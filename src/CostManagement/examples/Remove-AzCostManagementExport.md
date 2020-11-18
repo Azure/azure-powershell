@@ -1,18 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete the AzCostManagementExport by Scope and Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzCostManagementExport -Scope 'subscriptions/********' -name 'TestExportDatasetAggregationInfoYouri'
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete the AzCostManagementExport By Scope and ExportName
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete the AzCostManagementExport by Export Object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $getExport = Get-AzCostManagementExport -Scope 'subscriptions/*********' -name 'TestExportDatasetAggregationYouori'
+Remove-AzCostManagementExport -InputObject $getExport
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete the AzCostManagementExport By InputObject
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Cost
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cost/get-azcostmanagementexport
+Module Name: Az.CostManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/get-azcostmanagementexport
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ Get-AzCostManagementExport -Name <String> -Scope <String> [-Expand <String>] [-D
 
 ### GetViaIdentity
 ```
-Get-AzCostManagementExport -InputObject <ICostIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzCostManagementExport -InputObject <ICostManagementIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,23 +35,29 @@ The operation to get the export for the defined scope by export name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all AzCostManagementExports by scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCostManagementExport -Scope 'subscriptions/**********'
 
-{{ Add output here }}
+ETag              Name                               Type
+----              ----                               ----
+"1d63fb46c1f5154" TestExport                         Microsoft.CostManagement/exports
+"1d63fb4a3f75019" TestExport1                        Microsoft.CostManagement/exports
+"1d649f5dda56551" TestExport2                        Microsoft.CostManagement/exports
 ```
 
-{{ Add description here }}
+Get all AzCostManagementExports by Scope
 
-### Example 2: {{ Add title here }}
+### Example 2: Get AzCostManagementExport by Name and scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 
-{{ Add output here }}
+ETag              Name       Type
+----              ----       ----
+"1d63fb46c1f5154" TestExport Microsoft.CostManagement/exports
 ```
 
-{{ Add description here }}
+Get AzCostManagementExport by Name and scope
 
 ## PARAMETERS
 
@@ -91,7 +97,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -118,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with export operations.
-This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
 
 ```yaml
 Type: System.String
@@ -138,11 +143,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport
 
 ## NOTES
 
@@ -153,7 +158,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostIdentity>: Identity Parameter
+INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

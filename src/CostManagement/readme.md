@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Cost
+# Az.CostManagement
 This directory contains the PowerShell module for the Cost service.
 
 ---
 ## Status
-[![Az.Cost](https://img.shields.io/powershellgallery/v/Az.Cost.svg?style=flat-square&label=Az.Cost "Az.Cost")](https://www.powershellgallery.com/packages/Az.Cost/)
+[![Az.CostManagement](https://img.shields.io/powershellgallery/v/Az.CostManagement.svg?style=flat-square&label=Az.CostManagement "Az.CostManagement")](https://www.powershellgallery.com/packages/Az.CostManagement/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Cost`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.CostManagement`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -54,7 +54,7 @@ input-file:
 title: CostManagement
 module-version: 0.1.0
 
-subject-prefix: 'CostManagement'
+service-name: CostManagement
 
 identity-correction-for-post: true
 
@@ -80,12 +80,20 @@ directive:
       subject: ByDimensionExternalCloudProviderType|CloudForecast|DismissAlert|Forecast
       verb: Invoke
     remove: true
-  # - where:
-  #     subject: Export|ExportExecutionHistory|ExportExecution
-  #     parameter-name: Scope
-  #   set:
-  #     parameter-name: ABC
-      # parameter-description: This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+  - where:
+      subject: Export|ExportExecutionHistory|ExportExecution
+      parameter-name: Scope
+    set:
+      parameter-name: Scope
+      parameter-description: This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
+  - where:
+      subject: Export
+      verb: Update
+    hide: true
+  - where:
+      subject: Export
+      verb: New
+    hide: true
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/\/runHistory\$/g, "$");

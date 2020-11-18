@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Cost
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cost/remove-azcostmanagementexport
+Module Name: Az.CostManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/remove-azcostmanagementexport
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Remove-AzCostManagementExport -Name <String> -Scope <String> [-DefaultProfile <P
 
 ### DeleteViaIdentity
 ```
-Remove-AzCostManagementExport -InputObject <ICostIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzCostManagementExport -InputObject <ICostManagementIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,23 +29,24 @@ The operation to delete a export.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the AzCostManagementExport by Scope and Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzCostManagementExport -Scope 'subscriptions/********' -name 'TestExportDatasetAggregationInfoYouri'
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete the AzCostManagementExport By Scope and ExportName
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete the AzCostManagementExport by Export Object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $getExport = Get-AzCostManagementExport -Scope 'subscriptions/*********' -name 'TestExportDatasetAggregationYouori'
+Remove-AzCostManagementExport -InputObject $getExport
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete the AzCostManagementExport By InputObject
 
 ## PARAMETERS
 
@@ -69,7 +70,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -111,8 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with export operations.
-This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
 
 ```yaml
 Type: System.String
@@ -162,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 
 ## OUTPUTS
 
@@ -177,7 +177,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostIdentity>: Identity Parameter
+INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

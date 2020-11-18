@@ -14,12 +14,12 @@ while(-not $mockingPath) {
 Describe 'Get-AzCostManagementExportExecutionHistory' {
     It 'Get' {
         $exportHist = Get-AzCostManagementExportExecutionHistory -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
-        $exportHist.Count | Should -Be 1
+        $exportHist.Count | Should -Be 2
     }
 
     It 'GetViaIdentity' {
         $export = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
         $exportHist = Get-AzCostManagementExportExecutionHistory -InputObject $export
-        $exportHist.Count | Should -Be 1
+        $exportHist.Count | Should -Be 2
     }
 }

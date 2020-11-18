@@ -19,7 +19,7 @@ Describe 'New-AzCostManagementExport' {
         -RecurrencePeriodTo $env.toDate -Format "Csv" `
         -DestinationResourceId $env.storageAccountId `
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-        -DatasetGranularity "Daily" 
+        -DatasetGranularity "Daily"
 
         $export.ScheduleStatus | Should -Be 'Active'
     }
@@ -30,7 +30,7 @@ Describe 'New-AzCostManagementExport' {
         -RecurrencePeriodTo $env.toDate -Format "Csv" `
         -DestinationResourceId $env.storageAccountId `
         -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-        -DatasetGranularity "Daily" 
+        -DatasetGranularity "Daily"
 
         $export.ScheduleStatus | Should -Be 'Active'
     }
@@ -45,59 +45,4 @@ Describe 'New-AzCostManagementExport' {
 
         $export.ScheduleStatus | Should -Be 'Active'
     }
-
-    It 'CreateExpandedByGroup' {
-        $export =  New-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName05 `
-        -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom $env.fromDate `
-        -RecurrencePeriodTo $env.toDate -Format "Csv" `
-        -DestinationResourceId $env.storageAccountId `
-        -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-        -DatasetGranularity "Daily" `
-        -DatasetGrouping @(@{type='Dimension'; name='ResourceGroup'})
-
-        $export.ScheduleStatus | Should -Be 'Active'
-    }
-    It 'CreateExpandedByGroupAggregation' {
-        #Group Aggregation: Created successfully, No data generated in the storage account
-        $Aggregation1 = @{ name = 'PreTaxCost'; function='sum'}
-        $Aggregation2 = @{ name = 'Cost'; function='sum'}
-        $AggregationDict = @{costsum=$aggregation1; cost=$aggregation2}
-
-        $export =  New-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName06 `
-        -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom $env.fromDate `
-        -RecurrencePeriodTo $env.toDate -Format "Csv" `
-        -DestinationResourceId $env.storageAccountId `
-        -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-        -DatasetGranularity "Daily" `
-        -DatasetGrouping @(@{type='Dimension'; name='ResourceGroup'}) `
-        -DatasetAggregation $AggregationDict
-
-        $export.ScheduleStatus | Should -Be 'Active'
-    }
-
-    It 'CreateExpandedByFilter' -skip {
-        #Filter: Create failed, Invalid dataset filter; on a QueryFilter one and only one of and/or/not/dimension/tag can be set. Invalid dataset
-        #        filter; on a QueryFilter one and only one of and/or/not/dimension/tag can be set.
-        #TODO: The issue fix.
-        <#
-        $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe') 
-        $queryOrDimension = New-AzCostManagementQueryFilterObject -Dimension $orDimension
-        $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Operator In -Value @('UAT', 'Prod') 
-        $queryOrTag = New-AzCostManagementQueryFilterObject -Tag $orTag
-        $andOr = New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimension $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
-
-        $dimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator In -Value 'API'
-        $andDimension = New-AzCostManagementQueryFilterObject -Dimension $dimension
-        $fileter = New-AzCostManagementQueryFilterObject -And @($andOr, $andDimension) 
-
-        New-AzCostManagementExport -Debug -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name "ps-filter-t01" `
-        -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom "2020-06-29T13:00:00Z" `
-        -RecurrencePeriodTo "2020-07-01T00:00:00Z" -Format "Csv" `
-        -DestinationResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-manual-test/providers/Microsoft.Storage/storageAccounts/lucasstorageaccount" `
-        -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-        -DatasetGranularity "Daily" `
-        -DatasetFilter $fileter
-        #>
-    }
-
 }

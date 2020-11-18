@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Cost
+Module Name: Az.CostManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 schema: 2.0.0
 ---
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The operator to use for comparison.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.OperatorType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryComparisonExpression
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression
 
 ## NOTES
 

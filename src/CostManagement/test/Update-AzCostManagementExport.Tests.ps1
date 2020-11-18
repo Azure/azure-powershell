@@ -12,18 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzCostManagementExport' {
-    It 'UpdateExpanded' -skip {
-        # Has issue on server, Parameter ResourceID is not null
-        # TODO: When fix issue on server
-        $export = Update-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01 -RecurrencePeriodFrom $env.toDate
-        $export.RecurrencePeriodFrom | Should -Be $env.toDate
+    It 'UpdateExpanded' {
+        $export = Update-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01 -ScheduleRecurrence 'Weekly'
+        $export.property.ScheduleRecurrence | Should -Be 'Weekly'
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        # Has issue on server, Parameter ResourceID is not null
-        # TODO: When fix issue on server
+    It 'UpdateViaIdentityExpanded' {
         $oldExport = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
-        $export = Update-AzCostManagementExport -InputObject $oldExport -RecurrencePeriodFrom $env.fromDate
-        $export.RecurrencePeriodFrom | Should -Be $env.fromDate
+        $export = Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekly'
+        $export.property.ScheduleRecurrence | Should -Be 'Weekly'
     }
 }

@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Cost
+Module Name: Az.CostManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryColumnObject
 schema: 2.0.0
 ---
@@ -71,7 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryColumn
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryColumn
 
 ## NOTES
 

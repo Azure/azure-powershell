@@ -20,12 +20,12 @@ Create a in-memory object for QueryColumn
 Create a in-memory object for QueryColumn
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryColumn
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryColumn
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryColumnObject
 #>
 function New-AzCostManagementQueryColumnObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryColumn')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryColumn')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +38,7 @@ function New-AzCostManagementQueryColumnObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryColumn]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryColumn]::New()
 
         $Object.Name = $Name
         $Object.Type = $Type

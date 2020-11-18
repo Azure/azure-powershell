@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Cost
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cost/update-azcostmanagementexport
+Module Name: Az.CostManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/update-azcostmanagementexport
 schema: 2.0.0
 ---
 
@@ -20,17 +20,17 @@ Create operation does not require eTag.
 Update-AzCostManagementExport -Name <String> -Scope <String> [-ConfigurationColumn <String[]>]
  [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCostManagementExport -InputObject <ICostIdentity> [-ConfigurationColumn <String[]>]
+Update-AzCostManagementExport -InputObject <ICostManagementIdentity> [-ConfigurationColumn <String[]>]
  [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -85,7 +85,7 @@ The granularity of rows in the export.
 Currently only 'Daily' is supported.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.GranularityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ The time frame for pulling data for the export.
 If custom, then a specific time period must be provided.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.TimeframeType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ The type of the export.
 Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.ExportType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType
 Parameter Sets: (All)
 Aliases:
 
@@ -188,28 +188,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ETag
-eTag of the resource.
-To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Format
+[Parameter()]
+[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+[System.String]
+# eTag of the resource.
+# To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+${ETag},
 The format of the export being delivered.
 Currently only 'Csv' is supported.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.FormatType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +215,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -285,7 +275,7 @@ Accept wildcard characters: False
 The schedule recurrence.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.RecurrenceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType
 Parameter Sets: (All)
 Aliases:
 
@@ -301,7 +291,7 @@ The status of the export's schedule.
 If 'Inactive', the export's schedule is paused.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Support.StatusType
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType
 Parameter Sets: (All)
 Aliases:
 
@@ -313,8 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with export operations.
-This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
 
 ```yaml
 Type: System.String
@@ -394,11 +383,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport
 
 ## NOTES
 
@@ -409,7 +398,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostIdentity>: Identity Parameter
+INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

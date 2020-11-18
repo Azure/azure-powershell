@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Cost
+Module Name: Az.CostManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 schema: 2.0.0
 ---
@@ -47,7 +47,7 @@ Must have at least 2 items.
 To construct, see NOTES section for AND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Has comparison expression for a dimension.
 To construct, see NOTES section for DIMENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryComparisonExpression
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ The logical "NOT" expression.
 To construct, see NOTES section for NOT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Must have at least 2 items.
 To construct, see NOTES section for OR properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Has comparison expression for a tag.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.IQueryComparisonExpression
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter
 
 ## NOTES
 

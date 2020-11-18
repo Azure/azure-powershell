@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Cost
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cost/invoke-azcostmanagementexecuteexport
+Module Name: Az.CostManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/invoke-azcostmanagementexecuteexport
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Invoke-AzCostManagementExecuteExport -ExportName <String> -Scope <String> [-Defa
 
 ### ExecuteViaIdentity
 ```
-Invoke-AzCostManagementExecuteExport -InputObject <ICostIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzCostManagementExecuteExport -InputObject <ICostManagementIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,23 +29,24 @@ The operation to execute an export.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Invoke Export by ExportName and Scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Invoke-AzCostManagementExecuteExport -ExportName 'TestExport' -Scope 'subscriptions/**********'
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+Invoke Export by ExportName and Scope
 
-### Example 2: {{ Add title here }}
+### Example 2: Invoke Export by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+Invoke-AzCostManagementExecuteExport -InputObject $getExport
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+Invoke Export by InputObject
 
 ## PARAMETERS
 
@@ -84,7 +85,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 Parameter Sets: ExecuteViaIdentity
 Aliases:
 
@@ -111,8 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope associated with export operations.
-This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
 
 ```yaml
 Type: System.String
@@ -162,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.ICostIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 
 ## OUTPUTS
 
@@ -177,7 +177,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostIdentity>: Identity Parameter
+INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

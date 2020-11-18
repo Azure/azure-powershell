@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Cost
-Module Guid: 3cca0b09-d91f-4cc1-aebd-6b1be566c631
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cost
+Module Name: Az.CostManagement
+Module Guid: 4cd9af10-559e-4fb9-8dcd-d3e8eb9e03b7
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Cost Module
+# Az.CostManagement Module
 ## Description
 Microsoft Azure PowerShell: Cost cmdlets
 
-## Az.Cost Cmdlets
+## Az.CostManagement Cmdlets
 ### [Get-AzCostManagementExport](Get-AzCostManagementExport.md)
 The operation to get the export for the defined scope by export name.
 
@@ -20,7 +20,7 @@ The operation to get the execution history of an export for the defined scope an
 ### [Invoke-AzCostManagementExecuteExport](Invoke-AzCostManagementExecuteExport.md)
 The operation to execute an export.
 
-### [Invoke-AzCostManagementUsageQuery](Invoke-AzCostManagementUsageQuery.md)
+### [Invoke-AzCostManagementQuery](Invoke-AzCostManagementQuery.md)
 Query the usage data for scope defined.
 
 ### [New-AzCostManagementExport](New-AzCostManagementExport.md)
