@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Fixed the issue that user cannot use service principal to create a new Kubernetes cluster. [#13012]
+
 ## Version 2.0.0
 * [Breaking Change] Removed parameter alias `ClientIdAndSecret` in `New-AzAksCluster` and `Set-AzAksCluster`.
 * [Breaking Change] Changed the default value of `NodeVmSetType` in `New-AzAksCluster` from `AvailabilitySet` to `VirtualMachineScaleSets`.

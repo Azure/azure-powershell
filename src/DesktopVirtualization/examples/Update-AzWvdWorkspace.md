@@ -1,4 +1,4 @@
-### Example 1: Update a Windows Virtual Desktop Worksapce by name
+### Example 1: Update a Windows Virtual Desktop Workspace by name
 ```powershell
 PS C:\> Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `

@@ -18,7 +18,7 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
  [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
  [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
  [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>]
- [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob]
+ [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob] [-PublicNetworkAccess <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String
  [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>]
  [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential]
  [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
- [-DisableManagedIdentity] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+ [-DisableManagedIdentity] [-Tag <Hashtable>] -ResourceId <String> [-AsJob] [-PublicNetworkAccess <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -377,6 +377,22 @@ Parameter Sets: ServiceNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The network access type for Fhir service. Commonly `Enabled` or `Disabled`.
+
+```yaml
+Type: System.String
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

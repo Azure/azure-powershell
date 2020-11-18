@@ -511,6 +511,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INITIALIZATION: Fallback context save mode to process because of error during checking token cache persistence: {0}..
+        /// </summary>
+        internal static string FallbackContextSaveModeDueCacheCheckError {
+            get {
+                return ResourceManager.GetString("FallbackContextSaveModeDueCacheCheckError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find file &apos;{0}&apos;.
         /// </summary>
         internal static string FileNotFound {
@@ -588,6 +597,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string InvalidEndpointProvided {
             get {
                 return ResourceManager.GetString("InvalidEndpointProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified ResourceTypeName &quot;{0}&quot; is not supported, please provide a valid value. e.g. Arm, AadGraph, etc..
+        /// </summary>
+        internal static string InvalidResourceTypeName {
+            get {
+                return ResourceManager.GetString("InvalidResourceTypeName", resourceCulture);
             }
         }
         
@@ -727,7 +745,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: &apos;{0}&apos;.
+        ///   Looks up a localized string similar to INITIALIZATION: Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: &apos;{0}&apos;.
         /// </summary>
         internal static string ProfileFileNotAccessible {
             get {
@@ -1123,7 +1141,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Token cache encryption is not supported in current environment and token cache will be fallen back as plain text..
+        ///   Looks up a localized string similar to INITIALIZATION: Token cache encryption is not supported in current environment and token cache will be fallen back as plain text..
         /// </summary>
         internal static string TokenCacheEncryptionNotSupportedWithFallback {
             get {

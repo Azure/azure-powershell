@@ -589,7 +589,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.Streams.Error.Clear();
-                }
+                }   
             }
         }
 
