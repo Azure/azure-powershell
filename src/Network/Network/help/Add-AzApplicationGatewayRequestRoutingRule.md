@@ -16,7 +16,7 @@ Adds a request routing rule to an application gateway.
 ### SetByResourceId
 ```
 Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
- -RuleType <String> [-BackendHttpSettingsId <String>] [-HttpListenerId <String>]
+ -RuleType <String> [-Priority <Int32>] [-BackendHttpSettingsId <String>] [-HttpListenerId <String>]
  [-BackendAddressPoolId <String>] [-UrlPathMapId <String>] [-RewriteRuleSetId <String>]
  [-RedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway <PSApplicationGat
 ### SetByResource
 ```
 Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
- -RuleType <String> [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ -RuleType <String> [-Priority <Int32>] [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-HttpListener <PSApplicationGatewayHttpListener>]
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-UrlPathMap <PSApplicationGatewayUrlPathMap>]
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
@@ -177,6 +177,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+The priority of the rule
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
