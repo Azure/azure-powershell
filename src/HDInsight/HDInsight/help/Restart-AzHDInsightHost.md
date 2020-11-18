@@ -15,13 +15,13 @@ Restarts the specific hosts of HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String> [-Name] <String[]> [-AsJob]
- [[-DefaultProfile] <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByAzureHDInsightHostInfoParameterSet
 ```
 Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-AzureHDInsightHostInfo] <AzureHDInsightHostInfo[]> [-AsJob] [[-DefaultProfile] <IAzureContextContainer>]
+ [-AzureHDInsightHostInfo] <AzureHDInsightHostInfo[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -192,11 +192,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo, Microsoft.Azure.PowerShell.Cmdlets.HDInsight, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.String[]
+
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.Cluster
+### System.Boolean
 
 ## NOTES
 

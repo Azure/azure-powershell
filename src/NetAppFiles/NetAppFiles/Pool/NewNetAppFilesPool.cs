@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
@@ -83,6 +84,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The qos type of the pool. Possible values include: 'Auto', 'Manual'")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Auto", "Manual")]
+        public string QosType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -122,13 +130,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
                 Location = Location,
-                Tags = tagPairs
+                Tags = tagPairs,
+                QosType = QosType
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
-                WriteObject(anfPool);
+                WriteObject(anfPool.ToPsNetAppFilesPool());
             }
         }
     }
