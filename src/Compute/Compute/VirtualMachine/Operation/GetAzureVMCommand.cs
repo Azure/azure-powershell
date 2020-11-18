@@ -23,10 +23,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -100,37 +97,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public DisplayHintType DisplayHint { get; set; }
 
-        //test
-        /// <summary>
-        /// Service client credentials client to hold credentials
-        /// </summary>
-        private ServiceClientCredentials clientCredentials;
-        public ServiceClientCredentials ClientCredentials
-        {
-            get
-            {
-                return clientCredentials = clientCredentials ?? AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultProfile.DefaultContext,
-                                               AzureEnvironment.Endpoint.ResourceManager);
-
-            }
-            set => clientCredentials = value;
-        }
-
-        private IResourceManagementClient resourceManagerClient;
-        public IResourceManagementClient ResourceManagerClient
-        {
-            get
-            {
-                return resourceManagerClient = resourceManagerClient ?? 
-                    new ResourceManagementClient(
-                        DefaultProfile.DefaultContext.Environment.
-                        GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
-                            ClientCredentials);
-            }
-            set => resourceManagerClient = value;
-        }
-        //test
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -152,8 +118,8 @@ namespace Microsoft.Azure.Commands.Compute
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
                     ReturnListVMObject(
-                            this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
-                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync); 
+                        this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
+                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync); 
                 }
                 else if (ShouldGetByName(ResourceGroupName, Name))
                 {
