@@ -597,4 +597,7 @@ Are you sure you want to continue?</value>
   <data name="SqlPoolRestorePointDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified Restore Point '{0}' does not exist.</value>
   </data>
+  <data name="RemoveSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Sql Pool Restore Point '{0}'?</value>
+  </data>
 </root>

@@ -1,9 +1,11 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Commands
 {
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
             nameof(WorkspaceName),
             nameof(SqlPoolName))]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public DateTime RestorePointCreationDate { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SqlPoolObject)]
@@ -62,6 +64,9 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.SqlPoolObject))
@@ -75,7 +80,8 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
 
             if (this.IsParameterBound(c => c.InputObject))
             {
-                this.Name = this.InputObject.Id.Substring(this.InputObject.Id.LastIndexOf('/') + 1);
+                var dateString = this.InputObject.Id.Substring(this.InputObject.Id.LastIndexOf('/') + 1);
+                this.RestorePointCreationDate = DateTime.FromFileTime(Convert.ToInt64(dateString));
                 this.ResourceId = this.InputObject.Id.Substring(0, this.InputObject.Id.Substring(0, this.InputObject.Id.LastIndexOf("/")).LastIndexOf("/"));
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -86,7 +92,8 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
-                this.Name = this.ResourceId.Substring(this.ResourceId.LastIndexOf('/') + 1);
+                var dateString = this.ResourceId.Substring(this.ResourceId.LastIndexOf('/') + 1);
+                this.RestorePointCreationDate = DateTime.FromFileTime(Convert.ToInt64(dateString));
                 this.ResourceId = this.ResourceId.Substring(0,this.ResourceId.Substring(0, this.ResourceId.LastIndexOf("/")).LastIndexOf("/"));
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -100,15 +107,19 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.ShouldProcess(this.Name, string.Format("Resources.RemovingSynapseSqlPoolRestorePoint", this.Name, this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName)))
-            {
-                this.SynapseAnalyticsClient.DeleteSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName, this.Name);
-
-                if (this.PassThru.IsPresent)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveSynapseSqlPoolRestorePoint, this.RestorePointCreationDate),
+                string.Format(Resources.RemovingSynapseSqlPoolRestorePoint, this.RestorePointCreationDate, this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName),
+                this.RestorePointCreationDate.ToFileTimeUtc().ToString(),
+                () =>
                 {
-                    WriteObject(true);
-                }
-            }
+                    this.SynapseAnalyticsClient.DeleteSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName, this.RestorePointCreationDate.ToFileTimeUtc().ToString());
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }
