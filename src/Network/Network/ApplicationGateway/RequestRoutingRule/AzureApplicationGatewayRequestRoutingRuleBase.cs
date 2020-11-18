@@ -26,11 +26,16 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-        Mandatory = true,
-        HelpMessage = "The type of rule")]
+                Mandatory = true,
+                HelpMessage = "The type of rule")]
         [ValidateSet("Basic", "PathBasedRouting", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RuleType { get; set; }
+
+        [Parameter(
+                HelpMessage = "The priority of the rule")]
+        [ValidateNotNullOrEmpty]
+        public int? Priority { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
@@ -142,6 +147,7 @@ namespace Microsoft.Azure.Commands.Network
             var requestRoutingRule = new PSApplicationGatewayRequestRoutingRule();
             requestRoutingRule.Name = this.Name;
             requestRoutingRule.RuleType = this.RuleType;
+            requestRoutingRule.Priority = this.Priority;
 
             if (!string.IsNullOrEmpty(this.BackendHttpSettingsId))
             {
