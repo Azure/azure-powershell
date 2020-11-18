@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
     /// <summary>
     /// This commandlet will let you delete a managed certificate
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", DefaultParameterSetName = ParameterSet1Name, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
         const string ParameterSet1Name = "S1";
