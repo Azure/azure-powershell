@@ -85,7 +85,7 @@ function Test-NewAzWebAppCertificateForSlot
 	$rgname = "lketmtestantps10"
 	$appname = "lketmtestantps10"	
 	$slot = "testslot"	
-	$slotHostname = "www.managedcerts.net"
+	$slotHostname = "testslot.adorenow.net"
 	$thumbprint=""
 
 	try{
