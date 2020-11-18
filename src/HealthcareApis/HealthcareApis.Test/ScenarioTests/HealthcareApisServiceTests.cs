@@ -36,5 +36,19 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
         {
             HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisService");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpointConnection()
+        {
+            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-PrivateEndpointConnection");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicNetworkAccessControl()
+        {
+            HealthcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-PublicNetworkAccessControl");
+        }
     }
 }
