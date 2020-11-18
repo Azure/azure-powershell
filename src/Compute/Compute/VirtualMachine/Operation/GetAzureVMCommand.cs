@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Commands.Compute
                 int vm_count = 0;
                 //adam
                 var filteredList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body);
-                foreach (var item in filteredList)
+                //foreach (var item in filteredList)
                 //adam
-                //foreach (var item in vmListResult.Body)//orig
+                foreach (var item in vmListResult.Body)//orig
                 {
                     vm_count++;
                     var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);

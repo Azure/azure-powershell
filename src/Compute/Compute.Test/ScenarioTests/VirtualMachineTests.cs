@@ -346,5 +346,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineImageListTopOrderExpand");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetVMNameAcrossResourceGroups()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetVMNameAcrossResourceGroups");
+        }
     }
 }

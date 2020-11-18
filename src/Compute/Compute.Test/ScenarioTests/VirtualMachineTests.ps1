@@ -4412,3 +4412,49 @@ function Test-VirtualMachineImageListTopOrderExpand
 
 }
 
+<#
+.SYNOPSIS
+Test the Get-AzVm cmdlet when using VMs with the 
+same name across multiple Resource Groups. 
+#>
+function Test-VirtualMachineGetVMNameAcrossResourceGroups
+{
+    # Setup
+    $loc = "eastus";
+    $rgname = Get-ComputeTestResourceName;
+    $rgname2 = Get-ComputeTestResourceName;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname2 -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname1 = 'v' + $rgname;
+        $vmname3 = 'v3' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        $domainNameLabel = "domainlabel1";
+        $domainNameLabel2 = "domainlabe2";
+        $domainNameLabel3 = "domainlabe3";
+
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
+        $vm2 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel2;
+        $vm3 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname3 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel3;
+
+        $vms = Get-AzVm -Name $vmname1 -Status;
+
+        Assert-AreEqual 2 $vms.Count;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+        Clean-ResourceGroup $rgname2;
+    }
+}
