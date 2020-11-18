@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
-        public int ReadReplicaCount { get; set; }
+        public int HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
             };
 

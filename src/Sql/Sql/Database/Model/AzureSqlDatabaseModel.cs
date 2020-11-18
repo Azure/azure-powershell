@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public double? MinimumCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of readonly replicas for the database
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
         /// </summary>
-        public int? ReadReplicaCount { get; set; }
+        public int? HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the backup storage redundancy for the database
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ZoneRedundant = false;
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
-            ReadReplicaCount = null;
+            HighAvailabilityReplicaCount = null;
             BackupStorageRedundancy= null;
         }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
-            ReadReplicaCount = database.ReadReplicaCount;
+            HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
             BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
         }
 
