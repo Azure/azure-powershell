@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
 
                 var certificate = new Certificate(
                     webApp.Location,
+                    type: "Microsoft.Web/certificates",
                     canonicalName: HostName,
                     password: "",
                     serverFarmId: webApp.ServerFarmId);
@@ -96,14 +97,26 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                             throw;
                         }
                     }
-                    //Delay the execution by 5 seconds so that the Certificate will created post it return 'Accepted' status
-                    Thread.Sleep(15000);
-                    var certs = WebsitesClient.ListCertificates().ToList();
-                    createdCertdetails = certs.Where(c => c.Name == HostName).SingleOrDefault();
+                    //Try to get the certificate post the create call return 'Accepted' status
+                    if (createdCertdetails == null)
+                        for (; ; )
+                        {
+                            try
+                            {
+                                createdCertdetails = WebsitesClient.GetCertificate(ResourceGroupName, HostName);
+                                break;
+                            }
+                            catch (DefaultErrorResponseException e)
+                            {
+                                //if 'NotFound' lets retry for every 5 seconds to get the certificate 
+                                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                                    Thread.Sleep(5000);
+                            }
+                        }
                     //Add only when user is opted for Binding
                     if (AddBinding)
                     {
-                        
+
                         WebsitesClient.UpdateHostNameSslState(ResourceGroupName,
                                                               WebAppName,
                                                               Slot,

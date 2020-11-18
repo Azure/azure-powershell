@@ -18,10 +18,9 @@ Tests creating a new managed cert for app.
 #>
 function Test-NewAzWebAppCertificate
 {
-	$rgname = "RG-W-CUS"
-	$appname = "managedcerts"
-	$slot = "testslot"
-	$prodHostname = "www.managedcerts.net"	
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"	
+	$prodHostname = "www.adorenow.net"	
 	$thumbprint=""
 
 	try{		
@@ -46,11 +45,9 @@ Tests creating a new managed cert for app with SSL binding.
 #>
 function Test-NewAzWebAppCertificateWithSSLBinding
 {
-	$rgname = "RG-W-CUS"
-	$appname = "managedcerts"
-	$slot = "testslot"
-	$prodHostname = "www.managedcerts.net"
-	$slotHostname = "testslot.adorenow.net"
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"	
+	$prodHostname = "www.adorenow.net"	
 	$thumbprint=""
 
 	try{		
@@ -85,10 +82,10 @@ Tests creating a new managed certfor slot.
 function Test-NewAzWebAppCertificateForSlot
 {
 
-	$rgname = "RG-W-CUS"
-	$appname = "managedcerts"
-	$slot = "sit"	
-	$slotHostname = "www.managedcerts1.org"
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"	
+	$slot = "testslot"	
+	$slotHostname = "www.managedcerts.net"
 	$thumbprint=""
 
 	try{
@@ -114,9 +111,9 @@ Tests removing a managed cert.
 function Test-RemoveAzWebAppCertificate
 {
 
-	$rgname = "RG-W-CUS"
-	$appname = "managedcerts"	
-	$prodHostname = "www.managedcerts.net"	
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"	
+	$prodHostname = "www.adorenow.net"	
 	$thumbprint=""
 
 	try{		

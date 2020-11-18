@@ -24,10 +24,17 @@ The **Remove-AzWebAppCertificate** cmdlet creates an Azure App Service Managed C
 
 ### Example 1
 ```powershell
-PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
+PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
 ```
 
 This command removes App Service Managed certificate for the given web app.
+
+### Example 2
+```powershell
+PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
+```
+
+This command removes SSL Binding and App Service Managed certificate for the given web app.
 
 ## PARAMETERS
 

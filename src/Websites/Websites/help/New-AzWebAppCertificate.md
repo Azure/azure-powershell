@@ -31,6 +31,13 @@ This command create an App Service Managed Certificate for the given WebApp
 
 ### Example 2
 ```powershell
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Slot "test" -AddCertBinding
+```
+
+This command create an App Service Managed Certificate and binds to the given WebApp Slot.
+
+### Example 3
+```powershell
 PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -AddCertBinding
 ```
 
