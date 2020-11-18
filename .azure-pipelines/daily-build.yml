@@ -59,19 +59,19 @@ jobs:
         Exit"
         dotnet tool run pwsh -c $command  
 
-  - task: PowerShell@2
-    displayName: 'Push to Branch internal/dailybuild'
-    inputs:
-      targetType: 'inline'
-      script: |
-        git config user.email "azuresdkci@microsoft.com"
-        git config user.name "azuresdkci"
-        git remote set-url origin https://$(Token)@github.com/Azure/azure-powershell.git
-        git checkout -b internal/dailybuild
-        git add .
-        git commit -m "Bump Version"
-        git status
-        git push -u origin internal/dailybuild --force
+  # - task: PowerShell@2
+  #   displayName: 'Push to Branch internal/dailybuild'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #       git config user.email "azuresdkci@microsoft.com"
+  #       git config user.name "azuresdkci"
+  #       git remote set-url origin https://$(Token)@github.com/Azure/azure-powershell.git
+  #       git checkout -b internal/dailybuild
+  #       git add .
+  #       git commit -m "Bump Version"
+  #       git status
+  #       git push -u origin internal/dailybuild --force
 
   - task: PowerShell@2
     displayName: 'Clean artifacts folder'
