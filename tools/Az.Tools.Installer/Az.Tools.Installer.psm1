@@ -35,7 +35,8 @@ foreach($function in $allFunctions) {
 Export-ModuleMember -Function $exportedFunctions.Basename
 
 $commandsWithRepositoryParameter = @(
-    "Install-AzModule"
+    "Install-AzModule",
+    "Uninstall-AzModule"
 )
 
 Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"

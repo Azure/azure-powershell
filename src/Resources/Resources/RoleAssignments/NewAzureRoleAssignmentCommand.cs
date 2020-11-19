@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
@@ -184,7 +185,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Condition to be applied to the RoleAssignment.")]
         [ValidateNotNullOrEmpty]
-        public string Condition { get; set; }
+        public string Condition { get; set; } = null;
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "Version of the condition.")]
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Version of the condition.")]
         [ValidateNotNullOrEmpty]
-        public string ConditionVersion { get; set; }
+        public string ConditionVersion { get; set; } = null;
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
@@ -245,7 +246,7 @@ namespace Microsoft.Azure.Commands.Resources
                     this.ResourceType = RoleAssignment.ObjectType;
                     this.Scope = RoleAssignment.Scope;
                     Guid guid = Guid.Empty;
-                    Guid.TryParse(RoleAssignment.RoleDefinitionId,out guid);
+                    Guid.TryParse(RoleAssignment.RoleDefinitionId, out guid);
                     this.RoleDefinitionId = guid;
                     this.Description = RoleAssignment.Description;
                     this.Condition = RoleAssignment.Condition;
@@ -271,7 +272,9 @@ namespace Microsoft.Azure.Commands.Resources
                 }
 
             }
-            double _conditionVersion = double.Parse((ConditionVersion ?? "2.0"));
+            // ensure that if ConditionVersion is empty in any way, it becomes null
+            ConditionVersion = string.IsNullOrEmpty(ConditionVersion) ? null : string.IsNullOrWhiteSpace(ConditionVersion) ? null : ConditionVersion; 
+            double _conditionVersion = double.Parse(ConditionVersion ?? "2.0", CultureInfo.InvariantCulture);
             if (_conditionVersion < 2.0)
             {
                 WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
     /// <summary>Check the availability of name for resource</summary>
     /// <remarks>
-    /// [OpenAPI] CheckNameAvailability_Execute=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMariaDB/checkNameAvailability"
+    /// [OpenAPI] Execute=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMariaDB/checkNameAvailability"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzMariaDbExecuteCheckNameAvailability_ExecuteViaIdentity", SupportsShouldProcess = true)]

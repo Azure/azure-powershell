@@ -68,5 +68,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets TotalThroughputMibps
+        /// </summary>
+        /// <value>
+        /// total throughput of pool in Mibps        
+        /// </value>
+        public double? TotalThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Gets or sets UtilizedThroughputMibps
+        /// </summary>
+        /// <value>
+        /// Utilized throughput of pool in Mibps        
+        /// </value>
+        public double? UtilizedThroughputMibps { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets qosType
+        /// </summary>
+        /// <value>
+        /// The qos type of the pool. Possible values include: 'Auto', 'Manual'
+        /// </value>
+        public string QosType { get; set; }
     }
 }

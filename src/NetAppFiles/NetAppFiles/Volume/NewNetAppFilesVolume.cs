@@ -119,6 +119,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string ServiceLevel { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Create volume from a snapshot. UUID v4 or resource identifier used to identify the Snapshot")]
+        [ValidateNotNullOrEmpty]        
+        public string SnapshotId { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the export policy")]
         [ValidateNotNullOrEmpty]
@@ -132,10 +139,49 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable array which represents the protocol types")]
+            HelpMessage = "A hashtable array which represents the snapshot object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the backup object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the protocol types. You need to create Active Directory connections before creating an SMB/CIFS volume")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("NFSv3", "NFSv4.1", "CIFS")]
         public string[] ProtocolType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
+        public SwitchParameter SnapshotDirectoryVisible { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Backup ID. UUID v4 or resource identifier used to identify the Backup.")]        
+        public string BackupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The security style of volume. Possible values include: 'ntfs', 'unix'")]
+        [PSArgumentCompleter("ntfs", "unix")]
+        public string SecurityStyle { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+        public double? ThroughputMibps { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describe if a volume is Kerberos Enabled.")]
+        public SwitchParameter KerberosEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -177,7 +223,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             var dataProtection = new PSNetAppFilesVolumeDataProtection
             {
-                Replication = ReplicationObject
+                Replication = ReplicationObject,
+                Snapshot = Snapshot,
+                Backup = Backup
             };
 
             var volumeBody = new Management.NetApp.Models.Volume()
@@ -191,7 +239,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 DataProtection = (dataProtection.Replication != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
-                Tags = tagPairs
+                Tags = tagPairs,
+                SnapshotId = SnapshotId,
+                SnapshotDirectoryVisible = SnapshotDirectoryVisible,
+                SecurityStyle = SecurityStyle,
+                BackupId = BackupId,
+                ThroughputMibps = ThroughputMibps,
+                KerberosEnabled = KerberosEnabled
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

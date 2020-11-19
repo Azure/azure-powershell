@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string RestorePoint = nameof(RestorePoint);
+
         public const string SqlDatabase = nameof(SqlDatabase);
 
         public const string SparkPoolName = nameof(SparkPoolName);
@@ -108,6 +110,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string Subscription = nameof(Subscription);
 
         public const string TriggerRun = nameof(TriggerRun);
+
+        public const string Dataset = nameof(Dataset);
+
+        public const string DataFlow = nameof(DataFlow);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {

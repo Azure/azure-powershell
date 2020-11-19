@@ -22,13 +22,32 @@ function Update-AzModule {
         Updates Azure PowerShell modules.
 
     .Example
-        C:\PS> Install-AzModule -Name Storage,Compute,Network -Repository PSGallery
+        C:\PS> Update-AzModule
 
         Version              Name                                Repository           Description
         -------              ----                                ----------           -----------
-        4.3.1                Az.Compute                          PSGallery            Microsoft Azure PowerShell - Compute ser…
-        3.3.0                Az.Network                          PSGallery            Microsoft Azure PowerShell - Networking …
-        2.5.0                Az.Storage                          PSGallery            Microsoft Azure PowerShell - Storage ser…
+        1.4.0                Az.Automation                       PSGallery            Microsoft Azure PowerShell - Automation service…
+        4.3.1                Az.Compute                          PSGallery            Microsoft Azure PowerShell - Compute service…
+        1.10.0               Az.DataFactory                      PSGallery            Microsoft Azure PowerShell - Data Factory service…
+        2.0.0                Az.DesktopVirtualization            PSGallery            Microsoft Azure PowerShell: DesktopVirtualization cmdlets
+        3.5.0                Az.HDInsight                        PSGallery            Microsoft Azure PowerShell - HDInsight service…
+        2.1.0                Az.KeyVault                         PSGallery            Microsoft Azure PowerShell - Key Vault service…
+        1.1.0                Az.Maintenance                      PSGallery            Microsoft Azure PowerShell - Maintenance…
+        1.1.0                Az.ManagedServices                  PSGallery            Microsoft Azure PowerShell - ManagedServices cmdlets for Azure Resource Manager
+        2.1.0                Az.Monitor                          PSGallery            Microsoft Azure PowerShell - Monitor service…
+        2.12.0               Az.RecoveryServices                 PSGallery            Microsoft Azure PowerShell - Recovery Services…
+        2.5.0                Az.Resources                        PSGallery            Microsoft Azure PowerShell - Azure Resource Manager and Active Directory…
+        1.2.0                Az.SignalR                          PSGallery            Microsoft Azure PowerShell - Azure SignalR service…
+        2.5.0                Az.Storage                          PSGallery            Microsoft Azure PowerShell - Storage service…
+        4.6.1                Az                                  PSGallery            Microsoft Azure PowerShell - Cmdlets to manage resources in Azure…
+
+
+        C:\PS> Update-AzModule -Name DesktopVirtualization,RecoveryServices
+
+        Version              Name                                Repository           Description
+        -------              ----                                ----------           -----------
+        2.0.0                Az.DesktopVirtualization            PSGallery            Microsoft Azure PowerShell: DesktopVirtualization cmdlets
+        2.12.0               Az.RecoveryServices                 PSGallery            Microsoft Azure PowerShell - Recovery Services…
 
 #>
     [OutputType([PSCustomObject[]])]
@@ -58,7 +77,7 @@ function Update-AzModule {
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
         if ($ppsedition -eq "Core") {
-            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop).Where({$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
+            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop | Where-Object {$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
             $allPahts = ($allPahts | Select-String -Pattern "WindowsPowerShell")
             if ($allPahts) {
                 Write-Warning "Az modules are also installed in WindowsPowerShell. Please update them using WindowsPowerShell."
@@ -77,9 +96,9 @@ function Update-AzModule {
         if($allToUpdate) {
             Write-Host -ForegroundColor DarkGreen "The modules to Update:$($allToUpdate | Out-String)"
 
-            $allToUpdateReordered = @() + $allToUpdate.Where({$_.Name -eq "Az"})
-            $allToUpdateReordered += $allToUpdate.Where({$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"})
-            $allToUpdateReordered += $allToUpdate.Where({$_.Name -eq "Az.Accounts"})
+            $allToUpdateReordered = @() + ($allToUpdate | Where-Object {$_.Name -eq "Az"})
+            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"}
+            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -eq "Az.Accounts"}
 
             foreach ($module in $allToUpdateReordered) {
                 if (-not $module) {
@@ -101,18 +120,19 @@ function Update-AzModule {
                         Write-Debug "Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
                     }
 
+                    $moduleInstalled = $null
                     try {
-                        $installModule = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
+                        $moduleInstalled = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
                     }
                     catch {
                         Write-Debug $_
                     }
-                    if (-not $installModule -or $installModule.Repository -ne $module.Repository) {
+                    if (-not $moduleInstalled -or $moduleInstalled.Repository -ne $module.Repository) {
                         $parameters = @{}
                         $parameters['Name'] = $module.Name
                         $parameters['Repository'] = $module.Repository
                         $parameters['RequiredVersion'] = $module.VersionToUpgrade
-                        $parameters['Force'] = $installModule.Repository -ne $module.Repository -or $Force
+                        $parameters['Force'] = $Force -or ($moduleInstalled -ne $null -and $moduleInstalled.Repository -ne $module.Repository)
                         PowerShellGet\Install-Module @parameters
                     }
                 }
@@ -120,9 +140,9 @@ function Update-AzModule {
 
             $output = @()
             if (-not $WhatIf) {
-                foreach($name in $allToUpdate.Name) {
+                foreach($n in $allToUpdate.Name) {
                     try {
-                        $output += (Get-InstalledModule -Name $name -ErrorAction Stop)
+                        $output += (Get-InstalledModule -Name $n -ErrorAction Stop)
                     }
                     catch {
                         Write-Warning $_

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -25,6 +26,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
             DeletedDate = keyItem.DeletedDate;
+        }
+        internal PSDeletedKeyVaultKeyIdentityItem(Track2Sdk.DeletedKey deletedKey, VaultUriHelper vaultUriHelper): base(deletedKey.Properties, vaultUriHelper)
+        {
+            ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
+            DeletedDate = deletedKey.DeletedOn?.UtcDateTime;
         }
 
         public DateTime? ScheduledPurgeDate { get; set; }

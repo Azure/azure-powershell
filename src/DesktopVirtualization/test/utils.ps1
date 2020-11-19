@@ -15,6 +15,11 @@ function setupEnv() {
     $envFile = 'env.json'
     $null = $env.Add("ResourceGroup", "datr-canadaeast")
     $null = $env.Add("Location", "canadaeast")
+    $null = $env.Add("HostPool", "datr-hp2")
+    $null = $env.Add("HostPoolArmPath", "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2")
+    $null = $env.Add("RemoteApplicationGroup", "datr-hp2-RAG")
+    $null = $env.Add("DesktopApplicationGroup", "datr-hp2-DAG")
+    $null = $env.Add("MSIXImagePath", "C:\msix\singlemsix.vhd")
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }

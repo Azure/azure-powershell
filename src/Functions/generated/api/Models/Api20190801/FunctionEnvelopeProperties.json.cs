@@ -70,19 +70,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_config = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("config"), out var __jsonConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelopePropertiesConfig.FromJson(__jsonConfig) : Config;}
-            {_configHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("config_href"), out var __jsonConfigHref) ? (string)__jsonConfigHref : (string)ConfigHref;}
-            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("files"), out var __jsonFiles) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelopePropertiesFiles.FromJson(__jsonFiles) : File;}
             {_functionAppId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("function_app_id"), out var __jsonFunctionAppId) ? (string)__jsonFunctionAppId : (string)FunctionAppId;}
-            {_href = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("href"), out var __jsonHref) ? (string)__jsonHref : (string)Href;}
-            {_invokeUrlTemplate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("invoke_url_template"), out var __jsonInvokeUrlTemplate) ? (string)__jsonInvokeUrlTemplate : (string)InvokeUrlTemplate;}
-            {_isDisabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isDisabled"), out var __jsonIsDisabled) ? (bool?)__jsonIsDisabled : IsDisabled;}
-            {_scriptHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("script_href"), out var __jsonScriptHref) ? (string)__jsonScriptHref : (string)ScriptHref;}
             {_scriptRootPathHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("script_root_path_href"), out var __jsonScriptRootPathHref) ? (string)__jsonScriptRootPathHref : (string)ScriptRootPathHref;}
-            {_secretsFileHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("secrets_file_href"), out var __jsonSecretsFileHref) ? (string)__jsonSecretsFileHref : (string)SecretsFileHref;}
-            {_testData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("test_data"), out var __jsonTestData) ? (string)__jsonTestData : (string)TestData;}
+            {_scriptHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("script_href"), out var __jsonScriptHref) ? (string)__jsonScriptHref : (string)ScriptHref;}
+            {_configHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("config_href"), out var __jsonConfigHref) ? (string)__jsonConfigHref : (string)ConfigHref;}
             {_testDataHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("test_data_href"), out var __jsonTestDataHref) ? (string)__jsonTestDataHref : (string)TestDataHref;}
+            {_secretsFileHref = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("secrets_file_href"), out var __jsonSecretsFileHref) ? (string)__jsonSecretsFileHref : (string)SecretsFileHref;}
+            {_href = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("href"), out var __jsonHref) ? (string)__jsonHref : (string)Href;}
+            {_config = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("config"), out var __jsonConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Any.FromJson(__jsonConfig) : Config;}
+            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("files"), out var __jsonFiles) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelopePropertiesFiles.FromJson(__jsonFiles) : File;}
+            {_testData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("test_data"), out var __jsonTestData) ? (string)__jsonTestData : (string)TestData;}
+            {_invokeUrlTemplate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("invoke_url_template"), out var __jsonInvokeUrlTemplate) ? (string)__jsonInvokeUrlTemplate : (string)InvokeUrlTemplate;}
             {_language = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("language"), out var __jsonLanguage) ? (string)__jsonLanguage : (string)Language;}
+            {_isDisabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isDisabled"), out var __jsonIsDisabled) ? (bool?)__jsonIsDisabled : IsDisabled;}
             AfterFromJson(json);
         }
 
@@ -105,19 +105,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._config ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._config.ToJson(null,serializationMode) : null, "config" ,container.Add );
-            AddIf( null != (((object)this._configHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._configHref.ToString()) : null, "config_href" ,container.Add );
-            AddIf( null != this._file ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._file.ToJson(null,serializationMode) : null, "files" ,container.Add );
             AddIf( null != (((object)this._functionAppId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._functionAppId.ToString()) : null, "function_app_id" ,container.Add );
-            AddIf( null != (((object)this._href)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._href.ToString()) : null, "href" ,container.Add );
-            AddIf( null != (((object)this._invokeUrlTemplate)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._invokeUrlTemplate.ToString()) : null, "invoke_url_template" ,container.Add );
-            AddIf( null != this._isDisabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDisabled) : null, "isDisabled" ,container.Add );
-            AddIf( null != (((object)this._scriptHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scriptHref.ToString()) : null, "script_href" ,container.Add );
             AddIf( null != (((object)this._scriptRootPathHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scriptRootPathHref.ToString()) : null, "script_root_path_href" ,container.Add );
-            AddIf( null != (((object)this._secretsFileHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._secretsFileHref.ToString()) : null, "secrets_file_href" ,container.Add );
-            AddIf( null != (((object)this._testData)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._testData.ToString()) : null, "test_data" ,container.Add );
+            AddIf( null != (((object)this._scriptHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scriptHref.ToString()) : null, "script_href" ,container.Add );
+            AddIf( null != (((object)this._configHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._configHref.ToString()) : null, "config_href" ,container.Add );
             AddIf( null != (((object)this._testDataHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._testDataHref.ToString()) : null, "test_data_href" ,container.Add );
+            AddIf( null != (((object)this._secretsFileHref)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._secretsFileHref.ToString()) : null, "secrets_file_href" ,container.Add );
+            AddIf( null != (((object)this._href)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._href.ToString()) : null, "href" ,container.Add );
+            AddIf( null != this._config ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._config.ToJson(null,serializationMode) : null, "config" ,container.Add );
+            AddIf( null != this._file ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._file.ToJson(null,serializationMode) : null, "files" ,container.Add );
+            AddIf( null != (((object)this._testData)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._testData.ToString()) : null, "test_data" ,container.Add );
+            AddIf( null != (((object)this._invokeUrlTemplate)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._invokeUrlTemplate.ToString()) : null, "invoke_url_template" ,container.Add );
             AddIf( null != (((object)this._language)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._language.ToString()) : null, "language" ,container.Add );
+            AddIf( null != this._isDisabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDisabled) : null, "isDisabled" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

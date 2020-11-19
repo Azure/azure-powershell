@@ -1,3 +1,4 @@
 "Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
 "Az.KeyVault","Microsoft.Win32.Registry","4.1.1.0","System.Management.Automation","0","3000","Missing assembly Microsoft.Win32.Registry referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
 "Az.KeyVault","Microsoft.PowerShell.CoreCLR.Eventing","6.1.0.0","System.Management.Automation","0","3000","Missing assembly Microsoft.PowerShell.CoreCLR.Eventing referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
+"Az.KeyVault","System.Text.Encodings.Web","4.0.4.0","Azure.Security.KeyVault.Keys","0","3000","Missing assembly System.Text.Encodings.Web referenced from Azure.Security.KeyVault.Keys","Ensure that the assembly is included in the Wix file or directory"
