@@ -2653,20 +2653,33 @@ function Test-VirtualMachineScaleSetAssignedHost
 
 <#
 .SYNOPSIS
-
+Test the VMSS Extension rolling upgrade cmdlet. 
 #>
 function Test-VirtualMachineScaleSetExtRollingUpgrade
 {
     # Setup
-    $rgname = Get-ComputeTestResourceName
+    #$rgname = Get-ComputeTestResourceName
  
     try
     {
+        
+          
         # Common
         [string]$loc = "eastus";
 
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        #New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
+
+        $rgname = "adamvmssupdate";
+        $vmssname = "windowsvmss";
+        $vmss = Get-Azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+        
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True -Setting "";
+
+        $job = Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        <#  
         # SRP
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
@@ -2736,10 +2749,12 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
         Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -AsJob;
         #$result = $job | Wait-Job;
         #Assert-AreEqual "Failed" $result.State;
+
+        #>
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        #Clean-ResourceGroup $rgname
     }
 }
