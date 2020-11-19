@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         #endregion
 
+        #region AlertRuleTemplates
+        public const string AlertRuleTemplateId = "AlertRuleTemplateId";
+        #endregion
+
         #region Bookmarks
         public const string BookmarkId = "BookmarkId.";
         #endregion

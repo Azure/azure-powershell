@@ -55,6 +55,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string TriggerThreshold = "Alert Rule Trigger Threshold.";
         #endregion
 
+        #region
+        public const string AlertRuleTemplateId = "Template Alert Rule Id.";
+        #endregion
+
         #region Bookmarks
         public const string BookmarkId = "Bookmark Id,";
         public const string RelationName = "Bookmark Relation Name.";
