@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Updated ADLS dataplane SDK to 1.2.4-alpha. Changes:https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-124-alpha
+
 ## Version 1.2.8
 * Added breaking change description for `Export-AzDataLakeStoreItem` and `Import-AzDataLakeStoreItem`
 * Added option of Byte encoding for `New-AzDataLakeStoreItem`, `Add-AzDAtaLakeStoreItemContent`, and `Get-AzDAtaLakeStoreItemContent`

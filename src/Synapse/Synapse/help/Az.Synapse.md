@@ -20,6 +20,12 @@ Exports notbooks.
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
+### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
+Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
+Gets information about datasets in workspace.
+
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
@@ -71,6 +77,9 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
 
+### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
+Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.
+
 ### [Get-AzSynapseTrigger](Get-AzSynapseTrigger.md)
 Gets information about triggers in a workspace.
 
@@ -112,6 +121,12 @@ Creates a Synapse Analytics SQL pool.
 
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
 Creates a Synapse Analytics workspace.
+
+### [Remove-AzSynapseDataFlow](Remove-AzSynapseDataFlow.md)
+Removes a data flow from workspace.
+
+### [Remove-AzSynapseDataset](Remove-AzSynapseDataset.md)
+Removes a dataset from workspace.
 
 ### [Remove-AzSynapseFirewallRule](Remove-AzSynapseFirewallRule.md)
 Deletes a Synapse Analytics Firewall Rule.
@@ -155,6 +170,18 @@ Deletes a Synapse Analytics workspace.
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
 Resets timeout of a Synapse Analytics Spark session.
 
+### [Restore-AzSynapseSqlPool](Restore-AzSynapseSqlPool.md)
+Restores a Synapse Analytics SQL pool.
+
+### [Resume-AzSynapseSqlPool](Resume-AzSynapseSqlPool.md)
+Resumes a Synapse Analytics SQL pool.
+
+### [Set-AzSynapseDataFlow](Set-AzSynapseDataFlow.md)
+Creates or updates a data flow in workspace.
+
+### [Set-AzSynapseDataset](Set-AzSynapseDataset.md)
+Creates or updates a dataset in workspace.
+
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
 
@@ -193,6 +220,9 @@ Stops a trigger in a workspace.
 
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.
+
+### [Suspend-AzSynapseSqlPool](Suspend-AzSynapseSqlPool.md)
+Suspends a Synapse Analytics SQL pool.
 
 ### [Sync-AzSynapseIntegrationRuntimeCredential](Sync-AzSynapseIntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.

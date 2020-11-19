@@ -28,15 +28,14 @@ function Get-AzModuleUpdateList {
     )
 
     process {
-
         $modules = New-Object System.Collections.ArrayList
 
         Write-Debug "Retrieving installed Az modules"
         $installModules = @{}
         try {
-            (PowerShellGet\Get-InstalledModule -Name "Az*" -ErrorAction Stop).Where({
+            PowerShellGet\Get-InstalledModule -Name "Az*" -ErrorAction Stop | Where-Object {
                 ($_.Author -eq 'Microsoft Corporation' -or $_.CompanyName -eq 'Microsoft Corporation') -and ($_.Name -match "Az(\.[a-zA-Z0-9]+)?$")
-            }) | ForEach-Object {
+            } | ForEach-Object {
                 $installModules[$_.Name] = @()
             }
         }
@@ -48,7 +47,7 @@ function Get-AzModuleUpdateList {
 
         if ($installModules.Keys -gt 0) {
             foreach ($key in $installModules.Keys.Clone()) {
-                $installedModules = (PowerShellGet\Get-InstalledModule -Name $key -AllVersions).Where( { -not $_.AdditionalMetadata.IsPrerelease })
+                $installedModules = (PowerShellGet\Get-InstalledModule -Name $key -AllVersions) | Where-Object { -not $_.AdditionalMetadata.IsPrerelease }
                 foreach ($installed in $installedModules) {
                     $installModules[$key] += [System.Tuple]::Create($installed.Version, $installed.Repository)
                 }
@@ -60,7 +59,6 @@ function Get-AzModuleUpdateList {
 
         $modulesToCheck = @()
         $modulesToCheck += if ($Name) {
-            #Fixme:Damien
             $Name.Foreach({
                 if ($installModules.ContainsKey($_) -and $installModules[$_]) {
                     [System.Tuple]::Create($_, $installModules[$_][0].Item2)
@@ -70,18 +68,25 @@ function Get-AzModuleUpdateList {
             $installModules.Keys.ForEach({[System.Tuple]::Create($_, $installModules[$_][0].Item2)})
         }
 
+        $allModuleTable = @{}
         $moduleSet = [System.Collections.Generic.HashSet[string]]::new()
         $null = $modulesToCheck | ForEach-Object {$moduleSet.Add($_.Item1)}
 
         $index = 0
         while($index -lt $modulesToCheck.Count) {
             $moduleName = $modulesToCheck[$index].Item1
-            $repo = if ($Repository) {$Repository} elseif ($installModules.ContainsKey($moduleName)) {$installModules[$moduleName].Item2} else {$modulesToCheck[$index].Item2}
+            $repo = if ($Repository) {$Repository} elseif ($installModules.ContainsKey($moduleName)) {$installModules[$moduleName][0].Item2} else {$modulesToCheck[$index].Item2}
             if($repo) {
-                $module = PowerShellGet\Find-Module -Name $moduleName -Repository $repo
+                if($allModuleTable.ContainsKey($moduleName)) {
+                    $module = $allModuleTable[$moduleName]
+                }
+                else {
+                    $module = PowerShellGet\Find-Module -Name $moduleName -Repository $repo
+                }
                 if ($module) {
                     Write-Progress -Activity "Find Module" -CurrentOperation "$($module.Name) with the latest version $($module.Version)" -PercentComplete ($index / $modulesToCheck.Count * 100)
                     $null = $modules.Add($module)
+                    $dep = $null
                     foreach ($dep in $module.Dependencies.Name) {
                         if (!$moduleSet.Contains($dep)) {
                             $modulesToCheck += [System.Tuple]::Create($dep, $repo)
@@ -100,10 +105,10 @@ function Get-AzModuleUpdateList {
 
         Write-Debug "The modules to check for update: $($modules.Name)"
 
-        $modulesToUpdate = $modules.Where({ !$installModules.ContainsKey($_.Name) -or !$installModules[$_.Name] -or [Version]($_.Version) -gt [Version]$installModules[$_.Name][0].Item1 })
+        $modulesToUpdate = $modules | Where-Object { !$installModules.ContainsKey($_.Name) -or !$installModules[$_.Name] -or [Version]($_.Version) -gt [Version]$installModules[$_.Name][0].Item1 }
         if ("Az" -eq ($modulesToUpdate | Select-Object -First 1).Name) {
             $first, $rest = $modulesToUpdate
-            $modulesToUpdate = (@() + $rest + $first)
+            $modulesToUpdate = (@() + $rest + $first) | Where-Object {$_ -ne $null}
         }
 
         If (-not $modulesToUpdate) {

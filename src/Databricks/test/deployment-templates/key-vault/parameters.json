@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyvault_name": {
-      "value": "keyvalult-3yvhci"
+      "value": "keyvalult-ib2uvs"
     },
     "storageaccount_principalid": {
-      "value": "8f08c73f-f31e-4c62-9d8f-1236b95c5c98"
+      "value": "5750adc7-71dc-41b9-80ba-f087526bd732"
     }
   }
 }

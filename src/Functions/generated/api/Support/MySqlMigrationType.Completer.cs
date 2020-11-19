@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for MySqlMigrationType.</summary>
+    /// <summary>The type of migration operation to be done</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.MySqlMigrationTypeTypeConverter))]
     public partial struct MySqlMigrationType :
         System.Management.Automation.IArgumentCompleter

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// Description for Restores a specific backup to another app (or deployment slot, if specified).
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_Restore=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore"
+    /// [OpenAPI] Restore=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Restore, @"AzFunctionApp_RestoreViaIdentity", SupportsShouldProcess = true)]

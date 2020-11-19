@@ -15,10 +15,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class PSRegistrationAssignmentProperties
     {
@@ -30,9 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 
         public PSRegistrationAssignmentProperties(RegistrationAssignmentProperties registrationAssignmentProperties)
         {
-           this.RegistrationDefinitionId = registrationAssignmentProperties.RegistrationDefinitionId;
+            this.RegistrationDefinitionId = registrationAssignmentProperties.RegistrationDefinitionId;
             this.ProvisioningState = registrationAssignmentProperties.ProvisioningState;
-            this.RegistrationDefinition = new PSRegistrationAssignmentPropertiesRegistrationDefinition(registrationAssignmentProperties.RegistrationDefinition);
+
+            if (registrationAssignmentProperties.RegistrationDefinition != null)
+            {
+                this.RegistrationDefinition = new PSRegistrationAssignmentPropertiesRegistrationDefinition(registrationAssignmentProperties.RegistrationDefinition);
+            }
         }
     }
 }

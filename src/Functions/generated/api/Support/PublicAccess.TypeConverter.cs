@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for PublicAccess.</summary>
+    /// <summary>
+    /// Specifies whether data in the container may be accessed publicly and the level of access.
+    /// </summary>
     public partial class PublicAccessTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

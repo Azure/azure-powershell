@@ -67,6 +67,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         [Parameter(
+    Mandatory = false,
+    ValueFromPipelineByPropertyName = true,
+    HelpMessage = "The public IP Prefix Sku tier.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+    MNM.PublicIPAddressSkuTier.Regional,
+    MNM.PublicIPAddressSkuTier.Global,
+    IgnoreCase = true)]
+        public string Tier { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The PublicIPPrefix length")]
@@ -95,6 +106,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
         public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The CustomIpPrefix that this PublicIpPrefix will be associated with")]
+        public PSCustomIpPrefix CustomIpPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -155,15 +172,23 @@ namespace Microsoft.Azure.Commands.Network
             
             publicIpPrefix.Sku = new PSPublicIpPrefixSku();
             publicIpPrefix.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
+            publicIpPrefix.Sku.Tier = MNM.PublicIPAddressSkuTier.Regional;
             if (!string.IsNullOrEmpty(this.Sku))
             {
                 publicIpPrefix.Sku.Name = this.Sku;
+            }
+
+            if (!string.IsNullOrEmpty(this.Tier))
+            {
+                publicIpPrefix.Sku.Tier = this.Tier;
             }
 
             if (this.IpTag != null && this.IpTag.Length > 0)
             {
                 publicIpPrefix.IpTags = this.IpTag?.ToList();
             }
+
+            publicIpPrefix.CustomIpPrefix = this.CustomIpPrefix;
 
             var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 

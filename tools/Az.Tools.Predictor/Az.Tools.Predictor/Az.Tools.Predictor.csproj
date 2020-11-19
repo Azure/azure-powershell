@@ -10,16 +10,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>Az.Tools.Predictor</PackageId>
-    <Version>0.1.0-preview</Version>
-    <Author>Microsoft Corporation</Author>
+    <Version>0.1.0</Version>
+    <Authors>Microsoft Corporation</Authors>
     <Company>Microsoft Corporation</Company>
-    <Description>Microsoft Azure PowerShell Predictor: Provide prediction while user types Azure PowerShell commands</Description>
+    <Copyright>Microsoft Corporation. All rights reserved.</Copyright>
+    <Description>Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.0 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+
+For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs</Description>
   </PropertyGroup>
 
   <PropertyGroup>

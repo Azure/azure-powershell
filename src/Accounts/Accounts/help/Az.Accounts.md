@@ -47,6 +47,9 @@ machine. Data is collected by default unless you explicitly opt out.
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
 Enables AzureRm prefix aliases for Az modules.
 
+### [Get-AzAccessToken](Get-AzAccessToken.md)
+Get raw access token.
+
 ### [Get-AzContext](Get-AzContext.md)
 Gets the metadata used to authenticate Azure Resource Manager requests.
 
@@ -59,9 +62,6 @@ Get the defaults set by the user in the current context.
 
 ### [Get-AzEnvironment](Get-AzEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
-
-### [Get-AzProfile](Get-AzProfile.md)
-Get the service profiles supported by installed modules.
 
 ### [Get-AzSubscription](Get-AzSubscription.md)
 Get subscriptions that the current account can access.
@@ -95,9 +95,6 @@ Saves the current authentication information for use in other PowerShell session
 
 ### [Select-AzContext](Select-AzContext.md)
 Select a subscription and account to target in Azure PowerShell cmdlets
-
-### [Select-AzProfile](Select-AzProfile.md)
-For modules that support multiple service profiles - load the cmdlets corresponding with the given service profile.
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

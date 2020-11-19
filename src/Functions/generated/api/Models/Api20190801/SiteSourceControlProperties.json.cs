@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_branch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("branch"), out var __jsonBranch) ? (string)__jsonBranch : (string)Branch;}
-            {_deploymentRollbackEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("deploymentRollbackEnabled"), out var __jsonDeploymentRollbackEnabled) ? (bool?)__jsonDeploymentRollbackEnabled : DeploymentRollbackEnabled;}
-            {_isManualIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isManualIntegration"), out var __jsonIsManualIntegration) ? (bool?)__jsonIsManualIntegration : IsManualIntegration;}
-            {_isMercurial = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isMercurial"), out var __jsonIsMercurial) ? (bool?)__jsonIsMercurial : IsMercurial;}
             {_repoUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("repoUrl"), out var __jsonRepoUrl) ? (string)__jsonRepoUrl : (string)RepoUrl;}
+            {_branch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("branch"), out var __jsonBranch) ? (string)__jsonBranch : (string)Branch;}
+            {_isManualIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isManualIntegration"), out var __jsonIsManualIntegration) ? (bool?)__jsonIsManualIntegration : IsManualIntegration;}
+            {_deploymentRollbackEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("deploymentRollbackEnabled"), out var __jsonDeploymentRollbackEnabled) ? (bool?)__jsonDeploymentRollbackEnabled : DeploymentRollbackEnabled;}
+            {_isMercurial = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isMercurial"), out var __jsonIsMercurial) ? (bool?)__jsonIsMercurial : IsMercurial;}
             AfterFromJson(json);
         }
 
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._branch)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._branch.ToString()) : null, "branch" ,container.Add );
-            AddIf( null != this._deploymentRollbackEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._deploymentRollbackEnabled) : null, "deploymentRollbackEnabled" ,container.Add );
-            AddIf( null != this._isManualIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isManualIntegration) : null, "isManualIntegration" ,container.Add );
-            AddIf( null != this._isMercurial ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isMercurial) : null, "isMercurial" ,container.Add );
             AddIf( null != (((object)this._repoUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._repoUrl.ToString()) : null, "repoUrl" ,container.Add );
+            AddIf( null != (((object)this._branch)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._branch.ToString()) : null, "branch" ,container.Add );
+            AddIf( null != this._isManualIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isManualIntegration) : null, "isManualIntegration" ,container.Add );
+            AddIf( null != this._deploymentRollbackEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._deploymentRollbackEnabled) : null, "deploymentRollbackEnabled" ,container.Add );
+            AddIf( null != this._isMercurial ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isMercurial) : null, "isMercurial" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

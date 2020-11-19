@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Provisioning state of the Service</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {

@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).DisplayName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILogSpecificationInternal)this).BlobDuration, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

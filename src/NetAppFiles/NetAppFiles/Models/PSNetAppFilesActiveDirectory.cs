@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.NetApp.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
@@ -21,6 +22,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
     /// </summary>
     public class PSNetAppFilesActiveDirectory
     {
+        /// <summary>
+        /// Gets or sets the Resource group name
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Account name
+        /// </summary>
+        public string AccountName { get; set; }
+
         /// <summary>
         /// Id of the active drectory.
         /// Value of this property can not be set by user.
@@ -60,6 +71,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Status { get; set; }
 
         /// <summary>
+        /// StatusDetails of the active drectory.
+        /// Value of this property can not be set by user.
+        /// </summary>
+        /// <value>Any details in regards to the Status of the Active Directory</value>
+        public string StatusDetails { get; set; }
+
+        /// <summary>
         /// NetBIOS name of the SMB server.
         /// This name will be registered as a computer account in the AD.
         /// This name will be used to mount the volumes.
@@ -71,5 +89,42 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// The Organizational Unit (OU) within the Windows Active Directory.
         /// </summary>
         public string OrganizationalUnit { get; set; }
+
+        /// <summary>
+        /// The Active Directory site the service will limit Domain Controller discovery to
+        /// </summary>
+        public string Site { get; set; }
+
+        /// <summary>
+        /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+        /// </summary>
+        public IList<string> BackupOperators { get; set; }
+
+        /// <summary>
+        /// Gets or sets kdcID
+        /// </summary>
+        /// <value>Kdc server IP addresses for the active directory machine. This optional
+        /// parameter is used only while creating kerberos volume.
+        /// </value>
+        public string KdcIP { get; set; }
+
+        /// <summary>
+        /// Gets or sets AdName
+        /// </summary>
+        /// <value>Name of the active directory machine. This optional parameter is
+        /// parameter is used only while creating kerberos volume.
+        /// </value>
+        public string AdName { get; set; }
+
+        /// <summary>
+        /// Gets or sets ServerRootCACertificate
+        /// </summary>
+        /// <value>when LDAP over SSL/TLS is enabled, the LDAP client is required to
+        /// have base64 encoded Active Directory Certificate Service's self-signed root CA
+        /// certificate, this optional parameter is used only for dual protocol with LDAP
+        /// user-mapping volumes.
+        /// </value>
+        public string ServerRootCACertificate { get; set; }
+
     }
 }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for Action.</summary>
+    /// <summary>The action of virtual network rule.</summary>
     public partial class ActionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

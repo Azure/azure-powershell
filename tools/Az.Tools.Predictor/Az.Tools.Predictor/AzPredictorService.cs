@@ -136,6 +136,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var resultsFromSuggestion = resultsFromSuggestionTuple.Item1;
             presentCommands = resultsFromSuggestionTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
+
             if (resultsFromSuggestion != null)
             {
                 var predictionSource = PredictionSource.None;

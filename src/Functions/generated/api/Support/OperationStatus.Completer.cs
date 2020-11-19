@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for OperationStatus.</summary>
+    /// <summary>The current status of the operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatusTypeConverter))]
     public partial struct OperationStatus :
         System.Management.Automation.IArgumentCompleter
