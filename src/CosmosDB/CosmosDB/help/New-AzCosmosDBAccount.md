@@ -59,8 +59,8 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### -ApiKind
 The type of Cosmos DB database account to create.
-Accepted values: GlobalDocumentDB, MongoDB, Gremlin, Table, Cassandra.
-Default value: GlobalDocumentDB
+Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra.
+Default value: Sql
 
 ```yaml
 Type: String
@@ -458,3 +458,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+ 

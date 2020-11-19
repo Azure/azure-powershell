@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.IdentityType = serviceDescription.Identity?.Type;
             this.IdentityPrincipalId = serviceDescription.Identity?.PrincipalId;
             this.IdentityTenantId = serviceDescription.Identity?.TenantId;
+            this.PublicNetworkAccess = serviceDescription.Properties.PublicNetworkAccess;
+            this.PrivateEndpointConnections = serviceDescription.Properties.PrivateEndpointConnections;
 
             var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
             foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
@@ -98,6 +100,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public string IdentityPrincipalId { get; private set; }
 
         public string IdentityTenantId { get; private set; }
+
+        public string PublicNetworkAccess { get; private set; }
+
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
 
         public static PSHealthcareApisService Create(ServicesDescription healthcareApisAccount)
         {
