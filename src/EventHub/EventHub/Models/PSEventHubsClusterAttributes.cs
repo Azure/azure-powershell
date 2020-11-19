@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 UpdatedAt = cluster.UpdatedAt;
                 Status = cluster.Status;
                 Sku = new PSEventHubsClusterSkuAttributes(cluster.Sku);
-                if (cluster.Tags.Count > 0)
+                if (cluster.Tags != null)
                 {
                     Tags = new Dictionary<string, string>(cluster.Tags);
                 }
