@@ -1569,14 +1569,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                List<RestorePoint> restorePointList = new List<RestorePoint>();
-                restorePointList = this._synapseManagementClient.SqlPoolRestorePoints.List(
-                    resourceGroupName,
+                RestorePoint respoint = this._synapseManagementClient.SqlPoolRestorePoints.Get(resourceGroupName,
                     workspaceName,
-                    sqlPoolName)
-                    .ToList();
-
-                return (restorePointList.Count != 0) && (restorePointList.Exists(element => element.Name == sqlPoolRestorePointName));
+                    sqlPoolName,
+                    sqlPoolRestorePointName);
+;
+                return respoint != null;
             }
             catch (NotFoundException)
             {
