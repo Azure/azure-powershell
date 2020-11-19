@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
     public static class PSSentinelActionConvertors
     {
 
-        public static PSSentinelAction ConvertToPSType(this ActionResponse value)
+        public static PSSentinelActionResponse ConvertToPSType(this ActionResponse value)
         {
-            return new PSSentinelAction()
+            return new PSSentinelActionResponse()
             {
                 Id = value.Id,
                 Name = value.Name,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
             };
         }
 
-        public static List<PSSentinelAction> ConvertToPSType(this IEnumerable<ActionResponse> value)
+        public static List<PSSentinelActionResponse> ConvertToPSType(this IEnumerable<ActionResponse> value)
         {
             return value.Select(dss => dss.ConvertToPSType()).ToList();
         }

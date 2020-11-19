@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
                 Name = value.Name,
                 Type = value.Type,
                 AdditonalData = value.AdditionalData.ConvertToPSType(),
-                Classificaton = value.Classification,
+                Classification = value.Classification,
                 ClassificationComment = value.ClassificationComment,
                 ClassificationReason = value.ClassificationReason,
                 CreatedTimeUTC = value.CreatedTimeUtc,

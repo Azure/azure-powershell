@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
 
         public DateTime? Created { get; set; }
 
-        public PSSentinelBookmarkCreatedBy CreatedBy { get; set; }
+        public PSSentinelBookmarkUserInfo CreatedBy { get; set; }
 
         public string DisplayName { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
 
         public DateTime? Updated { get; set; }
 
-        public PSSentinelBookmarkUpdatedBy UpdatedBy { get; set; }
+        public PSSentinelBookmarkUserInfo UpdatedBy { get; set; }
 
     }
 }
