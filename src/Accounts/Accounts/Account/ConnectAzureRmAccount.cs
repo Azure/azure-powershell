@@ -419,7 +419,8 @@ namespace Microsoft.Azure.Commands.Profile
 
                    try
                    {
-                       var result = (PSAzureProfile)task.Result;
+                       //Must not use task.Result as it wraps inner exception into AggregateException
+                       var result = (PSAzureProfile)task.GetAwaiter().GetResult();
                        WriteObject(result);
                    }
                    catch (AuthenticationFailedException ex)
