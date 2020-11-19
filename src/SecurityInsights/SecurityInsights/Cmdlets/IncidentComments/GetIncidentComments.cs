@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
 {
@@ -58,27 +59,27 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
             switch (ParameterSetName)
             {
                 case ParameterSetNames.IncidentId:
-                    var incidentComments = SecurityInsightsClient.IncidentComments.ListByIncidentWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId).GetAwaiter().GetResult().Body;
+                    var incidentComments = SecurityInsightsClient.IncidentComments.ListByIncident(ResourceGroupName, WorkspaceName, IncidentId);
                     int incidentCommentsCount = incidentComments.Count();
-                    WriteObject(incidentComments, enumerateCollection: true);
+                    WriteObject(incidentComments.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedIncidentComments += incidentCommentsCount;
                     nextLink = incidentComments?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedIncidentComments < MaxIncidentCommentsToFetch)
                     {
-                        incidentComments = SecurityInsightsClient.IncidentComments.ListByIncidentNextWithHttpMessagesAsync(incidentComments.NextPageLink).GetAwaiter().GetResult().Body;
+                        incidentComments = SecurityInsightsClient.IncidentComments.ListByIncidentNext(incidentComments.NextPageLink);
                         incidentCommentsCount = incidentComments.Count();
-                        WriteObject(incidentComments, enumerateCollection: true);
+                        WriteObject(incidentComments.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedIncidentComments += incidentCommentsCount;
                         nextLink = incidentComments?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.IncidentCommentId:
-                    var incidentComment = SecurityInsightsClient.IncidentComments.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId, IncidentCommentId).GetAwaiter().GetResult().Body;
-                    WriteObject(incidentComment, enumerateCollection: false);
+                    var incidentComment = SecurityInsightsClient.IncidentComments.Get(ResourceGroupName, WorkspaceName, IncidentId, IncidentCommentId);
+                    WriteObject(incidentComment.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    incidentComment = SecurityInsightsClient.IncidentComments.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetIncidentName(ResourceId), AzureIdUtilities.GetIncidentCommentName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(incidentComment, enumerateCollection: false);
+                    incidentComment = SecurityInsightsClient.IncidentComments.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetIncidentName(ResourceId), AzureIdUtilities.GetIncidentCommentName(ResourceId));
+                    WriteObject(incidentComment.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

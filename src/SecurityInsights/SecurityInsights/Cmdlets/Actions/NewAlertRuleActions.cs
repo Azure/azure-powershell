@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId), OutputType(typeof(PSSentinelAction))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId), OutputType(typeof(PSSentinelActionResponse))]
     public class NewAlertRuleActions : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             {
                 var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateActionWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId, name, action).GetAwaiter().GetResult().Body;
 
-                WriteObject(outputaction, enumerateCollection: false);
+                WriteObject(outputaction.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

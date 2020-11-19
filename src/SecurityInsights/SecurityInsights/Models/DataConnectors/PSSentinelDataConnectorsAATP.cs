@@ -14,16 +14,16 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.SecurityInsights.Models;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 {
-    public class PSSentinelBookmarkCreatedBy
+    public class PSSentinelDataConnectorAATP : PSSentinelDataConnector
     {
 
-        public string Email { get; set; }
+        public PSSentinelDataConnectorDataTypeAlert DataTypes { get; set; }
 
-        public Guid? ObjectId { get; set; }
+        public string TenantId { get; set; }
 
-        public string UserPrincipalName { get; set; }
     }
 }

@@ -14,24 +14,20 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.SecurityInsights.Models;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
 {
-    public class PSSentinelDataConnectorDataType
+    public class PSSentinelActionResponse
     {
+        public string Id { get; set; }
 
-        public PSSentinelDataConnectorDataTypeCommon Alerts { get; set; }
+        public string Name { get; set; }
 
-        public PSSentinelDataConnectorDataTypeCommon DiscoveryLogs { get; set; }
+        public string Type { get; set; }
 
-        public PSSentinelDataConnectorDataTypeCommon Indicators { get; set; }
+        public string LogicAppResourceId { get; set; }
 
-        public PSSentinelDataConnectorDataTypeCommon Logs { get; set; }
-
-        public PSSentinelDataConnectorDataTypeCommon SharePoint { get; set; }
-
-        public PSSentinelDataConnectorDataTypeCommon Exchange { get; set; }
+        public string WorkflowId { get; set; }
 
     }
 }

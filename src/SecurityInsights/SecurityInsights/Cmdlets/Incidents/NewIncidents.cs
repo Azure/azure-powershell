@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
@@ -54,10 +55,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         public string Description { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Labels)]
-        public IList<IncidentLabel> Labels { get; set; }
+        public IList<PSSentinelIncidentLabel> Labels { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Owner)]
-        public IncidentOwnerInfo Owner { get; set; }
+        public PSSentinelIncidentOwner Owner { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)]
         [ValidateSet("High", "Informational", "Low", "Medium")]
@@ -87,15 +88,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 ClassificationComment = ClassificationComment,
                 ClassificationReason = ClassificationReason,
                 Description = Description,
-                Labels = Labels,
-                Owner = Owner
+                Labels = Labels.CreatePSType(),
+                Owner = Owner.CreatePSType()
             };
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputIncidnet = SecurityInsightsClient.Incidents.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, incident).GetAwaiter().GetResult().Body;
+                var outputIncident = SecurityInsightsClient.Incidents.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, incident);
 
-                WriteObject(outputIncidnet?.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(outputIncident.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

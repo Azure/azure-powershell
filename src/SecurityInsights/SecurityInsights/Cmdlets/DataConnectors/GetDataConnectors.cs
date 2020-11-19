@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 {
@@ -53,27 +54,27 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var dataconnectors = SecurityInsightsClient.DataConnectors.ListWithHttpMessagesAsync(ResourceGroupName, WorkspaceName).GetAwaiter().GetResult().Body;
+                    var dataconnectors = SecurityInsightsClient.DataConnectors.List(ResourceGroupName, WorkspaceName);
                     int dataconnectorscount = dataconnectors.Count();
-                    WriteObject(dataconnectors, enumerateCollection: true);
+                    WriteObject(dataconnectors.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedDataConnectors += dataconnectorscount;
                     nextLink = dataconnectors?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedDataConnectors < MaxDataConnectorsToFetch)
                     {
-                        dataconnectors = SecurityInsightsClient.DataConnectors.ListNextWithHttpMessagesAsync(dataconnectors.NextPageLink).GetAwaiter().GetResult().Body;
+                        dataconnectors = SecurityInsightsClient.DataConnectors.ListNext(dataconnectors.NextPageLink);
                         dataconnectorscount = dataconnectors.Count();
-                        WriteObject(dataconnectors, enumerateCollection: true);
+                        WriteObject(dataconnectors.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedDataConnectors += dataconnectorscount;
                         nextLink = dataconnectors?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.DataConnectorId:
-                    var dataconnector = SecurityInsightsClient.DataConnectors.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, DataConnectorId).GetAwaiter().GetResult().Body;
-                    WriteObject(dataconnector, enumerateCollection: false);
+                    var dataconnector = SecurityInsightsClient.DataConnectors.Get(ResourceGroupName, WorkspaceName, DataConnectorId);
+                    WriteObject(dataconnector.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    dataconnector = SecurityInsightsClient.DataConnectors.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(dataconnector, enumerateCollection: false);
+                    dataconnector = SecurityInsightsClient.DataConnectors.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
+                    WriteObject(dataconnector.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

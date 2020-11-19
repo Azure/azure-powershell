@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
 {
@@ -56,9 +57,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputIncidentCommnet = SecurityInsightsClient.IncidentComments.CreateCommentWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId, name, Message).GetAwaiter().GetResult().Body;
+                var outputIncidentCommnet = SecurityInsightsClient.IncidentComments.CreateComment(ResourceGroupName, WorkspaceName, IncidentId, name, Message);
 
-                WriteObject(outputIncidentCommnet, enumerateCollection: false);
+                WriteObject(outputIncidentCommnet.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

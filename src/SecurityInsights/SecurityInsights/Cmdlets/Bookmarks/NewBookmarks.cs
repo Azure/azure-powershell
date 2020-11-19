@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
+using Microsoft.Azure.Management.SecurityInsights;
+using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 {
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         public string DisplayName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.IncidentInfo)] 
-        public IncidentInfo IncidentInfo { get; set; }
+        public PSSentinelBookmarkIncidentInfo IncidentInfo { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Labels)] 
         public IList<string> Labels { get; set; }
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                 Created = DateTime.Now,
                 CreatedBy = userinfo,
                 DisplayName = DisplayName,
-                IncidentInfo = IncidentInfo,
+                IncidentInfo = IncidentInfo.CreatePSType(),
                 Labels = Labels,
                 Notes = Notes,
                 Query = Query,
@@ -88,9 +90,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, bookmark).GetAwaiter().GetResult().Body;
+                var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
 
-                WriteObject(outputBookmark, enumerateCollection: false);
+                WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

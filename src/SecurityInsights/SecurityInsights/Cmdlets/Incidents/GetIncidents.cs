@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
@@ -53,27 +54,27 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var incidents = SecurityInsightsClient.Incidents.ListWithHttpMessagesAsync(ResourceGroupName, WorkspaceName).GetAwaiter().GetResult().Body;
+                    var incidents = SecurityInsightsClient.Incidents.List(ResourceGroupName, WorkspaceName);
                     var incidentscount = incidents.Count();
-                    WriteObject(incidents, enumerateCollection: true);
+                    WriteObject(incidents.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedIncidents += incidentscount;
                     nextLink = incidents?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedIncidents < MaxIncidentsToFetch)
                     {
-                        incidents = SecurityInsightsClient.Incidents.ListNextWithHttpMessagesAsync(incidents.NextPageLink).GetAwaiter().GetResult().Body;
+                        incidents = SecurityInsightsClient.Incidents.ListNext(incidents.NextPageLink);
                         incidentscount = incidents.Count();
-                        WriteObject(incidents, enumerateCollection: true);
+                        WriteObject(incidents.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedIncidents += incidentscount;
                         nextLink = incidents?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.IncidentId:
-                    var incident = SecurityInsightsClient.Incidents.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId).GetAwaiter().GetResult().Body;
-                    WriteObject(incident, enumerateCollection: false);
+                    var incident = SecurityInsightsClient.Incidents.Get(ResourceGroupName, WorkspaceName, IncidentId);
+                    WriteObject(incident.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    incident = SecurityInsightsClient.Incidents.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(incident, enumerateCollection: false);
+                    incident = SecurityInsightsClient.Incidents.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
+                    WriteObject(incident.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

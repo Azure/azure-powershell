@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
+using Microsoft.Azure.Management.SecurityInsights;
+using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 {
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         public string DisplayName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.IncidentInfo)] 
-        public IncidentInfo IncidentInfo { get; set; }
+        public PSSentinelBookmarkIncidentInfo IncidentInfo { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Labels)] 
         public IList<string> Labels { get; set; }
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public Bookmark InputObject { get; set; }
+        public PSSentinelBookmark InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,7 +95,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
             Bookmark bookmark = new Bookmark
             {
                 DisplayName = DisplayName,
-                IncidentInfo = IncidentInfo,
+                IncidentInfo = IncidentInfo.CreatePSType(),
                 Labels = Labels,
                 Notes = Notes,
                 Query = Query,
@@ -104,9 +106,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
             
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var outputbookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, bookmark).GetAwaiter().GetResult().Body;
+                var outputbookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
 
-                WriteObject(outputbookmark, enumerateCollection: false);
+                WriteObject(outputbookmark.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

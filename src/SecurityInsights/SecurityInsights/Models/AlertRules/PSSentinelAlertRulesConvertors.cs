@@ -24,11 +24,31 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 
         public static PSSentinelAlertRule ConvertToPSType(this AlertRule value)
         {
+            var convertedFusionValue = value as FusionAlertRule;
+
+            if (convertedFusionValue != null)
+            {
+                return convertedFusionValue.ConvertToPSType();
+            }
+
+            var convertedMicrosoftSecurityIncidentCreationValue = value as MicrosoftSecurityIncidentCreationAlertRule;
+
+            if (convertedMicrosoftSecurityIncidentCreationValue != null)
+            {
+                return convertedMicrosoftSecurityIncidentCreationValue.ConvertToPSType();
+            }
+
+            var convertedScheduledValue = value as ScheduledAlertRule;
+
+            if (convertedScheduledValue != null)
+            {
+                return convertedScheduledValue.ConvertToPSType();
+            }
+
             return new PSSentinelAlertRule()
             {
-                Id = value.Id,
-                Name = value.Name,
-                Type = value.Type
+                Kind = "Error",
+                Name = value.Name
             };
         }
 
@@ -55,11 +75,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
             };
         }
 
-        public static List<PSSentinelFusionAlertRule> ConvertToPSType(this IEnumerable<FusionAlertRule> value)
-        {
-            return value.Select(dss => dss.ConvertToPSType()).ToList();
-        }
-
         public static PSSentinelMicrosoftSecurityIncidentCreationRule ConvertToPSType(this MicrosoftSecurityIncidentCreationAlertRule value)
         {
             return new PSSentinelMicrosoftSecurityIncidentCreationRule()
@@ -78,11 +93,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
                 ProductFilter = value.ProductFilter,
                 SeveritiesFilter = value.SeveritiesFilter
             };
-        }
-
-        public static List<PSSentinelMicrosoftSecurityIncidentCreationRule> ConvertToPSType(this IEnumerable<MicrosoftSecurityIncidentCreationAlertRule> value)
-        {
-            return value.Select(dss => dss.ConvertToPSType()).ToList();
         }
 
         public static PSSentinelScheduledAlertRule ConvertToPSType(this ScheduledAlertRule value)
@@ -111,9 +121,92 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
             };
         }
 
-        public static List<PSSentinelScheduledAlertRule> ConvertToPSType(this IEnumerable<ScheduledAlertRule> value)
+        public static AlertRule CreatePSStype(this PSSentinelAlertRule value)
         {
-            return value.Select(dss => dss.ConvertToPSType()).ToList();
+            var convertedFusionValue = value as PSSentinelFusionAlertRule;
+
+            if (convertedFusionValue != null)
+            {
+                return convertedFusionValue.CreatePSType();
+            }
+
+            var convertedMicrosoftSecurityIncidentCreationValue = value as PSSentinelMicrosoftSecurityIncidentCreationRule;
+
+            if (convertedMicrosoftSecurityIncidentCreationValue != null)
+            {
+                return convertedMicrosoftSecurityIncidentCreationValue.CreatePSType();
+            }
+
+            var convertedScheduledValue = value as PSSentinelScheduledAlertRule;
+
+            if (convertedScheduledValue != null)
+            {
+                return convertedScheduledValue.CreatePSType();
+            }
+
+            return new AlertRule()
+            { };
+        }
+
+        public static FusionAlertRule CreatePSType(this PSSentinelFusionAlertRule value)
+        {
+            return new FusionAlertRule()
+            {
+                AlertRuleTemplateName = value.AlertRuleTemplateName,
+                Enabled = value.Enabled
+            };
+        }
+
+        public static List<FusionAlertRule> CreatePSType(this IEnumerable<PSSentinelFusionAlertRule> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
+        public static MicrosoftSecurityIncidentCreationAlertRule CreatePSType(this PSSentinelMicrosoftSecurityIncidentCreationRule value)
+        {
+            return new MicrosoftSecurityIncidentCreationAlertRule()
+            {
+                DisplayName = value.DisplayName,
+                Enabled = value.Enabled,
+                ProductFilter = value.ProductFilter,
+                AlertRuleTemplateName = value.AlertRuleTemplateName,
+                Description = value.Description,
+                DisplayNamesExcludeFilter = value.DisplayNamesExcludeFilter,
+                DisplayNamesFilter = value.DisplayNamesFilter,
+                SeveritiesFilter = value.SeveritiesFilter
+                
+            };
+        }
+
+        public static List<MicrosoftSecurityIncidentCreationAlertRule> CreatePSType(this IEnumerable<PSSentinelMicrosoftSecurityIncidentCreationRule> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
+        public static ScheduledAlertRule CreatePSType(this PSSentinelScheduledAlertRule value)
+        {
+            return new ScheduledAlertRule()
+            {
+                DisplayName = value.DisplayName,
+                Enabled = value.Enabled,
+                SuppressionDuration = value.SuppressionDuration,
+                SuppressionEnabled = value.SuppressionEnabled,
+                AlertRuleTemplateName = value.AlertRuleTemplateName,
+                Description = value.Description,
+                Query = value.Query,
+                QueryFrequency = value.QueryFrequency,
+                QueryPeriod = value.QueryPeriod,
+                Severity = value.Severity,
+                Tactics = value.Tactics,
+                TriggerOperator = value.TriggerOperator,
+                TriggerThreshold = value.TriggerThreshold
+
+            };
+        }
+
+        public static List<ScheduledAlertRule> CreatePSType(this IEnumerable<PSSentinelScheduledAlertRule> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
         }
     }
 }

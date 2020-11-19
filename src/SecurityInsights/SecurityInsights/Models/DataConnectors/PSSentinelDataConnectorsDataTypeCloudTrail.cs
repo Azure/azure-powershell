@@ -14,20 +14,13 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.SecurityInsights.Models;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 {
-    public class PSSentinelAction
+    public class PSSentinelDataConnectorDataTypeCloudTrail
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string LogicAppResourceId { get; set; }
-
-        public string WorkflowId { get; set; }
+        public PSSentinelDataConnectorDataTypeCloudTrailLog Logs { get; set; }
 
     }
 }

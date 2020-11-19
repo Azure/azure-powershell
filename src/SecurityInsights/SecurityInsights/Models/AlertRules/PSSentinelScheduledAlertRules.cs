@@ -18,16 +18,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 {
-    public class PSSentinelScheduledAlertRule
+    public class PSSentinelScheduledAlertRule : PSSentinelAlertRule
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string Kind { get; set; }
-
         public string AlertRuleTemplateName { get; set; }
 
         public string DisplayName { get; set; }
@@ -46,7 +38,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 
         public string Severity { get; set; }
 
-        public TimeSpan? SuppressionDuration { get; set; }
+        public TimeSpan SuppressionDuration { get; set; }
 
         public bool SuppressionEnabled { get; set; }
         

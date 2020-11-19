@@ -17,16 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 {
-    public class PSSentinelMicrosoftSecurityIncidentCreationRule
+    public class PSSentinelMicrosoftSecurityIncidentCreationRule : PSSentinelAlertRule
     {
-
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string Kind { get; set; }
 
         public string AlertRuleTemplateName { get; set; }
 

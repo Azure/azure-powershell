@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                SecurityInsightsClient.DataConnectors.DeleteWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name).GetAwaiter().GetResult();
+                SecurityInsightsClient.DataConnectors.Delete(ResourceGroupName, WorkspaceName, name);
             }
 
             if (PassThru.IsPresent)

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 
         public override void ExecuteCmdlet()
         {
-            IncidentLabel label = new IncidentLabel
+            PSSentinelIncidentLabel label = new PSSentinelIncidentLabel
             {
                 LabelName = LabelName
             };

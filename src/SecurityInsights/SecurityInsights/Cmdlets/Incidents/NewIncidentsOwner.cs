@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 
         public override void ExecuteCmdlet()
         {
-            IncidentOwnerInfo owner = new IncidentOwnerInfo
+            PSSentinelIncidentOwner owner = new PSSentinelIncidentOwner
             {
                 AssignedTo = AssignedTo,
                 Email = Email,

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 {
@@ -127,6 +128,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public int? TriggerThreshold { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSSentinelAlertRule InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -142,8 +146,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                             AlertRuleTemplateName = AlertRuleTemplateName,
                             Enabled = Enabled
                         };
-                        var outputfusionalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, fusionalertrule).GetAwaiter().GetResult().Body;
-                        WriteObject(outputfusionalertrule, enumerateCollection: false);
+                        var outputfusionalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, fusionalertrule);
+                        WriteObject(outputfusionalertrule.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.MicrosoftSecurityIncidentCreationRule:
                         MicrosoftSecurityIncidentCreationAlertRule msicalertrule = new MicrosoftSecurityIncidentCreationAlertRule
@@ -157,8 +161,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                             DisplayNamesFilter = DisplayNamesFilter,
                             SeveritiesFilter = SeveritiesFilter
                         };
-                        var outputmsicalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, msicalertrule).GetAwaiter().GetResult().Body;
-                        WriteObject(outputmsicalertrule, enumerateCollection: false);
+                        var outputmsicalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, msicalertrule);
+                        WriteObject(outputmsicalertrule.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.ScheduledAlertRule:
                         ScheduledAlertRule scheduledalertrule = new ScheduledAlertRule
@@ -177,8 +181,28 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                             TriggerOperator = TriggerOperator,
                             TriggerThreshold = TriggerThreshold
                         };
-                        var outputscheduledalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, scheduledalertrule).GetAwaiter().GetResult().Body;
-                        WriteObject(outputscheduledalertrule, enumerateCollection: false);
+                        var outputscheduledalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, scheduledalertrule);
+                        WriteObject(outputscheduledalertrule.ConvertToPSType(), enumerateCollection: false);
+                        break;
+                    case ParameterSetNames.InputObject:
+                        switch(InputObject.Kind)
+                        {
+                            case "Fusion":
+                                var fusionInputRule = InputObject.CreatePSStype();
+                                outputfusionalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, fusionInputRule);
+                                WriteObject(outputfusionalertrule.ConvertToPSType(), enumerateCollection: false);
+                                break;
+                            case "Scheduled":
+                                var scheduledInputRule = InputObject.CreatePSStype();
+                                outputscheduledalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, scheduledInputRule);
+                                WriteObject(outputscheduledalertrule.ConvertToPSType(), enumerateCollection: false);
+                                break;
+                            case "MicrosoftSecurityIncidentCreation":
+                                var msicInputRule = InputObject.CreatePSStype();
+                                outputmsicalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, msicInputRule);
+                                WriteObject(outputmsicalertrule.ConvertToPSType(), enumerateCollection: false);
+                                break;
+                        }
                         break;
                     default:
                         throw new PSInvalidOperationException();

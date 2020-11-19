@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
         public override void ExecuteCmdlet()
         {
-            IncidentInfo incidentInfo = new IncidentInfo
+            PSSentinelBookmarkIncidentInfo incidentInfo = new PSSentinelBookmarkIncidentInfo
             {
                 IncidentId = IncidentId,
                 RelationName = RelationName,

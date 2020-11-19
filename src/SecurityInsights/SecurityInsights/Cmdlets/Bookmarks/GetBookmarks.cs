@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 {
@@ -53,27 +54,27 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var bookmarks = SecurityInsightsClient.Bookmarks.ListWithHttpMessagesAsync(ResourceGroupName, WorkspaceName).GetAwaiter().GetResult().Body;
+                    var bookmarks = SecurityInsightsClient.Bookmarks.List(ResourceGroupName, WorkspaceName);
                     int bookmarkscount = bookmarks.Count();
-                    WriteObject(bookmarks, enumerateCollection: true);
+                    WriteObject(bookmarks.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedBookmarks += bookmarkscount;
                     nextLink = bookmarks?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedBookmarks < MaxBookmarksToFetch)
                     {
-                        bookmarks = SecurityInsightsClient.Bookmarks.ListNextWithHttpMessagesAsync(bookmarks.NextPageLink).GetAwaiter().GetResult().Body;
+                        bookmarks = SecurityInsightsClient.Bookmarks.ListNext(bookmarks.NextPageLink);
                         bookmarkscount = bookmarks.Count();
-                        WriteObject(bookmarks, enumerateCollection: true);
+                        WriteObject(bookmarks.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedBookmarks += bookmarkscount;
                         nextLink = bookmarks?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.BookmarkId:
-                    var bookmark = SecurityInsightsClient.Bookmarks.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, BookmarkId).GetAwaiter().GetResult().Body;
-                    WriteObject(bookmark, enumerateCollection: false);
+                    var bookmark = SecurityInsightsClient.Bookmarks.Get(ResourceGroupName, WorkspaceName, BookmarkId);
+                    WriteObject(bookmark.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    bookmark = SecurityInsightsClient.Bookmarks.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(bookmark, enumerateCollection: false);
+                    bookmark = SecurityInsightsClient.Bookmarks.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
+                    WriteObject(bookmark.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

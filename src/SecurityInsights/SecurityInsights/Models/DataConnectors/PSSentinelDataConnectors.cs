@@ -29,11 +29,5 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 
         public string Kind { get; set; }
 
-        public PSSentinelDataConnectorDataType DataTypes { get; set; }
-
-        public string AWSRoleArn { get; set; }
-
-        public string SubscriptionId { get; set; }
-
     }
 }

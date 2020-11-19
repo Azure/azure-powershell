@@ -15,24 +15,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
 {
-    public class PSSentinelFusionAlertRule : PSSentinelAlertRule
+    public class PSSentinelBookmarkUserInfo
     {
 
-        public string AlertRuleTemplateName { get; set; }
+        public string Email { get; set; }
 
-        public string DisplayName { get; set; }
+        public Guid? ObjectId { get; set; }
 
-        public string Description { get; set; }
-
-        public string Severity { get; set; }
-
-        public bool Enabled { get; set; }
-
-        public DateTime? LastModifiedUtc { get; set; }
-
-        public IList<string> Tactics { get; set; }
-        
+        public string Name { get; set; }
     }
 }

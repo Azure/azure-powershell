@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.SecurityInsights.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId), OutputType(typeof(PSSentinelAction))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId), OutputType(typeof(PSSentinelActionResponse))]
     public class SetAlertruleActions : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public ActionRequest InputObject { get; set; }
+        public PSSentinelActionResponse InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
                     WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     LogicAppResourceId = InputObject.LogicAppResourceId;
-                    TriggerUri =  InputObject.TriggerUri;
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             {
                 var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateActionWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId, name, action).GetAwaiter().GetResult().Body;
 
-                WriteObject(outputaction, enumerateCollection: false);
+                WriteObject(outputaction?.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

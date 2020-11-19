@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
 
         public PSSentinelIncidentAdditionalData AdditonalData { get; set; }
 
-        public string Classificaton { get; set; }
+        public string Classification { get; set; }
 
         public string ClassificationComment { get; set; }
         

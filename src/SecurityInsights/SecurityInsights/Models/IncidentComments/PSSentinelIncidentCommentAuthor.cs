@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments
 {
     public class PSSentinelIncidentCommentAuthor
     {
-        public string ObjectId { get; set; }
+        public Guid? ObjectId { get; set; }
 
         public string Email { get; set; }
 

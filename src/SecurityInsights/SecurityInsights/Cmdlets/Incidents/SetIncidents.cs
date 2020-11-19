@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
@@ -53,10 +54,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         public string Description { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Labels)]
-        public IList<IncidentLabel> Labels { get; set; }
+        public IList<PSSentinelIncidentLabel> Labels { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Owner)]
-        public IncidentOwnerInfo Owner { get; set; }
+        public PSSentinelIncidentOwner Owner { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)]
         [ValidateSet("High", "Informational", "Low", "Medium")] 
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public Incident InputObject { get; set; }
+        public PSSentinelIncident InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -89,8 +90,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                     ClassificationComment = InputObject.ClassificationComment;
                     ClassificationReason = InputObject.ClassificationReason;
                     Description = InputObject.Description;
-                    Labels = (IList<IncidentLabel>) InputObject.Labels;
-                    Owner = (IncidentOwnerInfo)InputObject.Owner;
+                    Labels = (IList<PSSentinelIncidentLabel>) InputObject.Labels;
+                    Owner = (PSSentinelIncidentOwner)InputObject.Owner;
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -106,16 +107,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 ClassificationComment = ClassificationComment,
                 ClassificationReason = ClassificationReason,
                 Description = Description,
-                Labels = Labels,
-                Owner = Owner
+                Labels = Labels.CreatePSType(),
+                Owner = Owner.CreatePSType()
             };
 
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var outputIncident = SecurityInsightsClient.Incidents.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, incident).GetAwaiter().GetResult().Body;
+                var outputIncident = SecurityInsightsClient.Incidents.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, incident);
 
-                WriteObject(outputIncident?.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(outputIncident.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

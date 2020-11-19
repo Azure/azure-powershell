@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                SecurityInsightsClient.Bookmarks.DeleteWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name).GetAwaiter().GetResult();
+                SecurityInsightsClient.Bookmarks.Delete(ResourceGroupName, WorkspaceName, name);
             }
 
             if (PassThru.IsPresent)

@@ -100,5 +100,35 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
             return value.Select(dss => dss.ConvertToPSType()).ToList();
         }
 
+
+        public static IncidentLabel CreatePSType(this PSSentinelIncidentLabel value)
+        {
+            return new IncidentLabel()
+            {
+                LabelName = value.LabelName
+            };
+        }
+
+        public static List<IncidentLabel> CreatePSType(this IEnumerable<PSSentinelIncidentLabel> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
+        public static IncidentOwnerInfo CreatePSType(this PSSentinelIncidentOwner value)
+        {
+            return new IncidentOwnerInfo()
+            {
+                AssignedTo = value.AssignedTo,
+                Email = value.Email,
+                ObjectId = value.ObjectId,
+                UserPrincipalName = value.UserPrincipalName
+            };
+        }
+
+        public static List<IncidentOwnerInfo> CreatePSType(this IEnumerable<PSSentinelIncidentOwner> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
     }
 }

@@ -14,25 +14,16 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.SecurityInsights.Models;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 {
-    public class PSSentinelFusionAlertRule : PSSentinelAlertRule
+    public class PSSentinelDataConnectorMCAS : PSSentinelDataConnector
     {
 
-        public string AlertRuleTemplateName { get; set; }
+        public PSSentinelDataConnectorDataTypeMCAS DataTypes { get; set; }
 
-        public string DisplayName { get; set; }
+        public string TenantId { get; set; }
 
-        public string Description { get; set; }
-
-        public string Severity { get; set; }
-
-        public bool Enabled { get; set; }
-
-        public DateTime? LastModifiedUtc { get; set; }
-
-        public IList<string> Tactics { get; set; }
-        
     }
 }

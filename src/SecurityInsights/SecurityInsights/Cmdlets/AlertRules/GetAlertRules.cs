@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 {
@@ -53,27 +54,28 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var alertrules = SecurityInsightsClient.AlertRules.ListWithHttpMessagesAsync(ResourceGroupName, WorkspaceName).GetAwaiter().GetResult().Body;
+                    var alertrules = SecurityInsightsClient.AlertRules.List(ResourceGroupName, WorkspaceName);
+                    
                     int alertrulescount = alertrules.Count();
-                    WriteObject(alertrules, enumerateCollection: true);
+                    WriteObject(alertrules.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedAlertRules += alertrulescount;
                     nextLink = alertrules?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedAlertRules < MaxAlertRulesToFetch)
                     {
-                        alertrules = SecurityInsightsClient.AlertRules.ListNextWithHttpMessagesAsync(alertrules.NextPageLink).GetAwaiter().GetResult().Body;
+                        alertrules = SecurityInsightsClient.AlertRules.ListNext(alertrules.NextPageLink);
                         alertrulescount = alertrules.Count();
-                        WriteObject(alertrules, enumerateCollection: true);
+                        WriteObject(alertrules.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedAlertRules += alertrulescount;
                         nextLink = alertrules?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.AlertRuleId:
-                    var alertrule = SecurityInsightsClient.AlertRules.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId).GetAwaiter().GetResult().Body;
-                    WriteObject(alertrule, enumerateCollection: false);
+                    var alertrule = SecurityInsightsClient.AlertRules.Get(ResourceGroupName, WorkspaceName, AlertRuleId);
+                    WriteObject(alertrule.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    alertrule = SecurityInsightsClient.AlertRules.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(alertrule, enumerateCollection: false);
+                    alertrule = SecurityInsightsClient.AlertRules.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
+                    WriteObject(alertrule.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

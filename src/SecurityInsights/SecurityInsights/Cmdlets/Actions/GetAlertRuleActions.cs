@@ -18,10 +18,11 @@ using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.AlertRuleId), OutputType(typeof(PSSentinelAction))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.AlertRuleId), OutputType(typeof(PSSentinelActionResponse))]
     public class GetAlertRuleActions : SecurityInsightsCmdletBase    
     {
         [Parameter(ParameterSetName = ParameterSetNames.AlertRuleId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -49,12 +50,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             switch (ParameterSetName)
             {
                 case ParameterSetNames.AlertRuleId:
-                    var actions = SecurityInsightsClient.Actions.ListByAlertRuleWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId).GetAwaiter().GetResult().Body;
-                    WriteObject(actions, enumerateCollection: false);
+                    var actions = SecurityInsightsClient.Actions.ListByAlertRule(ResourceGroupName, WorkspaceName, AlertRuleId);
+                    WriteObject(actions.ConvertToPSType(), enumerateCollection: true);
                     break;
                 case ParameterSetNames.ActionId:
-                    var action = SecurityInsightsClient.AlertRules.GetActionWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId);
-                    WriteObject(action, enumerateCollection: false);
+                    var action = SecurityInsightsClient.AlertRules.GetAction(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId);
+                    WriteObject(action.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

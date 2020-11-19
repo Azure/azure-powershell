@@ -29,42 +29,5 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 
         public string Kind { get; set; }
 
-        public string AlertRuleTemplateName { get; set; }
-
-        public string DisplayName { get; set; }
-
-        public string Description { get; set; }
-
-        public bool Enabled { get; set; }
-
-        public DateTime? LastModifiedUtc { get; set; }
-
-        public string Severity { get; set; }
-
-        public IList<string> Tactics { get; set; }
-
-        public string ProductFilter { get; set; }
-
-        public IList<string> DisplayNamesFilter { get; set; }
-
-        public IList<string> DisplayNamesExcludeFilter { get; set; }
-
-        public IList<string> SeveritiesFilter { get; set; }
-
-        public string Query { get; set; }
-
-        public TimeSpan? QueryFrequency { get; set; }
-
-        public TimeSpan? QueryPeriod { get; set; }
-
-
-        public TimeSpan? SuppressionDuration { get; set; }
-
-        public bool SuppressionEnabled { get; set; }
-
-        public TriggerOperator? TriggerOperator { get; set; }
-
-        public int? TriggerThreshold { get; set; }
-
     }
 }

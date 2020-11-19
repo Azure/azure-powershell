@@ -18,10 +18,11 @@ using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId, SupportsShouldProcess = true), OutputType(typeof(PSSentinelAction))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRuleAction", DefaultParameterSetName = ParameterSetNames.ActionId, SupportsShouldProcess = true), OutputType(typeof(PSSentinelActionResponse))]
     public class RemoveAlertRuleActions : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public PSSentinelAction InputObject { get; set; }
+        public PSSentinelActionResponse InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                SecurityInsightsClient.AlertRules.DeleteActionWithHttpMessagesAsync(resourcegroup, workspacename, alertrule, name).GetAwaiter().GetResult();
+                SecurityInsightsClient.AlertRules.DeleteAction(resourcegroup, workspacename, alertrule, name);
             }
 
             if (PassThru.IsPresent)

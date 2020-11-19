@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 {
@@ -143,8 +144,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector aadDataConnector = aadDataTypes; 
-                        var outputaadconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, aadDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputaadconnector, enumerateCollection: false);
+                        var outputaadconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aadDataConnector);
+                        WriteObject(outputaadconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.AzureAdvancedThreatProtection:
                         DataConnectorDataTypeCommon aatpcommon = new DataConnectorDataTypeCommon
@@ -159,8 +160,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector aatpDataConnector = aatpDataTypes;
-                        var outputaatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, aatpDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputaatpconnector, enumerateCollection: false);
+                        var outputaatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aatpDataConnector);
+                        WriteObject(outputaatpconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.AzureSecurityCenter:
                         DataConnectorDataTypeCommon asccommon = new DataConnectorDataTypeCommon
@@ -177,8 +178,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             
                         };
                         DataConnector ascDataConnector = ascDataTypes;
-                        var outputascconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, ascDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputascconnector, enumerateCollection: false);
+                        var outputascconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, ascDataConnector);
+                        WriteObject(outputascconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.AmazonWebServicesCloudTrail:
                         AwsCloudTrailDataConnectorDataTypesLogs awscommon = new AwsCloudTrailDataConnectorDataTypesLogs
@@ -194,8 +195,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 
                         };
                         DataConnector awsDataConnector = awsDataTypes;
-                        var outputawsconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, awsDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputawsconnector, enumerateCollection: false);
+                        var outputawsconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, awsDataConnector);
+                        WriteObject(outputawsconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.MicrosoftCloudAppSecurity:
                         DataConnectorDataTypeCommon mcascommon = new DataConnectorDataTypeCommon
@@ -213,8 +214,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector mcasDataConnector = mcasConnector;
-                        var outputmcasconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, mcasDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputmcasconnector, enumerateCollection: false);
+                        var outputmcasconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mcasDataConnector);
+                        WriteObject(outputmcasconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection:
                         DataConnectorDataTypeCommon mdatpcommon = new DataConnectorDataTypeCommon
@@ -229,8 +230,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector mdatpDataConnector = mdatpDataTypes;
-                        var outputmdatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, mdatpDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputmdatpconnector, enumerateCollection: false);
+                        var outputmdatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mdatpDataConnector);
+                        WriteObject(outputmdatpconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.Office365:
                         OfficeDataConnectorDataTypesExchange officeExchange = new OfficeDataConnectorDataTypesExchange
@@ -248,8 +249,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector officeDataConnector = officeConnector;
-                        var outputofficeconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, officeDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputofficeconnector, enumerateCollection: false);
+                        var outputofficeconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, officeDataConnector);
+                        WriteObject(outputofficeconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.ThreatIntelligence:
                         TIDataConnectorDataTypesIndicators tiIndicators = new TIDataConnectorDataTypesIndicators
@@ -264,8 +265,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                             TenantId = tenantId
                         };
                         DataConnector tiDataConnector = tiConnector;
-                        var outputticonnector = SecurityInsightsClient.DataConnectors.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, tiDataConnector).GetAwaiter().GetResult().Body;
-                        WriteObject(outputticonnector, enumerateCollection: false);
+                        var outputticonnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, tiDataConnector);
+                        WriteObject(outputticonnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     default:
                         throw new PSInvalidOperationException();
