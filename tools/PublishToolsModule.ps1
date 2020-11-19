@@ -11,12 +11,21 @@ param(
     [string]$ModuleName,
 
     [Parameter(Mandatory = $true)]
-    [string]$RepositoryLocation
+    [string]$RepositoryLocation,
+
+    [Parameter(Mandatory = $true)]
+    [string]$PublishLocation
 )
+
+Import-Module "$PSScriptRoot\PublishModules.psm1"
+
 try {
     $tempRepoName = ([System.Guid]::NewGuid()).ToString()
-    Register-PSRepository -Name $tempRepoName -SourceLocation $RepositoryLocation -PublishLocation $RepositoryLocation -InstallationPolicy Trusted -PackageManagementProvider NuGet
+    Register-PSRepository -Name $tempRepoName -SourceLocation $RepositoryLocation -PublishLocation $PublishLocation -InstallationPolicy Trusted -PackageManagementProvider NuGet
     $modulePath = Join-Path $RepositoryLocation $ModuleName -Resolve
+
+    Save-PackagesFromPsGallery -TempRepo $tempRepoName -TempRepoPath $RepositoryLocation -ModulePaths $modulePath
+
     Publish-Module -Path $modulePath -Repository $tempRepoName -Force
 } catch {
     $Errors = $_
