@@ -185,8 +185,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             if ((result == null) || (result.Count < suggestionCount))
             {
                 var fallbackPredictor = _fallbackPredictor;
-                var resultsFromFallbackTuple = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCount - result.Count, maxAllowedCommandDuplicate, cancellationToken);
-                var resultsFromFallback = resultsFromCommandsTuple.Item1;
+                var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
+                var resultsFromFallbackTuple = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCountToRequest, maxAllowedCommandDuplicate, cancellationToken);
+                var resultsFromFallback = resultsFromFallbackTuple.Item1;
                 presentCommands = resultsFromFallbackTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
                 if (result == null)
