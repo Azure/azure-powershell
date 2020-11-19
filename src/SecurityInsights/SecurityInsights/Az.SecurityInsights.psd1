@@ -98,7 +98,8 @@ CmdletsToExport = 'Get-AzSentinelAlertRuleAction',
     'New-AzSentinelIncidentLabel', 
     'New-AzSentinelIncidentOwner',
     'Remove-AzSentinelIncident',
-    'Set-AzSentinelIncident'
+    'Set-AzSentinelIncident',
+    'Get-AzSentinelAlertRuleTemplate'
 
 
 # Variables to export from this module
