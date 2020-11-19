@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                     if (this.ManagedIdentity.IsPresent)
                     {
-                        servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                        servicesDescription.Identity = new ServicesResourceIdentity() { Type = "SystemAssigned" };
                     }
 
                     if (!string.IsNullOrEmpty(PublicNetworkAccess))

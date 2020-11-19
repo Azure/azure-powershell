@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
             if (this.EnableManagedIdentity.ToBool() && healthcareApisAccount.Identity == null)
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                servicesDescription.Identity = new ServicesResourceIdentity() { Type = "SystemAssigned" };
             }
             else if (!this.DisableManagedIdentity.ToBool())
             {
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
             else
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "None" };
+                servicesDescription.Identity = new ServicesResourceIdentity() { Type = "None" };
             }
 
             return servicesDescription;
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
             if (!String.IsNullOrEmpty(InputObject.IdentityType))
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity(InputObject.IdentityPrincipalId, InputObject.IdentityTenantId, InputObject.IdentityType);
+                servicesDescription.Identity = new ServicesResourceIdentity(InputObject.IdentityPrincipalId, InputObject.IdentityTenantId, InputObject.IdentityType);
             }
             else
             {
