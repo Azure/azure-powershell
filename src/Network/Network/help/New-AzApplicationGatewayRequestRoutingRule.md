@@ -15,7 +15,7 @@ Creates a request routing rule for an application gateway.
 
 ### SetByResourceId
 ```
-New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> -Priority <Int32>
+New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-Priority <Int32>]
  [-BackendHttpSettingsId <String>] [-HttpListenerId <String>] [-BackendAddressPoolId <String>]
  [-UrlPathMapId <String>] [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> -Pr
 
 ### SetByResource
 ```
-New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> -Priority <Int32>
+New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-Priority <Int32>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-HttpListener <PSApplicationGatewayHttpListener>]
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-UrlPathMap <PSApplicationGatewayUrlPathMap>]
