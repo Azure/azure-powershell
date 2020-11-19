@@ -17,13 +17,13 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class SecurityTaskTests
+    public class ActionsTests
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public SecurityTaskTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ActionsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -32,37 +32,37 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetSubscriptionScope()
+        public void ListByAlertRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTask-SubscriptionScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleAction-ListByAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceGroupScope()
+        public void GetAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTask-ResourceGroupScope");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRuleAction-GetAction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceId()
+        public void CreateAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTask-ResourceId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelAlertRuleAction-Create");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetSubscriptionLevelResource()
+        public void UpdateAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTask-SubscriptionLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelAlertRuleAction-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceGroupLevelResource()
+        public void RemoveAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityTask-ResourceGroupLevelResource");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelAlertRuleAction-Delete");
         }
     }
 }

@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Security;
+using Microsoft.Azure.Management.SecurityInsights;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -26,7 +26,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.Security.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.SecurityInsights.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             var resourcesClient = GetResourcesClient(context);
-            var securityCenterClient = GetSecurityCenterClient(context);
+            var securityInsightsClient = GetSecurityInsightsClient(context);
             var storageClient = GetStorageManagementClient(context);
-            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient);
+            _helper.SetupManagementClients(securityInsightsClient, resourcesClient, storageClient);
         }
 
-        private static SecurityCenterClient GetSecurityCenterClient(MockContext context)
+        private static SecurityInsightsClient GetSecurityInsightsClient(MockContext context)
         {
-            return context.GetServiceClient<SecurityCenterClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SecurityInsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         private static ResourceManagementClient GetResourcesClient(MockContext context)
         {

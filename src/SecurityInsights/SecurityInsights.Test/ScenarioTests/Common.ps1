@@ -18,7 +18,12 @@ Gets test resource group name
 #>
 function Get-TestResourceGroupName
 {
-	"myService1"
+	"ndicola-azsposh"
+}
+
+function Get-TestWorkspaceName
+{
+	"azsposh"
 }
 
 <#

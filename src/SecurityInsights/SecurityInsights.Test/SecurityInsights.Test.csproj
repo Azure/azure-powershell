@@ -11,36 +11,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SqlInformationProtectionPolicies\**" />
+    <EmbeddedResource Remove="SqlInformationProtectionPolicies\**" />
+    <None Remove="SqlInformationProtectionPolicies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="SqlInformationProtectionPolicies\Empty.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameDisplayName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameId.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameId.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\InvalidRank.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\MissingRank.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="ScenarioTests\Actions\ActionsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   
