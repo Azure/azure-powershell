@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         public TimeSpan? QueryPeriod { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Severity)]
+        [ValidateSet("High", "Informational", "Low", "Medium")]
         [ValidateNotNullOrEmpty]
         public string Severity { get; set; }
 
@@ -119,6 +120,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         public IList<string> Tactics { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerOperator)]
+        [ValidateSet("Equal", "GreaterThan", "LessThan", "NotEqual")]
         [ValidateNotNullOrEmpty]
         public TriggerOperator TriggerOperator { get; set; }
 
@@ -136,7 +138,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
             }
 
             var name = AlertRuleId;
-            if (ShouldProcess(name, VerbsCommon.Set))
+            if (ShouldProcess(name, VerbsCommon.New))
             {
                 
                 switch(ParameterSetName)

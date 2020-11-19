@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
         [Parameter(ParameterSetName = ParameterSetNames.IncidentCommentId, Mandatory = false, HelpMessage = ParameterHelpMessages.IncidentCommentId)]
         public string IncidentCommentId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.Message)] 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentCommentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Message)] 
         public string Message { get; set; }
        
         public override void ExecuteCmdlet()
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
 
             var name = IncidentCommentId;
 
-            if (ShouldProcess(name, VerbsCommon.Set))
+            if (ShouldProcess(name, VerbsCommon.New))
             {
                 var outputIncidentCommnet = SecurityInsightsClient.IncidentComments.CreateCommentWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId, name, Message).GetAwaiter().GetResult().Body;
 

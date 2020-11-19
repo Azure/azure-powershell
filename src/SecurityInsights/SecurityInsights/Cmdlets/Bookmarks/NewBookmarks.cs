@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             };
 
-            if (ShouldProcess(name, VerbsCommon.Set))
+            if (ShouldProcess(name, VerbsCommon.New))
             {
                 var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name, bookmark).GetAwaiter().GetResult().Body;
 

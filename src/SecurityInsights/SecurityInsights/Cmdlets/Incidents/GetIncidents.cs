@@ -18,13 +18,14 @@ using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncident", DefaultParameterSetName = ParameterSetNames.WorkspaceScope), OutputType(typeof(PSSentinelIncident))]
     public class GetIncidents : SecurityInsightsCmdletBase
     {
-        private const int MaxAlertsToFetch = 1500;
+        private const int MaxIncidentsToFetch = 1500;
 
         [Parameter(ParameterSetName = ParameterSetNames.WorkspaceScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -53,26 +54,26 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
             {
                 case ParameterSetNames.WorkspaceScope:
                     var incidents = SecurityInsightsClient.Incidents.ListWithHttpMessagesAsync(ResourceGroupName, WorkspaceName).GetAwaiter().GetResult().Body;
-                    var PSTypeIncidents = incidents.ConvertToPSType();
-                    WriteObject(PSTypeIncidents, enumerateCollection: true);
-                    numberOfFetchedIncidents += PSTypeIncidents.Count;
+                    var incidentscount = incidents.Count();
+                    WriteObject(incidents, enumerateCollection: true);
+                    numberOfFetchedIncidents += incidentscount;
                     nextLink = incidents?.NextPageLink;
-                    while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedIncidents < MaxAlertsToFetch)
+                    while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedIncidents < MaxIncidentsToFetch)
                     {
                         incidents = SecurityInsightsClient.Incidents.ListNextWithHttpMessagesAsync(incidents.NextPageLink).GetAwaiter().GetResult().Body;
-                        PSTypeIncidents = incidents.ConvertToPSType();
-                        WriteObject(PSTypeIncidents, enumerateCollection: true);
-                        numberOfFetchedIncidents += PSTypeIncidents.Count;
+                        incidentscount = incidents.Count();
+                        WriteObject(incidents, enumerateCollection: true);
+                        numberOfFetchedIncidents += incidentscount;
                         nextLink = incidents?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.IncidentId:
                     var incident = SecurityInsightsClient.Incidents.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, IncidentId).GetAwaiter().GetResult().Body;
-                    WriteObject(incident.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(incident, enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
                     incident = SecurityInsightsClient.Incidents.GetWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    WriteObject(incident.ConvertToPSType(), enumerateCollection: false);
+                    WriteObject(incident, enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

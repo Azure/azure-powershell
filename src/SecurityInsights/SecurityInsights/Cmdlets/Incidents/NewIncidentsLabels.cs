@@ -28,16 +28,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.LabelName)]
         public string LabelName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.LabelType)]
-        [PSArgumentCompleter("System", "User")]
-        public string LabelType { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            PSSentinelIncidentLabel label = new PSSentinelIncidentLabel
+            IncidentLabel label = new IncidentLabel
             {
-                LabelName = LabelName,
-                LabelType = LabelType
+                LabelName = LabelName
             };
 
             WriteObject(label, enumerateCollection: false);

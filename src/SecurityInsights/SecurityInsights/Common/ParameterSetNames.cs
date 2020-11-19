@@ -39,6 +39,17 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string BookmarkId = "BookmarkId.";
         #endregion
 
+        #region DataConnectors
+        public const string DataConnectorId = "DataConnectorId";
+        public const string AzureActiveDirectory = "AzureActiveDirectory";
+        public const string AzureAdvancedThreatProtection = "AzureAdvancedThreatProtection";
+        public const string AzureSecurityCenter = "AzureSecurityCenter";
+        public const string AmazonWebServicesCloudTrail = "AmazonWebServicesCloudTrail";
+        public const string MicrosoftCloudAppSecurity = "MicrosoftCloudAppSecurity";
+        public const string MicrosoftDefenderAdvancedThreatProtection = "MicrosoftDefenderAdvancedThreatProtection";
+        public const string Office365 = "Office365";
+        public const string ThreatIntelligence = "ThreatIntelligence";
+        #endregion
 
         #region IncidentComments
         public const string IncidentCommentId = "IncidentCommentId";

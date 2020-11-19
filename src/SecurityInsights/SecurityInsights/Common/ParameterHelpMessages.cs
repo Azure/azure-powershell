@@ -67,6 +67,27 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string UpdatedBy = "Bookmark Updated By.";
         #endregion
 
+        #region DataConnectors
+        public const string DataConnectorId = "Data Connector Id.";
+        public const string DataConnectorKind = "Data Connector Kind.";
+        public const string AzureActiveDirectory = "Data Connector Azure Active Directory";
+        public const string AzureAdvancedThreatProtection = "Data Connector Azure Advanced Threat Protection";
+        public const string AzureSecurityCenter = "Data Connector Azure Security Center";
+        public const string AmazonWebServicesCloudTrail = "Data Connector Amazon Web Services Cloud Trail";
+        public const string MicrosoftCloudAppSecurity = "Data Connector Microsoft Cloud App Security";
+        public const string MicrosoftDefenderAdvancedThreatProtection = "Data Connector Microsoft Defender Advanced Threat Protection";
+        public const string Office365 = "Data Connector Office 365";
+        public const string ThreatIntelligence = "Data Connector Threat Intelligence";
+        public const string Alerts = "Data Connector Alerts";
+        public const string AwsRoleArn = "Data Connector AWS Role Arn";
+        public const string Logs = "Data Connector Logs";
+        public const string DiscoveryLogs = "Data Connector Discovery Logs";
+        public const string Exchange = "Data Connector Exchange";
+        public const string SharePoint = "Data Connector SharePoint";
+        public const string Indicators = "Data Connector Indicators";
+        public const string SubscriptionId = "Data connector Subscription Id";
+        #endregion
+
         #region IncidentComments
         public const string IncidentCommentId = "Incident Comment Id.";
         public const string Message = "Incident Message.";

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
                 TriggerUri = TriggerUri
             };
 
-            if (ShouldProcess(name, VerbsCommon.Set))
+            if (ShouldProcess(name, VerbsCommon.New))
             {
                 var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateActionWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId, name, action).GetAwaiter().GetResult().Body;
 

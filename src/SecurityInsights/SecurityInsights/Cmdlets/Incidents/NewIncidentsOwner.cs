@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.SecurityInsights;
 using Microsoft.Azure.Commands.SecurityInsights.Common;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Incidents;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.SecurityInsights.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 
         public override void ExecuteCmdlet()
         {
-            PSSentinelIncidentOwner owner = new PSSentinelIncidentOwner
+            IncidentOwnerInfo owner = new IncidentOwnerInfo
             {
                 AssignedTo = AssignedTo,
                 Email = Email,

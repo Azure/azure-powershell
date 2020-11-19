@@ -38,13 +38,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [ValidateNotNullOrEmpty]
         public string IncidentId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.Classificaton)] 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.Classificaton)]
+        [ValidateSet("BenignPositive", "FalsePositive", "TruePositive", "Undetermined")] 
         public string Classification { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.ClassificationComment)] 
         public string ClassificationComment { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.ClassificationReason)] 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.ClassificationReason)]
+        [ValidateSet("InaccurateData", "IncorrectAlertLogic", "SuspiciousActivity", "SuspiciousButExpected")] 
         public string ClassificationReason { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.Description)] 
@@ -56,10 +58,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Owner)]
         public IncidentOwnerInfo Owner { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)] 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)]
+        [ValidateSet("High", "Informational", "Low", "Medium")] 
         public string Severity { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Status)] 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Status)]
+        [ValidateSet("Active", "Closed", "New")] 
         public string Status { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Title)] 
