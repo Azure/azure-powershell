@@ -64,6 +64,12 @@ namespace Tools.Common.Loaders
             var results = new List<CmdletMetadata>();
 
             ModuleMetadata = new ModuleMetadata();
+
+        /// If assemble is not dll, return directly, in the future, except for dll, we should also support psm1
+            if (!assemblyPath.EndsWith("dll")) {
+                ModuleMetadata.Cmdlets = results;
+                return ModuleMetadata;
+            }
             try
             {
                 var assembly = Assembly.LoadFrom(assemblyPath);
