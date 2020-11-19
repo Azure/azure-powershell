@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of storage.</summary>
     public partial struct AzureStorageType :
         System.IEquatable<AzureStorageType>
     {

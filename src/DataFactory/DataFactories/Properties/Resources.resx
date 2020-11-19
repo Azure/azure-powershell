@@ -137,7 +137,7 @@
   </data>
   <data name="DataFactoryExists" xml:space="preserve">
     <value>A data factory with the name {0} in the resource group {1} exists. 
-Continuing execution may overwrite the exisiting one. 
+Continuing execution may overwrite the existing one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="DataFactoryNotFound" xml:space="preserve">
@@ -176,7 +176,7 @@ Timestamp (Utc):{4}</value>
   </data>
   <data name="HubExists" xml:space="preserve">
     <value>A hub with the name {0} in the data factory {1} exists. 
-Continuing execution may overwrite the exisiting one. 
+Continuing execution may overwrite the existing one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="HubNotFound" xml:space="preserve">
@@ -193,7 +193,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="LinkedServiceExists" xml:space="preserve">
     <value>A linked service with the name {0} in the data factory {1} exists. 
-Continuing execution may overwrite the exisiting one. 
+Continuing execution may overwrite the existing one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="LinkedServiceNotFound" xml:space="preserve">
@@ -213,7 +213,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="PipelineExists" xml:space="preserve">
     <value>A pipeline with the name {0} in the data factory {1} exists. 
-Continuing execution may overwrite the exisiting one. 
+Continuing execution may overwrite the existing one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="PipelineNotFound" xml:space="preserve">
@@ -233,7 +233,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="DatasetExists" xml:space="preserve">
     <value>A dataset with the name {0} in the data factory {1} already exists. 
-Continuing execution will overwrite the exisiting one. 
+Continuing execution will overwrite the existing one. 
 Are you sure you want to continue?</value>
   </data>
   <data name="DatasetNotFound" xml:space="preserve">

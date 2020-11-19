@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
+* Add `-Force` to all Remove cmdlets
+
+## Version 0.3.0
 * Added support for operation of Synapse LinkedService
     - Add `Get-AzSynapseLinkedService` cmdlet
     - Add `Remove-AzSynapseLinkedService` cmdlet
@@ -50,6 +55,23 @@
     - Add `Start-AzSynapseTrigger` cmdlet
     - Add `Stop-AzSynapseTrigger` cmdlet
     - Add `Get-AzSynapseTriggerRun` cmdlet
+* Added support for operation of Synapse DataFlow
+    - Add `Get-AzSynapseDataFlow` cmdlet
+    - Add `Remove-AzSynapseDataFlow` cmdlet
+    - Add `Set-AzSynapseDataFlow` cmdlet
+    - Add `New-AzSynapseDataFlow` cmdlet
+* Added support for operation of Synapse Dataset
+    - Add `Get-AzSynapseDataset` cmdlet
+    - Add `Remove-AzSynapseDataset` cmdlet
+    - Add `Set-AzSynapseDataset` cmdlet
+    - Add `New-AzSynapseDataset` cmdlet
+* Removed parameter sets related 'create from backup' and 'create from restore point' from the `New-AzSynapseSqlPool` cmdlet
+* Removed parameter sets related 'pause' and 'resume' from the `Update-AzSynapseSqlPool`
+* Added support for operation of Synapse Sql pool
+    - Add `Get-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Restore-AzSynapseSqlPool` cmdlet
+    - Add `Resume-AzSynapseSqlPool` cmdlet
+    - Add `Suspend-AzSynapseSqlPool` cmdlet
 
 ## Version 0.2.0
 

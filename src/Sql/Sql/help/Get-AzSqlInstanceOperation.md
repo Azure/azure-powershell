@@ -14,7 +14,7 @@ Gets a SQL managed instance's operations.
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSqlInstanceOperation [-Name <Guid>] -ManagedInstanceName <String> -ResourceGroupName <String>
+Get-AzSqlInstanceOperation [-Name <String>] -ManagedInstanceName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 The name of the operation.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases: OperationName
 

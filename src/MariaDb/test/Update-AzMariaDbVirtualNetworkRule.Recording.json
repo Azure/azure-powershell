@@ -1,14 +1,14 @@
 {
-  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview+1": {
+  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"ignoreMissingVnetServiceEndpoint\": true,\n    \"virtualNetworkSubnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ignoreMissingVnetServiceEndpoint\": true,\r\n    \"virtualNetworkSubnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "258" ]
+        "Content-Length": [ "263" ]
       }
     },
     "Response": {
@@ -16,39 +16,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/f9dc71da-ad65-47fd-a955-1cc3bc7a82c5?api-version=2018-06-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/locations/eastus/operationResults/b13be173-ecf4-487d-9177-166583448203?api-version=2018-06-01-preview" ],
         "Retry-After": [ "30" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/f9dc71da-ad65-47fd-a955-1cc3bc7a82c5?api-version=2018-06-01-preview" ],
-        "x-ms-request-id": [ "f9dc71da-ad65-47fd-a955-1cc3bc7a82c5" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/b13be173-ecf4-487d-9177-166583448203?api-version=2018-06-01-preview" ],
+        "x-ms-request-id": [ "b13be173-ecf4-487d-9177-166583448203" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
-        "x-ms-correlation-request-id": [ "060a1d5f-c876-4735-970d-1bdc08bdf30f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T030053Z:060a1d5f-c876-4735-970d-1bdc08bdf30f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1175" ],
+        "x-ms-correlation-request-id": [ "5f8b0fce-2189-4435-bb40-28e2a204d695" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200923T190728Z:5f8b0fce-2189-4435-bb40-28e2a204d695" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Apr 2020 03:00:53 GMT" ]
+        "Date": [ "Wed, 23 Sep 2020 19:07:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "90" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-04-15T03:00:52.163Z\"}"
+      "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-09-23T19:07:27.273Z\"}"
     }
   },
-  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/f9dc71da-ad65-47fd-a955-1cc3bc7a82c5?api-version=2018-06-01-preview+2": {
+  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/b13be173-ecf4-487d-9177-166583448203?api-version=2018-06-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/f9dc71da-ad65-47fd-a955-1cc3bc7a82c5?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/locations/eastus/azureAsyncOperation/b13be173-ecf4-487d-9177-166583448203?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "244", "245" ],
-        "x-ms-client-request-id": [ "b7d2afae-be29-4660-a385-b908afaf18fb", "b7d2afae-be29-4660-a385-b908afaf18fb" ],
-        "CommandName": [ "Update-AzMariaDbVirtualNetworkRule", "Update-AzMariaDbVirtualNetworkRule" ],
-        "FullCommandName": [ "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded", "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "273" ],
+        "x-ms-client-request-id": [ "a8b7dfde-c280-4e88-8143-eef3c4e1ab66" ],
+        "CommandName": [ "Update-AzMariaDbVirtualNetworkRule" ],
+        "FullCommandName": [ "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
       },
       "ContentHeaders": {
       }
@@ -59,36 +59,36 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "30" ],
-        "x-ms-request-id": [ "7f7ce2cf-d23e-46be-a492-2bf7ff40d83f" ],
+        "x-ms-request-id": [ "6ab2c7a2-2b0b-4f87-b137-66a11b631d5b" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11800" ],
-        "x-ms-correlation-request-id": [ "db992095-0029-446b-b48e-109fc41eaf51" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T030121Z:db992095-0029-446b-b48e-109fc41eaf51" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11766" ],
+        "x-ms-correlation-request-id": [ "9856ffda-b03f-4e25-b9d2-607c3e1aeca1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200923T190758Z:9856ffda-b03f-4e25-b9d2-607c3e1aeca1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Apr 2020 03:01:20 GMT" ]
+        "Date": [ "Wed, 23 Sep 2020 19:07:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"f9dc71da-ad65-47fd-a955-1cc3bc7a82c5\",\"status\":\"Succeeded\",\"startTime\":\"2020-04-15T03:00:52.163Z\"}"
+      "Content": "{\"name\":\"b13be173-ecf4-487d-9177-166583448203\",\"status\":\"Succeeded\",\"startTime\":\"2020-09-23T19:07:27.273Z\"}"
     }
   },
-  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview+3": {
+  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "244", "245", "246" ],
-        "x-ms-client-request-id": [ "b7d2afae-be29-4660-a385-b908afaf18fb", "b7d2afae-be29-4660-a385-b908afaf18fb", "b7d2afae-be29-4660-a385-b908afaf18fb" ],
-        "CommandName": [ "Update-AzMariaDbVirtualNetworkRule", "Update-AzMariaDbVirtualNetworkRule", "Update-AzMariaDbVirtualNetworkRule" ],
-        "FullCommandName": [ "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded", "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded", "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "274" ],
+        "x-ms-client-request-id": [ "a8b7dfde-c280-4e88-8143-eef3c4e1ab66" ],
+        "CommandName": [ "Update-AzMariaDbVirtualNetworkRule" ],
+        "FullCommandName": [ "Update-AzMariaDbVirtualNetworkRule_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
       },
       "ContentHeaders": {
       }
@@ -98,31 +98,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "32818dec-a11e-4d74-a425-303487df68a3" ],
+        "x-ms-request-id": [ "bf8a42d8-edd0-4761-9af4-f33b78deff1c" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11799" ],
-        "x-ms-correlation-request-id": [ "88f5d334-3e95-4bd8-ba65-8ab41de1f01d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T030121Z:88f5d334-3e95-4bd8-ba65-8ab41de1f01d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11765" ],
+        "x-ms-correlation-request-id": [ "9dba47c7-7de2-4461-8630-84e5ec131c10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200923T190759Z:9dba47c7-7de2-4461-8630-84e5ec131c10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Apr 2020 03:01:21 GMT" ]
+        "Date": [ "Wed, 23 Sep 2020 19:07:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "530" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\",\"ignoreMissingVnetServiceEndpoint\":true,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU\",\"name\":\"vnetrule-ETLsVU\",\"type\":\"Microsoft.DBforMariaDB/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\",\"ignoreMissingVnetServiceEndpoint\":true,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu\",\"name\":\"vnetrule-hocaiu\",\"type\":\"Microsoft.DBforMariaDB/servers/virtualNetworkRules\"}"
     }
   },
-  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview+4": {
+  "Update-AzMariaDbVirtualNetworkRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU?api-version=2018-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu?api-version=2018-06-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "247" ],
-        "x-ms-client-request-id": [ "70c28d9e-92ed-4026-b8f4-83ea029e162e" ],
+        "x-ms-unique-id": [ "275" ],
+        "x-ms-client-request-id": [ "9ad5543b-a812-471d-941a-4a52668559df" ],
         "CommandName": [ "Get-AzMariaDbVirtualNetworkRule" ],
         "FullCommandName": [ "Get-AzMariaDbVirtualNetworkRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -137,21 +137,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "dfe2a195-7f10-413e-9eb7-22ebf6eeeee6" ],
+        "x-ms-request-id": [ "eb904b25-9266-4d6d-95b8-57d244b79fd3" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11798" ],
-        "x-ms-correlation-request-id": [ "4ddf35df-562f-4584-8e16-9f464dbcf3cb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200415T030122Z:4ddf35df-562f-4584-8e16-9f464dbcf3cb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11764" ],
+        "x-ms-correlation-request-id": [ "d2406e07-aed9-4069-a921-eb54d402f75b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200923T190759Z:d2406e07-aed9-4069-a921-eb54d402f75b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Apr 2020 03:01:21 GMT" ]
+        "Date": [ "Wed, 23 Sep 2020 19:07:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "530" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\",\"ignoreMissingVnetServiceEndpoint\":true,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-9cgsan/providers/Microsoft.DBforMariaDB/servers/mariadb-test-plo24t/virtualNetworkRules/vnetrule-ETLsVU\",\"name\":\"vnetrule-ETLsVU\",\"type\":\"Microsoft.DBforMariaDB/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subvnet-03\",\"ignoreMissingVnetServiceEndpoint\":true,\"state\":\"Ready\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/mariadb-test-vomqla/providers/Microsoft.DBforMariaDB/servers/mariadb-test-mqe08f/virtualNetworkRules/vnetrule-hocaiu\",\"name\":\"vnetrule-hocaiu\",\"type\":\"Microsoft.DBforMariaDB/servers/virtualNetworkRules\"}"
     }
   }
 }

@@ -58,26 +58,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_consent = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("consent"), out var __jsonConsent) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DomainPurchaseConsent.FromJson(__jsonConsent) : Consent;}
             {_contactAdmin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("contactAdmin"), out var __jsonContactAdmin) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Contact.FromJson(__jsonContactAdmin) : ContactAdmin;}
             {_contactBilling = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("contactBilling"), out var __jsonContactBilling) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Contact.FromJson(__jsonContactBilling) : ContactBilling;}
             {_contactRegistrant = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("contactRegistrant"), out var __jsonContactRegistrant) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Contact.FromJson(__jsonContactRegistrant) : ContactRegistrant;}
             {_contactTech = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("contactTech"), out var __jsonContactTech) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Contact.FromJson(__jsonContactTech) : ContactTech;}
-            {_authCode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("authCode"), out var __jsonAuthCode) ? (string)__jsonAuthCode : (string)AuthCode;}
-            {_autoRenew = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("autoRenew"), out var __jsonAutoRenew) ? (bool?)__jsonAutoRenew : AutoRenew;}
+            {_consent = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("consent"), out var __jsonConsent) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DomainPurchaseConsent.FromJson(__jsonConsent) : Consent;}
+            {_registrationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("registrationStatus"), out var __jsonRegistrationStatus) ? (string)__jsonRegistrationStatus : (string)RegistrationStatus;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_nameServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("nameServers"), out var __jsonNameServers) ? If( __jsonNameServers as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : NameServer;}
+            {_privacy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("privacy"), out var __jsonPrivacy) ? (bool?)__jsonPrivacy : Privacy;}
             {_createdTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("createdTime"), out var __jsonCreatedTime) ? global::System.DateTime.TryParse((string)__jsonCreatedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedTimeValue) ? __jsonCreatedTimeValue : CreatedTime : CreatedTime;}
-            {_dnsType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dnsType"), out var __jsonDnsType) ? (string)__jsonDnsType : (string)DnsType;}
-            {_dnsZoneId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dnsZoneId"), out var __jsonDnsZoneId) ? (string)__jsonDnsZoneId : (string)DnsZoneId;}
-            {_domainNotRenewableReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("domainNotRenewableReasons"), out var __jsonDomainNotRenewableReasons) ? If( __jsonDomainNotRenewableReasons as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : DomainNotRenewableReason;}
             {_expirationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("expirationTime"), out var __jsonExpirationTime) ? global::System.DateTime.TryParse((string)__jsonExpirationTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExpirationTimeValue) ? __jsonExpirationTimeValue : ExpirationTime : ExpirationTime;}
             {_lastRenewedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastRenewedTime"), out var __jsonLastRenewedTime) ? global::System.DateTime.TryParse((string)__jsonLastRenewedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastRenewedTimeValue) ? __jsonLastRenewedTimeValue : LastRenewedTime : LastRenewedTime;}
-            {_managedHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("managedHostNames"), out var __jsonManagedHostNames) ? If( __jsonManagedHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostName[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostName) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostName.FromJson(__p) )) ))() : null : ManagedHostName;}
-            {_nameServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("nameServers"), out var __jsonNameServers) ? If( __jsonNameServers as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : NameServer;}
-            {_privacy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("privacy"), out var __jsonPrivacy) ? (bool?)__jsonPrivacy : Privacy;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_autoRenew = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("autoRenew"), out var __jsonAutoRenew) ? (bool?)__jsonAutoRenew : AutoRenew;}
             {_readyForDnsRecordManagement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("readyForDnsRecordManagement"), out var __jsonReadyForDnsRecordManagement) ? (bool?)__jsonReadyForDnsRecordManagement : ReadyForDnsRecordManagement;}
-            {_registrationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("registrationStatus"), out var __jsonRegistrationStatus) ? (string)__jsonRegistrationStatus : (string)RegistrationStatus;}
+            {_managedHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("managedHostNames"), out var __jsonManagedHostNames) ? If( __jsonManagedHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostName[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostName) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostName.FromJson(__p) )) ))() : null : ManagedHostName;}
+            {_domainNotRenewableReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("domainNotRenewableReasons"), out var __jsonDomainNotRenewableReasons) ? If( __jsonDomainNotRenewableReasons as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : DomainNotRenewableReason;}
+            {_dnsType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dnsType"), out var __jsonDnsType) ? (string)__jsonDnsType : (string)DnsType;}
+            {_dnsZoneId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dnsZoneId"), out var __jsonDnsZoneId) ? (string)__jsonDnsZoneId : (string)DnsZoneId;}
             {_targetDnsType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("targetDnsType"), out var __jsonTargetDnsType) ? (string)__jsonTargetDnsType : (string)TargetDnsType;}
+            {_authCode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("authCode"), out var __jsonAuthCode) ? (string)__jsonAuthCode : (string)AuthCode;}
             AfterFromJson(json);
         }
 
@@ -112,30 +112,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._consent ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._consent.ToJson(null,serializationMode) : null, "consent" ,container.Add );
             AddIf( null != this._contactAdmin ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._contactAdmin.ToJson(null,serializationMode) : null, "contactAdmin" ,container.Add );
             AddIf( null != this._contactBilling ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._contactBilling.ToJson(null,serializationMode) : null, "contactBilling" ,container.Add );
             AddIf( null != this._contactRegistrant ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._contactRegistrant.ToJson(null,serializationMode) : null, "contactRegistrant" ,container.Add );
             AddIf( null != this._contactTech ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._contactTech.ToJson(null,serializationMode) : null, "contactTech" ,container.Add );
-            AddIf( null != (((object)this._authCode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._authCode.ToString()) : null, "authCode" ,container.Add );
-            AddIf( null != this._autoRenew ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._autoRenew) : null, "autoRenew" ,container.Add );
+            AddIf( null != this._consent ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._consent.ToJson(null,serializationMode) : null, "consent" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._createdTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._createdTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "createdTime" ,container.Add );
+                AddIf( null != (((object)this._registrationStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._registrationStatus.ToString()) : null, "registrationStatus" ,container.Add );
             }
-            AddIf( null != (((object)this._dnsType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsType.ToString()) : null, "dnsType" ,container.Add );
-            AddIf( null != (((object)this._dnsZoneId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsZoneId.ToString()) : null, "dnsZoneId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._domainNotRenewableReason)
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._nameServer)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._domainNotRenewableReason )
+                    foreach( var __x in this._nameServer )
                     {
                         AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                     }
-                    container.Add("domainNotRenewableReasons",__w);
+                    container.Add("nameServers",__w);
                 }
+            }
+            AddIf( null != this._privacy ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._privacy) : null, "privacy" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._createdTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._createdTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "createdTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -144,6 +149,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._lastRenewedTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastRenewedTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastRenewedTime" ,container.Add );
+            }
+            AddIf( null != this._autoRenew ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._autoRenew) : null, "autoRenew" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._readyForDnsRecordManagement ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._readyForDnsRecordManagement) : null, "readyForDnsRecordManagement" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -159,30 +169,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._nameServer)
+                if (null != this._domainNotRenewableReason)
                 {
                     var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._nameServer )
+                    foreach( var __n in this._domainNotRenewableReason )
                     {
                         AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                     }
-                    container.Add("nameServers",__m);
+                    container.Add("domainNotRenewableReasons",__m);
                 }
             }
-            AddIf( null != this._privacy ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._privacy) : null, "privacy" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._readyForDnsRecordManagement ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._readyForDnsRecordManagement) : null, "readyForDnsRecordManagement" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._registrationStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._registrationStatus.ToString()) : null, "registrationStatus" ,container.Add );
-            }
+            AddIf( null != (((object)this._dnsType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsType.ToString()) : null, "dnsType" ,container.Add );
+            AddIf( null != (((object)this._dnsZoneId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dnsZoneId.ToString()) : null, "dnsZoneId" ,container.Add );
             AddIf( null != (((object)this._targetDnsType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._targetDnsType.ToString()) : null, "targetDnsType" ,container.Add );
+            AddIf( null != (((object)this._authCode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._authCode.ToString()) : null, "authCode" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

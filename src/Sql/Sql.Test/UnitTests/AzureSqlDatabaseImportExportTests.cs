@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureSqlDatabaseExportAttributes()
+        public void ExportAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(NewAzureSqlDatabaseExport);
+            Type type = typeof(NewAzureSqlDatabaseImport);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageKeyType", isMandatory: true, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageKey", isMandatory: true, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "StorageUri", isMandatory: true, valueFromPipelineByName: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureSqlDatabaseImportAttributes()
+        public void ImportNewAzureSqlDatabaseAttributes()
         {
             Type type = typeof(NewAzureSqlDatabaseImport);
 

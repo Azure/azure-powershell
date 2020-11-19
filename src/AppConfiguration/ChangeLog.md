@@ -19,8 +19,10 @@
 -->
 ## Upcoming Release
 
-## Version 0.2.0
+## Version 1.0.0
+* General availability of 'Az.AppConfiguration' module
 
+## Version 0.2.0
 * Supported customer-managed keys and configuration of managed identity.
 
 ## Version 0.1.4

@@ -125,8 +125,8 @@ function Test-SynapseSparkPool
         Assert-True {$found -eq 1} "SparkPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
         # Delete SparkPool
-        Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -PassThru} "Remove SparkPool failed."
-        Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolNameForAutoScale -PassThru} "Remove SparkPool failed."
+        Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -PassThru -Force} "Remove SparkPool failed."
+        Assert-True {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolNameForAutoScale -PassThru -Force} "Remove SparkPool failed."
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName}
@@ -134,7 +134,7 @@ function Test-SynapseSparkPool
     finally
     {
         # cleanup the spark pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -ErrorAction SilentlyContinue} -IgnoreFailures
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolNameForAutoScale -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolNameForAutoScale -ErrorAction SilentlyContinue -Force} -IgnoreFailures
     }
 }

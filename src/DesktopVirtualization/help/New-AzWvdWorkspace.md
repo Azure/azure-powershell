@@ -23,7 +23,7 @@ Create or update a workspace.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Worksapce by name
+### Example 1: Create a Windows Virtual Desktop Workspace by name
 ```powershell
 PS C:\> New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -39,7 +39,7 @@ eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 
 This command creates a Windows Virtual Desktop Workspace in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop Worksapce by name
+### Example 2: Create a Windows Virtual Desktop Workspace by name
 ```powershell
 PS C:\> New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace
 
 ## NOTES
 

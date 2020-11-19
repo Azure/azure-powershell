@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("actions"), out var __jsonActions) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealActions.FromJson(__jsonActions) : Action;}
             {_trigger = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("triggers"), out var __jsonTriggers) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealTriggers.FromJson(__jsonTriggers) : Trigger;}
+            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("actions"), out var __jsonActions) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealActions.FromJson(__jsonActions) : Action;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._action ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._action.ToJson(null,serializationMode) : null, "actions" ,container.Add );
             AddIf( null != this._trigger ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._trigger.ToJson(null,serializationMode) : null, "triggers" ,container.Add );
+            AddIf( null != this._action ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._action.ToJson(null,serializationMode) : null, "actions" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

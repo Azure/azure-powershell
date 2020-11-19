@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworkGateways_GW_name": {
+            "defaultValue": "GW",
+            "type": "String"
+        },
+        "publicIPAddresses_GWIP_externalid": {
+            "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingdhsm/providers/Microsoft.Network/publicIPAddresses/GWIP",
+            "type": "String"
+        },
+        "virtualNetworks_myHSM_vnet_externalid": {
+            "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingdhsm/providers/Microsoft.Network/virtualNetworks/myHSM-vnet",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworkGateways",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('virtualNetworkGateways_GW_name')]",
+            "location": "eastus",
+            "properties": {
+                "enablePrivateIpAddress": false,
+                "ipConfigurations": [
+                    {
+                        "name": "gwipconf",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_GWIP_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_myHSM_vnet_externalid'), '/subnets/GatewaySubnet')]"
+                            }
+                        }
+                    }
+                ],
+                "sku": {
+                    "name": "Standard",
+                    "tier": "Standard"
+                },
+                "gatewayType": "ExpressRoute",
+                "vpnType": "PolicyBased",
+                "enableBgp": false,
+                "activeActive": false,
+                "vpnGatewayGeneration": "None"
+            }
+        }
+    ]
+}

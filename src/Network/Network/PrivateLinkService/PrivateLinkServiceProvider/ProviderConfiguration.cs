@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider
@@ -11,7 +14,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
-            RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2019-11-01-preview");
+            RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01");
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview");
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01");
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01");
@@ -29,6 +32,11 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview");
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01");
             RegisterConfiguration("Microsoft.SignalRService/signalr", "2020-05-01", false);
+            RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false);
+            RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false);
+            RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false);
+            RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2020-10-01-preview");
+            RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false);
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)
@@ -49,6 +57,36 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
         public static ProviderConfiguration GetProviderConfiguration(string type)
         {
             return _configurations[type];
+        }
+
+        /// <summary>
+        /// Generate a runtime parameter with ValidateSet matching the current context
+        /// </summary>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
+        /// <returns>True if one or more contexts were found, otherwise false</returns>
+        public static bool TryGetProvideServiceParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)
+        {
+            var result = false;
+            runtimeParameter = null;
+            if (_configurations != null && _configurations.Values != null)
+            {
+                var ObjArray = _configurations.Values.ToArray();
+                var ProvideTypeList = ObjArray.Select(c => c.Type).ToArray();
+                runtimeParameter = new RuntimeDefinedParameter(
+                    name, typeof(string),
+                    new Collection<Attribute>()
+                    {
+                    new ParameterAttribute { Mandatory = false,
+                                            ValueFromPipeline = true,
+                                            HelpMessage = "The private link resource type.",
+                                            ParameterSetName = parameterSetName },
+                    new ValidateSetAttribute(ProvideTypeList)
+                    }
+                );
+                result = true;
+            }
+            return result;
         }
     }
 }

@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceSkuRestrictionsReasonCode.</summary>
+    /// <summary>
+    /// Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription'
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ResourceSkuRestrictionsReasonCodeTypeConverter))]
     public partial struct ResourceSkuRestrictionsReasonCode :
         System.Management.Automation.IArgumentCompleter

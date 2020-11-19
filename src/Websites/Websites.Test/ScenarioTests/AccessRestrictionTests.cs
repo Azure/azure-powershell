@@ -59,6 +59,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestriction");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionServiceTag()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionServiceTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionHttpHeaders()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionHttpHeaders");
+        }
+
         // Currently no mock for Network exists in the Test Framework
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -72,6 +86,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestRemoveWebAppAccessRestriction()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebAppAccessRestriction");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveWebAppAccessRestrictionServiceTag()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebAppAccessRestrictionServiceTag");
         }
 
         [Fact]

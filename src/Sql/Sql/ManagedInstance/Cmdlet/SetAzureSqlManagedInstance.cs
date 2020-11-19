@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The connection type used for connecting to the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        [PSArgumentCompleter("Proxy", "Redirect", "Default")]
         public string ProxyOverride { get; set; }
 
         /// <summary>
@@ -196,6 +196,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.ComputeGenerationGen5)]
         public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
+        public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -282,7 +289,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 InstancePoolName = this.InstancePoolName,
-                MinimalTlsVersion = this.MinimalTlsVersion
+                MinimalTlsVersion = this.MinimalTlsVersion,
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId
             });
             return updateData;
         }

@@ -17,16 +17,32 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->        
+
+-->
 ## Upcoming Release
-* Added 'PatchStatus'Property to VirtualMachine Instance View
-* Added ``VMHealth`` property to the virtual machine's instance view, which is the returned object when ``Get-AzVm`` is invoked with ``-Status``
-* Added 'AssignedHost' field to Get-AzVM and Get-AzVmss's instance views. The field shows the resource id of the virtual machine instance
-* Added `SupportAutomaticPlacement` to New-AzHostGroup 
-* Added '-EncryptionAtHost' parameter to New-AzVm, New-AzVmss, New-AzVMConfig, New-AzVmssConfig, Update-AzVM, and Update-AzVmss
-* Added 'SecurityProfile' to Get-AzVM and Get-AzVmss return object
-* Added the '-InstanceView' switch as optional parameter to Get-AzHostGroup
-* Added the '-HostGroupId' parameter to New-AzVm and New-AzVmss
+
+## Version 4.6.0
+* Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* New cmdlet `Get-AzDiskEncryptionSetAssociatedResource`
+* Added `Tier` and `LogicalSectorSize` optional parameters to the New-AzDiskConfig cmdlet. 
+* Added `Tier`, `MaxSharesCount`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
+* Modified `Get-AzVmBootDiagnostics` cmdlet to use the new RetrieveBootDiagnosticsData API instead of directly accessing the BootDiagnostics properties on the virtual machine.  
+
+## Version 4.5.0
+* Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
+* Added the `-Top` and `-OrderBy` optional parameters to the `Get-AzVmImage` cmdlet. 
+
+## Version 4.4.0
+* Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
+* New cmdlets for new resource type: DiskAccess `Get-AzDiskAccess`, `New-AzDiskAccess`, `Get-AzDiskAccess`
+* Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzSnapshotConfig`
+* Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzDiskConfig`
+* Added `PatchStatus` property to VirtualMachine Instance View
+* Added `VMHealth` property to the virtual machine's instance view, which is the returned object when `Get-AzVm` is invoked with `-Status`
+* Added `AssignedHost` field to `Get-AzVM` and `Get-AzVmss` instance views. The field shows the resource id of the virtual machine instance
+* Added optional parameter `-SupportAutomaticPlacement` to `New-AzHostGroup` 
+* Added the `-HostGroupId` parameter to `New-AzVm` and `New-AzVmss`
 
 ## Version 4.3.1
 * Patched `-EncryptionAtHost` parameter in `New-AzVm` to remove default value of false [#12776]

@@ -599,7 +599,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.</value>
   </data>
   <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
-    <value>The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter</value>
+    <value>This is a managed disk recovery point and hence please provide a target resource group for the managed disks to be restored into with the TargetResourceGroupName parameter. Otherwise, please explicitly state that the managed disks should be restored into the staging storage account as unmanaged disks with restoreAsUnmanagedDisks parameter</value>
   </data>
   <data name="AzureFileSourceFilePathRedundantException" xml:space="preserve">
     <value>Both source file path and multiple source file paths provided. Please give only one option</value>
@@ -609,5 +609,11 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="TargetVaultStorageRedundancy" xml:space="preserve">
     <value>Are you sure you want to copy items to the {0} whose storage redundancy is {1}</value>
+  </data>
+  <data name="ContainerNameIsInvalid" xml:space="preserve">
+    <value>container name is invalid.</value>
+  </data>
+  <data name="TargetResourcegroupNotSupported" xml:space="preserve">
+    <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
 </root>

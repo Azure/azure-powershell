@@ -1,6 +1,6 @@
-### Example 1: Get a Windows Virtual Desktop Worksapce by name
+### Example 1: Get a Windows Virtual Desktop Workspace by name
 ```powershell
-PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName -Name WorkspaceName
+PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
 
 Location   Name                 Type
 --------   ----                 ----
@@ -11,7 +11,7 @@ This command gets a Windows Virtual Desktop Workspace in a Resource Group.
 
 ### Example 2: List Windows Virtual Desktop Workspaces
 ```powershell
-PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName
+PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
 
 Location   Name           Type
 --------   ----           ----
