@@ -186,6 +186,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -238,7 +243,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
             HighAvailabilityReplicaCount = null;
-            BackupStorageRedundancy= null;
+            BackupStorageRedundancy = null;
+            SecondaryType = null;
         }
 
         /// <summary>
@@ -291,6 +297,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             MinimumCapacity = database.MinCapacity;
             HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
             BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            SecondaryType = database.SecondaryType;
         }
 
         /// <summary>

@@ -236,6 +236,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -287,6 +295,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
