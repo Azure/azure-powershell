@@ -14,13 +14,12 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingExtensionUpgrade", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingExtensionUpgrade", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class VirtualMachineScaleSetRollingExtensionStartUpgrade : ComputeAutomationBaseCmdlet
     {
         private const string ByResourceIdParamSet = "ByResourceId",
-            ByInputObjectParamSet = "ByInputObject",
-            DefaultParameterSetName = "DefaultParameter";
+            ByInputObjectParamSet = "ByInputObject", DefaultParameterSetName = "DefaultParameter";
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
