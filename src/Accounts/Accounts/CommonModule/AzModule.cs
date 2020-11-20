@@ -110,6 +110,9 @@ namespace Microsoft.Azure.Commands.Common
                 case Events.ResponseCreated:
                     await OnResponseCreated(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
+                case Events.Polling:
+                    await OnPolling(id, cancellationToken, getEventData, signal, processRecordId);
+                    break;
                 default:
                     getEventData.Print(signal, cancellationToken, Events.Information, id);
                     break;
@@ -137,6 +140,25 @@ namespace Microsoft.Azure.Commands.Common
                 }
 
                 /// Print formatted response message
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+            }
+        }
+
+        internal async Task OnPolling(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            // a polling event contains a response, and the response contains the request
+            // so we can print them both in one event
+            if (data?.RequestMessage is HttpRequestMessage request)
+            {
+                // Print formatted request message
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+            }
+            if (data?.ResponseMessage is HttpResponseMessage response)
+            {
+                // Print formatted response message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
             }
