@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.AdvancedThreatProtectionSetting,
         DefaultParameterSetName = ClearByNameParameterSet, SupportsShouldProcess = true)]
-    [Alias("Clear-AzSynapseSqlAdvancedThreatProtectionSetting")]
+    [Alias("Clear-AzSynapseSqlPoolAdvancedThreatProtectionSetting")]
     [OutputType(typeof(bool))]
     public class ClearAzureSynapseSqlPoolAdvancedThreatProtectionSetting : SynapseManagementCmdletBase
     {

@@ -28,19 +28,32 @@
     - Add `Set-AzSynapseSqlPoolAuditSetting` cmdlet
     - Add `Get-AzSynapseSqlPoolAuditSetting` cmdlet
     - Add `Reset-AzSynapseSqlPoolAuditSetting` cmdlet
-* Added support for operation of Advanced Threat Protection settings in Workspace-level
+* Added support for operation of Advanced Threat Protection settings in Workspace-level and SqlPool-level
     - Add `Update-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
     - Add `Get-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
     - Add `Reset-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
-* Added support for operation of Vulnerability Assessment settings in Workspace-level
+    - Add `Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Vulnerability Assessment settings in Workspace-level and SqlPool-level
     - Add `Update-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
     - Add `Get-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
     - Add `Reset-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Update-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
 * Added support for operation of SQL Active Directory admin
     - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
     - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
     - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
 * Fixed Null Reference Exception when submit spark job.
+* Added support for operation of SQL Advanced Data Security
+    - Add `Enable-AzSynapseSqlAdvancedDataSecurity` cmdlet
+    - Add `Disable-AzSynapseSqlAdvancedDataSecurity` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedDataSecurityPolicy` cmdlet
+* Added support for operation of Transparent Data Encryption in SqlPool-level
+    - Add `Get-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
+    - Add `Set-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
 
 ## Version 0.4.0
 * Add `-Force` to all Remove cmdlets

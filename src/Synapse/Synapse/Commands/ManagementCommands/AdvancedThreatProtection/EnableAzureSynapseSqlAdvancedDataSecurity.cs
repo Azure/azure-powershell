@@ -81,6 +81,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(policy.StorageEndpoint)[StorageKeyKind.Primary];
                 }
+                else
+                {
+                    policy.StorageEndpoint = null;
+                }
                 SynapseAnalyticsClient.SetWorkspaceThreatDetectionPolicy(this.ResourceGroupName, this.WorkspaceName, policy);
 
                 if (!DoNotConfigureVulnerabilityAssessment)
