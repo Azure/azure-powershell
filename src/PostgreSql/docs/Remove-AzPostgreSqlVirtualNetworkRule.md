@@ -30,20 +30,22 @@ Deletes the virtual network rule with the given name.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Remove PostgreSql server Virtual Network Rule by name
 ```powershell
-Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+
 ```
 
+This cmdlet removes PostgreSql server Virtual Network Rule by name.
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Remove PostgreSql server Virtual Network Rule by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
 PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+ 
 ```
 
-
+These cmdlets remove PostgreSql server Virtual Network Rule by identity.
 
 ## PARAMETERS
 

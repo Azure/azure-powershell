@@ -35,10 +35,9 @@ Gets information about a configuration of server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: List all configurations in PostgreSql server
 ```powershell
-Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-```
+PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 Name                                  Value
 ----                                  -----
@@ -53,15 +52,20 @@ max_wal_senders                       10
 max_replication_slots                 10
 hot_standby_feedback                  off
 logging_collector                     on
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 ```
+
+This cmdlet lists all configurations in specified PostgreSql server.
+
+### Example 2: Get specified PostgreSql configuration by name
+```powershell
+PS C:\> Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 Name     Value
 ----     -----
 timezone UTC
+```
+
+This cmdlet gets specified PostgreSql configuration by name.
 
 ## PARAMETERS
 

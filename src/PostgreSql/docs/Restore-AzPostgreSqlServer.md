@@ -32,24 +32,28 @@ Restore a server from an existing backup
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Restore PostgreSql server using GeoReplica Restore
 ```powershell
-Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName postgresqltestserverreplica | Restore-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -UseGeoRestore
-```
+PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName postgresqltestserverreplica | Restore-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -UseGeoRestore
 
 Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
 postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-$restorePointInTime = (Get-Date).AddMinutes(-10)
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Restore-AzPostgreSqlServer -Name PostgreSqlTestServerGEO -ResourceGroupName PostgreSqlTestRG -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
+
+This cmdlet restores PostgreSql server using GeoReplica Restore.
+
+### Example 2: Restore PostgreSql server using PointInTime Restore
+```powershell
+PS C:\> $restorePointInTime = (Get-Date).AddMinutes(-10)
+PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Restore-AzPostgreSqlServer -Name PostgreSqlTestServerGEO -ResourceGroupName PostgreSqlTestRG -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 
 Name                    Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                    -------- ------------------ ------- ----------------------- -------   -------        --------------
 postgresqltestservergeo eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+```
+
+These cmdlets restore PostgreSql server using PointInTime Restore.
 
 ## PARAMETERS
 
@@ -302,9 +306,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IServer>: The source server object to restore from.
-  - `Location <String>`: The geo-location where the resource lives
-  - `SkuName <String>`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
+  - `Location <String>`: The location the resource resides in.
+  - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
@@ -318,6 +321,7 @@ INPUTOBJECT <IServer>: The source server object to restore from.
   - `[ReplicationRole <String>]`: The replication role of the server.
   - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
   - `[SkuFamily <String>]`: The family of hardware.
+  - `[SkuName <String>]`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   - `[SkuSize <String>]`: The size code, to be interpreted by resource as appropriate.
   - `[SkuTier <SkuTier?>]`: The tier of the particular SKU, e.g. Basic.
   - `[SslEnforcement <SslEnforcementEnum?>]`: Enable ssl enforcement or not when connect to server.

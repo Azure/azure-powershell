@@ -26,21 +26,21 @@ Creates a new server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create a new PostgreSql server
 ```powershell
-New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
-```
+PS C:\> New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
 postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+```
+
+These cmdlets create a new PostgreSql server.
 
 ## PARAMETERS
 
 ### -AdministratorLoginPassword
-The password of the administrator.
-Minimum 8 characters and maximum 128 characters.
-Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
+The location the resource resides in.
 
 ```yaml
 Type: System.Security.SecureString
@@ -55,8 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -AdministratorUserName
-Administrator username for the server.
-Once set, it cannot be changed.
+The location the resource resides in.
 
 ```yaml
 Type: System.String

@@ -28,7 +28,7 @@ Describe 'Get-AzPostgreSqlServer' {
     }
 
     It 'GetViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSQL/servers/$($env.serverName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/$($env.serverName)"
         $servers = Get-AzPostgreSqlServer -InputObject $ID
         $servers.Name | Should -Be $env.serverName
     }

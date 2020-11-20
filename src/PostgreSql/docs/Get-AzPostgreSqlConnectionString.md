@@ -29,19 +29,23 @@ Get the connection string according to client connection provider.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Get PostgreSql server connection string by resource group and server name
 ```powershell
-Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
-```
+PS C:\> Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
 
 Server=postgresqltestserver.postgres.database.azure.com;Database={your_database};Port=5432;User Id=pwsh@postgresqltestserver;Password={your_password};Ssl Mode=Require;
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
 ```
 
+This cmdlet gets PostgreSql server connection string by resource group and server name.
+
+### Example 2: Get PostgreSql server connection string by identity
+```powershell
+PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
+
 host=postgresqltestserver.postgres.database.azure.com port=5432 dbname={your_database} user=pwsh@postgresqltestserver password={your_password} sslmode=require
+```
+
+This cmdlet gets PostgreSql server connection string by identity.
 
 ## PARAMETERS
 
@@ -157,9 +161,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IServer>: The source server object to create replica from.
-  - `Location <String>`: The geo-location where the resource lives
-  - `SkuName <String>`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
+  - `Location <String>`: The location the resource resides in.
+  - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
@@ -173,6 +176,7 @@ INPUTOBJECT <IServer>: The source server object to create replica from.
   - `[ReplicationRole <String>]`: The replication role of the server.
   - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
   - `[SkuFamily <String>]`: The family of hardware.
+  - `[SkuName <String>]`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   - `[SkuSize <String>]`: The size code, to be interpreted by resource as appropriate.
   - `[SkuTier <SkuTier?>]`: The tier of the particular SKU, e.g. Basic.
   - `[SslEnforcement <SslEnforcementEnum?>]`: Enable ssl enforcement or not when connect to server.
