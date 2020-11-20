@@ -55,7 +55,7 @@ DotNetFrameworkVersion = '4.7.2'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.1.2'; },
                @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '2.7.0'; }, 
+               @{ModuleName = 'Az.Compute'; RequiredVersion = '3.3.0'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
                @{ModuleName = 'Az.Dns'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
