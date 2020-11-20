@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.0
 * Allowed tags in IoT Hub create cmdlet.
 
 ## Version 2.6.0

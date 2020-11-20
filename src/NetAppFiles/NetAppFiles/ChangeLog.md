@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+
 * Add new Backup Policy cmdlets:
     - `Get-AzNetAppFilesBackupPolicy`
     - `New-AzNetAppFilesBackupPolicy`
