@@ -8,74 +8,77 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServer
 
 ## SYNOPSIS
-Creates a new server.
+Creates a new server or updates an existing server.
+The update action will overwrite the existing server.
 
 ## SYNTAX
 
 ```
-New-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> -AdministratorUserName <String> [-SubscriptionId <String>]
- [-BackupRetentionDay <Int32>] [-Location <String>] [-Sku <String>] [-SkuTier <String>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> -Location <String>
+ [-SubscriptionId <String>] [-AdministratorLogin <String>] [-AdministratorLoginPassword <String>]
+ [-AvailabilityZone <String>] [-CreateMode <CreateMode>]
+ [-DelegatedSubnetArgumentSubnetArmResourceId <String>] [-HaEnabled <HaEnabledEnum>]
+ [-IdentityType <ResourceIdentityType>] [-InfrastructureEncryption <InfrastructureEncryptionEnum>]
+ [-MaintenanceWindowCustomWindow <String>] [-MaintenanceWindowDayOfWeek <Int32>]
+ [-MaintenanceWindowStartHour <Int32>] [-MaintenanceWindowStartMinute <Int32>] [-PropertiesTag <Hashtable>]
+ [-ReplicationRole <String>] [-RestorePointInTime <DateTime>] [-SkuName <String>] [-SkuTier <SkuTier>]
+ [-SourceServerId <String>] [-SslEnforcement <SslEnforcementEnum>] [-StorageProfileBackupRetentionDay <Int32>]
+ [-StorageProfileStorageAutogrow <StorageAutogrow>] [-StorageProfileStorageIop <Int32>]
+ [-StorageProfileStorageMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new server.
+Creates a new server or updates an existing server.
+The update action will overwrite the existing server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-$password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      WestUS 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-$password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--AdministratorUserName mysqltest -AdministratorLoginPassword $password
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      131072                  Standard_B1ms   Burstable
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AdministratorLoginPassword
-The password of the administrator.
-Minimum 8 characters and maximum 128 characters.
-Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdministratorUserName
-Administrator username for the server.
-Once set, it cannot be changed.
+### -AdministratorLogin
+The administrator's login name of a server.
+Can only be specified when the server is being created (and is required for creation).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdministratorLoginPassword
+The password of the administrator login (required for server creation).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run the command as a job.
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -97,12 +100,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupRetentionDay
-Backup retention days for the server.
-Day count is between 7 and 35.
+### -AvailabilityZone
+availability Zone information of the server.
 
 ```yaml
-Type: System.Int32
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateMode
+The mode to create a new MySQL server.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode
 Parameter Sets: (All)
 Aliases:
 
@@ -128,8 +145,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location the resource resides in.
+### -DelegatedSubnetArgumentSubnetArmResourceId
+delegated subnet arm resource id.
 
 ```yaml
 Type: System.String
@@ -143,13 +160,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -HaEnabled
+Enable HA or not for a server.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ResourceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InfrastructureEncryption
+Status showing whether the server enabled infrastructure encryption.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryptionEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ServerName
+Aliases:
 
 Required: True
 Position: Named
@@ -158,8 +220,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaintenanceWindowCustomWindow
+indicates whether custom window is enabled or disabled
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceWindowDayOfWeek
+day of week for maintenance window
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceWindowStartHour
+start hour for maintenance window
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceWindowStartMinute
+start minute for maintenance window
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
-Run the command asynchronously.
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -173,8 +295,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PropertiesTag
+Application-specific metadata in the form of key-value pairs.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicationRole
+The replication role.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -188,9 +341,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-The name of the sku, typically, tier + family + cores, e.g.
-Standard_B1ms, Standard_D2ds_v4.
+### -RestorePointInTime
+Restore point creation time (ISO8601 format), specifying the time to restore from.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerName
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the sku, e.g.
+Standard_D32s_v3.
 
 ```yaml
 Type: System.String
@@ -205,9 +388,23 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Compute tier of the server.
-Accepted values: Burstable, GeneralPurpose, Memory Optimized.
-Default: Burstable.
+The tier of the particular SKU, e.g.
+GeneralPurpose.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceServerId
+The source MySQL server id.
 
 ```yaml
 Type: System.String
@@ -221,7 +418,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageInMb
+### -SslEnforcement
+Enable ssl enforcement or not when connect to server.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageProfileBackupRetentionDay
+Backup retention days for the server.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageProfileStorageAutogrow
+Enable Storage Auto Grow.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageProfileStorageIop
+Storage IOPS for a server.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageProfileStorageMb
 Max storage allowed for a server.
 
 ```yaml
@@ -237,7 +494,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -252,7 +509,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Application-specific metadata in the form of key-value pairs.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

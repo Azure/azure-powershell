@@ -14,7 +14,7 @@ Restarts a server.
 
 ### Restart (Default)
 ```
-Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,20 +29,23 @@ Restarts a server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/restart"
-PS C:\> Restart-AzMySqlFlexibleServer -InputObject $ID
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -92,21 +95,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: Restart
-Aliases: ServerName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -140,6 +128,21 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Restart
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerName
+The name of the server.
 
 ```yaml
 Type: System.String

@@ -1,15 +1,18 @@
-
-### Example 1: Stop the server by resource name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Stop-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Stop the server by name
+{{ Add description here }}
 
-### Example 2: Stop the server by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/stop"
-PS C:\> Stop-AzMySqlFlexibleServer -InputObject $ID
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Stop the server by identity
+{{ Add description here }}
+

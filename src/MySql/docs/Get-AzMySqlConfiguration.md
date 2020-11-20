@@ -34,10 +34,9 @@ Gets information about a configuration of server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: List all configurations in specified MySql server
 ```powershell
-Get-AzMySqlConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
-```
+PS C:\> Get-AzMySqlConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
 Name                                     Type
 ----                                     ----
@@ -50,15 +49,20 @@ transaction_prealloc_size                Microsoft.DBforMySQL/servers/configurat
 tx_isolation                             Microsoft.DBforMySQL/servers/configurations
 updatable_views_with_limit               Microsoft.DBforMySQL/servers/configurations
 wait_timeout                             Microsoft.DBforMySQL/servers/configurations
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
+
+This cmdlet lists all configurations in specified MySql server.
+
+### Example 2: Get specified MySql configuration by name
+```powershell
+PS C:\> Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
 Name      Type
 ----      ----
 time_zone Microsoft.DBforMySQL/servers/configurations
+```
+
+This cmdlet gets specified MySql configuration by name.
 
 ## PARAMETERS
 

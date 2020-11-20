@@ -22,14 +22,23 @@ List all the replicas for a given server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlFlexibleServerReplica -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test    westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

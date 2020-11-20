@@ -19,7 +19,7 @@ Get-AzMySqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObjec
 
 ### Get
 ```
-Get-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMySqlFlexibleServer -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -39,43 +39,23 @@ Gets information about a server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlFlexibleServer
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test-11  westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test     westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
-
-### -------------------------- EXAMPLE 3 --------------------------
-```powershell
-Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
-```
-
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test-11 westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
-mysql-test-12 westus2   mysql_test2        5.7     5120                    Standard_D2ds_v4 GeneralPurpose
-
-### -------------------------- EXAMPLE 4 --------------------------
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test"
-PS C:\> Get-AzMySqlFlexibleServer -InputObject $ID
-```
-
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- ---------------- -------------
-mysql-test    westus2   mysql_test         5.7     5120                    Standard_D2ds_v4 GeneralPurpose
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -110,13 +90,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ServerName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named
@@ -125,13 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ServerName
+The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True

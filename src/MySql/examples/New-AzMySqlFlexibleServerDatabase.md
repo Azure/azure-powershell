@@ -1,9 +1,18 @@
-### Example 1: Create a new MySql server database
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> {{ Add code here }}
 
-Name            Charset     Collation              
-----            -------- ------------------
-databasetest   latin1   latin1_swedish_ci  
+{{ Add output here }}
 ```
-Create a database with default settings.
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

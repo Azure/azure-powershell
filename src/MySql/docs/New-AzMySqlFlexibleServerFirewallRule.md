@@ -12,25 +12,10 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AllowAll
-```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -AllowAll
- [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ClientIPAddress
-```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String>
- -ClientIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServerFirewallRule -FirewallRuleName <String> -ResourceGroupName <String>
+ -ServerName <String> -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,49 +23,25 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzMySqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name              StartIPAddress EndIPAddress
------------------ -------------- ------------
-firewallrule-test 0.0.0.0        0.0.0.1
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
-
-### -------------------------- EXAMPLE 3 --------------------------
-```powershell
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
-```
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AllowAll
-Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AllowAll
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -91,22 +52,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientIPAddress
-Client specified single IP of the server firewall rule.
-Must be IPv4 format.
-
-```yaml
-Type: System.String
-Parameter Sets: ClientIPAddress
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,7 +79,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -144,17 +89,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -FirewallRuleName
 The name of the server firewall rule.
-If not specified, the default is undefined.
-If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: FirewallRuleName
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,7 +156,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
