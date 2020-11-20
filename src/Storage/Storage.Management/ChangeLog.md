@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.2
 * Supported Set/Get/Remove blob inventory policy
     - `New-AzStorageBlobInventoryPolicyRule`
     - `Set-AzStorageBlobInventoryPolicy`
