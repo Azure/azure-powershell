@@ -15,8 +15,8 @@ Delete a data collection rule association.
 ### ByName (Default)
 ```
 Remove-AzDataCollectionRuleAssociation
-   -ResourceUri <string> 
-   -Name <string> 
+   -TargetResourceId <string> 
+   -AssociationName <string> 
    [-PassThru]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
@@ -38,7 +38,7 @@ Remove-AzDataCollectionRuleAssociation
 ### ByResourceId
 ```
 Remove-AzDataCollectionRuleAssociation
-   -ResourceId <string>
+   -AssociationId <string>
    [-PassThru]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
@@ -54,7 +54,7 @@ The **Remove-AzDataCollectionRuleAssociation** cmdlet delete a data collection r
 
 ### Example 1: Delete data collection rule association with name and resource uri parameters
 ```
-PS C:\>Remove-AzDataCollectionRuleAssociation -ResourceUri $vm.Id -Name $assocName
+PS C:\>Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 ```
 
 ### Example 2: Delete data collection rule with Input Object
@@ -64,7 +64,7 @@ PS C:\>$dcrAssoc | Remove-AzDataCollectionRule
 
 ### Example 3: Delete data collection rule with resource id
 ```
-PS C:\>Remove-AzDataCollectionRule -ResourceId $dcrAssoc.Id
+PS C:\>Remove-AzDataCollectionRule -AssociationId $dcrAssoc.Id
 ```
 
 ## PARAMETERS
@@ -84,13 +84,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
+### -TargetResourceId
 The associated resource id.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: ResourceUri
 
 Required: True
 Position: Named
@@ -99,13 +99,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -AssociationName
 The name of the association resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName (Default)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -129,13 +129,13 @@ Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
-### -ResourceId
+### -AssociationId
 The resource identifier.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
-Aliases:
+Aliases: ResourceId
 
 Required: True
 Position: Named

@@ -16,7 +16,7 @@ Delete a data collection rule.
 ```
 Remove-AzDataCollectionRule
    -ResourceGroupName <string> 
-   -Name <string> 
+   -RuleName <string> 
    [-PassThru]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
@@ -38,7 +38,7 @@ Remove-AzDataCollectionRule
 ### ByResourceId
 ```
 Remove-AzDataCollectionRule
-   -ResourceId <string>
+   -RuleId <string>
    [-PassThru]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
@@ -54,24 +54,24 @@ The **Remove-AzDataCollectionRule** cmdlet delete a data collection rule.
 
 ### Example 1: Delete data collection rule with name and resource group parameters
 ```
-PS C:\>Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -Name "testDcr"             
+PS C:\>Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"             
 ```
 
 ### Example 2: Delete data collection rule with name and resource group return bool
 ```
-PS C:\>Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -Name "testDcr" -PassThru
+PS C:\>Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -PassThru
 
 True
 ```
 
 ### Example 3: Delete data collection rule from InputObject
 ```
-PS C:\>Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "dcrFromPipe95" | Remove-AzDataCollectionRule
+PS C:\>Get-AzDataCollectionRule -ResourceGroupName "testdcr" -RuleName "dcrFromPipe95" | Remove-AzDataCollectionRule
 ```
 
 ### Example 4: Delete data collection rule from resource id
 ```
-PS C:\>Remove-AzDataCollectionRule -ResourceId "/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/{dcrName}"
+PS C:\>Remove-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/{dcrName}"
 ```
 
 ## PARAMETERS
@@ -118,13 +118,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the action group.
+### -RuleName
+The resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleId
+The resource identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ResourceId
 
 Required: True
 Position: Named

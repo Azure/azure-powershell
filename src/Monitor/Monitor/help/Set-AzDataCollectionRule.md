@@ -15,7 +15,9 @@ Updates data collection rule.
 ### ByFile (Default)
 ```
 Set-AzDataCollectionRule 
-   -File <string> 
+   -File <string>
+   [-ResourceGroupName <string>] 
+   [-RuleName <string>]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -218,6 +220,36 @@ Parameter Sets: ByFile
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ByFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleName
+The resource name
+
+```yaml
+Type: System.String
+Parameter Sets: ByFile
+Aliases: Name
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

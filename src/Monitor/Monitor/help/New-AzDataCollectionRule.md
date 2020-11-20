@@ -17,7 +17,7 @@ Create data collection rule.
 New-AzDataCollectionRule 
    -Location <string>
    -ResourceGroupName <string>
-   -Name <string>
+   -RuleName <string>
    -File <string>
    [-Description <string>]
    [-Tags <hashtable>]
@@ -36,7 +36,7 @@ The **New-AzDataCollectionRule** cmdlet creates a data collection rules.
 ### Example 1: Create data collection rule, JSON from Rest API
 ```
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -Name 'newDcrEx1' -File 'C:\samples\dcrEx1.json' 
+                                -RuleName 'newDcrEx1' -File 'C:\samples\dcrEx1.json' 
                                 -Description 'Dcr description' 
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
@@ -96,7 +96,7 @@ Content of C:\samples\dcrEx1.json
 ### Example 2: Create data collection rule, JSON from PSDataCollectionRuleResource
 ```
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -Name 'newDcrEx2' -File 'C:\samples\dcrEx2.json' 
+                                -RuleName 'newDcrEx2' -File 'C:\samples\dcrEx2.json' 
                                 -Description 'Dcr description' 
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
@@ -198,13 +198,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -RuleName
 The resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFile
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

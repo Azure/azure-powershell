@@ -37,15 +37,17 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the associated resource.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The associated resource id.")]
+        [Alias("ResourceUri")]
         [ValidateNotNullOrEmpty]
-        public string ResourceUri { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AssociationName { get; set; }
 
         /// <summary>
         /// Gets or sets the InputObject parameter
@@ -58,8 +60,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the ResourceId parameter
         /// </summary>
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource identifier")]
+        [Alias("ResourceId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string AssociationId { get; set; }
 
         /// <summary>
         /// Gets or sets the PassThru switch parameter to force return an object when removing the resource.
@@ -80,25 +83,25 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                     break;
                 case ByInputObject:
                     var dcra = new ResourceIdentifier(InputObject.Id);
-                    ResourceUri = InputObject.Id.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcra.ResourceName, "");
-                    Name = InputObject.Name;
+                    TargetResourceId = InputObject.Id.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcra.ResourceName, "");
+                    AssociationName = InputObject.Name;
                     break;
                 case ByResourceId:
-                    var dcraById = new ResourceIdentifier(ResourceId);
-                    ResourceUri = ResourceId.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcraById.ResourceName, "");
-                    Name = dcraById.ResourceName;
+                    var dcraById = new ResourceIdentifier(AssociationId);
+                    TargetResourceId = AssociationId.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcraById.ResourceName, "");
+                    AssociationName = dcraById.ResourceName;
                     break;
                 default:
                     throw new Exception("Unkown ParameterSetName");
             }
 
             if (ShouldProcess(
-                    target: string.Format("Data collection rule association '{0}' from resource '{1}'", this.Name, this.ResourceUri),
+                    target: string.Format("Data collection rule association '{0}' from resource '{1}'", this.AssociationName, this.TargetResourceId),
                     action: "Delete a data collection rule association"))
             {
                 this.MonitorManagementClient.DataCollectionRuleAssociations.DeleteWithHttpMessagesAsync(
-                    resourceUri: ResourceUri,
-                    associationName: Name).GetAwaiter().GetResult();
+                    resourceUri: TargetResourceId,
+                    associationName: AssociationName).GetAwaiter().GetResult();
 
                 if (this.PassThru.IsPresent)
                 {

@@ -31,7 +31,7 @@ Get-AzDataCollectionRule
 ```
 Get-AzDataCollectionRule
    -ResourceGroupName <string>
-   -Name <string>
+   -RuleName <string>
    [-DefaultProfile <IAzureContextContainer>]
    [<CommonParameters>]
 ```
@@ -82,7 +82,7 @@ This command lists data collection rules for the given resource group.
 
 ### Example 3: Get a data collection rule
 ```
-PS C:\>Get-AzDataCollectionRule -ResourceGroup "testgroup" -Name "testDcr"
+PS C:\>Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
 
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -143,13 +143,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the reource.
+### -RuleName
+The name of the resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: DataCollectionRuleName
 
 Required: True
 Position: Named

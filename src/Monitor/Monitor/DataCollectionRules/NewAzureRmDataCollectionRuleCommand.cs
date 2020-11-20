@@ -56,8 +56,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the data collection rule name.
         /// </summary>
         [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string RuleName { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule file definition path
@@ -115,10 +116,10 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
             if (Tags != null) dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
 
             if (ShouldProcess(
-                    target: string.Format("Data collection rule '{0}' in resource group '{1}'", Name, ResourceGroupName),
+                    target: string.Format("Data collection rule '{0}' in resource group '{1}'", RuleName, ResourceGroupName),
                     action: "Create a data collection rule"))
             {
-                var dcrResponse = MonitorManagementClient.DataCollectionRules.Create(resourceGroupName: ResourceGroupName, dataCollectionRuleName: Name, body: dcr);
+                var dcrResponse = MonitorManagementClient.DataCollectionRules.Create(resourceGroupName: ResourceGroupName, dataCollectionRuleName: RuleName, body: dcr);
 
                 var output = new PSDataCollectionRuleResource(dcrResponse);
                 WriteObject(sendToPipeline: output);

@@ -44,23 +44,26 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         [Parameter(ParameterSetName = ByDataCollectionRuleId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource id to associate.")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource id to associate.")]
+        [Alias("ResourceUri")]
         [ValidateNotNullOrEmpty]
-        public string ResourceUri { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the association name.
         /// </summary>
         [Parameter(ParameterSetName = ByDataCollectionRuleId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AssociationName { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule.
         /// </summary>
         [Parameter(ParameterSetName = ByDataCollectionRuleId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The data collection rule id.")]
+        [Alias("DataCollectionRuleId")]
         [ValidateNotNullOrEmpty]
-        public string DataCollectionRuleId { get; set; }
+        public string RuleId { get; set; }
 
         /// <summary>
         /// Gets or sets the association description.
@@ -89,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                     ProcessRecordInternalByDataCollectionRuleId();
                     break;
                 case ByInputObject:
-                    DataCollectionRuleId = InputObject.Id;
+                    RuleId = InputObject.Id;
                     ProcessRecordInternalByDataCollectionRuleId();
                     break;
                 default:
@@ -99,18 +102,18 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
         private void ProcessRecordInternalByDataCollectionRuleId()
         {
-            var dcrResourceId = new ResourceIdentifier(DataCollectionRuleId);
+            var dcrResourceId = new ResourceIdentifier(RuleId);
 
             if (ShouldProcess(
-                    target: string.Format("Name '{0}' in data collection rule '{1}' in resource group '{2}'", 
-                                          Name, dcrResourceId.ResourceName, dcrResourceId.ResourceGroupName),
+                    target: string.Format("Name '{0}' in data collection rule '{1}' in resource group '{2}'",
+                                          AssociationName, dcrResourceId.ResourceName, dcrResourceId.ResourceGroupName),
                     action: "Create a data collection rule association"))
             {
                 var dcraResponse = MonitorManagementClient.DataCollectionRuleAssociations.Create(
-                                    resourceUri: ResourceUri,
-                                    associationName: Name,
+                                    resourceUri: TargetResourceId,
+                                    associationName: AssociationName,
                                     body: new DataCollectionRuleAssociationProxyOnlyResource(
-                                        dataCollectionRuleId: DataCollectionRuleId,
+                                        dataCollectionRuleId: RuleId,
                                         description: Description
                                     )
                                 );

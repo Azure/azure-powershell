@@ -15,9 +15,9 @@ Create data collection rule association.
 ### ByDataCollectionRuleId (Default)
 ```
 New-AzDataCollectionRuleAssociation
-  -ResourceUri <string>
-  -Name <string>
-  -DataCollectionRuleId <string>
+  -TargetResourceId <string>
+  -AssociationName <string>
+  -RuleId <string>
   [-Description <string>]
   [-DefaultProfile <IAzureContextContainer>]
   [-WhatIf]
@@ -28,8 +28,8 @@ New-AzDataCollectionRuleAssociation
 ### ByInputObject
 ```
 New-AzDataCollectionRuleAssociation
-  -ResourceUri <string>
-  -Name <string>
+  -TargetResourceId <string>
+  -AssociationName <string>
   -InputObject <PSDataCollectionRuleResource>
   [-Description <string>]
   [-DefaultProfile <IAzureContextContainer>]  
@@ -47,9 +47,9 @@ The **New-AzDataCollectionRuleAssociation** cmdlet creates a data collection rul
 
 ### Example 1: Create data collection rule association
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -Name $dcrName
+PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
 PS C:\>$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
-PS C:\>New-AzDataCollectionRuleAssociation -ResourceUri $vmId -Name "dcrAssoc" -DataCollectionRuleId $dcr.Id
+PS C:\>New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssoc" -RuleId $dcr.Id
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}
@@ -69,7 +69,7 @@ This command creates a data collection rule association for the current subscrip
 ### Example 2: Create data collection rule association from a DCR object
 ```
 PS C:\>$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
-PS C:\>Get-AzDataCollectionRule -ResourceGroupName $rg -Name $dcrName | New-AzDataCollectionRuleAssociation -ResourceUri $vmId -Name "dcrAssocInput"
+PS C:\>Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName | New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssocInput"
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}
@@ -101,13 +101,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
+### -TargetResourceId
 The resource id to associate
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceUri
 
 Required: True
 Position: Named
@@ -116,13 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -AssociationName
 The resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -131,13 +131,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataCollectionRuleId
+### -RuleId
 The data collection rule id
 
 ```yaml
 Type: System.String
 Parameter Sets: ByDataCollectionRuleId
-Aliases:
+Aliases: DataCollectionRuleId
 
 Required: True
 Position: Named

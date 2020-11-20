@@ -44,8 +44,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         [Parameter(ParameterSetName = ByAssociatedResource, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The associated resource id.")]
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The associated resource id.")]
+        [Alias("ResourceUri")]
         [ValidateNotNullOrEmpty]
-        public string ResourceUri { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group parameter.
@@ -59,8 +60,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the data collection rule.
         /// </summary>
         [Parameter(ParameterSetName = ByRule, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The data collection rule name.")]
+        [Alias("DataCollectionRuleName")]
         [ValidateNotNullOrEmpty]
-        public string DataCollectionRuleName { get; set; }
+        public string RuleName { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule object.
@@ -73,8 +75,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the resource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AssociationName { get; set; }
 
         #endregion
 
@@ -89,13 +92,13 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
             {
                 case ByAssociatedResource:
                     apiResult = this.MonitorManagementClient.DataCollectionRuleAssociations.ListByResource(
-                        resourceUri: ResourceUri
+                        resourceUri: TargetResourceId
                     ).ToList();
                     break;
                 case ByRule:
                     apiResult = this.MonitorManagementClient.DataCollectionRuleAssociations.ListByRule(
                         resourceGroupName: ResourceGroupName,
-                        dataCollectionRuleName: DataCollectionRuleName
+                        dataCollectionRuleName: RuleName
                     ).ToList();
                     break;
                 case ByInputObject:
@@ -107,8 +110,8 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                     break;
                 case ByName:
                     var oneAssoc = this.MonitorManagementClient.DataCollectionRuleAssociations.Get(
-                        resourceUri: ResourceUri,
-                        associationName: Name
+                        resourceUri: TargetResourceId,
+                        associationName: AssociationName
                     );
                     apiResult = new List<DataCollectionRuleAssociationProxyOnlyResource> { oneAssoc };
                     break;

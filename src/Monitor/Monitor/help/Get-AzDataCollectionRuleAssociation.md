@@ -15,7 +15,7 @@ Gets data collection rule association(s).
 ### ByAssociatedResource (Default)
 ```
 Get-AzDataCollectionRuleAssociation 
-   -ResourceUri <string> 
+   -TargetResourceId <string> 
    [-DefaultProfile <IAzureContextContainer>]
    [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Get-AzDataCollectionRuleAssociation
 ```
 Get-AzDataCollectionRuleAssociation 
    -ResourceGroupName <string> 
-   -DataCollectionRuleName <string> 
+   -RuleName <string> 
    [-DefaultProfile <IAzureContextContainer>]
    [<CommonParameters>]
 ```
@@ -40,8 +40,8 @@ Get-AzDataCollectionRuleAssociation
 ### ByName
 ```
 Get-AzDataCollectionRuleAssociation 
-   -ResourceUri <string> 
-   -Name <string> 
+   -TargetResourceId <string> 
+   -AssociationName <string> 
    [-DefaultProfile <IAzureContextContainer>] 
    [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collect
 ### Example 1: Get data collection rules associations by resource uri (associated virtual machines)
 ```
 PS C:\>$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
-PS C:\>Get-AzDataCollectionRuleAssociation -ResourceUri $vm.Id
+PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
@@ -72,7 +72,7 @@ This command lists all the data collection rules for the given resource id (virt
 
 ### Example 2: Get data collection rules associations by rule (DCR)
 ```
-PS C:\>Get-AzDataCollectionRule -ResourceGroup $rg -DataCollectionRuleName $dcrName
+PS C:\>Get-AzDataCollectionRuleAssociation -ResourceGroup $rg -RuleName $dcrName
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
@@ -89,7 +89,7 @@ This command lists data collection rules associations for the given resource gro
 
 ### Example 3: Get data collection rule associations by input object (PSDataCollectionRuleResource)
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -Name $dcrName
+PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
 PS C:\>$dcr | Get-AzDataCollectionRuleAssociation
 
 Description          :
@@ -107,7 +107,7 @@ This command lists data collection rules associations for the given input object
 
 ### Example 4: Get a data collection rule association by resource uri (associated virtual machines) and association name
 ```
-PS C:\>Get-AzDataCollectionRuleAssociation -ResourceUri $vm.Id -Name $assocName
+PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
@@ -139,13 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
+### -TargetResourceId
 The associated resource id
 
 ```yaml
 Type: System.String
 Parameter Sets: ByAssociatedResource (Default)
-Aliases:
+Aliases: ResourceUri
 
 Required: True
 Position: Named
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: ResourceUri
 
 Required: True
 Position: Named
@@ -181,13 +181,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DataCollectionRuleName
+### -RuleName
 The data collection rule name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByRule
-Aliases:
+Aliases: DataCollectionRuleName
 
 Required: True
 Position: Named
@@ -211,13 +211,13 @@ Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
-### -Name
+### -AssociationName
 The name of the association.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

@@ -46,8 +46,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the reource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string RuleName { get; set; }
 
         /// <summary>
         /// Gets or sets the InputObject parameter
@@ -60,8 +61,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the ResourceId parameter
         /// </summary>
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
+        [Alias("ResourceId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string RuleId { get; set; }
 
         /// <summary>
         /// Gets or sets the PassThru switch parameter to force return an object when removing the resource.
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                 case ByName:
                     break;
                 case ByInputObject:
-                    ResourceId = InputObject.Id;
+                    RuleId = InputObject.Id;
                     SetNameAndResourceFromResourceId();
                     break;
                 case ByResourceId:
@@ -92,12 +94,12 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
             }
 
             if (ShouldProcess(
-                    target: string.Format("Data collection rule '{0}' from resource group '{1}'", this.Name, this.ResourceGroupName),
+                    target: string.Format("Data collection rule '{0}' from resource group '{1}'", this.RuleName, this.ResourceGroupName),
                     action: "Delete a data collection rule"))
             {
                 this.MonitorManagementClient.DataCollectionRules.DeleteWithHttpMessagesAsync(
                     resourceGroupName: ResourceGroupName,
-                    dataCollectionRuleName: Name).GetAwaiter().GetResult();
+                    dataCollectionRuleName: RuleName).GetAwaiter().GetResult();
 
                 if (this.PassThru.IsPresent)
                 {
@@ -108,8 +110,8 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
         private void SetNameAndResourceFromResourceId()
         {
-            var resourceIdentifier = new ResourceIdentifier(ResourceId);
-            Name = resourceIdentifier.ResourceName;
+            var resourceIdentifier = new ResourceIdentifier(RuleId);
+            RuleName = resourceIdentifier.ResourceName;
             ResourceGroupName = resourceIdentifier.ResourceGroupName;
         }
     }

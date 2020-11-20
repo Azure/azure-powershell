@@ -50,8 +50,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the resource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string RuleName { get; set; }
 
         #endregion
 
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                 case ByName:
                     var oneDcr = MonitorManagementClient.DataCollectionRules.Get(
                         resourceGroupName: ResourceGroupName,
-                        dataCollectionRuleName: Name);
+                        dataCollectionRuleName: RuleName);
                     apiResult = new List<DataCollectionRuleResource> { oneDcr };
                     break;
                 default:

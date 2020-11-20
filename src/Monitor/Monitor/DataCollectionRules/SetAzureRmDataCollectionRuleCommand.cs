@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
@@ -50,6 +51,21 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         [ValidateNotNullOrEmpty]
         public string File { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource group parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule name.
+        /// </summary>
+        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
+        [Alias("Name")]
+        [ValidateNotNullOrEmpty]
+        public string RuleName { get; set; }
         #endregion
 
         /// <summary>
@@ -94,8 +110,8 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         private void CreateDataCollectionRule(string resourceId, DataCollectionRuleResource dcr) 
         {
             var resourceIdentifier = new ResourceIdentifier(resourceId);
-            var name = resourceIdentifier.ResourceName;
-            var resourceGroupName = resourceIdentifier.ResourceGroupName;
+            var name = RuleName ?? resourceIdentifier.ResourceName;
+            var resourceGroupName = ResourceGroupName ?? resourceIdentifier.ResourceGroupName;
 
             if (ShouldProcess(
                         target: string.Format("Data collection rule '{0}' in resource group '{1}'", name, resourceGroupName),
