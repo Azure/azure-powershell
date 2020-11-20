@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Add `-Force` to all Remove cmdlets
+
 ## Version 0.3.0
 * Added support for operation of Synapse LinkedService
     - Add `Get-AzSynapseLinkedService` cmdlet

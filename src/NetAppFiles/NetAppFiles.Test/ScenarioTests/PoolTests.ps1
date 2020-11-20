@@ -64,17 +64,19 @@ function Test-PoolCrud
         # get and check the account again using the resource id just obtained
         $retrievedPoolById = Get-AzNetAppFilesPool -ResourceId $retrievedPool.Id
         Assert-AreEqual "$accName/$poolName1" $retrievedPoolById.Name
+        
+        $newTagValue = "tagValue1Updated"
 
         # update (patch) and check the pool
         # changing a single item verifies this is a patch not a put
-        $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -ServiceLevel "Standard"
+        $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual "$accName/$poolName1" $retrievedPool.Name
-        Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
+        Assert-AreEqual "tagValue1Updated" $retrievedPool.Tags[$newTagName].ToString()
 
         # do it again but change nothing and demonstrate location is optional
         $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName1
         Assert-AreEqual "$accName/$poolName1" $retrievedPool.Name
-        Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
+        Assert-AreEqual "Premium" $retrievedPool.ServiceLevel
 
         # delete one account retrieved by id and one by name and check removed
         Remove-AzNetAppFilesPool -ResourceId $retrievedPoolById.Id
@@ -109,7 +111,9 @@ function Test-PoolPipelines
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
-    
+    $newTagName = "tag1"
+    $newTagValue = "tagValue1"
+   
     try
     {
         # create the resource group
@@ -117,14 +121,16 @@ function Test-PoolPipelines
 
         # create pool by piping from account
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName | New-AnfPool -Name $poolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel
+        
 		
         # modify pool by piping from Pool
-        $retrievedPool = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Update-AnfPool -ServiceLevel "Standard"
-        Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
-		
+        $retrievedPool = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Update-AnfPool -Tag @{$newTagName = $newTagValue}
+        Assert-AreEqual "tagValue1" $retrievedPool.Tags[$newTagName].ToString()
+		Assert-AreEqual $poolSize $retrievedPool.Size
+
         # and again modify pool this time by piping from account
-        $retrievedPool = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Update-AnfPool -Name $poolName1 -PoolSize $poolSize -ServiceLevel "Premium"
-        Assert-AreEqual "Premium" $retrievedPool.ServiceLevel
+        $retrievedPool = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Update-AnfPool -Name $poolName1 -PoolSize $poolSize 
+        Assert-AreEqual $poolSize $retrievedPool.Size
 
         # delete a pool by piping from account
         Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Remove-AnfPool -Name $poolName1 

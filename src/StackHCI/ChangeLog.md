@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Made changes to registration script to register the GA version of On-Premises Azure Stack HCI with Azure.
+    - Supports registering with user provided certificate thumbprint.
+    - Supports On-Premises Azure Stack HCI OS changes to use independent certificate on cluster nodes.
+    - Cleans up resource group during unregistration.
+    - Improves registration output and logging.
+    - Corrected invalid character in unregistration details message.
+* [Breaking Change] Breaks the public preview registration of On-Premises Azure Stack HCI with Azure.
+    - To register public preview On-Premises Azure Stack HCi with Azure, use 0.3.1 version of Az.StackHCI.
+
 ## Version 0.3.1
 * Fixed an issue that may block Stack HCI registration.
     - Workaround for the token cache issue in Az.Accounts 2.1.0. Using AuthenticationFactory.

@@ -21,6 +21,7 @@ using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 DeviceCodeCallback = DeviceCodeFunc,
                 AuthorityHost = new Uri(authority),
                 ClientId = clientId,
-                TenantId = onPremise ? tenantId : null,
+                TenantId = tenantId,
                 TokenCache = tokenCache.TokenCache,
             };
             var codeCredential = new DeviceCodeCredential(options);
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private void WriteWarning(string message)
         {
             EventHandler<StreamEventArgs> writeWarningEvent;
-            if (AzureSession.Instance.TryGetComponent("WriteWarning", out writeWarningEvent))
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
             {
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }

@@ -127,12 +127,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     {
                         ProtectedProfileProvider.InitializeResourceManagerProfile();
                     }
-                    catch (SystemException e)
+                    catch (Exception e)
                     {
-                        if (!(e is IOException) && !(e is UnauthorizedAccessException))
-                        {
-                            throw e;
-                        }
+                        //Likely the exception is related to IO or permission, fallback to Process save mode
                         WriteInitializationWarnings(string.Format(Resources.ProfileFileNotAccessible, e.Message));
                         ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }
