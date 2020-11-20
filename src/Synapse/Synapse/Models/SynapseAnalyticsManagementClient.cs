@@ -1333,7 +1333,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.SqlPools.Create(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseManagementClient.SqlPools.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseManagementClient.SqlPools.ListByWorkspaceNext);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1397,7 +1397,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.UpdateAsync(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1419,7 +1419,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.Delete(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1440,31 +1440,32 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void RenameSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, string newSqlPoolName)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
+            throw new NotImplementedException("SQL pool rename operation is not supported.");
+            //try
+            //{
+            //    if (string.IsNullOrEmpty(resourceGroupName))
+            //    {
+            //        resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+            //    }
 
-                this._synapseManagementClient.SqlPools.Rename(
-                    resourceGroupName,
-                    workspaceName,
-                    sqlPoolName,
-                    new ResourceMoveDefinition
-                    {
-                        Id = Utils.ConstructResourceId(
-                            _synapseManagementClient.SubscriptionId,
-                            resourceGroupName,
-                            ResourceTypes.SqlPool,
-                            newSqlPoolName,
-                            $"workspaces/{workspaceName}")
-                    });
-            }
-            catch (CloudException ex)
-            {
-                throw GetSynapseException(ex);
-            }
+            //    this._synapseManagementClient.SqlPools.Rename(
+            //        resourceGroupName,
+            //        workspaceName,
+            //        sqlPoolName,
+            //        new ResourceMoveDefinition
+            //        {
+            //            Id = Utils.ConstructResourceId(
+            //                _synapseManagementClient.SubscriptionId,
+            //                resourceGroupName,
+            //                ResourceTypes.SqlPool,
+            //                newSqlPoolName,
+            //                $"workspaces/{workspaceName}")
+            //        });
+            //}
+            //catch (ErrorContractException ex)
+            //{
+            //    throw GetSynapseException(ex);
+            //}
         }
 
         public void PauseSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
@@ -1478,7 +1479,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Pause(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1495,7 +1496,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Resume(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1520,7 +1521,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     sqlPoolName)
                     .ToList();
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }

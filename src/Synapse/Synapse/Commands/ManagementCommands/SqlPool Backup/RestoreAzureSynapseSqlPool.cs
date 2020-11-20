@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                     createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
                     createParams.SourceDatabaseId = this.SourceResourceId;
-                    createParams.RestorePointInTime = this.RestorePoint;
+                    createParams.RestorePointInTime = this.RestorePoint.ToString();
                     createParams.Sku = new Sku
                     {
                         Name = this.PerformanceLevel
