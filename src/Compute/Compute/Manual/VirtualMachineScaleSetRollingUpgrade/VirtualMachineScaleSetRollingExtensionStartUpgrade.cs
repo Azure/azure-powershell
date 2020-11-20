@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
 
-
                     ExecuteClientAction(() =>
                     {
                         this.StartRollingUpdate(identifier.ResourceGroupName, identifier.ResourceName);
