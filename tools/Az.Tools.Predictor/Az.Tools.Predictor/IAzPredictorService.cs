@@ -29,9 +29,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="input">User input from PSReadLine</param>
         /// <param name="suggestionCount">The number of suggestion to return.</param>
+        /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The list of suggestions for <paramref name="input"/> and the source that create the suggestion. The maximum number of suggestion is <paramref name="suggestionCount"/></returns>
-        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken);
+        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests predictions, given a command string.

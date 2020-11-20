@@ -184,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 maskedUserInput = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
 
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, localCancellationToken);
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 localCancellationToken.ThrowIfCancellationRequested();
 
