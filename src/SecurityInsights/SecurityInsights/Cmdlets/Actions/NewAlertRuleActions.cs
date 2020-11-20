@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
+using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 {
@@ -39,14 +40,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.AlertRuleId)]
         public string AlertRuleId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.ActionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = false, HelpMessage = ParameterHelpMessages.ActionId)]
         public string ActionId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.LogicAppResourceId)]
         [ValidateNotNullOrEmpty]
         public string LogicAppResourceId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerUri)] 
+        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.TriggerUri)] 
         public string TriggerUri { get; set; }
 
         public override void ExecuteCmdlet()
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateActionWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, AlertRuleId, name, action).GetAwaiter().GetResult().Body;
+                var outputaction = SecurityInsightsClient.AlertRules.CreateOrUpdateAction(ResourceGroupName, WorkspaceName, AlertRuleId, name, action);
 
                 WriteObject(outputaction.ConvertToPSType(), enumerateCollection: false);
             }
