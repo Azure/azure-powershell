@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
+
             var providers = new Dictionary<string, string>();
             var providersToIgnore = new Dictionary<string, string>();
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
@@ -61,10 +62,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.Resources.psd1"),
                     _helper.GetRMModulePath(@"AzureRM.SecurityInsights.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
@@ -75,8 +77,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         {
             var resourcesClient = GetResourcesClient(context);
             var securityInsightsClient = GetSecurityInsightsClient(context);
-            var storageClient = GetStorageManagementClient(context);
-            _helper.SetupManagementClients(securityInsightsClient, resourcesClient, storageClient);
+            _helper.SetupManagementClients(securityInsightsClient, resourcesClient);
         }
 
         private static SecurityInsightsClient GetSecurityInsightsClient(MockContext context)
@@ -86,10 +87,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         private static ResourceManagementClient GetResourcesClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-        private static StorageManagementClient GetStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
