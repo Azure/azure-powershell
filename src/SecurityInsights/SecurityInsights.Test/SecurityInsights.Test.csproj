@@ -21,7 +21,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Update="ScenarioTests\ActionsTests.ps1">
+    <None Update="ScenarioTests\Actions\ActionsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

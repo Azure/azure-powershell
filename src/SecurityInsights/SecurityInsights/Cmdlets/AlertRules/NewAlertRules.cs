@@ -99,19 +99,19 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public bool SuppressionEnabled { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Query)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Query)]
         [ValidateNotNullOrEmpty]
         public string Query { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.QueryFrequency)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.QueryFrequency)]
         [ValidateNotNullOrEmpty]
         public TimeSpan? QueryFrequency { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.QueryPeriod)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.QueryPeriod)]
         [ValidateNotNullOrEmpty]
         public TimeSpan? QueryPeriod { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Severity)]
         [ValidateSet("High", "Informational", "Low", "Medium")]
         [ValidateNotNullOrEmpty]
         public string Severity { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public TriggerOperator TriggerOperator { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.TriggerThreshold)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerThreshold)]
         [ValidateNotNullOrEmpty]
         public int? TriggerThreshold { get; set; }
 
