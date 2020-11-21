@@ -74,7 +74,7 @@ Update Incident
 function Set-AzSentinelIncident-Update
 {
 	#Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
 		
 	#update $Incident
 	$Incident = Set-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Status Closed

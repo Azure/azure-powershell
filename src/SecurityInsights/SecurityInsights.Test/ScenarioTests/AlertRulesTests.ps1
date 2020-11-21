@@ -61,7 +61,7 @@ function New-AzSentinelAlertRule-CreateFusion
     $AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
 		
 	#Create Alert Rule
-	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind Fusion -Enabled $true -AlertRuleTemplateName = $AlertRuleTemplateName
+	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind Fusion -Enabled $true -AlertRuleTemplateName $AlertRuleTemplateName
 	
 	#Validate
 	Validate-AlertRule $alertrule
@@ -79,7 +79,7 @@ function New-AzSentinelAlertRule-CreateMSIC
 	$AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
 
 	#Create Alert Rule
-	$alertRule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind MicrosoftSecurityIncidentCreation -Enabled $true -AlertRuleTemplateName $AlertRuleTemplateName -DeplayName "MSICposhTest" -ProductFilter "Azure Security Center for IoT"
+	$alertRule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind MicrosoftSecurityIncidentCreation -Enabled $true -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "MSICposhTest" -ProductFilter "Azure Security Center for IoT"
 	
 	# Validate
 	Validate-AlertRule $alertrule
@@ -116,7 +116,7 @@ function Set-AzSentinelAlertRule-Update
 	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind Scheduled -Enabled $true -DisplayName "PoshModuleTest" -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
 	
 	#update alert rule
-	$alertrule = Set-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name) -DisplayName "PoshModuleTest2" -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
+	$alertrule = Set-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name) -Kind Scheduled -Enabled Disabled  -DisplayName ($alertrule.DisplayName) -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
 	
 	# Validate
 	Validate-AlertRule $alertrule

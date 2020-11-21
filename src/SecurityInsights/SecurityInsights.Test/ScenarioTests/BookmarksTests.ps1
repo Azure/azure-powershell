@@ -29,8 +29,8 @@ function Get-AzSentinelBookmark-List
 	Validate-Bookmarks $bookmarks
 
 	#Cleanup
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark2.Name)
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark2.Name)
 }
 
 <#
@@ -48,7 +48,7 @@ function Get-AzSentinelBookmark-Get
 	Validate-Bookmark $bookmark
 
 	#Cleanup
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
 }
 
 <#
@@ -64,7 +64,7 @@ function New-AzSentinelBookmark-Create
 	Validate-Bookmark $bookmark
 
 	#Cleanup
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
 }
 
 <#
@@ -77,13 +77,13 @@ function Set-AzSentinelBookmark-Update
 	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	#update $bookmark
-	$bookmark = Set-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Notes "PoshModuleTest"
+	$bookmark = Set-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1" -Notes "PoshModuleTest"
 	
 	# Validate
 	Validate-Bookmark $bookmark
 
 	#Cleanup
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
 	
 	
 	}
@@ -92,7 +92,7 @@ function Set-AzSentinelBookmark-Update
 .SYNOPSIS
 Delete Bookmark
 #>
-function Remove-AzSentinelBookmark-Delete
+function Remove-AzSentinelBookmark-Remove
 {
 	#Create $bookmark
 	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
@@ -100,10 +100,8 @@ function Remove-AzSentinelBookmark-Delete
 	#delete
 	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
 	# Validate
-	Validate-Action $action
+	Validate-Bookmark $bookmark
 
-	#Cleanup
-	Remove-Bookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
 }
 
 <#
@@ -126,7 +124,7 @@ function Validate-Bookmarks
 .SYNOPSIS
 Validates a single bookmark
 #>
-function Validate-$bookmark
+function Validate-Bookmark
 {
 	param($bookmark)
 

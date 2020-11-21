@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.IncidentId)]
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.IncidentId)]
         [ValidateNotNullOrEmpty]
         public string IncidentId { get; set; }
 

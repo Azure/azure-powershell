@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [ValidateNotNullOrEmpty] 
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.IncidentId)]
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.IncidentId)]
         [ValidateNotNullOrEmpty]
         public string IncidentId { get; set; }
 
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 ClassificationComment = ClassificationComment,
                 ClassificationReason = ClassificationReason,
                 Description = Description,
-                Labels = Labels.CreatePSType(),
-                Owner = Owner.CreatePSType()
+                Labels = Labels?.CreatePSType(),
+                Owner = Owner?.CreatePSType()
             };
 
             if (ShouldProcess(name, VerbsCommon.New))

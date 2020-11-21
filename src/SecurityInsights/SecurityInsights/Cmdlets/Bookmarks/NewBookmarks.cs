@@ -67,37 +67,20 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             var name = BookmarkId;
 
+            Bookmark bookmark = new Bookmark
+            {
+                Created = DateTime.Now,
+                DisplayName = DisplayName,
+                IncidentInfo = IncidentInfo?.CreatePSType(),
+                Labels = Labels,
+                Notes = Notes,
+                Query = Query,
+                QueryResult = QueryResult
+
+            };
+
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                if (IncidentInfo == null)
-            {
-                Bookmark bookmark = new Bookmark
-                {
-                    Created = DateTime.Now,
-                    DisplayName = DisplayName,
-                    Labels = Labels,
-                    Notes = Notes,
-                    Query = Query,
-                    QueryResult = QueryResult
-
-                };
-                    var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
-
-                    WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
-                }
-            else
-            {
-                Bookmark bookmark = new Bookmark
-                {
-                    Created = DateTime.Now,
-                    DisplayName = DisplayName,
-                    IncidentInfo = IncidentInfo.CreatePSType(),
-                    Labels = Labels,
-                    Notes = Notes,
-                    Query = Query,
-                    QueryResult = QueryResult
-
-                };
                     var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
 
                     WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
