@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates
 {
-    public class PSSentinelAlertRuleTemplate
+    public class PSSentinelAlertRuleTemplateDataSource
     {
-        public string Id { get; set; }
+        public string ConnectorId { get; set; }
 
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string Kind { get; set; }
+        public IList<string> DataTypes { get; set; }
 
     }
 }

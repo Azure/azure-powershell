@@ -40,9 +40,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.BookmarkId)]
         public string BookmarkId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.CreatedBy)] 
-        public string CreatedBy { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkDisplayName)]
         public string DisplayName { get; set; }
 
@@ -70,29 +67,42 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             var name = BookmarkId;
 
-            UserInfo userinfo = new UserInfo
-            {
-                ObjectId = Guid.Parse(CreatedBy)
-            };
-
-            Bookmark bookmark = new Bookmark
-            {
-                Created = DateTime.Now,
-                CreatedBy = userinfo,
-                DisplayName = DisplayName,
-                IncidentInfo = IncidentInfo.CreatePSType(),
-                Labels = Labels,
-                Notes = Notes,
-                Query = Query,
-                QueryResult = QueryResult
-
-            };
-
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
+                if (IncidentInfo == null)
+            {
+                Bookmark bookmark = new Bookmark
+                {
+                    Created = DateTime.Now,
+                    DisplayName = DisplayName,
+                    Labels = Labels,
+                    Notes = Notes,
+                    Query = Query,
+                    QueryResult = QueryResult
 
-                WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
+                };
+                    var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
+
+                    WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
+                }
+            else
+            {
+                Bookmark bookmark = new Bookmark
+                {
+                    Created = DateTime.Now,
+                    DisplayName = DisplayName,
+                    IncidentInfo = IncidentInfo.CreatePSType(),
+                    Labels = Labels,
+                    Notes = Notes,
+                    Query = Query,
+                    QueryResult = QueryResult
+
+                };
+                    var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
+
+                    WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
+                } 
+               
             }
         }
     }

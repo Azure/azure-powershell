@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
-                Kind = "MicrosoftSecurityIncidentCreation",
+                Kind = "Scheduled",
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
                 Description = value.Description,
                 DisplayName = value.DisplayName,

@@ -73,6 +73,20 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
             };
         }
 
+        public static IncidentInfo CreatePSType(this PSSentinelBookmarkIncidentInfo value)
+        {
+            return new IncidentInfo()
+            {
+                IncidentId = value.IncidentId,
+                RelationName = value.RelationName,
+                Severity = value.Severity,
+                Title = value.Title
+            };
+        }
 
+        public static List<IncidentInfo> CreatePSType(this IEnumerable<PSSentinelBookmarkIncidentInfo> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
     }
 }

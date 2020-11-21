@@ -12,21 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
+using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates
 {
-    public class PSSentinelAlertRuleTemplate
+    public class PSSentinelScheduledAlertRuleTemplate : PSSentinelAlertRuleTemplate
     {
-        public string Id { get; set; }
+        public int? AlertRulesCreatedByTemplateCount { get; set; }
 
-        public string Name { get; set; }
+        public string DisplayName { get; set; }
 
-        public string Type { get; set; }
+        public string Description { get; set; }
 
-        public string Kind { get; set; }
+        public string Status { get; set; }
+        
+        public DateTime? CreatedDateUtc { get; set; }
+
+        public string Query { get; set; }
+
+        public TimeSpan? QueryFrequency { get; set; }
+
+        public TimeSpan? QueryPeriod { get; set; }
+
+        public IList<PSSentinelAlertRuleTemplateDataSource> RequiredDataConnectors { get; set; }
+
+        public string Severity { get; set; }
+      
+        public TriggerOperator? TriggerOperator { get; set; }
+
+        public int? TriggerThreshold { get; set; }
+
+        public IList<string> Tactics { get; set; }
 
     }
 }

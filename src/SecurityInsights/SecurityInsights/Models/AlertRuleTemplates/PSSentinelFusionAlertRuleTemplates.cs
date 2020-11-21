@@ -15,13 +15,24 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
+namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates
 {
-    public class PSSentinelAlertRuleTemplateRequiredDataConnector
+    public class PSSentinelFusionAlertRuleTemplate : PSSentinelAlertRuleTemplate
     {
-        public string ConnectorId { get; set; }
 
-        public IList<string> DataTypes { get; set; }
+        public int? AlertRulesCreatedByTemplateCount { get; set; }
 
+        public string DisplayName { get; set; }
+
+        public string Description { get; set; }
+
+        public string Severity { get; set; }
+
+        public string Status { get; set; }
+
+        public DateTime? CreatedDateUtc { get; set; }
+
+        public IList<string> Tactics { get; set; }
+        
     }
 }

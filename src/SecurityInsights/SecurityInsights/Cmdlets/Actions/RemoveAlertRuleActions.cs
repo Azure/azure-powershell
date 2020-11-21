@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
             var workspacename = WorkspaceName;
             switch (ParameterSetName)
             {
-                case ParameterSetNames.AlertRuleId:
+                case ParameterSetNames.ActionId:
                     break;
                 case ParameterSetNames.InputObject:
                     name = InputObject.Name;

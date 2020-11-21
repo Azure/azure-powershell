@@ -54,28 +54,28 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRulesTemplates
             switch (ParameterSetName)
             {
                 case ParameterSetNames.WorkspaceScope:
-                    var alertruletemplate = SecurityInsightsClient.AlertRuleTemplates.List(ResourceGroupName, WorkspaceName);
+                    var alertruletemplates = SecurityInsightsClient.AlertRuleTemplates.List(ResourceGroupName, WorkspaceName);
                     
-                    int alertruletemplatecount = alertruletemplate.Count();
-                    WriteObject(alertruletemplate.ConvertToPSType(), enumerateCollection: true);
+                    int alertruletemplatecount = alertruletemplates.Count();
+                    WriteObject(alertruletemplates.ConvertToPSType(), enumerateCollection: true);
                     numberOfFetchedAlertRuleTemplates += alertruletemplatecount;
-                    nextLink = alertruletemplate?.NextPageLink;
+                    nextLink = alertruletemplates?.NextPageLink;
                     while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedAlertRuleTemplates < MaxAlertRulesToFetch)
                     {
-                        alertruletemplate = SecurityInsightsClient.AlertRuleTemplates.ListNext(alertruletemplate.NextPageLink);
-                        alertruletemplatecount = alertruletemplate.Count();
-                        WriteObject(alertruletemplate.ConvertToPSType(), enumerateCollection: true);
+                        alertruletemplates = SecurityInsightsClient.AlertRuleTemplates.ListNext(alertruletemplates.NextPageLink);
+                        alertruletemplatecount = alertruletemplates.Count();
+                        WriteObject(alertruletemplates.ConvertToPSType(), enumerateCollection: true);
                         numberOfFetchedAlertRuleTemplates += alertruletemplatecount;
-                        nextLink = alertruletemplate?.NextPageLink;
+                        nextLink = alertruletemplates?.NextPageLink;
                     }
                     break;
                 case ParameterSetNames.AlertRuleTemplateId:
-                    var alertruletemplate2 = SecurityInsightsClient.AlertRuleTemplates.Get(ResourceGroupName, WorkspaceName, AlertRuleTemplateId);
-                    WriteObject(alertruletemplate2.ConvertToPSType(), enumerateCollection: false);
+                    var alertruletemplate = SecurityInsightsClient.AlertRuleTemplates.Get(ResourceGroupName, WorkspaceName, AlertRuleTemplateId);
+                    WriteObject(alertruletemplate.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    alertruletemplate2 = SecurityInsightsClient.AlertRuleTemplates.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
-                    WriteObject(alertruletemplate2.ConvertToPSType(), enumerateCollection: false);
+                    alertruletemplate = SecurityInsightsClient.AlertRuleTemplates.Get(ResourceGroupName, WorkspaceName, AzureIdUtilities.GetResourceName(ResourceId));
+                    WriteObject(alertruletemplate.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
                     throw new PSInvalidOperationException();

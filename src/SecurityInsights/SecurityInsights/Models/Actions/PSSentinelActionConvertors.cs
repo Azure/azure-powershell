@@ -16,7 +16,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System.Security.Cryptography;
-using Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks;
+using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
 {
@@ -40,18 +40,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Actions
             return value.Select(dss => dss.ConvertToPSType()).ToList();
         }
 
-        public static IncidentInfo CreatePSType(this PSSentinelBookmarkIncidentInfo value)
+        public static ActionRequest CreatePSType(this PSSentinelActionRequest value)
         {
-            return new IncidentInfo()
+            return new ActionRequest()
             {
-                IncidentId = value.IncidentId,
-                RelationName = value.RelationName,
-                Severity = value.Severity,
-                Title = value.Title
+                LogicAppResourceId = value.LogicAppResourceId,
+                TriggerUri = value.TriggerUri
             };
         }
 
-        public static List<IncidentInfo> CreatePSType(this IEnumerable<PSSentinelBookmarkIncidentInfo> value)
+        public static List<ActionRequest> CreatePSType(this IEnumerable<PSSentinelActionRequest> value)
         {
             return value.Select(rec => rec.CreatePSType()).ToList();
         }
