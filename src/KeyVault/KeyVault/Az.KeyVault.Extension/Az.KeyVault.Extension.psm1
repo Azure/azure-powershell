@@ -11,7 +11,14 @@ function Check-SubscriptionLogIn
     $azContext = Az.Accounts\Get-AzContext
     if (($azContext -eq $null) -or ($azContext.Subscription.Id -ne $SubscriptionId))
     {
-        throw "To use ${AzKVaultName} Azure vault, the current user must be logged into Azure account subscription ${SubscriptionId}. Run 'Connect-AzAccount -SubscriptionId ${SubscriptionId}'."
+        try
+        {
+            Set-AzContext -SubscriptionId ${SubscriptionId} -ErrorAction Stop
+        }
+        catch
+        {
+            throw "To use ${AzKVaultName} Azure vault, the current user must be logged into Azure account subscription ${SubscriptionId}. Run 'Connect-AzAccount -SubscriptionId ${SubscriptionId}'."
+        }
     }
 }
 
