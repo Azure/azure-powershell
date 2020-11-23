@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+## Version 2.6.2
+* Updated the default value of Kind parameter from StorageV2 to Storage
+* This module version is meant only for the usage in Azure Stack environments with Update 2011 +
 ## Version 2.6.0
 * Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
 * Supported Point In Time Restore

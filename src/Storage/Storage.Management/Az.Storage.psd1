@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.6.0'
+ModuleVersion = '2.6.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.9.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
@@ -212,22 +212,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed upload blob fail by upgrade to Microsoft.Azure.Storage.DataMovement 2.0.0 [#12220]
-* Supported Point In Time Restore
-    - ''Enable-AzStorageBlobRestorePolicy''
-    - ''Disable-AzStorageBlobRestorePolicy''
-    - ''New-AzStorageBlobRangeToRestore''
-    - ''Restore-AzStorageBlobRange''
-* Supported get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
-    - ''Get-AzureRMStorageAccount''
-* Added breaking change warning message for upcoming cmdlet output change
-    - ''Get-AzStorageContainerStoredAccessPolicy''
-    - ''Set-AzStorageContainerStoredAccessPolicy''
-    - ''Set-AzStorageAccountManagementPolicy''
-    - ''Get-AzStorageAccountManagementPolicy''
-    - ''Add-AzStorageAccountManagementPolicyAction''
-    - ''New-AzStorageAccountManagementPolicyRule''
-* Upgraded Microsoft.Azure.Cosmos.Table SDK to 1.0.8'
+        ReleaseNotes = '* Copy of the module az.storage version 2.6.0.
+* Updated only for the New-AzStorageAcount cmdlet Kind Parameter default value changed from StorageV2 to Storage
+* This module version is meant only for the usage in Azure Stack environments with Update 2011 +'
 
         # Prerelease string of this module
         # Prerelease = ''
