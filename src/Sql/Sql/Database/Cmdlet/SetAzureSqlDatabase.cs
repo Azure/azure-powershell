@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -219,6 +220,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the number of read replicas for the database
         /// </summary>
+        [CmdletParameterBreakingChange("ReadReplicaCount", ReplaceMentCmdletParameterName = "HighAvailabilityReplicaCount")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        public int ReadReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of read replicas for the database
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
             ParameterSetName = UpdateParameterSetName)]
@@ -293,7 +306,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : 
+                    this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
             };

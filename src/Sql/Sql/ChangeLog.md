@@ -25,7 +25,7 @@
 * Added HighAvailabilityReplicaCount to the following: 
     - `New-AzSqlDatabase`
     - `Set-AzSqlDatabase`
-* Removed ReadReplicaCount from the following: 
+* Marked ReadReplicaCount as deprecated in the following: 
     - `New-AzSqlDatabase`
     - `Set-AzSqlDatabase`
 
