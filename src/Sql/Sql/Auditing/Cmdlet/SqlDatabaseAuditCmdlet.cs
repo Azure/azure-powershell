@@ -17,12 +17,11 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlAuditAdapter>
+    public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlAuditAdapterRegular>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.DatabaseParameterSetName,
@@ -79,9 +78,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return model;
         }
 
-        protected override SqlAuditAdapter InitModelAdapter()
+        protected override SqlAuditAdapterRegular InitModelAdapter()
         {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext);
+            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext);
         }
     }
 }

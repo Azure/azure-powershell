@@ -187,9 +187,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-        protected override SqlAuditAdapter InitModelAdapter()
+        protected override SqlAuditAdapterRegular InitModelAdapter()
         {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext, RoleAssignmentId);
         }
 
         protected override bool WriteResult() => PassThru;

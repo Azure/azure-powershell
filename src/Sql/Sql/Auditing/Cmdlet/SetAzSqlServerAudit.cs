@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Management.Automation;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzSqlServerAudit : SqlServerAuditCmdlet
+    public class SetAzSqlServerAudit : SqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy>
     {
         [Parameter(
             Mandatory = false,
@@ -177,9 +178,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-        protected override SqlAuditAdapter InitModelAdapter()
+        protected override SqlAuditAdapter<ExtendedServerBlobAuditingPolicy> InitModelAdapter()
         {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext, RoleAssignmentId);
         }
 
         protected override bool WriteResult() => PassThru;

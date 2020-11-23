@@ -11,30 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Sql.Auditing.DevOps;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     [Cmdlet(
-        VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class RemoveAzSqlServerAudit : SqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy>
+        VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerDevOpsAuditCmdletsSuffix,
+        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName),
+        OutputType(typeof(ServerAuditModel))]
+    public class GetAzSqlServerMSSupportAudit : SqlServerAuditCmdlet<ServerDevOpsAuditingPolicy>
     {
-        protected override SqlAuditAdapter<ExtendedServerBlobAuditingPolicy> InitModelAdapter()
+        protected override SqlAuditAdapter<ServerDevOpsAuditingPolicy> InitModelAdapter()
         {
-            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext);
-        }
-
-        protected override ServerAuditModel PersistChanges(ServerAuditModel entity)
-        {
-            ModelAdapter.RemoveAuditingSettings(entity);
-            return null;
+            return new SqlAuditAdapterDevOps(DefaultProfile.DefaultContext);
         }
     }
 }

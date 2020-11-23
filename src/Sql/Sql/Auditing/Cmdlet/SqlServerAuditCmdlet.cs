@@ -17,12 +17,12 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using System;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public class SqlServerAuditCmdlet : AzureSqlCmdletBase<ServerAuditModel, SqlAuditAdapter>
+    public abstract class SqlServerAuditCmdlet<ServerPolicy> : AzureSqlCmdletBase<ServerAuditModel, SqlAuditAdapter<ServerPolicy>> where ServerPolicy : ProxyResource
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
@@ -71,11 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
             return model;
-        }
-
-        protected override SqlAuditAdapter InitModelAdapter()
-        {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

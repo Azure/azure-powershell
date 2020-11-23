@@ -43,147 +43,147 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact(Skip = "not able to re - record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-BlobAuditServerUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableDatabaseAudit()
         {
             RunPowerShellTest("Test-BlobAuditDisableDatabaseAudit");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableServerAudit()
         {
             RunPowerShellTest("Test-BlobAuditDisableServerAudit");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedDatabaseUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedServerUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-BlobAuditFailedServerUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadDatabaseIndentity()
         {
             RunPowerShellTest("Test-BlobAuditFailWithBadDatabaseIndentity");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadServerIndentity()
         {
             RunPowerShellTest("Test-BlobAuditFailWithBadServerIndentity");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseStorageKeyRotation");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-BlobAuditServerStorageKeyRotation");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-BlobAuditServerRetentionKeepProperties");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseRetentionKeepProperties");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnDatabase()
         {
             RunPowerShellTest("Test-BlobAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnServer()
         {
             RunPowerShellTest("Test-BlobAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
             RunPowerShellTest("Test-BlobAuditWithAuditActionGroups");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnDatabase()
         {
             RunPowerShellTest("Test-ExtendedAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnServer()
         {
             RunPowerShellTest("Test-ExtendedAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnDatabase()
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnServer()
@@ -199,56 +199,56 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-RemoveAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnDatabase()
         {
             RunPowerShellTest("Test-RemoveAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
         {
             RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
             RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerAuditingToStorageInVNet()
         {
             RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseAuditingToStorageInVNet()
         {
