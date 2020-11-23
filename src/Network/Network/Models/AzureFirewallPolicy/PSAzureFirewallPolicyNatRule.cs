@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("translatedPort")]
         public string TranslatedPort { get; set; }
 
+        [JsonProperty("translatedFqdn")]
+        public string TranslatedFqdn { get; set; }
+
         [JsonIgnore]
         public string ProtocolsText
         {

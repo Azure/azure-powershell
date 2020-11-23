@@ -19,12 +19,12 @@ Tests Eventhub Cluster operations.
 
 function ClusterTest
 {
-    # Setup    
+    # Setup
     $location = "southcentralus"
 	$clusterName = getAssetName "Eventhub-Cluster-"
     $resourceGroupName = getAssetName "RSG-Cluster"
-
-    Write-Debug "  Create resource group"
+	
+	Write-Debug "  Create resource group"
     Write-Debug " Resource Group Name : $resourceGroupName"
     $ResultResourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Force   
 
