@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlets:
+    `Get-AzDiagnosticSettingCategory`, 
+    `New-AzDiagnosticSetting`, 
+    `New-AzDiagnosticDetailSetting`
 
 ## Version 2.2.0
 * Fixed the bug that warning message cannot be suppressed. [#12889]
