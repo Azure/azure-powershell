@@ -33,8 +33,7 @@ Describe 'Remove-AzWvdHostPool' {
                             -SsoClientId 'https://domain/name' `
                             -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
                             -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
-                            -SsoSecretType 'SharedKeyInKeyVault' `
-                            -StartVMOnConnect:$false
+                            -SsoSecretType 'SharedKeyInKeyVault'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -55,7 +54,6 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
             $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
             $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
-            $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -80,7 +78,6 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
             $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
             $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
-            $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
