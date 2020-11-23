@@ -27,8 +27,8 @@ The **Set-AzApplicationGatewaySslCertificate** cmdlet updates an SSL certificate
 ### Example 1: Update an existing SSL certificate on Application Gateway
 ```
 PS C:\> $appGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-[//]: # ([SuppressMessage\("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test password for the ssl certificate"\)])
-PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+PS C:\> $passwordString = "P@ssw0rd"
+PS C:\> $password = ConvertTo-SecureString $passwordString -AsPlainText -Force
 PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
