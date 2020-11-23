@@ -13,8 +13,7 @@ Creates an App service managed certificate for an Azure Web App.
 ## SYNTAX
 
 ```
-Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
- [-HostName] <String> [-ThumbPrint] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-ThumbPrint] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +28,6 @@ PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -Thumbpr
 
 This command removes App Service Managed certificate for the given web app.
 
-### Example 2
-```powershell
-PS C:\>Remove-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3" 
-```
-
-This command removes SSL Binding and App Service Managed certificate for the given web app.
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -48,21 +40,6 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostName
-Custom hostnames associated with web app/slot.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,21 +60,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Slot
-The name of the web app slot.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ThumbPrint
 Thumbprint of the certificate that already exists in web space.
 
@@ -108,21 +70,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebAppName
-The name of the web app.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

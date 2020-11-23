@@ -35,7 +35,7 @@ function Test-NewAzWebAppCertificate
 	finally{
 		
 		# Cleanup
-		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -ThumbPrint $thumbprint
 	}
 }
 
@@ -71,7 +71,7 @@ function Test-NewAzWebAppCertificateWithSSLBinding
 		
 		# Cleanup
 		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
-		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -ThumbPrint $thumbprint
 	}
 }
 
@@ -100,7 +100,7 @@ function Test-NewAzWebAppCertificateForSlot
 	finally{
 	
 		# Cleanup
-		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -ThumbPrint $thumbprint
 	}
 }
 
@@ -124,7 +124,7 @@ function Test-RemoveAzWebAppCertificate
 		# Assert
 		Assert-AreEqual $prodHostname $cert.SubjectName	
 		
-		Remove-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -ThumbPrint $thumbprint
+		Remove-AzWebAppCertificate -ResourceGroupName $rgname -ThumbPrint $thumbprint
 
 		$certificate = Get-AzWebAppCertificate -Thumbprint $thumbprint
 		

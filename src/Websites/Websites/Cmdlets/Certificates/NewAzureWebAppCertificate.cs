@@ -23,6 +23,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         {
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
             {
-                //PSSite webApp = null;
+                HttpStatusCode statusCode = HttpStatusCode.OK;
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
                 var location = webApp.Location;
 
@@ -85,10 +86,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 {
                     try
                     {
-                        WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
+                        createdCertdetails=WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
+                        statusCode = e.Response.StatusCode;
                         // 'Conflict' exception is thrown when certificate already exists. Let's swallow it and continue.
                         //'Accepted' exception is thrown by default for create cert method. 
                         if (e.Response.StatusCode != HttpStatusCode.Conflict &&
@@ -98,8 +100,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                         }
                     }
                     //Try to get the certificate post the create call return 'Accepted' status
-                    if (createdCertdetails == null)
-                        for (; ; )
+                    var watch = new System.Diagnostics.Stopwatch();
+                    if (statusCode == HttpStatusCode.Accepted)
+                    {
+                        watch.Start();
+                        for (; watch.Elapsed.Minutes < 6;)
                         {
                             try
                             {
@@ -111,8 +116,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                                 //if 'NotFound' lets retry for every 5 seconds to get the certificate 
                                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
                                     Thread.Sleep(5000);
+                                else
+                                    throw;
                             }
                         }
+                        watch.Stop();
+                        if (createdCertdetails == null)
+                        {
+                            throw new Exception(string.Format($"The creation of the managed certificate '{this.HostName}' is taking longer than expected." +
+                                $" Please re-try the operation '{CreateInputCommand()}'"));
+                        }
+                    }
                     //Add only when user is opted for Binding
                     if (AddBinding)
                     {
@@ -129,6 +143,19 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
 
             }
 
+        }
+
+        private string CreateInputCommand()
+        {
+            StringBuilder command = new StringBuilder("New-AzWebAppCertificate ");
+            command.Append($"-ResourceGroupName {this.ResourceGroupName} -WebAppName {this.WebAppName} -HostName {this.HostName} ");
+            if (Slot != null)
+                command.Append($"-Slot {this.Slot} ");
+            if (AddBinding)
+                command.Append($"-AddBinding ");
+            if (SslState != null)
+                command.Append($"-SslState {this.SslState} ");
+            return command.ToString(); ;
         }
     }
 }
