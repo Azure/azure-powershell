@@ -115,5 +115,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionSlot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionDuplicate()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionDuplicate");
+        }
     }
 }

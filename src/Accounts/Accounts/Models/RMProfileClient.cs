@@ -195,6 +195,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         environment,
                         subscriptionId,
                         subscriptionName,
+                        true,
                         out newSubscription,
                         out newTenant))
                     {
@@ -248,7 +249,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         if (token != null &&
                             newTenant == null &&
-                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
+                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
                             // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
@@ -554,6 +555,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureEnvironment environment,
             string subscriptionId,
             string subscriptionName,
+            bool isTenantPresent,
             out IAzureSubscription subscription,
             out IAzureTenant tenant)
         {
@@ -596,7 +598,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 catch (CloudException ex)
                 {
-                    WriteWarningMessage(ex.Message);
+                    //Error "InvalidAuthenticationTokenTenant" means tenant and subscription mismatches.
+                    //If tenant is not present, we're iterating all tenants until finding right tenant for specified subscription,
+                    //in this case, InvalidAuthenticationTokenTenant message is expected and we should ignore it.
+                    if (isTenantPresent || !string.Equals(ex.Body?.Code, "InvalidAuthenticationTokenTenant", StringComparison.OrdinalIgnoreCase))
+                    {
+                        WriteWarningMessage(ex.Message);
+                    }
                 }
 
                 if (subscription != null)

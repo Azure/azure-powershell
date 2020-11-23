@@ -31,10 +31,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 3)]
         public string IpAddress { get; set; }
 
+        [JsonProperty(Order = 4)]
+        public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
+
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText
         {
             get { return JsonConvert.SerializeObject(NetworkInterfaceIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancerFrontendIPConfigurationIdText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancerFrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
