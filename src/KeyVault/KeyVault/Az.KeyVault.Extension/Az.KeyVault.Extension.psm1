@@ -37,10 +37,7 @@ function Get-Secret
             {
                 $SecretValue = Get-String $Secret
             }
-            'SecureString'
-            {
-                $SecretValue = Get-SecureString $Secret
-            }
+
             'PSCredential' 
             {
                 Get-PSCredential $Secret
@@ -51,7 +48,7 @@ function Get-Secret
             }
             Default 
             {
-                throw "Unknown secret type"
+                $SecretValue = Get-SecureString $Secret
             }
         }
         return $SecretValue
@@ -112,8 +109,10 @@ function Get-Hashtable
         [object] $Secret
     )
 
-    $secretValueText = Get-String $Secret
-    return ConvertFrom-Json $secretValueText -AsHashtable
+    $jsonObject = Get-String $Secret | ConvertFrom-Json
+    $hashtable = @{}
+    $jsonObject.psobject.Properties | foreach { $hashtable[$_.Name] = $_.Value }
+    return $hashtable
 }
 
 function Set-Secret
@@ -240,10 +239,10 @@ function Get-SecretInfo
         [string] $VaultName,
         [hashtable] $AdditionalParameters
     )
-
-    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
    
-    if ([string]::IsNullOrEmpty($Filter))
+    Check-SubscriptionLogIn $AdditionalParameters.SubscriptionId $AdditionalParameters.AZKVaultName
+
+       if ([string]::IsNullOrEmpty($Filter))
     {
         $Filter = "*"
     }
@@ -256,10 +255,14 @@ function Get-SecretInfo
     {
         if ($pattern.IsMatch($vaultSecretInfo.Name))
         {
+            if($vaultSecretInfo.ContentType -eq $null) 
+            {
+                $vaultSecretInfo.ContentType = 'Unknown'
+            }
             Write-Output (
                 [Microsoft.PowerShell.SecretManagement.SecretInformation]::new(
                     $vaultSecretInfo.Name,
-                    [Microsoft.PowerShell.SecretManagement.SecretType]::SecureString,
+                    [System.Enum]::Parse([Microsoft.PowerShell.SecretManagement.SecretType], $vaultSecretInfo.ContentType),
                     $VaultName)
             )
         }
