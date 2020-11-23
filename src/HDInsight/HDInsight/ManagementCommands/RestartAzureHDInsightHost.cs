@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.HDInsight.Models.Management;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightHost", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),OutputType(typeof(Cluster))]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightHost", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RestartAzureHDInsightHostCommand : HDInsightCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";

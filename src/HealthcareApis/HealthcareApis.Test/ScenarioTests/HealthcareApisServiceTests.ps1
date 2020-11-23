@@ -28,6 +28,7 @@ function Test-AzRmHealthcareApisService{
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$location = Get-Location
+	$keyVaultKeyUri = Get-KeyVaultKeyUri
 	$offerThroughput =  Get-OfferThroughput
 	$kind = Get-Kind
 	$object_id = Get-AccessPolicyObjectID;
@@ -40,12 +41,13 @@ function Test-AzRmHealthcareApisService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosKeyVaultKeyUri $keyVaultKeyUri -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
 		# Assert
 		Assert-AreEqual $rname $actual.Name
+		Assert-AreEqual $keyVaultKeyUri $actual.CosmosDbKeyVaultKeyUri
 		Assert-AreEqual $offerThroughput $actual.CosmosDbOfferThroughput
 		Assert-AreEqual $kind $actual.Kind
 		Assert-AreEqual "https://$rname.azurehealthcareapis.com" $actual.Audience
@@ -55,13 +57,15 @@ function Test-AzRmHealthcareApisService{
 		Assert-NotNull $actual.IdentityTenantId
 
 		#Update using parameters
-		$newOfferThroughput = $offerThroughput - 600
-		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput -DisableManagedIdentity;
+		$newKeyVaultKeyUri = "https://pshealthapitestvault.vault.azure.net/keys/PSKey2"
+		$newOfferThroughput = 400
+		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosKeyVaultKeyUri $newKeyVaultKeyUri -CosmosOfferThroughput $newOfferThroughput -DisableManagedIdentity;
 
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
 		# Assert the update
 		Assert-AreEqual $rname $updatedAccount.Name
+		Assert-AreEqual $newKeyVaultKeyUri $updatedAccount.CosmosDbKeyVaultKeyUri
 		Assert-AreEqual $newOfferThroughput $updatedAccount.CosmosDbOfferThroughput
 		Assert-AreEqual "None" $updatedAccount.IdentityType
 
@@ -94,4 +98,109 @@ function Test-AzRmHealthcareApisService{
 		# Clean up
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
+}
+
+<#
+.SYNOPSIS
+Test PublicNetworkAccessControl
+#>
+function Test-PublicNetworkAccessControl
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    # Test
+    $rname = 'hca' + $rgname;
+    $location = Get-Location;
+    $offerThroughput =  Get-OfferThroughput
+	$kind = Get-Kind
+	$storageAccountName = "exportStorage"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location;
+        $createdAccount =  New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -ManagedIdentity -ExportStorageAccountName $storageAccountName;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+
+        $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Disabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Disabled"
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+
+        $updatedAccount = Set-AzHealthcareApisService -ResourceId $actual.Id -PublicNetworkAccess "Enabled"
+        Assert-NotNull $updatedAccount;
+        Assert-AreEqual $updatedAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force
+    }
+
+	try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location;
+        $createdAccount = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -PublicNetworkAccess "Disabled";
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Disabled"
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location;
+        $createdAccount = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -PublicNetworkAccess "Enabled";
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Test PrivateEndpointConnection
+#>
+function Test-PrivateEndpointConnection
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$location = Get-Location
+	$offerThroughput =  Get-OfferThroughput
+	$kind = Get-Kind
+	$storageAccountName = "exportStorage"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location;
+        $createdAccount = New-AzHealthcareApisService -Name $rname -ResourceGroupName $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput -ExportStorageAccountName $storageAccountName;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.PublicNetworkAccess "Enabled"
+        Assert-AreEqual $createdAccount.PrivateEndpointConnections $null
+
+        $vnet = Get-AzVirtualNetwork -ResourceName "anrudraw-vnet" -ResourceGroupName "anrudraw-demo"
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name "pe-test" -PrivateLinkServiceId $createdAccount.Id -RequestMessage "Please Approve my request, Thanks" -GroupId "fhir"
+        New-AzPrivateEndpoint -PrivateLinkServiceConnection $plsConnection -Subnet $vnet.Subnets[0] -Name "pe-test" -ResourceGroupName "anrudraw-demo" -Location $location 
+        
+        $account = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual $account.PrivateEndpointConnections.Length 1
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force
+    }
 }

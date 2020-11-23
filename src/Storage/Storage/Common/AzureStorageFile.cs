@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track1 File object to Track 2 file Client
-        protected static ShareFileClient GetTrack2FileClient(CloudFile cloudFile, AzureStorageContext context)
+        public static ShareFileClient GetTrack2FileClient(CloudFile cloudFile, AzureStorageContext context)
         {
             ShareFileClient fileClient;
             if (cloudFile.ServiceClient.Credentials.IsSAS) //SAS
