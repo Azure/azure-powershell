@@ -1,8 +1,8 @@
 {
-  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview+1": {
+  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"UnitTest-MSIXPackage\",\r\n    \"imagePath\": \"C:\\\\msix\\\\singlemsix.vhd\",\r\n    \"isActive\": true,\r\n    \"isRegularRegistration\": true,\r\n    \"lastUpdated\": \"0001-01-01T00:00:00.0000000\",\r\n    \"packageApplications\": [\r\n      {\r\n        \"description\": \"testing from ps\",\r\n        \"appId\": \"MsixTest_Application_Id\",\r\n        \"appUserModelID\": \"MsixTest_Application_ModelID\",\r\n        \"friendlyName\": \"some name\",\r\n        \"iconImageName\": \"Apptile\",\r\n        \"rawIcon\": \"c29tZSBpbWFnZQ==\",\r\n        \"rawPng\": \"c29tZSBpbWFnZQ==\"\r\n      }\r\n    ],\r\n    \"packageDependencies\": [\r\n      {\r\n        \"dependencyName\": \"MsixTest_Dependency_Name\",\r\n        \"minVersion\": \"0.0.0.42\",\r\n        \"publisher\": \"MsixTest_Dependency_Publisher\"\r\n      }\r\n    ],\r\n    \"packageFamilyName\": \"MsixUnitTest_FamilyName\",\r\n    \"packageName\": \"MsixUnitTest_Name\",\r\n    \"packageRelativePath\": \"MsixUnitTest_RelativePackageRoot\",\r\n    \"version\": \"0.0.18838.722\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -39,10 +39,10 @@
       "Content": "{\"name\":\"datr-hp2/MsixTest_FullName_UnitTest\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/datr-hp2/msixpackages/MsixTest_FullName_UnitTest\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/msixpackages\",\"properties\":{\"imagePath\":\"C:\\\\msix\\\\singlemsix.vhd\",\"packageName\":\"MsixUnitTest_Name\",\"packageFamilyName\":\"MsixUnitTest_FamilyName\",\"displayName\":\"UnitTest-MSIXPackage\",\"packageRelativePath\":\"MsixUnitTest_RelativePackageRoot\",\"isRegularRegistration\":true,\"isActive\":true,\"packageDependencies\":[{\"dependencyName\":\"MsixTest_Dependency_Name\",\"publisher\":\"MsixTest_Dependency_Publisher\",\"minVersion\":\"0.0.0.42\"}],\"version\":\"0.0.18838.722\",\"lastUpdated\":\"0001-01-01T00:00:00\",\"packageApplications\":[{\"appId\":\"MsixTest_Application_Id\",\"description\":\"testing from ps\",\"appUserModelID\":\"MsixTest_Application_ModelID\",\"friendlyName\":\"some name\",\"iconImageName\":\"Apptile\",\"rawIcon\":\"c29tZSBpbWFnZQ==\",\"rawPng\":\"c29tZSBpbWFnZQ==\"}]}}"
     }
   },
-  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview+2": {
+  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "174" ],
@@ -84,10 +84,10 @@
       "Content": "{\"name\":\"datr-hp2/MsixTest_FullName_UnitTest\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/datr-hp2/msixpackages/MsixTest_FullName_UnitTest\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/msixpackages\",\"properties\":{\"imagePath\":\"C:\\\\msix\\\\singlemsix.vhd\",\"packageName\":\"MsixUnitTest_Name\",\"packageFamilyName\":\"MsixUnitTest_FamilyName\",\"displayName\":\"UnitTest-MSIXPackage\",\"packageRelativePath\":\"MsixUnitTest_RelativePackageRoot\",\"isRegularRegistration\":true,\"isActive\":true,\"packageDependencies\":[{\"dependencyName\":\"MsixTest_Dependency_Name\",\"publisher\":\"MsixTest_Dependency_Publisher\",\"minVersion\":\"0.0.0.42\"}],\"version\":\"0.0.18838.722\",\"lastUpdated\":\"0001-01-01T00:00:00\",\"packageApplications\":[{\"appId\":\"MsixTest_Application_Id\",\"description\":\"testing from ps\",\"appUserModelID\":\"MsixTest_Application_ModelID\",\"friendlyName\":\"some name\",\"iconImageName\":\"Apptile\",\"rawIcon\":\"c29tZSBpbWFnZQ==\",\"rawPng\":\"c29tZSBpbWFnZQ==\"}]}}"
     }
   },
-  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview+3": {
+  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "175" ],
@@ -129,10 +129,10 @@
       "Content": "{\"name\":\"datr-hp2/MsixTest_FullName_UnitTest\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/datr-hp2/msixpackages/MsixTest_FullName_UnitTest\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/msixpackages\",\"properties\":{\"imagePath\":\"C:\\\\msix\\\\singlemsix.vhd\",\"packageName\":\"MsixUnitTest_Name\",\"packageFamilyName\":\"MsixUnitTest_FamilyName\",\"displayName\":\"UnitTest-MSIXPackage\",\"packageRelativePath\":\"MsixUnitTest_RelativePackageRoot\",\"isRegularRegistration\":true,\"isActive\":true,\"packageDependencies\":[{\"dependencyName\":\"MsixTest_Dependency_Name\",\"publisher\":\"MsixTest_Dependency_Publisher\",\"minVersion\":\"0.0.0.42\"}],\"version\":\"0.0.18838.722\",\"lastUpdated\":\"0001-01-01T00:00:00\",\"packageApplications\":[{\"appId\":\"MsixTest_Application_Id\",\"description\":\"testing from ps\",\"appUserModelID\":\"MsixTest_Application_ModelID\",\"friendlyName\":\"some name\",\"iconImageName\":\"Apptile\",\"rawIcon\":\"c29tZSBpbWFnZQ==\",\"rawPng\":\"c29tZSBpbWFnZQ==\"}]}}"
     }
   },
-  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview+4": {
+  "Remove-AzWvdMsixPackage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/datr-hp2/msixPackages/MsixTest_FullName_UnitTest?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "176" ],

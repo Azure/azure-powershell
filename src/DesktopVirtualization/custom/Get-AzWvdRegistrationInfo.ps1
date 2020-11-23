@@ -20,7 +20,7 @@ Get the Windows virtual desktop registration info.
 Get the Windows virtual desktop registration info.
 #>
 function Get-AzWvdRegistrationInfo {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.RegistrationInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]
@@ -89,7 +89,7 @@ function Get-AzWvdRegistrationInfo {
 
     process {
         $hostpool = Az.DesktopVirtualization\Get-AzWvdHostPool @PSBoundParameters
-        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo' `
+        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.RegistrationInfo' `
             -Property @{ `
                 ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `
                 RegistrationTokenOperation = $hostpool.RegistrationInfoRegistrationTokenOperation; `

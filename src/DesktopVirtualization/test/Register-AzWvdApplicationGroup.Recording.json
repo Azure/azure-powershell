@@ -1,8 +1,8 @@
 {
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview+1": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"location\": \"canadaeast\",\r\n  \"properties\": {\r\n    \"description\": \"des\",\r\n    \"friendlyName\": \"fri\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -39,10 +39,10 @@
       "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[],\"cloudPcResource\":false,\"objectId\":\"4358b37e-d9ac-4025-9274-5a44779cad38\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-10-19-preview+2": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-11-02-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"location\": \"canadaeast\",\r\n  \"properties\": {\r\n    \"registrationInfo\": {\r\n      \"expirationTime\": \"2020-10-22T08:22:44.3325114-07:00\",\r\n      \"registrationTokenOperation\": \"Update\"\r\n    },\r\n    \"description\": \"des\",\r\n    \"customRdpProperty\": \"\",\r\n    \"friendlyName\": \"fri\",\r\n    \"hostPoolType\": \"Shared\",\r\n    \"loadBalancerType\": \"DepthFirst\",\r\n    \"maxSessionLimit\": 5,\r\n    \"preferredAppGroupType\": \"Desktop\",\r\n    \"ring\": 0,\r\n    \"ssoContext\": \"\",\r\n    \"validationEnvironment\": false,\r\n    \"vmTemplate\": \"\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -79,10 +79,10 @@
       "Content": "{\"name\":\"HostPoolPowershellContained1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained1\",\"type\":\"Microsoft.DesktopVirtualization/hostpools\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"friendlyName\":\"fri\",\"description\":\"des\",\"hostPoolType\":\"Pooled\",\"personalDesktopAssignmentType\":null,\"applicationGroupReferences\":[],\"customRdpProperty\":\"\",\"maxSessionLimit\":5,\"loadBalancerType\":\"DepthFirst\",\"validationEnvironment\":true,\"ring\":null,\"registrationInfo\":{\"expirationTime\":\"2020-10-22T15:22:44.3325114+00:00\",\"token\":null,\"resetToken\":false,\"registrationTokenOperation\":\"Update\"},\"vmTemplate\":null,\"preferredAppGroupType\":\"Desktop\",\"migrationRequest\":null,\"cloudPcResource\":false,\"startVMOnConnect\":false,\"ssoadfsAuthority\":null,\"ssoClientId\":null,\"ssoClientSecretKeyVaultPath\":null,\"ssoSecretType\":null,\"objectId\":\"d3dba0e8-39d4-4b2f-b44a-4afe966c9332\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-10-19-preview+3": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-11-02-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"location\": \"canadaeast\",\r\n  \"properties\": {\r\n    \"description\": \"des\",\r\n    \"applicationGroupType\": \"RemoteApp\",\r\n    \"friendlyName\": \"fri\",\r\n    \"hostPoolArmPath\": \"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -119,10 +119,10 @@
       "Content": "{\"name\":\"ApplicationGroupPowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell1\",\"type\":\"Microsoft.DesktopVirtualization/applicationgroups\",\"location\":\"canadaeast\",\"tags\":{},\"kind\":\"RemoteApp\",\"properties\":{\"hostPoolArmPath\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained1\",\"workspaceArmPath\":null,\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupType\":\"RemoteApp\",\"migrationRequest\":null,\"cloudPcResource\":false,\"objectId\":\"cca6281e-8b1e-48e9-9eb3-532354599550\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview+4": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "139" ],
@@ -164,10 +164,10 @@
       "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[],\"cloudPcResource\":false,\"objectId\":\"4358b37e-d9ac-4025-9274-5a44779cad38\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PATCH+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview+5": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$PATCH+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"applicationGroupReferences\": [ \"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1\" ]\r\n  }\r\n}",
       "Headers": {
       },
@@ -204,10 +204,10 @@
       "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell1\"],\"cloudPcResource\":false,\"objectId\":\"4358b37e-d9ac-4025-9274-5a44779cad38\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview+6": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "141" ],
@@ -249,10 +249,10 @@
       "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell1\"],\"cloudPcResource\":false,\"objectId\":\"4358b37e-d9ac-4025-9274-5a44779cad38\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-10-19-preview+7": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-11-02-preview+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "142" ],
@@ -294,10 +294,10 @@
       "Content": "{\"name\":\"ApplicationGroupPowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell1\",\"type\":\"Microsoft.DesktopVirtualization/applicationgroups\",\"location\":\"canadaeast\",\"tags\":{},\"kind\":\"RemoteApp\",\"properties\":{\"hostPoolArmPath\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained1\",\"workspaceArmPath\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupType\":\"RemoteApp\",\"migrationRequest\":null,\"cloudPcResource\":false,\"objectId\":\"cca6281e-8b1e-48e9-9eb3-532354599550\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-10-19-preview+8": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-11-02-preview+8": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "143" ],
@@ -339,10 +339,10 @@
       "Content": "{\"name\":\"HostPoolPowershellContained1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained1\",\"type\":\"Microsoft.DesktopVirtualization/hostpools\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"friendlyName\":\"fri\",\"description\":\"des\",\"hostPoolType\":\"Pooled\",\"personalDesktopAssignmentType\":null,\"applicationGroupReferences\":[],\"customRdpProperty\":\"\",\"maxSessionLimit\":5,\"loadBalancerType\":\"DepthFirst\",\"validationEnvironment\":true,\"ring\":null,\"registrationInfo\":{\"expirationTime\":\"2020-10-22T15:22:44.3325114Z\",\"token\":null,\"resetToken\":false,\"registrationTokenOperation\":\"None\"},\"vmTemplate\":null,\"preferredAppGroupType\":\"Desktop\",\"migrationRequest\":null,\"cloudPcResource\":false,\"startVMOnConnect\":false,\"ssoadfsAuthority\":null,\"ssoClientId\":null,\"ssoClientSecretKeyVaultPath\":null,\"ssoSecretType\":null,\"objectId\":\"d3dba0e8-39d4-4b2f-b44a-4afe966c9332\"}}"
     }
   },
-  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview+9": {
+  "Register-AzWvdApplicationGroup+[NoContext]+Register ApplicationGroup+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+9": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "144" ],
