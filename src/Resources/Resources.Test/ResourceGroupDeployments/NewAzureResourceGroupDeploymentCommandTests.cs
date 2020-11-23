@@ -30,6 +30,12 @@ using System.Linq;
 using System.Collections;
 using FluentAssertions;
 using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
+using Microsoft.Azure.Management.ResourceManager;
+using Newtonsoft.Json.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -38,6 +44,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private NewAzureResourceGroupDeploymentCmdlet cmdlet;
 
         private Mock<ResourceManagerSdkClient> resourcesClientMock;
+
+        private Mock<ITemplateSpecsClient> templateSpecsClientMock;
+
+        private Mock<ITemplateSpecVersionsOperations> templateSpecsVersionOperationsMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -54,13 +64,20 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+
+            templateSpecsClientMock = new Mock<ITemplateSpecsClient>();
+            templateSpecsClientMock.SetupAllProperties();
+            templateSpecsVersionOperationsMock = new Mock<ITemplateSpecVersionsOperations>();
+            templateSpecsClientMock.Setup(m => m.TemplateSpecVersions).Returns(templateSpecsVersionOperationsMock.Object);
+
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             SetupConfirmation(commandRuntimeMock);
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object,
+                TemplateSpecsClient = templateSpecsClientMock.Object
             };
         }
 
@@ -270,6 +287,69 @@ namespace Microsoft.Azure.Commands.Resources.Test
             differenceTags.Should().BeEmpty();
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
+
+        /// <summary>
+        /// When deployments are created using a template spec, the dynamic parameters are
+        /// resolved by reading the parameters from the template spec version's template body. 
+        /// Previously a bug was present that prevented successful dynamic parameter resolution
+        /// if the template spec existed in a subscription outside the current subscription 
+        /// context. This test validates dynamic parameter resolution works for deployments using
+        /// cross-subscription template specs.
+        /// </summary>
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResolvesDynamicParametersWithCrossSubTemplateSpec()
+        {
+            const string templateSpecSubscriptionId = "10000000-0000-0000-0000-000000000000";
+            const string templateSpecRGName = "someRG";
+            const string templateSpecName = "myTemplateSpec";
+            const string templateSpecVersion = "v1";
+
+            string templateSpecId = $"/subscriptions/{templateSpecSubscriptionId}/" +
+                $"resourceGroups/{templateSpecRGName}/providers/Microsoft.Resources/" +
+                $"templateSpecs/{templateSpecName }/versions/{templateSpecVersion}";
+
+            var templateContentForTest = File.ReadAllText(templateFile);
+            var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
+
+            templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
+                    templateSpecRGName,
+                    templateSpecName,
+                    templateSpecVersion,
+                    null,
+                    new CancellationToken()))
+                .Returns(() => {
+
+                    // We should only be getting this template spec from the expected subscription:
+                    Assert.Equal(templateSpecSubscriptionId, templateSpecsClientMock.Object.SubscriptionId);
+
+                    var versionToReturn = new TemplateSpecVersion(
+                        location: "westus2",
+                        id: templateSpecId,
+                        name: templateSpecVersion,
+                        type: "Microsoft.Resources/templateSpecs/versions",
+                        template: JObject.Parse(templateContentForTest)
+                    );
+
+                    return Task.Factory.StartNew(() =>
+                        new AzureOperationResponse<TemplateSpecVersion>()
+                        {
+                            Body = versionToReturn
+                        }
+                    );
+                });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = deploymentName;
+            cmdlet.TemplateSpecId = templateSpecId;
+
+            var dynamicParams = cmdlet.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
+            dynamicParams.Should().NotBeNull();
+            dynamicParams.Count().Should().Be(template.Parameters.Count);
+            dynamicParams.Keys.Should().Contain(template.Parameters.Keys);
         }
     }
 }
