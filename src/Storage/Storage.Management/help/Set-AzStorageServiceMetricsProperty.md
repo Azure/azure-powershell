@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ The acceptable values for this parameter are:
 - ServiceAndApi
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAz.Storage.Shared.Protocol.MetricsLevel]
+Type: System.Nullable`1[Microsoft.Azure.Storage.Shared.Protocol.MetricsLevel]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, ServiceAndApi
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -MetricsType
 Specifies a metrics type.
-This cmldet sets the Azure Storage service metrics type to the value that this parameter specifies.
+This cmdlet sets the Azure Storage service metrics type to the value that this parameter specifies.
 The acceptable values for this parameter are: Hour and Minute.
 
 ```yaml
@@ -183,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAz.Storage.Shared.Protocol.MetricsProperties
+### Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties
 
 ## NOTES
 

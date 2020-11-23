@@ -17,17 +17,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// list azure tables
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.Table, DefaultParameterSetName = NameParameterSet),
-        OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             if (String.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
-                IEnumerable<CloudTable> tables = Channel.ListTables(prefix, requestOptions, OperationContext);
+                IEnumerable<CloudTable> tables = Channel.ListTables(prefix, requestOptions, TableOperationContext);
                 WildcardOptions options = WildcardOptions.IgnoreCase | WildcardOptions.Compiled;
                 WildcardPattern wildcard = null;
 
@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
                 CloudTable table = Channel.GetTableReference(name);
 
-                if (Channel.DoesTableExist(table, requestOptions, OperationContext))
+                if (Channel.DoesTableExist(table, requestOptions, TableOperationContext))
                 {
                     yield return table;
                 }
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidTableName, prefix));
             }
 
-            return Channel.ListTables(prefix, reqesutOptions, OperationContext);
+            return Channel.ListTables(prefix, reqesutOptions, TableOperationContext);
         }
 
         /// <summary>

@@ -17,13 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(String))]
     public class NewAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             //Get existing permissions
             CloudTable table = localChannel.GetTableReference(tableName);
-            TablePermissions tablePermissions = localChannel.GetTablePermissions(table);
+            TablePermissions tablePermissions = localChannel.GetTablePermissions(table, null, TableOperationContext);
 
             //Add new policy
             if (tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             tablePermissions.SharedAccessPolicies.Add(policyName, policy);
 
             //Set permissions back to table
-            localChannel.SetTablePermissions(table, tablePermissions);
+            localChannel.SetTablePermissions(table, tablePermissions, null, TableOperationContext);
             return policyName;
         }
 

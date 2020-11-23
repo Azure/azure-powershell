@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.Azure.Storage.Queue;
 
     /// <summary>
     /// base class for azure queue cmdlet
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>IStorageQueueManagement object</returns>
         protected override IStorageQueueManagement CreateChannel()
         {
-            //init storage blob managment channel
+            //init storage blob management channel
             if (Channel == null || !ShareChannel)
             {
                 Channel = new StorageQueueManagement(GetCmdletStorageContext());

@@ -16,14 +16,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using Microsoft.Azure.Storage.Queue;
+    using Microsoft.Azure.Storage.Queue.Protocol;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy"), OutputType(typeof(String))]
     public class NewAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
             //Get existing permissions
             CloudQueue queue = Channel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = localChannel.GetPermissions(queue);
+            QueuePermissions queuePermissions = localChannel.GetPermissions(queue, this.RequestOptions, this.OperationContext);
 
             //Add new policy
             if (queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -89,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             queuePermissions.SharedAccessPolicies.Add(policyName, policy);
 
             //Set permissions back to queue
-            localChannel.SetPermissions(queue, queuePermissions);
+            localChannel.SetPermissions(queue, queuePermissions, null, OperationContext);
             return policyName;
         }
 

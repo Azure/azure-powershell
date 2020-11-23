@@ -16,15 +16,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs.Specialized;
+    using Track2Models = global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),
-        OutputType(typeof(Boolean))]
+    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -46,6 +49,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSet)]
         public CloudBlob CloudBlob { get; set; }
+
+        [Parameter(HelpMessage = "BlobBaseClient Object", Mandatory = false,
+            ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSet)]
+        [ValidateNotNull]
+        public BlobBaseClient BlobBaseClient { get; set; }
 
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerPipelineParameterSet)]
@@ -78,6 +86,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
         private bool deleteSnapshot;
 
+        [Parameter(HelpMessage = "Blob SnapshotTime", Mandatory = false, ParameterSetName = ContainerPipelineParameterSet)]
+        [Parameter(HelpMessage = "Blob SnapshotTime", Mandatory = false, ParameterSetName = NameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public DateTimeOffset? SnapshotTime { get; set; }
+
+        [Parameter(HelpMessage = "Blob VersionId", Mandatory = false, ParameterSetName = ContainerPipelineParameterSet)]
+        [Parameter(HelpMessage = "Blob VersionId", Mandatory = false, ParameterSetName = NameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string VersionId { get; set; }
+
         [Parameter(HelpMessage = "Force to remove the blob and its snapshot")]
         public SwitchParameter Force
         {
@@ -88,6 +106,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified blob is successfully removed")]
         public SwitchParameter PassThru { get; set; }
+
+        protected override bool UseTrack2Sdk()
+        {
+            if(this.VersionId != null)
+            {
+                return true;
+            }
+            return base.UseTrack2Sdk();
+        }
 
         /// <summary>
         /// Initializes a new instance of the RemoveStorageAzureBlobCommand class.
@@ -182,6 +209,87 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
+        /// <summary>
+        /// remove the azure blob with Track2 SDK
+        /// </summary>
+        /// <param name="blob">BlobBaseClient object</param>
+        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
+        /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
+        internal async Task RemoveAzureBlobTrack2(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, bool isValidBlob)
+        {
+            if (!isValidBlob)
+            {
+                ValidatePipelineCloudBlobTrack2(blob);
+            }
+
+            Track2Models.DeleteSnapshotsOption deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.None;
+            bool retryDeleteSnapshot = false;
+
+            if (Util.GetSnapshotTimeFromBlobUri(blob.Uri) != null)
+            {
+                if (deleteSnapshot)
+                {
+                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, Util.GetSnapshotTimeFromBlobUri(blob.Uri)));
+                }
+            }
+            else if (!string.IsNullOrEmpty(Util.GetVersionIdFromBlobUri(blob.Uri)))
+            {
+                if (deleteSnapshot)
+                {
+                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForBlobVersion, blob.Name, Util.GetVersionIdFromBlobUri(blob.Uri)));
+                }
+            }
+            else
+            {
+                if (deleteSnapshot)
+                {
+                    deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.OnlySnapshots;
+                }
+                else if (force)
+                {
+                    deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.IncludeSnapshots;
+                }
+                else
+                {
+                    retryDeleteSnapshot = true;
+                }
+            }
+
+            try
+            {
+                await DeleteCloudAsyncTrack2(taskId, localChannel, blob, deleteSnapshotsOption).ConfigureAwait(false);
+                retryDeleteSnapshot = false;
+            }
+            catch (global::Azure.RequestFailedException e) when (e.Status == 409)
+            {
+                if (retryDeleteSnapshot)
+                {
+                    //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
+                    retryDeleteSnapshot = true;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            if (retryDeleteSnapshot)
+            {
+                string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.BlobContainerName);
+
+                if (await OutputStream.ConfirmAsync(message).ConfigureAwait(false))
+                {
+                    deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.IncludeSnapshots;
+                    await DeleteCloudAsyncTrack2(taskId, localChannel, blob, deleteSnapshotsOption).ConfigureAwait(false);
+                }
+                else
+                {
+                    string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.BlobContainerName);
+                    OutputStream.WriteVerbose(taskId, result);
+                }
+            }
+        }
+
         internal async Task DeleteCloudAsync(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption)
         {
             AccessCondition accessCondition = null;
@@ -191,6 +299,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
             string result = String.Format(Resources.RemoveBlobSuccessfully, blob.Name, blob.Container.Name);
+
+            OutputStream.WriteVerbose(taskId, result);
+
+            if (PassThru)
+            {
+                OutputStream.WriteObject(taskId, true);
+            }
+        }
+
+        internal async Task DeleteCloudAsyncTrack2(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, Track2Models.DeleteSnapshotsOption deleteSnapshotsOption)
+        {
+
+            var responds = await blob.DeleteAsync(deleteSnapshotsOption, this.BlobRequestConditions, CmdletCancellationToken).ConfigureAwait(false);
+
+            string result = String.Format(Resources.RemoveBlobSuccessfully, blob.Name, blob.BlobContainerName);
 
             OutputStream.WriteVerbose(taskId, result);
 
@@ -214,33 +337,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
 
             ValidatePipelineCloudBlobContainer(container);
-            AccessCondition accessCondition = null;
-            BlobRequestOptions requestOptions = null;
 
-            CloudBlob blob = null;
+            if (!UseTrack2Sdk())
+            {
+                AccessCondition accessCondition = null;
+                BlobRequestOptions requestOptions = null;
 
-            try
-            {
-                blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
-                      requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            }
-            catch (InvalidOperationException)
-            {
-                blob = null;
-            }
+                CloudBlob blob = null;
 
-            if (null == blob && container.ServiceClient.Credentials.IsSharedKey)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
+                try
+                {
+                    blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, this.SnapshotTime, accessCondition,
+                          requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                }
+                catch (InvalidOperationException)
+                {
+                    blob = null;
+                }
+
+                if (null == blob && container.ServiceClient.Credentials.IsSharedKey)
+                {
+                    throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
+                }
+                else
+                {
+                    //Construct the blob as CloudBlockBlob no matter what's the real blob type
+                    //We can't get the blob type if Credentials only have the delete permission and don't have read permission.
+                    blob = container.GetBlockBlobReference(blobName, this.SnapshotTime);
+                }
+
+                await RemoveAzureBlob(taskId, localChannel, blob, true).ConfigureAwait(false);
             }
             else
             {
-                //Construct the blob as CloudBlockBlob no matter what's the real blob type
-                //We can't get the blob type if Credentials only have the delete permission and don't have read permission.
-                blob = container.GetBlockBlobReference(blobName);
-            }
+                if(this.VersionId != null & this.SnapshotTime !=null)
+                {
+                    throw new ArgumentException("Can't input VersionId and SnapshotTime, since a blob can't have both.");
+                }
 
-            await RemoveAzureBlob(taskId, localChannel, blob, true).ConfigureAwait(false);
+                BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, localChannel.StorageContext, ClientOptions);
+                BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, null,
+                    this.SnapshotTime is null? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
+                // Skip check blob existance, as Server will report error is necessary
+
+                await RemoveAzureBlobTrack2(taskId, localChannel, blobClient, true).ConfigureAwait(false);
+            }
         }
 
         /// <summary>
@@ -290,20 +431,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
 
             if (ShouldProcess(blobName, action))
-            { 
+            {
                 switch (ParameterSetName)
                 {
-                    case BlobPipelineParameterSet:
-                        CloudBlob localBlob = CloudBlob;
-                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
+                    case BlobPipelineParameterSet:                     
+                        if (!(this.CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk())
+                        {
+                            CloudBlob localBlob = CloudBlob;
+                            taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
+                        }
+                        else
+                        {
+                            taskGenerator = (taskId) => RemoveAzureBlobTrack2(taskId, localChannel, this.BlobBaseClient, false);
+                        }
                         break;
-
                     case ContainerPipelineParameterSet:
                         CloudBlobContainer localContainer = CloudBlobContainer;
                         string localName = BlobName;
                         taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainer, localName);
                         break;
-
                     case NameParameterSet:
                     default:
                         string localContainerName = ContainerName;

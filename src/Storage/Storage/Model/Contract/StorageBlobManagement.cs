@@ -16,17 +16,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.WindowsAzure.Storage.File.Protocol;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Storage;
+    using XSCL = Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
+    using Microsoft.Azure.Storage.File.Protocol;
+    using Microsoft.Azure.Storage.Queue;
+    using XSCLProtocol = Microsoft.Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage;
 
     /// <summary>
     /// Blob management
@@ -91,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
-        public IEnumerable<CloudBlobContainer> ListContainers(string prefix, ContainerListingDetails detailsIncluded, BlobRequestOptions options, OperationContext operationContext)
+        public IEnumerable<CloudBlobContainer> ListContainers(string prefix, ContainerListingDetails detailsIncluded, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
             BlobContinuationToken continuationToken = null;
@@ -104,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     continuationToken = response.ContinuationToken;
                     results.AddRange(response.Results);
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException)
+                catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
                 {
                     throw e.InnerException;
                 }
@@ -120,13 +124,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The container's permission</returns>
-        public BlobContainerPermissions GetContainerPermissions(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public BlobContainerPermissions GetContainerPermissions(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 return container.GetPermissionsAsync(accessCondition, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -143,19 +147,56 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        public BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null)
+        {
+            return GetBlobServiceClient(options).GetBlobContainerClient(name);
+        }
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        public BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null)
+        {
+            if (blobServiceClient == null)
+            {
+                if (this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                }
+                else if (this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, 
+                        new StorageSharedKeyCredential(this.StorageContext.StorageAccountName, this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+                }
+                else //sas, Anonymous
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                }
+            }
+            return blobServiceClient;
+        }
+        private BlobServiceClient blobServiceClient = null;
+
+        /// <summary>
         /// Create the container if not exists
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if the container did not already exist and was created; otherwise false.</returns>
-        public bool CreateContainerIfNotExists(CloudBlobContainer container, BlobRequestOptions requestOptions, OperationContext operationContext)
+        public bool CreateContainerIfNotExists(CloudBlobContainer container, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext)
         {
             try
             {
                 return container.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -168,13 +209,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
-        public void DeleteContainer(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void DeleteContainer(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => container.DeleteAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -188,13 +229,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
-        public void SetContainerPermissions(CloudBlobContainer container, BlobContainerPermissions permissions, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void SetContainerPermissions(CloudBlobContainer container, BlobContainerPermissions permissions, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => container.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -209,14 +250,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? SnapshotTime = null)
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, DateTimeOffset? SnapshotTime = null)
         {
             try
             {
                 CloudBlob blob = Util.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext, SnapshotTime);
                 return blob;
             }
-            catch (StorageException e)
+            catch (XSCL.StorageException e)
             {
                 if (e.IsNotFoundException())
                 {
@@ -239,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of CloudBlob</returns>
-        public IEnumerable<IListBlobItem> ListBlobs(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, BlobRequestOptions options, OperationContext operationContext)
+        public IEnumerable<IListBlobItem> ListBlobs(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
             BlobContinuationToken continuationToken = null;
@@ -260,7 +301,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if the specific container exists, otherwise return false</returns>
-        public bool DoesContainerExist(CloudBlobContainer container, BlobRequestOptions options, OperationContext operationContext)
+        public bool DoesContainerExist(CloudBlobContainer container, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             if (null == container)
             {
@@ -272,7 +313,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 {
                     return container.ExistsAsync(options, operationContext).Result;
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException)
+                catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
                 {
                     throw e.InnerException;
                 }
@@ -286,7 +327,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if the specific blob exists, otherwise return false</returns>
-        public bool DoesBlobExist(CloudBlob blob, BlobRequestOptions options, OperationContext operationContext)
+        public bool DoesBlobExist(CloudBlob blob, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             if (null == blob)
             {
@@ -298,7 +339,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 {
                     return blob.ExistsAsync(options, operationContext).Result;
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException)
+                catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
                 {
                     throw e.InnerException;
                 }
@@ -313,13 +354,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of CloudBlob</returns>
-        public void DeleteCloudBlob(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void DeleteCloudBlob(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => blob.DeleteAsync(deleteSnapshotsOption, accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -332,13 +373,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void FetchContainerAttributes(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void FetchContainerAttributes(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => container.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -350,13 +391,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void FetchBlobAttributes(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void FetchBlobAttributes(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => blob.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -368,13 +409,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void SetBlobProperties(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void SetBlobProperties(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => blob.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -387,13 +428,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void SetBlobMetadata(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void SetBlobMetadata(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => blob.SetMetadataAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -407,13 +448,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
-        public void AbortCopy(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void AbortCopy(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => blob.AbortCopyAsync(copyId, accessCondition, options, operationContext)).Wait();
             }
-            catch (StorageException e)
+            catch (XSCL.StorageException e)
             {
                 if (e.IsSuccessfulResponse())
                 {
@@ -425,9 +466,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     throw;
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
-                if (((StorageException)e.InnerException).IsSuccessfulResponse())
+                if (((XSCL.StorageException)e.InnerException).IsSuccessfulResponse())
                 {
                     //The abort operation is successful, although get an exception
                     return;
@@ -447,9 +488,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The service properties of the specified service type</returns>
-        public ServiceProperties GetStorageServiceProperties(StorageServiceType type, IRequestOptions options, OperationContext operationContext)
+        public XSCLProtocol.ServiceProperties GetStorageServiceProperties(StorageServiceType type, IRequestOptions options, XSCL.OperationContext operationContext)
         {
-            CloudStorageAccount account = StorageContext.StorageAccount;
+            XSCL.CloudStorageAccount account = StorageContext.StorageAccount;
             try
             {
                 switch (type)
@@ -458,11 +499,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         return account.CreateCloudBlobClient().GetServicePropertiesAsync((BlobRequestOptions)options, operationContext).Result;
                     case StorageServiceType.Queue:
                         return account.CreateCloudQueueClient().GetServicePropertiesAsync((QueueRequestOptions)options, operationContext).Result;
-                    case StorageServiceType.Table:
-                        return account.CreateCloudTableClient().GetServicePropertiesAsync((TableRequestOptions)options, operationContext).Result;
                     case StorageServiceType.File:
                         FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServicePropertiesAsync((FileRequestOptions)options, operationContext).Result;
-                        ServiceProperties sp = new ServiceProperties();
+                        XSCLProtocol.ServiceProperties sp = new XSCLProtocol.ServiceProperties();
                         sp.Clean();
                         sp.Cors = fileServiceProperties.Cors;
                         sp.HourMetrics = fileServiceProperties.HourMetrics;
@@ -472,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -486,9 +525,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="properties">Service properties</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
-        public void SetStorageServiceProperties(StorageServiceType type, ServiceProperties properties, IRequestOptions options, OperationContext operationContext)
+        public void SetStorageServiceProperties(StorageServiceType type, XSCLProtocol.ServiceProperties properties, IRequestOptions options, XSCL.OperationContext operationContext)
         {
-            CloudStorageAccount account = StorageContext.StorageAccount;
+            XSCL.CloudStorageAccount account = StorageContext.StorageAccount;
             try
             {
                 switch (type)
@@ -498,9 +537,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         break;
                     case StorageServiceType.Queue:
                         Task.Run(() => account.CreateCloudQueueClient().SetServicePropertiesAsync(properties, (QueueRequestOptions)options, operationContext)).Wait();
-                        break;
-                    case StorageServiceType.Table:
-                        Task.Run(() => account.CreateCloudTableClient().SetServicePropertiesAsync(properties, (TableRequestOptions)options, operationContext)).Wait();
                         break;
                     case StorageServiceType.File:
                         if (null != properties.Logging)
@@ -518,7 +554,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -529,7 +565,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
         /// <returns>Account SAS token.</returns>
-        public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        public string GetStorageAccountSASToken(XSCL.SharedAccessAccountPolicy sharedAccessAccountPolicy)
         {
             return StorageContext.StorageAccount.GetSharedAccessSignature(sharedAccessAccountPolicy);
         }
@@ -544,7 +580,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="cancellationToken">User cancellation token</param>
         /// <returns>A task object which retrieve the permission of the specified container</returns>
         public Task<BlobContainerPermissions> GetContainerPermissionsAsync(CloudBlobContainer container,
-            AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext,
+            AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext,
             CancellationToken cancellationToken)
         {
             return container.GetPermissionsAsync(accessCondition, options, operationContext, cancellationToken);
@@ -558,9 +594,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously check whether the specified container exists </returns>
-        public Task<bool> DoesContainerExistAsync(CloudBlobContainer container, BlobRequestOptions requestOptions, OperationContext OperationContext, CancellationToken cancellationToken)
+        public Task<bool> DoesContainerExistAsync(CloudBlobContainer container, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return container.ExistsAsync(requestOptions, OperationContext, cancellationToken);
+            return container.ExistsAsync(requestOptions, operationContext, cancellationToken);
         }
 
         /// <summary>
@@ -573,16 +609,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
-        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             try
             {
-                CloudBlob blob = container.GetBlobReference(blobName);
+                CloudBlob blob = container.GetBlobReference(blobName, snapshotTime);
                 await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
 
-                return Util.GetCorrespondingTypeBlobReference(blob);
+                return Util.GetCorrespondingTypeBlobReference(blob, operationContext);
             }
-            catch (StorageException e)
+            catch (XSCL.StorageException e)
             {
                 if (e.IsNotFoundException())
                 {
@@ -604,7 +640,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously fetch blob attributes</returns>
-        public Task FetchBlobAttributesAsync(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task FetchBlobAttributesAsync(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken);
         }
@@ -618,7 +654,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously create a container if it doesn't exist.</returns>
-        public Task<bool> CreateContainerIfNotExistsAsync(CloudBlobContainer container, BlobContainerPublicAccessType accessType, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<bool> CreateContainerIfNotExistsAsync(CloudBlobContainer container, BlobContainerPublicAccessType accessType, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return container.CreateIfNotExistsAsync(accessType, requestOptions, operationContext, cancellationToken);
         }
@@ -632,7 +668,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously delete the specified container.</returns>
-        public Task DeleteContainerAsync(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task DeleteContainerAsync(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return container.DeleteAsync(accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -647,7 +683,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously abort the blob copy operation</returns>
-        public Task AbortCopyAsync(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task AbortCopyAsync(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -662,7 +698,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">cancellation token</param>
         /// <returns>Return a task that asynchronously set the container permission</returns>
-        public Task SetContainerPermissionsAsync(CloudBlobContainer container, BlobContainerPermissions permissions, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task SetContainerPermissionsAsync(CloudBlobContainer container, BlobContainerPermissions permissions, AccessCondition accessCondition, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return container.SetPermissionsAsync(permissions, accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -677,7 +713,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously delete the specified blob</returns>
-        public Task DeleteCloudBlobAsync(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task DeleteCloudBlobAsync(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions requestOptions, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.DeleteAsync(deleteSnapshotsOption, accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -690,7 +726,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously check whether the specified blob exists.</returns>
-        public Task<bool> DoesBlobExistAsync(CloudBlob blob, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task<bool> DoesBlobExistAsync(CloudBlob blob, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.ExistsAsync(options, operationContext, cmdletCancellationToken);
         }
@@ -703,7 +739,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public Task SetBlobPropertiesAsync(CloudBlob blob, AccessCondition accessCondition,
-            BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+            BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.SetPropertiesAsync(accessCondition, options, operationContext, cmdletCancellationToken);
         }
@@ -716,11 +752,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public Task SetBlobMetadataAsync(CloudBlob blob, AccessCondition accessCondition,
-            BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+            BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.SetMetadataAsync(accessCondition, options, operationContext, cmdletCancellationToken);
         }
-
+        
+        /// Return a task that asynchronously set Premium page blob Tier
+        /// </summary>
+        /// <param name="blob">CloudPageBlob object</param>
+        /// <param name="tier">Premium pageblob Tier</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+        }
+        
         /// <summary>
         /// Return a task that asynchronously set block blob Tier
         /// </summary>
@@ -729,9 +776,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
-            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+            return blob.SetStandardBlobTierAsync(tier, rehydratePriority, accessCondition, options, operationContext, cmdletCancellationToken);
         }
 
         /// <summary>
@@ -743,7 +790,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="blobListingDetails">Blob listing details</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
-        public Task<BlobResultSegment> ListBlobsSegmentedAsync(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<BlobResultSegment> ListBlobsSegmentedAsync(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, blobListingDetails, maxResults, currentToken, options, operationContext, cancellationToken);
         }
@@ -759,13 +806,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation Context.</param>
         /// <returns>BlobResultSegment object</returns>
         public BlobResultSegment ListBlobsSegmented(CloudBlobContainer container, string prefix, bool useFlatBlobListing,
-            BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
+            BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 return container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, blobListingDetails, maxResults, currentToken, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -779,13 +826,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
-        public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
+        public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, XSCL.OperationContext operationContext)
         {
             try
             {
                 return this.BlobClient.ListContainersSegmentedAsync(prefix, detailsIncluded, maxResults, currentToken, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
             {
                 throw e.InnerException;
             }
@@ -802,7 +849,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
-        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartCopyAsync(source, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
@@ -819,9 +866,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
-        public Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartCopyAsync(new CloudPageBlob(source), premiumPageBlobTier, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudBlob object whcih is a Block blob</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartCopyAsync(source, standardBlobTier, rehydratePriority, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
 
         /// <summary>
@@ -834,9 +898,45 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
-        public Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartIncrementalCopyAsync(source, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the sku name and account kind for the specified account
+        /// </summary>
+        /// <returns>the sku name and account kind</returns>
+        public XSCLProtocol.AccountProperties GetAccountProperties()
+        {
+            return this.BlobClient.GetAccountPropertiesAsync().Result;
+        }
+
+        /// <summary>
+        /// Get UserDelegationKey, this key will be used to get  UserDelegation SAS token
+        /// </summary>
+        /// <param name="keyStart">The key valid start time</param>
+        /// <param name="keyEnd">The key valid end time</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The UserDelegationKey</returns>
+        public UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, XSCL.OperationContext operationContext = null)
+        {
+            try
+            {
+                DateTimeOffset userDelegationKeyStartTime = keyStart == null ? DateTime.Now : keyStart.Value;
+                DateTimeOffset userDelegationKeyEndTime = keyEnd == null ? userDelegationKeyStartTime.AddHours(1) : keyEnd.Value;
+
+                //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+                Util.ValidateUserDelegationKeyStartEndTime(userDelegationKeyStartTime, userDelegationKeyEndTime);
+
+                return this.BlobClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime, accessCondition, options, operationContext);
+            }
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

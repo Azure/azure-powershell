@@ -24,9 +24,19 @@ using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount"), OutputType(typeof(PSStorageAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
+        /// <summary>
+        /// Set AzureActiveDirectoryDomainServicesForFile parameter set name
+        /// </summary>
+        private const string AzureActiveDirectoryDomainServicesForFileParameterSet = "AzureActiveDirectoryDomainServicesForFile";
+
+        /// <summary>
+        /// Set ActiveDirectoryDomainServicesForFile parameter set name
+        /// </summary>
+        private const string ActiveDirectoryDomainServicesForFileParameterSet = "ActiveDirectoryDomainServicesForFile";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -51,11 +61,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(AccountTypeString.StandardLRS,
-            AccountTypeString.StandardZRS,
-            AccountTypeString.StandardGRS,
-            AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
+        [ValidateSet(StorageModels.SkuName.StandardLRS,
+            StorageModels.SkuName.StandardZRS,
+            StorageModels.SkuName.StandardGRS,
+            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.PremiumLRS,
+            StorageModels.SkuName.PremiumZRS,
+            StorageModels.SkuName.StandardGZRS,
+            StorageModels.SkuName.StandardRAGZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -71,11 +84,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
-        [ValidateSet(AccountKind.Storage,
-            AccountKind.StorageV2,
-            AccountKind.BlobStorage,
+        [ValidateSet(StorageModels.Kind.Storage,
+            StorageModels.Kind.StorageV2,
+            StorageModels.Kind.BlobStorage,
+            StorageModels.Kind.BlockBlobStorage,
+            StorageModels.Kind.FileStorage,
             IgnoreCase = true)]
-        public string Kind { get; set; }
+        public string Kind
+        {
+            get
+            {
+                return kind;
+            }
+            set
+            {
+                kind = value;
+            }
+        }
+        private string kind = StorageModels.Kind.StorageV2;
 
         [Parameter(
             Mandatory = false,
@@ -106,13 +132,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
         public bool EnableHttpsTrafficOnly
         {
             get
             {
-                return enableHttpsTrafficOnly.Value;
+                return enableHttpsTrafficOnly != null ? enableHttpsTrafficOnly.Value : false;
             }
             set
             {
@@ -134,8 +159,158 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableHierarchicalNamespace
+        {
+            get
+            {
+                return enableHierarchicalNamespace != null ? enableHierarchicalNamespace.Value : false;
+            }
+            set
+            {
+                enableHierarchicalNamespace = value;
+            }
+        }
+        private bool? enableHierarchicalNamespace = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.",
+            ParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
+        public SwitchParameter EnableLargeFileShare { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Active Directory Domain Service Authentication for the storage account.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool EnableActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableActiveDirectoryDomainServicesForFile = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryNetBiosDomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Active Directory forest to get. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryForestName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainGuid { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the security identifier (SID). This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainSid { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryAzureStorageSid { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Table. -Account, Table will be encrypted with account-scoped encryption key. -Service, Table will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service, 
+            StorageModels.KeyType.Account, 
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForTable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Queue. -Account, Queue will be encrypted with account-scoped encryption key. -Service, Queue will always be encrypted with Service-Managed keys. The default value is Service.")]
+        [ValidateSet(StorageModels.KeyType.Service,
+            StorageModels.KeyType.Account,
+            IgnoreCase = true)]
+        public string EncryptionKeyTypeForQueue { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
+        public SwitchParameter  RequireInfrastructureEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowBlobPublicAccess
+        {
+            get
+            {
+                return allowBlobPublicAccess.Value;
+            }
+            set
+            {
+                allowBlobPublicAccess = value;
+            }
+        }
+        private bool? allowBlobPublicAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
+        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
+            StorageModels.MinimumTlsVersion.TLS11,
+            StorageModels.MinimumTlsVersion.TLS12,
+            IgnoreCase = true)]
+        public string MinimumTlsVersion
+        {
+            get
+            {
+                return minimumTlsVersion;
+            }
+            set
+            {
+                minimumTlsVersion = value;
+            }
+        }
+        private string minimumTlsVersion = null;
 
         public override void ExecuteCmdlet()
         {
@@ -150,7 +325,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Sku = new Sku(ParseSkuName(this.SkuName)),
+                Sku = new Sku(this.SkuName),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
@@ -159,7 +334,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.CustomDomain = new CustomDomain()
                 {
                     Name = CustomDomainName,
-                    UseSubDomain = UseSubDomain
+                    UseSubDomainName = UseSubDomain
                 };
             }
             else if (UseSubDomain != null)
@@ -167,9 +342,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }
 
-            if (Kind != null)
+            if (kind != null)
             {
-                createParameters.Kind = ParseAccountKind(Kind);
+                createParameters.Kind = kind;
             }
 
             if (this.AccessTier != null)
@@ -188,6 +363,84 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+            }
+            if (enableHierarchicalNamespace != null)
+            {
+                createParameters.IsHnsEnabled = enableHierarchicalNamespace;
+            }
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null || enableActiveDirectoryDomainServicesForFile != null)
+            {
+                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                if (enableAzureActiveDirectoryDomainServicesForFile != null && enableAzureActiveDirectoryDomainServicesForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                }
+                else if (enableActiveDirectoryDomainServicesForFile != null && enableActiveDirectoryDomainServicesForFile.Value)
+                {
+                    if (string.IsNullOrEmpty(this.ActiveDirectoryDomainName)
+                        || string.IsNullOrEmpty(this.ActiveDirectoryNetBiosDomainName)
+                        || string.IsNullOrEmpty(this.ActiveDirectoryForestName)
+                        || string.IsNullOrEmpty(this.ActiveDirectoryDomainGuid)
+                        || string.IsNullOrEmpty(this.ActiveDirectoryDomainSid)
+                        || string.IsNullOrEmpty(this.ActiveDirectoryAzureStorageSid)
+                        )
+                    {
+                        throw new System.ArgumentNullException("ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid", 
+                            "To enable ActiveDirectoryDomainServicesForFile, user must specify all of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid.");
+                    }
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AD;
+                    createParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()
+                    {
+                        DomainName = this.ActiveDirectoryDomainName,
+                        NetBiosDomainName = this.ActiveDirectoryNetBiosDomainName,
+                        ForestName = this.ActiveDirectoryForestName,
+                        DomainGuid = this.ActiveDirectoryDomainGuid,
+                        DomainSid = this.ActiveDirectoryDomainSid,
+                        AzureStorageSid = this.ActiveDirectoryAzureStorageSid
+                    };
+                }
+                else
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
+            }
+            if(this.EnableLargeFileShare.IsPresent)
+            {
+                createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
+            }
+            if(this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null || this.RequireInfrastructureEncryption.IsPresent)
+            {
+                createParameters.Encryption = new Encryption();
+                createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
+                if (this.EncryptionKeyTypeForQueue != null || this.EncryptionKeyTypeForTable != null)
+                {
+                    createParameters.Encryption.Services = new EncryptionServices();
+                    if (this.EncryptionKeyTypeForQueue != null)
+                    {
+                        createParameters.Encryption.Services.Queue = new EncryptionService(keyType: this.EncryptionKeyTypeForQueue);
+                    }
+                    if (this.EncryptionKeyTypeForTable != null)
+                    {
+                        createParameters.Encryption.Services.Table = new EncryptionService(keyType: this.EncryptionKeyTypeForTable);
+                    }
+                }
+                if (this.RequireInfrastructureEncryption.IsPresent)
+                {
+                    createParameters.Encryption.RequireInfrastructureEncryption = true;
+                    if (createParameters.Encryption.Services is null)
+                    {
+                        createParameters.Encryption.Services = new EncryptionServices();
+                        createParameters.Encryption.Services.Blob = new EncryptionService();
+                    }
+                }
+            }
+            if (this.minimumTlsVersion != null)
+            {
+                createParameters.MinimumTlsVersion = this.minimumTlsVersion;
+            }
+            if (this.allowBlobPublicAccess != null)
+            {
+                createParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

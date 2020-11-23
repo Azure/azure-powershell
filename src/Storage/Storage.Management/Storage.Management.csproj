@@ -14,14 +14,14 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
-    <PackageReference Include="WindowsAzure.Storage.Hybrid_2019_03_01" Version="9.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.2" />
   </ItemGroup>
-  <ItemGroup>
+  
+<ItemGroup>
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs" Link="Common\LazyAzureStorageContext.cs" />
   </ItemGroup>
 </Project>

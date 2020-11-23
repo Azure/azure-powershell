@@ -211,7 +211,7 @@
     <value>Start to upload '{0}' to blob '{1}'.</value>
   </data>
   <data name="DefaultStorageCredentialsNotFound" xml:space="preserve">
-    <value>Can not find your azure storage credential. Please set current storage account using "Set-AzureSubscription" or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+    <value>Can not find your azure storage credential. Please set current storage account using "Set-AzSubscription" or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
   </data>
   <data name="TableAlreadyExists" xml:space="preserve">
     <value>Table '{0}' already exists.</value>
@@ -235,7 +235,7 @@
     <value>Blob type mismatched, the current blob type of '{0}' is {1}.</value>
   </data>
   <data name="CannotSendDirectory" xml:space="preserve">
-    <value>Can not upload the directory '{0}' to azure. If you want to upload directory, please use "ls -File -Recurse | Set-AzureStorageBlobContent -Container containerName".</value>
+    <value>Can not upload the directory '{0}' to azure. If you want to upload directory, please use "ls -File -Recurse | Set-AzStorageBlobContent -Container containerName".</value>
   </data>
   <data name="PrepareUploadingBlob" xml:space="preserve">
     <value>Prepare to upload blob.</value>
@@ -323,7 +323,7 @@
     <comment>0 for storage account name, 1 for end point domain.</comment>
   </data>
   <data name="CurrentStorageAccountNameNotFound" xml:space="preserve">
-    <value>Current Storage Account not found in subscription '{0}'. Please set it use "Set-AzureSubscription".</value>
+    <value>Current Storage Account not found in subscription '{0}'. Please set it use "Set-AzSubscription".</value>
     <comment>0 subscription name</comment>
   </data>
   <data name="HTTPPrefix" xml:space="preserve">
@@ -379,10 +379,10 @@
     <comment>0 for blob name, 1 for container name</comment>
   </data>
   <data name="GetAzureStorageContainerAclCmdletName" xml:space="preserve">
-    <value>Get-AzureStorageContainerAcl</value>
+    <value>Get-AzStorageContainerAcl</value>
   </data>
   <data name="GetAzureStorageContainerCmdletName" xml:space="preserve">
-    <value>Get-AzureStorageContainer</value>
+    <value>Get-AzStorageContainer</value>
   </data>
   <data name="NewAlias" xml:space="preserve">
     <value>New-Alias</value>
@@ -394,7 +394,7 @@
     <value>Value</value>
   </data>
   <data name="CannotGetSotrageAccountFromSubscription" xml:space="preserve">
-    <value>Can not get storage account  from subscription. Please check the subscription settings using "Get-AzureSubscription".</value>
+    <value>Can not get storage account  from subscription. Please check the subscription settings using "Get-AzSubscription".</value>
     <comment>0 storage account name 1 subscription name</comment>
   </data>
   <data name="CannotGetStorageAccountFromEnvironmentVariable" xml:space="preserve">
@@ -521,7 +521,7 @@
   </data>
   <data name="DestinationBlobTypeNotMatch" xml:space="preserve">
     <value>User specified blob type does not match the blob type of the existing destination blob.</value>
-  </data>    
+  </data>
   <data name="StopCopyOperationCancelled" xml:space="preserve">
     <value>The stop copy operation on blob '{0}' in container '{1}' is cancelled.</value>
     <comment>0 for blob name, 1 for container name.</comment>
@@ -733,5 +733,12 @@ Failed: {2}.</value>
   </data>
   <data name="StartTimeParameterConflict" xml:space="preserve">
     <value>Parameter -StartTime and -NoStartTime are mutually exclusive</value>
+  </data>
+  <data name="ContextCannotBeNull" xml:space="preserve">
+    <value>Context cannot be null.  Please log in using Connect-AzAccount.</value>
+  </data>
+  <data name="CannotDeleteSnapshotForBlobVersion" xml:space="preserve">
+    <value>The specified blob '{0}' is a blob Version with VersionId {1}. Can't use "DeleteSnapshot" option for it.</value>
+    <comment>0 for blob name, 1 for VersionId</comment>
   </data>
 </root>

@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Table;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.Blob;
+using XTable = Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.Queue;
+using Microsoft.Azure.Storage.Shared.Protocol;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
@@ -71,6 +71,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
             serviceProperties.DeleteRetentionPolicy.Enabled = true;
             serviceProperties.DeleteRetentionPolicy.RetentionDays = 5;
+            serviceProperties.StaticWebsite = new StaticWebsiteProperties();
+            serviceProperties.StaticWebsite.Enabled = true;
+            serviceProperties.StaticWebsite.IndexDocument = "IndexDocument";
+            serviceProperties.StaticWebsite.ErrorDocument404Path = "ErrorDocument404Path";
             PSSeriviceProperties pSSeriviceProperties = new PSSeriviceProperties(serviceProperties);
             CompareServiceProperties(pSSeriviceProperties, serviceProperties);
 
@@ -118,6 +122,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             {
                 Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.Enabled, pSSeriviceProperties.DeleteRetentionPolicy.Enabled);
                 Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.RetentionDays, pSSeriviceProperties.DeleteRetentionPolicy.RetentionDays);
+            }
+            if ((pSSeriviceProperties != null && pSSeriviceProperties.StaticWebsite != null) || (serviceProperties != null && serviceProperties.StaticWebsite != null))
+            {
+                Assert.AreEqual(serviceProperties.StaticWebsite.Enabled, pSSeriviceProperties.StaticWebsite.Enabled);
+                Assert.AreEqual(serviceProperties.StaticWebsite.IndexDocument, pSSeriviceProperties.StaticWebsite.IndexDocument);
+                Assert.AreEqual(serviceProperties.StaticWebsite.ErrorDocument404Path, pSSeriviceProperties.StaticWebsite.ErrorDocument404Path);
             }
         }
 

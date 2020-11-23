@@ -17,16 +17,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// create an new azure table
     /// </summary>
-    [Cmdlet(VerbsCommon.New, StorageNouns.Table),
-        OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable"),OutputType(typeof(AzureStorageTable))]
     public class NewAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]
@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             TableRequestOptions requestOptions = RequestOptions;
             CloudTable table = Channel.GetTableReference(name);
-            bool created = Channel.CreateTableIfNotExists(table, requestOptions, OperationContext);
+            bool created = Channel.CreateTableIfNotExists(table, requestOptions, TableOperationContext);
 
             if (!created)
             {

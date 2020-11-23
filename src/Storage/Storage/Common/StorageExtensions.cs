@@ -9,9 +9,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Storage.Auth;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
+    using global::Azure.Storage;
+    using global::Azure.Storage.Blobs.Specialized;
+    using global::Azure.Storage.Sas;
+    using Microsoft.Azure.Storage.Auth;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
     using System;
     using System.Globalization;
 
@@ -152,6 +155,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return new Uri(uriStr);
         }
 
+        /// <summary>
+        /// Append an auto generated SAS to a blob uri.
+        /// </summary>
+        /// <param name="blob">Blob to append SAS.</param>
+        /// <returns>Blob Uri with SAS appended.</returns>
+        internal static Uri GenerateUriWithCredentials(
+            this BlobBaseClient blob, AzureStorageContext context)
+        {
+            if (null == blob)
+            {
+                throw new ArgumentNullException("blob");
+            }
+            else if (context.StorageAccount.Credentials.IsSAS)
+            {
+                return blob.Uri;
+            }
+
+            string sasToken = GetBlobSasToken(blob, context);
+
+            if (string.IsNullOrEmpty(sasToken))
+            {
+                return blob.Uri;
+            }
+
+            string uriStr = null;
+
+            if (!string.IsNullOrEmpty(blob.Uri.Query))
+            {
+                uriStr = string.Format(CultureInfo.InvariantCulture, "{0}&{1}", blob.Uri.AbsoluteUri, sasToken.Substring(1));
+            }
+            else
+            {
+                uriStr = string.Format(CultureInfo.InvariantCulture, "{0}{1}", blob.Uri.AbsoluteUri, sasToken);
+            }
+
+            return new Uri(uriStr);
+        }
+
         private static string GetBlobSasToken(CloudBlob blob)
         {
             if (null == blob.ServiceClient.Credentials
@@ -185,6 +226,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             return rootBlob.GetSharedAccessSignature(policy);
+        }
+
+        private static string GetBlobSasToken(BlobBaseClient blob, AzureStorageContext context)
+        {
+            if (null == context.StorageAccount.Credentials
+                || context.StorageAccount.Credentials.IsAnonymous)
+            {
+                return string.Empty;
+            }
+            else if (context.StorageAccount.Credentials.IsSAS)
+            {
+                return context.StorageAccount.Credentials.SASToken;
+            }
+
+            // SAS life time is at least 10 minutes.
+            TimeSpan sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutes);
+
+            BlobSasBuilder sasBuilder = new BlobSasBuilder
+            {
+                BlobContainerName = blob.BlobContainerName,
+                BlobName = blob.Name,
+                ExpiresOn = DateTimeOffset.UtcNow.Add(sasLifeTime),
+            };
+            if (Util.GetVersionIdFromBlobUri(blob.Uri) != null)
+            {
+                sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blob.Uri);
+            }
+            sasBuilder.SetPermissions("r");
+            string sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            if (sasToken[0] != '?')
+            {
+                sasToken = "?" + sasToken;
+            }
+            return sasToken;
         }
     }
 }

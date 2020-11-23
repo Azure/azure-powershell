@@ -15,9 +15,11 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using System.Management.Automation;
-    using WindowsAzure.Storage.File;
+    using Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
-    [Cmdlet(VerbsCommon.New, Constants.ShareCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileShare))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class NewAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -37,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             this.RunTask(async taskId =>
             {
                 await this.Channel.CreateShareAsync(share, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                this.OutputStream.WriteObject(taskId, share);
+                WriteCloudShareObject(taskId, this.Channel, share);
             });
         }
     }

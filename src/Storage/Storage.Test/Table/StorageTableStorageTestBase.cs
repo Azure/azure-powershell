@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Table;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure.Cosmos.Table;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             tableMock.tableList.Clear();
             string testUri = "https://127.0.0.1/account/test";
             string textUri = "https://127.0.0.1/account/text";
-            
+
             tableMock.tableList.Add(new CloudTable(new Uri(testUri)));
             tableMock.tableList.Add(new CloudTable(new Uri(textUri)));
         }
