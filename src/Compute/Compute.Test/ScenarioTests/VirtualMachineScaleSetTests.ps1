@@ -2653,22 +2653,19 @@ function Test-VirtualMachineScaleSetAssignedHost
 
 <#
 .SYNOPSIS
-Test the VMSS Extension rolling upgrade cmdlet. 
+Test the VMSS Extension rolling upgrade cmdlet.
+This is a LiveOnly test and requires some manual setup.  
 #>
 function Test-VirtualMachineScaleSetExtRollingUpgrade
 {
-    # Setup
-    #$rgname = Get-ComputeTestResourceName
- 
+    # create a VM scale set manually in Azure Portal, use its default values. 
+    # Provide the Location, ResourceGroupName, and VM scale set name below. 
+
     try
     {
         
-          
         # Common
         [string]$loc = "eastus";
-
-        #New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
 
         $rgname = "adamvmssupdate";
         $vmssname = "windowsvmss";
@@ -2679,82 +2676,10 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
         $job = Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        <#  
-        # SRP
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
-        # NRP
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-
-
-        # Create LoadBalancer
-        $frontendName = Get-ResourceName
-        $backendAddressPoolName = Get-ResourceName
-        $probeName = Get-ResourceName
-        $inboundNatPoolName = Get-ResourceName
-        $lbruleName = Get-ResourceName
-        $lbName = Get-ResourceName
-
-        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
-        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $inboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
-            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3368 -BackendPort 3370;
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName `
-            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
-            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
-            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
-            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
-        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
-
-        # New VMSS Parameters
-        $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-
-        $adminUsername = 'Foo12';
-        $adminPassword = "Testing1234567";
-
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
-        $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-
-        $ipCfg = New-AzVmssIPConfig -Name 'test' `
-            -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
-            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
-            -SubnetId $subnetId;
-
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Rolling' -HealthProbeId $expectedLb.Probes[0].Id `
-            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-            | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
-            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
-            -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
-            | Add-AzVmssExtension -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True -Setting "" 
-            ;
-        
-        $vmssActual = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-        #Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True  -Setting "";
-        
-        #$job = 
-        Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -AsJob;
-        #$result = $job | Wait-Job;
-        #Assert-AreEqual "Failed" $result.State;
-
-        #>
     }
     finally
     {
-        # Cleanup
-        #Clean-ResourceGroup $rgname
+        
     }
 }
