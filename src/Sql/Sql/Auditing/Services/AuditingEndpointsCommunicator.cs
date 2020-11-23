@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Sql.Auditing.DevOps;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
@@ -115,6 +114,29 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             });
         }
 
+        public ServerDevOpsAuditingPolicy GetDevOpsAuditingPolicy(string resourceGroupName,
+            string serverName)
+        {
+            IServerDevOpsAuditPoliciesOperations serverDevOpsAuditPolicies = GetCurrentSqlClient().ServerDevOpsAuditPolicies;
+
+            return serverDevOpsAuditPolicies.Get(resourceGroupName, serverName, "default");
+        }
+
+        public bool SetDevOpsAuditingPolicy(string resourceGroupName, string serverName,
+            ServerDevOpsAuditingPolicy policy)
+        {
+            return SetAuditingPolicyInternal(() =>
+            {
+                SqlManagementClient client = GetCurrentSqlClient();
+                IServerDevOpsAuditPoliciesOperations serverDevOpsAuditPolicies = client.ServerDevOpsAuditPolicies;
+
+                AzureOperationResponse<ServerDevOpsAuditingPolicy> response =
+                    serverDevOpsAuditPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
+                        resourceGroupName, serverName, "default", policy).Result;
+                return client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result.Response.IsSuccessStatusCode;
+            });
+        }
+
         public IList<DiagnosticSettingsResource> GetDiagnosticsEnablingAuditCategory(
             out string nextDiagnosticSettingsName,
             string categoryName, string settingsNamePrefix,
@@ -209,29 +231,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
 
             return server.Identity.PrincipalId;
-        }
-
-        public ServerDevOpsAuditingPolicy GetDevOpsAuditingPolicy(string resourceGroupName,
-            string serverName)
-        {
-            IServerDevOpsAuditPoliciesOperations serverDevOpsAuditPolicies = new ServerDevOpsAuditPoliciesOperations(GetCurrentSqlClient());
-
-            return serverDevOpsAuditPolicies.Get(resourceGroupName, serverName, "default");
-        }
-
-        public bool SetDevOpsAuditingPolicy(string resourceGroupName, string serverName,
-            ServerDevOpsAuditingPolicy policy)
-        {
-            return SetAuditingPolicyInternal(() =>
-            {
-                SqlManagementClient client = GetCurrentSqlClient();
-                IServerDevOpsAuditPoliciesOperations serverDevOpsAuditPolicies = new ServerDevOpsAuditPoliciesOperations(client);
-
-                AzureOperationResponse<ServerDevOpsAuditingPolicy> response =
-                    serverDevOpsAuditPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
-                        resourceGroupName, serverName, "default", policy).Result;
-                return client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result.Response.IsSuccessStatusCode;
-            });
         }
 
         private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings, 
