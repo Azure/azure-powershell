@@ -157,6 +157,10 @@ function Get-Cmdlets {
     $nestedModules = $ModuleMetadata.NestedModules
     $cmdlets = @()
     foreach ($module in $nestedModules) {
+        if('.dll' -ne [System.IO.Path]::GetExtension($module)) 
+        {
+            continue;
+        }
         $dllPath = Join-Path -Path $ModulePath -ChildPath $module
         $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
         $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
