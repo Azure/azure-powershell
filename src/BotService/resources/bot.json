@@ -1,0 +1,2659 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure Bot Service",
+    "description": "Azure Bot Service is a platform for creating smart conversational agents.",
+    "version": "2018-07-12"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}": {
+      "put": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Creates a Bot Service. Bot Service is a resource group wide resource type.",
+        "operationId": "Bots_Create",
+        "x-ms-examples": {
+          "Create Bot": {
+            "$ref": "./examples/CreateBot.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            },
+            "description": "The parameters to provide for the created bot."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Updates a Bot Service",
+        "operationId": "Bots_Update",
+        "x-ms-examples": {
+          "Update Bot": {
+            "$ref": "./examples/UpdateBot.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "x-ms-client-flatten": true,
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            },
+            "description": "The parameters to provide for the created bot."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            }
+          },
+          "201": {
+            "description": "If resource is updated successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Deletes a Bot Service from the resource group. ",
+        "operationId": "Bots_Delete",
+        "x-ms-examples": {
+          "Delete Bot": {
+            "$ref": "./examples/DeleteBot.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A 200 (OK) should be returned if the object exists and was deleted successfully;"
+          },
+          "204": {
+            "description": "a 204 (NoContent) should be used if the resource does not exist and the request is well formed."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Returns a BotService specified by the parameters.",
+        "operationId": "Bots_Get",
+        "x-ms-examples": {
+          "Get Bot": {
+            "$ref": "./examples/GetBot.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/Bot"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices": {
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Returns all the resources of a particular type belonging to a resource group",
+        "operationId": "Bots_ListByResourceGroup",
+        "x-ms-examples": {
+          "List Bots by Resource Group": {
+            "$ref": "./examples/ListBotsByResourceGroup.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses here. If a resource provider does not support paging, it should return the same body (JSON object with “value” property) but omit nextLink entirely (or set to null, *not* empty string) for future compatibility.\nThe nextLink should be implemented using following query parameters:\n· skipToken: opaque token that allows the resource provider to skip resources already enumerated. This value is defined and returned by the RP after first request via nextLink.\n· top: the optional client query parameter which defines the maximum number of records to be returned by the server.\nImplementation details:\n· NextLink may include all the query parameters (specifically OData $filter) used by the client in the first query. \n· Server may return less records than requested with nextLink. Returning zero records with NextLink is an acceptable response. \nClients must fetch records until the nextLink is not returned back / null. Clients should never rely on number of returned records to determinate if pagination is completed.",
+            "schema": {
+              "$ref": "#/definitions/BotResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group does not exist, 404 (NotFound) will be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices": {
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Returns all the resources of a particular type belonging to a subscription.",
+        "operationId": "Bots_List",
+        "x-ms-examples": {
+          "List Bots by Subscription": {
+            "$ref": "./examples/ListBotsBySubscription.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses. If a resource provider does not support paging, it should return the same body but leave nextLink empty for future compatibility.\nFor a detailed explanation of each field in the response body, please refer to the request body description in the PUT resource section. ",
+            "schema": {
+              "$ref": "#/definitions/BotResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}": {
+      "put": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Creates a Channel registration for a Bot Service",
+        "operationId": "Channels_Create",
+        "x-ms-examples": {
+          "Create Bot": {
+            "$ref": "./examples/PutChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/channelNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Updates a Channel registration for a Bot Service",
+        "operationId": "Channels_Update",
+        "x-ms-examples": {
+          "Update Bot": {
+            "$ref": "./examples/UpdateChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/channelNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "x-ms-client-flatten": true,
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            },
+            "description": "The parameters to provide for the created bot."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "201": {
+            "description": "If resource is updated successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Deletes a Channel registration from a Bot Service",
+        "operationId": "Channels_Delete",
+        "x-ms-examples": {
+          "Delete Bot": {
+            "$ref": "./examples/DeleteChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "name": "channelName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 2,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+            "description": "The name of the Bot resource."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A 200 (OK) should be returned if the object exists and was deleted successfully;"
+          },
+          "204": {
+            "description": "a 204 (NoContent) should be used if the resource does not exist and the request is well formed."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Returns a BotService Channel registration specified by the parameters.",
+        "operationId": "Channels_Get",
+        "x-ms-examples": {
+          "Get Bot": {
+            "$ref": "./examples/GetChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/channelNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/listChannelWithKeys": {
+      "post": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Lists a Channel registration for a Bot Service including secrets",
+        "operationId": "Channels_ListWithKeys",
+        "x-ms-examples": {
+          "List Channel": {
+            "$ref": "./examples/ListChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/channelNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is retrieved successfully, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/BotChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels": {
+      "get": {
+        "tags": [
+          "Channel"
+        ],
+        "description": "Returns all the Channel registrations of a particular BotService resource",
+        "operationId": "Channels_ListByResourceGroup",
+        "x-ms-examples": {
+          "List Bots by Resource Group": {
+            "$ref": "./examples/ListChannelsByBotService.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses here. If a resource provider does not support paging, it should return the same body (JSON object with “value” property) but omit nextLink entirely (or set to null, *not* empty string) for future compatibility.\nThe nextLink should be implemented using following query parameters:\n· skipToken: opaque token that allows the resource provider to skip resources already enumerated. This value is defined and returned by the RP after first request via nextLink.\n· top: the optional client query parameter which defines the maximum number of records to be returned by the server.\nImplementation details:\n· NextLink may include all the query parameters (specifically OData $filter) used by the client in the first query. \n· Server may return less records than requested with nextLink. Returning zero records with NextLink is an acceptable response. \nClients must fetch records until the nextLink is not returned back / null. Clients should never rely on number of returned records to determinate if pagination is completed.",
+            "schema": {
+              "$ref": "#/definitions/ChannelResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group does not exist, 404 (NotFound) will be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/providers/Microsoft.BotService/checkNameAvailability": {
+      "post": {
+        "tags": [
+          "Bot"
+        ],
+        "description": "Check whether a bot name is available.",
+        "operationId": "Bots_GetCheckNameAvailability",
+        "x-ms-examples": {
+          "check Name Availability": {
+            "$ref": "./examples/CheckNameAvailability.json"
+          }
+        },
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckNameAvailabilityRequestBody"
+            },
+            "description": "The request body parameters to provide for the check name availability request"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses. If a resource provider does not support paging, it should return the same body but leave nextLink empty for future compatibility.\nFor a detailed explanation of each field in the response body, please refer to the request body description in the PUT resource section. ",
+            "schema": {
+              "$ref": "#/definitions/CheckNameAvailabilityResponseBody"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/providers/Microsoft.BotService/operations": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "description": "Lists all the available BotService operations.",
+        "operationId": "Operations_List",
+        "x-ms-examples": {
+          "Get Operations": {
+            "$ref": "./examples/GetOperations.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "schema": {
+              "$ref": "#/definitions/OperationEntityListResult"
+            }
+          }
+        },
+        "deprecated": false,
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listAuthServiceProviders": {
+      "post": {
+        "tags": [
+          "ListServiceProviders"
+        ],
+        "description": "Lists the available Service Providers for creating Connection Settings",
+        "operationId": "BotConnection_ListServiceProviders",
+        "x-ms-examples": {
+          "List Auth Service Providers": {
+            "$ref": "./examples/ListServiceProviders.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is retrieved successfully, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/ServiceProviderResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/Connections/{connectionName}/listWithSecrets": {
+      "post": {
+        "tags": [
+          "BotConnection"
+        ],
+        "x-ms-examples": {
+          "Update Connection Setting": {
+            "$ref": "./examples/GetConnection.json"
+          }
+        },
+        "description": "Get a Connection Setting registration for a Bot Service",
+        "operationId": "BotConnection_ListWithSecrets",
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/Connections/{connectionName}": {
+      "put": {
+        "tags": [
+          "BotConnection"
+        ],
+        "description": "Register a new Auth Connection for a Bot Service",
+        "operationId": "BotConnection_Create",
+        "x-ms-examples": {
+          "Create Connection Setting": {
+            "$ref": "./examples/PutConnection.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            },
+            "description": "The parameters to provide for creating the Connection Setting."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "BotConnection"
+        ],
+        "description": "Updates a Connection Setting registration for a Bot Service",
+        "operationId": "BotConnection_Update",
+        "x-ms-examples": {
+          "Update Connection Setting": {
+            "$ref": "./examples/UpdateConnection.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            },
+            "description": "The parameters to provide for updating the Connection Setting."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "BotConnection"
+        ],
+        "x-ms-examples": {
+          "Update Connection Setting": {
+            "$ref": "./examples/GetConnection.json"
+          }
+        },
+        "description": "Get a Connection Setting registration for a Bot Service",
+        "operationId": "BotConnection_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSetting"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "BotConnection"
+        ],
+        "description": "Deletes a Connection Setting registration for a Bot Service",
+        "operationId": "BotConnection_Delete",
+        "x-ms-examples": {
+          "Update Connection Setting": {
+            "$ref": "./examples/DeleteConnection.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A 200 (OK) should be returned if the object exists and was deleted successfully;"
+          },
+          "204": {
+            "description": "a 204 (NoContent) should be used if the resource does not exist and the request is well formed."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections": {
+      "get": {
+        "tags": [
+          "BotConnection"
+        ],
+        "description": "Returns all the Connection Settings registered to a particular BotService resource",
+        "operationId": "BotConnection_ListByBotService",
+        "x-ms-examples": {
+          "List Connection Settings": {
+            "$ref": "./examples/ListConnectionsByBotService.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses here. If a resource provider does not support paging, it should return the same body (JSON object with “value” property) but omit nextLink entirely (or set to null, *not* empty string) for future compatibility.\nThe nextLink should be implemented using following query parameters:\n· skipToken: opaque token that allows the resource provider to skip resources already enumerated. This value is defined and returned by the RP after first request via nextLink.\n· top: the optional client query parameter which defines the maximum number of records to be returned by the server.\nImplementation details:\n· NextLink may include all the query parameters (specifically OData $filter) used by the client in the first query. \n· Server may return less records than requested with nextLink. Returning zero records with NextLink is an acceptable response. \nClients must fetch records until the nextLink is not returned back / null. Clients should never rely on number of returned records to determinate if pagination is completed.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionSettingResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group does not exist, 404 (NotFound) will be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/providers/Microsoft.BotService/checkEnterpriseChannelNameAvailability": {
+      "post": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Check whether an Enterprise Channel name is available.",
+        "operationId": "EnterpriseChannels_CheckNameAvailability",
+        "x-ms-examples": {
+          "Check Enterprise Channel Name Availability": {
+            "$ref": "./examples/EnterpriseChannelCheckNameAvailability.json"
+          }
+        },
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannelCheckNameAvailabilityRequest"
+            },
+            "description": "The parameters to provide for the Enterprise Channel check name availability request."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses. If a resource provider does not support paging, it should return the same body but leave nextLink empty for future compatibility.\nFor a detailed explanation of each field in the response body, please refer to the request body description in the PUT resource section.",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannelCheckNameAvailabilityResponse"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/enterpriseChannels": {
+      "get": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Returns all the resources of a particular type belonging to a resource group.",
+        "operationId": "EnterpriseChannels_ListByResourceGroup",
+        "x-ms-examples": {
+          "List Enterprise Channels by Resource Group": {
+            "$ref": "./examples/ListEnterpriseChannelsByResourceGroup.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. For other errors (e.g. internal errors) use the appropriate HTTP error code.\nThe nextLink field is expected to point to the URL the client should use to fetch the next page (per server side paging). This matches the OData guidelines for paged responses here. If a resource provider does not support paging, it should return the same body (JSON object with “value” property) but omit nextLink entirely (or set to null, *not* empty string) for future compatibility.\nThe nextLink should be implemented using following query parameters:\n· skipToken: opaque token that allows the resource provider to skip resources already enumerated. This value is defined and returned by the RP after first request via nextLink.\n· top: the optional client query parameter which defines the maximum number of records to be returned by the server.\nImplementation details:\n· NextLink may include all the query parameters (specifically OData $filter) used by the client in the first query. \n· Server may return less records than requested with nextLink. Returning zero records with NextLink is an acceptable response. \nClients must fetch records until the nextLink is not returned back / null. Clients should never rely on number of returned records to determinate if pagination is completed.",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannelResponseList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group does not exist, 404 (NotFound) will be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/enterpriseChannels/{resourceName}": {
+      "put": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Creates an Enterprise Channel.",
+        "operationId": "EnterpriseChannels_Create",
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create Enterprise Channel": {
+            "$ref": "./examples/CreateEnterpriseChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            },
+            "description": "The parameters to provide for the new Enterprise Channel."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Updates an Enterprise Channel.",
+        "operationId": "EnterpriseChannels_Update",
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Update Enterprise Channel": {
+            "$ref": "./examples/UpdateEnterpriseChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "x-ms-client-flatten": true,
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            },
+            "description": "The parameters to provide to update the Enterprise Channel."
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If resource is created successfully or already existed, the service should return 200 (OK).",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            }
+          },
+          "201": {
+            "description": "If resource is created successfully, the service should return 201 (Created). Execution to continue asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Deletes an Enterprise Channel from the resource group",
+        "operationId": "EnterpriseChannels_Delete",
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Delete Enterprise Channel": {
+            "$ref": "./examples/DeleteEnterpriseChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A 200 (OK) should be returned if the object exists and was deleted successfully;"
+          },
+          "204": {
+            "description": "a 204 (NoContent) should be used if the resource does not exist and the request is well formed."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Enterprise Channel"
+        ],
+        "description": "Returns an Enterprise Channel specified by the parameters.",
+        "operationId": "EnterpriseChannels_Get",
+        "x-ms-examples": {
+          "Get Enterprise Channel": {
+            "$ref": "./examples/GetEnterpriseChannel.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/resourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/resourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/subscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The resource provider should return 200 (OK) to indicate that the operation completed successfully. ",
+            "schema": {
+              "$ref": "#/definitions/EnterpriseChannel"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed. If the resource group *or* resource does not exist, 404 (NotFound) should be returned.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "description": "Azure resource",
+      "x-ms-azure-resource": true,
+      "properties": {
+        "id": {
+          "description": "Specifies the resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Specifies the name of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "Specifies the location of the resource.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Specifies the type of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "tags": {
+          "description": "Contains resource tags defined as key/value pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sku": {
+          "$ref": "#/definitions/Sku",
+          "description": "Gets or sets the SKU of the resource."
+        },
+        "kind": {
+          "$ref": "#/definitions/Kind",
+          "description": "Required. Gets or sets the Kind of the resource."
+        },
+        "etag": {
+          "type": "string",
+          "description": "Entity Tag"
+        }
+      }
+    },
+    "Sku": {
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/SkuName",
+          "description": "The sku name"
+        },
+        "tier": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Gets the sku tier. This is based on the SKU name.",
+          "enum": [
+            "Free",
+            "Standard"
+          ],
+          "x-ms-enum": {
+            "name": "SkuTier",
+            "modelAsString": true
+          }
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "description": "The SKU of the cognitive services account."
+    },
+    "SkuName": {
+      "type": "string",
+      "description": "The name of SKU.",
+      "enum": [
+        "F0",
+        "S1"
+      ],
+      "x-ms-enum": {
+        "name": "SkuName",
+        "modelAsString": true
+      }
+    },
+    "Kind": {
+      "type": "string",
+      "description": "Indicates the type of bot service",
+      "enum": [
+        "sdk",
+        "designer",
+        "bot",
+        "function"
+      ],
+      "x-ms-enum": {
+        "name": "Kind",
+        "modelAsString": true
+      }
+    },
+    "Bot": {
+      "type": "object",
+      "description": "Bot resource definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/BotProperties",
+          "description": "The set of properties specific to bot resource"
+        }
+      }
+    },
+    "BotProperties": {
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The Name of the bot"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the bot"
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "The Icon Url of the bot"
+        },
+        "endpoint": {
+          "type": "string",
+          "description": "The bot's endpoint"
+        },
+        "endpointVersion": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The bot's endpoint version"
+        },
+        "msaAppId": {
+          "type": "string",
+          "description": "Microsoft App Id for the bot"
+        },
+        "configuredChannels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "description": "Collection of channels for which the bot is configured"
+        },
+        "enabledChannels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "description": "Collection of channels for which the bot is enabled"
+        },
+        "developerAppInsightKey": {
+          "type": "string",
+          "description": "The Application Insights key"
+        },
+        "developerAppInsightsApiKey": {
+          "type": "string",
+          "description": "The Application Insights Api Key"
+        },
+        "developerAppInsightsApplicationId": {
+          "type": "string",
+          "description": "The Application Insights App Id"
+        },
+        "luisAppIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Collection of LUIS App Ids"
+        },
+        "luisKey": {
+          "type": "string",
+          "description": "The LUIS Key"
+        }
+      },
+      "description": "The parameters to provide for the Bot.",
+      "required": [
+        "displayName",
+        "endpoint",
+        "msaAppId"
+      ]
+    },
+    "BotResponseList": {
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of bot service resources.",
+          "type": "string"
+        },
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Bot"
+          },
+          "description": "Gets the list of bot service results and their properties."
+        }
+      },
+      "description": "The list of  bot service operation response."
+    },
+    "BotChannel": {
+      "type": "object",
+      "description": "Bot channel resource definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/Channel",
+          "description": "The set of properties specific to bot channel resource"
+        }
+      }
+    },
+    "Channel": {
+      "type": "object",
+      "description": "Channel definition",
+      "discriminator": "channelName",
+      "properties": {
+        "channelName": {
+          "type": "string",
+          "description": "The channel name"
+        }
+      },
+      "required": [
+        "channelName"
+      ]
+    },
+    "FacebookChannel": {
+      "type": "object",
+      "description": "Facebook channel definition",
+      "x-ms-discriminator-value": "FacebookChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/FacebookChannelProperties",
+          "description": "The set of properties specific to bot facebook channel"
+        }
+      }
+    },
+    "FacebookChannelProperties": {
+      "properties": {
+        "verifyToken": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Verify token. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FacebookPage"
+          },
+          "description": "The list of Facebook pages"
+        },
+        "appId": {
+          "type": "string",
+          "description": "Facebook application id"
+        },
+        "appSecret": {
+          "type": "string",
+          "description": "Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "callbackUrl": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Callback Url"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Facebook channel.",
+      "required": [
+        "appId",
+        "appSecret",
+        "isEnabled"
+      ]
+    },
+    "FacebookPage": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Page id"
+        },
+        "accessToken": {
+          "type": "string",
+          "description": "Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty."
+        }
+      },
+      "description": "A Facebook page for Facebook channel registration",
+      "required": [
+        "id",
+        "accessToken"
+      ]
+    },
+    "EmailChannel": {
+      "type": "object",
+      "description": "Email channel definition",
+      "x-ms-discriminator-value": "EmailChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/EmailChannelProperties",
+          "description": "The set of properties specific to email channel resource"
+        }
+      }
+    },
+    "EmailChannelProperties": {
+      "properties": {
+        "emailAddress": {
+          "type": "string",
+          "description": "The email address"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Email channel.",
+      "required": [
+        "emailAddress",
+        "password",
+        "isEnabled"
+      ]
+    },
+    "MsTeamsChannel": {
+      "type": "object",
+      "x-ms-discriminator-value": "MsTeamsChannel",
+      "description": "Microsoft Teams channel definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/MsTeamsChannelProperties",
+          "description": "The set of properties specific to Microsoft Teams channel resource"
+        }
+      }
+    },
+    "MsTeamsChannelProperties": {
+      "properties": {
+        "enableCalling": {
+          "type": "boolean",
+          "description": "Enable calling for Microsoft Teams channel"
+        },
+        "callingWebHook": {
+          "type": "string",
+          "description": "Webhook for Microsoft Teams channel calls"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Microsoft Teams channel.",
+      "required": [
+        "isEnabled"
+      ]
+    },
+    "SkypeChannel": {
+      "type": "object",
+      "description": "Skype channel definition",
+      "x-ms-discriminator-value": "SkypeChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SkypeChannelProperties",
+          "description": "The set of properties specific to Skype channel resource"
+        }
+      }
+    },
+    "SkypeChannelProperties": {
+      "properties": {
+        "enableMessaging": {
+          "type": "boolean",
+          "description": "Enable messaging for Skype channel"
+        },
+        "enableMediaCards": {
+          "type": "boolean",
+          "description": "Enable media cards for Skype channel"
+        },
+        "enableVideo": {
+          "type": "boolean",
+          "description": "Enable video for Skype channel"
+        },
+        "enableCalling": {
+          "type": "boolean",
+          "description": "Enable calling for Skype channel"
+        },
+        "enableScreenSharing": {
+          "type": "boolean",
+          "description": "Enable screen sharing for Skype channel"
+        },
+        "enableGroups": {
+          "type": "boolean",
+          "description": "Enable groups for Skype channel"
+        },
+        "groupsMode": {
+          "type": "string",
+          "description": "Group mode for Skype channel"
+        },
+        "callingWebHook": {
+          "type": "string",
+          "description": "Calling web hook for Skype channel"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Microsoft Teams channel.",
+      "required": [
+        "isEnabled"
+      ]
+    },
+    "KikChannel": {
+      "type": "object",
+      "x-ms-discriminator-value": "KikChannel",
+      "description": "Kik channel definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/KikChannelProperties",
+          "description": "The set of properties specific to Kik channel resource"
+        }
+      }
+    },
+    "KikChannelProperties": {
+      "properties": {
+        "userName": {
+          "type": "string",
+          "description": "The Kik user name"
+        },
+        "apiKey": {
+          "type": "string",
+          "description": "Kik API key. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "isValidated": {
+          "type": "boolean",
+          "description": "Whether this channel is validated for the bot"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Kik channel.",
+      "required": [
+        "userName",
+        "apiKey",
+        "isEnabled"
+      ]
+    },
+    "WebChatChannel": {
+      "type": "object",
+      "x-ms-discriminator-value": "WebChatChannel",
+      "description": "Web Chat channel definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/WebChatChannelProperties",
+          "description": "The set of properties specific to Web Chat channel resource"
+        }
+      }
+    },
+    "WebChatChannelProperties": {
+      "properties": {
+        "webChatEmbedCode": {
+          "type": "string",
+          "x-ms-mutability": [
+            "read"
+          ],
+          "readOnly": true,
+          "description": "Web chat control embed code"
+        },
+        "sites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WebChatSite"
+          },
+          "description": "The list of Web Chat sites"
+        }
+      },
+      "description": "The parameters to provide for the Web Chat channel."
+    },
+    "DirectLineChannel": {
+      "type": "object",
+      "x-ms-discriminator-value": "DirectLineChannel",
+      "description": "Direct Line channel definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DirectLineChannelProperties",
+          "description": "The set of properties specific to Direct Line channel resource"
+        }
+      }
+    },
+    "DirectLineChannelProperties": {
+      "properties": {
+        "sites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DirectLineSite"
+          },
+          "description": "The list of Direct Line sites"
+        }
+      },
+      "description": "The parameters to provide for the Direct Line channel."
+    },
+    "TelegramChannel": {
+      "type": "object",
+      "description": "Telegram channel definition",
+      "x-ms-discriminator-value": "TelegramChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/TelegramChannelProperties",
+          "description": "The set of properties specific to Telegram channel resource"
+        }
+      }
+    },
+    "TelegramChannelProperties": {
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "description": "The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "isValidated": {
+          "type": "boolean",
+          "description": "Whether this channel is validated for the bot"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Telegram channel.",
+      "required": [
+        "accessToken",
+        "isEnabled"
+      ]
+    },
+    "SmsChannel": {
+      "type": "object",
+      "description": "Sms channel definition",
+      "x-ms-discriminator-value": "SmsChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SmsChannelProperties",
+          "description": "The set of properties specific to Sms channel resource"
+        }
+      }
+    },
+    "SmsChannelProperties": {
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "The Sms phone"
+        },
+        "accountSID": {
+          "type": "string",
+          "description": "The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "authToken": {
+          "type": "string",
+          "description": "The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "isValidated": {
+          "type": "boolean",
+          "description": "Whether this channel is validated for the bot"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Sms channel.",
+      "required": [
+        "phone",
+        "accountSID",
+        "authToken",
+        "isEnabled"
+      ]
+    },
+    "SlackChannel": {
+      "type": "object",
+      "description": "Slack channel definition",
+      "x-ms-discriminator-value": "SlackChannel",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Channel"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SlackChannelProperties",
+          "description": "The set of properties specific to Slack channel resource"
+        }
+      }
+    },
+    "SlackChannelProperties": {
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "The Slack client id"
+        },
+        "clientSecret": {
+          "type": "string",
+          "description": "The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "verificationToken": {
+          "type": "string",
+          "description": "The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty."
+        },
+        "landingPageUrl": {
+          "type": "string",
+          "description": "The Slack landing page Url"
+        },
+        "redirectAction": {
+          "type": "string",
+          "description": "The Slack redirect action",
+          "readOnly": true
+        },
+        "lastSubmissionId": {
+          "type": "string",
+          "description": "The Sms auth token",
+          "readOnly": true
+        },
+        "registerBeforeOAuthFlow": {
+          "type": "boolean",
+          "description": "Whether to register the settings before OAuth validation is performed. Recommended to True.",
+          "readOnly": true
+        },
+        "isValidated": {
+          "type": "boolean",
+          "description": "Whether this channel is validated for the bot",
+          "readOnly": true
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this channel is enabled for the bot"
+        }
+      },
+      "description": "The parameters to provide for the Slack channel.",
+      "required": [
+        "clientId",
+        "clientSecret",
+        "verificationToken",
+        "isEnabled"
+      ]
+    },
+    "ChannelResponseList": {
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of bot service channel resources.",
+          "type": "string"
+        },
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BotChannel"
+          },
+          "description": "Gets the list of bot service channel results and their properties."
+        }
+      },
+      "description": "The list of bot service channel operation response."
+    },
+    "WebChatSite": {
+      "properties": {
+        "siteId": {
+          "type": "string",
+          "description": "Site Id",
+          "x-ms-mutability": [
+            "read"
+          ],
+          "readOnly": true
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Site name"
+        },
+        "key": {
+          "type": "string",
+          "description": "Primary key. Value only returned through POST to the action Channel List API, otherwise empty.",
+          "x-ms-mutability": [
+            "read"
+          ],
+          "readOnly": true
+        },
+        "key2": {
+          "type": "string",
+          "description": "Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.",
+          "x-ms-mutability": [
+            "read"
+          ],
+          "readOnly": true
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for DirectLine channel"
+        },
+        "enablePreview": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for preview versions of Webchat"
+        }
+      },
+      "required": [
+        "siteName",
+        "isEnabled",
+        "enablePreview"
+      ],
+      "description": "A site for the Webchat channel"
+    },
+    "DirectLineSite": {
+      "properties": {
+        "siteId": {
+          "x-ms-mutability": [
+            "read"
+          ],
+          "type": "string",
+          "description": "Site Id",
+          "readOnly": true
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Site name"
+        },
+        "key": {
+          "x-ms-mutability": [
+            "read"
+          ],
+          "type": "string",
+          "description": "Primary key. Value only returned through POST to the action Channel List API, otherwise empty.",
+          "readOnly": true
+        },
+        "key2": {
+          "x-ms-mutability": [
+            "read"
+          ],
+          "type": "string",
+          "description": "Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.",
+          "readOnly": true
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for DirectLine channel."
+        },
+        "isV1Enabled": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for Bot Framework V1 protocol."
+        },
+        "isV3Enabled": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for Bot Framework V1 protocol."
+        },
+        "isSecureSiteEnabled": {
+          "type": "boolean",
+          "description": "Whether this site is enabled for authentication with Bot Framework."
+        },
+        "trustedOrigins": {
+          "type": "array",
+          "description": "List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A site for the Direct Line channel",
+      "required": [
+        "isV1Enabled",
+        "isV3Enabled",
+        "isEnabled",
+        "siteName"
+      ]
+    },
+    "ConnectionItemName": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Connection Item name that has been added in the API",
+          "readOnly": true
+        }
+      },
+      "description": "The display name of a connection Item Setting registered with the Bot"
+    },
+    "ConnectionSettingParameter": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Key for the Connection Setting Parameter."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value associated with the Connection Setting Parameter."
+        }
+      },
+      "description": "Extra Parameter in a Connection Setting Properties to indicate service provider specific properties"
+    },
+    "ConnectionSettingProperties": {
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "Client Id associated with the Connection Setting."
+        },
+        "settingId": {
+          "type": "string",
+          "description": "Setting Id set by the service for the Connection Setting.",
+          "readOnly": true
+        },
+        "clientSecret": {
+          "type": "string",
+          "description": "Client Secret associated with the Connection Setting"
+        },
+        "scopes": {
+          "type": "string",
+          "description": "Scopes associated with the Connection Setting"
+        },
+        "serviceProviderId": {
+          "type": "string",
+          "description": "Service Provider Id associated with the Connection Setting"
+        },
+        "serviceProviderDisplayName": {
+          "type": "string",
+          "description": "Service Provider Display Name associated with the Connection Setting"
+        },
+        "parameters": {
+          "type": "array",
+          "description": "Service Provider Parameters associated with the Connection Setting",
+          "items": {
+            "$ref": "#/definitions/ConnectionSettingParameter"
+          }
+        }
+      },
+      "description": "Properties for a Connection Setting Item"
+    },
+    "ConnectionSetting": {
+      "type": "object",
+      "description": "Bot channel resource definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ConnectionSettingProperties",
+          "description": "The set of properties specific to bot channel resource"
+        }
+      }
+    },
+    "ConnectionSettingResponseList": {
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of bot service connection setting resources.",
+          "type": "string"
+        },
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConnectionSetting"
+          },
+          "description": "Gets the list of bot service connection settings and their properties."
+        }
+      },
+      "description": "The list of bot service connection settings response."
+    },
+    "ServiceProviderResponseList": {
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of bot service providers.",
+          "type": "string"
+        },
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceProvider"
+          },
+          "description": "Gets the list of bot service providers and their properties."
+        }
+      },
+      "description": "The list of bot service providers response."
+    },
+    "ServiceProviderParameter": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the Service Provider",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the Service Provider",
+          "readOnly": true
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display Name of the Service Provider",
+          "readOnly": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the Service Provider",
+          "readOnly": true
+        },
+        "helpUrl": {
+          "type": "string",
+          "description": "Help Url for the  Service Provider",
+          "readOnly": true
+        },
+        "default": {
+          "type": "string",
+          "description": "Default Name for the Service Provider",
+          "readOnly": true
+        }
+      },
+      "description": "Extra Parameters specific to each Service Provider"
+    },
+    "ServiceProviderProperties": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id for Service Provider",
+          "readOnly": true
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display Name of the Service Provider",
+          "readOnly": true
+        },
+        "serviceProviderName": {
+          "type": "string",
+          "description": "Display Name of the Service Provider",
+          "readOnly": true
+        },
+        "devPortalUrl": {
+          "type": "string",
+          "description": "Display Name of the Service Provider",
+          "readOnly": true
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "Display Name of the Service Provider",
+          "readOnly": true
+        },
+        "parameters": {
+          "description": "The list of parameters for the Service Provider",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceProviderParameter"
+          }
+        }
+      },
+      "description": "The Object used to describe a Service Provider supported by Bot Service"
+    },
+    "ServiceProvider": {
+      "type": "object",
+      "description": "Service Provider Definition",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ServiceProviderProperties",
+          "description": "The Properties of a Service Provider Object"
+        }
+      }
+    },
+    "Error": {
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorBody",
+          "description": "The error body."
+        }
+      },
+      "description": "Bot Service error object."
+    },
+    "ErrorBody": {
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "error code"
+        },
+        "message": {
+          "type": "string",
+          "description": "error message"
+        }
+      },
+      "description": "Bot Service error body.",
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "OperationEntityListResult": {
+      "description": "The list of bot service operation response.",
+      "type": "object",
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of operations.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The list of operations.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OperationEntity"
+          }
+        }
+      }
+    },
+    "OperationEntity": {
+      "description": "The operations supported by Bot Service Management.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Operation name: {provider}/{resource}/{operation}.",
+          "type": "string"
+        },
+        "display": {
+          "$ref": "#/definitions/OperationDisplayInfo",
+          "description": "The operation supported by Bot Service Management."
+        },
+        "origin": {
+          "description": "The origin of the operation.",
+          "type": "string"
+        },
+        "properties": {
+          "description": "Additional properties.",
+          "type": "object"
+        }
+      }
+    },
+    "OperationDisplayInfo": {
+      "description": "The operation supported by Bot Service Management.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "The description of the operation.",
+          "type": "string"
+        },
+        "operation": {
+          "description": "The action that users can perform, based on their permission level.",
+          "type": "string"
+        },
+        "provider": {
+          "description": "Service provider: Microsoft Bot Service.",
+          "type": "string"
+        },
+        "resource": {
+          "description": "Resource on which the operation is performed.",
+          "type": "string"
+        }
+      }
+    },
+    "CheckNameAvailabilityRequestBody": {
+      "description": "The request body for a request to Bot Service Management to check availability of a bot name.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "the name of the bot for which availability needs to be checked.",
+          "type": "string"
+        },
+        "type": {
+          "description": "the type of the bot for which availability needs to be checked",
+          "type": "string"
+        }
+      }
+    },
+    "CheckNameAvailabilityResponseBody": {
+      "description": "The response body returned for a request to Bot Service Management to check availability of a bot name.",
+      "type": "object",
+      "properties": {
+        "valid": {
+          "description": "indicates if the bot name is valid.",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "additional message from the bot management api showing why a bot name is not available",
+          "type": "string"
+        }
+      }
+    },
+    "EnterpriseChannelCheckNameAvailabilityRequest": {
+      "description": "A request to Bot Service Management to check availability of an Enterprise Channel name.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the Enterprise Channel for which availability needs to be checked.",
+          "type": "string"
+        }
+      }
+    },
+    "EnterpriseChannelCheckNameAvailabilityResponse": {
+      "description": "A request to Bot Service Management to check availability of an Enterprise Channel name.",
+      "type": "object",
+      "properties": {
+        "valid": {
+          "description": "Indicates if the Enterprise Channel name is valid.",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "Additional information about why a bot name is not available.",
+          "type": "string"
+        }
+      }
+    },
+    "EnterpriseChannelResponseList": {
+      "properties": {
+        "nextLink": {
+          "description": "The link used to get the next page of bot service resources.",
+          "type": "string"
+        },
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnterpriseChannel"
+          },
+          "description": "The list of Enterprise Channels and their properties."
+        }
+      },
+      "description": "The list of  bot service operation response."
+    },
+    "EnterpriseChannel": {
+      "type": "object",
+      "description": "Enterprise Channel resource definition",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/EnterpriseChannelProperties",
+          "description": "The set of properties specific to an Enterprise Channel resource."
+        }
+      }
+    },
+    "EnterpriseChannelProperties": {
+      "properties": {
+        "state": {
+          "type": "string",
+          "description": "The current state of the Enterprise Channel.",
+          "enum": [
+            "Creating",
+            "CreateFailed",
+            "Started",
+            "Starting",
+            "StartFailed",
+            "Stopped",
+            "Stopping",
+            "StopFailed",
+            "Deleting",
+            "DeleteFailed"
+          ],
+          "x-ms-enum": {
+            "name": "EnterpriseChannelState",
+            "modelAsString": true
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnterpriseChannelNode"
+          },
+          "description": "The nodes associated with the Enterprise Channel."
+        }
+      },
+      "description": "The parameters to provide for the Enterprise Channel.",
+      "required": [
+        "nodes"
+      ]
+    },
+    "EnterpriseChannelNode": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id of Enterprise Channel Node. This is generated by the Bot Framework.",
+          "readOnly": true
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of the Enterprise Channel Node.",
+          "enum": [
+            "Creating",
+            "CreateFailed",
+            "Started",
+            "Starting",
+            "StartFailed",
+            "Stopped",
+            "Stopping",
+            "StopFailed",
+            "Deleting",
+            "DeleteFailed"
+          ],
+          "x-ms-enum": {
+            "name": "EnterpriseChannelNodeState",
+            "modelAsString": true
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Enterprise Channel Node."
+        },
+        "azureSku": {
+          "type": "string",
+          "description": "The sku of the Enterprise Channel Node."
+        },
+        "azureLocation": {
+          "type": "string",
+          "description": "The location of the Enterprise Channel Node."
+        }
+      },
+      "description": "The properties specific to an Enterprise Channel Node.",
+      "required": [
+        "name",
+        "azureSku",
+        "azureLocation"
+      ]
+    }
+  },
+  "parameters": {
+    "resourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "x-ms-parameter-location": "method",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "maxLength": 64,
+      "minLength": 2,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+      "description": "The name of the Bot resource group in the user subscription."
+    },
+    "resourceNameParameter": {
+      "name": "resourceName",
+      "x-ms-parameter-location": "method",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "maxLength": 64,
+      "minLength": 2,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+      "description": "The name of the Bot resource."
+    },
+    "subscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Azure Subscription ID.",
+      "required": true,
+      "type": "string"
+    },
+    "apiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "Version of the API to be used with the client request."
+    },
+    "connectionNameParameter": {
+      "name": "connectionName",
+      "x-ms-parameter-location": "method",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "maxLength": 64,
+      "minLength": 2,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
+      "description": "The name of the Bot Service Connection Setting resource"
+    },
+    "channelNameParameter": {
+      "name": "channelName",
+      "x-ms-parameter-location": "method",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "enum": [
+        "FacebookChannel",
+        "EmailChannel",
+        "KikChannel",
+        "TelegramChannel",
+        "SlackChannel",
+        "MsTeamsChannel",
+        "SkypeChannel",
+        "WebChatChannel",
+        "DirectLineChannel",
+        "SmsChannel"
+      ],
+      "x-ms-enum": {
+        "name": "channelName",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "FacebookChannel"
+          },
+          {
+            "value": "EmailChannel"
+          },
+          {
+            "value": "KikChannel"
+          },
+          {
+            "value": "TelegramChannel"
+          },
+          {
+            "value": "SlackChannel"
+          },
+          {
+            "value": "MsTeamsChannel"
+          },
+          {
+            "value": "SkypeChannel"
+          },
+          {
+            "value": "WebChatChannel"
+          },
+          {
+            "value": "DirectLineChannel"
+          },
+          {
+            "value": "SmsChannel"
+          }
+        ]
+      },
+      "description": "The name of the Channel resource."
+    }
+  }
+}
