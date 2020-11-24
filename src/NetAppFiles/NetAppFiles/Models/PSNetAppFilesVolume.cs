@@ -158,6 +158,39 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
         /// </summary>
-        public bool SnapshotDirectoryVisible { get; set; }
+        public bool? SnapshotDirectoryVisible { get; set; }
+
+        /// <summary>
+        /// Gets or sets backup ID
+        /// </summary>
+        /// <remarks>
+        /// UUID v4 or resource identifier used to identify the Backup.
+        /// </remarks>
+        public string BackupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets SecurityStyle
+        /// </summary>
+        /// <remarks>
+        /// The security style of volume. Possible values include: 'ntfs', 'unix'        
+        /// </remarks>
+        public string SecurityStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets ThroughputMibps
+        /// </summary>
+        /// <remarks>
+        ///  Maximum throughput in Mibps that can be achieved by this volume
+        /// </remarks>
+        public double? ThroughputMibps { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets KerberosEnabled
+        /// </summary>
+        /// <remarks>
+        ///  describe if a volume is KerberosEnabled.
+        /// </remarks>
+        public bool? KerberosEnabled { get; set; }
     }
 }

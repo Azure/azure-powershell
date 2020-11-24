@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [GenericBreakingChange("Get-AzRecoveryServicesBackupJobDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange(" Please use singular alias Get-AzRecoveryServicesBackupJobDetail, as Get-AzRecoveryServicesBackupJobDetails plural alias will be removed in an upcoming breaking change release", "4.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetail", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
     [Alias("Get-AzRecoveryServicesBackupJobDetails")]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase

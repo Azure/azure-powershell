@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -80,6 +81,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
         public string ResourceId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
+            HelpMessage = "If replication is in status transferring and you want to force break the replication, set to true")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(
+        "Microsoft.NetApp/netAppAccounts",
+        nameof(ResourceGroupName))]
+        public SwitchParameter ForceBreak { get; set; }
+
+        [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -116,7 +127,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name);
+                BreakReplicationRequest breakBody = null;
+                if (ForceBreak)
+                {
+                    breakBody = new BreakReplicationRequest(ForceBreak.ToBool());
+                }
+                AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name, body: breakBody);
                 success = true;
             }
 

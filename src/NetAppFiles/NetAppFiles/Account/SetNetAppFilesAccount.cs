@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : new List<ActiveDirectory>(),
+                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
                 Tags = tagPairs
             };
 
