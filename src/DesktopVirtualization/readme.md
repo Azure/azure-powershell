@@ -53,7 +53,7 @@ require:
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- E:\latestbuild\goksuForkSwagger\azure-rest-api-specs\specification\desktopvirtualization\resource-manager\Microsoft.DesktopVirtualization\preview\2020-11-02-preview\desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2020-11-02-preview/desktopvirtualization.json
 
 module-version: 2.0.0
 title: DesktopVirtualizationClient
