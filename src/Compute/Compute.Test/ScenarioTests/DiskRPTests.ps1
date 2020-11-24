@@ -1340,7 +1340,8 @@ function Test-DiskConfigTierSectorSizeReadOnly
 
 <#
 .SYNOPSIS
-
+Test the New-AzSnapshot cmdlet throws an error when attempting to create a snapshot with 
+the same name in the same resource group. 
 #>
 function Test-SnapshotDuplicateCreationFails
 {
