@@ -1215,7 +1215,7 @@ dolauli-instance-hana Microsoft.HanaOnAzure/sapMonitors/providerInstances
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hana/new-azsapproviderinstance
+https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
 #>
 function New-AzSapMonitorProviderInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]
