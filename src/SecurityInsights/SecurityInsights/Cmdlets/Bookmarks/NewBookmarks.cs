@@ -88,4 +88,3 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
         }
     }
-}
