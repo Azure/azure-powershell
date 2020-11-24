@@ -1044,8 +1044,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 {
                     var policy = new ServerBlobAuditingPolicy();
                     PolicizeAuditModel(model, policy);
-                    // TODO operation error
-                    _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
+                    _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
                 }
                 else
                 {
@@ -1074,7 +1073,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
                 policy.State = BlobAuditingPolicyState.Disabled;
-                _synapseManagementClient.WorkspaceManagedqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
+                _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
             }
             catch (CloudException ex)
             {
@@ -1395,7 +1394,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                _synapseManagementClient.SqlPools.UpdateAsync(resourceGroupName, workspaceName, sqlPoolName, updateParams);
+                _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
             catch (ErrorContractException ex)
             {

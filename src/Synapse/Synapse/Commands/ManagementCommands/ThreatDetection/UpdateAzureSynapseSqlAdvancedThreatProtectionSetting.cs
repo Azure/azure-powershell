@@ -127,6 +127,10 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 policy.StorageAccountAccessKey = SynapseAnalyticsClient.GetStorageKeys(policy.StorageEndpoint)[StorageKeyKind.Primary];
             }
+            else
+            {
+                policy.StorageEndpoint = null;
+            }
 
             if (this.ShouldProcess(this.WorkspaceName, string.Format(Resources.UpdatingThreatProtectionSetting, this.WorkspaceName)))
             {
