@@ -107,5 +107,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetDiskEncryptionSetAssociatedResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotDuplicateCreationFails()
+        {
+            TestRunner.RunTestScript("Test-SnapshotDuplicateCreationFails");
+        }
     }
 }

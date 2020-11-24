@@ -1337,3 +1337,33 @@ function Test-DiskConfigTierSectorSizeReadOnly
             Clean-ResourceGroup $rgname
 		}
 }
+
+<#
+.SYNOPSIS
+
+#>
+function Test-SnapshotDuplicateCreationFails
+{
+    # Setup 
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northcentralus";#$loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $snapshotName = "test1";
+
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty;
+        
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig;
+        Assert-NotNull $snapshot;
+
+        Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
