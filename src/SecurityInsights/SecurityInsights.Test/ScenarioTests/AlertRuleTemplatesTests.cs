@@ -19,11 +19,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class AlertRulesTemplateTests
+    public class AlertRuleTemplatesTests
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public AlertRulesTemplateTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertRuleTemplatesTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);

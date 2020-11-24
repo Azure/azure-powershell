@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 AdditonalData = value.AdditionalData.ConvertToPSType(),
                 Classification = value.Classification,
                 ClassificationComment = value.ClassificationComment,

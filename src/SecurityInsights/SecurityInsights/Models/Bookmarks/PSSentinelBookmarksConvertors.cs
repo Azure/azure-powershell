@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Created = value.Created,
                 CreatedBy = value.CreatedBy.ConvertToPSType(),
                 DisplayName = value.DisplayName,

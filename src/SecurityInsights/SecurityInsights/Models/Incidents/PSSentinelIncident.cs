@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
 
         public string Type { get; set; }
 
+        public string Etag { get; set; }
+
         public PSSentinelIncidentAdditionalData AdditonalData { get; set; }
 
         public string Classification { get; set; }

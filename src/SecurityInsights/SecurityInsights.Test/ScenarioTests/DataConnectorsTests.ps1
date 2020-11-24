@@ -20,32 +20,30 @@ function Get-AzSentinelDataConnector-List
 {
 	
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureActiveDirectory -Alerts Enabled 
-	$DataConnector2 = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
-	
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	#Get Data Connector
     $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName)
 	# Validate
-	Validate-$DataConnectors $DataConnectors
+	Validate-DataConnectors $DataConnectors
 
+	Start-Sleep 15
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
-	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector2.Name)
 }
 
 <#
 .SYNOPSIS
 Get Data Connector
 #>
-function Get-AzSentinelAlertRule-Get
+function Get-AzSentinelDataConnector-Get
 {
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureActiveDirectory -Alerts Enabled 
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Get Data Connector
     $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
 	# Validate
-	Validate-$DataConnector $DataConnector
+	Validate-DataConnector $DataConnector
 
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
@@ -55,13 +53,13 @@ function Get-AzSentinelAlertRule-Get
 .SYNOPSIS
 Create Data Connector
 #>
-function New-AzSentinelAlertRule-CreateFusion
+function New-AzSentinelDataConnector-CreateFusion
 {
     #Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureActiveDirectory -Alerts Enabled 
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	# Validate
-	Validate-$DataConnector $DataConnector
+	Validate-DataConnector $DataConnector
 
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
@@ -71,15 +69,15 @@ function New-AzSentinelAlertRule-CreateFusion
 .SYNOPSIS
 Update DataConnector
 #>
-function Set-AzSentinelAlertRule-Update
+function Set-AzSentinelDataConnector-Update
 {
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureActiveDirectory -Alerts Enabled 
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Update Data Connector
-    $DataConnector = Set-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name) -Alerts Disabled
+    $DataConnector = Set-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name) -Etag ($DataConnector.Etag) -Kind AzureSecurityCenter -Alerts Disabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	# Validate
-	Validate-$DataConnector $DataConnector
+	Validate-DataConnector $DataConnector
 
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
@@ -89,16 +87,16 @@ function Set-AzSentinelAlertRule-Update
 .SYNOPSIS
 Delete Data Connector
 #>
-function Remove-AzSentinelAlertRule-Delete
+function Remove-AzSentinelDataConnector-Delete
 {
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureActiveDirectory -Alerts Enabled 
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Update Data Connector
     Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
 	
 	# Validate
-	Validate-$DataConnector $DataConnector
+	Validate-DataConnector $DataConnector
 
 }
 
@@ -106,7 +104,7 @@ function Remove-AzSentinelAlertRule-Delete
 .SYNOPSIS
 Validates a list of data connectors
 #>
-function Validate-DataConnector
+function Validate-DataConnectors
 {
 	param($DataConnectors)
 

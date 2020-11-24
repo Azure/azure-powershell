@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "Fusion",
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
                 Description = value.Description,
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
             {
                 Id = value.Id,
                 Name = value.Name,
+                Etag = value.Etag,
                 Type = value.Type,
                 Kind = "MicrosoftSecurityIncidentCreation",
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
@@ -101,6 +103,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
             {
                 Id = value.Id,
                 Name = value.Name,
+                Etag = value.Etag,
                 Type = value.Type,
                 Kind = "Scheduled",
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
@@ -152,6 +155,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
         {
             return new FusionAlertRule()
             {
+                Etag = value.Etag,
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
                 Enabled = value.Enabled
             };
@@ -167,6 +171,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
             return new MicrosoftSecurityIncidentCreationAlertRule()
             {
                 DisplayName = value.DisplayName,
+                Etag = value.Etag,
                 Enabled = value.Enabled,
                 ProductFilter = value.ProductFilter,
                 AlertRuleTemplateName = value.AlertRuleTemplateName,
@@ -187,6 +192,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
         {
             return new ScheduledAlertRule()
             {
+                Etag = value.Etag,
                 DisplayName = value.DisplayName,
                 Enabled = value.Enabled,
                 SuppressionDuration = value.SuppressionDuration,

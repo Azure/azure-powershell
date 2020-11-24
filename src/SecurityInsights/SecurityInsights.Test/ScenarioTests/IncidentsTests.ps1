@@ -29,8 +29,8 @@ function Get-AzSentinelIncident-List
 	Validate-Incidents $Incidents
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident2.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident2.Name)
 }
 
 <#
@@ -48,7 +48,7 @@ function Get-AzSentinelIncident-Get
 	Validate-Incident $Incident
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 }
 
 <#
@@ -64,7 +64,7 @@ function New-AzSentinelIncident-Create
 	Validate-Incident $Incident
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 }
 
 <#
@@ -77,13 +77,13 @@ function Set-AzSentinelIncident-Update
 	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
 		
 	#update $Incident
-	$Incident = Set-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Status Closed
+	$Incident = Set-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Etag ($Incident.Etag) -Status Closed -Severity ($Incident.Severity) -Title ($Incident.Title) -Classification FalsePositive -ClassificationReason InaccurateData
 	
 	# Validate
 	Validate-Incident $Incident
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 	
 	
 	}
@@ -100,10 +100,10 @@ function Remove-AzSentinelIncident-Delete
 	#delete
 	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 	# Validate
-	Validate-Action $action
+	Validate-Incident $Incident
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 }
 
 <#
@@ -126,7 +126,7 @@ function Validate-Incidents
 .SYNOPSIS
 Validates a single Incident
 #>
-function Validate-$Incident
+function Validate-Incident
 {
 	param($Incident)
 

@@ -37,9 +37,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         [ValidateNotNullOrEmpty] 
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.BookmarkId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkId)]
         public string BookmarkId { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        public string Etag { get; set; }
+        
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkDisplayName)]
         public string DisplayName { get; set; }
 
@@ -58,9 +61,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.QueryResult)]
         public string QueryResult { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.CreatedBy)]
-        public string UpdatedBy { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSentinelBookmark InputObject { get; set; }
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                     break;
                 case ParameterSetNames.InputObject:
                     BookmarkId = InputObject.Name;
+                    Etag = InputObject.Etag;
                     WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     DisplayName = InputObject.DisplayName;
@@ -87,21 +88,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
             }
 
             var name = BookmarkId;
-            UserInfo userinfo = new UserInfo
-            {
-                ObjectId = Guid.Parse(UpdatedBy)
-            };
 
             Bookmark bookmark = new Bookmark
             {
+                Etag = Etag,
                 DisplayName = DisplayName,
-                IncidentInfo = IncidentInfo.CreatePSType(),
+                IncidentInfo = IncidentInfo?.CreatePSType(),
                 Labels = Labels,
                 Notes = Notes,
                 Query = Query,
-                QueryResult = QueryResult,
-                Updated = DateTime.Now,
-                UpdatedBy = userinfo
+                QueryResult = QueryResult
             };
             
             if (ShouldProcess(name, VerbsCommon.Set))

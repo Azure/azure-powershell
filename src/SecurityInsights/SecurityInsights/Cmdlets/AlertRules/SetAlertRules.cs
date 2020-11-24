@@ -40,6 +40,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty] 
         public string WorkspaceName { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [ValidateNotNullOrEmpty]
+        public string Etag { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
         [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
@@ -143,6 +149,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                     case ParameterSetNames.FusionAlertRule:
                         FusionAlertRule fusionalertrule = new FusionAlertRule
                         {
+                            Etag = Etag,
                             AlertRuleTemplateName = AlertRuleTemplateName,
                             Enabled = Enabled
                         };
@@ -152,6 +159,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                     case ParameterSetNames.MicrosoftSecurityIncidentCreationRule:
                         MicrosoftSecurityIncidentCreationAlertRule msicalertrule = new MicrosoftSecurityIncidentCreationAlertRule
                         {
+                            Etag = Etag,
                             DisplayName = DisplayName,
                             Enabled = Enabled,
                             ProductFilter = ProductFilter,
@@ -167,6 +175,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                     case ParameterSetNames.ScheduledAlertRule:
                         ScheduledAlertRule scheduledalertrule = new ScheduledAlertRule
                         {
+                            Etag = Etag,
                             DisplayName = DisplayName,
                             Enabled = Enabled,
                             SuppressionDuration = SuppressionDuration,

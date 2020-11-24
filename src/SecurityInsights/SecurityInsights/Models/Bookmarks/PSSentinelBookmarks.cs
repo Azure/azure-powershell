@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
 
         public string Type { get; set; }
 
+        public string Etag { get; set; }
+
         public DateTime? Created { get; set; }
 
         public PSSentinelBookmarkUserInfo CreatedBy { get; set; }

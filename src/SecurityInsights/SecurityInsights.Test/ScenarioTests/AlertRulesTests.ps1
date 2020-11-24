@@ -116,7 +116,7 @@ function Set-AzSentinelAlertRule-Update
 	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Kind Scheduled -Enabled $true -DisplayName "PoshModuleTest" -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
 	
 	#update alert rule
-	$alertrule = Set-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name) -Kind Scheduled -Enabled Disabled  -DisplayName ($alertrule.DisplayName) -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
+	$alertrule = Set-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name) -Etag ($alertrule.Etag) -Kind Scheduled -Enabled $false  -DisplayName ($alertrule.DisplayName) -SuppressionDuration (New-TimeSpan -Hours 5) -SuppressionEnabled $false -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
 	
 	# Validate
 	Validate-AlertRule $alertrule

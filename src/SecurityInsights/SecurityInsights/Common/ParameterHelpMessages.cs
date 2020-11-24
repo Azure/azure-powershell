@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string Description = "Description.";
         public const string PassThru = "PassThru";
         public const string AsJob = "Run cmdlet in the background";
+        public const string Etag = "Etag";
         #endregion
 
         #region Actions

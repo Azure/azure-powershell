@@ -25,50 +25,60 @@ using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelDataConnector", DefaultParameterSetName = ParameterSetNames.DataConnectorId), OutputType(typeof(PSSentinelDataConnector))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelDataConnector", DefaultParameterSetName = ParameterSetNames.AzureActiveDirectory), OutputType(typeof(PSSentinelDataConnector))]
     public class SetDataConnectors : SecurityInsightsCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureActiveDirectory)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureSecurityCenter)]
-        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.AmazonWebServicesCloudTrail)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftCloudAppSecurity)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftDefenderAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Office365)]
-        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.ThreatIntelligence)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureActiveDirectory)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureSecurityCenter)]
-        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.AmazonWebServicesCloudTrail)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftCloudAppSecurity)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftDefenderAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Office365)]
-        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.ThreatIntelligence)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureActiveDirectory)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureSecurityCenter)]
-        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.AmazonWebServicesCloudTrail)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftCloudAppSecurity)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftDefenderAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Office365)]
-        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.ThreatIntelligence)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
         public string DataConnectorId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureActiveDirectory)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureSecurityCenter)]
-        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.AmazonWebServicesCloudTrail)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftCloudAppSecurity)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.MicrosoftDefenderAdvancedThreatProtection)]
-        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Office365)]
-        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.ThreatIntelligence)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        public string Etag { get; set; }
+        
+        [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.AzureSecurityCenter, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.AmazonWebServicesCloudTrail, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftCloudAppSecurity, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureActiveDirectory", "AzureAdvancedThreatProtection", "AzureSecurityCenter", "AmazonWebServicesCloudTrail", "MicrosoftCloudAppSecurity", "MicrosoftDefenderAdvancedThreatProtection", "Office365", "ThreatIntelligence")]
         public string Kind { get; set; }
@@ -124,16 +134,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 
             var name = DataConnectorId;
             
-            var tenantId = AzureSubscription.Property.HomeTenant;
+            var tenantId = AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id;
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
 
-                switch (ParameterSetName)
+                switch (Kind)
                 {
-                    case ParameterSetNames.AzureActiveDirectory:
+                    case "AzureActiveDirectory" :
                         DataConnectorDataTypeCommon aadcommon = new DataConnectorDataTypeCommon
-                        { State = Alerts };
+                        { State = Alerts.ToLower() };
                         AlertsDataTypeOfDataConnector aadalerts = new AlertsDataTypeOfDataConnector
                         {
                             Alerts = aadcommon
@@ -141,15 +151,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         AADDataConnector aadDataTypes = new AADDataConnector
                         {
                             DataTypes = aadalerts,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector aadDataConnector = aadDataTypes;
                         var outputaadconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aadDataConnector);
                         WriteObject(outputaadconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.AzureAdvancedThreatProtection:
+                    case "AzureAdvancedThreatProtection" :
                         DataConnectorDataTypeCommon aatpcommon = new DataConnectorDataTypeCommon
-                        { State = Alerts };
+                        { State = Alerts.ToLower() };
                         AlertsDataTypeOfDataConnector aatpalerts = new AlertsDataTypeOfDataConnector
                         {
                             Alerts = aatpcommon
@@ -157,15 +168,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         AATPDataConnector aatpDataTypes = new AATPDataConnector
                         {
                             DataTypes = aatpalerts,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector aatpDataConnector = aatpDataTypes;
                         var outputaatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aatpDataConnector);
                         WriteObject(outputaatpconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.AzureSecurityCenter:
+                    case "AzureSecurityCenter" :
                         DataConnectorDataTypeCommon asccommon = new DataConnectorDataTypeCommon
-                        { State = Alerts };
+                        { State = Alerts.ToLower() };
                         AlertsDataTypeOfDataConnector ascalerts = new AlertsDataTypeOfDataConnector
                         {
                             Alerts = asccommon
@@ -174,16 +186,17 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         ASCDataConnector ascDataTypes = new ASCDataConnector
                         {
                             DataTypes = ascalerts,
-                            SubscriptionId = SubscriptionId
+                            SubscriptionId = SubscriptionId,
+                            Etag = Etag
 
                         };
                         DataConnector ascDataConnector = ascDataTypes;
                         var outputascconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, ascDataConnector);
                         WriteObject(outputascconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.AmazonWebServicesCloudTrail:
+                    case "AmazonWebServicesCloudTrail" :
                         AwsCloudTrailDataConnectorDataTypesLogs awscommon = new AwsCloudTrailDataConnectorDataTypesLogs
-                        { State = Logs };
+                        { State = Logs.ToLower() };
                         AwsCloudTrailDataConnectorDataTypes awslogs = new AwsCloudTrailDataConnectorDataTypes
                         {
                             Logs = awscommon
@@ -191,18 +204,19 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         AwsCloudTrailDataConnector awsDataTypes = new AwsCloudTrailDataConnector
                         {
                             DataTypes = awslogs,
-                            AwsRoleArn = AwsRoleArn
+                            AwsRoleArn = AwsRoleArn,
+                            Etag = Etag
 
                         };
                         DataConnector awsDataConnector = awsDataTypes;
                         var outputawsconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, awsDataConnector);
                         WriteObject(outputawsconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.MicrosoftCloudAppSecurity:
+                    case "MicrosoftCloudAppSecurity" :
                         DataConnectorDataTypeCommon mcascommon = new DataConnectorDataTypeCommon
-                        { State = Alerts };
+                        { State = Alerts.ToLower() };
                         DataConnectorDataTypeCommon mcasdiscovery = new DataConnectorDataTypeCommon
-                        { State = DiscoveryLogs };
+                        { State = DiscoveryLogs.ToLower() };
                         MCASDataConnectorDataTypes mcasDataTypes = new MCASDataConnectorDataTypes
                         {
                             Alerts = mcascommon,
@@ -211,15 +225,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         MCASDataConnector mcasConnector = new MCASDataConnector
                         {
                             DataTypes = mcasDataTypes,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector mcasDataConnector = mcasConnector;
                         var outputmcasconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mcasDataConnector);
                         WriteObject(outputmcasconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.MicrosoftDefenderAdvancedThreatProtection:
+                    case "MicrosoftDefenderAdvancedThreatProtection" :
                         DataConnectorDataTypeCommon mdatpcommon = new DataConnectorDataTypeCommon
-                        { State = Alerts };
+                        { State = Alerts.ToLower() };
                         AlertsDataTypeOfDataConnector mdatpalerts = new AlertsDataTypeOfDataConnector
                         {
                             Alerts = mdatpcommon
@@ -227,17 +242,18 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         MDATPDataConnector mdatpDataTypes = new MDATPDataConnector
                         {
                             DataTypes = mdatpalerts,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector mdatpDataConnector = mdatpDataTypes;
                         var outputmdatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mdatpDataConnector);
                         WriteObject(outputmdatpconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.Office365:
+                    case "Office365" :
                         OfficeDataConnectorDataTypesExchange officeExchange = new OfficeDataConnectorDataTypesExchange
-                        { State = Exchange };
+                        { State = Exchange.ToLower() };
                         OfficeDataConnectorDataTypesSharePoint officeSharePoint = new OfficeDataConnectorDataTypesSharePoint
-                        { State = SharePoint };
+                        { State = SharePoint.ToLower() };
                         OfficeDataConnectorDataTypes officeDataTypes = new OfficeDataConnectorDataTypes
                         {
                             Exchange = officeExchange,
@@ -246,15 +262,16 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         OfficeDataConnector officeConnector = new OfficeDataConnector
                         {
                             DataTypes = officeDataTypes,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector officeDataConnector = officeConnector;
                         var outputofficeconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, officeDataConnector);
                         WriteObject(outputofficeconnector.ConvertToPSType(), enumerateCollection: false);
                         break;
-                    case ParameterSetNames.ThreatIntelligence:
+                    case "ThreatIntelligence" :
                         TIDataConnectorDataTypesIndicators tiIndicators = new TIDataConnectorDataTypesIndicators
-                        { State = Indicators };
+                        { State = Indicators.ToLower() };
                         TIDataConnectorDataTypes tiDataTypes = new TIDataConnectorDataTypes
                         {
                             Indicators = tiIndicators
@@ -262,7 +279,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         TIDataConnector tiConnector = new TIDataConnector
                         {
                             DataTypes = tiDataTypes,
-                            TenantId = tenantId
+                            TenantId = tenantId,
+                            Etag = Etag
                         };
                         DataConnector tiDataConnector = tiConnector;
                         var outputticonnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, tiDataConnector);

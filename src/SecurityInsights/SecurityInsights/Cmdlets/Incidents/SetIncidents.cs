@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         [ValidateNotNullOrEmpty]
         public string IncidentId { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = true, HelpMessage = ParameterHelpMessages.Etag)]
+        [ValidateNotNullOrEmpty]
+        public string Etag { get; set; }
+        
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, HelpMessage = ParameterHelpMessages.Classificaton)]
         [ValidateSet("BenignPositive", "FalsePositive", "TruePositive", "Undetermined")] 
         public string Classification { get; set; }
@@ -82,7 +86,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                     break;
                 case ParameterSetNames.InputObject:
                     IncidentId = InputObject.Name;
-
+                    Etag = InputObject.Etag;
                     Title = InputObject.Title;
                     Status = InputObject.Status;
                     Severity = InputObject.Severity;
@@ -100,6 +104,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
             var name = IncidentId;
             Incident incident = new Incident
             {
+                Etag = Etag,
                 Title = Title,
                 Status = Status,
                 Severity = Severity,
@@ -107,8 +112,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 ClassificationComment = ClassificationComment,
                 ClassificationReason = ClassificationReason,
                 Description = Description,
-                Labels = Labels.CreatePSType(),
-                Owner = Owner.CreatePSType()
+                Labels = Labels?.CreatePSType(),
+                Owner = Owner?.CreatePSType()
             };
 
 

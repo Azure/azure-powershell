@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
     {
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty] 
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
-        [ValidateNotNullOrEmpty] 
+        [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.BookmarkId)]
@@ -43,21 +43,21 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkDisplayName)]
         public string DisplayName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.IncidentInfo)] 
+        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.IncidentInfo)]
         public PSSentinelBookmarkIncidentInfo IncidentInfo { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Labels)] 
+        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Labels)]
         public IList<string> Labels { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Notes)] 
+        [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Notes)]
         public string Notes { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkQuery)]
         public string Query { get; set; }
-        
+
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.QueryResult)]
         public string QueryResult { get; set; }
-                
+
         public override void ExecuteCmdlet()
         {
             if (BookmarkId == null)
@@ -81,12 +81,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             if (ShouldProcess(name, VerbsCommon.New))
             {
-                    var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
+                var outputBookmark = SecurityInsightsClient.Bookmarks.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, bookmark);
 
-                    WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
-                } 
-               
+                WriteObject(outputBookmark.ConvertToPSType(), enumerateCollection: false);
             }
+
         }
     }
 }

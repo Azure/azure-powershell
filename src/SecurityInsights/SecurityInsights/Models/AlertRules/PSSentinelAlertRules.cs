@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules
 
         public string Type { get; set; }
 
+        public string Etag { get; set; }
+
         public string Kind { get; set; }
 
     }

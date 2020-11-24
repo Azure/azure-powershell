@@ -77,7 +77,7 @@ function Set-AzSentinelBookmark-Update
 	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	#update $bookmark
-	$bookmark = Set-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1" -Notes "PoshModuleTest"
+	$bookmark2 = Set-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Etag ($bookmark.etag) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1" -Notes "PoshModuleTest"
 	
 	# Validate
 	Validate-Bookmark $bookmark

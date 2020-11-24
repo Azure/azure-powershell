@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "AzureActiveDirectory",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId
@@ -112,6 +113,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "AzureAdvancedThreatProtection",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId
@@ -125,6 +127,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "AzureSecurityCenter",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 SubscriptionId = value.SubscriptionId
@@ -138,6 +141,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "AmazonWebServicesCloudTrail",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 AwsRoleArn = value.AwsRoleArn
@@ -151,6 +155,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "MicrosoftCloudAppSecurity",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId
@@ -164,6 +169,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "MicrosoftDefenderAdvancedThreatProtection",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId
@@ -177,6 +183,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "Office365",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId
@@ -190,6 +197,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
+                Etag = value.Etag,
                 Kind = "ThreatIntelligence",
                 DataTypes = value.DataTypes.ConvertToPSType(),
                 TenantId = value.TenantId

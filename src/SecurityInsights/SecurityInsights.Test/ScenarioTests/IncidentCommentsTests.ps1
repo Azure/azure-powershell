@@ -21,16 +21,16 @@ function Get-AzSentinelIncidentComment-ListbyIncident
 	#Create Incident
 	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
 	#Create IncidentComment Comment
-	$IncidentCommentComment = New-AzSentinelIncidentCommentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Message "PoshModuleTest"
-	$IncidentCommentComment2 = New-AzSentinelIncidentCommentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Message "PoshModuleTest2"
+	$IncidentCommentComment = New-AzSentinelIncidentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Message "PoshModuleTest"
+	$IncidentCommentComment2 = New-AzSentinelIncidentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Message "PoshModuleTest2"
 	
 	#Get Incident Commments
-    $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName)
+    $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 	# Validate
 	Validate-IncidentComments $IncidentComments
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 	
 }
 
@@ -52,7 +52,7 @@ function Get-AzSentinelIncidentComment-Get
 	Validate-IncidentComment $IncidentComment
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 }
 
 <#
@@ -71,7 +71,7 @@ function New-AzSentinelIncidentComment-Create
 	Validate-IncidentComment $IncidentComment
 
 	#Cleanup
-	Remove-Incident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
 }
 
 <#
@@ -94,7 +94,7 @@ function Validate-IncidentComments
 .SYNOPSIS
 Validates a single IncidentComment
 #>
-function Validate-$IncidentComment
+function Validate-IncidentComment
 {
 	param($IncidentComment)
 

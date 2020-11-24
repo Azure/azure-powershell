@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.AlertRuleId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataConnectorId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.WorkspaceName)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.AlertRuleId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
+        [Parameter(ParameterSetName = ParameterSetNames.DataConnectorId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DataConnectorId)]
         [ValidateNotNullOrEmpty]
         public string DataConnectorId { get; set; }
 
