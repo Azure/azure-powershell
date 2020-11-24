@@ -330,7 +330,7 @@ Gets the auditing settings of an Azure SQL server.
 Gets communication links for elastic database transactions between database servers.
 
 ### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
-Gets the Microsoft support auditing settings of an Azure SQL server.
+Gets the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
@@ -706,6 +706,9 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 
 ### [Set-AzSqlServerFirewallRule](Set-AzSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
+
+### [Set-AzSqlServerMSSupportAudit](Set-AzSqlServerMSSupportAudit.md)
+Changes the Microsoft support operations auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.
