@@ -1,0 +1,82 @@
+{
+  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+List+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationRecoveryServicesProviders?api-version=2018-01-10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationRecoveryServicesProviders?api-version=2018-01-10",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e6da23fe-502e-4015-8d5b-593abfd0f7ac" ],
+        "CommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "x-ms-request-id": [ "e6da23fe-502e-4015-8d5b-593abfd0f7ac 9/23/2020 5:25:42 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "e6da23fe-502e-4015-8d5b-593abfd0f7ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "46488043-3185-401d-95eb-08e20fb8c576" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200923T172542Z:46488043-3185-401d-95eb-08e20fb8c576" ],
+        "Date": [ "Wed, 23 Sep 2020 17:25:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1873" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/AzMigratePWSHTc8d1dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"AzMigratePWSHTc8d1dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"AzMigratePWSHTc8d1dra\",\"providerVersion\":\"5.1.6080.0\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Supported\",\"providerVersionExpiryDate\":\"0001-01-01T00:00:00\",\"fabricFriendlyName\":\"AzMigratePWSHTc8d1replicationfabric\",\"lastHeartBeat\":\"2020-09-23T17:25:28.0612863Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":2,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"979c90cf-c376-5f2c-af38-15b72ff221f2\",\"machineId\":null,\"machineName\":\"WIN-8IOIBM6JQKI\",\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"14004b6b-cd1f-4c02-bd03-38c7f5485a04\",\"objectId\":\"6c2e17f6-7ed0-4e6b-9e1c-85ac8525061a\",\"audience\":\"https://72f988bf-86f1-41af-91ab-2d7cd011db47/AzMigratePWSHTc8d1agentauthaadapp\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d11e887f-95ea-4b34-98c3-2a28f532aaa1\",\"objectId\":\"6fc50704-1c11-48e7-b104-63611f6a91ec\",\"audience\":\"https://72f988bf-86f1-41af-91ab-2d7cd011db47/AzMigratePWSHTc8d1resourceaccessaadapp\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.1.6080.0\",\"expiryDate\":\"0001-01-01T00:00:00\",\"status\":\"NotSupported\"}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+Get+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/AzMigratePWSHTc8d1dra?api-version=2018-01-10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/AzMigratePWSHTc8d1dra?api-version=2018-01-10",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "12705bf9-fea3-45ef-8d23-a6cd059f8d60" ],
+        "CommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "x-ms-request-id": [ "12705bf9-fea3-45ef-8d23-a6cd059f8d60 9/23/2020 5:25:43 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "12705bf9-fea3-45ef-8d23-a6cd059f8d60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "d04aacec-ccc5-45de-97c8-24df8546ce1a" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20200923T172543Z:d04aacec-ccc5-45de-97c8-24df8546ce1a" ],
+        "Date": [ "Wed, 23 Sep 2020 17:25:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1845" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationRecoveryServicesProviders/AzMigratePWSHTc8d1dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"AzMigratePWSHTc8d1dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"AzMigratePWSHTc8d1dra\",\"providerVersion\":\"5.1.6080.0\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Supported\",\"providerVersionExpiryDate\":\"0001-01-01T00:00:00\",\"fabricFriendlyName\":\"AzMigratePWSHTc8d1replicationfabric\",\"lastHeartBeat\":\"2020-09-23T17:25:28.0612863Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":2,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"979c90cf-c376-5f2c-af38-15b72ff221f2\",\"machineId\":null,\"machineName\":\"WIN-8IOIBM6JQKI\",\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"14004b6b-cd1f-4c02-bd03-38c7f5485a04\",\"objectId\":\"6c2e17f6-7ed0-4e6b-9e1c-85ac8525061a\",\"audience\":\"https://72f988bf-86f1-41af-91ab-2d7cd011db47/AzMigratePWSHTc8d1agentauthaadapp\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d11e887f-95ea-4b34-98c3-2a28f532aaa1\",\"objectId\":\"6fc50704-1c11-48e7-b104-63611f6a91ec\",\"audience\":\"https://72f988bf-86f1-41af-91ab-2d7cd011db47/AzMigratePWSHTc8d1resourceaccessaadapp\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.1.6080.0\",\"expiryDate\":\"0001-01-01T00:00:00\",\"status\":\"NotSupported\"}}}"
+    }
+  }
+}

@@ -19,10 +19,10 @@ function New-AzPostgreSqlReplica {
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Creates a new replica from an existing database.')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]
-        [Alias('ReplicaServerName')]
+        [Alias('ReplicaServerName', 'Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
         [System.String]
-        ${Name},
+        ${ReplicaName},
 
         [Parameter(Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -36,9 +36,10 @@ function New-AzPostgreSqlReplica {
         ${SubscriptionId},
 
         [Parameter(Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
+        [Alias('InputObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer]
-        ${InputObject},
+        ${Master},
 
         [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
@@ -112,10 +113,10 @@ function New-AzPostgreSqlReplica {
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForReplica]::new()
           $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Replica
 
-          $server = $PSBoundParameters['InputObject']
+          $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id
           $Parameter.Location = $server.Location
-          $null = $PSBoundParameters.Remove('InputObject')
+          $null = $PSBoundParameters.Remove('Master')
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']
@@ -125,6 +126,12 @@ function New-AzPostgreSqlReplica {
           if ($PSBoundParameters.ContainsKey('Sku')) {
               $Parameter.SkuName = $PSBoundParameters['Sku']
               $null = $PSBoundParameters.Remove('Sku')
+          }
+
+          if ($PSBoundParameters.ContainsKey('ReplicaName'))
+          {
+            $PSBoundParameters['Name'] =  $PSBoundParameters['ReplicaName']
+            $null = $PSBoundParameters.Remove('ReplicaName')
           }
 
           $PSBoundParameters.Add('Parameter', $Parameter)

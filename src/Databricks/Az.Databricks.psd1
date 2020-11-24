@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Databricks.private.dll'
   FormatsToProcess = './Az.Databricks.format.ps1xml'
-  FunctionsToExport = 'Get-AzDatabricksWorkspace', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksWorkspace', '*'
+  FunctionsToExport = 'Get-AzDatabricksVNetPeering', 'Get-AzDatabricksWorkspace', 'New-AzDatabricksVNetPeering', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksVNetPeering', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksVNetPeering', 'Update-AzDatabricksWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

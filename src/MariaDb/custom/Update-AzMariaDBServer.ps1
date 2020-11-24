@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+.Description
+Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzMariaDbConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+#>
 function Update-AzMariaDbServer
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDb server name')]
+        [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDB server name')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb server name.
+        # MariaDB server name.
         ${Name},
     
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='The name of the resource group that contains the resource.')]
@@ -78,6 +85,8 @@ function Update-AzMariaDbServer
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
@@ -168,8 +177,7 @@ function Update-AzMariaDbServer
     process {
         try {
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
-                $PSBoundParameters['AdministratorLoginPassword'] = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+                $PSBoundParameters['AdministratorLoginPassword'] = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
                 $Null = $PSBoundParameters.Remove('AdministratorLoginPassword')
             }
 

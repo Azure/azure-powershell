@@ -47,10 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
+  - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
 module-version: 0.1.0
 title: PostgreSQL 
 subject-prefix: 'PostgreSQL'
@@ -65,28 +67,19 @@ directive:
     set:
       verb: Update
   - where:
-      verb: ^New$|^Set$|^Remove$|^Get|^Update$|^Invoke$
       subject: Database$|SecurityAlertPolicy$|Administrator$|LocationBasedPerformanceTier$|LogFile$|ExecuteCheckNameAvailability$
     hide: true
   - where:
       verb: New$|Update$
-      subject: Server$
+      subject: Server$|Configuration$|FirewallRule$
     hide: true
   - where:
      verb: New$
-     variant: ^Create$
-    hide: true
-  - where:
-     verb: New$
-     variant: ^CreateViaIdentity
+     variant: ^Create$|^CreateViaIdentity
     hide: true
   - where:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New
-      subject: Configuration
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId

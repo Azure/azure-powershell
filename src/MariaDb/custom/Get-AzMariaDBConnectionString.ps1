@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Get connection string of a MariaDB under a given framework.
+.Description
+Get connection string of a MariaDB under a given framework.
+#>
 function Get-AzMariaDbConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false)]

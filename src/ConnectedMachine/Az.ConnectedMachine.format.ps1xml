@@ -9,6 +9,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ExtensionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -21,6 +24,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExtensionName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -36,9 +42,537 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.LocationData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.LocationData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>City</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CountryOrRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>District</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>City</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CountryOrRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>District</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.Resource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.TrackedResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.TrackedResourceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoUpgradeMinorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForceUpdateTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewStatusCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewStatusDisplayStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewStatusLevel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewStatusMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewStatusTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceViewTypeHandlerVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForceUpdateTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewStatusCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewStatusDisplayStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewStatusLevel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewStatusMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewStatusTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceViewTypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoUpgradeMinorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForceUpdateTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForceUpdateTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionProperties1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionProperties1</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoUpgradeMinorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForceUpdateTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForceUpdateTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdateProperties1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdateProperties1</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoUpgradeMinorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForceUpdateTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForceUpdateTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesProtectedSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesProtectedSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsFixedSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSynchronized</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsFixedSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSynchronized</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsFixedSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSynchronized</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsFixedSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSynchronized</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdatePropertiesProtectedSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdatePropertiesProtectedSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsFixedSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSynchronized</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsFixedSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSynchronized</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdatePropertiesSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionUpdatePropertiesSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsFixedSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSynchronized</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsFixedSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSynchronized</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.ErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -70,9 +604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Identity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Identity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.Identity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -104,14 +638,20 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Machine</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.Machine</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Machine</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.Machine</TypeName>
       </ViewSelectedBy>
       <TableControl>
-        <TableHeaders> 
+        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
@@ -119,24 +659,24 @@
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
-            <TableColumnItems> 
+            <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>	
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -144,51 +684,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtension</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>IdentityPrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityTenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityType</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>IdentityPrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityTenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityType</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -196,9 +718,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionInstanceView</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionInstanceView</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -230,9 +752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionInstanceViewStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionInstanceViewStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionInstanceViewStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionInstanceViewStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -276,23 +798,29 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionPropertiesInstanceView</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AutoUpgradeMinorVersion</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ForceUpdateTag</Label>
+            <Label>StatusCode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ProvisioningState</Label>
+            <Label>StatusDisplayStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Publisher</Label>
+            <Label>StatusLevel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StatusMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StatusTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Type</Label>
@@ -305,16 +833,22 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ForceUpdateTag</PropertyName>
+                <PropertyName>StatusCode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
+                <PropertyName>StatusDisplayStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
+                <PropertyName>StatusLevel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StatusMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StatusTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
@@ -328,9 +862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineExtensionsListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -350,45 +884,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineExtensionUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AutoUpgradeMinorVersion</Label>
+            <Label>PrincipalId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ForceUpdateTag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
+            <Label>TenantId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TypeHandlerVersion</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+                <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ForceUpdateTag</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
+                <PropertyName>TenantId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TypeHandlerVersion</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -396,9 +918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -418,12 +940,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdFqdn</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>AgentVersion</Label>
           </TableColumnHeader>
@@ -432,6 +957,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastStatusChange</Label>
@@ -443,10 +974,10 @@
             <Label>OSName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>OSVersion</Label>
+            <Label>OSSku</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PhysicalLocation</Label>
+            <Label>OSVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -457,10 +988,16 @@
           <TableColumnHeader>
             <Label>VMId</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMUuid</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdFqdn</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AgentVersion</PropertyName>
               </TableColumnItem>
@@ -469,6 +1006,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastStatusChange</PropertyName>
@@ -480,10 +1023,10 @@
                 <PropertyName>OSName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>OSVersion</PropertyName>
+                <PropertyName>OSSku</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PhysicalLocation</PropertyName>
+                <PropertyName>OSVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -494,33 +1037,144 @@
               <TableColumnItem>
                 <PropertyName>VMId</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMUuid</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineReconnectProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineProperties1</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineReconnectProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineProperties1</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AgentVersion</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ClientPublicKey</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastStatusChange</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataCity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataCountryOrRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataDistrict</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MachineFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSProfileComputerName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>VMId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMUuid</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AgentVersion</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ClientPublicKey</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastStatusChange</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataCity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataCountryOrRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataDistrict</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MachineFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSProfileComputerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>VMId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMUuid</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -528,21 +1182,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachinePropertiesOSProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.MachineUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachinePropertiesOSProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>PhysicalLocation</Label>
+            <Label>ComputerName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>PhysicalLocation</PropertyName>
+                <PropertyName>ComputerName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -550,9 +1204,83 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OperationValue</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineUpdateIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OperationValue</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineUpdateIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineUpdateProperties1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.MachineUpdateProperties1</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LocationDataCity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataCountryOrRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataDistrict</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationDataName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LocationDataCity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataCountryOrRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataDistrict</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocationDataName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValue</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValue</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +1306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OperationValueDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValueDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OperationValueDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValueDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -618,9 +1346,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OSProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValueDisplay1</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.OSProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OperationValueDisplay1</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OSProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.OSProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -640,65 +1408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.UpdateResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.ResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.ResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.UpdateResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20190802Preview.UpdateResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.UpdateResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

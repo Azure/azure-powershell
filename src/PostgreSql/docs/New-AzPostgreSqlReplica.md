@@ -13,7 +13,7 @@ Creates a new replica from an existing database.
 ## SYNTAX
 
 ```
-New-AzPostgreSqlReplica -Name <String> -ResourceGroupName <String> -InputObject <IServer>
+New-AzPostgreSqlReplica -ReplicaName <String> -ResourceGroupName <String> -Master <IServer>
  [-SubscriptionId <String>] [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Creates a new replica from an existing database.
 
 ### Example 1: Create a new PostgreSql server replica
 ```powershell
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqlReplica -Name PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
+PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | New-AzPostgreSqlReplica -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 
 Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
@@ -37,7 +37,7 @@ This cmdlet creates a new PostgreSql server replica.
 ### Example 2: Create a new PostgreSql server replica
 ```powershell
 PS C:\> $pgDb = Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
-PS C:\> New-AzPostgreSqlReplica -InputObject $pgDb -Name PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
+PS C:\> New-AzPostgreSqlReplica -Master $pgDb -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 
 Name                        Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                        -------- ------------------ ------- ----------------------- -------   -------        --------------
@@ -78,22 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The source server object to create replica from.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The location the resource resides in.
 
@@ -109,18 +93,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the server.
+### -Master
+The source server object to create replica from.
+To construct, see NOTES section for MASTER properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
 Parameter Sets: (All)
-Aliases: ReplicaServerName
+Aliases: InputObject
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,6 +118,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicaName
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ReplicaServerName, Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -236,7 +236,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The source server object to create replica from.
+MASTER <IServer>: The source server object to create replica from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
