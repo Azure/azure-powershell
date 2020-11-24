@@ -14,6 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzMySqlFlexibleServer' {
     It 'CreateExpanded' {
         {
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
             $server = New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier GeneralPurpose -BackupRetentionDay 12 -StorageInMb 102400 -Location eastus2
             $server.SkuName | Should -Be "Standard_D2ds_v4"
