@@ -93,11 +93,6 @@ directive:
       subject: Service$
       variant: Update$|UpdateViaIdentity$
     remove: true
-  - where:
-      verb: Test
-      subject: ServiceDeviceServiceNameAvailability$
-      variant: Check$|CheckViaIdentity$|CheckViaIdentityExpanded$
-    remove: true
   # Rename parameter name
   - where:
       verb: Get|New|Update|Remove
