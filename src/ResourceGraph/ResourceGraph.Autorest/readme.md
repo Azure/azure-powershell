@@ -44,6 +44,14 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.ResourceGraph\/queries\/\{resourceName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.resourcegraph/queries/{resourceName}")
+  ## Remove Etag
+  - from: swagger-document
+    where: $.definitions.Resource.properties
+    transform: delete $.eTag
+  ## Remove Etag
+  - from: swagger-document
+    where: $.definitions.GraphQueryUpdateParameters.properties
+    transform: delete $.eTag
   - where:
       verb: Set
       subject: Query$

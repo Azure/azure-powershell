@@ -69,20 +69,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Description { get => Body.Description ?? null; set => Body.Description = value; }
 
-        /// <summary>
-        /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without
-        /// checking conflict.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.",
-        SerializedName = @"eTag",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ETag { get => Body.ETag ?? null; set => Body.ETag = value; }
-
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]

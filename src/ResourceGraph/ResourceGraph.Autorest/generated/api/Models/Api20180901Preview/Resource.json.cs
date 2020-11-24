@@ -74,7 +74,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_eTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString>("eTag"), out var __jsonETag) ? (string)__jsonETag : (string)ETag;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.ResourceTags.FromJson(__jsonTags) : Tag;}
             AfterFromJson(json);
         }
@@ -111,7 +110,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
             {
                 AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             }
-            AddIf( null != (((object)this._eTag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString(this._eTag.ToString()) : null, "eTag" ,container.Add );
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;

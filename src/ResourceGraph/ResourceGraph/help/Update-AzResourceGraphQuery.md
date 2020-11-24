@@ -15,15 +15,14 @@ Updates a graph query that has already been added.
 ### UpdateExpanded (Default)
 ```
 Update-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-ETag <String>] [-File <String>] [-Query <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-File <String>] [-Query <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-Description <String>] [-ETag <String>]
- [-File <String>] [-Query <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-Description <String>] [-File <String>]
+ [-Query <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +32,10 @@ Updates a graph query that has already been added.
 
 ### Example 1: Update the parameter query and tag by name
 ```powershell
-PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
+PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 ```
 
@@ -44,11 +43,11 @@ This command updates the parameter query and tag by name.
 
 ### Example 2: Update the parameter file by object
 ```powershell
-PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 
+PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 PS C:\> Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 ```
 
@@ -73,22 +72,6 @@ Accept wildcard characters: False
 
 ### -Description
 The description of a graph query.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ETag
-This will be used to handle Optimistic Concurrency.
-If not present, it will always overwrite the existing resource without checking conflict.
 
 ```yaml
 Type: System.String

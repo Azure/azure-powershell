@@ -18,13 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryPropertiesInternal)Property).Description = value; }
 
-        /// <summary>
-        /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without
-        /// checking conflict.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inherited)]
-        public string ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IResourceInternal)__resource).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IResourceInternal)__resource).ETag = value; }
-
         /// <summary>Azure resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IResourceInternal)__resource).Id; }

@@ -8,16 +8,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
         Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IResourceInternal
     {
 
-        /// <summary>Backing field for <see cref="ETag" /> property.</summary>
-        private string _eTag;
-
-        /// <summary>
-        /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without
-        /// checking conflict.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.PropertyOrigin.Owned)]
-        public string ETag { get => this._eTag; set => this._eTag = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -74,17 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
     public partial interface IResource :
         Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without
-        /// checking conflict.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.",
-        SerializedName = @"eTag",
-        PossibleTypes = new [] { typeof(string) })]
-        string ETag { get; set; }
         /// <summary>Azure resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(
         Required = false,
@@ -133,11 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
     internal partial interface IResourceInternal
 
     {
-        /// <summary>
-        /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without
-        /// checking conflict.
-        /// </summary>
-        string ETag { get; set; }
         /// <summary>Azure resource Id</summary>
         string Id { get; set; }
         /// <summary>The location of the resource</summary>

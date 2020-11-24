@@ -22,14 +22,14 @@ Create a new graph query.
 PS C:\> New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
 
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t03 microsoft.resourcegraph/queries
 .Example
 PS C:\> New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t04 microsoft.resourcegraph/queries
 
 .Inputs
@@ -51,7 +51,6 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
 
 PROPERTY <IGraphQueryResource>: Graph Query entity definition.
   Query <String>: KQL query that will be graph.
-  [ETag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Location <String>]: The location of the resource
   [Tag <IResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -107,14 +106,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -248,17 +239,17 @@ Updates a graph query that has already been added.
 .Description
 Updates a graph query that has already been added.
 .Example
-PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
+PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 .Example
-PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 
+PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 PS C:\> Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 
 .Inputs
@@ -274,7 +265,6 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <IGraphQueryUpdateParameters>: The parameters that can be provided when updating workbook properties properties.
   [Description <String>]: The description of a graph query.
-  [ETag <String>]: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   [Query <String>]: KQL query that will be graph.
   [Tag <IGraphQueryUpdateParametersTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -335,14 +325,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

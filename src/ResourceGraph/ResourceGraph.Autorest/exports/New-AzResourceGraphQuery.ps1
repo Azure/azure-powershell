@@ -22,14 +22,14 @@ Create a new graph query.
 PS C:\> New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
 
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t03 microsoft.resourcegraph/queries
 .Example
 PS C:\> New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t04 microsoft.resourcegraph/queries
 
 .Inputs
@@ -69,13 +69,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]

@@ -74,7 +74,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
             }
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.GraphQueryPropertiesUpdateParameters.FromJson(__jsonProperties) : Property;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.GraphQueryUpdateParametersTags.FromJson(__jsonTags) : Tag;}
-            {_eTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString>("eTag"), out var __jsonETag) ? (string)__jsonETag : (string)ETag;}
             AfterFromJson(json);
         }
 
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Pre
             }
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
-            AddIf( null != (((object)this._eTag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Json.JsonString(this._eTag.ToString()) : null, "eTag" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

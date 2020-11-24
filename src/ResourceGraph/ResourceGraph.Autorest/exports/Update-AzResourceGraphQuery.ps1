@@ -19,17 +19,17 @@ Updates a graph query that has already been added.
 .Description
 Updates a graph query that has already been added.
 .Example
-PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
+PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 .Example
-PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 
+PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 PS C:\> Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 
 .Inputs
@@ -84,13 +84,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]

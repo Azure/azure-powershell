@@ -21,21 +21,21 @@ Get a single graph query by its resourceName.
 .Example
 PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
 
-ETag Location Name            Type
----- -------- ----            ----
+Location Name            Type
+-------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 .Example
 PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
 
-ETag Location Name            Type
----- -------- ----            ----
+Location Name            Type
+-------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 .Example
 PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
 PS C:\> Get-AzResourceGraphQuery -InputObject $query
 
-ETag Location Name            Type
----- -------- ----            ----
+Location Name            Type
+-------- ----            ----
      global   SharedQuery-t01 microsoft.resourcegraph/queries
 
 .Inputs
@@ -367,14 +367,14 @@ Create a new graph query.
 PS C:\> New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
 
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t03 microsoft.resourcegraph/queries
 .Example
 PS C:\> New-AzResourceGraphQuery -Name query-t04 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -File 'D:\azure-service\ResourceGraph.Autorest\azure-powershell\src\ResourceGraph\ResourceGraph.Autorest\test\Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t04 microsoft.resourcegraph/queries
 
 .Inputs
@@ -414,13 +414,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
@@ -554,17 +547,17 @@ Updates a graph query that has already been added.
 .Description
 Updates a graph query that has already been added.
 .Example
-PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
+PS C:\>  Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 .Example
-PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName lucas-rg-test -Name query-t05 
+PS C:\> $query =  Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 
 PS C:\> Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 
-ETag Location Name      Type
----- -------- ----      ----
+Location Name      Type
+-------- ----      ----
      global   query-t05 microsoft.resourcegraph/queries
 
 .Inputs
@@ -619,13 +612,6 @@ param(
     [System.String]
     # The description of a graph query.
     ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [System.String]
-    # This will be used to handle Optimistic Concurrency.
-    # If not present, it will always overwrite the existing resource without checking conflict.
-    ${ETag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
