@@ -1346,7 +1346,7 @@ function Test-SnapshotDuplicateCreationFails
 {
     # Setup 
     $rgname = Get-ComputeTestResourceName;
-    $loc = "northcentralus";#$loc = Get-ComputeVMLocation;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
