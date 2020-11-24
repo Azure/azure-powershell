@@ -11,17 +11,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class VirtualMachineScaleSetRollingExtensionStartUpgrade : ComputeAutomationBaseCmdlet
     {
         private const string ByResourceIdParamSet = "ByResourceId",
-            ByInputObjectParamSet = "ByInputObject", DefaultParameterSetName = "DefaultParameter";
+            ByInputObjectParamSet = "ByInputObject";
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            ParameterSetName = "DefaultParameter",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            ParameterSetName = "DefaultParameter",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
