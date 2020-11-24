@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-AzCloudServiceInstanceView' {
     It 'Get cloud service InstanceView' {
         $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
-        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should Be 2
+        $cloudServiceInstanceView.RoleInstanceStatusesSummary.Count | Should -Not -Be 0
     }
 }

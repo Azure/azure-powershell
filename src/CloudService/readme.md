@@ -47,10 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 88fa0d128fbcf2d1ff3b330add6b4425c84f4149
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(this-folder)/resources/CloudService.json
+  # - $(this-folder)/resources/CloudService.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/preview/2020-10-01-preview/cloudService.json
 
 title: CloudService
 module-version: 0.1.0
