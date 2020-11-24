@@ -14,6 +14,7 @@ while(-not $mockingPath) {
 Describe 'Remove-AzMySqlFlexibleServer' {
     It 'Delete' {
         {
+            #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
             New-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
             Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2
