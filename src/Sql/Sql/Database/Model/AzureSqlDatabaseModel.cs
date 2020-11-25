@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
         /// </summary>
+        public int? ReadReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
+        /// </summary>
         public int? HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
@@ -242,6 +247,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ZoneRedundant = false;
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
+            ReadReplicaCount = null;
             HighAvailabilityReplicaCount = null;
             BackupStorageRedundancy = null;
             SecondaryType = null;
