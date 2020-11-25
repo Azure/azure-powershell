@@ -29,19 +29,19 @@ function Invoke-AzBotServicePrepareDeploy {
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
         # The name of the Bot resource group in the user subscription.
-        ${ResourceGroupName},
-    
-        [Alias('BotName')]
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-        [System.String]
-        # The name of the Bot resource.
-        ${Name},
+        ${CodeDir},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
-        ${SavePath},
+        ${ProjFileName},
+    
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [ValidateSet('C#', 'JavaScript', 'TypeScript')]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
+        [System.String]
+        ${Language} = 'C#',
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
@@ -100,29 +100,53 @@ function Invoke-AzBotServicePrepareDeploy {
     
     process {
         try {
-            $EnvPSBoundParameters = @{}
-            if ($PSBoundParameters.ContainsKey('Debug')) {
-                $EnvPSBoundParameters['Debug'] = $Debug
+            if ($Null -eq $CodeDir) {
+                $CodeDir = Resolve-Path -Path .
+                Write-Host "CodeDir not provided, defaulting to current working directory: $CodeDir."
             }
-            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                $EnvPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+            if (-not (Test-Path -Path $CodeDir)) {
+                throw "Provided CodeDir value $CodeDir does not exist."
             }
-            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-                $EnvPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+            if (("JavaScript" -eq $Language) -or ("TypeScript" -eq $Language)) {
+                if ($PSBoundParameters.ContainsKey("ProjFileName")) {
+                    throw "ProjectFilePath should not be passed in if language is not Csharp."
+                }
+                $DestWebConfig = [System.IO.Path]::Combine($CodeDir, 'web.config')
+                if (Test-Path -Path $DestWebConfig) {
+                    throw "web.config is found in $CodeDir.Please delete it first."
+                }
+                if (-not (Test-Path -Path ([System.IO.Path]::Combine($CodePath, "package.json")))) {
+                    Write-Warning "WARNING: This command should normally be run in the same folder as the package.json for Node.js bots. Package.json and web.config are usually in the same folder and at the root level of the .zip file."
+                }
+                if ("JavaScript" -eq $Language) {
+                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'web.config')
+                }
+                else {
+                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'typescript.web.config')
+                }
+                Copy-Item -Path $SourceWebConfig -Destination $DestWebConfig
             }
-            if ($PSBoundParameters.ContainsKey('Proxy')) {
-                $EnvPSBoundParameters['Proxy'] = $Proxy
+            else {
+                if (-not $PSBoundParameters.ContainsKey("ProjFileName")) {
+                    throw "ProjectFilePath must be provided if language is Csharp."
+                }
+                if (-not $ProjFileName.EndsWith('.csproj')) {
+                    $ProjFileName = "$ProjFileName.csproj"
+                }
+                $DestWebConfig = [System.IO.Path]::Combine($CodeDir, '.deployment')
+                if (Test-Path -Path $DestWebConfig) {
+                    throw ".deployment is found in $CodeDir.Please delete it first."
+                }
+                $CsprojFile = [System.IO.Path]::Combine($CodeDir, $ProjFileName)
+                if (-not (Test-Path -Path $CsprojFile)) {
+                    throw "$ProjFileName file not found.Please verify the relative path to the .csproj file from the $CodeDir"
+                }
+                $DeploymentContent = "[config]{0}SCM_SCRIPT_GENERATOR_ARGS=--aspNetCore $ProjFileName{1}" -f @([environment]::NewLine, [environment]::NewLine)
+                Set-Content -Path $DestWebConfig -Value $DeploymentContent
             }
-            if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
-                $EnvPSBoundParameters['ProxyCredential'] = $ProxyCredential
-            }
-            if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
-                $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
-            }
-
-
         } catch {
             throw
         }
     }
 }
+

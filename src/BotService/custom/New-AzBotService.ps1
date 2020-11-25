@@ -18,31 +18,6 @@
 Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.botservice/new-azbotservice
 #>
@@ -118,15 +93,13 @@ function New-AzBotService {
     
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('C#', 'Javascript') })]
-        [ValidateSet('C#', 'Javascript')]
+        [ValidateSet('C#', 'JavaScript')]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
         ${Language} = 'C#',
     
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('echo') })]
         [ValidateSet('echo')]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
