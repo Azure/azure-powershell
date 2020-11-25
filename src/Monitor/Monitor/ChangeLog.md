@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]
 
 ## Version 2.2.0
 * Fixed the bug that warning message cannot be suppressed. [#12889]
