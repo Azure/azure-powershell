@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
+* New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
 
 ## Version 4.6.0
 * Added `-VmssId` parameter to `New-AzVm`
