@@ -1,0 +1,4461 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "2020-07-01",
+      "title": "AppPlatformManagementClient",
+      "description": "REST API for Azure Spring Cloud"
+    },
+    "host": "management.azure.com",
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get a Service and its properties.",
+          "operationId": "Services_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding Service.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_Get": {
+              "$ref": "./examples/Services_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create a new Service or update an exiting Service.",
+          "operationId": "Services_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "resource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created. The response describes the new Service and contains a Location header to query the\r\noperation result.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "200": {
+              "description": "Success. The response describes the updated Service.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Service is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Services_CreateOrUpdate": {
+              "$ref": "./examples/Services_CreateOrUpdate.json"
+            },
+            "Services_CreateOrUpdate_VNetInjection": {
+              "$ref": "./examples/Services_CreateOrUpdate_VNetInjection.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to delete a Service.",
+          "operationId": "Services_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "204": {
+              "description": "Success. The response indicates the resource is already deleted."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Services_Delete": {
+              "$ref": "./examples/Services_Delete.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to update an exiting Service.",
+          "operationId": "Services_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "resource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Service.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Service is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Services_Update": {
+              "$ref": "./examples/Services_Update.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "List test keys for a Service.",
+          "operationId": "Services_ListTestKeys",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the test keys.",
+              "schema": {
+                "$ref": "#/definitions/TestKeys"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_ListTestKeys": {
+              "$ref": "./examples/Services_ListTestKeys.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Regenerate a test key for a Service.",
+          "operationId": "Services_RegenerateTestKey",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "regenerateTestKeyRequest",
+              "in": "body",
+              "description": "Parameters for the operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/RegenerateTestKeyRequestPayload"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success.",
+              "schema": {
+                "$ref": "#/definitions/TestKeys"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_RegenerateTestKey": {
+              "$ref": "./examples/Services_RegenerateTestKey.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Disable test endpoint functionality for a Service.",
+          "operationId": "Services_DisableTestEndpoint",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_DisableTestEndpoint": {
+              "$ref": "./examples/Services_DisableTestEndpoint.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Enable test endpoint functionality for a Service.",
+          "operationId": "Services_EnableTestEndpoint",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/TestKeys"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_EnableTestEndpoint": {
+              "$ref": "./examples/Services_EnableTestEndpoint.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get the config server and its properties.",
+          "operationId": "ConfigServers_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding Config Server.",
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigServers_Get": {
+              "$ref": "./examples/ConfigServers_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Update the config server.",
+          "operationId": "ConfigServers_UpdatePut",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "configServerResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Config Server.",
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Config Server is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "ConfigServers_UpdatePut": {
+              "$ref": "./examples/ConfigServers_UpdatePut.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Update the config server.",
+          "operationId": "ConfigServers_UpdatePatch",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "configServerResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Config Server.",
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Config Server is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/ConfigServerResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "ConfigServers_UpdatePatch": {
+              "$ref": "./examples/ConfigServers_UpdatePatch.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get the Monitoring Setting and its properties.",
+          "operationId": "MonitoringSettings_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding Monitoring Setting.",
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "MonitoringSettings_Get": {
+              "$ref": "./examples/MonitoringSettings_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Update the Monitoring Setting.",
+          "operationId": "MonitoringSettings_UpdatePut",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "monitoringSettingResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Monitoring Setting.",
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Monitoring Setting is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "MonitoringSettings_UpdatePut": {
+              "$ref": "./examples/MonitoringSettings_UpdatePut.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Update the Monitoring Setting.",
+          "operationId": "MonitoringSettings_UpdatePatch",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "monitoringSettingResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Monitoring Setting.",
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Monitoring Setting is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/MonitoringSettingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "MonitoringSettings_UpdatePatch": {
+              "$ref": "./examples/MonitoringSettings_UpdatePatch.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get an App and its properties.",
+          "operationId": "Apps_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "name": "syncStatus",
+              "in": "query",
+              "description": "Indicates whether sync status",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding App.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Apps_Get": {
+              "$ref": "./examples/Apps_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create a new App or update an exiting App.",
+          "operationId": "Apps_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "name": "appResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated App.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "201": {
+              "description": "Created. The response describes the new App and contains a Location header to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting App is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Apps_CreateOrUpdate": {
+              "$ref": "./examples/Apps_CreateOrUpdate.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to delete an App.",
+          "operationId": "Apps_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Success. The response indicates the resource doesn't exist."
+            },
+            "200": {
+              "description": "Success. The response indicates the resource is deleted."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Apps_Delete": {
+              "$ref": "./examples/Apps_Delete.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to update an exiting App.",
+          "operationId": "Apps_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "name": "appResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated App.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting App is now updating and contains a Location header to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/AppResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Apps_Update": {
+              "$ref": "./examples/Apps_Update.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Handles requests to list all resources in a Service.",
+          "operationId": "Apps_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of Apps in the Service.",
+              "schema": {
+                "$ref": "#/definitions/AppResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Apps_List": {
+              "$ref": "./examples/Apps_List.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get an resource upload URL for an App, which may be artifacts or source archive.",
+          "operationId": "Apps_GetResourceUploadUrl",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the resource upload URL.",
+              "schema": {
+                "$ref": "#/definitions/ResourceUploadDefinition"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Apps_GetResourceUploadUrl": {
+              "$ref": "./examples/Apps_GetResourceUploadUrl.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get a Binding and its properties.",
+          "operationId": "Bindings_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/BindingNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding Binding.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Bindings_Get": {
+              "$ref": "./examples/Bindings_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create a new Binding or update an exiting Binding.",
+          "operationId": "Bindings_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/BindingNameParameter"
+            },
+            {
+              "name": "bindingResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the created or updated Binding.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "201": {
+              "description": "Created. The response describes the new Binding and contains a Location header to query the\r\noperation result.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Binding is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Bindings_CreateOrUpdate": {
+              "$ref": "./examples/Bindings_CreateOrUpdate.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to delete a Binding.",
+          "operationId": "Bindings_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/BindingNameParameter"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Success. The response indicates the resource doesn't exist."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "200": {
+              "description": "Success. The response indicates the resource is deleted."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Bindings_Delete": {
+              "$ref": "./examples/Bindings_Delete.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to update an exiting Binding.",
+          "operationId": "Bindings_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/BindingNameParameter"
+            },
+            {
+              "name": "bindingResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the updated Binding.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Binding is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/BindingResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Bindings_Update": {
+              "$ref": "./examples/Bindings_Update.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Handles requests to list all resources in an App.",
+          "operationId": "Bindings_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of Bindings in the App.",
+              "schema": {
+                "$ref": "#/definitions/BindingResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Bindings_List": {
+              "$ref": "./examples/Bindings_List.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get the certificate resource.",
+          "operationId": "Certificates_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CertificateNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the certificate.",
+              "schema": {
+                "$ref": "#/definitions/CertificateResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Certificates_Get": {
+              "$ref": "./examples/Certificates_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create or update certificate resource.",
+          "operationId": "Certificates_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CertificateNameParameter"
+            },
+            {
+              "name": "certificateResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CertificateResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the existed certificate updated.",
+              "schema": {
+                "$ref": "#/definitions/CertificateResource"
+              }
+            },
+            "201": {
+              "description": "Created. The response describes the new certificate and contains a Location header to query the\r\noperation result.",
+              "schema": {
+                "$ref": "#/definitions/CertificateResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting certificate is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/CertificateResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Certificates_CreateOrUpdate": {
+              "$ref": "./examples/Certificates_CreateOrUpdate.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Delete the certificate resource.",
+          "operationId": "Certificates_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CertificateNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response indicates the certificate deleted."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "204": {
+              "description": "No content. The response indicates the certificate doesn't exist."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Certificates_Delete": {
+              "$ref": "./examples/Certificates_Delete.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "List all the certificates of one user.",
+          "operationId": "Certificates_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the custom domain resource list of one application.",
+              "schema": {
+                "$ref": "#/definitions/CertificateResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Certificates_List": {
+              "$ref": "./examples/Certificates_List.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Checks that the resource name is valid and is not already in use.",
+          "operationId": "Services_CheckNameAvailability",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "name": "location",
+              "in": "path",
+              "description": "the region",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "availabilityParameters",
+              "in": "body",
+              "description": "Parameters supplied to the operation.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NameAvailabilityParameters"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the name availability.",
+              "schema": {
+                "$ref": "#/definitions/NameAvailability"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Services_CheckNameAvailability": {
+              "$ref": "./examples/Services_CheckNameAvailability.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get the custom domain of one lifecycle application.",
+          "operationId": "CustomDomains_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CustomDomainNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the custom domain.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "CustomDomains_Get": {
+              "$ref": "./examples/CustomDomains_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create or update custom domain of one lifecycle application.",
+          "operationId": "CustomDomains_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CustomDomainNameParameter"
+            },
+            {
+              "name": "domainResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the existed custom domain updated.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "201": {
+              "description": "Created. The response describes the new custom domain and contains a Location header to query the\r\noperation result.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting custom domain is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "CustomDomains_CreateOrUpdate": {
+              "$ref": "./examples/CustomDomains_CreateOrUpdate.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Delete the custom domain of one lifecycle application.",
+          "operationId": "CustomDomains_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CustomDomainNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response indicates the custom domain deleted."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "204": {
+              "description": "No content. The response indicates the custom domain doesn't exist."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "CustomDomains_Delete": {
+              "$ref": "./examples/CustomDomains_Delete.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Update custom domain of one lifecycle application.",
+          "operationId": "CustomDomains_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/CustomDomainNameParameter"
+            },
+            {
+              "name": "domainResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the existed custom domain updated.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting custom domain is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "CustomDomains_Update": {
+              "$ref": "./examples/CustomDomains_Update.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "List the custom domains of one lifecycle application.",
+          "operationId": "CustomDomains_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the custom domain resource list of one application.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "CustomDomains_List": {
+              "$ref": "./examples/CustomDomains_List.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Check the resource name is valid as well as not in use.",
+          "operationId": "Apps_ValidateDomain",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "name": "validatePayload",
+              "in": "body",
+              "description": "Custom domain payload to be validated",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CustomDomainValidatePayload"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describe the name is available.",
+              "schema": {
+                "$ref": "#/definitions/CustomDomainValidateResult"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Apps_ValidateDomain": {
+              "$ref": "./examples/Apps_ValidateDomain.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get a Deployment and its properties.",
+          "operationId": "Deployments_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the corresponding Deployment.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Deployments_Get": {
+              "$ref": "./examples/Deployments_Get.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Create a new Deployment or update an exiting Deployment.",
+          "operationId": "Deployments_CreateOrUpdate",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            },
+            {
+              "name": "deploymentResource",
+              "in": "body",
+              "description": "Parameters for the create or update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created. The response describes the new Deployment and contains a Location header to query the\r\noperation result.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "200": {
+              "description": "Success. The response describes the updated Deployment.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "202": {
+              "description": "Accepted. The response indicates the exiting Deployment is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_CreateOrUpdate": {
+              "$ref": "./examples/Deployments_CreateOrUpdate.json"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to delete a Deployment.",
+          "operationId": "Deployments_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response indicates the resource is deleted."
+            },
+            "204": {
+              "description": "Success. The response indicates the resource doesn't exist."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the delete operation is performed in the background."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_Delete": {
+              "$ref": "./examples/Deployments_Delete.json"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Operation to update an exiting Deployment.",
+          "operationId": "Deployments_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            },
+            {
+              "name": "deploymentResource",
+              "in": "body",
+              "description": "Parameters for the update operation",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            }
+          ],
+          "responses": {
+            "202": {
+              "description": "Accepted. The response indicates the exiting Deployment is now updating and contains a Location\r\nheader to query the operation result.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "200": {
+              "description": "Success. The response describes the updated Deployment.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResource"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_Update": {
+              "$ref": "./examples/Deployments_Update.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Handles requests to list all resources in an App.",
+          "operationId": "Deployments_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "name": "version",
+              "in": "query",
+              "description": "Version of the deployments to be listed",
+              "required": false,
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "collectionFormat": "multi",
+              "uniqueItems": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of Deployments in the App.",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Deployments_List": {
+              "$ref": "./examples/Deployments_List.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "List deployments for a certain service",
+          "operationId": "Deployments_ListForCluster",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "name": "version",
+              "in": "query",
+              "description": "Version of the deployments to be listed",
+              "required": false,
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "collectionFormat": "multi",
+              "uniqueItems": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/DeploymentResourceCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Deployments_ListForCluster": {
+              "$ref": "./examples/Deployments_ListForCluster.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Start the deployment.",
+          "operationId": "Deployments_Start",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the Deployment is now starting and contains a Location header to\r\nquery the operation result."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_Start": {
+              "$ref": "./examples/Deployments_Start.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Stop the deployment.",
+          "operationId": "Deployments_Stop",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the Deployment is now stopping and contains a Location header to\r\nquery the operation result."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_Stop": {
+              "$ref": "./examples/Deployments_Stop.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Restart the deployment.",
+          "operationId": "Deployments_Restart",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success."
+            },
+            "202": {
+              "description": "Accepted. The response indicates the Deployment is now restarting and contains a Location header\r\nto query the operation result."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-long-running-operation": true,
+          "x-ms-long-running-operation-options": {
+            "final-state-via": "azure-async-operation"
+          },
+          "x-ms-examples": {
+            "Deployments_Restart": {
+              "$ref": "./examples/Deployments_Restart.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl": {
+        "post": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Get deployment log file URL",
+          "operationId": "Deployments_GetLogFileUrl",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ServiceNameParameter"
+            },
+            {
+              "$ref": "#/parameters/AppNameParameter"
+            },
+            {
+              "$ref": "#/parameters/DeploymentNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response contains the log file URL.",
+              "schema": {
+                "$ref": "#/definitions/LogFileUrlResponse"
+              }
+            },
+            "204": {
+              "description": "Success. The deployment does not have log file."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "Deployments_GetLogFileUrl": {
+              "$ref": "./examples/Deployments_GetLogFileUrl.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Handles requests to list all resources in a subscription.",
+          "operationId": "Services_ListBySubscription",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of Services in the subscription.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResourceList"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Services_ListBySubscription": {
+              "$ref": "./examples/Services_ListBySubscription.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Handles requests to list all resources in a resource group.",
+          "operationId": "Services_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of Services in the resource group.",
+              "schema": {
+                "$ref": "#/definitions/ServiceResourceList"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Services_List": {
+              "$ref": "./examples/Services_List.json"
+            }
+          }
+        }
+      },
+      "/providers/Microsoft.AppPlatform/operations": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Lists all of the available REST API operations of the Microsoft.AppPlatform provider.",
+          "operationId": "Operations_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the list of operations.",
+              "schema": {
+                "$ref": "#/definitions/AvailableOperations"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Operations_List": {
+              "$ref": "./examples/Operations_List.json"
+            }
+          }
+        }
+      },
+      "/providers/Microsoft.AppPlatform/runtimeVersions": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.",
+          "operationId": "RuntimeVersions_ListRuntimeVersions",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. The response describes the details of all supported deployment runtime versions.",
+              "schema": {
+                "$ref": "#/definitions/AvailableRuntimeVersions"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "RuntimeVersions_ListRuntimeVersions": {
+              "$ref": "./examples/RuntimeVersions_ListRuntimeVersions.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus": {
+        "get": {
+          "tags": [
+            "AppPlatform"
+          ],
+          "description": "Lists all of the available skus of the Microsoft.AppPlatform provider.",
+          "operationId": "Skus_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/ResourceSkuCollection"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed.",
+              "schema": {
+                "$ref": "#/definitions/CloudError"
+              }
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          },
+          "x-ms-examples": {
+            "Skus_List": {
+              "$ref": "./examples/Skus_List.json"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "ServiceResource": {
+        "description": "Service resource",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/TrackedResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/ClusterResourceProperties",
+            "description": "Properties of the Service resource",
+            "x-ms-client-flatten": false
+          },
+          "sku": {
+            "$ref": "#/definitions/Sku",
+            "description": "Sku of the Service resource"
+          }
+        }
+      },
+      "TrackedResource": {
+        "description": "The resource model definition for a ARM tracked top level resource.",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Resource"
+          }
+        ],
+        "properties": {
+          "location": {
+            "description": "The GEO location of the resource.",
+            "type": "string"
+          },
+          "tags": {
+            "description": "Tags of the service which is a list of key value pairs that describe the resource.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Resource": {
+        "description": "The core properties of ARM resources.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Fully qualified resource Id for the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "description": "The name of the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "type": {
+            "description": "The type of the resource.",
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "x-ms-azure-resource": true
+      },
+      "ClusterResourceProperties": {
+        "description": "Service properties payload",
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "description": "Provisioning state of the Service",
+            "enum": [
+              "Creating",
+              "Updating",
+              "Deleting",
+              "Deleted",
+              "Succeeded",
+              "Failed",
+              "Moving",
+              "Moved",
+              "MoveFailed"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "ProvisioningState",
+              "modelAsString": true
+            }
+          },
+          "networkProfile": {
+            "$ref": "#/definitions/NetworkProfile",
+            "description": "Network profile of the Service"
+          },
+          "version": {
+            "format": "int32",
+            "description": "Version of the Service",
+            "type": "integer",
+            "readOnly": true
+          },
+          "serviceId": {
+            "description": "ServiceInstanceEntity GUID which uniquely identifies a created resource",
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "ManagedIdentityProperties": {
+        "description": "Managed identity properties retrieved from ARM request headers.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the managed identity",
+            "enum": [
+              "None",
+              "SystemAssigned",
+              "UserAssigned",
+              "SystemAssigned,UserAssigned"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "ManagedIdentityType",
+              "modelAsString": true
+            }
+          },
+          "principalId": {
+            "description": "Principal Id",
+            "type": "string"
+          },
+          "tenantId": {
+            "description": "Tenant Id",
+            "type": "string"
+          }
+        }
+      },
+      "Sku": {
+        "description": "Sku of Azure Spring Cloud",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the Sku",
+            "type": "string"
+          },
+          "tier": {
+            "description": "Tier of the Sku",
+            "type": "string"
+          },
+          "capacity": {
+            "format": "int32",
+            "description": "Current capacity of the target resource",
+            "type": "integer"
+          }
+        }
+      },
+      "ConfigServerResource": {
+        "description": "Config Server resource",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/ConfigServerProperties",
+            "description": "Properties of the Config Server resource",
+            "x-ms-client-flatten": false
+          }
+        }
+      },
+      "ConfigServerProperties": {
+        "description": "Config server git properties payload",
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "description": "State of the config server.",
+            "enum": [
+              "NotAvailable",
+              "Deleted",
+              "Failed",
+              "Succeeded",
+              "Updating"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "ConfigServerState",
+              "modelAsString": true
+            }
+          },
+          "error": {
+            "$ref": "#/definitions/Error",
+            "description": "Error when apply config server settings."
+          },
+          "configServer": {
+            "$ref": "#/definitions/ConfigServerSettings",
+            "description": "Settings of config server."
+          }
+        }
+      },
+      "MonitoringSettingResource": {
+        "description": "Monitoring Setting resource",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/MonitoringSettingProperties",
+            "description": "Properties of the Monitoring Setting resource",
+            "x-ms-client-flatten": false
+          }
+        }
+      },
+      "MonitoringSettingProperties": {
+        "description": "Monitoring Setting properties payload",
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "description": "State of the Monitoring Setting.",
+            "enum": [
+              "NotAvailable",
+              "Failed",
+              "Succeeded",
+              "Updating"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "MonitoringSettingState",
+              "modelAsString": true
+            }
+          },
+          "error": {
+            "$ref": "#/definitions/Error",
+            "description": "Error when apply Monitoring Setting changes."
+          },
+          "traceEnabled": {
+            "description": "Indicates whether enable the trace functionality",
+            "type": "boolean"
+          },
+          "appInsightsInstrumentationKey": {
+            "description": "Target application insight instrumentation key",
+            "type": "string"
+          }
+        }
+      },
+      "NetworkProfile": {
+        "description": "Service network profile payload",
+        "type": "object",
+        "properties": {
+          "serviceRuntimeSubnetId": {
+            "description": "Fully qualified resource Id of the subnet to host Azure Spring Cloud Service Runtime",
+            "type": "string"
+          },
+          "appSubnetId": {
+            "description": "Fully qualified resource Id of the subnet to host Azure Spring Cloud Apps",
+            "type": "string"
+          },
+          "serviceCidr": {
+            "description": "Azure Spring Cloud service reserved CIDR",
+            "type": "string"
+          },
+          "serviceRuntimeNetworkResourceGroup": {
+            "description": "Name of the resource group containing network resources of Azure Spring Cloud Service Runtime",
+            "type": "string"
+          },
+          "appNetworkResourceGroup": {
+            "description": "Name of the resource group containing network resources of Azure Spring Cloud Apps",
+            "type": "string"
+          },
+          "outboundIPs": {
+            "description": "Desired outbound IP resources for Azure Spring Cloud instance.",
+            "type": "object",
+            "readOnly": true,
+            "properties": {
+              "publicIPs": {
+                "type": "array",
+                "readOnly": true,
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of public IP addresses."
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "description": "The error code compose of code and message.",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "The code of error.",
+            "type": "string"
+          },
+          "message": {
+            "description": "The message of error.",
+            "type": "string"
+          }
+        }
+      },
+      "ConfigServerSettings": {
+        "description": "The settings of config server.",
+        "type": "object",
+        "properties": {
+          "gitProperty": {
+            "$ref": "#/definitions/ConfigServerGitProperty",
+            "description": "Property of git environment."
+          }
+        }
+      },
+      "ConfigServerGitProperty": {
+        "description": "Property of git.",
+        "required": [
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "repositories": {
+            "description": "Repositories of git.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/GitPatternRepository"
+            }
+          },
+          "uri": {
+            "description": "URI of the repository",
+            "type": "string"
+          },
+          "label": {
+            "description": "Label of the repository",
+            "type": "string"
+          },
+          "searchPaths": {
+            "description": "Searching path of the repository",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "username": {
+            "description": "Username of git repository basic auth.",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password of git repository basic auth.",
+            "type": "string"
+          },
+          "hostKey": {
+            "description": "Public sshKey of git repository.",
+            "type": "string"
+          },
+          "hostKeyAlgorithm": {
+            "description": "SshKey algorithm of git repository.",
+            "type": "string"
+          },
+          "privateKey": {
+            "description": "Private sshKey algorithm of git repository.",
+            "type": "string"
+          },
+          "strictHostKeyChecking": {
+            "description": "Strict host key checking or not.",
+            "type": "boolean"
+          }
+        }
+      },
+      "GitPatternRepository": {
+        "description": "Git repository property payload",
+        "required": [
+          "name",
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the repository",
+            "type": "string"
+          },
+          "pattern": {
+            "description": "Collection of pattern of the repository",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "uri": {
+            "description": "URI of the repository",
+            "type": "string"
+          },
+          "label": {
+            "description": "Label of the repository",
+            "type": "string"
+          },
+          "searchPaths": {
+            "description": "Searching path of the repository",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "username": {
+            "description": "Username of git repository basic auth.",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password of git repository basic auth.",
+            "type": "string"
+          },
+          "hostKey": {
+            "description": "Public sshKey of git repository.",
+            "type": "string"
+          },
+          "hostKeyAlgorithm": {
+            "description": "SshKey algorithm of git repository.",
+            "type": "string"
+          },
+          "privateKey": {
+            "description": "Private sshKey algorithm of git repository.",
+            "type": "string"
+          },
+          "strictHostKeyChecking": {
+            "description": "Strict host key checking or not.",
+            "type": "boolean"
+          }
+        }
+      },
+      "TestKeys": {
+        "description": "Test keys payload",
+        "type": "object",
+        "properties": {
+          "primaryKey": {
+            "description": "Primary key",
+            "type": "string"
+          },
+          "secondaryKey": {
+            "description": "Secondary key",
+            "type": "string"
+          },
+          "primaryTestEndpoint": {
+            "description": "Primary test endpoint",
+            "type": "string"
+          },
+          "secondaryTestEndpoint": {
+            "description": "Secondary test endpoint",
+            "type": "string"
+          },
+          "enabled": {
+            "description": "Indicates whether the test endpoint feature enabled or not",
+            "type": "boolean"
+          }
+        }
+      },
+      "RegenerateTestKeyRequestPayload": {
+        "description": "Regenerate test key request payload",
+        "required": [
+          "keyType"
+        ],
+        "type": "object",
+        "properties": {
+          "keyType": {
+            "description": "Type of the test key",
+            "enum": [
+              "Primary",
+              "Secondary"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "TestKeyType",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "AppResource": {
+        "description": "App resource payload",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/AppResourceProperties",
+            "description": "Properties of the App resource",
+            "x-ms-client-flatten": false
+          },
+          "identity": {
+            "$ref": "#/definitions/ManagedIdentityProperties",
+            "description": "The Managed Identity type of the app resource"
+          },
+          "location": {
+            "description": "The GEO location of the application, always the same with its parent resource",
+            "type": "string"
+          }
+        }
+      },
+      "ProxyResource": {
+        "description": "The resource model definition for a ARM proxy resource. It will have everything other than required location and tags.",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Resource"
+          }
+        ],
+        "properties": {}
+      },
+      "AppResourceProperties": {
+        "description": "App resource properties payload",
+        "type": "object",
+        "properties": {
+          "public": {
+            "description": "Indicates whether the App exposes public endpoint",
+            "type": "boolean"
+          },
+          "url": {
+            "description": "URL of the App",
+            "type": "string",
+            "readOnly": true
+          },
+          "provisioningState": {
+            "description": "Provisioning state of the App",
+            "enum": [
+              "Succeeded",
+              "Failed",
+              "Creating",
+              "Updating"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "AppResourceProvisioningState",
+              "modelAsString": true
+            }
+          },
+          "activeDeploymentName": {
+            "description": "Name of the active deployment of the App",
+            "type": "string"
+          },
+          "fqdn": {
+            "description": "Fully qualified dns Name.",
+            "type": "string"
+          },
+          "httpsOnly": {
+            "description": "Indicate if only https is allowed.",
+            "type": "boolean"
+          },
+          "createdTime": {
+            "format": "date-time",
+            "description": "Date time when the resource is created",
+            "type": "string",
+            "readOnly": true
+          },
+          "temporaryDisk": {
+            "$ref": "#/definitions/TemporaryDisk",
+            "description": "Temporary disk settings"
+          },
+          "persistentDisk": {
+            "$ref": "#/definitions/PersistentDisk",
+            "description": "Persistent disk settings"
+          }
+        }
+      },
+      "TemporaryDisk": {
+        "description": "Temporary disk payload",
+        "type": "object",
+        "properties": {
+          "sizeInGB": {
+            "format": "int32",
+            "description": "Size of the temporary disk in GB",
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "mountPath": {
+            "description": "Mount path of the temporary disk",
+            "type": "string"
+          }
+        }
+      },
+      "PersistentDisk": {
+        "description": "Persistent disk payload",
+        "type": "object",
+        "properties": {
+          "sizeInGB": {
+            "format": "int32",
+            "description": "Size of the persistent disk in GB",
+            "maximum": 50.0,
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "usedInGB": {
+            "format": "int32",
+            "description": "Size of the used persistent disk in GB",
+            "maximum": 50.0,
+            "minimum": 0.0,
+            "type": "integer",
+            "readOnly": true
+          },
+          "mountPath": {
+            "description": "Mount path of the persistent disk",
+            "type": "string"
+          }
+        }
+      },
+      "AppResourceCollection": {
+        "description": "Object that includes an array of App resources and a possible link for next set",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of App resources",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/AppResource"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "ResourceUploadDefinition": {
+        "description": "Resource upload definition payload",
+        "type": "object",
+        "properties": {
+          "relativePath": {
+            "description": "Source relative path",
+            "type": "string"
+          },
+          "uploadUrl": {
+            "description": "Upload URL",
+            "type": "string"
+          }
+        }
+      },
+      "BindingResource": {
+        "description": "Binding resource payload",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/BindingResourceProperties",
+            "description": "Properties of the Binding resource",
+            "x-ms-client-flatten": false
+          }
+        }
+      },
+      "BindingResourceProperties": {
+        "description": "Binding resource properties payload",
+        "type": "object",
+        "properties": {
+          "resourceName": {
+            "description": "The name of the bound resource",
+            "type": "string",
+            "readOnly": true
+          },
+          "resourceType": {
+            "description": "The standard Azure resource type of the bound resource",
+            "type": "string",
+            "readOnly": true
+          },
+          "resourceId": {
+            "description": "The Azure resource id of the bound resource",
+            "type": "string"
+          },
+          "key": {
+            "description": "The key of the bound resource",
+            "type": "string"
+          },
+          "bindingParameters": {
+            "description": "Binding parameters of the Binding resource",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "generatedProperties": {
+            "description": "The generated Spring Boot property file for this binding. The secret will be deducted.",
+            "type": "string",
+            "readOnly": true
+          },
+          "createdAt": {
+            "description": "Creation time of the Binding resource",
+            "type": "string",
+            "readOnly": true
+          },
+          "updatedAt": {
+            "description": "Update time of the Binding resource",
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "BindingResourceCollection": {
+        "description": "Object that includes an array of Binding resources and a possible link for next set",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of Binding resources",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/BindingResource"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "CertificateResource": {
+        "description": "Certificate resource payload.",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/CertificateProperties",
+            "description": "Properties of the certificate resource payload.",
+            "x-ms-client-flatten": false
+          }
+        }
+      },
+      "CertificateProperties": {
+        "description": "Certificate resource payload.",
+        "required": [
+          "vaultUri",
+          "keyVaultCertName"
+        ],
+        "type": "object",
+        "properties": {
+          "thumbprint": {
+            "description": "The thumbprint of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "vaultUri": {
+            "description": "The vault uri of user key vault.",
+            "type": "string"
+          },
+          "keyVaultCertName": {
+            "description": "The certificate name of key vault.",
+            "type": "string"
+          },
+          "certVersion": {
+            "description": "The certificate version of key vault.",
+            "type": "string"
+          },
+          "issuer": {
+            "description": "The issuer of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "issuedDate": {
+            "description": "The issue date of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "expirationDate": {
+            "description": "The expiration date of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "activateDate": {
+            "description": "The activate date of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "subjectName": {
+            "description": "The subject name of certificate.",
+            "type": "string",
+            "readOnly": true
+          },
+          "dnsNames": {
+            "description": "The domain list of certificate.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "readOnly": true
+          }
+        }
+      },
+      "CertificateResourceCollection": {
+        "description": "Collection compose of certificate resources list and a possible link for next page.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The certificate resources list.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CertificateResource"
+            }
+          },
+          "nextLink": {
+            "description": "The link to next page of certificate list.",
+            "type": "string"
+          }
+        }
+      },
+      "NameAvailabilityParameters": {
+        "description": "Name availability parameters payload",
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the resource to check name availability",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name to be checked",
+            "type": "string"
+          }
+        }
+      },
+      "NameAvailability": {
+        "description": "Name availability result payload",
+        "type": "object",
+        "properties": {
+          "nameAvailable": {
+            "description": "Indicates whether the name is available",
+            "type": "boolean"
+          },
+          "reason": {
+            "description": "Reason why the name is not available",
+            "type": "string"
+          },
+          "message": {
+            "description": "Message why the name is not available",
+            "type": "string"
+          }
+        },
+        "readOnly": true
+      },
+      "CustomDomainResource": {
+        "description": "Custom domain resource payload.",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/CustomDomainProperties",
+            "description": "Properties of the custom domain resource.",
+            "x-ms-client-flatten": false
+          }
+        }
+      },
+      "CustomDomainProperties": {
+        "description": "Custom domain of app resource payload.",
+        "type": "object",
+        "properties": {
+          "thumbprint": {
+            "description": "The thumbprint of bound certificate.",
+            "type": "string"
+          },
+          "appName": {
+            "description": "The app name of domain.",
+            "type": "string",
+            "readOnly": true
+          },
+          "certName": {
+            "description": "The bound certificate name of domain.",
+            "type": "string"
+          }
+        }
+      },
+      "CustomDomainResourceCollection": {
+        "description": "Collection compose of a custom domain resources list and a possible link for next page.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The custom domain resources list.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CustomDomainResource"
+            }
+          },
+          "nextLink": {
+            "description": "The link to next page of custom domain list.",
+            "type": "string"
+          }
+        }
+      },
+      "CustomDomainValidatePayload": {
+        "description": "Custom domain validate payload.",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name to be validated",
+            "type": "string"
+          }
+        }
+      },
+      "CustomDomainValidateResult": {
+        "description": "Validation result for custom domain.",
+        "type": "object",
+        "properties": {
+          "isValid": {
+            "description": "Indicates if domain name is valid.",
+            "type": "boolean"
+          },
+          "message": {
+            "description": "Message of why domain name is invalid.",
+            "type": "string"
+          }
+        }
+      },
+      "DeploymentResource": {
+        "description": "Deployment resource payload",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProxyResource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/DeploymentResourceProperties",
+            "description": "Properties of the Deployment resource",
+            "x-ms-client-flatten": false
+          },
+          "sku": {
+            "$ref": "#/definitions/Sku",
+            "description": "Sku of the Deployment resource"
+          }
+        }
+      },
+      "DeploymentResourceProperties": {
+        "description": "Deployment resource properties payload",
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/definitions/UserSourceInfo",
+            "description": "Uploaded source information of the deployment."
+          },
+          "appName": {
+            "description": "App name of the deployment",
+            "type": "string",
+            "readOnly": true
+          },
+          "deploymentSettings": {
+            "$ref": "#/definitions/DeploymentSettings",
+            "description": "Deployment settings of the Deployment"
+          },
+          "provisioningState": {
+            "description": "Provisioning state of the Deployment",
+            "enum": [
+              "Creating",
+              "Updating",
+              "Succeeded",
+              "Failed"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "DeploymentResourceProvisioningState",
+              "modelAsString": true
+            }
+          },
+          "status": {
+            "description": "Status of the Deployment",
+            "enum": [
+              "Unknown",
+              "Stopped",
+              "Running",
+              "Failed",
+              "Allocating",
+              "Upgrading",
+              "Compiling"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "DeploymentResourceStatus",
+              "modelAsString": true
+            }
+          },
+          "active": {
+            "description": "Indicates whether the Deployment is active",
+            "type": "boolean",
+            "readOnly": true
+          },
+          "createdTime": {
+            "format": "date-time",
+            "description": "Date time when the resource is created",
+            "type": "string",
+            "readOnly": true
+          },
+          "instances": {
+            "description": "Collection of instances belong to the Deployment",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DeploymentInstance"
+            },
+            "readOnly": true
+          }
+        }
+      },
+      "UserSourceInfo": {
+        "description": "Source information for a deployment",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the source uploaded",
+            "enum": [
+              "Jar",
+              "NetCoreZip",
+              "Source"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "UserSourceType",
+              "modelAsString": true
+            }
+          },
+          "relativePath": {
+            "description": "Relative path of the storage which stores the source",
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the source",
+            "type": "string"
+          },
+          "artifactSelector": {
+            "description": "Selector for the artifact to be used for the deployment for multi-module projects. This should be\r\nthe relative path to the target module/project.",
+            "type": "string"
+          }
+        }
+      },
+      "DeploymentSettings": {
+        "description": "Deployment settings payload",
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "format": "int32",
+            "description": "Required CPU, basic tier should be 1, standard tier should be in range (1, 4)",
+            "default": 1,
+            "type": "integer"
+          },
+          "memoryInGB": {
+            "format": "int32",
+            "description": "Required Memory size in GB, basic tier should be in range (1, 2), standard tier should be in range (1, 8)",
+            "default": 1,
+            "type": "integer"
+          },
+          "jvmOptions": {
+            "description": "JVM parameter",
+            "type": "string"
+          },
+          "netCoreMainEntryPath": {
+            "description": "The path to the .NET executable relative to zip root",
+            "type": "string"
+          },
+          "environmentVariables": {
+            "description": "Collection of environment variables",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "runtimeVersion": {
+            "description": "Runtime version",
+            "enum": [
+              "Java_8",
+              "Java_11",
+              "NetCore_31"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "RuntimeVersion",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "DeploymentInstance": {
+        "description": "Deployment instance payload",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the deployment instance",
+            "type": "string",
+            "readOnly": true
+          },
+          "status": {
+            "description": "Status of the deployment instance",
+            "type": "string",
+            "readOnly": true
+          },
+          "reason": {
+            "description": "Failed reason of the deployment instance",
+            "type": "string",
+            "readOnly": true
+          },
+          "discoveryStatus": {
+            "description": "Discovery status of the deployment instance",
+            "type": "string",
+            "readOnly": true
+          },
+          "startTime": {
+            "description": "Start time of the deployment instance",
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "DeploymentResourceCollection": {
+        "description": "Object that includes an array of App resources and a possible link for next set",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of Deployment resources",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DeploymentResource"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "LogFileUrlResponse": {
+        "description": "Log file URL payload",
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "URL of the log file",
+            "type": "string"
+          }
+        }
+      },
+      "ServiceResourceList": {
+        "description": "Object that includes an array of Service resources and a possible link for next set",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of Service resources",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ServiceResource"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "AvailableOperations": {
+        "description": "Available operations of the service",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of available operation details",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/OperationDetail"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "OperationDetail": {
+        "description": "Operation detail payload",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the operation",
+            "type": "string"
+          },
+          "isDataAction": {
+            "description": "Indicates whether the operation is a data action",
+            "type": "boolean"
+          },
+          "display": {
+            "$ref": "#/definitions/OperationDisplay",
+            "description": "Display of the operation"
+          },
+          "origin": {
+            "description": "Origin of the operation",
+            "type": "string"
+          },
+          "properties": {
+            "$ref": "#/definitions/OperationProperties",
+            "description": "Properties of the operation"
+          }
+        }
+      },
+      "OperationDisplay": {
+        "description": "Operation display payload",
+        "type": "object",
+        "properties": {
+          "provider": {
+            "description": "Resource provider of the operation",
+            "type": "string"
+          },
+          "resource": {
+            "description": "Resource of the operation",
+            "type": "string"
+          },
+          "operation": {
+            "description": "Localized friendly name for the operation",
+            "type": "string"
+          },
+          "description": {
+            "description": "Localized friendly description for the operation",
+            "type": "string"
+          }
+        }
+      },
+      "OperationProperties": {
+        "description": "Extra Operation properties",
+        "type": "object",
+        "properties": {
+          "serviceSpecification": {
+            "$ref": "#/definitions/ServiceSpecification",
+            "description": "Service specifications of the operation"
+          }
+        }
+      },
+      "ServiceSpecification": {
+        "description": "Service specification payload",
+        "type": "object",
+        "properties": {
+          "logSpecifications": {
+            "description": "Specifications of the Log for Azure Monitoring",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/LogSpecification"
+            }
+          },
+          "metricSpecifications": {
+            "description": "Specifications of the Metrics for Azure Monitoring",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/MetricSpecification"
+            }
+          }
+        }
+      },
+      "LogSpecification": {
+        "description": "Specifications of the Log for Azure Monitoring",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the log",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Localized friendly display name of the log",
+            "type": "string"
+          },
+          "blobDuration": {
+            "description": "Blob duration of the log",
+            "type": "string"
+          }
+        }
+      },
+      "MetricSpecification": {
+        "description": "Specifications of the Metrics for Azure Monitoring",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the metric",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Localized friendly display name of the metric",
+            "type": "string"
+          },
+          "displayDescription": {
+            "description": "Localized friendly description of the metric",
+            "type": "string"
+          },
+          "unit": {
+            "description": "Unit that makes sense for the metric",
+            "type": "string"
+          },
+          "category": {
+            "description": "Name of the metric category that the metric belongs to. A metric can only belong to a single category.",
+            "type": "string"
+          },
+          "aggregationType": {
+            "description": "Only provide one value for this field. Valid values: Average, Minimum, Maximum, Total, Count.",
+            "type": "string"
+          },
+          "supportedAggregationTypes": {
+            "description": "Supported aggregation types",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "supportedTimeGrainTypes": {
+            "description": "Supported time grain types",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fillGapWithZero": {
+            "description": "Optional. If set to true, then zero will be returned for time duration where no metric is emitted/published.",
+            "type": "boolean"
+          },
+          "dimensions": {
+            "description": "Dimensions of the metric",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/MetricDimension"
+            }
+          }
+        }
+      },
+      "MetricDimension": {
+        "description": "Specifications of the Dimension of metrics",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the dimension",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Localized friendly display name of the dimension",
+            "type": "string"
+          }
+        }
+      },
+      "ResourceSkuCollection": {
+        "description": "Object that includes an array of Azure Spring Cloud SKU and a possible link for next set",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Collection of resource SKU",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ResourceSku"
+            }
+          },
+          "nextLink": {
+            "description": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use.",
+            "type": "string"
+          }
+        }
+      },
+      "ResourceSku": {
+        "description": "Describes an available Azure Spring Cloud SKU.",
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "description": "Gets the type of resource the SKU applies to.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Gets the name of SKU.",
+            "type": "string"
+          },
+          "tier": {
+            "description": "Gets the tier of SKU.",
+            "type": "string"
+          },
+          "capacity": {
+            "$ref": "#/definitions/SkuCapacity",
+            "description": "Gets the capacity of SKU."
+          },
+          "locations": {
+            "description": "Gets the set of locations that the SKU is available.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locationInfo": {
+            "description": "Gets a list of locations and availability zones in those locations where the SKU is available.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ResourceSkuLocationInfo"
+            }
+          },
+          "restrictions": {
+            "description": "Gets the restrictions because of which SKU cannot be used. This is\r\nempty if there are no restrictions.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ResourceSkuRestrictions"
+            }
+          }
+        }
+      },
+      "SkuCapacity": {
+        "description": "The SKU capacity",
+        "required": [
+          "minimum"
+        ],
+        "type": "object",
+        "properties": {
+          "minimum": {
+            "format": "int32",
+            "description": "Gets or sets the minimum.",
+            "type": "integer"
+          },
+          "maximum": {
+            "format": "int32",
+            "description": "Gets or sets the maximum.",
+            "type": "integer"
+          },
+          "default": {
+            "format": "int32",
+            "description": "Gets or sets the default.",
+            "type": "integer"
+          },
+          "scaleType": {
+            "description": "Gets or sets the type of the scale.",
+            "enum": [
+              "None",
+              "Manual",
+              "Automatic"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "SkuScaleType",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "ResourceSkuLocationInfo": {
+        "description": "Locations and availability zones where the SKU is available",
+        "type": "object",
+        "properties": {
+          "location": {
+            "description": "Gets location of the SKU",
+            "type": "string"
+          },
+          "zones": {
+            "description": "Gets list of availability zones where the SKU is supported.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "zoneDetails": {
+            "description": "Gets details of capabilities available to a SKU in specific zones.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ResourceSkuZoneDetails"
+            }
+          }
+        }
+      },
+      "ResourceSkuRestrictions": {
+        "description": "Restrictions where the SKU cannot be used",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Gets the type of restrictions. Possible values include: 'Location', 'Zone'",
+            "enum": [
+              "Location",
+              "Zone"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "ResourceSkuRestrictionsType",
+              "modelAsString": true
+            }
+          },
+          "values": {
+            "description": "Gets the value of restrictions. If the restriction type is set to\r\nlocation. This would be different locations where the SKU is restricted.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "restrictionInfo": {
+            "$ref": "#/definitions/ResourceSkuRestrictionInfo",
+            "description": "Gets the information about the restriction where the SKU cannot be used."
+          },
+          "reasonCode": {
+            "description": "Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription'",
+            "enum": [
+              "QuotaId",
+              "NotAvailableForSubscription"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "ResourceSkuRestrictionsReasonCode",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "ResourceSkuZoneDetails": {
+        "description": "Details of capabilities available to a SKU in specific zones",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Gets the set of zones that the SKU is available in with the\r\nspecified capabilities.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "capabilities": {
+            "description": "Gets a list of capabilities that are available for the SKU in the\r\nspecified list of zones.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ResourceSkuCapabilities"
+            }
+          }
+        }
+      },
+      "ResourceSkuRestrictionInfo": {
+        "description": "Information about the restriction where the SKU cannot be used",
+        "type": "object",
+        "properties": {
+          "locations": {
+            "description": "Gets locations where the SKU is restricted",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "zones": {
+            "description": "Gets list of availability zones where the SKU is restricted.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ResourceSkuCapabilities": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Gets an invariant to describe the feature.",
+            "type": "string"
+          },
+          "value": {
+            "description": "Gets an invariant if the feature is measured by quantity.",
+            "type": "string"
+          }
+        }
+      },
+      "CloudError": {
+        "description": "An error response from the service.",
+        "properties": {
+          "error": {
+            "description": "An error response from the service.",
+            "$ref": "#/definitions/CloudErrorBody"
+          }
+        },
+        "x-ms-external": true
+      },
+      "CloudErrorBody": {
+        "description": "An error response from the service.",
+        "properties": {
+          "code": {
+            "description": "An identifier for the error. Codes are invariant and are intended to be consumed programmatically.",
+            "type": "string"
+          },
+          "message": {
+            "description": "A message describing the error, intended to be suitable for display in a user interface.",
+            "type": "string"
+          },
+          "target": {
+            "description": "The target of the particular error. For example, the name of the property in error.",
+            "type": "string"
+          },
+          "details": {
+            "description": "A list of additional details about the error.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CloudErrorBody"
+            }
+          }
+        },
+        "x-ms-external": true
+      },
+      "AvailableRuntimeVersions": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "A list of all supported runtime versions.",
+            "uniqueItems": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/SupportedRuntimeVersion"
+            },
+            "readOnly": true
+          }
+        },
+        "readOnly": true
+      },
+      "SupportedRuntimeVersion": {
+        "description": "Supported deployment runtime version descriptor.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The raw value which could be passed to deployment CRUD operations.",
+            "enum": [
+              "Java_8",
+              "Java_11",
+              "NetCore_31"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "SupportedRuntimeVersion",
+              "modelAsString": true
+            }
+          },
+          "platform": {
+            "description": "The platform of this runtime version (possible values: \"Java\" or \".NET\").",
+            "enum": [
+              "Java",
+              ".NET Core"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "SupportedRuntimePlatform",
+              "modelAsString": true
+            }
+          },
+          "version": {
+            "description": "The detailed version (major.minor) of the platform.",
+            "type": "string"
+          }
+        },
+        "readOnly": true
+      }
+    },
+    "parameters": {
+      "ApiVersionParameter": {
+        "name": "api-version",
+        "in": "query",
+        "description": "Client Api Version.",
+        "required": true,
+        "type": "string",
+        "enum": [
+          "2020-07-01"
+        ]
+      },
+      "SubscriptionIdParameter": {
+        "name": "subscriptionId",
+        "in": "path",
+        "description": "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        "required": true,
+        "type": "string"
+      },
+      "ResourceGroupNameParameter": {
+        "name": "resourceGroupName",
+        "in": "path",
+        "description": "The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "ServiceNameParameter": {
+        "name": "serviceName",
+        "in": "path",
+        "description": "The name of the Service resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "AppNameParameter": {
+        "name": "appName",
+        "in": "path",
+        "description": "The name of the App resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "DeploymentNameParameter": {
+        "name": "deploymentName",
+        "in": "path",
+        "description": "The name of the Deployment resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "BindingNameParameter": {
+        "name": "bindingName",
+        "in": "path",
+        "description": "The name of the Binding resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "CustomDomainNameParameter": {
+        "name": "domainName",
+        "in": "path",
+        "description": "The name of the custom domain resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "CertificateNameParameter": {
+        "name": "certificateName",
+        "in": "path",
+        "description": "The name of the certificate resource.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      }
+    },
+    "securityDefinitions": {
+      "azure_auth": {
+        "flow": "implicit",
+        "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "scopes": {
+          "user_impersonation": "impersonate your user account"
+        },
+        "type": "oauth2",
+        "description": "Azure Active Directory OAuth2 Flow"
+      }
+    },
+    "security": [
+      {
+        "azure_auth": [
+          "user_impersonation"
+        ]
+      }
+    ]
+  }

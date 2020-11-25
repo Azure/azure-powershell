@@ -89,7 +89,7 @@ function Get-Database-Not-Exist-Message
 .SYNOPSIS
 Executes a cmdlet and enables ignoring of errors if desired
 NOTE: this only catches errors that are thrown. If the command calls to Write-Error
-the user must specify the errorAction to be silent or store the record in an error variable.
+the user must specify the errorAction to -Be silent or store the record in an error variable.
 #>
 function Invoke-HandledCmdlet
 {
@@ -126,14 +126,14 @@ function Validate_Cluster{
         [string]$SkuName,
         [string]$SkuTier,
 		[int]$Capacity)
-	$Cluster.Name | Should Be $ClusterName
-	$Cluster.Location | Should Be $Location
-	$Cluster.State | Should Be $State
-	$Cluster.ProvisioningState | Should Be  $ProvisioningState
-	$Cluster.Type | Should Be $ResourceType
-    $Cluster.SkuName | Should Be $SkuName
-    $Cluster.SkuTier | Should Be $SkuTier
-	$Cluster.SkuCapacity | Should Be $Capacity
+	$Cluster.Name | Should -Be $ClusterName
+	$Cluster.Location | Should -Be $Location
+	$Cluster.State | Should -Be $State
+	$Cluster.ProvisioningState | Should -Be  $ProvisioningState
+	$Cluster.Type | Should -Be $ResourceType
+    $Cluster.SkuName | Should -Be $SkuName
+    $Cluster.SkuTier | Should -Be $SkuTier
+	$Cluster.SkuCapacity | Should -Be $Capacity
 }
 
 <#
@@ -147,11 +147,11 @@ function Validate_Database {
 		[string]$ResourceType,
 		[Nullable[timespan]]$SoftDeletePeriodInDays,
 		[Nullable[timespan]]$HotCachePeriodInDays)
-		$Database.Name | Should Be $DatabaseFullName
-		$Database.Location | Should Be $Location
-		$Database.Type | Should Be $ResourceType
-		$Database.SoftDeletePeriod | Should Be $SoftDeletePeriodInDays
-		$Database.HotCachePeriod | Should Be $HotCachePeriodInDays
+		$Database.Name | Should -Be $DatabaseFullName
+		$Database.Location | Should -Be $Location
+		$Database.Type | Should -Be $ResourceType
+		$Database.SoftDeletePeriod | Should -Be $SoftDeletePeriodInDays
+		$Database.HotCachePeriod | Should -Be $HotCachePeriodInDays
 }
 
 <#
@@ -164,10 +164,10 @@ function Validate_PrincipalAssignment {
 		[string]$PrincipalId,
 		[string]$PrincipalType,
 		[string]$Role)
-		$PrincipalAssignment.Name | Should Be $PrincipalAssignmentFullName
-		$PrincipalAssignment.PrincipalId | Should Be $PrincipalId
-		$PrincipalAssignment.PrincipalType | Should Be $PrincipalType
-		$PrincipalAssignment.Role | Should Be $Role
+		$PrincipalAssignment.Name | Should -Be $PrincipalAssignmentFullName
+		$PrincipalAssignment.PrincipalId | Should -Be $PrincipalId
+		$PrincipalAssignment.PrincipalType | Should -Be $PrincipalType
+		$PrincipalAssignment.Role | Should -Be $Role
 }
 
 <#
@@ -179,17 +179,11 @@ function Validate_EventHubDataConnection {
 		[string]$dataConnectionFullName,
 		[string]$location,
 		[string]$eventHubResourceId,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
-		$DataConnection.Name | Should Be $dataConnectionFullName
-		$DataConnection.Location | Should Be $location
-		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
-		$DataConnection.Kind | Should Be $kind
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.Kind | Should -Be $kind
 }
 
 <#
@@ -202,18 +196,12 @@ function Validate_EventGridDataConnection {
 		[string]$location,
 		[string]$eventHubResourceId,
 		[string]$storageAccountResourceId,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
-		$DataConnection.Name | Should Be $dataConnectionFullName
-		$DataConnection.Location | Should Be $location
-		$DataConnection.EventHubResourceId | Should Be $eventHubResourceId
-		$DataConnection.StorageAccountResourceId | Should Be $storageAccountResourceId
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
-		$DataConnection.Kind | Should Be $kind
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.StorageAccountResourceId | Should -Be $storageAccountResourceId
+		$DataConnection.Kind | Should -Be $kind
 }
 
 <#
@@ -226,18 +214,12 @@ function Validate_IotHubDataConnection {
 		[string]$location,
 		[string]$iotHubResourceId,
 		[string]$sharedAccessPolicyName,
-		[string]$tableName,
-		[string]$tableMappingName,
-		[string]$dataFormat,
 		[string]$kind)
-		$DataConnection.Name | Should Be $dataConnectionFullName
-		$DataConnection.Location | Should Be $location
-		$DataConnection.IotHubResourceId | Should Be $iotHubResourceId
-		$DataConnection.SharedAccessPolicyName | Should Be $sharedAccessPolicyName
-		$DataConnection.TableName | Should Be $tableName
-		$DataConnection.MappingRuleName | Should Be $tableMappingName
-		$DataConnection.DataFormat | Should Be $dataFormat
-		$DataConnection.Kind | Should Be $kind
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.IotHubResourceId | Should -Be $iotHubResourceId
+		$DataConnection.SharedAccessPolicyName | Should -Be $sharedAccessPolicyName
+		$DataConnection.Kind | Should -Be $kind
 }
 
 function Validate_AttachedDatabaseConfiguration {
@@ -247,11 +229,11 @@ function Validate_AttachedDatabaseConfiguration {
 		[string]$ClusterResourceId,
 		[string]$DatabaseName,
 		[string]$DefaultPrincipalsModificationKind)
-		$AttachedDatabaseConfigurationCreated.Name | Should Be $AttachedDatabaseConfigurationFullName
-		$AttachedDatabaseConfigurationCreated.Location | Should Be $Location
-		$AttachedDatabaseConfigurationCreated.ClusterResourceId | Should Be $ClusterResourceId
-		$AttachedDatabaseConfigurationCreated.DatabaseName | Should Be $DatabaseName
-		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should Be $DefaultPrincipalsModificationKind
+		$AttachedDatabaseConfigurationCreated.Name | Should -Be $AttachedDatabaseConfigurationFullName
+		$AttachedDatabaseConfigurationCreated.Location | Should -Be $Location
+		$AttachedDatabaseConfigurationCreated.ClusterResourceId | Should -Be $ClusterResourceId
+		$AttachedDatabaseConfigurationCreated.DatabaseName | Should -Be $DatabaseName
+		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be $DefaultPrincipalsModificationKind
 }
 
 
@@ -260,7 +242,7 @@ function Validate_ClusterFollowerDatabase {
 		[string]$AttachedDatabaseConfigurationName,
 		[string]$FollowerClusterResourceId,
 		[string]$DatabaseName)
-		$ClusterFollowerDatabase.AttachedDatabaseConfigurationName | Should Be $AttachedDatabaseConfigurationName
-		$ClusterFollowerDatabase.ClusterResourceId | Should Be $FollowerClusterResourceId
-		$ClusterFollowerDatabase.DatabaseName | Should Be $DatabaseName
+		$ClusterFollowerDatabase.AttachedDatabaseConfigurationName | Should -Be $AttachedDatabaseConfigurationName
+		$ClusterFollowerDatabase.ClusterResourceId | Should -Be $FollowerClusterResourceId
+		$ClusterFollowerDatabase.DatabaseName | Should -Be $DatabaseName
 }

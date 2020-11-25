@@ -16,17 +16,14 @@ while (-not $mockingPath) {
 Describe 'Get-AzKustoDataConnection' {
     It 'List' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS = $env.eventhubNSName
-        $eventhub = $env.eventhubName
+        $eventhubNS = $env.eventhubNSNamefordc
+        $eventhub = $env.eventhubNamefordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
@@ -37,26 +34,23 @@ Describe 'Get-AzKustoDataConnection' {
                 $dataConnectionCreated = $dataConnection
             }
         }
-        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind
     }
 
     It 'Get' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS = $env.eventhubNSName
-        $eventhub = $env.eventhubName
+        $eventhubNS = $env.eventhubNSNamefordc
+        $eventhub = $env.eventhubNamefordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
         $dataConnectionCreated = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
-        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $tableName $tableMappingName $dataFormat $kind
+        Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind
     }
 }

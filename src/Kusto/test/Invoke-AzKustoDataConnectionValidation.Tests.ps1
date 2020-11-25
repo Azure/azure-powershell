@@ -16,122 +16,98 @@ while (-not $mockingPath) {
 Describe 'Invoke-AzKustoDataConnectionValidation' {
     It 'DataExpandedEventHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
-        $eventhubNS = $env.eventhubNSName
-        $eventhub = $env.eventhubName
+        $eventhubNS = $env.eventhubNSNamefordc
+        $eventhub = $env.eventhubNamefordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
 
-        $validationResult = Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None" } | Should -Not -Throw
     }
 
     It 'DataExpandedEventGrid' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr5
-        $eventhubNS = $env.eventhubNSNameForEventGrid
-        $eventhub = $env.eventhubNameForEventGrid
+        $eventhubNS = $env.eventhubNSNameForEventGridfordc
+        $eventhub = $env.eventhubNameForEventGridfordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $storageAccountName = $env.storageName
+        $storageAccountName = $env.storageNamefordc
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventGrid"
 
-        $validationResult = Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default' } | Should -Not -Throw
     }
 
     It 'DataExpandedIotHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
-        $iothubName = $env.iothubName
+        $iothubName = $env.iothubNamefordc
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "IotHub"
 
-        $validationResult = Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default' } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedEventHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
-        $eventhubNS = $env.eventhubNSName
-        $eventhub = $env.eventhubName
+        $eventhubNS = $env.eventhubNSNamefordc
+        $eventhub = $env.eventhubNamefordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        $validationResult = Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -Compression "None" -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None" } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedEventGrid' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr5
-        $eventhubNS = $env.eventhubNSNameForEventGrid
-        $eventhub = $env.eventhubNameForEventGrid
+        $eventhubNS = $env.eventhubNSNameForEventGridfordc
+        $eventhub = $env.eventhubNameForEventGridfordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $storageAccountName = $env.storageName
+        $storageAccountName = $env.storageNamefordc
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "EventGrid"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        $validationResult = Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default' } | Should -Not -Throw
     }
 
     It 'DataViaIdentityExpandedIotHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.location
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $location = $env.locationfordc
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
-        $iothubName = $env.iothubName
+        $iothubName = $env.iothubNamefordc
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
         $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
-        $tableName = $env.tableName
-        $tableMappingName = $env.tableMappingName
-        $dataFormat = $env.dataFormat
         $kind = "IotHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        $validationResult = Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -DataFormat $dataFormat -ConsumerGroup '$Default' -TableName $tableName -MappingRuleName $tableMappingName
-        $validationResult.errorMessage | Should Be "event hub resource id and consumer group tuple provided are already used"
+        { Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default' } | Should -Not -Throw
     }
 }

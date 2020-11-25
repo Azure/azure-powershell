@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MySql service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -66,7 +67,6 @@ directive:
     set:
       verb: Update
   - where:
-      verb: ^New$|^Set$|^Remove$|^Get|^Update$|^Invoke$
       subject: Database$|SecurityAlertPolicy$|Administrator$|LocationBasedPerformanceTier$|LogFile$|ExecuteCheckNameAvailability$
     hide: true
   - where:
@@ -75,19 +75,11 @@ directive:
     hide: true
   - where:
      verb: New$
-     variant: ^Create$
-    hide: true
-  - where:
-     verb: New$
-     variant: ^CreateViaIdentity
+     variant: ^Create$|^CreateViaIdentity
     hide: true
   - where:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New
-      subject: Configuration
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId
@@ -105,7 +97,6 @@ directive:
           - Version
           - StorageProfileStorageMb
           - SkuName
-          - SkuSize
           - SkuTier
           - SslEnforcement
   - where:

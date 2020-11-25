@@ -14,7 +14,7 @@ while (-not $mockingPath) {
 Describe 'Get-AzKustoClusterSku' {
     It 'List' {
         [array]$clusterSku = Get-AzKustoClusterSku
-        $clusterSku.Count | Should -Be 308
+        $clusterSku.Count | Should -Be 493
     }
 
     It 'List1' {
@@ -22,6 +22,6 @@ Describe 'Get-AzKustoClusterSku' {
         $clusterName = $env.clusterName
 
         [array]$clusterSku = Get-AzKustoClusterSku -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-        $clusterSku.Count | Should -Be 21
+        $clusterSku.Count | Should -Be 23
     }
 }

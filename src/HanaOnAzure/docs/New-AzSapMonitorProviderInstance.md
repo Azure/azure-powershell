@@ -21,6 +21,13 @@ New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -Sap
  [<CommonParameters>]
 ```
 
+### ByDict
+```
+New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
+ -InstanceProperty <Hashtable> -ProviderType <String> [-SubscriptionId <String>] [-Metadata <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### ByKeyVault
 ```
 New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
@@ -56,6 +63,51 @@ sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
 ```
 
 This command creates an instance of SAP monitor by key vault for HANA.
+
+### Example 3: Create an instance of SAP monitor by dictionary for PrometheusHaCluster
+```powershell
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-promclt   -SapMonitorName dolauli-test04 -ProviderType PrometheusHaCluster -InstanceProperty @{prometheusUrl='http://10.4.1.10:9664/metrics'}
+
+
+Name           Type
+----           ----
+sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+```
+
+This command creates an instance of SAP monitor by dictionary for PrometheusHaCluster.
+
+### Example 4: Create an instance of SAP monitor by dictionary for PrometheusOS
+```powershell
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-prom   -SapMonitorName dolauli-test04 -ProviderType PrometheusOS -InstanceProperty @{prometheusUrl='http://10.3.1.6:9100/metrics'}
+
+Name           Type
+----           ----
+sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+```
+
+This command creates an instance of SAP monitor by dictionary for PrometheusOS.
+
+### Example 5: Create an instance of SAP monitor by dictionary for MsSqlServer
+```powershell
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-ms   -SapMonitorName dolauli-test04 -ProviderType MsSqlServer -InstanceProperty @{sqlHostname="10.4.8.90";sqlPort=1433;sqlUsername="AMFSS";sqlPassword="fakepassword"}
+
+Name           Type
+----           ----
+sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+```
+
+This command creates an instance of SAP monitor by dictionary for MsSqlServer.
+
+### Example 6: Create an instance of SAP monitor by dictionary for SapHana
+```powershell
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-hana   -SapMonitorName dolauli-test04 -ProviderType SapHana -InstanceProperty @{hanaHostname="10.1.2.6";hanaDbName="SYSTEMDB";hanaDbSqlPort=30113;hanaDbUsername="SYSTEM"; hanaDbPassword="Manager1"}
+
+Name           Type
+----           ----
+sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+```
+
+This command creates an instance of SAP monitor by dictionary for SapHana.
 
 ## PARAMETERS
 
@@ -94,7 +146,7 @@ The database name of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByKeyVault, ByString
 Aliases: HanaDbName
 
 Required: True
@@ -154,7 +206,7 @@ The SQL port of the database of SAP HANA instance.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ByKeyVault, ByString
 Aliases: HanaDbSqlPort
 
 Required: True
@@ -169,7 +221,7 @@ The username of the database of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByKeyVault, ByString
 Aliases: HanaDbUsername
 
 Required: True
@@ -184,7 +236,22 @@ The hostname of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByKeyVault, ByString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceProperty
+The property of HANA instance.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByDict
 Aliases:
 
 Required: True

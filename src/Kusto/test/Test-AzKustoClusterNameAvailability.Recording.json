@@ -1,9 +1,9 @@
 {
-  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-02-15+1": {
+  "Test-AzKustoClusterNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2020-09-18+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-02-15",
-      "Content": "{\r\n  \"name\": \"testclusterpb8oay\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2020-09-18",
+      "Content": "{\r\n  \"name\": \"testclustermlhoe5\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\"\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -17,22 +17,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "a8f3053a-1394-403c-87a0-de03fda03208" ],
-        "Set-Cookie": [ "ARRAffinity=6546d31d55ee4830d02435ffb7e23d3cc2fbc05a13894098a441197898802a3b;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "c1d80828-f491-4050-bc73-d9a01df91960" ],
+        "Set-Cookie": [ "ARRAffinity=8461a480ba64ac008187a19a8e06cff1e16d9525507776033d2e273198e8fcfb;Path=/;HttpOnly;Secure;Domain=armrp-kustorpeus.kusto.windows.net", "ARRAffinitySameSite=8461a480ba64ac008187a19a8e06cff1e16d9525507776033d2e273198e8fcfb;Path=/;HttpOnly;SameSite=None;Secure;Domain=armrp-kustorpeus.kusto.windows.net" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20200507T143525Z:1ed398e4-5d19-4054-be9c-4b280baf96b5" ],
+        "x-ms-correlation-request-id": [ "c882981c-1f90-4903-87d0-b1adf29a512a" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20201026T203656Z:c882981c-1f90-4903-87d0-b1adf29a512a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 07 May 2020 14:35:25 GMT" ]
+        "Date": [ "Mon, 26 Oct 2020 20:36:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testclusterpb8oay\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterpb8oay\u0027 with type Engine is already taken. Please specify a different name\"}"
+      "Content": "{\"name\":\"testclustermlhoe5\",\"nameAvailable\":false,\"message\":\"Name \u0027testclustermlhoe5\u0027 with type Engine is already taken. Please specify a different name\"}"
     }
   }
 }

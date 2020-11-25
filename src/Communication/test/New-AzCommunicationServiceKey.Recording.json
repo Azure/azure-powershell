@@ -1,0 +1,216 @@
+{
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d5c2c78e-86d2-4730-8bc7-511e15dc83c0" ],
+        "CommandName": [ "Get-AzCommunicationServiceKey" ],
+        "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "a7801d24-4eba-4a98-b6a8-a6e1292ac5d6" ],
+        "x-ms-correlation-request-id": [ "8e8f7201-1a35-4eb1-a338-0098c29e9cdb" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214633Z:8e8f7201-1a35-4eb1-a338-0098c29e9cdb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=**************************************************************************************==\"}"
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "9ae2d16a-87cc-4f97-9e0d-5ede9a13ee1e" ],
+        "x-ms-correlation-request-id": [ "64c28631-a77f-48d7-baf5-dd5ab5162b6e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214633Z:64c28631-a77f-48d7-baf5-dd5ab5162b6e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "303" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"original_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=original_primary_key==\"}"
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "ebec5c09-3bad-4d3d-ac7d-1d4f7608429b" ],
+        "x-ms-correlation-request-id": [ "e5e86054-6f21-45fd-9e00-0950a890a4c2" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214634Z:e5e86054-6f21-45fd-9e00-0950a890a4c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "307" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"secondaryKey\":\"original_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=original_secondary_key==\"}"
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "6a54108f-ae96-4162-9b2f-ca0a5188afe4" ],
+        "CommandName": [ "Get-AzCommunicationServiceKey" ],
+        "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "43b223dd-46ce-4467-8214-64994f31f749" ],
+        "x-ms-correlation-request-id": [ "7bf4b5f9-c81e-4c04-8253-43a429985769" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214634Z:7bf4b5f9-c81e-4c04-8253-43a429985769" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"original_primary_key==\",\"secondaryKey\":\"original_secondary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=original_primary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=original_secondary_key==\"}"
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "9e803968-6f90-471a-9b6c-331ac2fbd463" ],
+        "x-ms-correlation-request-id": [ "5101ee82-ce0d-49cd-9a1a-7e6601fc742c" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214634Z:5101ee82-ce0d-49cd-9a1a-7e6601fc742c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "303" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"new_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=new_primary_key==\"}"
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/regenerateKey?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "63649db3-df9f-4ff1-9e82-1e0393d546b4" ],
+        "x-ms-correlation-request-id": [ "46c6bdf6-3765-454f-ba5f-0c050776d81e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214634Z:46c6bdf6-3765-454f-ba5f-0c050776d81e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "307" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"secondaryKey\":\"new_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamepvbt51.communication.azure.com/;accesskey=new_secondary_key==\"}"
+    }
+  }
+}

@@ -68,32 +68,42 @@ function New-AzSapMonitorProviderInstance {
         # The type of provider instance. Supported values are: "SapHana".
         ${ProviderType},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName = 'ByString', Mandatory)]
+        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The hostname of SAP HANA instance.
         ${HanaHostname},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName = 'ByString', Mandatory)]
+        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
         [Alias('HanaDbName')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The database name of SAP HANA instance.
         ${HanaDatabaseName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName = 'ByString', Mandatory)]
+        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
         [Alias('HanaDbSqlPort')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.Int32]
         # The SQL port of the database of SAP HANA instance.
         ${HanaDatabaseSqlPort},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName = 'ByString', Mandatory)]
+        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
         [Alias('HanaDbUsername')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The username of the database of SAP HANA instance.
         ${HanaDatabaseUsername},
+
+        [Parameter(ParameterSetName = 'ByDict', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+        [System.Collections.Hashtable]
+        # The property of HANA instance.
+        ${InstanceProperty},
 
         [Parameter(ParameterSetName = 'ByString', Mandatory)]
         [Alias('HanaDbPassword')]
@@ -203,7 +213,9 @@ function New-AzSapMonitorProviderInstance {
                     hanaDbName     = $HanaDatabaseName
                     hanaDbSqlPort  = $HanaDatabaseSqlPort
                     hanaDbUsername = $HanaDatabaseUsername
-                    hanaDbPassword = ConvertFrom-SecureString $HanaDatabasePassword -AsPlainText
+                    # To suppport descryption accross different platforms and PowerShell versions, we implement a script Unprotect-SecureString.ps1
+                    # to convert securesting to plaintext
+                    hanaDbPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $HanaDatabasePassword
                 }
             }
             'ByKeyVault' {
@@ -250,6 +262,10 @@ function New-AzSapMonitorProviderInstance {
                     keyVaultId                     = $HanaDatabasePasswordKeyVaultResourceId # key vault id is keyvault resource id
                     keyVaultCredentialsMsiClientID = $msi.ClientId # FIXME: this property is not needed in newer service backend, can we remove it?
                 }
+            }
+            'ByDict' {
+                $property = $InstanceProperty
+                $null = $PSBoundParameters.remove('InstanceProperty')
             }
         }
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
