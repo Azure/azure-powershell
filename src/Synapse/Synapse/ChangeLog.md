@@ -21,8 +21,7 @@
 * Fix Null Reference Exception when submit spark job.
 
 ## Version 0.4.0
-* Add `-Force` to all Remove cmdlets
-
+* Added `-Force` to all Remove cmdlets
 * Added support for operation of Synapse SQL Pool Restore Point
     - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
 * Added support for operation of Auditing settings in Workspace-level and SqlPool-level
