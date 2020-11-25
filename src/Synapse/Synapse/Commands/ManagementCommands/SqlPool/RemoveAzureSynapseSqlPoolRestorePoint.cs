@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 () =>
                 {
                     this.SynapseAnalyticsClient.DeleteSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName, this.RestorePointCreationDate.ToFileTimeUtc().ToString());
-                    if (PassThru)
+                    if (this.PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }

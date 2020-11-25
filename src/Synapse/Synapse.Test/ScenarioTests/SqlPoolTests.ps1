@@ -98,9 +98,9 @@ function Test-SynapseSqlPool
         Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
 
         # Delete restore point
-        [array]$restorePoints = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $restoreFromSqlPoolName
+        $RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
 
-        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $sqlPoolName - Name $restorePoint[0] -PassThru} "Remove Restore Point failed."
+        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $restoreFromSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
 
         # Restore SqlPool
         $sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -SourceWorkspaceName $workspaceName -SourceSqlPoolName $restoreFromSqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
