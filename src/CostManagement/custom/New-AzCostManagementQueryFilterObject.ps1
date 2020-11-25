@@ -32,9 +32,9 @@ function New-AzCostManagementQueryFilterObject {
         [Parameter(HelpMessage="The logical `"AND`" expression. Must have at least 2 items.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]]
         $And,
-        [Parameter(HelpMessage="Has comparison expression for a dimension.")]
+        [Parameter(HelpMessage="Has comparison expression for a dimensions.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression]
-        $Dimension,
+        $Dimensions,
         [Parameter(HelpMessage="The logical `"NOT`" expression.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter]
         $Not,
@@ -50,7 +50,7 @@ function New-AzCostManagementQueryFilterObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter]::New()
 
         $Object.And = $And
-        $Object.Dimension = $Dimension
+        $Object.Dimensions = $Dimensions
         $Object.Not = $Not
         $Object.Or = $Or
         $Object.Tag = $Tag

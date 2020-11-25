@@ -87,9 +87,10 @@ directive:
       parameter-name: Scope
       parameter-description: This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
   - where:
-      subject: Export
-      verb: Update
-    hide: true
+      model-name: QueryFilter
+      property-name: Dimension
+    set:
+      property-name: Dimensions
   - where:
       subject: Export
       verb: New
@@ -146,7 +147,9 @@ directive:
         return {
           "type": "string"
         }
-
+  # - from: swagger-document
+  #   where: $.definitions.QueryFilter.properties
+  #   transform: $ = $.replace('dimension','dimensions');
   - no-inline:
     - QueryFilter
     - ReportConfigFilter

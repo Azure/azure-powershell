@@ -14,7 +14,7 @@ On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
 ## SYNTAX
 
 ```
-New-AzCostManagementQueryFilterObject [-And <IQueryFilter[]>] [-Dimension <IQueryComparisonExpression>]
+New-AzCostManagementQueryFilterObject [-And <IQueryFilter[]>] [-Dimensions <IQueryComparisonExpression>]
  [-Not <IQueryFilter>] [-Or <IQueryFilter[]>] [-Tag <IQueryComparisonExpression>] [<CommonParameters>]
 ```
 
@@ -58,9 +58,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Dimension
-Has comparison expression for a dimension.
-To construct, see NOTES section for DIMENSION properties and create a hash table.
+### -Dimensions
+Has comparison expression for a dimensions.
+To construct, see NOTES section for DIMENSIONS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression
@@ -143,7 +143,7 @@ To create the parameters described below, construct a hash table containing the 
 
 AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimension <IQueryComparisonExpression>]`: Has comparison expression for a dimension
+  - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
     - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
@@ -151,14 +151,14 @@ AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-DIMENSION <IQueryComparisonExpression>: Has comparison expression for a dimension.
+DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
   - `Name <String>`: The name of the column to use in comparison.
   - `Operator <OperatorType>`: The operator to use for comparison.
   - `Value <String[]>`: Array of values to use for comparison
 
 NOT <IQueryFilter>: The logical "NOT" expression.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimension <IQueryComparisonExpression>]`: Has comparison expression for a dimension
+  - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
     - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
@@ -168,7 +168,7 @@ NOT <IQueryFilter>: The logical "NOT" expression.
 
 OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimension <IQueryComparisonExpression>]`: Has comparison expression for a dimension
+  - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
     - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison

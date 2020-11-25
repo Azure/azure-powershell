@@ -20,7 +20,7 @@ Create operation does not require eTag.
 Update-AzCostManagementExport -Name <String> -Scope <String> [-ConfigurationColumn <String[]>]
  [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Update-AzCostManagementExport -Name <String> -Scope <String> [-ConfigurationColu
 Update-AzCostManagementExport -InputObject <ICostManagementIdentity> [-ConfigurationColumn <String[]>]
  [-DataSetGranularity <GranularityType>] [-DefinitionTimeframe <TimeframeType>] [-DefinitionType <ExportType>]
  [-DestinationContainer <String>] [-DestinationResourceId <String>] [-DestinationRootFolderPath <String>]
- [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
+ [-ETag <String>] [-Format <FormatType>] [-RecurrencePeriodFrom <DateTime>] [-RecurrencePeriodTo <DateTime>]
  [-ScheduleRecurrence <RecurrenceType>] [-ScheduleStatus <StatusType>] [-TimePeriodFrom <DateTime>]
  [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -188,13 +188,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ETag
+eTag of the resource.
+To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Format
-[Parameter()]
-[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-[System.String]
-# eTag of the resource.
-# To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-${ETag},
 The format of the export being delivered.
 Currently only 'Csv' is supported.
 

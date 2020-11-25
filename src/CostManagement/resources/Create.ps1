@@ -15,6 +15,6 @@ New-AzCostManagementExport -Debug -Scope "subscriptions/9e223dbe-3399-4e19-88eb-
     -RecurrencePeriodTo "2020-11-10T00:00:00Z" -Format "Csv" `
     -DestinationResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-costmanagement/providers/Microsoft.Storage/storageAccounts/wyunchistorageaccount" `
     -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" -DefinitionTimeframe "MonthToDate" `
-    -DatasetGranularity "Daily" -ETag "test"
+    -DatasetGranularity "Daily"
 # Invoke-AzCostManagementUsageQuery -Type AmortizedCost -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Timeframe 'MonthToDate' -DatasetGranularity 'Daily'
     # -DatasetFilter $QueryFilterOr -DatasetGranularity 'Daily'

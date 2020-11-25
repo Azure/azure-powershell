@@ -1,23 +1,18 @@
-### Example 1: Update AzCostManagementExport by scope and name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\>Update-AzCostManagementExport -Scope "subscriptions//*********" -Name "TestExport" -ScheduleRecurrence 'Weekly'
+PS C:\> {{ Add code here }}
 
-ETag              Name                                 Type
-----              ----                                 ----
-"********" TestExportDatasetAggregationInfo Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-Update AzCostManagementExport by Scope and name
+{{ Add description here }}
 
-### Example 2: Update AzCostManagementExport by InputObject
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\>$oldExport = Get-AzCostManagementExport -Scope "subscriptions/*********" -Name "TestExport"
-Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekly'
+PS C:\> {{ Add code here }}
 
-ETag              Name                                 Type
-----              ----                                 ----
-"********" TestExportDatasetAggregationInfo Microsoft.CostManagement/exports
+{{ Add output here }}
 ```
 
-Update AzCostManagementExport by InputObject
+{{ Add description here }}
 

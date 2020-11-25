@@ -34,13 +34,14 @@ Query the usage data for scope defined.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Invoke AzCostManagementQuery by Scope
 ```powershell
 PS C:\> Invoke-AzCostManagementQuery -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Timeframe MonthToDate -Type Usage
+Invoke-AzCostManagementQuery -Scope "/subscriptions/***********" -Timeframe MonthToDate -Type Usage -DatasetGranularity 'Daily'
 
-NextLink Column Row
--------- ------ ---
-         {}     {}
+NextLink Column                Row
+-------- ------                ---
+         {UsageDate, Currency} {20201101 USD, 20201102 USD, 20201103 USD, 20201104 USD…}
 ```
 
 Invoke AzCostManagementQuery by Scope
@@ -48,11 +49,6 @@ Invoke AzCostManagementQuery by Scope
 ### Example 2: {{ Add title here }}
 ```powershell
 PS C:\> {{ Add code here }}
-$DimensionObject = new-AzCostManagementQueryComparisonExpressionObject -name 'ResourceGroup' -Operator 'In' -Value 'API'
-
-$FilterObject = New-AzCostManagementQueryFilterObject -Dimension $DimensionObject
-
-Invoke-AzCostManagementQuery -ExternalCloudProviderId 100 -ExternalCloudProviderType externalBillingAccounts -Timeframe MonthToDate -type Usage -DatasetFilter $FilterObject -DatasetGranularity Daily -debug 
 
 
 {{ Add output here }}
@@ -314,7 +310,7 @@ To create the parameters described below, construct a hash table containing the 
 
 DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimension <IQueryComparisonExpression>]`: Has comparison expression for a dimension
+  - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
     - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
