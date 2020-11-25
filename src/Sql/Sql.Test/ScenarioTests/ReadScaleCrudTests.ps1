@@ -99,6 +99,12 @@ function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "So
 			-ReadScale Enabled -HighAvailabilityReplicaCount 0
 		Assert-AreEqual Disabled $db2.ReadScale
 		Assert-AreEqual 0 $db2.HighAvailabilityReplicaCount
+
+		# Alter read scale properties using alias
+		$db3 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-ReadScale Enabled -ReadReplicaCount 1
+		Assert-AreEqual Enabled $db3.ReadScale
+		Assert-AreEqual 1 $db3.HighAvailabilityReplicaCount
 	}
 	finally
 	{
