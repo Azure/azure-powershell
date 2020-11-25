@@ -4,7 +4,7 @@
     $vaultName = GetAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-    $objectId = [System.Guid]::NewGuid().ToString() # not using real user object ID here, so need to bypass validation
+    $objectId = "d7e17135-d5a7-4b8b-89e5-252aa15b7e01"
     New-AzResourceGroup -Name $rg -Location $rgLocation
 
     try {
