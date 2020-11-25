@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             __solutionSummary = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SolutionSummary(json);
-            {_databaseInstancesAssessedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("databaseInstancesAssessedCount"), out var __jsonDatabaseInstancesAssessedCount) ? (int?)__jsonDatabaseInstancesAssessedCount : DatabaseInstancesAssessedCount;}
             {_databasesAssessedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("databasesAssessedCount"), out var __jsonDatabasesAssessedCount) ? (int?)__jsonDatabasesAssessedCount : DatabasesAssessedCount;}
+            {_databaseInstancesAssessedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("databaseInstancesAssessedCount"), out var __jsonDatabaseInstancesAssessedCount) ? (int?)__jsonDatabaseInstancesAssessedCount : DatabaseInstancesAssessedCount;}
             {_migrationReadyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("migrationReadyCount"), out var __jsonMigrationReadyCount) ? (int?)__jsonMigrationReadyCount : MigrationReadyCount;}
             AfterFromJson(json);
         }
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return container;
             }
             __solutionSummary?.ToJson(container, serializationMode);
-            AddIf( null != this._databaseInstancesAssessedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._databaseInstancesAssessedCount) : null, "databaseInstancesAssessedCount" ,container.Add );
             AddIf( null != this._databasesAssessedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._databasesAssessedCount) : null, "databasesAssessedCount" ,container.Add );
+            AddIf( null != this._databaseInstancesAssessedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._databaseInstancesAssessedCount) : null, "databaseInstancesAssessedCount" ,container.Add );
             AddIf( null != this._migrationReadyCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._migrationReadyCount) : null, "migrationReadyCount" ,container.Add );
             AfterToJson(ref container);
             return container;

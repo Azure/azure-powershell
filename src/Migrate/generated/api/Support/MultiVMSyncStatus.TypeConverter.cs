@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for MultiVMSyncStatus.</summary>
+    /// <summary>A value indicating whether multi-VM sync has to be enabled.</summary>
     public partial class MultiVMSyncStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

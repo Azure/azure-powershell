@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether source site operations are required.</summary>
     public partial struct SourceSiteOperations :
         System.IEquatable<SourceSiteOperations>
     {

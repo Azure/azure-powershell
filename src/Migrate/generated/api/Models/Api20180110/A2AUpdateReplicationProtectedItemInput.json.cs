@@ -60,10 +60,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __updateReplicationProtectedItemProviderInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.UpdateReplicationProtectedItemProviderInput(json);
             {_diskEncryptionInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("diskEncryptionInfo"), out var __jsonDiskEncryptionInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.DiskEncryptionInfo.FromJson(__jsonDiskEncryptionInfo) : DiskEncryptionInfo;}
-            {_managedDiskUpdateDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("managedDiskUpdateDetails"), out var __jsonManagedDiskUpdateDetails) ? If( __jsonManagedDiskUpdateDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmManagedDiskUpdateDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmManagedDiskUpdateDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.A2AvmManagedDiskUpdateDetails.FromJson(__u) )) ))() : null : ManagedDiskUpdateDetail;}
-            {_recoveryBootDiagStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryBootDiagStorageAccountId"), out var __jsonRecoveryBootDiagStorageAccountId) ? (string)__jsonRecoveryBootDiagStorageAccountId : (string)RecoveryBootDiagStorageAccountId;}
             {_recoveryCloudServiceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryCloudServiceId"), out var __jsonRecoveryCloudServiceId) ? (string)__jsonRecoveryCloudServiceId : (string)RecoveryCloudServiceId;}
             {_recoveryResourceGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryResourceGroupId"), out var __jsonRecoveryResourceGroupId) ? (string)__jsonRecoveryResourceGroupId : (string)RecoveryResourceGroupId;}
+            {_managedDiskUpdateDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("managedDiskUpdateDetails"), out var __jsonManagedDiskUpdateDetails) ? If( __jsonManagedDiskUpdateDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmManagedDiskUpdateDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmManagedDiskUpdateDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.A2AvmManagedDiskUpdateDetails.FromJson(__u) )) ))() : null : ManagedDiskUpdateDetail;}
+            {_recoveryBootDiagStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryBootDiagStorageAccountId"), out var __jsonRecoveryBootDiagStorageAccountId) ? (string)__jsonRecoveryBootDiagStorageAccountId : (string)RecoveryBootDiagStorageAccountId;}
             AfterFromJson(json);
         }
 
@@ -101,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __updateReplicationProtectedItemProviderInput?.ToJson(container, serializationMode);
             AddIf( null != this._diskEncryptionInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._diskEncryptionInfo.ToJson(null,serializationMode) : null, "diskEncryptionInfo" ,container.Add );
+            AddIf( null != (((object)this._recoveryCloudServiceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryCloudServiceId.ToString()) : null, "recoveryCloudServiceId" ,container.Add );
+            AddIf( null != (((object)this._recoveryResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryResourceGroupId.ToString()) : null, "recoveryResourceGroupId" ,container.Add );
             if (null != this._managedDiskUpdateDetail)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -111,8 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 container.Add("managedDiskUpdateDetails",__w);
             }
             AddIf( null != (((object)this._recoveryBootDiagStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryBootDiagStorageAccountId.ToString()) : null, "recoveryBootDiagStorageAccountId" ,container.Add );
-            AddIf( null != (((object)this._recoveryCloudServiceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryCloudServiceId.ToString()) : null, "recoveryCloudServiceId" ,container.Add );
-            AddIf( null != (((object)this._recoveryResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryResourceGroupId.ToString()) : null, "recoveryResourceGroupId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -71,11 +71,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __policyProviderSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.PolicyProviderSpecificDetails(json);
-            {_appConsistentFrequencyInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("appConsistentFrequencyInMinutes"), out var __jsonAppConsistentFrequencyInMinutes) ? (int?)__jsonAppConsistentFrequencyInMinutes : AppConsistentFrequencyInMinute;}
-            {_crashConsistentFrequencyInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("crashConsistentFrequencyInMinutes"), out var __jsonCrashConsistentFrequencyInMinutes) ? (int?)__jsonCrashConsistentFrequencyInMinutes : CrashConsistentFrequencyInMinute;}
-            {_multiVMSyncStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("multiVmSyncStatus"), out var __jsonMultiVMSyncStatus) ? (string)__jsonMultiVMSyncStatus : (string)MultiVMSyncStatus;}
-            {_recoveryPointHistory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("recoveryPointHistory"), out var __jsonRecoveryPointHistory) ? (int?)__jsonRecoveryPointHistory : RecoveryPointHistory;}
             {_recoveryPointThresholdInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("recoveryPointThresholdInMinutes"), out var __jsonRecoveryPointThresholdInMinutes) ? (int?)__jsonRecoveryPointThresholdInMinutes : RecoveryPointThresholdInMinute;}
+            {_recoveryPointHistory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("recoveryPointHistory"), out var __jsonRecoveryPointHistory) ? (int?)__jsonRecoveryPointHistory : RecoveryPointHistory;}
+            {_appConsistentFrequencyInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("appConsistentFrequencyInMinutes"), out var __jsonAppConsistentFrequencyInMinutes) ? (int?)__jsonAppConsistentFrequencyInMinutes : AppConsistentFrequencyInMinute;}
+            {_multiVMSyncStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("multiVmSyncStatus"), out var __jsonMultiVMSyncStatus) ? (string)__jsonMultiVMSyncStatus : (string)MultiVMSyncStatus;}
+            {_crashConsistentFrequencyInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("crashConsistentFrequencyInMinutes"), out var __jsonCrashConsistentFrequencyInMinutes) ? (int?)__jsonCrashConsistentFrequencyInMinutes : CrashConsistentFrequencyInMinute;}
             AfterFromJson(json);
         }
 
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __policyProviderSpecificDetails?.ToJson(container, serializationMode);
-            AddIf( null != this._appConsistentFrequencyInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._appConsistentFrequencyInMinute) : null, "appConsistentFrequencyInMinutes" ,container.Add );
-            AddIf( null != this._crashConsistentFrequencyInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._crashConsistentFrequencyInMinute) : null, "crashConsistentFrequencyInMinutes" ,container.Add );
-            AddIf( null != (((object)this._multiVMSyncStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._multiVMSyncStatus.ToString()) : null, "multiVmSyncStatus" ,container.Add );
-            AddIf( null != this._recoveryPointHistory ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._recoveryPointHistory) : null, "recoveryPointHistory" ,container.Add );
             AddIf( null != this._recoveryPointThresholdInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._recoveryPointThresholdInMinute) : null, "recoveryPointThresholdInMinutes" ,container.Add );
+            AddIf( null != this._recoveryPointHistory ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._recoveryPointHistory) : null, "recoveryPointHistory" ,container.Add );
+            AddIf( null != this._appConsistentFrequencyInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._appConsistentFrequencyInMinute) : null, "appConsistentFrequencyInMinutes" ,container.Add );
+            AddIf( null != (((object)this._multiVMSyncStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._multiVMSyncStatus.ToString()) : null, "multiVmSyncStatus" ,container.Add );
+            AddIf( null != this._crashConsistentFrequencyInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._crashConsistentFrequencyInMinute) : null, "crashConsistentFrequencyInMinutes" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

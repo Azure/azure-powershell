@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// A value indicating whether multi VM sync enabled VMs should use multi VM sync points for failover.
+    /// </summary>
     public partial struct MultiVMSyncPointOption :
         System.IEquatable<MultiVMSyncPointOption>
     {

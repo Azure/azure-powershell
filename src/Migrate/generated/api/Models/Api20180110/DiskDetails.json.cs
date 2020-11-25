@@ -59,9 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             {_maxSizeMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("maxSizeMB"), out var __jsonMaxSizeMb) ? (long?)__jsonMaxSizeMb : MaxSizeMb;}
+            {_vhdType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vhdType"), out var __jsonVhdType) ? (string)__jsonVhdType : (string)VhdType;}
             {_vhdId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vhdId"), out var __jsonVhdId) ? (string)__jsonVhdId : (string)VhdId;}
             {_vhdName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vhdName"), out var __jsonVhdName) ? (string)__jsonVhdName : (string)VhdName;}
-            {_vhdType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vhdType"), out var __jsonVhdType) ? (string)__jsonVhdType : (string)VhdType;}
             AfterFromJson(json);
         }
 
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             AddIf( null != this._maxSizeMb ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((long)this._maxSizeMb) : null, "maxSizeMB" ,container.Add );
+            AddIf( null != (((object)this._vhdType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vhdType.ToString()) : null, "vhdType" ,container.Add );
             AddIf( null != (((object)this._vhdId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vhdId.ToString()) : null, "vhdId" ,container.Add );
             AddIf( null != (((object)this._vhdName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vhdName.ToString()) : null, "vhdName" ,container.Add );
-            AddIf( null != (((object)this._vhdType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vhdType.ToString()) : null, "vhdType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

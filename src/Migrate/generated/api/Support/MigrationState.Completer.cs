@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MigrationState.</summary>
+    /// <summary>The migration status.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationStateTypeConverter))]
     public partial struct MigrationState :
         System.Management.Automation.IArgumentCompleter

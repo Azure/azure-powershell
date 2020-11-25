@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus = (string) content.GetValueForProperty("AgentUpdateStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus = (string) content.GetValueForProperty("AgentUpdateStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).PostUpdateRebootStatus = (string) content.GetValueForProperty("PostUpdateRebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).PostUpdateRebootStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus = (string) content.GetValueForProperty("AgentUpdateStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus = (string) content.GetValueForProperty("AgentUpdateStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentUpdateStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).PostUpdateRebootStatus = (string) content.GetValueForProperty("PostUpdateRebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).PostUpdateRebootStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             AfterDeserializePSObject(content);
         }
 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether the recovery point is multi VM consistent.</summary>
     public partial struct RecoveryPointSyncType :
         System.IEquatable<RecoveryPointSyncType>
     {

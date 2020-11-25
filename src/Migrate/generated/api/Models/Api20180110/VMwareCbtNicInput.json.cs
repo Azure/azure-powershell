@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != (((object)this._isPrimaryNic)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._isPrimaryNic.ToString()) : null, "isPrimaryNic" ,container.Add );
-            AddIf( null != (((object)this._isSelectedForMigration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._isSelectedForMigration.ToString()) : null, "isSelectedForMigration" ,container.Add );
             AddIf( null != (((object)this._nicId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._nicId.ToString()) : null, "nicId" ,container.Add );
-            AddIf( null != (((object)this._targetStaticIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetStaticIPAddress.ToString()) : null, "targetStaticIPAddress" ,container.Add );
+            AddIf( null != (((object)this._isPrimaryNic)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._isPrimaryNic.ToString()) : null, "isPrimaryNic" ,container.Add );
             AddIf( null != (((object)this._targetSubnetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetSubnetName.ToString()) : null, "targetSubnetName" ,container.Add );
+            AddIf( null != (((object)this._targetStaticIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetStaticIPAddress.ToString()) : null, "targetStaticIPAddress" ,container.Add );
+            AddIf( null != (((object)this._isSelectedForMigration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._isSelectedForMigration.ToString()) : null, "isSelectedForMigration" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_isPrimaryNic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("isPrimaryNic"), out var __jsonIsPrimaryNic) ? (string)__jsonIsPrimaryNic : (string)IsPrimaryNic;}
-            {_isSelectedForMigration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("isSelectedForMigration"), out var __jsonIsSelectedForMigration) ? (string)__jsonIsSelectedForMigration : (string)IsSelectedForMigration;}
             {_nicId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("nicId"), out var __jsonNicId) ? (string)__jsonNicId : (string)NicId;}
-            {_targetStaticIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetStaticIPAddress"), out var __jsonTargetStaticIPAddress) ? (string)__jsonTargetStaticIPAddress : (string)TargetStaticIPAddress;}
+            {_isPrimaryNic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("isPrimaryNic"), out var __jsonIsPrimaryNic) ? (string)__jsonIsPrimaryNic : (string)IsPrimaryNic;}
             {_targetSubnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetSubnetName"), out var __jsonTargetSubnetName) ? (string)__jsonTargetSubnetName : (string)TargetSubnetName;}
+            {_targetStaticIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetStaticIPAddress"), out var __jsonTargetStaticIPAddress) ? (string)__jsonTargetStaticIPAddress : (string)TargetStaticIPAddress;}
+            {_isSelectedForMigration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("isSelectedForMigration"), out var __jsonIsSelectedForMigration) ? (string)__jsonIsSelectedForMigration : (string)IsSelectedForMigration;}
             AfterFromJson(json);
         }
     }

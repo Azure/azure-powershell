@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName = (string) content.GetValueForProperty("CloudName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId = (string[]) content.GetValueForProperty("ErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).VMName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName = (string) content.GetValueForProperty("CloudName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).Detail = (string[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId = (string[]) content.GetValueForProperty("ErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
 
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName = (string) content.GetValueForProperty("CloudName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId = (string[]) content.GetValueForProperty("ErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).VMName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName = (string) content.GetValueForProperty("CloudName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).CloudName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).Detail = (string[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId = (string[]) content.GetValueForProperty("ErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInconsistentVMDetailsInternal)this).ErrorId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }
 

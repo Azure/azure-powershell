@@ -50,7 +50,7 @@ BODY <IVMwareSite>: Site REST Resource.
   [ServicePrincipalIdentityDetailObjectId <String>]: Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
   [ServicePrincipalIdentityDetailRawCertData <String>]: Raw certificate data for building certificate expiry flows.
   [ServicePrincipalIdentityDetailTenantId <String>]: Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  [Tag <IVMwareSiteTags>]: 
+  [Tag <IVMwareSiteTags>]: Dictionary of <string>
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigratesite
@@ -168,7 +168,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags]))]
     [System.Collections.Hashtable]
-    # .
+    # Dictionary of <string>
     ${Tag},
 
     [Parameter()]

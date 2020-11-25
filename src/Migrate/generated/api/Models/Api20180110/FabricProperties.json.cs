@@ -58,14 +58,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
+            {_friendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("friendlyName"), out var __jsonFriendlyName) ? (string)__jsonFriendlyName : (string)FriendlyName;}
+            {_encryptionDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("encryptionDetails"), out var __jsonEncryptionDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EncryptionDetails.FromJson(__jsonEncryptionDetails) : EncryptionDetail;}
+            {_rolloverEncryptionDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("rolloverEncryptionDetails"), out var __jsonRolloverEncryptionDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EncryptionDetails.FromJson(__jsonRolloverEncryptionDetails) : RolloverEncryptionDetail;}
+            {_internalIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("internalIdentifier"), out var __jsonInternalIdentifier) ? (string)__jsonInternalIdentifier : (string)InternalIdentifier;}
             {_bcdrState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("bcdrState"), out var __jsonBcdrState) ? (string)__jsonBcdrState : (string)BcdrState;}
             {_customDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("customDetails"), out var __jsonCustomDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.FabricSpecificDetails.FromJson(__jsonCustomDetails) : CustomDetail;}
-            {_encryptionDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("encryptionDetails"), out var __jsonEncryptionDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EncryptionDetails.FromJson(__jsonEncryptionDetails) : EncryptionDetail;}
-            {_friendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("friendlyName"), out var __jsonFriendlyName) ? (string)__jsonFriendlyName : (string)FriendlyName;}
-            {_health = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("health"), out var __jsonHealth) ? (string)__jsonHealth : (string)Health;}
             {_healthErrorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("healthErrorDetails"), out var __jsonHealthErrorDetails) ? If( __jsonHealthErrorDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.HealthError.FromJson(__u) )) ))() : null : HealthErrorDetail;}
-            {_internalIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("internalIdentifier"), out var __jsonInternalIdentifier) ? (string)__jsonInternalIdentifier : (string)InternalIdentifier;}
-            {_rolloverEncryptionDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("rolloverEncryptionDetails"), out var __jsonRolloverEncryptionDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EncryptionDetails.FromJson(__jsonRolloverEncryptionDetails) : RolloverEncryptionDetail;}
+            {_health = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("health"), out var __jsonHealth) ? (string)__jsonHealth : (string)Health;}
             AfterFromJson(json);
         }
 
@@ -100,11 +100,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._friendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._friendlyName.ToString()) : null, "friendlyName" ,container.Add );
+            AddIf( null != this._encryptionDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._encryptionDetail.ToJson(null,serializationMode) : null, "encryptionDetails" ,container.Add );
+            AddIf( null != this._rolloverEncryptionDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._rolloverEncryptionDetail.ToJson(null,serializationMode) : null, "rolloverEncryptionDetails" ,container.Add );
+            AddIf( null != (((object)this._internalIdentifier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._internalIdentifier.ToString()) : null, "internalIdentifier" ,container.Add );
             AddIf( null != (((object)this._bcdrState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._bcdrState.ToString()) : null, "bcdrState" ,container.Add );
             AddIf( null != this._customDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._customDetail.ToJson(null,serializationMode) : null, "customDetails" ,container.Add );
-            AddIf( null != this._encryptionDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._encryptionDetail.ToJson(null,serializationMode) : null, "encryptionDetails" ,container.Add );
-            AddIf( null != (((object)this._friendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._friendlyName.ToString()) : null, "friendlyName" ,container.Add );
-            AddIf( null != (((object)this._health)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._health.ToString()) : null, "health" ,container.Add );
             if (null != this._healthErrorDetail)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -114,8 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("healthErrorDetails",__w);
             }
-            AddIf( null != (((object)this._internalIdentifier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._internalIdentifier.ToString()) : null, "internalIdentifier" ,container.Add );
-            AddIf( null != this._rolloverEncryptionDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._rolloverEncryptionDetail.ToJson(null,serializationMode) : null, "rolloverEncryptionDetails" ,container.Add );
+            AddIf( null != (((object)this._health)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._health.ToString()) : null, "health" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

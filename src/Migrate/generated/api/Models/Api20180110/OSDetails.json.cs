@@ -70,12 +70,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_oSMajorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSMajorVersion"), out var __jsonOSMajorVersion) ? (string)__jsonOSMajorVersion : (string)OSMajorVersion;}
-            {_oSMinorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSMinorVersion"), out var __jsonOSMinorVersion) ? (string)__jsonOSMinorVersion : (string)OSMinorVersion;}
-            {_oSVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSVersion"), out var __jsonOSVersion) ? (string)__jsonOSVersion : (string)OSVersion;}
-            {_oSEdition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("osEdition"), out var __jsonOSEdition) ? (string)__jsonOSEdition : (string)OSEdition;}
             {_oSType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("osType"), out var __jsonOSType) ? (string)__jsonOSType : (string)OSType;}
             {_productType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("productType"), out var __jsonProductType) ? (string)__jsonProductType : (string)ProductType;}
+            {_oSEdition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("osEdition"), out var __jsonOSEdition) ? (string)__jsonOSEdition : (string)OSEdition;}
+            {_oSVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSVersion"), out var __jsonOSVersion) ? (string)__jsonOSVersion : (string)OSVersion;}
+            {_oSMajorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSMajorVersion"), out var __jsonOSMajorVersion) ? (string)__jsonOSMajorVersion : (string)OSMajorVersion;}
+            {_oSMinorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("oSMinorVersion"), out var __jsonOSMinorVersion) ? (string)__jsonOSMinorVersion : (string)OSMinorVersion;}
             AfterFromJson(json);
         }
 
@@ -98,12 +98,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != (((object)this._oSMajorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSMajorVersion.ToString()) : null, "oSMajorVersion" ,container.Add );
-            AddIf( null != (((object)this._oSMinorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSMinorVersion.ToString()) : null, "oSMinorVersion" ,container.Add );
-            AddIf( null != (((object)this._oSVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSVersion.ToString()) : null, "oSVersion" ,container.Add );
-            AddIf( null != (((object)this._oSEdition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSEdition.ToString()) : null, "osEdition" ,container.Add );
             AddIf( null != (((object)this._oSType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSType.ToString()) : null, "osType" ,container.Add );
             AddIf( null != (((object)this._productType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._productType.ToString()) : null, "productType" ,container.Add );
+            AddIf( null != (((object)this._oSEdition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSEdition.ToString()) : null, "osEdition" ,container.Add );
+            AddIf( null != (((object)this._oSVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSVersion.ToString()) : null, "oSVersion" ,container.Add );
+            AddIf( null != (((object)this._oSMajorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSMajorVersion.ToString()) : null, "oSMajorVersion" ,container.Add );
+            AddIf( null != (((object)this._oSMinorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSMinorVersion.ToString()) : null, "oSMinorVersion" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return;
             }
-            {_clusterCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("clusterCount"), out var __jsonClusterCount) ? (int?)__jsonClusterCount : ClusterCount;}
-            {_hostCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("hostCount"), out var __jsonHostCount) ? (int?)__jsonHostCount : HostCount;}
             {_machineCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("machineCount"), out var __jsonMachineCount) ? (int?)__jsonMachineCount : MachineCount;}
             {_runAsAccountCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("runAsAccountCount"), out var __jsonRunAsAccountCount) ? (int?)__jsonRunAsAccountCount : RunAsAccountCount;}
+            {_hostCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("hostCount"), out var __jsonHostCount) ? (int?)__jsonHostCount : HostCount;}
+            {_clusterCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("clusterCount"), out var __jsonClusterCount) ? (int?)__jsonClusterCount : ClusterCount;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return container;
             }
-            AddIf( null != this._clusterCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._clusterCount) : null, "clusterCount" ,container.Add );
-            AddIf( null != this._hostCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._hostCount) : null, "hostCount" ,container.Add );
             AddIf( null != this._machineCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._machineCount) : null, "machineCount" ,container.Add );
             AddIf( null != this._runAsAccountCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._runAsAccountCount) : null, "runAsAccountCount" ,container.Add );
+            AddIf( null != this._hostCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._hostCount) : null, "hostCount" ,container.Add );
+            AddIf( null != this._clusterCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._clusterCount) : null, "clusterCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

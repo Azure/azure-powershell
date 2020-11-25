@@ -82,11 +82,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         public string Origin { get => this._origin; set => this._origin = value; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _property;
 
         /// <summary>Properties. Reserved for future use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.OperationsDiscoveryProperties()); set => this._property = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set => this._property = value; }
 
         /// <summary>Creates an new <see cref="OperationsDiscovery" /> instance.</summary>
         public OperationsDiscovery()
@@ -185,8 +185,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         ReadOnly = false,
         Description = @"Properties. Reserved for future use.",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get; set; }
 
     }
     /// Operations discovery class.
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// </summary>
         string Origin { get; set; }
         /// <summary>Properties. Reserved for future use.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get; set; }
 
     }
 }

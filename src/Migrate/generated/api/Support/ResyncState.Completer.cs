@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for ResyncState.</summary>
+    /// <summary>The resync state.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncStateTypeConverter))]
     public partial struct ResyncState :
         System.Management.Automation.IArgumentCompleter

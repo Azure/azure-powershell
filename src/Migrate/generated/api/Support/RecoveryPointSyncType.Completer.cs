@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPointSyncType.</summary>
+    /// <summary>A value indicating whether the recovery point is multi VM consistent.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointSyncTypeTypeConverter))]
     public partial struct RecoveryPointSyncType :
         System.Management.Automation.IArgumentCompleter

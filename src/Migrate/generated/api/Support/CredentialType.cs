@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Credential type of the run as account.</summary>
     public partial struct CredentialType :
         System.IEquatable<CredentialType>
     {

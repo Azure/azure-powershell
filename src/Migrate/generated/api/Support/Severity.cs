@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Severity of error.</summary>
     public partial struct Severity :
         System.IEquatable<Severity>
     {

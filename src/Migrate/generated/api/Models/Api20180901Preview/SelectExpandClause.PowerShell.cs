@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[]) content.GetValueForProperty("SelectedItem",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).AllSelected = (bool?) content.GetValueForProperty("AllSelected",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).AllSelected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[]) content.GetValueForProperty("SelectedItem",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SelectItemTypeConverter.ConvertFrom));
             AfterDeserializeDictionary(content);
         }
 
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[]) content.GetValueForProperty("SelectedItem",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).AllSelected = (bool?) content.GetValueForProperty("AllSelected",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).AllSelected, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[]) content.GetValueForProperty("SelectedItem",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal)this).SelectedItem, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SelectItemTypeConverter.ConvertFrom));
             AfterDeserializePSObject(content);
         }
 

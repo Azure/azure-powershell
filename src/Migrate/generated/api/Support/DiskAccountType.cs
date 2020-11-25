@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The disk type.</summary>
     public partial struct DiskAccountType :
         System.IEquatable<DiskAccountType>
     {

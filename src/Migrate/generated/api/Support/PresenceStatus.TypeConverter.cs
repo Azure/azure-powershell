@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for PresenceStatus.</summary>
+    /// <summary>
+    /// A value indicating whether the VM has a physical disk attached. String value of {SrsDataContract.PresenceStatus} enum.
+    /// </summary>
     public partial class PresenceStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

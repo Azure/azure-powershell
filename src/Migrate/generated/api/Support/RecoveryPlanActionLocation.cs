@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The fabric location.</summary>
     public partial struct RecoveryPlanActionLocation :
         System.IEquatable<RecoveryPlanActionLocation>
     {

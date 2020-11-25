@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether the auto update is enabled.</summary>
     public partial struct AgentAutoUpdateStatus :
         System.IEquatable<AgentAutoUpdateStatus>
     {

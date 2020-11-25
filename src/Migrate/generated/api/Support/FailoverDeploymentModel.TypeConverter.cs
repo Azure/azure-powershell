@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for FailoverDeploymentModel.</summary>
+    /// <summary>The failover deployment model.</summary>
     public partial class FailoverDeploymentModelTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

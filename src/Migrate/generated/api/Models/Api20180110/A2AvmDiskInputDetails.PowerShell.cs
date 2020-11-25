@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).DiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).DiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

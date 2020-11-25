@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MultiVMGroupCreateOption.</summary>
+    /// <summary>Whether Multi VM group is auto created or specified by user.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MultiVMGroupCreateOptionTypeConverter))]
     public partial struct MultiVMGroupCreateOption :
         System.Management.Automation.IArgumentCompleter

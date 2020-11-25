@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for SetMultiVMSyncStatus.</summary>
+    /// <summary>
+    /// A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SetMultiVMSyncStatusTypeConverter))]
     public partial struct SetMultiVMSyncStatus :
         System.Management.Automation.IArgumentCompleter

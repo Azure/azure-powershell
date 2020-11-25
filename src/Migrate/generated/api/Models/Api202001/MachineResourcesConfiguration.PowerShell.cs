@@ -95,10 +95,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory = (int?) content.GetValueForProperty("PhysicalMemory",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu = (int?) content.GetValueForProperty("Cpu",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeed = (int?) content.GetValueForProperty("CpuSpeed",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeed, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeedAccuracy = (string) content.GetValueForProperty("CpuSpeedAccuracy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeedAccuracy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu = (int?) content.GetValueForProperty("Cpu",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory = (int?) content.GetValueForProperty("PhysicalMemory",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializeDictionary(content);
         }
 
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory = (int?) content.GetValueForProperty("PhysicalMemory",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu = (int?) content.GetValueForProperty("Cpu",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeed = (int?) content.GetValueForProperty("CpuSpeed",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeed, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeedAccuracy = (string) content.GetValueForProperty("CpuSpeedAccuracy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).CpuSpeedAccuracy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu = (int?) content.GetValueForProperty("Cpu",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).Cpu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory = (int?) content.GetValueForProperty("PhysicalMemory",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IMachineResourcesConfigurationInternal)this).PhysicalMemory, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
         }
 

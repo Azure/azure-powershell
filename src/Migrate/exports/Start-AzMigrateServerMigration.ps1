@@ -56,7 +56,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigrateservermigration
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigraterservermigration
 #>
 function Start-AzMigrateServerMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]

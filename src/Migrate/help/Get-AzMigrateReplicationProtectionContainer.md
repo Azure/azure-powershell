@@ -12,7 +12,7 @@ Gets the details of a protection container.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -25,7 +25,7 @@ Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionCont
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ResourceGroupName <String>
  -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -80,7 +80,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]

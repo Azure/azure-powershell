@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MultiVMSyncPointOption.</summary>
+    /// <summary>
+    /// A value indicating whether multi VM sync enabled VMs should use multi VM sync points for failover.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MultiVMSyncPointOptionTypeConverter))]
     public partial struct MultiVMSyncPointOption :
         System.Management.Automation.IArgumentCompleter

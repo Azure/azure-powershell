@@ -94,7 +94,7 @@ Contoso-DataTier3             10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
 #>
 function Get-AzMigrateDiscoveredServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]

@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_initialReplicationProgressPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("initialReplicationProgressPercentage"), out var __jsonInitialReplicationProgressPercentage) ? (string)__jsonInitialReplicationProgressPercentage : (string)InitialReplicationProgressPercentage;}
             {_initialReplicationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("initialReplicationType"), out var __jsonInitialReplicationType) ? (string)__jsonInitialReplicationType : (string)InitialReplicationType;}
+            {_initialReplicationProgressPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("initialReplicationProgressPercentage"), out var __jsonInitialReplicationProgressPercentage) ? (string)__jsonInitialReplicationProgressPercentage : (string)InitialReplicationProgressPercentage;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != (((object)this._initialReplicationProgressPercentage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._initialReplicationProgressPercentage.ToString()) : null, "initialReplicationProgressPercentage" ,container.Add );
             AddIf( null != (((object)this._initialReplicationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._initialReplicationType.ToString()) : null, "initialReplicationType" ,container.Add );
+            AddIf( null != (((object)this._initialReplicationProgressPercentage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._initialReplicationProgressPercentage.ToString()) : null, "initialReplicationProgressPercentage" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

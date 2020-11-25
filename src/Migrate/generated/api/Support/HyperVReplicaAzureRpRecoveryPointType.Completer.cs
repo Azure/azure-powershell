@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for HyperVReplicaAzureRpRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HyperVReplicaAzureRpRecoveryPointTypeTypeConverter))]
     public partial struct HyperVReplicaAzureRpRecoveryPointType :
         System.Management.Automation.IArgumentCompleter

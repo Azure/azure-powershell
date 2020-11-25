@@ -72,10 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             {_fabricSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("fabricSpecificDetails"), out var __jsonFabricSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProtectionContainerFabricSpecificDetails.FromJson(__jsonFabricSpecificDetails) : FabricSpecificDetail;}
             {_fabricFriendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricFriendlyName"), out var __jsonFabricFriendlyName) ? (string)__jsonFabricFriendlyName : (string)FabricFriendlyName;}
-            {_fabricType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricType"), out var __jsonFabricType) ? (string)__jsonFabricType : (string)FabricType;}
             {_friendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("friendlyName"), out var __jsonFriendlyName) ? (string)__jsonFriendlyName : (string)FriendlyName;}
-            {_pairingStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("pairingStatus"), out var __jsonPairingStatus) ? (string)__jsonPairingStatus : (string)PairingStatus;}
+            {_fabricType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricType"), out var __jsonFabricType) ? (string)__jsonFabricType : (string)FabricType;}
             {_protectedItemCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("protectedItemCount"), out var __jsonProtectedItemCount) ? (int?)__jsonProtectedItemCount : ProtectedItemCount;}
+            {_pairingStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("pairingStatus"), out var __jsonPairingStatus) ? (string)__jsonPairingStatus : (string)PairingStatus;}
             {_role = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("role"), out var __jsonRole) ? (string)__jsonRole : (string)Role;}
             AfterFromJson(json);
         }
@@ -101,10 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             AddIf( null != this._fabricSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._fabricSpecificDetail.ToJson(null,serializationMode) : null, "fabricSpecificDetails" ,container.Add );
             AddIf( null != (((object)this._fabricFriendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricFriendlyName.ToString()) : null, "fabricFriendlyName" ,container.Add );
-            AddIf( null != (((object)this._fabricType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricType.ToString()) : null, "fabricType" ,container.Add );
             AddIf( null != (((object)this._friendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._friendlyName.ToString()) : null, "friendlyName" ,container.Add );
-            AddIf( null != (((object)this._pairingStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._pairingStatus.ToString()) : null, "pairingStatus" ,container.Add );
+            AddIf( null != (((object)this._fabricType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricType.ToString()) : null, "fabricType" ,container.Add );
             AddIf( null != this._protectedItemCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._protectedItemCount) : null, "protectedItemCount" ,container.Add );
+            AddIf( null != (((object)this._pairingStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._pairingStatus.ToString()) : null, "pairingStatus" ,container.Add );
             AddIf( null != (((object)this._role)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._role.ToString()) : null, "role" ,container.Add );
             AfterToJson(ref container);
             return container;

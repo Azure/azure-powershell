@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Whether Multi VM group is auto created or specified by user.</summary>
     public partial struct MultiVMGroupCreateOption :
         System.IEquatable<MultiVMGroupCreateOption>
     {

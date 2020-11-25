@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for MigrationRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationRecoveryPointTypeTypeConverter))]
     public partial struct MigrationRecoveryPointType :
         System.Management.Automation.IArgumentCompleter

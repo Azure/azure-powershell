@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided
+    /// by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.
+    /// </summary>
     public partial struct RecoveryPointType :
         System.IEquatable<RecoveryPointType>
     {
