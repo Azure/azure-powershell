@@ -1,8 +1,8 @@
 {
-  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2020-10-19-preview+1": {
+  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"messageBody\": \"apple\",\r\n  \"messageTitle\": \"title\"\r\n}",
       "Headers": {
         "x-ms-unique-id": [ "6" ],
