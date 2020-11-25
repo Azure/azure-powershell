@@ -24,6 +24,7 @@
 * Updated `Export-AzResourceGroup` to use the SDK.
 * Added culture info to parse methods
 * Changed Double parser for version parser
+* Changed New-RoleAssignment to include principal type during calls
 
 ## Version 3.0.0
 * Fixed parsing bug
