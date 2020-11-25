@@ -108,7 +108,9 @@ Function Move-Generation2Master {
         $extensions = ls ~/.autorest
         ForEach ($ex in $extensions) {
             $info = $ex.Name.Split('@')
-            $generate_info.Add($info[1], $info[2])
+            if (-not $generate_info.ContainsKey($info[1])) {
+                $generate_info.Add($info[1], $info[2])
+            }
         }
         Set-Content -Path (Join-Path $DestPath generate-info.json) -Value (ConvertTo-Json $generate_info)
         #EndRegion
@@ -119,7 +121,7 @@ Function Move-Generation2Master {
 
         #Region update GeneratedModuleList
         $GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "..", "GeneratedModuleList.txt")
-        $Modules = Get-Content $GeneratedModuleListPath + "Az.$ModuleName"
+        $Modules = (Get-Content $GeneratedModuleListPath) + "Az.$ModuleName"
         $NewModules = $Modules | Sort-Object
         Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
