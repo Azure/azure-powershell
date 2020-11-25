@@ -13,16 +13,17 @@ while(-not $mockingPath) {
 
 Describe 'New-AzSapMonitorProviderInstance' {
     It 'CreateExpandedByString' {
-        $hostName = 'hdb1-0'
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $sapIns = New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns03 -SapMonitorName $env.sapMonitor02 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
+        $sapIns = New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns03 -SapMonitorName $env.sapMonitor02 -ProviderType SapHana -HanaHostname $env.hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort $env.port -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
         $sapIns.ProvisioningState | Should -Be 'Succeeded'
     }
     It 'ByKeyVault' {
-        $hostName = 'hdb1-0'
-        New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns04 -SapMonitorName $env.sapMonitor02 -ProviderType SapHana -HanaHostname $hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePasswordSecretId $env.hanaDbPasswordSecretId -HanaDatabasePasswordKeyVaultResourceId $env.hanaDbPasswordKvResourceId  -AsJob | Wait-Job
+        New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns04 -SapMonitorName $env.sapMonitor02 -ProviderType SapHana -HanaHostname $env.hostName -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort $env.port -HanaDatabaseUsername SYSTEM -HanaDatabasePasswordSecretId $env.hanaDbPasswordSecretId -HanaDatabasePasswordKeyVaultResourceId $env.hanaDbPasswordKvResourceId  -AsJob | Wait-Job
         $sapIns = Get-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns04 -SapMonitorName $env.sapMonitor02
         $sapIns.ProvisioningState | Should -Be 'Succeeded'
     }
-
+    It 'ByDict' {
+        $sapIns = New-AzSapMonitorProviderInstance -ResourceGroupName $env.resourceGroup -Name $env.sapIns05 -SapMonitorName $env.sapMonitor02 -ProviderType PrometheusOS -InstanceProperty @{prometheusUrl=$env.prometheusUrl}
+        $sapIns.ProvisioningState | Should -Be 'Succeeded'
+    }
 }

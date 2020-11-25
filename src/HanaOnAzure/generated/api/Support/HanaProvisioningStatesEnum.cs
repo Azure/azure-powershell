@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
+    /// <summary>State of provisioning of the HanaInstance</summary>
     public partial struct HanaProvisioningStatesEnum :
         System.IEquatable<HanaProvisioningStatesEnum>
     {
