@@ -29,20 +29,20 @@ Restarts a server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Restart the server by resource name
 ```powershell
-Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+PS C:\> Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
+Restart the server by name
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Restart the server by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/restart"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/restart"
 PS C:\> Restart-AzMySqlFlexibleServer -InputObject $ID
 ```
 
-
+Restart the server by identity
 
 ## PARAMETERS
 

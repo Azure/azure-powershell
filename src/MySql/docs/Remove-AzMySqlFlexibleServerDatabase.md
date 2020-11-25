@@ -30,20 +30,21 @@ Deletes a database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Remove MySql database by name
 ```powershell
-Remove-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+PS C:\> Remove-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
+This cmdlet removes MySql database by name.
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Remove MySql database by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/databases/databasetest"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/databases/databasetest"
 PS C:\> Remove-AzMySqlFlexibleServerDatabase -InputObject $ID
+ 
 ```
 
-
+These cmdlets remove MySql database by identity.
 
 ## PARAMETERS
 

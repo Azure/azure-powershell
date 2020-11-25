@@ -30,24 +30,28 @@ Creates a new database or updates an existing database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Update a MySql server database by name
 ```powershell
-Update-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
-```
+PS C:\> Update-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
 
 Name            Charset     Collation              
 ----            -------- ------------------
-databasetest   utf8      latin1_swedish_ci
+databasetest   utf8      latin1_swedish_ci  
+```
 
-### -------------------------- EXAMPLE 2 --------------------------
+Update a database by resource name.
+
+### Example 2: Update MySql database by parameter.
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/databases/databasetest"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/databases/databasetest"
 PS C:\> Update-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
-```
 
 Name            Charset     Collation              
 ----            -------- ------------------
-databasetest   utf8      latin1_swedish_ci
+databasetest   utf8      latin1_swedish_ci  
+```
+
+Update a database by parameter
 
 ## PARAMETERS
 

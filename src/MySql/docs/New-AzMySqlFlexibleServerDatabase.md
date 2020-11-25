@@ -30,14 +30,16 @@ Creates a new database or updates an existing database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create a new MySql server database
 ```powershell
-New-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
-```
+PS C:\> New-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 
 Name            Charset     Collation              
 ----            -------- ------------------
-databasetest   latin1   latin1_swedish_ci
+databasetest   latin1   latin1_swedish_ci  
+```
+
+Create a database with default settings.
 
 ## PARAMETERS
 
