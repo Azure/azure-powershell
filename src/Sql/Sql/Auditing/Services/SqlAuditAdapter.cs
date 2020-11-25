@@ -85,17 +85,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             ModelizeAuditPolicy(model, policy);
         }
 
-        internal abstract AuditPolicyType GetAuditingPolicy(string resourceGroup, string serverName);
+        protected abstract AuditPolicyType GetAuditingPolicy(string resourceGroup, string serverName);
 
-        internal abstract bool SetAudit(AuditModelType model);
+        protected abstract bool SetAudit(AuditModelType model);
 
-        internal abstract string GetDiagnosticsEnablingAuditCategoryName();
+        protected abstract string GetDiagnosticsEnablingAuditCategoryName();
 
-        internal abstract string GetNextDiagnosticSettingsNamePrefix();
+        protected abstract string GetNextDiagnosticSettingsNamePrefix();
 
-        internal abstract void ModelizeAuditPolicy(AuditModelType model, AuditPolicyType policy);
+        protected abstract void ModelizeAuditPolicy(AuditModelType model, AuditPolicyType policy);
 
-        internal abstract StorageKeyKind GetStorageKeyKind(AuditModelType model);
+        protected abstract StorageKeyKind GetStorageKeyKind(AuditModelType model);
 
         internal void ModelizeAuditPolicy(AuditModelType model,
             BlobAuditingPolicyState state,
@@ -109,23 +109,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
             ModelizeStorageInfo(model, storageEndpoint, isSecondary, storageAccountSubscriptionId, IsAuditEnabled(state), retentionDays);
             DetermineTargetsState(model, state);
-        }
-
-        internal AuditActionGroups[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
-        {
-            var groups = new List<AuditActionGroups>();
-            if (auditActionsAndGroups != null)
-            {
-                auditActionsAndGroups.ForEach(item =>
-                {
-                    if (Enum.TryParse(item, true, out AuditActionGroups group))
-                    {
-                        groups.Add(group);
-                    }
-                });
-            }
-
-            return groups.ToArray();
         }
 
         internal string[] ExtractAuditActions(IEnumerable<string> auditActionsAndGroups)
@@ -405,25 +388,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             string[] segments = storageAccountResourceId.Split('/');
             storageAccountSubscriptionId = Guid.Parse(segments[0]);
             storageAccountName = segments[6];
-        }
-
-        internal static IList<string> ExtractAuditActionsAndGroups(AuditActionGroups[] auditActionGroup, string[] auditAction = null)
-        {
-            var actionsAndGroups = new List<string>();
-            if (auditAction != null)
-            {
-                actionsAndGroups.AddRange(auditAction);
-            }
-
-            auditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
-            if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
-            {
-                actionsAndGroups.Add("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP");
-                actionsAndGroups.Add("FAILED_DATABASE_AUTHENTICATION_GROUP");
-                actionsAndGroups.Add("BATCH_COMPLETED_GROUP");
-            }
-
-            return actionsAndGroups;
         }
 
         /// <summary>
@@ -745,21 +709,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
         }
 
-        internal override string GetDiagnosticsEnablingAuditCategoryName()
+        protected override string GetDiagnosticsEnablingAuditCategoryName()
         {
             return DefinitionsCommon.SQLSecurityAuditCategory;
         }
 
-        internal override string GetNextDiagnosticSettingsNamePrefix()
+        protected override string GetNextDiagnosticSettingsNamePrefix()
         {
             return DefinitionsCommon.DiagnosticSettingsNamePrefixSQLSecurityAuditEvents;
         }
 
-        internal abstract bool SetAuditingPolicy(string resourceGroup, string serverName, AuditPolicyType policy);
+        protected abstract bool SetAuditingPolicy(string resourceGroup, string serverName, AuditPolicyType policy);
 
-        internal abstract bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedAuditPolicyType policy);
+        protected abstract bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedAuditPolicyType policy);
 
-        internal override void ModelizeAuditPolicy(AuditModelType model, ExtendedAuditPolicyType policy)
+        protected override void ModelizeAuditPolicy(AuditModelType model, ExtendedAuditPolicyType policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -782,7 +746,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        internal override bool SetAudit(AuditModelType model)
+        protected override bool SetAudit(AuditModelType model)
         {
             if (string.IsNullOrEmpty(model.PredicateExpression))
             {
@@ -824,9 +788,45 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             dynamicPolicy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
         }
 
-        internal override StorageKeyKind GetStorageKeyKind(AuditModelType model)
+        protected override StorageKeyKind GetStorageKeyKind(AuditModelType model)
         {
             return model.StorageKeyType;
+        }
+
+        protected static IList<string> ExtractAuditActionsAndGroups(AuditActionGroups[] auditActionGroup, string[] auditAction = null)
+        {
+            var actionsAndGroups = new List<string>();
+            if (auditAction != null)
+            {
+                actionsAndGroups.AddRange(auditAction);
+            }
+
+            auditActionGroup.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
+            if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
+            {
+                actionsAndGroups.Add("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP");
+                actionsAndGroups.Add("FAILED_DATABASE_AUTHENTICATION_GROUP");
+                actionsAndGroups.Add("BATCH_COMPLETED_GROUP");
+            }
+
+            return actionsAndGroups;
+        }
+
+        private AuditActionGroups[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
+        {
+            var groups = new List<AuditActionGroups>();
+            if (auditActionsAndGroups != null)
+            {
+                auditActionsAndGroups.ForEach(item =>
+                {
+                    if (Enum.TryParse(item, true, out AuditActionGroups group))
+                    {
+                        groups.Add(group);
+                    }
+                });
+            }
+
+            return groups.ToArray();
         }
     }
 
@@ -836,17 +836,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
         }
 
-        internal override ExtendedServerBlobAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
+        protected override ExtendedServerBlobAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
         {
             return Communicator.GetAuditingPolicy(resourceGroup, serverName);
         }
 
-        internal override bool SetAuditingPolicy(string resourceGroup, string serverName, ServerBlobAuditingPolicy policy)
+        protected override bool SetAuditingPolicy(string resourceGroup, string serverName, ServerBlobAuditingPolicy policy)
         {
             return Communicator.SetAuditingPolicy(resourceGroup, serverName, policy);
         }
 
-        internal override bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedServerBlobAuditingPolicy policy)
+        protected override bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedServerBlobAuditingPolicy policy)
         {
             return Communicator.SetExtendedAuditingPolicy(resourceGroup, serverName, policy);
         }
@@ -868,17 +868,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             this.DatabaseName = databaseName;
         }
 
-        internal override ExtendedDatabaseBlobAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
+        protected override ExtendedDatabaseBlobAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
         {
             return Communicator.GetAuditingPolicy(resourceGroup, serverName, DatabaseName);
         }
 
-        internal override bool SetAuditingPolicy(string resourceGroup, string serverName, DatabaseBlobAuditingPolicy policy)
+        protected override bool SetAuditingPolicy(string resourceGroup, string serverName, DatabaseBlobAuditingPolicy policy)
         {
             return Communicator.SetAuditingPolicy(resourceGroup, serverName, DatabaseName, policy);
         }
 
-        internal override bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedDatabaseBlobAuditingPolicy policy)
+        protected override bool SetExtendedAuditingPolicy(string resourceGroup, string serverName, ExtendedDatabaseBlobAuditingPolicy policy)
         {
             return Communicator.SetExtendedAuditingPolicy(resourceGroup, serverName, DatabaseName, policy);
         }
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 resourceGroupName, serverName, DatabaseName);
         }
 
-        internal override void ModelizeAuditPolicy(DatabaseAuditModel model, ExtendedDatabaseBlobAuditingPolicy policy)
+        protected override void ModelizeAuditPolicy(DatabaseAuditModel model, ExtendedDatabaseBlobAuditingPolicy policy)
         {
             base.ModelizeAuditPolicy(model, policy);
 
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.DatabaseName = DatabaseName;
         }
 
-        internal override bool SetAudit(DatabaseAuditModel model)
+        protected override bool SetAudit(DatabaseAuditModel model)
         {
             ValidateDatabaseInServiceTierForPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName);
 
@@ -925,12 +925,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
         }
 
-        internal override ServerDevOpsAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
+        protected override ServerDevOpsAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
         {
             return Communicator.GetDevOpsAuditingPolicy(resourceGroup, serverName);
         }
 
-        internal override bool SetAudit(ServerDevOpsAuditModel model)
+        protected override bool SetAudit(ServerDevOpsAuditModel model)
         {
             var policy = new ServerDevOpsAuditingPolicy();
 
@@ -939,134 +939,26 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return Communicator.SetDevOpsAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
         }
 
-        internal override string GetDiagnosticsEnablingAuditCategoryName()
+        protected override string GetDiagnosticsEnablingAuditCategoryName()
         {
             return DefinitionsCommon.DevOpsAuditCategory;
         }
 
-        internal override string GetNextDiagnosticSettingsNamePrefix()
+        protected override string GetNextDiagnosticSettingsNamePrefix()
         {
             return DefinitionsCommon.DiagnosticSettingsNamePrefixDevOpsOperationsAudit;
         }
 
-        internal override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingPolicy policy)
+        protected override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingPolicy policy)
         {
             ModelizeAuditPolicy(model,
                 policy.State, policy.StorageEndpoint, null, policy.StorageAccountSubscriptionId,
                 policy.IsAzureMonitorTargetEnabled, null);
         }
 
-        internal override StorageKeyKind GetStorageKeyKind(ServerDevOpsAuditModel model)
+        protected override StorageKeyKind GetStorageKeyKind(ServerDevOpsAuditModel model)
         {
             return StorageKeyKind.Primary;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public sealed class SqlAuditAdapterRegular : SqlAuditAdapter<ExtendedServerBlobAuditingPolicy, ServerAuditModel>
-    //{
-    //    public SqlAuditAdapterRegular(IAzureContext context, Guid roleAssignmentId = default(Guid)) : base(context, roleAssignmentId)
-    //    {
-    //    }
-
-    //    internal override ExtendedServerBlobAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
-    //    {
-    //        return Communicator.GetAuditingPolicy(resourceGroup, serverName);
-    //    }
-
-    //    internal override bool SetAudit(ServerAuditModel model)
-    //    {
-    //        if (string.IsNullOrEmpty(model.PredicateExpression))
-    //        {
-    //            var policy = new ServerBlobAuditingPolicy();
-    //            PolicizeAuditModel(model, policy);
-    //            return Communicator.SetAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
-    //        }
-    //        else
-    //        {
-    //            var policy = new ExtendedServerBlobAuditingPolicy
-    //            {
-    //                PredicateExpression = model.PredicateExpression
-    //            };
-    //            PolicizeAuditModel(model, policy);
-    //            return Communicator.SetExtendedAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
-    //        }
-    //    }
-
-    //    internal override string GetDiagnosticsEnablingAuditCategoryName()
-    //    {
-    //        return DefinitionsCommon.SQLSecurityAuditCategory;
-    //    }
-
-    //    internal override string GetNextDiagnosticSettingsNamePrefix()
-    //    {
-    //        return DefinitionsCommon.DiagnosticSettingsNamePrefixSQLSecurityAuditEvents;
-    //    }
-
-    //    internal override void ModelizeAuditPolicy(ServerAuditModel model, ExtendedServerBlobAuditingPolicy policy)
-    //    {
-    //        ModelizeAuditPolicy(model, 
-    //            policy.State, policy.StorageEndpoint, policy.StorageAccountSubscriptionId, 
-    //            policy.IsAzureMonitorTargetEnabled);
-
-    //        model.StorageKeyType = policy.IsStorageSecondaryKeyInUse.GetValueOrDefault(false) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
-    //        model.PredicateExpression = policy.PredicateExpression;
-    //        model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-    //        model.RetentionInDays = Convert.ToUInt32(policy.RetentionDays);
-    //    }
-    //}
-
-    //public sealed class SqlAuditAdapterDevOps : SqlAuditAdapter<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel>
-    //{
-    //    public SqlAuditAdapterDevOps(IAzureContext context, Guid roleAssignmentId = default(Guid)) : base(context, roleAssignmentId)
-    //    {
-    //    }
-
-    //    internal override ServerDevOpsAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
-    //    {
-    //        return Communicator.GetDevOpsAuditingPolicy(resourceGroup, serverName);
-    //    }
-
-    //    internal override bool SetAudit(ServerDevOpsAuditModel model)
-    //    {
-    //        var policy = new ServerDevOpsAuditingPolicy();
-
-    //        PolicizeAuditModel(model, policy);
-
-    //        return Communicator.SetDevOpsAuditingPolicy(model.ResourceGroupName, model.ServerName, policy);
-    //    }
-
-    //    internal override string GetDiagnosticsEnablingAuditCategoryName()
-    //    {
-    //        return DefinitionsCommon.DevOpsAuditCategory;
-    //    }
-
-    //    internal override string GetNextDiagnosticSettingsNamePrefix()
-    //    {
-    //        return DefinitionsCommon.DiagnosticSettingsNamePrefixDevOpsOperationsAudit;
-    //    }
-
-    //    internal override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingPolicy policy)
-    //    {
-    //        ModelizeAuditPolicy(model, 
-    //            policy.State, policy.StorageEndpoint, policy.StorageAccountSubscriptionId,
-    //            policy.IsAzureMonitorTargetEnabled);
-    //    }
-    //}
 }
