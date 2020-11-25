@@ -42,11 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
-        /// The Sql Auditing Adapter
-        /// </summary>
-        private SqlAuditAdapterRegular AuditingAdapter { get; set; }
-
-        /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
         public IAzureContext Context { get; set; }
@@ -56,7 +51,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             Context = context;
             ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
-            AuditingAdapter = new SqlAuditAdapterRegular(context);
         }
 
         /// <summary>

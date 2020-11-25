@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Management.Automation;
@@ -24,11 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzSqlServerMSSupportAudit : SetSqlServerAuditCmdlet<ServerDevOpsAuditingPolicy>
+    public class SetAzSqlServerMSSupportAudit : SetSqlServerAuditCmdlet<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
-        protected override SqlAuditAdapter<ServerDevOpsAuditingPolicy> InitModelAdapter()
+        protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapterDevOps(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SqlDevOpsAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
         }
     }
 }

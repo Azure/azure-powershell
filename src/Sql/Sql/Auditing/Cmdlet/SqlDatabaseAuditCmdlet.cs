@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlAuditAdapterRegular>
+    public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlDatabaseAuditAdapter>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.DatabaseParameterSetName,
@@ -74,13 +74,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 DatabaseName = DatabaseName
             };
 
-            ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, DatabaseName, model);
+            ModelAdapter.DatabaseName = DatabaseName;
+            ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
+
             return model;
         }
 
-        protected override SqlAuditAdapterRegular InitModelAdapter()
+        protected override SqlDatabaseAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext);
+            return new SqlDatabaseAuditAdapter(DefaultProfile.DefaultContext, DatabaseName);
         }
     }
 }

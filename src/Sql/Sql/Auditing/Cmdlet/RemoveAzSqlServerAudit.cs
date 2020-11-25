@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class RemoveAzSqlServerAudit : SqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy>
+    public class RemoveAzSqlServerAudit : SqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
     {
-        protected override SqlAuditAdapter<ExtendedServerBlobAuditingPolicy> InitModelAdapter()
+        protected override SqlServerAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext);
+            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
         }
 
         protected override ServerAuditModel PersistChanges(ServerAuditModel entity)

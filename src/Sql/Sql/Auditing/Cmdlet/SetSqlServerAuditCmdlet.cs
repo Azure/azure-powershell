@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
@@ -20,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public abstract class SetSqlServerAuditCmdlet<ServerPolicy> : SqlServerAuditCmdlet<ServerPolicy> where ServerPolicy : ProxyResource
+    public abstract class SetSqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> 
+        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {
         [Parameter(
             Mandatory = false,
@@ -74,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         public Guid RoleAssignmentId { get; set; } = default(Guid);
 
-        protected override ServerAuditModel ApplyUserInputToModel(ServerAuditModel model)
+        protected override ServerAuditModelType ApplyUserInputToModel(ServerAuditModelType model)
         {
             base.ApplyUserInputToModel(model);
 
@@ -119,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return model;
         }
 
-        protected override ServerAuditModel PersistChanges(ServerAuditModel entity)
+        protected override ServerAuditModelType PersistChanges(ServerAuditModelType entity)
         {
             ModelAdapter.PersistAuditChanges(entity);
             return null;

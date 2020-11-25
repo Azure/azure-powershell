@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzSqlServerAudit : SetSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy>
+    public class SetAzSqlServerAudit : SetSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
     {
         [Parameter(
             Mandatory = false,
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return model;
         }
 
-        protected override SqlAuditAdapter<ExtendedServerBlobAuditingPolicy> InitModelAdapter()
+        protected override SqlServerAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapterRegular(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
         }
     }
 }

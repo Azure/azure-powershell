@@ -22,7 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public abstract class SqlServerAuditCmdlet<ServerPolicy> : AzureSqlCmdletBase<ServerAuditModel, SqlAuditAdapter<ServerPolicy>> where ServerPolicy : ProxyResource
+    public abstract class SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : AzureSqlCmdletBase<ServerAuditModelType, ServerAuditAdapterType>
+        where ServerAuditPolicyType : ProxyResource 
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        protected override ServerAuditModel GetEntity()
+        protected override ServerAuditModelType GetEntity()
         {
             if (ServerObject != null)
             {
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 ServerName = ServerObject.ServerName;
             }
 
-            ServerAuditModel model = new ServerAuditModel()
+            ServerAuditModelType model = new ServerAuditModelType()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName
