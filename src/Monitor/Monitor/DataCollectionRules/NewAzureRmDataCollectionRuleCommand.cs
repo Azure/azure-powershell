@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
         [ValidateNotNullOrEmpty]
-        public string File { get; set; }
+        public string RuleFile { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule description.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
         private void ProcessRecordInternalByFile()
         {
-            string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(File));
+            string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(RuleFile));
 
             DataCollectionRuleResource dcr;
             PSDataCollectionRuleResource psDcr = SafeJsonConvert.DeserializeObject<PSDataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);

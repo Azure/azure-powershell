@@ -38,7 +38,8 @@ Get-AzDataCollectionRule
 
 ## DESCRIPTION
 The **Get-AzDataCollectionRule** cmdlet gets one or more data collection rules.
-[Overview](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview)
+
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
 
 ## EXAMPLES
 
@@ -149,7 +150,7 @@ The name of the resource.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: DataCollectionRuleName
+Aliases: Name
 
 Required: True
 Position: Named
@@ -176,3 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)
 [Remove-AzDataCollectionRule](./Remove-AzDataCollectionRule.md)
 [New-AzDataCollectionRule](./New-AzDataCollectionRule.md)
+[Update-AzDataCollectionRule](./Update-AzDataCollectionRule.md)

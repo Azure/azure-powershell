@@ -108,7 +108,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzInsightsPrivateLinkScopedResource', 
                'Get-AzInsightsPrivateLinkScopedResource', 
                'Remove-AzInsightsPrivateLinkScopedResource',
-               'Get-AzDataCollectionRule', 'New-AzDataCollectionRule', 'Set-AzDataCollectionRule', 'Remove-AzDataCollectionRule',
+               'Get-AzDataCollectionRule', 'New-AzDataCollectionRule', 'Set-AzDataCollectionRule', 'Update-AzDataCollectionRule', 'Remove-AzDataCollectionRule',
                'Get-AzDataCollectionRuleAssociation', 'New-AzDataCollectionRuleAssociation', 'Remove-AzDataCollectionRuleAssociation'
 
 # Variables to export from this module

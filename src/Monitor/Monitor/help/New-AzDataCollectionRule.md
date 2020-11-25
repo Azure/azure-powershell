@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionRule
 
 ## SYNOPSIS
-Create data collection rule.
+Create a data collection rule.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzDataCollectionRule
    -Location <string>
    -ResourceGroupName <string>
    -RuleName <string>
-   -File <string>
+   -RuleFile <string>
    [-Description <string>]
    [-Tags <hashtable>]
    [-DefaultProfile <IAzureContextContainer>]
@@ -28,15 +28,29 @@ New-AzDataCollectionRule
 ```
 
 ## DESCRIPTION
-The **New-AzDataCollectionRule** cmdlet creates a data collection rules.
-[Overview](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview)
+The **New-AzDataCollectionRule** cmdlet creates a data collection rule.
+
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
+
+To use the -RuleFile parameter, construct a json file containing three properties ([Example #1](#example1)):
+```yaml
+{
+  "properties": {
+    "dataSources": { ... },
+    "destinations": { ... },
+    "dataFlows": [ ... ]
+  }
+``` 
+You may find here the [schema detail](https://docs.microsoft.com/en-us/rest/api/monitor/datacollectionrules/create).
+
+The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported ([Example #2](#example2)).
 
 ## EXAMPLES
 
-### Example 1: Create data collection rule, JSON from Rest API
+### <a id="example1" name="example1"></a>Example 1: Create data collection rule, JSON from Rest API
 ```
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcrEx1' -File 'C:\samples\dcrEx1.json' 
+                                -RuleName 'newDcrEx1' -RuleFile 'C:\samples\dcrEx1.json' 
                                 -Description 'Dcr description' 
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
@@ -93,10 +107,10 @@ Content of C:\samples\dcrEx1.json
 }
 ```
 
-### Example 2: Create data collection rule, JSON from PSDataCollectionRuleResource
+### <a id="example2" name="example2"></a>Example 2: Create data collection rule, JSON from PSDataCollectionRuleResource
 ```
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcrEx2' -File 'C:\samples\dcrEx2.json' 
+                                -RuleName 'newDcrEx2' -RuleFile 'C:\samples\dcrEx2.json' 
                                 -Description 'Dcr description' 
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
@@ -213,7 +227,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
+### -RuleFile
 The JSON file path
 
 ```yaml
@@ -236,7 +250,7 @@ Type: System.String
 Parameter Sets: ByFile
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -306,3 +320,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)
 [Remove-AzDataCollectionRule](./Remove-AzDataCollectionRule.md)
 [Get-AzDataCollectionRule](./Get-AzDataCollectionRule.md)
+[Update-AzDataCollectionRule](./Update-AzDataCollectionRule.md)

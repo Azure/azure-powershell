@@ -47,12 +47,13 @@ Get-AzDataCollectionRuleAssociation
 ```
 
 ## DESCRIPTION
-The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collection rules associations.
-[Overview](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview)
+The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collection rules associations (DCRA).
+
+To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
 
 ## EXAMPLES
 
-### Example 1: Get data collection rules associations by resource uri (associated virtual machines)
+### Example 1: Get data collection rules associations by target resource ID (associated virtual machine)
 ```
 PS C:\>$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
 PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
@@ -68,7 +69,7 @@ Name                 : {assocName}
 Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 ```
 
-This command lists all the data collection rules for the given resource id (virtual machine).
+This command lists all the data collection rules for the given target resource ID (virtual machine).
 
 ### Example 2: Get data collection rules associations by rule (DCR)
 ```
@@ -105,7 +106,7 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 
 This command lists data collection rules associations for the given input object.
 
-### Example 4: Get a data collection rule association by resource uri (associated virtual machines) and association name
+### Example 4: Get a data collection rule association by target resource ID (associated virtual machine) and association name
 ```
 PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-The associated resource id
+The associated resource ID
 
 ```yaml
 Type: System.String

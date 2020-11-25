@@ -40,8 +40,9 @@ New-AzDataCollectionRuleAssociation
 
 
 ## DESCRIPTION
-The **New-AzDataCollectionRuleAssociation** cmdlet creates a data collection rules association.
-[Overview](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview)
+The **New-AzDataCollectionRuleAssociation** cmdlet creates a data collection rules association (DCRA).
+
+To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
 
 ## EXAMPLES
 
@@ -58,18 +59,15 @@ Etag                 : "{etag}"
 Id                   : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssoc
 Name                 : dcrAssoc
 Type                 : Microsoft.Insights/dataCollectionRuleAssociations
-Location             :
-Tags                 :
 ```
 
-This command creates a data collection rule association for the current subscription.
-
-
+This command creates a data collection rule association for given rule and target resource ID.
 
 ### Example 2: Create data collection rule association from a DCR object
 ```
+PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
 PS C:\>$vmId = '/subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}'
-PS C:\>Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName | New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssocInput"
+PS C:\>$dcr | New-AzDataCollectionRuleAssociation -TargetResourceId $vmId -AssociationName "dcrAssocInput"
 
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}
@@ -78,11 +76,9 @@ Etag                 : "{etag}"
 Id                   : /subscriptions/{subId}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput
 Name                 : dcrAssocInput
 Type                 : Microsoft.Insights/dataCollectionRuleAssociations
-Location             :
-Tags                 :
 ```
 
-This command creates a data collection rules for the current subscription.
+This command creates a data collection rule association for given rule and target resource ID.
 
 ## PARAMETERS
 
@@ -102,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-The resource id to associate
+The resource ID to associate
 
 ```yaml
 Type: System.String
@@ -132,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleId
-The data collection rule id
+The data collection rule ID
 
 ```yaml
 Type: System.String

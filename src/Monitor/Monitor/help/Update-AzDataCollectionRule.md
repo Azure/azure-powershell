@@ -1,27 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdatacollectionrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azdatacollectionrule
 schema: 2.0.0
 ---
 
-# Set-AzDataCollectionRule
+# Update-AzDataCollectionRule
 
 ## SYNOPSIS
-Updates (full replacement) a data collection rule.
+Updates a data collection rule tags property.
 
 ## SYNTAX
 
-### ByFile (Default)
+### ByName (Default)
 ```
-Set-AzDataCollectionRule 
-   -ResourceGroupName <string>
-   -RuleName <string>
-   -RuleFile <string>
-   [-Description <string>]
-   [-Tags <hashtable>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
+Update-AzDataCollectionRule 
+   -ResourceGroupName <string> 
+   -RuleName <string> 
+   [-Tags <hashtable>] 
+   [-DefaultProfile <IAzureContextContainer>] 
+   [-WhatIf] 
+   [-Confirm]
+   [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzDataCollectionRule 
+   -RuleId <string> 
+   [-Tags <hashtable>] 
+   [-DefaultProfile <IAzureContextContainer>] 
+   [-WhatIf] 
    [-Confirm]
    [<CommonParameters>]
 ```
@@ -30,6 +39,7 @@ Set-AzDataCollectionRule
 ```
 Set-AzDataCollectionRule 
    -InputObject <PSDataCollectionRuleResource> 
+   [-Tags <hashtable>] 
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -37,33 +47,19 @@ Set-AzDataCollectionRule
 ```
 
 ## DESCRIPTION
-The **Set-AzDataCollectionRule** cmdlet replaces an existing data collection rule.
+The **Update-AzDataCollectionRule** cmdlet updates a data collection rule Tags property.
 
 Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
 
-To use the -RuleFile parameter, construct a json file containing three properties ([Example #1](#example1)):
-```yaml
-{
-  "properties": {
-    "dataSources": { ... },
-    "destinations": { ... },
-    "dataFlows": [ ... ]
-  }
-``` 
-You may find here the [schema detail](https://docs.microsoft.com/en-us/rest/api/monitor/datacollectionrules/create).
-
-The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported ([Example #2](#example2)).
-
 ## EXAMPLES
 
-### <a id="example1" name="example1"></a>Example 1: Update data collection rule, JSON from Rest API
+### Example 1: Update data collection rule tags
 ```
-PS C:\>Set-AzDataCollectionRule -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcr' 
-                                -RuleFile 'C:\samples\dcr.json'
-                                -Description 'Updated Description'
+PS C:\>Update-AzDataCollectionRule -RuleName 'newDcr'
+                                   -ResourceGroupName 'testdcr'
+                                   -Tags @{"tag1"="value1"; "tag2"="value2"}
 
-Description       : Updated Description
+Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -76,54 +72,14 @@ Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
 
-This command replaces an existing data collection rule for the current subscription.
+This command updates the tags property for the given data collection rule.
 
-Content of C:\samples\dcr.json
-```yaml
-{
-  "properties": {
-    "dataSources": {
-      "performanceCounters": [
-        {
-          "streams": [
-            "Microsoft-InsightsMetrics"
-          ],
-          "scheduledTransferPeriod": "PT1M",
-          "samplingFrequencyInSeconds": 10,
-          "counterSpecifiers": [
-            "\\Processor Information(_Total)\\% Processor Time"
-          ],
-          "name": "perfCounter01"
-        }
-      ]
-    },
-    "destinations": {
-      "azureMonitorMetrics": {
-        "name": "azureMonitorMetrics-default"
-      }
-    },
-    "dataFlows": [
-      {
-        "streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "destinations": [
-          "azureMonitorMetrics-default"
-        ]
-      }
-    ]
-  }
-}
+### Example 2: Update data collection rule tags
 ```
+PS C:\>Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr'
+                                   -Tags @{"tag1"="value1"; "tag2"="value2"}
 
-### <a id="example2" name="example2"></a>Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
-```
-PS C:\>Set-AzDataCollectionRule -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcr' 
-                                -RuleFile 'C:\samples\dcr.json'
-                                -Description 'Updated Description'
-
-Description       : Updated Description
+Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -136,51 +92,14 @@ Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
 
-This command updates a data collection rules for the current subscription.
+This command updates the tags property for the given data collection rule.
 
-Content of C:\samples\dcr.json
-```yaml
-{
-  "DataSources": {
-    "PerformanceCounters": [
-      {
-        "Streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "ScheduledTransferPeriod": "PT1M",
-        "SamplingFrequencyInSeconds": 10,
-        "CounterSpecifiers": [
-          "\\Processor Information(_Total)\\% Processor Time"
-        ],
-        "Name": "perfCounter01"
-      }
-    ]
-  },
-  "Destinations": {
-    "AzureMonitorMetrics": {
-      "Name": "azureMonitorMetrics-default"
-    }
-  },
-  "DataFlows": [
-    {
-      "Streams": [
-        "Microsoft-InsightsMetrics"
-      ],
-      "Destinations": [
-        "azureMonitorMetrics-default"
-      ]
-    }
-  ]
-}
-```
-
-### Example 3: Update data collection rule from object
+### Example 3: Update data collection rule tags
 ```
 PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
-PS C:\>$dcr.Description = 'This is a test'
-PS C:\>$dcr | Set-AzDataCollectionRule
+PS C:\>$dcr | Update-AzDataCollectionRule -Tags @{"tag1"="value1"; "tag2"="value2"}
 
-Description       : This is a test
+Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -192,6 +111,8 @@ Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
+
+This command updates the tags property for the given data collection rule.
 
 ## PARAMETERS
 
@@ -210,27 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleFile
-The JSON file path
-
-```yaml
-Type: System.String
-Parameter Sets: ByFile
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -245,7 +151,7 @@ The resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
 Aliases: Name
 
 Required: True
@@ -255,33 +161,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The resource description
+### -RuleId
+The resource ID of the data collection rule
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
-Aliases:
+Parameter Sets: ByResourceId
+Aliases: ResourceId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-The resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: ByFile
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
@@ -297,6 +188,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True
+Accept wildcard characters: False
+```
+
+### -Tags
+The tags property of the data collection rule
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: Falose
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -348,4 +254,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzDataCollectionRule](./New-AzDataCollectionRule.md)
 [Remove-AzDataCollectionRule](./Remove-AzDataCollectionRule.md)
 [Get-AzDataCollectionRule](./Get-AzDataCollectionRule.md)
-[Update-AzDataCollectionRule](./Update-AzDataCollectionRule.md)
+[Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)

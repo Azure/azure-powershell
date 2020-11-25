@@ -47,12 +47,13 @@ Remove-AzDataCollectionRuleAssociation
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataCollectionRuleAssociation** cmdlet delete a data collection rule association.
-[Overview](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview)
+The **Remove-AzDataCollectionRuleAssociation** cmdlet delete a data collection rule association (DCRA).
+
+To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
 
 ## EXAMPLES
 
-### Example 1: Delete data collection rule association with name and resource uri parameters
+### Example 1: Delete data collection rule association with name and target resource ID (associated virtual machine) parameters
 ```
 PS C:\>Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 ```
@@ -62,7 +63,7 @@ PS C:\>Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -Associat
 PS C:\>$dcrAssoc | Remove-AzDataCollectionRule
 ```
 
-### Example 3: Delete data collection rule with resource id
+### Example 3: Delete data collection rule with the association resource ID property
 ```
 PS C:\>Remove-AzDataCollectionRule -AssociationId $dcrAssoc.Id
 ```
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-The associated resource id.
+The associated resource ID.
 
 ```yaml
 Type: System.String

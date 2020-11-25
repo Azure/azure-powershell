@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
@@ -49,12 +51,12 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
         [ValidateNotNullOrEmpty]
-        public string File { get; set; }
+        public string RuleFile { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group parameter.
         /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -62,10 +64,22 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// <summary>
         /// Gets or sets the data collection rule name.
         /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
+        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule description.
+        /// </summary>
+        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule tags.
+        /// </summary>
+        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
+        public Hashtable Tags { get; set; }
         #endregion
 
         /// <summary>
@@ -88,7 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
         private void ProcessRecordInternalByFile()
         {
-            string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(File));
+            string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(RuleFile));
             string resourceId = string.Empty;
 
             DataCollectionRuleResource dcr;
@@ -112,6 +126,9 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
             var resourceIdentifier = new ResourceIdentifier(resourceId);
             var name = RuleName ?? resourceIdentifier.ResourceName;
             var resourceGroupName = ResourceGroupName ?? resourceIdentifier.ResourceGroupName;
+
+            if (Description != null) dcr.Description = Description;
+            if(Tags != null) dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
 
             if (ShouldProcess(
                         target: string.Format("Data collection rule '{0}' in resource group '{1}'", name, resourceGroupName),
