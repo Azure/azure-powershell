@@ -147,6 +147,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return Communicator.UpdateDiagnosticSettings(settings, model.ResourceGroupName, model.ServerName);
         }
 
+        protected virtual bool RemoveDiagnosticSettings(
+            DiagnosticSettingsResource settings, AuditModelType model)
+        {
+            return Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName);
+        }
+
         private void ModelizeStorageInfo(AuditModelType model,
             string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId, 
             bool isAuditEnabled, int? retentionDays)
@@ -243,7 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        internal bool CreateDiagnosticSettingsForModel(
+        private bool CreateDiagnosticSettingsForModel(
             string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
             AuditModelType model)
         {
@@ -265,7 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        internal bool UpdateDiagnosticSettingsForModel(
+        private bool UpdateDiagnosticSettingsForModel(
             DiagnosticSettingsResource settings, AuditModelType model)
         {
             DiagnosticSettingsResource modifiedSettings = UpdateDiagnosticSettings(settings, model);
@@ -292,14 +298,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        internal bool RemoveFirstDiagnosticSettings(dynamic model)
+        private bool RemoveFirstDiagnosticSettingsForModel(AuditModelType model)
         {
             IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
             DiagnosticSettingsResource settings = diagnosticsEnablingAuditCategory.FirstOrDefault();
-            if (settings == null ||
-                (model is DatabaseAuditModel dbModel ?
-                Communicator.RemoveDiagnosticSettings(settings.Name, dbModel.ResourceGroupName, dbModel.ServerName, dbModel.DatabaseName) :
-                Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName)) == false)
+
+            if (settings == null || !RemoveDiagnosticSettings(settings, model))
             {
                 return false;
             }
@@ -425,7 +429,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 }
                 else
                 {
-                    if (RemoveFirstDiagnosticSettings(model) == false)
+                    if (RemoveFirstDiagnosticSettingsForModel(model) == false)
                     {
                         exception = DefinitionsCommon.RemoveDiagnosticSettingsException;
                     }
@@ -480,7 +484,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 try
                 {
-                    RemoveFirstDiagnosticSettings(model);
+                    RemoveFirstDiagnosticSettingsForModel(model);
                 }
                 catch (Exception) { }
 
@@ -607,7 +611,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             string oldEventHubAuthorizationRuleId,
             string oldWorkspaceId)
         {
-            if (RemoveFirstDiagnosticSettings(model) == false)
+            if (RemoveFirstDiagnosticSettingsForModel(model) == false)
             {
                 throw DefinitionsCommon.RemoveDiagnosticSettingsException;
             }
@@ -896,6 +900,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             return Communicator.UpdateDiagnosticSettings(settings,
                 model.ResourceGroupName, model.ServerName, DatabaseName);
+        }
+
+        protected override bool RemoveDiagnosticSettings(
+            DiagnosticSettingsResource settings, DatabaseAuditModel model)
+        {
+            return Communicator.RemoveDiagnosticSettings(settings.Name, model.ResourceGroupName, model.ServerName, DatabaseName);
         }
 
         protected override void ModelizeAuditPolicy(DatabaseAuditModel model, ExtendedDatabaseBlobAuditingPolicy policy)
