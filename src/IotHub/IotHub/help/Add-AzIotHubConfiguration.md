@@ -58,7 +58,7 @@ PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubNa
 
 Create a device configuration with a priority of 3 that applies on condition when a device is tagged in building 9 and the environment is 'test'.
 
-### Example 2
+### Example 3
 ```powershell
 PS C:\> $metrics = @{}
 PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
@@ -67,7 +67,7 @@ PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubNa
 
 Create a device configuration with user metrics.
 
-### Example 3
+### Example 4
 ```powershell
 PS C:\> $labels = @{}
 PS C:\> $labels.add("key0","value0")
@@ -77,7 +77,7 @@ PS C:\> Add-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubNa
 
 Create a device configuration with labels.
 
-### Example 4
+### Example 5
 ```powershell
 PS C:\> $prop = @{}
 PS C:\> $prop.add("Location", "US")

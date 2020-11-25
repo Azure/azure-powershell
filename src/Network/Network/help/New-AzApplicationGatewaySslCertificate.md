@@ -25,7 +25,7 @@ The **New-AzApplicationGatewaySslCertificate** cmdlet creates an SSL certificate
 
 ### Example 1: Create an SSL certificate for an Azure application gateway.
 ```
-PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
 PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 

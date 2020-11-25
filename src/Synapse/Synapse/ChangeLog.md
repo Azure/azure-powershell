@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix Null Reference Exception when submit spark job.
 
 ## Version 0.4.0
 * Add `-Force` to all Remove cmdlets

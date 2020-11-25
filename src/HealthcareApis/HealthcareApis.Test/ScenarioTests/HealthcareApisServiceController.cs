@@ -24,19 +24,22 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Graph.RBAC.Version1_6;
     using Microsoft.Azure.Management.HealthcareApis;
+    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using ServiceManagement.Common.Models;
     using TestEnvironmentFactory = Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
-    public sealed class HealthcareApisServiceController
+    public class HealthcareApisServiceController
     {
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public HealthcareApisManagementClient HealthcareApisManagementClient { get; set; }
+
+        public NetworkManagementClient NetworkClient { get; private set; }
 
         public GraphRbacManagementClient GraphRbacManagementClient { get; set; }
 
@@ -78,7 +81,8 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Network", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -91,12 +95,15 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
             {
                 
                 SetupManagementClients(context);
+                
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+                    _helper.RMNetworkModule,
                     "AzureRM.Resources.ps1",
                     _helper.GetRMModulePath(@"AzureRM.HealthcareApis.psd1"));
 
@@ -120,8 +127,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient(context);
             HealthcareApisManagementClient = GetHealthcareApisManagementClient(context);
             GraphRbacManagementClient = GetGraphRBACManagementClient(context);
+            NetworkClient = GetNetworkManagementClient(context);
 
-            _helper.SetupManagementClients(ResourceManagementClient, HealthcareApisManagementClient, GraphRbacManagementClient);
+            _helper.SetupManagementClients(ResourceManagementClient, HealthcareApisManagementClient, GraphRbacManagementClient, NetworkClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -137,6 +145,11 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
         private static GraphRbacManagementClient GetGraphRBACManagementClient(MockContext context)
         {
             return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

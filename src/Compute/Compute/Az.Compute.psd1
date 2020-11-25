@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
@@ -171,7 +171,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Set-AzVmssOrchestrationServiceState', 'New-AzDiskAccess', 
                'Remove-AzDiskAccess', 'Get-AzDiskAccess', 
                'Invoke-AzVmPatchAssessment', 
-               'Get-AzDiskEncryptionSetAssociatedResource'
+               'Get-AzDiskEncryptionSetAssociatedResource', 'Start-AzVmssRollingExtensionUpgrade'
 
 # Variables to export from this module
 # VariablesToExport = @()

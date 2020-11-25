@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceFabricApplicationType
 
 ## SYNOPSIS
-Get Service Fabric application type details.
+Get Service Fabric application type details. Only supports ARM deployed application types.
 
 ## SYNTAX
 
