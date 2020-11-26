@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `-Force` to all Remove cmdlets
 * Added support for operation of Synapse SQL Pool Restore Point
     - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
 * Added support for operation of Auditing settings in Workspace-level and SqlPool-level
