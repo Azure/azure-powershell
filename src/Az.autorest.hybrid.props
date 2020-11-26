@@ -61,7 +61,6 @@
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="Az.$(PsModuleName).psd1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\$(PsModuleName).Autorest" />
     <Copy SourceFiles="Az.$(PsModuleName).psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\$(PsModuleName).Autorest" />
     <Copy SourceFiles="Az.$(PsModuleName).format.ps1xml" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\$(PsModuleName).Autorest" />
     <Copy SourceFiles="check-dependencies.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\$(PsModuleName).Autorest" Condition="'$(Configuration)'=='Debug'"/>
