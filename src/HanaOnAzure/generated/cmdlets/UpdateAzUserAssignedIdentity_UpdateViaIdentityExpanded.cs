@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 
     /// <summary>Update an identity in the specified subscription and resource group.</summary>
     /// <remarks>
-    /// [OpenAPI] UserAssignedIdentities_Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
+    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzUserAssignedIdentity_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]

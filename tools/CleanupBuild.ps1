@@ -84,7 +84,7 @@ foreach($RMPath in $resourceManagerPaths)
         Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"
         $exludedPsd1 = @(
             "PsSwaggerUtility*.psd1",
-            "SecretManagementExtension.psd1"
+            "Az.KeyVault.Extension.psd1"
             )
         $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude $exludedPsd1 -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
         $removedPsd1 | % { Write-Host "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }

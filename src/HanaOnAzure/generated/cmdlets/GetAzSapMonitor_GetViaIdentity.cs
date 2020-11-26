@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
     /// Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] SapMonitors_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSapMonitor_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor))]

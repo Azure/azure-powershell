@@ -161,6 +161,10 @@ function Get-Cmdlets {
     $nestedModules = $ModuleMetadata.NestedModules
     $cmdlets = @()
     foreach ($module in $nestedModules) {
+        if('.dll' -ne [System.IO.Path]::GetExtension($module)) 
+        {
+            continue;
+        }
         $dllPath = Join-Path -Path $ModulePath -ChildPath $module
         if ($dllPath.EndsWith("dll")) {
             $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)

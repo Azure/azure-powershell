@@ -104,11 +104,11 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 ### [Set-AzNetAppFilesAccount](Set-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
 
+### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
+Change pool for an Azure NetApp Files (ANF) volume.
+
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
 Suspend/break the replication connection on the destination volume
-
-### [Switch-AzNetAppFilesVolumePool](Switch-AzNetAppFilesVolumePool.md)
-Change pool for an Azure NetApp Files (ANF) volume.
 
 ### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.1
+* Fixed an issue blocking user to use cmdlets in Az.StackHCI v0.4.0.
+
 ## Version 0.4.0
 * Made changes to registration script to register the GA version of On-Premises Azure Stack HCI with Azure.
     - Supports registering with user provided certificate thumbprint.

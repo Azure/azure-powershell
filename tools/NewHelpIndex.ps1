@@ -69,7 +69,7 @@ $HelpFolders = @()
 $resourceManagerPath = "$PSScriptRoot/../artifacts/$BuildConfig/"
 
 $RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 2 | Where-Object { 
-    $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" -and $_.Name -ne "SecretManagementExtension.psd1"
+    $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*" -and $_.Name -ne "Az.KeyVault.Extension.psd1"
 }
 
 .($PSScriptRoot + "\PreloadToolDll.ps1")
