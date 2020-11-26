@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for AgentAutoUpdateStatus.</summary>
+    /// <summary>A value indicating whether the auto update is enabled.</summary>
     public partial class AgentAutoUpdateStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

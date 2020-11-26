@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="FabricName" /> property.</summary>
         private string _fabricName;
 
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string FabricName { get => this._fabricName; set => this._fabricName = value; }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="JobName" /> property.</summary>
         private string _jobName;
 
-        /// <summary>Job identifier</summary>
+        /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string JobName { get => this._jobName; set => this._jobName = value; }
 
@@ -250,13 +250,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Backing field for <see cref="VCenterName" /> property.</summary>
-        private string _vCenterName;
-
-        /// <summary>vCenter name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string VCenterName { get => this._vCenterName; set => this._vCenterName = value; }
-
         /// <summary>Backing field for <see cref="VcenterName" /> property.</summary>
         private string _vcenterName;
 
@@ -321,11 +314,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"eventName",
         PossibleTypes = new [] { typeof(string) })]
         string EventName { get; set; }
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Fabric unique name.",
+        Description = @"Fabric name.",
         SerializedName = @"fabricName",
         PossibleTypes = new [] { typeof(string) })]
         string FabricName { get; set; }
@@ -345,11 +338,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Job identifier</summary>
+        /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Job identifier",
+        Description = @"Job ARM name.",
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
         string JobName { get; set; }
@@ -545,14 +538,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
-        /// <summary>vCenter name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"vCenter name.",
-        SerializedName = @"vCenterName",
-        PossibleTypes = new [] { typeof(string) })]
-        string VCenterName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -578,13 +563,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string DatabaseName { get; set; }
         /// <summary>Unique name of an event within a migrate project.</summary>
         string EventName { get; set; }
-        /// <summary>Fabric unique name.</summary>
+        /// <summary>Fabric name.</summary>
         string FabricName { get; set; }
         /// <summary>Host ARM name.</summary>
         string HostName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Job identifier</summary>
+        /// <summary>Job ARM name.</summary>
         string JobName { get; set; }
         /// <summary>Logical network name.</summary>
         string LogicalNetworkName { get; set; }
@@ -634,8 +619,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string StorageClassificationName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
-        /// <summary>vCenter name.</summary>
-        string VCenterName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         string VcenterName { get; set; }
 

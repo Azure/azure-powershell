@@ -87,8 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId = (string) content.GetValueForProperty("KeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).SecretIdentifier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId = (string) content.GetValueForProperty("KeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId = (string) content.GetValueForProperty("KeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).SecretIdentifier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId = (string) content.GetValueForProperty("KeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskEncryptionKeyInfoInternal)this).KeyVaultResourceArmId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

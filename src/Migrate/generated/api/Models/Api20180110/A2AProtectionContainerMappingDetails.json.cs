@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             __protectionContainerMappingProviderSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProtectionContainerMappingProviderSpecificDetails(json);
             {_agentAutoUpdateStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("agentAutoUpdateStatus"), out var __jsonAgentAutoUpdateStatus) ? (string)__jsonAgentAutoUpdateStatus : (string)AgentAutoUpdateStatus;}
             {_automationAccountArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("automationAccountArmId"), out var __jsonAutomationAccountArmId) ? (string)__jsonAutomationAccountArmId : (string)AutomationAccountArmId;}
-            {_jobScheduleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobScheduleName"), out var __jsonJobScheduleName) ? (string)__jsonJobScheduleName : (string)JobScheduleName;}
             {_scheduleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("scheduleName"), out var __jsonScheduleName) ? (string)__jsonScheduleName : (string)ScheduleName;}
+            {_jobScheduleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobScheduleName"), out var __jsonJobScheduleName) ? (string)__jsonJobScheduleName : (string)JobScheduleName;}
             AfterFromJson(json);
         }
 
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             __protectionContainerMappingProviderSpecificDetails?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._agentAutoUpdateStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._agentAutoUpdateStatus.ToString()) : null, "agentAutoUpdateStatus" ,container.Add );
             AddIf( null != (((object)this._automationAccountArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._automationAccountArmId.ToString()) : null, "automationAccountArmId" ,container.Add );
-            AddIf( null != (((object)this._jobScheduleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobScheduleName.ToString()) : null, "jobScheduleName" ,container.Add );
             AddIf( null != (((object)this._scheduleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._scheduleName.ToString()) : null, "scheduleName" ,container.Add );
+            AddIf( null != (((object)this._jobScheduleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobScheduleName.ToString()) : null, "jobScheduleName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

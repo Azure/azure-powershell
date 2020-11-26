@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The ALR option.</summary>
     public partial struct AlternateLocationRecoveryOption :
         System.IEquatable<AlternateLocationRecoveryOption>
     {

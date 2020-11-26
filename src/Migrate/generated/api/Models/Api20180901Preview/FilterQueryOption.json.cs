@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             {_filterClause = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("filterClause"), out var __jsonFilterClause) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.FilterClause.FromJson(__jsonFilterClause) : FilterClause;}
+            {_validator = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("validator"), out var __jsonValidator) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any.FromJson(__jsonValidator) : Validator;}
             {_rawValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("rawValue"), out var __jsonRawValue) ? (string)__jsonRawValue : (string)RawValue;}
-            {_validator = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("validator"), out var __jsonValidator) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.FilterQueryValidator.FromJson(__jsonValidator) : Validator;}
             {_context = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("context"), out var __jsonContext) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataQueryContext.FromJson(__jsonContext) : Context;}
             AfterFromJson(json);
         }
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 AddIf( null != this._filterClause ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._filterClause.ToJson(null,serializationMode) : null, "filterClause" ,container.Add );
             }
+            AddIf( null != this._validator ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._validator.ToJson(null,serializationMode) : null, "validator" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._rawValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._rawValue.ToString()) : null, "rawValue" ,container.Add );
             }
-            AddIf( null != this._validator ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._validator.ToJson(null,serializationMode) : null, "validator" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._context ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._context.ToJson(null,serializationMode) : null, "context" ,container.Add );

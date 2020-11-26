@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for AgentVersionStatus.</summary>
+    /// <summary>A value indicating whether security update required.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatusTypeConverter))]
     public partial struct AgentVersionStatus :
         System.Management.Automation.IArgumentCompleter

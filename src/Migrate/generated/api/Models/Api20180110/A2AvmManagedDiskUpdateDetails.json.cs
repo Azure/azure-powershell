@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             {_diskId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("diskId"), out var __jsonDiskId) ? (string)__jsonDiskId : (string)DiskId;}
-            {_recoveryReplicaDiskAccountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryReplicaDiskAccountType"), out var __jsonRecoveryReplicaDiskAccountType) ? (string)__jsonRecoveryReplicaDiskAccountType : (string)RecoveryReplicaDiskAccountType;}
             {_recoveryTargetDiskAccountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryTargetDiskAccountType"), out var __jsonRecoveryTargetDiskAccountType) ? (string)__jsonRecoveryTargetDiskAccountType : (string)RecoveryTargetDiskAccountType;}
+            {_recoveryReplicaDiskAccountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryReplicaDiskAccountType"), out var __jsonRecoveryReplicaDiskAccountType) ? (string)__jsonRecoveryReplicaDiskAccountType : (string)RecoveryReplicaDiskAccountType;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             AddIf( null != (((object)this._diskId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._diskId.ToString()) : null, "diskId" ,container.Add );
-            AddIf( null != (((object)this._recoveryReplicaDiskAccountType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryReplicaDiskAccountType.ToString()) : null, "recoveryReplicaDiskAccountType" ,container.Add );
             AddIf( null != (((object)this._recoveryTargetDiskAccountType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryTargetDiskAccountType.ToString()) : null, "recoveryTargetDiskAccountType" ,container.Add );
+            AddIf( null != (((object)this._recoveryReplicaDiskAccountType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryReplicaDiskAccountType.ToString()) : null, "recoveryReplicaDiskAccountType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

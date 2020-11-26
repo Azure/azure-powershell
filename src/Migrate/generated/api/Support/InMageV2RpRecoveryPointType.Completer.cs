@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for InMageV2RpRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.InMageV2RpRecoveryPointTypeTypeConverter))]
     public partial struct InMageV2RpRecoveryPointType :
         System.Management.Automation.IArgumentCompleter

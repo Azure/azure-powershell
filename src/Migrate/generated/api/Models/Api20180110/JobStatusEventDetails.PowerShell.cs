@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName = (string) content.GetValueForProperty("JobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName = (string) content.GetValueForProperty("JobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobStatus = (string) content.GetValueForProperty("JobStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName = (string) content.GetValueForProperty("JobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName = (string) content.GetValueForProperty("JobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobFriendlyName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobStatus = (string) content.GetValueForProperty("JobStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).JobStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobStatusEventDetailsInternal)this).AffectedObjectType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

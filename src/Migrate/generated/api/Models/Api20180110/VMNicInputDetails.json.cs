@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._enableAcceleratedNetworkingOnRecovery ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableAcceleratedNetworkingOnRecovery) : null, "enableAcceleratedNetworkingOnRecovery" ,container.Add );
             AddIf( null != (((object)this._nicId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._nicId.ToString()) : null, "nicId" ,container.Add );
             AddIf( null != (((object)this._recoveryVMSubnetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryVMSubnetName.ToString()) : null, "recoveryVMSubnetName" ,container.Add );
             AddIf( null != (((object)this._replicaNicStaticIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._replicaNicStaticIPAddress.ToString()) : null, "replicaNicStaticIPAddress" ,container.Add );
             AddIf( null != (((object)this._selectionType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._selectionType.ToString()) : null, "selectionType" ,container.Add );
+            AddIf( null != this._enableAcceleratedNetworkingOnRecovery ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableAcceleratedNetworkingOnRecovery) : null, "enableAcceleratedNetworkingOnRecovery" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_enableAcceleratedNetworkingOnRecovery = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableAcceleratedNetworkingOnRecovery"), out var __jsonEnableAcceleratedNetworkingOnRecovery) ? (bool?)__jsonEnableAcceleratedNetworkingOnRecovery : EnableAcceleratedNetworkingOnRecovery;}
             {_nicId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("nicId"), out var __jsonNicId) ? (string)__jsonNicId : (string)NicId;}
             {_recoveryVMSubnetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryVMSubnetName"), out var __jsonRecoveryVMSubnetName) ? (string)__jsonRecoveryVMSubnetName : (string)RecoveryVMSubnetName;}
             {_replicaNicStaticIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("replicaNicStaticIPAddress"), out var __jsonReplicaNicStaticIPAddress) ? (string)__jsonReplicaNicStaticIPAddress : (string)ReplicaNicStaticIPAddress;}
             {_selectionType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("selectionType"), out var __jsonSelectionType) ? (string)__jsonSelectionType : (string)SelectionType;}
+            {_enableAcceleratedNetworkingOnRecovery = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableAcceleratedNetworkingOnRecovery"), out var __jsonEnableAcceleratedNetworkingOnRecovery) ? (bool?)__jsonEnableAcceleratedNetworkingOnRecovery : EnableAcceleratedNetworkingOnRecovery;}
             AfterFromJson(json);
         }
     }

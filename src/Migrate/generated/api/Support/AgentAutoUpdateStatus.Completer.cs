@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for AgentAutoUpdateStatus.</summary>
+    /// <summary>A value indicating whether the auto update is enabled.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentAutoUpdateStatusTypeConverter))]
     public partial struct AgentAutoUpdateStatus :
         System.Management.Automation.IArgumentCompleter

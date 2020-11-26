@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The recovery point type.</summary>
     public partial struct InMageV2RpRecoveryPointType :
         System.IEquatable<InMageV2RpRecoveryPointType>
     {

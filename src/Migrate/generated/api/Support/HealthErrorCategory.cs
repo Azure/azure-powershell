@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The category of the health error.</summary>
     public partial struct HealthErrorCategory :
         System.IEquatable<HealthErrorCategory>
     {

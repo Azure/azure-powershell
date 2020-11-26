@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The data sync option.</summary>
     public partial struct DataSyncStatus :
         System.IEquatable<DataSyncStatus>
     {

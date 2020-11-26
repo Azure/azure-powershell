@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
     /// <summary>
     /// Low-level API implementation for the Migrate service.
+    /// Discover your workloads for Azure.
     /// </summary>
     public partial class Migrate
     {
@@ -1407,7 +1408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1911,7 +1912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -4364,7 +4365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -5712,7 +5713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -5877,7 +5878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -6987,7 +6988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets a recovery point for a migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -7148,7 +7149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -7174,7 +7175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the recovery points for a migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -7333,7 +7334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -7393,7 +7394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperationResultList>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperationResultListAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             // Constant Parameters
             using( NoSynchronizationContext )
@@ -7424,7 +7425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperationResultList>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperationResultListAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7441,7 +7442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.OperationResultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.OperationResultListAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7478,7 +7479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
         /// <summary>Operation to return the list of available operations.</summary>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -7611,7 +7612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// events back.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -7730,7 +7731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Get the details of specified recovery point.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replication protected item's name.</param>
@@ -7891,7 +7892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replication protected item's name.</param>
@@ -7917,7 +7918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the available recovery points for a replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replication protected item's name.</param>
@@ -8076,7 +8077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replication protected item's name.</param>
@@ -8100,7 +8101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Create or update an email notification(alert) configuration.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="alertSettingName">The name of the email notification(alert) configuration.</param>
         /// <param name="body">The input to configure the email notification(alert).</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8253,7 +8254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="alertSettingName">The name of the email notification(alert) configuration.</param>
         /// <param name="body">The input to configure the email notification(alert).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8276,7 +8277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of the specified email notification(alert) configuration.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="alertSettingName">The name of the email notification configuration.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8419,7 +8420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="alertSettingName">The name of the email notification configuration.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8439,7 +8440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of email notification(alert) configurations for the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8578,7 +8579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -8596,7 +8597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to get the details of an Azure Site recovery event.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventName">The name of the Azure Site Recovery event.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8739,7 +8740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventName">The name of the Azure Site Recovery event.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8759,7 +8760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of Azure Site Recovery events for the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8767,7 +8768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -8809,7 +8810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -8862,7 +8863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationEventsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationEventsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8879,7 +8880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EventCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EventCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8904,7 +8905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8924,7 +8925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to perform a consistency check on the fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9163,7 +9164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -9183,7 +9184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site)</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Name of the ASR fabric.</param>
         /// <param name="body">Fabric creation input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9429,7 +9430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Name of the ASR fabric.</param>
         /// <param name="body">Fabric creation input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9452,7 +9453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete or remove an Azure Site Recovery fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to delete</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9691,7 +9692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to delete</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -9711,7 +9712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of an Azure Site Recovery fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9854,7 +9855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -9874,7 +9875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets a list of the Azure Site Recovery fabrics in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10013,7 +10014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10031,7 +10032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to migrate an Azure Site Recovery fabric to AAD.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to migrate.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10270,7 +10271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to migrate.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10290,7 +10291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to purge(force delete) an Azure Site Recovery fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to purge.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10527,7 +10528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">ASR fabric to purge.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10549,7 +10550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the process server.</param>
         /// <param name="body">The input to the failover process server operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10802,7 +10803,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the process server.</param>
         /// <param name="body">The input to the failover process server operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10825,7 +10826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Renews the connection certificate for the ASR replication fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">fabric name to renew certs for.</param>
         /// <param name="body">Renew certificate input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11074,7 +11075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">fabric name to renew certs for.</param>
         /// <param name="body">Renew certificate input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11097,7 +11098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to cancel an Azure Site Recovery job.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11336,7 +11337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -11358,7 +11359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="body">job query filter.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11603,7 +11604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="body">job query filter.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -11624,7 +11625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Get the details of an Azure Site Recovery job.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11767,7 +11768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -11787,7 +11788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of Azure Site Recovery Jobs for the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11932,7 +11933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -11952,7 +11953,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to restart an Azure Site Recovery job.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12191,7 +12192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -12211,7 +12212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to resume an Azure Site Recovery job</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="body">Resume rob comments.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12460,7 +12461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="jobName">Job identifier.</param>
         /// <param name="body">Resume rob comments.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12483,7 +12484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a logical network.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="logicalNetworkName">Logical network name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12632,7 +12633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="logicalNetworkName">Logical network name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12654,7 +12655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists all the logical networks of the Azure Site Recovery fabric</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12801,7 +12802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -12821,7 +12822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create an ASR migration item (enable migration).</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13079,7 +13080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13106,7 +13107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete an ASR migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13361,7 +13362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13387,7 +13388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13542,7 +13543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -13566,7 +13567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of migration items in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="skipToken">The pagination token.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13613,7 +13614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of ASR migration items in the protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13766,7 +13767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13892,7 +13893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="skipToken">The pagination token.</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13914,7 +13915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to initiate migration of the item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14175,7 +14176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14202,7 +14203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to resynchronize replication of an ASR migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14463,7 +14464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14490,7 +14491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to initiate test migration of the item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14545,7 +14546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to initiate test migrate cleanup.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -14808,7 +14809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -15043,7 +15044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -15070,7 +15071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update the recovery settings of an ASR migration item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -15328,7 +15329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="migrationItemName">Migration item name.</param>
@@ -15355,7 +15356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create an ASR network mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -15613,7 +15614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -15640,7 +15641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete a network mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">ARM Resource Name for network mapping.</param>
@@ -15889,7 +15890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">ARM Resource Name for network mapping.</param>
@@ -15913,7 +15914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of an ASR network mapping</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -16068,7 +16069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -16092,7 +16093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists all ASR network mappings in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -16133,7 +16134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists all ASR network mappings for the specified network.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16286,7 +16287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16406,7 +16407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -16424,7 +16425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update an ASR network mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -16682,7 +16683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Primary fabric name.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="networkMappingName">Network mapping name.</param>
@@ -16709,7 +16710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a network.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16858,7 +16859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Server Id.</param>
         /// <param name="networkName">Primary network name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16880,7 +16881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the networks available in a vault</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -16921,7 +16922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the networks available for a fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17068,7 +17069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17186,7 +17187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -17204,7 +17205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create a replication policy</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name</param>
         /// <param name="body">Create policy input</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17450,7 +17451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name</param>
         /// <param name="body">Create policy input</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17473,7 +17474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete a replication policy.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17710,7 +17711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17730,7 +17731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a replication policy.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17873,7 +17874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Replication policy name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17893,7 +17894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the replication policies for a vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -18032,7 +18033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -18050,7 +18051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update a replication policy.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Policy Id.</param>
         /// <param name="body">Update Policy Input</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -18296,7 +18297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="policyName">Policy Id.</param>
         /// <param name="body">Update Policy Input</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18319,7 +18320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to get the details of a protectable item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="protectableItemName">Protectable item name.</param>
@@ -18474,7 +18475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="protectableItemName">Protectable item name.</param>
@@ -18498,7 +18499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the protectable items in a protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="Filter">OData filter options.</param>
@@ -18657,7 +18658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="Filter">OData filter options.</param>
@@ -18683,7 +18684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The ARM fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replicated protected item's name.</param>
@@ -18948,7 +18949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The ARM fabric name.</param>
         /// <param name="protectionContainerName">The protection container name.</param>
         /// <param name="replicatedProtectedItemName">The replicated protected item's name.</param>
@@ -18975,7 +18976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create an ASR replication protected item (Enable replication).</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Name of the fabric.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">A name for the replication protected item.</param>
@@ -19233,7 +19234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Name of the fabric.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">A name for the replication protected item.</param>
@@ -19262,7 +19263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -19525,7 +19526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -19552,7 +19553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to commit the failover of the replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -19805,7 +19806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -19829,7 +19830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of an ASR replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -19984,7 +19985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric unique name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -20008,7 +20009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of ASR replication protected items in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="skipToken">The pagination token. Possible values: "FabricId" or "FabricId_CloudId" or null</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20055,7 +20056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the list of ASR replication protected items in the protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20208,7 +20209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20334,7 +20335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="skipToken">The pagination token. Possible values: "FabricId" or "FabricId_CloudId" or null</param>
         /// <param name="Filter">OData filter options.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20356,7 +20357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to initiate a planned failover of the replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -20619,7 +20620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -20649,7 +20650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -20901,7 +20902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -20927,7 +20928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric.</param>
         /// <param name="protectionContainerName">The name of the container.</param>
         /// <param name="replicatedProtectedItemName">The name of the replication protected item.</param>
@@ -21182,7 +21183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric.</param>
         /// <param name="protectionContainerName">The name of the container.</param>
         /// <param name="replicatedProtectedItemName">The name of the replication protected item.</param>
@@ -21208,7 +21209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -21471,7 +21472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -21498,7 +21499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to perform a test failover of the replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -21553,7 +21554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to clean up the test failover of a replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -21816,7 +21817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22051,7 +22052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22078,7 +22079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to initiate a failover of the replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22341,7 +22342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22370,7 +22371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22427,7 +22428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the protected item.</param>
         /// <param name="protectionContainerName">The name of the container containing the protected item.</param>
         /// <param name="replicationProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
@@ -22693,7 +22694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the protected item.</param>
         /// <param name="protectionContainerName">The name of the container containing the protected item.</param>
         /// <param name="replicationProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
@@ -22926,7 +22927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -22953,7 +22954,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create a protection container mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -23213,7 +23214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -23240,7 +23241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete or remove a protection container mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -23503,7 +23504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -23530,7 +23531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a protection container mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection Container mapping name.</param>
@@ -23687,7 +23688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection Container mapping name.</param>
@@ -23711,7 +23712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the protection container mappings in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -23752,7 +23753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the protection container mappings for a protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23905,7 +23906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -24027,7 +24028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -24045,7 +24046,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to purge(force delete) a protection container mapping</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -24296,7 +24297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -24320,7 +24321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update protection container mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -24580,7 +24581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="mappingName">Protection container mapping name.</param>
@@ -24607,7 +24608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to create a protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric ARM name.</param>
         /// <param name="protectionContainerName">Unique protection container ARM name.</param>
         /// <param name="body">Creation input.</param>
@@ -24861,7 +24862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric ARM name.</param>
         /// <param name="protectionContainerName">Unique protection container ARM name.</param>
         /// <param name="body">Creation input.</param>
@@ -24886,7 +24887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Operation to remove a protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric ARM name.</param>
         /// <param name="protectionContainerName">Unique protection container ARM name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -25133,7 +25134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric ARM name.</param>
         /// <param name="protectionContainerName">Unique protection container ARM name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25157,7 +25158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric.</param>
         /// <param name="protectionContainerName">The name of the protection container.</param>
         /// <param name="body">The request object to add a protectable item.</param>
@@ -25416,7 +25417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric.</param>
         /// <param name="protectionContainerName">The name of the protection container.</param>
         /// <param name="body">The request object to add a protectable item.</param>
@@ -25441,7 +25442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a protection container.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25590,7 +25591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25612,7 +25613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the protection containers in a vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -25653,7 +25654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the protection containers in the specified fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25800,7 +25801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -25918,7 +25919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -25938,7 +25939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="body">Switch protection input.</param>
@@ -26197,7 +26198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Unique fabric name.</param>
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="body">Switch protection input.</param>
@@ -26222,7 +26223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Recovery Plan creation input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -26468,7 +26469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Recovery Plan creation input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -26491,7 +26492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Delete a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -26728,7 +26729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -26748,7 +26749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to commit the fail over of a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -26989,7 +26990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -27009,7 +27010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of the recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Name of the recovery plan.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27152,7 +27153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Name of the recovery plan.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -27172,7 +27173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the recovery plans in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -27311,7 +27312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -27329,7 +27330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to start the planned failover of a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27580,7 +27581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27603,7 +27604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to reprotect(reverse replicate) a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27842,7 +27843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -27862,7 +27863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to start the test failover of a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27911,7 +27912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to cleanup test failover of a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Test failover cleanup input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -28162,7 +28163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Test failover cleanup input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -28387,7 +28388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -28410,7 +28411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to start the failover of a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -28661,7 +28662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Failover input.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -28684,7 +28685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update a recovery plan.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Update recovery plan input</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -28930,7 +28931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="recoveryPlanName">Recovery plan name.</param>
         /// <param name="body">Update recovery plan input</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -28953,7 +28954,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to add a recovery services provider.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="body">Add provider input.</param>
@@ -29207,7 +29208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="body">Add provider input.</param>
@@ -29234,7 +29235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -29483,7 +29484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29505,7 +29506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of registered recovery services provider.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -29656,7 +29657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29678,7 +29679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the registered recovery services providers in the vault</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -29719,7 +29720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the registered recovery services providers for the specified fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29866,7 +29867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -29986,7 +29987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -30006,7 +30007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -30253,7 +30254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -30275,7 +30276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to refresh the information from the recovery services provider.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -30522,7 +30523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="providerName">Recovery services provider name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -30544,7 +30545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create a storage classification mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -30804,7 +30805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -30831,7 +30832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to delete a storage classification mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -31082,7 +31083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -31106,7 +31107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of the specified storage classification mapping.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -31263,7 +31264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="storageClassificationMappingName">Storage classification mapping name.</param>
@@ -31287,7 +31288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the storage classification mappings in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -31328,7 +31329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the storage classification mappings for the fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -31481,7 +31482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -31603,7 +31604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -31621,7 +31622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of the specified storage classification.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -31772,7 +31773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -31794,7 +31795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the storage classifications in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -31835,7 +31836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the storage classifications available in the specified fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Site name of interest.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -31982,7 +31983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Site name of interest.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -32102,7 +32103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -32120,7 +32121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the health details of the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -32259,7 +32260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -32277,7 +32278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Refreshes health summary of the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -32510,7 +32511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -32528,7 +32529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to create a vCenter object..</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="body">The input to the add vCenter operation.</param>
@@ -32538,7 +32539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -32585,7 +32586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -32645,7 +32646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -32755,7 +32756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -32780,7 +32781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="body">The input to the add vCenter operation.</param>
@@ -32805,7 +32806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to remove(unregister) a registered vCenter server from the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -33048,7 +33049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -33070,7 +33071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Gets the details of a registered vCenter server(Add vCenter server.)</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -33079,7 +33080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33121,7 +33122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33177,7 +33178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33194,7 +33195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33219,7 +33220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -33241,14 +33242,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the vCenter servers registered in the vault.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33282,7 +33283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the vCenter servers registered in a fabric.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -33290,7 +33291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33331,7 +33332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33387,7 +33388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33404,7 +33405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33429,7 +33430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -33454,7 +33455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33505,7 +33506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33522,7 +33523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33547,7 +33548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -33565,7 +33566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>The operation to update a registered vCenter.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name</param>
         /// <param name="body">The input to the update vCenter operation.</param>
@@ -33575,7 +33576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vCenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33622,7 +33623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2018-01-10";
             // Constant Parameters
@@ -33682,7 +33683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenter>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33792,7 +33793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33817,7 +33818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="vCenterName">vCenter name</param>
         /// <param name="body">The input to the update vCenter operation.</param>
@@ -35086,7 +35087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -36500,7 +36501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <summary>Lists the available target compute sizes for a replication protected item.</summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -36659,7 +36660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </summary>
         /// <param name="resourceName">The name of the recovery services vault.</param>
         /// <param name="resourceGroupName">The name of the resource group where the recovery services vault is present.</param>
-        /// <param name="subscriptionId">The subscription Id.</param>
+        /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">Fabric name.</param>
         /// <param name="protectionContainerName">protection container name.</param>
         /// <param name="replicatedProtectedItemName">Replication protected item name.</param>
@@ -36811,7 +36812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\yeliu\.autorest\@autorest_powershell@2.1.400\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\leijin\.autorest\@autorest_powershell@3.0.403\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:

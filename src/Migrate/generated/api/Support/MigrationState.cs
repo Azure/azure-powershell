@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The migration status.</summary>
     public partial struct MigrationState :
         System.IEquatable<MigrationState>
     {

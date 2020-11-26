@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
+            {_sourceFabricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sourceFabricName"), out var __jsonSourceFabricName) ? (string)__jsonSourceFabricName : (string)SourceFabricName;}
+            {_recoveryPlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPlanName"), out var __jsonRecoveryPlanName) ? (string)__jsonRecoveryPlanName : (string)RecoveryPlanName;}
+            {_vCenterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vCenterName"), out var __jsonVCenterName) ? (string)__jsonVCenterName : (string)VCenterName;}
             {_instanceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("instanceType"), out var __jsonInstanceType) ? (string)__jsonInstanceType : (string)InstanceType;}
             {_multiVMGroupCreateOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("multiVmGroupCreateOption"), out var __jsonMultiVMGroupCreateOption) ? (string)__jsonMultiVMGroupCreateOption : (string)MultiVMGroupCreateOption;}
-            {_recoveryPlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPlanName"), out var __jsonRecoveryPlanName) ? (string)__jsonRecoveryPlanName : (string)RecoveryPlanName;}
-            {_sourceFabricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sourceFabricName"), out var __jsonSourceFabricName) ? (string)__jsonSourceFabricName : (string)SourceFabricName;}
-            {_vCenterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vCenterName"), out var __jsonVCenterName) ? (string)__jsonVCenterName : (string)VCenterName;}
             AfterFromJson(json);
         }
 
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._sourceFabricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sourceFabricName.ToString()) : null, "sourceFabricName" ,container.Add );
+            AddIf( null != (((object)this._recoveryPlanName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPlanName.ToString()) : null, "recoveryPlanName" ,container.Add );
+            AddIf( null != (((object)this._vCenterName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vCenterName.ToString()) : null, "vCenterName" ,container.Add );
             AddIf( null != (((object)this._instanceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._instanceType.ToString()) : null, "instanceType" ,container.Add );
             AddIf( null != (((object)this._multiVMGroupCreateOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._multiVMGroupCreateOption.ToString()) : null, "multiVmGroupCreateOption" ,container.Add );
-            AddIf( null != (((object)this._recoveryPlanName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPlanName.ToString()) : null, "recoveryPlanName" ,container.Add );
-            AddIf( null != (((object)this._sourceFabricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sourceFabricName.ToString()) : null, "sourceFabricName" ,container.Add );
-            AddIf( null != (((object)this._vCenterName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vCenterName.ToString()) : null, "vCenterName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __recoveryPlanActionDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanActionDetails(json);
-            {_fabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricLocation"), out var __jsonFabricLocation) ? (string)__jsonFabricLocation : (string)FabricLocation;}
             {_runbookId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("runbookId"), out var __jsonRunbookId) ? (string)__jsonRunbookId : (string)RunbookId;}
             {_timeout = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("timeout"), out var __jsonTimeout) ? (string)__jsonTimeout : (string)Timeout;}
+            {_fabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricLocation"), out var __jsonFabricLocation) ? (string)__jsonFabricLocation : (string)FabricLocation;}
             AfterFromJson(json);
         }
 
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __recoveryPlanActionDetails?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._fabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricLocation.ToString()) : null, "fabricLocation" ,container.Add );
             AddIf( null != (((object)this._runbookId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._runbookId.ToString()) : null, "runbookId" ,container.Add );
             AddIf( null != (((object)this._timeout)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._timeout.ToString()) : null, "timeout" ,container.Add );
+            AddIf( null != (((object)this._fabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricLocation.ToString()) : null, "fabricLocation" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

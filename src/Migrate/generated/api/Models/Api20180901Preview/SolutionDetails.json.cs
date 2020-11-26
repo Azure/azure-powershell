@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return;
             }
+            {_groupCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("groupCount"), out var __jsonGroupCount) ? (int?)__jsonGroupCount : GroupCount;}
             {_assessmentCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("assessmentCount"), out var __jsonAssessmentCount) ? (int?)__jsonAssessmentCount : AssessmentCount;}
             {_extendedDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("extendedDetails"), out var __jsonExtendedDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SolutionDetailsExtendedDetails.FromJson(__jsonExtendedDetails) : ExtendedDetail;}
-            {_groupCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("groupCount"), out var __jsonGroupCount) ? (int?)__jsonGroupCount : GroupCount;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return container;
             }
+            AddIf( null != this._groupCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._groupCount) : null, "groupCount" ,container.Add );
             AddIf( null != this._assessmentCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._assessmentCount) : null, "assessmentCount" ,container.Add );
             AddIf( null != this._extendedDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._extendedDetail.ToJson(null,serializationMode) : null, "extendedDetails" ,container.Add );
-            AddIf( null != this._groupCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._groupCount) : null, "groupCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

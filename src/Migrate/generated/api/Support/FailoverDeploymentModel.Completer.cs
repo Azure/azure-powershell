@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for FailoverDeploymentModel.</summary>
+    /// <summary>The failover deployment model.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.FailoverDeploymentModelTypeConverter))]
     public partial struct FailoverDeploymentModel :
         System.Management.Automation.IArgumentCompleter

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_kekCertExpiryDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("kekCertExpiryDate"), out var __jsonKekCertExpiryDate) ? global::System.DateTime.TryParse((string)__jsonKekCertExpiryDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKekCertExpiryDateValue) ? __jsonKekCertExpiryDateValue : KekCertExpiryDate : KekCertExpiryDate;}
-            {_kekCertThumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("kekCertThumbprint"), out var __jsonKekCertThumbprint) ? (string)__jsonKekCertThumbprint : (string)KekCertThumbprint;}
             {_kekState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("kekState"), out var __jsonKekState) ? (string)__jsonKekState : (string)KekState;}
+            {_kekCertThumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("kekCertThumbprint"), out var __jsonKekCertThumbprint) ? (string)__jsonKekCertThumbprint : (string)KekCertThumbprint;}
+            {_kekCertExpiryDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("kekCertExpiryDate"), out var __jsonKekCertExpiryDate) ? global::System.DateTime.TryParse((string)__jsonKekCertExpiryDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKekCertExpiryDateValue) ? __jsonKekCertExpiryDateValue : KekCertExpiryDate : KekCertExpiryDate;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._kekCertExpiryDate ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._kekCertExpiryDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "kekCertExpiryDate" ,container.Add );
-            AddIf( null != (((object)this._kekCertThumbprint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._kekCertThumbprint.ToString()) : null, "kekCertThumbprint" ,container.Add );
             AddIf( null != (((object)this._kekState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._kekState.ToString()) : null, "kekState" ,container.Add );
+            AddIf( null != (((object)this._kekCertThumbprint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._kekCertThumbprint.ToString()) : null, "kekCertThumbprint" ,container.Add );
+            AddIf( null != this._kekCertExpiryDate ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._kekCertExpiryDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "kekCertExpiryDate" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

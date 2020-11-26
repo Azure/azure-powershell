@@ -17,13 +17,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         bool? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal.AllSelected { get => this._allSelected; set { {_allSelected = value;} } }
 
         /// <summary>Internal Acessors for SelectedItem</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal.SelectedItem { get => this._selectedItem; set { {_selectedItem = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectExpandClauseInternal.SelectedItem { get => this._selectedItem; set { {_selectedItem = value;} } }
 
         /// <summary>Backing field for <see cref="SelectedItem" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[] _selectedItem;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[] _selectedItem;
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[] SelectedItem { get => this._selectedItem; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[] SelectedItem { get => this._selectedItem; }
 
         /// <summary>Creates an new <see cref="SelectExpandClause" /> instance.</summary>
         public SelectExpandClause()
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         ReadOnly = true,
         Description = @"",
         SerializedName = @"selectedItems",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[] SelectedItem { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[] SelectedItem { get;  }
 
     }
     internal partial interface ISelectExpandClauseInternal
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
     {
         bool? AllSelected { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISelectItem[] SelectedItem { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny[] SelectedItem { get; set; }
 
     }
 }

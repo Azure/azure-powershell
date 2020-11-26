@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether multi-VM sync has to be enabled.</summary>
     public partial struct MultiVMSyncStatus :
         System.IEquatable<MultiVMSyncStatus>
     {

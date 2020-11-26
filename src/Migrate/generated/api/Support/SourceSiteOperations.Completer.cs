@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for SourceSiteOperations.</summary>
+    /// <summary>A value indicating whether source site operations are required.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperationsTypeConverter))]
     public partial struct SourceSiteOperations :
         System.Management.Automation.IArgumentCompleter

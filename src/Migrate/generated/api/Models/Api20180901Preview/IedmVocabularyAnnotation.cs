@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotationInternal.Qualifier { get => this._qualifier; set { {_qualifier = value;} } }
 
         /// <summary>Internal Acessors for Target</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotationInternal.Target { get => (this._target = this._target ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmVocabularyAnnotatable()); set { {_target = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotationInternal.Target { get => (this._target = this._target ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set { {_target = value;} } }
 
         /// <summary>Internal Acessors for Term</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmTerm Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotationInternal.Term { get => (this._term = this._term ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmTerm()); set { {_term = value;} } }
@@ -59,10 +59,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         public string Qualifier { get => this._qualifier; }
 
         /// <summary>Backing field for <see cref="Target" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable _target;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _target;
 
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable Target { get => (this._target = this._target ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmVocabularyAnnotatable()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Target { get => (this._target = this._target ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); }
 
         /// <summary>Backing field for <see cref="Term" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmTerm _term;
@@ -121,14 +122,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         SerializedName = @"qualifier",
         PossibleTypes = new [] { typeof(string) })]
         string Qualifier { get;  }
-
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"",
+        Description = @"Any object",
         SerializedName = @"target",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable Target { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Target { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -193,8 +194,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string DefinitionTypeKind { get; set; }
 
         string Qualifier { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotatable Target { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Target { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmTerm Term { get; set; }
 

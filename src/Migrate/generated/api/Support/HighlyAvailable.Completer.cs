@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for HighlyAvailable.</summary>
+    /// <summary>Value indicating whether the VM is highly available.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HighlyAvailableTypeConverter))]
     public partial struct HighlyAvailable :
         System.Management.Automation.IArgumentCompleter

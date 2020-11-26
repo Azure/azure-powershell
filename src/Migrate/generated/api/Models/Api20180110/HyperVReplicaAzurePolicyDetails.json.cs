@@ -71,12 +71,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __policyProviderSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.PolicyProviderSpecificDetails(json);
-            {_activeStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("activeStorageAccountId"), out var __jsonActiveStorageAccountId) ? (string)__jsonActiveStorageAccountId : (string)ActiveStorageAccountId;}
-            {_applicationConsistentSnapshotFrequencyInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("applicationConsistentSnapshotFrequencyInHours"), out var __jsonApplicationConsistentSnapshotFrequencyInHours) ? (int?)__jsonApplicationConsistentSnapshotFrequencyInHours : ApplicationConsistentSnapshotFrequencyInHour;}
-            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)Encryption;}
-            {_onlineReplicationStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("onlineReplicationStartTime"), out var __jsonOnlineReplicationStartTime) ? (string)__jsonOnlineReplicationStartTime : (string)OnlineReplicationStartTime;}
             {_recoveryPointHistoryDurationInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("recoveryPointHistoryDurationInHours"), out var __jsonRecoveryPointHistoryDurationInHours) ? (int?)__jsonRecoveryPointHistoryDurationInHours : RecoveryPointHistoryDurationInHour;}
+            {_applicationConsistentSnapshotFrequencyInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("applicationConsistentSnapshotFrequencyInHours"), out var __jsonApplicationConsistentSnapshotFrequencyInHours) ? (int?)__jsonApplicationConsistentSnapshotFrequencyInHours : ApplicationConsistentSnapshotFrequencyInHour;}
             {_replicationInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("replicationInterval"), out var __jsonReplicationInterval) ? (int?)__jsonReplicationInterval : ReplicationInterval;}
+            {_onlineReplicationStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("onlineReplicationStartTime"), out var __jsonOnlineReplicationStartTime) ? (string)__jsonOnlineReplicationStartTime : (string)OnlineReplicationStartTime;}
+            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)Encryption;}
+            {_activeStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("activeStorageAccountId"), out var __jsonActiveStorageAccountId) ? (string)__jsonActiveStorageAccountId : (string)ActiveStorageAccountId;}
             AfterFromJson(json);
         }
 
@@ -100,12 +100,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __policyProviderSpecificDetails?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._activeStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._activeStorageAccountId.ToString()) : null, "activeStorageAccountId" ,container.Add );
-            AddIf( null != this._applicationConsistentSnapshotFrequencyInHour ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._applicationConsistentSnapshotFrequencyInHour) : null, "applicationConsistentSnapshotFrequencyInHours" ,container.Add );
-            AddIf( null != (((object)this._encryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._encryption.ToString()) : null, "encryption" ,container.Add );
-            AddIf( null != (((object)this._onlineReplicationStartTime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._onlineReplicationStartTime.ToString()) : null, "onlineReplicationStartTime" ,container.Add );
             AddIf( null != this._recoveryPointHistoryDurationInHour ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._recoveryPointHistoryDurationInHour) : null, "recoveryPointHistoryDurationInHours" ,container.Add );
+            AddIf( null != this._applicationConsistentSnapshotFrequencyInHour ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._applicationConsistentSnapshotFrequencyInHour) : null, "applicationConsistentSnapshotFrequencyInHours" ,container.Add );
             AddIf( null != this._replicationInterval ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._replicationInterval) : null, "replicationInterval" ,container.Add );
+            AddIf( null != (((object)this._onlineReplicationStartTime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._onlineReplicationStartTime.ToString()) : null, "onlineReplicationStartTime" ,container.Add );
+            AddIf( null != (((object)this._encryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._encryption.ToString()) : null, "encryption" ,container.Add );
+            AddIf( null != (((object)this._activeStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._activeStorageAccountId.ToString()) : null, "activeStorageAccountId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

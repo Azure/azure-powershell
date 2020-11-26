@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Value indicating whether the VM is highly available.</summary>
     public partial struct HighlyAvailable :
         System.IEquatable<HighlyAvailable>
     {

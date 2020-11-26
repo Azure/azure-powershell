@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume = (string) content.GetValueForProperty("OnlyExcludeIfSingleVolume",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).VolumeLabel = (string) content.GetValueForProperty("VolumeLabel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).VolumeLabel, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume = (string) content.GetValueForProperty("OnlyExcludeIfSingleVolume",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume = (string) content.GetValueForProperty("OnlyExcludeIfSingleVolume",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).VolumeLabel = (string) content.GetValueForProperty("VolumeLabel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).VolumeLabel, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume = (string) content.GetValueForProperty("OnlyExcludeIfSingleVolume",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptionsInternal)this).OnlyExcludeIfSingleVolume, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

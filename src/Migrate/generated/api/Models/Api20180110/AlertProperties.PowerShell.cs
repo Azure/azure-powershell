@@ -61,9 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner = (string) content.GetValueForProperty("SendToOwner",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).CustomEmailAddress = (string[]) content.GetValueForProperty("CustomEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).CustomEmailAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).Locale, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner = (string) content.GetValueForProperty("SendToOwner",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner = (string) content.GetValueForProperty("SendToOwner",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).CustomEmailAddress = (string[]) content.GetValueForProperty("CustomEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).CustomEmailAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).Locale = (string) content.GetValueForProperty("Locale",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).Locale, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner = (string) content.GetValueForProperty("SendToOwner",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)this).SendToOwner, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

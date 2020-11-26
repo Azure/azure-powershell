@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The source IP address type.</summary>
     public partial struct EthernetAddressType :
         System.IEquatable<EthernetAddressType>
     {

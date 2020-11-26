@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
         private string _azureAsyncOperation;
 
-        /// <summary>Tracking URL for long running operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
@@ -38,11 +37,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     public partial interface ISitesRefreshAcceptedResponseHeaders
 
     {
-        /// <summary>Tracking URL for long running operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Tracking URL for long running operation.",
+        Description = @"",
         SerializedName = @"Azure-AsyncOperation",
         PossibleTypes = new [] { typeof(string) })]
         string AzureAsyncOperation { get; set; }
@@ -51,7 +49,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     internal partial interface ISitesRefreshAcceptedResponseHeadersInternal
 
     {
-        /// <summary>Tracking URL for long running operation.</summary>
         string AzureAsyncOperation { get; set; }
 
     }

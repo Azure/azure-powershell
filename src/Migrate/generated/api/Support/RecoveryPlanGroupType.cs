@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The group type.</summary>
     public partial struct RecoveryPlanGroupType :
         System.IEquatable<RecoveryPlanGroupType>
     {

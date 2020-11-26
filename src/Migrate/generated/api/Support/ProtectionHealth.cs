@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The consolidated health.</summary>
     public partial struct ProtectionHealth :
         System.IEquatable<ProtectionHealth>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for DisableProtectionReason.</summary>
+    /// <summary>Disable protection reason. It can have values NotSpecified/MigrationComplete.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DisableProtectionReasonTypeConverter))]
     public partial struct DisableProtectionReason :
         System.Management.Automation.IArgumentCompleter

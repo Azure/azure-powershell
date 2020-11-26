@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for DataSyncStatus.</summary>
+    /// <summary>The data sync option.</summary>
     public partial class DataSyncStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

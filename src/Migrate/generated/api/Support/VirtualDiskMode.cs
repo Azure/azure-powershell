@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Disk mode property used for identifying independent disks.</summary>
     public partial struct VirtualDiskMode :
         System.IEquatable<VirtualDiskMode>
     {

@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._containersHealth ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._containersHealth.ToJson(null,serializationMode) : null, "containersHealth" ,container.Add );
-            AddIf( null != this._fabricsHealth ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._fabricsHealth.ToJson(null,serializationMode) : null, "fabricsHealth" ,container.Add );
             AddIf( null != this._protectedItemsHealth ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._protectedItemsHealth.ToJson(null,serializationMode) : null, "protectedItemsHealth" ,container.Add );
+            AddIf( null != this._fabricsHealth ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._fabricsHealth.ToJson(null,serializationMode) : null, "fabricsHealth" ,container.Add );
+            AddIf( null != this._containersHealth ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._containersHealth.ToJson(null,serializationMode) : null, "containersHealth" ,container.Add );
             if (null != this._vaultError)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_containersHealth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("containersHealth"), out var __jsonContainersHealth) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummary.FromJson(__jsonContainersHealth) : ContainersHealth;}
-            {_fabricsHealth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("fabricsHealth"), out var __jsonFabricsHealth) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummary.FromJson(__jsonFabricsHealth) : FabricsHealth;}
             {_protectedItemsHealth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("protectedItemsHealth"), out var __jsonProtectedItemsHealth) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummary.FromJson(__jsonProtectedItemsHealth) : ProtectedItemsHealth;}
+            {_fabricsHealth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("fabricsHealth"), out var __jsonFabricsHealth) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummary.FromJson(__jsonFabricsHealth) : FabricsHealth;}
+            {_containersHealth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("containersHealth"), out var __jsonContainersHealth) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummary.FromJson(__jsonContainersHealth) : ContainersHealth;}
             {_vaultError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("vaultErrors"), out var __jsonVaultErrors) ? If( __jsonVaultErrors as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.HealthError.FromJson(__u) )) ))() : null : VaultError;}
             AfterFromJson(json);
         }

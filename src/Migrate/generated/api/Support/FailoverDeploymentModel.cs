@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The failover deployment model.</summary>
     public partial struct FailoverDeploymentModel :
         System.IEquatable<FailoverDeploymentModel>
     {

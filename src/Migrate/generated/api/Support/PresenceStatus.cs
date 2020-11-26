@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// A value indicating whether the VM has a physical disk attached. String value of {SrsDataContract.PresenceStatus} enum.
+    /// </summary>
     public partial struct PresenceStatus :
         System.IEquatable<PresenceStatus>
     {

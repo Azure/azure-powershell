@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __recoveryPlanProviderSpecificFailoverInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanProviderSpecificFailoverInput(json);
+            {_vaultLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vaultLocation"), out var __jsonVaultLocation) ? (string)__jsonVaultLocation : (string)VaultLocation;}
             {_recoveryPointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointType"), out var __jsonRecoveryPointType) ? (string)__jsonRecoveryPointType : (string)RecoveryPointType;}
             {_useMultiVMSyncPoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("useMultiVmSyncPoint"), out var __jsonUseMultiVMSyncPoint) ? (string)__jsonUseMultiVMSyncPoint : (string)UseMultiVMSyncPoint;}
-            {_vaultLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vaultLocation"), out var __jsonVaultLocation) ? (string)__jsonVaultLocation : (string)VaultLocation;}
             AfterFromJson(json);
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __recoveryPlanProviderSpecificFailoverInput?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._vaultLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vaultLocation.ToString()) : null, "vaultLocation" ,container.Add );
             AddIf( null != (((object)this._recoveryPointType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointType.ToString()) : null, "recoveryPointType" ,container.Add );
             AddIf( null != (((object)this._useMultiVMSyncPoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._useMultiVMSyncPoint.ToString()) : null, "useMultiVmSyncPoint" ,container.Add );
-            AddIf( null != (((object)this._vaultLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vaultLocation.ToString()) : null, "vaultLocation" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

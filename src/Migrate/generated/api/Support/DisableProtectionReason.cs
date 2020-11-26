@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>Disable protection reason. It can have values NotSpecified/MigrationComplete.</summary>
     public partial struct DisableProtectionReason :
         System.IEquatable<DisableProtectionReason>
     {

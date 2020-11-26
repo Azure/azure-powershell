@@ -58,10 +58,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_failoverDeploymentModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("failoverDeploymentModel"), out var __jsonFailoverDeploymentModel) ? (string)__jsonFailoverDeploymentModel : (string)FailoverDeploymentModel;}
-            {_group = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("groups"), out var __jsonGroups) ? If( __jsonGroups as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanGroup.FromJson(__u) )) ))() : null : Group;}
             {_primaryFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("primaryFabricId"), out var __jsonPrimaryFabricId) ? (string)__jsonPrimaryFabricId : (string)PrimaryFabricId;}
             {_recoveryFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryFabricId"), out var __jsonRecoveryFabricId) ? (string)__jsonRecoveryFabricId : (string)RecoveryFabricId;}
+            {_failoverDeploymentModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("failoverDeploymentModel"), out var __jsonFailoverDeploymentModel) ? (string)__jsonFailoverDeploymentModel : (string)FailoverDeploymentModel;}
+            {_group = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("groups"), out var __jsonGroups) ? If( __jsonGroups as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanGroup.FromJson(__u) )) ))() : null : Group;}
             AfterFromJson(json);
         }
 
@@ -96,6 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._primaryFabricId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryFabricId.ToString()) : null, "primaryFabricId" ,container.Add );
+            AddIf( null != (((object)this._recoveryFabricId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryFabricId.ToString()) : null, "recoveryFabricId" ,container.Add );
             AddIf( null != (((object)this._failoverDeploymentModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._failoverDeploymentModel.ToString()) : null, "failoverDeploymentModel" ,container.Add );
             if (null != this._group)
             {
@@ -106,8 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("groups",__w);
             }
-            AddIf( null != (((object)this._primaryFabricId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryFabricId.ToString()) : null, "primaryFabricId" ,container.Add );
-            AddIf( null != (((object)this._recoveryFabricId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryFabricId.ToString()) : null, "recoveryFabricId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

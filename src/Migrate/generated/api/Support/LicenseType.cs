@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>License type.</summary>
     public partial struct LicenseType :
         System.IEquatable<LicenseType>
     {

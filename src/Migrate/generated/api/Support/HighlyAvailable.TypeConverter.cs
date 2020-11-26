@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for HighlyAvailable.</summary>
+    /// <summary>Value indicating whether the VM is highly available.</summary>
     public partial class HighlyAvailableTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

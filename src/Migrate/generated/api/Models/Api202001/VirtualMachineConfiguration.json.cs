@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return container;
             }
-            AddIf( null != (((object)this._nativeHostMachineId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._nativeHostMachineId.ToString()) : null, "nativeHostMachineId" ,container.Add );
+            AddIf( null != (((object)this._virtualMachineType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._virtualMachineType.ToString()) : null, "virtualMachineType" ,container.Add );
             AddIf( null != (((object)this._nativeMachineId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._nativeMachineId.ToString()) : null, "nativeMachineId" ,container.Add );
             AddIf( null != (((object)this._virtualMachineName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._virtualMachineName.ToString()) : null, "virtualMachineName" ,container.Add );
-            AddIf( null != (((object)this._virtualMachineType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._virtualMachineType.ToString()) : null, "virtualMachineType" ,container.Add );
+            AddIf( null != (((object)this._nativeHostMachineId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._nativeHostMachineId.ToString()) : null, "nativeHostMachineId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return;
             }
-            {_nativeHostMachineId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("nativeHostMachineId"), out var __jsonNativeHostMachineId) ? (string)__jsonNativeHostMachineId : (string)NativeHostMachineId;}
+            {_virtualMachineType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("virtualMachineType"), out var __jsonVirtualMachineType) ? (string)__jsonVirtualMachineType : (string)VirtualMachineType;}
             {_nativeMachineId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("nativeMachineId"), out var __jsonNativeMachineId) ? (string)__jsonNativeMachineId : (string)NativeMachineId;}
             {_virtualMachineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("virtualMachineName"), out var __jsonVirtualMachineName) ? (string)__jsonVirtualMachineName : (string)VirtualMachineName;}
-            {_virtualMachineType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("virtualMachineType"), out var __jsonVirtualMachineType) ? (string)__jsonVirtualMachineType : (string)VirtualMachineType;}
+            {_nativeHostMachineId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("nativeHostMachineId"), out var __jsonNativeHostMachineId) ? (string)__jsonNativeHostMachineId : (string)NativeHostMachineId;}
             AfterFromJson(json);
         }
     }

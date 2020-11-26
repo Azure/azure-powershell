@@ -58,11 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             {_agentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("agentId"), out var __jsonAgentId) ? (string)__jsonAgentId : (string)AgentId;}
-            {_clockGranularity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("clockGranularity"), out var __jsonClockGranularity) ? (int?)__jsonClockGranularity : ClockGranularity;}
             {_dependencyAgentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("dependencyAgentId"), out var __jsonDependencyAgentId) ? (string)__jsonDependencyAgentId : (string)DependencyAgentId;}
-            {_dependencyAgentRevision = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("dependencyAgentRevision"), out var __jsonDependencyAgentRevision) ? (string)__jsonDependencyAgentRevision : (string)DependencyAgentRevision;}
             {_dependencyAgentVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("dependencyAgentVersion"), out var __jsonDependencyAgentVersion) ? (string)__jsonDependencyAgentVersion : (string)DependencyAgentVersion;}
+            {_dependencyAgentRevision = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("dependencyAgentRevision"), out var __jsonDependencyAgentRevision) ? (string)__jsonDependencyAgentRevision : (string)DependencyAgentRevision;}
             {_rebootStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("rebootStatus"), out var __jsonRebootStatus) ? (string)__jsonRebootStatus : (string)RebootStatus;}
+            {_clockGranularity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("clockGranularity"), out var __jsonClockGranularity) ? (int?)__jsonClockGranularity : ClockGranularity;}
             AfterFromJson(json);
         }
 
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return container;
             }
             AddIf( null != (((object)this._agentId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._agentId.ToString()) : null, "agentId" ,container.Add );
-            AddIf( null != this._clockGranularity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._clockGranularity) : null, "clockGranularity" ,container.Add );
             AddIf( null != (((object)this._dependencyAgentId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._dependencyAgentId.ToString()) : null, "dependencyAgentId" ,container.Add );
-            AddIf( null != (((object)this._dependencyAgentRevision)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._dependencyAgentRevision.ToString()) : null, "dependencyAgentRevision" ,container.Add );
             AddIf( null != (((object)this._dependencyAgentVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._dependencyAgentVersion.ToString()) : null, "dependencyAgentVersion" ,container.Add );
+            AddIf( null != (((object)this._dependencyAgentRevision)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._dependencyAgentRevision.ToString()) : null, "dependencyAgentRevision" ,container.Add );
             AddIf( null != (((object)this._rebootStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._rebootStatus.ToString()) : null, "rebootStatus" ,container.Add );
+            AddIf( null != this._clockGranularity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._clockGranularity) : null, "clockGranularity" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
