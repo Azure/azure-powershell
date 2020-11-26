@@ -19,6 +19,12 @@ Remove-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### HsmByVaultName
+```
+Remove-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByInputObject
 ```
 Remove-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
@@ -109,6 +115,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByVaultName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 KeyBundle Object
 
@@ -145,7 +166,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key based on 
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName
+Parameter Sets: ByVaultName, HsmByVaultName
 Aliases: KeyName
 
 Required: True

@@ -18,13 +18,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRemoval", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+        private const string HsmInteractiveParameterSet = "HsmInteractive";
         private const string InputObjectParameterSet = "InputObject";
 
         #endregion
@@ -42,6 +43,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInteractiveParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string HsmName { get; set; }
+
         /// <summary>
         /// Key name
         /// </summary>
@@ -49,6 +57,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = HsmInteractiveParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -57,10 +68,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key object
         /// </summary>
         [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = InputObjectParameterSet,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Deleted key object")]
+            Position = 0,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Deleted key object")]
         [ValidateNotNullOrEmpty]
         public PSDeletedKeyVaultKeyIdentityItem InputObject { get; set; }
 
@@ -68,17 +79,37 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                Name = InputObject.Name;
-            }
+            NormalizeParameterSets();
 
             if (ShouldProcess(Name, Properties.Resources.RecoverKey))
             {
-                PSKeyVaultKey recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
+                PSKeyVaultKey recoveredKey;
+                if (string.IsNullOrEmpty(HsmName))
+                {
+                    recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
+                }
+                else
+                {
+                    recoveredKey = this.Track2DataClient.RecoverManagedHsmKey(HsmName, Name);
+                }
 
                 WriteObject(recoveredKey);
+            }
+        }
+
+        private void NormalizeParameterSets()
+        {
+            if (InputObject != null)
+            {
+                if (InputObject.IsHsm)
+                {
+                    HsmName = InputObject.VaultName;
+                }
+                else
+                {
+                    VaultName = InputObject.VaultName;
+                }
+                Name = InputObject.Name;
             }
         }
     }
