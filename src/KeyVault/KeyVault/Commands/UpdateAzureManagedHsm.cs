@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsm", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagedHsm))]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedHsm", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagedHsm))]
     public class UpdateAzureManagedHsm : KeyVaultManagementCmdletBase
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";

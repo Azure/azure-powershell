@@ -71,6 +71,9 @@ Gets the policy for a certificate in a key vault.
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
 Gets Key Vault keys.
 
+### [Get-AzKeyVaultManagedHsm](Get-AzKeyVaultManagedHsm.md)
+Get managed HSMs.
+
 ### [Get-AzKeyVaultManagedStorageAccount](Get-AzKeyVaultManagedStorageAccount.md)
 Gets Key Vault managed Azure Storage Accounts.
 
@@ -79,9 +82,6 @@ Gets Key Vault managed Storage SAS Definitions.
 
 ### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
 Gets the secrets in a key vault.
-
-### [Get-AzManagedHsm](Get-AzManagedHsm.md)
-Get managed HSMs.
 
 ### [Get-AzManagedHsmKey](Get-AzManagedHsmKey.md)
 Gets Managed Hsm keys.
@@ -107,11 +107,11 @@ Creates an in-memory certificate organization details object.
 ### [New-AzKeyVaultCertificatePolicy](New-AzKeyVaultCertificatePolicy.md)
 Creates an in-memory certificate policy object.
 
+### [New-AzKeyVaultManagedHsm](New-AzKeyVaultManagedHsm.md)
+Creates a managed HSM.
+
 ### [New-AzKeyVaultNetworkRuleSetObject](New-AzKeyVaultNetworkRuleSetObject.md)
 Create an object representing the network rule settings.
-
-### [New-AzManagedHsm](New-AzManagedHsm.md)
-Creates a managed HSM.
 
 ### [New-AzManagedHsmRoleAssignment](New-AzManagedHsmRoleAssignment.md)
 Assigns the specified RBAC role to the specified principal, at the specified scope.
@@ -137,6 +137,9 @@ Deletes a certificate operation from a key vault.
 ### [Remove-AzKeyVaultKey](Remove-AzKeyVaultKey.md)
 Deletes a key in a key vault.
 
+### [Remove-AzKeyVaultManagedHsm](Remove-AzKeyVaultManagedHsm.md)
+Deletes a managed HSM.
+
 ### [Remove-AzKeyVaultManagedStorageAccount](Remove-AzKeyVaultManagedStorageAccount.md)
 Removes a Key Vault managed Azure Storage Account and all associated SAS definitions.
 
@@ -148,9 +151,6 @@ Removes a network rule from a key vault.
 
 ### [Remove-AzKeyVaultSecret](Remove-AzKeyVaultSecret.md)
 Deletes a secret in a key vault.
-
-### [Remove-AzManagedHsm](Remove-AzManagedHsm.md)
-Deletes a managed HSM.
 
 ### [Remove-AzManagedHsmKey](Remove-AzManagedHsmKey.md)
 Deletes a key in a managed HSM.
@@ -227,6 +227,9 @@ Modifies editable attributes of a certificate.
 ### [Update-AzKeyVaultKey](Update-AzKeyVaultKey.md)
 Updates the attributes of a key in a key vault.
 
+### [Update-AzKeyVaultManagedHsm](Update-AzKeyVaultManagedHsm.md)
+Update the state of an Azure managed HSM.
+
 ### [Update-AzKeyVaultManagedStorageAccount](Update-AzKeyVaultManagedStorageAccount.md)
 Update editable attributes of a Key Vault managed Azure Storage Account.
 
@@ -238,9 +241,6 @@ Updates the network rule set on a key vault.
 
 ### [Update-AzKeyVaultSecret](Update-AzKeyVaultSecret.md)
 Updates attributes of a secret in a key vault.
-
-### [Update-AzManagedHsm](Update-AzManagedHsm.md)
-Update the state of an Azure managed HSM.
 
 ### [Update-AzManagedHsmKey](Update-AzManagedHsmKey.md)
 Updates the attributes of a key in a managed HSM.

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azmanagedhsm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
-# New-AzManagedHsm
+# New-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
 Creates a managed HSM.
@@ -13,13 +13,13 @@ Creates a managed HSM.
 ## SYNTAX
 
 ```
-New-AzManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
+New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Administrator] <String[]> [-Sku <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzManagedHsm** cmdlet creates a managed HSM in the specified resource group. To add, 
+The **New-AzKeyVaultManagedHsm** cmdlet creates a managed HSM in the specified resource group. To add, 
 remove, or list keys in the managed HSM, user should grant permissions by adding user ID to 
 Administrator.
 
@@ -27,7 +27,7 @@ Administrator.
 
 ### Example 1: Create a StandardB1 managed HSM
 ```powershell
-PS C:\> New-AzManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PS C:\> New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
@@ -40,7 +40,7 @@ value for the *SKU* parameter, it creates a Standard_B1 managed HSM.
 
 ### Example 2: Create a CustomB32 managed HSM
 ```powershell
-PS C:\>New-AzManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32'
+PS C:\>New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32'
 Name  Resource Group Name Location    SKU
 
 ----  ------------------- --------    ---
@@ -228,8 +228,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzManagedHsm](./Get-AzManagedHsm.md)
+[Get-AzKeyVaultManagedHsm](./Get-AzKeyVaultManagedHsm.md)
 
-[Remove-AzManagedHsm](./Remove-AzManagedHsm.md)
+[Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
-[Update-AzManagedHsm](./Update-AzManagedHsm.md)
+[Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)
