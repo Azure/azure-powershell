@@ -30,6 +30,9 @@ function setupEnv() {
     $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
+    write-host "Deploy Vnet template"
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "mysql-test-100"

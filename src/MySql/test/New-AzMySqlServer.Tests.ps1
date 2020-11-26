@@ -5,18 +5,15 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMySqlServer.Recording.json'
 $currentPath = $PSScriptRoot
-Write-Output "Inside test PS script222222"
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
-    Write-Output "Inside test PS script33333"
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMySqlServer' {
     It 'CreateExpanded' {
         {
-            Write-Output "Inside test PS script1111"
             #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             $server = New-AzMySqlServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
