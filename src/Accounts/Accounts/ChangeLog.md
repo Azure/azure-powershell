@@ -19,10 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 2.3.0
-* Added DCR support: Get-AzDataCollectionRule, New-AzDataCollectionRule, Set-AzDataCollectionRule, Remove-AzDataCollectionRule
-* Added DCRA support: Get-AzDataCollectionRuleAssociation, New-AzDataCollectionRuleAssociation, Set-AzDataCollectionRuleAssociation, Remove-AzDataCollectionRuleAssociation
-
 ## Version 1.9.5
 * Fixed DateTime parse issue in common libraries [#13045]
 
