@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointCreationTime)
+        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointCreationDate)
         {
             try
             {
@@ -1552,12 +1552,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationTime))
+                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationDate))
                 {
-                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointCreationTime));
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointCreationDate));
                 }
 
-                this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationTime);
+                this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationDate);
             }
             catch (ErrorContractException ex)
             {
