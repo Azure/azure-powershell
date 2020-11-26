@@ -15,35 +15,35 @@ Updates a data collection rule tags property.
 ### ByName (Default)
 ```
 Update-AzDataCollectionRule 
-   -ResourceGroupName <string> 
-   -RuleName <string> 
-   [-Tags <hashtable>] 
-   [-DefaultProfile <IAzureContextContainer>] 
-   [-WhatIf] 
-   [-Confirm]
-   [<CommonParameters>]
+      -ResourceGroupName <string> 
+      -RuleName <string> 
+      [-Tags <hashtable>] 
+      [-DefaultProfile <IAzureContextContainer>] 
+      [-WhatIf] 
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Update-AzDataCollectionRule 
-   -RuleId <string> 
-   [-Tags <hashtable>] 
-   [-DefaultProfile <IAzureContextContainer>] 
-   [-WhatIf] 
-   [-Confirm]
-   [<CommonParameters>]
+      -RuleId <string> 
+      [-Tags <hashtable>] 
+      [-DefaultProfile <IAzureContextContainer>] 
+      [-WhatIf] 
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzDataCollectionRule 
-   -InputObject <PSDataCollectionRuleResource> 
-   [-Tags <hashtable>] 
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Update-AzDataCollectionRule 
+      -InputObject <PSDataCollectionRuleResource> 
+      [-Tags <hashtable>] 
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ## DESCRIPTION

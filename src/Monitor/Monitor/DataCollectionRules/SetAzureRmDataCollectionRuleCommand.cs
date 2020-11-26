@@ -47,13 +47,6 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         public PSDataCollectionRuleResource InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the data collection rule file definition path
-        /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
-        [ValidateNotNullOrEmpty]
-        public string RuleFile { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource group parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
@@ -68,6 +61,13 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule file definition path
+        /// </summary>
+        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleFile { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule description.

@@ -20,6 +20,15 @@ Get-AzDataCollectionRuleAssociation
    [<CommonParameters>]
 ```
 
+### ByName
+```
+Get-AzDataCollectionRuleAssociation 
+   -TargetResourceId <string> 
+   -AssociationName <string> 
+   [-DefaultProfile <IAzureContextContainer>] 
+   [<CommonParameters>]
+```
+
 ### ByRule
 ```
 Get-AzDataCollectionRuleAssociation 
@@ -34,15 +43,6 @@ Get-AzDataCollectionRuleAssociation
 Get-AzDataCollectionRuleAssociation 
    -InputObject <PSDataCollectionRuleResource> 
    [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
-```
-
-### ByName
-```
-Get-AzDataCollectionRuleAssociation 
-   -TargetResourceId <string> 
-   -AssociationName <string> 
-   [-DefaultProfile <IAzureContextContainer>] 
    [<CommonParameters>]
 ```
 

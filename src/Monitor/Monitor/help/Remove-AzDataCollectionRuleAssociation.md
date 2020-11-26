@@ -15,35 +15,35 @@ Delete a data collection rule association.
 ### ByName (Default)
 ```
 Remove-AzDataCollectionRuleAssociation
-   -TargetResourceId <string> 
-   -AssociationName <string> 
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+      -TargetResourceId <string> 
+      -AssociationName <string> 
+      [-PassThru]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzDataCollectionRuleAssociation
-   -InputObject <PSDataCollectionRuleAssociationProxyOnlyResource>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+      -InputObject <PSDataCollectionRuleAssociationProxyOnlyResource>
+      [-PassThru]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Remove-AzDataCollectionRuleAssociation
-   -AssociationId <string>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+      -AssociationId <string>
+      [-PassThru]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
 ```
 
 ## DESCRIPTION

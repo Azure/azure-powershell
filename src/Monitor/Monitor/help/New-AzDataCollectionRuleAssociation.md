@@ -15,27 +15,27 @@ Create data collection rule association.
 ### ByDataCollectionRuleId (Default)
 ```
 New-AzDataCollectionRuleAssociation
-  -TargetResourceId <string>
-  -AssociationName <string>
-  -RuleId <string>
-  [-Description <string>]
-  [-DefaultProfile <IAzureContextContainer>]
-  [-WhatIf]
-  [-Confirm]
-  [<CommonParameters>]
+   -TargetResourceId <string>
+   -AssociationName <string>
+   -RuleId <string>
+   [-Description <string>]
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 New-AzDataCollectionRuleAssociation
-  -TargetResourceId <string>
-  -AssociationName <string>
-  -InputObject <PSDataCollectionRuleResource>
-  [-Description <string>]
-  [-DefaultProfile <IAzureContextContainer>]  
-  [-WhatIf]   
-  [-Confirm]   
-  [<CommonParameters>]
+   -TargetResourceId <string>
+   -AssociationName <string>
+   -InputObject <PSDataCollectionRuleResource>
+   [-Description <string>]
+   [-DefaultProfile <IAzureContextContainer>]  
+   [-WhatIf]   
+   [-Confirm]   
+   [<CommonParameters>]
 ```
 
 
