@@ -166,7 +166,72 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string RestorePoint = "Snapshot time to restore.";
 
+        public const string RestorePointLabel = "The label we associate a restore point with, may not be unique.";
+
         public const string SqlAdministratorLoginPassword = "The new SQL administrator password for the workspace.";
+
+        public const string DisplayName = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.";
+
+        public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
+
+        // TODO: need to update to Synapse link in future
+        public const string AuditActionGroup =
+@"The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
+  
+“BATCH_COMPLETED_GROUP“,  
+“SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP“,  
+“FAILED_DATABASE_AUTHENTICATION_GROUP“  
+This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
+For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.";
+
+        public const string AuditAction =
+@"The set of audit actions.  
+The supported actions to audit are:  
+SELECT  
+UPDATE  
+INSERT  
+DELETE  
+EXECUTE  
+RECEIVE  
+REFERENCES  
+The general form for defining an action to be audited is:
+[action] ON [object] BY [principal]
+Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
+For example:  
+SELECT on dbo.myTable by public  
+SELECT on DATABASE::myDatabase by public  
+SELECT on SCHEMA::mySchema by public  
+For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.";
+
+        public const string PredicateExpression = "The T-SQL predicate (WHERE clause) used to filter audit logs.";
+
+        public const string BlobStorageTargetState = "Indicates whether blob storage is a destination for audit records.";
+
+        public const string AuditStorageAccountResourceId = "The storage account resource id";
+
+        public const string StorageKeyType = "Specifies which of the storage access keys to use.";
+
+        public const string RetentionInDays = "The number of retention days for the audit logs.";
+
+        public const string NotificationRecipientsEmails = "A semicolon separated list of email addresses to send the alerts to.";
+
+        public const string EmailAdmins = "Defines whether to email administrators.";
+
+        public const string ExcludedDetectionType = "Detection types to exclude.";
+
+        public const string StorageAccountName = "The name of the storage account.";
+
+        public const string ScanResultsStorageAccountName = "The name of the storage account that will hold the scan results.";
+
+        public const string ScanResultsContainerName = "The name of the storage container that will hold the scan results.";
+
+        public const string BlobStorageSasUri = "A SAS URI to a storage container that will hold the scan results.";
+
+        public const string RecurringScansInterval = "The recurring scans interval.";
+
+        public const string ScanEmailAdmins = "A value indicating whether to email service and co-administrators on recurring scan completion.";
+
+        public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
 
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 

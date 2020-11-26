@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for operation of Synapse SQL Pool Restore Point
+    - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
+* Added support for operation of Auditing settings in Workspace-level and SqlPool-level
+    - Add `Set-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Set-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolAuditSetting` cmdlet
+* Added support for operation of Advanced Threat Protection settings in Workspace-level
+    - Add `Update-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Vulnerability Assessment settings in Workspace-level
+    - Add `Update-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Reset-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+* Added support for operation of SQL Active Directory admin
+    - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
 * Fix Null Reference Exception when submit spark job.
 
 ## Version 0.4.0
