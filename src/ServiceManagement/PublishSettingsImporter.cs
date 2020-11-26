@@ -91,7 +91,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 certificateString = profile.ManagementCertificate;
             }
 
-            X509Certificate2 certificate = new X509Certificate2(Convert.FromBase64String(certificateString), string.Empty);
+            X509Certificate2 certificate = new X509Certificate2(Convert.FromBase64String(certificateString), string.Empty, X509KeyStorageFlags.PersistKeySet);
             AzureSession.Instance.DataStore.AddCertificate(certificate);
 
             return certificate;
