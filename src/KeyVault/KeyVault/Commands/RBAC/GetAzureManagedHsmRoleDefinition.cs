@@ -6,7 +6,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.ManagedHsmRoleDefinition, DefaultParameterSetName = InteractiveCreateParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultHsmRoleDefinition, DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSKeyVaultRoleDefinition))]
     public class GetAzureManagedHsmRoleDefinition : RbacCmdletBase
     {

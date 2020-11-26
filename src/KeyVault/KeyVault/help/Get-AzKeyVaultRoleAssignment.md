@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azmanagedhsmroleassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultroleassignment
 schema: 2.0.0
 ---
 
-# Get-AzManagedHsmRoleAssignment
+# Get-AzKeyVaultRoleAssignment
 
 ## SYNOPSIS
 Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
@@ -14,19 +14,19 @@ Get or list role assignments of a managed HSM. Use respective parameters to list
 
 ### List (Default)
 ```
-Get-AzManagedHsmRoleAssignment [-HsmName] <String> [-Scope <String>] [-RoleDefinitionName <String>]
+Get-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] [-RoleDefinitionName <String>]
  [-RoleDefinitionId <String>] [-ObjectId <String>] [-SignInName <String>] [-ApplicationId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzManagedHsmRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleAssignmentName <String>
+Get-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleAssignmentName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use the `Get-AzManagedHsmRoleAssignment` command to list all role assignments that are effective on a scope.
+Use the `Get-AzKeyVaultRoleAssignment` command to list all role assignments that are effective on a scope.
 Without any parameters, this command returns all the role assignments made under the managed HSM.
 This list can be filtered using filtering parameters for principal, role and scope.
 The subject of the assignment must be specified.
@@ -40,7 +40,7 @@ The scope at which access is being granted may be specified. It defaults to "/".
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzManagedHsmRoleAssignment -HsmName myHsm
+PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm
 
 RoleDefinitionName         DisplayName                      ObjectType Scope
 ------------------         -----------                      ---------- -----
@@ -54,7 +54,7 @@ This example lists all role assignments of "myHsm" on all the scope.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzManagedHsmRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com -Scope "/keys"
+PS C:\> Get-AzKeyVaultRoleAssignment -HsmName myHsm -SignInName user1@microsoft.com -Scope "/keys"
 
 RoleDefinitionName         DisplayName                      ObjectType Scope
 ------------------         -----------                      ---------- -----

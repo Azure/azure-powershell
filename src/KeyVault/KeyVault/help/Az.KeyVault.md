@@ -80,17 +80,17 @@ Gets Key Vault managed Azure Storage Accounts.
 ### [Get-AzKeyVaultManagedStorageSasDefinition](Get-AzKeyVaultManagedStorageSasDefinition.md)
 Gets Key Vault managed Storage SAS Definitions.
 
+### [Get-AzKeyVaultRoleAssignment](Get-AzKeyVaultRoleAssignment.md)
+Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
+
+### [Get-AzKeyVaultRoleDefinition](Get-AzKeyVaultRoleDefinition.md)
+List role definitions of a given managed HSM at a given scope.
+
 ### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
 Gets the secrets in a key vault.
 
 ### [Get-AzManagedHsmKey](Get-AzManagedHsmKey.md)
 Gets Managed Hsm keys.
-
-### [Get-AzManagedHsmRoleAssignment](Get-AzManagedHsmRoleAssignment.md)
-Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
-
-### [Get-AzManagedHsmRoleDefinition](Get-AzManagedHsmRoleDefinition.md)
-List role definitions of a given managed HSM at a given scope.
 
 ### [Import-AzKeyVaultCertificate](Import-AzKeyVaultCertificate.md)
 Imports a certificate to a key vault.
@@ -113,7 +113,7 @@ Creates a managed HSM.
 ### [New-AzKeyVaultNetworkRuleSetObject](New-AzKeyVaultNetworkRuleSetObject.md)
 Create an object representing the network rule settings.
 
-### [New-AzManagedHsmRoleAssignment](New-AzManagedHsmRoleAssignment.md)
+### [New-AzKeyVaultRoleAssignment](New-AzKeyVaultRoleAssignment.md)
 Assigns the specified RBAC role to the specified principal, at the specified scope.
 
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
@@ -149,14 +149,14 @@ Removes a Key Vault managed Azure Storage SAS definitions.
 ### [Remove-AzKeyVaultNetworkRule](Remove-AzKeyVaultNetworkRule.md)
 Removes a network rule from a key vault.
 
+### [Remove-AzKeyVaultRoleAssignment](Remove-AzKeyVaultRoleAssignment.md)
+Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
+
 ### [Remove-AzKeyVaultSecret](Remove-AzKeyVaultSecret.md)
 Deletes a secret in a key vault.
 
 ### [Remove-AzManagedHsmKey](Remove-AzManagedHsmKey.md)
 Deletes a key in a managed HSM.
-
-### [Remove-AzManagedHsmRoleAssignment](Remove-AzManagedHsmRoleAssignment.md)
-Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
 
 ### [Restore-AzKeyVaultCertificate](Restore-AzKeyVaultCertificate.md)
 Restores a certificate in a key vault from a backup file.

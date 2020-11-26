@@ -5,6 +5,7 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 . $PSScriptRoot/ManagedHsmDatePlaneTests.ps1
 # ImportModules
 $hsmName = 'hsm29568'
+$signInName = 'yeliu@microsoft.com'
 
 Describe "AddAzManagedHsmKey" {
     It "Create a RSA key inside a managed HSM" {
@@ -179,13 +180,13 @@ Describe "BackupAndRestoreAzManagedHsm" {
 }
 
 Describe "GetAzManagedHsmRoleDefinition" {
-    It "List all the roles at '/keys' scope" {
-        $roles = Get-AzManagedHsmRoleDefinition -HsmName $hsmName -Scope "/keys"
+    It "List all the roles at '/' scope" {
+        $roles = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -Scope "/"
         $roles.Count | Should -BeGreaterThan 0
     }
 
     It "Get a specific role" {
-        $backupRole = Get-AzManagedHsmRoleDefinition -HsmName $hsmName -RoleDefinitionName "managed hsm backup"
+        $backupRole = Get-AzKeyVaultRoleDefinition -HsmName $hsmName -RoleDefinitionName "managed hsm backup"
         $backupRole | Should -Not -Be $null
         $backupRole.Permissions | Should -Not -Be $null
         $backupRole.Permissions.AllowedDataActions | Should -Not -Be $null
@@ -194,18 +195,17 @@ Describe "GetAzManagedHsmRoleDefinition" {
 
 Describe "NewAzManagedHsmRoleAssignment" {
     BeforeEach {
-        $signInName = "user@microsoft.com"
         $roleDefinitionName = "Managed HSM Backup"
         # Clean role
-        $roleAssignment = Get-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+        $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if ($roleAssignment) {
-            Remove-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+            Remove-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         }
     }
 
     It "Assign a role to user" {
         # Assign role
-        $roleAssignment = New-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+        $roleAssignment = New-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         $roleAssignment | Should -Not -Be $null
         $roleAssignment.RoleDefinitionName | Should -Be $roleDefinitionName
     }
@@ -214,17 +214,16 @@ Describe "NewAzManagedHsmRoleAssignment" {
 Describe "RemoveAzManagedHsmRoleAssignment" {
     BeforeEach {
         # Assign role
-        $signInName = "user@microsoft.com"
         $roleDefinitionName = "Managed HSM Backup"
-        $roleAssignment = Get-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+        $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if (!$roleAssignment) {
-            $roleAssignment = New-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+            $roleAssignment = New-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         }
     }
 
-    It "Revoke a role from user at '/keys' scope" {
-        Remove-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName -Scope "/keys"
-        $roleAssignment = Get-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+    It "Revoke a role from user at '/' scope" {
+        Remove-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName -Scope "/"
+        $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         $roleAssignment | Should -Be $null
     }
 }
@@ -232,22 +231,21 @@ Describe "RemoveAzManagedHsmRoleAssignment" {
 Describe "GetAzManagedHsmRoleAssignment" {
     BeforeEach {
         # Assign role
-        $signInName = "user@microsoft.com"
         $roleDefinitionName = "Managed HSM Backup"
-        $roleAssignment = Get-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+        $roleAssignment = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         if (!$roleAssignment) {
-            $roleAssignment = New-AzManagedHsmRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
+            $roleAssignment = New-AzKeyVaultRoleAssignment -HsmName $hsmName -RoleDefinitionName $roleDefinitionName -SignInName $signInName
         }
     }
 
     It "List all role assignmentss in a managed HSM" {
-        $roleAssignments = Get-AzManagedHsmRoleAssignment -HsmName $hsmName
+        $roleAssignments = Get-AzKeyVaultRoleAssignment -HsmName $hsmName
         $roleAssignments | Should -Not -Be $null
         $roleAssignments.Count | Should -BeGreaterThan 0
     }
 
-    It "List a user's role assignments in a managed HSM on '/keys' scope" {
-        $roleAssignments = Get-AzManagedHsmRoleAssignment -HsmName $hsmName -SignInName $signInName -Scope "/keys"
+    It "List a user's role assignments in a managed HSM on '/' scope" {
+        $roleAssignments = Get-AzKeyVaultRoleAssignment -HsmName $hsmName -SignInName $signInName -Scope "/"
         $roleAssignments | Should -Not -Be $null
         $roleAssignments.Count | Should -BeGreaterThan 0
     }

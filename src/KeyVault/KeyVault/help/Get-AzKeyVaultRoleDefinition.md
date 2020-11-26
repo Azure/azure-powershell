@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azmanagedhsmroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultroledefinition
 schema: 2.0.0
 ---
 
-# Get-AzManagedHsmRoleDefinition
+# Get-AzKeyVaultRoleDefinition
 
 ## SYNOPSIS
 List role definitions of a given managed HSM at a given scope.
@@ -14,13 +14,13 @@ List role definitions of a given managed HSM at a given scope.
 
 ### Interactive (Default)
 ```
-Get-AzManagedHsmRoleDefinition [-HsmName] <String> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzManagedHsmRoleDefinition [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
+Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ List role definitions of a given managed HSM at a given scope.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzManagedHsmRoleDefinition -HsmName myHsm -Scope "/keys"
+PS C:\> Get-AzKeyVaultRoleDefinition -HsmName myHsm -Scope "/keys"
 
 RoleName                              Description Permissions
 --------                              ----------- -----------
@@ -48,7 +48,7 @@ The example lists all the roles at "/keys" scope.
 
 ### Example 2
 ```powershell
-PS C:\> $backupRole = Get-AzManagedHsmRoleDefinition -HsmName myHsm -RoleDefinitionName "managed hsm backup"
+PS C:\> $backupRole = Get-AzKeyVaultRoleDefinition -HsmName myHsm -RoleDefinitionName "managed hsm backup"
 
 PS C:\> $backupRole.Permissions
 
