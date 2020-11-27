@@ -1537,7 +1537,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1573,7 +1573,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     workspaceName,
                     sqlPoolName,
                     sqlPoolRestorePointName);
-;
+
                 return respoint != null;
             }
             catch (NotFoundException)

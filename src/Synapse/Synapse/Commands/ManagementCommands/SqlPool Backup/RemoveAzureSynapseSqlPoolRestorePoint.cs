@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
             {
                 var dateString = this.InputObject.Id.Substring(this.InputObject.Id.LastIndexOf('/') + 1);
                 this.RestorePointCreationDate = DateTime.FromFileTime(Convert.ToInt64(dateString));
-                this.ResourceId = this.InputObject.Id.Substring(0, this.InputObject.Id.Substring(0, this.InputObject.Id.LastIndexOf("/")).LastIndexOf("/"));
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                var resourceId = this.InputObject.Id.Substring(0, this.InputObject.Id.Substring(0, this.InputObject.Id.LastIndexOf("/")).LastIndexOf("/"));
+                var resourceIdentifier = new ResourceIdentifier(resourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
