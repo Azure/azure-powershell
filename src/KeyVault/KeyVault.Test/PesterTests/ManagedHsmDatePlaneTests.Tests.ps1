@@ -4,8 +4,11 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 
 . $PSScriptRoot/ManagedHsmDatePlaneTests.ps1
 # ImportModules
-$hsmName = 'hsm29568'
+$hsmName = 'yeminghsm01'
 $signInName = 'yeliu@microsoft.com'
+$storageAccount = 'yemingsa01'
+$containerName = 'hsmbackup'
+$sasToken = ConvertTo-SecureString -AsPlainText -Force ''
 
 Describe "AddAzManagedHsmKey" {
     It "Create a RSA key inside a managed HSM" {
@@ -163,18 +166,18 @@ Describe "BackupAndRestoreAzManagedHsmKey" {
 }
 
 Describe "BackupAndRestoreAzManagedHsm" {
-    BeforeEach {
-        $sasToken = ConvertTo-SecureString -AsPlainText -Force "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-21T13:11:01Z&st=2020-10-21T05:11:01Z&spr=https&sig=******"
-        $containerUri = "https://{accountName}.blob.core.windows.net/{containerName}"
-    }
+    $script:backupUri = ''
+    $containerUri = "https://$storageAccount.blob.core.windows.net/$containerName"
 
-    It "Backup a managed HSM" {
-        $uri = Backup-AzManagedHsm -Name $hsmName -StorageContainerUri $containerUri -SasToken $sasToken
-        $uri | Should -Not -Be $null
+    It "Backup then restore a managed HSM" {
+        $script:backupUri = Backup-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -SasToken $sasToken
+        $script:backupUri | Should -Not -Be $null
     }
 
     It "Restore a managed HSM" {
-        $restoreResult = Restore-AzManagedHsm -Name $hsmName -StorageContainerUri $containerUri -BackupFolder "mhsm-$hsmName-2020102105402658" -SasToken $sasToken -PassThru
+        $script:backupUri = [System.Uri]::new($script:backupUri)
+        $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
+        $restoreResult = Restore-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
         $restoreResult | Should -Be $True
     }
 }

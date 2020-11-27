@@ -29,6 +29,9 @@ Adds a rule meant to restrict access to a key vault based on the client's intern
 ### [Add-AzManagedHsmKey](Add-AzManagedHsmKey.md)
 Creates a key in a managed HSM or imports a key into a managed HSM.
 
+### [Backup-AzKeyVault](Backup-AzKeyVault.md)
+Fully backup a managed HSM.
+
 ### [Backup-AzKeyVaultCertificate](Backup-AzKeyVaultCertificate.md)
 Backs up a certificate in a key vault.
 
@@ -40,9 +43,6 @@ Backs up a KeyVault-managed storage account.
 
 ### [Backup-AzKeyVaultSecret](Backup-AzKeyVaultSecret.md)
 Backs up a secret in a key vault.
-
-### [Backup-AzManagedHsm](Backup-AzManagedHsm.md)
-Fully backup a managed HSM.
 
 ### [Backup-AzManagedHsmKey](Backup-AzManagedHsmKey.md)
 Backs up a key in a managed HSM.
@@ -158,6 +158,9 @@ Deletes a secret in a key vault.
 ### [Remove-AzManagedHsmKey](Remove-AzManagedHsmKey.md)
 Deletes a key in a managed HSM.
 
+### [Restore-AzKeyVault](Restore-AzKeyVault.md)
+Fully restores a managed HSM from backup.
+
 ### [Restore-AzKeyVaultCertificate](Restore-AzKeyVaultCertificate.md)
 Restores a certificate in a key vault from a backup file.
 
@@ -169,9 +172,6 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### [Restore-AzKeyVaultSecret](Restore-AzKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
-
-### [Restore-AzManagedHsm](Restore-AzManagedHsm.md)
-Fully restores a managed HSM from backup.
 
 ### [Restore-AzManagedHsmKey](Restore-AzManagedHsmKey.md)
 Creates a key in a managed HSM from a backed-up key.

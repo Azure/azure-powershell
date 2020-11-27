@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azmanagedhsm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azkeyvault
 schema: 2.0.0
 ---
 
-# Backup-AzManagedHsm
+# Backup-AzKeyVault
 
 ## SYNOPSIS
 Fully backup a managed HSM.
@@ -14,31 +14,31 @@ Fully backup a managed HSM.
 
 ### InteractiveStorageName (Default)
 ```
-Backup-AzManagedHsm [-Name] <String> -StorageAccountName <String> -StorageContainerName <String>
+Backup-AzKeyVault [-HsmName] <String> -StorageAccountName <String> -StorageContainerName <String>
  -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveStorageUri
 ```
-Backup-AzManagedHsm [-Name] <String> -StorageContainerUri <Uri> -SasToken <SecureString>
+Backup-AzKeyVault [-HsmName] <String> -StorageContainerUri <Uri> -SasToken <SecureString>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageUri
 ```
-Backup-AzManagedHsm -StorageContainerUri <Uri> -SasToken <SecureString> -HsmObject <PSManagedHsm>
+Backup-AzKeyVault -StorageContainerUri <Uri> -SasToken <SecureString> -HsmObject <PSManagedHsm>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageName
 ```
-Backup-AzManagedHsm -StorageAccountName <String> -StorageContainerName <String> -SasToken <SecureString>
+Backup-AzKeyVault -StorageAccountName <String> -StorageContainerName <String> -SasToken <SecureString>
  -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Fully backup a managed HSM to a storage account.
-Use `Restore-AzManagedHsm` to restore the backup.
+Use `Restore-AzKeyVault` to restore the backup.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Use `Restore-AzManagedHsm` to restore the backup.
 ```powershell
 PS C:\> $sasToken = ConvertTo-SecureString -AsPlainText -Force "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-12T14:42:19Z&st=2020-10-12T06:42:19Z&spr=https&sig=******"
 
-PS C:\> Backup-AzManagedHsm -Name myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -SasToken $sasToken
+PS C:\> Backup-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -SasToken $sasToken
 
 https://{accountName}.blob.core.windows.net/{containerName}/{backupFolder}
 ```
@@ -70,6 +70,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HsmName
+Name of the HSM.
+
+```yaml
+Type: System.String
+Parameter Sets: InteractiveStorageName, InteractiveStorageUri
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HsmObject
 Managed HSM object
 
@@ -80,21 +95,6 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the HSM.
-
-```yaml
-Type: System.String
-Parameter Sets: InteractiveStorageName, InteractiveStorageUri
-Aliases: HsmName
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
