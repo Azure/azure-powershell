@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 2.3.0
 * Added cmdlets for data collection rules: 
     - `Get-AzDataCollectionRule`
     - `New-AzDataCollectionRule`
