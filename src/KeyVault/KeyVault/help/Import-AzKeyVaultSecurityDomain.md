@@ -8,7 +8,7 @@ schema: 2.0.0
 # Import-AzKeyVaultSecurityDomain
 
 ## SYNOPSIS
-Restores previous backed up security domain data to a managed HSM.
+Imports previously exported security domain data to a managed HSM.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Import-AzKeyVaultSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> [
 ```
 
 ## DESCRIPTION
-This cmdlet restores previous backed up security domain data to a managed HSM.
+This cmdlet imports previously exported security domain data to a managed HSM.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = 
 PS C:\> Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
 ```
 
-First, the keys need be provided to decrypt the security domain data. 
+First, the keys need be provided to decrypt the security domain data.
 Then, The **Import-AzKeyVaultSecurityDomain** command restores previous backed up security domain data to a managed HSM using these keys.
 
 ## PARAMETERS

@@ -79,10 +79,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll', '.\Az.KeyVa
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey', 
-               'Remove-AzManagedHsmKey', 'Undo-AzManagedHsmKeyRemoval', 
-               'Update-AzManagedHsmKey', 'Backup-AzManagedHsmKey', 
-               'Restore-AzManagedHsmKey', 'Add-AzKeyVaultCertificate', 
+CmdletsToExport = 'Add-AzKeyVaultCertificate', 
                'Update-AzKeyVaultCertificate', 
                'Stop-AzKeyVaultCertificateOperation', 
                'Get-AzKeyVaultCertificateOperation', 
@@ -135,8 +132,7 @@ CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
-               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute', 
-               'Set-AzManagedHsmKey', 'Set-AzManagedHsmKeyAttribute'
+               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

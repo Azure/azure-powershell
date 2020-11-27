@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (existingResource == null)
             {
-                throw new Exception(string.Format("A managed HSM with name '{0}' in resource group '{1}' does not exist. Please use New-AzManagedHsm to create a managed HSM with these properties.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A managed HSM with name '{0}' in resource group '{1}' does not exist. Please use New-AzKeyVaultManagedHsm to create a managed HSM with these properties.", this.Name, this.ResourceGroupName));
             }
 
             if (this.ShouldProcess(this.Name, string.Format("Updating managed HSM '{0}' in resource group '{1}'.", this.Name, this.ResourceGroupName)))
