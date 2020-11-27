@@ -25,7 +25,7 @@ function setupEnv() {
     $env.query04 = 'query-' + (RandomString -allChars $false -len 6)
 
     # Configuration parameters
-    $env.kqlFilePath = 'Query.kql'
+    $env.kqlFilePath = 'Query.txt'
     $env.location = 'global'
 
     # Create the test group
