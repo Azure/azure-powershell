@@ -29,20 +29,22 @@ Deletes a server.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Remove PostgreSql server by resourceGroup and server name
 ```powershell
-Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+PS C:\> Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+
 ```
 
+This cmdlet removes PostgreSql server by resourceGroup and server name.
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Remove PostgreSql server by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
 PS C:\> Remove-AzPostgreSqlServer -InputObject $ID
+ 
 ```
 
-
+These cmdlets remove PostgreSql server by identity.
 
 ## PARAMETERS
 
