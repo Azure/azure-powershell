@@ -124,13 +124,19 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SqlPoolName = "Name of Synapse SQL pool.";
 
+        public const string SqlPoolRestorePointName = "Name of Synapse SQL pool restore point name.";
+
         public const string SqlPoolVersion = "Version of Synapse SQL pool. For example, 2 or 3.";
 
         public const string SqlPoolNewName = "The new name to rename the SQL pool to.";
 
         public const string SqlPoolResourceId = "Resource identifier of Synapse SQL Pool.";
 
+        public const string SqlPoolRestorePointResourceId = "Resource identifier of Synapse SQL Pool Restore Point.";
+
         public const string SqlPoolObject = "SQL pool input object, usually passed through the pipeline.";
+
+        public const string SqlPoolRestorePointObject = "SQL pool restore point input object, usually passed through the pipeline.";
 
         public const string SuspendSqlPool = "Indicates to pause the SQL pool";
 

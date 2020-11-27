@@ -1,11 +1,9 @@
 ﻿using Microsoft.Azure.Management.Synapse.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSRestorePoint
+    public class PSRestorePoint : PSSynapseResource
     {
         public PSRestorePoint(RestorePoint restorePoint)
         {
@@ -14,6 +12,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.EarliestRestoreDate = restorePoint.EarliestRestoreDate;
             this.RestorePointCreationDate = restorePoint.RestorePointCreationDate;
             this.RestorePointLabel = restorePoint.RestorePointLabel;
+            this.Id = restorePoint.Id;
+            this.Name = restorePoint.Name;
+            this.Type = restorePoint.Type;
         }
 
         public string Location { get; }
@@ -25,5 +26,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public DateTime? RestorePointCreationDate { get; }
 
         public string RestorePointLabel { get; }
+
+        public new string Id { get; set; }
+
+        public new string Name { get; set; }
+
+        public new string Type { get; set; }
     }
 }

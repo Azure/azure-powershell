@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added support for operation of Synapse SQL Pool Restore Point
     - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Remove-AzSynapseSqlPoolRestorePoint` cmdlet
 * Added support for operation of Auditing settings in Workspace-level and SqlPool-level
     - Add `Set-AzSynapseSqlAuditSetting` cmdlet
     - Add `Get-AzSynapseSqlAuditSetting` cmdlet
@@ -39,7 +40,7 @@
     - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
     - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
     - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
-* Fix Null Reference Exception when submit spark job.
+* Fixed Null Reference Exception when submit spark job.
 
 ## Version 0.4.0
 * Add `-Force` to all Remove cmdlets

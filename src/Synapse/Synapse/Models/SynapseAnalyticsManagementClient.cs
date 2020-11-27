@@ -1537,9 +1537,48 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
+            }
+        }
+
+        public void DeleteSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointCreationDate)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestSqlPoolRestorePoint(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationDate))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.SqlPoolRestorePointDoesNotExist, sqlPoolRestorePointCreationDate));
+                }
+
+                this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationDate);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public bool TestSqlPoolRestorePoint(string resourceGroupName, string workspaceName, string sqlPoolName, string sqlPoolRestorePointName)
+        {
+            try
+            {
+                RestorePoint respoint = this._synapseManagementClient.SqlPoolRestorePoints.Get(resourceGroupName,
+                    workspaceName,
+                    sqlPoolName,
+                    sqlPoolRestorePointName);
+
+                return respoint != null;
+            }
+            catch (NotFoundException)
+            {
+                return false;
             }
         }
 

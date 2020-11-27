@@ -811,6 +811,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse Sql Pool Restore Point &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseTrigger {
@@ -969,6 +978,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseSqlPool {
             get {
                 return ResourceManager.GetString("RemovingSynapseSqlPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting SQL pool Restore Point &apos;{0}&apos; in resource group &apos;{1}&apos; , workspace &apos;{2}&apos;, under  Sql Pool &apos;{3}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlPoolRestorePoint", resourceCulture);
             }
         }
         
@@ -1203,6 +1221,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SqlPoolDoesNotExist {
             get {
                 return ResourceManager.GetString("SqlPoolDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified Restore Point &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string SqlPoolRestorePointDoesNotExist {
+            get {
+                return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
         
