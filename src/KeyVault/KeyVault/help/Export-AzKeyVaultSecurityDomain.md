@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzKeyVaultSecurityDomain
 
 ## SYNOPSIS
-Backs up the security domain data of a managed HSM for restoring.
+Exports the security domain data of a managed HSM.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Export-AzKeyVaultSecurityDomain -Certificates <String[]> -OutputPath <String> [-
 ```
 
 ## DESCRIPTION
-This cmdlet backs up the security domain data of a managed HSM for restoring.
+Exports the security domain data of a managed HSM for importing on another HSM.
 
 ## EXAMPLES
 

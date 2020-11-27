@@ -17,7 +17,7 @@ function GetAzManagedHsm {
     $resourceGroupName = GetRandomName -Prefix "rg"
     $Location = "eastus2"
     $administrator = "c1be1392-39b8-4521-aafc-819a47008545", 'd7e17135-d5a7-4b8b-89e5-252aa15b7e01'
-    $hsm = New-AzManagedHsm -Name $HsmName -ResourceGroupName $ResourceGroupName -Location $Location -Administrator $Administrator
+    $hsm = New-AzKeyVaultManagedHsm -Name $HsmName -ResourceGroupName $ResourceGroupName -Location $Location -Administrator $Administrator
     return $hsm
 }
 
