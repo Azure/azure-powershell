@@ -127,8 +127,8 @@ CmdletsToExport = 'Add-AzManagedHsmKey', 'Get-AzManagedHsmKey',
                'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 
                'Undo-AzKeyVaultManagedStorageAccountRemoval', 
                'Add-AzKeyVaultNetworkRule', 'Update-AzKeyVaultNetworkRuleSet', 
-               'Remove-AzKeyVaultNetworkRule', 'Backup-AzManagedHsmSecurityDomain', 
-               'Restore-AzManagedHsmSecurityDomain'
+               'Remove-AzKeyVaultNetworkRule', 'Export-AzKeyVaultSecurityDomain', 
+               'Import-AzKeyVaultSecurityDomain'
 
 # Variables to export from this module
 # VariablesToExport = @()

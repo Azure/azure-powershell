@@ -4,11 +4,13 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 
 . $PSScriptRoot/ManagedHsmDatePlaneTests.ps1
 # ImportModules
-$hsmName = 'yeminghsm01'
+$hsmName = 'yeminghsm02'
 $signInName = 'yeliu@microsoft.com'
 $storageAccount = 'yemingsa01'
 $containerName = 'hsmbackup'
-$sasToken = ConvertTo-SecureString -AsPlainText -Force ''
+$sasToken = ConvertTo-SecureString -AsPlainText -Force 'insert sas token'
+$certs = "D:\sd1.cer", "D:\sd2.cer", "D:\sd3.cer" # for security domain
+$certsKeys = @{PublicKey = "D:\sd1.cer"; PrivateKey = "D:\sd1.key" }, @{PublicKey = "D:\sd2.cer"; PrivateKey = "D:\sd2.key" }, @{PublicKey = "D:\sd3.cer"; PrivateKey = "D:\sd3.key" }
 
 Describe "AddAzManagedHsmKey" {
     It "Create a RSA key inside a managed HSM" {
@@ -254,8 +256,14 @@ Describe "GetAzManagedHsmRoleAssignment" {
     }
 }
 
-# to do: manually remove all stuffs in resource group
-# AfterAll {
-# $hsm = Get-AzManagedHsm -Name $hsmName
-# Remove-AzResourceGroup -Name $hsm.ResourceGroupName -Force
-# }
+Describe 'Export Import Security domain' {
+    $sd = New-TemporaryFile
+    It 'Can export security domain' {
+        Get-Content $sd | Should -BeNullOrEmpty
+        Export-AzKeyVaultSecurityDomain -HsmName $hsmName -Certificates $certs -OutputPath $sd.FullName -Quorum 3 -Force
+        Get-Content $sd | Should -Not -BeNullOrEmpty
+    }
+
+    # Cannot test importing because it needs another HSM
+    #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
+}
