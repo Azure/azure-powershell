@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Upgraded a default user logic in New-AzMigrateServerReplication cmdlet
+
 ## Version 0.1.0
 * First preview release for module Az.Migrate
 
