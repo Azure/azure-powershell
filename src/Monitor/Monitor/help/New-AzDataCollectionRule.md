@@ -32,15 +32,8 @@ The **New-AzDataCollectionRule** cmdlet creates a data collection rule.
 
 Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
 
-To use the -RuleFile parameter, construct a json file containing three properties ([Example #1](#example1)):
-```yaml
-{
-  "properties": {
-    "dataSources": { ... },
-    "destinations": { ... },
-    "dataFlows": [ ... ]
-  }
-``` 
+To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see [Example #1](#example1))
+
 You may find here the [schema detail](https://docs.microsoft.com/en-us/rest/api/monitor/datacollectionrules/create).
 
 The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported ([Example #2](#example2)).
