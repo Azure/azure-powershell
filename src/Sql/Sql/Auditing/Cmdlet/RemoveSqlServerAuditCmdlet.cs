@@ -14,21 +14,18 @@
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Management.Sql.Models;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class RemoveAzSqlServerAudit : RemoveSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+    public abstract class RemoveSqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType>
+        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {
-        protected override SqlServerAuditAdapter InitModelAdapter()
+        protected override ServerAuditModelType PersistChanges(ServerAuditModelType entity)
         {
-            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
+            ModelAdapter.RemoveAuditingSettings(entity);
+            return null;
         }
     }
 }

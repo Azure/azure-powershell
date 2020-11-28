@@ -20,15 +20,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditCmdletsSuffix,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerDevOpsAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class RemoveAzSqlServerAudit : RemoveSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+    public class RemoveAzSqlServerMSSupportAudit : RemoveSqlServerAuditCmdlet<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
-        protected override SqlServerAuditAdapter InitModelAdapter()
+        protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {
-            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
+            return new SqlDevOpsAuditAdapter(DefaultProfile.DefaultContext);
         }
     }
 }
