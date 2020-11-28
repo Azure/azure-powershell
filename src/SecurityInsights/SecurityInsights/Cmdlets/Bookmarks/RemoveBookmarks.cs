@@ -60,7 +60,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                SecurityInsightsClient.Bookmarks.Delete(ResourceGroupName, WorkspaceName, name);
+                var result = SecurityInsightsClient.Bookmarks.DeleteWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name).Result;
+                if (result.Response.StatusCode == (System.Net.HttpStatusCode)200)
+                {
+                    System.Console.WriteLine("success");
+                }
+                else if (result.Response.StatusCode == (System.Net.HttpStatusCode)204)
+                {
+                    System.Console.WriteLine("success");
+                }
             }
 
             if (PassThru.IsPresent)

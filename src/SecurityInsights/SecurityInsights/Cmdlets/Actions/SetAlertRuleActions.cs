@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
         [ValidateNotNullOrEmpty]
         public string LogicAppResourceId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerUri)]
+        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.TriggerUri)]
         public string TriggerUri { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]

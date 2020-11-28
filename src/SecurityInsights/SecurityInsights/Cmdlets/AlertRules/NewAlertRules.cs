@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
 using Microsoft.Azure.Management.SecurityInsights;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 {
@@ -40,12 +41,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty] 
         public string WorkspaceName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("Scheduled", "MicrosoftSecurityIncidentCreation", "Fusion")]
-        public string Kind { get; set; }
+        public SwitchParameter Scheduled { get; set; }
+        
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        public SwitchParameter MicrosoftSecurityIncidentCreation { get; set; }
+        
+        [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Kind)]
+        public SwitchParameter Fusion { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.AlertRuleId)]
         [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = false, HelpMessage = ParameterHelpMessages.AlertRuleId)]

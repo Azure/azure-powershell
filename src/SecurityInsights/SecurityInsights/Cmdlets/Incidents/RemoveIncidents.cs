@@ -60,7 +60,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                SecurityInsightsClient.Incidents.Delete(ResourceGroupName, WorkspaceName, name);
+                var result = SecurityInsightsClient.Incidents.DeleteWithHttpMessagesAsync(ResourceGroupName, WorkspaceName, name).Result;
+                if (result.Response.StatusCode == (System.Net.HttpStatusCode)200)
+                {
+                    System.Console.WriteLine("success");
+                }
+                else if (result.Response.StatusCode == (System.Net.HttpStatusCode)204)
+                {
+                    System.Console.WriteLine("success");
+                }
             }
 
             if (PassThru.IsPresent)
