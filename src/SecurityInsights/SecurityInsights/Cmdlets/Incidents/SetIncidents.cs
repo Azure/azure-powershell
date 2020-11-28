@@ -85,6 +85,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 case ParameterSetNames.IncidentId:
                     break;
                 case ParameterSetNames.InputObject:
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                    WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     IncidentId = InputObject.Name;
                     Etag = InputObject.Etag;
                     Title = InputObject.Title;

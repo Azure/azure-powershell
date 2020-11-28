@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
                 case ParameterSetNames.ActionId:
                     break;
                 case ParameterSetNames.InputObject:
+                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                    WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     ActionId = InputObject.Name;
                     AlertRuleId = AzureIdUtilities.GetAlertRuleName(InputObject.Id);
                     WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);

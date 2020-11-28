@@ -300,6 +300,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         WriteObject(outputticonnector.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.InputObject:
+                        ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                        WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
+                        name = InputObject.Name;
                         switch (InputObject.Kind)
                         {
                             case "AzureActiveDirectory":

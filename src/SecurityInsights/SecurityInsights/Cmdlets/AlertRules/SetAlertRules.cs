@@ -199,19 +199,29 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
                         WriteObject(outputscheduledalertrule.ConvertToPSType(), enumerateCollection: false);
                         break;
                     case ParameterSetNames.InputObject:
-                        switch(InputObject.Kind)
-                        {
+                        
+                        switch (InputObject.Kind)
+                        { 
                             case "Fusion":
+                                ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                                WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
+                                name = InputObject.Name;
                                 var fusionInputRule = InputObject.CreatePSStype();
                                 outputfusionalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, fusionInputRule);
                                 WriteObject(outputfusionalertrule.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "Scheduled":
+                                ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                                WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
+                                name = InputObject.Name;
                                 var scheduledInputRule = InputObject.CreatePSStype();
                                 outputscheduledalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, scheduledInputRule);
                                 WriteObject(outputscheduledalertrule.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "MicrosoftSecurityIncidentCreation":
+                                ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
+                                WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
+                                name = InputObject.Name;
                                 var msicInputRule = InputObject.CreatePSStype();
                                 outputmsicalertrule = SecurityInsightsClient.AlertRules.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, msicInputRule);
                                 WriteObject(outputmsicalertrule.ConvertToPSType(), enumerateCollection: false);
