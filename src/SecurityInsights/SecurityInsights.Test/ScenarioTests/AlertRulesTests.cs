@@ -74,6 +74,13 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelAlertRule-InputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAlertRule()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelAlertRule-Delete");

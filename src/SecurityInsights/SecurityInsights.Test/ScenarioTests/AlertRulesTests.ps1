@@ -125,6 +125,22 @@ function Set-AzSentinelAlertRule-Update
 	Remove-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name)
 }
 
+function Set-AzSentinelAlertRule-InputObject
+{
+	#Create Alert Rule
+	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Scheduled -Enabled -DisplayName "PoshModuleTest" -Severity Low -Query "SecurityAlert | take 1" -QueryFrequency (New-TimeSpan -Hours 5) -QueryPeriod (New-TimeSpan -Hours 5) -TriggerThreshold 10
+	$alertrule.Enabled = $false
+	#update alert rule
+	$alertrule | Set-AzSentinelAlertRule
+	$alertrule = Get-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name)
+
+	# Validate
+	Validate-AlertRule $alertrule
+
+	#Cleanup
+	Remove-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertrule.Name)
+}
+
 <#
 .SYNOPSIS
 Delete AlertRule

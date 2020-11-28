@@ -72,14 +72,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                 case ParameterSetNames.BookmarkId:
                     break;
                 case ParameterSetNames.InputObject:
-                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
-                    WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     BookmarkId = InputObject.Name;
                     Etag = InputObject.Etag;
                     WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
                     ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     DisplayName = InputObject.DisplayName;
-                    IncidentInfo = InputObject.IncidentInfo;
+                    if (InputObject.IncidentInfo.IncidentId != null) { IncidentInfo = InputObject.IncidentInfo; }
                     Labels = InputObject.Labels;
                     Notes = InputObject.Notes;
                     Query = InputObject.Query;

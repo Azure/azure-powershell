@@ -88,6 +88,23 @@ function Set-AzSentinelBookmark-Update
 	
 	}
 
+	function Set-AzSentinelBookmark-InputObject
+{
+	#Create $bookmark
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark.Notes = "testnotes"
+	#update $bookmark
+	$bookmark2 = $bookmark | Set-AzSentinelBookmark
+	
+	# Validate
+	Validate-Bookmark $bookmark2
+
+	#Cleanup
+	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
+	
+	
+	}
+
 <#
 .SYNOPSIS
 Delete Bookmark

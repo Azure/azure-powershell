@@ -83,6 +83,20 @@ function Set-AzSentinelDataConnector-Update
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
 }
 
+function Set-AzSentinelDataConnector-InputObject
+{
+	#Create Data Connector
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector.DataTypes.Alerts.State = "disabled"
+	#Update Data Connector
+    $DataConnector2 = $DataConnector | Set-AzSentinelDataConnector
+	# Validate
+	Validate-DataConnector $DataConnector2
+
+	#Cleanup
+	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
+}
+
 <#
 .SYNOPSIS
 Delete Data Connector

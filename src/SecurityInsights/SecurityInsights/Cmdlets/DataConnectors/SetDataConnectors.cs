@@ -307,41 +307,49 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         {
                             case "AzureActiveDirectory":
                                 var aadinputconnector = InputObject.CreatePSType();
+                                aadinputconnector.Etag = InputObject.Etag;
                                 outputaadconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aadinputconnector);
                                 WriteObject(outputaadconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "AzureAdvancedThreatProtection":
                                 var aatpinputconnector = InputObject.CreatePSType();
+                                aatpinputconnector.Etag = InputObject.Etag;
                                 outputaatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, aatpinputconnector);
                                 WriteObject(outputaatpconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "AzureSecurityCenter":
                                 var ascinputconnector = InputObject.CreatePSType();
+                                ascinputconnector.Etag = InputObject.Etag;
                                 outputascconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, ascinputconnector);
                                 WriteObject(outputascconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "AmazonWebServicesCloudTrail":
                                 var awsinputconnector = InputObject.CreatePSType();
+                                awsinputconnector.Etag = InputObject.Etag;
                                 outputawsconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, awsinputconnector);
                                 WriteObject(outputawsconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "MicrosoftCloudAppSecurity":
                                 var mcasinputconnector = InputObject.CreatePSType();
+                                mcasinputconnector.Etag = InputObject.Etag;
                                 outputmcasconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mcasinputconnector);
                                 WriteObject(outputmcasconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "MicrosoftDefenderAdvancedThreatProtection":
                                 var mdatpinputconnector = InputObject.CreatePSType();
+                                mdatpinputconnector.Etag = InputObject.Etag;
                                 outputmdatpconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, mdatpinputconnector);
                                 WriteObject(outputmdatpconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "Office365":
                                 var officeinputconnector = InputObject.CreatePSType();
+                                officeinputconnector.Etag = InputObject.Etag;
                                 outputofficeconnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, officeinputconnector);
                                 WriteObject(outputofficeconnector.ConvertToPSType(), enumerateCollection: false);
                                 break;
                             case "ThreatIntelligence":
                                 var tiinputconnector = InputObject.CreatePSType();
+                                tiinputconnector.Etag = InputObject.Etag;
                                 outputticonnector = SecurityInsightsClient.DataConnectors.CreateOrUpdate(ResourceGroupName, WorkspaceName, name, tiinputconnector);
                                 WriteObject(outputticonnector.ConvertToPSType(), enumerateCollection: false);
                                 break;

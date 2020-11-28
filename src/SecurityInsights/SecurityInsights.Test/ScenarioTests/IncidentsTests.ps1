@@ -88,6 +88,23 @@ function Set-AzSentinelIncident-Update
 	
 	}
 
+	function Set-AzSentinelIncident-InputObject
+{
+	#Create $Incident
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident.Severity = "Medium"
+	#update $Incident
+	$Incident2 = $Incident | Set-AzSentinelIncident
+	
+	# Validate
+	Validate-Incident $Incident2
+
+	#Cleanup
+	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
+	
+	
+	}
+
 <#
 .SYNOPSIS
 Delete Incident

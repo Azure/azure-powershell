@@ -48,29 +48,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.TriggerUri)]
         public string TriggerUri { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
-        [ValidateNotNullOrEmpty]
-        public PSSentinelActionResponse InputObject { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
-            {
-                case ParameterSetNames.ActionId:
-                    break;
-                case ParameterSetNames.InputObject:
-                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
-                    WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
-                    ActionId = InputObject.Name;
-                    AlertRuleId = AzureIdUtilities.GetAlertRuleName(InputObject.Id);
-                    WorkspaceName = AzureIdUtilities.GetWorkspaceName(InputObject.Id);
-                    ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
-                    LogicAppResourceId = InputObject.LogicAppResourceId;
-                    break;
-                default:
-                    throw new PSInvalidOperationException();
-            }
-
             var name = ActionId;
             ActionRequest action = new ActionRequest
             {

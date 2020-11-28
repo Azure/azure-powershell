@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelIncident-InputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Remove()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelIncident-Delete");
