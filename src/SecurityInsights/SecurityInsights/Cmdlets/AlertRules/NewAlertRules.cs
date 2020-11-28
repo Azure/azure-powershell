@@ -142,10 +142,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
             {
                 SuppressionDuration = new TimeSpan(1, 00, 00);
             }
-            if(AlertRuleTemplateName == null)
-            {
-                AlertRuleTemplateName = "";
-            }
 
             var name = AlertRuleId;
             if (ShouldProcess(name, VerbsCommon.New))

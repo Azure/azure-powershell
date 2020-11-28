@@ -100,13 +100,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public IList<string> SeveritiesFilter { get; set; }
 
-       [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SuppressionDuration)]
+       [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SuppressionDuration)]
         [ValidateNotNullOrEmpty]
         public TimeSpan SuppressionDuration { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SuppressionEnabled)]
-        [ValidateNotNullOrEmpty]
-        public bool SuppressionEnabled { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SuppressionEnabled)]
+        public SwitchParameter SuppressionEnabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Query)]
         [ValidateNotNullOrEmpty]
@@ -143,6 +142,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         public override void ExecuteCmdlet()
         {
             var name = AlertRuleId;
+            if (SuppressionEnabled == false)
+            {
+                SuppressionDuration = new TimeSpan(1, 00, 00);
+            }
             if (ShouldProcess(name, VerbsCommon.Set))
             {
                 
