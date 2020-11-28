@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         break;
                     case "ThreatIntelligence":
                         TIDataConnectorDataTypesIndicators tiIndicators = new TIDataConnectorDataTypesIndicators
-                        { State = Indicators.ToLower() };
+                        { State = Indicators.ToLower() }; 
                         TIDataConnectorDataTypes tiDataTypes = new TIDataConnectorDataTypes
                         {
                             Indicators = tiIndicators

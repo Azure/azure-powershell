@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRule", DefaultParameterSetName = ParameterSetNames.FusionAlertRule), OutputType(typeof(PSSentinelAlertRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRule", DefaultParameterSetName = ParameterSetNames.ScheduledAlertRule), OutputType(typeof(PSSentinelAlertRule))]
     public class NewAlertRules : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -58,11 +58,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public string AlertRuleTemplateName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [ValidateNotNullOrEmpty]
-        public bool Enabled { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Enabled)]
+        public SwitchParameter Enabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.MicrosoftSecurityIncidentCreationRule, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.DisplayName)]
@@ -91,13 +90,12 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
         [ValidateNotNullOrEmpty]
         public IList<string> SeveritiesFilter { get; set; }
 
-       [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.SuppressionDuration)]
+       [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.SuppressionDuration)]
         [ValidateNotNullOrEmpty]
         public TimeSpan SuppressionDuration { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.SuppressionEnabled)]
-        [ValidateNotNullOrEmpty]
-        public bool SuppressionEnabled { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.SuppressionEnabled)]
+        public SwitchParameter SuppressionEnabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.Query)]
         [ValidateNotNullOrEmpty]
@@ -136,6 +134,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
             if(AlertRuleId == null)
             {
                 AlertRuleId = Guid.NewGuid().ToString();
+            }
+            if(SuppressionEnabled == false)
+            {
+                SuppressionDuration = new TimeSpan(1, 00, 00);
+            }
+            if(AlertRuleTemplateName == null)
+            {
+                AlertRuleTemplateName = "";
             }
 
             var name = AlertRuleId;

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
         [ValidateNotNullOrEmpty]
         public string AlertRuleId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = false, HelpMessage = ParameterHelpMessages.ActionId)] 
+        [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.ActionId)] 
         public string ActionId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ActionId, Mandatory = true, HelpMessage = ParameterHelpMessages.LogicAppResourceId)]
