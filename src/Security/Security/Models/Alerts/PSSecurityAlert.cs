@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Security.Models;
 using System;
 using System.Collections.Generic;
 
@@ -23,46 +24,49 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
 
         public string Name { get; set; }
 
-        public string ActionTaken { get; set; }
-
         public string AlertDisplayName { get; set; }
-
-        public string AlertName { get; set; }
-
-        public string AssociatedResource { get; set; }
-
-        public bool? CanBeInvestigated { get; set; }
 
         public string CompromisedEntity { get; set; }
 
-        public List<PSSecurityAlertConfidenceReason> ConfidenceReasons { get; set; }
-
-        public double? ConfidenceScore { get; set; }
-
         public string Description { get; set; }
-
-        public DateTime? DetectedTimeUtc { get; set; }
 
         public List<PSSecurityAlertEntity> Entities { get; set; }
 
-        public IDictionary<string,object> ExtendedProperties { get; set; }
+        public IDictionary<string,string> ExtendedProperties { get; set; }
 
-        public string InstanceId { get; set; }
+        public List<string> RemediationSteps { get; set; }
 
-        public string RemediationSteps { get; set; }
+        public string Severity { get; set; }
 
-        public string ReportedSeverity { get; set; }
-
-        public DateTime? ReportedTimeUtc { get; set; }
-
-        public string State { get; set; }
-
-        public string SubscriptionId { get; set; }
-
-        public string SystemSource { get; set; }
+        public string Status { get; set; }
 
         public string VendorName { get; set; }
 
-        public string WorkspaceArmId { get; set; }
+        public string CorrelationKey { get; set; }
+        
+        public bool? IsIncident { get; set; }
+        
+        public string ProductName { get; set; }
+        
+        public DateTime? TimeGeneratedUtc { get; set; }
+        public string AlertUri { get; set; }
+        
+        public List<IDictionary<string, string>> ExtendedLinks { get; set; }
+        
+        public List<ResourceIdentifier> ResourceIdentifiers { get; set; }
+        
+        public string Intent { get; set; }
+        
+        public string ProductComponentName { get; set; }
+
+        public string SystemAlertId { get; set; }
+
+        public string AlertType { get; set; }
+
+        public DateTime? ProcessingEndTimeUtc { get; set; }
+
+        public DateTime? EndTimeUtc { get; set; }
+
+        public DateTime? StartTimeUtc { get; set; }
     }
 }

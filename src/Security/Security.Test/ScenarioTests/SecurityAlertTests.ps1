@@ -28,7 +28,7 @@ Get security alerts on a resource group and its resources
 #>
 function Get-AzureRmSecurityAlert-ResourceGroupScope
 {
-	$rgName = Get-TestResourceGroupName
+	$rgName = "Sample-RG"
 
     $alerts = Get-AzSecurityAlert -ResourceGroupName $rgName
 	Validate-Alerts $alerts
@@ -166,5 +166,5 @@ function Validate-AlertActivity
 	param($alert)
 
 	Assert-NotNull $alert
-	Assert-True { $alert.State -eq "Active" }
+	Assert-True { $alert.Status -eq "Active" }
 }
