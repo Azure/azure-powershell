@@ -1,0 +1,284 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzgxMjhjOWExLTU3NjAtNGRhNy04YWVmLTYxZDY3Y2EzZWRlND9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"Scheduled\",\r\n  \"properties\": {\r\n    \"query\": \"SecurityAlert | take 1\",\r\n    \"queryFrequency\": \"PT5H\",\r\n    \"queryPeriod\": \"PT5H\",\r\n    \"severity\": \"Low\",\r\n    \"triggerOperator\": \"GreaterThan\",\r\n    \"triggerThreshold\": 10,\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"enabled\": true,\r\n    \"suppressionDuration\": \"PT1H\",\r\n    \"suppressionEnabled\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fbbddbbd-5b2a-4777-be26-76d8ad62f1c3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "372"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "268758a5-e3b2-4317-aa02-78777e0a6425"
+        ],
+        "x-ms-correlation-request-id": [
+          "268758a5-e3b2-4317-aa02-78777e0a6425"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201128T201938Z:268758a5-e3b2-4317-aa02-78777e0a6425"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 28 Nov 2020 20:19:38 GMT"
+        ],
+        "Content-Length": [
+          "972"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4\",\r\n  \"name\": \"8128c9a1-5760-4da7-8aef-61d67ca3ede4\",\r\n  \"etag\": \"\\\"b101b71e-0000-0100-0000-5fc2b0da0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"Scheduled\",\r\n  \"properties\": {\r\n    \"severity\": \"Low\",\r\n    \"query\": \"SecurityAlert | take 1\",\r\n    \"queryFrequency\": \"PT5H\",\r\n    \"queryPeriod\": \"PT5H\",\r\n    \"triggerOperator\": \"GreaterThan\",\r\n    \"triggerThreshold\": 10,\r\n    \"suppressionDuration\": \"PT1H\",\r\n    \"suppressionEnabled\": false,\r\n    \"incidentConfiguration\": {\r\n      \"createIncident\": true,\r\n      \"groupingConfiguration\": {\r\n        \"enabled\": false,\r\n        \"reopenClosedIncident\": false,\r\n        \"lookbackDuration\": \"PT5M\",\r\n        \"entitiesMatchingMethod\": \"All\",\r\n        \"groupByEntities\": []\r\n      }\r\n    },\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": null,\r\n    \"lastModifiedUtc\": \"2020-11-28T20:19:38.0942992Z\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4/actions/16df7a63-1869-4239-823c-bba3cb3682a7?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzgxMjhjOWExLTU3NjAtNGRhNy04YWVmLTYxZDY3Y2EzZWRlNC9hY3Rpb25zLzE2ZGY3YTYzLTE4NjktNDIzOS04MjNjLWJiYTNjYjM2ODJhNz9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.Logic/workflows/Block-AADUser\",\r\n    \"triggerUri\": \"https://prod-13.westus.logic.azure.com:443/workflows/826a95b1b84c4ffbaf3af3dd88fe96b5/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2018-07-01-preview&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=pK23xWl4uJT4RWs7zopxiP0Z7CpIfCDZEanL-mEyy1E\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9230980d-5ba1-4e64-98f3-bc4acecbaa74"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "541"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "80ffe354-f825-4f71-8a1d-e5619efd12e4"
+        ],
+        "x-ms-correlation-request-id": [
+          "80ffe354-f825-4f71-8a1d-e5619efd12e4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201128T201939Z:80ffe354-f825-4f71-8a1d-e5619efd12e4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 28 Nov 2020 20:19:38 GMT"
+        ],
+        "Content-Length": [
+          "621"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4/actions/16df7a63-1869-4239-823c-bba3cb3682a7\",\r\n  \"name\": \"16df7a63-1869-4239-823c-bba3cb3682a7\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules/actions\",\r\n  \"properties\": {\r\n    \"workflowId\": \"826a95b1b84c4ffbaf3af3dd88fe96b5\",\r\n    \"logicAppResourceId\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.Logic/workflows/Block-AADUser\",\r\n    \"operatesOn\": \"Alert\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4/actions/16df7a63-1869-4239-823c-bba3cb3682a7?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzgxMjhjOWExLTU3NjAtNGRhNy04YWVmLTYxZDY3Y2EzZWRlNC9hY3Rpb25zLzE2ZGY3YTYzLTE4NjktNDIzOS04MjNjLWJiYTNjYjM2ODJhNz9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.Logic/workflows/Get-MDATPInvestigationPackage\",\r\n    \"triggerUri\": \"https://prod-16.westus.logic.azure.com:443/workflows/18c75599cf3742c998d14af0f89cf3b1/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2018-07-01-preview&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=rREdJWoN3PNCmhqwMz0KRy8apQDt8DQbZZuvlm1l4Oo\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9514677f-2e15-4c0c-bcf5-1d45f0c049f1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "557"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "faa745f7-e49b-4ab7-8f34-2c0bf1d4140c"
+        ],
+        "x-ms-correlation-request-id": [
+          "faa745f7-e49b-4ab7-8f34-2c0bf1d4140c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201128T201939Z:faa745f7-e49b-4ab7-8f34-2c0bf1d4140c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 28 Nov 2020 20:19:39 GMT"
+        ],
+        "Content-Length": [
+          "637"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4/actions/16df7a63-1869-4239-823c-bba3cb3682a7\",\r\n  \"name\": \"16df7a63-1869-4239-823c-bba3cb3682a7\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules/actions\",\r\n  \"properties\": {\r\n    \"workflowId\": \"18c75599cf3742c998d14af0f89cf3b1\",\r\n    \"logicAppResourceId\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.Logic/workflows/Get-MDATPInvestigationPackage\",\r\n    \"operatesOn\": \"Alert\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/8128c9a1-5760-4da7-8aef-61d67ca3ede4?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzgxMjhjOWExLTU3NjAtNGRhNy04YWVmLTYxZDY3Y2EzZWRlND9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fada0db6-f322-4fe4-a6db-2e7df301423e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "3a5304d8-19c2-44db-a619-f4b3269a2612"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a5304d8-19c2-44db-a619-f4b3269a2612"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201128T201940Z:3a5304d8-19c2-44db-a619-f4b3269a2612"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 28 Nov 2020 20:19:39 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "1c61ccbf-70b3-45a3-a1fb-848ce46d70a6"
+  }
+}
