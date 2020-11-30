@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Check if it is in desktop session
         /// </summary>
         /// <returns></returns>
-        public bool IsDesktopSession()
+        public virtual bool IsDesktopSession()
         {
             //Check only for Linux platform
             //Linux: https://github.com/microsoft/Git-Credential-Manager-Core/blob/master/src/shared/Microsoft.Git.CredentialManager/Interop/Posix/PosixSessionManager.cs
