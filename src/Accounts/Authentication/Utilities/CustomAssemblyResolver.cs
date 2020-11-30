@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Buffers", new Version("4.0.3.0")},
                 {"System.Diagnostics.DiagnosticSource", new Version("4.0.4.0")},
                 {"System.Memory", new Version("4.0.1.1")},
+                {"System.Memory.Data", new Version("1.0.0.0")},
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
                 {"System.Numerics.Vectors", new Version("4.1.3.0")},
                 {"System.Private.ServiceModel", new Version("4.1.2.1")},

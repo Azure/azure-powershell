@@ -23,6 +23,7 @@
 * Upgraded Azure.Storage..Blobs to 12.7.0
 * Upgraded Azure.Storage.Files.Shares to 12.5.0
 * Upgraded Azure.Storage.Files.DataLake to 12.5.0
+* Upgraded Azure.Storage.Queues to 12.5.0
 
 ## Version 3.0.0
 * Removed obsolete property RestorePolicy.LastEnabledTime
