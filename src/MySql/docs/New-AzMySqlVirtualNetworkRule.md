@@ -23,17 +23,23 @@ Creates or updates an existing virtual network rule.
 
 ## EXAMPLES
 
-### Example 1: Create a new MySql server Virtual Network Rule
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
-PS C:\> New-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SubnetId $ID
+PS C:\> {{ Add code here }}
 
-Name Type
----- ----
-vnet Microsoft.DBforMySQL/servers/virtualNetworkRules
+{{ Add output here }}
 ```
 
-These cmdlets create a MySql server Virtual Network Rule.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
