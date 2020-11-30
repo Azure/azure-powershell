@@ -152,15 +152,23 @@ namespace Microsoft.Azure.Commands.Common
             // so we can print them both in one event
             if (data?.RequestMessage is HttpRequestMessage request)
             {
-                // Print formatted request message
-                await signal(Events.Debug, cancellationToken,
-                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+                try {
+                    // Print formatted request message
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+                } catch {
+                    // request was disposed, ignore
+                }
             }
             if (data?.ResponseMessage is HttpResponseMessage response)
             {
+                try {
                 // Print formatted response message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+                } catch {
+                    // response was disposed, ignore
+                }
             }
         }
 
