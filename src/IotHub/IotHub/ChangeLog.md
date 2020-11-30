@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix an issue of SAS token.
+* Fixed an issue of SAS token.
 
 ## Version 2.7.0
 * Allowed tags in IoT Hub create cmdlet.
