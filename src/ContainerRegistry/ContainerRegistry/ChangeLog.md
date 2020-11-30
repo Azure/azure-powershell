@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported parameter `Name` for `Get-AzContainerRegistryUsage`
+* Support parameters from pipeline input for `Get-AzContainerRegistryUsage`
+* Polished exceptions for `Connect-AzContainerRegistry`
 
 ## Version 2.0.0
 * [Breaking Change] Updates API version to 2019-05-01
