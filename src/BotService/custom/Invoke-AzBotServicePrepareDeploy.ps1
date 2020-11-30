@@ -141,7 +141,7 @@ function Invoke-AzBotServicePrepareDeploy {
                 if (-not (Test-Path -Path $CsprojFile)) {
                     throw "$ProjFileName file not found.Please verify the relative path to the .csproj file from the $CodeDir"
                 }
-                $DeploymentContent = "[config]{0}SCM_SCRIPT_GENERATOR_ARGS=--aspNetCore $ProjFileName{1}" -f @([environment]::NewLine, [environment]::NewLine)
+                $DeploymentContent = "[config]{0}SCM_SCRIPT_GENERATOR_ARGS=--aspNetCore '$ProjFileName{1}'" -f @([environment]::NewLine, [environment]::NewLine)
                 Set-Content -Path $DestWebConfig -Value $DeploymentContent
             }
         } catch {
