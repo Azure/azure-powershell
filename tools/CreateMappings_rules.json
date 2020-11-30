@@ -604,5 +604,9 @@
   {
     "regex": "DigitalTwins",
     "alias": "DigitalTwins"
+  },
+  {
+    "alias": "WindowsIotServices",
+    "regex": "WindowsIotServices"
   }
 ]
