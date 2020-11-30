@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSecurityAlert), NewParameterTypeName = "PSSecurityAlertV3")]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }
