@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string GetRefreshToken()
         {
             var response = _client.RefreshTokens.GetFromExchangeAsync(grantType: _grantType, service: _endPoint, accessToken: _accessToken.AccessToken);
-            return response.Result.RefreshTokenProperty;
+            return response.GetAwaiter().GetResult().RefreshTokenProperty;
         }
 
         public string GetAccessToken()
         {
             var response = _client.AccessTokens.GetAsync(service: _endPoint, scope: _scope, refreshToken: GetRefreshToken());
-            return response.Result.AccessTokenProperty;
+            return response.GetAwaiter().GetResult().AccessTokenProperty;
         }
 
         public void SetEndPoint(string RegistryName)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public Rest.Azure.AzureOperationResponse CheckRegistry()
         {
-            return _client.V2Support.CheckWithHttpMessagesAsync().Result;
+            return _client.V2Support.CheckWithHttpMessagesAsync().GetAwaiter().GetResult();
         }
     }
 }
