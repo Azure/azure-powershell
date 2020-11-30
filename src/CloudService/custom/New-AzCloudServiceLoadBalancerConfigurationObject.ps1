@@ -32,7 +32,7 @@ function New-AzCloudServiceLoadBalancerConfigurationObject {
         [Parameter(HelpMessage="FrontendIPConfiguration.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]]
         $FrontendIPConfiguration,
-        [Parameter(HelpMessage="Name.")]
+        [Parameter(HelpMessage="Name of LoadBalancerConfiguration.")]
         [string]
         $Name
     )

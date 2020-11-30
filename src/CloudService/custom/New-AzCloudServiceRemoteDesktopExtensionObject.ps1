@@ -39,8 +39,10 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
     [Parameter(HelpMessage="Remote Desktop Extension version.")]
     [string] $TypeHandlerVersion,
 
+    [Parameter(HelpMessage="Roles applied to.")]
     [string[]] $RolesAppliedTo,
 
+    [Parameter(HelpMessage="Auto upgrade minor version.")]
     [Boolean] $AutoUpgradeMinorVersion
   )
 

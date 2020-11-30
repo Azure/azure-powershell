@@ -51,8 +51,10 @@ function New-AzCloudServiceDiagnosticsExtension {
     [Parameter(HelpMessage="Specifies the version of the extension.")]
     [string] $TypeHandlerVersion,
 
+    [Parameter(HelpMessage="Roles applied to.")]
     [string[]] $RolesAppliedTo,
 
+    [Parameter(HelpMessage="Auto upgrade minor version.")]
     [Boolean] $AutoUpgradeMinorVersion
   )
 

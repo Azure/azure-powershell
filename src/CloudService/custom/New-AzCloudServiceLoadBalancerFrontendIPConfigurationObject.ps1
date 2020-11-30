@@ -29,7 +29,7 @@ function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Name.")]
+        [Parameter(HelpMessage="Name of FrontendIpConfigration.")]
         [string]
         $Name,
         [Parameter(HelpMessage="Resource Id.")]

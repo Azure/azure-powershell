@@ -24,21 +24,21 @@ https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-AzCloudSe
 
 function Get-AzCloudServiceNetworkInterfaces {
     param(
-        [Parameter(ParameterSetName="CloudServiceName")]
-        [Parameter(ParameterSetName = "CloudService")]
+        [Parameter(ParameterSetName="CloudServiceName", HelpMessage="Subscription.")]
+        [Parameter(ParameterSetName = "CloudService", HelpMessage="Subscription.")]
         [string] $SubscriptionId,
 
-        [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName")]
+        [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName", HelpMessage="ResourceGroupName.")]
         [string] $ResourceGroupName,
         
-        [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName")]
+        [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName", HelpMessage="CloudServiceName.")]
         [string] $CloudServiceName,
 
-        [Parameter(ParameterSetName="CloudServiceName")]
-        [Parameter(ParameterSetName = "CloudService")]
-        [string] $RoleInstanceName,      
+        [Parameter(ParameterSetName="CloudServiceName", HelpMessage="RoleInstanceName.")]
+        [Parameter(ParameterSetName = "CloudService", HelpMessage="RoleInstanceName.")]
+        [string] $RoleInstanceName,
 
-        [Parameter(Mandatory=$true, ParameterSetName="CloudService")]
+        [Parameter(Mandatory=$true, ParameterSetName="CloudService", HelpMessage="CloudService instance.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService] $CloudService,
 
         [Parameter(DontShow)]

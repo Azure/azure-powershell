@@ -32,7 +32,7 @@ function New-AzCloudServiceVaultSecretGroupObject {
         [string]
         $Id,
 
-        [Parameter(HelpMessage="This is the URL of a certificate that has been uploaded to Key Vault as a secret..")]
+        [Parameter(HelpMessage="This is the URL of a certificate that has been uploaded to Key Vault as a secret.")]
         [string[]]
         $CertificateUrl
     )
