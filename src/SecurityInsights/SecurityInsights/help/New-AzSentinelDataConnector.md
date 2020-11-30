@@ -66,7 +66,8 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
  [-ThreatIntelligence] -Indicators <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-## DESCRIPTIONThe **New-AzSentinelAlertRule** cmdlet creates an Analytic (Alert Rule) in the specified workspace.
+## DESCRIPTION
+The **New-AzSentinelAlertRule** cmdlet creates an Analytic (Alert Rule) in the specified workspace.
 You must specify one of the parameters, for example -AzureActiveDirectory, to specify the kind of Alert rule to create.  Each Kind has different required paramaters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 Note:  Not all data connectors available in the portal are avaialble via API.

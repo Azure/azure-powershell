@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRule", DefaultParameterSetName = ParameterSetNames.ScheduledAlertRule), OutputType(typeof(PSSentinelAlertRule))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelAlertRule", DefaultParameterSetName = ParameterSetNames.ScheduledAlertRule, SupportsShouldProcess = true), OutputType(typeof(PSSentinelAlertRule))]
     public class SetAlertRules : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.FusionAlertRule, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelDataConnector", DefaultParameterSetName = ParameterSetNames.AzureActiveDirectory), OutputType(typeof(PSSentinelDataConnector))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelDataConnector", DefaultParameterSetName = ParameterSetNames.AzureActiveDirectory, SupportsShouldProcess = true), OutputType(typeof(PSSentinelDataConnector))]
     public class NewDataConnectors : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.AzureActiveDirectory, Mandatory = true, HelpMessage = ParameterHelpMessages.AzureActiveDirectory)]

@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.SecurityInsights;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.IncidentsComments
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentComment", DefaultParameterSetName = ParameterSetNames.IncidentCommentId), OutputType(typeof(PSSentinelIncidentComment))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentComment", DefaultParameterSetName = ParameterSetNames.IncidentCommentId, SupportsShouldProcess = true), OutputType(typeof(PSSentinelIncidentComment))]
     public class NewBookmarks : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.IncidentCommentId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

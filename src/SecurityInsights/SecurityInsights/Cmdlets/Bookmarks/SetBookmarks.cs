@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.SecurityInsights.Models.Actions;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelBookmark", DefaultParameterSetName = ParameterSetNames.BookmarkId), OutputType(typeof(PSSentinelBookmark))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelBookmark", DefaultParameterSetName = ParameterSetNames.BookmarkId, SupportsShouldProcess = true), OutputType(typeof(PSSentinelBookmark))]
     public class SetBookmarks : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

@@ -50,9 +50,6 @@ Create Azure Sentinel Incident.
 ### [New-AzSentinelIncidentComment](New-AzSentinelIncidentComment.md)
 Create Azure Sentinel Incident Comment.
 
-### [New-AzSentinelIncidentLabel](New-AzSentinelIncidentLabel.md)
-Create Azure Sentinel Incident Label.
-
 ### [New-AzSentinelIncidentOwner](New-AzSentinelIncidentOwner.md)
 Create Azure Sentinel Incident Owner.
 
