@@ -311,8 +311,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 $"resourceGroups/{templateSpecRGName}/providers/Microsoft.Resources/" +
                 $"templateSpecs/{templateSpecName }/versions/{templateSpecVersion}";
 
-            // Note: We use GetFullPath below to normalize paths for Unix based systems...
-            var templateContentForTest = File.ReadAllText(Path.GetFullPath(templateFile));
+            // Ensure our template file path is normalized for the current system:
+            var normalizedTemplateFilePath = (Path.DirectorySeparatorChar != '\\')
+                ? templateFile.Replace('\\', Path.DirectorySeparatorChar) // Other/Unix based
+                : templateFile; // Windows based (already valid)
+
+            var templateContentForTest = File.ReadAllText(normalizedTemplateFilePath);
             var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
 
             templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
