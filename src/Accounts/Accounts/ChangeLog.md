@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved debug log of long running operations in generated modules
 
 ## Version 2.2.1
 * Fixed the issue that incorrectly use Task.Result causes unclear error message if browser is not avaialable for Interactive auth
