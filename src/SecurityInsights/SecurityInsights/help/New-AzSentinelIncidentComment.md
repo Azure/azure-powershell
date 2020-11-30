@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelIncidentComment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add an Incident Comment to an Incident.
 
 ## SYNTAX
 
@@ -19,16 +19,19 @@ New-AzSentinelIncidentComment -ResourceGroupName <String> -WorkspaceName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSentinelIncidentComment** cmdlet creates a Incident Comment from the specified workspace.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
+PS C:\> $IncidentComment = New-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId ($Incident.Name) -Message "Still needs investigation"
 ```
 
-{{ Add example description here }}
+This example creates an **IncidentComment** in the specified workspace, and then stores it in the $IncidentComment variable.
 
 ## PARAMETERS
 

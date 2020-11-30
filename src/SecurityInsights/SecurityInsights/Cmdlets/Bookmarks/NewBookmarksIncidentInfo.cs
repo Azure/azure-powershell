@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.IncidentId)]
         public string IncidentId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.RelationName)]
+        [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = false, HelpMessage = ParameterHelpMessages.RelationName)]
         public string RelationName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Severity)]

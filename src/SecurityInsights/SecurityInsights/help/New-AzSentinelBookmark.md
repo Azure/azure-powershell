@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelBookmark
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a Bookmark.
 
 ## SYNTAX
 
@@ -20,16 +20,18 @@ New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Boo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSentinelBookmark** cmdlet creates a Bookmark from the specified workspace.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Bookmark = New-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DisplayName "MyBookmark" -Query "SecurityAlert | take 1"
+
 ```
 
-{{ Add example description here }}
+This example creates a **Bookmark** in the specified workspace, and then stores it in the $Bookmark variable.
 
 ## PARAMETERS
 

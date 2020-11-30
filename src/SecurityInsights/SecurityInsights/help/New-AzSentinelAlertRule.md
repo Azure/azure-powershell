@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create an Analytic (Alert Rule).
 
 ## SYNTAX
 
@@ -40,16 +40,34 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSentinelAlertRule** cmdlet creates an Analytic (Alert Rule) in the specified workspace.
+You must specify one of the three parameters, *Fusion*, *Scheduled* or *MicrosoftSecurityIncidentCreation*, to specify the kind of Alert rule to create.  Each Kind has different required paramaters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
+PS C:\>$AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 ```
 
-{{ Add example description here }}
+This example creates a **DataConnector** of the *Fusion* kind based on the Template for *Advanced Multistage Attack Detection*, and then stores it in the $AlertRule variable.
+
+### Example 2
+```powershell
+PS C:\> $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
+PS C:\> $AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Azure Security Center for IoT" -ProductFilter "Azure Security Center for IoT"
+```
+
+This example creates a **DataConnector** of the *MicrosoftSecurityIncidentCreation* kind based on the template for *Create incidents based on Azure Security Center for IoT alerts*, and then stores it in the $AlertRule varaible.
+
+### Example 2
+```powershell
+PS C:\> $AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
+```
+
+This example creates a **DataConnector** of the *Scheduled* kind, and then stores it in the $AlertRule varaible.
 
 ## PARAMETERS
 

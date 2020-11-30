@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add an Automated Response to an Analatic.
 
 ## SYNTAX
 
@@ -19,16 +19,21 @@ New-AzSentinelAlertRuleAction -ResourceGroupName <String> -WorkspaceName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSentinelAlertRuleAction** cmdlet creates an Automated Response for an Alert Rule in the specified workspace.
+You must provide the Logic App Resorce Id and Trigger Uri which can be found using the Logic App module.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword"
+PS C:\>$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword" -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
+PS C:\>$AlertRuleAction = New-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
 
-{{ Add example description here }}
+This example creates an **AlertRuleAction** for the specified Alert Rule using properties of the Logic App, and then stores it in the $AlertRuleAction variable.
+
 
 ## PARAMETERS
 

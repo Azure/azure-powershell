@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncidentComment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get an Incident Comment.
 
 ## SYNTAX
 
@@ -31,16 +31,25 @@ Get-AzSentinelIncidentComment -ResourceId <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelIncidentComment** cmdlet gets a Incident Comment from the specified workspace.
+If you specify the *IncidentCommentId* and *IncidentId* parameters, a single **IncidentComment** object is returned.
+If you do not specify the *IncidentCommentId* parameter, an array containing all of the Incident Comments for the specified Incident in the specified workspace are returned.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $IncidentComments = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
 ```
 
-{{ Add example description here }}
+This example gets all of the **IncidentComments** for the specified Incident in the specified workspace, and then stores it in the $IncidentComments variable.
+
+### Example 2
+```powershell
+PS C:\> $IncidentComment = Get-AzSentinelIncidentComment -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId" -IncidentCommentId "MyIncidentCommentId"
+```
+
+This example gets an **IncidentComment** for the specified Incident in the specified workspace, and then stores it in the $IncidentComment variable.
 
 ## PARAMETERS
 

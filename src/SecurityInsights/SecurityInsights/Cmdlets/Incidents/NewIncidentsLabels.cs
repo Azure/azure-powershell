@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.SecurityInsights.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentLabel", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSentinelIncidentAdditionalData))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentLabel", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSentinelIncidentLabel))]
     public class NewIncidentsLabels : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.LabelName)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSentinelIncident
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update an Incident.
 
 ## SYNTAX
 
@@ -29,16 +29,22 @@ Set-AzSentinelIncident -InputObject <PSSentinelIncident> [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSentinelIncident** cmdlet updates the Incident in the specified workspace.
+You can pass an **Incident** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
+PS C:\> $Incident.severity = "High"
+PS C:\> $Incident | Set-AzSentinelIncident
 ```
 
-{{ Add example description here }}
+The first command gets the Incident by *IncidentId* from the specified workspace, and then stores it in the $Incident variable.
+The second command updates the severity property.
+The final command commits the change.
 
 ## PARAMETERS
 

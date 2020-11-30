@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSentinelAlertRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update an Analtyic.
 
 ## SYNTAX
 
@@ -47,16 +47,22 @@ Set-AzSentinelAlertRule -InputObject <PSSentinelAlertRule> [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSentinelAlertRule** cmdlet updates the Alert Rule in the specified workspace.
+You can pass an **AlertRule** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId"
+PS C:\> $AlertRule.Enabled = $false
+PS C:\> $AlertRule | Set-AzSentinelAlertRule
 ```
 
-{{ Add example description here }}
+The first command gets the Alert Rule by *AlertRuleId* from the specified workspace, and then stores it in the $AlertRule variable.
+The second command updates the Enabled property.
+The final command commits the change.
 
 ## PARAMETERS
 

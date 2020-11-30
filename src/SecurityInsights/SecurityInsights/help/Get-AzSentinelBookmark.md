@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelBookmark
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get a Bookmark.
 
 ## SYNTAX
 
@@ -30,16 +30,26 @@ Get-AzSentinelBookmark -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelBookmark** cmdlet gets a Bookmark from the specified workspace.
+If you specify the *BookmarkId* parameter, a single **Bookmark** object is returned.
+If you do not specify the *BookmarkId* parameter, an array containing all of the Bookmarks in the specified workspace are returned.
+You can use the **Bookmark** object to update the Bookmark, for example you can add Notes the **Bookmark**.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Bookmarks = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
 ```
 
-{{ Add example description here }}
+This example gets all of the **Bookmarks** in the specified workspace, and then stores it in the $Bookmarks variable.
+
+### Example 2
+```powershell
+PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
+```
+
+This example gets an **Bookmark** in the specified workspace, and then stores it in the $Bookmark variable.
 
 ## PARAMETERS
 

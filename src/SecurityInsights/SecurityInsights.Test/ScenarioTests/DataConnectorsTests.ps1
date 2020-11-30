@@ -53,7 +53,7 @@ function Get-AzSentinelDataConnector-Get
 .SYNOPSIS
 Create Data Connector
 #>
-function New-AzSentinelDataConnector-CreateFusion
+function New-AzSentinelDataConnector-Create
 {
     #Create Data Connector
 	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncident
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get an Incident.
 
 ## SYNTAX
 
@@ -30,16 +30,26 @@ Get-AzSentinelIncident -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelIncident** cmdlet gets an Incident from the specified workspace.
+If you specify the *IncidentId* parameter, a single **Incident** object is returned.
+If you do not specify the *IncidentId* parameter, an array containing all of the Incidents in the specified workspace are returned.
+You can use the **Incident** object to update the Incident, for example you can add Notes the **Incident**.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
 ```
 
-{{ Add example description here }}
+This example gets all of the **Incidents** in the specified workspace, and then stores it in the $Incidents variable.
+
+### Example 2
+```powershell
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
+```
+
+This example gets an **Incident** in the specified workspace, and then stores it in the $Incident variable.
 
 ## PARAMETERS
 

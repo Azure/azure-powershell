@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelDataConnector
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a Data Connector.
 
 ## SYNTAX
 
@@ -66,17 +66,27 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
  [-ThreatIntelligence] -Indicators <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-{{ Fill in the Description }}
+## DESCRIPTIONThe **New-AzSentinelAlertRule** cmdlet creates an Analytic (Alert Rule) in the specified workspace.
+You must specify one of the parameters, for example -AzureActiveDirectory, to specify the kind of Alert rule to create.  Each Kind has different required paramaters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
+Note:  Not all data connectors available in the portal are avaialble via API.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 ```
 
-{{ Add example description here }}
+This example creates a **DataConnector** for Azure Security Center in the specified workspace, and then stores it in the $DataConnector variable.
+
+### Example 2
+```powershell
+PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
+```
+
+This example creates a **DataConnector** for Microsoft Cloud App Security in the specified workspace, and then stores it in the $DataConnector variable.
+
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelAlertRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Delete an Analytic.
 
 ## SYNTAX
 
@@ -25,16 +25,18 @@ Remove-AzSentinelAlertRule -InputObject <PSSentinelAlertRule> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSentinelAlertRule** cmdlet permanently deletes an Alert Rule from a specified workspace.
+You can pass an **AlertRule** object by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId"
 ```
 
-{{ Add example description here }}
+This command removes the Alert Rule from the workspace.
 
 ## PARAMETERS
 

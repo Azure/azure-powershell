@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelDataConnector
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get a Data Connector.
 
 ## SYNTAX
 
@@ -31,16 +31,26 @@ Get-AzSentinelDataConnector -ResourceId <String> [-DefaultProfile <IAzureContext
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelDataConnector** cmdlet gets a Data Connector from the specified workspace.
+If you specify the *DataConnectorId* parameter, a single **DataConnector** object is returned.
+If you do not specify the *DataConnectorId* parameter, an array containing all of the Data Connectors in the specified workspace are returned.
+You can use the **DataConnector** object to update the Data Connector, for example you can disable the **DataConnector**.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
 ```
 
-{{ Add example description here }}
+This example gets all of the **DataConnectors** in the specified workspace, and then stores it in the $DataConnectors variable.
+
+### Example 2
+```powershell
+PS C:\> $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -DataConnectorId "MyDataConnectorId"
+```
+
+This example gets an **DataConnector** in the specified workspace, and then stores it in the $DataConnector variable.
 
 ## PARAMETERS
 

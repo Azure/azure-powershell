@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSentinelDataConnector
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a data connector.
 
 ## SYNTAX
 
@@ -75,16 +75,22 @@ Set-AzSentinelDataConnector -InputObject <PSSentinelDataConnector> [-DefaultProf
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSentinelDataConnector** cmdlet updates the Data Connector in the specified workspace.
+You can pass an **DataConnector** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -DataConnectorId "MyDataConnectorId"
+PS C:\> $DataConnector.dataTypes.exchange.state = "disabled"
+PS C:\> $DataConnector | Set-AzSentinelDataConnector
 ```
 
-{{ Add example description here }}
+The first command gets the Office Data Connector by *DataConnectorId* from the specified workspace, and then stores it in the $DataConnector variable.
+The second command updates the Exchange data type to disabled.
+The final command commits the change.
 
 ## PARAMETERS
 

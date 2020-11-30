@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelAlertRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an Analytic (Alert Rule).
 
 ## SYNTAX
 
@@ -30,21 +30,31 @@ Get-AzSentinelAlertRule -ResourceId <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelAlertRule** cmdlet gets an Analytic (Alert Rule) from the specified workspace.
+If you specify the *AlertRuleId* parameter, a single **AlertRule** object is returned.
+If you do not specify the *AlertRuleId* parameter, an array containing all of the Alert Rules in the specified workspace are returned.
+You can use the **AlertRule** object to update the AlertRule, for example you can disable the **AlertRule**.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
 ```
 
-{{ Add example description here }}
+This example gets all of the **AlertRules** in the specified workspace, and then stores it in the $AlertRules variable.
+
+### Example 2
+```powershell
+PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId"
+```
+
+This example gets an **AlertRule** in the specified workspace, and then stores it in the $AlertRule variable.
 
 ## PARAMETERS
 
 ### -AlertRuleId
-Incident Id.
+Alert Rule Id.
 
 ```yaml
 Type: System.String

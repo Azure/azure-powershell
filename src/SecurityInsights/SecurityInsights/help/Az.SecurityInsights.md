@@ -1,91 +1,88 @@
 ---
 Module Name: Az.SecurityInsights
 Module Guid: 453d4fb9-65ec-4cf1-8358-6a0fbd995d19
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights
+Help Version: 0.1.0
 Locale: en-US
 ---
 
 # Az.SecurityInsights Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.
 
 ## Az.SecurityInsights Cmdlets
 ### [Get-AzSentinelAlertRule](Get-AzSentinelAlertRule.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Analytic (Alert Rule).
 
 ### [Get-AzSentinelAlertRuleAction](Get-AzSentinelAlertRuleAction.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Automated Response (Alert Rule Action).
 
 ### [Get-AzSentinelAlertRuleTemplate](Get-AzSentinelAlertRuleTemplate.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Analtyic Template.
 
 ### [Get-AzSentinelBookmark](Get-AzSentinelBookmark.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Bookmark.
 
 ### [Get-AzSentinelDataConnector](Get-AzSentinelDataConnector.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Data Connector.
 
 ### [Get-AzSentinelIncident](Get-AzSentinelIncident.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Incident.
 
 ### [Get-AzSentinelIncidentComment](Get-AzSentinelIncidentComment.md)
-{{ Fill in the Description }}
+Get Azure Sentinel Incident Comment.
 
 ### [New-AzSentinelAlertRule](New-AzSentinelAlertRule.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Analytic (Alert Rule).
 
 ### [New-AzSentinelAlertRuleAction](New-AzSentinelAlertRuleAction.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Automated Response (Alert Rule Action).
 
 ### [New-AzSentinelBookmark](New-AzSentinelBookmark.md)
-{{ Fill in the Description }}
-
-### [New-AzSentinelBookmarkIncidentInfo](New-AzSentinelBookmarkIncidentInfo.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Bookmark.
 
 ### [New-AzSentinelDataConnector](New-AzSentinelDataConnector.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Data Connector.
 
 ### [New-AzSentinelIncident](New-AzSentinelIncident.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Incident.
 
 ### [New-AzSentinelIncidentComment](New-AzSentinelIncidentComment.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Incident Comment.
 
 ### [New-AzSentinelIncidentLabel](New-AzSentinelIncidentLabel.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Incident Label.
 
 ### [New-AzSentinelIncidentOwner](New-AzSentinelIncidentOwner.md)
-{{ Fill in the Description }}
+Create Azure Sentinel Incident Owner.
 
 ### [Remove-AzSentinelAlertRule](Remove-AzSentinelAlertRule.md)
-{{ Fill in the Description }}
+Delete Azure Sentinel Analytic (Alert Rule).
 
 ### [Remove-AzSentinelAlertRuleAction](Remove-AzSentinelAlertRuleAction.md)
-{{ Fill in the Description }}
+Delete Azure Sentinel Automated Response (Alert Rule Action).
 
 ### [Remove-AzSentinelBookmark](Remove-AzSentinelBookmark.md)
-{{ Fill in the Description }}
+Delete Azure Sentinel Bookmark.
 
 ### [Remove-AzSentinelDataConnector](Remove-AzSentinelDataConnector.md)
-{{ Fill in the Description }}
+Delete Azure Sentinel Data Connector.
 
 ### [Remove-AzSentinelIncident](Remove-AzSentinelIncident.md)
-{{ Fill in the Description }}
+Delete Azure Sentinel Incident.
 
 ### [Set-AzSentinelAlertRule](Set-AzSentinelAlertRule.md)
-{{ Fill in the Description }}
+Update Azure Sentinel Analytic (Alert Rule).
 
 ### [Set-AzSentinelAlertRuleAction](Set-AzSentinelAlertRuleAction.md)
-{{ Fill in the Description }}
+Update Azure Sentinel Automated Response (Alert Rule Action).
 
 ### [Set-AzSentinelBookmark](Set-AzSentinelBookmark.md)
-{{ Fill in the Description }}
+Update Azure Sentinel Bookmark.
 
 ### [Set-AzSentinelDataConnector](Set-AzSentinelDataConnector.md)
-{{ Fill in the Description }}
+Update Azure Sentinel Data Connector.
 
 ### [Set-AzSentinelIncident](Set-AzSentinelIncident.md)
-{{ Fill in the Description }}
+Update Azure Sentinel Incident.
 

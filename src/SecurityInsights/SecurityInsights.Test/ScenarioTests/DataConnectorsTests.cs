@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Create()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelDataConnector-CreateFusion");
+            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelDataConnector-Create");
         }
 
         [Fact]

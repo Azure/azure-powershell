@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelIncidentOwner
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create Incident Owner object to update an incident owner.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ New-AzSentinelIncidentOwner -AssignedTo <String> -Email <String> -ObjectId <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzSentinelIncidentOwner** cmdlet creates a Incident Owner object in memory to update an incident.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
+PS C:\> $owner = New-AzSentinelIncidentOwner -AssignedTo "First Last" -Email "user@domain.com" -Objectid "userobjectId" -UserPrincipalName "user@domain.com"
+PS C:\> $Incident.Owner = $owner
+PS C:\> $Incident | Set-AzSentinelIncident
+
 ```
 
-{{ Add example description here }}
+This example creates an **IncidentOwner** and updates an Incident to the new owner.
 
 ## PARAMETERS
 

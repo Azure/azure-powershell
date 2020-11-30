@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSentinelBookmark
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a Bookmark.
 
 ## SYNTAX
 
@@ -27,16 +27,22 @@ Set-AzSentinelBookmark -InputObject <PSSentinelBookmark> [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSentinelBookmark** cmdlet updates the bookmark in the specified workspace.
+You can pass an **Bookmark** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
+PS C:\> $Bookmark.Notes = "Found something interesting"
+PS C:\> $Bookmark | Set-AzSentinelBookmark
 ```
 
-{{ Add example description here }}
+The first command gets the Bookmark by *BookmarkId* from the specified workspace, and then stores it in the $Bookmark variable.
+The second command updates the Notes property.
+The final command commits the change.
 
 ## PARAMETERS
 

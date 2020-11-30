@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update an Automated Response for an Alert Rule.
 
 ## SYNTAX
 
@@ -19,16 +19,23 @@ Set-AzSentinelAlertRuleAction -ResourceGroupName <String> -WorkspaceName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSentinelAlertRuleAction** cmdlet updates the Automated Response for the Alert Rule in the specified workspace.
+You can pass an **AlertRuleAction** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword"
+PS C:\>$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword" -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
+PS C:\>	$AlertRuleAction = Set-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlerRuleId" -ActionId "MyActionId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
+
 ```
 
-{{ Add example description here }}
+The first command gets the Logic App Object.
+The second command gets the Logic App TriggerUrI.
+The final command updates the exisitng action to the new logic app and trigger uri.
 
 ## PARAMETERS
 

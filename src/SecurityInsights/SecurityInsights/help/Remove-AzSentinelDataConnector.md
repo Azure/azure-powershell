@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelDataConnector
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a Data Connector.
 
 ## SYNTAX
 
@@ -25,16 +25,18 @@ Remove-AzSentinelDataConnector -InputObject <PSSentinelDataConnector> [-PassThru
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSentinelDataConnector** cmdlet permanently deletes a Data Connector from a specified workspace.
+You can pass an **DataConnector** object by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -DataConnectorId "MyDataConnectorId"
 ```
 
-{{ Add example description here }}
+This command removes the DataConnector from the workspace.
 
 ## PARAMETERS
 

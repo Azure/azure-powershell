@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove an Automated Response from an Analytic.
 
 ## SYNTAX
 
@@ -26,16 +26,18 @@ Remove-AzSentinelAlertRuleAction -InputObject <PSSentinelActionResponse> [-PassT
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSentinelAlertRuleAction** cmdlet permanently deletes an Automated Response from the Alert Rule in a specified workspace.
+You can pass an **AlertRuleAction** object by using the pipeline operator, or alternatively you can specify the required parameters.
+You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId" -ActionId "MyActionId"
 ```
 
-{{ Add example description here }}
+This command removes the Alert Rule from the workspace.
 
 ## PARAMETERS
 

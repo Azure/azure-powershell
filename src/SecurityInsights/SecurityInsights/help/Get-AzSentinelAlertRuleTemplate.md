@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelAlertRuleTemplate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Analytic Rule Template.
 
 ## SYNTAX
 
@@ -31,16 +31,26 @@ Get-AzSentinelAlertRuleTemplate -ResourceId <String> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelAlertRuleTemplate** cmdlet gets an Alert Rule Template from the specified workspace.
+If you specify the *AlertRuleTemplateId* parameter, a single **AlertRuleTemplate** object is returned.
+If you do not specify the *AlertRuleTemplateId* parameter, an array containing all of the Alert Rule Templates in the specified workspace are returned.
+You can use the **AlertRuleTemplate** object to create a new Alert Rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $AlertRuleTemplates = Get-AzSentinelAlertRuleTemplate -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme"
 ```
 
-{{ Add example description here }}
+This example gets all of the **AlertRuleTemplates** in the specified workspace, and then stores it in the $AlertRuleTemplates variable.
+
+### Example 2
+```powershell
+PS C:\> $AlertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleTemplateId "MyAlertRuleTemplateId"
+```
+
+This example gets an **AlertRuleTemplate** in the specified workspace, and then stores it in the $AlertRuleTemplate variable.
 
 ## PARAMETERS
 

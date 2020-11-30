@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get an Automated Response (Alert Rule Action).
 
 ## SYNTAX
 
@@ -25,16 +25,26 @@ Get-AzSentinelAlertRuleAction -ResourceGroupName <String> -WorkspaceName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSentinelAlertRuleAction** cmdlet gets an Automated Response (Alert Rule Action) from the specified workspace.
+If you specify the *ActionId* and *AlertRuleId* parameters, a single **AlertRuleAction** object is returned.
+If you do not specify the *ActionId* parameter, an array containing all of the Actions for the specificed Alert Rule in the specified workspace are returned.
+You can use the **Action** object to update the Action, for example you can change the the **Action** for an Alert Rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $AlertRuleActions = Get-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId"
 ```
 
-{{ Add example description here }}
+This example gets all of the **Actions** for the specified Alert Rule in the specified workspace, and then stores it in the $AlertRuleActions variable.
+
+### Example 2
+```powershell
+PS C:\> $AlertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId" -ActionId "MyActionId"
+```
+
+This example gets an **AlertRuleAction** for the specified Alert Rule in the specified workspace, and then stores it in the $AlertRuleAction variable.
 
 ## PARAMETERS
 
@@ -54,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -AlertRuleId
-Incident Id.
+Alert Rule Id.
 
 ```yaml
 Type: System.String
