@@ -89,7 +89,7 @@ directive:
     hide: true
   - where:
       verb: Set
-      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase|^flexibleServerFirewallRule$
+      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase$|^flexibleServerFirewallRule$
     set:
       verb: Update
   - where:

@@ -241,6 +241,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subnet
+The Name or Id of an existing Subnet or name of a new one to create.
+Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers/Microsoft.DBforMySQL/flexibleServers.After delegation, this subnet cannot be used for any other type of Azure resources.
+
+```yaml
+Type: System.Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetPrefix
+The subnet IP address prefix to use when creating a new VNet in CIDR format.
+Default value is 10.0.0.0/24.
+
+```yaml
+Type: System.Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription ID that identifies an Azure subscription.
 
@@ -276,6 +308,39 @@ Server version.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vnet
+The Name or Id of an existing virtual network or name of a new one to create.
+The name must be between 2 to 64 characters.
+The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.
+
+```yaml
+Type: System.Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetPrefix
+The IP address prefix to use when creating a new virtual network in CIDR format.
+Default value is 10.0.0.0/16.
+
+```yaml
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
