@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public PSSecurityAlertV3 InputObject { get; set; }
+        public PSSecurityAlert InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     name = AzureIdUtilities.GetResourceName(ResourceId);
                     break;
                 case ParameterSetNames.InputObject:
-                    switch (InputObject.Status.ToLower())
+                    switch (InputObject.State.ToLower())
                     {
                         case "dismissed":
                             actionType = "Dismiss";

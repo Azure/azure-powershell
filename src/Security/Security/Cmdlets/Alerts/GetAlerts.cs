@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 {
     [CmdletOutputBreakingChange(typeof(PSSecurityAlert), ReplacementCmdletOutputTypeName = "PSSecurityAlertV3")]
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlertV3))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlert))]
     public class GetAlerts : SecurityCenterCmdletBase
     {
         private const int MaxAlertsToFetch = 1500;
