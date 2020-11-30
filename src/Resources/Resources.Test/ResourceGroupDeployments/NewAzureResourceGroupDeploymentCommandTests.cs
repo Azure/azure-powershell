@@ -311,7 +311,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 $"resourceGroups/{templateSpecRGName}/providers/Microsoft.Resources/" +
                 $"templateSpecs/{templateSpecName }/versions/{templateSpecVersion}";
 
-            var templateContentForTest = File.ReadAllText(templateFile);
+            // Note: We use GetFullPath below to normalize paths for Unix based systems...
+            var templateContentForTest = File.ReadAllText(Path.GetFullPath(templateFile));
             var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
 
             templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
