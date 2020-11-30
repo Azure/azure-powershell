@@ -393,7 +393,11 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
-                AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies);
+                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies))
+                {
+                    commonUtitilies = new CommonUtilities();
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtitilies);
+                }
                 if(!commonUtitilies.IsDesktopSession() && IsUsingInteractiveAuthentication())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
