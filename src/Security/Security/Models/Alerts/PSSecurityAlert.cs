@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
         public string ProductName { get; set; }
         
         public DateTime? TimeGeneratedUtc { get; set; }
+
         public string AlertUri { get; set; }
         
         public List<IDictionary<string, string>> ExtendedLinks { get; set; }
