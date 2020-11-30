@@ -434,7 +434,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertV3
 
 ## NOTES
 

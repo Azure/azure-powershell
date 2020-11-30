@@ -14,15 +14,16 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
 using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Models.Alerts
 {
     public static class PSSecurityAlertConverters
     {
-        public static PSSecurityAlert ConvertToPSType(this Alert value)
+        public static PSSecurityAlertV3 ConvertToPSType(this Alert value)
         {
-            return new PSSecurityAlert
+            return new PSSecurityAlertV3
             {                
                 Id = value.Id,
                 AlertDisplayName = value.AlertDisplayName,
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
             };
         }
 
-        public static List<PSSecurityAlert> ConvertToPSType(this IEnumerable<Alert> value)
+        public static List<PSSecurityAlertV3> ConvertToPSType(this IEnumerable<Alert> value)
         {
             return value.Select(aps => aps.ConvertToPSType()).ToList();
         }

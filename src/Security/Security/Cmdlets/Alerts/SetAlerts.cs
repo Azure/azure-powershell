@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
-        public PSSecurityAlert InputObject { get; set; }
+        public PSSecurityAlertV3 InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }

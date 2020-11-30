@@ -32,7 +32,7 @@ Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
 
 ### InputObject
 ```
-Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
+Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlertV3> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertV3
 Parameter Sets: InputObject
 Aliases:
 
@@ -219,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlertV3
 
 ## OUTPUTS
 

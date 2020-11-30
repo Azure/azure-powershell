@@ -19,14 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 {
-    [CmdletOutputBreakingChange(typeof(PSSecurityAlert),
-        DeprecatedOutputProperties = new String[] {"ActionTaken", "AlertName", "AssociatedResource", "CanBeInvestigated", "ConfidenceReasons", "ConfidenceScore", "DetectedTimeUtc", "ExtendedProperties", "InstanceId", "RemediationSteps", "ReportedTimeUtc", "ReportedSeverity", "SystemSource", "SubscriptionId", "State", "WorkspaceArmId" },
-        NewOutputProperties = new String[] {"AlertType", "AlertUri", "CorrelationKey", "ExtendedProperties", "ExtendedLinks", "EndTimeUtc", "IsIncident", "Intent", "ProductName", "ProductComponentName", "ProcessingEndTimeUtc", "ResourceIdentifiers", "RemediationSteps", "Severity", "Status", "StartTimeUtc", "SystemAlertId", "TimeGeneratedUtc", "VendorName" })]
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlert))]
+    [CmdletOutputBreakingChange(typeof(PSSecurityAlert), ReplacementCmdletOutputTypeName = "PSSecurityAlertV3")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlertV3))]
     public class GetAlerts : SecurityCenterCmdletBase
     {
         private const int MaxAlertsToFetch = 1500;
