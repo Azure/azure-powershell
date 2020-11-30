@@ -125,15 +125,15 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Port number for managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Port number for managed service login.")]
         [PSDefaultValue(Help = "50342", Value = 50342)]
         public int ManagedServicePort { get; set; } = 50342;
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Host name for managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Host name for managed service login.")]
         [PSDefaultValue(Help = "localhost", Value = "localhost")]
         public string ManagedServiceHostName { get; set; } = "localhost";
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Secret, used for some kinds of managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Secret, used for some kinds of managed service login.")]
         [ValidateNotNullOrEmpty]
         public SecureString ManagedServiceSecret { get; set; }
 
@@ -295,6 +295,12 @@ namespace Microsoft.Azure.Commands.Profile
                         Path = "/oauth2/token"
                     };
 
+                    //ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete, should be removed in next major release
+                    if (this.IsBound(nameof(ManagedServiceHostName)) || this.IsBound(nameof(ManagedServicePort)) || this.IsBound(nameof(ManagedServiceSecret)))
+                    {
+                        WriteWarning(Resources.ObsoleteManagedServiceParameters);
+                    }
+
                     var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
 
                     var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
@@ -387,6 +393,17 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
+                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies))
+                {
+                    commonUtitilies = new CommonUtilities();
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtitilies);
+                }
+                if(!commonUtitilies.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                {
+                    WriteWarning(Resources.InteractiveAuthNotSupported);
+                    return;
+                }
+
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
                    bool shouldPopulateContextList = true;
@@ -425,14 +442,14 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
-                       if(IsUnableToOpenWebPageError(ex))
+                       if (IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
                        }
                        else
                        {
-                           if (ParameterSetName == UserParameterSet && UseDeviceAuthentication == false)
+                           if (IsUsingInteractiveAuthentication())
                            {
                                //Display only if user is using Interactive auth
                                WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
@@ -443,6 +460,11 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                });
             }
+        }
+
+        private bool IsUsingInteractiveAuthentication()
+        {
+            return ParameterSetName == UserParameterSet && UseDeviceAuthentication == false;
         }
 
         private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
@@ -591,6 +613,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 var tokenCache = provider.GetTokenCache();
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
+                AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
