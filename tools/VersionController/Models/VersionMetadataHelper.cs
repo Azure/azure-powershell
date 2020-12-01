@@ -256,7 +256,7 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingSerialized(bool serialize = true)
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with metadata from JSON file...");
+            Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
@@ -359,7 +359,7 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingGallery()
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with seemblies in the saved gallery folder...");
+            Console.WriteLine("Comparing the cmdlet assemblies with assemblies in the saved gallery folder...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
