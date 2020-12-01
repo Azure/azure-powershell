@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule for MySQL flexible server
 .Description
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule for MySQL flexible server
 #>
 function New-AzMySqlFlexibleServerFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
