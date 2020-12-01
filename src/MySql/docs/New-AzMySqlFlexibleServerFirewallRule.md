@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule for MySQL flexible server
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <S
 ```
 
 ## DESCRIPTION
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule for MySQL flexible server
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServerReplica
 
 ## SYNOPSIS
-Creates a new replica from an existing database.
+Creates a replica server for a MySQL flexible server
 
 ## SYNTAX
 

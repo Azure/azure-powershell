@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServer
 
 ## SYNOPSIS
-Creates a new server.
+Creates a new MySQL flexible server
 
 ## SYNTAX
 

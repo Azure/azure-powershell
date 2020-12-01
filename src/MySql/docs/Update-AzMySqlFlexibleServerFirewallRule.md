@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMySqlFlexibleServerFirewallRule
 
 ## SYNOPSIS
-Creates a new firewall rule or updates an existing firewall rule.
+Updates an existing firewall rule.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzMySqlFlexibleServerFirewallRule -InputObject <IMySqlIdentity> -EndIPAdd
 ```
 
 ## DESCRIPTION
-Creates a new firewall rule or updates an existing firewall rule.
+Updates an existing firewall rule.
 
 ## EXAMPLES
 
