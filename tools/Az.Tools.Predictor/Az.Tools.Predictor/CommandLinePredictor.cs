@@ -178,9 +178,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             catch
             {
             }
+
             if ((result.Count < suggestionCount) && (resultsTemp.Count > 0))
             {
-                resultsTemp.ToList().GetRange(0, suggestionCount - result.Count).ForEach(x => result.AddSuggestion(new PredictiveSuggestion(x.Key), x.Value));
+                foreach (var temp in resultsTemp.Take(suggestionCount - result.Count))
+                {
+                    result.AddSuggestion(new PredictiveSuggestion(temp.Key), temp.Value);
+                }
             }
 
             return new Tuple<CommandLineSuggestion, IDictionary<string, int>>(result, presentCommands);
