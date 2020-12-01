@@ -582,4 +582,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="UpdateHsmShouldProcessMessage" xml:space="preserve">
     <value>Updating managed HSM '{0}' in resource group '{1}'.</value>
   </data>
+  <data name="SelectiveRestoreFailed" xml:space="preserve">
+    <value>Failed to selective restore key {0} of managed HSM {1}.</value>
+  </data>
 </root>

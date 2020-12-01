@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true, HelpMessage = "The shared access signature (SAS) token to authenticate the storage account.")]
         public SecureString SasToken { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectStorageUri, Mandatory = true, HelpMessage = "Managed HSM object")]
-        [Parameter(ParameterSetName = InputObjectStorageName, Mandatory = true, HelpMessage = "Managed HSM object")]
+        [Parameter(ParameterSetName = InputObjectStorageUri, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
+        [Parameter(ParameterSetName = InputObjectStorageName, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
         public PSManagedHsm HsmObject { get; set; }
 
         public override void ExecuteCmdlet()

@@ -388,6 +388,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
+        #region Full backup restore
         public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
         {
             return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken);
@@ -397,6 +398,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             HsmClient.RestoreHsm(hsmName, backupLocation, sasToken, backupFolder);
         }
+
+        public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
+        {
+            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupLocation, sasToken, backupFolder);
+        }
+        #endregion
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
         {

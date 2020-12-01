@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported selective restore a key from a managed HSM full backup [#13526]
 * Supported "all" as an option when setting key vault access policies
 * Supported new version of SecretManagement module [#13366]
 * Supported ByteArray, String, PSCredential and Hashtable for `SecretValue` in SecretManagementModule [#12190]

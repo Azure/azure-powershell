@@ -187,6 +187,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw;
             }
         }
+        
+        public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
+        {
+            var client = CreateBackupClient(hsmName);
+            try
+            {
+                client.StartSelectiveRestore(keyName, backupLocation, sasToken, backupFolder)
+                    .WaitForCompletionAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
         {

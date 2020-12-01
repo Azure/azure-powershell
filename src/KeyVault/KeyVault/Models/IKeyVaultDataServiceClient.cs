@@ -25,7 +25,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
+        #region Key actions
         PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
+       
         PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
@@ -68,6 +70,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
 
+        string BackupKey(string vaultName, string keyName, string outputBlobPath);
+
+        string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath);
+
+        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+
+        PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
+        #endregion
+
+        #region Secret actions
         PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes);
 
         PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes);
@@ -88,17 +100,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultSecret RecoverSecret(string vaultName, string secretName);
 
-        string BackupKey(string vaultName, string keyName, string outputBlobPath);
-
-        string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath);
-
-        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
-
-        PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
-
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 
         PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath);
+        #endregion
 
         #region Certificate actions
 
@@ -198,7 +203,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         #region Full backup restore
         Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken);
+        
         void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder);
+       
+        void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder);
         #endregion
 
         #region RBAC
