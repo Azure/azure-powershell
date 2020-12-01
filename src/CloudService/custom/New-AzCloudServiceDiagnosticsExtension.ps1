@@ -30,8 +30,13 @@ function New-AzCloudServiceDiagnosticsExtension {
     [Parameter(HelpMessage="Name of Diagnostics Extension.", Mandatory)]
     [string] $Name,
 
-    [Parameter(HelpMessage="Subscription")]
-    [string] $Subscription,
+    [Parameter(HelpMessage="Subscription.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${Subscription},
 
     [Parameter(HelpMessage="Resource Group name of Cloud Service.", Mandatory)]
     [string] $ResourceGroupName,
@@ -67,12 +72,6 @@ function New-AzCloudServiceDiagnosticsExtension {
         throw ("DiagnosticsConfigurationPath does not exits: " + $DiagnosticsConfigurationPath)
     }
 
-    if (-not $Subscription)
-    {
-        $context = Get-AzContext
-        $Subscription = $context.Subscription.Id
-    }
-
     [xml]$diagnosticsConfigurationXml = Get-Content $DiagnosticsConfigurationPath
 
     $storageAccount = $diagnosticsConfigurationXml.PublicConfig.ChildNodes | Where-Object { $_.Name -eq 'StorageAccount' }
@@ -95,7 +94,7 @@ function New-AzCloudServiceDiagnosticsExtension {
     else
     {
         $metrics = $diagnosticsConfigurationXml.CreateElement('Metrics', $diagnosticsConfigurationXml.PublicConfig.NamespaceURI)
-        $resourceId = '/subscriptions/' + $Subscription + '/resourceGroups/'+ $ResourceGroupName + '/providers/Microsoft.Compute/cloudservices/' + $CloudServiceName
+        $resourceId = "/subscriptions/$Subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/cloudservices/$CloudServiceName"
         $metrics.SetAttribute('resourceId', $resourceId)
         $metrics = $diagnosticsConfigurationXml.PublicConfig.WadCfg.DiagnosticMonitorConfiguration.AppendChild($metrics)
     }

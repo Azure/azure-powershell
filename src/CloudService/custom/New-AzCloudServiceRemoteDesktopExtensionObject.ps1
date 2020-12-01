@@ -50,8 +50,8 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
     $RDPPublisher = "Microsoft.Windows.Azure.Extensions"
     $RDPExtensionType = "RDP"
 
-    $rdpSetting = "<PublicConfig><UserName>" + $Credential.UserName + "</UserName><Expiration>" + $Expiration +"</Expiration></PublicConfig>";
-    $rdpProtectedSetting = "<PrivateConfig><Password>"+ $Credential.Password + "</Password></PrivateConfig>";
+    $rdpSetting = "<PublicConfig><UserName>($Credential.UserName)</UserName><Expiration>$Expiration</Expiration></PublicConfig>";
+    $rdpProtectedSetting = "<PrivateConfig><Password>($Credential.Password)</Password></PrivateConfig>";
 
     return New-AzCloudServiceExtensionObject -Name $Name -Publisher $RDPPublisher -Type $RDPExtensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $rdpSetting -ProtectedSetting $rdpProtectedSetting -RolesAppliedTo $RolesAppliedTo -AutoUpgradeMinorVersion $AutoUpgradeMinorVersion
   }

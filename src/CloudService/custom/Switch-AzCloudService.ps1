@@ -96,7 +96,7 @@ function Switch-AzCloudService {
 
         # Check that both have swappable property set.
         if ([string]::IsNullOrEmpty($SourceCloudService.NetworkProfile.SwappableCloudService.Id)) {
-            throw "SwappableCloudServiceId is not set on the source cloud service " + $SourceCloudService.Name 
+            throw "SwappableCloudServiceId is not set on the source cloud service ($SourceCloudService.Name)"
         }
 
         # Check that Public IPs counts are correct for source
@@ -141,16 +141,24 @@ function Switch-AzCloudService {
         $requestBody = $requestBody -replace "#PIP1#", $SourceCloudService.NetworkProfile.LoadBalancerConfiguration[0].FrontendIPConfiguration[0].PublicIPAddressId
 
         # Set up API URI and Headers
-        $uriToInvoke = "/subscriptions/" + $SubscriptionId + "/providers/Microsoft.Network/locations/" + $SourceCloudService.Location + "/setLoadBalancerFrontendPublicIpAddresses?api-version=" + $ApiVersion
+        $uriToInvoke = "/subscriptions/$SubscriptionId/providers/Microsoft.Network/locations/($SourceCloudService.Location)/setLoadBalancerFrontendPublicIpAddresses?api-version=$ApiVersion"
 
         # Display the information about the VIP swap being made
-        Write-Host "Performing switch cloud service (VIP swap) action between" $SourceCloudService.Name "and" $TargetCloudService.Name
-        Write-Host
-        Write-Host "Request URI :"
-        Write-Host "POST " $uriToInvoke
-        Write-Host
-        Write-Host "Request Body :"
-        Write-Host $requestBody
+        Write-Host "Performing switch cloud service (VIP swap) action between ($SourceCloudService.Name) and ($TargetCloudService.Name)
+
+Request URI : $uriToInvoke
+POST
+
+Request Body :
+$requestBody"
+
+        # Write-Host "Performing switch cloud service (VIP swap) action between ($SourceCloudService.Name) and ($TargetCloudService.Name)"
+        # Write-Host
+        # Write-Host "Request URI : $uriToInvoke"
+        # Write-Host "POST"
+        # Write-Host
+        # Write-Host "Request Body :"
+        # Write-Host $requestBody
 
         # Invoke the VIP swap API
         if ($PSCmdlet.ShouldProcess($SourceCloudService.Name + " <=> " + $TargetCloudService.Name,'VIP swap')) {

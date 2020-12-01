@@ -26,7 +26,12 @@ function Get-AzCloudServiceNetworkInterfaces {
     param(
         [Parameter(ParameterSetName="CloudServiceName", HelpMessage="Subscription.")]
         [Parameter(ParameterSetName = "CloudService", HelpMessage="Subscription.")]
-        [string] $SubscriptionId,
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # Subscription credentials which uniquely identify Microsoft Azure subscription.
+        # The subscription ID forms part of the URI for every service call.
+        ${SubscriptionId},
 
         [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName", HelpMessage="ResourceGroupName.")]
         [string] $ResourceGroupName,
@@ -46,12 +51,6 @@ function Get-AzCloudServiceNetworkInterfaces {
 
     )
     process {
-
-        if (-not $PSBoundParameters.ContainsKey("SubscriptionId")) 
-        {
-            $SubscriptionId = (Get-AzContext).Subscription.Id
-        }
-
         if ($PSBoundParameters.ContainsKey("CloudService"))
         {
             $elements = $CloudService.Id.Split("/")
@@ -63,11 +62,11 @@ function Get-AzCloudServiceNetworkInterfaces {
         # Create the URI as per the input
         if ($PSBoundParameters.ContainsKey("RoleInstanceName"))
         {
-            $uriToInvoke = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.Compute/cloudServices/" + $CloudServiceName + "/roleInstances/" + $RoleInstanceName + "/networkInterfaces?api-version=" + $ApiVersion
+            $uriToInvoke = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/cloudServices/$CloudServiceName/roleInstances/$RoleInstanceName/networkInterfaces?api-version=$ApiVersion"
         }
         else
         {
-            $uriToInvoke = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.Compute/cloudServices/" + $CloudServiceName + "/networkInterfaces?api-version=" + $ApiVersion
+            $uriToInvoke = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/cloudServices/$CloudServiceName/networkInterfaces?api-version=$ApiVersion"
         }
 
         # Invoke and display the information

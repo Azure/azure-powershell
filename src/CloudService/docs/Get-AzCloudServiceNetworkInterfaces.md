@@ -15,13 +15,13 @@ Get the network interfaces of a cloud service.
 ### CloudServiceName (Default)
 ```
 Get-AzCloudServiceNetworkInterfaces -CloudServiceName <String> -ResourceGroupName <String>
- [-RoleInstanceName <String>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-RoleInstanceName <String>] [<CommonParameters>]
 ```
 
 ### CloudService
 ```
-Get-AzCloudServiceNetworkInterfaces -CloudService <CloudService> [-RoleInstanceName <String>]
- [-SubscriptionId <String>] [<CommonParameters>]
+Get-AzCloudServiceNetworkInterfaces -CloudService <CloudService> [-SubscriptionId <String>]
+ [-RoleInstanceName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,7 +127,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

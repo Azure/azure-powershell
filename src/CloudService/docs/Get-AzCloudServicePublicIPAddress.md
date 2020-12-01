@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+Subscription.
 
 ```yaml
 Type: System.String
@@ -103,7 +103,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
