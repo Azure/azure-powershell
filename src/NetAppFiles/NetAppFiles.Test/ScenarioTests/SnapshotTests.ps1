@@ -30,7 +30,8 @@ function Test-SnapshotCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus2euap" -UseCanonical
+    $resourceLocation = "eastus2euap"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -117,7 +118,8 @@ function Test-SnapshotPipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -179,6 +181,7 @@ function Test-CreateVolumeFromSnapshot
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -251,7 +254,8 @@ function Test-RestoreVolumeFromSnapshot
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"

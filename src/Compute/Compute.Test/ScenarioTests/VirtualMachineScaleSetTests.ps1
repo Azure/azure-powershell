@@ -2650,3 +2650,36 @@ function Test-VirtualMachineScaleSetAssignedHost
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test the VMSS Extension rolling upgrade cmdlet.
+This is a LiveOnly test and requires some manual setup.  
+#>
+function Test-VirtualMachineScaleSetExtRollingUpgrade
+{
+    # create a VM scale set manually in Azure Portal, use its default values. 
+    # Provide the Location, ResourceGroupName, and VM scale set name below. 
+
+    try
+    {
+        
+        # Common
+        [string]$loc = "eastus";
+
+        $rgname = "adamvmssupdate";
+        $vmssname = "windowsvmss";
+        $vmss = Get-Azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+        
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True -Setting "";
+
+        $job = Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+    }
+    finally
+    {
+        
+    }
+}

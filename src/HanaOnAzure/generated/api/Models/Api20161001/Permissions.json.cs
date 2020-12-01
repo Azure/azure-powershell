@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
             {
                 return;
             }
-            {_certificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("certificates"), out var __jsonCertificates) ? If( __jsonCertificates as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions) (__u is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __t ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions)(__t.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions)""))) ))() : null : Certificate;}
-            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("keys"), out var __jsonKeys) ? If( __jsonKeys as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions) (__p is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __o ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions)(__o.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions)""))) ))() : null : Key;}
-            {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("secrets"), out var __jsonSecrets) ? If( __jsonSecrets as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions) (__k is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __j ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions)(__j.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions)""))) ))() : null : Secret;}
+            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("keys"), out var __jsonKeys) ? If( __jsonKeys as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions) (__u is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __t ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions)(__t.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.KeyPermissions)""))) ))() : null : Key;}
+            {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("secrets"), out var __jsonSecrets) ? If( __jsonSecrets as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions) (__p is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __o ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions)(__o.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SecretPermissions)""))) ))() : null : Secret;}
+            {_certificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("certificates"), out var __jsonCertificates) ? If( __jsonCertificates as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions) (__k is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __j ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions)(__j.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CertificatePermissions)""))) ))() : null : Certificate;}
             {_storage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("storage"), out var __jsonStorage) ? If( __jsonStorage as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.StoragePermissions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.StoragePermissions) (__f is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString __e ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.StoragePermissions)(__e.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.StoragePermissions)""))) ))() : null : Storage;}
             AfterFromJson(json);
         }
@@ -96,32 +96,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
             {
                 return container;
             }
-            if (null != this._certificate)
+            if (null != this._key)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.XNodeArray();
-                foreach( var __x in this._certificate )
+                foreach( var __x in this._key )
                 {
                     AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                 }
-                container.Add("certificates",__w);
-            }
-            if (null != this._key)
-            {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.XNodeArray();
-                foreach( var __s in this._key )
-                {
-                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
-                }
-                container.Add("keys",__r);
+                container.Add("keys",__w);
             }
             if (null != this._secret)
             {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.XNodeArray();
+                foreach( var __s in this._secret )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("secrets",__r);
+            }
+            if (null != this._certificate)
+            {
                 var __m = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.XNodeArray();
-                foreach( var __n in this._secret )
+                foreach( var __n in this._certificate )
                 {
                     AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                 }
-                container.Add("secrets",__m);
+                container.Add("certificates",__m);
             }
             if (null != this._storage)
             {

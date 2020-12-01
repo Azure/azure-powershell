@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.1
+* Fixed the issue that using Task.Result incorrectly causes unclear error message if browser is not available for Interactive auth
+
+## Version 2.2.0
+* Fixed an issue that TenantId may be not respected if using `Connect-AzAccount -DeviceCode`[#13477]
 * Added new cmdlet `Get-AzAccessToken`
 * Fixed an issue that error happens if user profile path is inaccessible
 * Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]

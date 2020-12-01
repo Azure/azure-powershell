@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             var accessPolicies = servicesProperties.AccessPolicies;
 
             var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
-            foreach(ServiceAccessPolicyEntry accessPolicy in  accessPolicies)
+            foreach (ServiceAccessPolicyEntry accessPolicy in accessPolicies)
             {
                 psAccessPolicies.Add(new PSHealthcareApisFhirServiceAccessPolicyEntry(accessPolicy));
             }

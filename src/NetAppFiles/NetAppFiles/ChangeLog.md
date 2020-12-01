@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added aesEncryption, ldapSigning properties to ActiveDirectory
+* Fixed Tags in UpdateAzNetAppFilesBackupPolicy
+* Return backupId in Backup and BackupPatch models
+
+## Version 0.2.0
 
 * Add new Backup Policy cmdlets:
     - `Get-AzNetAppFilesBackupPolicy`

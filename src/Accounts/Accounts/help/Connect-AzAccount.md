@@ -420,7 +420,7 @@ Accept wildcard characters: False
 
 ### -ManagedServiceHostName
 
-Host name for the managed service.
+Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token". Host name for the managed service.
 
 ```yaml
 Type: System.String
@@ -436,7 +436,7 @@ Accept wildcard characters: False
 
 ### -ManagedServicePort
 
-Port number for the managed service.
+Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token".Port number for the managed service.
 
 ```yaml
 Type: System.Int32
@@ -452,7 +452,7 @@ Accept wildcard characters: False
 
 ### -ManagedServiceSecret
 
-Token for the managed service login.
+Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Token for the managed service login.
 
 ```yaml
 Type: System.Security.SecureString

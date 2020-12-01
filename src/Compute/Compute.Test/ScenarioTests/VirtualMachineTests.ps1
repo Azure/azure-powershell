@@ -4374,7 +4374,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
 
 <#
 .SYNOPSIS
-Test Virtual Machine Size and Usage
+Test Get-AzVMImage new parameters -OrderBy and -Top.
 #>
 function Test-VirtualMachineImageListTopOrderExpand
 {
@@ -4414,7 +4414,7 @@ function Test-VirtualMachineImageListTopOrderExpand
 
 <#
 .SYNOPSIS
-This test can only run in Record mode. SEveral lines need to be uncommented for it to test the cmdlet. 
+This test can only run in Record mode. Several lines need to be uncommented for it to test the cmdlet. 
 Downloads the managed boot diagnostics of a Windows machine to a local file path. 
 #>
 function Test-VirtualMachineBootDiagnostics
@@ -4432,9 +4432,9 @@ function Test-VirtualMachineBootDiagnostics
         $vmname = 'vm' + $rgname;
         # Create the file path on your machine, then set this variable to it. 
         # $localPath = "C:\Users\adsandor\Documents\bootDiags"
-        
+
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-        
+
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
@@ -4447,19 +4447,19 @@ function Test-VirtualMachineBootDiagnostics
         $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
-        
+
         $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-        
+
         # OS & Image
         $user = "Foo2";
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        
+
         # Windows OS test case. 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-        
+
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
@@ -4475,6 +4475,52 @@ function Test-VirtualMachineBootDiagnostics
     {
         # Cleanup
         Clean-ResourceGroup $rgname
-	}
+	  }
 }
 
+<#
+.SYNOPSIS
+Test the Get-AzVm cmdlet when using VMs with the 
+same name across multiple Resource Groups. 
+#>
+function Test-VirtualMachineGetVMNameAcrossResourceGroups
+{
+    # Setup
+    $loc = "eastus";
+    $rgname = Get-ComputeTestResourceName;
+    $rgname2 = Get-ComputeTestResourceName;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname2 -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname1 = 'v' + $rgname;
+        $vmname3 = 'v3' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+        $domainNameLabel1 = "domain1" + $rgname;
+        $domainNameLabel2 = "domain2" + $rgname;
+        $domainNameLabel3 = "domain3" + $rgname;
+
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel1;
+        $vm2 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname1 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel2;
+        $vm3 = New-AzVM -ResourceGroupName $rgname2 -Location $loc -Name $vmname3 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel3;
+
+        $vms = Get-AzVm -Name $vmname1 -Status;
+
+        Assert-AreEqual 2 $vms.Count;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+        Clean-ResourceGroup $rgname2;
+    }
+}

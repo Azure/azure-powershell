@@ -22,6 +22,21 @@
 * Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
+
+## Version 4.3.0
+* Updated below cmdlet 
+    - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
+        - Added PublicIpAddressPrefix property
+        - Added PublicIpAddressPrefixId property
+* Added new properties to the following cmdlets to allow for global load balancing
+    - `New-AzLoadBalancer`:
+        - Added Sku Tier property
+    - `New-AzPuplicIpAddress`:
+        - Added Sku Tier property
+    - `New-AzPublicIpPrefix`:
+        - Added Sku Tier property
+    - `New-AzLoadBalancerBackendAddressConfig`:
+        - Added LoadBalancerFrontendIPConfigurationId property
 * Updated planning to deprecate warnings for the following cmdlets
     -`New-AzVirtualHubRoute`
     -`New-AzVirtualHubRouteTable`
@@ -52,6 +67,10 @@
     - `Get-AzApplicationGatewaySslProfilePolicy`
     - `Remove-AzApplicationGatewaySslProfilePolicy`
     - `Set-AzApplicationGatewaySslProfilePolicy`
+* Added new parameter 'Priority' to support Rule Priority in Application Gateway RequestRoutingRule for the below cmdlets
+    - `Add-AzApplicationGatewayRequestRoutingRule`
+    - `New-AzApplicationGatewayRequestRoutingRule`
+    - `Set-AzApplicationGatewayRequestRoutingRule`
 
 ## Version 4.2.0
 * Added warning messages for upcoming breaking change for Virtual Router Peer Routes
