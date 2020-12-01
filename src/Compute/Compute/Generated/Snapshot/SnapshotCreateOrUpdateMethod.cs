@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     existingResource = null;
                 }
-
+                
                 if (existingResource != null)
                 {
                     throw new Exception(string.Format("A Snapshot with name '{0}' in resource group '{1}' already exists. Please use Update-AzSnapshot to update an existing Snapshot.", this.SnapshotName, this.ResourceGroupName));

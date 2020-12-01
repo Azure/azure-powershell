@@ -1360,7 +1360,22 @@ function Test-SnapshotDuplicateCreationFails
         $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig;
         Assert-NotNull $snapshot;
 
-        Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+        #Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+
+        #-Location $loc
+        <#$snapshotconfig2 = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Standard_LRS -OsType Windows;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -SnapshotUpdate $snapshotconfig2 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;#>
+
+        $access = 'Read';
+        $job = Grant-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        $job = Revoke-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
     }
     finally
     {
