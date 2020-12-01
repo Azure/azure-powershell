@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
@@ -31,6 +32,7 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -196,6 +198,8 @@ namespace Microsoft.Azure.Commands.Profile
         /// </summary>
         protected override bool RequireDefaultContext() { return false; }
 
+        internal TokenCachePersistenceChecker TokenCachePersistenceChecker { get; set; } = new TokenCachePersistenceChecker();
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -335,7 +339,7 @@ namespace Microsoft.Azure.Commands.Profile
                         azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
                     }
 
-                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
+                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format(Constants.DefaultMsiAccountIdPrefix + "{0}", ManagedServicePort);
                     break;
                 default:
                     //Support username + password for both Windows PowerShell and PowerShell 6+
@@ -570,7 +574,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 try
                 {
-                    if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
+                    if (autoSaveEnabled && !TokenCachePersistenceChecker.Verify())
                     {
                         // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                         // We cannot just throw an exception here because this is called when importing the module
@@ -617,7 +621,8 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
-
+                AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
+                AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)
