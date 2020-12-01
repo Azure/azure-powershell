@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets copy activity source.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.source")]
-        public CopySource Source { get; set; }
+        public PSCopySource Source { get; set; }
 
         /// <summary>
         /// Gets or sets copy activity sink.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.sink")]
-        public CopySink Sink { get; set; }
+        public PSCopySink Sink { get; set; }
 
         /// <summary>
         /// Gets or sets copy activity translator. If not specified, tabular
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// is true.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.stagingSettings")]
-        public StagingSettings StagingSettings { get; set; }
+        public PSStagingSettings StagingSettings { get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of concurrent sessions opened on the
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// EnableSkipIncompatibleRow is true.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.redirectIncompatibleRowSettings")]
-        public RedirectIncompatibleRowSettings RedirectIncompatibleRowSettings { get; set; }
+        public PSRedirectIncompatibleRowSettings RedirectIncompatibleRowSettings { get; set; }
 
         /// <summary>
         /// Gets or sets preserve Rules.
@@ -148,20 +148,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new CopyActivity(this.Name, this.Source, this.Sink);
+            var activity = new CopyActivity(this.Name, this.Source.ToSdkObject(), this.Sink.ToSdkObject());
             this.Inputs?.ForEach(item => activity.Inputs.Add(item));
             this.Outputs?.ForEach(item => activity.Outputs.Add(item));
             activity.Translator = this.Translator;
             activity.EnableStaging = this.EnableStaging;
-            activity.StagingSettings = this.StagingSettings;
+            activity.StagingSettings = this.StagingSettings.ToSdkObject();
             activity.ParallelCopies = this.ParallelCopies;
             activity.DataIntegrationUnits = this.DataIntegrationUnits;
             activity.EnableSkipIncompatibleRow = this.EnableSkipIncompatibleRow;
-            activity.RedirectIncompatibleRowSettings = this.RedirectIncompatibleRowSettings;
+            activity.RedirectIncompatibleRowSettings = this.RedirectIncompatibleRowSettings.ToSdkObject();
             this.PreserveRules?.ForEach(item => activity.PreserveRules.Add(item));
             this.Preserve?.ForEach(item => activity.Preserve.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Parameters?.ForEach(item => activity.Parameters.Add(item));
             this.Libraries?.ForEach(item => activity.Libraries.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

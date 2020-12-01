@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets data flow reference.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.dataFlow")]
-        public DataFlowReference DataFlow { get; set; }
+        public PSDataFlowReference DataFlow { get; set; }
 
         /// <summary>
         /// Gets or sets staging info for execute data flow activity.
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new ExecuteDataFlowActivity(this.Name, this.DataFlow);
+            var activity = new ExecuteDataFlowActivity(this.Name, this.DataFlow.ToSdkObject());
             activity.Staging = this.Staging;
             activity.IntegrationRuntime = this.IntegrationRuntime;
             activity.Compute = this.Compute;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

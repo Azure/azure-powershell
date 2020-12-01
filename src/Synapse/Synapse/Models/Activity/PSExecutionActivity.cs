@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets activity policy.
         /// </summary>
         [JsonProperty(PropertyName = "policy")]
-        public ActivityPolicy Policy { get; set; }
+        public PSActivityPolicy Policy { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var activity = new ExecutionActivity(this.Name);
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

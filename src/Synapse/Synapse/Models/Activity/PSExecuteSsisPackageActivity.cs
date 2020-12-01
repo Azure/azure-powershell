@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.PropertyOverrides?.ForEach(item => activity.PropertyOverrides.Add(item));
             activity.LogLocation = this.LogLocation;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

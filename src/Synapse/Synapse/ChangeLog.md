@@ -41,6 +41,7 @@
     - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
     - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
 * Fixed Null Reference Exception when submit spark job.
+* Fixed deserialization error when create Pipeline/Dataset/Trigger through DefinitionFile
 
 ## Version 0.4.0
 * Add `-Force` to all Remove cmdlets

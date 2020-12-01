@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the location of the Binary storage.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets the data compression method used for the binary
         /// dataset.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.compression")]
-        public DatasetCompression Compression { get; set; }
+        public PSDatasetCompression Compression { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new BinaryDataset(this.LinkedServiceName);
-            dataset.Location = this.Location;
-            dataset.Compression = this.Compression;
+            dataset.Location = this.Location.ToSdkObject();
+            dataset.Compression = this.Compression.ToSdkObject();
             SetProperties(dataset);
             return dataset;
         }

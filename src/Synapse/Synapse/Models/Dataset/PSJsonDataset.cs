@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the location of the json data storage.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets the code page name of the preferred encoding. If not
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the data compression method used for the json dataset.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.compression")]
-        public DatasetCompression Compression { get; set; }
+        public PSDatasetCompression Compression { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new JsonDataset(this.LinkedServiceName);
-            dataset.Location = this.Location;
+            dataset.Location = this.Location.ToSdkObject();
             dataset.EncodingName = this.EncodingName;
-            dataset.Compression = this.Compression;
+            dataset.Compression = this.Compression.ToSdkObject();
             SetProperties(dataset);
             return dataset;
         }

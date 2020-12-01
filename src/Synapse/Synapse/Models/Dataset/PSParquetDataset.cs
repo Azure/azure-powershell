@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the location of the parquet storage.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'none', 'gzip', 'snappy',
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new ParquetDataset(this.LinkedServiceName);
-            dataset.Location = this.Location;
+            dataset.Location = this.Location.ToSdkObject();
             dataset.CompressionCodec = this.CompressionCodec ?? "none";
             SetProperties(dataset);
             return dataset;

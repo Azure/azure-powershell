@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.JarLibs?.ForEach(item => activity.JarLibs.Add(item));
             this.Defines?.ForEach(item => activity.Defines.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

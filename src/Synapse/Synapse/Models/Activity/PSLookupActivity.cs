@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// activity source.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.source")]
-        public CopySource Source { get; set; }
+        public PSCopySource Source { get; set; }
 
         /// <summary>
         /// Gets or sets lookup activity dataset reference.
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new LookupActivity(this.Name, this.Source, this.Dataset);
+            var activity = new LookupActivity(this.Name, this.Source.ToSdkObject(), this.Dataset);
             activity.FirstRowOnly = this.FirstRowOnly;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

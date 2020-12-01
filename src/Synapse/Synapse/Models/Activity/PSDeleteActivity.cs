@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// enableLogging is true.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.logStorageSettings")]
-        public LogStorageSettings LogStorageSettings { get; set; }
+        public PSLogStorageSettings LogStorageSettings { get; set; }
 
         /// <summary>
         /// Gets or sets delete activity dataset reference.
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.Recursive = this.Recursive;
             activity.MaxConcurrentConnections = this.MaxConcurrentConnections;
             activity.EnableLogging = this.EnableLogging;
-            activity.LogStorageSettings = this.LogStorageSettings;
+            activity.LogStorageSettings = this.LogStorageSettings.ToSdkObject();
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

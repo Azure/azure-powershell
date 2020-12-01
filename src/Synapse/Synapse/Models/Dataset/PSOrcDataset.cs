@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the location of the ORC data storage.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'none', 'zlib', 'snappy'
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new OrcDataset(this.LinkedServiceName);
-            dataset.Location = this.Location;
+            dataset.Location = this.Location.ToSdkObject();
             dataset.OrcCompressionCodec = this.OrcCompressionCodec ?? "none";
             SetProperties(dataset);
             return dataset;

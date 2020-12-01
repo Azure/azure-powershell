@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var activity = new AzureMLUpdateResourceActivity(this.Name, this.TrainedModelName, this.TrainedModelLinkedServiceName, this.TrainedModelFilePath);
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy;
+            activity.Policy = this.Policy.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

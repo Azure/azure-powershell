@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the location of the delimited text storage.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.location")]
-        public DatasetLocation Location { get; set; }
+        public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets the column delimiter. Type: string (or Expression with
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new DelimitedTextDataset(this.LinkedServiceName);
-            dataset.Location = this.Location;
+            dataset.Location = this.Location.ToSdkObject();
             dataset.ColumnDelimiter = this.ColumnDelimiter;
             dataset.RowDelimiter = this.RowDelimiter;
             dataset.EncodingName = this.EncodingName;
