@@ -28,11 +28,6 @@ Exports a database file from target database.
 Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;rVwHb4/ZyJCF9kLzgCkAdjB0e6uCfdqV1dwhEHLWICKNLfeWJ9O3KLNtEk31AsOfmsN2LNjwSsgj3iVMwkGNJw=="
-```
-
 ## PARAMETERS
 
 ### -AsJob

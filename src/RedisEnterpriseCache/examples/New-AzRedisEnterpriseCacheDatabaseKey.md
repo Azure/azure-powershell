@@ -2,9 +2,9 @@
 ```powershell
 PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
 
-PrimaryKey                                   SecondaryKey
-----------                                   ------------
-ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= QEInlqy5WwCxkX+SQR8jCmbYdBrXXopbwRAeqLkizX0=
+PrimaryKey      SecondaryKey
+----------      ------------
+new-primary-key secondary-key
 
 ```
 
@@ -14,9 +14,9 @@ This command regenerates the primary secret access key used for authenticating c
 ```powershell
 PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
-PrimaryKey                                   SecondaryKey
-----------                                   ------------
-ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= IVFu/ddyL/Q61zL/A/WPu+8aMyF9o6Jr+WbD2bgvZXA=
+PrimaryKey  SecondaryKey
+----------  ------------
+primary-key new-secondary-key
 
 ```
 
