@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
 
@@ -97,6 +98,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The location of the template spec. Only required if the template spec does not already exist.")]
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
+
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Hashtable of tags for the new template spec resource(s).")]
+        [ValidateNotNull]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             ParameterSetName = FromJsonStringParameterSet,
@@ -204,7 +212,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         packagedTemplate,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
-                        versionDescription: VersionDescription
+                        versionDescription: VersionDescription,
+                        templateSpecTags:Tag, // Note: Only applied if template spec doesn't exist
+                        versionTags: Tag
                     );
 
                     WriteObject(templateSpecVersion);
