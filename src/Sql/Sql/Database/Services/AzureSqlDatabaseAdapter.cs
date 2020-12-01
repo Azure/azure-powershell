@@ -160,8 +160,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 LicenseType = model.Database.LicenseType,
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
-                ReadReplicaCount = model.Database.ReadReplicaCount,
+                HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
                 StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                SecondaryType = model.Database.SecondaryType,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -398,13 +399,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>internal backupStorageRedundancy</returns>
         private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
         {
-            switch (backupStorageRedundancy)
+
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
             {
-                case "Geo":
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
                     return "GRS";
-                case "Local":
+                case "local":
                     return "LRS";
-                case "Zone":
+                case "zone":
                     return "ZRS";
                 default:
                     return null;

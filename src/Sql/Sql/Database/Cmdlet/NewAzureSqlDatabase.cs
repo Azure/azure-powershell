@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -198,7 +199,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
-        public int ReadReplicaCount { get; set; }
+        [Alias("ReadReplicaCount")]
+        public int HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
@@ -208,7 +210,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
 
-        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -223,19 +231,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.DatabaseName)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeGeoWarning)))
                     {
                         return;
                     }
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    if (!Force.IsPresent && !ShouldContinue(
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.DatabaseName)))
-                    {
-                        return;
-                    }
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
                 }
             }
             base.ExecuteCmdlet();
@@ -295,8 +298,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

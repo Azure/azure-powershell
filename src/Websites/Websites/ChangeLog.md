@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Prevent duplicate access restriction rules
+
+## Version 2.1.0
+* Added support for new access restriction features: ServiceTag, multi-ip and http-headers
+
+## Version 2.0.0
 * Added support for Premium V3 pricing tier
+* Updated the WebSites SDK to 3.1.0
 
 ## Version 1.11.0
 * Added support to perform operations for Slots not in the same resource group as the App Service Plan

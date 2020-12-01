@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
     /// Gets a list of SAP monitors in the specified subscription. The operations returns various properties of each SAP monitor.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] SapMonitors_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.HanaOnAzure/sapMonitors"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.HanaOnAzure/sapMonitors"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSapMonitor_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor))]

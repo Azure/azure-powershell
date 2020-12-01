@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>DNS verification test result.</summary>
     public partial struct DnsVerificationTestResult :
         System.IEquatable<DnsVerificationTestResult>
     {

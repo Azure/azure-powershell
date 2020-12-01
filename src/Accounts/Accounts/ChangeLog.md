@@ -18,6 +18,36 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Managed to parse ExpiresOn time from raw token if could not get from underlying library
+* Improved warning message if Interactive authentication is unavailable
+
+## Version 2.2.1
+* Fixed the issue that using Task.Result incorrectly causes unclear error message if browser is not available for Interactive auth
+
+## Version 2.2.0
+* Fixed an issue that TenantId may be not respected if using `Connect-AzAccount -DeviceCode`[#13477]
+* Added new cmdlet `Get-AzAccessToken`
+* Fixed an issue that error happens if user profile path is inaccessible
+* Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
+* Added parameter "ContainerRegistryEndpointSuffix" to: `Add-AzEnvironment`, `Set-AzEnvironment` 
+* Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
+* Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
+* Fixed null reference and method case insensitive in `Invoke-AzRestMethod`
+
+## Version 2.1.2
+* Fixed one issue related to MSI
+
+## Version 2.1.1
+* Fixed the issue that token is not renewed after expiring for LRO [#13367]
+* Fixed the issue that AccountId is not respected in MSI [#13376]
+* Fixed the issue that error message is unclear if browser is not avaialable for Interactive auth [#13340]
+
+## Version 2.1.0
+* [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`
+* Replaced Azure Directory Authentication Library with Microsoft Authentication Library(MSAL)
+
+## Version 1.9.5
+* Fixed DateTime parse issue in common libraries [#13045]
 
 ## Version 1.9.4
 * Formatted the upcoming breaking change messages

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// nor AppId in the Put operation.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Components_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAppInsights_Create", SupportsShouldProcess = true)]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Required = true,
         ReadOnly = false,
         Description = @"An Application Insights component definition.",
-        SerializedName = @"InsightProperties",
+        SerializedName = @"insightProperties",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent InsightProperty { get => this._insightProperty; set => this._insightProperty = value; }
 
@@ -127,12 +127,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
 
-        /// <summary>The name of the identity resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the identity resource.")]
+        /// <summary>The name of the Application Insights component resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Application Insights component resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the identity resource.",
+        Description = @"The name of the Application Insights component resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Path)]
@@ -141,12 +141,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>
+        /// Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(

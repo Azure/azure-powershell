@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130
             {
                 return;
             }
-            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ProxyResource(json);
+            __resource = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.Resource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.SystemAssignedIdentityProperties.FromJson(__jsonProperties) : Property;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.SystemAssignedIdentityTags.FromJson(__jsonTags) : Tag;}
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130
             {
                 return container;
             }
-            __proxyResource?.ToJson(container, serializationMode);
+            __resource?.ToJson(container, serializationMode);
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );

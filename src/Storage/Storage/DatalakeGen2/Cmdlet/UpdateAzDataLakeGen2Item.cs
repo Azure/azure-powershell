@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(ValueFromPipeline = true, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be updated. Can be a file or directory " +
-                "In the format 'directory/file.txt' or 'directory1/directory2/'. Not specify this parameter will update the root directory of the Filesystem.", ParameterSetName = ManualParameterSet)]
+                "In the format 'directory/file.txt' or 'directory1/directory2/'. Skip set this parameter to update the root directory of the Filesystem.", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 

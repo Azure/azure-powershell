@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for DirectoryServiceOptions.</summary>
+    /// <summary>Indicates the directory service used.</summary>
     public partial class DirectoryServiceOptionsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

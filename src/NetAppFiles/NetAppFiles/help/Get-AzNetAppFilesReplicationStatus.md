@@ -164,6 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesReplicationStatus

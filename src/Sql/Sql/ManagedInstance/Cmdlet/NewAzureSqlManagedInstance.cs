@@ -313,8 +313,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the Sql Azure Managed Instance. Options are: Local, Zone and Geo ")]
-        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
+        public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -381,7 +388,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyNotChosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeGeoWarning, this.Name)))
                     {
                         return;
                     }
@@ -475,7 +482,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 DnsZonePartner = this.DnsZonePartner,
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                BackupStorageRedundancy = this.BackupStorageRedundancy
+                BackupStorageRedundancy = this.BackupStorageRedundancy,
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId
             });
             return newEntity;
         }

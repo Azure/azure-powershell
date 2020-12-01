@@ -523,7 +523,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
-                LicenseType = model.LicenseType
+                LicenseType = model.LicenseType,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
             };
 
             if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
@@ -609,6 +610,31 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 databaseName);
 
             return new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(resourceGroup, serverName, databaseName, baPolicy);
+        }
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
         }
     }
 }

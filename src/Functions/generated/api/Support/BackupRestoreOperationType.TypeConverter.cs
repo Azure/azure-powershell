@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for BackupRestoreOperationType.</summary>
+    /// <summary>Operation type.</summary>
     public partial class BackupRestoreOperationTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

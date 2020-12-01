@@ -163,11 +163,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find application by &apos;{0}&apos;..
+        /// </summary>
+        internal static string ApplicationNotFoundBy {
+            get {
+                return ResourceManager.GetString("ApplicationNotFoundBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
         /// </summary>
         internal static string ArmAccountNotFound {
             get {
                 return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign role &apos;{0}&apos; to principal &apos;{1}&apos; at scope &apos;{2}&apos;..
+        /// </summary>
+        internal static string AssignRole {
+            get {
+                return ResourceManager.GetString("AssignRole", resourceCulture);
             }
         }
         
@@ -316,6 +334,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
+        /// </summary>
+        internal static string DecryptSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enough keys to decrypt security domain backup. {0} required, {0} provided..
+        /// </summary>
+        internal static string DecryptSecurityDomainKeyNotEnough {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainKeyNotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
         /// </summary>
         internal static string DeletedVaultNotFound {
@@ -325,11 +361,47 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perform a full backup and stores it in {0}..
+        /// </summary>
+        internal static string DoFullBackup {
+            get {
+                return ResourceManager.GetString("DoFullBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restores the managed HSM from the backup stored in {0}..
+        /// </summary>
+        internal static string DoFullRestore {
+            get {
+                return ResourceManager.GetString("DoFullRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for downloading. (Supported types: RSA, RSA-HSM).
         /// </summary>
         internal static string DownloadNotSupported {
             get {
                 return ResourceManager.GetString("DownloadNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        /// </summary>
+        internal static string DownloadSecurityDomainFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain exchange key..
+        /// </summary>
+        internal static string DownloadSecurityDomainKeyFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
             }
         }
         
@@ -352,6 +424,51 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to backup managed HSM {0}..
+        /// </summary>
+        internal static string FullBackupFailed {
+            get {
+                return ResourceManager.GetString("FullBackupFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to restore managed HSM {0}..
+        /// </summary>
+        internal static string FullRestoreFailed {
+            get {
+                return ResourceManager.GetString("FullRestoreFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified HSM already exists..
+        /// </summary>
+        internal static string HsmAlreadyExists {
+            get {
+                return ResourceManager.GetString("HsmAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To encrypt the security domain data, please provide at least {0} and at most {1} certificates..
+        /// </summary>
+        internal static string HsmCertRangeWarning {
+            get {
+                return ResourceManager.GetString("HsmCertRangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find HSM &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string HsmNotFound {
+            get {
+                return ResourceManager.GetString("HsmNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {
@@ -366,6 +483,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string ImportCertificate {
             get {
                 return ResourceManager.GetString("ImportCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for importing. (Supported types: RSA-HSM).
+        /// </summary>
+        internal static string ImportNotSupported {
+            get {
+                return ResourceManager.GetString("ImportNotSupported", resourceCulture);
             }
         }
         
@@ -393,6 +519,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidCurrentSubscription {
             get {
                 return ResourceManager.GetString("InvalidCurrentSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid HSM name..
+        /// </summary>
+        internal static string InvalidHsmName {
+            get {
+                return ResourceManager.GetString("InvalidHsmName", resourceCulture);
             }
         }
         
@@ -447,6 +582,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyName {
             get {
                 return ResourceManager.GetString("InvalidKeyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid key properties.
+        /// </summary>
+        internal static string InvalidKeyProperties {
+            get {
+                return ResourceManager.GetString("InvalidKeyProperties", resourceCulture);
             }
         }
         
@@ -640,6 +784,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to load security domain data from {0}. Please make sure the file exists and is not modified..
+        /// </summary>
+        internal static string LoadSecurityDomainFileFailed {
+            get {
+                return ResourceManager.GetString("LoadSecurityDomainFileFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault..
         /// </summary>
         internal static string NoDefaultUserAccount {
@@ -802,7 +955,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveCertWarning {
             get {
@@ -892,7 +1045,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove HSM &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveHsmWarning {
+            get {
+                return ResourceManager.GetString("RemoveHsmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove HSM.
+        /// </summary>
+        internal static string RemoveHsmWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveHsmWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveKeyWarning {
             get {
@@ -910,7 +1081,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveManagedStorageAccountWarning {
             get {
@@ -955,7 +1126,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Remove role &apos;{0}&apos; of principal &apos;{1}&apos; at scope &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemoveRole {
+            get {
+                return ResourceManager.GetString("RemoveRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSecretWarning {
             get {
@@ -1032,6 +1212,51 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RestoreSecret {
             get {
                 return ResourceManager.GetString("RestoreSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;PublicKey&quot; and &quot;PrivateKey&quot; are mandatory properties in each object in &quot;Keys&quot;..
+        /// </summary>
+        internal static string RestoreSecurityDomainBadKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainBadKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to restore security domain from backup..
+        /// </summary>
+        internal static string RestoreSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
+        /// </summary>
+        internal static string RestoreSecurityDomainNotEnoughKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainNotEnoughKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find the role assignment by given parameters..
+        /// </summary>
+        internal static string RoleAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("RoleAssignmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not to find role definition by &apos;{0}&apos;..
+        /// </summary>
+        internal static string RoleDefinitionNotFound {
+            get {
+                return ResourceManager.GetString("RoleDefinitionNotFound", resourceCulture);
             }
         }
         
@@ -1144,6 +1369,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating managed HSM &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdateHsmShouldProcessMessage {
+            get {
+                return ResourceManager.GetString("UpdateHsmShouldProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update vault network rule.
         /// </summary>
         internal static string UpdateNetworkRule {
@@ -1158,6 +1392,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string UpdateNetworkRuleWarning {
             get {
                 return ResourceManager.GetString("UpdateNetworkRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find user by &apos;{0}&apos;..
+        /// </summary>
+        internal static string UserNotFoundBy {
+            get {
+                return ResourceManager.GetString("UserNotFoundBy", resourceCulture);
             }
         }
         

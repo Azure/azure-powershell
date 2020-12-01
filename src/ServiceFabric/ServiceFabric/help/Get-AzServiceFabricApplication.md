@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceFabricApplication
 
 ## SYNOPSIS
-Get Service Fabric application details.
+Get Service Fabric application details. Only supports ARM deployed applications.
 
 ## SYNTAX
 

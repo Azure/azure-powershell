@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static PSKeyVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
         {
-            // The service will return NULL when NetworkAcls is never set before or set with default property values
+            // The service will return NULL when NetworkAcls is never set before or set with default values
             // The default constructor will set default property values in SDK's NetworkRuleSet class
             if (properties?.NetworkAcls == null)
             {

@@ -18,6 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for operation of Synapse SQL Pool Restore Point
+    - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Remove-AzSynapseSqlPoolRestorePoint` cmdlet
+* Added support for operation of Auditing settings in Workspace-level and SqlPool-level
+    - Add `Set-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Set-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolAuditSetting` cmdlet
+* Added support for operation of Advanced Threat Protection settings in Workspace-level
+    - Add `Update-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Vulnerability Assessment settings in Workspace-level
+    - Add `Update-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Reset-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+* Added support for operation of SQL Active Directory admin
+    - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+* Fixed Null Reference Exception when submit spark job.
+
+## Version 0.4.0
+* Add `-Force` to all Remove cmdlets
+
+## Version 0.3.0
 * Added support for operation of Synapse LinkedService
     - Add `Get-AzSynapseLinkedService` cmdlet
     - Add `Remove-AzSynapseLinkedService` cmdlet
@@ -60,6 +88,13 @@
     - Add `Remove-AzSynapseDataset` cmdlet
     - Add `Set-AzSynapseDataset` cmdlet
     - Add `New-AzSynapseDataset` cmdlet
+* Removed parameter sets related 'create from backup' and 'create from restore point' from the `New-AzSynapseSqlPool` cmdlet
+* Removed parameter sets related 'pause' and 'resume' from the `Update-AzSynapseSqlPool`
+* Added support for operation of Synapse Sql pool
+    - Add `Get-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Restore-AzSynapseSqlPool` cmdlet
+    - Add `Resume-AzSynapseSqlPool` cmdlet
+    - Add `Suspend-AzSynapseSqlPool` cmdlet
 
 ## Version 0.2.0
 

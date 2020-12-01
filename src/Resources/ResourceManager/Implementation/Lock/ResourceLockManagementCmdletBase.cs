@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Base class for resource lock management cmdlets.
     /// </summary>
-    public abstract class ResourceLockManagementCmdletBase : ResourceManagerCmdletBaseWithAPiVersion
+    public abstract class ResourceLockManagementCmdletBase : ResourceManagerCmdletBaseWithApiVersion
     {
         /// <summary> 
         /// The Id parameter set. 

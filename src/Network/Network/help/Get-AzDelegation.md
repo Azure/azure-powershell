@@ -39,7 +39,7 @@ The first line retrieves the subnet of interest. The second line shows the deleg
 
 ### 2: Retrieving all subnet delegations
 ```powershell
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
+PS C:\> $subnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
 PS C:\> $delegations = Get-AzDelegation -Subnet $subnet
 ```
 

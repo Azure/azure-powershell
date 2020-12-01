@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
     /// <summary>Deletes a server.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMariaDbServer_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

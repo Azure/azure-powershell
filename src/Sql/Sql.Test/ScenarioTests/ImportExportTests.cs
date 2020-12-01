@@ -37,10 +37,25 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportDatabase_NetworkIsolation()
+        {
+            RunPowerShellTest("Test-ExportDatabaseNetworkIsolation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportNewDatabase()
         {
             RunPowerShellTest("Test-ImportNewDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, "Needs to be re-recorded")]
+        public void TestImportNewDatabase_NetworkIsolation()
+        {
+            RunPowerShellTest("Test-ImportNewDatabaseNetworkIsolation");
         }
     }
 }

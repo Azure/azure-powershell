@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.ResourceGuid = virtualHub.ResourceGuid;
             this.Type = virtualHub.Type;
             var ipconfig = virtualHub.IpConfigurations.FirstOrDefault<PSHubIpConfiguration>();
-            this.HostedSubnet = ipconfig.Id;
+            this.HostedSubnet = ipconfig.Subnet.Id;
             this.VirtualRouterAsn = virtualHub.VirtualRouterAsn;
             this.VirtualRouterIps = virtualHub.VirtualRouterIps;
             this.ProvisioningState = virtualHub.ProvisioningState;
@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 };
                 this.Peerings.Add(peering);
             }
+            this.AllowBranchToBranchTraffic = virtualHub.AllowBranchToBranchTraffic;
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         public string HostedSubnet { get; set; }
         public List<PSVirtualRouterPeer> Peerings { get; set; }
+        public bool AllowBranchToBranchTraffic { get; set; }
 
         [JsonIgnore]
         public string PeeringsText

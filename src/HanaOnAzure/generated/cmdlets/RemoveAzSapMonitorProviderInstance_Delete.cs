@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
     /// Deletes a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ProviderInstances_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}/providerInstances/{providerInstanceName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}/providerInstances/{providerInstanceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzSapMonitorProviderInstance_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.Azure.Storage.File;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
+    using System.IO;
     using System.Globalization;
     using System.Net;
     using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Collections;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
+    using global::Azure.Storage.Files.Shares.Models;
 
     internal static class Util
     {
@@ -595,6 +597,87 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 default:
                     return null;
             }
+        }
+
+        public static FileAttributes AzureFileNtfsAttributesToLocalAttributes(NtfsFileAttributes cloudFileNtfsAttributes)
+        {
+            FileAttributes fileAttributes = FileAttributes.Normal;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.ReadOnly) == NtfsFileAttributes.ReadOnly)
+                fileAttributes |= FileAttributes.ReadOnly;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Hidden) == NtfsFileAttributes.Hidden)
+                fileAttributes |= FileAttributes.Hidden;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.System) == NtfsFileAttributes.System)
+                fileAttributes |= FileAttributes.System;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Directory) == NtfsFileAttributes.Directory)
+                fileAttributes |= FileAttributes.Directory;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Archive) == NtfsFileAttributes.Archive)
+                fileAttributes |= FileAttributes.Archive;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Temporary) == NtfsFileAttributes.Temporary)
+                fileAttributes |= FileAttributes.Temporary;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Offline) == NtfsFileAttributes.Offline)
+                fileAttributes |= FileAttributes.Offline;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.NotContentIndexed) == NtfsFileAttributes.NotContentIndexed)
+                fileAttributes |= FileAttributes.NotContentIndexed;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.NoScrubData) == NtfsFileAttributes.NoScrubData)
+                fileAttributes |= FileAttributes.NoScrubData;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.None) == NtfsFileAttributes.None)
+            {
+                if (fileAttributes != FileAttributes.Normal)
+                {
+                    fileAttributes = fileAttributes & (~FileAttributes.Normal);
+                }
+            }
+
+            return fileAttributes;
+        }
+
+        public static NtfsFileAttributes LocalAttributesToAzureFileNtfsAttributes(FileAttributes fileAttributes)
+        {
+            NtfsFileAttributes cloudFileNtfsAttributes = NtfsFileAttributes.None;
+
+            if ((fileAttributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.ReadOnly;
+
+            if ((fileAttributes & FileAttributes.Hidden) == FileAttributes.Hidden)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Hidden;
+
+            if ((fileAttributes & FileAttributes.System) == FileAttributes.System)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.System;
+
+            if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Directory;
+
+            if ((fileAttributes & FileAttributes.Archive) == FileAttributes.Archive)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Archive;
+
+            if ((fileAttributes & FileAttributes.Normal) == FileAttributes.Normal)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.None;
+
+            if ((fileAttributes & FileAttributes.Temporary) == FileAttributes.Temporary)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Temporary;
+
+            if ((fileAttributes & FileAttributes.Offline) == FileAttributes.Offline)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Offline;
+
+            if ((fileAttributes & FileAttributes.NotContentIndexed) == FileAttributes.NotContentIndexed)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.NotContentIndexed;
+
+            if ((fileAttributes & FileAttributes.NoScrubData) == FileAttributes.NoScrubData)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.NoScrubData;
+
+            if (cloudFileNtfsAttributes != NtfsFileAttributes.None) cloudFileNtfsAttributes &= (~NtfsFileAttributes.None);
+
+            return cloudFileNtfsAttributes;
         }
     }
 }

@@ -71,11 +71,32 @@ Gets a Synapse Analytics Spark session.
 ### [Get-AzSynapseSparkStatement](Get-AzSynapseSparkStatement.md)
 Gets a Synapse Analytics Spark statement.
 
+### [Get-AzSynapseSqlActiveDirectoryAdministrator](Get-AzSynapseSqlActiveDirectoryAdministrator.md)
+Gets information about an Azure AD administrator for Synapse Analytics Workspace.
+
+### [Get-AzSynapseSqlAdvancedThreatProtectionSetting](Get-AzSynapseSqlAdvancedThreatProtectionSetting.md)
+Gets the advanced threat protection settings for a workspace.
+
+### [Get-AzSynapseSqlAuditSetting](Get-AzSynapseSqlAuditSetting.md)
+Gets the auditing settings of an Azure Synapse Analytics Workspace.
+
 ### [Get-AzSynapseSqlDatabase](Get-AzSynapseSqlDatabase.md)
 This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
 
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
+
+### [Get-AzSynapseSqlPoolAuditSetting](Get-AzSynapseSqlPoolAuditSetting.md)
+Gets the auditing settings of an Azure Synapse Analytics SQL pool.
+
+### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
+Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.
+
+### [Get-AzSynapseSqlTransparentDataEncryptionProtector](Get-AzSynapseSqlTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector.
+
+### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
+Gets the vulnerability assessment settings of a workspace.
 
 ### [Get-AzSynapseTrigger](Get-AzSynapseTrigger.md)
 Gets information about triggers in a workspace.
@@ -116,6 +137,9 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [New-AzSynapseSqlPool](New-AzSynapseSqlPool.md)
 Creates a Synapse Analytics SQL pool.
 
+### [New-AzSynapseSqlPoolRestorePoint](New-AzSynapseSqlPoolRestorePoint.md)
+Creates a new restore point in an Azure Synapse Analytics SQL pool.
+
 ### [New-AzSynapseWorkspace](New-AzSynapseWorkspace.md)
 Creates a Synapse Analytics workspace.
 
@@ -149,6 +173,9 @@ Deletes a Synapse Analytics role assignment.
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
 Deletes a Synapse Analytics Spark pool.
 
+### [Remove-AzSynapseSqlActiveDirectoryAdministrator](Remove-AzSynapseSqlActiveDirectoryAdministrator.md)
+Removes an Azure AD administrator for Synapse Analytics Workspace.
+
 ### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
 This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
 
@@ -167,14 +194,32 @@ Deletes a Synapse Analytics workspace.
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
 Resets timeout of a Synapse Analytics Spark session.
 
-### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
-Updates an integration runtime.
+### [Reset-AzSynapseSqlAdvancedThreatProtectionSetting](Reset-AzSynapseSqlAdvancedThreatProtectionSetting.md)
+Removes the advanced threat protection settings from a workspace.
+
+### [Reset-AzSynapseSqlAuditSetting](Reset-AzSynapseSqlAuditSetting.md)
+Removes the auditing settings of an Azure Synapse Analytics Workspace.
+
+### [Reset-AzSynapseSqlPoolAuditSetting](Reset-AzSynapseSqlPoolAuditSetting.md)
+Removes the auditing settings of an Azure Synapse Analytics SQL pool.
+
+### [Reset-AzSynapseSqlVulnerabilityAssessmentSetting](Reset-AzSynapseSqlVulnerabilityAssessmentSetting.md)
+Clears the vulnerability assessment settings of a workspace.
+
+### [Restore-AzSynapseSqlPool](Restore-AzSynapseSqlPool.md)
+Restores a Synapse Analytics SQL pool.
+
+### [Resume-AzSynapseSqlPool](Resume-AzSynapseSqlPool.md)
+Resumes a Synapse Analytics SQL pool.
 
 ### [Set-AzSynapseDataFlow](Set-AzSynapseDataFlow.md)
 Creates or updates a data flow in workspace.
 
 ### [Set-AzSynapseDataset](Set-AzSynapseDataset.md)
 Creates or updates a dataset in workspace.
+
+### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
+Updates an integration runtime.
 
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
@@ -184,6 +229,18 @@ Creates or updates a notebook in a workspace.
 
 ### [Set-AzSynapsePipeline](Set-AzSynapsePipeline.md)
 Creates a pipeline in workspace.
+
+### [Set-AzSynapseSqlActiveDirectoryAdministrator](Set-AzSynapseSqlActiveDirectoryAdministrator.md)
+Provisions an Azure AD administrator for Synapse Analytics SQL pool.
+
+### [Set-AzSynapseSqlAuditSetting](Set-AzSynapseSqlAuditSetting.md)
+Changes the auditing settings of an Azure Synapse Analytics Workspace.
+
+### [Set-AzSynapseSqlPoolAuditSetting](Set-AzSynapseSqlPoolAuditSetting.md)
+Changes the auditing settings for an Azure Synapse Analytics SQL pool.
+
+### [Set-AzSynapseSqlTransparentDataEncryptionProtector](Set-AzSynapseSqlTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a Synapse Analytics Workspace.
 
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
@@ -212,6 +269,9 @@ Stops a trigger in a workspace.
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.
 
+### [Suspend-AzSynapseSqlPool](Suspend-AzSynapseSqlPool.md)
+Suspends a Synapse Analytics SQL pool.
+
 ### [Sync-AzSynapseIntegrationRuntimeCredential](Sync-AzSynapseIntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.
 
@@ -239,11 +299,17 @@ Updates self-hosted integration runtime node.
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
 Updates a Synapse Analytics Spark pool.
 
+### [Update-AzSynapseSqlAdvancedThreatProtectionSetting](Update-AzSynapseSqlAdvancedThreatProtectionSetting.md)
+Updates an advanced threat protection settings on a workspace.
+
 ### [Update-AzSynapseSqlDatabase](Update-AzSynapseSqlDatabase.md)
 This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
 
 ### [Update-AzSynapseSqlPool](Update-AzSynapseSqlPool.md)
 Updates a Synapse Analytics SQL pool.
+
+### [Update-AzSynapseSqlVulnerabilityAssessmentSetting](Update-AzSynapseSqlVulnerabilityAssessmentSetting.md)
+Updates the vulnerability assessment settings of a workspace.
 
 ### [Update-AzSynapseWorkspace](Update-AzSynapseWorkspace.md)
 Updates a Synapse Analytics workspace.

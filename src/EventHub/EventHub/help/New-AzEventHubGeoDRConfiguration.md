@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerNamespace
-DR Configuration PartnerNamespace
+DR Configuration PartnerNamespace ARM ID
 
 ```yaml
 Type: System.String
