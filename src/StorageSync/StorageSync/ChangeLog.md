@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Add Sync tiering policy feature with download policy and local cache mode
+
 ## Version 1.3.0
 * Added a new version StorageSync SDK targeting ApiVersion 2020-03-01
 * Added Update Storage Sync Service cmdlet
