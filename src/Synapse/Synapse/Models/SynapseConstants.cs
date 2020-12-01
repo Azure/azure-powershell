@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
-        public const string SqlDataBaseGeoBackup = nameof(SqlDataBaseGeoBackup);
+        public const string SqlPoolGeoBackup = nameof(SqlPoolGeoBackup);
 
         public const string SqlDatabase = nameof(SqlDatabase);
 
