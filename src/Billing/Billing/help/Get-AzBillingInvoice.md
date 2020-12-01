@@ -79,7 +79,7 @@ Get invoices by billing account name and include download url for each invoice i
 
 ### Example 7
 ```
-PS C:\> Get-AzBillingInvoice Get-AzBillingInvoice -Name 0000000000 -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -GenerateDownloadUrl
+PS C:\> Get-AzBillingInvoice -Name 0000000000 -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -GenerateDownloadUrl
 ```
 
 Get specific invoice by invoice name and billing account name and include download url for each invoice in the result.
