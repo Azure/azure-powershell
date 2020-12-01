@@ -8,9 +8,9 @@ schema: 2.0.0
 # Update-AzMySqlFlexibleServer
 
 ## SYNOPSIS
-Updates an existing server.
+Updates an existing MySQL flexible server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## SYNTAX
 
@@ -33,9 +33,9 @@ Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginP
 ```
 
 ## DESCRIPTION
-Updates an existing server.
+Updates an existing MySQL flexible server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ## EXAMPLES
 

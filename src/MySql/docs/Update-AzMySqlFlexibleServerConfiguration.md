@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMySqlFlexibleServerConfiguration
 
 ## SYNOPSIS
-
+Updates information about a configuration of a MySQL flexible server.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzMySqlFlexibleServerConfiguration -InputObject <IMySqlIdentity> [-Source
 ```
 
 ## DESCRIPTION
-
+Updates information about a configuration of a MySQL flexible server.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ These cmdlets update MySql configuration by identity.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -86,6 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+The name of the server configuration.
 
 ```yaml
 Type: System.String
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -131,7 +132,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -146,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-
+The name of the server.
 
 ```yaml
 Type: System.String
@@ -177,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -192,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-
+Value of the configuration.
 
 ```yaml
 Type: System.String
@@ -257,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: 
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

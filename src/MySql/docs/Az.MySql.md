@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: fc8b3a19-b288-4f67-a4ff-b2d82a11cd6a
+Module Guid: 6fb456f8-3967-40b0-a0af-3be8e13ae017
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -54,7 +54,7 @@ Creates a new server.
 Creates a new database or updates an existing database.
 
 ### [New-AzMySqlFlexibleServerFirewallRule](New-AzMySqlFlexibleServerFirewallRule.md)
-Creates a new firewall rule or updates an existing firewall rule.
+Creates a new firewall rule for MySQL flexible server
 
 ### [New-AzMySqlFlexibleServerReplica](New-AzMySqlFlexibleServerReplica.md)
 Creates a new replica from an existing database.
@@ -112,18 +112,18 @@ Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, 
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [Update-AzMySqlFlexibleServer](Update-AzMySqlFlexibleServer.md)
-Updates an existing server.
+Updates an existing MySQL flexible server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
-
+Updates information about a configuration of a MySQL flexible server.
 
 ### [Update-AzMySqlFlexibleServerDatabase](Update-AzMySqlFlexibleServerDatabase.md)
 Creates a new database or updates an existing database.
 
 ### [Update-AzMySqlFlexibleServerFirewallRule](Update-AzMySqlFlexibleServerFirewallRule.md)
-Creates a new firewall rule or updates an existing firewall rule.
+Updates an existing firewall rule.
 
 ### [Update-AzMySqlServer](Update-AzMySqlServer.md)
 Updates an existing server.
