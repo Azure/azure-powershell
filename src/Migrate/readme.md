@@ -54,7 +54,7 @@ input-file:
     - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2018-01-10/service.json
 
-module-version: 0.1.0
+module-version: 0.1.1
 title: Migrate 
 subject-prefix: 'Migrate'
 

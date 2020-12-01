@@ -1140,6 +1140,10 @@
     {
       "file": "src\\AppConfiguration\\docs\\Get-AzAppConfigurationStoreKey.md",
       "_justification": "app configuration access key is safe; regenerated"
+    },
+    {
+      "file": "src\\DigitalTwins\\test\\New-AzDigitalTwinsEndpoint.Recording.json",
+      "_justification": "eventHubConnectionStringPrimaryKey serviceBusPrimaryConnectionString and eventGridAccessKey1 are deleted"
     }
   ]
 }

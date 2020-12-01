@@ -1,0 +1,76 @@
+{
+  "New-AzResourceGraphQuery+[NoContext]+CreateExpandedByQuery+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fdbjcl?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fdbjcl?api-version=2018-09-01-preview",
+      "Content": "{\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"description\": \"requesting a subset of resource fields.\",\r\n    \"query\": \"project id, name, type, location, tags\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "171" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "31ff7089-037a-46e4-bee3-dc67ff6cc342" ],
+        "x-ms-correlation-request-id": [ "31ff7089-037a-46e4-bee3-dc67ff6cc342" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071748Z:31ff7089-037a-46e4-bee3-dc67ff6cc342" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:17:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "562" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:17:46.2137714Z\",\"query\":\"project id, name, type, location, tags\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-fdbjcl\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fdbjcl\",\"etag\":\"\\\"f600672c-0000-0d00-0000-5f97c99a0000\\\"\"}"
+    }
+  },
+  "New-AzResourceGraphQuery+[NoContext]+CreateExpandedByFile+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview",
+      "Content": "{\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"description\": \"requesting a subset of resource fields.\",\r\n    \"query\": \"project id, name, type, location\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "165" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "e43d9847-a60d-4381-8771-5bf5a51ed4da" ],
+        "x-ms-correlation-request-id": [ "e43d9847-a60d-4381-8771-5bf5a51ed4da" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071753Z:e43d9847-a60d-4381-8771-5bf5a51ed4da" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:17:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:17:51.6149467Z\",\"query\":\"project id, name, type, location\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-wzje76\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76\",\"etag\":\"\\\"f600702c-0000-0d00-0000-5f97c99f0000\\\"\"}"
+    }
+  }
+}
