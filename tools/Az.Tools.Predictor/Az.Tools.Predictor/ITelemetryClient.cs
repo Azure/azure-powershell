@@ -42,14 +42,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Collects the event when a prediction is requested.
         /// </summary>
         /// <param name="command">The command to that we request the prediction for.</param>
-        public void OnRequestPrediction(string command);
-
-        /// <summary>
-        /// Collects the event when we fail to get the prediction for the command.
-        /// </summary>
-        /// <param name="command">The command to that we request the prediction for.</param>
-        /// <param name="e">The exception.</param>
-        public void OnRequestPredictionError(string command, Exception e);
+        /// <param name="isRequestSuccess">Indicates whether the http request is send.</param>
+        /// <param name="exception">The exception if there is an error.</param>
+        public void OnRequestPrediction(string command, bool isRequestSuccess, Exception exception);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
@@ -64,13 +59,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="suggestions">The list of suggestions.</param>
         /// <param name="suggestionSources">The list of sources for each of <paramref name="suggestions"/>.</param>
         /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out.</param>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSources, bool isCancelled);
-
-        /// <summary>
-        /// Collects when an exception is thrown when we return a suggestion.
-        /// </summary>
-        /// <param name="e">The exception.</param>
-
-        public void OnGetSuggestionError(Exception e);
+        /// <param name="exception">The exception if there is an error.</param>
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSources, bool isCancelled, Exception exception);
     }
 }

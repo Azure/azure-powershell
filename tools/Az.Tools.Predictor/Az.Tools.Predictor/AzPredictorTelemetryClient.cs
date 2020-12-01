@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(string command)
+        public void OnRequestPrediction(string command, bool isRequestSuccess, Exception exception)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -84,31 +84,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             CorrelationId = Guid.NewGuid().ToString();
 
             var properties = CreateProperties();
-            properties.Add("Command", command);
+            properties.Add("Command", command ?? string.Empty);
+            properties.Add("IsRequestSuccess", isRequestSuccess.ToString(CultureInfo.InvariantCulture));
+            properties.Add("exception", exception?.ToString() ?? string.Empty);
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording RequestPrediction");
-#endif
-        }
-
-        /// <inheritdoc/>
-        public void OnRequestPredictionError(string command, Exception e)
-        {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            var properties = CreateProperties();
-            properties.Add("Command", command);
-            properties.Add("Exception", e.ToString());
-
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPredictionError", properties);
-
-#if TELEMETRY_TRACE && DEBUG
-            System.Diagnostics.Trace.WriteLine("Recording RequestPredictionError");
 #endif
         }
 
@@ -131,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSource, bool isCancelled)
+        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSource, bool isCancelled, Exception exception)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -139,32 +122,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             var properties = CreateProperties();
-            properties.Add("UserInput", maskedUserInput);
-            properties.Add("Suggestion", JsonConvert.SerializeObject(suggestions.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))));
+            properties.Add("UserInput", maskedUserInput ?? string.Empty);
+            properties.Add("Suggestion", suggestions != null ? JsonConvert.SerializeObject(suggestions.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))) : string.Empty);
             properties.Add("IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture));
+            properties.Add("exception", exception?.ToString() ?? string.Empty);
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
-#endif
-        }
-
-        /// <inheritdoc/>
-        public void OnGetSuggestionError(Exception e)
-        {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            var properties = CreateProperties();
-            properties.Add("Exception", e.ToString());
-
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestionError", properties);
-
-#if TELEMETRY_TRACE && DEBUG
-            System.Diagnostics.Trace.WriteLine("Recording GetSuggestioinError");
 #endif
         }
 

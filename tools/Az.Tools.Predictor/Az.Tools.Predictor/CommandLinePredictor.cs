@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem;
 using System.Text;
 using System.Threading;
 
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                 result.AddSuggestion(new PredictiveSuggestion(prediction.ToString()), sourceBuilder.ToString());
                                 presentCommands.Add(_commandLinePredictions[i].Name, 1);
                             }
-                            else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDupl)
+                            else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDuplicate)
                             {
                                 result.AddSuggestion(new PredictiveSuggestion(prediction.ToString()), sourceBuilder.ToString());
                                 presentCommands[_commandLinePredictions[i].Name] += 1;

@@ -177,11 +177,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (_settings.SuggestionCount.Value > 0)
             {
+                Exception exception = null;
+                string maskedUserInput = null;
+                CommandLineSuggestion suggestions = null;
+
                 try
                 {
                     var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
-                    var maskedUserInput = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
-                    var suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
+
+                    maskedUserInput = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+                    suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                     localCancellationToken.ThrowIfCancellationRequested();
 
@@ -203,18 +208,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     localCancellationToken.ThrowIfCancellationRequested();
 
                     var returnedValue = suggestions.PredictiveSuggestions.ToList();
-
-                    _telemetryClient.OnGetSuggestion(maskedUserInput,
-                            suggestions.SourceTexts,
-                            suggestions.SuggestionSources,
-                            cancellationToken.IsCancellationRequested);
-
                     return returnedValue;
 
                 }
                 catch (Exception e) when (!(e is OperationCanceledException))
                 {
-                    _telemetryClient.OnGetSuggestionError(e);
+                    exception = e;
+                }
+                finally
+                {
+
+                    _telemetryClient.OnGetSuggestion(maskedUserInput,
+                            suggestions?.SourceTexts,
+                            suggestions?.SuggestionSources,
+                            cancellationToken.IsCancellationRequested,
+                            exception);
+
                 }
             }
 

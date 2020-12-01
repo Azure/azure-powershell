@@ -159,7 +159,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var command = _commandToRequestPrediction;
 
             var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
-            var resultsFromSuggestionTuple = commandBasedPredictor?.Item2?.GetSuggestion(input, presentCommands, suggestionCount, cancellationToken);
+            var resultsFromSuggestionTuple = commandBasedPredictor?.Item2?.GetSuggestion(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
             var result = resultsFromSuggestionTuple.Item1;
             presentCommands = resultsFromSuggestionTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -217,56 +217,65 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
-            _telemetryClient.OnRequestPrediction(localCommands);
+            bool postSuccess = false;
+            Exception exception = null;
 
-            if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
+            try
             {
-                // It's the same history we've already requested the prediction for last time, skip it.
-                return;
+                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
+                {
+                    // It's the same history we've already requested the prediction for last time, skip it.
+                    return;
+                }
+
+                if (commands.Any())
+                {
+                    SetCommandToRequestPrediction(localCommands);
+
+                    // When it's called multiple times, we only need to keep the one for the latest command.
+
+                    _predictionRequestCancellationSource?.Cancel();
+                    _predictionRequestCancellationSource = new CancellationTokenSource();
+
+                    var cancellationToken = _predictionRequestCancellationSource.Token;
+
+                    // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+                    Task.Run(async () => {
+                        try
+                        {
+                            AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
+
+                            var requestContext = new PredictionRequestBody.RequestContext()
+                            {
+                                SessionId = _telemetryClient.SessionId,
+                                CorrelationId = _telemetryClient.CorrelationId,
+                            };
+
+                            var requestBody = new PredictionRequestBody(localCommands)
+                            {
+                                Context = requestContext,
+                            };
+
+                            var requestBodyString = JsonConvert.SerializeObject(requestBody);
+                            var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
+                            postSuccess = true;
+
+                            var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
+                            var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
+
+                            SetCommandBasedPreditor(localCommands, suggestionsList);
+                        }
+                        catch (Exception e) when (!(e is OperationCanceledException))
+                        {
+                            exception = e;
+                        }
+                    },
+                    cancellationToken);
+                }
             }
-
-            if (commands.Any())
+            finally
             {
-                SetCommandToRequestPrediction(localCommands);
-
-                // When it's called multiple times, we only need to keep the one for the latest command.
-
-                _predictionRequestCancellationSource?.Cancel();
-                _predictionRequestCancellationSource = new CancellationTokenSource();
-
-                var cancellationToken = _predictionRequestCancellationSource.Token;
-
-                // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
-                Task.Run(async () => {
-                    try
-                    {
-                        AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
-
-                        var requestContext = new PredictionRequestBody.RequestContext()
-                        {
-                            SessionId = _telemetryClient.SessionId,
-                            CorrelationId = _telemetryClient.CorrelationId,
-                        };
-
-                        var requestBody = new PredictionRequestBody(localCommands)
-                        {
-                            Context = requestContext,
-                        };
-
-                        var requestBodyString = JsonConvert.SerializeObject(requestBody);
-                        var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
-
-                        var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
-                        var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
-
-                        SetCommandBasedPreditor(localCommands, suggestionsList);
-                    }
-                    catch (Exception e) when (!(e is OperationCanceledException))
-                    {
-                        _telemetryClient.OnRequestPredictionError(localCommands, e);
-                    }
-                },
-                cancellationToken);
+                _telemetryClient.OnRequestPrediction(localCommands, postSuccess, exception);
             }
         }
 
