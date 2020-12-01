@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azmanagedhsm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
-# Get-AzManagedHsm
+# Get-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
 Get managed HSMs.
@@ -13,12 +13,12 @@ Get managed HSMs.
 ## SYNTAX
 
 ```
-Get-AzManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
+Get-AzKeyVaultManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzManagedHsm** cmdlet gets information about the managed HSMs in a subscription. You can
+The **Get-AzKeyVaultManagedHsm** cmdlet gets information about the managed HSMs in a subscription. You can
 view all managed HSMs instances in a subscription, or filter your results by a resource group or a
 particular managed HSM.
 Note that although specifying the resource group is optional for this cmdlet when you get a single
@@ -28,7 +28,7 @@ managed HSM, you should do so for better performance.
 
 ### Example 1: Get all managed HSMs in your current subscription
 ```powershell
-PS C:\> Get-AzManagedHsm
+PS C:\> Get-AzKeyVaultManagedHsm
 
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
@@ -39,7 +39,7 @@ This command gets all managed HSMs in your current subscription.
 
 ### Example 2: Get a specific managed HSM
 ```powershell
-PS C:\> Get-AzManagedHsm -Name 'myhsm'
+PS C:\> Get-AzKeyVaultManagedHsm -Name 'myhsm'
 
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
@@ -50,7 +50,7 @@ This command gets the managed HSM named myhsm in your current subscription.
 
 ### Example 3: Get managed HSMs in a resource group
 ```powershell
-PS C:\> Get-AzManagedHsm -ResourceGroupName 'myrg1'
+PS C:\> Get-AzKeyVaultManagedHsm -ResourceGroupName 'myrg1'
 
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
@@ -61,7 +61,7 @@ This command gets all managed HSMs in the resource group named myrg1.
 
 ### Example 4: Get managed HSMs using filtering
 ```powershell
-PS C:\> Get-AzManagedHsm -Name 'myhsm*'
+PS C:\> Get-AzKeyVaultManagedHsm -Name 'myhsm*'
 
 Name  Resource Group Name Location    SKU
 ----  ------------------- --------    ---
@@ -151,8 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzManagedHsm](./New-AzManagedHsm.md)
+[New-AzKeyVaultManagedHsm](./New-AzKeyVaultManagedHsm.md)
 
-[Remove-AzManagedHsm](./Remove-AzManagedHsm.md)
+[Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
-[Update-AzManagedHsm](./Update-AzManagedHsm.md)
+[Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)

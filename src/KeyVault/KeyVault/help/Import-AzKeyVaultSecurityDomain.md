@@ -1,59 +1,45 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azmanagedhsmsecuritydomain
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/import-azkeyvaultsecuritydomain
 schema: 2.0.0
 ---
 
-# Backup-AzManagedHsmSecurityDomain
+# Import-AzKeyVaultSecurityDomain
 
 ## SYNOPSIS
-Backs up the security domain data of a managed HSM for restoring.
+Imports previously exported security domain data to a managed HSM.
 
 ## SYNTAX
 
 ### ByName (Default)
 ```
-Backup-AzManagedHsmSecurityDomain -Certificates <String[]> -OutputPath <String> [-Force] [-PassThru]
- -Quorum <Int32> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Import-AzKeyVaultSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru] -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Backup-AzManagedHsmSecurityDomain -Certificates <String[]> -OutputPath <String> [-Force] [-PassThru]
- -Quorum <Int32> -InputObject <PSKeyVaultIdentityItem> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Import-AzKeyVaultSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru]
+ -InputObject <PSKeyVaultIdentityItem> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet backs up the security domain data of a managed HSM for restoring.
+This cmdlet imports previously exported security domain data to a managed HSM.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\Users\username\> Backup-AzManagedHsmSecurityDomain -Name testmhsm -Certificates {pathOfCertificates}/sd1.cer, {pathOfCertificates}/sd2.cer, {pathOfCertificates}/sd3.cer -OutputPath {pathOfOutput}/sd.ps.json -Quorum 2
+PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
+PS C:\> Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
 ```
 
-This command retrieves the managed HSM named testmhsm and saves a backup of that managed HSM security domain to the specified output file.
+First, the keys need be provided to decrypt the security domain data.
+Then, The **Import-AzKeyVaultSecurityDomain** command restores previous backed up security domain data to a managed HSM using these keys.
 
 ## PARAMETERS
-
-### -Certificates
-Paths to the certificates that are used to encrypt the security domain data.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -62,21 +48,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Specify whether to overwrite existing file.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -100,13 +71,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the managed HSM.
+### -Keys
+Information about the keys that are used to decrypt the security domain data.
+See examples for how it is constructed.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: HsmName
+Type: Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models.KeyPath[]
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -115,13 +87,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OutputPath
-Specify the path where security domain data will be downloaded to.
+### -Name
+Name of the managed HSM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: ByName
+Aliases: HsmName
 
 Required: True
 Position: Named
@@ -145,13 +117,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Quorum
-The minimum number of shares required to decrypt the security domain for recovery.
+### -SecurityDomainPath
+Specify the path to the encrypted security domain data.
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Path
 
 Required: True
 Position: Named

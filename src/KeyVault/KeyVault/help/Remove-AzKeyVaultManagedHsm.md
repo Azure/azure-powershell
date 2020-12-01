@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azmanagedhsm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
-# Remove-AzManagedHsm
+# Remove-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
 Deletes a managed HSM.
@@ -14,24 +14,24 @@ Deletes a managed HSM.
 
 ### RemoveManagedHsmByName (Default)
 ```
-Remove-AzManagedHsm [-Name] <String> [[-ResourceGroupName] <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVaultManagedHsm [-Name] <String> [[-ResourceGroupName] <String>] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveManagedHsmByInputObject
 ```
-Remove-AzManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVaultManagedHsm [-InputObject] <PSManagedHsm> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveManagedHsmByResourceId
 ```
-Remove-AzManagedHsm [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVaultManagedHsm [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzManagedHsm** cmdlet deletes the specified managed HSM.
+The **Remove-AzKeyVaultManagedHsm** cmdlet deletes the specified managed HSM.
 It also deletes all keys contained in that instance.
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
 
@@ -39,7 +39,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a managed HSM
 ```powershell
-PS C:\> Remove-AzManagedHsm -HsmName 'myhsm' -Force
+PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -Force
 
 True
 ```
@@ -48,7 +48,7 @@ This command removes the managed hsm named myhsm from your current subscription.
 
 ### Example 2: Remove a managed hsm from a specified resource group
 ```powershell
-PS C:\> Remove-AzManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" -PassThru
+PS C:\> Remove-AzKeyVaultManagedHsm -HsmName 'myhsm' -ResourceGroupName "myrg1" -PassThru
 
 True
 ```
@@ -228,8 +228,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzManagedHsm](./Get-AzManagedHsm.md)
+[Get-AzKeyVaultManagedHsm](./Get-AzKeyVaultManagedHsm.md)
 
-[New-AzManagedHsm](./New-AzManagedHsm.md)
+[New-AzKeyVaultManagedHsm](./New-AzKeyVaultManagedHsm.md)
 
-[Update-AzManagedHsm](./Update-AzManagedHsm.md)
+[Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)

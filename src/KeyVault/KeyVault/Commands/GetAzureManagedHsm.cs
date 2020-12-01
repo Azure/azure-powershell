@@ -5,7 +5,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedHsm")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm")]
     [OutputType(typeof(PSManagedHsm), typeof(PSKeyVaultIdentityItem))]
     public class GetAzureManagedHsm : KeyVaultManagementCmdletBase
     {

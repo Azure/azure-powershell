@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azmanagedhsm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
-# Update-AzManagedHsm
+# Update-AzKeyVaultManagedHsm
 
 ## SYNOPSIS
 Update the state of an Azure managed HSM.
@@ -14,19 +14,19 @@ Update the state of an Azure managed HSM.
 
 ### UpdateByNameParameterSet (Default)
 ```
-Update-AzManagedHsm -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzManagedHsm -InputObject <PSManagedHsm> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzManagedHsm -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+Update-AzKeyVaultManagedHsm -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ This cmdlet updates the state of an Azure managed HSM.
 
 ### Example 1: Update a managed Hsm directly
 ```powershell
-PS C:\> Update-AzManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | fl
+PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -Tag @{testKey="testValue"} | fl
 
 Managed HSM Name                    : testmhsm
 Resource Group Name                 : testmhsm
@@ -63,7 +63,7 @@ Updates tags for the managed Hsm named `$hsmName` in resource group `$resourceGr
 
 ### Example 2: Update a managed Hsm using piping
 ```powershell
-PS C:\> Get-AzManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName | Update-AzManagedHsm -Tag @{testKey="testValue"}
+PS C:\> Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName | Update-AzKeyVaultManagedHsm -Tag @{testKey="testValue"}
 ```
 
 Updates tags for the managed Hsm using piping syntax.
@@ -210,8 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzManagedHsm](./New-AzManagedHsm.md)
+[New-AzKeyVaultManagedHsm](./New-AzKeyVaultManagedHsm.md)
 
-[Remove-AzManagedHsm](./Remove-AzManagedHsm.md)
+[Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
-[Get-AzManagedHsm](./Get-AzManagedHsm.md)
+[Get-AzKeyVaultManagedHsm](./Get-AzKeyVaultManagedHsm.md)
