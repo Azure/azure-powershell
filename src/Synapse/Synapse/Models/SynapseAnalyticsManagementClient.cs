@@ -593,6 +593,45 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public virtual async Task<PSBackupModel> GetRecoverableManagedDatabase(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                var taskGetResults = Task.Run(
+                    async () => await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName));
+                await Task.WhenAll(taskGetResults);
+
+                return new PSBackupModel(taskGetResults.Result.Body);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public virtual async Task<List<PSBackupModel>> ListRecoverableManagedDatabases(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var taskGetResults = (IPage<PSBackupModel>)Task.Run(
+                    async () => await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListWithHttpMessagesAsync(resourceGroupName, workspaceName));
+                await Task.WhenAll((IEnumerable<Task>)taskGetResults);
+
+                var results = new List<PSBackupModel>();
+
+                foreach (var res in taskGetResults.ToList())
+                {
+                    results.Add(res);
+                }
+
+                return results;
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         internal SqlDatabase GetSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
         {
             try
