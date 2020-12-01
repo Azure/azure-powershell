@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>A state of a server that is visible to user.</summary>
     public partial struct ServerState :
         System.IEquatable<ServerState>
     {
@@ -16,6 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Inaccessible = @"Inaccessible";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Ready = @"Ready";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Starting = @"Starting";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Stopped = @"Stopped";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Stopping = @"Stopping";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerState Updating = @"Updating";
 
         /// <summary>the value for an instance of the <see cref="ServerState" /> Enum.</summary>
         private string _value { get; set; }

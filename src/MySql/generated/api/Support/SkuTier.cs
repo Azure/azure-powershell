@@ -6,10 +6,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     public partial struct SkuTier :
         System.IEquatable<SkuTier>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier Basic = @"Basic";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier Burstable = @"Burstable";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier GeneralPurpose = @"GeneralPurpose";
 

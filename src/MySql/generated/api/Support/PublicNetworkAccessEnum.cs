@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>
+    /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled'
+    /// or 'Disabled'
+    /// </summary>
     public partial struct PublicNetworkAccessEnum :
         System.IEquatable<PublicNetworkAccessEnum>
     {

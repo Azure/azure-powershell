@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
-    /// <summary>TypeConverter implementation for PrivateLinkServiceConnectionStateStatus.</summary>
+    /// <summary>The private link service connection status.</summary>
     public partial class PrivateLinkServiceConnectionStateStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

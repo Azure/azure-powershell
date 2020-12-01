@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
-    /// <summary>Argument completer implementation for OperationOrigin.</summary>
+    /// <summary>The intended executor of the operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.OperationOriginTypeConverter))]
     public partial struct OperationOrigin :
         System.Management.Automation.IArgumentCompleter

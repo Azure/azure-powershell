@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MySql flexible server cmdlets
 
 ## Version 0.2.0
 * Removed legacy SkuSize from input and output (#11725)

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>Gets information about a AAD server administrator.</summary>
     /// <remarks>
-    /// [OpenAPI] ServerAdministrators_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/Administrators/activeDirectory"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlServerAdministrator_Get")]

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>Deletes a server.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMySqlServer_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

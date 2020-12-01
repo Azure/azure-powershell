@@ -9,164 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
 
     /// <summary>
     /// Low-level API implementation for the MySQL service.
+    /// The Microsoft Azure management API provides create, read, update, and delete functionality for Azure MySQL resources including
+    /// servers, databases, firewall rules, VNET rules, log files and configurations with new business model.
     /// </summary>
     public partial class MySql
     {
-
-        /// <summary>Check the availability of name for resource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="body">The required parameters for checking if resource name is available.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailabilityExecute(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforMySQL/checkNameAvailability"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.CheckNameAvailabilityExecute_Call(request,onOk,eventListener,sender);
-            }
-        }
-
-        /// <summary>Check the availability of name for resource</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The required parameters for checking if resource name is available.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailabilityExecuteViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforMySQL/checkNameAvailability$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/checkNameAvailability'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
-                        + subscriptionId
-                        + "/providers/Microsoft.DBforMySQL/checkNameAvailability"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.CheckNameAvailabilityExecute_Call(request,onOk,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="CheckNameAvailabilityExecute" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityExecute_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.NameAvailability.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.UndeclaredResponseException(_response);
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="CheckNameAvailabilityExecute" /> method. Call this like the actual call, but you will
-        /// get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="body">The required parameters for checking if resource name is available.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityExecute_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
 
         /// <summary>Updates a configuration of a server.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -192,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -233,10 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -250,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -464,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -500,10 +347,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -517,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -630,7 +477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations"
                         + "?"
@@ -665,10 +512,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/configurations'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/configurations'");
                 }
 
                 // replace URI parameters with values from identity
@@ -681,7 +528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/configurations"
                         + "?"
@@ -793,7 +640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -834,10 +681,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -851,7 +698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1066,7 +913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -1103,10 +950,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1120,7 +967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1335,7 +1182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -1371,10 +1218,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1388,7 +1235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1501,7 +1348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases"
                         + "?"
@@ -1536,10 +1383,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/databases'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1552,7 +1399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/databases"
                         + "?"
@@ -1664,7 +1511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -1705,10 +1552,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1722,7 +1569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -1937,7 +1784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -1974,10 +1821,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1991,7 +1838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -2206,7 +2053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -2242,10 +2089,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2259,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -2372,7 +2219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules"
                         + "?"
@@ -2407,10 +2254,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/firewallRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/firewallRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2423,7 +2270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/firewallRules"
                         + "?"
@@ -2511,6 +2358,6104 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             }
         }
 
+        /// <summary>Gets information about a configuration of server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="configurationName">The name of the server configuration.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet(string subscriptionId, string resourceGroupName, string serverName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/configurations/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a configuration of server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/configurations/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerConfigurationsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerConfigurationsGet" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="configurationName">The name of the server configuration.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet_Validate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+            }
+        }
+
+        /// <summary>List all the configurations in a given server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/configurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the configurations in a given server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/configurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerConfigurationsListByServer" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerConfigurationsListByServer" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Updates a configuration of a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="configurationName">The name of the server configuration.</param>
+        /// <param name="body">The required parameters for updating a server configuration.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/configurations/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Updates a configuration of a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for updating a server configuration.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/configurations/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerConfigurationsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerConfigurationsUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerConfigurationsUpdate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="configurationName">The name of the server configuration.</param>
+        /// <param name="body">The required parameters for updating a server configuration.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IConfigurationAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Creates a new database or updates an existing database.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="body">The required parameters for creating or updating a database.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/databases/"
+                        + global::System.Uri.EscapeDataString(databaseName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Creates a new database or updates an existing database.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for creating or updating a database.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var databaseName = _match.Groups["databaseName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/databases/"
+                        + databaseName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerDatabasesCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerDatabasesCreateOrUpdate" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="body">The required parameters for creating or updating a database.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes a database.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesDelete(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/databases/"
+                        + global::System.Uri.EscapeDataString(databaseName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a database.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var databaseName = _match.Groups["databaseName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/databases/"
+                        + databaseName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerDatabasesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerDatabasesDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesDelete_Validate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+            }
+        }
+
+        /// <summary>Gets information about a database.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesGet(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/databases/"
+                        + global::System.Uri.EscapeDataString(databaseName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a database.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var databaseName = _match.Groups["databaseName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/databases/"
+                        + databaseName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerDatabasesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerDatabasesGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="databaseName">The name of the database.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesGet_Validate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+            }
+        }
+
+        /// <summary>List all the databases in a given server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDatabaseListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/databases"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the databases in a given server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerDatabasesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDatabaseListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/databases"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerDatabasesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerDatabasesListByServer" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDatabaseListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.DatabaseListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerDatabasesListByServer" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerDatabasesListByServer_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Creates a new firewall rule or updates an existing firewall rule.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="body">The required parameters for creating or updating a firewall rule.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/firewallRules/"
+                        + global::System.Uri.EscapeDataString(firewallRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Creates a new firewall rule or updates an existing firewall rule.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for creating or updating a firewall rule.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var firewallRuleName = _match.Groups["firewallRuleName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/firewallRules/"
+                        + firewallRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerFirewallRulesCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.FirewallRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerFirewallRulesCreateOrUpdate" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="body">The required parameters for creating or updating a firewall rule.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes a firewall rule.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDelete(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/firewallRules/"
+                        + global::System.Uri.EscapeDataString(firewallRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a firewall rule.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var firewallRuleName = _match.Groups["firewallRuleName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/firewallRules/"
+                        + firewallRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerFirewallRulesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerFirewallRulesDelete" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDelete_Validate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
+            }
+        }
+
+        /// <summary>Gets information about a server firewall rule.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/firewallRules/"
+                        + global::System.Uri.EscapeDataString(firewallRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a server firewall rule.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var firewallRuleName = _match.Groups["firewallRuleName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/firewallRules/"
+                        + firewallRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerFirewallRulesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.FirewallRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerFirewallRulesGet" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="firewallRuleName">The name of the server firewall rule.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet_Validate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
+            }
+        }
+
+        /// <summary>List all the firewall rules in a given server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/firewallRules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the firewall rules in a given server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/firewallRules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerFirewallRulesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerFirewallRulesListByServer" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.FirewallRuleListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerFirewallRulesListByServer" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Creates or updates a MySQL Server key.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="body">The requested MySQL Server key resource state.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string keyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/keys/"
+                        + global::System.Uri.EscapeDataString(keyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Creates or updates a MySQL Server key.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The requested MySQL Server key resource state.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var keyName = _match.Groups["keyName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/keys/"
+                        + keyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerKeysCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKey.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerKeysCreateOrUpdate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="body">The requested MySQL Server key resource state.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string keyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(keyName),keyName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes the MySQL Server key with the given name.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysDelete(string subscriptionId, string resourceGroupName, string serverName, string keyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/keys/"
+                        + global::System.Uri.EscapeDataString(keyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes the MySQL Server key with the given name.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var keyName = _match.Groups["keyName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/keys/"
+                        + keyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerKeysDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerKeysDelete" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysDelete_Validate(string subscriptionId, string resourceGroupName, string serverName, string keyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(keyName),keyName);
+            }
+        }
+
+        /// <summary>Gets a server key.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysGet(string subscriptionId, string resourceGroupName, string serverName, string keyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/keys/"
+                        + global::System.Uri.EscapeDataString(keyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a server key.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                var keyName = _match.Groups["keyName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/keys/"
+                        + keyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerKeysGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKey.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerKeysGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="keyName">The name of the server key.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysGet_Validate(string subscriptionId, string resourceGroupName, string serverName, string keyName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(keyName),keyName);
+            }
+        }
+
+        /// <summary>Gets a list of Server keys.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/keys"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a list of Server keys.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerKeysListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/keys"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerKeysListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerKeysListByServer" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerKeyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerKeysListByServer" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerKeysListByServer_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Get capabilities at specified location in a given subscription.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="locationName">The name of the location.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesList(string subscriptionId, string locationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.DBForMySql/locations/"
+                        + global::System.Uri.EscapeDataString(locationName)
+                        + "/capabilities"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerLocationBasedCapabilitiesList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get capabilities at specified location in a given subscription.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySql/locations/(?<locationName>[^/]+)/capabilities$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySql/locations/{locationName}/capabilities'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var locationName = _match.Groups["locationName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.DBForMySql/locations/"
+                        + locationName
+                        + "/capabilities"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerLocationBasedCapabilitiesList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerLocationBasedCapabilitiesList" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CapabilitiesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerLocationBasedCapabilitiesList" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="locationName">The name of the location.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesList_Validate(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(locationName),locationName);
+            }
+        }
+
+        /// <summary>Check the availability of name for server</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The required parameters for checking if server name is available.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerNameAvailabilityTest(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.DBForMySql/checkNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerNameAvailabilityTest_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Check the availability of name for server</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for checking if server name is available.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerNameAvailabilityTestViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySql/checkNameAvailability$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySql/checkNameAvailability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.DBForMySql/checkNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerNameAvailabilityTest_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerNameAvailabilityTest" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerNameAvailabilityTest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.NameAvailability.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerNameAvailabilityTest" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The required parameters for checking if server name is available.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerNameAvailabilityTest_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>List all the replicas for a given server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerReplicasListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/replicas"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerReplicasListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the replicas for a given server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerReplicasListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/replicas'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/replicas"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerReplicasListByServer_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServerReplicasListByServer" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerReplicasListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerReplicasListByServer" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerReplicasListByServer_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Get virtual network subnet usage for a given vNet resource id.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="locationName">The name of the location.</param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.DBForMySql/locations/"
+                        + global::System.Uri.EscapeDataString(locationName)
+                        + "/checkVirtualNetworkSubnetUsage"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerVirtualNetworkSubnetUsageGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get virtual network subnet usage for a given vNet resource id.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySql/locations/(?<locationName>[^/]+)/checkVirtualNetworkSubnetUsage$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySql/locations/{locationName}/checkVirtualNetworkSubnetUsage'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var locationName = _match.Groups["locationName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.DBForMySql/locations/"
+                        + locationName
+                        + "/checkVirtualNetworkSubnetUsage"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServerVirtualNetworkSubnetUsageGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="FlexibleServerVirtualNetworkSubnetUsageGet" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.VirtualNetworkSubnetUsageResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServerVirtualNetworkSubnetUsageGet" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="locationName">The name of the location.</param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Validate(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IVirtualNetworkSubnetUsageParameter body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(locationName),locationName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersCreate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersCreate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersCreate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="body">The required parameters for creating or updating a server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersDelete(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersDelete" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersDelete_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Gets information about a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersGet_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>List all the servers in a given subscription.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the servers in a given resource group.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all the servers in a given resource group.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersListByResourceGroup" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersListByResourceGroup" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup_Validate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+            }
+        }
+
+        /// <summary>List all the servers in a given subscription.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySql/flexibleServers'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.DBForMySql/flexibleServers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersList" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersList_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>Restarts a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersRestart(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersRestart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Restarts a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/restart'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersRestart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersRestart" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersRestart" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersRestart_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Starts a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersStart(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/start"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersStart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/start$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/start'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/start"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersStart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersStart" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersStart" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersStart_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>Stops a server.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersStop(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "/stop"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersStop_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Stops a server.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/stop$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/stop'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "/stop"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersStop_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersStop" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersStop" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersStop_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="body">The required parameters for updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + global::System.Uri.EscapeDataString(serverName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for updating a server.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlexibleServersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var serverName = _match.Groups["serverName"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + serverName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlexibleServersUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="FlexibleServersUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                      // the body doesn't contain any information that has the state of the LRO
+                                      // we're going to just get out, and let the consumer have the result
+                                      break;
+                                    }
+                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "succeeded":
+                                      case "failed":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlexibleServersUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="serverName">The name of the server.</param>
+        /// <param name="body">The required parameters for updating a server.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerForUpdate body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(serverName),serverName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>List all the performance tiers at specified location in a given subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="locationName">The name of the location.</param>
@@ -2530,7 +8475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
                         "https://management.azure.com/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforMySQL/locations/"
+                        + "/providers/Microsoft.DBForMySQL/locations/"
                         + global::System.Uri.EscapeDataString(locationName)
                         + "/performanceTiers"
                         + "?"
@@ -2565,10 +8510,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforMySQL/locations/(?<locationName>[^/]+)/performanceTiers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySQL/locations/(?<locationName>[^/]+)/performanceTiers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/performanceTiers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySQL/locations/{locationName}/performanceTiers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2578,7 +8523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
                         "https://management.azure.com/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforMySQL/locations/"
+                        + "/providers/Microsoft.DBForMySQL/locations/"
                         + locationName
                         + "/performanceTiers"
                         + "?"
@@ -2683,7 +8628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/logFiles"
                         + "?"
@@ -2718,10 +8663,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/logFiles$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/logFiles$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/logFiles'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/logFiles'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2734,7 +8679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/logFiles"
                         + "?"
@@ -2822,6 +8767,161 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             }
         }
 
+        /// <summary>Check the availability of name for resource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The required parameters for checking if resource name is available.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NameAvailabilityTest(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2017-12-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.DBForMySQL/checkNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NameAvailabilityTest_Call(request,onOk,eventListener,sender);
+            }
+        }
+
+        /// <summary>Check the availability of name for resource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required parameters for checking if resource name is available.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NameAvailabilityTestViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2017-12-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySQL/checkNameAvailability$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySQL/checkNameAvailability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.DBForMySQL/checkNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NameAvailabilityTest_Call(request,onOk,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="NameAvailabilityTest" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NameAvailabilityTest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.NameAvailability.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.UndeclaredResponseException(_response);
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NameAvailabilityTest" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The required parameters for checking if resource name is available.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NameAvailabilityTest_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>Lists all of the available REST API operations.</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2837,7 +8937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // construct URL
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.DBforMySQL/operations"
+                        "https://management.azure.com/providers/Microsoft.DBForMySQL/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -2851,6 +8951,148 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all of the available REST API operations.</summary>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/providers/Microsoft.DBForMySql/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OperationsList1_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all of the available REST API operations.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OperationsList1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2020-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBForMySql/operations$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBForMySql/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
+                        "https://management.azure.com/providers/Microsoft.DBForMySql/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OperationsList1_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="OperationsList1" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.OperationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="OperationsList1" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OperationsList1_Validate(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+
             }
         }
 
@@ -2870,16 +9112,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBforMySQL/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBForMySQL/operations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBforMySQL/operations'");
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBForMySQL/operations'");
                 }
 
                 // replace URI parameters with values from identity
                 // construct URL
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.DBforMySQL/operations"
+                        "https://management.azure.com/providers/Microsoft.DBForMySQL/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -2978,7 +9220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/replicas"
                         + "?"
@@ -3013,10 +9255,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/replicas'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/replicas'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3029,7 +9271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/replicas"
                         + "?"
@@ -3145,7 +9387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3190,10 +9432,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/Administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3206,7 +9448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3423,7 +9665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3461,10 +9703,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/Administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3477,7 +9719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3694,7 +9936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3731,10 +9973,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/Administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3747,7 +9989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/Administrators/activeDirectory"
                         + "?"
@@ -3863,7 +10105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/administrators"
                         + "?"
@@ -3900,10 +10142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/administrators$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/administrators$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/administrators'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3916,7 +10158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/administrators"
                         + "?"
@@ -4487,7 +10729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4528,10 +10770,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4544,7 +10786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4754,7 +10996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4789,10 +11031,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4805,7 +11047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -5015,7 +11257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -5049,10 +11291,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5065,7 +11307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -5170,7 +11412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
                         "https://management.azure.com/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforMySQL/servers"
+                        + "/providers/Microsoft.DBForMySQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -5208,7 +11450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers"
+                        + "/providers/Microsoft.DBForMySQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -5241,10 +11483,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5256,7 +11498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers"
+                        + "/providers/Microsoft.DBForMySQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -5356,10 +11598,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforMySQL/servers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForMySQL/servers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/servers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySQL/servers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5368,7 +11610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                 var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
                         "https://management.azure.com/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforMySQL/servers"
+                        + "/providers/Microsoft.DBForMySQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
@@ -5471,7 +11713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/restart"
                         + "?"
@@ -5508,10 +11750,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/restart'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/restart'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5524,7 +11766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/restart"
                         + "?"
@@ -5735,7 +11977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -5776,10 +12018,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5792,7 +12034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -6005,7 +12247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -6048,10 +12290,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6065,7 +12307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -6286,7 +12528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -6325,10 +12567,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6342,7 +12584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -6563,7 +12805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -6601,10 +12843,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6618,7 +12860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -6737,7 +12979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules"
                         + "?"
@@ -6774,10 +13016,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySQL/servers/(?<serverName>[^/]+)/virtualNetworkRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6790,7 +13032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforMySQL/servers/"
+                        + "/providers/Microsoft.DBForMySQL/servers/"
                         + serverName
                         + "/virtualNetworkRules"
                         + "?"

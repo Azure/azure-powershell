@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>List all the performance tiers at specified location in a given subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] LocationBasedPerformanceTier_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/performanceTiers"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySQL/locations/{locationName}/performanceTiers"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlLocationBasedPerformanceTier_List")]

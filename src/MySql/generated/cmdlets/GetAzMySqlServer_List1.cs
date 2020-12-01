@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>List all the servers in a given subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/servers"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBForMySQL/servers"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlServer_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer))]

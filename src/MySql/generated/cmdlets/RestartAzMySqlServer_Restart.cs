@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>Restarts a server.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_Restart=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/restart"
+    /// [OpenAPI] Restart=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/restart"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Restart, @"AzMySqlServer_Restart", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

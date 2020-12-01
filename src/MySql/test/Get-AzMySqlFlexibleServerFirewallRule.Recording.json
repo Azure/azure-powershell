@@ -1,0 +1,355 @@
+{
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"0.0.0.1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "93" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/1e8ff943-a93f-4526-88a5-28bbe71c90eb?api-version=2020-07-01-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/1e8ff943-a93f-4526-88a5-28bbe71c90eb?api-version=2020-07-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "1e8ff943-a93f-4526-88a5-28bbe71c90eb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "f6722fee-689b-496a-bb1f-443943ab2e2d" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085851Z:f6722fee-689b-496a-bb1f-443943ab2e2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:58:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "99" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2020-11-10T08:58:51.333Z\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/1e8ff943-a93f-4526-88a5-28bbe71c90eb?api-version=2020-07-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/1e8ff943-a93f-4526-88a5-28bbe71c90eb?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "2e215d2d-2e21-45f4-bb90-a0429f193b2f" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "New-AzMySqlFlexibleServerFirewallRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c14e93f3-97ab-45ee-b69a-a2c59f27f479" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "e57a400f-a9ec-421f-b122-e1d5f00f6582" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085951Z:e57a400f-a9ec-421f-b122-e1d5f00f6582" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1e8ff943-a93f-4526-88a5-28bbe71c90eb\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-10T08:58:51.333Z\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "2e215d2d-2e21-45f4-bb90-a0429f193b2f" ],
+        "CommandName": [ "Az.MySql.internal\\New-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "New-AzMySqlFlexibleServerFirewallRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "123ab935-8d93-4d8b-8727-24d5c510a3b9" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "72b38835-2d21-411d-8253-a45c4acd71f9" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085952Z:72b38835-2d21-411d-8253-a45c4acd71f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "149" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules?api-version=2020-07-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "e4ce5b69-a37d-4239-8c7e-18caad82820b" ],
+        "CommandName": [ "Get-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Get-AzMySqlFlexibleServerFirewallRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7bed6708-ccc6-4724-ab91-07f3a96b92c8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "bd003fe4-59a0-42fe-b77b-7814b278b76c" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085952Z:bd003fe4-59a0-42fe-b77b-7814b278b76c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "161" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/firewallRules\"}]}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "8ad4ff35-00a5-4b34-893c-0eda146d6fe3" ],
+        "CommandName": [ "Get-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Get-AzMySqlFlexibleServerFirewallRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c8c89e0c-5c98-4efd-92f3-ff7cb902f288" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "feae2fe5-a8bb-491d-80ab-e67f7976ddf9" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085952Z:feae2fe5-a8bb-491d-80ab-e67f7976ddf9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "149" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "9cc628db-0b1e-4407-8bd5-6818335f15c6" ],
+        "CommandName": [ "Get-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Get-AzMySqlFlexibleServerFirewallRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0a374e16-cd9e-4799-bdd6-f41ad856a054" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "9118538f-6a8a-407e-b80f-6a881e098f75" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085952Z:9118538f-6a8a-407e-b80f-6a881e098f75" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "149" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"name\":\"mysqlrule01\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/firewallRules/mysqlrule01?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "bc5100ec-cce1-4d2c-b4d7-6788e3551836" ],
+        "CommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f1d410fb-6f8f-41c6-bc39-1156abdb00d5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "14bdfe74-5b5b-4a3a-ae6f-5c6a09863d2f" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T085953Z:14bdfe74-5b5b-4a3a-ae6f-5c6a09863d2f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 08:59:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "97" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropServerFirewallRulesManagementOperation\",\"startTime\":\"2020-11-10T08:59:53.133Z\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "bc5100ec-cce1-4d2c-b4d7-6788e3551836" ],
+        "CommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6a10b21a-2c6a-4e04-b5c4-1ee259daff38" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "e06fb5ef-01d1-48a1-8113-bca83ff535cd" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T090053Z:e06fb5ef-01d1-48a1-8113-bca83ff535cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 09:00:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"f1d410fb-6f8f-41c6-bc39-1156abdb00d5\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-10T08:59:53.133Z\"}"
+    }
+  },
+  "Get-AzMySqlFlexibleServerFirewallRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/f1d410fb-6f8f-41c6-bc39-1156abdb00d5?api-version=2020-07-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "bc5100ec-cce1-4d2c-b4d7-6788e3551836" ],
+        "CommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzMySqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9f05b5c7-c6ac-4c43-9f42-54a97c220954" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "625b812c-56af-42e4-8be1-1703f191e122" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20201110T090053Z:625b812c-56af-42e4-8be1-1703f191e122" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 10 Nov 2020 09:00:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

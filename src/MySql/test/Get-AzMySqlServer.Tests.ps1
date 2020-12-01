@@ -28,7 +28,7 @@ Describe 'Get-AzMySqlServer' {
     }
 
     It 'GetViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)"
         $servers = Get-AzMySqlServer -InputObject $ID
         $servers.Name | Should -Be $env.serverName
     }

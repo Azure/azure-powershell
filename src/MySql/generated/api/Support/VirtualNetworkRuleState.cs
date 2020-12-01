@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>Virtual Network Rule State</summary>
     public partial struct VirtualNetworkRuleState :
         System.IEquatable<VirtualNetworkRuleState>
     {

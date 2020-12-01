@@ -9,13 +9,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ProxyResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.Resource();
 
         /// <summary>Allowed values of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 2)]
         public string AllowedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).AllowedValue; }
 
         /// <summary>Data type of the configuration.</summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Default value of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 4)]
         public string DefaultValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).DefaultValue; }
 
         /// <summary>Description of the configuration.</summary>
@@ -38,16 +38,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type = value; }
 
         /// <summary>Internal Acessors for AllowedValue</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationInternal.AllowedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).AllowedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).AllowedValue = value; }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 0)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationProperties _property;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Source of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 3)]
         public string Source { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).Source; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfigurationPropertiesInternal)Property).Source = value; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; }
 
         /// <summary>Value of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertNotNull(nameof(__resource), __resource);
+            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
     /// Represents a Configuration.
     public partial interface IConfiguration :
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource
     {
         /// <summary>Allowed values of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     }
     /// Represents a Configuration.
     internal partial interface IConfigurationInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal
     {
         /// <summary>Allowed values of the configuration.</summary>
         string AllowedValue { get; set; }

@@ -40,6 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="KeyName" /> property.</summary>
+        private string _keyName;
+
+        /// <summary>The name of the server key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Owned)]
+        public string KeyName { get => this._keyName; set => this._keyName = value; }
+
         /// <summary>Backing field for <see cref="LocationName" /> property.</summary>
         private string _locationName;
 
@@ -123,6 +130,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The name of the server key.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the server key.",
+        SerializedName = @"keyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string KeyName { get; set; }
         /// <summary>The name of the location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -184,6 +199,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         string FirewallRuleName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The name of the server key.</summary>
+        string KeyName { get; set; }
         /// <summary>The name of the location.</summary>
         string LocationName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>Enable Storage Auto Grow.</summary>
     public partial struct StorageAutogrow :
         System.IEquatable<StorageAutogrow>
     {

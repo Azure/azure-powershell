@@ -11,6 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Mock Write-Host {}
 Describe 'Get-AzMySqlVirtualNetworkRule' {
     It 'List' {
         $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
@@ -31,7 +32,7 @@ Describe 'Get-AzMySqlVirtualNetworkRule' {
     It 'GetViaIdentity' {
         $VnetID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
         New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $VnetID
-        $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
+        $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
         $rule = Get-AzMySqlVirtualNetworkRule -InputObject $RuleID
         $rule.VirtualNetworkSubnetId | Should -Be $VnetID
         Remove-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup-ServerName $env.serverName

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>State of the private endpoint connection.</summary>
     public partial struct PrivateEndpointProvisioningState :
         System.IEquatable<PrivateEndpointProvisioningState>
     {

@@ -1,15 +1,17 @@
 {
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "restoreName": "mysql-test-100-restore",
-  "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
   "firewallRuleName": "mysqlrule01",
-  "restoreName2": "mysql-test-100-restore-2",
-  "replicaName": "mysql-test-100-replica",
+  "resourceGroup": "MySqlTest",
   "Sku": "GP_Gen5_4",
   "firewallRuleName2": "mysqlrule02",
+  "location": "westus2",
+  "databaseName": "mysqldb",
   "serverName": "mysql-test-100",
+  "FlexibleSku": "Standard_B1ms",
+  "restoreName": "mysql-test-100-restore",
+  "replicaName": "mysql-test-100-replica",
+  "SubscriptionId": "7fec3109-5b78-4a24-b834-5d47d63e2596",
+  "restoreName2": "mysql-test-100-restore-2",
   "serverName2": "mysql-test-100-2",
-  "resourceGroup": "MySqlTest",
-  "VNetName": "mysqlvnet",
-  "location": "eastus"
+  "VNetName": "mysqlvnet"
 }

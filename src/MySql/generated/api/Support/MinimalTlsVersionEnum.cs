@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>Enforce a minimal Tls version for the server.</summary>
     public partial struct MinimalTlsVersionEnum :
         System.IEquatable<MinimalTlsVersionEnum>
     {

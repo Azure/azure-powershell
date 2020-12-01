@@ -63,13 +63,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
-    # The location the resource resides in.
+    # Administrator username for the server.
+    # Once set, it cannot be changed.
     ${AdministratorUserName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.Security.SecureString]
-    # The location the resource resides in.
+    # The password of the administrator.
+    # Minimum 8 characters and maximum 128 characters.
+    # Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
     ${AdministratorLoginPassword},
 
     [Parameter(Mandatory)]
