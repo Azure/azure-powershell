@@ -107,6 +107,10 @@ function Switch-AzCloudService {
   
         # Parse target cloud service fields
         $elements = $SourceCloudService.NetworkProfile.SwappableCloudService.Id.Split("/")
+        if (($elements.Count -lt 9) -or ("subscriptions" -ne $elements[1]) -or ("resourceGroups" -ne $elements[3]) -or ("cloudServices" -ne $elements[7]))
+        {
+            throw "SourceCloudService.NetworkProfile.SwappableCloudService.Id should match the format: /subscriptions/(?<TargetSubscriptionId>[^/]+)/resourceGroups/(?<TargetResourceGroupName>[^/]+/providers/Microsoft.Compute/cloudServices/(?<TargetCloudServiceName>[^/]+))"
+        }
         $TargetSubscriptionId = $elements[2]
         $TargetResourceGroupName = $elements[4]
         $TargetCloudServiceName = $elements[8]

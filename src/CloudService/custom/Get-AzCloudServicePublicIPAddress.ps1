@@ -48,9 +48,17 @@ function Get-AzCloudServicePublicIPAddress {
         if ($PSBoundParameters.ContainsKey("CloudService"))
         {
             $elements = $CloudService.Id.Split("/")
+            if (($elements.Count -lt 5) -or ("subscriptions" -ne $elements[1]) -or ("resourceGroups" -ne $elements[3]))
+            {
+                throw "CloudService.Id should match the format: /subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)"
+            }
             $SubscriptionId = $elements[2]
             $ResourceGroupName = $elements[4]
             $CloudServiceName = $CloudService.Name
+            if ($Null -eq $CloudServiceName)
+            {
+                throw "CloudService.Name should not be Null"
+            }
         }
 
         # Create the URI as per the input
