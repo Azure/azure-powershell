@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that parameters of `Start-AzAutomationRunbook` cannot convert PSObject wrapped string to JSON string [#13240]
 
 ## Version 1.4.0
 * Added `-RunOn` parameters to `Set-AzAutomationWebhook` to specify a Hybrid Worker Group
