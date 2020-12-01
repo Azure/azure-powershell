@@ -3612,7 +3612,7 @@ function Test-VirtualMachineManagedDisk
         # Create OS snapshot from the VM
         $snapshotConfig = New-AzSnapshotConfig -SourceUri $vm.Storageprofile.OsDisk.ManagedDisk.Id -Location $loc -CreateOption Copy;
         $snapshotname = "ossnapshot";
-        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotname -ResourceGroupName $rgname;
+        Update-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotname -ResourceGroupName $rgname;
         $snapshot = Get-AzSnapshot -SnapshotName $snapshotname -ResourceGroupName $rgname;
 
         Assert-NotNull $snapshot.Id;

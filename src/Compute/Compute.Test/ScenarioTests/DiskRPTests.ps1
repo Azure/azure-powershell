@@ -246,7 +246,7 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettingsCollection.Enabled = $false;
         $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -619,7 +619,7 @@ function Test-SnapshotEncrypt
         Assert-AreEqual 0 $snapshotconfig.CreationData.ImageReference.Lun;
 
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -1351,8 +1351,8 @@ function Test-SnapshotDuplicateCreationFails
 
     try
     {
+        # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
         $snapshotName = "test1";
 
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty;
@@ -1360,20 +1360,12 @@ function Test-SnapshotDuplicateCreationFails
         $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig;
         Assert-NotNull $snapshot;
 
-        #Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+        # Assert duplicate snapshot fails to create.
+        Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
 
-        #-Location $loc
-        <#$snapshotconfig2 = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Standard_LRS -OsType Windows;
+        # Assert update snapshot succeeds. 
+        $snapshotconfig2 = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Standard_LRS -OsType Windows;
         $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -SnapshotUpdate $snapshotconfig2 -AsJob;
-        $result = $job | Wait-Job;
-        Assert-AreEqual "Completed" $result.State;#>
-
-        $access = 'Read';
-        $job = Grant-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
-        $result = $job | Wait-Job;
-        Assert-AreEqual "Completed" $result.State;
-
-        $job = Revoke-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
     }
