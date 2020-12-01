@@ -7,6 +7,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.WorkspaceName = workspaceName;
             this.Description = pipelineResource?.Description;
-            this.Activities = pipelineResource?.Activities?.Select(element => new PSActivity(element)).ToList();
+            this.Activities = pipelineResource?.Activities;
             this.Variables = pipelineResource?.Variables?
                 .Select(element => new KeyValuePair<string, PSVariableSpecification>(element.Key, new PSVariableSpecification(element.Value)))
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -53,8 +54,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "properties.description")]
         public string Description { get; set; }
 
+        public IList<Activity> Activities { get; set; }
+
+        [Hidden]
         [JsonProperty(PropertyName = "properties.activities")]
-        public IList<PSActivity> Activities { get; set; }
+        public IList<PSActivity> ActivitiesForCreate { get; set; }
 
         [JsonProperty(PropertyName = "properties.variables")]
         public IDictionary<string, PSVariableSpecification> Variables { get; set; }
@@ -86,7 +90,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 Concurrency = this.Concurrency,
                 Folder = this.Folder?.ToSdkObject()
             };
-            this.Activities?.ForEach(item => pipeline.Activities.Add(item?.ToSdkObject()));
+            this.ActivitiesForCreate?.ForEach(item => pipeline.Activities.Add(item?.ToSdkObject()));
             this.Variables?.ForEach(item => pipeline.Variables.Add(item.Key, item.Value?.ToSdkObject()));
             this.Annotations?.ForEach(item => pipeline.Annotations.Add(item));
             this.RunDimensions?.ForEach(item => pipeline.RunDimensions.Add(item));

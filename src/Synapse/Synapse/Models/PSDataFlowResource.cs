@@ -1,6 +1,8 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -14,16 +16,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                   dataFlowResource?.Etag)
         {
             this.WorkspaceName = workspaceName;
-            this.Properties = new PSDataFlow(dataFlowResource?.Properties);
+            this.Properties = dataFlowResource?.Properties;
         }
 
         public string WorkspaceName { get; set; }
 
-        public PSDataFlow Properties { get; set; }
+        public DataFlow Properties { get; set; }
+
+        [Hidden]
+        [JsonProperty(PropertyName = "properties")]
+        public PSDataFlow PropertiesForCreate { get; set; }
 
         public DataFlowResource ToSdkObject()
         {
-            return new DataFlowResource(this.Properties?.ToSdkObject());
+            return new DataFlowResource(this.PropertiesForCreate?.ToSdkObject());
         }
     }
 }

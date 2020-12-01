@@ -1,6 +1,8 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -14,16 +16,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                  triggerResource?.Etag)
         {
             this.WorkspaceName = workspaceName;
-            this.Properties = new PSTrigger(triggerResource?.Properties);
+            this.Properties = triggerResource?.Properties;
         }
 
         public string WorkspaceName { get; set; }
 
-        public PSTrigger Properties { get; set; }
+        public Trigger Properties { get; set; }
+
+        [Hidden]
+        [JsonProperty(PropertyName = "properties")]
+        public PSTrigger PropertiesForCreate { get; set; }
 
         public TriggerResource ToSdkObject()
         {
-            return new TriggerResource(this.Properties?.ToSdkObject());
+            return new TriggerResource(this.PropertiesForCreate?.ToSdkObject());
         }
     }
 }
