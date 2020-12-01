@@ -6,16 +6,16 @@ Regenerates the RedisEnterprise database's access keys.
 .Example
 PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
 
-PrimaryKey      SecondaryKey
-----------      ------------
-new-primary-key secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+new-primary-key                              secondary-key
 
 .Example
 PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
-PrimaryKey  SecondaryKey
-----------  ------------
-primary-key new-secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+primary-key                                  new-secondary-key
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys

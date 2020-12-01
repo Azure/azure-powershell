@@ -2,9 +2,9 @@
 ```powershell
 PS C:\> Get-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
-PrimaryKey  SecondaryKey
-----------  ------------
-primary-key secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+primary-key                                  secondary-key
 
 ```
 

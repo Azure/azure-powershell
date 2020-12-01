@@ -27,9 +27,9 @@ Regenerates the RedisEnterprise database's access keys.
 ```powershell
 New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
 
-PrimaryKey      SecondaryKey
-----------      ------------
-new-primary-key secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+new-primary-key                              secondary-key
 
 ```
 
@@ -37,9 +37,9 @@ new-primary-key secondary-key
 ```powershell
 New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
-PrimaryKey  SecondaryKey
-----------  ------------
-primary-key new-secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+primary-key                                  new-secondary-key
 
 ```
 

@@ -6,9 +6,9 @@ Retrieves the access keys for the RedisEnterprise database.
 .Example
 PS C:\> Get-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
-PrimaryKey  SecondaryKey
-----------  ------------
-primary-key secondary-key
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+primary-key                                  secondary-key
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys
