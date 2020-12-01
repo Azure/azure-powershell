@@ -10,9 +10,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
   </PropertyGroup>
 
-  <!--<ItemGroup>
-    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>-->
+  <ItemGroup>
+    <Compile Remove="ScenarioTests\SecurityExternalSecuritySolutionTests.cs" />
+    <None Remove="ScenarioTests\SecurityExternalSecuritySolutionTests.ps1" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="2.2.0" />
