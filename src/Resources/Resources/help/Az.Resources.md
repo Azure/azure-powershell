@@ -17,6 +17,9 @@ Adds a user to an existing AD group.
 ### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
 
+### [Export-AzTemplateSpec](Export-AzTemplateSpec.md)
+Exports a Template Spec to the local filesystem
+
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Retrieves a list of credentials associated with an application.
 
@@ -131,6 +134,9 @@ Lists all Azure RBAC roles that are available for assignment.
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
 
+### [Get-AzTemplateSpec](Get-AzTemplateSpec.md)
+Gets or lists Template Specs
+
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
 
@@ -216,6 +222,9 @@ Finally, use this command to create a custom role using role definition.
 ### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
 
+### [New-AzTemplateSpec](New-AzTemplateSpec.md)
+Creates a new Template Spec.
+
 ### [New-AzTenantDeployment](New-AzTenantDeployment.md)
 Create a deployment at tenant scope
 
@@ -299,6 +308,9 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
 
+### [Remove-AzTemplateSpec](Remove-AzTemplateSpec.md)
+Removes a Template Spec
+
 ### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
 Removes a deployment at tenant scope and any associated operations
 
@@ -350,6 +362,9 @@ Provide the modified role definition either as a JSON file or as a PSRoleDefinit
 First, use the Get-AzRoleDefinition command to retrieve the custom role that you wish to modify.
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
+
+### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
+Modifies a Template Spec.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancel a running deployment

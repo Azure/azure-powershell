@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
+* Added Tag display support to default formatter for Template Specs 
 
 ## Version 3.0.1
 * Fixed an issue where What-If shows two resource group scopes with different casing
