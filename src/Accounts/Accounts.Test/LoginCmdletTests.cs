@@ -159,22 +159,35 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
 
             // Setup
-            var mockUtilities = new Mock<CommonUtilities>();
-            mockUtilities.Setup(u => u.IsDesktopSession()).Returns(false);
-            AzureSession.Instance.RegisterComponent(nameof(CommonUtilities),
-                () => mockUtilities.Object);
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SetParameterSet("UserWithSubscriptionId");
+            CommonUtilities commonUtilities;
+            AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out commonUtilities);
+            try
+            {
+                var mockUtilities = new Mock<CommonUtilities>();
+                mockUtilities.Setup(u => u.IsDesktopSession()).Returns(false);
+                AzureSession.Instance.RegisterComponent(nameof(CommonUtilities),
+                    () => mockUtilities.Object, true);
+                cmdlt.CommandRuntime = commandRuntimeMock;
+                cmdlt.SetParameterSet("UserWithSubscriptionId");
 
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
+                // Act
+                cmdlt.InvokeBeginProcessing();
+                cmdlt.ExecuteCmdlet();
+                cmdlt.InvokeEndProcessing();
 
-            //Verify
-            Assert.Single(commandRuntimeMock.WarningStream);
-            Assert.Equal("Interactive authentication is not supported in this session, please run cmdlet 'Connect-AzAccount -UseDeviceAuthentication'.", commandRuntimeMock.WarningStream[0]);
-            Assert.Null(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+                //Verify
+                Assert.Single(commandRuntimeMock.WarningStream);
+                Assert.Equal("Interactive authentication is not supported in this session, please run cmdlet 'Connect-AzAccount -UseDeviceAuthentication'.", commandRuntimeMock.WarningStream[0]);
+                Assert.Null(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            }
+            finally
+            {
+                if(commonUtilities != null)
+                {
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities),
+                        () => commonUtilities, true);
+                }
+            }
         }
 
         [Fact]
