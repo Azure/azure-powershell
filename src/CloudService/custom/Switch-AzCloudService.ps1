@@ -57,10 +57,6 @@ function Switch-AzCloudService {
         ${Async},
 
         [Parameter()]
-        [string] 
-        ${ApiVersion} = "2020-06-01",
-
-        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
@@ -82,6 +78,7 @@ function Switch-AzCloudService {
     )
     
     process {
+        $ApiVersion = "2020-06-01"
         if (-not $PSBoundParameters.ContainsKey("SubscriptionId")) {
             $SubscriptionId = (Get-AzContext).Subscription.Id
         }

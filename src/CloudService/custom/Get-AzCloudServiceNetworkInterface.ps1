@@ -44,13 +44,10 @@ function Get-AzCloudServiceNetworkInterfaces {
         [string] $RoleInstanceName,
 
         [Parameter(Mandatory=$true, ParameterSetName="CloudService", HelpMessage="CloudService instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService] $CloudService,
-
-        [Parameter(DontShow)]
-        [string] $ApiVersion = "2020-06-01"
-
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService] $CloudService
     )
     process {
+        $ApiVersion = "2020-06-01"
         if ($PSBoundParameters.ContainsKey("CloudService"))
         {
             $elements = $CloudService.Id.Split("/")

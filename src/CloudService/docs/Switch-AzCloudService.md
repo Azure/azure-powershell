@@ -15,13 +15,12 @@ Swaps VIPs between two cloud service (extended support) load balancers.
 ### CloudServiceName (Default)
 ```
 Switch-AzCloudService -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApiVersion <String>] [-Async] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Async] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CloudService
 ```
-Switch-AzCloudService -CloudService <CloudService> [-SubscriptionId <String>] [-ApiVersion <String>] [-Async]
+Switch-AzCloudService -CloudService <CloudService> [-SubscriptionId <String>] [-Async]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,21 +49,6 @@ Above command invokes the vipswap operation on the Cloud service with name 'BSer
 'BService' with be swapped with its swappable cloud service.
 
 ## PARAMETERS
-
-### -ApiVersion
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
