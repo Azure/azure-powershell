@@ -1,6 +1,5 @@
 ### Example 1: Create a new MySql flexible server
 ```powershell
-PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
 
@@ -12,7 +11,6 @@ mysql-test      West US 2   mysqltest    5.7      10240                  Standar
 
 ### Example 2: Create a new MySql flexible server with default setting
 ```powershell
-PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -AdministratorUserName mysqltest -AdministratorLoginPassword $password
 

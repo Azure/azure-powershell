@@ -4961,7 +4961,6 @@ Creates a new MySQL flexible server
 .Description
 Creates a new server.
 .Example
-PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
 
@@ -4969,7 +4968,6 @@ Name            Location AdministratorLogin Version StorageProfileStorageMb SkuN
 ----            -------- ------------------ ------- ----------------------- ------------    -------------        
 mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
 .Example
-PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -AdministratorUserName mysqltest -AdministratorLoginPassword $password
 
