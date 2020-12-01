@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -68,10 +69,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (existingResource == null)
             {
-                throw new Exception(string.Format("A managed HSM with name '{0}' in resource group '{1}' does not exist. Please use New-AzKeyVaultManagedHsm to create a managed HSM with these properties.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format(Resources.HsmNotFound, this.Name, this.ResourceGroupName));
             }
 
-            if (this.ShouldProcess(this.Name, string.Format("Updating managed HSM '{0}' in resource group '{1}'.", this.Name, this.ResourceGroupName)))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.UpdateHsmShouldProcessMessage, this.Name, this.ResourceGroupName)))
             {
                 var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, 
                     new VaultCreationOrUpdateParameters 
