@@ -20,6 +20,9 @@ Create a new graph query.
 ### [Remove-AzResourceGraphQuery](Remove-AzResourceGraphQuery.md)
 Delete a graph query.
 
+### [Search-AzGraph](Search-AzGraph.md)
+Queries the resources managed by Azure Resource Manager.
+
 ### [Update-AzResourceGraphQuery](Update-AzResourceGraphQuery.md)
 Updates a graph query that has already been added.
 

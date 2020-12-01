@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 0.7.8
+## Version 0.8.0
 * Added four new cmdlets -- Get-AzResourceGraphQuery, New-AzResourceGraphQuery, Remove-AzResourceGraphQuery, Update-AzResourceGraphQuery
 
 ## Version 0.7.7

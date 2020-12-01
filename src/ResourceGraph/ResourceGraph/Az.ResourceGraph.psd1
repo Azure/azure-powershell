@@ -11,7 +11,7 @@
 # Script module or binary module file associated with this manifest.
 
 # Version number of this module.
-ModuleVersion = '0.7.8'
+ModuleVersion = '0.8.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
