@@ -4,13 +4,10 @@ Imports a database file to target database.
 .Description
 Imports a database file to target database.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Import-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/myfilename?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
 
-{{ Add output here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Import-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/bk20201130-223654-1-db-1_of_1-2-0-16383.rdb.gz?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;rVwHb4/ZyJCF9kLzgCkAdjB0e6uCfdqV1dwhEHLWICKNLfeWJ9O3KLNtEk31AsOfmsN2LNjwSsgj3iVMwkGNJw=="
 
 .Outputs
 System.Boolean
@@ -22,11 +19,11 @@ function Import-AzRedisEnterpriseCacheDatabase {
     [CmdletBinding(DefaultParameterSetName='ImportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -115,9 +112,6 @@ function Import-AzRedisEnterpriseCacheDatabase {
     )
 
     process {
-        $clusterName = $PSBoundParameters["Name"]
-        $null = $PSBoundParameters.Remove("Name")
-        $null = $PSBoundParameters.Add("ClusterName", $clusterName)
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\Import-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }

@@ -13,8 +13,8 @@ Gets information about a database in a RedisEnterprise cluster.
 ## SYNTAX
 
 ```
-Get-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,25 +22,32 @@ Gets information about a database in a RedisEnterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -51,21 +58,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ClusterName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

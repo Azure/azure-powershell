@@ -13,8 +13,8 @@ Retrieves the access keys for the RedisEnterprise database.
 ## SYNTAX
 
 ```
-Get-AzRedisEnterpriseCacheDatabaseKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheDatabaseKey -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,25 +22,32 @@ Retrieves the access keys for the RedisEnterprise database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+Get-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+j7La5KLxe3RLExqO8W4xwIEl4KDbCs7fQM0vf7tZnPY= QEInlqy5WwCxkX+SQR8jCmbYdBrXXopbwRAeqLkizX0=
+
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -51,21 +58,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ClusterName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

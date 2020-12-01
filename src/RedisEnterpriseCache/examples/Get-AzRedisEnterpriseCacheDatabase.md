@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get database
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets the database for the Redis Enterprise Cache named MyCache.

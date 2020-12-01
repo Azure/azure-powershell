@@ -14,10 +14,10 @@ Updates a database
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRedisEnterpriseCacheDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
- [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
+ [-EvictionPolicy <EvictionPolicy>] [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,23 +33,25 @@ Updates a database
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -94,6 +96,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,21 +173,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ClusterName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

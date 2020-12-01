@@ -13,9 +13,9 @@ Regenerates the RedisEnterprise database's access keys.
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheDatabaseKey -Name <String> -ResourceGroupName <String> -KeyType <AccessKeyType>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCacheDatabaseKey -ClusterName <String> -ResourceGroupName <String>
+ -KeyType <AccessKeyType> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,23 +23,25 @@ Regenerates the RedisEnterprise database's access keys.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
 
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= QEInlqy5WwCxkX+SQR8jCmbYdBrXXopbwRAeqLkizX0=
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
+New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= IVFu/ddyL/Q61zL/A/WPu+8aMyF9o6Jr+WbD2bgvZXA=
+
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -52,6 +54,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,21 +97,6 @@ Which access key to regenerate.
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ClusterName
 
 Required: True
 Position: Named

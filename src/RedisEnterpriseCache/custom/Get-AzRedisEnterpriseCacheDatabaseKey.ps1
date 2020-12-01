@@ -4,13 +4,11 @@ Retrieves the access keys for the RedisEnterprise database.
 .Description
 Retrieves the access keys for the RedisEnterprise database.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+j7La5KLxe3RLExqO8W4xwIEl4KDbCs7fQM0vf7tZnPY= QEInlqy5WwCxkX+SQR8jCmbYdBrXXopbwRAeqLkizX0=
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys
@@ -22,11 +20,11 @@ function Get-AzRedisEnterpriseCacheDatabaseKey {
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -91,9 +89,6 @@ function Get-AzRedisEnterpriseCacheDatabaseKey {
     )
 
     process {
-        $clusterName = $PSBoundParameters["Name"]
-        $null = $PSBoundParameters.Remove("Name")
-        $null = $PSBoundParameters.Add("ClusterName", $clusterName)
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabaseKey @PSBoundParameters
     }

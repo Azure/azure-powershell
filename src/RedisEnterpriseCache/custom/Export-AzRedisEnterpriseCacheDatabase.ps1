@@ -4,13 +4,10 @@ Exports a database file from target database.
 .Description
 Exports a database file from target database.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
 
-{{ Add output here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;rVwHb4/ZyJCF9kLzgCkAdjB0e6uCfdqV1dwhEHLWICKNLfeWJ9O3KLNtEk31AsOfmsN2LNjwSsgj3iVMwkGNJw=="
 
 .Outputs
 System.Boolean
@@ -22,11 +19,11 @@ function Export-AzRedisEnterpriseCacheDatabase {
     [CmdletBinding(DefaultParameterSetName='ExportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -115,9 +112,6 @@ function Export-AzRedisEnterpriseCacheDatabase {
     )
 
     process {
-        $clusterName = $PSBoundParameters["Name"]
-        $null = $PSBoundParameters.Remove("Name")
-        $null = $PSBoundParameters.Add("ClusterName", $clusterName)
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\Export-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }

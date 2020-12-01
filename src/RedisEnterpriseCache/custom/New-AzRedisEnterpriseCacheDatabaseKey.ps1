@@ -4,13 +4,18 @@ Regenerates the RedisEnterprise database's access keys.
 .Description
 Regenerates the RedisEnterprise database's access keys.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
 
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= QEInlqy5WwCxkX+SQR8jCmbYdBrXXopbwRAeqLkizX0=
+
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
 
-{{ Add output here }}
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+ZqY6g2H1dcL1ARne0TSCdBHs/UHQM+UTZRDB5I2+BSY= IVFu/ddyL/Q61zL/A/WPu+8aMyF9o6Jr+WbD2bgvZXA=
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys
@@ -22,11 +27,11 @@ function New-AzRedisEnterpriseCacheDatabaseKey {
     [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -110,9 +115,6 @@ function New-AzRedisEnterpriseCacheDatabaseKey {
     )
 
     process {
-        $clusterName = $PSBoundParameters["Name"]
-        $null = $PSBoundParameters.Remove("Name")
-        $null = $PSBoundParameters.Add("ClusterName", $clusterName)
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabaseKey @PSBoundParameters
     }

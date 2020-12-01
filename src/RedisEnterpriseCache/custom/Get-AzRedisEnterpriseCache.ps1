@@ -35,16 +35,16 @@ function Get-AzRedisEnterpriseCache {
         ${ResourceGroupName},
 
         [Parameter(HelpMessage='The name of the RedisEnterprise cluster.')]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(HelpMessage='Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
+        [System.String[]]
         # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
@@ -98,13 +98,10 @@ function Get-AzRedisEnterpriseCache {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey("Name"))
+        if ($PSBoundParameters.ContainsKey("ClusterName"))
         {
             $cluster = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @PSBoundParameters
 
-            $clusterName = $PSBoundParameters["Name"]
-            $null = $PSBoundParameters.Remove("Name")
-            $null = $PSBoundParameters.Add("ClusterName", $clusterName)
             $databaseList = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @PSBoundParameters
             $cluster.Database = @{}
             foreach ($database in $databaseList)

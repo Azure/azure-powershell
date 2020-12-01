@@ -4,13 +4,11 @@ Gets information about a database in a RedisEnterprise cluster.
 .Description
 Gets information about a database in a RedisEnterprise cluster.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
@@ -22,11 +20,11 @@ function Get-AzRedisEnterpriseCacheDatabase {
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -91,9 +89,6 @@ function Get-AzRedisEnterpriseCacheDatabase {
     )
 
     process {
-        $clusterName = $PSBoundParameters["Name"]
-        $null = $PSBoundParameters.Remove("Name")
-        $null = $PSBoundParameters.Add("ClusterName", $clusterName)
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }

@@ -14,7 +14,7 @@ Deletes a RedisEnterprise cache cluster.
 
 ### Delete (Default)
 ```
-Remove-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,21 +29,16 @@ Deletes a RedisEnterprise cache cluster.
 
 ## EXAMPLES
 
-### Example 1: Remove a Redis Enterprise Cache and return the result
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
 True
 ```
 
-This command removes a Redis Enterprise Cache and displays whether the operation is successful.
-
-### Example 2: Remove a Redis Enterprise Cache and do not display the result
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup"
 ```
-
-This command removes a Redis Enterprise Cache. Because the PassThru parameter is not specified, the result of the operation is not displayed.
-
 
 ## PARAMETERS
 
@@ -56,6 +51,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,21 +100,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

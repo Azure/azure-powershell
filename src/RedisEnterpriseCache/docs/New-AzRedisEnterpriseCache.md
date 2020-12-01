@@ -13,7 +13,7 @@ Creates a Redis Enterpise cache cluster and an associated database
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCache -Name <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
+New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
  [-SubscriptionId <String>] [-Capacity <Int32>] [-ClientProtocol <Protocol>]
  [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>] [-MinimumTlsVersion <String>]
  [-Module <IModule[]>] [-Port <Int32>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
@@ -25,9 +25,9 @@ Creates or updates an existing (overwrite/recreate, with potential downtime) cac
 
 ## EXAMPLES
 
-### Example 1: Create a Redis Enterprise Cache
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -35,19 +35,15 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command creates a Redis Enterprise Cache.
-
-### Example 2: Create a Redis Enterprise Cache using some optional parameters
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zone "1","2","3" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tag @{"tag" = "value"}
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -Zone "1","2","3" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Tag @{"tag" = "value"}
 
 Location Name    Type                            Zone      Database
 -------- ----    ----                            ----      --------
 East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 ```
-
-This command creates a Redis Enterprise Cache using some optional parameters.
 
 ## PARAMETERS
 
@@ -109,6 +105,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the RedisEnterprise cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,21 +197,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the RedisEnterprise cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ClusterName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

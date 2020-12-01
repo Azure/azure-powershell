@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update client protocol
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
-{{ Add description here }}
+This command updates the client protocol of the database for the Redis Enterprise Cache named MyCache.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update client protocol and eviction policy
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
-{{ Add description here }}
+This command updates the client protocol and eviction policy of the database for the Redis Enterprise Cache named MyCache.
 

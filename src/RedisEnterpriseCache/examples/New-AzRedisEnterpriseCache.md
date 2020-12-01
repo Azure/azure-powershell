@@ -8,7 +8,7 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command creates a Redis Enterprise Cache.
+This command creates a Redis Enterprise Cache named MyCache.
 
 ### Example 2: Create a Redis Enterprise Cache using some optional parameters
 ```powershell
@@ -20,4 +20,4 @@ East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 ```
 
-This command creates a Redis Enterprise Cache using some optional parameters.
+This command creates a Redis Enterprise Cache named MyCache using some optional parameters.

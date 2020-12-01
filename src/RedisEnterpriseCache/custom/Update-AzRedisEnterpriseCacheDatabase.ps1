@@ -4,13 +4,18 @@ Updates a database
 .Description
 Updates a database
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction"
 
-{{ Add output here }}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
@@ -42,11 +47,11 @@ function Update-AzRedisEnterpriseCacheDatabase {
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [Alias('ClusterName')]
+        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the RedisEnterprise cluster.
-        ${Name},
+        ${ClusterName},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -168,12 +173,6 @@ function Update-AzRedisEnterpriseCacheDatabase {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey("Name"))
-        {
-            $clusterName = $PSBoundParameters["Name"]
-            $null = $PSBoundParameters.Remove("Name")
-            $null = $PSBoundParameters.Add("ClusterName", $clusterName)
-        }
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         Az.RedisEnterpriseCache.internal\Update-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }

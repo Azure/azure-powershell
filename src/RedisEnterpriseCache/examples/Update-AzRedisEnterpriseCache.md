@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Redis Enterprise Cache
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag" = "value"}
 
-{{ Add output here }}
+Location Name    Type                            Zone Database
+-------- ----    ----                            ---- --------
+West US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates the minimum TLS version and adds a tag to the Redis Enterprise Cache named MyCache.

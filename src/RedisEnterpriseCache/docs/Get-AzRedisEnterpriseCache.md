@@ -13,7 +13,7 @@ Gets information about a RedisEnterprise cluster and its associated database
 ## SYNTAX
 
 ```
-Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-Name <String>] [-SubscriptionId <String>]
+Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-ClusterName <String>] [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -22,9 +22,9 @@ Gets information about a RedisEnterprise cluster and its associated database
 
 ## EXAMPLES
 
-### Example 1: Get a Redis Enterprise Cache by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
+Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -32,11 +32,9 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command gets the Redis Enterprise Cache named MyCache.
-
-### Example 2: Get every Redis Enterprise Cache in a resource group
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
+Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 
 Location Name     Type                            Zone      Database
 -------- ----     ----                            ----      --------
@@ -45,17 +43,15 @@ East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 ```
 
-This command gets every Redis Enterprise Cache in the specified resource group.
-
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ClusterName
+The name of the RedisEnterprise cluster.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: Name
 
 Required: False
 Position: Named
@@ -64,13 +60,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the RedisEnterprise cluster.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: ClusterName
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -99,7 +95,7 @@ Gets subscription credentials which uniquely identify the Microsoft Azure subscr
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

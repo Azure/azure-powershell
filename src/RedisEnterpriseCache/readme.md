@@ -37,7 +37,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/redisenterprise/resource-manager/readme.md
+# lock the commit
+input-file:
+  - https://github.com/Azure/azure-rest-api-specs/blob/150da63a09d1cb156cb0b6d8fe575cb9ccf7b6de/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2020-10-01-preview/redisenterprise.json
 
 module-version: 0.1.0
 title: RedisEnterpriseCache
@@ -61,14 +63,13 @@ directive:
       verb: Get
       subject: OperationStatus
 
-  # Parameter renames
+  # Parameter renames and aliases
   - where:
       verb: Get|Update|Remove
       subject: ^$
       parameter-name: ClusterName
     set:
-      parameter-name: Name
-      alias: ClusterName
+      alias: Name
   - where:
       parameter-name: SkuCapacity
     set:
