@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
+* New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
 * Edited `New-AzSnapshot` cmdlet to check for existing snapshot with the same name in the same resource group. 
     - Throws an error if a duplicate snapshot exists. 
 

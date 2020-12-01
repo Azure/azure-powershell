@@ -120,9 +120,9 @@ directive:
       format-table:
         properties:
           - Name
-          - ProviderType
+          - Type
         labels:
-          ProviderType: Provider Type
+          Type: Provider Type
   - where:
       model-name: SapMonitor
     set:
