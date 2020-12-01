@@ -16,27 +16,19 @@
 .SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
-function Test-ImportAzKeyvaultCertificate
+function Test-ImportAzWebAppKeyVaultCertificate
 {
-	$rgname =  "testrcdest118"
-	$wname = "testappdest118"
-	$keyvaultname = "testkv2610"
-	$keyvaultcertname = "testcertificate2610"
-	
-	
-
+	$rgname = "testkv1611"
+	$wname = "testasewebapp"
+	$keyvaultname =	"testkv1611"
+	$keyvaultcertname =	"testcertname1611"
 	try{		
 
 		#Setup
-		$kvcert=New-AzWebAppManagedCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyvaultName $keyvaultname -CertName $keyvaultcertname
-		
-		# Assert
-		Assert-AreEqual $keyvaultname $kvcert.KeyvaultName	
-		Assert-AreEqual $keyvaultcertname $kvcert.CertName
-
+		$kvcert = Import-AzWebAppKeyVaultCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyVaultName $keyvaultname -CertName $keyvaultcertname
 	}
-	finally{
+	finally
+	{
 
-		# Cleanup
 	}
 }

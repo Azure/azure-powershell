@@ -435,35 +435,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return certificates.ToArray();
         }
 
-        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, ActiveDirectoryClient activedirectoryClient, string resourceGroupName, string keyVault)
-        {
-            var perm1 = " ";
-            var kv1 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
-            var objid = kv1.Properties.AccessPolicies;
-            var AZUREGOVWEBSITESAPPID = new Guid("6a02c803-dafd-4136-b4c3-5a6f318b4714");
-            var AZUREPUBLICWEBSITESAPPID = new Guid("abfa0a7c-a6b6-4736-8310-5855508787cd");
-            foreach (var policy in kv1.Properties.AccessPolicies)
-            {
-                var policyobj = policy.ObjectId;
-                var sp = activedirectoryClient.GetServicePrincipalByObjectId(policyobj);
-                string spad = sp.ApplicationId.ToString();
-                if ((sp.ApplicationId == AZUREPUBLICWEBSITESAPPID) || (sp.ApplicationId == AZUREGOVWEBSITESAPPID))
-                {
-                    foreach (var perm in policy.Permissions.Secrets)
-                    {
-                        if (perm == "Get")
-                        {
-                            perm1 = perm;
-                            Console.WriteLine("Success");
-                            break;
-                        }
-                    }
-                    break;
-                }
-            }
-            return perm1.ToString();
-        }
-
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
         {
             return new SiteConfigResource

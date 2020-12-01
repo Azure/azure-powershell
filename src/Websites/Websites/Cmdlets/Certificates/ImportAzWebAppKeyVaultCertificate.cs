@@ -5,8 +5,6 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 
@@ -15,16 +13,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you import a keyvault to Webapp
     /// </summary>
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultCertificate")]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppKeyVaultCertificate")]
     [OutputType(typeof(PSCertificate))]
-    public class ImportAzKeyVaultCertificate : WebAppBaseClientCmdLet
+    public class ImportAzWebAppKeyVaultCertificate : WebAppBaseClientCmdLet
     {
-
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the Ketvault.")]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the keyvault.")]
         [ValidateNotNullOrEmpty]
-        public string KeyvaultName { get; set; }
+        public string KeyVaultName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Thumbprint of the certificate created in keyvault")]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = "KeyVaultCertName of the certificate created in keyvault")]
         [ValidateNotNullOrEmpty]
         public string CertName { get; set; }
 
@@ -49,21 +46,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
                 var location = webApp.Location;
                 var serverFarmId = webApp.ServerFarmId;
-
-                //string keyvaultid;
                 string kvid = string.Empty;
                 string kvresourcegrpname = string.Empty;
-                var resourcesClient = new ResourceClient(DefaultProfile.DefaultContext);
-                //keyvaultid = CmdletHelpers.GetKeyVaultCertificates(this.ResourcesClient, this.WebsitesClient, ResourceGroupName, WebAppName, KeyvaultName, CertName);
-
-                var keyvaultResources = resourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
+                var keyvaultResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
                 {
                     ResourceType = "Microsoft.KeyVault/Vaults"
                 }).ToArray();
 
                 foreach (var kv in keyvaultResources)
                 {
-                    if (kv.Name == KeyvaultName)
+                    if (kv.Name == KeyVaultName)
                     {
                         kvid = kv.Id;
                         kvresourcegrpname = kv.ResourceGroupName;
@@ -72,17 +64,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
                 if (string.IsNullOrEmpty(kvid))
                 {
-                    kvid = KeyvaultName;
+                    kvid = KeyVaultName;
                 }
-                string keyvaultperm;
-                keyvaultperm = CmdletHelpers.CheckServicePrincipalPermissions(this.ResourcesClient, this.KeyvaultClient, this.ActiveDirectoryClient, kvresourcegrpname, KeyvaultName);
-                var lnk = "https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html";
-                if (keyvaultperm != "Get")
-                {
-                    WriteWarning("Unable to verify Key Vault permissions.");
-                    WriteWarning("You may need to grant Microsoft.Azure.WebSites service principal the Secret:Get permission");
-                    WriteWarning(string.Format("Find more details here: '{0}'", lnk));
-                }
+           
                 Certificate kvc = null;
                 var certificate = new Certificate(
                     location: location,
@@ -112,4 +96,3 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
-

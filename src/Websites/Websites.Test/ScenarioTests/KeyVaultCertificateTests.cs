@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -22,10 +20,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class KeyvaultCertTests : RMTestBase
+    public class KeyVaultCertificateTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
-        public KeyvaultCertTests(ITestOutputHelper output)
+
+        public KeyVaultCertificateTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -33,17 +32,10 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzWebAppManagedCertificate()
+        public void TestImportAzWebAppKeyVaultCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ImportAzKeyvaultCertificate");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ImportAzWebAppKeyVaultCertificate");
         }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzWebAppManagedCertificateForSlot()
-        {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ImportAzKeyvaultCertificateForSlot");
-        }
-
     }
 }
 

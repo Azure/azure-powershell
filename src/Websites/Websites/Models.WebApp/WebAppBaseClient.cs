@@ -15,7 +15,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;

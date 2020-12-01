@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/s
 schema: 2.0.0
 ---
 
-# Import-AzKeyVaultCertificate
+# Import-AzWebAppKeyVaultCertificate
 
 ## SYNOPSIS
 Import an SSL certificate to a web app from Key Vault. 
@@ -14,25 +14,25 @@ Import an SSL certificate to a web app from Key Vault.
 ## SYNTAX
 
 ```
-Import-AzKeyCaultCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
+Import-AzWebAppKeyVaultCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
 [-KeyVaultName] <String> [-CertName] <String> 
 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ## DESCRIPTION
-The **Import-AzKeyCaultCertificate** cmdlet imports an SSL certificate to a web app from Key Vault.
+The **Import-AzWebAppKeyVaultCertificate** cmdlet imports an SSL certificate to a web app from Key Vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Import-AzKeyCaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -KeyVaultName "ContosoKeyVault" -CertName "ContosoCertname"
+PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -KeyVaultName "ContosoKeyVault" -CertName "ContosoCertname"
 ```
 
 This command imports an SSL certificate to a web app from Key Vault.
 
 ### Example 2
 ```powershell
-PS C:\> Import-AzKeyCaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
+PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
 -KeyVaultName  '/subscriptions/[sub id]/resourceGroups/[rg]/providers/Microsoft.KeyVault/vaults/[vault name]' -CertName "ContosoCertname"
 ```
 
