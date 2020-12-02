@@ -74,8 +74,6 @@ PARAMETER <IQueryDefinition>: The definition of a query.
   [DatasetGrouping <IQueryGrouping[]>]: Array of group by expression to use in the query. Query can have up to 2 group by clauses.
     Name <String>: The name of the column to group.
     Type <QueryColumnType>: Has type of the column to group.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.cost/invoke-azcostmanagementusagequery
 #>
 function Invoke-AzCostManagementQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult])]

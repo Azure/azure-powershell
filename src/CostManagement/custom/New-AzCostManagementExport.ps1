@@ -24,19 +24,6 @@ The operation to create or update a export.
 Update operation requires latest eTag to be set in the request.
 You may obtain the latest eTag by performing a get operation.
 Create operation does not require eTag.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/new-azcostmanagementexport
 #>
 function New-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport])]
