@@ -56,6 +56,9 @@ Gets Autoscale settings.
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the logged categories and time grains.
 
+### [Get-AzDiagnosticSettingCategory](Get-AzDiagnosticSettingCategory.md)
+Get or list supported diagnostic setting category for Azure resource.
+
 ### [Get-AzInsightsPrivateLinkScope](Get-AzInsightsPrivateLinkScope.md)
 Get private link scope
 
@@ -103,6 +106,12 @@ Creates an Autoscale rule.
 
 ### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
+
+### [New-AzDiagnosticDetailSetting](New-AzDiagnosticDetailSetting.md)
+Create PSDiagnosticDetailSetting Object, type could be metric or log
+
+### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
+Create PSServiceDiagnosticSettings object.
 
 ### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
 create private link scope

@@ -30,6 +30,13 @@ using Xunit.Abstractions;
 using System.Text.RegularExpressions;
 using System.Net.Http;
 using System.Threading;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
+using Azure.Identity;
+using Moq;
+using System.ServiceModel.Channels;
+using Azure.Core;
 
 namespace Common.Authentication.Test
 {
@@ -155,7 +162,7 @@ namespace Common.Authentication.Test
             VerifyToken(checkKVToken, kvToken, userId, tenant);
         }
 
-        [Fact(Skip = "eriwan: mock MSI credential request and response")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanAuthenticateUsingMSIDefault()
         {
@@ -164,12 +171,26 @@ namespace Common.Authentication.Test
             AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => authenticatorBuilder);
             PowerShellTokenCacheProvider factory = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory);
+            var msalAccessTokenAcquirerFactory = new MsalAccessTokenAcquirerFactory();
+            AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => msalAccessTokenAcquirerFactory);
+
             string expectedAccessToken = Guid.NewGuid().ToString();
             _output.WriteLine("Expected access token for default URI: {0}", expectedAccessToken);
+            var mockAzureCredentialFactory = new MockAzureCredentialFactory();
+            MockManagedIdentityCredential mockManagedIdentityCredential = null;
+            mockAzureCredentialFactory.CredentialFactory = (clientId) =>
+            {
+                return mockManagedIdentityCredential = new MockManagedIdentityCredential(clientId)
+                {
+                    TokenFactory = () => new AccessToken(expectedAccessToken, DateTimeOffset.Now)
+                };
+            };
+            AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => (AzureCredentialFactory)mockAzureCredentialFactory, true);
+
             string expectedToken2 = Guid.NewGuid().ToString();
             string tenant = Guid.NewGuid().ToString();
             _output.WriteLine("Expected access token for custom URI: {0}", expectedToken2);
-            string userId = "user1@contoso.org";
+            string userId = Constants.DefaultMsiAccountIdPrefix + "12345";
             var account = new AzureAccount
             {
                 Id = userId,
@@ -178,31 +199,35 @@ namespace Common.Authentication.Test
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
             var builder = new UriBuilder(AuthenticationFactory.DefaultBackupMSILoginUri);
-            builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&api-version=2018-02-01";
-            var defaultUri = builder.Uri.ToString();
+            //builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&api-version=2018-02-01";
+            //var defaultUri = builder.Uri.ToString();
 
-            var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
-            {
-                {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
-                {"http://myfunkyurl:10432/oauth2/token?resource=foo&api-version=2018-02-01", new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource="foo"} }
-            };
-            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            //var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            //{
+            //    {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
+            //    {"http://myfunkyurl:10432/oauth2/token?resource=foo&api-version=2018-02-01", new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource="foo"} }
+            //};
+            //AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IAccessToken token = authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
-            Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
+            Assert.Null(mockManagedIdentityCredential.AccountId);
+            //Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
+            var userId2 = "abc@foo.com";
             var account2 = new AzureAccount
             {
-                Id = userId,
+                Id = userId2,
                 Type = AzureAccount.AccountType.ManagedService
             };
-            account2.SetProperty(AzureAccount.Property.MSILoginUri, "http://myfunkyurl:10432/oauth2/token");
+            //account2.SetProperty(AzureAccount.Property.MSILoginUri, "http://myfunkyurl:10432/oauth2/token");
+            expectedAccessToken = expectedToken2;
             var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, "foo");
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
-            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
-            Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
+            Assert.Equal(userId2, mockManagedIdentityCredential.AccountId);
+            //var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            //Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
 
         [Fact(Skip = "eriwan: mock MSI credential request and response")]

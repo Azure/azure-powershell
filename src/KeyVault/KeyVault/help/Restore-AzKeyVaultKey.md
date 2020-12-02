@@ -19,15 +19,33 @@ Restore-AzKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-DefaultProfi
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### HsmByVaultName
+```
+Restore-AzKeyVaultKey -HsmName <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByInputObject
 ```
 Restore-AzKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### HsmByInputObject
+```
+Restore-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByResourceId
 ```
 Restore-AzKeyVaultKey [-ResourceId] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### HsmByResourceId
+```
+Restore-AzKeyVaultKey -HsmResourceId <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,6 +93,51 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByVaultName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmObject
+HSM object
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
+Parameter Sets: HsmByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -HsmResourceId
+Hsm Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

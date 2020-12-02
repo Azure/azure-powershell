@@ -1,5 +1,5 @@
 ﻿using Azure.Security.KeyVault.Administration;
-﻿using Azure;
+using Azure;
 using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return BackupKey(client, keyName, outputBlobPath);
         }
 
-        private string BackupKey(KeyClient client, string keyName, string outputBlobPath) 
+        private string BackupKey(KeyClient client, string keyName, string outputBlobPath)
         {
             BackupKeyResult backupKeyResult;
             try
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultKey(keyBundle, this._uriHelper);
+            return new PSKeyVaultKey(keyBundle, this._uriHelper, isHsm: true);
         }
 
         internal PSKeyVaultKey CreateKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
@@ -142,15 +142,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
             {
-                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _uriHelper);
+                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _uriHelper, isHsm: true);
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _uriHelper);
+                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _uriHelper, isHsm: true);
             }
             else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType.ToString() == "oct-HSM")
             {
-                return new PSKeyVaultKey(client.CreateKey(keyName, KeyType.Oct, options).Value, _uriHelper);
+                return new PSKeyVaultKey(client.CreateKey(keyName, KeyType.Oct, options).Value, _uriHelper, isHsm: true);
             }
             else
             {
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var client = CreateRbacClient(hsmName);
             client.DeleteRoleAssignment(new KeyVaultRoleScope(scope), roleAssignmentName);
         }
-        
+
         internal PSDeletedKeyVaultKey DeleteKey(string managedHsmName, string keyName)
         {
             if (string.IsNullOrEmpty(managedHsmName))
@@ -245,10 +245,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedKeyVaultKey(deletedKey, this._uriHelper);
+            return new PSDeletedKeyVaultKey(deletedKey, this._uriHelper, isHsm: true);
         }
 
-        internal PSKeyVaultKey RecoverKey(string managedHsmName, string keyName) 
+        internal PSKeyVaultKey RecoverKey(string managedHsmName, string keyName)
         {
             if (string.IsNullOrEmpty(managedHsmName))
                 throw new ArgumentNullException("managedHsmName");
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             return RecoverKey(client, keyName);
         }
-        
+
         private PSKeyVaultKey RecoverKey(KeyClient client, string keyName)
         {
             KeyVaultKey recoveredKey;
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultKey(recoveredKey, this._uriHelper);
+            return new PSKeyVaultKey(recoveredKey, this._uriHelper, isHsm: true);
         }
 
         internal PSKeyVaultKey UpdateKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultKey(keyBundle, this._uriHelper);
+            return new PSKeyVaultKey(keyBundle, this._uriHelper, isHsm: true);
         }
 
         internal PSKeyVaultKey GetKey(string managedHsmName, string keyName, string keyVersion)
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return GetKey(client, keyName, keyVersion);
         }
 
-        private PSKeyVaultKey GetKey(KeyClient client, string keyName, string keyVersion) 
+        private PSKeyVaultKey GetKey(KeyClient client, string keyName, string keyVersion)
         {
             KeyVaultKey keyBundle;
             try
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultKey(keyBundle, this._uriHelper);
+            return new PSKeyVaultKey(keyBundle, this._uriHelper, isHsm: true);
         }
 
         internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(string managedHsmName)
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 IEnumerable<KeyProperties> result = client.GetPropertiesOfKeys();
 
                 return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
-                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper, isHsm: true));
             }
             catch (Exception ex)
             {
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyAllVersions(string managedHsmName, string keyName)
-        { 
+        {
             if (string.IsNullOrEmpty(managedHsmName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidHsmName);
 
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 IEnumerable<KeyProperties> result = client.GetPropertiesOfKeyVersions(keyName);
                 return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
-                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper));
+                    result.Select((keyProperties) => new PSKeyVaultKeyIdentityItem(keyProperties, this._uriHelper, isHsm: true));
             }
             catch (Exception ex)
             {
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             var client = CreateKeyClient(managedHsmName);
 
-            return GetDeletedKey(client, keyName);            
+            return GetDeletedKey(client, keyName);
         }
 
         private PSDeletedKeyVaultKey GetDeletedKey(KeyClient client, string keyName)
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw GetInnerException(ex);
             }
 
-            return new PSDeletedKeyVaultKey(deletedKeyBundle, _uriHelper);
+            return new PSDeletedKeyVaultKey(deletedKeyBundle, _uriHelper, isHsm: true);
         }
 
         internal IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(string managedHsmName)
@@ -443,9 +443,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             try
             {
                 IEnumerable<DeletedKey> result = client.GetDeletedKeys();
-              
+
                 return (result == null) ? new List<PSDeletedKeyVaultKeyIdentityItem>() :
-                    result.Select((deletedKey) => new PSDeletedKeyVaultKeyIdentityItem(deletedKey, this._uriHelper));
+                    result.Select((deletedKey) => new PSDeletedKeyVaultKeyIdentityItem(deletedKey, this._uriHelper, isHsm: true));
             }
             catch (Exception ex)
             {
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
-        internal PSKeyVaultKey ImportKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        internal PSKeyVaultKey ImportKey(string managedHsmName, string keyName, JsonWebKey webKey)
         {
             if (string.IsNullOrEmpty(managedHsmName))
                 throw new ArgumentNullException(nameof(managedHsmName));
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             try
             {
                 var key = client.ImportKeyAsync(keyName, webKey).GetAwaiter().GetResult();
-                return new PSKeyVaultKey(key, this._uriHelper);
+                return new PSKeyVaultKey(key, this._uriHelper, isHsm: true);
             }
             catch (Exception ex)
             {

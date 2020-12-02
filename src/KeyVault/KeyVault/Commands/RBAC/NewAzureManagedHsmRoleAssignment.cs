@@ -9,7 +9,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.ManagedHsmRoleAssignment,
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleAssignment,
         SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.DefinitionNameSignInName)]
     [OutputType(typeof(PSKeyVaultRoleAssignment))]
     public class NewAzureManagedHsmRoleAssignment : RbacCmdletBase

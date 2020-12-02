@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// </summary>
     public class PSRetentionPolicy : Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy
     {
+        public PSRetentionPolicy()
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the PSRetention class
         /// </summary>
