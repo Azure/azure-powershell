@@ -21,7 +21,7 @@ Create a in-memory object for Diagnostics Extension
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
 #>
 
 function New-AzCloudServiceDiagnosticsExtension {
