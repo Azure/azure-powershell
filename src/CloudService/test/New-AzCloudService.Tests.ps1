@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzCloudService' {
+Describe 'New-AzCloudService' -skip {
     It 'UpdateExpanded: Create new cloud service' {
         # Create Network Profile
         $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $env.NewCSPublicIPId
