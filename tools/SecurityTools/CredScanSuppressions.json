@@ -1216,6 +1216,14 @@
     {
       "file": "src\\DigitalTwins\\test\\New-AzDigitalTwinsEndpoint.Recording.json",
       "_justification": "eventHubConnectionStringPrimaryKey serviceBusPrimaryConnectionString and eventGridAccessKey1 are deleted"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.SqlPoolTests\\TestSynapseSqlPoolSecurity.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.WorkspaceTests\\TestSynapseWorkspaceSecurity.json",
+      "_justification": "storage account deleted after the test run"
     }
   ]
 }
