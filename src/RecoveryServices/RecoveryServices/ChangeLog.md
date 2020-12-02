@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Making help text changes to Restore-AzRecoveryServicesBackupItem cmdlet.
+* Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.
 
 ## Version 3.0.1
 * Specifying policy BackupTime is in UTC.
