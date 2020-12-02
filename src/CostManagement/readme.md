@@ -45,12 +45,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+Branch: 2cb80cf6668074c84cf02cf45b6bb897eff47e9b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.json
   - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.exports.json
-  # - $(this-folder)/resources/costmanagement.json
 title: CostManagement
 module-version: 0.1.0
 

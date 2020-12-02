@@ -33,7 +33,6 @@ The operation to execute an export.
 ```powershell
 PS C:\> Invoke-AzCostManagementExecuteExport -ExportName 'TestExport' -Scope 'subscriptions/**********'
 
-{{ Add output here }}
 ```
 
 Invoke Export by ExportName and Scope
@@ -43,7 +42,6 @@ Invoke Export by ExportName and Scope
 PS C:\> $getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 Invoke-AzCostManagementExecuteExport -InputObject $getExport
 
-{{ Add output here }}
 ```
 
 Invoke Export by InputObject
