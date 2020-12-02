@@ -18,62 +18,6 @@
 Query the usage data for scope defined.
 .Description
 Query the usage data for scope defined.
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDefinition
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
-  [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
-  [Dimension <IQueryComparisonExpression>]: Has comparison expression for a dimension
-    Name <String>: The name of the column to use in comparison.
-    Operator <OperatorType>: The operator to use for comparison.
-    Value <String[]>: Array of values to use for comparison
-  [Not <IQueryFilter>]: The logical "NOT" expression.
-  [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
-  [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
-
-DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query. Query can have up to 2 group by clauses.
-  Name <String>: The name of the column to group.
-  Type <QueryColumnType>: Has type of the column to group.
-
-INPUTOBJECT <ICostIdentity>: Identity Parameter
-  [AlertId <String>]: Alert ID
-  [ExportName <String>]: Export Name.
-  [ExternalCloudProviderId <String>]: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
-  [ExternalCloudProviderType <ExternalCloudProviderType?>]: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
-  [Id <String>]: Resource identity path
-  [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
-  [ViewName <String>]: View name
-
-PARAMETER <IQueryDefinition>: The definition of a query.
-  TimePeriodFrom <DateTime>: The start date to pull data from.
-  TimePeriodTo <DateTime>: The end date to pull data to.
-  Timeframe <TimeframeType>: The time frame for pulling data for the query. If custom, then a specific time period must be provided.
-  Type <ExportType>: The type of the query.
-  [ConfigurationColumn <String[]>]: Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns.
-  [DatasetAggregation <IQueryDatasetAggregation>]: Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses.
-    [(Any) <IQueryAggregation>]: This indicates any property can be added to this object.
-  [DatasetFilter <IQueryFilter>]: Has filter expression to use in the query.
-    [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
-    [Dimension <IQueryComparisonExpression>]: Has comparison expression for a dimension
-      Name <String>: The name of the column to use in comparison.
-      Operator <OperatorType>: The operator to use for comparison.
-      Value <String[]>: Array of values to use for comparison
-    [Not <IQueryFilter>]: The logical "NOT" expression.
-    [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
-    [Tag <IQueryComparisonExpression>]: Has comparison expression for a tag
-  [DatasetGranularity <GranularityType?>]: The granularity of rows in the query.
-  [DatasetGrouping <IQueryGrouping[]>]: Array of group by expression to use in the query. Query can have up to 2 group by clauses.
-    Name <String>: The name of the column to group.
-    Type <QueryColumnType>: Has type of the column to group.
 #>
 function Invoke-AzCostManagementQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult])]
