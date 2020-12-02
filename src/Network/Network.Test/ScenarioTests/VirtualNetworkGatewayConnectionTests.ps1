@@ -263,7 +263,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  $ipsecPolicy = New-AzIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 10000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
-      $job = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy -DpdTimeoutInSeconds 30 -ConnectionMode Default -AsJob
+      $job = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy -DpdTimeoutInSeconds 30 -AsJob
       $job | Wait-Job
 	  $actual = $job | Receive-Job
 	  $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
@@ -280,10 +280,9 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
       Assert-AreEqual 30 $connection.DpdTimeoutSeconds
-      Assert-AreEqual "Default" $connection.ConnectionMode
     
 	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
-      $job = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -DpdTimeoutInSeconds 10 -ConnectionMode ResponderOnly -Force -AsJob
+      $job = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -DpdTimeoutInSeconds 10 -Force -AsJob
 	  $job | Wait-Job
 	  $actual = $job | Receive-Job
 	  $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
@@ -292,7 +291,6 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual false $connection.UsePolicyBasedTrafficSelectors
 	  Assert-AreEqual 0 $connection.IpsecPolicies.Count
       Assert-AreEqual 10 $connection.DpdTimeoutSeconds
-      Assert-AreEqual "ResponderOnly" $connection.ConnectionMode
 
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
@@ -437,7 +435,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $localnetGateway.Location = $location
 
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1 -ConnectionMode Default
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -445,6 +443,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       Assert-AreEqual "3" $expected.RoutingWeight
 	  Assert-AreEqual "IKEv1" $expected.ConnectionProtocol
       #Assert-AreEqual "abc" $expected.SharedKey
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
 
       # List VirtualNetworkGatewayConnections
       $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname
@@ -462,12 +461,14 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $expected.LocalNetworkGateway2.Location = $location
       $expected.RoutingWeight = "4"
       $expected.SharedKey = "xyz"
+      $expected.ConnectionMode = "ResponderOnly"
 
 	  # Set/Update VirtualNetworkGatewayConnection Tags
       $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" } -Force
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName    
       Assert-AreEqual 2 $expected.Tag.Count
 	  Assert-AreEqual $true $expected.Tag.Contains("testtagKey")
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
       
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
