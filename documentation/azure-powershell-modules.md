@@ -119,7 +119,7 @@ Time Series Insights                  | `Az.TimeSeriesInsights`                 
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
 VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
-
+Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
 <!-- References -->
 
@@ -234,6 +234,7 @@ Web App Service                       | `Az.Websites`                           
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
 [VMWare]:                     https://img.shields.io/powershellgallery/v/Az.VMWare.svg?style=flat-square&label=Az.VMWare
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
+[WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -346,3 +347,4 @@ Web App Service                       | `Az.Websites`                           
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
 [VMWareGallery]:                     https://www.powershellgallery.com/packages/Az.VMWare/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
+[WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
