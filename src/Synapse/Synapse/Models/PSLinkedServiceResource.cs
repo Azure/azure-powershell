@@ -1,9 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -23,9 +19,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkedService Properties { get; set; }
 
-        [Hidden]
         [JsonProperty(PropertyName = "properties")]
-        public PSLinkedService PropertiesForCreate { get; set; }
+        internal PSLinkedService PropertiesForCreate { get; set; }
 
         public LinkedServiceResource ToSdkObject()
         {

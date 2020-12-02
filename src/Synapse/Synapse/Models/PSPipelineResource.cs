@@ -1,16 +1,9 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -56,9 +49,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public IList<Activity> Activities { get; set; }
 
-        [Hidden]
         [JsonProperty(PropertyName = "properties.activities")]
-        public IList<PSActivity> ActivitiesForCreate { get; set; }
+        internal IList<PSActivity> ActivitiesForCreate { get; set; }
 
         [JsonProperty(PropertyName = "properties.variables")]
         public IDictionary<string, PSVariableSpecification> Variables { get; set; }

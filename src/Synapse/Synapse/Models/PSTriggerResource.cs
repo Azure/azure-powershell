@@ -1,9 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -23,9 +19,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public Trigger Properties { get; set; }
 
-        [Hidden]
         [JsonProperty(PropertyName = "properties")]
-        public PSTrigger PropertiesForCreate { get; set; }
+        internal PSTrigger PropertiesForCreate { get; set; }
 
         public TriggerResource ToSdkObject()
         {
