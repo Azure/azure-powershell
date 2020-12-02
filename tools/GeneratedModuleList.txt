@@ -1,6 +1,7 @@
 Az.AppConfiguration
 Az.Blockchain
 Az.ConnectedKubernetes
+Az.CostManagement
 Az.CustomProviders
 Az.Databricks
 Az.DesktopVirtualization
