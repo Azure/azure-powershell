@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>Argument completer implementation for Reason.</summary>
+    /// <summary>
+    /// The reason that a vault name could not be used. The Reason element is only returned if NameAvailable is false.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.ReasonTypeConverter))]
     public partial struct Reason :
         System.Management.Automation.IArgumentCompleter

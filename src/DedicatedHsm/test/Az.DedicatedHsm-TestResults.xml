@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="9" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-09-24" time="13:58:25">
+  <environment machine-name="AWP-LUCAS-01" nunit-version="2.5.8.0" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition2" user-domain="FAREAST" os-version="10.0.19041" user="v-diya" clr-version="Unknown" cwd="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="5.3553" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Get-AzDedicatedHsm.Tests.ps1" executed="True" result="Success" success="True" time="1.0877" asserts="0" description="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Get-AzDedicatedHsm.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDedicatedHsm" executed="True" result="Success" success="True" time="0.7573" asserts="0" description="Get-AzDedicatedHsm">
+            <results>
+              <test-case description="List1" name="Get-AzDedicatedHsm.List1" time="0.2968" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzDedicatedHsm.Get" time="0.0633" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzDedicatedHsm.List" time="0.0245" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzDedicatedHsm.GetViaIdentity" time="0.0457" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\New-AzDedicatedHsm.Tests.ps1" executed="True" result="Success" success="True" time="0.4155" asserts="0" description="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\New-AzDedicatedHsm.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzDedicatedHsm" executed="True" result="Success" success="True" time="0.2208" asserts="0" description="New-AzDedicatedHsm">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzDedicatedHsm.CreateExpanded" time="0.0856" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Remove-AzDedicatedHsm.Tests.ps1" executed="True" result="Success" success="True" time="3.4956" asserts="0" description="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Remove-AzDedicatedHsm.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzDedicatedHsm" executed="True" result="Success" success="True" time="3.3508" asserts="0" description="Remove-AzDedicatedHsm">
+            <results>
+              <test-case description="Delete" name="Remove-AzDedicatedHsm.Delete" time="1.6676" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzDedicatedHsm.DeleteViaIdentity" time="1.6045" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Update-AzDedicatedHsm.Tests.ps1" executed="True" result="Success" success="True" time="0.3565" asserts="0" description="D:\azure-service\move-generation-to-master\generation\azure-powershell\src\DedicatedHsm\test\Update-AzDedicatedHsm.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzDedicatedHsm" executed="True" result="Success" success="True" time="0.2198" asserts="0" description="Update-AzDedicatedHsm">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzDedicatedHsm.UpdateExpanded" time="0.0801" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzDedicatedHsm.UpdateViaIdentityExpanded" time="0.0239" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

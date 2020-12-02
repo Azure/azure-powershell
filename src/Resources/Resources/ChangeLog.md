@@ -18,10 +18,40 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
+* Added Tag display support to default formatter for Template Specs 
+
+## Version 3.0.1
+* Fixed an issue where What-If shows two resource group scopes with different casing
+* Updated `Export-AzResourceGroup` to use the SDK.
+* Added culture info to parse methods
+* Fixed issue where attempts to deploy template specs from a subscription outside of the current subscription context would fail
+* Changed Double parser for version parser
+
+## Version 3.0.0
+* Fixed parsing bug
+* Updated ARM template What-If cmdlets to remove preview message from results
+* Fixed an issue where template deployment cmdlets crash if `-WhatIf` is set at a higher scope [#13038]
+* Fixed an issue where template deployment cmdlets does not preserve case for template parameters
+* Added a default API version to be used in `Export-AzResourceGroup` cmdlet
+* Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
+* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
+* Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
+* Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
+
+## Version 2.5.1
+* Added missing check for Set-AzRoleAssignment
+* Added breaking change attribute to `SubscriptionId` parameter of `Get-AzResourceGroupDeploymentOperation`
+* Updated ARM template What-If cmdlets to show "Ignore" resource changes last
+* Fixed secure and array parameter serialization issues for deployment cmdlets [#12773]
+
+## Version 2.5.0
+* Updated `Get-AzPolicyAlias` response to include information indicating whether the alias is modifiable by Azure Policy.
+* Created new cmdlet `Set-AzRoleAssignment`
 * Added `Get-AzDeploymentManagementGroupWhatIfResult` for getting ARM template What-If results at management Group scope
 * Added `Get-AzTenantWhatIfResult` new cmdlet for getting ARM template What-If results at tenant scope
 * Overrode `-WhatIf` and `-Confirm` for `New-AzManagementGroupDeployment` and `New-AzTenantDeployment` to use ARM template What-If results
-* Fixed the hehaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
+* Fixed the behaviors of `-WhatIf` and `-Confirm` for new deployment cmdlets so they comply with $WhatIfPreference and $ConfrimPreference
 * Fixed serialization error for `-TemplateObject` and `TemplateParameterObject` [#1528] [#6292]
 
 ## Version 2.4.0

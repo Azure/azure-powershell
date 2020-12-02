@@ -233,6 +233,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
+        
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string VmssId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
@@ -258,7 +262,15 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
-        public SwitchParameter EncryptionAtHost { get; set; } = false;
+        public SwitchParameter EncryptionAtHost { get; set; }
+        
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
+            ValueFromPipelineByPropertyName = true)]
+        public string HostGroupId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -392,10 +404,12 @@ namespace Microsoft.Azure.Commands.Compute
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
+                        hostGroupId: _cmdlet.HostGroupId,
+                        VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
                         );
                 }
                 else
@@ -417,11 +431,13 @@ namespace Microsoft.Azure.Commands.Compute
                         identity: _cmdlet.GetVMIdentityFromArgs(),
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
+                        hostGroupId: _cmdlet.HostGroupId,
+                        VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostEnabled: _cmdlet.EncryptionAtHost.IsPresent
-                        );
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                    );
                 }
             }
         }

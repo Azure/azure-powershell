@@ -40,7 +40,7 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml', 'MSSharedLibKey.snk')
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml')
         Foreach($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
@@ -66,9 +66,12 @@ Function Move-Generation2Master {
         If ($Null -ne $ModuleGuid) {
             $Psd1Metadata.GUID = $ModuleGuid
         }
-        If ($Null -ne $RequiredModule) {
-            $Psd1Metadata.RequiredModules = $RequiredModule
+        If ($Null -eq $RequiredModule) {
+            $AccountsModulePath = [System.IO.Path]::Combine($DestPath, '..', 'Accounts', 'Accounts')
+            $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
+            $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }
+        $Psd1Metadata.RequiredModules = $RequiredModule
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object {$_ -ne "*"})
         }
@@ -93,8 +96,46 @@ Function Move-Generation2Master {
         }
         #EndRegion
 
+        #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
+        $generateInfo = @{}
+        $repo = "https://github.com/Azure/azure-rest-api-specs"
+        $commit = git ls-remote $repo HEAD
+        $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
+        $generateInfo.Add("node", (node --version))
+        $autorest_info = (npm ls -g @autorest/autorest).Split('@')
+        $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
+        $extensions = ls ~/.autorest
+        ForEach ($ex in $extensions) {
+            $info = $ex.Name.Split('@')
+            $packageName = $info[1]
+            $version = $info[2]
+            if ($generateInfo.ContainsKey($packageName))
+            {
+                $preVersion = $generateInfo[$packageName]
+                $versionFields = $version.Split('.')
+                $preVersionFields = $preVersion.Split('.')
+                if (($versionFields[0] -lt $preVersionFields[0]) -or ($versionFields[1] -lt $preVersionFields[1]) -or ($versionFields[2] -lt $preVersionFields[2]))
+                {
+                    $generateInfo[$packageName] = $version
+                }
+            }
+            else
+            {
+                $generateInfo.Add($packageName, $version)
+            }
+        }
+        Set-Content -Path (Join-Path $DestPath generate-info.json) -Value (ConvertTo-Json $generateInfo)
+        #EndRegion
+
         #Region update azure-powershell-modules.md
         
+        #EndRegion
+
+        #Region update GeneratedModuleList
+        $GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "..", "GeneratedModuleList.txt")
+        $Modules = (Get-Content $GeneratedModuleListPath) + "Az.$ModuleName"
+        $NewModules = $Modules | Sort-Object | Get-Unique
+        Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
 
         Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"

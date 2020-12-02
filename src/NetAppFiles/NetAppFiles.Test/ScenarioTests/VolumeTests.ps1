@@ -32,7 +32,8 @@ function Test-VolumeCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -240,7 +241,7 @@ function Test-VolumeCrud
 .SYNOPSIS
 Test VolumeReplication operations (using command aliases)
 #>
-<# ---Note This test will be added to the next (2019-11-01) version ---
+<# ---Note This test will be added to the next (2019-11-01) version ---#>
 function Test-VolumeReplication
 {
     $currentSub = (Get-AzureRmContext).Subscription
@@ -261,8 +262,9 @@ function Test-VolumeReplication
     $doubleUsage = 2 * $usageThreshold
     $srcResourceGroupLocation = "westus2"
     $destResourceGroupLocation = "southcentralus"
-    $srcResourceLocation = "westus2stage"
-    $destResourceLocation = "southcentralusstage"
+    #$srcResourceLocation = "westus2stage"
+    $srcResourceLocation = "westus2"
+    $destResourceLocation = "eastus"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -313,12 +315,12 @@ function Test-VolumeReplication
         New-AzResourceGroup -Name $destResourceGroup -Location $destResourceGroupLocation
 
         # create virtual network source
-        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $srcResourceGroup -Location $srcResourceGroupLocation -Name $srcVnetName -AddressPrefix 10.0.0.0/16
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $srcResourceGroup -Location $srcResourceLocation -Name $srcVnetName -AddressPrefix 10.0.0.0/16
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create virtual network destination
-        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $destResourceGroup -Location $destResourceGroupLocation -Name $destVnetName -AddressPrefix 10.0.0.0/16
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $destResourceGroup -Location $destResourceLocation -Name $destVnetName -AddressPrefix 10.0.0.0/16
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
@@ -330,7 +332,7 @@ function Test-VolumeReplication
         $srcRetrievedPool = New-AzNetAppFilesPool -ResourceGroupName $srcResourceGroup -Location $srcResourceLocation -AccountName $srcAccName -PoolName $srcPoolName -PoolSize $poolSize -ServiceLevel $serviceLevel
         $destRetrievedPool = New-AzNetAppFilesPool -ResourceGroupName $destResourceGroup -Location $destResourceLocation -AccountName $destAccName -PoolName $destPoolName -PoolSize $poolSize -ServiceLevel $serviceLevel
 
-        # create source volume
+        # create source volume      
         $sourceVolume = New-AzNetAppFilesVolume -ResourceGroupName $srcResourceGroup -Location $srcResourceLocation -AccountName $srcAccName -PoolName $srcPoolName -VolumeName $srcVolName -CreationToken $srcVolName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $srcSubnetId
         #Assert-AreEqual "$srcAccName/$srcPoolName/$srcVolName" $sourceVolume.Name
 
@@ -375,7 +377,7 @@ function Test-VolumeReplication
         #Start-Sleep -Seconds 30.0
 
         # break the replication again
-        Suspend-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
+        Suspend-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName -ForceBreak
 
         WaitForRepliationStatus "Broken"
         SleepDuringRecord
@@ -384,8 +386,114 @@ function Test-VolumeReplication
         # delete the data protection object
         #  - initiate delete replication on destination, this then releases on source, both resulting in object deletion
         Remove-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
+    }
+    finally
+    {
+        # Cleanup        
+        Clean-ResourceGroup $srcResourceGroup
+        Clean-ResourceGroup $destResourceGroup
+    }
+}
 
 
+<#
+.SYNOPSIS
+Test Volume Set-AzNetAppFilesVolumePool operation
+#>
+function Test-SetVolumePool
+{
+    $currentSub = (Get-AzureRmContext).Subscription	
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $poolName2 = Get-ResourceName
+    $volName1 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte    
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "westus2"
+    $subnetName = "default"
+    $poolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $serviceLevelStandard = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    $rule1 = @{
+        RuleIndex = 1
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
+        AllowedClients = '0.0.0.0/0'
+    }
+
+    
+    $exportPolicy = @{
+		Rules = (
+			$rule1
+		)
+	}
+       
+    # create the list of protocol types
+    $protocolTypes = New-Object string[] 1
+    $protocolTypes[0] = "NFSv3"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+		
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        # create account
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName 
+	    
+        # create pools
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
+        $retrievedPool2 = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevelStandard
+        
+        # create  volume and check
+        $newTagName = "tag1"
+        $newTagValue = "tagValue1"
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+        Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
+        Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
+        Assert-NotNull $retrievedVolume.ExportPolicy
+        Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
+
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
+        Assert-NotNull $retrievedVolume.MountTargets
+        Assert-Null $retrievedVolume.VolumeType
+        Assert-Null $retrievedVolume.DataProtection
+
+        # get and check the volume by name
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        		
+        # PoolChange and check the volume
+        $poolChangeResult = Set-AzNetAppFilesVolumePool -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -NewPoolResourceId $retrievedPool2.Id
+        
+        # check GET no change to rest of volume
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName2 -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName2/$volName1" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevelStandard $retrievedVolume.ServiceLevel
+                        
+        # unchanged, not part of the patch
+        Assert-AreEqual $serviceLevelStandard $retrievedVolume.ServiceLevel
+        Assert-AreEqual $usageThreshold $retrievedVolume.usageThreshold
+        #Known Bug tags are missing,  https://jira.ngage.netapp.com/browse/NFSAAS-11136  wait for deployment before uncommenting
+        #Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
+        #Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
     }
     finally
     {
@@ -393,7 +501,8 @@ function Test-VolumeReplication
         Clean-ResourceGroup $resourceGroup
     }
 }
-#>
+
+
 <#
 .SYNOPSIS
 Test Volume Pipeline operations (using command aliases)
@@ -411,7 +520,9 @@ function Test-VolumePipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "westcentralus" -UseCanonical
+    $resourceLocation = "westus2"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"

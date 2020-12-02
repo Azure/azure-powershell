@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Maintenance</PsModuleName>
@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Maintenance" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Maintenance" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

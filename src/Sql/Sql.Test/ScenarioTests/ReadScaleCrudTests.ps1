@@ -24,7 +24,7 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 	
 	# Create with default values
 	$databaseName1 = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Edition Premium
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Edition Premium -Force
 	Assert-AreEqual $db1.DatabaseName $databaseName1
 	
 	try
@@ -52,20 +52,18 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
 		$db1 = Get-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual Enabled $db1.ReadScale
-		Assert-AreEqual 1 $db1.ReadReplicaCount
 
-		# Alter read scale properties, Premium ignores ReadReplicaCount
+		# Alter read scale properties, Premium ignores HighAvailabilityReplicaCount
 		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-ReadScale Disabled -ReadReplicaCount -1
+			-ReadScale Disabled -HighAvailabilityReplicaCount -1
 		Assert-AreEqual Disabled $db2.ReadScale
-		Assert-AreEqual 0 $db2.ReadReplicaCount
 	}
 	finally
 	{
@@ -76,7 +74,7 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 
 <#
 	.SYNOPSIS
-	Tests database ReadReplicaCount option
+	Tests database HighAvailabilityReplicaCount option
 #>
 function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "Southeast Asia")
 {
@@ -87,20 +85,26 @@ function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "So
 	# Create with default values
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Hyperscale `
-		-VCore 4 -ComputeGeneration Gen5
+		-VCore 4 -ComputeGeneration Gen5 -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
 		$db1 = Get-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual Enabled $db1.ReadScale
-		Assert-AreEqual 1 $db1.ReadReplicaCount
+		Assert-AreEqual 1 $db1.HighAvailabilityReplicaCount
 
 		# Alter read scale properties, Hyperscale ignores ReadScale
 		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-ReadScale Enabled -ReadReplicaCount 0
+			-ReadScale Enabled -HighAvailabilityReplicaCount 0
 		Assert-AreEqual Disabled $db2.ReadScale
-		Assert-AreEqual 0 $db2.ReadReplicaCount
+		Assert-AreEqual 0 $db2.HighAvailabilityReplicaCount
+
+		# Alter read scale properties using alias
+		$db3 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-ReadScale Enabled -ReadReplicaCount 1
+		Assert-AreEqual Enabled $db3.ReadScale
+		Assert-AreEqual 1 $db3.HighAvailabilityReplicaCount
 	}
 	finally
 	{

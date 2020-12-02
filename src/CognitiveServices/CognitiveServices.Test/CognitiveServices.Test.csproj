@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.CognitiveServices" Version="7.3.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.CognitiveServices" Version="7.4.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.0" />
   </ItemGroup>
 
 </Project>

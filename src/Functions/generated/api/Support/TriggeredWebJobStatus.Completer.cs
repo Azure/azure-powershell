@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for TriggeredWebJobStatus.</summary>
+    /// <summary>Job status.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TriggeredWebJobStatusTypeConverter))]
     public partial struct TriggeredWebJobStatus :
         System.Management.Automation.IArgumentCompleter

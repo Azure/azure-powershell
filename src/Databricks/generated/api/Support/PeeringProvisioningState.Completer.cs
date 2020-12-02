@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>Argument completer implementation for PeeringProvisioningState.</summary>
+    /// <summary>The current provisioning state.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningStateTypeConverter))]
     public partial struct PeeringProvisioningState :
         System.Management.Automation.IArgumentCompleter

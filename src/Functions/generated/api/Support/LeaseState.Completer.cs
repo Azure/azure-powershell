@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for LeaseState.</summary>
+    /// <summary>Lease state of the container.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.LeaseStateTypeConverter))]
     public partial struct LeaseState :
         System.Management.Automation.IArgumentCompleter

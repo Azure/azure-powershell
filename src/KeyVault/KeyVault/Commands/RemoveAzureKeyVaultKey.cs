@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using System.Globalization;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultKey))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string HsmByVaultNameParameterSet = "HsmByVaultName";
 
         #endregion
 
@@ -44,6 +45,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmByVaultNameParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string HsmName { get; set; }
+
         /// <summary>
         /// key name
         /// </summary>
@@ -51,6 +59,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = HsmByVaultNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -70,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// If present, do not ask for confirmation
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "Do not ask for confirmation.")]
+            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false,
@@ -81,18 +92,42 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// If present, operate on the deleted key entity.
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "Remove the previously deleted key permanently.")]
+            HelpMessage = "Remove the previously deleted key permanently.")]
         public SwitchParameter InRemovedState { get; set; }
 
         #endregion
         public override void ExecuteCmdlet()
         {
+            NormalizeParameterSets();
+
+            if (string.IsNullOrEmpty(HsmName))
+            {
+                RemoveKeyVaultKey();
+            }
+            else
+            {
+                RemoveHsmKey();
+            }
+        }
+
+        private void NormalizeParameterSets()
+        {
             if (InputObject != null)
             {
-                VaultName = InputObject.VaultName.ToString();
+                if (InputObject.IsHsm)
+                {
+                    HsmName = InputObject.VaultName.ToString();
+                }
+                else
+                {
+                    VaultName = InputObject.VaultName.ToString();
+                }
                 Name = InputObject.Name.ToString();
             }
+        }
 
+        private void RemoveKeyVaultKey()
+        {
             if (InRemovedState.IsPresent)
             {
                 ConfirmAction(
@@ -123,6 +158,45 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Name),
                 Name,
                 () => { deletedKeyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
+
+            if (PassThru)
+            {
+                WriteObject(deletedKeyBundle);
+            }
+        }
+
+        private void RemoveHsmKey()
+        {
+            if (InRemovedState.IsPresent)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedKeyWarning,
+                        Name),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedKeyWhatIfMessage,
+                        Name),
+                    Name,
+                    () => { this.Track2DataClient.PurgeManagedHsmKey(HsmName, Name); });
+                return;
+            }
+
+            PSDeletedKeyVaultKey deletedKeyBundle = null;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveKeyWarning,
+                    Name),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveKeyWhatIfMessage,
+                    Name),
+                Name,
+                () => { deletedKeyBundle = this.Track2DataClient.DeleteManagedHsmKey(HsmName, Name); });
 
             if (PassThru)
             {

@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_keyvaultproperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("keyvaultproperties"), out var __jsonKeyvaultproperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.KeyVaultProperties.FromJson(__jsonKeyvaultproperties) : Keyvaultproperty;}
             {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("services"), out var __jsonServices) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionServices.FromJson(__jsonServices) : Service;}
+            {_keyVaultProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("keyvaultproperties"), out var __jsonKeyvaultproperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.KeyVaultProperties.FromJson(__jsonKeyvaultproperties) : KeyVaultProperty;}
             {_keySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("keySource"), out var __jsonKeySource) ? (string)__jsonKeySource : (string)KeySource;}
             AfterFromJson(json);
         }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return container;
             }
-            AddIf( null != this._keyvaultproperty ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._keyvaultproperty.ToJson(null,serializationMode) : null, "keyvaultproperties" ,container.Add );
             AddIf( null != this._service ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._service.ToJson(null,serializationMode) : null, "services" ,container.Add );
+            AddIf( null != this._keyVaultProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._keyVaultProperty.ToJson(null,serializationMode) : null, "keyvaultproperties" ,container.Add );
             AddIf( null != (((object)this._keySource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._keySource.ToString()) : null, "keySource" ,container.Add );
             AfterToJson(ref container);
             return container;

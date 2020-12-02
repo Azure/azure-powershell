@@ -131,7 +131,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                                                 -StorageAccount $env.storageAccountWindows `
                                                 -OSType "Windows" `
                                                 -Runtime "PowerShell" `
-                                                -RuntimeVersion 6.2 `
+                                                -RuntimeVersion 7.0 `
                                                 -FunctionsVersion 3 `
                                                 -AsJob
 

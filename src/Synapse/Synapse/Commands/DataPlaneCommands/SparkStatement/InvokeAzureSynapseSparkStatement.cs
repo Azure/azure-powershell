@@ -2,12 +2,13 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkStatement, DefaultParameterSetName = RunSparkStatementByCodePathParameterSet)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkStatement, DefaultParameterSetName = RunSparkStatementByCodePathParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseExtendedSparkStatement))]
     public class InvokeAzureSynapseSparkStatement : SynapseSparkCmdletBase
     {
@@ -105,9 +106,12 @@ namespace Microsoft.Azure.Commands.Synapse
                 Code = this.Code
             };
 
-            var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest, waitForCompletion:true);
-            var psSessionStmt = new PSSynapseExtendedSparkStatement(sessionStmt);
-            WriteObject(psSessionStmt);
+            if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.InvokingSparkStatement, this.SparkPoolName, this.WorkspaceName)))
+            {
+                var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest, waitForCompletion:true);
+                var psSessionStmt = new PSSynapseExtendedSparkStatement(sessionStmt);
+                WriteObject(psSessionStmt);
+            }
         }
     }
 }

@@ -245,6 +245,15 @@ function Test-Blob
 		Assert-AreEqual $t.Error $null
         Assert-AreEqual (Get-FileHash -Path $localDestFile2 -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
+		# upload/download blob which name include "/"
+		$blobNameWithFolder = "aa/bb/cc/dd.txt"
+		$localFileNameWithFolder= "aa\bb\cc\dd.txt"
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
+		Get-AzStorageBlobContent -Container $containerName -Blob $blobNameWithFolder -Destination . -Force -Context $storageContext 
+        Assert-AreEqual (Get-FileHash -Path $localFileNameWithFolder -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		Remove-Item -Path "aa" -Force -Recurse
+        Remove-AzStorageBlob -Container $containerName -Blob $blobNameWithFolder -Force -Context $storageContext
+
         Remove-AzStorageBlob -Container $containerName -Blob $objectName2 -Force -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
         Assert-AreEqual $blob.Count 1
@@ -509,7 +518,7 @@ function Test-Common
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
-        # wait at most 120*5s=600s for the set sevice proeprty updated on server.
+        # wait at most 120*5s=600s for the set sevice property updated on server.
         $retryTimes = 120
         
         # B/F/Q Service properties, in same code path
@@ -833,6 +842,24 @@ function Test-DatalakeGen2
 		$dir1 = $dir3 | Move-AzDataLakeGen2Item -DestFileSystem $filesystemName -DestPath $directoryPath1
 		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
 		Assert-AreEqual $dir1.Path $directoryPath1
+
+		# Set ACL recusive
+		$result = Set-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName -Acl $acl
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
+		$result = Update-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Acl $acl -BatchSize 2 -MaxBatchCount 2 
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 1 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 1 $result.TotalDirectoriesSuccessfulCount
+		$acl2 = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope 
+		$result = Remove-AzDataLakeGen2AclRecursive -Context $storageContext -FileSystem $filesystemName  -Acl $acl2 
+		Assert-Null $result.FailedEntries
+		Assert-AreEqual 0 $result.TotalFailureCount
+		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
+		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
 
 		# Remove Items
         Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force

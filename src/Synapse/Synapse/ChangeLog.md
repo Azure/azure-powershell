@@ -18,6 +18,109 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for operation of Synapse SQL Pool Restore Point
+    - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Remove-AzSynapseSqlPoolRestorePoint` cmdlet
+* Added support for operation of Auditing settings in Workspace-level and SqlPool-level
+    - Add `Set-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAuditSetting` cmdlet
+    - Add `Set-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolAuditSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolAuditSetting` cmdlet
+* Added support for operation of Advanced Threat Protection settings in Workspace-level
+    - Add `Update-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+    - Add `Reset-AzSynapseSqlAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Vulnerability Assessment settings in Workspace-level
+    - Add `Update-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+    - Add `Reset-AzSynapseSqlVulnerabilityAssessmentSetting` cmdlet
+* Added support for operation of SQL Active Directory admin
+    - Add `Set-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Get-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+    - Add `Remove-AzSynapseSqlActiveDirectoryAdministrator` cmdlet
+* Fixed Null Reference Exception when submit spark job.
+
+## Version 0.4.0
+* Add `-Force` to all Remove cmdlets
+
+## Version 0.3.0
+* Added support for operation of Synapse LinkedService
+    - Add `Get-AzSynapseLinkedService` cmdlet
+    - Add `Remove-AzSynapseLinkedService` cmdlet
+    - Add `Set-AzSynapseLinkedService` cmdlet
+    - Add `New-AzSynapseLinkedService` cmdlet
+* Added support for operation of Synapse Notebook
+    - Add `Get-AzSynapseNotebook` cmdlet
+    - Add `Export-AzSynapseNotebook` cmdlet
+    - Add `Remove-AzSynapseNotebook` cmdlet
+    - Add `Set-AzSynapseNotebook` cmdlet
+    - Add `New-AzSynapseNotebook` cmdlet
+    - Add `Import-AzSynapseNotebook` cmdlet
+* Added support for operation of Synapse Pipeline
+    - Add `Get-AzSynapsePipeline` cmdlet
+    - Add `Remove-AzSynapsePipeline` cmdlet
+    - Add `Set-AzSynapsePipeline` cmdlet
+    - Add `New-AzSynapsePipeline` cmdlet
+    - Add `Get-AzSynapseActivityRun` cmdlet
+    - Add `Get-AzSynapsePipelineRun` cmdlet
+    - Add `Invoke-AzSynapsePipeline` cmdlet
+    - Add `Stop-AzSynapsePipelineRun` cmdlet
+* Added support for operation of Synapse Trigger
+    - Add `Get-AzSynapseTrigger` cmdlet
+    - Add `Remove-AzSynapseTrigger` cmdlet
+    - Add `Set-AzSynapseTrigger` cmdlet
+    - Add `New-AzSynapseTrigger` cmdlet
+    - Add `Add-AzSynapseTriggerSubscription` cmdlet
+    - Add `Get-AzSynapseTriggerSubscriptionStatus` cmdlet
+    - Add `Remove-AzSynapseTriggerSubscription` cmdlet
+    - Add `Start-AzSynapseTrigger` cmdlet
+    - Add `Stop-AzSynapseTrigger` cmdlet
+    - Add `Get-AzSynapseTriggerRun` cmdlet
+* Added support for operation of Synapse DataFlow
+    - Add `Get-AzSynapseDataFlow` cmdlet
+    - Add `Remove-AzSynapseDataFlow` cmdlet
+    - Add `Set-AzSynapseDataFlow` cmdlet
+    - Add `New-AzSynapseDataFlow` cmdlet
+* Added support for operation of Synapse Dataset
+    - Add `Get-AzSynapseDataset` cmdlet
+    - Add `Remove-AzSynapseDataset` cmdlet
+    - Add `Set-AzSynapseDataset` cmdlet
+    - Add `New-AzSynapseDataset` cmdlet
+* Removed parameter sets related 'create from backup' and 'create from restore point' from the `New-AzSynapseSqlPool` cmdlet
+* Removed parameter sets related 'pause' and 'resume' from the `Update-AzSynapseSqlPool`
+* Added support for operation of Synapse Sql pool
+    - Add `Get-AzSynapseSqlPoolRestorePoint` cmdlet
+    - Add `Restore-AzSynapseSqlPool` cmdlet
+    - Add `Resume-AzSynapseSqlPool` cmdlet
+    - Add `Suspend-AzSynapseSqlPool` cmdlet
+
+## Version 0.2.0
+
+* Added support for gen3 Sql Pools
+    - For `Get-AzSynapseSqlPool`, `New-AzSynapseSqlPool`, ` Remove-AzSynapseSqlPool`, ` Test-AzSynapseSqlPool` and `Update-AzSynapseSqlPool` cmdlet
+        - Add Version parameter to cmdlets to specify version 3. 
+        - For this release, these cmdlets will not work unless a customer's subscription is on the allowlist.
+* Added support for gen3 Sql Databases
+    - Add `Get-AzSynapseSqlDatabase` cmdlet
+    - Add `New-AzSynapseSqlDatabase` cmdlet
+    - Add `Remove-AzSynapseSqlDatabase` cmdlet
+    - Add `Update-AzSynapseSqlDatabase` cmdlet
+    - Add `Test-AzSynapseSqlDatabase` cmdlet
+* Added support for operation of Synapse IntegrationRuntime
+    - Add `Get-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeKey` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeMetric` cmdlet
+    - Add `Get-AzSynapseIntegrationRuntimeNode` cmdlet
+    - Add `Invoke-AzSynapseIntegrationRuntimeUpgrade` cmdlet
+    - Add `New-AzSynapseIntegrationRuntimeKey` cmdlet
+    - Add `Remove-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Remove-AzSynapseIntegrationRuntimeNode` cmdlet
+    - Add `Set-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Sync-AzSynapseIntegrationRuntimeCredential` cmdlet
+    - Add `Update-AzSynapseIntegrationRuntime` cmdlet
+    - Add `Update-AzSynapseIntegrationRuntimeNode` cmdlet
 
 ## Version 0.1.2
 
