@@ -523,25 +523,29 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
-                LicenseType = model.LicenseType
+                LicenseType = model.LicenseType,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
             };
 
-            switch (model.CreateMode)
+            if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
             {
-                case Management.Sql.Models.CreateMode.Recovery:
-                    dbModel.RecoverableDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.Restore:
-                    dbModel.RestorableDroppedDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.PointInTimeRestore:
-                    dbModel.SourceDatabaseId = resourceId;
-                    break;
-                case Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup:
-                    dbModel.LongTermRetentionBackupResourceId = resourceId;
-                    break;
-                default:
-                    throw new ArgumentException("Restore mode not supported");
+                dbModel.RecoverableDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
+            {
+                dbModel.RestorableDroppedDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
+            {
+                dbModel.SourceDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+            {
+                dbModel.LongTermRetentionBackupResourceId = resourceId;
+            }
+            else
+            {
+                throw new ArgumentException("Restore mode not supported");
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
@@ -606,6 +610,31 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 databaseName);
 
             return new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(resourceGroup, serverName, databaseName, baPolicy);
+        }
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
         }
     }
 }

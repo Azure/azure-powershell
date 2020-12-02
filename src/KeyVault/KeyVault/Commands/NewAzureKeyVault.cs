@@ -16,11 +16,9 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -85,12 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "If specified, 'soft delete' functionality is disabled for this key vault.")]
-        public SwitchParameter DisableSoftDelete { get; set; }
-
-        [Parameter(Mandatory = false,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "If specified, enables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be ignored. Note that management actions are always authorized with RBAC.")]
+        public SwitchParameter EnableRbacAuthorization { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies how long deleted resources are retained, and how long until a vault or an object in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
@@ -100,7 +98,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
-        public SkuName Sku { get; set; }
+        [PSArgumentCompleter("Standard", "Premium")]
+        public string Sku { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -152,26 +151,24 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationOrUpdateParameters()
                 {
-                    VaultName = this.Name,
+                    Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = !DisableSoftDelete.IsPresent,
+                    EnableSoftDelete = null,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
+                    EnableRbacAuthorization = EnableRbacAuthorization.IsPresent,
                     /*
-                     * If soft delete is enabled, but retention days is not specified, use the default value,
-                     * else use the vault user provides,
-                     * else use null
+                     * If retention days is not specified, use the default value,
+                     * else use the vault user provides
                      */
-                    SoftDeleteRetentionInDays = DisableSoftDelete.IsPresent
-                        ? null as int?
-                        : (this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                    SoftDeleteRetentionInDays = this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
                             ? SoftDeleteRetentionInDays
-                            : Constants.DefaultSoftDeleteRetentionDays),
+                            : Constants.DefaultSoftDeleteRetentionDays,
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),

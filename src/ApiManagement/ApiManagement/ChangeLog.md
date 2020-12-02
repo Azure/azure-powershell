@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking change] `New-AzApiManagementProduct` by default has no subscription limit.
+
+## Version 2.1.0
 * Added new `Add-AzApiManagementApiToGateway` cmdlet.
 * Added new `Get-AzApiManagementGateway` cmdlet.
 * Added new `Get-AzApiManagementGatewayHostnameConfiguration` cmdlet.

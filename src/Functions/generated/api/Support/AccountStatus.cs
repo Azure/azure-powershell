@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Gets the status indicating whether the primary location of the storage account is available or unavailable.
+    /// </summary>
     public partial struct AccountStatus :
         System.IEquatable<AccountStatus>
     {

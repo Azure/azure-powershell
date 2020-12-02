@@ -48,7 +48,7 @@ $launchJson = Join-Path $vscodeDirectory 'launch.json'
 
 # if there is a launch.json file, let's just assume -Code, and update the file
 if(($Code) -or (test-Path $launchJson) ) {
-  $launchContent = '{ "version": "0.2.0", "configurations":[{ "name":"Attach to PowerShell", "type":"coreclr", "request":"attach", "processId":"' + ([System.Diagnostics.Process]::GetCurrentProcess().Id) + '", "justMyCode":false }] }'
+  $launchContent = '{ "version": "0.1.4", "configurations":[{ "name":"Attach to PowerShell", "type":"coreclr", "request":"attach", "processId":"' + ([System.Diagnostics.Process]::GetCurrentProcess().Id) + '", "justMyCode":false }] }'
   Set-Content -Path $launchJson -Value $launchContent
   if($Code) {
     # only launch vscode if they say -code

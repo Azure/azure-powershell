@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>MinTlsVersion: configures the minimum version of TLS required for SSL requests</summary>
     public partial struct SupportedTlsVersions :
         System.IEquatable<SupportedTlsVersions>
     {

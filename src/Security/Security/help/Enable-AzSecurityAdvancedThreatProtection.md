@@ -23,7 +23,7 @@ To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES
 
-### Example 1 : Storage Account
+### Example 1: Storage Account
 ```powershell
 PS C:\> Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 
@@ -34,7 +34,7 @@ IsEnabled Id
 
 This command enables the advanced threat protection policy for resource id `"/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"`.
 
-### Example 2 : CosmosDB Account
+### Example 2: CosmosDB Account
 ```powershell
 PS C:\> Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"
 

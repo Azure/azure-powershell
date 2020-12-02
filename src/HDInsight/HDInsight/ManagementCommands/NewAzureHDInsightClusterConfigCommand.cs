@@ -28,25 +28,25 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "Gets or sets the account name for the default storage account.")]
-        public string DefaultStorageAccountName
+        [Parameter(HelpMessage = "Gets or sets the storage account resource id.")]
+        public string StorageAccountResourceId
         {
-            get { return _config.DefaultStorageAccountName; }
-            set { _config.DefaultStorageAccountName = value; }
+            get { return _config.StorageAccountResourceId; }
+            set { _config.StorageAccountResourceId = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the storage key for the default Azure Storage Account.")]
-        public string DefaultStorageAccountKey
+        [Parameter(HelpMessage = "Gets or sets the storage account access key.")]
+        public string StorageAccountKey
         {
-            get { return _config.DefaultStorageAccountKey; }
-            set { _config.DefaultStorageAccountKey = value; }
+            get { return _config.StorageAccountKey; }
+            set { _config.StorageAccountKey = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the type of the default storage account.")]
-        public StorageType DefaultStorageAccountType
+        public StorageType StorageAccountType
         {
-            get { return _config.DefaultStorageAccountType; }
-            set { _config.DefaultStorageAccountType = value; }
+            get { return _config.StorageAccountType; }
+            set { _config.StorageAccountType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
@@ -189,6 +189,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return _config.EncryptionVaultUri; }
             set { _config.EncryptionVaultUri = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption in transit or not.")]
+        public bool? EncryptionInTransit
+        {
+            get { return _config.EncryptionInTransit; }
+            set { _config.EncryptionInTransit = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the flag which indicates whether enable encryption at host or not.")]
+        public bool? EncryptionAtHost
+        {
+            get { return _config.EncryptionAtHost; }
+            set { _config.EncryptionAtHost = value; }
         }
 
         #endregion

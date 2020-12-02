@@ -19,6 +19,29 @@
 -->
 ## Upcoming Release
 
+* Add example to Set-AzServiceFabricSetting with SettingsSectionDescription param
+* Update application related cmdlets to call out that support is only for ARM deployed resources
+* Mark for deprecation cluster cert cmdlets Add-AzureRmServiceFabricClusterCertificate and Remove-AzureRmServiceFabricClusterCertificate
+
+## Version 2.2.0
+
+* Added new cmdlets for managed clusters and node types:
+    - `New-AzServiceFabricManagedCluster`
+    - `Get-AzServiceFabricManagedCluster`
+    - `Set-AzServiceFabricManagedCluster`
+    - `Remove-AzServiceFabricManagedCluster`
+    - `Add-AzServiceFabricManagedClusterClientCertificate`
+    - `Remove-AzServiceFabricManagedClusterClientCertificate`
+    - `New-AzServiceFabricManagedNodeType`
+    - `Get-AzServiceFabricManagedNodeType`
+    - `Set-AzServiceFabricManagedNodeType`
+    - `Remove-AzServiceFabricManagedNodeType`
+    - `Add-AzServiceFabricManagedNodeTypeVMExtension`
+    - `Add-AzServiceFabricManagedNodeTypeVMSecret`
+    - `Remove-AzServiceFabricManagedNodeTypeVMExtension`
+    - `Restart-AzServiceFabricManagedNodeTyp`
+* Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2020-03-01 for the current model and 2020-01-01-preview for managed clusters.
+
 ## Version 2.1.0
 * Fixed bug in add certificate using --SecretIdentifier that was getting the wrong certificate thumbprint
 

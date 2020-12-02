@@ -198,9 +198,6 @@
   <data name="FilePathDoesNotExist" xml:space="preserve">
     <value>The file at path '{0}' does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible.</value>
   </data>
-  <data name="InteractiveSparkSessionTips" xml:space="preserve">
-    <value>InteractiveSparkSessionTips</value>
-  </data>
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
@@ -248,9 +245,6 @@
   </data>
   <data name="SqlPoolDoesNotExist" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified SQL pool '{0}' does not exist.</value>
-  </data>
-  <data name="StartSparkSessionNonInteractiveMessage" xml:space="preserve">
-    <value>{0} must be issued in interactive mode.</value>
   </data>
   <data name="StoppingSparkJob" xml:space="preserve">
     <value>Stopping Spark job with Id: '{0}' ...</value>
@@ -311,5 +305,299 @@
   </data>
   <data name="ServicePrincipalNameDoesNotExist" xml:space="preserve">
     <value>Service principal with Name '{0}' does not exist.</value>
+  </data>
+  <data name="CreatingSynapseSqlDatabase" xml:space="preserve">
+    <value>Creating a new SQL Database in resource group '{0}' under parent Workspace '{1}' with name '{2}'.</value>
+  </data>
+  <data name="FailedToDiscoverSqlDatabase" xml:space="preserve">
+    <value>A SQL Database with name '{0}' in resource group '{1}' under workspace '{2}' does not exist. Please use New-AzSynapseSqlDatabase to create a SQL Database with these properties.</value>
+  </data>
+  <data name="RemovingSynapseSqlDatabase" xml:space="preserve">
+    <value>Deleting SQL Database '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="SynapseSqlDatabaseExists" xml:space="preserve">
+    <value>A SQL Database with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseSqlDatabase to update an existing SQL Database.</value>
+  </data>
+  <data name="UpdatingSynapseSqlDatabase" xml:space="preserve">
+    <value>Updating SQL Database '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
+  <data name="InvalidCastParameterKeyExceptionMessage" xml:space="preserve">
+    <value>All keys in the parameters hashtable must be of type string since they represent pipeline parameter names.</value>
+  </data>
+  <data name="UpgradingIntegrationRuntime" xml:space="preserve">
+    <value>Upgrading integration runtime '{0}'.</value>
+  </data>
+  <data name="ContinueRegenerateAuthKey" xml:space="preserve">
+    <value>Continuing execution will renegerate the authentication key '{0}' of integration runtime {1}. This operation will invalidate the existing authentication key.
+Are you sure you want to continue?</value>
+  </data>
+  <data name="RegenerateAuthKey" xml:space="preserve">
+    <value>Renegerate the authentication key '{0}' of integration runtime {1}.</value>
+  </data>
+  <data name="IntegrationRuntimeConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove integration runtime '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="IntegrationRuntimeNotFound" xml:space="preserve">
+    <value>Integration runtime '{0}' does not exist in the workspace '{1}'.</value>
+  </data>
+  <data name="RemovingIntegrationRuntime" xml:space="preserve">
+    <value>Removing the integration runtime '{0}' in the workspace '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeNodeConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove node {0} in integration runtime '{1}''?</value>
+  </data>
+  <data name="RemovingIntegrationRuntimeNode" xml:space="preserve">
+    <value>Removing the node {0} in integration runtime '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeNodeNotFound" xml:space="preserve">
+    <value>The node '{0}' does not exist in integration runtime '{1}'.</value>
+  </data>
+  <data name="IntegrationRuntimeInvalidVnet" xml:space="preserve">
+    <value>Both VNetId and Subnet must be set.</value>
+  </data>
+  <data name="IntegrationRuntimeVNetNotProvided" xml:space="preserve">
+    <value>Please provide a VNet resource ID and subnet name to bring static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="IntegrationRuntimeWrongType" xml:space="preserve">
+    <value>The value for pramater 'Type' is different with existing integration runtime with name {0}.</value>
+  </data>
+  <data name="InvalidIntegrationRuntimeSharing" xml:space="preserve">
+    <value>Only self-hosted integration runtime can be shared.</value>
+  </data>
+  <data name="InvalidPublicIPCount" xml:space="preserve">
+    <value>Please provide two static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="NeedIntegrationRuntimeType" xml:space="preserve">
+    <value>Pramater 'Type' must be provided when creating new integration runtime.</value>
+  </data>
+  <data name="UpdateAuthKeyNotAllowed" xml:space="preserve">
+    <value>Updating the authentication key of linked integration runtime '{0}' is not allowed.</value>
+  </data>
+  <data name="IntegrationRuntimeExists" xml:space="preserve">
+    <value>An integration runtime with the name {0} in the workspace {1} exists. 
+Continuing execution may overwrite the existing one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="UpdatingIntegrationRuntime" xml:space="preserve">
+    <value>Updating integration runtime '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="LongRunningStatusError" xml:space="preserve">
+    <value>An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzSynapseIntegrationRuntime -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -Name MyIR -Status</value>
+  </data>
+  <data name="IntegrationRuntimeSyncNodeCredential" xml:space="preserve">
+    <value>Are you sure you want to sync node credentials in integration runtime '{0}'.</value>
+  </data>
+  <data name="SyncingIntegrationRuntimeNodeCredential" xml:space="preserve">
+    <value>Syncing node credentials in integration runtime '{0}'.</value>
+  </data>
+  <data name="UpdatingIntegrationRuntimeNode" xml:space="preserve">
+    <value>Updating integration runtime node {0}.</value>
+  </data>
+  <data name="InvokingSparkStatement" xml:space="preserve">
+    <value>Invoking Spark statement in Spark pool '{0}' under workspace '{1}' ...</value>
+  </data>
+  <data name="StartingSynapseSparkSession" xml:space="preserve">
+    <value>Starting Spark session in Spark pool '{0}' under workspace '{1}' ...</value>
+  </data>
+  <data name="SubmittingSynapseSparkJob" xml:space="preserve">
+    <value>Submitting Spark job in Spark pool '{0}' under workspace '{1}' ...</value>
+  </data>
+  <data name="SettingSynapsePipeline" xml:space="preserve">
+    <value>Setting pipeline '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapsePipeline" xml:space="preserve">
+    <value>Deleting pipeline '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="CreatingSynapsePipelineRun" xml:space="preserve">
+    <value>Creating a run of a pipeline in workspace '{0}' with name '{1}'.</value>
+  </data>
+  <data name="StoppingPipelineRun" xml:space="preserve">
+    <value>Stopping Pipeline with Id: '{0}' ...</value>
+  </data>
+  <data name="SettingSynapseLinkedService" xml:space="preserve">
+    <value>Setting linked service '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseLinkedService" xml:space="preserve">
+    <value>Deleting linked service '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseNotebook" xml:space="preserve">
+    <value>Deleting notebook '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseNotebook" xml:space="preserve">
+    <value>Setting notebook '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseTrigger" xml:space="preserve">
+    <value>Setting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseTrigger" xml:space="preserve">
+    <value>Deleting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="AddingSynapseTriggerSubscribe" xml:space="preserve">
+    <value>Subscribe the event trigger '{0}' to external service events.</value>
+  </data>
+  <data name="RemovingSynapseTriggerSubscription" xml:space="preserve">
+    <value>Unsubscribe the event trigger '{0}' from external service events.</value>
+  </data>
+  <data name="StartingSynapseTrigger" xml:space="preserve">
+    <value>Starting trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="StoppingSynapseTrigger" xml:space="preserve">
+    <value>Stopping trigger '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseDataset" xml:space="preserve">
+    <value>Setting dataset '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseDataset" xml:space="preserve">
+    <value>Deleting dataset '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseDataFlow" xml:space="preserve">
+    <value>Setting data flow '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSynapseDataFlow" xml:space="preserve">
+    <value>Deleting data flow '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RestoringSynapseSqlPool" xml:space="preserve">
+    <value>Creating a new SQL pool restored from '{0}' in resource group '{1}' under parent Workspace '{2}' with name '{3}'.</value>
+  </data>
+  <data name="RemoveFirewallRule" xml:space="preserve">
+    <value>Are you sure you want to remove filewall rule '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataFlow" xml:space="preserve">
+    <value>Are you sure you want to remove data flow '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataset" xml:space="preserve">
+    <value>Are you sure you want to remove data set '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseLinkedService" xml:space="preserve">
+    <value>Are you sure you want to remove linked service '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseNotebook" xml:space="preserve">
+    <value>Are you sure you want to remove notebook '{0}'?</value>
+  </data>
+  <data name="RemoveSynapsePipeline" xml:space="preserve">
+    <value>Are you sure you want to remove pipeline '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSparkPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Spark pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlDatabase" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL database '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTrigger" xml:space="preserve">
+    <value>Are you sure you want to remove trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTriggerSubscription" xml:space="preserve">
+    <value>Are you sure you want to unsubscribe the event trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseWorkspace" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse workspace '{0}'?</value>
+  </data>
+  <data name="ADApplicationDisplayNameMismatch" xml:space="preserve">
+    <value>Azure Active Directory application with the display name '{0}' was found. Display Name provided does not match with any service principal display name '{1}'. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString "{0}" or Get-AzADServicePrincipal -SearchString "{1}".</value>
+  </data>
+  <data name="ADApplicationMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory application with the display name '{0}' was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString "{0}" or use use Get-AzADServicePrincipal -SearchString "{0}"</value>
+  </data>
+  <data name="ADDuplicateGroupAndApplicationFound" xml:space="preserve">
+    <value>Azure Active Directory application and group with same display name '{0}' was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString "{0}" or to get object id use Get-AzADGroup -SearchString "{0}".</value>
+  </data>
+  <data name="ADGroupMoreThanOneFound" xml:space="preserve">
+    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString "{0}"</value>
+  </data>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or group or application you are authorizing is registered in the current subscription's Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication.</value>
+  </data>
+  <data name="ADUserMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString "{0}"</value>
+  </data>
+  <data name="CreatingSqlPoolRestorePoint" xml:space="preserve">
+    <value>Creating a restore point in SQL pool '{0}' under Workspace '{1}'.</value>
+  </data>
+  <data name="InvalidADGroupNotSecurity" xml:space="preserve">
+    <value>The Active Directory Group '{0}' is not security enabled. Only Azure Active Directory Security Enabled Groups are supported.</value>
+  </data>
+  <data name="RemovingSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Removing the active directory admin in workspace '{0}'.</value>
+  </data>
+  <data name="SettingSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Setting an active directory admin in workspace '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="StorageAccountNotFound" xml:space="preserve">
+    <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
+  </data>
+  <data name="SettingSqlPoolAudit" xml:space="preserve">
+    <value>Setting audit for SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
+    <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden.</value>
+  </data>
+  <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
+    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
+  </data>
+  <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
+    <value>Failed to get Role Assignments for Storage Account '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
+    <value>Failed to retrieve properties of storage account '{0}'.</value>
+  </data>
+  <data name="SettingSqlAudit" xml:space="preserve">
+    <value>Setting audit in workspace '{0}'.</value>
+  </data>
+  <data name="StorageAccountNameParameterException" xml:space="preserve">
+    <value>Storage acount name is not provided.</value>
+  </data>
+  <data name="RemovingSqlPoolAudit" xml:space="preserve">
+    <value>Removing audit settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="RemovingWorkspaceAudit" xml:space="preserve">
+    <value>Removing audit settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
+    <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
+  <data name="UpdatingThreatProtectionSetting" xml:space="preserve">
+    <value>Updating threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="RemovingThreatProtectionSetting" xml:space="preserve">
+    <value>Removing threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="UpdatingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Updating vulnerability assessment settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidBlobStorageSasUri" xml:space="preserve">
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?</value>
+  </data>
+  <data name="NoStorageAccountSpecified" xml:space="preserve">
+    <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
+  </data>
+  <data name="EmailsAreNotValid" xml:space="preserve">
+    <value>One or more of the email addresses you entered are not valid.</value>
+  </data>
+  <data name="RemovingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Removing vulnerability assessment settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidKeyId" xml:space="preserve">
+    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
+  </data>
+  <data name="ComfirmToRemoveSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Deleting SQL pool Restore Point '{0}' in resource group '{1}' , workspace '{2}', under  Sql Pool '{3}'.</value>
+  </data>
+  <data name="SqlPoolRestorePointDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified Restore Point '{0}' does not exist.</value>
+  </data>
+  <data name="RemoveSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Sql Pool Restore Point '{0}'?</value>
   </data>
 </root>

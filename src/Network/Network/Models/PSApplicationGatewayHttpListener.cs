@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Type { get; set; }
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
         public PSResourceId FirewallPolicy { get; set; }
+        public PSResourceId SslProfile { get; set; }
 
         [JsonIgnore]
         public string FrontendIpConfigurationText
@@ -54,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SslCertificateText
         {
             get { return JsonConvert.SerializeObject(SslCertificate, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SslProfileText
+        {
+            get { return JsonConvert.SerializeObject(SslProfile, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

@@ -9,6 +9,7 @@ function Test-SynapseSqlPool
         $resourceGroupName = (Get-ResourceGroupName),
         $workspaceName = (Get-SynapseWorkspaceName),
         $sqlPoolName = (Get-SynapseSqlPoolName),
+        $restoreFromSqlPoolName = 'dwtestbackup',
         $sqlPoolPerformanceLevel = 'DW200c'
     )
 
@@ -86,14 +87,89 @@ function Test-SynapseSqlPool
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
         # Delete SqlPool
-        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru} "Remove SqlPool failed."
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
+
+        # Get restore point
+        [array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $restoreFromSqlPoolName
+
+        Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
+
+        # Delete restore point
+        $RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
+
+        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $restoreFromSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
+
+        # Restore SqlPool
+        $sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -SourceWorkspaceName $workspaceName -SourceSqlPoolName $restoreFromSqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
+
+        Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
+        Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
+        Assert-True {$sqlPoolRestored.Id -like "*$resourceGroupName*"}
+
+        # Suspend SqlPool
+        $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Paused" $sqlPoolSuspended.Status
+
+        # Resume SqlPool
+        $sqlPoolResumed = Resume-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Online" $sqlPoolResumed.Status
+
+        # Delete SqlPool
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
     }
     finally
     {
         # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Synapse Workspace SQL Pool Auditing settings.
+#>
+function Test-SynapseSqlPool-Security
+{
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $sqlPoolName = (Get-SynapseSqlPoolName),
+        $storageGen2AccountName = (Get-DataLakeStorageAccountName),
+        $location = "East US"
+    )
+
+    try
+    {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+        $sqlPoolName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("sqlPoolName", $sqlPoolName)
+        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_LRS -Kind StorageV2
+        
+        # Set SQL Auditing
+        Set-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -BlobStorageTargetState Enabled -StorageAccountResourceId $account.id -StorageKeyType Primary
+
+        # Get SQL Auditing
+        $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Enabled
+        Assert-AreEqual $auditing.StorageAccountResourceId $account.id
+
+        # Remove SQL Auditing
+        Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+
+        # Verify that SQL Auditing was deleted
+        $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Disabled
+    }
+    finally
+    {
+        Invoke-HandledCmdlet -Command {Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName} -IgnoreFailures
     }
 }

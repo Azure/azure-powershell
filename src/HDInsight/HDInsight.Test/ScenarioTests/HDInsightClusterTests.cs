@@ -42,5 +42,54 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CmkClusterRelatedCommands");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithEncryptionInTransit()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionInTransit");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithEncryptionAtHost()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithEncryptionAtHost");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithLoadBasedAutoscale()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithLoadBasedAutoscale");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithScheduleBasedAutoscale()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithScheduleBasedAutoscale");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithKafkaRestProxy()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithKafkaRestProxy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithRelayOutoundAndPrivateLink()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithRelayOutoundAndPrivateLink");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithCustomAmbariDatabase()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateClusterWithCustomAmbariDatabase");
+        }
     }
 }

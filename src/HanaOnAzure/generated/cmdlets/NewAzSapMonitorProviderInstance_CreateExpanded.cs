@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
     /// Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ProviderInstances_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}/providerInstances/{providerInstanceName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}/providerInstances/{providerInstanceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSapMonitorProviderInstance_CreateExpanded", SupportsShouldProcess = true)]

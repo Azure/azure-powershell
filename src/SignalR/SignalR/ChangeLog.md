@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Fixed `Restart-AzSignalR` and `Update-AzSignalR` help files errors
+* Added cmdlets `Update-AzSignalRNetworkAcl`, `Set-AzSignalRUpstream`
+
 ## Version 1.1.1
 * Update references in .psd1 to use relative path
 

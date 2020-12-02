@@ -145,7 +145,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string automationAccountName,
             string name,
             IDictionary parameters,
-            bool? isEnabled)
+            bool? isEnabled,
+            string RunOn)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -167,6 +168,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
                         webhookPatchParameters.Parameters =
                             this.ProcessRunbookParameters(resourceGroupName, automationAccountName, webhookModel.Runbook.Name, parameters);
+                    }
+                    if (RunOn != null)
+                    {
+                        webhookPatchParameters.RunOn = RunOn;
+
                     }
                 }
                 

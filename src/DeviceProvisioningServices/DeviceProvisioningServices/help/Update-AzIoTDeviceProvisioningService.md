@@ -76,7 +76,9 @@ Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning
 
 ### Example 2
 ```
-PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
+PS C:\> $tag = @{}
+PS C:\> $tag.Add("key1","Value1")
+PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tag
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -91,11 +93,13 @@ SkuTier						: Standard
 Etag						: AAAAAAAPoOk=
 ```
 
-Add "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps".
+Add tags to an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 3
 ```
-PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag @tags -Reset
+PS C:\> $tag = @{}
+PS C:\> $tag.Add("key1","Value1")
+PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag $tag -Reset
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -110,7 +114,7 @@ SkuTier						: Standard
 Etag						: AAAAAAAS1dY=
 ```
 
-Delete Tag and add new "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
+Delete Tag and add new tags to an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
 
 ## PARAMETERS
 

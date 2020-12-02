@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -34,12 +35,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters, string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string), string cloudDataLakeAudience =default(string))
+        public virtual Cluster CreateCluster(string resourceGroupName, string clusterName, ClusterCreateParametersExtended createParams)
         {
-            var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
-            createParams.Properties.OsType = osType;
-            createParams.Properties.MinSupportedTlsVersion = minSupportedTlsVersion;
-            ResetClusterIdentity(createParams, cloudAadAuthority, cloudDataLakeAudience);
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 
@@ -226,7 +223,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             HdInsightManagementClient.VirtualMachines.RestartHosts(resourceGroupName, clusterName, hosts);
         }
-        
+
+        public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, AutoscaleConfigurationUpdateParameter autoscaleConfigurationUpdateParameter)
+        {
+            HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
+        }
+
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;

@@ -18,7 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Improved the Azure Backup contaner/item discovery experience.
+* Making help text changes to Restore-AzRecoveryServicesBackupItem cmdlet.
+
+## Version 3.0.1
+* Specifying policy BackupTime is in UTC.
+* Modifying breaking change warning in Get-AzRecoveryServicesBackupJobDetails cmdlet.
+* Updating sample script help text for Set-AzRecoveryServicesBackupProtectionPolicy cmdlet.
+
+## Version 3.0.0
+* Fixing Workload Restore for contributor permissions.
+* Added new parameter sets and validations for Restore-AzRecoveryServicesBackupItem cmdlet.
+
+## Version 2.12.2
+* Added container name validation for workload backup.
+
+## Version 2.12.1
+* Fixed the Delete State for workload Backup Items.
+
+## Version 2.12.0
+* Azure Backup added a new cmdlet Copy-AzRecoveryServicesVault for DS move feature.
+* Get-AzRecoveryServicesBackupJob cmdlet now supports operation type 'BackupDataMove'.
+* Modifying the configure backup per policy limit for VMs from 100 to 1000.
+
+## Version 2.11.1
+* Improved the Azure Backup container/item discovery experience.
 
 ## Version 2.11.0
 * Removed project reference to Authentication

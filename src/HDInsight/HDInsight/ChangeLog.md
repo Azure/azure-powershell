@@ -19,6 +19,65 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.0
+
+* Add parameters `ResourceProviderConnection` and `PrivateLink` to cmdlet `New-AzHDInsightCluster` to support relay outbound and private link feature
+* Add parameter `AmbariDatabase` to cmdlet `New-AzHDInsightCluster` to support custom Ambari database feature
+* Add accept value "AmbariDatabase" to the parameter `MetastoreType` of the cmdlet `Add-AzHDInsightMetastore`
+
+## Version 4.0.0
+ * For New-AzHDInsightCluster cmdlet:
+     - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+     - Replaced parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+     - Replaced parameter `DefaultStorageAccountType` with `StorageAccountType`
+     - Removed parameter `PublicNetworkAccessType`
+     - Removed parameter `OutboundPublicNetworkAccessType`
+     - Added new parameters: `StorageFileSystem` and `StorageAccountManagedIdentity` to support ADLSGen2
+     - Added new parameter `EnableIDBroker` to Support HDInsight ID Broker
+     - Added new parameters: `KafkaClientGroupId`, `KafkaClientGroupName` and `KafkaManagementNodeSize` to support Kafka Rest Proxy
+ * For New-AzHDInsightClusterConfig cmdlet:
+     - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+     - Replaced parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+     - Replaced parameter `DefaultStorageAccountType` with `StorageAccountType`
+     - Removed parameter `PublicNetworkAccessType`
+     - Removed parameter `OutboundPublicNetworkAccessType`
+* For Set-AzHDInsightDefaultStorage cmdlet:
+    - Replaced parameter `StorageAccountName` with `StorageAccountResourceId`
+* For Add-AzHDInsightSecurityProfile cmdlet:
+    - Replaced parameter `Domain` with `DomainResourceId`
+    - Removed the mandatory requirement for parameter `OrganizationalUnitDN`
+
+## Version 3.6.1
+* Added warning message for planning to deprecate the parameters `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountKey` with `StorageAccountKey`
+* Added warning message for planning to replace the parameter `DefaultStorageAccountType` with `StorageAccountType`
+* Added warning message for planning to replace the parameter `DefaultStorageContainer` with `StorageContainer`
+* Added warning message for planning to replace the parameter `DefaultStorageRootPath` with `StorageRootPath`
+
+## Version 3.6.0
+* Supported creating cluster with Autoscale configuration
+    - Add new parameter `AutoscaleConfiguration` to the cmdlet `New-AzHDInsightCluster`
+* Supported operating cluster's Autoscale configuration
+    - Add new cmdlet `Get-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `New-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `Set-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `Remove-AzHDInsihgtClusterAutoscaleConfiguration`
+    - Add new cmdlet `New-AzHDInsihgtClusterAutoscaleScheduleCondition`
+
+## Version 3.5.0
+* Supported creating cluster with encryption at host feature.
+
+## Version 3.4.0
+* Supported creating cluster with encryption in transit feature.
+    - Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightCluster`
+	- Add new parameter `EncryptionInTransit` to the cmdlet `New-AzHDInsightClusterConfig`
+* Supported creating cluster with private link feature:
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightCluster`
+    - Add new parameter `PublicNetworkAccessType` and `OutboundPublicNetworkAccessType` to the cmdlet `New-AzHDInsightClusterConfig`
+* Returned virtual network information when calling `New-AzHDInsightCluster` or `Get-AzHDInsightCluster`
+
+
 ## Version 3.3.1
 * Supported creating cluster with ADLSGen1/2 storage in national clouds.
 

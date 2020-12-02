@@ -51,5 +51,36 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 testResourceGroupName,
                 testWorkspaceName));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSynapseSqlPoolSecurity()
+        {
+            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
+            if (string.IsNullOrEmpty(testResourceGroupName))
+            {
+                testResourceGroupName = nameof(TestResourceGroupName);
+            }
+
+            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
+            if (string.IsNullOrEmpty(testWorkspaceName))
+            {
+                testWorkspaceName = nameof(TestWorkspaceName);
+            }
+
+            string testSqlPoolName = SynapseTestBase.TestSqlPoolName;
+            if (string.IsNullOrEmpty(testWorkspaceName))
+            {
+                testSqlPoolName = nameof(TestSqlPoolName);
+            }
+
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
+                string.Format(
+                "Test-SynapseSqlPool-Security -resourceGroupName '{0}' -workspaceName '{1}' -sqlPoolName '{2}'",
+                testResourceGroupName,
+                testWorkspaceName,
+                testSqlPoolName));
+        }
     }
 }

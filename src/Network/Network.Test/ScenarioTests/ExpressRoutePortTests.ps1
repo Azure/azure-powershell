@@ -187,4 +187,44 @@ function Test-ExpressRoutePortIdentityCRUD
     }
 }
 
+<#
+.SYNOPSIS
+Test creating new ExpressRoutePort
+#>
+function Test-ExpressRoutePortGenerateLOA
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+
+    # Only available peering location and location for now.
+    $rglocation = "eastus2euap"
+    $location = "eastus2euap"
+	$peeringLocation = "Good Grief"
+	$encapsulation = "QinQ"
+	$bandwidthInGbps = 25
+    $customerName = "contoso"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ExpressRoutePort
+        $vExpressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        Assert-NotNull $vExpressRoutePort
+        Assert-True { Check-CmdletReturnType "New-AzExpressRoutePort" $vExpressRoutePort }
+        Assert-NotNull $vExpressRoutePort.Links
+        Assert-True { $vExpressRoutePort.Links.Count -eq 2 }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        $loa = New-AzExpressRoutePortLOA -ResourceGroupName $rgname -PortName $rname -CustomerName $customerName -PassThru
+        Assert-True { $loa -eq $true }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 

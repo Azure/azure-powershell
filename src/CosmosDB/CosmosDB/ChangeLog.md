@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 
+## Version 0.2.0
+* Introduced support for throughput Migration, allowing custoers to migrate their resources from manually provisioned throughput to autoscaled throughput. Customers can use this feature using the following cmdlets:
+    - 'Invoke-AzCosmosDBSqlContainerThroughputMigration', 
+    - 'Invoke-AzCosmosDBSqlDatabaseThroughputMigration', 
+    - 'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration', 
+    - 'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration', 
+    - 'Invoke-AzCosmosDBGremlinGraphThroughputMigration', 
+    - 'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration', 
+    - 'Invoke-AzCosmosDBCassandraTableThroughputMigration', 
+    - 'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration', 
+    - 'Invoke-AzCosmosDBTableThroughputMigration'
+
 ## Version 0.1.6
 * Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput. 
 * New-AzCosmosDBAccount cmdlet was updated with new paramters: EnableFreeTier, EnableAnalyticalStorage, ServerVersion, IpRule.

@@ -92,10 +92,18 @@ The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier 
 
 ### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
 ```
-PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
+PS C:\> $filepath = "c:\temp\index.html"
+PS C:\> Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
+
+   AccountName: storageaccountname, ContainerName: contosouploads
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
+----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
+index.html           BlockBlob 403116          text/html                      2020-09-22 08:06:53Z Cool                                    False
 ```
 
-This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties, and set StandardBlobTier as Cool.
+This command uploads the file c:\temp\index.html to the container named contosouploads with specified blob properties, and set StandardBlobTier as Cool.
+This command gets ContentType value set to blob properties by [System.Web.MimeMapping]::GetMimeMapping() API.
 
 ## PARAMETERS
 
@@ -135,6 +143,7 @@ Specifies the type for the blob that this cmdlet uploads.
 The acceptable values for this parameter are:
 - Block
 - Page
+- Append
 The default value is Block.
 
 ```yaml

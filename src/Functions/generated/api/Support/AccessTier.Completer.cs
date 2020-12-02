@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AccessTier.</summary>
+    /// <summary>
+    /// Required for storage accounts where kind = BlobStorage. The access tier used for billing.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccessTierTypeConverter))]
     public partial struct AccessTier :
         System.Management.Automation.IArgumentCompleter

@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover = (bool?) content.GetValueForProperty("CanFailover",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.GeoReplicationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.GeoReplicationStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover = (bool?) content.GetValueForProperty("CanFailover",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializeDictionary(content);
         }
 
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover = (bool?) content.GetValueForProperty("CanFailover",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.GeoReplicationStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.GeoReplicationStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime = (global::System.DateTime?) content.GetValueForProperty("LastSyncTime",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).LastSyncTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover = (bool?) content.GetValueForProperty("CanFailover",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IGeoReplicationStatsInternal)this).CanFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializePSObject(content);
         }
 

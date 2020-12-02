@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.ContainerRegistry
 Module Guid: b3ca459c-feb9-41cc-a954-46222505acb3
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry
@@ -11,6 +11,9 @@ Locale: en-US
 This topic displays help topics for the Azure Container Registry Management Cmdlets.
 
 ## Az.ContainerRegistry Cmdlets
+### [Connect-AzContainerRegistry](Connect-AzContainerRegistry.md)
+Login to an azure container registry.
+
 ### [Get-AzContainerRegistry](Get-AzContainerRegistry.md)
 Gets a container registry.
 
@@ -20,14 +23,23 @@ Gets the login credentials for a container registry.
 ### [Get-AzContainerRegistryReplication](Get-AzContainerRegistryReplication.md)
 Gets a replication of a container registry.
 
+### [Get-AzContainerRegistryUsage](Get-AzContainerRegistryUsage.md)
+Get Usage of an azure container registry.
+
 ### [Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
 Gets a container registry webhook.
 
 ### [Get-AzContainerRegistryWebhookEvent](Get-AzContainerRegistryWebhookEvent.md)
 Gets events of a container registry webhook.
 
+### [Import-AzContainerRegistryImage](Import-AzContainerRegistryImage.md)
+Import image from a public/azure registry to an azure container registry.
+
 ### [New-AzContainerRegistry](New-AzContainerRegistry.md)
 Creates a container registry.
+
+### [New-AzContainerRegistryNetworkRule](New-AzContainerRegistryNetworkRule.md)
+Create a network rule.
 
 ### [New-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
 Creates a container registry replication.
@@ -43,6 +55,9 @@ Removes a container registry replication.
 
 ### [Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)
 Removes a container registry webhook.
+
+### [Set-AzContainerRegistryNetworkRuleSet](Set-AzContainerRegistryNetworkRuleSet.md)
+Create or update a network rule set. Rule set can only be applied to "Premium" registry.
 
 ### [Test-AzContainerRegistryNameAvailability](Test-AzContainerRegistryNameAvailability.md)
 Checks the availability of a container registry name.

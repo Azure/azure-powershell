@@ -57,9 +57,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_kernelModeUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("kernelModeUsage"), out var __jsonKernelModeUsage) ? (long?)__jsonKernelModeUsage : KernelModeUsage;}
-            {_perCpuUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("perCpuUsage"), out var __jsonPerCpuUsage) ? If( __jsonPerCpuUsage as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<long[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(long) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber __t ? (long)__t : default(long))) ))() : null : PerCpuUsage;}
             {_totalUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("totalUsage"), out var __jsonTotalUsage) ? (long?)__jsonTotalUsage : TotalUsage;}
+            {_perCpuUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("perCpuUsage"), out var __jsonPerCpuUsage) ? If( __jsonPerCpuUsage as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<long[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(long) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber __t ? (long)__t : default(long))) ))() : null : PerCpuUsage;}
+            {_kernelModeUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("kernelModeUsage"), out var __jsonKernelModeUsage) ? (long?)__jsonKernelModeUsage : KernelModeUsage;}
             {_userModeUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("userModeUsage"), out var __jsonUserModeUsage) ? (long?)__jsonUserModeUsage : UserModeUsage;}
             AfterFromJson(json);
         }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._kernelModeUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._kernelModeUsage) : null, "kernelModeUsage" ,container.Add );
+            AddIf( null != this._totalUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._totalUsage) : null, "totalUsage" ,container.Add );
             if (null != this._perCpuUsage)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("perCpuUsage",__w);
             }
-            AddIf( null != this._totalUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._totalUsage) : null, "totalUsage" ,container.Add );
+            AddIf( null != this._kernelModeUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._kernelModeUsage) : null, "kernelModeUsage" ,container.Add );
             AddIf( null != this._userModeUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._userModeUsage) : null, "userModeUsage" ,container.Add );
             AfterToJson(ref container);
             return container;

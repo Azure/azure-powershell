@@ -53,20 +53,62 @@ function Create-KeyIdentity{
 
 <#
 .SYNOPSIS
-Create cluster
+Create Vnet with subnet
 #>
-function Create-Cluster{
+function Create-VnetkWithSubnet{
+	param(
+		[string] $resourceGroupName,
+		[string] $location,
+		[string] $vnetName,
+		[string] $subnetName="default",
+		[bool] $subnetPrivateEndpointNetworkPoliciesFlag=$true,
+		[bool] $subnetPrivateLinkServiceNetworkPoliciesFlag=$true
+	)
+
+	$vnet= [Commands.HDInsight.Test.ScenarioTests.TestHelper]::CreateVirtualNetworkWithSubnet($resourceGroupName, $location,$vnetName, $subnetName, $subnetPrivateEndpointNetworkPoliciesFlag, $subnetPrivateLinkServiceNetworkPoliciesFlag)
+	return $vnet
+}
+
+class ClusterCommonCreateParameter{
+      [string] $clusterName
+      [string] $location
+      [string] $resourceGroupName
+      [string] $storageAccountResourceId
+      [string] $clusterType
+      [int] $clusterSizeInNodes
+      [string] $storageAccountKey
+      [System.Management.Automation.PSCredential] $httpCredential
+      [System.Management.Automation.PSCredential] $sshCredential
+      [string] $minSupportedTlsVersion
+
+	  ClusterCommonCreateParameter([string] $clusterName, [string] $location, [string] $resourceGroupName,
+                                   [string] $storageAccountResourceId, [string] $clusterType, [int] $clusterSizeInNodes, 
+                                   [string] $storageAccountKey, [System.Management.Automation.PSCredential] $httpCredential,
+                                   [System.Management.Automation.PSCredential] $sshCredential, [string] $minSupportedTlsVersion){
+                $this.clusterName=$clusterName
+                $this.location=$location
+                $this.resourceGroupName=$resourceGroupName
+                $this.storageAccountResourceId=$storageAccountResourceId
+                $this.clusterType=$clusterType
+                $this.clusterSizeInNodes=$clusterSizeInNodes
+                $this.storageAccountKey=$storageAccountKey
+                $this.httpCredential=$httpCredential
+                $this.sshCredential=$sshCredential
+                $this.minSupportedTlsVersion=$minSupportedTlsVersion
+      }
+}
+
+<#
+.SYNOPSIS
+ Create Common Parameter with WASB for creating cluster.
+#>
+function Prepare-ClusterCreateParameter{
     param(
       [string] $clusterName="hdi-ps-test",
       [string] $location="East US",
       [string] $resourceGroupName="group-ps-test",
-      [string] $clusterType="Spark",
-      [string] $storageAccountName="storagepstest",
-      [string] $minSupportedTlsVersion="1.2",
-      [bool] $enableCMK=$false,
-      [string] $assignedIdentityName="ami-ps-cmktest",
-	  [string] $vaultName="vault-ps-cmktest",
-	  [string] $keyName="key-ps-cmktest"
+	  [string] $storageAccountName="storagepstest",
+      [string] $clusterType="Spark"
     )
 
     $clusterName=Generate-Name($clusterName)
@@ -76,50 +118,62 @@ function Create-Cluster{
 
     $storageAccountName=Generate-StorageAccountName($storageAccountName)
 
-    $storageAccount= New-AzStorageAccount -ResourceGroupName $resourceGroupName -Location $location -Name $storageAccountName -TypeString "Standard_RAGRS"
+	$storageAccount= New-AzStorageAccount -ResourceGroupName $resourceGroupName -Location $location -Name $storageAccountName -TypeString Standard_RAGRS
 
+	$storageAccountResourceId=$storageAccount.Id
     $storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
     $storageAccountKey=$storageAccountKey[0].Value
 
     $httpUser="admin"
-	$textPassword= "YourPw!00953"
+    $textPassword= "YourPw!00953"
     $httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
     $sshUser="sshuser"
     $sshPassword=$httpPassword
     $httpCredential=New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
     $sshCredential=New-Object System.Management.Automation.PSCredential($sshUser, $sshPassword)
-    
-    $clusterSizeInNodes=2
 
-    if($enableCMK)
-    {
-        # new user-assigned identity
-        $assignedIdentity= New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $assignedIdentityName
-        $assignedIdentityId=$assignedIdentity.Id
-        # new key-vault 
-        $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
-        $principalId = Get-PrincipalObjectId
-        # add access police for key-vault
-        $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $principalId -PermissionsToKeys create,import,delete,list -PermissionsToSecrets Get,Set -PermissionsToCertificates Get,List
-        $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys Get,UnwrapKey,WrapKey -PermissionsToSecrets Get,Set,Delete
-        # new key identity
-        $encryptionKey=Create-KeyIdentity -resourceGroupName $resourceGroupName -vaultName  $vaultName -keyName $keyName
-        $encryptionVaultUri=$encryptionKey.Vault
-        $encryptionKeyVersion=$encryptionKey.Version
-        $encryptionKeyName=$encryptionKey.Name
-        # new hdi cluster with cmk
-        $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
-        -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential  `
-        -AssignedIdentity $assignedIdentityId -EncryptionKeyName $encryptionKeyName -EncryptionKeyVersion $encryptionKeyVersion `
-        -EncryptionVaultUri $encryptionVaultUri
-    }
-    else
-    {
-        $cluster=New-AzHDInsightCluster -Location $location -ResourceGroupName $resourceGroup.ResourceGroupName -ClusterName $clusterName `
-        -ClusterSizeInNodes $clusterSizeInNodes -ClusterType $clusterType -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey -HttpCredential $httpCredential -SshCredential $sshCredential -MinSupportedTlsVersion $minSupportedTlsVersion
-    }
+    $clusterSizeInNodes=3
+    $minSupportedTlsVersion="1.2"
+    return [ClusterCommonCreateParameter]::new($clusterName, $location,  $resourceGroupName,$storageAccountResourceId, 
+                                               $clusterType, $clusterSizeInNodes,$storageAccountKey, $httpCredential,
+                                               $sshCredential, $minSupportedTlsVersion)
+}
+
+<#
+.SYNOPSIS
+Create cluster
+#>
+function Create-CMKCluster{
+    param(
+      [string] $clusterName="hdi-ps-test",
+      [string] $location="East US",
+      [string] $assignedIdentityName="ami-ps-cmktest",
+	  [string] $vaultName="vault-ps-cmktest",
+	  [string] $keyName="key-ps-cmktest"
+    )
+
+    $params=Prepare-ClusterCreateParameter -clusterName $clusterName -location $location 
+
+    # new user-assigned identity
+    $assignedIdentity= New-AzUserAssignedIdentity -ResourceGroupName $params.resourceGroupName -Name $assignedIdentityName
+    $assignedIdentityId=$assignedIdentity.Id
+    # new key-vault 
+    $encryptionKeyVault=New-AzKeyVault -VaultName $vaultName -ResourceGroupName $params.resourceGroupName -Location $params.location
+    $principalId = Get-PrincipalObjectId
+    # add access police for key-vault
+    $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $principalId -PermissionsToKeys create,import,delete,list -PermissionsToSecrets Get,Set -PermissionsToCertificates Get,List
+    $encryptionKeyVault=Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $assignedIdentity.PrincipalId -PermissionsToKeys Get,UnwrapKey,WrapKey -PermissionsToSecrets Get,Set,Delete
+    # new key identity
+    $encryptionKey=Create-KeyIdentity -resourceGroupName $params.resourceGroupName -vaultName  $vaultName -keyName $keyName
+    $encryptionVaultUri=$encryptionKey.Vault
+    $encryptionKeyVersion=$encryptionKey.Version
+    $encryptionKeyName=$encryptionKey.Name
+    # new hdi cluster with cmk
+    $cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName `
+    -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType -StorageAccountResourceId $params.storageAccountResourceId `
+    -StorageAccountKey $params.storageAccountKey -HttpCredential $params.httpCredential -SshCredential $params.sshCredential  `
+    -AssignedIdentity $assignedIdentityId -EncryptionKeyName $encryptionKeyName -EncryptionKeyVersion $encryptionKeyVersion `
+    -EncryptionVaultUri $encryptionVaultUri
 
     return $cluster
 }

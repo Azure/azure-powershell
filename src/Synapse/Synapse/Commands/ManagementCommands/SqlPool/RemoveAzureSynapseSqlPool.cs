@@ -36,6 +36,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
+
         [Parameter(ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
@@ -56,6 +60,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -88,14 +95,27 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
-            {
-                this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                if (this.PassThru.IsPresent)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveSynapseSqlPool, Name),
+                string.Format(Resources.RemovingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName),
+                Name,
+                () =>
                 {
-                    WriteObject(true);
-                }
-            }
+                    if (this.Version == 3)
+                    {
+                        this.SynapseAnalyticsClient.DeleteSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                    }
+                    else
+                    {
+                        this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                    }
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

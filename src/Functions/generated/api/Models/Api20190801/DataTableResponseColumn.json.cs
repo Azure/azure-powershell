@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_columnName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("columnName"), out var __jsonColumnName) ? (string)__jsonColumnName : (string)ColumnName;}
-            {_columnType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("columnType"), out var __jsonColumnType) ? (string)__jsonColumnType : (string)ColumnType;}
             {_dataType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("dataType"), out var __jsonDataType) ? (string)__jsonDataType : (string)DataType;}
+            {_columnType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("columnType"), out var __jsonColumnType) ? (string)__jsonColumnType : (string)ColumnType;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != (((object)this._columnName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._columnName.ToString()) : null, "columnName" ,container.Add );
-            AddIf( null != (((object)this._columnType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._columnType.ToString()) : null, "columnType" ,container.Add );
             AddIf( null != (((object)this._dataType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._dataType.ToString()) : null, "dataType" ,container.Add );
+            AddIf( null != (((object)this._columnType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._columnType.ToString()) : null, "columnType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

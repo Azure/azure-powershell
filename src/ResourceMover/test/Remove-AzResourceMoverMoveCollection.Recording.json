@@ -1,0 +1,73 @@
+{
+  "Remove-AzResourceMoverMoveCollection+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/testMoveCollection?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/testMoveCollection?api-version=2019-10-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"sourceRegion\": \"centralus\",\n    \"targetRegion\": \"westcentralus\"\n  },\n  \"location\": \"EastUs2\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "119" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6801827a-0000-0200-0000-5f44e7430000\"" ],
+        "x-ms-request-id": [ "0fb289d2-2346-4c1a-a3ab-37e2b910ac36" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "cd707302-2ba6-4721-88c3-7bb629506c24" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102614Z:cd707302-2ba6-4721-88c3-7bb629506c24" ],
+        "Date": [ "Tue, 25 Aug 2020 10:26:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "420" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/testMoveCollection\",\"name\":\"testMoveCollection\",\"type\":\"Microsoft.Migrate/moveCollections\",\"etag\":\"\\\"6801827a-0000-0200-0000-5f44e7430000\\\"\",\"location\":\"eastus2\",\"properties\":{\"sourceRegion\":\"centralus\",\"targetRegion\":\"westcentralus\",\"provisioningState\":\"Succeeded\",\"errors\":null}}"
+    }
+  },
+  "Remove-AzResourceMoverMoveCollection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/testMoveCollection?api-version=2019-10-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/testMoveCollection?api-version=2019-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "fb43a86d-eb0a-4db4-8323-6fc7f832e641" ],
+        "CommandName": [ "Remove-AzResourceMoverMoveCollection" ],
+        "FullCommandName": [ "Remove-AzResourceMoverMoveCollection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "fe02dd5e-dda6-4a74-a5a1-d63dae3186c6" ],
+        "x-ms-correlation-request-id": [ "fe02dd5e-dda6-4a74-a5a1-d63dae3186c6" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102617Z:fe02dd5e-dda6-4a74-a5a1-d63dae3186c6" ],
+        "Date": [ "Tue, 25 Aug 2020 10:26:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

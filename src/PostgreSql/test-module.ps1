@@ -32,7 +32,7 @@ if ($requireResourceModule) {
   Import-Module -Name $resourceModulePSD.FullName
 }
 
-$localModulesPath = Join-Path $PSScriptRoot 'generated/modules'
+$localModulesPath = Join-Path $PSScriptRoot 'generated\modules'
 if(Test-Path -Path $localModulesPath) {
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }

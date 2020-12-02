@@ -34,7 +34,9 @@ Set-AzApplicationInsightsPricingPlan [-ResourceId] <String> [-PricingPlan <Strin
 ```
 
 ## DESCRIPTION
-Set pricing plan and daily data volume information for an application insights resource
+Set pricing plan and daily data volume information for an application insights resource.
+Pricing plan of application insights created after April 2018 cannot be set by this cmdlet: 
+https://docs.microsoft.com/en-us/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier
 
 ## EXAMPLES
 

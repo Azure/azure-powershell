@@ -37,6 +37,7 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Aks
             Mandatory = false,
             ParameterSetName = DefaultParamSet,
             HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
-        public PSCredential ClientIdAndSecret { get; set; }
+        public PSCredential ServicePrincipalIdAndSecret { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Azure location for the cluster. Defaults to the location of the resource group.")]
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("AdminUserName")]
         public string LinuxProfileAdminUserName { get; set; } = "azureuser";
 
-        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster.")]
+        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
         public string DnsNamePrefix { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
@@ -149,7 +150,7 @@ namespace Microsoft.Azure.Commands.Aks
                 new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
                     new ContainerServiceSshConfiguration(pubKey));
 
-            var acsServicePrincipal = EnsureServicePrincipal(ClientIdAndSecret?.UserName, ClientIdAndSecret?.Password?.ToString());
+            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ToString());
 
             var spProfile = new ManagedClusterServicePrincipalProfile(
                 acsServicePrincipal.SpId,

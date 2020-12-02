@@ -16,70 +16,79 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ### Default (Default)
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
- [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
- [-ClusterType <String>]
+ [-StorageContainer <String>] [-StorageRootPath <String>] [-StorageFileSystem <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>]
+ [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificatePassword <String>]
  [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
- [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>]
- [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>]
+ [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-StorageAccountManagedIdentity <String>]
+ [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
+ [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
+ [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
- [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
- [-ClusterType <String>]
+ [-StorageContainer <String>] [-StorageRootPath <String>] [-StorageFileSystem <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>]
+ [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
- [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
- [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
+ [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
+ [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
+ [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
- [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
- [-HiveMetastore <AzureHDInsightMetastore>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
+ [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
- [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
- [-ClusterType <String>]
+ [-StorageContainer <String>] [-StorageRootPath <String>] [-StorageFileSystem <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>]
+ [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
  [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
- [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
- [-EncryptionVaultUri <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
+ [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
+ [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
+ [-PrivateLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +100,7 @@ The New-AzHDInsightCluster creates an Azure HDInsight cluster by using the speci
 ```
 PS C:\&gt; # Primary storage account info
         $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
@@ -104,7 +114,7 @@ PS C:\&gt; # Primary storage account info
         $clusterCreds = Get-Credential
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
         New-AzHDInsightCluster `
@@ -114,10 +124,10 @@ PS C:\&gt; # Primary storage account info
             -ClusterName $clusterName `
             -HttpCredential $clusterCreds `
             -Location $location `
-            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -DefaultStorageContainer $storageContainer `
-			-SshCredential $clusterCreds `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
 ```
 
 This command creates a cluster in the current subscription.
@@ -126,6 +136,7 @@ This command creates a cluster in the current subscription.
 ```
 PS C:\&gt; # Primary storage account info
         $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountName = "yourstorageacct001"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
@@ -138,14 +149,14 @@ PS C:\&gt; # Primary storage account info
         $clusterName = "your-cmk-cluster"
         $clusterCreds = Get-Credential
 
-		# Customer-managed Key info
-		$assignedIdentity = "your-ami-resource-id"
-		$encryptionKeyName = "new-key"
-		$encryptionVaultUri = "https://MyKeyVault.vault.azure.net"
-		$encryptionKeyVersion = "00000000000000000000000000000000"
+        # Customer-managed Key info
+        $assignedIdentity = "your-ami-resource-id"
+        $encryptionKeyName = "new-key"
+        $encryptionVaultUri = "https://MyKeyVault.vault.azure.net"
+        $encryptionKeyVersion = "00000000000000000000000000000000"
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
         New-AzHDInsightCluster `
@@ -155,14 +166,290 @@ PS C:\&gt; # Primary storage account info
             -ClusterName $clusterName `
             -HttpCredential $clusterCreds `
             -Location $location `
-            -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -DefaultStorageContainer $storageContainer `
-			-SshCredential $clusterCreds `
-			-AssignedIdentity $assignedIdentity `
-			-EncryptionKeyName $encryptionKeyName `
-			-EncryptionVaultUri $encryptionVaultUri `
-			-EncryptionKeyVersion $encryptionKeyVersion
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -AssignedIdentity $assignedIdentity `
+            -EncryptionKeyName $encryptionKeyName `
+            -EncryptionVaultUri $encryptionVaultUri `
+            -EncryptionKeyVersion $encryptionKeyVersion
+```
+
+### Example 3: Create an Azure HDInsight cluster which enables encryption in transit
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -EncryptionInTransit $true `
+```
+
+### Example 4: Create an Azure HDInsight cluster with relay outbound and private link feature
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Virtual network info
+        $virtualNetworkId="yourvnetresourceid"
+        $subnetName="yoursubnetname"
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
+            -ResourceProviderConnection Outbound -PrivateLink Enabled `
+```
+
+### Example 5: Create an Azure HDInsight cluster which enables encryption at host
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -EncryptionAtHost $true `
+```
+
+### Example 6: Create an Azure HDInsight cluster which enables autoscale.
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create autoscale configuration
+        $autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration `
+            -MinWorkerNodeCount 3 -MaxWorkerNodeCount 5
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -AutoscaleConfiguration $autoscaleConfiguration
+```
+
+### Example 7: Create an Azure HDInsight cluster with Kafka Rest Proxy.
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | %{ $_.Key1 }
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Kafka Rest Proxy configuration info
+        $kafkaClientGroupName = "yourclientgroupname"
+        $kafkaClientGroupId = "yourclientgroupid"
+        $kafkaManagementNodeSize = "Standard_D4_v2"
+        $disksPerWorkerNode = 2
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Kafka `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -KafkaClientGroupId  $kafkaClientGroupId -KafkaClientGroupName $kafkaClientGroupName `
+            -KafkaManagementNodeSize $kafkaManagementNodeSize -DisksPerWorkerNode $disksPerWorkerNode
+```
+
+### Example 8: Create an Azure HDInsight cluster with Azure Data Lake Gen2 storage.
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageManagedIdentity = "yourstorageusermanagedidentity"
+        $storageFileSystem = "filesystem01"
+        $storageAccountType=AzureDataLakeStorageGen2
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 3 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountManagedIdentity $storageManagedIdentity `
+            -StorageFileSystem $storageFileSystem `
+            -StorageAccountType $storageAccountType `
+            -SshCredential $clusterCreds
+```
+
+### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and Enable HDInsight ID Broker.
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountKey = "yourstorageaccountaccesskey"
+        $storageContainer = "yourcontainer01"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # ESP configuration
+        $domainResourceId = "your Azure AD Domin Service resource id"
+        $domainUser = "yourdomainuser"
+        $domainPassword = "yourdoaminpasswd"
+        $domainPassword = ConvertTo-SecureString $domainPassword -AsPlainText -Force
+        $domainCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+        $clusterUserGroupDns = "dominusergroup"
+        $ldapUrls = "ldaps://{your domain name}:636"
+
+        $clusterTier = Premium
+        $vnetId = "yourvnetid"
+        $subnetName = "yoursubnetname"
+        $assignedIdentity = "your user managed assigned identity resourcee id"
+
+        #Create security profile
+        $config= New-AzHDInsightClusterConfig|Add-AzHDInsightSecurityProfile -DomainResourceId $domainResourceId -DomainUserCredential $domainCredential -LdapsUrls $ldapUrls -ClusterUsersGroupDNs $clusterUserGroupDns
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusteTier $clusterTier `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 3 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -VirtualNetworkId $vnetId -SubnetName $subnetName `
+            -AssignedIdentity $assignedIdentity `
+            -SecurityProfile $config.SecurityProfile -EnableIDBroker
 ```
 
 ## PARAMETERS
@@ -198,6 +485,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AmbariDatabase
+Gets or sets the database for ambari.
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationId
 Gets or sets the Service Principal Application Id for accessing Azure Data Lake.
 
@@ -218,6 +520,21 @@ Gets or sets the assigned identity.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoscaleConfiguration
+Gets or sets the autoscale configuration
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscale
 Parameter Sets: (All)
 Aliases:
 
@@ -399,85 +716,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultStorageAccountKey
-Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageAccountName
-Specifies the name of the default Azure Storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageAccountType
-Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to AzureStorage if not specified.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType]
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureStorage, AzureDataLakeStore
-
-Required: False
-Position: Named
-Default value: AzureStorage
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageContainer
-Specifies the name of the default container in the default Azure storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageRootPath
-Specifies the path-prefix in the Data Lake Store Account that the HDInsight cluster will use as the default filesystem.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DisksPerWorkerNode
 Specifies the number of disks for worker node role in the cluster.
 
@@ -508,11 +746,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableIDBroker
+Enables HDInsight Identity Broker feature.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionAlgorithm
 Gets or sets the encryption algorithm.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+Gets or sets the flag which indicates whether enable encryption at host or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransit
+Gets or sets the flag which indicates whether enable encryption in transit or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -615,6 +899,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KafkaClientGroupId
+Gets or sets the client group id for Kafka Rest Proxy access.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KafkaClientGroupName
+Gets or sets the client group name for Kafka Rest Proxy access.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KafkaManagementNodeSize
+Gets or sets the size of the Kafka Management Node.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location for the cluster.
 
@@ -694,6 +1023,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateLink
+Gets or sets the private link type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RdpAccessExpiry
 Specifies the expiration, as a DateTime object, for Remote Desktop Protocol (RDP) access to a cluster.
 
@@ -735,6 +1080,22 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceProviderConnection
+Gets or sets the resource provider connection type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Inbound, Outbound
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -805,8 +1166,114 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageAccountKey
+Gets or sets the Storage Account Access Key for the Storage Account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountManagedIdentity
+Gets or sets the storage account managed identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceId
+Gets or sets the Storage Resource Id for the Storage Account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+Gets or sets the type of the storage account.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureStorage, AzureDataLakeStore, AzureDataLakeStorageGen2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageContainer
+Gets or sets the StorageContainer name for the default Azure Storage Account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageFileSystem
+Gets or sets the file system for the default Azure Data Lake Storage Gen2 account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageRootPath
+Gets or sets the path to the root of the cluster in the default Data Lake Store Account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubnetName
-Specifies the name of a subnet within the chosen virtual network for the cluster.
+Gets or sets the subnet name for this HDInsight cluster.
 
 ```yaml
 Type: System.String

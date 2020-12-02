@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
+            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
+
             AzureSqlDatabaseImportExportBaseModel exportRequest = new AzureSqlDatabaseImportExportBaseModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -51,7 +53,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 ServerName = ServerName,
                 StorageKey = StorageKey,
                 StorageKeyType = StorageKeyType,
-                StorageUri = StorageUri
+                StorageUri = StorageUri,
+                NetworkIsolationSettings = networkIsolationSettings
             };
             return exportRequest;
         }

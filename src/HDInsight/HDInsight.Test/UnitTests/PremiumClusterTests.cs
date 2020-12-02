@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private NewAzureHDInsightClusterCommand cmdlet;
         private const string StorageName = "PlaceStorageName.blob.core.windows.net";
+        private const string StorageAccountResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fakerg/providers/Microsoft.Storage/storageAccounts/PlaceStorageName";
         private const string StorageKey = "PlaceStorageKey";
         private const int ClusterSize = 4;
 
@@ -54,8 +55,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterSizeInNodes = ClusterSize;
             cmdlet.Location = Location;
             cmdlet.HttpCredential = _httpCred;
-            cmdlet.DefaultStorageAccountName = StorageName;
-            cmdlet.DefaultStorageAccountKey = StorageKey;
+            cmdlet.StorageAccountResourceId = StorageAccountResourceId;
+            cmdlet.StorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
             cmdlet.ClusterTier = Tier.Premium;
             cmdlet.SshCredential = _httpCred;
@@ -101,19 +102,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
-                parameters =>
-                    parameters.ClusterSizeInNodes == ClusterSize &&
-                    parameters.DefaultStorageInfo as AzureStorageInfo != null &&
-                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountName == StorageName &&
-                    ((AzureStorageInfo)parameters.DefaultStorageInfo).StorageAccountKey == StorageKey &&
-                    parameters.Location == Location &&
-                    parameters.UserName == _httpCred.UserName &&
-                    parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.SshUserName == _httpCred.UserName &&
-                    parameters.SshPassword == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.ClusterTier == Tier.Premium),It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
+                             parameters => parameters.Location == Location &&
+                             parameters.Properties.ClusterDefinition.Kind == ClusterType &&
+                             parameters.Properties.OsType == OSType.Linux
+                             )))
             .Returns(cluster)
             .Verifiable();
 
