@@ -116,5 +116,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the backup storage redundancy for the database
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
     }
 }

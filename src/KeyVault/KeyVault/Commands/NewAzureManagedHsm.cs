@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Create a new managed HSM.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedHsm", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
     public class NewAzureManagedHsm : KeyVaultManagementCmdletBase
     {

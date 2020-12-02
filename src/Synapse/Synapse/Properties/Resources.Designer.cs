@@ -61,11 +61,83 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with any service principal display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADServicePrincipal -SearchString &quot;{1}&quot;..
+        /// </summary>
+        internal static string ADApplicationDisplayNameMismatch {
+            get {
+                return ResourceManager.GetString("ADApplicationDisplayNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or use use Get-AzADServicePrincipal -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADApplicationMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADApplicationMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden..
+        /// </summary>
+        internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
+            get {
+                return ResourceManager.GetString("AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscribe the event trigger &apos;{0}&apos; to external service events..
         /// </summary>
         internal static string AddingSynapseTriggerSubscribe {
             get {
                 return ResourceManager.GetString("AddingSynapseTriggerSubscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
+        /// </summary>
+        internal static string ADDuplicateGroupAndApplicationFound {
+            get {
+                return ResourceManager.GetString("ADDuplicateGroupAndApplicationFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADGroupMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group or application you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication..
+        /// </summary>
+        internal static string ADObjectNotFound {
+            get {
+                return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADUserMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("ComfirmToRemoveSqlActiveDirectoryAdministrator", resourceCulture);
             }
         }
         
@@ -121,6 +193,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string CreatingFirewallRule {
             get {
                 return ResourceManager.GetString("CreatingFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating a restore point in SQL pool &apos;{0}&apos; under Workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("CreatingSqlPoolRestorePoint", resourceCulture);
             }
         }
         
@@ -197,6 +278,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
+        /// </summary>
+        internal static string EmailsAreNotValid {
+            get {
+                return ResourceManager.GetString("EmailsAreNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string EnablingSynapseSparkPoolAutoPause {
@@ -211,6 +301,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EnablingSynapseSparkPoolAutoScale {
             get {
                 return ResourceManager.GetString("EnablingSynapseSparkPoolAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
+        /// </summary>
+        internal static string FailedToAddRoleAssignmentForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToAddRoleAssignmentForStorageAccount", resourceCulture);
             }
         }
         
@@ -328,6 +427,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string FailedToDiscoverWorkspace {
             get {
                 return ResourceManager.GetString("FailedToDiscoverWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get Role Assignments for Storage Account &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailedToGetRoleAssignmentsForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToGetRoleAssignmentsForStorageAccount", resourceCulture);
             }
         }
         
@@ -451,6 +559,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
+        /// </summary>
+        internal static string InvalidADGroupNotSecurity {
+            get {
+                return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?.
+        /// </summary>
+        internal static string InvalidBlobStorageSasUri {
+            get {
+                return ResourceManager.GetString("InvalidBlobStorageSasUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All keys in the parameters hashtable must be of type string since they represent pipeline parameter names..
         /// </summary>
         internal static string InvalidCastParameterKeyExceptionMessage {
@@ -469,6 +595,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other excluded detection types..
+        /// </summary>
+        internal static string InvalidExcludedDetectionTypeSet {
+            get {
+                return ResourceManager.GetString("InvalidExcludedDetectionTypeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only self-hosted integration runtime can be shared..
         /// </summary>
         internal static string InvalidIntegrationRuntimeSharing {
@@ -483,6 +618,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string InvalidJobType {
             get {
                 return ResourceManager.GetString("InvalidJobType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter format for keyId: &apos;{0}&apos;. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901.
+        /// </summary>
+        internal static string InvalidKeyId {
+            get {
+                return ResourceManager.GetString("InvalidKeyId", resourceCulture);
             }
         }
         
@@ -546,6 +690,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string NeedIntegrationRuntimeType {
             get {
                 return ResourceManager.GetString("NeedIntegrationRuntimeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide valid value for StorageAccountName or BlobStorageSasUri parameter..
+        /// </summary>
+        internal static string NoStorageAccountSpecified {
+            get {
+                return ResourceManager.GetString("NoStorageAccountSpecified", resourceCulture);
             }
         }
         
@@ -658,6 +811,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse Sql Pool Restore Point &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseTrigger {
@@ -708,6 +870,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingIntegrationRuntimeNode {
             get {
                 return ResourceManager.GetString("RemovingIntegrationRuntimeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the active directory admin in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("RemovingSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing audit settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolAudit {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolAudit", resourceCulture);
             }
         }
         
@@ -802,6 +982,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting SQL pool Restore Point &apos;{0}&apos; in resource group &apos;{1}&apos; , workspace &apos;{2}&apos;, under  Sql Pool &apos;{3}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSqlPoolRestorePoint {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseTrigger {
@@ -825,6 +1014,33 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemovingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing threat protection settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("RemovingThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing vulnerability assessment settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("RemovingVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing audit settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingWorkspaceAudit {
+            get {
+                return ResourceManager.GetString("RemovingWorkspaceAudit", resourceCulture);
             }
         }
         
@@ -856,6 +1072,33 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve properties of storage account &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountPropertiesFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountPropertiesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role Definition Name &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string RoleDefinitionNameDoesNotExist {
@@ -870,6 +1113,33 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string ServicePrincipalNameDoesNotExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting an active directory admin in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSqlActiveDirectoryAdministrator {
+            get {
+                return ResourceManager.GetString("SettingSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting audit in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string SettingSqlAudit {
+            get {
+                return ResourceManager.GetString("SettingSqlAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting audit for SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSqlPoolAudit {
+            get {
+                return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
             }
         }
         
@@ -955,6 +1225,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified Restore Point &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string SqlPoolRestorePointDoesNotExist {
+            get {
+                return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
@@ -1014,6 +1293,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StoppingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage acount name is not provided..
+        /// </summary>
+        internal static string StorageAccountNameParameterException {
+            get {
+                return ResourceManager.GetString("StorageAccountNameParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
+        /// </summary>
+        internal static string StorageAccountNotFound {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
             }
         }
         
@@ -1140,6 +1437,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("UpdatingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating threat protection settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdatingThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("UpdatingThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating vulnerability assessment settings in workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdatingVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("UpdatingVulnerabilityAssessmentSetting", resourceCulture);
             }
         }
         

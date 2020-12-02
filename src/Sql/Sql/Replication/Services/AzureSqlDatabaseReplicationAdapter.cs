@@ -13,14 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
@@ -277,6 +274,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 },
                 LicenseType = model.LicenseType,
                 StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                SecondaryType = model.SecondaryType,
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);

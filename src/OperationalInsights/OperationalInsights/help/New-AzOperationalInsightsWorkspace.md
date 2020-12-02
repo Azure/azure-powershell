@@ -9,7 +9,7 @@ schema: 2.0.0
 # New-AzOperationalInsightsWorkspace
 
 ## SYNOPSIS
-Creates a workspace.
+Creates a workspace, or restore a soft-deleted workspace.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the specified resource group and location.
+The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the specified resource group and location. Or restore a soft-deleted workspace.
 
 ## EXAMPLES
 

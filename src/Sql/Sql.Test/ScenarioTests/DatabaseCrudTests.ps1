@@ -59,7 +59,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$job2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -AsJob
+				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -AsJob
 		$job2 | Wait-Job
 		$dwdb  = $job2.Output
 
@@ -68,7 +68,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 		Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb.Edition DataWarehouse
-		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb.CollationName $collationName
 
 		Write-Debug "Create with all parameters"
@@ -391,17 +391,17 @@ function Test-UpdateDatabaseInternal ($location = "southeastasia")
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
+		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 
 		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
-				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse -AsJob
+				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200c -Edition DataWarehouse -AsJob
 		$job | Wait-Job
 		$dwdb2 = $job.Output
 
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
-		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200
+		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200c
 		Assert-AreEqual $dwdb2.CollationName $collationName
 	}
 	finally
@@ -759,7 +759,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		# Create data warehouse database.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100c
 		$dwdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName 
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $dwdb.MaxSizeBytes
@@ -885,7 +885,7 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 		# Create data warehouse database
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
+			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 
 		Remove-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force

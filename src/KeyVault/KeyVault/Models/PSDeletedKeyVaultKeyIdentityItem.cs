@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSDeletedKeyVaultKeyIdentityItem()
         { }
 
-        internal PSDeletedKeyVaultKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper) : base(keyItem, vaultUriHelper)
+        internal PSDeletedKeyVaultKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm = false) : base(keyItem, vaultUriHelper, isHsm)
         {
             ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
             DeletedDate = keyItem.DeletedDate;
         }
-        internal PSDeletedKeyVaultKeyIdentityItem(Track2Sdk.DeletedKey deletedKey, VaultUriHelper vaultUriHelper): base(deletedKey.Properties, vaultUriHelper)
+        internal PSDeletedKeyVaultKeyIdentityItem(Track2Sdk.DeletedKey deletedKey, VaultUriHelper vaultUriHelper, bool isHsm = false) : base(deletedKey.Properties, vaultUriHelper, isHsm)
         {
             ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
             DeletedDate = deletedKey.DeletedOn?.UtcDateTime;

@@ -96,21 +96,35 @@ Function Move-Generation2Master {
         }
         #EndRegion
 
-        #Region generate-info.json
-        
-        $generate_info = @{}
+        #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
+        $generateInfo = @{}
         $repo = "https://github.com/Azure/azure-rest-api-specs"
         $commit = git ls-remote $repo HEAD
-        $generate_info.Add("swagger_commit", $commit.Substring(0, 40))
-        $generate_info.Add("node", (node --version))
+        $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
+        $generateInfo.Add("node", (node --version))
         $autorest_info = (npm ls -g @autorest/autorest).Split('@')
-        $generate_info.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
+        $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
         $extensions = ls ~/.autorest
         ForEach ($ex in $extensions) {
             $info = $ex.Name.Split('@')
-            $generate_info.Add($info[1], $info[2])
+            $packageName = $info[1]
+            $version = $info[2]
+            if ($generateInfo.ContainsKey($packageName))
+            {
+                $preVersion = $generateInfo[$packageName]
+                $versionFields = $version.Split('.')
+                $preVersionFields = $preVersion.Split('.')
+                if (($versionFields[0] -lt $preVersionFields[0]) -or ($versionFields[1] -lt $preVersionFields[1]) -or ($versionFields[2] -lt $preVersionFields[2]))
+                {
+                    $generateInfo[$packageName] = $version
+                }
+            }
+            else
+            {
+                $generateInfo.Add($packageName, $version)
+            }
         }
-        Set-Content -Path (Join-Path $DestPath generate-info.json) -Value (ConvertTo-Json $generate_info)
+        Set-Content -Path (Join-Path $DestPath generate-info.json) -Value (ConvertTo-Json $generateInfo)
         #EndRegion
 
         #Region update azure-powershell-modules.md
@@ -119,8 +133,8 @@ Function Move-Generation2Master {
 
         #Region update GeneratedModuleList
         $GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "..", "GeneratedModuleList.txt")
-        $Modules = Get-Content $GeneratedModuleListPath + "Az.$ModuleName"
-        $NewModules = $Modules | Sort-Object
+        $Modules = (Get-Content $GeneratedModuleListPath) + "Az.$ModuleName"
+        $NewModules = $Modules | Sort-Object | Get-Unique
         Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
 
