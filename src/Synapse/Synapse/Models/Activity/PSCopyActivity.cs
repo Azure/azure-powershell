@@ -148,16 +148,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new CopyActivity(this.Name, this.Source?.ToSdkObject(), this.Sink.ToSdkObject());
+            var activity = new CopyActivity(this.Name, this.Source?.ToSdkObject(), this.Sink?.ToSdkObject());
             this.Inputs?.ForEach(item => activity.Inputs.Add(item));
             this.Outputs?.ForEach(item => activity.Outputs.Add(item));
             activity.Translator = this.Translator;
             activity.EnableStaging = this.EnableStaging;
-            activity.StagingSettings = this.StagingSettings.ToSdkObject();
+            activity.StagingSettings = this.StagingSettings?.ToSdkObject();
             activity.ParallelCopies = this.ParallelCopies;
             activity.DataIntegrationUnits = this.DataIntegrationUnits;
             activity.EnableSkipIncompatibleRow = this.EnableSkipIncompatibleRow;
-            activity.RedirectIncompatibleRowSettings = this.RedirectIncompatibleRowSettings.ToSdkObject();
+            activity.RedirectIncompatibleRowSettings = this.RedirectIncompatibleRowSettings?.ToSdkObject();
             this.PreserveRules?.ForEach(item => activity.PreserveRules.Add(item));
             this.Preserve?.ForEach(item => activity.Preserve.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
