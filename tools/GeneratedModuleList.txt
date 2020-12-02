@@ -1,5 +1,6 @@
 Az.AppConfiguration
 Az.Blockchain
+Az.CloudService
 Az.ConnectedKubernetes
 Az.CustomProviders
 Az.Databricks

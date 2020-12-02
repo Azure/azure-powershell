@@ -600,5 +600,9 @@
   {
     "regex": "DigitalTwins",
     "alias": "DigitalTwins"
+  },
+  {
+    "regex": "CloudService",
+    "alias": "CloudService"
   }
 ]

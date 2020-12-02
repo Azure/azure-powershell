@@ -25,6 +25,7 @@ Billing                               | `Az.Billing`                            
 Blockchain                            | `Az.Blockchain`                         | [![Blockchain]][BlockchainGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
+Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
@@ -139,6 +140,7 @@ Web App Service                       | `Az.Websites`                           
 [Blockchain]:                 https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
+[CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
@@ -250,6 +252,7 @@ Web App Service                       | `Az.Websites`                           
 [BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
+[CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/

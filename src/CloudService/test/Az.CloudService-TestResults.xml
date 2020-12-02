@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="30" errors="0" failures="0" not-run="0" inconclusive="0" ignored="19" skipped="0" invalid="0" date="2020-12-01" time="15:40:14">
+  <environment nunit-version="2.5.8.0" platform="Microsoft Windows 10 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" os-version="10.0.19042" user-domain="FAREAST" user="yunwang" clr-version="Unknown" machine-name="DESKTOP-5DFLPGL" cwd="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="13.9687" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="1.1907" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudService" executed="True" result="Success" success="True" time="0.7922" asserts="0" description="Get-AzCloudService">
+            <results>
+              <test-case description="List cloud service in subscription" name="Get-AzCloudService.List cloud service in subscription" time="0.2322" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List cloud service in ResourceGroup" name="Get-AzCloudService.List cloud service in ResourceGroup" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get cloud service" name="Get-AzCloudService.Get cloud service" time="0.0566" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzCloudService.GetViaIdentity" time="0.0621" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceInstanceView.Tests.ps1" executed="True" result="Success" success="True" time="0.4924" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceInstanceView.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServiceInstanceView" executed="True" result="Success" success="True" time="0.1675" asserts="0" description="Get-AzCloudServiceInstanceView">
+            <results>
+              <test-case description="Get cloud service InstanceView" name="Get-AzCloudServiceInstanceView.Get cloud service InstanceView" time="0.0543" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceNetworkInterfaces.Tests.ps1" executed="True" result="Ignored" success="True" time="0.405" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceNetworkInterfaces.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServiceNetworkInterfaces" executed="True" result="Ignored" success="True" time="0.0967" asserts="0" description="Get-AzCloudServiceNetworkInterfaces">
+            <results>
+              <test-case description="CloudServiceName" name="Get-AzCloudServiceNetworkInterfaces.CloudServiceName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CloudService" name="Get-AzCloudServiceNetworkInterfaces.CloudService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServicePublicIPAddress.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4519" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServicePublicIPAddress.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServicePublicIPAddress" executed="True" result="Ignored" success="True" time="0.1077" asserts="0" description="Get-AzCloudServicePublicIPAddress">
+            <results>
+              <test-case description="CloudServiceName" name="Get-AzCloudServicePublicIPAddress.CloudServiceName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CloudService" name="Get-AzCloudServicePublicIPAddress.CloudService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstance.Tests.ps1" executed="True" result="Success" success="True" time="0.5843" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServiceRoleInstance" executed="True" result="Success" success="True" time="0.2582" asserts="0" description="Get-AzCloudServiceRoleInstance">
+            <results>
+              <test-case description="List cloud service role instance" name="Get-AzCloudServiceRoleInstance.List cloud service role instance" time="0.0305" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List cloud service role instance InstanceView via Expand" name="Get-AzCloudServiceRoleInstance.List cloud service role instance InstanceView via Expand" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get cloud service role instance" name="Get-AzCloudServiceRoleInstance.Get cloud service role instance" time="0.0215" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get cloud service role instance InstanceView via Expand" name="Get-AzCloudServiceRoleInstance.Get cloud service role instance InstanceView via Expand" time="0.0103" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get cloud service role instance via identity" name="Get-AzCloudServiceRoleInstance.Get cloud service role instance via identity" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get cloud service role instance InstanceView via identity and Expand" name="Get-AzCloudServiceRoleInstance.Get cloud service role instance InstanceView via identity and Expand" time="0.0121" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstanceRemoteDesktopFile.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4848" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstanceRemoteDesktopFile.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServiceRoleInstanceRemoteDesktopFile" executed="True" result="Ignored" success="True" time="0.1319" asserts="0" description="Get-AzCloudServiceRoleInstanceRemoteDesktopFile">
+            <results>
+              <test-case description="Get remote desktop file" name="Get-AzCloudServiceRoleInstanceRemoteDesktopFile.Get remote desktop file" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstanceView.Tests.ps1" executed="True" result="Success" success="True" time="0.4419" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Get-AzCloudServiceRoleInstanceView.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCloudServiceRoleInstanceView" executed="True" result="Success" success="True" time="0.1274" asserts="0" description="Get-AzCloudServiceRoleInstanceView">
+            <results>
+              <test-case description="Get cloud service role instance InstanceView" name="Get-AzCloudServiceRoleInstanceView.Get cloud service role instance InstanceView" time="0.0198" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRebuild.Tests.ps1" executed="True" result="Success" success="True" time="0.4627" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRebuild.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzCloudServiceRebuild" executed="True" result="Success" success="True" time="0.1687" asserts="0" description="Invoke-AzCloudServiceRebuild">
+            <results>
+              <test-case description="Rebuild cloud service" name="Invoke-AzCloudServiceRebuild.Rebuild cloud service" time="0.0301" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Rebuild cloud service via identity" name="Invoke-AzCloudServiceRebuild.Rebuild cloud service via identity" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceReimage.Tests.ps1" executed="True" result="Success" success="True" time="0.4694" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceReimage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzCloudServiceReimage" executed="True" result="Success" success="True" time="0.1712" asserts="0" description="Invoke-AzCloudServiceReimage">
+            <results>
+              <test-case description="Reimage cloud service" name="Invoke-AzCloudServiceReimage.Reimage cloud service" time="0.0292" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Reimage cloud service via identity" name="Invoke-AzCloudServiceReimage.Reimage cloud service via identity" time="0.0434" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRoleInstanceRebuild.Tests.ps1" executed="True" result="Success" success="True" time="0.5022" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRoleInstanceRebuild.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzCloudServiceRoleInstanceRebuild" executed="True" result="Success" success="True" time="0.1914" asserts="0" description="Invoke-AzCloudServiceRoleInstanceRebuild">
+            <results>
+              <test-case description="Rebuild cloud service role instance" name="Invoke-AzCloudServiceRoleInstanceRebuild.Rebuild cloud service role instance" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Rebuild cloud service role instance via identity" name="Invoke-AzCloudServiceRoleInstanceRebuild.Rebuild cloud service role instance via identity" time="0.0696" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRoleInstanceReimage.Tests.ps1" executed="True" result="Success" success="True" time="0.4822" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Invoke-AzCloudServiceRoleInstanceReimage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzCloudServiceRoleInstanceReimage" executed="True" result="Success" success="True" time="0.1546" asserts="0" description="Invoke-AzCloudServiceRoleInstanceReimage">
+            <results>
+              <test-case description="Reimage cloud service role instance" name="Invoke-AzCloudServiceRoleInstanceReimage.Reimage cloud service role instance" time="0.0253" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Reimage cloud service role instance via identity" name="Invoke-AzCloudServiceRoleInstanceReimage.Reimage cloud service role instance via identity" time="0.0185" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="0.6322" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudService" executed="True" result="Success" success="True" time="0.2842" asserts="0" description="New-AzCloudService">
+            <results>
+              <test-case description="UpdateExpanded: Create new cloud service" name="New-AzCloudService.UpdateExpanded: Create new cloud service" time="0.1593" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceDiagnosticsExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4758" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceDiagnosticsExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceDiagnosticsExtension" executed="True" result="Ignored" success="True" time="0.1091" asserts="0" description="New-AzCloudServiceDiagnosticsExtension">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceDiagnosticsExtension.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceExtensionObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4337" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceExtensionObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceExtensionObject" executed="True" result="Ignored" success="True" time="0.108" asserts="0" description="New-AzCloudServiceExtensionObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceExtensionObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceLoadBalancerConfigurationObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4589" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceLoadBalancerConfigurationObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceLoadBalancerConfigurationObject" executed="True" result="Ignored" success="True" time="0.0927" asserts="0" description="New-AzCloudServiceLoadBalancerConfigurationObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceLoadBalancerConfigurationObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4181" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject" executed="True" result="Ignored" success="True" time="0.0919" asserts="0" description="New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceRemoteDesktopExtensionObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.413" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceRemoteDesktopExtensionObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceRemoteDesktopExtensionObject" executed="True" result="Ignored" success="True" time="0.0923" asserts="0" description="New-AzCloudServiceRemoteDesktopExtensionObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceRemoteDesktopExtensionObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceRoleProfilePropertiesObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4169" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceRoleProfilePropertiesObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceRoleProfilePropertiesObject" executed="True" result="Ignored" success="True" time="0.1041" asserts="0" description="New-AzCloudServiceRoleProfilePropertiesObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceRoleProfilePropertiesObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceVaultSecretGroupObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.5186" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\New-AzCloudServiceVaultSecretGroupObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCloudServiceVaultSecretGroupObject" executed="True" result="Ignored" success="True" time="0.1156" asserts="0" description="New-AzCloudServiceVaultSecretGroupObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzCloudServiceVaultSecretGroupObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Remove-AzCloudService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4522" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Remove-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzCloudService" executed="True" result="Ignored" success="True" time="0.103" asserts="0" description="Remove-AzCloudService">
+            <results>
+              <test-case description="Delete cloud service" name="Remove-AzCloudService.Delete cloud service" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzCloudService.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Remove-AzCloudServiceRoleInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4121" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Remove-AzCloudServiceRoleInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzCloudServiceRoleInstance" executed="True" result="Ignored" success="True" time="0.0929" asserts="0" description="Remove-AzCloudServiceRoleInstance">
+            <results>
+              <test-case description="Delete role instance" name="Remove-AzCloudServiceRoleInstance.Delete role instance" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete role instance via identity" name="Remove-AzCloudServiceRoleInstance.Delete role instance via identity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Restart-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="0.5804" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Restart-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzCloudService" executed="True" result="Success" success="True" time="0.21" asserts="0" description="Restart-AzCloudService">
+            <results>
+              <test-case description="Restart cloud service" name="Restart-AzCloudService.Restart cloud service" time="0.0719" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Restart cloud service via identity" name="Restart-AzCloudService.Restart cloud service via identity" time="0.0383" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Restart-AzCloudServiceRoleInstance.Tests.ps1" executed="True" result="Success" success="True" time="0.509" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Restart-AzCloudServiceRoleInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzCloudServiceRoleInstance" executed="True" result="Success" success="True" time="0.1859" asserts="0" description="Restart-AzCloudServiceRoleInstance">
+            <results>
+              <test-case description="Restart cloud service role instance" name="Restart-AzCloudServiceRoleInstance.Restart cloud service role instance" time="0.0257" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Restart cloud service role instance via identity" name="Restart-AzCloudServiceRoleInstance.Restart cloud service role instance via identity" time="0.0679" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Set-AzCloudServiceUpdateDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.406" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Set-AzCloudServiceUpdateDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzCloudServiceUpdateDomain" executed="True" result="Ignored" success="True" time="0.0892" asserts="0" description="Set-AzCloudServiceUpdateDomain">
+            <results>
+              <test-case description="Update role instances for update domain 0" name="Set-AzCloudServiceUpdateDomain.Update role instances for update domain 0" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Start-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="0.4793" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Start-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzCloudService" executed="True" result="Success" success="True" time="0.1823" asserts="0" description="Start-AzCloudService">
+            <results>
+              <test-case description="Start cloud service" name="Start-AzCloudService.Start cloud service" time="0.0321" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Start cloud service via identity" name="Start-AzCloudService.Start cloud service via identity" time="0.0211" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Stop-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="0.4635" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Stop-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzCloudService" executed="True" result="Success" success="True" time="0.1327" asserts="0" description="Stop-AzCloudService">
+            <results>
+              <test-case description="PowerOff/Stop cloud service" name="Stop-AzCloudService.PowerOff/Stop cloud service" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="PowerOff/Stop cloud service via identity" name="Stop-AzCloudService.PowerOff/Stop cloud service via identity" time="0.02" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Switch-AzCloudService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4565" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Switch-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Switch-AzCloudService" executed="True" result="Ignored" success="True" time="0.135" asserts="0" description="Switch-AzCloudService">
+            <results>
+              <test-case description="CloudServiceName" name="Switch-AzCloudService.CloudServiceName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CloudService" name="Switch-AzCloudService.CloudService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Update-AzCloudService.Tests.ps1" executed="True" result="Success" success="True" time="0.4749" asserts="0" description="C:\Users\yunwang\source\repos\azure-powershell-generation-db\src\CloudService\test\Update-AzCloudService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzCloudService" executed="True" result="Success" success="True" time="0.1404" asserts="0" description="Update-AzCloudService">
+            <results>
+              <test-case description="Update cloud service via identity" name="Update-AzCloudService.Update cloud service via identity" time="0.0429" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
