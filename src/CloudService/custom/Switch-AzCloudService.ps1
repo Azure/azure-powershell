@@ -153,14 +153,6 @@ POST
 Request Body :
 $requestBody"
 
-        # Write-Host "Performing switch cloud service (VIP swap) action between ($SourceCloudService.Name) and ($TargetCloudService.Name)"
-        # Write-Host
-        # Write-Host "Request URI : $uriToInvoke"
-        # Write-Host "POST"
-        # Write-Host
-        # Write-Host "Request Body :"
-        # Write-Host $requestBody
-
         # Invoke the VIP swap API
         if ($PSCmdlet.ShouldProcess($SourceCloudService.Name + " <=> " + $TargetCloudService.Name,'VIP swap')) {
             $result = Invoke-AzRestMethod -Method POST -Path $uriToInvoke -Payload $requestBody 
