@@ -22,6 +22,7 @@
 * Add example to Set-AzServiceFabricSetting with SettingsSectionDescription param
 * Update application related cmdlets to call out that support is only for ARM deployed resources
 * Mark for deprecation cluster cert cmdlets Add-AzureRmServiceFabricClusterCertificate and Remove-AzureRmServiceFabricClusterCertificate
+* Fix add-AzServiceFabricNodeType. Add node type to service fabric cluster before creating virtual machine scale set.
 
 ## Version 2.2.0
 
