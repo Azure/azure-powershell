@@ -144,7 +144,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Adding support for Data Collection Rules and Data Collection Rule Association'
+        ReleaseNotes = '* Fixed the bug that warning message cannot be suppressed. [#12889]
+* Supported ''SkipMetricValidation'' parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn''t yet emitted, by causing the metric validation to be skipped.'
 
         # Prerelease string of this module
         # Prerelease = ''
