@@ -12,14 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzCostManagementQuery' {
-    It 'UsageExpanded'  {
+    It 'UsageExpanded' -skip {
         $invbokeQueryResult = Invoke-AzCostManagementQuery -Scope "/subscriptions/$($env.SubscriptionId)" -Timeframe MonthToDate -Type Usage -DatasetGranularity 'Daily'
-        $invbokeQueryResult.Column.Name.Contains('UsageDate')
+        $invbokeQueryResult.Column.Name.Contains('UsageDate') | Should -Be $true
     }
 
-    It 'UsageExpanded1' -skip {
-        #$DimensionObject = new-AzCostManagementQueryComparisonExpressionObject -name 'ResourceGroup' -Operator 'In' -Value 'API'
-        #$FilterObject = New-AzCostManagementQueryFilterObject -Dimension $DimensionObject
-        #Invoke-AzCostManagementQuery -ExternalCloudProviderId 100 -ExternalCloudProviderType externalBillingAccounts -Timeframe MonthToDate -type Usage -DatasetFilter $FilterObject -DatasetGranularity Daily -debug 
-    }
+    # It 'UsageExpanded1' -skip {
+    #     #$DimensionObject = new-AzCostManagementQueryComparisonExpressionObject -name 'ResourceGroup' -Operator 'In' -Value 'API'
+    #     #$FilterObject = New-AzCostManagementQueryFilterObject -Dimension $DimensionObject
+    #     #Invoke-AzCostManagementQuery -ExternalCloudProviderId 'Microsoft.Compute' -ExternalCloudProviderType externalBillingAccounts -Timeframe MonthToDate -type Usage -DatasetFilter $FilterObject -DatasetGranularity Daily -debug
+    # }
 }

@@ -29,15 +29,11 @@ Update operation requires latest eTag to be set in the request.
 You may obtain the latest eTag by performing a get operation.
 Create operation does not require eTag.
 
-### [New-AzCostManagementQueryColumnObject](New-AzCostManagementQueryColumnObject.md)
-Create a in-memory object for QueryColumn
-
 ### [New-AzCostManagementQueryComparisonExpressionObject](New-AzCostManagementQueryComparisonExpressionObject.md)
 Create a in-memory object for QueryComparisonExpression
 
 ### [New-AzCostManagementQueryFilterObject](New-AzCostManagementQueryFilterObject.md)
-Create a in-memory object for QueryFilter.
-On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
+Create a in-memory object for QueryFilter
 
 ### [Remove-AzCostManagementExport](Remove-AzCostManagementExport.md)
 The operation to delete a export.

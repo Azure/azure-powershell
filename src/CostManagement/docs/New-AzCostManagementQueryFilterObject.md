@@ -8,8 +8,7 @@ schema: 2.0.0
 # New-AzCostManagementQueryFilterObject
 
 ## SYNOPSIS
-Create a in-memory object for QueryFilter.
-On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
+Create a in-memory object for QueryFilter
 
 ## SYNTAX
 
@@ -19,8 +18,7 @@ New-AzCostManagementQueryFilterObject [-And <IQueryFilter[]>] [-Dimensions <IQue
 ```
 
 ## DESCRIPTION
-Create a in-memory object for QueryFilter.
-On a QueryFilter one and only one of and/or/not/dimension/tag can be set.
+Create a in-memory object for QueryFilter
 
 ## EXAMPLES
 

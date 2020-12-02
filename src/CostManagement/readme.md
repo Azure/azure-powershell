@@ -87,13 +87,12 @@ directive:
       parameter-name: Scope
       parameter-description: This parameter defines the scope of costmanagement from different perspectives 'Subscription','ResourceGroup' and 'Provide Service'.
   - where:
-      model-name: QueryFilter
-      property-name: Dimension
-    set:
-      property-name: Dimensions
-  - where:
       subject: Export
       verb: New
+    hide: true
+  - where:
+      subject: Export
+      verb: Update
     hide: true
   - from: source-file-csharp
     where: $
@@ -147,9 +146,51 @@ directive:
         return {
           "type": "string"
         }
-  # - from: swagger-document
-  #   where: $.definitions.QueryFilter.properties
-  #   transform: $ = $.replace('dimension','dimensions');
+  - from: swagger-document
+    where: $.definitions.QueryFilter.properties
+    transform: >-
+        return {
+          "and": {
+            "description": "The logical \"AND\" expression. Must have at least 2 items.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/QueryFilter"
+            },
+            "minItems": 2
+          },
+          "or": {
+            "description": "The logical \"OR\" expression. Must have at least 2 items.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/QueryFilter"
+            },
+            "minItems": 2
+          },
+          "not": {
+            "description": "The logical \"NOT\" expression.",
+            "$ref": "#/definitions/QueryFilter"
+          },
+          "dimensions": {
+            "description": "Has comparison expression for a dimension",
+            "$ref": "#/definitions/QueryComparisonExpression"
+          },
+          "tag": {
+            "description": "Has comparison expression for a tag",
+            "$ref": "#/definitions/QueryComparisonExpression"
+          }
+        }
+  - where:
+      model-name: QueryFilter
+      property-name: Dimension
+    set:
+      property-name: Dimensions
+  - where:
+      model-name: QueryResult
+    set:
+      format-table:
+        properties:
+          - Column
+          - Row
   - no-inline:
     - QueryFilter
     - ReportConfigFilter

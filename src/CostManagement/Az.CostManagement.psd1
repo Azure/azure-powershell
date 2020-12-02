@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CostManagement.private.dll'
   FormatsToProcess = './Az.CostManagement.format.ps1xml'
-  FunctionsToExport = 'Get-AzCostManagementExport', 'Get-AzCostManagementExportExecutionHistory', 'Invoke-AzCostManagementExecuteExport', 'Invoke-AzCostManagementQuery', 'New-AzCostManagementExport', 'New-AzCostManagementQueryColumnObject', 'New-AzCostManagementQueryComparisonExpressionObject', 'New-AzCostManagementQueryFilterObject', 'Remove-AzCostManagementExport', 'Update-AzCostManagementExport', '*'
+  FunctionsToExport = 'Get-AzCostManagementExport', 'Get-AzCostManagementExportExecutionHistory', 'Invoke-AzCostManagementExecuteExport', 'Invoke-AzCostManagementQuery', 'New-AzCostManagementExport', 'New-AzCostManagementQueryComparisonExpressionObject', 'New-AzCostManagementQueryFilterObject', 'Remove-AzCostManagementExport', 'Update-AzCostManagementExport', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
