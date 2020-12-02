@@ -8,6 +8,12 @@ Param(
     [Parameter(ParameterSetName='ReleaseAz', Mandatory = $true)]
     [string]$Release,
 
+    [Parameter(ParameterSetName='ReleaseAzByMonthAndYear', Mandatory = $true)]
+    [string]$MonthName,
+
+    [Parameter(ParameterSetName='ReleaseAzByMonthAndYear', Mandatory = $true)]
+    [string]$Year,
+
     [Parameter(ParameterSetName='ReleaseSingleModule', Mandatory = $true)]
     [string]$ModuleName,
 
@@ -185,9 +191,13 @@ switch ($PSCmdlet.ParameterSetName)
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
     }
 
-    "ReleaseAz"
+    "ReleaseAzByMonthAndYear"
     {
-
+        $Release = "$MonthName $Year"
+    }
+    
+    {$PSItem.StartsWith("ReleaseAz")}
+    {        
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
         $ExpectJsonHashSet = @{}

@@ -42,8 +42,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
+        private static readonly Version supportedPSVersion = new Version(7, 0);
+
         public override void ExecuteCmdlet()
         {
+            if (Host.Version < supportedPSVersion)
+            {
+                throw new PSNotSupportedException($"PowerShell {supportedPSVersion} or higher is required");
+            }
+
             ByFactoryObject();
 
             // ValidationNotNullOrEmpty doesn't handle whitespaces well

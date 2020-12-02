@@ -55,10 +55,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string AzureKeyVaultManagedStorageQueueSasParameters = "AzureKeyVaultManagedStorageQueueSasParameters";
         public const string AzureKeyVaultManagedStorageShareSasParameters = "AzureKeyVaultManagedStorageShareSasParameters";
         public const string AzureKeyVaultManagedStorageTableSasParameters = "AzureKeyVaultManagedStorageTableSasParameters";
-
-        public const string ManagedHsm = "ManagedHsm";
-        public const string ManagedHsmRoleDefinition = ManagedHsm + "RoleDefinition";
-        public const string ManagedHsmRoleAssignment = ManagedHsm + "RoleAssignment";
+        public const string KeyVault = "KeyVault";
+        public const string KeyVaultHsmRoleDefinition = KeyVault + "RoleDefinition";
+        public const string KeyVaultRoleAssignment = KeyVault + "RoleAssignment";
     }
 
     public static class ResourceType

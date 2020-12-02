@@ -27,6 +27,9 @@ The **New-AzSqlDatabaseExport** cmdlet exports an Azure SQL Database as a .bacpa
 The get export database status request may be sent to retrieve status information for this request.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
+> [!IMPORTANT]
+> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced.
+
 ## EXAMPLES
 
 ### Example 1: Create an export request for a database

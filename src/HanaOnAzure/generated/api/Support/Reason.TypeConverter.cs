@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>TypeConverter implementation for Reason.</summary>
+    /// <summary>
+    /// The reason that a vault name could not be used. The Reason element is only returned if NameAvailable is false.
+    /// </summary>
     public partial class ReasonTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

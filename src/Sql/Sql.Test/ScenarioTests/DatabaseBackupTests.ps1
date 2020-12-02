@@ -30,7 +30,7 @@ function Test-ListDatabaseRestorePoints
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c
 
 		$databaseName = Get-DatabaseName
 		$standarddb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `

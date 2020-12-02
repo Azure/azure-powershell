@@ -166,29 +166,40 @@ function Test-CreateNamedSecondaryDatabase()
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
+	$hsDatabase = Create-HyperscaleDatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{
-		# Create Named Readable Secondary
-		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All
-		Assert-NotNull $readSecondary.LinkId
-		Assert-AreEqual $readSecondary.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $readSecondary.ServerName $server.ServerName
-		Assert-AreEqual $readSecondary.DatabaseName $database.DatabaseName
-		Assert-AreEqual $readSecondary.Role "Primary"
-		Assert-AreEqual $readSecondary.Location $location
-		Assert-AreEqual $readSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
-		Assert-AreEqual $readSecondary.PartnerServerName $partServer.ServerName
-		Assert-AreEqual $readSecondary.PartnerDatabaseName "secondary"
-		Assert-NotNull $readSecondary.PartnerRole
-		Assert-AreEqual $readSecondary.PartnerLocation $location
-		Assert-NotNull $readSecondary.AllowConnections
-		Assert-NotNull $readSecondary.ReplicationState
-		Assert-NotNull $readSecondary.PercentComplete
+		# Create Geo Secondary
+		$geoSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All -SecondaryType "Geo"
+		Assert-NotNull $geoSecondary.LinkId
+		Assert-AreEqual $geoSecondary.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $geoSecondary.ServerName $server.ServerName
+		Assert-AreEqual $geoSecondary.DatabaseName $database.DatabaseName
+		Assert-AreEqual $geoSecondary.Role "Primary"
+		Assert-AreEqual $geoSecondary.Location $location
+		Assert-AreEqual $geoSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
+		Assert-AreEqual $geoSecondary.PartnerServerName $partServer.ServerName
+		Assert-AreEqual $geoSecondary.PartnerDatabaseName "secondary"
+		Assert-NotNull $geoSecondary.PartnerRole
+		Assert-AreEqual $geoSecondary.PartnerLocation $location
+		Assert-NotNull $geoSecondary.AllowConnections
+		Assert-NotNull $geoSecondary.ReplicationState
+		Assert-NotNull $geoSecondary.PercentComplete
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName "secondary"
+		Assert-AreEqual "Geo" $newDb.SecondaryType
+
+		# Create Named Replica
+		$namedReplica = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $hsDatabase.DatabaseName `
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named"
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName "secondary"
+		Assert-AreEqual "Named" $newDb.SecondaryType
 	}
 	finally
 	{
@@ -358,6 +369,16 @@ function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType
 {
 	$databaseName = Get-DatabaseName
 	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType
+}
+
+<#
+	.SYNOPSIS
+	Creates test database
+#>
+function Create-HyperscaleDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
+{
+	$databaseName = Get-DatabaseName
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType
 }
 
 <#

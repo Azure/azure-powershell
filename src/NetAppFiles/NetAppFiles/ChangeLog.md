@@ -18,6 +18,53 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added aesEncryption, ldapSigning properties to ActiveDirectory
+* Fixed Tags in UpdateAzNetAppFilesBackupPolicy
+* Return backupId in Backup and BackupPatch models
+
+## Version 0.2.0
+
+* Add new Backup Policy cmdlets:
+    - `Get-AzNetAppFilesBackupPolicy`
+    - `New-AzNetAppFilesBackupPolicy`
+    - `Remove-AzNetAppFilesBackupPolicy`
+    - `Update-AzNetAppFilesBackupPolicy`    
+* Add new Snapshot Policy cmdlets:
+    - `Get-AzNetAppFilesBackupPolicy`
+    - `New-AzNetAppFilesBackupPolicy`
+    - `Remove-AzNetAppFilesBackupPolicy`
+    - `Update-AzNetAppFilesBackupPolicy`    
+* Add new Backup cmdlets:
+    - `Get-AzNetAppFilesBackup`
+    - `New-AzNetAppFilesBackup`
+    - `Remove-AzNetAppFilesBackup`
+    - `Update-AzNetAppFilesBackup`
+* Add new Active Directory cmdlets:
+    - `Get-AzNetAppFilesActiveDirectory`
+    - `New-AzNetAppFilesActiveDirectory`
+    - `Remove-AzNetAppFilesActiveDirectory`
+    - `Update-AzNetAppFilesActiveDirectory`
+* Add new `Get-AzNetAppFilesVault` cmdlet (use for backups, vaults currently only support getting list of vaults):
+* Add new Set-AzNetAppFilesVolumePool cmdlet, to move volume to another pool
+* Add parameters to `New-AzNetAppFilesVolume` 
+     - Backup to to enable Backups and Backup Policy 
+     - Snapshot to enable Snapshot Policy 
+     - totalThroughputMips
+     - SnapshotDirectoryVisible
+     - BackupId
+     - SecurityStyle
+     - KerberosEnabled
+* Add paramters to `Update-AzNetAppFilesVolume`
+     - Backup to to enable Backups and Backup Policy
+     - totalThroughputMips
+* Add property StatusDetails to Account
+* Add properties to support LDAP over SSL/TLS to ActiveDirectory
+* Add properties to support Kerberos to ExportPolicy rule
+* Add QosType parameter to Pool `New-AzNetAppFilesPool` and `Update-AzNetAppFilesPool`
+* Breaking Removed ServiecLevel from `Update-AzNetAppFilesPool` as that updating servie level is not supported
+* Add `Initialize-AzNetAppFilesReplication` cmdLet
+* Add ForceBreak parameter to `Suspend-AzNetAppFilesReplication` to force break the replication if replication is in status transferring
+
 
 ## Version 0.1.6
 * Added SnapshotId parameter to New-NetAppFilesVolume to create volume from a snapshot

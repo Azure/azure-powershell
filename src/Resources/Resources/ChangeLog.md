@@ -18,9 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
+* Added Tag display support to default formatter for Template Specs 
+
+## Version 3.0.1
 * Fixed an issue where What-If shows two resource group scopes with different casing
 * Updated `Export-AzResourceGroup` to use the SDK.
 * Added culture info to parse methods
+* Fixed issue where attempts to deploy template specs from a subscription outside of the current subscription context would fail
+* Changed Double parser for version parser
 
 ## Version 3.0.0
 * Fixed parsing bug

@@ -459,4 +459,145 @@ Are you sure you want to continue?</value>
   <data name="RestoringSynapseSqlPool" xml:space="preserve">
     <value>Creating a new SQL pool restored from '{0}' in resource group '{1}' under parent Workspace '{2}' with name '{3}'.</value>
   </data>
+  <data name="RemoveFirewallRule" xml:space="preserve">
+    <value>Are you sure you want to remove filewall rule '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataFlow" xml:space="preserve">
+    <value>Are you sure you want to remove data flow '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseDataset" xml:space="preserve">
+    <value>Are you sure you want to remove data set '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseLinkedService" xml:space="preserve">
+    <value>Are you sure you want to remove linked service '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseNotebook" xml:space="preserve">
+    <value>Are you sure you want to remove notebook '{0}'?</value>
+  </data>
+  <data name="RemoveSynapsePipeline" xml:space="preserve">
+    <value>Are you sure you want to remove pipeline '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSparkPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Spark pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlDatabase" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL database '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseSqlPool" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL pool '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTrigger" xml:space="preserve">
+    <value>Are you sure you want to remove trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseTriggerSubscription" xml:space="preserve">
+    <value>Are you sure you want to unsubscribe the event trigger '{0}'?</value>
+  </data>
+  <data name="RemoveSynapseWorkspace" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse workspace '{0}'?</value>
+  </data>
+  <data name="ADApplicationDisplayNameMismatch" xml:space="preserve">
+    <value>Azure Active Directory application with the display name '{0}' was found. Display Name provided does not match with any service principal display name '{1}'. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString "{0}" or Get-AzADServicePrincipal -SearchString "{1}".</value>
+  </data>
+  <data name="ADApplicationMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory application with the display name '{0}' was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString "{0}" or use use Get-AzADServicePrincipal -SearchString "{0}"</value>
+  </data>
+  <data name="ADDuplicateGroupAndApplicationFound" xml:space="preserve">
+    <value>Azure Active Directory application and group with same display name '{0}' was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString "{0}" or to get object id use Get-AzADGroup -SearchString "{0}".</value>
+  </data>
+  <data name="ADGroupMoreThanOneFound" xml:space="preserve">
+    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString "{0}"</value>
+  </data>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or group or application you are authorizing is registered in the current subscription's Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication.</value>
+  </data>
+  <data name="ADUserMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString "{0}"</value>
+  </data>
+  <data name="CreatingSqlPoolRestorePoint" xml:space="preserve">
+    <value>Creating a restore point in SQL pool '{0}' under Workspace '{1}'.</value>
+  </data>
+  <data name="InvalidADGroupNotSecurity" xml:space="preserve">
+    <value>The Active Directory Group '{0}' is not security enabled. Only Azure Active Directory Security Enabled Groups are supported.</value>
+  </data>
+  <data name="RemovingSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Removing the active directory admin in workspace '{0}'.</value>
+  </data>
+  <data name="SettingSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Setting an active directory admin in workspace '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="StorageAccountNotFound" xml:space="preserve">
+    <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
+  </data>
+  <data name="SettingSqlPoolAudit" xml:space="preserve">
+    <value>Setting audit for SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden" xml:space="preserve">
+    <value>Adding Storage Blob Data Contributor role for storage account {0} is forbidden.</value>
+  </data>
+  <data name="FailedToAddRoleAssignmentForStorageAccount" xml:space="preserve">
+    <value>Failed to add Role Assignment for Storage Account '{0}'. Response Status Code {1}. Response Content: {2}</value>
+  </data>
+  <data name="FailedToGetRoleAssignmentsForStorageAccount" xml:space="preserve">
+    <value>Failed to get Role Assignments for Storage Account '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountPropertiesFailed" xml:space="preserve">
+    <value>Failed to retrieve properties of storage account '{0}'.</value>
+  </data>
+  <data name="SettingSqlAudit" xml:space="preserve">
+    <value>Setting audit in workspace '{0}'.</value>
+  </data>
+  <data name="StorageAccountNameParameterException" xml:space="preserve">
+    <value>Storage acount name is not provided.</value>
+  </data>
+  <data name="RemovingSqlPoolAudit" xml:space="preserve">
+    <value>Removing audit settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="RemovingWorkspaceAudit" xml:space="preserve">
+    <value>Removing audit settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
+    <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
+  <data name="UpdatingThreatProtectionSetting" xml:space="preserve">
+    <value>Updating threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="RemovingThreatProtectionSetting" xml:space="preserve">
+    <value>Removing threat protection settings in workspace '{0}'.</value>
+  </data>
+  <data name="UpdatingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Updating vulnerability assessment settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidBlobStorageSasUri" xml:space="preserve">
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?</value>
+  </data>
+  <data name="NoStorageAccountSpecified" xml:space="preserve">
+    <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
+  </data>
+  <data name="EmailsAreNotValid" xml:space="preserve">
+    <value>One or more of the email addresses you entered are not valid.</value>
+  </data>
+  <data name="RemovingVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Removing vulnerability assessment settings in workspace '{0}'.</value>
+  </data>
+  <data name="InvalidKeyId" xml:space="preserve">
+    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
+  </data>
+  <data name="ComfirmToRemoveSqlActiveDirectoryAdministrator" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Deleting SQL pool Restore Point '{0}' in resource group '{1}' , workspace '{2}', under  Sql Pool '{3}'.</value>
+  </data>
+  <data name="SqlPoolRestorePointDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified Restore Point '{0}' does not exist.</value>
+  </data>
+  <data name="RemoveSynapseSqlPoolRestorePoint" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse Sql Pool Restore Point '{0}'?</value>
+  </data>
 </root>
