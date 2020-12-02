@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new CopyActivity(this.Name, this.Source.ToSdkObject(), this.Sink.ToSdkObject());
+            var activity = new CopyActivity(this.Name, this.Source?.ToSdkObject(), this.Sink.ToSdkObject());
             this.Inputs?.ForEach(item => activity.Inputs.Add(item));
             this.Outputs?.ForEach(item => activity.Outputs.Add(item));
             activity.Translator = this.Translator;
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.PreserveRules?.ForEach(item => activity.PreserveRules.Add(item));
             this.Preserve?.ForEach(item => activity.Preserve.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

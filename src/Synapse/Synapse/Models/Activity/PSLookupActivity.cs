@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public override Activity ToSdkObject()
         {
-            var activity = new LookupActivity(this.Name, this.Source.ToSdkObject(), this.Dataset);
+            var activity = new LookupActivity(this.Name, this.Source?.ToSdkObject(), this.Dataset);
             activity.FirstRowOnly = this.FirstRowOnly;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

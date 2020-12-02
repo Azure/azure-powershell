@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.LinkedServices?.ForEach(item => activity.LinkedServices.Add(item));
             activity.ConnectVia = this.ConnectVia;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

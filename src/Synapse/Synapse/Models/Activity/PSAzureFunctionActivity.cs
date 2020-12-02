@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.Headers = this.Headers;
             activity.Body = this.Body;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

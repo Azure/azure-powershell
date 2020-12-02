@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.ScriptLinkedService = this.ScriptLinkedService;
             this.Defines?.ForEach(item => activity.Defines.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

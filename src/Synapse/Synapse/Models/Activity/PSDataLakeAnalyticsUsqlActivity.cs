@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.RuntimeVersion = this.RuntimeVersion;
             activity.CompilationMode = this.CompilationMode;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

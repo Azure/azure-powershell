@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var activity = new ExecutionActivity(this.Name);
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

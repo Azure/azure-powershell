@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var activity = new AzureDataExplorerCommandActivity(this.Name, this.Command);
             activity.CommandTimeout = this.CommandTimeout;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ExtendedProperties?.ForEach(item => activity.ExtendedProperties.Add(item));
             activity.RetentionTimeInDays = this.RetentionTimeInDays;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

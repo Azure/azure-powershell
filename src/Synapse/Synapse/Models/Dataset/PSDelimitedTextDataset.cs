@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new DelimitedTextDataset(this.LinkedServiceName);
-            dataset.Location = this.Location.ToSdkObject();
+            dataset.Location = this.Location?.ToSdkObject();
             dataset.ColumnDelimiter = this.ColumnDelimiter;
             dataset.RowDelimiter = this.RowDelimiter;
             dataset.EncodingName = this.EncodingName;

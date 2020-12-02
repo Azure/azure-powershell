@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Variables?.ForEach(item => activity.Variables.Add(item));
             activity.QueryTimeout = this.QueryTimeout;
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             activity.ProxyUser = this.ProxyUser;
             this.SparkConfig?.ForEach(item => activity.SparkConfig.Add(item));
             activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy.ToSdkObject();
+            activity.Policy = this.Policy?.ToSdkObject();
             SetProperties(activity);
             return activity;
         }

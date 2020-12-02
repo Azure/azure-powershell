@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 StartTime = this.StartTime,
                 EndTime = this.EndTime,
                 TimeZone = this.TimeZone,
-                Schedule = this.Schedule.ToSdkObject()
+                Schedule = this.Schedule?.ToSdkObject()
             };
             this.AdditionalProperties?.ForEach(item => scheduleTriggerRecurrence.Add(item.Key, item.Value));
             return scheduleTriggerRecurrence;

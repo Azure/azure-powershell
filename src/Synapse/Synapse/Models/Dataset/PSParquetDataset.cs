@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public override Dataset ToSdkObject()
         {
             var dataset = new ParquetDataset(this.LinkedServiceName);
-            dataset.Location = this.Location.ToSdkObject();
+            dataset.Location = this.Location?.ToSdkObject();
             dataset.CompressionCodec = this.CompressionCodec ?? "none";
             SetProperties(dataset);
             return dataset;
