@@ -267,7 +267,7 @@ namespace VersionController.Models
             {
                 powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
                 var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
+                nestedModules = cmdletResult.Select(c => c.ToString());
             }
 
             Version versionBump = Version.PATCH;
@@ -290,9 +290,17 @@ namespace VersionController.Models
                 }
 
                 requiredModules.Add(outputModuleDirectory);
-                foreach (var nestedModule in nestedModules)
+                foreach (var nestedModuleName in nestedModules)
                 {
+                    // Handcrafted modules assume its nested module always is DLL file. 
+                    var nestedModule = nestedModuleName + ".dll";
                     var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+
+                    // However we support PSM1, PSD1 other nested module type. Skip this check and we need to use a different design soon.
+                    if(assemblyPath == null)
+                    {
+                        continue;
+                    }
                     var proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
