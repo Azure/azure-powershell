@@ -37,7 +37,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlTestsBase : RMTestBase
+    public class SqlTestsBase : RMTestBase, IDisposable
     {
         protected EnvironmentSetupHelper Helper;
         protected string[] resourceTypesToIgnoreApiVersion;
@@ -186,5 +186,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        public void Dispose()
+        {
+            XunitTracingInterceptor.RemoveFromContext(Helper.TracingInterceptor);
+            Helper.TracingInterceptor = null;
+            Helper = null;
+        }
     }
 }
