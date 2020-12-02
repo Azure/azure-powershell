@@ -15,11 +15,14 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utitlities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation.Language;
+using System.Threading.Tasks.Dataflow;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -36,9 +39,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
 
+        /// <summary>
+        /// The client that sends the telemetry to the server.
+        /// </summary>
         private readonly TelemetryClient _telemetryClient;
+
         private readonly IAzContext _azContext;
-        private Tuple<IDictionary<string, Version>, string> _cachedAzModulesVersions = Tuple.Create<IDictionary<string, Version>, string>(null, null);
+
+        /// <summary>
+        /// The action to handle the <see cref="TelemetryData.ITelemetryData"/> in a thread pool.
+        /// </summary>
+        private readonly ActionBlock<TelemetryData.ITelemetryData> _telemetryDispatcher;
+
+        /// <summary>
+        /// The adjusted texts and the source text for the suggestion.
+        /// </summary>
+        /// <remarks>
+        /// We only access it in the thread pool which is to handle the data at the target side of the data flow.
+        /// We only handle one item at a time so there is no race condition.
+        /// </remarks>
+        private IDictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>.
@@ -53,20 +73,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.Context.Cloud.RoleInstance = "placeholderdon'tuse";
             _telemetryClient.Context.Cloud.RoleName = "placeholderdon'tuse";
             _azContext = azContext;
+            _telemetryDispatcher = new ActionBlock<TelemetryData.ITelemetryData>(
+                    (telemetryData) => DispatchTelemetryData(telemetryData));
         }
 
         /// <inheritdoc/>
-        public void OnHistory(string historyLine)
+        public void OnHistory(TelemetryData.History telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
-            var properties = CreateProperties();
-            properties.Add("History", historyLine);
+            telemetryData.SessionId = SessionId;
+            telemetryData.CorrelationId = CorrelationId;
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
+            _telemetryDispatcher.Post(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
@@ -74,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(string command, bool isRequestSuccess, Exception exception)
+        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -83,12 +105,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             CorrelationId = Guid.NewGuid().ToString();
 
-            var properties = CreateProperties();
-            properties.Add("Command", command ?? string.Empty);
-            properties.Add("IsRequestSuccess", isRequestSuccess.ToString(CultureInfo.InvariantCulture));
-            properties.Add("exception", exception?.ToString() ?? string.Empty);
+            telemetryData.SessionId = SessionId;
+            telemetryData.CorrelationId = CorrelationId;
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
+            _telemetryDispatcher.Post(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording RequestPrediction");
@@ -96,17 +116,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
-            var properties = CreateProperties();
-            properties.Add("AcceptedSuggestion", acceptedSuggestion);
+            telemetryData.SessionId = SessionId;
+            telemetryData.CorrelationId = CorrelationId;
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
+            _telemetryDispatcher.Post(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording AcceptSuggestion");
@@ -114,20 +134,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSource, bool isCancelled, Exception exception)
+        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
                 return;
             }
 
-            var properties = CreateProperties();
-            properties.Add("UserInput", maskedUserInput ?? string.Empty);
-            properties.Add("Suggestion", suggestions != null ? JsonConvert.SerializeObject(suggestions.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))) : string.Empty);
-            properties.Add("IsCancelled", isCancelled.ToString(CultureInfo.InvariantCulture));
-            properties.Add("exception", exception?.ToString() ?? string.Empty);
+            telemetryData.SessionId = SessionId;
+            telemetryData.CorrelationId = CorrelationId;
 
-            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
+            _telemetryDispatcher.Post(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
@@ -149,14 +166,107 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
+        /// Dispatches <see cref="TelemetryData.ITelemetryData"/> according to its implementation.
+        /// </summary>
+        private void DispatchTelemetryData(TelemetryData.ITelemetryData telemetryData)
+        {
+            switch (telemetryData)
+            {
+                case TelemetryData.History history:
+                    SendTelemetry(history);
+                    break;
+                case TelemetryData.RequestPrediction requestPrediction:
+                    SendTelemetry(requestPrediction);
+                    break;
+                case TelemetryData.GetSuggestion getSuggestion:
+                    SendTelemetry(getSuggestion);
+                    break;
+                case TelemetryData.SuggestionAccepted suggestionAccepted:
+                    SendTelemetry(suggestionAccepted);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the command history.
+        /// </summary>
+        private void SendTelemetry(TelemetryData.History telemetryData)
+        {
+            var properties = CreateProperties(telemetryData);
+            properties.Add("History", telemetryData.Command);
+
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the commands for prediction.
+        /// </summary>
+        private void SendTelemetry(TelemetryData.RequestPrediction telemetryData)
+        {
+            _userAcceptedAndSuggestion.Clear();
+
+            var properties = CreateProperties(telemetryData);
+            properties.Add("Command", telemetryData.Commands ?? string.Empty);
+            properties.Add("HttpRequestSent", telemetryData.HasSentHttpRequest.ToString(CultureInfo.InvariantCulture));
+            properties.Add("Exception", telemetryData.Exception?.ToString() ?? string.Empty);
+
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the suggestion returned to the user.
+        /// </summary>
+        private void SendTelemetry(TelemetryData.GetSuggestion telemetryData)
+        {
+            var suggestions = telemetryData.Suggestion?.PredictiveSuggestions;
+            var suggestionSource = telemetryData.Suggestion?.SuggestionSources;
+            var sourceTexts = telemetryData.Suggestion?.SourceTexts;
+            var maskedUserInput = CommandLineUtilities.MaskCommandLine(telemetryData.UserInput?.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+
+            if ((suggestions != null) && (sourceTexts != null))
+            {
+                for (int i = 0; i < suggestions.Count; ++i)
+                {
+                    _userAcceptedAndSuggestion[suggestions[i].SuggestionText] = sourceTexts[i];
+                }
+            }
+
+            var properties = CreateProperties(telemetryData);
+            properties.Add("UserInput", maskedUserInput ?? string.Empty);
+            properties.Add("Suggestion", sourceTexts != null ? JsonConvert.SerializeObject(sourceTexts.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))) : string.Empty);
+            properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
+            properties.Add("Exception", telemetryData.Exception?.ToString() ?? string.Empty);
+
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the suggestion returned to the user.
+        /// </summary>
+        private void SendTelemetry(TelemetryData.SuggestionAccepted telemetryData)
+        {
+            if (!_userAcceptedAndSuggestion.TryGetValue(telemetryData.Suggestion, out var suggestion))
+            {
+                suggestion = "NoRecord";
+            }
+
+            var properties = CreateProperties(telemetryData);
+            properties.Add("AcceptedSuggestion", suggestion);
+
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
+        }
+
+        /// <summary>
         /// Add the common properties to the telemetry event.
         /// </summary>
-        private IDictionary<string, string> CreateProperties()
+        private IDictionary<string, string> CreateProperties(TelemetryData.ITelemetryData telemetryData)
         {
             return new Dictionary<string, string>()
             {
-                { "SessionId", SessionId },
-                { "CorrelationId", CorrelationId },
+                { "SessionId", telemetryData.SessionId },
+                { "CorrelationId", telemetryData.CorrelationId },
                 { "UserId", _azContext.UserId },
                 { "HashMacAddress", _azContext.MacAddress },
                 { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },

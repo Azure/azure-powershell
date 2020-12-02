@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
@@ -35,31 +32,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects the event of the history command.
         /// </summary>
-        /// <param name="historyLine">The history command from PSReadLine.</param>
-        public void OnHistory(string historyLine);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnHistory(TelemetryData.History telemetryData);
 
         /// <summary>
         /// Collects the event when a prediction is requested.
         /// </summary>
-        /// <param name="command">The command to that we request the prediction for.</param>
-        /// <param name="isRequestSuccess">Indicates whether the http request is send.</param>
-        /// <param name="exception">The exception if there is an error.</param>
-        public void OnRequestPrediction(string command, bool isRequestSuccess, Exception exception);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
-        /// <param name="acceptedSuggestion">The suggestion that's accepted by the user.</param>
-        public void OnSuggestionAccepted(string acceptedSuggestion);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData);
 
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
-        /// <param name="maskedUserInput">The user input that the suggestions are for.</param>
-        /// <param name="suggestions">The list of suggestions.</param>
-        /// <param name="suggestionSources">The list of sources for each of <paramref name="suggestions"/>.</param>
-        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out.</param>
-        /// <param name="exception">The exception if there is an error.</param>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<string> suggestions, IEnumerable<SuggestionSource> suggestionSources, bool isCancelled, Exception exception);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData);
     }
 }

@@ -149,31 +149,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             Validation.CheckArgument(input, $"{nameof(input)} cannot be null");
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
-
-            if (suggestionCount == 0)
-            {
-                return null;
-            }
+            Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
             var commandBasedPredictor = _commandBasedPredictor;
             var command = _commandToRequestPrediction;
 
-            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
-            var resultsFromSuggestionTuple = commandBasedPredictor?.Item2?.GetSuggestion(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
-            var result = resultsFromSuggestionTuple.Item1;
-            presentCommands = resultsFromSuggestionTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            var presentCommands = new Dictionary<string, int>();
+            var result = commandBasedPredictor?.Item2?.GetSuggestion(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
 
             if ((result != null) && (result.Count > 0))
             {
-                var suggestionSource = SuggestionSource.None;
+                var suggestionSource = SuggestionSource.PreviousCommand;
 
                 if (string.Equals(command, commandBasedPredictor?.Item1, StringComparison.Ordinal))
                 {
                     suggestionSource = SuggestionSource.CurrentCommand;
-                }
-                else
-                {
-                    suggestionSource = SuggestionSource.PreviousCommand;
                 }
 
                 for (var i = 0; i < result.Count; ++i)
@@ -186,9 +176,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var fallbackPredictor = _fallbackPredictor;
                 var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
-                var resultsFromFallbackTuple = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCountToRequest, maxAllowedCommandDuplicate, cancellationToken);
-                var resultsFromFallback = resultsFromFallbackTuple.Item1;
-                presentCommands = resultsFromFallbackTuple.Item2.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                var resultsFromFallback = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCountToRequest, maxAllowedCommandDuplicate, cancellationToken);
 
                 if (result == null)
                 {
@@ -203,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             continue;
                         }
 
-                        result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], resultsFromFallback.SuggestionSources[i]);
+                        result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], SuggestionSource.StaticCommands);
                     }
                 }
             }
@@ -219,6 +207,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
             bool postSuccess = false;
             Exception exception = null;
+            bool startRequestTask = false;
 
             try
             {
@@ -240,6 +229,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     var cancellationToken = _predictionRequestCancellationSource.Token;
 
                     // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+                    startRequestTask = true;
                     Task.Run(async () => {
                         try
                         {
@@ -269,13 +259,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         {
                             exception = e;
                         }
+                        finally
+                        {
+                            _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction(localCommands, postSuccess, exception));
+                        }
                     },
                     cancellationToken);
                 }
             }
+            catch (Exception e)
+            {
+                exception = e;
+            }
             finally
             {
-                _telemetryClient.OnRequestPrediction(localCommands, postSuccess, exception);
+                if (!startRequestTask)
+                {
+                    _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction(localCommands, hasSentHttpRequest: false, exception: exception));
+                }
             }
         }
 

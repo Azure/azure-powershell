@@ -60,6 +60,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const char ParameterIndicator = '-';
 
         /// <summary>
+        /// The seperator used in parameter name and value pair which is in the form -Name:Value.
+        /// </summary>
+        public const char ParameterValueSeperator = ':';
+
+        /// <summary>
+        /// The substitute for the parameter value.
+        /// </summary>
+        public const string ParameterValueMask = "***";
+
+        /// <summary>
         /// The setting file name.
         /// </summary>
         public const string SettingsFileName = "AzPredictorSettings.json";
