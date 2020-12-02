@@ -20,3 +20,4 @@ Az.PostgreSql
 Az.ResourceMover
 Az.SpringCloud
 Az.TimeSeriesInsights
+Az.WindowsIotServices
