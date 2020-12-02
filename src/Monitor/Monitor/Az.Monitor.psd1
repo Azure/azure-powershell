@@ -76,7 +76,10 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile', 
                'Get-AzLogProfile', 'Add-AzLogProfile', 'Get-AzActivityLog', 
+               'New-AzDiagnosticSetting', 
+               'New-AzDiagnosticDetailSetting', 
                'Set-AzDiagnosticSetting', 'Get-AzDiagnosticSetting', 
+               'Get-AzDiagnosticSettingCategory', 
                'Remove-AzDiagnosticSetting', 'New-AzAutoscaleNotification', 
                'New-AzAutoscaleProfile', 'New-AzAutoscaleRule', 
                'Add-AzAutoscaleSetting', 'Get-AzAutoscaleHistory', 
