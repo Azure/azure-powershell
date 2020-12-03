@@ -19,7 +19,8 @@
 --->
 
 ## Upcoming Release
-
+* Bugfix in Remove peering and connection commandlet for ExpressrouteCircuit scenario
+    - Remove-AzExpressRouteCircuitPeeringConfig and Remove-AzExpressRouteCircuitConnectionConfig
 ## Version 4.3.0
 * Updated below cmdlet 
     - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
