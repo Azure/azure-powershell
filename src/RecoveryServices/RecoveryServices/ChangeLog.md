@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.
 
 ## Version 3.0.1

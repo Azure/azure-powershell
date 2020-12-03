@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.3.0
 * Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]
 * Added new cmdlets to support creating diagnostic settings more flexible:
     * `Get-AzDiagnosticSettingCategory`
