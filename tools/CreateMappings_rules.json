@@ -600,5 +600,9 @@
   {
     "regex": "DigitalTwins",
     "alias": "DigitalTwins"
+  },
+  {
+    "alias": "CostManagement",
+    "regex": "CostManagement"
   }
 ]
