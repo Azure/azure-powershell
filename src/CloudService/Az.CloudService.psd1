@@ -127,7 +127,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* First preview release for module Az.CloudService.'
 
         # Prerelease string of this module
         # Prerelease = ''
