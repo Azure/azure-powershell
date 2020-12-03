@@ -25,91 +25,116 @@ function New-AzMySqlFlexibleServer {
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new server.')]
     param(
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the server.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${Name},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         ${SubscriptionId},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${Location},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${AdministratorUserName},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Security.SecureString]
         [ValidateNotNullOrEmpty()]
         ${AdministratorLoginPassword},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2ds_v4.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${Sku},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${SkuTier},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
         ${BackupRetentionDay},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
         ${StorageInMb},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Server version.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion])]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion]
         ${Version},
 
-        [Parameter(HelpMessage = 'The virtual network address prefix.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        ${AddressPrefix},
-
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
         ${SubnetPrefix},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The Name or Id of an existing Subnet or name of a new one to create. Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
         ${Subnet},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/16.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
         ${VnetPrefix},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The Name or Id of an existing virtual network or name of a new one to create. The name must be between 2 to 64 characters. The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
         ${Vnet},
 
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = "
             Determines the public access. Enter single or range of IP addresses to be 
             included in the allowed list of IPs. IP address ranges must be dash-
@@ -117,11 +142,12 @@ function New-AzMySqlFlexibleServer {
             access from any resources deployed within Azure to access your server.
             Specifying no IP address sets the server in public access mode but does
             not create a firewall rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
         ${PublicAccess},
 
+        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
+        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Enable or disable high availability feature.  Default value is Disabled. Default: Disabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         ${HighAvailability},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
@@ -182,6 +208,8 @@ function New-AzMySqlFlexibleServer {
 
     process {
         try {
+            Get-Module -ListAvailable
+
             If (!$PSBoundParameters.ContainsKey('Location')) {
                 $PSBoundParameters.Location = 'westus2'
             }
@@ -192,6 +220,10 @@ function New-AzMySqlFlexibleServer {
             }
             $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
+            # If (!(Get-Module -ListAvailable -Name Az.Resources)) {
+            #     Throw 'Please install Az.Resources module by entering "Install-Module -Name Az.Resources"'
+            # }
+            # Import-Module -Name Az.Resources
             If(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
                 $PSBoundParameters.ResourceGroupName = Get-RandomNumbers -Prefix 'group' -Length 10
                 $Msg = "Creating Resource Group {0}..." -f $PSBoundParameters.ResourceGroupName
@@ -200,6 +232,7 @@ function New-AzMySqlFlexibleServer {
                     Find-Module -Name Az.Resources -RequiredVersion 2.0.1 -Repository 'PSGallery' | Save-Module -Path (Join-Path $PSScriptRoot '../generated/modules')
                 }
                 Import-Module -Name Az.Resources -RequiredVersion 2.0.1
+                
                 $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location
             }
             Else {
@@ -289,7 +322,7 @@ function New-AzMySqlFlexibleServer {
             Write-Host $Msg
             $Msg = 'Your server {0} is using sku {1} (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details' -f $PSBoundParameters.Name, $PSBoundParameters.SkuName
             Write-Host $Msg
-            $null = Az.MySql.internal\New-AzMySqlFlexibleServer @PSBoundParameters
+            $Server = Az.MySql.internal\New-AzMySqlFlexibleServer @PSBoundParameters
 
             # # Create Database
             $DatabaseParameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.Database]::new()
@@ -303,15 +336,16 @@ function New-AzMySqlFlexibleServer {
             $FirewallRuleName = CreateFirewallRule $NetworkParameters
 
             $Msg = "
-            `"databaseName`": `"$DEFAULT_DB_NAME`",
-            `"id`": `"/subscriptions/$($PSBoundParameters.SubscriptionId)/resourceGroups/$($PSBoundParameters.ResourceGroupName)/providers/Microsoft.DBForMySql/flexibleServers/$($PSBoundParameters.Name)`",
-            `"location`": `"$($PSBoundParameters.Location)`",
-            `"password`": `"$($PSBoundParameters.AdministratorLoginPassword)`",
-            `"resourceGroup`": `"$($PSBoundParameters.ResourceGroupName)`",
-            `"skuname`": `"$($PSBoundParameters.SkuName)`",
-            `"username`": `"$($PSBoundParameters.AdministratorLogin)`",
-            `"version`": `"$($PSBoundParameters.Version)`"
-            "
+`"databaseName`": `"$DEFAULT_DB_NAME`",
+`"id`": `"/subscriptions/$($PSBoundParameters.SubscriptionId)/resourceGroups/$($PSBoundParameters.ResourceGroupName)/providers/Microsoft.DBForMySql/flexibleServers/$($PSBoundParameters.Name)`",
+`"location`": `"$($PSBoundParameters.Location)`",
+`"password`": `"$($PSBoundParameters.AdministratorLoginPassword)`",
+`"resourceGroup`": `"$($PSBoundParameters.ResourceGroupName)`",
+`"skuname`": `"$($PSBoundParameters.SkuName)`",
+`"username`": `"$($PSBoundParameters.AdministratorLogin)`",
+`"version`": `"$($PSBoundParameters.Version)`"
+"
+
             If ($PSBoundParameters.ContainsKey('DelegatedSubnetArgumentSubnetArmResourceId')) {
                 $Msg += "`"subnetId`": `"$($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)`""
             }
@@ -319,6 +353,8 @@ function New-AzMySqlFlexibleServer {
                 $Msg += "`"firewallName`": `"$FirewallRuleName`""
             }
             Write-Host $Msg
+
+            return $Server
 
         } catch {
             throw
@@ -328,15 +364,22 @@ function New-AzMySqlFlexibleServer {
 function CreateNetworkResource($Parameters) {
     [OutputType([string])]
     $WarningPreference = 'silentlycontinue'
-    If (!(Test-Path (Join-Path $PSScriptRoot '../generated/modules/Az.Network'))){
-        Find-Module -Name Az.Network -RequiredVersion 3.0.0 -Repository 'PSGallery' | Save-Module -Path (Join-Path $PSScriptRoot '../generated/modules')
+    # If (!(Test-Path (Join-Path $PSScriptRoot '../generated/modules/Az.Network'))){
+    #     Find-Module -Name Az.Network -RequiredVersion 3.0.0 -Repository 'PSGallery' | Save-Module -Path (Join-Path $PSScriptRoot '../generated/modules')
+    # }
+    # Import-Module -Name Az.Network -RequiredVersion 3.0.0
+    If (!(Get-Module -ListAvailable -Name Az.Network)) {
+        Throw 'Please install Az.Network module 3.0.0 by entering "Install-Module -Name Az.Network -RequiredVersion 3.0.0"'
     }
-    Import-Module -Name Az.Network -RequiredVersion 3.0.0
+    Else {
+        Import-Module -Name Az.Network -RequiredVersion 3.0.0
+    }
+    
 
     # 1. Error Handling
     # Raise error when user passes values for both parameters
     if ($Parameters.Containskey('Subnet') -And $Parameters.ContainsKey('PublicAccess')) {
-        Write-Error "Incorrect usage : A combination of the parameters -Subnet and -PublicAccess is invalid. Use either one of them."
+        Throw "Incorrect usage : A combination of the parameters -Subnet and -PublicAccess is invalid. Use either one of them."
     }
 
     # When address space parameters are passed, the only valid combination is : --vnet, --subnet, --vnet-address-prefix, --subnet-address-prefix
@@ -344,7 +387,7 @@ function CreateNetworkResource($Parameters) {
         if (($Parameters.ContainsKey('VnetPrefix') -And !$Parameters.ContainsKey('SubnetPrefix')) -Or
             (!$Parameters.ContainsKey('VnetPrefix') -And $Parameters.ContainsKey('SubnetPrefix')) -Or 
             ($Parameters.ContainsKey('VnetPrefix') -And $Parameters.ContainsKey('SubnetPrefix') -And (!$Parameters.ContainsKey('Vnet') -Or !$Parameters.ContainsKey('Subnet')))){
-                Write-Error "Incorrect usage : --vnet, --subnet, --vnet-address-prefix, --subnet-address-prefix must be supplied together."
+                Throw "Incorrect usage : --vnet, --subnet, --vnet-address-prefix, --subnet-address-prefix must be supplied together."
         }
     }
     
@@ -362,7 +405,7 @@ function CreateNetworkResource($Parameters) {
                         $Delegations = Get-AzDelegation -Subnet $Subnet 
                         $Delegations | ForEach-Object {If ($PSItem.ServiceName -ne $DELEGATION_SERVICE_NAME) {
                             $Msg = "Can not use subnet with existing delegations other than {0}" -f $DELEGATION_SERVICE_NAME
-                            Write-Error $Msg
+                            Throw $Msg
                         }}
                     } Catch { # Valid but incorrect delegation
                         $null = $Subnet = Get-AzVirtualNetworkSubnetConfig -ResourceId $Parameters.Subnet
@@ -374,7 +417,7 @@ function CreateNetworkResource($Parameters) {
                 }
             }
             Else {
-                Write-Error "The Subnet ID is not a valid form of resource id."
+                Throw "The Subnet ID is not a valid form of resource id."
             }
         }
         ElseIf ($Parameters.ContainsKey('Vnet') -And !$Parameters.ContainsKey('Subnet')) {
@@ -394,7 +437,7 @@ function CreateNetworkResource($Parameters) {
                 IsValidRgLocation $Subnet.Id $Parameters 
             }
             Else {
-                Write-Error "Incorrectly formed Vnet id or Vnet name"
+                Throw "Incorrectly formed Vnet id or Vnet name"
             }
         }
         Else { # Both Vnet and Subnet provided
@@ -408,7 +451,7 @@ function CreateNetworkResource($Parameters) {
                     $Msg = "If you pass an address prefix, please consider passing a name (instead of Id) for a subnet or vnet."
                 }
                 Else { $Msg = "If you pass both --vnet and --subnet, consider passing names instead of ids." }
-                Write-Error $Msg
+                Throw $Msg
             }
         }
     }
@@ -458,7 +501,7 @@ function CreateAndDelegateSubnet($Parameters) {
     Write-Host $Msg
     
     $Subnet = New-AzVirtualNetworkSubnetConfig -Name $Parameters.SubnetName -AddressPrefix $Parameters.SubnetPrefix
-    New-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -Location $Parameters.Location -AddressPrefix $Parameters.VnetPrefix -Subnet $Subnet
+    New-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -Location $Parameters.Location -AddressPrefix $Parameters.VnetPrefix -Subnet $Subnet -Force
 
     $null = $Vnet = Get-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName
     $null = $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $Parameters.SubnetName -VirtualNetwork $Vnet
@@ -489,7 +532,7 @@ function CreateFirewallRule($Parameters) {
                     $StartIp = $Parsed[0]
                     $EndIp = $Parsed[1]
                 }
-                Else { Write-Error "incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255" }
+                Else { Throw "incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255" }
                 
                 If ($StartIp -eq '0.0.0.0' -And $EndIp -eq '0.0.0.0') {
                     $RuleName = "AllowAllAzureServicesAndResourcesWithinAzureIps_" + $Date
@@ -505,21 +548,21 @@ function CreateFirewallRule($Parameters) {
                 Write-Host $Msg
                 $FirewallRule = New-AzMySqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $Parameters.ResourceGroupName -ServerName $Parameters.Name -EndIPAddress $EndIp -StartIPAddress $StartIp
             } catch {
-                Write-Error "incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255"
+                Throw "incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255"
             }
         }
     }
     Return $FirewallRule.Name
 }
 function IsValidVnetId($Rid){
-    $VnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups\/[-\w\._\(\)]+\/providers\/Microsoft.Network\/VirtualNetworks\/[^<>%&:\\?/]{1,260}$"
+    $VnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups\/[-\w\._\(\)]+\/providers\/Microsoft.Network\/virtualNetworks\/[^<>%&:\\?/]{1,260}$"
     If ( $Rid -match $VnetFormat ) {
         return $True
     }
     return $False
 }
 function IsValidSubnetId($Rid){
-    $SubnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups/[-\w\._\(\)]+\/providers\/Microsoft.Network\/VirtualNetworks\/[^<>%&:\\?/]{1,260}\/subnets\/[^<>%&:\\?/]{1,260}$"
+    $SubnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups/[-\w\._\(\)]+\/providers\/Microsoft.Network\/virtualNetworks\/[^<>%&:\\?/]{1,260}\/subnets\/[^<>%&:\\?/]{1,260}$"
     IF ( $Rid -match $SubnetFormat ) {
         return $True
     }
@@ -546,5 +589,5 @@ function IsValidRgLocation($ResourceId, $Parameters){
     If ($Parameters.SubscriptionId -eq $ParsedResults.SubscriptionId -And $Parameters.Location -eq $ParsedResults.Location) {
         Return $True
     }
-    Write-Error "Incorrect Usage : The location and subscription of the server, Vnet and Subnet should be same."
+    Throw "Incorrect Usage : The location and subscription of the server, Vnet and Subnet should be same."
 }

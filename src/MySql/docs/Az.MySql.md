@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: fc8b3a19-b288-4f67-a4ff-b2d82a11cd6a
+Module Guid: 3384c227-22b0-4f4d-b069-b8dcf7a6bc74
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -114,7 +114,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzMySqlFlexibleServer](Update-AzMySqlFlexibleServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
 

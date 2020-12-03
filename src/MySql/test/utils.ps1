@@ -20,7 +20,8 @@ function setupEnv() {
     $env.Add("firewallRuleName", "mysqlrule01")
     $env.Add("firewallRuleName2", "mysqlrule02")
     $env.Add("databaseName", "mysqldb")
-    $env.Add("VNetName", "mysqlvnet")
+    $env.Add("VNetName", "mysql-test-vnet")
+    $env.Add("SubnetName", "mysql-test-subnet")
 
     # Create the test group
     write-host "start to create test group."
