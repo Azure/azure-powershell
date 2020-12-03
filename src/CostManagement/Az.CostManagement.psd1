@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* First preview release for module Az.CostManagement.'
 
         # Prerelease string of this module
         # Prerelease = ''
