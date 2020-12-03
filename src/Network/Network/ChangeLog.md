@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated Remove-AzExpressRouteCircuitPeeringConfig:
+    - fix bug to remove entire private peering object when cx intends delete
+* Updated Remove-AzExpressRouteCircuitConnectionConfig:
+    - fix bug to remove entire circuit connection object when cx intends delete
 
 ## Version 4.3.0
 * Updated below cmdlet 
