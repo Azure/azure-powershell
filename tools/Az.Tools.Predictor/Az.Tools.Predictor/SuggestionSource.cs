@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// An enum for the source where we get the suggestion.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum SuggestionSource
     {
         /// <summary>

@@ -16,7 +16,7 @@ using System.Linq;
 using System.Management.Automation.Language;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utitlities
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 {
     /// <summary>
     /// A utility class for Az command line.

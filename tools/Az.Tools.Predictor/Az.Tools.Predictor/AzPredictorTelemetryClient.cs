@@ -15,13 +15,13 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
-using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utitlities;
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var properties = CreateProperties(telemetryData);
             properties.Add("UserInput", maskedUserInput ?? string.Empty);
-            properties.Add("Suggestion", sourceTexts != null ? JsonConvert.SerializeObject(sourceTexts.Zip(suggestionSource).Select((s) => ValueTuple.Create(s.First, s.Second))) : string.Empty);
+            properties.Add("Suggestion", sourceTexts != null ? JsonSerializer.Serialize(sourceTexts.Zip(suggestionSource).Select((s) => Tuple.Create(s.First, s.Second)), JsonUtilities.TelemetrySerializerOptions) : string.Empty);
             properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
             properties.Add("Exception", telemetryData.Exception?.ToString() ?? string.Empty);
 

@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +20,7 @@ using System.Management.Automation.Language;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string ClientType = "AzurePowerShell";
 
-        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -52,7 +50,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             public PredictionRequestBody(string command) => History = command;
         };
 
-        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class CommandRequestContext
         {
             public Version VersionNumber{ get; set; } = new Version(0, 0);
@@ -100,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
 
-            _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context={JsonConvert.SerializeObject(new CommandRequestContext())}";
+            _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context={JsonSerializer.Serialize(new CommandRequestContext(), JsonUtilities.DefaultSerializerOptions)}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
             _telemetryClient = telemetryClient;
             _azContext = azContext;
@@ -273,12 +270,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                 Context = requestContext,
                             };
 
-                            var requestBodyString = JsonConvert.SerializeObject(requestBody);
+                            var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
                             var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
                             postSuccess = true;
 
-                            var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
-                            var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
+                            var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
+                            var suggestionsList = await JsonSerializer.DeserializeAsync<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
 
                             SetCommandBasedPreditor(localCommands, suggestionsList);
                         }
@@ -332,7 +329,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
 
                         var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                        var commandsReply = JsonConvert.DeserializeObject<List<string>>(reply);
+                        var commandsReply = JsonSerializer.Deserialize<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
                         SetFallbackPredictor(commandsReply);
 
                         // Initialize predictions

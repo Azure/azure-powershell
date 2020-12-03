@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation.Language;
-using System.Threading;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
