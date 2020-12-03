@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [Parameter(
             ParameterSetName = VMParameterSetName,
-            ValueFromPipelineByPropertyName = true,
+            //ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzVMDscExtension cmdlet sets this name to  " +
             "'Microsoft.Powershell.DSC', which is the same value used by Get-AzVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
