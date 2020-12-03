@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPoolGeoBackup = nameof(SqlPoolGeoBackup);
 
+        public const string SqlDeletedDatabaseBackup = nameof(SqlDeletedDatabaseBackup);
+
         public const string SqlDatabase = nameof(SqlDatabase);
 
         public const string SparkPoolName = nameof(SparkPoolName);

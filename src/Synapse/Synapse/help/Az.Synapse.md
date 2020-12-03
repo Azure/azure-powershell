@@ -35,6 +35,12 @@ Gets information about integration runtime resources.
 ### [Get-AzSynapseIntegrationRuntimeKey](Get-AzSynapseIntegrationRuntimeKey.md)
 Gets keys for a self-hosted integration runtime.
 
+### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
+Gets Synapse Sql Pool Geo Backup.
+
+### [Get-AzSynapseSqlDeletedDatabaseBackup](Get-AzSynapseSqlDeletedDatabaseBackup.md)
+Gets Synapse Sql deleted database Backup.
+
 ### [Get-AzSynapseIntegrationRuntimeMetric](Get-AzSynapseIntegrationRuntimeMetric.md)
 Gets metric data for an integration runtime. 
 

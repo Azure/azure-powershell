@@ -634,6 +634,47 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public virtual async Task<PSDeletedDatabaseBackupModel> GetDeletedDatabaseBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
+        {
+            try
+            {
+                var taskResponse = Task.Run(
+                    async () => await _synapseManagementClient.RestorableDroppedSqlPools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolAndTimeName));
+                await Task.WhenAll(taskResponse);
+
+                return new PSDeletedDatabaseBackupModel(taskResponse.Result.Body);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public virtual async Task<List<PSDeletedDatabaseBackupModel>> ListDeletedDatabaseBackups(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var taskResponse = Task.Run(
+                    async () => await _synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspaceWithHttpMessagesAsync(resourceGroupName, workspaceName));
+                await Task.WhenAll(taskResponse);
+
+                var results = new List<PSDeletedDatabaseBackupModel>();
+
+                var response = taskResponse.Result.Body;
+
+                foreach (var res in response.ToList())
+                {
+                    results.Add(new PSDeletedDatabaseBackupModel(res));
+                }
+
+                return results;
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         internal SqlDatabase GetSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
         {
             try
@@ -1086,7 +1127,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.GetWithHttpMessagesAsync(
+                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.ListWithHttpMessagesAsync(
                 resourceGroupName,
                 workspaceName,
                 integrationRuntimeName);
