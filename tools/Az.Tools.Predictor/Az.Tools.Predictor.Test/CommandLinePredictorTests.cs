@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
@@ -47,18 +48,64 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyParameterValues()
         {
             var predictionContext = PredictionContext.Create("Get-AzContext");
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
 
-            Action actual = () => this._predictor.GetSuggestion(null, presentCommands, 1, 1, CancellationToken.None);
+            Action actual = () => this._predictor.GetSuggestion(null,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
+            Assert.Throws<ArgumentException>(actual);
+
+            actual = () => this._predictor.GetSuggestion(commandName,
+                    null,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.Throws<ArgumentNullException>(actual);
 
-            actual = () => this._predictor.GetSuggestion(predictionContext.InputAst, null, 1, 1, CancellationToken.None);
+            actual = () => this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    null,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
+            Assert.Throws<ArgumentException>(actual);
+
+            actual = () => this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    null,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.Throws<ArgumentNullException>(actual);
 
-            actual = () => this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 0, 1, CancellationToken.None);
+            actual = () => this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    0,
+                    1,
+                    CancellationToken.None);
             Assert.Throws<ArgumentOutOfRangeException>(actual);
 
-            actual = () => this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 0, CancellationToken.None);
+            actual = () => this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    0,
+                    CancellationToken.None);
             Assert.Throws<ArgumentOutOfRangeException>(actual);
         }
 
@@ -73,8 +120,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetNoPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.Equal(0, result.Count);
         }
 
@@ -90,8 +147,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.True(result.Count > 0);
         }
 
@@ -106,8 +173,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.True(result.Count > 0);
         }
 
@@ -119,11 +196,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzADServicePrincipal -ApplicationObject")] // Doesn't exist
         [InlineData("new-azresourcegroup -NoExistingParam")]
         [InlineData("Set-StorageAccount -WhatIf")]
+        // Enable "git status" and "Get-AzContext Name" when ParameterSet can parse this format of command
+        // [InlineData("git status")]
+        // [InlineData("Get-AzContext Name")] // a wrong command
         public void GetNoPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
             Assert.Equal(0, result.Count);
         }
 
@@ -134,8 +224,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommand()
         {
             var predictionContext = PredictionContext.Create("Connect-AzAccount");
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
 
             Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.PredictiveSuggestions.First().SuggestionText);
         }
@@ -147,28 +247,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPredictionForCommandAndParameters()
         {
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
 
             Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.PredictiveSuggestions.First().SuggestionText);
-        }
-
-        /// <summary>
-        /// Verify when we cannot parse the user input correctly.
-        /// </summary>
-        /// <remarks>
-        /// When we can parse them correctly, please move the InlineData to the corresponding test methods, for example, "git status"
-        /// doesn't have any prediction so it should move to <see cref="GetNoPredictionWithCommandNameParameters"/>.
-        /// </remarks>
-        [Theory]
-        [InlineData("git status")]
-        [InlineData("Get-AzContext Name")] // a wrong command
-        public void VerifyMalFormattedCommandLine(string userInput)
-        {
-            var predictionContext = PredictionContext.Create(userInput);
-            var presentCommands = new Dictionary<string, int>();
-            Action actual = () => this._predictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
-            _ = Assert.Throws<InvalidOperationException>(actual);
         }
     }
 }

@@ -151,17 +151,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
             Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
-            var commandBasedPredictor = _commandBasedPredictor;
-            var command = _commandToRequestPrediction;
+            var commandAst = input.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
 
+            if (string.IsNullOrWhiteSpace(commandName))
+            {
+                return null;
+            }
+
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = input.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
-            var result = commandBasedPredictor?.Item2?.GetSuggestion(input, presentCommands, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
+            var commandBasedPredictor = _commandBasedPredictor;
+            var commandToRequestPrediction = _commandToRequestPrediction;
+
+            var result = commandBasedPredictor?.Item2?.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    suggestionCount,
+                    maxAllowedCommandDuplicate,
+                    cancellationToken);
 
             if ((result != null) && (result.Count > 0))
             {
                 var suggestionSource = SuggestionSource.PreviousCommand;
 
-                if (string.Equals(command, commandBasedPredictor?.Item1, StringComparison.Ordinal))
+                if (string.Equals(commandToRequestPrediction, commandBasedPredictor?.Item1, StringComparison.Ordinal))
                 {
                     suggestionSource = SuggestionSource.CurrentCommand;
                 }
@@ -176,7 +192,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var fallbackPredictor = _fallbackPredictor;
                 var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
-                var resultsFromFallback = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCountToRequest, maxAllowedCommandDuplicate, cancellationToken);
+                var resultsFromFallback = fallbackPredictor?.GetSuggestion(commandName,
+                        inputParameterSet,
+                        rawUserInput,
+                        presentCommands,
+                        suggestionCountToRequest,
+                        maxAllowedCommandDuplicate,
+                        cancellationToken);
 
                 if ((result == null) && (resultsFromFallback != null))
                 {

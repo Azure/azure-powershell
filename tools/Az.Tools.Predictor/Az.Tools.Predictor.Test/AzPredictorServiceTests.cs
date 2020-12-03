@@ -16,6 +16,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using Xunit;
@@ -111,8 +112,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingCommandBasedPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
-            var expected = this._commandBasedPredictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
+            var presentCommands = new Dictionary<string, int>();
+            var expected = this._commandBasedPredictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
+
             var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
@@ -143,8 +155,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingFallbackPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var presentCommands = new System.Collections.Generic.Dictionary<string, int>();
-            var expected = this._fallbackPredictor.GetSuggestion(predictionContext.InputAst, presentCommands, 1, 1, CancellationToken.None);
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
+            var presentCommands = new Dictionary<string, int>();
+            var expected = this._fallbackPredictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    1,
+                    1,
+                    CancellationToken.None);
+
             var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
