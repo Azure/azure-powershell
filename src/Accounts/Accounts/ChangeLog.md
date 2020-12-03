@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* dummy for test
 * Managed to parse ExpiresOn time from raw token if could not get from underlying library
 * Improved warning message if Interactive authentication is unavailable
 
