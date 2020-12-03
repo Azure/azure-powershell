@@ -159,7 +159,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         else
                         {
-                            resultsTemp.Add(prediction.ToString(), sourceBuilder.ToString());
+                            _ = resultsTemp.TryAdd(prediction.ToString(), sourceBuilder.ToString());
                         }
 
                         if (result.Count == suggestionCount)
