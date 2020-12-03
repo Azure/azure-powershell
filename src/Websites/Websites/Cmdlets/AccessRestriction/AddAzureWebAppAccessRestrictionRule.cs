@@ -164,14 +164,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 int intPriority = checked((int)Priority);
                 switch (ParameterSetName)
                 {
-                    case IpAddressParameterSet:
-                        CheckDuplicateIPRestriction(IpAddress, accessRestrictionList);
+                    case IpAddressParameterSet:                    
                         ipSecurityRestriction = new IpSecurityRestriction(IpAddress, null, null, null, null, Action, null, intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);                        
                         break;
 
                     case ServiceTagParameterSet:
-                        CheckDuplicateIPRestriction(ServiceTag, accessRestrictionList);
                         ipSecurityRestriction = new IpSecurityRestriction(ServiceTag, null, null, null, null, Action, "ServiceTag", intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);
                         break;
@@ -184,7 +182,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
                         var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
-                        CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
                         if (!IgnoreMissingServiceEndpoint)
                         {
                             CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
@@ -234,24 +231,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
             }
             return headerResult;
-        }
-
-        private void CheckDuplicateIPRestriction(string ipRange, IList<IpSecurityRestriction> accessRestrictionList)
-        {
-            foreach (var accessRestriction in accessRestrictionList)
-            {
-                if (accessRestriction.IpAddress == ipRange)
-                    throw new Exception($"Rule for '{ipRange}' already exist");
-            }
-        }
-
-        private void CheckDuplicateServiceEndpointRestriction(string subnetResourceId, IList<IpSecurityRestriction> accessRestrictionList)
-        {
-            foreach (var accessRestriction in accessRestrictionList)
-            {
-                if (accessRestriction.VnetSubnetResourceId == subnetResourceId)
-                    throw new Exception($"Rule for '{subnetResourceId}' already exist");
-            }
         }
     }
 }

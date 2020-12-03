@@ -47,8 +47,7 @@ IPPrefix               : xx.xx.xx.xx/xx
 IdleTimeoutInMinutes   :
 Zones                  : {}
 Sku                    : {
-                           "Name": "Standard",
-                           "Tier":"Regional"
+                           "Name": "Standard"
                          }
 IpTags                 : []
 PublicIpAddresses      : []
@@ -75,8 +74,7 @@ IPPrefix               : xx.xx.xx.xx/xx
 IdleTimeoutInMinutes   :
 Zones                  : {}
 Sku                    : {
-                           "Name": "Standard",
-                           "Tier": "Regional"
+                           "Name": "Standard"
                          }
 IpTags                 : []
 PublicIpAddresses      : []

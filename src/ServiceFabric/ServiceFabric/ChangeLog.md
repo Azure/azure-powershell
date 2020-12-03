@@ -19,10 +19,6 @@
 -->
 ## Upcoming Release
 
-* Add example to Set-AzServiceFabricSetting with SettingsSectionDescription param
-* Update application related cmdlets to call out that support is only for ARM deployed resources
-* Mark for deprecation cluster cert cmdlets Add-AzureRmServiceFabricClusterCertificate and Remove-AzureRmServiceFabricClusterCertificate
-
 ## Version 2.2.0
 
 * Added new cmdlets for managed clusters and node types:

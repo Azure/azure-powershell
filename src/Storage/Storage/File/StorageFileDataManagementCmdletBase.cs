@@ -32,8 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// </summary>
         private const int DefaultConcurrentTaskCount = 10;
 
-        public const long sizeTB = (long)1024 * 1024 * 1024 * 1024;
-
         /// <summary>
         /// Stores the transfer manager instance.
         /// </summary>
@@ -56,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public virtual SwitchParameter AsJob { get; set; }
-
+        
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -103,7 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
-        protected void DoEndProcessing()
+        protected  void DoEndProcessing()
         {
             try
             {

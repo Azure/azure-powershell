@@ -85,16 +85,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Name of a load balancer tier.",
-            ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter(
-            "Regional",
-            "Global"
-        )]
-        public string Tier { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Object representing the frontend IPs to be used for the load balancer",
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration[] FrontendIpConfiguration { get; set; }
@@ -202,15 +192,6 @@ namespace Microsoft.Azure.Commands.Network
                 vSku.Name = this.Sku;
             }
 
-            // Tier
-            if (this.Tier != null)
-            {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
-                vSku.Tier = this.Tier;
-            }
 
             var vLoadBalancer = new PSLoadBalancer
             {

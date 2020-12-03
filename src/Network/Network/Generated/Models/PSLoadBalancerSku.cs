@@ -34,6 +34,5 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
-        public string Tier { get; set; }
     }
 }

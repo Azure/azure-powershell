@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// SKU name to specify whether the key vault is a standard vault or a premium vault.
-    /// </summary>
+    /// <summary>TypeConverter implementation for SkuName.</summary>
     public partial class SkuNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

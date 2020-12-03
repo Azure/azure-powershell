@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.9.0
 * Allow tags in IoT Device Provisioning Service create cmdlet.
 
 ## Version 0.8.0

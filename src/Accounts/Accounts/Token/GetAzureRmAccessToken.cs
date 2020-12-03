@@ -14,14 +14,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text.Json;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
@@ -34,7 +31,6 @@ namespace Microsoft.Azure.Commands.Profile
     {
         private const string ResourceUrlParameterSet = "ResourceUrl";
         private const string KnownResourceNameParameterSet = "KnownResourceTypeName";
-        private static DateTimeOffset UnixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
         [Parameter(ParameterSetName = ResourceUrlParameterSet,
             Mandatory = true,
@@ -112,25 +108,6 @@ namespace Microsoft.Azure.Commands.Profile
                 UserId = accessToken.UserId,
             };
             result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiresOn ?? result.ExpiresOn;
-            if(result.ExpiresOn == default(DateTimeOffset))
-            {
-                try
-                {
-                    var tokenParts = accessToken.AccessToken.Split('.');
-                    var decodedToken = Base64UrlHelpers.DecodeToString(tokenParts[1]);
-
-                    var tokenDocument = JsonDocument.Parse(decodedToken);
-                    int expSeconds = tokenDocument.RootElement.EnumerateObject()
-                                    .Where(p => p.Name == "exp")
-                                    .Select(p => p.Value.GetInt32())
-                                    .First();
-                    result.ExpiresOn = UnixEpoch.AddSeconds(expSeconds);
-                }
-                catch(Exception e)//Ignore exception if fails to parse exp from token
-                {
-                    WriteDebug("Unable to parse exp in token: " + e.ToString());
-                }
-            }
 
             WriteObject(result);
         }

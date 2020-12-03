@@ -192,12 +192,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAssignedHost");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetExtRollingUpgrade()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetExtRollingUpgrade");
-        }
     }
 }

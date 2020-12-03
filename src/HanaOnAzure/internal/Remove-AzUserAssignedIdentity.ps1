@@ -57,7 +57,7 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # Name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]

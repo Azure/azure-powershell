@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Location = backup.Location,
                 Id = backup.Id,
                 Name = backup.Name,
-                BackupId = backup.BackupId,
+                //not in yet was missing from swagger BackupId = backup.BackupId,
                 Type = backup.Type,
                 BackupType = backup.Type,
                 Label = backup.Label,

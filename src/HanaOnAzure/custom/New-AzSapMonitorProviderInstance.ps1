@@ -20,6 +20,8 @@ Creates a provider instance for the specified subscription, resource group, SapM
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.hana/new-azsapproviderinstance
 #>
 function New-AzSapMonitorProviderInstance {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]
@@ -66,42 +68,32 @@ function New-AzSapMonitorProviderInstance {
         # The type of provider instance. Supported values are: "SapHana".
         ${ProviderType},
 
-        [Parameter(ParameterSetName = 'ByString', Mandatory)]
-        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The hostname of SAP HANA instance.
         ${HanaHostname},
 
-        [Parameter(ParameterSetName = 'ByString', Mandatory)]
-        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
+        [Parameter(Mandatory)]
         [Alias('HanaDbName')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The database name of SAP HANA instance.
         ${HanaDatabaseName},
 
-        [Parameter(ParameterSetName = 'ByString', Mandatory)]
-        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
+        [Parameter(Mandatory)]
         [Alias('HanaDbSqlPort')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.Int32]
         # The SQL port of the database of SAP HANA instance.
         ${HanaDatabaseSqlPort},
 
-        [Parameter(ParameterSetName = 'ByString', Mandatory)]
-        [Parameter(ParameterSetName = 'ByKeyVault', Mandatory)]
+        [Parameter(Mandatory)]
         [Alias('HanaDbUsername')]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
         [System.String]
         # The username of the database of SAP HANA instance.
         ${HanaDatabaseUsername},
-
-        [Parameter(ParameterSetName = 'ByDict', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
-        [System.Collections.Hashtable]
-        # The property of HANA instance.
-        ${InstanceProperty},
 
         [Parameter(ParameterSetName = 'ByString', Mandatory)]
         [Alias('HanaDbPassword')]
@@ -211,9 +203,8 @@ function New-AzSapMonitorProviderInstance {
                     hanaDbName     = $HanaDatabaseName
                     hanaDbSqlPort  = $HanaDatabaseSqlPort
                     hanaDbUsername = $HanaDatabaseUsername
-                    # To suppport descryption accross different platforms and PowerShell versions, we implement a script Unprotect-SecureString.ps1
-                    # to convert securesting to plaintext
-                    hanaDbPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $HanaDatabasePassword
+                    # cannot use `ConvertFrom-SecureString -AsPlainText`, requires powershell >= 7
+                    hanaDbPassword = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($HanaDatabasePassword))
                 }
             }
             'ByKeyVault' {
@@ -260,10 +251,6 @@ function New-AzSapMonitorProviderInstance {
                     keyVaultId                     = $HanaDatabasePasswordKeyVaultResourceId # key vault id is keyvault resource id
                     keyVaultCredentialsMsiClientID = $msi.ClientId # FIXME: this property is not needed in newer service backend, can we remove it?
                 }
-            }
-            'ByDict' {
-                $property = $InstanceProperty
-                $null = $PSBoundParameters.remove('InstanceProperty')
             }
         }
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)

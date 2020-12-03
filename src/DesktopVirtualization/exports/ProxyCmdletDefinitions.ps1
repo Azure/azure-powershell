@@ -36,7 +36,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -199,204 +198,6 @@ end {
 
 <#
 .Synopsis
-Expands and Lists MSIX packages in an Image, given the Image Path.
-.Description
-Expands and Lists MSIX packages in an Image, given the Image Path.
-.Example
-PS C:\> Expand-AzWvdMsixImage -HostPoolName HostPoolName `
-          -ResourceGroupName resourceGroupName `
-          -SubscriptionId SubscriptionId `
-          -Uri ImagePathURI
-
-Name                          Type
-----                          ----
-HostPoolName/extractmsiximage Microsoft.DesktopVirtualization/hostpools/extractmsiximage
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixImageUri
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IExpandMsixImage
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [ApplicationGroupName <String>]: The name of the application group
-  [ApplicationName <String>]: The name of the application within the specified application group
-  [DesktopName <String>]: The name of the desktop within the specified desktop group
-  [HostPoolName <String>]: The name of the host pool within the specified resource group
-  [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [UserSessionId <String>]: The name of the user session within the specified session host
-  [WorkspaceName <String>]: The name of the workspace
-
-MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
-  [Uri <String>]: URI to Image
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
-#>
-function Expand-AzWvdMsixImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IExpandMsixImage])]
-[CmdletBinding(DefaultParameterSetName='ExpandExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Expand', Mandatory)]
-    [Parameter(ParameterSetName='ExpandExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
-
-    [Parameter(ParameterSetName='Expand', Mandatory)]
-    [Parameter(ParameterSetName='ExpandExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Expand')]
-    [Parameter(ParameterSetName='ExpandExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ExpandViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Expand', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixImageUri]
-    # Represents URI referring to MSIX Image
-    # To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
-    ${MsixImageUri},
-
-    [Parameter(ParameterSetName='ExpandExpanded')]
-    [Parameter(ParameterSetName='ExpandViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # URI to Image
-    ${Uri},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Expand = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_Expand';
-            ExpandExpanded = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandExpanded';
-            ExpandViaIdentity = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaIdentity';
-            ExpandViaIdentityExpanded = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaIdentityExpanded';
-        }
-        if (('Expand', 'ExpandExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Get an application group.
 .Description
 Get an application group.
@@ -417,7 +218,7 @@ eastus     ApplicationGroupName2 Microsoft.DesktopVirtualization/applicationgrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -429,7 +230,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -439,7 +239,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdapplicationgroup
 #>
 function Get-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -607,7 +407,7 @@ ApplicationGroupName/ApplicationName2 Microsoft.DesktopVirtualization/applicatio
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -619,7 +419,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -629,7 +428,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdapplication
 #>
 function Get-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -794,9 +593,9 @@ ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktop
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktop
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktopList
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktopList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -808,7 +607,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -818,7 +616,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvddesktop
 #>
 function Get-AzWvdDesktop {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktop], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktopList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktop], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktopList])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -983,7 +781,7 @@ eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -995,7 +793,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -1005,7 +802,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdhostpool
 #>
 function Get-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1145,194 +942,6 @@ end {
 
 <#
 .Synopsis
-Get a msixpackage.
-.Description
-Get a msixpackage.
-.Example
-PS C:\> Get-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroupName -SubscriptionId SubscriptionId -FullName PackageFullName
-
-Name                                                  Type
-----                                                  ----
-HostPoolName/MSIXPackage_FullName                     Microsoft.DesktopVirtualization/hostpools/msixpackages
-.Example
-PS C:\> Get-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroupName -SubscriptionId SubscriptionId
-
-Name                                                  Type
-----                                                  ----
-HostPoolName/MSIXPackage_FullName1                    Microsoft.DesktopVirtualization/hostpools/msixpackages
-HostPoolName/MSIXPackage_FullName2                    Microsoft.DesktopVirtualization/hostpools/msixpackages
-HostPoolName/MSIXPackage_FullName3                    Microsoft.DesktopVirtualization/hostpools/msixpackages
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [ApplicationGroupName <String>]: The name of the application group
-  [ApplicationName <String>]: The name of the application within the specified application group
-  [DesktopName <String>]: The name of the desktop within the specified desktop group
-  [HostPoolName <String>]: The name of the host pool within the specified resource group
-  [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [UserSessionId <String>]: The name of the user session within the specified session host
-  [WorkspaceName <String>]: The name of the workspace
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage
-#>
-function Get-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('MsixPackageFullName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The version specific package full name of the MSIX package within specified hostpool
-    ${FullName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Get = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_Get';
-            GetViaIdentity = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_GetViaIdentity';
-            List = 'Az.DesktopVirtualization.private\Get-AzWvdMsixPackage_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Get a session host.
 .Description
 Get a session host.
@@ -1353,7 +962,7 @@ HostPoolName/SessionHostName2 Microsoft.DesktopVirtualization/hostpools/sessionh
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ISessionHost
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHost
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1365,7 +974,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -1375,7 +983,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdsessionhost
 #>
 function Get-AzWvdSessionHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ISessionHost])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHost])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1534,12 +1142,12 @@ ApplicationGroupName/Disk Cleanup                   Microsoft.DesktopVirtualizat
 ApplicationGroupName/Internet Explorer              Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IStartMenuItem
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IStartMenuItem
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
 #>
 function Get-AzWvdStartMenuItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IStartMenuItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IStartMenuItem])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1692,7 +1300,7 @@ HostPoolName/SessionHostName/3 Microsoft.DesktopVirtualization/hostpools/session
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IUserSession
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IUserSession
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1704,7 +1312,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -1714,7 +1321,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdusersession
 #>
 function Get-AzWvdUserSession {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IUserSession])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IUserSession])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1881,13 +1488,13 @@ Get a workspace.
 .Description
 Get a workspace.
 .Example
-PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
+PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName -Name WorkspaceName
 
 Location   Name                 Type
 --------   ----                 ----
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 .Example
-PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
+PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName
 
 Location   Name           Type
 --------   ----           ----
@@ -1897,7 +1504,7 @@ eastus     WorkspaceName2 Microsoft.DesktopVirtualization/workspaces
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1909,7 +1516,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -1919,7 +1525,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdworkspace
 #>
 function Get-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2088,12 +1694,12 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdapplicationgroup
 #>
 function New-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2278,12 +1884,12 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2346,13 +1952,6 @@ param(
     ${AppAlias},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
-    # Resource Type of Application.
-    ${ApplicationType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Command Line Arguments for Application.
@@ -2375,18 +1974,6 @@ param(
     [System.String]
     # Path to icon.
     ${IconPath},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Specifies the package application Id for MSIX applications
-    ${MsixPackageApplicationId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Specifies the package family name for MSIX applications
-    ${MsixPackageFamilyName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2508,10 +2095,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
                             -SsoContext $null `
-                            -SsoClientId $null `
-                            -SsoClientSecretKeyVaultPath $null `
-                            -SsoSecretType $null `
-                            -SsoadfsAuthority $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false
@@ -2532,10 +2115,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
                             -SsoContext $null `
-                            -SsoClientId $null `
-                            -SsoClientSecretKeyVaultPath $null `
-                            -SsoSecretType $null `
-                            -SsoadfsAuthority $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false
@@ -2545,12 +2124,12 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 #>
 function New-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2672,33 +2251,8 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # ClientId for the registered Relying Party used to issue WVD SSO certificates.
-    ${SsoClientId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Path to Azure KeyVault storing the secret used for communication to ADFS.
-    ${SsoClientSecretKeyVaultPath},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
     # Path to keyvault containing ssoContext secret.
     ${SsoContext},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType]
-    # The type of single sign on Secret Type.
-    ${SsoSecretType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # URL to customer ADFS server for signing WVD SSO certificates.
-    ${SsoadfsAuthority},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -2823,272 +2377,6 @@ end {
 
 <#
 .Synopsis
-Create or update a MSIX package.
-.Description
-Create or update a MSIX package.
-.Example
-PS C:\> New-AzWvdMsixPackage -HostPoolName HostPoolName `
-          -ResourceGroupName resourceGroupName `
-          -SubscriptionId SubscriptionId `
-	  -PackageAlias packagealias `
-	  -ImagePath ImagePathURI  `
-.Example
-PS C:\> New-AzWvdMsixPackage -FullName PackageFullName `
-							-HostPoolName HostPoolName `
-							-ResourceGroupName ResourceGroupName ` 
-							-SubscriptionId SubscriptionId ` 
-							-DisplayName displayname `
-							-ImagePath imageURI ` 
-							-IsActive:$false `
-							-IsRegularRegistration:$false `
-							-LastUpdated datelastupdated `
-							-PackageApplication $apps `
-							-PackageDependency $deps `
-							-PackageFamilyName packagefamilyname `
-							-PackageName packagename `
-							-PackageRelativePath packagerelativepath `
-							-Version packageversion `
-
-Name                              Type
-----                              ----
-HotPoolName/PackageFullName		 Microsoft.DesktopVirtualization/hostpools/msixpackages
-
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
-  [AppId <String>]: Package Application Id, found in appxmanifest.xml.
-  [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
-  [Description <String>]: Description of Package Application.
-  [FriendlyName <String>]: User friendly name.
-  [IconImageName <String>]: User friendly name.
-  [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
-  [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
-
-PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
-  [DependencyName <String>]: Name of package dependency.
-  [MinVersion <String>]: Dependency version required.
-  [Publisher <String>]: Name of dependency publisher.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
-#>
-function New-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Alias('MsixPackageFullName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The version specific package full name of the MSIX package within specified hostpool
-    ${FullName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # User friendly Name to be displayed in the portal.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # VHD/CIM image path on Network Share.
-    ${ImagePath},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.Management.Automation.SwitchParameter]
-    # Make this version of the package the active one across the hostpool.
-    ${IsActive},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.Management.Automation.SwitchParameter]
-    # Specifies how to register Package in feed.
-    ${IsRegularRegistration},
-
-    [Parameter(ParameterSetName='PackageAlias', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # Package Alias from extract MSIX Image
-    ${PackageAlias},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.DateTime]
-    # Date Package was last updated, found in the appxmanifest.xml.
-    ${LastUpdated},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackageApplications[]]
-    # List of package applications.
-    # 
-    # To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
-    ${PackageApplication},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackageDependencies[]]
-    # List of package dependencies.
-    # 
-    # To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
-    ${PackageDependency},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Package Family Name from appxmanifest.xml.
-    # Contains Package Name and Publisher name.
-    ${PackageFamilyName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Package Name from appxmanifest.xml.
-    ${PackageName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Relative Path to the package inside the image.
-    ${PackageRelativePath},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Package Version found in the appxmanifest.xml.
-    ${Version},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            CreateExpanded = 'Az.DesktopVirtualization.private\New-AzWvdMsixPackage_CreateExpanded';
-            PackageAlias = 'Az.DesktopVirtualization.custom\New-AzWvdMsixPackage_PackageAlias';
-        }
-        if (('CreateExpanded', 'PackageAlias') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Create or update a workspace.
 .Description
 Create or update a workspace.
@@ -3116,12 +2404,12 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdworkspace
 #>
 function New-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3300,7 +2588,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -3472,7 +2759,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -3651,7 +2937,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -3808,184 +3093,6 @@ end {
 
 <#
 .Synopsis
-Remove an MSIX Package.
-.Description
-Remove an MSIX Package.
-.Example
-PS C:\> Remove-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroupName -SubscriptionId SubscriptionId -FullName PackageFullName
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [ApplicationGroupName <String>]: The name of the application group
-  [ApplicationName <String>]: The name of the application within the specified application group
-  [DesktopName <String>]: The name of the desktop within the specified desktop group
-  [HostPoolName <String>]: The name of the host pool within the specified resource group
-  [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [UserSessionId <String>]: The name of the user session within the specified session host
-  [WorkspaceName <String>]: The name of the workspace
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage
-#>
-function Remove-AzWvdMsixPackage {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('MsixPackageFullName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The version specific package full name of the MSIX package within specified hostpool
-    ${FullName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Delete = 'Az.DesktopVirtualization.private\Remove-AzWvdMsixPackage_Delete';
-            DeleteViaIdentity = 'Az.DesktopVirtualization.private\Remove-AzWvdMsixPackage_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Remove a SessionHost.
 .Description
 Remove a SessionHost.
@@ -4007,7 +3114,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4191,7 +3297,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4364,7 +3469,7 @@ Remove a workspace.
 .Description
 Remove a workspace.
 .Example
-PS C:\> Remove-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
+PS C:\> Remove-AzWvdWorksapce -ResourceGroupName ResourceGroupName -Name WorkspaceName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -4381,7 +3486,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4558,7 +3662,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4748,7 +3851,7 @@ eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4760,7 +3863,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4770,7 +3872,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
 #>
 function Update-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -4815,7 +3917,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationGroupPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationGroupPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -4946,7 +4048,7 @@ ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/application
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4958,7 +4060,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -4968,7 +4069,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdapplication
 #>
 function Update-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -5005,13 +4106,6 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
-    # Resource Type of Application.
-    ${ApplicationType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -5058,25 +4152,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Specifies the package application Id for MSIX applications
-    ${MsixPackageApplicationId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Specifies the package family name for MSIX applications
-    ${MsixPackageFamilyName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether to show the RemoteApp program in the RD Web Access server.
     ${ShowInPortal},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplicationPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplicationPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -5202,7 +4284,7 @@ ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktop
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktop
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5214,7 +4296,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -5224,7 +4305,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvddesktop
 #>
 function Update-AzWvdDesktop {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktop])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktop])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -5275,7 +4356,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IDesktopPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IDesktopPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -5406,7 +4487,7 @@ eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5418,7 +4499,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -5428,7 +4508,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdhostpool
 #>
 function Update-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -5526,46 +4606,15 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # ClientId for the registered Relying Party used to issue WVD SSO certificates.
-    ${SsoClientId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Path to Azure KeyVault storing the secret used for communication to ADFS.
-    ${SsoClientSecretKeyVaultPath},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
     # Path to keyvault containing ssoContext secret.
     ${SsoContext},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType]
-    # The type of single sign on Secret Type.
-    ${SsoSecretType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # URL to customer ADFS server for signing WVD SSO certificates.
-    ${SsoadfsAuthority},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPoolPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IHostPoolPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # VM template for sessionhosts configuration within hostpool.
-    ${VMTemplate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -5677,206 +4726,6 @@ end {
 
 <#
 .Synopsis
-Update an  MSIX Package.
-.Description
-Update an  MSIX Package.
-.Example
-PS C:\> Update-AzWvdMsixPackage -HostPoolName HostPoolName `
-				-ResourceGroupName ResourceGroupName `
-				-SubscriptionId SubscriptionId `
-				-displayName 'Updated-display-Name' `
-        			-IsRegularRegistration:$False `
-				-IsActive:$True
-
-Name                                                  Type
-----                                                  ----
-HostPoolName/MSIXPackage_FullName1                    Microsoft.DesktopVirtualization/hostpools/msixpackages
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [ApplicationGroupName <String>]: The name of the application group
-  [ApplicationName <String>]: The name of the application within the specified application group
-  [DesktopName <String>]: The name of the desktop within the specified desktop group
-  [HostPoolName <String>]: The name of the host pool within the specified resource group
-  [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [UserSessionId <String>]: The name of the user session within the specified session host
-  [WorkspaceName <String>]: The name of the workspace
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
-#>
-function Update-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IMsixPackage])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('MsixPackageFullName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The version specific package full name of the MSIX package within specified hostpool
-    ${FullName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Display name for MSIX Package.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Set a version of the package to be active across hostpool.
-    ${IsActive},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Set Registration mode.
-    # Regular or Delayed.
-    ${IsRegularRegistration},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.DesktopVirtualization.private\Update-AzWvdMsixPackage_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Update a session host.
 .Description
 Update a session host.
@@ -5893,7 +4742,7 @@ HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionho
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ISessionHost
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHost
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5905,7 +4754,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -5915,7 +4763,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdsessionhost
 #>
 function Update-AzWvdSessionHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ISessionHost])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ISessionHost])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -6085,7 +4933,7 @@ eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6097,7 +4945,6 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
-  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -6107,7 +4954,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdworkspace
 #>
 function Update-AzWvdWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -6158,7 +5005,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspacePatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspacePatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -6278,12 +5125,12 @@ ExpirationTime       RegistrationTokenOperation Token
 4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfo
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 #>
 function Get-AzWvdRegistrationInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfo])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -6419,12 +5266,12 @@ ExpirationTime       RegistrationTokenOperation Token
 4/1/2020 10:19:33 PM Update                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IRegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfo
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
 #>
 function New-AzWvdRegistrationInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IRegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IRegistrationInfo])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6573,6 +5420,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Previ
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 #>
 function Register-AzWvdApplicationGroup {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6855,6 +5703,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Previ
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
 #>
 function Unregister-AzWvdApplicationGroup {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

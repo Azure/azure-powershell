@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new NetworkCloudException(rex);
             }
         }
-
         public virtual void Execute()
         {
         }

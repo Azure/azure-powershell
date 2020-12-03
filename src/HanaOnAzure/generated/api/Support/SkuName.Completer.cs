@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// SKU name to specify whether the key vault is a standard vault or a premium vault.
-    /// </summary>
+    /// <summary>Argument completer implementation for SkuName.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuNameTypeConverter))]
     public partial struct SkuName :
         System.Management.Automation.IArgumentCompleter

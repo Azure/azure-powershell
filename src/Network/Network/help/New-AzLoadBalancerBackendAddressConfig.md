@@ -12,15 +12,8 @@ Returns a load balancer backend address config.
 
 ## SYNTAX
 
-### SetByResourcePublicIpAddress (Default)
 ```
 New-AzLoadBalancerBackendAddressConfig -IpAddress <String> -Name <String> -VirtualNetworkId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SetByResourceFrontendIPConfiguration
-```
-New-AzLoadBalancerBackendAddressConfig -Name <String> -LoadBalancerFrontendIPConfigurationId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,16 +22,11 @@ Returns a load balancer backend address config.
 
 ## EXAMPLES
 
-### Example 1: New loadbalancer address config with virtual network reference
+### Example 1
+### Example 2: New loadbalancer address config with virtual network reference
 ```powershell
 PS C:\> $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
-```
-
-### Example 2: New loadbalancer address config with loadbalancer frontend ip configuration reference
-```powershell
-PS C:\> $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
-New-AzLoadBalancerBackendAddressConfig -LoadBalancerFrontendIPConfigurationId $frontend.Id -Name "TestLBFERef"
 ```
 
 ## PARAMETERS
@@ -63,22 +51,7 @@ The IPAddress to add to the backend pool
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourcePublicIpAddress
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LoadBalancerFrontendIPConfigurationId
-The load balancer frontend ip configuration associated with Backend Address config
-
-```yaml
-Type: System.String
-Parameter Sets: SetByResourceFrontendIPConfiguration
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -108,7 +81,7 @@ The virtual network associated with Backend Address config
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourcePublicIpAddress
+Parameter Sets: (All)
 Aliases:
 
 Required: True

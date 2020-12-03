@@ -164,7 +164,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS, GeneralPurpose, BusinessCritical, Hyperscale
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS, GeneralPurpose, BusinessCritical
 
 Required: True
 Position: Named

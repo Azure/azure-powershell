@@ -50,8 +50,7 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
-                             "Name": "Basic",
-                             "Tier": "Regional"
+                             "Name": "Basic"
                            }
 ```
 
@@ -78,8 +77,7 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
-                             "Name": "Basic",
-                             "Tier": "Regional"
+                             "Name": "Basic"
                            }
 
 Name                     : MyLoadBalancer2
@@ -98,8 +96,7 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
-                             "Name": "Basic",
-                             "Tier": "Regional"
+                             "Name": "Basic"
                            }
 ```
 

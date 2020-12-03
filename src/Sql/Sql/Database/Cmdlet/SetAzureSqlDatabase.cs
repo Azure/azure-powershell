@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -226,8 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        [Alias("ReadReplicaCount")]
-        public int HighAvailabilityReplicaCount { get; set; }
+        public int ReadReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
@@ -236,14 +234,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary type for the database if it is a secondary.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
-        [ValidateSet("Named", "Geo")]
-        public string SecondaryType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -295,9 +285,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
-                SecondaryType = SecondaryType,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

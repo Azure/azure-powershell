@@ -13,7 +13,7 @@ Get Usage of an azure container registry.
 ## SYNTAX
 
 ```
-Get-AzContainerRegistryUsage -ResourceGroupName <String> -Name <String>
+Get-AzContainerRegistryUsage -ResourceGroupName <String> -RegistryName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -46,18 +46,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -RegistryName
 Target registry name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: RegistryName
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -72,7 +72,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -44,14 +44,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestGlobalLoadBalancerBackendPoolCreate()
-        {
-            TestRunner.RunTestScript("Test-GlobalLoadBalancerBackendPoolCreate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerBackendPoolRead()
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendPoolRead");

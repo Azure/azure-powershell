@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.IdentityType = identity?.Type?.ToString();
             this.PrincipalId = identity?.PrincipalId;
-            this.TenantId = identity?.TenantId.ToString();
+            this.TenantId = identity?.TenantId;
         }
     }
 }

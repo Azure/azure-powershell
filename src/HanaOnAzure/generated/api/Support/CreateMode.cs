@@ -6,9 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// The vault's create mode to indicate whether the vault need to be recovered or not.
-    /// </summary>
     public partial struct CreateMode :
         System.IEquatable<CreateMode>
     {

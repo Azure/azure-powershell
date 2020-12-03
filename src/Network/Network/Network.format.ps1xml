@@ -2612,10 +2612,6 @@
                 <Label>VirtualNetwork</Label>
                 <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>LoadBalancerFrontendIPConfiguration</Label>
-                <PropertyName>LoadBalancerFrontendIPConfigurationIdText</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -2,9 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Extensions;
 
-    /// <summary>
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
-    /// </summary>
+    /// <summary>Key Vault resource</summary>
     public partial class Resource :
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.IResource,
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.IResourceInternal
@@ -13,9 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </summary>
+        /// <summary>The Azure Resource Manager resource ID for the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
 
@@ -31,16 +27,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the resource</summary>
+        /// <summary>The name of the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
+        /// <summary>The resource type of the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
 
@@ -50,53 +44,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10
 
         }
     }
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// Key Vault resource
     public partial interface IResource :
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </summary>
+        /// <summary>The Azure Resource Manager resource ID for the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+        Description = @"The Azure Resource Manager resource ID for the key vault.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
-        /// <summary>The name of the resource</summary>
+        /// <summary>The name of the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"The name of the resource",
+        Description = @"The name of the key vault.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
+        /// <summary>The resource type of the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"The type of the resource. E.g. ""Microsoft.Compute/virtualMachines"" or ""Microsoft.Storage/storageAccounts""",
+        Description = @"The resource type of the key vault.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
 
     }
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// Key Vault resource
     internal partial interface IResourceInternal
 
     {
-        /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </summary>
+        /// <summary>The Azure Resource Manager resource ID for the key vault.</summary>
         string Id { get; set; }
-        /// <summary>The name of the resource</summary>
+        /// <summary>The name of the key vault.</summary>
         string Name { get; set; }
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
+        /// <summary>The resource type of the key vault.</summary>
         string Type { get; set; }
 
     }

@@ -1,14 +1,14 @@
 [cmdletbinding()]
 param(
   [string]
-  [Parameter(Mandatory = $false, Position = 0)]
+  [Parameter(Mandatory = $true, Position = 0)]
   $requiredPsVersion
 )
 
 function Install-PowerShell {
   param (
     [string]
-    [Parameter(Mandatory = $false, Position = 0)]
+    [Parameter(Mandatory = $true, Position = 0)]
     $requiredPsVersion
   )
   
@@ -19,11 +19,7 @@ function Install-PowerShell {
     Write-Host "Installing PS $requiredPsVersion..."
     dotnet --version
     dotnet new tool-manifest --force
-    if('latest' -eq $requiredPsVersion){
-      dotnet tool install PowerShell
-    }else {
-      dotnet tool install PowerShell --version $requiredPsVersion 
-    }
+    dotnet tool install PowerShell --version $requiredPsVersion 
     dotnet tool list
   }else {
     Write-Host "Powershell", $requiredPsVersion, "has been installed"

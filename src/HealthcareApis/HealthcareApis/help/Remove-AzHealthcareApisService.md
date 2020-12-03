@@ -200,9 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
-
 ### System.String
+
+### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
 
 ## OUTPUTS
 

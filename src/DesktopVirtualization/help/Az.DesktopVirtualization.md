@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: DesktopVirtualization cmdlets
 ### [Disconnect-AzWvdUserSession](Disconnect-AzWvdUserSession.md)
 Disconnect a userSession.
 
-### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
-Expands and Lists MSIX packages in an Image, given the Image Path.
-
 ### [Get-AzWvdApplication](Get-AzWvdApplication.md)
 Get an application.
 
@@ -28,9 +25,6 @@ Get a desktop.
 
 ### [Get-AzWvdHostPool](Get-AzWvdHostPool.md)
 Get a host pool.
-
-### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
-Get a msixpackage.
 
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
 Get the Windows virtual desktop registration info.
@@ -56,9 +50,6 @@ Create or update an applicationGroup.
 ### [New-AzWvdHostPool](New-AzWvdHostPool.md)
 Create or update a host pool.
 
-### [New-AzWvdMsixPackage](New-AzWvdMsixPackage.md)
-Create or update a MSIX package.
-
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
 Create Windows virtual desktop registration info.
 
@@ -76,9 +67,6 @@ Remove an applicationGroup.
 
 ### [Remove-AzWvdHostPool](Remove-AzWvdHostPool.md)
 Remove a host pool.
-
-### [Remove-AzWvdMsixPackage](Remove-AzWvdMsixPackage.md)
-Remove an MSIX Package.
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
 Remove the Windows virtual desktop registration info.
@@ -109,9 +97,6 @@ Update a desktop.
 
 ### [Update-AzWvdHostPool](Update-AzWvdHostPool.md)
 Update a host pool.
-
-### [Update-AzWvdMsixPackage](Update-AzWvdMsixPackage.md)
-Update an  MSIX Package.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
 Update a session host.

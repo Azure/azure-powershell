@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// The vault's create mode to indicate whether the vault need to be recovered or not.
-    /// </summary>
+    /// <summary>Argument completer implementation for CreateMode.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.CreateModeTypeConverter))]
     public partial struct CreateMode :
         System.Management.Automation.IArgumentCompleter

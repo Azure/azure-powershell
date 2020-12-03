@@ -2,9 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>
-    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-    /// </summary>
+    /// <summary>The resource model definition for a ARM tracked top level resource</summary>
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial class TrackedResource
     {
@@ -131,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
             AfterDeserializePSObject(content);
         }
     }
-    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    /// The resource model definition for a ARM tracked top level resource
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial interface ITrackedResource
 

@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// The vault's create mode to indicate whether the vault need to be recovered or not.
-    /// </summary>
+    /// <summary>TypeConverter implementation for CreateMode.</summary>
     public partial class CreateModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -6,9 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>
-    /// SKU name to specify whether the key vault is a standard vault or a premium vault.
-    /// </summary>
     public partial struct SkuName :
         System.IEquatable<SkuName>
     {

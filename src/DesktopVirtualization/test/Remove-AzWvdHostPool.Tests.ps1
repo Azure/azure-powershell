@@ -29,11 +29,7 @@ Describe 'Remove-AzWvdHostPool' {
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop' `
-                            -SsoClientId 'https://domain/name' `
-                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
-                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
-                            -SsoSecretType 'SharedKeyInKeyVault'
+                            -PreferredAppGroupType 'Desktop'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -50,10 +46,6 @@ Describe 'Remove-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
-            $hostPool.SsoClientId | Should -Be 'https://domain/name'
-            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
-            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
-            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -74,10 +66,6 @@ Describe 'Remove-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
-            $hostPool.SsoClientId | Should -Be 'https://domain/name'
-            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
-            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
-            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `

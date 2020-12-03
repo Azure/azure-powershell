@@ -21,9 +21,6 @@
             <Label>HostPoolName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MsixPackageFullName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -55,9 +52,6 @@
                 <PropertyName>HostPoolName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MsixPackageFullName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -78,9 +72,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Application</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Application</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Application</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Application</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -106,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -140,9 +134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -162,9 +156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -190,9 +184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -218,9 +212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -240,9 +234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationGroupProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -308,15 +302,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ApplicationType</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>CommandLineArgument</Label>
           </TableColumnHeader>
@@ -339,21 +330,12 @@
             <Label>IconPath</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MsixPackageApplicationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MsixPackageFamilyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ShowInPortal</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ApplicationType</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CommandLineArgument</PropertyName>
               </TableColumnItem>
@@ -376,12 +358,6 @@
                 <PropertyName>IconPath</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MsixPackageApplicationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MsixPackageFamilyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ShowInPortal</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -390,9 +366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -412,15 +388,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ApplicationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ApplicationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ApplicationType</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>CommandLineArgument</Label>
           </TableColumnHeader>
@@ -449,21 +422,12 @@
             <Label>IconPath</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MsixPackageApplicationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MsixPackageFamilyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ShowInPortal</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ApplicationType</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CommandLineArgument</PropertyName>
               </TableColumnItem>
@@ -492,12 +456,6 @@
                 <PropertyName>IconPath</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MsixPackageApplicationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MsixPackageFamilyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ShowInPortal</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -506,9 +464,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.CloudErrorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.CloudError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.CloudErrorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.CloudError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -534,9 +492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Desktop</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Desktop</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Desktop</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Desktop</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -562,9 +520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -584,9 +542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -612,9 +570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -634,9 +592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.DesktopProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.DesktopProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -674,141 +632,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImage</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImageList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImageList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImageProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ExpandMsixImageProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ImagePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsRegularRegistration</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastUpdated</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageAlias</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageFamilyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageFullName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageRelativePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ImagePath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsRegularRegistration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastUpdated</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageAlias</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageFamilyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageFullName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageRelativePath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPool</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -840,9 +666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -862,9 +688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -890,9 +716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -921,22 +747,7 @@
             <Label>Ring</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SsoClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoClientSecretKeyVaultPath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SsoContext</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoSecretType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoadfsAuthority</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VMTemplate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ValidationEnvironment</Label>
@@ -970,22 +781,7 @@
                 <PropertyName>Ring</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SsoClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoClientSecretKeyVaultPath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>SsoContext</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoSecretType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoadfsAuthority</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VMTemplate</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ValidationEnvironment</PropertyName>
@@ -996,9 +792,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1018,9 +814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.HostPoolProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.HostPoolProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1055,19 +851,7 @@
             <Label>Ring</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SsoClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoClientSecretKeyVaultPath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SsoContext</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoSecretType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SsoadfsAuthority</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VMTemplate</Label>
@@ -1110,19 +894,7 @@
                 <PropertyName>Ring</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SsoClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoClientSecretKeyVaultPath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>SsoContext</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoSecretType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SsoadfsAuthority</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VMTemplate</PropertyName>
@@ -1136,305 +908,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixImageUri</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixImageUri</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Uri</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Uri</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackage</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackage</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageApplications</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageApplications</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AppId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AppUserModelId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FriendlyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IconImageName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RawIcon</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RawPng</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AppId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AppUserModelId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FriendlyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IconImageName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RawIcon</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RawPng</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageDependencies</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageDependencies</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DependencyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MinVersion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DependencyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MinVersion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackagePatch</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackagePatch</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackagePatchProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackagePatchProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsRegularRegistration</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsRegularRegistration</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.MsixPackageProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ImagePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsRegularRegistration</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastUpdated</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageFamilyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageRelativePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ImagePath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsRegularRegistration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastUpdated</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageFamilyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageRelativePath</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1466,9 +942,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfoPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfoPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.RegistrationInfoPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.RegistrationInfoPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1494,9 +970,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ResourceProviderOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ResourceProviderOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ResourceProviderOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ResourceProviderOperation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1516,9 +992,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ResourceProviderOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ResourceProviderOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.ResourceProviderOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.ResourceProviderOperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1556,9 +1032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SendMessage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SendMessage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SendMessage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SendMessage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1584,9 +1060,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHost</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHost</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHost</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHost</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1612,9 +1088,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1634,9 +1110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1662,9 +1138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1690,9 +1166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.SessionHostProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.SessionHostProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1790,9 +1266,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1818,9 +1294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItemList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItemList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItemList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItemList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1840,9 +1316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItemProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItemProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.StartMenuItemProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.StartMenuItemProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1892,9 +1368,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSession</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSession</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSession</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSession</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1920,9 +1396,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSessionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSessionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSessionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSessionList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1942,9 +1418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSessionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSessionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.UserSessionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.UserSessionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1988,9 +1464,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Workspace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Workspace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.Workspace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.Workspace</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2022,9 +1498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspaceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspaceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspaceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspaceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2044,9 +1520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspacePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspacePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspacePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspacePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2078,9 +1554,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspacePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspacePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspacePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspacePatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +1576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspaceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspaceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.WorkspaceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.WorkspaceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 DeviceCodeCallback = DeviceCodeFunc,
                 AuthorityHost = new Uri(authority),
                 ClientId = clientId,
-                TenantId = tenantId,
+                TenantId = onPremise ? tenantId : null,
                 TokenCache = tokenCache.TokenCache,
             };
             var codeCredential = new DeviceCodeCredential(options);

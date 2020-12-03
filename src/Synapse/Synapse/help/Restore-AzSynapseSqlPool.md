@@ -12,7 +12,7 @@ Restores a Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### RestoreFromBackupIdByNameParameterSet (Default)
+### RestoreFromBackupIdByNameParameterSet
 ```
 Restore-AzSynapseSqlPool [-FromBackup] [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] -BackupResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]

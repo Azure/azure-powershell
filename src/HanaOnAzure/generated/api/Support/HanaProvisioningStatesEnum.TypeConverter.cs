@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>State of provisioning of the HanaInstance</summary>
+    /// <summary>TypeConverter implementation for HanaProvisioningStatesEnum.</summary>
     public partial class HanaProvisioningStatesEnumTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string RuleType { get; set; }
-        public int? Priority { get; set; }
         public PSResourceId BackendAddressPool { get; set; }
         public PSResourceId BackendHttpSettings { get; set; }
         public PSResourceId HttpListener { get; set; }

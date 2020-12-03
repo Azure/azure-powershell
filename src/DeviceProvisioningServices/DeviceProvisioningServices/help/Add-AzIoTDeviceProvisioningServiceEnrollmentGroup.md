@@ -68,9 +68,7 @@ Create an enrollment with attestation type X509
 ```powershell
 PS C:\> $tag = @{}
 PS C:\> $tag.Add("environment","test")
-PS C:\> $desired = @{}
-PS C:\> $desired.add("version_dps", "dps1")
-PS C:\> Add-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -AttestationType SymmetricKey -tag $tag -Desired $desired
+PS C:\> Add-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -AttestationType SymmetricKey -tag $tag
 ```
 
 Create an enrollment with attestation type SymmetricKey and initial twin state.

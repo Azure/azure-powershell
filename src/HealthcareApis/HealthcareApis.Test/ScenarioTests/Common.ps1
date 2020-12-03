@@ -50,15 +50,6 @@ function Get-OfferThroughput
 
 <#
 .SYNOPSIS
-Gets keyVaultKeyUri value
-#>
-function Get-KeyVaultKeyUri
-{
-    return "https://pshealthapitestvault.vault.azure.net/keys/PSKey1"
-}
-
-<#
-.SYNOPSIS
 Gets kind value
 #>
 function Get-Kind

@@ -323,22 +323,7 @@ function Remove-ModuleDependencies {
 
         $regex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
         $content = (Get-Content -Path $Path) -join "`r`n"
-
-        $file = Get-Item $Path
-        Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
-        $ReplacedNestedModules = ""
-        foreach ($nestedModule in $ModuleMetadata.NestedModules)
-        {
-            if('.dll' -ne [System.IO.Path]::GetExtension($nestedModule)) 
-            {
-                $ReplacedNestedModules += "'$nestedModule', ";
-            }
-        }
-        if("" -ne $ReplacedNestedModules){
-            $ReplacedNestedModules = $ReplacedNestedModules.Substring(0, $ReplacedNestedModules.Length - 2)
-        }
-
-        $text = $regex.Replace($content, "NestedModules = @($ReplacedNestedModules)")
+        $text = $regex.Replace($content, "NestedModules = @()")
         Out-FileNoBom -File $Path -Text $text
     }
 }
@@ -699,7 +684,7 @@ function Add-Module {
             }
 
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
-            Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest -Resolve)
+            Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest)
 
             Remove-Item -Path $zipPath -Force
 
