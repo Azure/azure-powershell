@@ -1054,6 +1054,10 @@
       "_justification": "Generated cs, specified disallowed password values"
     },
     {
+      "file": "src\\CloudService\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\TimeSeriesInsights\\test\\env.json",
       "_justification": "Test resource is deleted"
     },
