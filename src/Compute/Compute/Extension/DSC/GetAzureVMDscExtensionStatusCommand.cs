@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// Get-AzVMDscExtensionStatus -ResourceGroupName resgrp1 -VMName vm1
     /// /// Get-AzVMDscExtensionStatus -ResourceGroupName resgrp1 -VMName vm1 -Name DSC
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtensionStatus", DefaultParameterSetName = GetDscExtensionParamSetName), OutputType(typeof(PSVirtualMachineInstanceView))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtensionStatus", DefaultParameterSetName = VMParameterSetName), OutputType(typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMDscExtensionStatusCommand : VirtualMachineExtensionBaseCmdlet
     {
         private const string GetDscExtensionParamSetName = "GetDscExtension",
@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetDscExtensionParamSetName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetDscExtensionParamSetName,
             HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -47,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetDscExtensionParamSetName,
             HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzVMDscExtension cmdlet sets this name to  " +
             "'Microsoft.Powershell.DSC', which is the same value used by Get-AzVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
@@ -73,13 +76,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             base.ExecuteCmdlet();
 
             var virtualMachineName = "";
+            var resourceGroup = "";
             if (this.ParameterSetName.Equals(GetDscExtensionParamSetName))
             {
                 virtualMachineName = VMName;
+                resourceGroup = ResourceGroupName;
             }
             else
             {
                 virtualMachineName = this.VM.Name;
+                resourceGroup = this.VM.ResourceGroupName;
             }
 
             if (String.IsNullOrEmpty(Name))
@@ -88,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
 
             //var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-            var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, virtualMachineName, Name);
+            var result = VirtualMachineExtensionClient.GetWithInstanceView(resourceGroup, virtualMachineName, Name);
             if (result != null && result.Body != null)
             {
                 //WriteObject(GetDscExtensionStatusContext(result.Body, ResourceGroupName, VMName));
