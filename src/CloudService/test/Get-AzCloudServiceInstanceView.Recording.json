@@ -1,0 +1,41 @@
+{
+  "Get-AzCloudServiceInstanceView+[NoContext]+Get cloud service InstanceView+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestdk2fgatb/providers/Microsoft.Compute/cloudServices/cscmdlettestank38pzb/instanceView?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestdk2fgatb/providers/Microsoft.Compute/cloudServices/cscmdlettestank38pzb/instanceView?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "95630f1c-58d1-4195-b864-b6d32983221d" ],
+        "CommandName": [ "Get-AzCloudServiceInstanceView" ],
+        "FullCommandName": [ "Get-AzCloudServiceInstanceView_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "20ed9df9-ddf2-4c5c-8fb5-78d920238529" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "75307c12-c4ef-4799-abf2-57d1db0be284" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201124T063230Z:75307c12-c4ef-4799-abf2-57d1db0be284" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Nov 2020 06:32:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1012" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"roleInstance\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"PowerState/started\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"RoleState/RoleStateStarted\",\r\n        \"count\": 4\r\n      }\r\n    ]\r\n  },\r\n  \"sdkVersion\": \"2.9.6496.3\",\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2020-11-24T06:31:54.6239714+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/started\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Started\",\r\n      \"time\": \"2020-11-24T06:31:54.6239714+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"CurrentUpgradeDomain/-1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Current Upgrade Domain of cloud service is -1.\"\r\n    },\r\n    {\r\n      \"code\": \"MaxUpgradeDomain/1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Max Upgrade Domain of cloud service is 1.\"\r\n    }\r\n  ]\r\n}"
+    }
+  }
+}

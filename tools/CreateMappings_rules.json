@@ -602,6 +602,10 @@
     "alias": "DigitalTwins"
   },
   {
+    "regex": "CloudService",
+    "alias": "CloudService"
+  },
+  {
     "alias": "WindowsIotServices",
     "regex": "WindowsIotServices"
   }
