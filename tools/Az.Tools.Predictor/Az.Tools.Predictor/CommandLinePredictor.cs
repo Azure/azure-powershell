@@ -142,10 +142,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             if (!string.IsNullOrWhiteSpace(p.Value))
                             {
                                 _ = sourceBuilder.Append(AzPredictorConstants.CommandParameterSeperator);
-                                _ = sourceBuilder.Append(p.Name);
+                                _ = sourceBuilder.Append(p.Value);
                             }
                         }
-
 
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
                         {
