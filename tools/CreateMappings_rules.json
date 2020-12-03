@@ -608,5 +608,9 @@
   {
     "alias": "WindowsIotServices",
     "regex": "WindowsIotServices"
+  },
+  {
+    "regex": "CostManagement",
+    "alias": "CostManagement"
   }
 ]
