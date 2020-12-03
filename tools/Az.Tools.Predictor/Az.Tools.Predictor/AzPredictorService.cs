@@ -178,9 +178,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
                 var resultsFromFallback = fallbackPredictor?.GetSuggestion(input, presentCommands, suggestionCountToRequest, maxAllowedCommandDuplicate, cancellationToken);
 
-                if (result == null)
+                if ((result == null) && (resultsFromFallback != null))
                 {
                     result = resultsFromFallback;
+
+                    for (var i = 0; i < result.Count; ++i)
+                    {
+                        result.UpdateSuggestionSource(i, SuggestionSource.StaticCommands);
+                    }
                 }
                 else if ((resultsFromFallback != null) && (resultsFromFallback.Count > 0))
                 {

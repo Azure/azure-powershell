@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -34,38 +33,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public int SuggestionAccepted { get; set; }
 
         /// <inheritdoc/>
-        public void OnHistory(string historyLine)
+        public void OnHistory(TelemetryData.History telemetryData)
         {
             this.RecordedSuggestion = new RecordedSuggestionForHistory()
             {
-                HistoryLine = historyLine,
+                HistoryLine = telemetryData.Command,
             };
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(string command)
+        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData)
         {
         }
 
         /// <inheritdoc/>
-        public void OnRequestPredictionError(string command, Exception e)
-        {
-        }
-
-        /// <inheritdoc/>
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData)
         {
             ++this.SuggestionAccepted;
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled)
+        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData)
         {
         }
 
-        /// <inheritdoc/>
-        public void OnGetSuggestionError(Exception e)
-        {
-        }
     }
 }
