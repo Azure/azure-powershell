@@ -274,6 +274,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
                             postSuccess = true;
 
+                            httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
                             var suggestionsList = await JsonSerializer.DeserializeAsync<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
 
@@ -328,6 +329,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
 
+                        httpResponseMessage.EnsureSuccessStatusCode();
                         var reply = await httpResponseMessage.Content.ReadAsStringAsync();
                         var commandsReply = JsonSerializer.Deserialize<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
                         SetFallbackPredictor(commandsReply);
