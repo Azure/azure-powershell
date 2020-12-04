@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
-using Microsoft.Rest.Azure;
-using System;
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSecurityAlert), NewParameterTypeName = "PSSecurityAlertV3")]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }
@@ -84,6 +85,9 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                         case "active":
                             actionType = "Activate";
                             break;
+                        case "resolved":
+                            actionType = "Resolve";
+                            break;
                         default:
                             break;
                     }
@@ -110,6 +114,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     {
                         SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
+                    else if (actionType == "Resolve")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToResolveWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
                 }
             }
             else
@@ -123,6 +131,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     else if (actionType == "Activate")
                     {
                         SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Resolve")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToResolveWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
                     }
                 }
             }
