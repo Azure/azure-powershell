@@ -30,30 +30,36 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </remarks>
     public sealed class CommandLineSuggestion
     {
-        private readonly List<PredictiveSuggestion> _predictiveSuggestions = new();
+        /// <summary>
+        /// Since PSReadLine can accept at most 10 suggestions, we pre-allocate that many items in the collection to avoid
+        /// re-allocation when we try to find the suggestion to return.
+        /// </summary>
+        private const int CollectionDefaultCapacity = 10;
+
+        private readonly List<PredictiveSuggestion> _predictiveSuggestions = new List<PredictiveSuggestion>(CommandLineSuggestion.CollectionDefaultCapacity);
 
         /// <summary>
         /// Gets the suggestions returned to show to the user. This can be adjusted from <see cref="SourceTexts"/> based on
         /// the user input.
         /// </summary>
-        public IReadOnlyList<PredictiveSuggestion> PredictiveSuggestions { get { CheckObjectInvariant(); return _predictiveSuggestions; } }
+        public IReadOnlyList<PredictiveSuggestion> PredictiveSuggestions { get { return _predictiveSuggestions; } }
 
-        private readonly List<string> _sourceTexts = new();
+        private readonly List<string> _sourceTexts = new List<string>(CommandLineSuggestion.CollectionDefaultCapacity);
         /// <summary>
         /// Gets the texts that <see cref="PredictiveSuggestions"/> is based on.
         /// </summary>
-        public IReadOnlyList<string> SourceTexts { get { CheckObjectInvariant(); return _sourceTexts; } }
+        public IReadOnlyList<string> SourceTexts { get { return _sourceTexts; } }
 
-        private readonly List<SuggestionSource> _suggestionSources = new();
+        private readonly List<SuggestionSource> _suggestionSources = new List<SuggestionSource>(CommandLineSuggestion.CollectionDefaultCapacity);
         /// <summary>
         /// Gets or sets the sources where the text is from.
         /// </summary>
-        public IReadOnlyList<SuggestionSource> SuggestionSources { get { CheckObjectInvariant(); return _suggestionSources; } }
+        public IReadOnlyList<SuggestionSource> SuggestionSources { get { return _suggestionSources; } }
 
         /// <summary>
         /// Gets the number of suggestions.
         /// </summary>
-        public int Count { get { CheckObjectInvariant(); return _suggestionSources.Count; } }
+        public int Count { get { return _suggestionSources.Count; } }
 
         /// <summary>
         /// Adds a new suggestion.

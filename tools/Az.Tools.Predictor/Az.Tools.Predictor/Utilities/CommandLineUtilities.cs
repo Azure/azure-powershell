@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 _ = sb.Append(AzPredictorConstants.CommandParameterSeperator);
                 if (param.Argument != null)
                 {
-                    // Parameter is in the form of `-Name:name`
+                    // Parameter is in the form of `-Name:value`
                     _ = sb.Append(AzPredictorConstants.ParameterIndicator)
                         .Append(param.ParameterName)
                         .Append(AzPredictorConstants.ParameterValueSeperator)
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 }
                 else
                 {
-                    // Parameter is in the form of `-Name`
+                    // Parameter is in the form of `-Name value`
                     _ = sb.Append(AzPredictorConstants.ParameterIndicator)
                         .Append(param.ParameterName)
                         .Append(AzPredictorConstants.CommandParameterSeperator)
@@ -73,6 +73,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 }
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Escaping the prediction text is necessary because KnowledgeBase predicted suggestions.
+        /// such as "&lt;PSSubnetConfig&gt;" are incorrectly identified as pipe operators.
+        /// </summary>
+        /// <param name="text">The text to escape.</param>
+        public static string EscapePredictionText(string text)
+        {
+            return text.Replace("<", "'<").Replace(">", ">'");
+        }
+
+        /// <summary>
+        /// Unescape the prediction text from <see cref="EscapePredictionText"/>.
+        /// We don't want to show the escaped one to the user.
+        /// </summary>
+        /// <param name="text">The text to unescape.</param>
+        public static string UnescapePredictionText(string text)
+        {
+            return text.Replace("'<", "<").Replace(">'", ">");
         }
     }
 }

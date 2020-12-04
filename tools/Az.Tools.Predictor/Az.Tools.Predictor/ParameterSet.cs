@@ -37,17 +37,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var parameters = new List<Parameter>();
             var elements = commandAst.CommandElements.Skip(1);
-            Ast param = null;
+            CommandParameterAst param = null;
             Ast arg = null;
             foreach (Ast elem in elements)
             {
-                if (elem is CommandParameterAst)
+                if (elem is CommandParameterAst p)
                 {
-                    if (param != null)
-                    {
-                        parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
-                    }
-                    param = elem;
+                    AddParameter(param, arg);
+                    param = p;
                     arg = null;
                 }
                 else if (AzPredictorConstants.ParameterIndicator == elem?.ToString().Trim().FirstOrDefault())
@@ -55,11 +52,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // We have an incomplete command line such as
                     // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
                     // We'll ignore the incomplete parameter.
-                    if (param != null)
-                    {
-                        parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
-                    }
-
+                    AddParameter(param, arg);
                     param = null;
                     arg = null;
                 }
@@ -71,12 +64,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             Validation.CheckInvariant((param != null) || (arg == null));
 
-            if (param != null)
-            {
-                parameters.Add(new Parameter(param.ToString(), arg?.ToString()));
-            }
+            AddParameter(param, arg);
 
             Parameters = parameters;
+
+            void AddParameter(CommandParameterAst parameterName, Ast parameterValue)
+            {
+                if (parameterName != null)
+                {
+                    parameters.Add(new Parameter(parameterName.ParameterName, (parameterValue == null) ? null : CommandLineUtilities.UnescapePredictionText(parameterValue.ToString())));
+                }
+            }
         }
     }
 }

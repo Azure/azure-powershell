@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             foreach (var predictionTextRaw in modelPredictions ?? Enumerable.Empty<string>())
             {
-                var predictionText = EscapePredictionText(predictionTextRaw);
+                var predictionText = CommandLineUtilities.EscapePredictionText(predictionTextRaw);
                 Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
                 var commandAst = (ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst);
 
@@ -88,8 +88,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
             Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
+            const int commandCollectionCapacity = 10;
             CommandLineSuggestion result = new();
-            var resultsTemp = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var resultsTemp = new Dictionary<string, string>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
 
             var isCommandNameComplete = inputParameterSet.Parameters.Any() || rawUserInput.EndsWith(' ');
 
@@ -107,8 +108,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // resultBuilder and usedParams are used to store the information to construct the result.
             // We want to avoid too much heap allocation for the performance purpose.
 
+            const int parameterCollectionCapacity = 10;
             var resultBuilder = new StringBuilder();
-            var usedParams = new HashSet<int>();
+            var usedParams = new HashSet<int>(parameterCollectionCapacity);
             var sourceBuilder = new StringBuilder();
 
             for (var i = 0; i < _commandLinePredictions.Count && result.Count < suggestionCount; ++i)
@@ -124,54 +126,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, _commandLinePredictions[i].ParameterSet, usedParams))
                     {
                         PredictRestOfParameters(resultBuilder, _commandLinePredictions[i].ParameterSet.Parameters, usedParams);
-                        var prediction = UnescapePredictionText(resultBuilder);
 
-                        if (prediction.Length <= rawUserInput.Length)
+                        if (resultBuilder.Length <= rawUserInput.Length)
                         {
                             continue;
                         }
+
+                        var prediction = resultBuilder.ToString();
 
                         sourceBuilder.Clear();
                         sourceBuilder.Append(_commandLinePredictions[i].Name);
 
                         foreach (var p in _commandLinePredictions[i].ParameterSet.Parameters)
                         {
-                            _ = sourceBuilder.Append(AzPredictorConstants.CommandParameterSeperator);
-                            _ = sourceBuilder.Append(p.Name);
-
-                            if (!string.IsNullOrWhiteSpace(p.Value))
-                            {
-                                _ = sourceBuilder.Append(AzPredictorConstants.CommandParameterSeperator);
-                                _ = sourceBuilder.Append(p.Value);
-                            }
+                            AppendParameterNameAndValue(sourceBuilder, p.Name, p.Value);
                         }
 
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction.ToString()), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
                             presentCommands.Add(_commandLinePredictions[i].Name, 1);
                         }
                         else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDuplicate)
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction.ToString()), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
                             presentCommands[_commandLinePredictions[i].Name] += 1;
                         }
                         else
                         {
-                            _ = resultsTemp.TryAdd(prediction.ToString(), sourceBuilder.ToString());
-                        }
-
-                        if (result.Count == suggestionCount)
-                        {
-                            break;
+                            _ = resultsTemp.TryAdd(prediction, sourceBuilder.ToString());
                         }
                     }
                 }
             }
 
-            if ((result.Count < suggestionCount) && (resultsTemp.Count > 0))
+            var resultCount = result.Count;
+
+            if ((resultCount < suggestionCount) && (resultsTemp.Count > 0))
             {
-                foreach (var temp in resultsTemp.Take(suggestionCount - result.Count))
+                foreach (var temp in resultsTemp.Take(suggestionCount - resultCount))
                 {
                     result.AddSuggestion(new PredictiveSuggestion(temp.Key), temp.Value);
                 }
@@ -218,11 +211,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     usedParams.Add(matchIndex);
                     if (inputParameter.Value != null)
                     {
-                        _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
-                        _ = builder.Append(predictionParameters.Parameters[matchIndex].Name);
-
-                        _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
-                        _ = builder.Append(inputParameter.Value);
+                        AppendParameterNameAndValue(builder, predictionParameters.Parameters[matchIndex].Name, inputParameter.Value);
                     }
                     else
                     {
@@ -230,6 +219,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
                 }
             }
+
             return true;
         }
 
@@ -248,21 +238,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private void BuildParameterValue(StringBuilder builder, Parameter parameter)
         {
             var parameterName = parameter.Name;
-            _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
-            _ = builder.Append(parameterName);
-
-            string parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(parameterName);
+            var parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(parameterName);
 
             if (string.IsNullOrWhiteSpace(parameterValue))
             {
                 parameterValue = parameter.Value;
             }
 
-            if (!string.IsNullOrWhiteSpace(parameterValue))
-            {
-                _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
-                _ = builder.Append(parameterValue);
-            }
+            AppendParameterNameAndValue(builder, parameterName, parameterValue);
         }
 
         /// <summary>
@@ -286,19 +269,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return -1;
         }
 
-        /// <summary>
-        /// Escaping the prediction text is necessary because KnowledgeBase predicted suggestions.
-        /// such as "&lt;PSSubnetConfig&gt;" are incorrectly identified as pipe operators.
-        /// </summary>
-        /// <param name="text">The text to escape.</param>
-        private static string EscapePredictionText(string text)
+        private static void AppendParameterNameAndValue(StringBuilder builder, string name, string value)
         {
-            return text.Replace("<", "'<").Replace(">", ">'");
-        }
+            _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
+            _ = builder.Append(AzPredictorConstants.ParameterIndicator);
+            _ = builder.Append(name);
 
-        private static StringBuilder UnescapePredictionText(StringBuilder text)
-        {
-            return text.Replace("'<", "<").Replace(">'", ">");
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
+                _ = builder.Append(value);
+            }
         }
     }
 }
