@@ -19,17 +19,17 @@ function setupEnv() {
     $env.Add("replicaName", "mysql-test-100-replica")
     $env.Add("firewallRuleName", "mysqlrule01")
     $env.Add("firewallRuleName2", "mysqlrule02")
+    $env.Add("databaseName", "mysqldb")
     $env.Add("VNetName", "mysqlvnet")
 
     # Create the test group
     write-host "start to create test group."
     $resourceGroup = "MySqlTest"
-    $location = "eastus"
+    $location = "westus2"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
-    # Create the test Vnet
     write-host "Deploy Vnet template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
@@ -38,12 +38,17 @@ function setupEnv() {
     $serverName = "mysql-test-100"
     $env.Add("serverName", $serverName)
     $Sku = "GP_Gen5_4"
+    $FlexibleSku = "Standard_B1ms"
     $env.Add("Sku", $Sku)
+    $env.Add("FlexibleSku", $FlexibleSku)
 
     write-host (Get-AzContext | Out-String)
 
     write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
     New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
+
+    write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
+    New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -57,4 +62,3 @@ function cleanupEnv() {
     write-host "Clean resources you create for testing."
     Remove-AzResourceGroup -Name $env.resourceGroup
 }
-
