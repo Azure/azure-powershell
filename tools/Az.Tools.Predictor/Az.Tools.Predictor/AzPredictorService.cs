@@ -325,14 +325,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
-                        _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
+                        Exception exception = null;
 
-                        var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
+                        try
+                        {
+                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
 
-                        httpResponseMessage.EnsureSuccessStatusCode();
-                        var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                        var commandsReply = JsonSerializer.Deserialize<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
-                        SetFallbackPredictor(commandsReply);
+                            var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
+
+                            httpResponseMessage.EnsureSuccessStatusCode();
+                            var reply = await httpResponseMessage.Content.ReadAsStringAsync();
+                            var commandsReply = JsonSerializer.Deserialize<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            SetFallbackPredictor(commandsReply);
+                        }
+                        catch (Exception e)
+                        {
+                            exception = e;
+                        }
+                        finally
+                        {
+                            _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction("request_commands", hasSentHttpRequest: true, exception: exception));
+                        }
 
                         // Initialize predictions
                         RequestPredictions(new string[] {
