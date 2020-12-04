@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed issue that parameters of `Start-AzAutomationRunbook` cannot convert PSObject wrapped string to JSON string [#13240]
-* Fixed location completer for NewAutomationUpdateManagementAzureQuery cmdlet
+* Fixed location completer for New-AzAutomationUpdateManagementAzureQuery cmdlet
 
 ## Version 1.4.0
 * Added `-RunOn` parameters to `Set-AzAutomationWebhook` to specify a Hybrid Worker Group
