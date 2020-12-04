@@ -1,3 +1,90 @@
+## 5.2.0 - December 2020
+#### Az.Accounts
+* Managed to parse ExpiresOn time from raw token if could not get from underlying library
+* Improved warning message if Interactive authentication is unavailable
+
+#### Az.ApiManagement
+* [Breaking change] 'New-AzApiManagementProduct' by default has no subscription limit.
+
+#### Az.Compute
+* Edited Get-AzVm to filter by '-Name' prior to checking for throttling due to too many resources. 
+* New cmdlet 'Start-AzVmssRollingExtensionUpgrade'.
+
+#### Az.ContainerRegistry
+* Supported parameter 'Name' for and value from pipeline input for 'Get-AzContainerRegistryUsage' [#13605]
+* Polished exceptions for 'Connect-AzContainerRegistry'
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.13.0
+
+#### Az.HealthcareApis
+* Added support for customer managed keys
+
+#### Az.IotHub
+* Fixed an issue of SAS token.
+
+#### Az.KeyVault
+* Supported 'all' as an option when setting key vault access policies
+* Supported new version of SecretManagement module [#13366]
+* Supported ByteArray, String, PSCredential and Hashtable for 'SecretValue' in SecretManagementModule [#12190]
+* [Breaking change] redesigned the API surface of cmdlets related to managed HSM.
+
+#### Az.Monitor
+* Changed parameter 'Rule' of 'New-AzAutoscaleProfile' to accept empty list. [#12903]
+* Added new cmdlets to support creating diagnostic settings more flexible:
+    * 'Get-AzDiagnosticSettingCategory'
+    * 'New-AzDiagnosticSetting'
+    * 'New-AzDiagnosticDetailSetting'
+
+#### Az.RecoveryServices
+* Made help text and parameter set name changes to 'Restore-AzRecoveryServicesBackupItem' cmdlet.
+
+#### Az.Resources
+* Added '-Tag' parameter support to 'Set-AzTemplateSpec' and 'New-AzTemplateSpec'
+* Added Tag display support to default formatter for Template Specs 
+
+#### Az.ServiceFabric
+* Added example to 'Set-AzServiceFabricSetting' with SettingsSectionDescription param
+* Updated application related cmdlets to call out that support is only for ARM deployed resources
+* Marked for deprecation cluster cert cmdlets 'Add-AzureRmServiceFabricClusterCertificate' and 'Remove-AzureRmServiceFabricClusterCertificate'
+
+#### Az.Sql
+* Added SecondaryType to the following: 
+    - 'New-AzSqlDatabase'
+    - 'Set-AzSqlDatabase'
+    - 'New-AzSqlDatabaseSecondary'
+* Added HighAvailabilityReplicaCount to the following: 
+    - 'New-AzSqlDatabase'
+    - 'Set-AzSqlDatabase'
+* Made ReadReplicaCount an alias of HighAvailabilityReplicaCount in the following: 
+    - 'New-AzSqlDatabase'
+    - 'Set-AzSqlDatabase'
+
+#### Az.Storage
+* Supported upload Azure File size up to 4 TiB
+    - 'Set-AzStorageFileContent'
+* Upgraded Azure.Storage.Blobs to 12.7.0
+* Upgraded Azure.Storage.Files.Shares to 12.5.0
+* Upgraded Azure.Storage.Files.DataLake to 12.5.0
+
+#### Az.StorageSync
+* Added Sync tiering policy feature with download policy and local cache mode
+
+#### Az.Websites
+* Prevent duplicate access restriction rules
+
+### Thanks to our community contributors
+* Andrew Dawson (@dawsonar802), Update Get-AzKeyVaultCertificate.md - Get cert and save it as pfx section to work with PowerShell Core (#13557)
+* @iviark, Healthcare APIs Powershell BYOK Updates (#13518)
+* John Duckmanton (@johnduckmanton), Correct spelling of TagPatchOperation (#13508)
+* Michael James (@mikejwhat)
+  * Get-AzLogicAppRunHistory Help Tidy (#13513)
+* Richard de Zwart (@mountain65)
+  * Update Update-AzAppConfigurationStore.md (#13485)
+  * Update New-AzCosmosDBAccount.md (#13490)
+* @SteppingRazor, New-AzApiManagementProduct: Change SubscriptionsLimit parameter default value to None (#13457)
+* Steve Burkett (@SteveBurkettNZ), Fix Typo for WorkspaceResourceId parameter in example (#13589)
+
 ## 5.1.0 - November 2020
 #### Az.Accounts
 * Fixed an issue that TenantId may be not respected if using 'Connect-AzAccount -DeviceCode'[#13477]

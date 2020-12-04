@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
 * Added Tag display support to default formatter for Template Specs 
 

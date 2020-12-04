@@ -673,16 +673,15 @@ function Test-GalleryImageVersionDiskImage
 
         $snapshotname1 = 'ossnapshot' + $rgname;
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
-        $snapshot1 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname1 -Snapshot $snapshotconfig
+        $snapshot1 = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname1 -Snapshot $snapshotconfig
 
         $snapshotname2 = 'data1snapshot' + $rgname;
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
-        $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname2 -Snapshot $snapshotconfig
+        $snapshot2 = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname2 -Snapshot $snapshotconfig
 
         $snapshotname3 = 'data2snapshot' + $rgname;
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
-        $snapshot3 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname3 -Snapshot $snapshotconfig
-
+        $snapshot3 = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname3 -Snapshot $snapshotconfig
 
         $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
         $tag = @{test1 = "testval1"; test2 = "testval2" };

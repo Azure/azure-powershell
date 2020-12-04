@@ -20,9 +20,13 @@
 
 -->
 ## Upcoming Release
+* Updated Tools binaries to have Get-AzVm support `Standard_GZRS` and `RAGZRS` storage accounts.
+
+## Version 4.7.0
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
 * New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
-* Updated Tools binaries to have Get-AzVm support `Standard_GZRS` and `RAGZRS` storage accounts.
+* Edited `New-AzSnapshot` cmdlet to check for existing snapshot with the same name in the same resource group. 
+    - Throws an error if a duplicate snapshot exists. 
 
 ## Version 4.6.0
 * Added `-VmssId` parameter to `New-AzVm`

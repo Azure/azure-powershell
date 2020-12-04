@@ -172,7 +172,7 @@ namespace Common.Authentication.Test
             PowerShellTokenCacheProvider factory = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => factory);
             var msalAccessTokenAcquirerFactory = new MsalAccessTokenAcquirerFactory();
-            AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => msalAccessTokenAcquirerFactory);
+            AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => msalAccessTokenAcquirerFactory, true);
 
             string expectedAccessToken = Guid.NewGuid().ToString();
             _output.WriteLine("Expected access token for default URI: {0}", expectedAccessToken);
