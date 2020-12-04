@@ -1,6 +1,8 @@
 Az.AppConfiguration
 Az.Blockchain
+Az.CloudService
 Az.ConnectedKubernetes
+Az.CostManagement
 Az.CustomProviders
 Az.Databricks
 Az.DesktopVirtualization
@@ -19,3 +21,4 @@ Az.PostgreSql
 Az.ResourceMover
 Az.SpringCloud
 Az.TimeSeriesInsights
+Az.WindowsIotServices

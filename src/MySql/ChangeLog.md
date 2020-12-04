@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Added MySql flexible server cmdlets
+
 ## Version 0.2.0
 * Removed legacy SkuSize from input and output (#11725)
 * Added AllowAll & ClientIpAddress Modes to firewall rule cmdlets (#11932)

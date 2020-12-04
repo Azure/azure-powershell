@@ -1,0 +1,37 @@
+{
+  "New-AzWindowsIotServicesDevice+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-kj9yc4?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-kj9yc4?api-version=2019-06-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"quantity\": 10,\r\n    \"billingDomainName\": \"microsoft.onmicrosoft.com\",\r\n    \"adminDomainName\": \"microsoft.onmicrosoft.com\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "181" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a9005166-0000-0700-0000-5fb36b300000\"" ],
+        "x-ms-request-id": [ "a69e52ac-96b1-4cc8-b877-94b962a70769" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "aae940f8-e5fc-465d-8889-7f34d1ac2faf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061827Z:aae940f8-e5fc-465d-8889-7f34d1ac2faf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-kj9yc4\",\"name\":\"wis-kj9yc4\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a9005166-0000-0700-0000-5fb36b300000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:20.7517086Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}
