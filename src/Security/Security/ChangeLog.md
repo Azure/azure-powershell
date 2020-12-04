@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* BREAKING CHANGES in AzSecurityAlert:
+* Added breaking change notification in AzSecurityAlert:
                     `Get-AzSecurityAlert`
                     `Set-AzSecurityAlert`
 * Added new cmdlets: 
