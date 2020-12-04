@@ -8,7 +8,7 @@ Function Move-Generation2Master {
 
     process {
         $ModuleName = ($SourcePath.Trim("\").Split("\"))[-1]
-        If (-not ($DestPath -Match $ModuleName)) {
+        If (-not ($DestPath.Trim("\").Split("\"))[-1] -eq $ModuleName)) {
             $DestPath = Join-Path -Path $DestPath -ChildPath $ModuleName
         }
         If (-not (Test-Path $DestPath)) {
@@ -67,7 +67,13 @@ Function Move-Generation2Master {
             $Psd1Metadata.GUID = $ModuleGuid
         }
         If ($Null -eq $RequiredModule) {
-            $AccountsModulePath = [System.IO.Path]::Combine($DestPath, '..', 'Accounts', 'Accounts')
+            If($DestPath -match ':')
+            {
+                $AccountsModulePath = [System.IO.Path]::Combine($DestPath, 'Accounts', 'Accounts') 
+            }eles
+            {
+                $AccountsModulePath = [System.IO.Path]::Combine($DestPath, '..', 'Accounts', 'Accounts')
+            }
             $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
             $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }
