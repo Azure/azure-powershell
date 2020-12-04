@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Supported "all" as an option when setting key vault access policies
 * Supported new version of SecretManagement module [#13366]
 * Supported ByteArray, String, PSCredential and Hashtable for `SecretValue` in SecretManagementModule [#12190]

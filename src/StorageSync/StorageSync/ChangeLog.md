@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Added Sync tiering policy feature with download policy and local cache mode
 
 ## Version 1.3.0
