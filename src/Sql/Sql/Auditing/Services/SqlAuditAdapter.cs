@@ -935,20 +935,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         internal string DatabaseName { get; set; }
     }
 
-    public sealed class SqlDevOpsAuditAdapter : SqlAuditAdapter<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel>
+    public sealed class SqlDevOpsAuditAdapter : SqlAuditAdapter<ServerDevOpsAuditingSettings, ServerDevOpsAuditModel>
     {
         public SqlDevOpsAuditAdapter(IAzureContext context, Guid roleAssignmentId = default(Guid)) : base(context, roleAssignmentId)
         {
         }
 
-        protected override ServerDevOpsAuditingPolicy GetAuditingPolicy(string resourceGroup, string serverName)
+        protected override ServerDevOpsAuditingSettings GetAuditingPolicy(string resourceGroup, string serverName)
         {
             return Communicator.GetDevOpsAuditingPolicy(resourceGroup, serverName);
         }
 
         protected override bool SetAudit(ServerDevOpsAuditModel model)
         {
-            var policy = new ServerDevOpsAuditingPolicy();
+            var policy = new ServerDevOpsAuditingSettings();
 
             PolicizeAuditModel(model, policy);
 
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return DefinitionsCommon.DiagnosticSettingsNamePrefixDevOpsOperationsAudit;
         }
 
-        protected override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingPolicy policy)
+        protected override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingSettings policy)
         {
             ModelizeAuditPolicy(model,
                 policy.State, policy.StorageEndpoint, null, policy.StorageAccountSubscriptionId,

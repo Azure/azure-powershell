@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.49.0-preview" />
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.10.0-preview" />
   </ItemGroup>
 

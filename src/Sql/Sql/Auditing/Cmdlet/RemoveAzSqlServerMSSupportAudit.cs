@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class RemoveAzSqlServerMSSupportAudit : RemoveSqlServerAuditCmdlet<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
+    public class RemoveAzSqlServerMSSupportAudit : RemoveSqlServerAuditCmdlet<ServerDevOpsAuditingSettings, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
         protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {

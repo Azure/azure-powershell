@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.4.0-beta.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.49.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
