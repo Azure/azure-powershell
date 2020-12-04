@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
 
 ## Version 4.3.0
 * Updated below cmdlet 
