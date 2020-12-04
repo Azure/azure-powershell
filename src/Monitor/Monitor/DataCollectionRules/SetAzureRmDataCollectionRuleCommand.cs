@@ -30,14 +30,55 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
     /// <summary>
     /// Update a Data Collection Rule
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRule", DefaultParameterSetName = ByFile, SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRule", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDataCollectionRuleResource))]
     public class SetAzureRmDataCollectionRuleCommand : ManagementCmdletBase
     {
-        private const string ByFile = "ByFile";
+        private const string ByName = "ByName";
+        private const string ByResourceId = "ByResourceId";
         private const string ByInputObject = "ByInputObject";
+        private DataCollectionRuleResource Dcr;
 
         #region Cmdlet parameters
+        /// <summary>
+        /// Gets or sets the data collection rule location.
+        /// </summary>
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource location.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource group parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule name.
+        /// </summary>
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
+        [Alias("Name")]
+        [ValidateNotNullOrEmpty]
+        public string RuleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ResourceId parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
+        [Alias("ResourceId")]
+        [ValidateNotNullOrEmpty]
+        public string RuleId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data collection rule file definition path
+        /// </summary>
+        [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleFile { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule object.
@@ -47,38 +88,17 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         public PSDataCollectionRuleResource InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the data collection rule name.
-        /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
-        [Alias("Name")]
-        [ValidateNotNullOrEmpty]
-        public string RuleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the data collection rule file definition path
-        /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The JSON file path.")]
-        [ValidateNotNullOrEmpty]
-        public string RuleFile { get; set; }
-
-        /// <summary>
         /// Gets or sets the data collection rule description.
         /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
+        [Parameter(ParameterSetName = ByName, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule tags.
         /// </summary>
-        [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
+        [Parameter(ParameterSetName = ByName, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
         public Hashtable Tags { get; set; }
         #endregion
 
@@ -87,59 +107,58 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            ResourceIdentifier resourceIdentifier;
             switch (ParameterSetName)
             {
-                case ByFile:
-                    ProcessRecordInternalByFile();
+                case ByName:
+                    SetDcrByFile();
+                    break;
+                case ByResourceId:
+                    resourceIdentifier = new ResourceIdentifier(RuleId);
+                    RuleName = resourceIdentifier.ResourceName;
+                    ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    SetDcrByFile();
                     break;
                 case ByInputObject:
-                    CreateDataCollectionRule(InputObject.Id, InputObject.ConvertToApiObject());
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                    RuleName = resourceIdentifier.ResourceName;
+                    ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    Dcr = InputObject.ConvertToApiObject();
                     break;
                 default:
-                    throw new Exception("Unkown ParameterSetName");
+                    throw new Exception("Unknown ParameterSetName");
             }
+
+            ReplaceDataCollectionRule();
         }
 
-        private void ProcessRecordInternalByFile()
+        private void SetDcrByFile()
         {
             string rawJsonContent = Utilities.ReadFileContent(this.TryResolvePath(RuleFile));
-            string resourceId = string.Empty;
 
-            DataCollectionRuleResource dcr;
-            PSDataCollectionRuleResource psDcr = SafeJsonConvert.DeserializeObject<PSDataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
+            var psDcr = SafeJsonConvert.DeserializeObject<PSDataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
             if (psDcr == null || psDcr.DataSources == null)
-            {
-                dcr = SafeJsonConvert.DeserializeObject<DataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
-                resourceId = dcr.Id;
-            }
+                Dcr = SafeJsonConvert.DeserializeObject<DataCollectionRuleResource>(rawJsonContent, MonitorManagementClient.DeserializationSettings);
             else
-            {
-                dcr = psDcr.ConvertToApiObject();
-                resourceId = psDcr.Id;
-            }
-
-            CreateDataCollectionRule(resourceId, dcr);
+                Dcr = psDcr.ConvertToApiObject();
         }
 
-        private void CreateDataCollectionRule(string resourceId, DataCollectionRuleResource dcr) 
+        private void ReplaceDataCollectionRule()
         {
-            var resourceIdentifier = new ResourceIdentifier(resourceId);
-            var name = RuleName ?? resourceIdentifier.ResourceName;
-            var resourceGroupName = ResourceGroupName ?? resourceIdentifier.ResourceGroupName;
-
-            if (Description != null) dcr.Description = Description;
-            if(Tags != null) dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+            if (Location != null) Dcr.Location = Location;
+            if (Description != null) Dcr.Description = Description;
+            if (Tags != null) Dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
 
             if (ShouldProcess(
-                        target: string.Format("Data collection rule '{0}' in resource group '{1}'", name, resourceGroupName),
+                        target: string.Format("Data collection rule '{0}' in resource group '{1}'", RuleName, ResourceGroupName),
                         action: "Update a data collection rule"))
             {
-                var dcrRespone = this.MonitorManagementClient.DataCollectionRules.Create(
-                    resourceGroupName: resourceGroupName, 
-                    dataCollectionRuleName: name, 
-                    body: dcr);
+                var dcrResponse = this.MonitorManagementClient.DataCollectionRules.Create(
+                    resourceGroupName: ResourceGroupName,
+                    dataCollectionRuleName: RuleName,
+                    body: Dcr);
 
-                var output = new PSDataCollectionRuleResource(dcrRespone);
+                var output = new PSDataCollectionRuleResource(dcrResponse);
                 WriteObject(sendToPipeline: output);
             }
         }

@@ -36,6 +36,14 @@ Get-AzDataCollectionRule
    [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzDataCollectionRule
+   -RuleId <string>
+   [-DefaultProfile <IAzureContextContainer>]
+   [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzDataCollectionRule** cmdlet gets one or more data collection rules.
 
@@ -84,6 +92,25 @@ This command lists data collection rules for the given resource group.
 ### Example 3: Get a data collection rule
 ```
 PS C:\>Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
+
+Description       : DCR description
+DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
+Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
+DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
+ProvisioningState : Succeeded
+Etag              : "{etag}"
+Id                : /subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr
+Name              : testDcr
+Type              : Microsoft.Insights/dataCollectionRules
+Location          : East US 2 EUAP
+Tags              : {[tag2, value2], [tag1, value1]}
+```
+
+This command lists one (a list with a single element) data collection rule.
+
+### Example 4: Get a data collection rule by Rule ID
+```
+PS C:\>Get-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr"
 
 Description       : DCR description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -151,6 +178,21 @@ The name of the resource.
 Type: System.String
 Parameter Sets: ByName
 Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleId
+The ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ResourceId
 
 Required: True
 Position: Named

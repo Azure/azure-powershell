@@ -19,6 +19,7 @@ using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         private const string ByName = "ByName";
         private const string ByResourceGroup = "ByResourceGroup";
         private const string BySubscription = "BySubscription";
+        private const string ByResourceId = "ByResourceId";
 
         #region Cmdlet parameters
 
@@ -54,6 +56,13 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ResourceId parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
+        [Alias("ResourceId")]
+        [ValidateNotNullOrEmpty]
+        public string RuleId { get; set; }
         #endregion
 
         /// <summary>
@@ -73,10 +82,17 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                         resourceGroupName: ResourceGroupName).ToList();
                     break;
                 case ByName:
-                    var oneDcr = MonitorManagementClient.DataCollectionRules.Get(
+                    var oneDcrByName = MonitorManagementClient.DataCollectionRules.Get(
                         resourceGroupName: ResourceGroupName,
                         dataCollectionRuleName: RuleName);
-                    apiResult = new List<DataCollectionRuleResource> { oneDcr };
+                    apiResult = new List<DataCollectionRuleResource> { oneDcrByName };
+                    break;
+                case ByResourceId:
+                    var resourceIdentifier = new ResourceIdentifier(RuleId);
+                    var oneDcrByRuleId = MonitorManagementClient.DataCollectionRules.Get(
+                        resourceGroupName: resourceIdentifier.ResourceGroupName,
+                        dataCollectionRuleName: resourceIdentifier.ResourceName);
+                    apiResult = new List<DataCollectionRuleResource> { oneDcrByRuleId };
                     break;
                 default:
                     throw new Exception("Unkown ParameterSetName");

@@ -36,23 +36,25 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
 	$emptyString = ""
 
     $newDcrJsonFile = New-TemporaryFile
-    Set-JsonContent -FileFullPath $newDcrJsonFile.FullName
  	
 	try
 	{
 		Write-Verbose " ****** Creating DCR #1"
+        Set-JsonContent -FileFullPath $newDcrJsonFile.FullName -NamePerfCounter 'perfCounterDcr1'
         $dcr1 = New-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName01 -RuleFile $newDcrJsonFile.FullName
 		Assert-NotNull $dcr1
 		Assert-AreEqual $dcrName01 $dcr1.Name
         Assert-AreEqual "\Processor Information(_Total)\% Processor Time" $dcr1.DataSources.PerformanceCounters[0].CounterSpecifiers[0]
 
         Write-Verbose " ****** Creating DCR #2"
+        Set-JsonContent -FileFullPath $newDcrJsonFile.FullName -NamePerfCounter 'perfCounterDcr2'
         $dcr2 = New-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName02 -RuleFile $newDcrJsonFile.FullName
 		Assert-NotNull $dcr2
 		Assert-AreEqual $dcrName02 $dcr2.Name
         Assert-AreEqual "azureMonitorMetrics-default" $dcr2.Destinations.AzureMonitorMetrics.Name
 
         Write-Verbose " ****** Creating DCR #3"
+        Set-JsonContent -FileFullPath $newDcrJsonFile.FullName -NamePerfCounter 'perfCounterDcr3'
         $dcr3 = New-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName03 -RuleFile $newDcrJsonFile.FullName
 		Assert-NotNull $dcr3
 		Assert-AreEqual $dcrName03 $dcr3.Name
@@ -81,18 +83,29 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         Assert-AreEqual $dcr1.Name $dcrList[0].Name
         Assert-AreEqual "Updated Description" $dcrList[0].Description
 
-        Write-Verbose " ****** Set DCRs from JSON file"
+        Write-Verbose " ****** Set DCRs from JSON PSDataCollectionRuleResource file"
         $dcr2.Description = "Set Description from file"
         $jsonContent = $dcr2 | ConvertTo-Json -Depth 100
         Set-Content -Path $newDcrJsonFile.FullName -Value $jsonContent
-        Set-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName02 -RuleFile $newDcrJsonFile.FullName
+        Set-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName02 -RuleFile $newDcrJsonFile.FullName
 
-        Write-Verbose " ****** Get DCRs By Name"
-        $dcrList = Get-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcr2.Name
+        Write-Verbose " ****** Get DCRs By Resource ID"
+        $dcrList = Get-AzDataCollectionRule -RuleId $dcr2.Id
         Assert-NotNull $dcrList
 		Assert-AreEqual 1 $dcrList.Length
         Assert-AreEqual $dcr2.Name $dcrList[0].Name
         Assert-AreEqual "Set Description from file" $dcrList[0].Description
+
+        Write-Verbose " ****** Set DCR By Resource ID"
+        Set-JsonContent -FileFullPath $newDcrJsonFile.FullName -NamePerfCounter 'perfCounterFromSet'
+        Set-AzDataCollectionRule -Location $location -RuleId $dcr3.Id -RuleFile $newDcrJsonFile.FullName
+
+        Write-Verbose " ****** Check Set by Resource ID"
+        $dcrList = Get-AzDataCollectionRule -RuleId $dcr3.Id
+        Assert-NotNull $dcrList
+        Assert-AreEqual 1 $dcrList.Length
+        $dcr3 = $dcrList[0]
+        Assert-AreEqual "perfCounterFromSet" $dcr3.DataSources.PerformanceCounters[0].Name
 
         Write-Verbose " ****** Update Tags (PATCH Operation) By Name"
         Update-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01 -Tags @{"update1"="test by Name"; "tag2"="value2"}
@@ -177,9 +190,9 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
     }
 }
 
-function Set-JsonContent($FileFullPath)
+function Set-JsonContent($FileFullPath, $NamePerfCounter)
 {
-    Set-Content -Path $FileFullPath -Value '{
+    Set-Content -Path $FileFullPath -Value ('{
       "properties": {
         "dataSources": {
           "performanceCounters": [
@@ -192,7 +205,7 @@ function Set-JsonContent($FileFullPath)
               "counterSpecifiers": [
                 "\\Processor Information(_Total)\\% Processor Time"
               ],
-              "name": "perfCounter01"
+              "name": "' + $NamePerfCounter + '"
             }
           ]
         },
@@ -212,5 +225,5 @@ function Set-JsonContent($FileFullPath)
           }
         ]
       }
-    }'
+    }')
 }

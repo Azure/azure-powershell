@@ -12,11 +12,26 @@ Updates (full replacement) a data collection rule.
 
 ## SYNTAX
 
-### ByFile (Default)
+### ByName (Default)
 ```
 Set-AzDataCollectionRule 
+   -Location <string>
    -ResourceGroupName <string>
    -RuleName <string>
+   -RuleFile <string>
+   [-Description <string>]
+   [-Tags <hashtable>]
+   [-DefaultProfile <IAzureContextContainer>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzDataCollectionRule 
+   -Location <string>
+   -RuleId <string>
    -RuleFile <string>
    [-Description <string>]
    [-Tags <hashtable>]
@@ -51,7 +66,8 @@ The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported 
 
 ### <a id="example1" name="example1"></a>Example 1: Update data collection rule, JSON from Rest API
 ```
-PS C:\>Set-AzDataCollectionRule -ResourceGroupName 'testdcr' 
+PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
+                                -ResourceGroupName 'testdcr' 
                                 -RuleName 'newDcr' 
                                 -RuleFile 'C:\samples\dcr1.json'
                                 -Description 'Updated Description'
@@ -73,8 +89,8 @@ This command replaces an existing data collection rules for the current subscrip
 
 ### <a id="example2" name="example2"></a>Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
 ```
-PS C:\>Set-AzDataCollectionRule -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcr' 
+PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
+                                -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' 
                                 -RuleFile 'C:\samples\dcr2.json'
                                 -Description 'Updated Description'
 
@@ -129,12 +145,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+The resource location
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RuleFile
 The JSON file path
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
@@ -149,7 +204,7 @@ The resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -164,8 +219,23 @@ The resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
 Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleId
+The resource ID
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -179,7 +249,19 @@ The resource description
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFile
+Parameter Sets: ByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: False
@@ -194,7 +276,19 @@ The resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByFile
+Parameter Sets: ByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: False

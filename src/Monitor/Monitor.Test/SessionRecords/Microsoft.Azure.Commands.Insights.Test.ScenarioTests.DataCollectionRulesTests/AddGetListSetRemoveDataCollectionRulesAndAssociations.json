@@ -4,7 +4,7 @@
       "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01?api-version=2019-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDE/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.29321.03",
@@ -16,7 +16,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "788"
+          "790"
         ]
       },
       "ResponseHeaders": {
@@ -42,13 +42,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "6c82d1dd-9a55-43fa-a2f6-1c1df41d55ad"
+          "130e4926-211d-4077-9571-d61b80b4a63c"
         ],
         "x-ms-correlation-request-id": [
-          "6c82d1dd-9a55-43fa-a2f6-1c1df41d55ad"
+          "130e4926-211d-4077-9571-d61b80b4a63c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200600Z:6c82d1dd-9a55-43fa-a2f6-1c1df41d55ad"
+          "SOUTHCENTRALUS:20201204T181629Z:130e4926-211d-4077-9571-d61b80b4a63c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:05:59 GMT"
+          "Fri, 04 Dec 2020 18:16:28 GMT"
         ],
         "Content-Length": [
-          "826"
+          "828"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,14 +69,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000221d-0000-3300-0000-5fc00aa70000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d0060df-0000-3300-0000-5fca7cfc0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01?api-version=2019-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDE/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.29321.03",
@@ -88,7 +88,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "831"
+          "833"
         ]
       },
       "ResponseHeaders": {
@@ -114,13 +114,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "f281563f-16f8-4d06-b9d1-1baeaf9c51a0"
+          "71983a42-b667-4c22-ae21-835f12a87f28"
         ],
         "x-ms-correlation-request-id": [
-          "f281563f-16f8-4d06-b9d1-1baeaf9c51a0"
+          "71983a42-b667-4c22-ae21-835f12a87f28"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200604Z:f281563f-16f8-4d06-b9d1-1baeaf9c51a0"
+          "SOUTHCENTRALUS:20201204T181633Z:71983a42-b667-4c22-ae21-835f12a87f28"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -129,10 +129,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:03 GMT"
+          "Fri, 04 Dec 2020 18:16:32 GMT"
         ],
         "Content-Length": [
-          "862"
+          "864"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -141,14 +141,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000281d-0000-3300-0000-5fc00aac0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d0097df-0000-3300-0000-5fca7d000000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02?api-version=2019-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDI/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr2\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.29321.03",
@@ -160,7 +160,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "788"
+          "790"
         ]
       },
       "ResponseHeaders": {
@@ -186,13 +186,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "aa7ab2cf-b715-494a-b602-9a7d7192a7b9"
+          "f6563328-78a3-49b2-be80-3a52caffd4ff"
         ],
         "x-ms-correlation-request-id": [
-          "aa7ab2cf-b715-494a-b602-9a7d7192a7b9"
+          "f6563328-78a3-49b2-be80-3a52caffd4ff"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200602Z:aa7ab2cf-b715-494a-b602-9a7d7192a7b9"
+          "SOUTHCENTRALUS:20201204T181630Z:f6563328-78a3-49b2-be80-3a52caffd4ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -201,10 +201,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:01 GMT"
+          "Fri, 04 Dec 2020 18:16:30 GMT"
         ],
         "Content-Length": [
-          "826"
+          "828"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -213,14 +213,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-e45bd88410644ff79a7a4b0542f8a2d1\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000241d-0000-3300-0000-5fc00aa90000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-d7e863b8a1cc45d89da5520b40b144b4\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr2\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d0074df-0000-3300-0000-5fca7cfe0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02?api-version=2019-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDI/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr2\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.29321.03",
@@ -232,7 +232,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "837"
+          "839"
         ]
       },
       "ResponseHeaders": {
@@ -258,13 +258,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "80222af4-b1f5-4bb6-9fd8-7c53fa90cf20"
+          "e0bd0f2c-cbf0-4749-8c15-7a8c3d2e6e6f"
         ],
         "x-ms-correlation-request-id": [
-          "80222af4-b1f5-4bb6-9fd8-7c53fa90cf20"
+          "e0bd0f2c-cbf0-4749-8c15-7a8c3d2e6e6f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200606Z:80222af4-b1f5-4bb6-9fd8-7c53fa90cf20"
+          "SOUTHCENTRALUS:20201204T181634Z:e0bd0f2c-cbf0-4749-8c15-7a8c3d2e6e6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -273,10 +273,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:06 GMT"
+          "Fri, 04 Dec 2020 18:16:33 GMT"
         ],
         "Content-Length": [
-          "868"
+          "870"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -285,14 +285,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"immutableId\": \"dcr-e45bd88410644ff79a7a4b0542f8a2d1\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000291d-0000-3300-0000-5fc00aad0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"immutableId\": \"dcr-d7e863b8a1cc45d89da5520b40b144b4\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr2\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00abdf-0000-3300-0000-5fca7d010000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03?api-version=2019-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDM/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr3\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.29321.03",
@@ -304,7 +304,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "788"
+          "790"
         ]
       },
       "ResponseHeaders": {
@@ -330,13 +330,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "bc72dc1c-86d7-4950-a9f2-f21e2da15424"
+          "b94e9429-fbdd-4b5b-9fe4-42eadcce75da"
         ],
         "x-ms-correlation-request-id": [
-          "bc72dc1c-86d7-4950-a9f2-f21e2da15424"
+          "b94e9429-fbdd-4b5b-9fe4-42eadcce75da"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200603Z:bc72dc1c-86d7-4950-a9f2-f21e2da15424"
+          "SOUTHCENTRALUS:20201204T181631Z:b94e9429-fbdd-4b5b-9fe4-42eadcce75da"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -345,10 +345,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:02 GMT"
+          "Fri, 04 Dec 2020 18:16:31 GMT"
         ],
         "Content-Length": [
-          "826"
+          "828"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -357,7 +357,79 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-26b9d801c9064a6e8b045f8cf7e45664\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n  \"name\": \"testSessionDCR03\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000261d-0000-3300-0000-5fc00aab0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-230e245d117140fd8289c8b32e622828\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr3\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n  \"name\": \"testSessionDCR03\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d0084df-0000-3300-0000-5fca7cff0000\\\"\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03?api-version=2019-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDM/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterFromSet\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "793"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "54"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
+        ],
+        "api-supported-versions": [
+          "2019-11-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "69ff6723-fc26-4e86-b5fb-502f7a2fdf49"
+        ],
+        "x-ms-correlation-request-id": [
+          "69ff6723-fc26-4e86-b5fb-502f7a2fdf49"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20201204T181635Z:69ff6723-fc26-4e86-b5fb-502f7a2fdf49"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Dec 2020 18:16:34 GMT"
+        ],
+        "Content-Length": [
+          "831"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-230e245d117140fd8289c8b32e622828\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterFromSet\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n  \"name\": \"testSessionDCR03\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00b8df-0000-3300-0000-5fca7d020000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -381,13 +453,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6ecf3713-2b0f-42ca-935e-b7e973abfd13"
+          "f6b05967-db28-4d1d-9152-f0e5d20a67dc"
         ],
         "x-ms-correlation-request-id": [
-          "6ecf3713-2b0f-42ca-935e-b7e973abfd13"
+          "f6b05967-db28-4d1d-9152-f0e5d20a67dc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200603Z:6ecf3713-2b0f-42ca-935e-b7e973abfd13"
+          "SOUTHCENTRALUS:20201204T181632Z:f6b05967-db28-4d1d-9152-f0e5d20a67dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -396,7 +468,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:02 GMT"
+          "Fri, 04 Dec 2020 18:16:31 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -405,10 +477,10 @@
           "-1"
         ],
         "Content-Length": [
-          "2492"
+          "2498"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n      \"name\": \"testSessionDCR01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000221d-0000-3300-0000-5fc00aa70000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-e45bd88410644ff79a7a4b0542f8a2d1\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n      \"name\": \"testSessionDCR02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000241d-0000-3300-0000-5fc00aa90000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-26b9d801c9064a6e8b045f8cf7e45664\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n      \"name\": \"testSessionDCR03\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000261d-0000-3300-0000-5fc00aab0000\\\"\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr1\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n      \"name\": \"testSessionDCR01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0060df-0000-3300-0000-5fca7cfc0000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-d7e863b8a1cc45d89da5520b40b144b4\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr2\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n      \"name\": \"testSessionDCR02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0074df-0000-3300-0000-5fca7cfe0000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-230e245d117140fd8289c8b32e622828\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr3\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n      \"name\": \"testSessionDCR03\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0084df-0000-3300-0000-5fca7cff0000\\\"\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -447,13 +519,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "01a403dd-9a0b-44ea-96c6-c5f1c983f18c"
+          "7b9143f1-5f04-4507-ae03-2b2a8b080f22"
         ],
         "x-ms-correlation-request-id": [
-          "01a403dd-9a0b-44ea-96c6-c5f1c983f18c"
+          "7b9143f1-5f04-4507-ae03-2b2a8b080f22"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200604Z:01a403dd-9a0b-44ea-96c6-c5f1c983f18c"
+          "SOUTHCENTRALUS:20201204T181632Z:7b9143f1-5f04-4507-ae03-2b2a8b080f22"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -462,10 +534,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:03 GMT"
+          "Fri, 04 Dec 2020 18:16:32 GMT"
         ],
         "Content-Length": [
-          "2508"
+          "2514"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -474,7 +546,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n      \"name\": \"testSessionDCR01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000221d-0000-3300-0000-5fc00aa70000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-e45bd88410644ff79a7a4b0542f8a2d1\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n      \"name\": \"testSessionDCR02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000241d-0000-3300-0000-5fc00aa90000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-26b9d801c9064a6e8b045f8cf7e45664\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounter01\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n      \"name\": \"testSessionDCR03\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"0000261d-0000-3300-0000-5fc00aab0000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr1\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n      \"name\": \"testSessionDCR01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0060df-0000-3300-0000-5fca7cfc0000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-d7e863b8a1cc45d89da5520b40b144b4\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr2\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n      \"name\": \"testSessionDCR02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0074df-0000-3300-0000-5fca7cfe0000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"immutableId\": \"dcr-230e245d117140fd8289c8b32e622828\",\r\n        \"dataSources\": {\r\n          \"performanceCounters\": [\r\n            {\r\n              \"streams\": [\r\n                \"Microsoft-InsightsMetrics\"\r\n              ],\r\n              \"scheduledTransferPeriod\": \"PT1M\",\r\n              \"samplingFrequencyInSeconds\": 10,\r\n              \"counterSpecifiers\": [\r\n                \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n              ],\r\n              \"name\": \"perfCounterDcr3\"\r\n            }\r\n          ]\r\n        },\r\n        \"destinations\": {\r\n          \"azureMonitorMetrics\": {\r\n            \"name\": \"azureMonitorMetrics-default\"\r\n          }\r\n        },\r\n        \"dataFlows\": [\r\n          {\r\n            \"streams\": [\r\n              \"Microsoft-InsightsMetrics\"\r\n            ],\r\n            \"destinations\": [\r\n              \"azureMonitorMetrics-default\"\r\n            ]\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"location\": \"East US 2 EUAP\",\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n      \"name\": \"testSessionDCR03\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n      \"etag\": \"\\\"1d0084df-0000-3300-0000-5fca7cff0000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -513,13 +585,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "aae4b850-e4e1-4c10-bd96-508fdef71945"
+          "2de3c1e2-bc7a-47bb-af86-6951d726b970"
         ],
         "x-ms-correlation-request-id": [
-          "aae4b850-e4e1-4c10-bd96-508fdef71945"
+          "2de3c1e2-bc7a-47bb-af86-6951d726b970"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200605Z:aae4b850-e4e1-4c10-bd96-508fdef71945"
+          "SOUTHCENTRALUS:20201204T181633Z:2de3c1e2-bc7a-47bb-af86-6951d726b970"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -528,10 +600,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:04 GMT"
+          "Fri, 04 Dec 2020 18:16:33 GMT"
         ],
         "Content-Length": [
-          "862"
+          "864"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -540,73 +612,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000281d-0000-3300-0000-5fc00aac0000\\\"\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01?api-version=2019-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDE/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
-        ],
-        "api-supported-versions": [
-          "2019-11-01-preview"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-request-id": [
-          "39f594e2-89d8-46b1-870b-4b02cfb3cd8f"
-        ],
-        "x-ms-correlation-request-id": [
-          "39f594e2-89d8-46b1-870b-4b02cfb3cd8f"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200607Z:39f594e2-89d8-46b1-870b-4b02cfb3cd8f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 26 Nov 2020 20:06:07 GMT"
-        ],
-        "Content-Length": [
-          "912"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"update1\": \"test by Name\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002a1d-0000-3300-0000-5fc00aae0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d0097df-0000-3300-0000-5fca7d000000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -645,13 +651,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "2b8331db-8e6d-4ad0-8a8c-40ca5bdc92cf"
+          "d247776e-5ed3-41f3-9848-d9dbac0ee703"
         ],
         "x-ms-correlation-request-id": [
-          "2b8331db-8e6d-4ad0-8a8c-40ca5bdc92cf"
+          "d247776e-5ed3-41f3-9848-d9dbac0ee703"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200609Z:2b8331db-8e6d-4ad0-8a8c-40ca5bdc92cf"
+          "SOUTHCENTRALUS:20201204T181636Z:d247776e-5ed3-41f3-9848-d9dbac0ee703"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -660,10 +666,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:09 GMT"
+          "Fri, 04 Dec 2020 18:16:36 GMT"
         ],
         "Content-Length": [
-          "915"
+          "914"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -672,7 +678,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update2\": \"test by Rule Id\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002b1d-0000-3300-0000-5fc00ab00000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"update1\": \"test by Name\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00cadf-0000-3300-0000-5fca7d030000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -711,13 +717,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "4b79884d-9be9-4d53-a51e-5fa3579134b3"
+          "91c4ec70-23dc-4999-b1a6-51ce2510ec03"
         ],
         "x-ms-correlation-request-id": [
-          "4b79884d-9be9-4d53-a51e-5fa3579134b3"
+          "91c4ec70-23dc-4999-b1a6-51ce2510ec03"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200610Z:4b79884d-9be9-4d53-a51e-5fa3579134b3"
+          "SOUTHCENTRALUS:20201204T181638Z:91c4ec70-23dc-4999-b1a6-51ce2510ec03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -726,10 +732,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:10 GMT"
+          "Fri, 04 Dec 2020 18:16:37 GMT"
         ],
         "Content-Length": [
-          "920"
+          "917"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -738,7 +744,73 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update3\": \"test by Input Object\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002c1d-0000-3300-0000-5fc00ab10000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update2\": \"test by Rule Id\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00d6df-0000-3300-0000-5fca7d050000\\\"\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01?api-version=2019-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDE/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
+        ],
+        "api-supported-versions": [
+          "2019-11-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "1b4e222b-cff4-4d95-925b-ad3f41fc6f83"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b4e222b-cff4-4d95-925b-ad3f41fc6f83"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20201204T181639Z:1b4e222b-cff4-4d95-925b-ad3f41fc6f83"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Dec 2020 18:16:38 GMT"
+        ],
+        "Content-Length": [
+          "922"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update3\": \"test by Input Object\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00e6df-0000-3300-0000-5fca7d060000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -777,13 +849,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "feddbd3c-6d16-4ec7-963e-7992291f12f0"
+          "7c085bd6-580e-451a-a8ff-aec678f0de82"
         ],
         "x-ms-correlation-request-id": [
-          "feddbd3c-6d16-4ec7-963e-7992291f12f0"
+          "7c085bd6-580e-451a-a8ff-aec678f0de82"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200606Z:feddbd3c-6d16-4ec7-963e-7992291f12f0"
+          "SOUTHCENTRALUS:20201204T181634Z:7c085bd6-580e-451a-a8ff-aec678f0de82"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -792,10 +864,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:06 GMT"
+          "Fri, 04 Dec 2020 18:16:33 GMT"
         ],
         "Content-Length": [
-          "868"
+          "870"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -804,7 +876,73 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"immutableId\": \"dcr-e45bd88410644ff79a7a4b0542f8a2d1\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"0000291d-0000-3300-0000-5fc00aad0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Set Description from file\",\r\n    \"immutableId\": \"dcr-d7e863b8a1cc45d89da5520b40b144b4\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr2\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\",\r\n  \"name\": \"testSessionDCR02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00abdf-0000-3300-0000-5fca7d010000\\\"\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03?api-version=2019-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDM/YXBpLXZlcnNpb249MjAxOS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
+        ],
+        "api-supported-versions": [
+          "2019-11-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "775d213d-e3e9-45db-82bb-f2efb2693d60"
+        ],
+        "x-ms-correlation-request-id": [
+          "775d213d-e3e9-45db-82bb-f2efb2693d60"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20201204T181635Z:775d213d-e3e9-45db-82bb-f2efb2693d60"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Dec 2020 18:16:34 GMT"
+        ],
+        "Content-Length": [
+          "831"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"immutableId\": \"dcr-230e245d117140fd8289c8b32e622828\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterFromSet\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR03\",\r\n  \"name\": \"testSessionDCR03\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00b8df-0000-3300-0000-5fca7d020000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -837,7 +975,7 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "54"
+          "53"
         ],
         "Request-Context": [
           "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
@@ -849,13 +987,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "53faba4e-39d3-407d-b5f8-39c607fc5eb2"
+          "ab891787-04b0-4f1b-ad75-ae3ec4c6ebce"
         ],
         "x-ms-correlation-request-id": [
-          "53faba4e-39d3-407d-b5f8-39c607fc5eb2"
+          "ab891787-04b0-4f1b-ad75-ae3ec4c6ebce"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200607Z:53faba4e-39d3-407d-b5f8-39c607fc5eb2"
+          "SOUTHCENTRALUS:20201204T181636Z:ab891787-04b0-4f1b-ad75-ae3ec4c6ebce"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -864,10 +1002,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:07 GMT"
+          "Fri, 04 Dec 2020 18:16:35 GMT"
         ],
         "Content-Length": [
-          "912"
+          "914"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -876,7 +1014,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"update1\": \"test by Name\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002a1d-0000-3300-0000-5fc00aae0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"update1\": \"test by Name\",\r\n    \"tag2\": \"value2\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00cadf-0000-3300-0000-5fca7d030000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -909,7 +1047,7 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "53"
+          "52"
         ],
         "Request-Context": [
           "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
@@ -921,13 +1059,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "0c88c938-41b4-4e20-8ef1-029a9bad1131"
+          "6980b17c-a19c-47d6-bcbd-434061e6a791"
         ],
         "x-ms-correlation-request-id": [
-          "0c88c938-41b4-4e20-8ef1-029a9bad1131"
+          "6980b17c-a19c-47d6-bcbd-434061e6a791"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200608Z:0c88c938-41b4-4e20-8ef1-029a9bad1131"
+          "SOUTHCENTRALUS:20201204T181637Z:6980b17c-a19c-47d6-bcbd-434061e6a791"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -936,10 +1074,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:08 GMT"
+          "Fri, 04 Dec 2020 18:16:37 GMT"
         ],
         "Content-Length": [
-          "915"
+          "917"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -948,7 +1086,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update2\": \"test by Rule Id\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002b1d-0000-3300-0000-5fc00ab00000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update2\": \"test by Rule Id\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00d6df-0000-3300-0000-5fca7d050000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -981,7 +1119,7 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "52"
+          "51"
         ],
         "Request-Context": [
           "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
@@ -993,13 +1131,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "a8636054-f589-44e5-b419-e9204ab45e05"
+          "e2b9397e-fc3c-4dee-90ad-c34dbec17c52"
         ],
         "x-ms-correlation-request-id": [
-          "a8636054-f589-44e5-b419-e9204ab45e05"
+          "e2b9397e-fc3c-4dee-90ad-c34dbec17c52"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200610Z:a8636054-f589-44e5-b419-e9204ab45e05"
+          "SOUTHCENTRALUS:20201204T181639Z:e2b9397e-fc3c-4dee-90ad-c34dbec17c52"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1008,10 +1146,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:09 GMT"
+          "Fri, 04 Dec 2020 18:16:38 GMT"
         ],
         "Content-Length": [
-          "920"
+          "922"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1020,7 +1158,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-1d0a17b0a4654affa042c72e4744bec9\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounter01\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update3\": \"test by Input Object\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"00002c1d-0000-3300-0000-5fc00ab10000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated Description\",\r\n    \"immutableId\": \"dcr-5db0141e3ff14e83b29248c01a9d1935\",\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [\r\n            \"Microsoft-InsightsMetrics\"\r\n          ],\r\n          \"scheduledTransferPeriod\": \"PT1M\",\r\n          \"samplingFrequencyInSeconds\": 10,\r\n          \"counterSpecifiers\": [\r\n            \"\\\\Processor Information(_Total)\\\\% Processor Time\"\r\n          ],\r\n          \"name\": \"perfCounterDcr1\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [\r\n          \"Microsoft-InsightsMetrics\"\r\n        ],\r\n        \"destinations\": [\r\n          \"azureMonitorMetrics-default\"\r\n        ]\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"update3\": \"test by Input Object\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\",\r\n  \"name\": \"testSessionDCR01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRules\",\r\n  \"etag\": \"\\\"1d00e6df-0000-3300-0000-5fca7d060000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1065,13 +1203,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "95880442-98cf-42de-9dcc-d1f292453dbb"
+          "84ec72a9-f392-4cb4-baa1-fef3f3fbbec1"
         ],
         "x-ms-correlation-request-id": [
-          "95880442-98cf-42de-9dcc-d1f292453dbb"
+          "84ec72a9-f392-4cb4-baa1-fef3f3fbbec1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200610Z:95880442-98cf-42de-9dcc-d1f292453dbb"
+          "SOUTHCENTRALUS:20201204T181640Z:84ec72a9-f392-4cb4-baa1-fef3f3fbbec1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1080,7 +1218,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:10 GMT"
+          "Fri, 04 Dec 2020 18:16:39 GMT"
         ],
         "Content-Length": [
           "528"
@@ -1092,7 +1230,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n  \"name\": \"dcrAssocInput01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"00002d1d-0000-3300-0000-5fc00ab20000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n  \"name\": \"dcrAssocInput01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"1d00f0df-0000-3300-0000-5fca7d070000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1137,13 +1275,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "e2ba0e29-b380-4efe-a4bf-2cc0ab8faa40"
+          "13b502be-9133-4ba6-8c72-f78c48c88c8b"
         ],
         "x-ms-correlation-request-id": [
-          "e2ba0e29-b380-4efe-a4bf-2cc0ab8faa40"
+          "13b502be-9133-4ba6-8c72-f78c48c88c8b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200615Z:e2ba0e29-b380-4efe-a4bf-2cc0ab8faa40"
+          "SOUTHCENTRALUS:20201204T181643Z:13b502be-9133-4ba6-8c72-f78c48c88c8b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1152,7 +1290,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:14 GMT"
+          "Fri, 04 Dec 2020 18:16:42 GMT"
         ],
         "Content-Length": [
           "528"
@@ -1164,7 +1302,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n  \"name\": \"dcrAssocInput01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"00002f1d-0000-3300-0000-5fc00ab60000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n  \"name\": \"dcrAssocInput01\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"1d0011e0-0000-3300-0000-5fca7d0a0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1209,13 +1347,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "fbd6d9b2-7dd5-4eb2-94bf-42a6de708ea0"
+          "d8c5416d-09b3-40c3-8898-97d2ed7bcb89"
         ],
         "x-ms-correlation-request-id": [
-          "fbd6d9b2-7dd5-4eb2-94bf-42a6de708ea0"
+          "d8c5416d-09b3-40c3-8898-97d2ed7bcb89"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200611Z:fbd6d9b2-7dd5-4eb2-94bf-42a6de708ea0"
+          "SOUTHCENTRALUS:20201204T181640Z:d8c5416d-09b3-40c3-8898-97d2ed7bcb89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1224,7 +1362,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:11 GMT"
+          "Fri, 04 Dec 2020 18:16:40 GMT"
         ],
         "Content-Length": [
           "528"
@@ -1236,78 +1374,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n  \"name\": \"dcrAssocInput02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"00002e1d-0000-3300-0000-5fc00ab30000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n  \"name\": \"dcrAssocInput02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"1d00f6df-0000-3300-0000-5fca7d080000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "//subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations?api-version=2019-11-01-preview",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2I5NzIyNGYzLWIxOTktNDliMS04NGM3LTI1YjA5ZThmYmY4NC9yZXNvdXJjZUdyb3Vwcy90ZXN0ZGNyL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvdm1kY3J0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW5zaWdodHMvZGF0YUNvbGxlY3Rpb25SdWxlQXNzb2NpYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTEtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
-        ],
-        "api-supported-versions": [
-          "2019-11-01-preview"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-request-id": [
-          "6bec92f8-31e3-4d3b-a58f-7bb2a7cb4fc2"
-        ],
-        "x-ms-correlation-request-id": [
-          "6bec92f8-31e3-4d3b-a58f-7bb2a7cb4fc2"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200612Z:6bec92f8-31e3-4d3b-a58f-7bb2a7cb4fc2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 26 Nov 2020 20:06:12 GMT"
-        ],
-        "Content-Length": [
-          "1085"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n      \"name\": \"dcrAssocInput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n      \"etag\": \"\\\"00002d1d-0000-3300-0000-5fc00ab20000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n      \"name\": \"dcrAssocInput02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n      \"etag\": \"\\\"00002e1d-0000-3300-0000-5fc00ab30000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01/associations?api-version=2019-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDEvYXNzb2NpYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1341,13 +1413,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "43053f1e-4a6f-42f5-a945-0c25e8250c5c"
+          "9e1fe608-9a0d-42b6-b71f-eb58abf09acd"
         ],
         "x-ms-correlation-request-id": [
-          "43053f1e-4a6f-42f5-a945-0c25e8250c5c"
+          "9e1fe608-9a0d-42b6-b71f-eb58abf09acd"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200612Z:43053f1e-4a6f-42f5-a945-0c25e8250c5c"
+          "SOUTHCENTRALUS:20201204T181640Z:9e1fe608-9a0d-42b6-b71f-eb58abf09acd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1356,10 +1428,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:12 GMT"
+          "Fri, 04 Dec 2020 18:16:40 GMT"
         ],
         "Content-Length": [
-          "506"
+          "1085"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1368,7 +1440,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/microsoft.insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput01\",\r\n      \"name\": \"dcrAssocInput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n      \"etag\": \"\\\"1d00f0df-0000-3300-0000-5fca7d070000\\\"\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n      \"name\": \"dcrAssocInput02\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n      \"etag\": \"\\\"1d00f6df-0000-3300-0000-5fca7d080000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
@@ -1407,13 +1479,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "0d668b2d-ba8f-4dba-b921-75a48cb3cfb0"
+          "9fdb5b21-79ce-48c6-bbfb-d0255361542b"
         ],
         "x-ms-correlation-request-id": [
-          "0d668b2d-ba8f-4dba-b921-75a48cb3cfb0"
+          "9fdb5b21-79ce-48c6-bbfb-d0255361542b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200613Z:0d668b2d-ba8f-4dba-b921-75a48cb3cfb0"
+          "SOUTHCENTRALUS:20201204T181641Z:9fdb5b21-79ce-48c6-bbfb-d0255361542b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1422,7 +1494,73 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:13 GMT"
+          "Fri, 04 Dec 2020 18:16:40 GMT"
+        ],
+        "Content-Length": [
+          "506"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.insights/datacollectionrules/testsessiondcr01\"\r\n      },\r\n      \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourcegroups/testdcr/providers/microsoft.compute/virtualmachines/vmdcrtest/providers/microsoft.insights/datacollectionruleassociations/dcrassocinput01\",\r\n      \"name\": \"dcrassocinput01\",\r\n      \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR01/associations?api-version=2019-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjk3MjI0ZjMtYjE5OS00OWIxLTg0YzctMjViMDllOGZiZjg0L3Jlc291cmNlR3JvdXBzL3Rlc3RkY3IvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9kYXRhQ29sbGVjdGlvblJ1bGVzL3Rlc3RTZXNzaW9uRENSMDEvYXNzb2NpYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.25.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
+        ],
+        "api-supported-versions": [
+          "2019-11-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "403eda24-b0e1-4f3f-a1fc-688446b81a7b"
+        ],
+        "x-ms-correlation-request-id": [
+          "403eda24-b0e1-4f3f-a1fc-688446b81a7b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20201204T181641Z:403eda24-b0e1-4f3f-a1fc-688446b81a7b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Dec 2020 18:16:40 GMT"
         ],
         "Content-Length": [
           "506"
@@ -1461,7 +1599,7 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11988"
         ],
         "Request-Context": [
           "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3"
@@ -1473,13 +1611,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "428dd58d-571e-41d1-b0f0-51f4fd14d63d"
+          "c16216bb-83ed-40c5-a8b4-b4a3a8377cac"
         ],
         "x-ms-correlation-request-id": [
-          "428dd58d-571e-41d1-b0f0-51f4fd14d63d"
+          "c16216bb-83ed-40c5-a8b4-b4a3a8377cac"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200613Z:428dd58d-571e-41d1-b0f0-51f4fd14d63d"
+          "SOUTHCENTRALUS:20201204T181641Z:c16216bb-83ed-40c5-a8b4-b4a3a8377cac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1488,7 +1626,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:13 GMT"
+          "Fri, 04 Dec 2020 18:16:40 GMT"
         ],
         "Content-Length": [
           "528"
@@ -1500,7 +1638,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n  \"name\": \"dcrAssocInput02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"00002e1d-0000-3300-0000-5fc00ab30000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dataCollectionRuleId\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/testSessionDCR02\"\r\n  },\r\n  \"id\": \"/subscriptions/b97224f3-b199-49b1-84c7-25b09e8fbf84/resourceGroups/testdcr/providers/Microsoft.Compute/virtualMachines/vmdcrtest/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcrAssocInput02\",\r\n  \"name\": \"dcrAssocInput02\",\r\n  \"type\": \"Microsoft.Insights/dataCollectionRuleAssociations\",\r\n  \"etag\": \"\\\"1d00f6df-0000-3300-0000-5fca7d080000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1536,13 +1674,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "ccfe05bd-8f88-40a8-88b0-452311cbddfd"
+          "fe5105d1-14e6-41a4-94f7-6dcbee19b8d0"
         ],
         "x-ms-correlation-request-id": [
-          "ccfe05bd-8f88-40a8-88b0-452311cbddfd"
+          "fe5105d1-14e6-41a4-94f7-6dcbee19b8d0"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200614Z:ccfe05bd-8f88-40a8-88b0-452311cbddfd"
+          "SOUTHCENTRALUS:20201204T181642Z:fe5105d1-14e6-41a4-94f7-6dcbee19b8d0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1551,7 +1689,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:13 GMT"
+          "Fri, 04 Dec 2020 18:16:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -1596,13 +1734,13 @@
           "14997"
         ],
         "x-ms-request-id": [
-          "b8129fbd-c00f-49d4-a517-4c06c72a6cf8"
+          "797fef29-7bf8-487d-9777-4cfcf103d6e9"
         ],
         "x-ms-correlation-request-id": [
-          "b8129fbd-c00f-49d4-a517-4c06c72a6cf8"
+          "797fef29-7bf8-487d-9777-4cfcf103d6e9"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200615Z:b8129fbd-c00f-49d4-a517-4c06c72a6cf8"
+          "SOUTHCENTRALUS:20201204T181643Z:797fef29-7bf8-487d-9777-4cfcf103d6e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1611,7 +1749,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:15 GMT"
+          "Fri, 04 Dec 2020 18:16:42 GMT"
         ],
         "Expires": [
           "-1"
@@ -1656,13 +1794,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "8642b6d3-1bad-4d1d-a943-3d9e96817c44"
+          "cd462479-86f7-4567-ac54-72967dd753d5"
         ],
         "x-ms-correlation-request-id": [
-          "8642b6d3-1bad-4d1d-a943-3d9e96817c44"
+          "cd462479-86f7-4567-ac54-72967dd753d5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200614Z:8642b6d3-1bad-4d1d-a943-3d9e96817c44"
+          "SOUTHCENTRALUS:20201204T181642Z:cd462479-86f7-4567-ac54-72967dd753d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1671,7 +1809,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:14 GMT"
+          "Fri, 04 Dec 2020 18:16:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -1716,13 +1854,13 @@
           "14996"
         ],
         "x-ms-request-id": [
-          "1ef96f15-60d7-488b-9917-58973b79b2ad"
+          "45997757-fae0-4421-912d-711dfe6ce104"
         ],
         "x-ms-correlation-request-id": [
-          "1ef96f15-60d7-488b-9917-58973b79b2ad"
+          "45997757-fae0-4421-912d-711dfe6ce104"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200616Z:1ef96f15-60d7-488b-9917-58973b79b2ad"
+          "SOUTHCENTRALUS:20201204T181644Z:45997757-fae0-4421-912d-711dfe6ce104"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1731,7 +1869,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:16 GMT"
+          "Fri, 04 Dec 2020 18:16:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -1776,13 +1914,13 @@
           "14995"
         ],
         "x-ms-request-id": [
-          "ae581395-1daa-4c98-adfc-8daaeed758fc"
+          "c48db592-8928-4fec-9513-4ef5c4000acc"
         ],
         "x-ms-correlation-request-id": [
-          "ae581395-1daa-4c98-adfc-8daaeed758fc"
+          "c48db592-8928-4fec-9513-4ef5c4000acc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200618Z:ae581395-1daa-4c98-adfc-8daaeed758fc"
+          "SOUTHCENTRALUS:20201204T181646Z:c48db592-8928-4fec-9513-4ef5c4000acc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1791,7 +1929,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:18 GMT"
+          "Fri, 04 Dec 2020 18:16:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -1836,13 +1974,13 @@
           "14994"
         ],
         "x-ms-request-id": [
-          "e4f6fa7e-15cb-47e2-99ec-6953b8138f18"
+          "ff51f199-8647-4c4f-857a-9a8e5132ba27"
         ],
         "x-ms-correlation-request-id": [
-          "e4f6fa7e-15cb-47e2-99ec-6953b8138f18"
+          "ff51f199-8647-4c4f-857a-9a8e5132ba27"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20201126T200619Z:e4f6fa7e-15cb-47e2-99ec-6953b8138f18"
+          "SOUTHCENTRALUS:20201204T181647Z:ff51f199-8647-4c4f-857a-9a8e5132ba27"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1851,7 +1989,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 26 Nov 2020 20:06:19 GMT"
+          "Fri, 04 Dec 2020 18:16:47 GMT"
         ],
         "Expires": [
           "-1"
