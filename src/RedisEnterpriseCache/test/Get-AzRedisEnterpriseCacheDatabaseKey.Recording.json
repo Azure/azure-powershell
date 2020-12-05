@@ -36,6 +36,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "Content": "{\r\n  \"primaryKey\": \"TbLFC0DybtETXlDS6NKn3gZksF2D8kBpEfn8tuIKi+g=\"\r\n}"
     }
   }
