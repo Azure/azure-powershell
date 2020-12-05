@@ -12,7 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzRedisEnterpriseCacheDatabaseKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded' {
+        $splat = @{
+            Name = $env.ClusterName
+            ResourceGroupName = $env.ResourceGroupName
+            KeyType = "Primary"
+        }
+        $databaseKeys = New-AzRedisEnterpriseCacheDatabaseKey @splat
+        $databaseKeys.PrimaryKey | Should -Not -Be $null
+        $databaseKeys.SecondaryKey | Should -Not -Be $null
+
+        $splat = @{
+            Name = $env.ClusterName
+            ResourceGroupName = $env.ResourceGroupName
+            KeyType = "Secondary"
+        }
+        $databaseKeys = New-AzRedisEnterpriseCacheDatabaseKey @splat
+        $databaseKeys.PrimaryKey | Should -Not -Be $null
+        $databaseKeys.SecondaryKey | Should -Not -Be $null
     }
 }

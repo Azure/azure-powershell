@@ -12,7 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzRedisEnterpriseCacheDatabaseKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $splat = @{
+            Name = $env.ClusterName
+            ResourceGroupName = $env.ResourceGroupName
+        }
+        $databaseKeys = Get-AzRedisEnterpriseCacheDatabaseKey @splat
+        $databaseKeys.PrimaryKey | Should -Not -Be $null
+        # TODO: uncomment the following line when listKeys supports returning the SecondaryKey
+        #$databaseKeys.SecondaryKey | Should -Not -Be $null
     }
 }
