@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.InputObjectV3, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObjectV3)]
+        [ValidateNotNullOrEmpty]
+        public PSSecurityAlertV3 InputObjectV3 { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
@@ -66,6 +70,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             var name = Name;
             var actionType = ActionType;
             var location = Location;
+            var status = "";
 
             switch (ParameterSetName)
             {
@@ -77,27 +82,37 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     name = AzureIdUtilities.GetResourceName(ResourceId);
                     break;
                 case ParameterSetNames.InputObject:
-                    switch (InputObject.State.ToLower())
-                    {
-                        case "dismissed":
-                            actionType = "Dismiss";
-                            break;
-                        case "active":
-                            actionType = "Activate";
-                            break;
-                        case "resolved":
-                            actionType = "Resolve";
-                            break;
-                        default:
-                            break;
-                    }
-
+                    status = InputObject.State;
                     name = InputObject.Name;
                     rg = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     location = AzureIdUtilities.GetResourceLocation(InputObject.Id);
                     break;
+                case ParameterSetNames.InputObjectV3:
+                    status = InputObjectV3.Status;
+                    name = InputObjectV3.Name;
+                    rg = AzureIdUtilities.GetResourceGroup(InputObjectV3.Id);
+                    location = AzureIdUtilities.GetResourceLocation(InputObjectV3.Id);
+                    break;
                 default:
                     throw new PSInvalidOperationException();
+            }
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                switch (status.ToLower())
+                {
+                    case "dismissed":
+                        actionType = "Dismiss";
+                        break;
+                    case "active":
+                        actionType = "Activate";
+                        break;
+                    case "resolved":
+                        actionType = "Resolve";
+                        break;
+                    default:
+                        break;
+                }
             }
 
             SecurityCenterClient.AscLocation = location;
