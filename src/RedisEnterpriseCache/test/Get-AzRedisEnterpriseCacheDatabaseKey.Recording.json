@@ -1,0 +1,43 @@
+{
+  "Get-AzRedisEnterpriseCacheDatabaseKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test/databases/default/listKeys?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test/databases/default/listKeys?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "694f82b3-904b-47ec-891c-7bef51d024df" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\Get-AzRedisEnterpriseCacheDatabaseKey" ],
+        "FullCommandName": [ "Get-AzRedisEnterpriseCacheDatabaseKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b0c531de-8295-4df6-9eca-b849fa0a114c" ],
+        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "5e5dbf20-3326-437f-9c0d-4b337742d7da" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201205T010350Z:5e5dbf20-3326-437f-9c0d-4b337742d7da" ],
+        "Date": [ "Sat, 05 Dec 2020 01:03:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "68" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
+      "Content": "{\r\n  \"primaryKey\": \"TbLFC0DybtETXlDS6NKn3gZksF2D8kBpEfn8tuIKi+g=\"\r\n}"
+    }
+  }
+}
