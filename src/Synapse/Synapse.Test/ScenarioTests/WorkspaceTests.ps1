@@ -209,6 +209,16 @@ function Test-SynapseWorkspace-Security
 
         Assert-AreEqual $auditing.BlobStorageTargetState Enabled
         Assert-AreEqual $auditing.StorageAccountResourceId $account.id
+        
+        # Enable SQL Data Security
+        $dataSecurityEnable = Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName $workspaceName -DoNotConfigureVulnerabilityAssessment
+
+        Assert-True {$dataSecurityEnable.IsEnabled}
+
+        # Get SQL Data Security Policy
+        $dataSecurityGet = Get-AzSynapseSqlAdvancedDataSecurityPolicy -WorkspaceName $workspaceName
+
+        Assert-True {$dataSecurityGet.IsEnabled}
 
         # Set SQL Advanced threat protection
         $threatProtectionSet = Update-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -NotificationRecipientsEmails "mail1@mail.com;mail2@mail.com" `
@@ -239,6 +249,11 @@ function Test-SynapseWorkspace-Security
         $threatProtectionGet = Get-AzSynapseSqlAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
 
         Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
+
+        # Disable SQL Data Security
+        $dataSecurityDisable = Disable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName $workspaceName
+
+        Assert-False {$dataSecurityDisable.IsEnabled}
 
         # Remove SQL Auditing
         Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
