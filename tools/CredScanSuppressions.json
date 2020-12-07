@@ -1130,11 +1130,11 @@
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestDisk.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestSnapshot.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
@@ -1142,39 +1142,39 @@
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpointParentObject.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpointParentResourceId.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestGetCloudEndpoints.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestNewCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestRemoveCloudEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestRemoveCloudEndpointInputObject.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.CloudEndpointTests\\TestRemoveCloudEndpointResourceId.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	  {
+    {
       "file": "src\\StorageSync\\StorageSync.Test\\SessionRecords\\StorageSyncTests.ServerEndpointTests\\TestServerEndpoint.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
@@ -1205,14 +1205,6 @@
     {
       "file": "\\src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
       "_justification": "Legitimate session record, resource removed at end of test"
-    },
-    {
-      "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
-      "_justification": "Legitimate session record. Test resource is deleted."
-    },
-    {
-      "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
-      "_justification": "Legitimate session record. Test resource is deleted."
     }
   ]
 }
