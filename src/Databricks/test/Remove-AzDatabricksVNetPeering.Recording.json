@@ -37,7 +37,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "IiIK"
+      "Content": "\"\""
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/bbe12183-76a0-4037-aba3-1c6a6f66c681?api-version=2018-08-01+2": {
@@ -161,7 +161,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "e30K"
+      "Content": "{}"
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl?api-version=2018-04-01+1": {
@@ -196,7 +196,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy93b3Jrc3BhY2V4dTJoa20vdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92bmV0cGVlcmluZy1iM21xZGwiLCJuYW1lIjoidm5ldHBlZXJpbmctYjNtcWRsIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL2RhdGFicmlja3Mtdm5ldC14cjN3a24ifSwicmVtb3RlQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3Mtcmctd29ya3NwYWNleHUyaGttLWRiZmt4dm1oeWUzdDQvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJVcGRhdGluZyJ9fQo="
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl\",\"name\":\"vnetpeering-b3mqdl\",\"properties\":{\"allowVirtualNetworkAccess\":true,\"allowForwardedTraffic\":false,\"allowGatewayTransit\":false,\"useRemoteGateways\":false,\"remoteVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Network/virtualNetworks/databricks-vnet-xr3wkn\"},\"remoteAddressSpace\":{\"addressPrefixes\":[\"10.0.0.0/16\"]},\"databricksVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-workspacexu2hkm-dbfkxvmhye3t4/providers/Microsoft.Network/virtualNetworks/workers-vnet\"},\"databricksAddressSpace\":{\"addressPrefixes\":[\"10.139.0.0/16\"]},\"peeringState\":\"Initiated\",\"provisioningState\":\"Updating\"}}"
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl?api-version=2018-04-01+2": {
@@ -236,7 +236,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy93b3Jrc3BhY2V4dTJoa20vdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92bmV0cGVlcmluZy1iM21xZGwiLCJuYW1lIjoidm5ldHBlZXJpbmctYjNtcWRsIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL2RhdGFicmlja3Mtdm5ldC14cjN3a24ifSwicmVtb3RlQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3Mtcmctd29ya3NwYWNleHUyaGttLWRiZmt4dm1oeWUzdDQvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl\",\"name\":\"vnetpeering-b3mqdl\",\"properties\":{\"allowVirtualNetworkAccess\":true,\"allowForwardedTraffic\":false,\"allowGatewayTransit\":false,\"useRemoteGateways\":false,\"remoteVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Network/virtualNetworks/databricks-vnet-xr3wkn\"},\"remoteAddressSpace\":{\"addressPrefixes\":[\"10.0.0.0/16\"]},\"databricksVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-workspacexu2hkm-dbfkxvmhye3t4/providers/Microsoft.Network/virtualNetworks/workers-vnet\"},\"databricksAddressSpace\":{\"addressPrefixes\":[\"10.139.0.0/16\"]},\"peeringState\":\"Initiated\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl?api-version=2018-04-01+3": {
@@ -276,7 +276,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy93b3Jrc3BhY2V4dTJoa20vdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92bmV0cGVlcmluZy1iM21xZGwiLCJuYW1lIjoidm5ldHBlZXJpbmctYjNtcWRsIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLTY5eHdhbi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL2RhdGFicmlja3Mtdm5ldC14cjN3a24ifSwicmVtb3RlQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3Mtcmctd29ya3NwYWNleHUyaGttLWRiZmt4dm1oeWUzdDQvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl\",\"name\":\"vnetpeering-b3mqdl\",\"properties\":{\"allowVirtualNetworkAccess\":true,\"allowForwardedTraffic\":false,\"allowGatewayTransit\":false,\"useRemoteGateways\":false,\"remoteVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Network/virtualNetworks/databricks-vnet-xr3wkn\"},\"remoteAddressSpace\":{\"addressPrefixes\":[\"10.0.0.0/16\"]},\"databricksVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-workspacexu2hkm-dbfkxvmhye3t4/providers/Microsoft.Network/virtualNetworks/workers-vnet\"},\"databricksAddressSpace\":{\"addressPrefixes\":[\"10.139.0.0/16\"]},\"peeringState\":\"Initiated\",\"provisioningState\":\"Succeeded\"}}"
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-69xwan/providers/Microsoft.Databricks/workspaces/workspacexu2hkm/virtualNetworkPeerings/vnetpeering-b3mqdl?api-version=2018-04-01+4": {
@@ -317,7 +317,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "IiIK"
+      "Content": "\"\""
     }
   },
   "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/d191394b-0b61-47c5-b842-729c4cb92869?api-version=2018-08-01+5": {
@@ -441,7 +441,7 @@
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "e30K"
+      "Content": "{}"
     }
   }
 }
