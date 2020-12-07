@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enabled softdelete feature for SQL.
 
 ## Version 3.1.0
 * Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.
