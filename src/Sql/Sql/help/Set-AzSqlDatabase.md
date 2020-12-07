@@ -122,6 +122,43 @@ Tags                          :
 
 This command updates a database named Database01 to set its max size to 1 TB.
 
+### Example 4: Update a existing General Purpose database to Hyperscale service tier
+```
+PS C:\>Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "Hyperscale" -RequestedServiceObjectiveName "HS_Gen5_2"
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : 56246136-839f-4171-80af-4c28142463b1
+Edition                       : Hyperscale
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : -1
+Status                        : Online
+CreationDate                  : 12/6/2020 5:34:16 PM
+CurrentServiceObjectiveId     : 00000000-0000-0000-0000-000000000000
+CurrentServiceObjectiveName   : HS_Gen5_2
+RequestedServiceObjectiveName : HS_Gen5_2
+RequestedServiceObjectiveId   :
+ElasticPoolName               :
+EarliestRestoreDate           : 12/6/2020 5:34:16 PM
+Tags                          : {}
+ResourceId                    : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/servers/Server01/databases/Database01
+CreateMode                    :
+ReadScale                     : Enabled
+ZoneRedundant                 :
+Capacity                      : 2
+Family                        : Gen5
+SkuName                       : HS_Gen5
+LicenseType                   : LicenseIncluded
+AutoPauseDelayInMinutes       :
+MinimumCapacity               :
+ReadReplicaCount              : 1
+BackupStorageRedundancy       : Geo
+```
+
+This command updates a database named Database01 from General Purpose to Hyperscale service tier.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -241,6 +278,7 @@ The acceptable values for this parameter are:
 - Free
 - Stretch
 - GeneralPurpose
+- Hyperscale
 - BusinessCritical
 
 ```yaml
