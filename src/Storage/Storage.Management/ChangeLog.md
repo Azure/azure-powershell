@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support upload Azure File size up to 4 TiB
+
+## Version 3.1.0
+* Supported upload Azure File size up to 4 TiB
     - `Set-AzStorageFileContent`
-* Upgraded Azure.Storage..Blobs to 12.7.0
+* Upgraded Azure.Storage.Blobs to 12.7.0
 * Upgraded Azure.Storage.Files.Shares to 12.5.0
 * Upgraded Azure.Storage.Files.DataLake to 12.5.0
 

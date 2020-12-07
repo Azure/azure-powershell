@@ -84,5 +84,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-LogAnalytics");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzDiagnosticSettingCategory()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzDiagnosticSettingCategory");
+        }
     }
 }

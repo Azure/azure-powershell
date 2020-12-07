@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Scope = "Scope.";
         public const string Kind = "Kind.";
         public const string InputObject = "Input Object.";
+        public const string InputObjectV3 = "Input Object V3.";
         public const string Location = "Location.";
         public const string PassThru = "Return whether the operation was successful.";
         public const string Tags = "Tags.";
