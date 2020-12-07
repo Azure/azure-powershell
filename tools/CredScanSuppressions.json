@@ -1205,6 +1205,14 @@
     {
       "file": "\\src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
       "_justification": "Legitimate session record, resource removed at end of test"
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
     }
   ]
 }
