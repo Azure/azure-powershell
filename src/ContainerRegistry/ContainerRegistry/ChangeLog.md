@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Supported parameter `Name` for and value from pipeline input for `Get-AzContainerRegistryUsage` [#13605]
 * Polished exceptions for `Connect-AzContainerRegistry`
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.0
 * Added support for operation of Synapse SQL Pool Restore Point
     - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
     - Add `Remove-AzSynapseSqlPoolRestorePoint` cmdlet
