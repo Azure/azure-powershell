@@ -9,9 +9,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ProxyResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.Resource();
 
         /// <summary>Creation timestamp of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -21,20 +21,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; }
 
         /// <summary>Last modified timestamp of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
         public global::System.DateTime? LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).LastModifiedTime; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type = value; }
 
         /// <summary>Internal Acessors for CreatedTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFileInternal.CreatedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).CreatedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).CreatedTime = value; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; }
 
         /// <summary>Type of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; }
 
         /// <summary>The url to download the log file from.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -88,14 +88,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertNotNull(nameof(__resource), __resource);
+            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
     /// Represents a log file.
     public partial interface ILogFile :
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource
     {
         /// <summary>Creation timestamp of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     }
     /// Represents a log file.
     internal partial interface ILogFileInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal
     {
         /// <summary>Creation timestamp of the log file.</summary>
         global::System.DateTime? CreatedTime { get; set; }

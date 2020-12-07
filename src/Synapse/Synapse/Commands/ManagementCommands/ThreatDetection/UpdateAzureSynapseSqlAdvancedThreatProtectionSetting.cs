@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.ExcludedDetectionType))
             {
-                policy.DisabledAlerts = ProcessExcludedDetectionTypes(this.ExcludedDetectionType);
+                policy.DisabledAlerts = Utils.ProcessExcludedDetectionTypes(this.ExcludedDetectionType);
             }
 
             if (this.IsParameterBound(c => c.RetentionInDays))
@@ -138,30 +138,6 @@ namespace Microsoft.Azure.Commands.Synapse
                     this.ResourceGroupName, this.WorkspaceName);
                 WriteObject(result);
             }
-        }
-
-        private string[] ProcessExcludedDetectionTypes(string[] excludedDetectionTypes)
-        {
-            if (excludedDetectionTypes == null || excludedDetectionTypes.Length == 0)
-            {
-                return excludedDetectionTypes;
-            }
-
-            if (excludedDetectionTypes.Length == 1)
-            {
-                if (excludedDetectionTypes[0] == SynapseConstants.DetectionType.None)
-                {
-                    return new string[] { };
-                }
-            }
-            else
-            {
-                if (excludedDetectionTypes.Contains(SynapseConstants.DetectionType.None))
-                {
-                    throw new Exception(string.Format(Resources.InvalidExcludedDetectionTypeSet, SynapseConstants.DetectionType.None));
-                }
-            }
-            return excludedDetectionTypes;
         }
     }
 }
