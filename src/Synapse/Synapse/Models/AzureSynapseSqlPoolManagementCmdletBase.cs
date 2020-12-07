@@ -25,10 +25,21 @@ namespace Microsoft.Azure.Commands.Synaspe.Models
     public abstract class AzureSynapseSqlPoolManagementCmdletBase<M, A> : AzureSynapseSqlManagementCmdletBase<M, A>
     {
         /// <summary>
-        /// Gets or sets the name of the SQL pool to use.
+        /// Gets or sets the name of the resource group.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupName)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the workspace to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 1,
             HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
@@ -39,7 +50,7 @@ namespace Microsoft.Azure.Commands.Synaspe.Models
         /// Gets or sets the name of the pool to use.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Position = 2,
             HelpMessage = HelpMessages.SqlPoolName)]
         [ResourceNameCompleter(ResourceTypes.SqlPool, nameof(ResourceGroupName), nameof(WorkspaceName))]
