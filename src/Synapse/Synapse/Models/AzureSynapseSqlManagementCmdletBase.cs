@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Synapse.Common;
+
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     /// <summary>
@@ -41,6 +45,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             return string.Empty;
         }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupName)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The ModelAdapter object used by this cmdlet
