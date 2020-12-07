@@ -394,6 +394,23 @@ public static int hashForArtifact(String artifact)
 
 
             if ($parameterSet -match 'DefaultUser'){
+                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+                if($parameterSet -eq 'ByInputObjectDefaultUser'){
+                    foreach($onPremDisk in $InputObject.Disk){
+                        if($onPremDisk.Uuid -ne $OSDiskID){
+                            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
+                            $DiskObject.DiskId = $onPremDisk.Uuid
+                            $DiskObject.DiskType = "Standard_LRS"
+                            $DiskObject.IsOSDisk = "false"
+                            $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
+                            $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                            if($HasDiskEncryptionSetID){
+                                $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
+                            }
+                            $DiskToInclude+=$DiskObject
+                        }
+                    }
+                }
                 $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
                 $DiskObject.DiskId = $OSDiskID
                 $DiskObject.DiskType = $DiskType
@@ -401,12 +418,12 @@ public static int hashForArtifact(String artifact)
                 $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                 $DiskObject.LogStorageAccountId = $LogStorageAccountID
                 if($HasDiskEncryptionSetID){
-                    $DiskObject.DiskEncryptionSetId = DiskEncryptionSetID
+                    $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
                 }
                 
-                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DiskToInclude = @()
                 $DiskToInclude+=$DiskObject
                 $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
+                
             }else{
                 foreach ($DiskObject in $DiskToInclude) {
                     $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
