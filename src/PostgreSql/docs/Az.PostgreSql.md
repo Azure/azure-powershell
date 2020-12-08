@@ -26,8 +26,14 @@ Gets information about a server.
 ### [Get-AzPostgreSqlFlexibleServerConfiguration](Get-AzPostgreSqlFlexibleServerConfiguration.md)
 Gets information about a configuration of server.
 
+### [Get-AzPostgreSqlFlexibleServerConnectionString](Get-AzPostgreSqlFlexibleServerConnectionString.md)
+Get the connection string according to client connection provider.
+
 ### [Get-AzPostgreSqlFlexibleServerFirewallRule](Get-AzPostgreSqlFlexibleServerFirewallRule.md)
 List all the firewall rules in a given server.
+
+### [Get-AzPostgreSqlFlexibleServerLocationBasedCapability](Get-AzPostgreSqlFlexibleServerLocationBasedCapability.md)
+
 
 ### [Get-AzPostgreSqlReplica](Get-AzPostgreSqlReplica.md)
 List all the replicas for a given server.

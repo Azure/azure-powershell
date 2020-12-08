@@ -20,6 +20,7 @@ function setupEnv() {
     $env.Add("firewallRuleName", "postgresqlrule01")
     $env.Add("firewallRuleName2", "postgresqlrule02")
     $env.Add("VNetName", "postgresql-vnet")
+    $env.Add("VNetName", "postgresql-subnet")
 
     # Create the test group
     write-host "start to create test group."
@@ -27,11 +28,11 @@ function setupEnv() {
     $location = "eastus"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
-    New-AzResourceGroup -Name $resourceGroup -Location $location
+    # New-AzResourceGroup -Name $resourceGroup -Location $location
 
     # Create the test Vnet
     write-host "Deploy Vnet template"
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    # New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
@@ -44,12 +45,12 @@ function setupEnv() {
 
     write-host (Get-AzContext | Out-String)
 
-    write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName adminuser -AdministratorLoginPassword $password -Sku $Sku"
-    New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName adminuser -AdministratorLoginPassword $password -Sku $Sku
+    # write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName adminuser -AdministratorLoginPassword $password -Sku $Sku"
+    # New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName adminuser -AdministratorLoginPassword $password -Sku $Sku
 
 
-    write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password"
-    New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password
+    # write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password"
+    # New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -61,5 +62,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
     write-host "Clean resources you create for testing."
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }

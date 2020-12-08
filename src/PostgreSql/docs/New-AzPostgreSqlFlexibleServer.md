@@ -15,9 +15,10 @@ Creates a new server.
 ```
 New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> -AdministratorUserName <String> [-SubscriptionId <String>]
- [-BackupRetentionDay <Int32>] [-Location <String>] [-Sku <String>] [-SkuTier <String>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-Location <String>] [-PublicAccess <String>] [-Sku <String>]
+ [-SkuTier <String>] [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>]
+ [-Version <ServerVersion>] [-Vnet <String>] [-VnetPrefix <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +177,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicAccess
+Determines the public access.
+Enter single or range of IP addresses to be 
+            included in the allowed list of IPs.
+IP address ranges must be dash-
+            separated and not contain any spaces.
+Specifying 0.0.0.0 allows public
+            access from any resources deployed within Azure to access your server.
+            Specifying no IP address sets the server in public access mode but does
+            not create a firewall rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
 
@@ -239,6 +263,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subnet
+The Name or Id of an existing Subnet or name of a new one to create.
+Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers.
+After delegation, this subnet cannot be used for any other type of Azure resources.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetPrefix
+The subnet IP address prefix to use when creating a new vnet in CIDR format.
+Default value is 10.0.0.0/24.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription ID that identifies an Azure subscription.
 
@@ -274,6 +331,39 @@ Server version.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vnet
+The Name or Id of an existing virtual network or name of a new one to create.
+The name must be between 2 to 64 characters.
+The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetPrefix
+The IP address prefix to use when creating a new vnet in CIDR format.
+Default value is 10.0.0.0/16.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
