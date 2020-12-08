@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/update-azsentineldataconnector
 schema: 2.0.0
 ---
 
@@ -35,6 +35,7 @@ Update-AzSentinelDataConnector -ResourceId <String> [-Alerts <String>] [-Subscri
  [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+## DESCRIPTION
 The **Update-AzSentinelDataConnector** cmdlet updates the Data Connector in the specified workspace.
 You can pass an **DataConnector** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
