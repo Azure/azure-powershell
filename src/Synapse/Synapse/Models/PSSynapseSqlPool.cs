@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the name of the workspace
         /// </summary>
         public string WorkspaceName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the database
+        /// Gets or sets the name of the SQL pool
         /// </summary>
         public string SqlPoolName 
         {

@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models.DataClassification
             return ToList(sensitivityLabel);
         }
 
-        private SensitivityLabel GetSensitivityLabel(Func<SensitivityLabel> getSensitivityLabelFromServer)
+        private SensitivityLabel GetSensitivityLabel(Func<SensitivityLabel> getSensitivityLabelFromWorkspace)
         {
             SensitivityLabel sensitivityLabel = null;
             try
             {
-                sensitivityLabel = getSensitivityLabelFromServer();
+                sensitivityLabel = getSensitivityLabelFromWorkspace();
             }
             catch (CloudException e)
             {
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models.DataClassification
         }
 
         private List<SensitivityLabel> IterateOverPages(
-            Func<IPage<SensitivityLabel>> listByDatabase,
+            Func<IPage<SensitivityLabel>> listByPool,
             Func<string, IPage<SensitivityLabel>> listByNextPageLink)
         {
-            IPage<SensitivityLabel> sensitivityLabelsPage = listByDatabase();
+            IPage<SensitivityLabel> sensitivityLabelsPage = listByPool();
             List<SensitivityLabel> sensitivityLabelsList = ToList(sensitivityLabelsPage);
 
             string nextPageLink = sensitivityLabelsPage?.NextPageLink;

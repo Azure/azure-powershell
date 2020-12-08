@@ -269,19 +269,20 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disabling Advanced Data Security on workspace &apos;{0}&apos;..
-        /// </summary>
-        internal static string DisablingAdvancedDataSecurity {
-            get {
-                return ResourceManager.GetString("DisablingAdvancedDataSecurity", resourceCulture);
-            }
-        }
-
         ///   Looks up a localized string similar to Failed to retrieve information protection policy of tenant {0}..
         /// </summary>
         internal static string DataClassificationFailedToRetrieveInformationProtectionPolicy {
             get {
                 return ResourceManager.GetString("DataClassificationFailedToRetrieveInformationProtectionPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling Advanced Data Security on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string DisablingAdvancedDataSecurity {
+            get {
+                return ResourceManager.GetString("DisablingAdvancedDataSecurity", resourceCulture);
             }
         }
         

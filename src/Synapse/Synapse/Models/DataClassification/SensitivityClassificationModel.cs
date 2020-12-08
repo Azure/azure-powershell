@@ -109,7 +109,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models.DataClassification
 
                 return string.Compare(x.ColumnName, y.ColumnName);
             }
-
         }
     }
 }

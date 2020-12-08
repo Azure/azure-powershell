@@ -347,9 +347,9 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
-        internal void AssignRoleForServerIdentityOnStorageIfNotAssigned(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
+        internal void AssignRoleForWorkspaceIdentityOnStorageIfNotAssigned(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
         {
-            if (IsRoleAssignedForServerIdentitiyOnStorage(storageAccountResourceId, principalId))
+            if (IsRoleAssignedForWorkspaceIdentitiyOnStorage(storageAccountResourceId, principalId))
             {
                 return;
             }
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             throw new Exception(string.Format(Properties.Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId, responseStatusCode.ToString(), responseContent));
         }
 
-        private bool IsRoleAssignedForServerIdentitiyOnStorage(string storageAccountResourceId, Guid principalId)
+        private bool IsRoleAssignedForWorkspaceIdentitiyOnStorage(string storageAccountResourceId, Guid principalId)
         {
             Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
             string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/?api-version=2018-01-01-preview&$filter=assignedTo('{principalId}')";

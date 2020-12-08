@@ -600,7 +600,6 @@ Are you sure you want to continue?</value>
   <data name="RemoveSynapseSqlPoolRestorePoint" xml:space="preserve">
     <value>Are you sure you want to remove Synapse Sql Pool Restore Point '{0}'?</value>
   </data>
-<<<<<<< HEAD
   <data name="UpdatingSqlPoolThreatProtectionSetting" xml:space="preserve">
     <value>Updating threat protection settings in SQL pool '{0}' under worksapce '{1}'.</value>
   </data>
