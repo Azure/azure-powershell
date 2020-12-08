@@ -597,11 +597,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var taskResponse = Task.Run(
-                    async () => await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName));
-                await Task.WhenAll(taskResponse);
+                var taskResponse = await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
 
-                return new PSBackupModel(taskResponse.Result.Body);
+                return new PSBackupModel(taskResponse.Body);
             }
             catch (ErrorContractException ex)
             {
@@ -613,13 +611,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var taskResponse = Task.Run(
-                    async () => await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListWithHttpMessagesAsync(resourceGroupName, workspaceName));
-                await Task.WhenAll(taskResponse);
-
+                var taskResponse = await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListWithHttpMessagesAsync(resourceGroupName, workspaceName);
                 var results = new List<PSBackupModel>();
-
-                var response = taskResponse.Result.Body;
+                var response = taskResponse.Body;
 
                 foreach (var res in response.ToList())
                 {
