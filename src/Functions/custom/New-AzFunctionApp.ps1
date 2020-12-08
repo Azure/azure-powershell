@@ -64,6 +64,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The OS to host the function app.')]
         [Parameter(ParameterSetName="Consumption")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
+        [ValidateSet("Linux", "Windows")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         # OS type (Linux or Windows)
@@ -245,17 +246,36 @@ function New-AzFunctionApp {
 
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+
+        $runtimeJsonDefintion = $null
         ValidateFunctionName -Name $Name @params
 
         if (-not $functionAppIsCustomDockerImage)
         {
             if (-not $FunctionsVersion)
             {
+                if ($Runtime -eq "DotNet")
+                {
+                    $errorId = "MissingFunctionsVersionValue"
+                    $message += "For 'DotNet' function apps, the runtime version is specified by the FunctionsVersion parameter. Please specify this value and try again."
+                    $exception = [System.InvalidOperationException]::New($message)
+                    ThrowTerminatingError -ErrorId $errorId `
+                                          -ErrorMessage $message `
+                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                          -Exception $exception
+                }
+
                 $FunctionsVersion = $DefaultFunctionsVersion
                 Write-Verbose "FunctionsVersion not specified. Setting default FunctionsVersion to '$FunctionsVersion'." -Verbose
             }
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
+
+            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            {
+                Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
+                $RuntimeVersion = $FunctionsVersion
+            }
 
             if (-not $OSType)
             {
@@ -263,23 +283,39 @@ function New-AzFunctionApp {
                 Write-Verbose "OSType for $Runtime is '$OSType'." -Verbose
             }
 
-            if (-not $RuntimeVersion)
+            $runtimeJsonDefintion = GetRuntimeJsonDefinition -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+
+            if (-not $runtimeJsonDefintion)
             {
-                # If not runtime version is provided, set the default version for the worker
-                $RuntimeVersion = GetDefaultRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType
-                Write-Verbose "RuntimeVersion not specified. Setting default runtime version for $Runtime to '$RuntimeVersion'." -Verbose
+                $errorId = "FailedToGetRuntimeDefinition"
+                $message += "Failed to get runtime definition for '$Runtime' version '$RuntimeVersion' in Functions version '$FunctionsVersion' on '$OSType'."
+                $exception = [System.InvalidOperationException]::New($message)
+                ThrowTerminatingError -ErrorId $errorId `
+                                      -ErrorMessage $message `
+                                      -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                      -Exception $exception
+
             }
 
-            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            # Add app settings
+            if ($runtimeJsonDefintion.AppSettingsDictionary.Count -gt 0)
             {
-                Write-Verbose "DotNet version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to $FunctionsVersion." -Verbose
-                $RuntimeVersion = $FunctionsVersion
+                foreach ($keyName in $runtimeJsonDefintion.AppSettingsDictionary.Keys)
+                {
+                    $value = $runtimeJsonDefintion.AppSettingsDictionary[$keyName]
+                    $appSettings.Add((NewAppSetting -Name $keyName -Value $value))
+                }
             }
 
-            ValidateRuntimeAndRuntimeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-
-            $runtimeWorker = $Runtime.ToLower()
-            $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_WORKER_RUNTIME' -Value "$runtimeWorker"))
+            # Add site config properties
+            if ($runtimeJsonDefintion.SiteConfigPropertiesDictionary.Count -gt 0)
+            {
+                foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
+                {
+                    $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
+                    $siteCofig.$PropertyName = $value
+                }
+            }            
         }
 
         $servicePlan = $null
@@ -350,37 +386,12 @@ function New-AzFunctionApp {
             else
             {
                 $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
-                $siteCofig.LinuxFxVersion = GetLinuxFxVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -OSType $OSType -RuntimeVersion $RuntimeVersion
             }
         }
         else 
         {
             # Windows function app
             $functionAppDef.Kind = 'functionapp'
-
-            # Set default Node version
-            $defaultNodeVersion = GetFunctionAppDefaultNodeVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_NODE_DEFAULT_VERSION' -Value $defaultNodeVersion))
-
-            # Set version for Java or PowerShell function apps
-            if ($Runtime -eq "Java")
-            {
-                $JavaVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-                $siteCofig.JavaVersion = "$JavaVersion"
-            }
-            elseif ($Runtime -eq "PowerShell")
-            {
-                if ($RuntimeVersion -eq "6.2")
-                {
-                    # Write warning for PowerShell 6.2 function apps
-                    $message = "PowerShell '6.2' has been deprecated. Please update your PowerShell runtime version to 7.0 by providing '-RuntimeVersion 7.0' when creating PowerShell function apps. "
-                    $message += "For more information, please see 'https://docs.microsoft.com/en-us/powershell/scripting/powershell-support-lifecycle?view=powershell-7#powershell-releases-end-of-life'."
-                    Write-Warning -Message $message
-                }
-
-                $PowerShellWorkerVersion = GetWorkerVersion -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
-                $siteCofig.PowerShellVersion = "$PowerShellWorkerVersion"
-            }
         }
 
         # Validate storage account and get connection string
@@ -409,7 +420,7 @@ function New-AzFunctionApp {
             $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $Name.ToLower()))
         }
 
-        if (-not $DisableAppInsights)
+        if (-not $DisableApplicationInsights)
         {
             if ($ApplicationInsightsKey)
             {

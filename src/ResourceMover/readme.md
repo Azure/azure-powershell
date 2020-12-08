@@ -60,9 +60,9 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
+aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
 input-file:
-	- $(aks)/regionmovecollection.json
+	- $(aks)/resourcemovercollection.json
 module-version: 0.1.0
 
 directive:
