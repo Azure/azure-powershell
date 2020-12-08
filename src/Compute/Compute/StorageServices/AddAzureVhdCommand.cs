@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Position = 5,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "Vhd",
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Delete the blob if already exists")]
         [ValidateNotNullOrEmpty]
         [Alias("o")]
