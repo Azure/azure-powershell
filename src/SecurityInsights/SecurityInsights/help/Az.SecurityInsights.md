@@ -12,74 +12,73 @@ Microsoft Azure Sentinel is a scalable, cloud-native, security information event
 
 ## Az.SecurityInsights Cmdlets
 ### [Get-AzSentinelAlertRule](Get-AzSentinelAlertRule.md)
-Get Azure Sentinel Analytic (Alert Rule).
+Gets an Analytic (Alert Rule).
 
 ### [Get-AzSentinelAlertRuleAction](Get-AzSentinelAlertRuleAction.md)
-Get Azure Sentinel Automated Response (Alert Rule Action).
+Get an Automated Response (Alert Rule Action).
 
 ### [Get-AzSentinelAlertRuleTemplate](Get-AzSentinelAlertRuleTemplate.md)
-Get Azure Sentinel Analtyic Template.
+Get Analytic Rule Template.
 
 ### [Get-AzSentinelBookmark](Get-AzSentinelBookmark.md)
-Get Azure Sentinel Bookmark.
+Get a Bookmark.
 
 ### [Get-AzSentinelDataConnector](Get-AzSentinelDataConnector.md)
-Get Azure Sentinel Data Connector.
+Get a Data Connector.
 
 ### [Get-AzSentinelIncident](Get-AzSentinelIncident.md)
-Get Azure Sentinel Incident.
+Get an Incident.
 
 ### [Get-AzSentinelIncidentComment](Get-AzSentinelIncidentComment.md)
-Get Azure Sentinel Incident Comment.
+Get an Incident Comment.
 
 ### [New-AzSentinelAlertRule](New-AzSentinelAlertRule.md)
-Create Azure Sentinel Analytic (Alert Rule).
+Create an Analytic (Alert Rule).
 
 ### [New-AzSentinelAlertRuleAction](New-AzSentinelAlertRuleAction.md)
-Create Azure Sentinel Automated Response (Alert Rule Action).
+Add an Automated Response to an Analatic.
 
 ### [New-AzSentinelBookmark](New-AzSentinelBookmark.md)
-Create Azure Sentinel Bookmark.
+Create a Bookmark.
 
 ### [New-AzSentinelDataConnector](New-AzSentinelDataConnector.md)
-Create Azure Sentinel Data Connector.
+Create a Data Connector.
 
 ### [New-AzSentinelIncident](New-AzSentinelIncident.md)
-Create Azure Sentinel Incident.
+Create an Incident.
 
 ### [New-AzSentinelIncidentComment](New-AzSentinelIncidentComment.md)
-Create Azure Sentinel Incident Comment.
+Add an Incident Comment to an Incident.
 
 ### [New-AzSentinelIncidentOwner](New-AzSentinelIncidentOwner.md)
-Create Azure Sentinel Incident Owner.
+Create Incident Owner object to update an incident owner.
 
 ### [Remove-AzSentinelAlertRule](Remove-AzSentinelAlertRule.md)
-Delete Azure Sentinel Analytic (Alert Rule).
+Delete an Analytic.
 
 ### [Remove-AzSentinelAlertRuleAction](Remove-AzSentinelAlertRuleAction.md)
-Delete Azure Sentinel Automated Response (Alert Rule Action).
+Remove an Automated Response from an Analytic.
 
 ### [Remove-AzSentinelBookmark](Remove-AzSentinelBookmark.md)
-Delete Azure Sentinel Bookmark.
+Delete a Bookmark.
 
 ### [Remove-AzSentinelDataConnector](Remove-AzSentinelDataConnector.md)
-Delete Azure Sentinel Data Connector.
+Remove a Data Connector.
 
 ### [Remove-AzSentinelIncident](Remove-AzSentinelIncident.md)
-Delete Azure Sentinel Incident.
+Delete an Incident.
 
-### [Set-AzSentinelAlertRule](Set-AzSentinelAlertRule.md)
-Update Azure Sentinel Analytic (Alert Rule).
+### [Update-AzSentinelAlertRule](Update-AzSentinelAlertRule.md)
+Updata an Analtyic.
 
-### [Set-AzSentinelAlertRuleAction](Set-AzSentinelAlertRuleAction.md)
-Update Azure Sentinel Automated Response (Alert Rule Action).
+### [Update-AzSentinelAlertRuleAction](Update-AzSentinelAlertRuleAction.md)
+Update an Automated Response (Alert Rule Action).
 
-### [Set-AzSentinelBookmark](Set-AzSentinelBookmark.md)
-Update Azure Sentinel Bookmark.
+### [Update-AzSentinelBookmark](Update-AzSentinelBookmark.md)
+Updata a Bookmark.
 
-### [Set-AzSentinelDataConnector](Set-AzSentinelDataConnector.md)
-Update Azure Sentinel Data Connector.
+### [Update-AzSentinelDataConnector](Update-AzSentinelDataConnector.md)
+Updata a Data Connector.
 
-### [Set-AzSentinelIncident](Set-AzSentinelIncident.md)
-Update Azure Sentinel Incident.
-
+### [Update-AzSentinelIncident](Update-AzSentinelIncident.md)
+Updata an Incident.

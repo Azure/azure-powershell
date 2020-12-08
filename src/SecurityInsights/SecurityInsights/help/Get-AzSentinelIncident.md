@@ -39,14 +39,14 @@ You can use the **Incident** object to update the Incident, for example you can 
 
 ### Example 1
 ```powershell
-PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
+PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
 This example gets all of the **Incidents** in the specified workspace, and then stores it in the $Incidents variable.
 
 ### Example 2
 ```powershell
-PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
 ```
 
 This example gets an **Incident** in the specified workspace, and then stores it in the $Incident variable.
@@ -134,11 +134,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
-
 ## NOTES
 
 ## RELATED LINKS

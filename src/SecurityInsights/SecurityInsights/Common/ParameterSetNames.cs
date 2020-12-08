@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string WorkspaceScope = "WorkspaceScope";
         public const string ResourceId = "ResourceId";
         public const string GeneralScope = "GeneralScope";
+        public const string ParentObject = "ParentObject";
         #endregion
 
         #region Actions

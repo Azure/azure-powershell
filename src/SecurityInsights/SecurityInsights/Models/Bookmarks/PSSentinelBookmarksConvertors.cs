@@ -89,5 +89,37 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
         {
             return value.Select(rec => rec.CreatePSType()).ToList();
         }
+
+        public static Bookmark CreatePSType(this PSSentinelBookmark value)
+        {
+            return new Bookmark()
+            {
+                Etag = value.Etag,
+                DisplayName = value.DisplayName,
+                //IncidentInfo = value.IncidentInfo.CreatePSType(),
+                Labels = value.Labels,
+                Notes = value.Notes,
+                Query = value.Query,
+                QueryResult = value.QueryResult
+            };
+        }
+
+        public static List<Bookmark> CreatePSType(this IEnumerable<PSSentinelBookmark> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
+        public static UserInfo CreatePSType(this PSSentinelBookmarkUserInfo value)
+        {
+            return new UserInfo()
+            {
+                ObjectId = value.ObjectId
+            };
+        }
+
+        public static List<UserInfo> CreatePSType(this IEnumerable<PSSentinelBookmarkUserInfo> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
     }
 }

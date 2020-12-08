@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/set-azsentinelbookmark
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzSentinelBookmark
+# Update-AzSentinelBookmark
 
 ## SYNOPSIS
 Update a Bookmark.
@@ -14,35 +14,50 @@ Update a Bookmark.
 
 ### BookmarkId. (Default)
 ```
-Set-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -BookmarkId <String> -Etag <String>
- -DisplayName <String> [-IncidentInfo <PSSentinelBookmarkIncidentInfo>]
- [-Labels <System.Collections.Generic.IList`1[System.String]>] [-Notes <String>] -Query <String>
- [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -BookmarkId <String>
+ [-DisplayName <String>] [-IncidentInfo <PSSentinelBookmarkIncidentInfo>]
+ [-Label <System.Collections.Generic.IList`1[System.String]>] [-Notes <String>] [-Query <String>]
+ [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzSentinelBookmark -InputObject <PSSentinelBookmark> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Update-AzSentinelBookmark -InputObject <PSSentinelBookmark> [-DisplayName <String>]
+ [-IncidentInfo <PSSentinelBookmarkIncidentInfo>] [-Label <System.Collections.Generic.IList`1[System.String]>]
+ [-Notes <String>] [-Query <String>] [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Update-AzSentinelBookmark -ResourceId <String> [-DisplayName <String>]
+ [-IncidentInfo <PSSentinelBookmarkIncidentInfo>] [-Label <System.Collections.Generic.IList`1[System.String]>]
+ [-Notes <String>] [-Query <String>] [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSentinelBookmark** cmdlet updates the bookmark in the specified workspace.
-You can pass an **Bookmark** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
+The **Update-AzSentinelBookmark** cmdlet updates the bookmark in the specified workspace.
+You can pass an **Bookmark** object as a parameter or by using the pipeline operator, or alternatively you can specify the required *BookmarkId* parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
+PS C:\> Update-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId" -Notes "Found something interesting"
+```
+
+The command updates the Bookmark by setting the *Notes* property.  All other propreties stay the same.
+
+### Example 2
+```powershell
 PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
-PS C:\> $Bookmark.Notes = "Found something interesting"
-PS C:\> $Bookmark | Set-AzSentinelBookmark
+PS C:\> $Bookmark | Set-AzSentinelBookmark -Notes "Found something interesting"
 ```
 
 The first command gets the Bookmark by *BookmarkId* from the specified workspace, and then stores it in the $Bookmark variable.
-The second command updates the Notes property.
-The final command commits the change.
+The second command updates the Notes property.   All other propreties stay the same.
 
 ## PARAMETERS
 
@@ -50,8 +65,8 @@ The final command commits the change.
 Bookmark Id,
 
 ```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
+Type: String
+Parameter Sets: BookmarkId., ParentObject
 Aliases:
 
 Required: True
@@ -65,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -80,26 +95,11 @@ Accept wildcard characters: False
 Bookmark Rule Display Name.
 
 ```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Etag
-
-```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,8 +110,8 @@ Accept wildcard characters: False
 Bookmark Incident Info.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo
-Parameter Sets: BookmarkId.
+Type: PSSentinelBookmarkIncidentInfo
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 InputObject.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark
+Type: PSSentinelBookmark
 Parameter Sets: InputObject
 Aliases:
 
@@ -136,12 +136,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Incident Labels.
 
 ```yaml
 Type: System.Collections.Generic.IList`1[System.String]
-Parameter Sets: BookmarkId.
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,8 +155,8 @@ Accept wildcard characters: False
 Bookmark Notes.
 
 ```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,11 +170,11 @@ Accept wildcard characters: False
 Bookmark Query.
 
 ```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,8 +185,8 @@ Accept wildcard characters: False
 Bookmark Query Result.
 
 ```yaml
-Type: System.String
-Parameter Sets: BookmarkId.
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: BookmarkId.
 Aliases:
 
@@ -211,15 +211,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Workspace Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: BookmarkId.
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -231,9 +277,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo
-
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark
+
+### System.String
+
+### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo
 
 ## OUTPUTS
 

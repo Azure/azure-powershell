@@ -69,27 +69,26 @@ function New-AzSentinelDataConnector-Create
 .SYNOPSIS
 Update DataConnector
 #>
-function Set-AzSentinelDataConnector-Update
+function Update-AzSentinelDataConnector-Update
 {
 	#Create Data Connector
 	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Update Data Connector
-    $DataConnector = Set-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name) -Etag ($DataConnector.Etag) -AzureSecurityCenter -Alerts Disabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+    $DataConnector2 = Update-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name) -Alerts Disabled
 	# Validate
-	Validate-DataConnector $DataConnector
+	Validate-DataConnector $DataConnector2
 
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
 }
 
-function Set-AzSentinelDataConnector-InputObject
+function Update-AzSentinelDataConnector-InputObject
 {
 	#Create Data Connector
 	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
-	$DataConnector.DataTypes.Alerts.State = "disabled"
 	#Update Data Connector
-    $DataConnector2 = $DataConnector | Set-AzSentinelDataConnector
+    $DataConnector2 = $DataConnector | Update-AzSentinelDataConnector -Alerts Disabled
 	# Validate
 	Validate-DataConnector $DataConnector2
 

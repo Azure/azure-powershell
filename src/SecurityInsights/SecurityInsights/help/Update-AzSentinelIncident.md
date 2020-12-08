@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/set-azsentinelincident
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzSentinelIncident
+# Update-AzSentinelIncident
 
 ## SYNOPSIS
 Update an Incident.
@@ -14,22 +14,34 @@ Update an Incident.
 
 ### IncidentId (Default)
 ```
-Set-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -IncidentId <String> -Etag <String>
+Update-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -IncidentID <String>
  [-Classification <String>] [-ClassificationComment <String>] [-ClassificationReason <String>]
  [-Description <String>]
- [-Labels <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
+ [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
  [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzSentinelIncident -InputObject <PSSentinelIncident> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Update-AzSentinelIncident -InputObject <PSSentinelIncident> [-Classification <String>]
+ [-ClassificationComment <String>] [-ClassificationReason <String>] [-Description <String>]
+ [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
+ [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Update-AzSentinelIncident -ResourceId <String> [-Classification <String>] [-ClassificationComment <String>]
+ [-ClassificationReason <String>] [-Description <String>]
+ [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
+ [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSentinelIncident** cmdlet updates the Incident in the specified workspace.
+The **Update-AzSentinelIncident** cmdlet updates the Incident in the specified workspace.
 You can pass an **Incident** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
@@ -37,14 +49,10 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
-PS C:\> $Incident.severity = "High"
-PS C:\> $Incident | Set-AzSentinelIncident
+PS C:\> Update-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -Severity High
 ```
 
-The first command gets the Incident by *IncidentId* from the specified workspace, and then stores it in the $Incident variable.
-The second command updates the severity property.
-The final command commits the change.
+The command gets the Incident by *IncidentId* and sets the *Severity* property to *High*.  All other properties remain the same.
 
 ## PARAMETERS
 
@@ -52,8 +60,8 @@ The final command commits the change.
 Incident Classificaiton.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 Accepted values: BenignPositive, FalsePositive, TruePositive, Undetermined
 
@@ -68,8 +76,8 @@ Accept wildcard characters: False
 Incident Classificaiton Comment.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -83,8 +91,8 @@ Accept wildcard characters: False
 Incident Classificaiton Reason.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 Accepted values: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, SuspiciousButExpected
 
@@ -99,7 +107,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,8 +122,8 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,27 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Etag
-Etag
-
-```yaml
-Type: System.String
-Parameter Sets: IncidentId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncidentId
+### -IncidentID
 Incident Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: IncidentId, ParentObject
 Aliases:
 
 Required: True
@@ -159,7 +152,7 @@ Accept wildcard characters: False
 InputObject.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
+Type: PSSentinelIncident
 Parameter Sets: InputObject
 Aliases:
 
@@ -170,12 +163,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Incident Labels.
 
 ```yaml
 Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]
-Parameter Sets: IncidentId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,8 +182,8 @@ Accept wildcard characters: False
 Incident Owner.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner
-Parameter Sets: IncidentId
+Type: PSSentinelIncidentOwner
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -204,7 +197,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IncidentId
 Aliases:
 
@@ -215,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Severity
 Incident Severity.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 Accepted values: High, Informational, Low, Medium
 
@@ -235,8 +243,8 @@ Accept wildcard characters: False
 Incident Status.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 Accepted values: Active, Closed, New
 
@@ -251,8 +259,8 @@ Accept wildcard characters: False
 Incident Title.
 
 ```yaml
-Type: System.String
-Parameter Sets: IncidentId
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -266,11 +274,42 @@ Accept wildcard characters: False
 Workspace Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IncidentId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -282,11 +321,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
+
+### System.String
+
 ### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner
-
-### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
 
 ## OUTPUTS
 

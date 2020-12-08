@@ -71,13 +71,13 @@ function New-AzSentinelIncident-Create
 .SYNOPSIS
 Update Incident
 #>
-function Set-AzSentinelIncident-Update
+function Update-AzSentinelIncident-Update
 {
 	#Create $Incident
 	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
 		
 	#update $Incident
-	$Incident = Set-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Etag ($Incident.Etag) -Status Closed -Severity ($Incident.Severity) -Title ($Incident.Title) -Classification FalsePositive -ClassificationReason InaccurateData
+	$Incident = Update-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Status Closed -Classification FalsePositive -ClassificationReason InaccurateData
 	
 	# Validate
 	Validate-Incident $Incident
@@ -88,13 +88,12 @@ function Set-AzSentinelIncident-Update
 	
 	}
 
-	function Set-AzSentinelIncident-InputObject
+	function Update-AzSentinelIncident-InputObject
 {
 	#Create $Incident
 	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
-	$Incident.Severity = "Medium"
 	#update $Incident
-	$Incident2 = $Incident | Set-AzSentinelIncident
+	$Incident2 =  Update-AzSentinelIncident -Severity Medium -InputObject $Incident
 	
 	# Validate
 	Validate-Incident $Incident2

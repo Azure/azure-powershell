@@ -33,7 +33,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
+PS C:\> Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
 ```
 
 This command removes the Bookmark from the workspace.
@@ -167,13 +167,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark
-
 ## NOTES
 
 ## RELATED LINKS

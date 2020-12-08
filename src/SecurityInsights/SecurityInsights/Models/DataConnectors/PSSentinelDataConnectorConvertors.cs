@@ -359,6 +359,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new AADDataConnector()
             {
+                Etag= value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };
@@ -368,6 +369,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new AATPDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };
@@ -377,6 +379,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new ASCDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 SubscriptionId = value.SubscriptionId
             };
@@ -386,6 +389,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new AwsCloudTrailDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 AwsRoleArn = value.AwsRoleArn
             };
@@ -395,6 +399,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new MCASDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };
@@ -404,6 +409,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new MDATPDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };
@@ -413,6 +419,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new OfficeDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };
@@ -422,6 +429,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new TIDataConnector()
             {
+                Etag = value.Etag,
                 DataTypes = value.DataTypes.CreatePSType(),
                 TenantId = value.TenantId
             };

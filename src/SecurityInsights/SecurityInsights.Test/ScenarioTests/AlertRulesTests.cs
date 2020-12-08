@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAlertRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelAlertRule-Update");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRule-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelAlertRule-InputObject");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRule-InputObject");
         }
 
         [Fact]

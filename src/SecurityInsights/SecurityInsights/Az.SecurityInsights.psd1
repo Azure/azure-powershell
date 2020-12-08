@@ -77,27 +77,27 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzSentinelAlertRuleAction',
     'New-AzSentinelAlertRuleAction',
     'Remove-AzSentinelAlertRuleAction',
-    'Set-AzSentinelAlertRuleAction',
+    'Update-AzSentinelAlertRuleAction',
     'Get-AzSentinelAlertRule',
     'New-AzSentinelAlertRule',
     'Remove-AzSentinelAlertRule',
-    'Set-AzSentinelAlertRule',
+    'Update-AzSentinelAlertRule',
     'Get-AzSentinelAlertRuleTemplate',
     'Get-AzSentinelBookmark',
     'New-AzSentinelBookmark',
     'Remove-AzSentinelBookmark',
-    'Set-AzSentinelBookmark',
+    'Update-AzSentinelBookmark',
     'Get-AzSentinelDataConnector',
     'New-AzSentinelDataConnector',
     'Remove-AzSentinelDataConnector',
-    'Set-AzSentinelDataConnector',
+    'Update-AzSentinelDataConnector',
     'Get-AzSentinelIncidentComment',
     'New-AzSentinelIncidentComment',
     'Get-AzSentinelIncident', 
     'New-AzSentinelIncident', 
     'New-AzSentinelIncidentOwner',
     'Remove-AzSentinelIncident',
-    'Set-AzSentinelIncident'
+    'Update-AzSentinelIncident'
 
 
 # Variables to export from this module

@@ -71,13 +71,13 @@ function New-AzSentinelBookmark-Create
 .SYNOPSIS
 Update Bookmark
 #>
-function Set-AzSentinelBookmark-Update
+function Update-AzSentinelBookmark-Update
 {
 	#Create $bookmark
 	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	#update $bookmark
-	$bookmark2 = Set-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Etag ($bookmark.etag) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1" -Notes "PoshModuleTest"
+	$bookmark2 = Update-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Notes "PoshModuleTest"
 	
 	# Validate
 	Validate-Bookmark $bookmark
@@ -88,13 +88,12 @@ function Set-AzSentinelBookmark-Update
 	
 	}
 
-	function Set-AzSentinelBookmark-InputObject
+	function Update-AzSentinelBookmark-InputObject
 {
 	#Create $bookmark
 	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
-	$bookmark.Notes = "testnotes"
 	#update $bookmark
-	$bookmark2 = $bookmark | Set-AzSentinelBookmark
+	$bookmark2 = Update-AzSentinelBookmark -Notes "testnotes" -InputObject $bookmark 
 	
 	# Validate
 	Validate-Bookmark $bookmark2

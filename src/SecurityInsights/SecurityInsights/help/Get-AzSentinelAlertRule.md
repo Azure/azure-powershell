@@ -39,14 +39,14 @@ You can use the **AlertRule** object to update the AlertRule, for example you ca
 
 ### Example 1
 ```powershell
-PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" 
+PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
 This example gets all of the **AlertRules** in the specified workspace, and then stores it in the $AlertRules variable.
 
 ### Example 2
 ```powershell
-PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -AlertRuleId "MyAlertRuleId"
+PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
 ```
 
 This example gets an **AlertRule** in the specified workspace, and then stores it in the $AlertRule variable.
@@ -134,11 +134,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule
-
 ## NOTES
 
 ## RELATED LINKS

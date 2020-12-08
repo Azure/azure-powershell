@@ -55,14 +55,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Update()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelIncident-Update");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelIncident-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelIncident-InputObject");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelIncident-InputObject");
         }
 
         [Fact]

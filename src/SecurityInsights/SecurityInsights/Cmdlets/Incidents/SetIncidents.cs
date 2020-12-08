@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
         public string Description { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Labels)]
-        public IList<PSSentinelIncidentLabel> Labels { get; set; }
+        public IList<PSSentinelIncidentLabel> Label { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.IncidentId, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.Owner)]
         public PSSentinelIncidentOwner Owner { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                     ClassificationComment = InputObject.ClassificationComment;
                     ClassificationReason = InputObject.ClassificationReason;
                     Description = InputObject.Description;
-                    Labels = (IList<PSSentinelIncidentLabel>) InputObject.Labels;
+                    Label = (IList<PSSentinelIncidentLabel>) InputObject.Labels;
                     Owner = (PSSentinelIncidentOwner)InputObject.Owner;
                     break;
                 default:
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 ClassificationComment = ClassificationComment,
                 ClassificationReason = ClassificationReason,
                 Description = Description,
-                Labels = Labels?.CreatePSType(),
+                Labels = Label?.CreatePSType(),
                 Owner = Owner?.CreatePSType()
             };
 

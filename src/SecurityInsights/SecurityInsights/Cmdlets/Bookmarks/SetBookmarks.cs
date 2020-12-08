@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         public PSSentinelBookmarkIncidentInfo IncidentInfo { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Labels)] 
-        public IList<string> Labels { get; set; }
+        public IList<string> Label { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Notes)] 
         public string Notes { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                     ResourceGroupName = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     DisplayName = InputObject.DisplayName;
                     if (InputObject.IncidentInfo.IncidentId != null) { IncidentInfo = InputObject.IncidentInfo; }
-                    Labels = InputObject.Labels;
+                    Label = InputObject.Labels;
                     Notes = InputObject.Notes;
                     Query = InputObject.Query;
                     QueryResult = InputObject.QueryResult;
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                 Etag = Etag,
                 DisplayName = DisplayName,
                 IncidentInfo = IncidentInfo?.CreatePSType(),
-                Labels = Labels,
+                Labels = Label,
                 Notes = Notes,
                 Query = Query,
                 QueryResult = QueryResult

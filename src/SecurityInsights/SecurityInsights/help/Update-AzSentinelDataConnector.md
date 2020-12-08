@@ -1,46 +1,76 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/new-azsentinelincident
+online version:
 schema: 2.0.0
 ---
 
-# New-AzSentinelIncident
+# Update-AzSentinelDataConnector
 
 ## SYNOPSIS
-Create an Incident.
+Update a Data Connector.
 
 ## SYNTAX
 
+### DataConnectorId (Default)
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-IncidentId <String>]
- [-Classificaton <String>] [-ClassificationComment <String>] [-ClassificationReason <String>]
- [-Description <String>]
- [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
- [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -DataConnectorId <String>
+ [-Alerts <String>] [-SubscriptionId <String>] [-AwsRoleArn <String>] [-Logs <String>]
+ [-DiscoveryLogs <String>] [-Exchange <String>] [-SharePoint <String>] [-Indicators <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-The **New-AzSentinelIncident** cmdlet creates a Incident from the specified workspace.
+### InputObject
+```
+Update-AzSentinelDataConnector -InputObject <PSSentinelDataConnector> [-Alerts <String>]
+ [-SubscriptionId <String>] [-AwsRoleArn <String>] [-Logs <String>] [-DiscoveryLogs <String>]
+ [-Exchange <String>] [-SharePoint <String>] [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Update-AzSentinelDataConnector -ResourceId <String> [-Alerts <String>] [-SubscriptionId <String>]
+ [-AwsRoleArn <String>] [-Logs <String>] [-DiscoveryLogs <String>] [-Exchange <String>] [-SharePoint <String>]
+ [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+The **Update-AzSentinelDataConnector** cmdlet updates the Data Connector in the specified workspace.
+You can pass an **DataConnector** object as a parameter or by using the pipeline operator, or alternatively you can specify the required parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Severity Low -Status New
+PS C:\> Update-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId" -Alerts Disabled
 ```
 
-This example creates an **Incident** in the specified workspace, and then stores it in the $Incident variable.
+The command gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.
 
 ## PARAMETERS
 
-### -ClassificationComment
-Incident Classificaiton Comment.
+### -Alerts
+Data Connector Alerts
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AwsRoleArn
+Data Connector AWS Role Arn
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -51,32 +81,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClassificationReason
-Incident Classificaiton Reason.
+### -DataConnectorId
+Data Connector Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: DataConnectorId
 Aliases:
-Accepted values: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, SuspiciousButExpected
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Classificaton
-Incident Classificaiton.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: BenignPositive, FalsePositive, TruePositive, Undetermined
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,7 +100,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,13 +111,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description.
+### -DiscoveryLogs
+Data Connector Discovery Logs
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -113,13 +127,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncidentId
-Incident Id.
+### -Exchange
+Data Connector Exchange
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -128,33 +143,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Label
-Incident Labels.
+### -Indicators
+Data Connector Indicators
 
 ```yaml
-Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+InputObject.
+
+```yaml
+Type: PSSentinelDataConnector
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Owner
-Incident Owner.
+### -Logs
+Data Connector Logs
 
 ```yaml
-Type: Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner
+Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -162,8 +194,8 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: DataConnectorId
 Aliases:
 
 Required: True
@@ -173,47 +205,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Severity
-Incident Severity.
+### -ResourceId
+Resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ResourceId
 Aliases:
-Accepted values: High, Informational, Low, Medium
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SharePoint
+Data Connector SharePoint
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status
-Incident Status.
+### -SubscriptionId
+Data connector Subscription Id
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Active, Closed, New
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Title
-Incident Title.
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,8 +255,8 @@ Accept wildcard characters: False
 Workspace Name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: DataConnectorId
 Aliases:
 
 Required: True
@@ -239,7 +270,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -251,10 +282,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -270,11 +302,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner
+### Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector
+
+### System.String
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
+### Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector
+
 ## NOTES
 
 ## RELATED LINKS

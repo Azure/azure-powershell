@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SecurityInsights.Models;
 using System;
 using System.Collections.Generic;
 

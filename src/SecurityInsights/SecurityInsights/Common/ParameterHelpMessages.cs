@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string PassThru = "PassThru";
         public const string AsJob = "Run cmdlet in the background";
         public const string Etag = "Etag";
+        public const string ParentObject = "Parent Object.";
         #endregion
 
         #region Actions
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string Kind = "Alert Rule Kind.";
         public const string AlertRuleTemplateName = "Alert Rule Template.";
         public const string Enabled = "Alert Rule Enabled.";
+        public const string Disabled = "Alert Rule Disabled.";
         public const string DisplayName = "Alert Rule Display Name.";
         public const string ProductFilter = "Alert Rule Product Filter.";
         public const string DisplayNamesExcludeFilter = "Alert Rule Display Names Exclude Filter.";
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string SeveritiesFilter = "Alert Rule Severities Filter.";
         public const string SuppressionDuration = "Alert Rule Suppression Duration.";
         public const string SuppressionEnabled = "Alert Rule Suppression Enabled.";
+        public const string SuppressionDisabled = "Alert Rule Suppression Disabled.";
         public const string Query = "Alert Rule Query.";
         public const string QueryFrequency = "Alert Rule Query Frequency.";
         public const string QueryPeriod = "Alert Rule Query Period.";

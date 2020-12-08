@@ -131,5 +131,29 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Incidents
             return value.Select(rec => rec.CreatePSType()).ToList();
         }
 
+        public static Incident CreatePSType(this PSSentinelIncident value)
+        {
+            return new Incident()
+            {
+                Etag = value.Etag,
+                Classification = value.Classification,
+                ClassificationComment = value.ClassificationComment,
+                ClassificationReason = value.ClassificationReason,
+                Description = value.Description,
+                FirstActivityTimeUtc = value.FirstActivityTimeUtc,
+                Labels = value.Labels.CreatePSType(),
+                LastActivityTimeUtc = value.LastActivityTimeUtc,
+                Owner = value.Owner.CreatePSType(),
+                Severity = value.Severity,
+                Status = value.Status,
+                Title = value.Title
+            };
+        }
+
+        public static List<Incident> ConvertToPSType(this IEnumerable<PSSentinelIncident> value)
+        {
+            return value.Select(rec => rec.CreatePSType()).ToList();
+        }
+
     }
 }

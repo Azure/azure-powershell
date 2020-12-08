@@ -33,7 +33,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -IncidentId "MyIncidentId"
+PS C:\> Remove-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
 ```
 
 This command removes the Incident from the workspace.
@@ -167,13 +167,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
-
 ## OUTPUTS
 
 ### System.Boolean
-
 ## NOTES
 
 ## RELATED LINKS

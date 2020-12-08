@@ -89,7 +89,7 @@ function New-AzSentinelAlertRuleAction-Create
 .SYNOPSIS
 Update Action
 #>
-function Set-AzSentinelAlertRuleAction-Update
+function Update-AzSentinelAlertRuleAction-Update
 {
 	$LogicAppResourceId = "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.Logic/workflows/Block-AADUser"
 	$TriggerUri = "https://prod-13.westus.logic.azure.com:443/workflows/826a95b1b84c4ffbaf3af3dd88fe96b5/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2018-07-01-preview&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=pK23xWl4uJT4RWs7zopxiP0Z7CpIfCDZEanL-mEyy1E"
@@ -102,7 +102,7 @@ function Set-AzSentinelAlertRuleAction-Update
 	$action = New-AzSentinelAlertRuleAction -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertRule.Name) -LogicAppResourceId $LogicAppResourceId -TriggerUri $TriggerUri
 	
 	#update action
-	$action = Set-AzSentinelAlertRuleAction -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertRule.Name) -ActionId ($action.Name) -LogicAppResourceId $LogicAppResourceId2 -TriggerUri $TriggerUri2
+	$action = Update-AzSentinelAlertRuleAction -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId ($alertRule.Name) -ActionId ($action.Name) -LogicAppResourceId $LogicAppResourceId2 -TriggerUri $TriggerUri2
 	
 	# Validate
 	Validate-Action $action

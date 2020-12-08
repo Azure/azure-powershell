@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzSentinelAlertRuleAction-Update");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRuleAction-Update");
         }
 
         [Fact]

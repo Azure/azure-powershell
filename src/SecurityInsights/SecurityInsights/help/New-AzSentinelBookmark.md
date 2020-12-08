@@ -15,8 +15,8 @@ Create a Bookmark.
 ```
 New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-BookmarkId <String>]
  -DisplayName <String> [-IncidentInfo <PSSentinelBookmarkIncidentInfo>]
- [-Labels <System.Collections.Generic.IList`1[System.String]>] [-Notes <String>] -Query <String>
- [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Label <System.Collections.Generic.IList`1[System.String]>] [-Notes <String>] -Query <String>
+ [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,6 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ### Example 1
 ```powershell
 PS C:\> $Bookmark = New-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DisplayName "MyBookmark" -Query "SecurityAlert | take 1"
-
 ```
 
 This example creates a **Bookmark** in the specified workspace, and then stores it in the $Bookmark variable.
@@ -95,7 +94,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Incident Labels.
 
 ```yaml
@@ -185,17 +184,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark
-
 ## NOTES
 
 ## RELATED LINKS

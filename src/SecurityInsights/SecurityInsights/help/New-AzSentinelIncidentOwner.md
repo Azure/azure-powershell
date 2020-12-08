@@ -28,7 +28,6 @@ PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" 
 PS C:\> $owner = New-AzSentinelIncidentOwner -AssignedTo "First Last" -Email "user@domain.com" -Objectid "userobjectId" -UserPrincipalName "user@domain.com"
 PS C:\> $Incident.Owner = $owner
 PS C:\> $Incident | Set-AzSentinelIncident
-
 ```
 
 This example creates an **IncidentOwner** and updates an Incident to the new owner.
@@ -116,11 +115,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
-
 ## NOTES
 
 ## RELATED LINKS
