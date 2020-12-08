@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0">
       <NoWarn>NU1608</NoWarn>
