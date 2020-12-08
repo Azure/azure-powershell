@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         public UploadContextDisk Create(FileInfo localVhd, PageBlobClient pageblob, bool overWrite)
         {
             AssertIfValidhVhd(localVhd);
-            // AssertIfValidVhdSize(localVhd);
+            // AssertIfValidVhdSize(localVhd); TODO
 
             // this.blobObjectFactory.CreateContainer(blobDestination);
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                 //        .ConfigureAwait(false).GetAwaiter().GetResult();
                 //}
 
-                Program.SyncOutput.MessageResumingUpload();
+                //Program.SyncOutput.MessageResumingUpload();
 
                 // TODO is this necessary? 
                 //var metaData = pageblob.GetUploadMetaData();
