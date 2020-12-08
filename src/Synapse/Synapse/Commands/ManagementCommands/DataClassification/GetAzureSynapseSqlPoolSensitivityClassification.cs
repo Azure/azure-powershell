@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.DataClassification;
 using Microsoft.Azure.Commands.Synaspe.Models;
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Synapse
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = DataClassificationCommon.WorkspaceNameHelpMessage)]
-        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Synapse
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = DataClassificationCommon.SqlPoolNameHelpMessage)]
-        [ResourceNameCompleter("Microsoft.Sql/servers/SqlPools", "ResourceGroupName", "WorkspaceName")]
+        [ResourceNameCompleter(ResourceTypes.SqlPool, nameof(ResourceGroupName), nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
         public override string SqlPoolName { get; set; }
 

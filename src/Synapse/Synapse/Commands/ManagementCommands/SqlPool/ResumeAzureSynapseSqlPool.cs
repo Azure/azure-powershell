@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.Name, string.Format(Resources.ResumingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
                 this.SynapseAnalyticsClient.ResumeSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
                 WriteObject(result);
             }
         }

@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
                 this.SynapseAnalyticsClient.RenameSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, this.NewName);
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.NewName));
+                var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.NewName));
                 WriteObject(result);
             }
         }

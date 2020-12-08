@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models.DataClassification
 
         private SynapseManagementClient GetCurrentSynapseManagementClient()
         {
-            if (SynapseManagementClient != null)
+            if (SynapseManagementClient == null)
             {
                 SynapseManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
