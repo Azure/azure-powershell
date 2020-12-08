@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
@@ -286,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction(localCommands, postSuccess, exception));
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, postSuccess, exception));
                         }
                     },
                     cancellationToken);
@@ -300,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (!startRequestTask)
                 {
-                    _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction(localCommands, hasSentHttpRequest: false, exception: exception));
+                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, hasSentHttpRequest: false, exception: exception));
                 }
             }
         }
@@ -317,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_allPredictiveCommands?.Contains(cmd) == true);
 
         /// <summary>
-        /// Requests a list of popular commands from service. These commands are used as fallback suggestion
+        /// Requests a list of popular commands from service. These commands are used as fall back suggestion
         /// if none of the predictions fit for the current input. This method should be called once per session.
         /// </summary>
         protected virtual void RequestAllPredictiveCommands()
@@ -344,7 +345,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new TelemetryData.RequestPrediction("request_commands", hasSentHttpRequest: true, exception: exception));
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData("request_commands", hasSentHttpRequest: true, exception: exception));
                         }
 
                         // Initialize predictions

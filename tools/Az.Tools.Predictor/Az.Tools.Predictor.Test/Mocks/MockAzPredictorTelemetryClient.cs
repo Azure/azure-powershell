@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public int SuggestionAccepted { get; set; }
 
         /// <inheritdoc/>
-        public void OnHistory(TelemetryData.History telemetryData)
+        public void OnHistory(HistoryTelemetryData telemetryData)
         {
             this.RecordedSuggestion = new RecordedSuggestionForHistory()
             {
@@ -42,18 +43,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData)
+        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData)
+        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
         {
             ++this.SuggestionAccepted;
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData)
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
         {
         }
 

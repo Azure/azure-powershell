@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
     /// The telemetry client that collects and sends the telemetry data.
@@ -33,24 +33,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Collects the event of the history command.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnHistory(TelemetryData.History telemetryData);
+        public void OnHistory(HistoryTelemetryData telemetryData);
 
         /// <summary>
         /// Collects the event when a prediction is requested.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData);
+        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData);
+        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData);
 
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData);
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _service.RecordHistory(lastCommand.Item1);
                 }
 
-                _telemetryClient.OnHistory(new TelemetryData.History(lastCommand.Item2));
+                _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
                 _service.RequestPredictions(_lastTwoMaskedCommands);
             }
 
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
-            _telemetryClient.OnSuggestionAccepted(new TelemetryData.SuggestionAccepted(acceptedSuggestion));
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(acceptedSuggestion));
         }
 
         /// <inhericdoc />
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             finally
             {
 
-                _telemetryClient.OnGetSuggestion(new TelemetryData.GetSuggestion(context.InputAst,
+                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(context.InputAst,
                         suggestions,
                         cancellationToken.IsCancellationRequested,
                         exception));

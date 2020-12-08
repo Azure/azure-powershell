@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="rawUserInput">The string format of the command line from user input.</param>
         /// <param name="presentCommands">Commands already present. Contents may be added to this collection.</param>
         /// <param name="suggestionCount">The number of suggestions to return.</param>
-        /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
+        /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commands in the list of predictions.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The collections of suggestions.</returns>
         public CommandLineSuggestion GetSuggestion(string inputCommandName,
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Determines the index of the given parameter in the parameter set.
         /// </summary>
         /// <param name="parameter">The parameter name and its value.</param>
-        /// <param name="predictionSet">Prediction parameter setto find parameter position in.</param>
+        /// <param name="predictionSet">Prediction parameter set to find parameter position in.</param>
         /// <param name="usedParams">Set of used parameters for set.</param>
         private static int FindParameterPositionInSet(Parameter parameter, ParameterSet predictionSet, HashSet<int> usedParams)
         {

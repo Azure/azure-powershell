@@ -24,7 +24,7 @@ using System.Management.Automation.Language;
 using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
     /// A telemetry client implementation to collect the telemetry data for AzPredictor.
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly IAzContext _azContext;
 
         /// <summary>
-        /// The action to handle the <see cref="TelemetryData.ITelemetryData"/> in a thread pool.
+        /// The action to handle the <see cref="ITelemetryData"/> in a thread pool.
         /// </summary>
-        private readonly ActionBlock<TelemetryData.ITelemetryData> _telemetryDispatcher;
+        private readonly ActionBlock<ITelemetryData> _telemetryDispatcher;
 
         /// <summary>
         /// The adjusted texts and the source text for the suggestion.
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.Context.Cloud.RoleInstance = "placeholderdon'tuse";
             _telemetryClient.Context.Cloud.RoleName = "placeholderdon'tuse";
             _azContext = azContext;
-            _telemetryDispatcher = new ActionBlock<TelemetryData.ITelemetryData>(
+            _telemetryDispatcher = new ActionBlock<ITelemetryData>(
                     (telemetryData) => DispatchTelemetryData(telemetryData));
         }
 
         /// <inheritdoc/>
-        public void OnHistory(TelemetryData.History telemetryData)
+        public void OnHistory(HistoryTelemetryData telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(TelemetryData.RequestPrediction telemetryData)
+        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionAccepted(TelemetryData.SuggestionAccepted telemetryData)
+        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(TelemetryData.GetSuggestion telemetryData)
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
         {
             if (!IsDataCollectionAllowed())
             {
@@ -166,22 +166,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Dispatches <see cref="TelemetryData.ITelemetryData"/> according to its implementation.
+        /// Dispatches <see cref="ITelemetryData"/> according to its implementation.
         /// </summary>
-        private void DispatchTelemetryData(TelemetryData.ITelemetryData telemetryData)
+        private void DispatchTelemetryData(ITelemetryData telemetryData)
         {
             switch (telemetryData)
             {
-                case TelemetryData.History history:
+                case HistoryTelemetryData history:
                     SendTelemetry(history);
                     break;
-                case TelemetryData.RequestPrediction requestPrediction:
+                case RequestPredictionTelemetryData requestPrediction:
                     SendTelemetry(requestPrediction);
                     break;
-                case TelemetryData.GetSuggestion getSuggestion:
+                case GetSuggestionTelemetryData getSuggestion:
                     SendTelemetry(getSuggestion);
                     break;
-                case TelemetryData.SuggestionAccepted suggestionAccepted:
+                case SuggestionAcceptedTelemetryData suggestionAccepted:
                     SendTelemetry(suggestionAccepted);
                     break;
                 default:
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Sends the telemetry with the command history.
         /// </summary>
-        private void SendTelemetry(TelemetryData.History telemetryData)
+        private void SendTelemetry(HistoryTelemetryData telemetryData)
         {
             var properties = CreateProperties(telemetryData);
             properties.Add("History", telemetryData.Command);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Sends the telemetry with the commands for prediction.
         /// </summary>
-        private void SendTelemetry(TelemetryData.RequestPrediction telemetryData)
+        private void SendTelemetry(RequestPredictionTelemetryData telemetryData)
         {
             _userAcceptedAndSuggestion.Clear();
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Sends the telemetry with the suggestion returned to the user.
         /// </summary>
-        private void SendTelemetry(TelemetryData.GetSuggestion telemetryData)
+        private void SendTelemetry(GetSuggestionTelemetryData telemetryData)
         {
             var suggestions = telemetryData.Suggestion?.PredictiveSuggestions;
             var suggestionSource = telemetryData.Suggestion?.SuggestionSources;
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Sends the telemetry with the suggestion returned to the user.
         /// </summary>
-        private void SendTelemetry(TelemetryData.SuggestionAccepted telemetryData)
+        private void SendTelemetry(SuggestionAcceptedTelemetryData telemetryData)
         {
             if (!_userAcceptedAndSuggestion.TryGetValue(telemetryData.Suggestion, out var suggestion))
             {
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Add the common properties to the telemetry event.
         /// </summary>
-        private IDictionary<string, string> CreateProperties(TelemetryData.ITelemetryData telemetryData)
+        private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData)
         {
             return new Dictionary<string, string>()
             {
