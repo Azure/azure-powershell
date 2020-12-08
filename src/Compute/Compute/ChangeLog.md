@@ -22,6 +22,11 @@
 ## Upcoming Release
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
 * New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
+* `Add-AzVhd` has the following new functionalities:
+    - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
+    - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
+    - added a new parameter set which will create a managed disk and upload Vhd file directly to the disk.
 
 ## Version 4.6.0
 * Added `-VmssId` parameter to `New-AzVm`
