@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal bool IsPremiumStorageAccount(StorageAccount account)
         {
-            if (account.Sku() != null)
+            if (account.Sku != null)
             {
                 return account.IsPremiumLrs();
             }
