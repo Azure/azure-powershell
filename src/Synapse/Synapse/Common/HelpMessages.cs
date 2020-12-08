@@ -6,6 +6,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
     {
         public const string ResourceGroupName = "Resource group name.";
 
+        public const string ScanId = "Scan Id.";
+
         public const string Location = "Azure region where the resource should be created.";
 
         public const string WorkspaceName = "Name of Synapse workspace.";

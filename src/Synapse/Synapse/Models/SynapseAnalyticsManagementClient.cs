@@ -1,7 +1,10 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Synapse.Common;
+using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model;
+using Microsoft.Azure.Documents;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -18,6 +21,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TriggerType = Microsoft.Azure.Documents.TriggerType;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -273,7 +277,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.SqlPools.Create(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -290,11 +294,70 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.SqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
         }
+
+        /// <summary>
+        /// Run a new Vulnerability Assessment scan
+        /// </summary>
+        public void StartVulnerabilityAssessmentScan(string resourceGroup, string serverName, string databaseName, string scanId)
+        {
+             _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, serverName, databaseName, scanId);
+          
+        }
+        internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
+        {
+            try
+            {
+                var response =  _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, scanId);
+                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, response.Result.Body);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal List<PSVulnerabilityAssessmentScanRecordModel> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                var response = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
+                return response.Result.Body.Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, scanRecord)).ToList();
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, VulnerabilityAssessmentScanRecord scanRecord)
+        {
+            TriggerType scanTriggerType;
+            Enum.TryParse(scanRecord.TriggerType, true, out scanTriggerType);
+
+            return new PSVulnerabilityAssessmentScanRecordModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ScanId = scanRecord.ScanId,
+                TriggerType = (VulnerabilityAssessment.Model.TriggerType)scanTriggerType,
+                State = scanRecord.State,
+                StartTime = scanRecord.StartTime,
+                EndTime = scanRecord.EndTime,
+                Errors = scanRecord.Errors?.Select(scanError =>
+                  new PSVulnerabilityAssessmentScanErrorModel()
+                  {
+                      Code = scanError.Code,
+                      Message = scanError.Message
+                  }).ToList(),
+                ScanResultsLocationPath = scanRecord.StorageContainerPath,
+                NumberOfFailedSecurityChecks = scanRecord.NumberOfFailedSecurityChecks
+            };
+        }
+
 
         internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
@@ -320,7 +383,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseManagementClient.SqlPools.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseManagementClient.SqlPools.ListByWorkspaceNext);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -337,7 +400,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -359,7 +422,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.Delete(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -382,24 +445,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                this._synapseManagementClient.SqlPools.Rename(
-                    resourceGroupName,
-                    workspaceName,
-                    sqlPoolName,
-                    new ResourceMoveDefinition
-                    {
-                        Id = Utils.ConstructResourceId(
-                            _synapseManagementClient.SubscriptionId,
-                            resourceGroupName,
-                            ResourceTypes.SqlPool,
-                            newSqlPoolName,
-                            $"workspaces/{workspaceName}")
-                    });
+                //if (string.IsNullOrEmpty(resourceGroupName))
+                //{
+                //    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                //}
+                throw new NotImplementedException("SQL pool rename operation is not supported.");
+                //this._synapseManagementClient.SqlPools.Rename(
+                //    resourceGroupName,
+                //    workspaceName,
+                //    sqlPoolName,
+                //    new ResourceMoveDefinition
+                //    {
+                //        Id = Utils.ConstructResourceId(
+                //            _synapseManagementClient.SubscriptionId,
+                //            resourceGroupName,
+                //            ResourceTypes.SqlPool,
+                //            newSqlPoolName,
+                //            $"workspaces/{workspaceName}")
+                //    });
             }
             catch (CloudException ex)
             {
@@ -418,7 +481,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Pause(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -435,7 +498,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Resume(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -456,7 +519,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     sqlPoolName)
                     .ToList();
             }
-            catch (CloudException ex)
+            catch (ErrorContractException ex)
             {
                 throw GetSynapseException(ex);
             }
@@ -1045,7 +1108,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
 
-                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.GetWithHttpMessagesAsync(
+                var data = await _synapseManagementClient.IntegrationRuntimeMonitoringData.ListWithHttpMessagesAsync(
                 resourceGroupName,
                 workspaceName,
                 integrationRuntimeName);
