@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             authTokenSetter("Bearer", AccessToken);
         }
 
-        public static async Task<IAccessToken> GetAccessTokenAsync(
+        internal static async Task<IAccessToken> GetAccessTokenAsync(
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,
             CancellationToken cancellationToken,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
 
-        public static async Task<IAccessToken> GetAccessTokenAsync(
+        internal static async Task<IAccessToken> GetAccessTokenAsync(
             Task<AuthenticationRecord> authTask,
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,

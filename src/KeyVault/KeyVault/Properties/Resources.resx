@@ -579,4 +579,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="ADGraphPermissionWarning" xml:space="preserve">
     <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>
   </data>
+  <data name="UpdateHsmShouldProcessMessage" xml:space="preserve">
+    <value>Updating managed HSM '{0}' in resource group '{1}'.</value>
+  </data>
 </root>

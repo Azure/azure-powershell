@@ -31,6 +31,24 @@ Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [-Ou
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### HsmByKeyName
+```
+Get-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByVaultName
+```
+Get-AzKeyVaultKey -HsmName <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByKeyVersions
+```
+Get-AzKeyVaultKey -HsmName <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByInputObjectVaultName
 ```
 Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
@@ -49,6 +67,24 @@ Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### HsmByInputObjectVaultName
+```
+Get-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByInputObjectKeyName
+```
+Get-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-Version] <String> [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByInputObjectKeyVersions
+```
+Get-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByResourceIdVaultName
 ```
 Get-AzKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
@@ -64,6 +100,24 @@ Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String> [-
 ### ByResourceIdKeyVersions
 ```
 Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByResourceIdVaultName
+```
+Get-AzKeyVaultKey -HsmResourceId <String> [[-Name] <String>] [-InRemovedState] [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByResourceIdKeyName
+```
+Get-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-Version] <String> [-OutFile <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### HsmByResourceIdKeyVersions
+```
+Get-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-IncludeVersions] [-OutFile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -273,6 +327,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByKeyName, HsmByVaultName, HsmByKeyVersions
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmObject
+HSM object.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
+Parameter Sets: HsmByInputObjectVaultName, HsmByInputObjectKeyName, HsmByInputObjectKeyVersions
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -HsmResourceId
+HSM Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByResourceIdVaultName, HsmByResourceIdKeyName, HsmByResourceIdKeyVersions
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
@@ -281,7 +380,7 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByKeyVersions, ByInputObjectKeyVersions, ByResourceIdKeyVersions
+Parameter Sets: ByKeyVersions, HsmByKeyVersions, ByInputObjectKeyVersions, HsmByInputObjectKeyVersions, ByResourceIdKeyVersions, HsmByResourceIdKeyVersions
 Aliases:
 
 Required: True
@@ -311,7 +410,7 @@ Specifies whether to show the previously deleted keys in the output
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Parameter Sets: ByVaultName, HsmByVaultName, ByInputObjectVaultName, HsmByInputObjectVaultName, ByResourceIdVaultName, HsmByResourceIdVaultName
 Aliases:
 
 Required: False
@@ -326,7 +425,7 @@ Specifies the name of the key bundle to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Parameter Sets: ByVaultName, HsmByVaultName, ByInputObjectVaultName, HsmByInputObjectVaultName, ByResourceIdVaultName, HsmByResourceIdVaultName
 Aliases: KeyName
 
 Required: False
@@ -338,7 +437,7 @@ Accept wildcard characters: True
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyName, ByKeyVersions, ByInputObjectKeyName, ByInputObjectKeyVersions, ByResourceIdKeyName, ByResourceIdKeyVersions
+Parameter Sets: ByKeyName, ByKeyVersions, HsmByKeyName, HsmByKeyVersions, ByInputObjectKeyName, ByInputObjectKeyVersions, HsmByInputObjectKeyName, HsmByInputObjectKeyVersions, ByResourceIdKeyName, ByResourceIdKeyVersions, HsmByResourceIdKeyName, HsmByResourceIdKeyVersions
 Aliases: KeyName
 
 Required: True
@@ -400,7 +499,7 @@ This cmdlet constructs the FQDN of a key based on the key vault name, your curre
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyName, ByInputObjectKeyName, ByResourceIdKeyName
+Parameter Sets: ByKeyName, HsmByKeyName, ByInputObjectKeyName, HsmByInputObjectKeyName, ByResourceIdKeyName, HsmByResourceIdKeyName
 Aliases: KeyVersion
 
 Required: True

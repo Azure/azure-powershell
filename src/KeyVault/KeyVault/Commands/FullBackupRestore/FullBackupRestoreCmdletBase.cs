@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "Name of the HSM.")]
         [Parameter(ParameterSetName = InteractiveStorageName, Mandatory = true, Position = 1,
             HelpMessage = "Name of the HSM.")]
-        [Alias("HsmName")]
-        public string Name { get; set; }
+        public string HsmName { get; set; }
 
         [Parameter(ParameterSetName = InteractiveStorageUri, Mandatory = true,
             HelpMessage = "URI of the storage container where the backup is going to be stored.")]
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (this.IsParameterBound(c => c.HsmObject))
             {
-                Name = HsmObject.Name;
+                HsmName = HsmObject.Name;
             }
 
             if (this.IsParameterBound(c => c.StorageAccountName))

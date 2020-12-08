@@ -62,7 +62,7 @@ This cmdlets create a MySql Firewall Rule using -ClientIPAddress.
 
 ### Example 3: Create a new MySql Firewall Rule to allow all IPs
 ```powershell
-PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
+PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
 
 Name                         StartIPAddress EndIPAddress
 ----                         -------------- ------------

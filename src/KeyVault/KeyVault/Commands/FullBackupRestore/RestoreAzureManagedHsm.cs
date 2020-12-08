@@ -7,7 +7,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsm", SupportsShouldProcess = true, DefaultParameterSetName = InteractiveStorageName)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault, SupportsShouldProcess = true, DefaultParameterSetName = InteractiveStorageName)]
     [OutputType(typeof(bool))]
     public class RestoreAzureManagedHsm : FullBackupRestoreCmdletBase
     {
@@ -21,15 +21,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             ConfirmAction(
                     string.Format(Resources.DoFullRestore, StorageContainerUri),
-                    Name, () =>
+                    HsmName, () =>
                     {
                         try
                         {
-                            Track2DataClient.RestoreHsm(Name, StorageContainerUri, SasToken.ConvertToString(), BackupFolder);
+                            Track2DataClient.RestoreHsm(HsmName, StorageContainerUri, SasToken.ConvertToString(), BackupFolder);
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception(string.Format(Resources.FullRestoreFailed, Name), ex);
+                            throw new Exception(string.Format(Resources.FullRestoreFailed, HsmName), ex);
                         }
                         if (PassThru)
                         {

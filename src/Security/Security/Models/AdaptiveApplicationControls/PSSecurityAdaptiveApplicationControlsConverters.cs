@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationCont
 {
     public static class PSSecurityAdaptiveApplicationControlsConverters
     {
-        public static PSSecurityAdaptiveApplicationControls ConvertToPSType(this AppWhitelistingGroup value)
+        public static PSSecurityAdaptiveApplicationControls ConvertToPSType(this AdaptiveApplicationControlGroup value)
         {
             return new PSSecurityAdaptiveApplicationControls()
             {
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationCont
         }
 
 
-        public static List<PSSecurityAdaptiveApplicationControls> ConvertToPSType(this IEnumerable<AppWhitelistingGroup> value)
+        public static List<PSSecurityAdaptiveApplicationControls> ConvertToPSType(this IEnumerable<AdaptiveApplicationControlGroup> value)
         {
             return value.Select(appWhitelistingGroup => appWhitelistingGroup.ConvertToPSType()).ToList();
         }
 
-        public static PSSecurityAdaptiveApplicationControlsIssueSummary ConvertToPSType(this AppWhitelistingIssueSummary value)
+        public static PSSecurityAdaptiveApplicationControlsIssueSummary ConvertToPSType(this AdaptiveApplicationControlIssueSummary value)
         {
             return new PSSecurityAdaptiveApplicationControlsIssueSummary()
             {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationCont
             };
         }
 
-        public static List<PSSecurityAdaptiveApplicationControlsIssueSummary> ConvertToPSType(this IEnumerable<AppWhitelistingIssueSummary> value)
+        public static List<PSSecurityAdaptiveApplicationControlsIssueSummary> ConvertToPSType(this IEnumerable<AdaptiveApplicationControlIssueSummary> value)
         {
             return value.Select(issueSummary => issueSummary.ConvertToPSType()).ToList();
         }
