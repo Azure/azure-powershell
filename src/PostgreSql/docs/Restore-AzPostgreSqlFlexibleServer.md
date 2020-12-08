@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzPostgreSqlFlexibleServer
 
 ## SYNOPSIS
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server from an existing backup
 
 ## SYNTAX
 

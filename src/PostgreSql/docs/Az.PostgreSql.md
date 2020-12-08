@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PostgreSql
-Module Guid: 5e9a79f3-23eb-432f-8d14-bc6f630e3dbe
+Module Guid: 7f3ddd45-b61b-4428-b772-fa17334d12a1
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.postgresql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -99,10 +99,11 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzPostgreSqlFlexibleServer](Update-AzPostgreSqlFlexibleServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzPostgreSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlFlexibleServerConfiguration](Update-AzPostgreSqlFlexibleServerConfiguration.md)
-
+Updates a configuration of a server.
+Use Update-AzPostgreSqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzPostgreSqlFlexibleServerFirewallRule](Update-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
