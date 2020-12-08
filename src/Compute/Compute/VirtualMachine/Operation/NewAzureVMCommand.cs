@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
-                            && osDiskStorageAccount.Sku() != null
+                            && osDiskStorageAccount.Sku != null
                             && !osDiskStorageAccount.SkuName().ToLowerInvariant().Contains("premium"))
                         {
                             return osDiskStorageAccount.PrimaryEndpoints.Blob;
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 return storageAccountList.First(
                     e => e.Location.Canonicalize().Equals(this.Location.Canonicalize())
-                      && e.Sku() != null
+                      && e.Sku != null
                       && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
