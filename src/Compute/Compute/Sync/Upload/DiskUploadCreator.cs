@@ -47,9 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         public UploadContextDisk Create(FileInfo localVhd, PageBlobClient pageblob, bool overWrite)
         {
             AssertIfValidhVhd(localVhd);
-            // AssertIfValidVhdSize(localVhd); TODO
-
-            // this.blobObjectFactory.CreateContainer(blobDestination);
+            AssertIfValidVhdSize(localVhd);
 
             UploadContextDisk context = null;
             bool completed = false;
@@ -61,15 +59,6 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                     DestinationDisk = pageblob,
                     SingleInstanceMutex = AcquireSingleInstanceMutex(pageblob.Uri)
                 };
-
-                // NEEDS WORK TODO
-                //if (overWrite)
-                //{
-                //    destinationBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, requestOptions, operationContext: null)
-                //        .ConfigureAwait(false).GetAwaiter().GetResult();
-                //}
-
-                //Program.SyncOutput.MessageResumingUpload();
 
                 // TODO is this necessary? 
                 //var metaData = pageblob.GetUploadMetaData();
@@ -182,18 +171,11 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         {
             using (var vds = new VirtualDiskStream(vhdFile.FullName))
             {
+                // broken in to 512 * 1024 bytes size blocks 
                 IEnumerable<IndexRange> ranges = vds.Extents.Select(e => e.Range).ToArray();
 
                 var bs = new BufferedStream(vds);
-                // TODO resume never true
-                //if (resume)
-                //{
-                //    var alreadyUploadedRanges = context.DestinationDisk.GetPageRangesAsync()
-                //        .ConfigureAwait(false).GetAwaiter().GetResult()
-                //        .Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
-                //    ranges = IndexRange.SubstractRanges(ranges, alreadyUploadedRanges);
-                //    context.AlreadyUploadedDataSize = alreadyUploadedRanges.Sum(ir => ir.Length);
-                //}
+                // linear still
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
                 if (vds.DiskType == DiskType.Fixed)
                 {
@@ -201,12 +183,6 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                     context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
                     context.UploadableRanges = nonEmptyUploadableRanges;
                 }
-                // TODO disk type always fixed right now
-                //else
-                //{
-                //    context.UploadableDataSize = uploadableRanges.Sum(r => r.Length);
-                //    context.UploadableRanges = uploadableRanges;
-                //}
             }
         }
 

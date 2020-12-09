@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzVhd
 
 ## SYNOPSIS
-Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
+Uploads a virtual hard disk from an on-premises machine to Azure (managed disk or blob).
 
 ## SYNTAX
 
@@ -23,17 +23,24 @@ Add-AzVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] 
 ### DirectUploadToManagedDiskSet
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
- [-DiskSku <String>] [-DiskOsType <OperatingSystemTypes>] [-DiskSizeGB <Int32>] [-Zone <String[]>]
+ [-DiskSku <String>] [-Zone <String[]>]
  [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzVhd** cmdlet uploads on-premises virtual hard disks, in .vhd file format, to a managed disk or a blob storage account.
-You can configure the number of uploader threads that will be used or overwrite an existing blob in the specified destination URI.
-For Default Parameter set, also supported is the ability to upload a patched version of an on-premises .vhd file.
+The **Add-AzVhd** cmdlet uploads an on-premise virtual hard disk to a managed disk or a blob storage account.<br/><br/>
+
+The virtual hard disk being uploaded needs to be a .vhd file and in size N * Mib + 512 bytes. Using Hyper-V functionality, **Add-AzVhd** will 
+convert .vhdx file to a .vhd file before uploading. It will convert dynamically sized .vhd file to a fixed size .vhd and resize. 
+If Hyper-V is not found, an error will occur with a message including a link to directions on how to enable Hyper-V 
+and manual steps for resizing and converting. <br/><br/>
+
+For Default Parameter set (upload to blob), also supported is the ability to upload a patched version of an on-premises .vhd file.
 When a base virtual hard disk has already been uploaded, you can upload differencing disks that use the base image as the parent.
-Shared access signature (SAS) URI is supported also.
+Shared access signature (SAS) URI is supported also. <br/>
+For Direct Upload to Managed Disk Parameter set, parameters: ResourceGroupName, DiskName, Location, DiskSku, and Zone will be used to 
+create a new disk, then the virtual hard disk will be uploaded to it.
 
 ## EXAMPLES
 
@@ -76,7 +83,7 @@ This command create a managed disk with given ResourceGroupName, Location, and D
 
 ### Example 6: Add a VHD file directly to a more configured disk.
 ```
-PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS -DiskOsType Windows -DiskSizeGb 1500
+PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS 
 ```
 
 This command will tried to convert vhdx file to vhd file first using Hyper-V. If Hyper-V is not found, it will return an error asking to use a vhd file. After successful conversion, it will create a managed disk with provided parameters, then upload the vhd file. 
@@ -154,37 +161,6 @@ Parameter Sets: DirectUploadToManagedDiskSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DiskOsType
-OS Type for managed disk. Windows or Linux
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes]
-Parameter Sets: DirectUploadToManagedDiskSet
-Aliases:
-Accepted values: Windows, Linux
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DiskSizeGB
-Specifies the size of the disk in GB. Must be larger than Vhd file size.
-
-```yaml
-Type: System.Int32
-Parameter Sets: DirectUploadToManagedDiskSet
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
