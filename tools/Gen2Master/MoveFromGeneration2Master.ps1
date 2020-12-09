@@ -8,7 +8,7 @@ Function Move-Generation2Master {
 
     process {
         $ModuleName = ($SourcePath.Trim("\").Split("\"))[-1]
-        If (-not ($DestPath.Trim("\").Split("\"))[-1] -eq $ModuleName)) {
+        If (-not ($DestPath.Trim("\").Split("\"))[-1] -eq $ModuleName) {
             $DestPath = Join-Path -Path $DestPath -ChildPath $ModuleName
         }
         If (-not (Test-Path $DestPath)) {
