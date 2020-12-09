@@ -1,4 +1,7 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿using Azure;
+using Azure.Analytics.Synapse.Artifacts;
+using Azure.Analytics.Synapse.Artifacts.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
@@ -9,7 +12,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
@@ -172,5 +174,27 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             }
             return excludedDetectionTypes;
         }
+
+        public static Operation<T> Poll<T>(this Operation<T> operation)
+        {
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+                System.Threading.Thread.Sleep(SynapseConstants.DefaultPollingInterval);
+            }
+
+            return operation;
+        }
+
+        //public static T Poll<T>(this Operation<T> operation) where T: SubResource
+        //{
+        //    while (!operation.HasValue)
+        //    {
+        //        operation.UpdateStatus();
+        //        System.Threading.Thread.Sleep(SynapseConstants.DefaultPollingInterval);
+        //    }
+
+        //    return operation.Value;
+        //}
     }
 }
