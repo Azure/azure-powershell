@@ -241,6 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                         else
                         {
+                            //TODO
                             Console.WriteLine("It has failed");
                         }
                         sw.WriteLine("Done Upload: " + DateTime.Now.TimeOfDay);
@@ -470,6 +471,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 throw new Exception(string.Format("A Disk with name '{0}' in resource group '{1}' already exists. Please use a different DiskName.", DiskName, resourceGroupName));
             }
+            return;
         }
 
         private void convertVhd()
