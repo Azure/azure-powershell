@@ -28,7 +28,7 @@ AppId Email                   Fqn                                               
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/remove-azkustodatabaseprincipal
 #>
 function Remove-AzKustoDatabasePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal])]
 [CmdletBinding(DefaultParameterSetName='RemoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
@@ -94,7 +94,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabasePrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal[]]
     # The list of Kusto database principals.
     # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},

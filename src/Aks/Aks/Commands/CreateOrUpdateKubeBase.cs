@@ -70,8 +70,6 @@ namespace Microsoft.Azure.Commands.Aks
             Mandatory = false,
             ParameterSetName = DefaultParamSet,
             HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
-        [Alias("ClientIdAndSecret")]
-        [CmdletParameterBreakingChange("ClientIdAndSecret", ReplaceMentCmdletParameterName = "ServicePrincipalIdAndSecret")]
         public PSCredential ServicePrincipalIdAndSecret { get; set; }
 
         [Parameter(Mandatory = false,
@@ -83,7 +81,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("AdminUserName")]
         public string LinuxProfileAdminUserName { get; set; } = "azureuser";
 
-        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster.")]
+        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
         public string DnsNamePrefix { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]

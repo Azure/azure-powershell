@@ -41,3 +41,6 @@ Delete Configuration record
 ### [Update-AzMaintenanceConfiguration](Update-AzMaintenanceConfiguration.md)
 Patch configuration record
 
+### [Get-AzMaintenancePublicConfiguration](Get-AzMaintenancePublicConfiguration.md)
+Get Public Maintenance configuration record
+

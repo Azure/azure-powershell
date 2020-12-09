@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             {_cpuUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("cpuUsage"), out var __jsonCpuUsage) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerCpuUsage.FromJson(__jsonCpuUsage) : CpuUsage;}
             {_throttlingData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("throttlingData"), out var __jsonThrottlingData) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerThrottlingData.FromJson(__jsonThrottlingData) : ThrottlingData;}
-            {_onlineCpuCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("onlineCpuCount"), out var __jsonOnlineCpuCount) ? (int?)__jsonOnlineCpuCount : OnlineCpuCount;}
             {_systemCpuUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("systemCpuUsage"), out var __jsonSystemCpuUsage) ? (long?)__jsonSystemCpuUsage : SystemCpuUsage;}
+            {_onlineCpuCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("onlineCpuCount"), out var __jsonOnlineCpuCount) ? (int?)__jsonOnlineCpuCount : OnlineCpuCount;}
             AfterFromJson(json);
         }
 
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             AddIf( null != this._cpuUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._cpuUsage.ToJson(null,serializationMode) : null, "cpuUsage" ,container.Add );
             AddIf( null != this._throttlingData ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._throttlingData.ToJson(null,serializationMode) : null, "throttlingData" ,container.Add );
-            AddIf( null != this._onlineCpuCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._onlineCpuCount) : null, "onlineCpuCount" ,container.Add );
             AddIf( null != this._systemCpuUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._systemCpuUsage) : null, "systemCpuUsage" ,container.Add );
+            AddIf( null != this._onlineCpuCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._onlineCpuCount) : null, "onlineCpuCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

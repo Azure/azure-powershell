@@ -1,0 +1,36 @@
+{
+  "New-AzResourceMoverMoveCollection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection?api-version=2019-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection?api-version=2019-10-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"sourceRegion\": \"centralus\",\n    \"targetRegion\": \"westcentralus\"\n  },\n  \"location\": \"EastUs2\"\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "119" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"68013c4b-0000-0200-0000-5f44e73b0000\"" ],
+        "x-ms-request-id": [ "812f563a-aaa0-4d92-8a0b-0ee30797cd65" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "dd9bbc18-92b9-4da8-835e-67758763e9a6" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102603Z:dd9bbc18-92b9-4da8-835e-67758763e9a6" ],
+        "Date": [ "Tue, 25 Aug 2020 10:26:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection\",\"name\":\"my-movecollection\",\"type\":\"Microsoft.Migrate/moveCollections\",\"etag\":\"\\\"68013c4b-0000-0200-0000-5f44e73b0000\\\"\",\"location\":\"eastus2\",\"properties\":{\"sourceRegion\":\"centralus\",\"targetRegion\":\"westcentralus\",\"provisioningState\":\"Succeeded\",\"errors\":null}}"
+    }
+  }
+}

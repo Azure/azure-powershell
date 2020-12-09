@@ -152,6 +152,19 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        private PSAzureSubscriptionPolicy _subscriptionPolicies;
+
+        public PSAzureSubscriptionPolicy SubscriptionPolicies {
+            get
+            {
+                if (this._subscriptionPolicies == null)
+                {
+                    this._subscriptionPolicies= new PSAzureSubscriptionPolicy(this.GetSubscriptionPolicies());
+                }
+                return this._subscriptionPolicies;
+            }
+        }
+
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         public string CurrentStorageAccount

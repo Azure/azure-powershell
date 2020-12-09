@@ -1,17 +1,10 @@
 {
-  "New-AzTimeSeriesInsightsReferenceDataSet+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql/referenceDataSets/tsirds001?api-version=2018-08-15-preview+1": {
+  "New-AzTimeSeriesInsightsReferenceDataSet+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/referenceDataSets/tsirds001?api-version=2020-05-15+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql/referenceDataSets/tsirds001?api-version=2018-08-15-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/referenceDataSets/tsirds001?api-version=2020-05-15",
       "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"dataStringComparisonBehavior\": \"Ordinal\",\n    \"keyProperties\": [\n      {\n        \"name\": \"device01\",\n        \"type\": \"Double\"\n      }\n    ]\n  }\n}",
       "Headers": {
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "f7cbf517-f97f-4483-baea-27d7d91aa6c7" ],
-        "CommandName": [ "New-AzTimeSeriesInsightsReferenceDataSet" ],
-        "FullCommandName": [ "New-AzTimeSeriesInsightsReferenceDataSet_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -23,21 +16,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1180" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "65020b26-956f-482e-b638-cfd2d4b55e6f" ],
+        "x-ms-request-id": [ "cc96dde3-0891-4c4a-a918-f85a32b4fc34" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "c0edec2f-0955-4638-aeee-9209ac34cefd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200408T073759Z:c0edec2f-0955-4638-aeee-9209ac34cefd" ],
-        "Date": [ "Wed, 08 Apr 2020 07:37:59 GMT" ]
+        "x-ms-correlation-request-id": [ "c8d6dfcb-7f96-4e01-90c0-1a7584e3508e" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042351Z:c8d6dfcb-7f96-4e01-90c0-1a7584e3508e" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "493" ],
+        "Content-Length": [ "492" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataStringComparisonBehavior\":\"Ordinal\",\"keyProperties\":[{\"name\":\"device01\",\"type\":\"Double\"}],\"creationTime\":\"Wed, 08 Apr 2020 07:37:58 GMT\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/rstr-cn1yql/referenceDataSets/tsirds001\",\"name\":\"tsirds001\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets\"}"
+      "Content": "{\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"dataStringComparisonBehavior\":\"Ordinal\",\"keyProperties\":[{\"name\":\"device01\",\"type\":\"Double\"}],\"creationTime\":\"2020-07-29T04:23:50.0429554Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/referenceDataSets/tsirds001\",\"name\":\"tsirds001\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets\"}"
     }
   }
 }

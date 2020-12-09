@@ -12,36 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Rest.Azure;
-using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
-using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
+using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -101,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { _resourceClient = value; }
         }
 
-        protected List<PSKeyVaultIdentityItem> FilterByTag(List<PSKeyVaultIdentityItem> listResult, Hashtable tag)
+        protected List<T> FilterByTag<T>(List<T> listResult, Hashtable tag) where T : PSKeyVaultIdentityItem
         {
             var tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
@@ -126,15 +117,26 @@ namespace Microsoft.Azure.Commands.KeyVault
             return listResult;
         }
 
-        protected PSKeyVault FilterByTag(PSKeyVault keyVault, Hashtable tag)
+        protected T FilterByTag<T>(T vault, Hashtable tag) where T : PSKeyVaultIdentityItem
         {
-            return (PSKeyVault) FilterByTag(new List<PSKeyVaultIdentityItem> { keyVault }, tag).FirstOrDefault();
+            return FilterByTag(new List<T> { vault }, tag).FirstOrDefault();
         }
 
-        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName = ResourceTypeName.Vault)
         {
+            var vaults = new List<PSKeyVaultIdentityItem>();
+
+            // List all kinds of vault resources
+            if (resourceTypeName == null)
+            {
+                vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Vault));
+                vaults.AddRange(ListVaults(resourceGroupName, tag, ResourceTypeName.Hsm));
+                return vaults;
+            }
+
             IEnumerable<PSKeyVaultIdentityItem> listResult;
-            var resourceType = KeyVaultManagementClient.VaultsResourceType;
+            var resourceType = resourceTypeName.Equals(ResourceTypeName.Hsm) ?
+                KeyVaultManagementClient.ManagedHsmResourceType : KeyVaultManagementClient.VaultsResourceType;
             if (ShouldListByResourceGroup(resourceGroupName, null))
             {
                 listResult = ListByResourceGroup(resourceGroupName,
@@ -148,7 +150,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                         r => r.ResourceType == resourceType));
             }
 
-            var vaults = new List<PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
                 vaults.AddRange(listResult);
@@ -177,17 +178,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             return new GenericPageEnumerable<GenericResource>(() => armClient.ResourceGroups.ListResources(resourceGroupName, filter), armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
-        protected string GetResourceGroupName(string vaultName)
+        protected string GetResourceGroupName(string name, bool isHsm=false)
         {
             var resourcesByName = ResourceClient.FilterResources(new FilterResourcesOptions
             {
-                ResourceType = KeyVaultManagementClient.VaultsResourceType
+                ResourceType = isHsm? KeyVaultManagementClient.ManagedHsmResourceType:KeyVaultManagementClient.VaultsResourceType
             });
 
             string rg = null;
             if (resourcesByName != null && resourcesByName.Count > 0)
             {
-                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
+                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
                 {
                     rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
@@ -207,9 +208,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         //
         // An alternate implementation that checks for the vault name globally would be to construct a vault
         // URL with the given name and attempt checking DNS entries for it.
-        protected bool VaultExistsInCurrentSubscription(string name)
+        protected bool VaultExistsInCurrentSubscription(string name, bool isHsm=false)
         {
-            return GetResourceGroupName(name) != null;
+            return GetResourceGroupName(name, isHsm) != null;
         }
 
         protected Guid GetTenantId()
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
 // TODO: Remove IfDef
 #if NETSTANDARD
-                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions {UPN = DefaultContext.Account.Id}).ToString();
+                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions { UPN = DefaultContext.Account.Id }).ToString();
 #else
                 var userFetcher = ActiveDirectoryClient.Me.ToUser();
                 var user = userFetcher.ExecuteAsync().Result;
@@ -335,13 +336,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         private bool ValidateObjectId(string objId)
         {
             if (string.IsNullOrWhiteSpace(objId)) return false;
-// TODO: Remove IfDef
-#if NETSTANDARD
-            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
-#else
-            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
-#endif
-            return objectCollection.Any();
+            try
+            {
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
+                return objectCollection.Any();
+            }
+            catch (Exception ex)
+            {
+                WriteWarning(Resources.ADGraphPermissionWarning);
+                throw ex;
+            }
         }
 
         protected string GetObjectId(string objectId, string upn, string email, string spn)
@@ -410,7 +414,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             KeyPerms.Recover
         };
 
-        protected readonly string[] DefaultPermissionsToSecrets = 
+        protected readonly string[] DefaultPermissionsToSecrets =
         {
             SecretPerms.Get,
             SecretPerms.List,
@@ -440,7 +444,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Restore
         };
 
-        protected readonly string[] DefaultPermissionsToStorage = 
+        protected readonly string[] DefaultPermissionsToStorage =
         {
             StoragePerms.Delete,
             StoragePerms.Deletesas,
@@ -459,5 +463,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
+
+        protected readonly string DefaultManagedHsmSkuFamily = "b";
+        protected readonly string DefaultManagedHsmSkuName = "Standard_B1";
     }
 }

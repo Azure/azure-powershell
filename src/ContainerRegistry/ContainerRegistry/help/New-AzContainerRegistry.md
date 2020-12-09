@@ -14,7 +14,7 @@ Creates a container registry.
 
 ```
 New-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String> [-Location <String>]
- [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+ [-EnableAdminUser] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,20 +50,6 @@ myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM    
 ```
 
 This command creates a container registry with admin user enabled.
-
-### Example 3: Create a container registry with an existing storage account.
-```powershell
-PS C:\>New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
-
-  Container registry location: eastus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
-```
-
-This command creates a container registry with an existing storage account \`mystorageaccount\` in the same subscription.
 
 ## PARAMETERS
 
@@ -151,25 +137,10 @@ Allowed values: Basic.
 Type: System.String
 Parameter Sets: (All)
 Aliases: ContainerRegistrySku, RegistrySku
-Accepted values: Classic, Basic, Premium, Standard
+Accepted values: Basic, Premium, Standard
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountName
-The name of an existing storage account.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

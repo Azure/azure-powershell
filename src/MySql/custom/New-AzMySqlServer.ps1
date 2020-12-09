@@ -40,12 +40,12 @@ function New-AzMySqlServer {
         [System.String]
         ${Location},
 
-        [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
+        [Parameter(Mandatory, HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${AdministratorUserName},
 
-        [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
+        [Parameter(Mandatory, HelpMessage = 'The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Security.SecureString]
         [ValidateNotNullOrEmpty()]
@@ -75,6 +75,7 @@ function New-AzMySqlServer {
 
         [Parameter(HelpMessage = 'Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
         ${StorageAutogrow},
@@ -211,7 +212,7 @@ function New-AzMySqlServer {
           $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
           $null = $PSBoundParameters.Remove('AdministratorUserName')
 
-          $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword']))
+          $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
           $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
           $PSBoundParameters.Add('Parameter', $Parameter)

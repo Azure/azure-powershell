@@ -178,6 +178,7 @@ function Test-ListDatabaseAdvisorsExpanded
 			-ExpandRecommendedActions
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
+		
 		foreach($advisor in $response)
 		{
 			ValidateDatabase $advisor $db
@@ -345,7 +346,7 @@ function Test-GetElasticPoolAdvisor
 #>
 function SetupServer($resourceGroup)
 {
-	$location = "Southeast Asia"
+	$location = "westcentralus"
 	$server = Create-ServerForTest $resourceGroup $location
 	return $server
 }
@@ -362,7 +363,7 @@ function SetupDatabase($resourceGroup)
 		-ResourceGroupName $server.ResourceGroupName `
 		-ServerName $server.ServerName `
 		-DatabaseName $databaseName `
-		-Edition Basic
+		-Edition Basic -Force
 	return $db
 }
 

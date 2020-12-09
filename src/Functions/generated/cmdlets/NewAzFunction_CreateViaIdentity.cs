@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Create function for web site, or a deployment slot.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_CreateFunction=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"
+    /// [OpenAPI] CreateFunction=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFunction_CreateViaIdentity", SupportsShouldProcess = true)]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Required = true,
         ReadOnly = false,
         Description = @"Function information.",
-        SerializedName = @"function_envelope",
+        SerializedName = @"functionEnvelope",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope FunctionEnvelope { get => this._functionEnvelope; set => this._functionEnvelope = value; }
 

@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using global::Azure.Storage.Blobs;
     using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage;
+    using global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// azure storage container
@@ -37,6 +38,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// the permission of CloudBlobContainer
         /// </summary>
         public BlobContainerPermissions Permission { get; private set; }
+
+        /// <summary>
+        /// the AccessPolicy of BlobContainer
+        /// </summary>
+        public BlobContainerAccessPolicy AccessPolicy { get; private set; }
 
         /// <summary>
         /// the public access level of CloudBlobContainer
@@ -108,6 +114,42 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
 
             LastModified = container.Properties.LastModified;
+        }
+
+        public void SetTrack2Permission(BlobContainerAccessPolicy accesspolicy = null)
+        {
+            // Try to get container permission if not input it, and container not deleted
+            if (accesspolicy == null)
+            {
+                try
+                {
+                    accesspolicy = BlobContainerClient.GetAccessPolicy().Value;
+                }
+                catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+                {
+                    // 404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
+                    // Just skip return container permission in this case.
+                }
+            }
+
+            if (accesspolicy != null)
+            {
+                AccessPolicy = accesspolicy;
+
+                switch (accesspolicy.BlobPublicAccess)
+                {
+                    case PublicAccessType.Blob:
+                        PublicAccess = BlobContainerPublicAccessType.Blob;
+                        break;
+                    case PublicAccessType.BlobContainer:
+                        PublicAccess = BlobContainerPublicAccessType.Container;
+                        break;
+                    case PublicAccessType.None:
+                    default:
+                        PublicAccess = BlobContainerPublicAccessType.Off;
+                        break;
+                }
+            }
         }
 
         //refresh XSCL track2 container properties object from server

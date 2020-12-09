@@ -1,0 +1,78 @@
+{
+  "Get-AzMigrateRunAsAccount+[NoContext]+List+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runAsAccounts?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runAsAccounts?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "f10bb8d7-82d2-469c-8aff-af9a5fb3375d" ],
+        "CommandName": [ "Get-AzMigrateRunAsAccount" ],
+        "FullCommandName": [ "Get-AzMigrateRunAsAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "79a012df-5cc1-433b-b09e-90e5aab5ecf6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "78ade8bc-467a-49ae-a02f-ec962603eb05" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191225Z:78ade8bc-467a-49ae-a02f-ec962603eb05" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "507" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runasaccounts/b090bef3-b733-5e34-bc8f-eb6f2701432a\",\"name\":\"b090bef3-b733-5e34-bc8f-eb6f2701432a\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"10.150.8.52\",\"credentialType\":\"VMwareFabric\",\"createdTimestamp\":\"2020-06-20T07:16:39.4853623Z\",\"updatedTimestamp\":\"2020-06-20T07:16:39.4853623Z\"}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzMigrateRunAsAccount+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runAsAccounts/b090bef3-b733-5e34-bc8f-eb6f2701432a?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runAsAccounts/b090bef3-b733-5e34-bc8f-eb6f2701432a?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "9518af19-c96c-414e-bb5f-d5260cd3ad5c" ],
+        "CommandName": [ "Get-AzMigrateRunAsAccount" ],
+        "FullCommandName": [ "Get-AzMigrateRunAsAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "542c4cce-e686-4296-a8f0-65f0a2d33e8a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "e39970d5-fdd2-4e8a-b922-5919d62fafe8" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191225Z:e39970d5-fdd2-4e8a-b922-5919d62fafe8" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite/runasaccounts/b090bef3-b733-5e34-bc8f-eb6f2701432a\",\"name\":\"b090bef3-b733-5e34-bc8f-eb6f2701432a\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"10.150.8.52\",\"credentialType\":\"VMwareFabric\",\"createdTimestamp\":\"2020-06-20T07:16:39.4853623Z\",\"updatedTimestamp\":\"2020-06-20T07:16:39.4853623Z\"}}"
+    }
+  }
+}

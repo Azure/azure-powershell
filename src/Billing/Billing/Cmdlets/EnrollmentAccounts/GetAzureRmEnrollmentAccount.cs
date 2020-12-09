@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
             {
                 try
                 {
-                    WriteObject(BillingManagementClient.EnrollmentAccounts.List().Value.Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
+                    WriteObject(BillingManagementClient.EnrollmentAccounts.List().Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
                 }
                 catch (ErrorResponseException error)
                 {

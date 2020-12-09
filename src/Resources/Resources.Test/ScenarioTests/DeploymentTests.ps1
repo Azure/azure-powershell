@@ -14,6 +14,47 @@
 
 <#
 .SYNOPSIS
+Converts an object to a Hashtable.
+#>
+function ConvertTo-Hashtable {
+	[CmdletBinding()]
+	[OutputType('hashtable')]
+	param (
+		[Parameter(ValueFromPipeline)]
+		$InputObject
+	)
+ 
+	process {
+		if ($null -eq $InputObject) {
+			return $null
+		}
+ 
+		if ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [string]) {
+			$collection = @(
+				foreach ($object in $InputObject) {
+					ConvertTo-Hashtable -InputObject $object
+				}
+			)
+ 
+			Write-Output -NoEnumerate $collection
+		}
+		elseif ($InputObject -is [psobject]) {
+			$hashtable = @{}
+
+			foreach ($property in $InputObject.PSObject.Properties) {
+				$hashtable[$property.Name] = ConvertTo-Hashtable -InputObject $property.Value
+			}
+
+			$hashtable
+		}
+		else {
+			$InputObject
+		}
+	}
+}
+
+<#
+.SYNOPSIS
 Tests deployment template validation.
 #>
 function Test-ValidateDeployment
@@ -71,6 +112,40 @@ function Test-NewDeploymentFromTemplateFile
     }
 }
 
+function Test-NewDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateSpecId $resourceId -TemplateParameterFile "sampleTemplateParams.json"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 function Test-NewDeploymentFromTemplateObject
 {
     # Setup
@@ -85,9 +160,7 @@ function Test-NewDeploymentFromTemplateObject
 
         $path = (Get-Item ".\").FullName
         $file = Join-Path $path "sampleDeploymentTemplate.json"
-        $json = ConvertFrom-Json ([System.IO.File]::ReadAllText($file))
-        $templateObject = @{}
-        $json.PSObject.Properties | % { $templateObject[$_.Name] = $_.Value }
+		$templateObject = ConvertFrom-Json ([System.IO.File]::ReadAllText($file)) | ConvertTo-Hashtable
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json 
 		
         # Assert
@@ -485,7 +558,7 @@ function Test-NewDeploymentWithKeyVaultReferenceInParameterObject
 	# Setup
 	$location = "West US"
 
-	$vaultId = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/powershelltest-keyvaultrg/providers/Microsoft.KeyVault/vaults/saname"
+	$vaultId = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/demo-rg-2/providers/Microsoft.KeyVault/vaults/pstestsaname"
 	$secretName = "examplesecret"
 
 	try

@@ -104,5 +104,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallVirtualHubMultiPublicIPCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDWithAllowActiveFTP()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDAllowActiveFTP");
+        }
     }
 }

@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share
+    /// (s).
+    /// </summary>
     public partial struct SignedResource :
         System.IEquatable<SignedResource>
     {

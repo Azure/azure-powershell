@@ -81,9 +81,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// Ensures the role assignment.
         /// </summary>
         /// <param name="serverPrincipal">The server principal.</param>
-        /// <param name="resourceId">The resource identifier.</param>
+        /// <param name="storageAccountSubscriptionId">The storage account subscription identifier.</param>
+        /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
-        RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal,string resourceId);
+        RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId);
 
         /// <summary>
         /// This function will invoke the registration and continue operation with a success function call.

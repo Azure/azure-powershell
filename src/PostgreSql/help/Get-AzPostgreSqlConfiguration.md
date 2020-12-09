@@ -35,7 +35,7 @@ Gets information about a configuration of server.
 
 ## EXAMPLES
 
-### Example 1: List all configurations in PostgreSql MySql server
+### Example 1: List all configurations in PostgreSql server
 ```powershell
 PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 

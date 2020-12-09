@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzDatabricksWorkspace' {
     It 'Delete' {
-        $name = "databricks-test-" + $env.rstr5
+        $name = "databricks-test" + $env.rstr5
         New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus
         { Remove-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
-        $name = "databricks-test-" + $env.rstr5
+        $name = "databricks-test" + $env.rstr7
         $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus
         { Remove-AzDatabricksWorkspace -InputObject $res } | Should -Not -Throw
     }

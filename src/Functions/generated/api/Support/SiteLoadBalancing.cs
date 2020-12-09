@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Site load balancing.</summary>
     public partial struct SiteLoadBalancing :
         System.IEquatable<SiteLoadBalancing>
     {

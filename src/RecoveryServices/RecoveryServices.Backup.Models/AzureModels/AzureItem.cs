@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             ProtectionPolicyName = policyName;
             PolicyId = protectedItemResource.Properties.PolicyId;
+            DeleteState = ItemDeleteState.NotDeleted;
         }
     }
     public class AzureItemExtendedInfo : ItemExtendedInfoBase

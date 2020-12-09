@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
               "State": "System.String",
@@ -81,7 +81,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpAddress": "System.String"
             },
@@ -189,7 +189,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -207,7 +207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -398,7 +398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -517,7 +517,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -876,7 +876,7 @@
       "Name": "Get-AzCognitiveServicesAccount",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -884,7 +884,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -1255,7 +1255,7 @@
       "Name": "Get-AzCognitiveServicesAccountKey",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountKeyCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -1263,7 +1263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -1494,7 +1494,7 @@
       "Name": "Get-AzCognitiveServicesAccountNetworkRuleSet",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountNetworkRuleSetCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -1502,7 +1502,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -1764,7 +1764,7 @@
       "Name": "Get-AzCognitiveServicesAccountSku",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountSkusCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "GetSkusWithFilter",
       "OutputTypes": [
@@ -1772,7 +1772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSku, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSku, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions]",
               "Locations": "System.Collections.Generic.IList`1[System.String]",
@@ -2080,7 +2080,7 @@
       "Name": "Get-AzCognitiveServicesAccountType",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountTypeCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "GetAccountTypes",
       "OutputTypes": [
@@ -2384,7 +2384,7 @@
       "Name": "Get-AzCognitiveServicesAccountUsage",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountUsageCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ResourceNameParameterSet",
       "OutputTypes": [
@@ -2392,7 +2392,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Double]",
               "Limit": "System.Nullable`1[System.Double]",
@@ -2456,7 +2456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -2638,7 +2638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
                     "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -2988,7 +2988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -3210,7 +3210,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3246,7 +3246,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3264,7 +3264,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3336,7 +3336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -3441,12 +3441,114 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ApiProperty",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+            "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+              "QnaRuntimeEndpoint": "System.String",
+              "EventHubConnectionString": "System.String",
+              "StorageAccountConnectionString": "System.String",
+              "AadClientId": "System.String",
+              "AadTenantId": "System.String",
+              "SuperUser": "System.String",
+              "WebsiteName": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "qnaRuntimeEndpoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "statisticsEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "eventHubConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "storageAccountConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadClientId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadTenantId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "superUser",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "websiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Force",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3680,7 +3782,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3728,7 +3830,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -3845,12 +3947,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3918,7 +4128,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4119,7 +4329,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4167,7 +4377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -4284,12 +4494,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4357,7 +4675,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4630,7 +4948,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4678,7 +4996,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -4795,12 +5113,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4863,6 +5289,199 @@
     },
     {
       "VerbName": "New",
+      "NounName": "AzCognitiveServicesAccountApiProperty",
+      "Name": "New-AzCognitiveServicesAccountApiProperty",
+      "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.NewAzureCognitiveServicesAccountApiPropertyCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+            "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+              "QnaRuntimeEndpoint": "System.String",
+              "EventHubConnectionString": "System.String",
+              "StorageAccountConnectionString": "System.String",
+              "AadClientId": "System.String",
+              "AadTenantId": "System.String",
+              "SuperUser": "System.String",
+              "WebsiteName": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "qnaRuntimeEndpoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "statisticsEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "eventHubConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "storageAccountConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadClientId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadTenantId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "superUser",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "websiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
       "NounName": "AzCognitiveServicesAccountKey",
       "Name": "New-AzCognitiveServicesAccountKey",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.NewAzureCognitiveServicesAccountKeyCommand",
@@ -4875,7 +5494,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -4982,7 +5601,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5085,7 +5704,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5193,7 +5812,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5302,7 +5921,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5435,7 +6054,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5543,7 +6162,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5618,7 +6237,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
               "State": "System.String",
@@ -5685,7 +6304,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpAddress": "System.String"
             },
@@ -5793,7 +6412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -5811,7 +6430,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -6002,7 +6621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -6121,7 +6740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -6488,7 +7107,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -6670,7 +7289,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6688,7 +7307,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6726,7 +7345,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6744,7 +7363,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6816,7 +7435,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -6921,12 +7540,114 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ApiProperty",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+            "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+              "QnaRuntimeEndpoint": "System.String",
+              "EventHubConnectionString": "System.String",
+              "StorageAccountConnectionString": "System.String",
+              "AadClientId": "System.String",
+              "AadTenantId": "System.String",
+              "SuperUser": "System.String",
+              "WebsiteName": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "qnaRuntimeEndpoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "statisticsEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "eventHubConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "storageAccountConnectionString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadClientId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "aadTenantId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "superUser",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "websiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Force",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7108,7 +7829,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7132,7 +7853,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7182,7 +7903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -7299,12 +8020,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7372,7 +8201,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7521,7 +8350,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7545,7 +8374,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7595,7 +8424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -7712,12 +8541,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7785,7 +8722,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8006,7 +8943,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8030,7 +8967,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -8080,7 +9017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -8197,12 +9134,120 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApiProperty",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
+                    "QnaRuntimeEndpoint": "System.String",
+                    "EventHubConnectionString": "System.String",
+                    "StorageAccountConnectionString": "System.String",
+                    "AadClientId": "System.String",
+                    "AadTenantId": "System.String",
+                    "SuperUser": "System.String",
+                    "WebsiteName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "qnaRuntimeEndpoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "statisticsEnabled",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "eventHubConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "storageAccountConnectionString",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadClientId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "aadTenantId",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "superUser",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "websiteName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8277,7 +9322,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -8406,7 +9451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8509,7 +9554,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -8527,7 +9572,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -8635,7 +9680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8744,7 +9789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -8768,7 +9813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -8974,7 +10019,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
         "State": "System.String",
@@ -9035,7 +10080,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
         "State": "System.String",
@@ -9136,7 +10181,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IpAddress": "System.String"
       },
@@ -9195,7 +10240,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.IpRule": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.IpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.IpRule, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.IpRule, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Value": "System.String"
       },
@@ -9303,6 +10348,8 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -9312,7 +10359,6 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
-        "StorageEndpointSuffix": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -9321,8 +10367,8 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
-        "AdTenant": "System.String",
-        "Name": "System.String"
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -9434,7 +10480,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
         "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -9515,7 +10561,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
       "GenericTypeArguments": [],
@@ -9525,7 +10571,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -9630,7 +10676,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
       "GenericTypeArguments": [],
@@ -9640,7 +10686,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.NetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.NetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.NetworkRuleSet, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.NetworkRuleSet, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.IpRule]",
         "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule]",
@@ -9704,7 +10750,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.IpRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.IpRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.IpRule, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.IpRule, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9716,7 +10762,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.VirtualNetworkRule, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9728,12 +10774,16 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "StatisticsEnabled": "System.Nullable`1[System.Boolean]",
         "QnaRuntimeEndpoint": "System.String",
         "EventHubConnectionString": "System.String",
-        "StorageAccountConnectionString": "System.String"
+        "StorageAccountConnectionString": "System.String",
+        "AadClientId": "System.String",
+        "AadTenantId": "System.String",
+        "SuperUser": "System.String",
+        "WebsiteName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -9794,6 +10844,22 @@
             {
               "Name": "storageAccountConnectionString",
               "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "aadClientId",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "aadTenantId",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "superUser",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "websiteName",
+              "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
         }
@@ -9802,7 +10868,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.Encryption": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.Encryption",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Encryption, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Encryption, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyVaultProperties": "Microsoft.Azure.Management.CognitiveServices.Models.KeyVaultProperties",
         "KeySource": "System.String"
@@ -9861,7 +10927,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.KeyVaultProperties": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.KeyVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyVaultProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyVaultProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyName": "System.String",
         "KeyVersion": "System.String",
@@ -9925,7 +10991,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.Identity": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.Identity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Identity, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Identity, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity]",
         "Type": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
@@ -9994,7 +11060,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10007,7 +11073,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.UserAssignedIdentity, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "ClientId": "System.String"
@@ -10066,7 +11132,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10078,7 +11144,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.IdentityType": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.IdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.IdentityType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10173,7 +11239,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.Sku": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Tier": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
         "Name": "System.String"
@@ -10237,7 +11303,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10249,7 +11315,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10344,7 +11410,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10356,7 +11422,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnection, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnectionProperties",
         "Id": "System.String",
@@ -10430,7 +11496,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnectionProperties": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnectionProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnectionProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpointConnectionProperties, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrivateEndpoint": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpoint",
         "PrivateLinkServiceConnectionState": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateLinkServiceConnectionState",
@@ -10499,7 +11565,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpoint": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpoint, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateEndpoint, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -10553,7 +11619,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.PrivateLinkServiceConnectionState": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateLinkServiceConnectionState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateLinkServiceConnectionState, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.PrivateLinkServiceConnectionState, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Status": "System.String",
         "Description": "System.String",
@@ -10617,7 +11683,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10629,7 +11695,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuCapability, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -10688,7 +11754,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10700,7 +11766,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.UserOwnedStorage, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String"
       },
@@ -10754,7 +11820,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
         "ApiProperties": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties",
@@ -10832,7 +11898,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10844,7 +11910,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictions, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RestrictionInfo": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionInfo",
         "Values": "System.Collections.Generic.IList`1[System.String]",
@@ -10913,7 +11979,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionInfo": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionInfo, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionInfo, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Locations": "System.Collections.Generic.IList`1[System.String]",
         "Zones": "System.Collections.Generic.IList`1[System.String]"
@@ -10972,7 +12038,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10984,7 +12050,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType, Microsoft.Azure.Management.CognitiveServices, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ResourceSkuRestrictionsType, Microsoft.Azure.Management.CognitiveServices, Version=7.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

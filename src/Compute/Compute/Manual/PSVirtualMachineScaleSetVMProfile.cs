@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
         public VirtualMachineScaleSetNetworkProfile NetworkProfile { get; set; }
         public DiagnosticsProfile DiagnosticsProfile { get; set; }
+        public SecurityProfile SecurityProfile { get; set; }
         public PSVirtualMachineScaleSetExtensionProfile ExtensionProfile { get; set; } // To hide a breaking change
         public string LicenseType { get; set; }
         public string Priority { get; set; }

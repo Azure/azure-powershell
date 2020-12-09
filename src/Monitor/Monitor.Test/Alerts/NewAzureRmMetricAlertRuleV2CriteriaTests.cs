@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.Operator = "GreaterThan";
             cmdlet.Threshold = 2;
             cmdlet.TimeAggregation = "Total";
+            cmdlet.SkipMetricValidation = true;
             cmdlet.ExecuteCmdlet();
 
             Func<IPSMultiMetricCriteria, bool> verify = crit =>
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Assert.Equal("GreaterThan", r.OperatorProperty);
                 Assert.Equal(2, r.Threshold);
                 Assert.Equal("Total", r.TimeAggregation);
+                Assert.Equal(true, r.SkipMetricValidation);
                 return true;
             };
 
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.ExaminedAggregatedPointCount= 4;
             cmdlet.IgnoreDataBefore = new DateTime(1,1,1);
             cmdlet.DynamicThreshold = new SwitchParameter(true);
+            cmdlet.SkipMetricValidation = true;
             cmdlet.ExecuteCmdlet();
 
             Func<IPSMultiMetricCriteria, bool> verify = crit =>
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Assert.Equal("High", r.AlertSensitivity);
                 Assert.Equal(2, r.FailingPeriods.MinFailingPeriodsToAlert);
                 Assert.Equal(4, r.FailingPeriods.NumberOfEvaluationPeriods);
+                Assert.Equal(true, r.SkipMetricValidation);
                 return true;
             };
 

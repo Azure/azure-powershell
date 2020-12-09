@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworks_myHSM_vnet_name": {
+      "value": "vnetq30la9"
+    },
+    "networkSecurityGroups_myHSM_vnet_compute_NRMS_externalid": {
+      "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/networkSecurityGroups/vnetSecurityGroup3yijzr"
+    }
+  }
+}

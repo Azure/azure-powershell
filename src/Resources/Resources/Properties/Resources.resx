@@ -447,4 +447,7 @@
   <data name="ServicePrincipalCreatedWithCredentials" xml:space="preserve">
     <value>No new secret was created. This ServicePrincipal will use the password associated with application '{0}'.</value>
   </data>
+  <data name="UpdatingRoleAssignment" xml:space="preserve">
+    <value>Updating role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
+  </data>
 </root>

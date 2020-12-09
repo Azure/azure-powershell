@@ -201,7 +201,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
 
 	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
@@ -803,17 +803,19 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
     # TODO: Remove "CallSite.Target" when re-recording ImportExportTests
-    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd", "CallSite.Target");
+    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd");
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
     $storageKey = "StorageKey"
+    $storageResourceId = "/subscriptions/xys/resourcegroups/default/providers/Microsoft.Storage/test"
 
     $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
     if($testMode -eq "Record"){
         $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
         $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
         $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+        $storageResourceId = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_RESOURCE_ID")
 
        if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
           throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
@@ -823,6 +825,9 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
        }
        if ([System.string]::IsNullOrEmpty($storageKey)){
           throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
+       }
+       if ([System.string]::IsNullOrEmpty($storageResourceId)){
+          throw "The  TEST_STORAGE_RESOURCE_ID environment variable should point to the resource id for the storage account"
        }
     }
 
@@ -837,12 +842,13 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
               storageKey = $storageKey;
               exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
               importBacpacUri = $importBacpacUri;
-              location = "Australia East";
+              location = "West Central US";
               version = "12.0";
-              databaseEdition = "Standard";
-              serviceObjectiveName = "S0";
-              databaseMaxSizeBytes = "5000000";
+              databaseEdition = "GeneralPurpose";
+              serviceObjectiveName = "GP_Gen5_2";
+              databaseMaxSizeBytes = "1073741824";
               authType = "Sql";
+              storageResourceId = $storageResourceId;
              }
 }
 
@@ -919,7 +925,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+ 	$skuName = "GP_Gen5"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
@@ -978,15 +984,16 @@ function Remove-ManagedInstancesInInstancePool($instancePool)
 function Get-InstancePoolTestProperties()
 {
     $tags = @{ instance="Pools" };
+
     $instancePoolTestProperties = @{
-        resourceGroup = "instancePoolCSSdemo"
-        name = "cssinstancepool0"
-        subnetName = "InstancePool"
-        vnetName = "vnet-cssinstancepool0"
+        resourceGroup = "ps3995"
+        name = "myinstancepool1"
+        subnetName = "ManagedInsanceSubnet"
+        vnetName = "MIVirtualNetwork"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
-        location = "canadacentral"
+        location = "westeurope"
         licenseType = "LicenseIncluded"
         vCores = 16
     }
@@ -1000,7 +1007,7 @@ function Get-InstancePoolTestProperties()
 function Create-InstancePoolForTest()
 {
     $props = Get-InstancePoolTestProperties
-    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location $props.resourceGroup
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location "v-urmila"
     $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
     $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
                 -Location $props.location -SubnetId $subnetId -VCore $props.vCores `

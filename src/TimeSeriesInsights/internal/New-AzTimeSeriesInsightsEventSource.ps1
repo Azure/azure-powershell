@@ -19,29 +19,29 @@ Create or update an event source under the specified environment.
 .Description
 Create or update an event source under the specified environment.
 .Example
-PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup2 -NamespaceName spacename001 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
-PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup2 -NamespaceName spacename001 -AuthorizationRuleName RootManageSharedAccessKey
+PS C:\> New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
+PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
 PS C:\> $k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename001 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Kind               Location Name      Type
 ----               -------- ----      ----
 Microsoft.EventHub eastus   estest001 Microsoft.TimeSeriesInsights/Environments/EventSources
 .Example
-PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup2 -Location eastus -Name iotname001 -SkuName S1 -Units 100
-PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup2 -Name iotname001
+PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
+PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
 PS C:\> $k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 
--EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Location Name    Type                                                   Kind
 -------- ----    ----                                                   ----
 eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsoft.IoTHub
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceCreateOrUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceCreateOrUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,11 +52,13 @@ PARAMETER <IEventSourceCreateOrUpdateParameters>: Parameters supplied to the Cre
   Kind <Kind>: The kind of the event source.
   [Tag <ICreateOrUpdateTrackedResourcePropertiesTags>]: Key-value pairs of additional properties for the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [LocalTimestampFormat <LocalTimestampFormat?>]: An enum that represents the format of the local timestamp property that needs to be set.
+  [TimeZoneOffsetPropertyName <String>]: The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -87,7 +89,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceCreateOrUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceCreateOrUpdateParameters]
     # Parameters supplied to the Create or Update Event Source operation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -106,11 +108,26 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat])]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat]
+    # An enum that represents the format of the local timestamp property that needs to be set.
+    ${LocalTimestampFormat},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
+    [System.String]
+    # The event property that will be contain the offset information to calculate the local timestamp.
+    # When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles).
+    # When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
+    ${TimeZoneOffsetPropertyName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

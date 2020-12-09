@@ -110,6 +110,11 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         public string ErrorMessage { get; set; }
 
         /// <summary>
+        /// Gets or sets the network isolation settings
+        /// </summary>
+        public NetworkIsolationSettings NetworkIsolationSettings { get; set; }
+
+        /// <summary>
         /// Copies the model to a new class
         /// </summary>
         internal virtual AzureSqlDatabaseImportExportBaseModel Copy()
@@ -122,7 +127,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
                 AuthenticationType = AuthenticationType,
                 DatabaseName = DatabaseName,
                 StorageKeyType = StorageKeyType,
-                StorageUri = StorageUri
+                StorageUri = StorageUri,
+                NetworkIsolationSettings = NetworkIsolationSettings
             };
         }
     }

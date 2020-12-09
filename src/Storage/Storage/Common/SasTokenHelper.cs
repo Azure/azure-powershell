@@ -340,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 if (ExpiryTime != null)
                 {
-                    if (signedIdentifier.AccessPolicy.ExpiresOn != DateTimeOffset.MinValue)
+                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue)
                     {
                         throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
                     }
@@ -349,7 +349,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
                     }
                 }
-                else if (signedIdentifier.AccessPolicy.ExpiresOn == DateTimeOffset.MinValue)
+                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue)
                 {
                     if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
                     {

@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier = (string) content.GetValueForProperty("ObjectIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Tag = (string) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Tag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Timestamp = (global::System.DateTime?) content.GetValueForProperty("Timestamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Timestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier = (string) content.GetValueForProperty("ObjectIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Upn = (string) content.GetValueForProperty("Upn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Upn, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier = (string) content.GetValueForProperty("ObjectIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Tag = (string) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Tag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Timestamp = (global::System.DateTime?) content.GetValueForProperty("Timestamp",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Timestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier = (string) content.GetValueForProperty("ObjectIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).ObjectIdentifier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).TenantId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Upn = (string) content.GetValueForProperty("Upn",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagPropertyInternal)this).Upn, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

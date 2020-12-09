@@ -1,0 +1,39 @@
+{
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-qodygz?api-version=2018-10-31+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-qodygz?api-version=2018-10-31",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"SafeNet Luna Network HSM A790\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"networkProfile\": {\r\n      \"subnet\": {\r\n        \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet\"\r\n      },\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"privateIpAddress\": \"10.2.1.120\"\r\n        }\r\n      ]\r\n    },\r\n    \"stampId\": \"stamp1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "488" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-keyvault-service-version": [ "1.1.55.0" ],
+        "x-ms-request-id": [ "69e688c0-0e2b-4bb7-8c6f-956e2c3d734e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "5edda270-c49a-49c6-ab72-0d663ace4111" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200922T020510Z:5edda270-c49a-49c6-ab72-0d663ace4111" ],
+        "Date": [ "Tue, 22 Sep 2020 02:05:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-qodygz\",\"name\":\"hsm-qodygz\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-n359cz/providers/Microsoft.Network/virtualNetworks/vnetq30la9/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"CheckingQuota\",\"statusMessage\":\"Resource creation in progress. Validating subscription device quota...\",\"stampId\":\"stamp1\"}}"
+    }
+  }
+}

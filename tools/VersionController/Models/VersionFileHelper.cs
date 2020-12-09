@@ -16,7 +16,7 @@ namespace VersionController.Models
             OutputModuleManifestPath = outputModuleManifestPath;
             ProjectModuleManifestPath = projectModuleManifestPath;
 
-            _outputDirectories = new List<string>{ DebugDirectory };
+            _outputDirectories = new List<string>{ ReleaseDirectory };
 
             _projectDirectories = new List<string>{ Path.Combine(RootDirectory, @"src") };
         }
@@ -27,7 +27,7 @@ namespace VersionController.Models
 
         public string PackageDirectory => Path.Combine(RootDirectory, @"artifacts");
 
-        public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
+        public string ReleaseDirectory => Path.Combine(PackageDirectory, @"Release");
 
         public string ArtifactsVersionControllerDirectory => Path.Combine(PackageDirectory, @"VersionController");
 

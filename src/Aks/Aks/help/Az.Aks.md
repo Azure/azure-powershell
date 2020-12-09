@@ -11,6 +11,12 @@ Locale: en-US
 Commands to interact with Azure managed Kubernetes clusters.
 
 ## Az.Aks Cmdlets
+### [Disable-AzAksAddOn](Disable-AzAksAddOn.md)
+Disable the addons for aks.
+
+### [Enable-AzAksAddOn](Enable-AzAksAddOn.md)
+Enable the addons for aks.
+
 ### [Get-AzAksCluster](Get-AzAksCluster.md)
 List Kubernetes managed clusters.
 
@@ -49,3 +55,4 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ### [Update-AzAksNodePool](Update-AzAksNodePool.md)
 Update node pool in a managed cluster.
+

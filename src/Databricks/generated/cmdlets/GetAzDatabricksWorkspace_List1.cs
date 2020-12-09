@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
     /// <summary>Gets all the workspaces within a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Workspaces_ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces"
+    /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksWorkspace_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace))]

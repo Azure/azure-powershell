@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Family, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName.CreateFrom);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Family, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.ISkuInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.SkuName.CreateFrom);
             AfterDeserializePSObject(content);
         }
 

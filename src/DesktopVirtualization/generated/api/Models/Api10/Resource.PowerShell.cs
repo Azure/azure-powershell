@@ -2,6 +2,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
+    /// <summary>
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceTypeConverter))]
     public partial class Resource
     {
@@ -124,6 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
     [System.ComponentModel.TypeConverter(typeof(ResourceTypeConverter))]
     public partial interface IResource
 

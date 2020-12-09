@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AzureStorageState.</summary>
+    /// <summary>State of the storage account.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageStateTypeConverter))]
     public partial struct AzureStorageState :
         System.Management.Automation.IArgumentCompleter

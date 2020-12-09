@@ -407,6 +407,50 @@ function Test-SimpleNewVmssPpg
 
 <#
 .SYNOPSIS
+Test Simple Paremeter Set With HostGroup (automatic placement)
+#>
+function Test-SimpleNewVmssHostGroup
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+        # Common
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        $zone = "2"
+        
+        # Creating the resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Host
+        $hostGroupName = $rgname + "HostGroup"
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone $zone -SupportAutomaticPlacement $true -Tag @{key1 = "val1"};
+
+        $Sku = "Dsv3-Type1"
+        $hostName = $rgname + "Host"
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -PlatformFaultDomain 1 -Tag @{test = "true"}
+
+        # Creating a new vmss
+        $VmSku = "Standard_D2s_v3"
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel "myvmss-48e3cf"
+
+        Assert-AreEqual $vmss.HostGroup.Id $hostGroup.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Simple Paremeter Set for New Vmss with eviction policy, priority, and max price.
 #>
 function Test-SimpleNewVmssBilling

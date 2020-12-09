@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using SdkProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
@@ -36,6 +37,7 @@ using SdkDeepCreatedOrigin = Microsoft.Azure.Management.Cdn.Models.DeepCreatedOr
 using SdkEndpoint = Microsoft.Azure.Management.Cdn.Models.Endpoint;
 using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
+using SdkOriginGroup = Microsoft.Azure.Management.Cdn.Models.OriginGroup;
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
@@ -147,7 +149,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 OptimizationType = sdkEndpoint.OptimizationType,
                 ProbePath = sdkEndpoint.ProbePath,
                 GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
-                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy()
+                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy(),
+                DefaultOriginGroup = sdkEndpoint.DefaultOriginGroup
             };
         }
 
@@ -713,9 +716,63 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Type = origin.Type,
                 ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), origin.ProvisioningState),
                 ResourceState = (PSOriginResourceState)Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
+
+                // origin specifc properties
                 HostName = origin.HostName,
                 HttpPort = origin.HttpPort,
-                HttpsPort = origin.HttpsPort
+                HttpsPort = origin.HttpsPort,
+                OriginHostHeader = origin.OriginHostHeader,
+                Priority = origin.Priority,
+                PrivateLinkApprovalMessage = origin.PrivateLinkApprovalMessage,
+                PrivateLinkLocation = origin.PrivateLinkLocation,
+                PrivateLinkResourceId = origin.PrivateLinkResourceId,
+                Weight = origin.Weight
+            };
+        }
+
+        public static PSOriginGroup ToPsOriginGroup(this SdkOriginGroup originGroup)
+        {
+            Debug.Assert(originGroup.ProvisioningState != null, "originGroup.ProvisioningState != null");
+            Debug.Assert(originGroup.ResourceState != null, "originGroup.ResourceState != null");
+
+            int? probeIntervalInSeconds = null;
+            string probePath = null;
+            string probeProtocol = null;
+            string probeRequestType = null;
+
+            if (originGroup.HealthProbeSettings != null)
+            {
+                probeIntervalInSeconds = originGroup.HealthProbeSettings.ProbeIntervalInSeconds;
+                probePath = originGroup.HealthProbeSettings.ProbePath;
+                probeProtocol = originGroup.HealthProbeSettings.ProbeProtocol.Value.ToString();
+                probeRequestType = originGroup.HealthProbeSettings.ProbeRequestType.Value.ToString();
+            }
+
+            int probeIntervalInSecondsInteger;
+
+            if (probeIntervalInSeconds == null)
+            {
+                probeIntervalInSecondsInteger = 0;
+            }
+            else
+            {
+                probeIntervalInSecondsInteger = probeIntervalInSeconds.Value;
+            }
+
+            return new PSOriginGroup
+            {
+                Id = originGroup.Id,
+                Name = originGroup.Name,
+                Type = originGroup.Type,
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), originGroup.ProvisioningState),
+                ResourceState = (PSOriginGroupResourceState)Enum.Parse(typeof(PSOriginGroupResourceState), originGroup.ResourceState),
+                
+                // origin group specific properties
+                Origins = originGroup.Origins,
+                ProbeIntervalInSeconds = probeIntervalInSecondsInteger,
+                ProbePath = probePath,
+                ProbeProtocol = probeProtocol,
+                ProbeRequestType = probeRequestType
             };
         }
 

@@ -75,6 +75,7 @@ function New-AzPostgreSqlServer {
 
         [Parameter(HelpMessage = 'Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow]
         ${StorageAutogrow},
@@ -211,7 +212,7 @@ function New-AzPostgreSqlServer {
           $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
           $null = $PSBoundParameters.Remove('AdministratorUserName')
 
-          $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword']))
+          $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
           $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
           $PSBoundParameters.Add('Parameter', $Parameter)

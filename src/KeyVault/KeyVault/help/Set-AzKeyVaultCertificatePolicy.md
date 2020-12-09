@@ -83,7 +83,8 @@ This command sets the policy for the TestCert01 certificate in the ContosoKV01 k
 ## PARAMETERS
 
 ### -CertificateTransparency
-Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'
+Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'.
+`-IssuerName` needs to be specified when setting this property.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

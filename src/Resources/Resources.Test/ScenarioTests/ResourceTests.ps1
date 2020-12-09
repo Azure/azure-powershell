@@ -889,7 +889,9 @@ function Test-SetAResourceTagCase
  
         # Set resource (add a new tag with key testTag2 = "TestVal2")
         Set-AzResource -Tags @{testtag = "testval"; testTag2 = "TestVal2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        Start-Sleep -s 30
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+            Start-Sleep -s 30
+        }
         $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
         
         # Verify tag keys
@@ -908,7 +910,9 @@ function Test-SetAResourceTagCase
  
         # Set resource (replace tags with keys of different cases)
         Set-AzResource -Tags @{testTag = "testVAL"; testtag2 = "Testval2"} -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-        Start-Sleep -s 30
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+            Start-Sleep -s 30
+        }
         $resource = Get-AzResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
        
         # Verify tag keys

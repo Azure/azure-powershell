@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for DomainStatus.</summary>
+    /// <summary>Domain registration status.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DomainStatusTypeConverter))]
     public partial struct DomainStatus :
         System.Management.Automation.IArgumentCompleter

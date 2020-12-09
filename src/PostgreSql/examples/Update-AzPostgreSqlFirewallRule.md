@@ -20,3 +20,15 @@ rule 0.0.0.0        0.0.0.1
 ```
 
 These cmdlets update PostgreSql Firewall Rule by identity.
+
+### Example 3: Update PostgreSql Firewall Rule by -ClientIPAddress.
+```powershell
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.2
+```
+
+These cmdlets update PostgreSql Firewall Rule by -ClientIPAddress.

@@ -108,6 +108,36 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2ByTargetResourceScopeActionGroupAndActionGroupIdParametersProcessing()
+        {
+            _cmdlet.TargetResourceScope = new[] { "resourceId1", "resourceId2" };
+            _cmdlet.ActionGroup = new[] {
+                new ActivityLogAlertActionGroup("actionGroupId1", new Dictionary<string, string> {{"key1", "value1"}}),
+                new ActivityLogAlertActionGroup("actionGroupId2", null)
+            };
+
+            _cmdlet.ActionGroupId = new[] { "actionGroupId1", "actionGroupId3" };
+
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Contains(_cmdlet.ActionGroup[0].ActionGroupId, metricAlert.Actions.Select(action => action.ActionGroupId));
+                Assert.Contains(_cmdlet.ActionGroup[0].WebhookProperties, metricAlert.Actions.Select(action => action.WebHookProperties));
+                Assert.Contains(_cmdlet.ActionGroup[1].ActionGroupId, metricAlert.Actions.Select(action => action.ActionGroupId));
+                Assert.Contains(_cmdlet.ActionGroupId[1], metricAlert.Actions.Select(action => action.ActionGroupId));
+                Assert.Equal(3, metricAlert.Actions.Count);
+                Assert.Contains(_cmdlet.TargetResourceScope[0], metricAlert.Scopes);
+                Assert.Contains(_cmdlet.TargetResourceScope[1], metricAlert.Scopes);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewMetricAlertRuleV2WithWebtestConditionProcessing()
         {
             var webtestCriteria = new WebtestLocationAvailabilityCriteria("webTestId", "componentId", 4);

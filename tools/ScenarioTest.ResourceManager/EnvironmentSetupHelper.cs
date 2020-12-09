@@ -427,6 +427,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+            environment.AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix;
+            environment.AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId;
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
@@ -587,7 +589,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.Streams.Error.Clear();
-                }
+                }   
             }
         }
 

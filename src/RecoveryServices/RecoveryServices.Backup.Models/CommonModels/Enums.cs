@@ -326,7 +326,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Disable protection with delete data
         /// </summary>
-        DeleteBackupData
+        DeleteBackupData,
+
+        /// <summary>
+        /// Data move between source and target vaults
+        /// </summary>
+        BackupDataMove
     }
 
     /// <summary>

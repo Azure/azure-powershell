@@ -23,8 +23,8 @@ The **Start-AzStreamAnalyticsJob** cmdlet asynchronously deploys and starts a St
 
 ## EXAMPLES
 
-### EXAMPLE 1: Start a Stream Analytics job
-```
+### Example 1: Start a Stream Analytics job
+```powershell
 PS C:\> Start-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob" -OutputStartMode "CustomTime" -OutputStartTime "2014-07-03T01:00Z"
 ```
 

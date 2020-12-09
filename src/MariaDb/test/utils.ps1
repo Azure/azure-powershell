@@ -77,7 +77,7 @@ function setupEnv() {
 
     Write-Host -ForegroundColor Green "Start to creating replica mariadb for test..."
     $rstrrep01 = $rstrgp01 + '-rep' + (RandomNumber -len 3)
-    New-AzMariaDbServerReplica -Name $rstrrep01 -ServerName $rstrgp01 -ResourceGroupName $resourceGroup
+    New-AzMariaDbReplica -Name $rstrrep01 -ServerName $rstrgp01 -ResourceGroupName $resourceGroup
     $null = $env.add('rstrrep01', $rstrrep01)
     Write-Host -ForegroundColor Green "Replica mariaDB created successfully."
 

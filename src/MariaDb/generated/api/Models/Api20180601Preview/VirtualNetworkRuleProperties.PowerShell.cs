@@ -101,9 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint = (bool?) content.GetValueForProperty("IgnoreMissingVnetServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).IgnoreMissingVnetServiceEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId = (string) content.GetValueForProperty("VirtualNetworkSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRulePropertiesInternal)this).VirtualNetworkSubnetId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
     }

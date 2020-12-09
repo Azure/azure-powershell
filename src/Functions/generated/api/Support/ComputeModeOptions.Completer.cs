@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for ComputeModeOptions.</summary>
+    /// <summary>Shared/dedicated workers.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ComputeModeOptionsTypeConverter))]
     public partial struct ComputeModeOptions :
         System.Management.Automation.IArgumentCompleter

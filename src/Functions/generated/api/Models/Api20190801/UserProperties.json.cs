@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._publishingUserName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingUserName.ToString()) : null, "publishingUserName" ,container.Add );
             AddIf( null != (((object)this._publishingPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingPassword.ToString()) : null, "publishingPassword" ,container.Add );
             AddIf( null != (((object)this._publishingPasswordHash)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingPasswordHash.ToString()) : null, "publishingPasswordHash" ,container.Add );
             AddIf( null != (((object)this._publishingPasswordHashSalt)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingPasswordHashSalt.ToString()) : null, "publishingPasswordHashSalt" ,container.Add );
-            AddIf( null != (((object)this._publishingUserName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingUserName.ToString()) : null, "publishingUserName" ,container.Add );
             AddIf( null != (((object)this._scmUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._scmUri.ToString()) : null, "scmUri" ,container.Add );
             AfterToJson(ref container);
             return container;
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_publishingUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingUserName"), out var __jsonPublishingUserName) ? (string)__jsonPublishingUserName : (string)PublishingUserName;}
             {_publishingPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingPassword"), out var __jsonPublishingPassword) ? (string)__jsonPublishingPassword : (string)PublishingPassword;}
             {_publishingPasswordHash = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingPasswordHash"), out var __jsonPublishingPasswordHash) ? (string)__jsonPublishingPasswordHash : (string)PublishingPasswordHash;}
             {_publishingPasswordHashSalt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingPasswordHashSalt"), out var __jsonPublishingPasswordHashSalt) ? (string)__jsonPublishingPasswordHashSalt : (string)PublishingPasswordHashSalt;}
-            {_publishingUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingUserName"), out var __jsonPublishingUserName) ? (string)__jsonPublishingUserName : (string)PublishingUserName;}
             {_scmUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("scmUri"), out var __jsonScmUri) ? (string)__jsonScmUri : (string)ScmUri;}
             AfterFromJson(json);
         }

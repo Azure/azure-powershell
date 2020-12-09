@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Reflection;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   enabled: other.Enabled,
                   enabledHostNames: other.EnabledHostNames,
                   availabilityState: other.AvailabilityState,
-                  hostNameSslStates: other.HostNameSslStates, 
+                  hostNameSslStates: other.HostNameSslStates,
                   serverFarmId: other.ServerFarmId,
                   lastModifiedTimeUtc: other.LastModifiedTimeUtc,
                   siteConfig: other.SiteConfig,
@@ -58,23 +59,25 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   isXenon: other.IsXenon,
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
-                  suspendedTill:other.SuspendedTill,
+                  suspendedTill: other.SuspendedTill,
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
                   identity: other.Identity
                   )
         {
-            if (other.SiteConfig != null)
+            PropertyInfo AzureStoragePathProp = other.GetType().GetProperty("AzureStoragePath");
+            if (AzureStoragePathProp != null)
             {
-                AzureStoragePath = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
+                object val = AzureStoragePathProp.GetValue(other, null);
+                AzureStoragePath = (WebAppAzureStoragePath[])val;
             }
         }
 
         public string GitRemoteName { get; set; }
         public string GitRemoteUri { get; set; }
         public string GitRemoteUsername { get; set; }
-        public SecureString  GitRemotePassword { get; set; }
-
+        public SecureString GitRemotePassword { get; set; }
+        public AzureStoragePropertyDictionaryResource AzureStorageAccounts { get; set; }
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
     }
 }

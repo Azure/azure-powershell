@@ -39,7 +39,7 @@ Name                       : ps2
 Type                       : Microsoft.Maintenance/configurationAssignments
 ```
 
-Register maintenance configuration for didicated host.
+Register maintenance configuration for dedicated host.
 
 ## PARAMETERS
 

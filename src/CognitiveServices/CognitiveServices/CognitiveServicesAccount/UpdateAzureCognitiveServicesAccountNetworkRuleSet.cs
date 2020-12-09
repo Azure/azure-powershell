@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
 
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

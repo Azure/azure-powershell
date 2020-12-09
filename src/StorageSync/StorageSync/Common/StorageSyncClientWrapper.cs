@@ -270,46 +270,64 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Ensures the role assignment.
         /// </summary>
         /// <param name="serverPrincipal">The server principal.</param>
+        /// <param name="storageAccountSubscriptionId">The storage account subscription identifier.</param>
         /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
-        /// <exception cref="PSArgumentException">roleDefinition</exception>
-        public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountResourceId)
+        public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId)
         {
-            var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);
-            string roleDefinitionScope = "/";
-            RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
+            string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
+            bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;
 
-            var serverPrincipalId = serverPrincipal.Id.ToString();
-            var roleAssignments = AuthorizationManagementClient.RoleAssignments
-                .ListForResource(
-                resourceIdentifier.ResourceGroupName,
-                ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
-                resourceIdentifier.ParentResource ?? "/",
-                ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
-                resourceIdentifier.ResourceName,
-                odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
-            var roleAssignmentScope = storageAccountResourceId;
-            Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
-
-            RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
-            if (roleAssignment == null)
+            try
             {
-                VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
-                var createParameters = new RoleAssignmentCreateParameters
+                if(hasMismatchSubscription)
                 {
-                    Properties = new RoleAssignmentProperties
+                    AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
+                }
+
+                var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);
+                string roleDefinitionScope = "/";
+                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
+
+                var serverPrincipalId = serverPrincipal.Id.ToString();
+                var roleAssignments = AuthorizationManagementClient.RoleAssignments
+                    .ListForResource(
+                    resourceIdentifier.ResourceGroupName,
+                    ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ParentResource ?? "/",
+                    ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ResourceName,
+                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                var roleAssignmentScope = storageAccountResourceId;
+                Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
+
+                RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
+                if (roleAssignment == null)
+                {
+                    VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
+                    var createParameters = new RoleAssignmentCreateParameters
                     {
-                        PrincipalId = serverPrincipalId,
-                        RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
-                    }
-                };
+                        Properties = new RoleAssignmentProperties
+                        {
+                            PrincipalId = serverPrincipalId,
+                            RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
+                        }
+                    };
 
-                roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
-                StorageSyncResourceManager.Wait();
+                    roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
+                    StorageSyncResourceManager.Wait();
 
+                }
+
+                return roleAssignment;
             }
-
-            return roleAssignment;
+            finally
+            {
+                if (hasMismatchSubscription)
+                {
+                    AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
+                }
+            }
         }
 
         /// <summary>

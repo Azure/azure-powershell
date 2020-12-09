@@ -37,6 +37,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestGlobalPublicIpPrefixCRUD()
+        {
+            TestRunner.RunTestScript("Test-GlobalPublicIpPrefixCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpPrefixAllocatePublicIpAddress()
         {
             TestRunner.RunTestScript("Test-PublicIpPrefixAllocatePublicIpAddress");

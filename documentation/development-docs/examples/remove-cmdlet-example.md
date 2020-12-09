@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Service
             if (this.ShouldProcess(this.Name, string.Format("Deleting ChildResource '{0}' in resource group '{1}' under parent TopLevelResource '{2}'.", this.Name, this.ResourceGroupName, this.TopLevelResourceName)))
             {
                 this.MySDKClient.ChildResource.Delete(this.ResourceGroupName, this.TopLevelResourceName, this.Name);
-                if (this.IsPassThru.IsPresent)
+                if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);
                 }

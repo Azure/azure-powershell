@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     {
 
         /// <summary>Backing field for <see cref="Config" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig _config;
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny _config;
 
         /// <summary>Config information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig Config { get => (this._config = this._config ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FunctionEnvelopePropertiesConfig()); set => this._config = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get => (this._config = this._config ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Any()); set => this._config = value; }
 
         /// <summary>Backing field for <see cref="ConfigHref" /> property.</summary>
         private string _configHref;
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         ReadOnly = false,
         Description = @"Config information.",
         SerializedName = @"config",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig Config { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get; set; }
         /// <summary>Config URI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
     {
         /// <summary>Config information.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelopePropertiesConfig Config { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny Config { get; set; }
         /// <summary>Config URI.</summary>
         string ConfigHref { get; set; }
         /// <summary>File list.</summary>

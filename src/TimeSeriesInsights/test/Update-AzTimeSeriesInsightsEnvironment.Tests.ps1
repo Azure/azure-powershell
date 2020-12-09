@@ -12,39 +12,45 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzTimeSeriesInsightsEnvironment' {
-    It 'UpdateStandard' {
+    It 'UpdateGen1' {
         $environmentName = $env.tsiEnvName
-        $tsiEnvStandard = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
-        $newCapacity = $tsiEnvStandard.Capacity + 2
-        Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName -Capacity $newCapacity -Sku $tsiEnvStandard.SkuName
+        $newTag = @{'key1'='val1'}
+        Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName -Tag $newTag
         $updatedTsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName
-        $updatedTsiEnv.SkuCapacity | Should -Be $newCapacity
-        
-    }
-    It 'UpdateStandardInputObject' {
-        $environmentName = $env.tsiEnvName
-        $tsiEnvStandard = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
-        $newCapacity = $tsiEnvStandard.Capacity + 1
-        Update-AzTimeSeriesInsightsEnvironment -InputObject $tsiEnvStandard -Capacity $newCapacity -Sku $tsiEnvStandard.SkuName
-        $updatedTsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName
-        $updatedTsiEnv.SkuCapacity | Should -Be $newCapacity
+        $val = ''
+        $updatedTsiEnv.Tag.TryGetValue('key1',[ref]$val) | Should -Be $true
+        $val | Should -Be 'val1'
     }
 
-    It 'UpdateLongTerm' {
-        $environmentName = $env.tsiEnvName01
-        $tsiEnvLongTerm = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
-        $newCapacity = $tsiEnvLongTerm.Capacity + 1
-        Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName -Capacity $newCapacity -Sku $tsiEnvLongTerm.SkuName
+    It 'UpdateGen1InputObject' {
+        $environmentName = $env.tsiEnvName
+        $tsiEnvGen1 = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
+        $newTag = @{'key2'='val2'}
+        Update-AzTimeSeriesInsightsEnvironment -InputObject $tsiEnvGen1 -Tag $newTag
         $updatedTsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName
-        $updatedTsiEnv.SkuCapacity | Should -Be $newCapacity
+        $val = ''
+        $updatedTsiEnv.Tag.TryGetValue('key2',[ref]$val) | Should -Be $true
+        $val | Should -Be 'val2'
+    }
+
+    It 'UpdateGen2' {
+        $environmentName = $env.tsiEnvName01
+        $newTag = @{'key3'='val3'}
+        Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName -Tag $newTag
+        $updatedTsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName
+        $val = ''
+        $updatedTsiEnv.Tag.TryGetValue('key3',[ref]$val) | Should -Be $true
+        $val | Should -Be 'val3'
     }
     
-    It 'UpdateLongTermInputObject' {
+    It 'UpdateGen2InputObject' {
         $environmentName = $env.tsiEnvName01
-        $tsiEnvLongTerm = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
-        $newCapacity = $tsiEnvLongTerm.Capacity + 1
-        Update-AzTimeSeriesInsightsEnvironment -InputObject $tsiEnvLongTerm  -Capacity $newCapacity -Sku $tsiEnvLongTerm.SkuName
+        $tsiEnvGen2 = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.resourceGroup -Name $environmentName
+        $newTag = @{'key4'='val4'}
+        Update-AzTimeSeriesInsightsEnvironment -InputObject $tsiEnvGen2 -Tag $newTag
         $updatedTsiEnv = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName $env.ResourceGroup -Name $environmentName 
-        $updatedTsiEnv.SkuCapacity | Should -Be $newCapacity
+        $val = ''
+        $updatedTsiEnv.Tag.TryGetValue('key4',[ref]$val) | Should -Be $true
+        $val | Should -Be 'val4'
     }
 }

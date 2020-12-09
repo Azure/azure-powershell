@@ -280,6 +280,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
+        public void ValidateContainerName(String containerName)
+        {
+            if (!containerName.Contains(";"))
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        Resources.ContainerNameIsInvalid));
+            }
+        }
+
         public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "")
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))

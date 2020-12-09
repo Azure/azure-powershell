@@ -34,10 +34,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static string Format(PSWhatIfOperationResult result)
         {
+            if (result == null)
+            {
+                return null;
+            }
+
             var builder = new ColoredStringBuilder();
             var formatter = new WhatIfOperationResultFormatter(builder);
 
-            formatter.FormatPreviewNotice();
+            formatter.FormatNoiseNotice();
             formatter.FormatLegend(result.Changes);
             formatter.FormatResourceChanges(result.Changes);
             formatter.FormatStats(result.Changes);
@@ -45,10 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return builder.ToString();
         }
 
-        private void FormatPreviewNotice()
+        private void FormatNoiseNotice()
         {
             this.Builder
-                .AppendLine(Resources.WhatIfPreviewNotice)
+                .AppendLine(Resources.WhatIfNoiseNotice)
                 .AppendLine();
         }
 
@@ -171,7 +176,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 return;
             }
 
-            int scopeCount = resourceChanges.Select(rc => rc.Scope).Distinct().Count();
+            int scopeCount = resourceChanges.Select(rc => rc.Scope.ToUpperInvariant()).Distinct().Count();
 
             this.Builder
                 .AppendLine()
@@ -179,10 +184,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
 
             resourceChanges
-                .OrderBy(rc => rc.Scope)
-                .GroupBy(rc => rc.Scope)
+                .OrderBy(rc => rc.Scope.ToUpperInvariant())
+                .GroupBy(rc => rc.Scope.ToUpperInvariant())
                 .ToDictionary(g => g.Key, g => g.ToList())
-                .ForEach(kvp => FormatResourceChangesInScope(kvp.Key, kvp.Value));
+                .ForEach(kvp => FormatResourceChangesInScope(kvp.Value[0].Scope, kvp.Value));
         }
 
         private void FormatResourceChangesInScope(string scope, IList<PSWhatIfChange> resourceChanges)
@@ -319,6 +324,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     break;
 
                 case PropertyChangeType.Array:
+                    this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
                     this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
                     break;
 
@@ -338,7 +344,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             int paddingWidth = maxPathLength - path.Length + 1;
             bool hasChildren = children != null && children.Count > 0;
 
-            if (valueAfterPath.IsNonEmptyArray())
+            if (valueAfterPath.IsNonEmptyArray() || (propertyChangeType == PropertyChangeType.Array && hasChildren))
             {
                 paddingWidth = 1;
             }

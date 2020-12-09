@@ -441,6 +441,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             this.VerifyListCallPatternAndReset();
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmPolicyAliasWithPathMetadata()
+        {
+            var providers = new ProviderListBuilder();
+            var provider = providers.AddProvider("Provider1");
+            var resourceTypes = provider.AddResourceType("ResourceType1");
+            var alias = resourceTypes.AddAlias("Alias1");
+            alias.AddDefaultAliasPathMetadata(AliasPathAttributes.Modifiable, AliasPathTokenType.String);
+            alias.AddAliasPath("properties.alias1", new List<string> { "2020-01-01" }, new AliasPathMetadata(AliasPathAttributes.Modifiable, AliasPathTokenType.Object));
+
+            var listResult = providers.List;
+            this.SetupAliasListResult(listResult);
+
+            this.commandRuntimeMock
+                .Setup(m => m.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
+                .Callback((object obj, bool listAll) => { this.AssertResult(obj, listResult, 1); });
+
+            this.cmdlet.ExecuteCmdlet();
+            this.VerifyListCallPatternAndReset();
+        }
         /// <summary>
         /// Helper method that sets up the expected result of the alias list cmdlet
         /// </summary>
@@ -497,6 +518,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     var expectedAlias = expectedResourceType.Aliases.SingleOrDefault(item => item.Name.EqualsInsensitively(actualAlias.Name));
                     Assert.NotNull(expectedAlias);
 
+                    Assert.Equal(expectedAlias.DefaultMetadata?.Attributes, actualAlias.DefaultMetadata?.Attributes);
+                    Assert.Equal(expectedAlias.DefaultMetadata?.Type, actualAlias.DefaultMetadata?.Type);
+
                     // verify paths collection
                     if (actualAlias.Paths == null)
                     {
@@ -508,6 +532,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     {
                         var expectedPath = expectedAlias.Paths.SingleOrDefault(item => item.Path.EqualsInsensitively(actualPath.Path));
                         Assert.NotNull(expectedPath);
+
+                        Assert.Equal(actualPath.Metadata?.Attributes, expectedPath.Metadata?.Attributes);
+                        Assert.Equal(actualPath.Metadata?.Type, expectedPath.Metadata?.Type);
 
                         // verify API version collection
                         if (actualPath.ApiVersions == null)

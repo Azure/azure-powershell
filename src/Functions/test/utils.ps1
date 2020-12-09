@@ -46,13 +46,13 @@ function setupEnv() {
     Write-Host "Creating storage accounts" -ForegroundColor Green
     $storageAccountsToCreate = @(
         @{
-            AccountName = $storageAccountWindows
+            Name = $storageAccountWindows
             ResourceGroupName = $resourceGroupNameWindowsPremium
             Location = $location
             SkuName = "Standard_GRS"
         },
         @{
-            AccountName = $storageAccountLinux
+            Name = $storageAccountLinux
             ResourceGroupName = $resourceGroupNameLinuxPremium
             Location = $location
             SkuName = "Standard_GRS"
@@ -111,8 +111,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "PowerShell"
-            RuntimeVersion = 6.2
-            Name = "Functions-PowerShell-6-" + (RandomString -len 6)
+            RuntimeVersion = '7.0'
+            Name = "Functions-PowerShell-7-" + (RandomString -len 6)
             FunctionsVersion = 3
         },
         @{

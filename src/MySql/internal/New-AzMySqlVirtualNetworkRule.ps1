@@ -34,6 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
@@ -41,6 +42,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [DatabaseName <String>]: The name of the database.
   [FirewallRuleName <String>]: The name of the server firewall rule.
   [Id <String>]: Resource identity path
+  [KeyName <String>]: The name of the server key.
   [LocationName <String>]: The name of the location.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.

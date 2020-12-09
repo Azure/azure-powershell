@@ -9,6 +9,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
     public partial struct IotHubDataFormat :
         System.IEquatable<IotHubDataFormat>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat Apacheavro = @"APACHEAVRO";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat Avro = @"AVRO";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat Csv = @"CSV";
@@ -36,6 +38,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat Tsve = @"TSVE";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat Txt = @"TXT";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormat W3Clogfile = @"W3CLOGFILE";
 
         /// <summary>the value for an instance of the <see cref="IotHubDataFormat" /> Enum.</summary>
         private string _value { get; set; }

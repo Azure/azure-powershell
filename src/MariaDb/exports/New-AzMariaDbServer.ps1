@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-
+Creates a new MariaDB.
 .Description
-
+Creates a new MariaDB.
 .Example
 PS C:\> New-AzMariaDbServer -Name mariadb-aassd-01 -ResourceGroupName lucas-manual-test -Sku 'B_Gen5_1' -Location eastus
 cmdlet New-AzMariaDbServer at command pipeline position 1
@@ -25,10 +25,12 @@ Supply values for the following parameters:
 AdministratorUsername: adminuser
 AdministratorLoginPassword: ************
 
-Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuSize SkuTier SslEnforcement
-----             -------- ------------------ ------- ----------------------- -------  ------- ------- --------------
-mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1         Basic   Enabled
+Name             Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
+----             -------- ------------------ ------- ----------------------- -------  ------- --------------
+mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_Gen5_1 Basic   Enabled
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
@@ -40,7 +42,7 @@ param(
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
-    # MariaDb server name.
+    # MariaDB server name.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -100,6 +102,7 @@ param(
     ${GeoRedundantBackup},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
     # Enable Storage Auto Grow.
@@ -129,49 +132,60 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Azure')]
     [System.Management.Automation.PSObject]
+    # region DefaultParameters
+    #  The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Uri]
+    # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    # endregion DefaultParameters
     ${ProxyUseDefaultCredentials}
 )
 

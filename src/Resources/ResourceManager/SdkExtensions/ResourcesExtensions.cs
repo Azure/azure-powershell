@@ -77,11 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
-                    StatusMessage = DeploymentOperationErrorInfo
-                                    .DeserializeDeploymentOperationError(result.Properties?.StatusMessage?.ToString())?
-                                    .ToFormattedString()?
-                                    .TrimEnd(System.Environment.NewLine.ToCharArray())
-                                        ?? result.Properties.StatusMessage, // To-Do: With the new API version this work will move to error model extensions.
+                    StatusMessage = result.Properties.StatusMessage?.Error?.ToFormattedString(),
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }

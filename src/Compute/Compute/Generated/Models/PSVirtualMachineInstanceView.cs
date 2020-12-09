@@ -34,12 +34,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string OsVersion { get; set; }
         public string HyperVGeneration { get; set; }
         public string RdpThumbPrint { get; set; }
+        public string AssignedHost { get; set; }
         public VirtualMachineAgentInstanceView VmAgent { get; set; }
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
         public IList<DiskInstanceView> Disks { get; set; }
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
         public IList<InstanceViewStatus> Statuses { get; set; }
+        public VirtualMachinePatchStatus PatchStatus { get; set; }
+        public VirtualMachineHealthStatus VmHealth { get; set; }
 
     }
 }

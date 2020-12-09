@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for CertificateProductType.</summary>
+    /// <summary>Certificate product type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CertificateProductTypeTypeConverter))]
     public partial struct CertificateProductType :
         System.Management.Automation.IArgumentCompleter

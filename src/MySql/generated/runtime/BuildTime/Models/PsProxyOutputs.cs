@@ -415,7 +415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PowerShell
 
         public const string ItemSeparator = ", ";
 
-        public static readonly string ComplexParameterHeader = $"COMPLEX PARAMETER PROPERTIES{Environment.NewLine}To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.{Environment.NewLine}{Environment.NewLine}";
+        public static readonly string ComplexParameterHeader = $"COMPLEX PARAMETER PROPERTIES{Environment.NewLine}{Environment.NewLine}To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.{Environment.NewLine}{Environment.NewLine}";
 
         public static string ToPsBool(this bool value) => $"${value.ToString().ToLowerInvariant()}";
 

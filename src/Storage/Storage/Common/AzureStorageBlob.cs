@@ -282,7 +282,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Name = track2BlobClient.Name;
             this.Context = storageContext;
             privateClientOptions = options;
-            ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+            if (privateBlobProperties is null)
+            {
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, null);
+            }
+            else
+            {
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+            }
             if (!(ICloudBlob is InvalidCloudBlob))
             {
                 BlobType = ICloudBlob.BlobType;

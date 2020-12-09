@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -63,15 +67,31 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (this.Version == 3)
             {
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
-                WriteObject(result);
+                if (!string.IsNullOrEmpty(this.Name))
+                {
+                    var result = new PSSynapseSqlPoolV3(this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                    WriteObject(result);
+                }
+                else
+                {
+                    var result = this.SynapseAnalyticsClient.ListSqlPoolsV3(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPoolV3(r));
+                    WriteObject(result, true);
+                }
             }
             else
             {
-                var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(r));
-                WriteObject(result, true);
+                if (!string.IsNullOrEmpty(this.Name))
+                {
+                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                    WriteObject(result);
+                }
+                else
+                {
+                    var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(r));
+                    WriteObject(result, true);
+                }
             }
         }
     }

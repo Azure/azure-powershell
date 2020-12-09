@@ -145,7 +145,7 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: GroupOperations, ParentGroupObject
-Aliases:
+Aliases: GroupId
 
 Required: True
 Position: Named

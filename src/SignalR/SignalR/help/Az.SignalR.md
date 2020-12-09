@@ -32,9 +32,15 @@ Remove a SignalR service.
 ### [Restart-AzSignalR](Restart-AzSignalR.md)
 Restart a SignalR service.
 
+### [Set-AzSignalRUpstream](Set-AzSignalRUpstream.md)
+Set the upstream settings of a SignalR service.
+
 ### [Test-AzSignalRName](Test-AzSignalRName.md)
-Check the availability of a name.
+Check the availability of a name. Alias: Test-AzSignal.
 
 ### [Update-AzSignalR](Update-AzSignalR.md)
 Update a SignalR service.
+
+### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
+Update the NetworkAcl of a SignalR service.
 

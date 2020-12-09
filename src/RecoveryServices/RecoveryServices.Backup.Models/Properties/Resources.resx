@@ -572,7 +572,7 @@ Please contact Microsoft for further assistance.</value>
     <value>RetentionDuration in Days should be from 7 - 9999</value>
   </data>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
-    <value>Cannot configure backup for more than 100 VMs per policy</value>
+    <value>Cannot configure backup for more than 1000 VMs per policy</value>
   </data>
   <data name="SoftdeleteNotImplementedException" xml:space="preserve">
     <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
@@ -599,9 +599,21 @@ Please contact Microsoft for further assistance.</value>
     <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.</value>
   </data>
   <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
-    <value>The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter</value>
+    <value>This is a managed disk recovery point and hence please provide a target resource group for the managed disks to be restored into with the TargetResourceGroupName parameter. Otherwise, please explicitly state that the managed disks should be restored into the staging storage account as unmanaged disks with restoreAsUnmanagedDisks parameter</value>
   </data>
   <data name="AzureFileSourceFilePathRedundantException" xml:space="preserve">
     <value>Both source file path and multiple source file paths provided. Please give only one option</value>
+  </data>
+  <data name="TargetVaultNotEmptyException" xml:space="preserve">
+    <value>Please provide an empty target vault. The target vault should not have any backup items or backup containers</value>
+  </data>
+  <data name="TargetVaultStorageRedundancy" xml:space="preserve">
+    <value>Are you sure you want to copy items to the {0} whose storage redundancy is {1}</value>
+  </data>
+  <data name="ContainerNameIsInvalid" xml:space="preserve">
+    <value>container name is invalid.</value>
+  </data>
+  <data name="TargetResourcegroupNotSupported" xml:space="preserve">
+    <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
 </root>

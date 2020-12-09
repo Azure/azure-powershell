@@ -71,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_recoverySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("recoverySource"), out var __jsonRecoverySource) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SnapshotRecoverySource.FromJson(__jsonRecoverySource) : RecoverySource;}
-            {_ignoreConflictingHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("ignoreConflictingHostNames"), out var __jsonIgnoreConflictingHostNames) ? (bool?)__jsonIgnoreConflictingHostNames : IgnoreConflictingHostName;}
+            {_snapshotTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("snapshotTime"), out var __jsonSnapshotTime) ? (string)__jsonSnapshotTime : (string)SnapshotTime;}
             {_overwrite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("overwrite"), out var __jsonOverwrite) ? (bool)__jsonOverwrite : Overwrite;}
             {_recoverConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("recoverConfiguration"), out var __jsonRecoverConfiguration) ? (bool?)__jsonRecoverConfiguration : RecoverConfiguration;}
-            {_snapshotTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("snapshotTime"), out var __jsonSnapshotTime) ? (string)__jsonSnapshotTime : (string)SnapshotTime;}
+            {_ignoreConflictingHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("ignoreConflictingHostNames"), out var __jsonIgnoreConflictingHostNames) ? (bool?)__jsonIgnoreConflictingHostNames : IgnoreConflictingHostName;}
             {_useDrSecondary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("useDRSecondary"), out var __jsonUseDrSecondary) ? (bool?)__jsonUseDrSecondary : UseDrSecondary;}
             AfterFromJson(json);
         }
@@ -99,10 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != this._recoverySource ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._recoverySource.ToJson(null,serializationMode) : null, "recoverySource" ,container.Add );
-            AddIf( null != this._ignoreConflictingHostName ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._ignoreConflictingHostName) : null, "ignoreConflictingHostNames" ,container.Add );
+            AddIf( null != (((object)this._snapshotTime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._snapshotTime.ToString()) : null, "snapshotTime" ,container.Add );
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean(this._overwrite), "overwrite" ,container.Add );
             AddIf( null != this._recoverConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._recoverConfiguration) : null, "recoverConfiguration" ,container.Add );
-            AddIf( null != (((object)this._snapshotTime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._snapshotTime.ToString()) : null, "snapshotTime" ,container.Add );
+            AddIf( null != this._ignoreConflictingHostName ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._ignoreConflictingHostName) : null, "ignoreConflictingHostNames" ,container.Add );
             AddIf( null != this._useDrSecondary ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._useDrSecondary) : null, "useDRSecondary" ,container.Add );
             AfterToJson(ref container);
             return container;

@@ -24,14 +24,14 @@ function Test-DedicatedHost
     try
     {
         # Common
-        [string]$loc = Get-ComputeVMLocation;
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "1" -Tag @{key1 = "val1"};
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "2" -Tag @{key1 = "val1"};
 
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
 
@@ -40,14 +40,12 @@ function Test-DedicatedHost
         Assert-AreEqual $loc $hostGroup.Location;
         Assert-True { $hostGroup.Tags.Keys.Contains("key1") };
         Assert-AreEqual "val1" $hostGroup.Tags["key1"];
-        Assert-True { $hostGroup.Zones.Contains("1") };
+        Assert-True { $hostGroup.Zones.Contains("2") };
         Assert-AreEqual 0 $hostGroup.Hosts.Count;
+        Assert-AreEqual $true $hostGroup.SupportAutomaticPlacement;
 
         $hostGroups = Get-AzHostGroup -ResourceGroupName $rgname;
         Assert-AreEqual 1 $hostGroups.Count;
-
-        $hostGroups = Get-AzHostGroup;
-        Assert-True {  $hostGroups.Count -ge 1 };
 
         $hostName = $rgname + 'host'
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
@@ -78,6 +76,12 @@ function Test-DedicatedHost
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
         Assert-AreEqual 1 $hostGroup.Hosts.Count;
         Assert-AreEqual 1 $hostGroup.Count;
+
+        $hostGroupInstanceViewResult = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -InstanceView;
+        Assert-NotNull $hostGroupInstanceViewResult.Hosts;
+        foreach ($hostInstanceViewWithName in $hostGroupInstanceViewResult.InstanceView.Hosts) {
+            Assert-NotNull $hostInstanceViewWithName.Name;
+        } 
 
         Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
 
@@ -123,15 +127,18 @@ function Test-DedicatedHostVirtualMachine
     try
     {
         # Common
-        [string]$loc = Get-ComputeVMLocation;
+        [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         $loc = $loc.Replace(' ', '');
         
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $hostGroupName = $rgname + 'hostgroup'
-        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "1" -Tag @{key1 = "val1"};
-        
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 2 -Zone "2" -SupportAutomaticPlacement $false -Tag @{key1 = "val1"};
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+
+        Assert-AreEqual $false $hostGroup.SupportAutomaticPlacement;
+
         $hostName = $rgname + 'host'
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -PlatformFaultDomain 1 -Tag @{key1 = "val2"};
 
@@ -148,7 +155,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "1" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel;
         $vm0 = Get-AzVM -ResourceGroupName $rgname -Name $vmname0;
         Assert-AreEqual $dedicatedHostId $vm0.Host.Id;
 
@@ -158,7 +165,7 @@ function Test-DedicatedHostVirtualMachine
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Zone "1" -Sku "Standard" -AllocationMethod "Static" -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Zone "2" -Sku "Standard" -AllocationMethod "Static" -DomainNameLabel ('pubip' + $rgname);
         $pubipId = $pubip.Id;
         $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nicId = $nic.Id;
@@ -170,7 +177,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "1" -HostId $dedicatedHostId `
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 

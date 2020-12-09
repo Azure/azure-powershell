@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
+    /// <summary>The current provisioning state.</summary>
     public partial struct PeeringProvisioningState :
         System.IEquatable<PeeringProvisioningState>
     {

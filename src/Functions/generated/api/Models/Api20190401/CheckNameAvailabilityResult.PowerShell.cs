@@ -61,9 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).NameAvailable = (bool?) content.GetValueForProperty("NameAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).NameAvailable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Reason = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Reason?) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Reason, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Reason.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).NameAvailable = (bool?) content.GetValueForProperty("NameAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).NameAvailable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Reason = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Reason?) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Reason, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Reason.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICheckNameAvailabilityResultInternal)this).Message, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

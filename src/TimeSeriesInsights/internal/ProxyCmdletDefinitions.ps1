@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsoperation
 #>
 function Get-AzTimeSeriesInsightsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -141,25 +141,24 @@ Create or update an environment in the specified subscription and resource group
 Create or update an environment in the specified subscription and resource group.
 .Example
 PS C:\> $TimeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Standard -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Gen1 -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-Standard eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
+Gen1 eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
 .Example
-PS C:\> New-AzStorageAccount -ResourceGroupName testgroup -AccountName staccount001 -Location eastus -SkuName Standard_GRS
 PS C:\> $ks = Get-AzStorageAccountKey -ResourceGroupName "testgroup" -Name "staccount001"
-PS C:\> $k  = $ks[0] | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind LongTerm -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
+PS C:\> $k  = $ks[0].Value | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind Gen2 -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-LongTerm eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
+Gen2 eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentCreateOrUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentCreateOrUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -168,7 +167,7 @@ To create the parameters described below, construct a hash table containing the 
 PARAMETER <IEnvironmentCreateOrUpdateParameters>: Parameters supplied to the CreateOrUpdate Environment operation.
   Location <String>: The location of the resource.
   Kind <Kind>: The kind of the environment.
-  SkuCapacity <Int32>: The capacity of the sku. For standard environments, this value can be changed to support scale out of environments after they have been created.
+  SkuCapacity <Int32>: The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
   SkuName <SkuName>: The name of this SKU.
   [Tag <ICreateOrUpdateTrackedResourcePropertiesTags>]: Key-value pairs of additional properties for the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -176,7 +175,7 @@ PARAMETER <IEnvironmentCreateOrUpdateParameters>: Parameters supplied to the Cre
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -201,7 +200,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentCreateOrUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentCreateOrUpdateParameters]
     # Parameters supplied to the CreateOrUpdate Environment operation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -210,7 +209,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.Int32]
     # The capacity of the sku.
-    # For standard environments, this value can be changed to support scale out of environments after they have been created.
+    # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
     ${Capacity},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -235,7 +234,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
@@ -366,29 +365,29 @@ Create or update an event source under the specified environment.
 .Description
 Create or update an event source under the specified environment.
 .Example
-PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup2 -NamespaceName spacename001 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
-PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup2 -NamespaceName spacename001 -AuthorizationRuleName RootManageSharedAccessKey
+PS C:\> New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
+PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
 PS C:\> $k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename001 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Kind               Location Name      Type
 ----               -------- ----      ----
 Microsoft.EventHub eastus   estest001 Microsoft.TimeSeriesInsights/Environments/EventSources
 .Example
-PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup2 -Location eastus -Name iotname001 -SkuName S1 -Units 100
-PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup2 -Name iotname001
+PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
+PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
 PS C:\> $k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 
--EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Location Name    Type                                                   Kind
 -------- ----    ----                                                   ----
 eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsoft.IoTHub
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceCreateOrUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceCreateOrUpdateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -399,11 +398,13 @@ PARAMETER <IEventSourceCreateOrUpdateParameters>: Parameters supplied to the Cre
   Kind <Kind>: The kind of the event source.
   [Tag <ICreateOrUpdateTrackedResourcePropertiesTags>]: Key-value pairs of additional properties for the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [LocalTimestampFormat <LocalTimestampFormat?>]: An enum that represents the format of the local timestamp property that needs to be set.
+  [TimeZoneOffsetPropertyName <String>]: The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -434,7 +435,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceCreateOrUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceCreateOrUpdateParameters]
     # Parameters supplied to the Create or Update Event Source operation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -453,11 +454,26 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat])]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormat]
+    # An enum that represents the format of the local timestamp property that needs to be set.
+    ${LocalTimestampFormat},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
+    [System.String]
+    # The event property that will be contain the offset information to calculate the local timestamp.
+    # When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles).
+    # When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
+    ${TimeZoneOffsetPropertyName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

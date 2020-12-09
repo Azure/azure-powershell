@@ -29,7 +29,7 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabase])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -146,7 +146,7 @@ function New-AzKustoDatabase {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ReadWriteDatabase]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadWriteDatabase]::new()
 
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')

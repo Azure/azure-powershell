@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Added byDict parameter set for New-AzSapMonitorProviderInstance
+
+## Version 0.2.0
+* Fixed an issue in PowerShell prior to 7.0
+
 ## Version 0.1.0
 * the first preview release
 

@@ -47,7 +47,7 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : True
-IsVersioningEnabled           : True            
+IsVersioningEnabled           : True
 ```
 
 This command gets the Blob services property of a specified Storage Account.

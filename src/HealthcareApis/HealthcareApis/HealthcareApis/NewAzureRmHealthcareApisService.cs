@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.HealthcareApis.Common;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.HealthcareApis;
+using Microsoft.Azure.Management.HealthcareApis.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections;
-using Microsoft.Azure.Management.HealthcareApis.Models;
-using Microsoft.Azure.Management.HealthcareApis;
-using Microsoft.Azure.Commands.HealthcareApis.Models;
-using Microsoft.Azure.Commands.HealthcareApis.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Commands.HealthcareApis.Properties;
-using System;
-using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(
            Mandatory = false,
+           HelpMessage = "HealthcareApis Fhir Service CosmosKeyVaultKeyUri. The URI of the customer-managed key for the backing database.")]
+        [ValidateNotNullOrEmpty]
+        public string CosmosKeyVaultKeyUri { get; set; }
+
+        [Parameter(
+           Mandatory = false,
            HelpMessage = "HealthcareApis Fhir Service CosmosOfferThroughput.")]
         [ValidateNotNullOrEmpty]
         public int? CosmosOfferThroughput { get; set; }
@@ -155,6 +161,12 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for Fhir Service. Commonly `Enabled` or `Disabled`.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        public string PublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -174,16 +186,21 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         Properties = new ServicesProperties()
                         {
                             AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
-                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
+                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput(), KeyVaultKeyUri = GetCosmosDBKeyVaultKeyUri() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
-                            ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName},
-                            AccessPolicies = accessPolicies
+                            ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName },
+                            AccessPolicies = accessPolicies,
                         }
                     };
-                    
+
                     if (this.ManagedIdentity.IsPresent)
                     {
-                        servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                        servicesDescription.Identity = new ServicesResourceIdentity() { Type = "SystemAssigned" };
+                    }
+
+                    if (!string.IsNullOrEmpty(PublicNetworkAccess))
+                    {
+                        servicesDescription.Properties.PublicNetworkAccess = PublicNetworkAccess;
                     }
 
                     if (ShouldProcess(this.Name, Resources.createService))
@@ -275,6 +292,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return CosmosOfferThroughput;
+        }
+
+        private string GetCosmosDBKeyVaultKeyUri()
+        {
+            return CosmosKeyVaultKeyUri;
         }
 
         private string GetAudience()

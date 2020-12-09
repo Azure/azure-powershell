@@ -30,9 +30,9 @@ Creates a new server.
 ```powershell
 PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuSize SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   ------- -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4         GeneralPurpose Enabled
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
 These cmdlets create a new MySql server.
@@ -40,7 +40,9 @@ These cmdlets create a new MySql server.
 ## PARAMETERS
 
 ### -AdministratorLoginPassword
-The location the resource resides in.
+The password of the administrator.
+Minimum 8 characters and maximum 128 characters.
+Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
 
 ```yaml
 Type: System.Security.SecureString
@@ -55,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -AdministratorUserName
-The location the resource resides in.
+Administrator username for the server.
+Once set, it cannot be changed.
 
 ```yaml
 Type: System.String

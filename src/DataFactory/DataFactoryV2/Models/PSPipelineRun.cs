@@ -59,6 +59,30 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        public string RunGroupId
+        {
+            get
+            {
+                return this.pipelineRun.RunGroupId;
+            }
+        }
+
+        public bool? IsLatest
+        {
+            get
+            {
+                return this.pipelineRun.IsLatest;
+            }
+        }
+
+        public PipelineRunInvokedBy InvokedBy
+        {
+            get
+            {
+                return this.pipelineRun.InvokedBy;
+            }
+        }
+
         public DateTime? LastUpdated
         {
             get

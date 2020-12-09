@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
 
     /// <summary>
     /// Blob management interface
@@ -75,6 +76,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="name">Container name</param>
         /// <returns>A CloudBlobContainer in local memory</returns>
         CloudBlobContainer GetContainerReference(String name);
+
+        /// <summary>
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null);
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null);
 
         /// <summary>
         /// Get blob reference with properties and meta data from server

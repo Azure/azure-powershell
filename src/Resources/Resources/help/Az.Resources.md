@@ -17,6 +17,9 @@ Adds a user to an existing AD group.
 ### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
 
+### [Export-AzTemplateSpec](Export-AzTemplateSpec.md)
+Exports a Template Spec to the local filesystem
+
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Retrieves a list of credentials associated with an application.
 
@@ -76,6 +79,9 @@ Get deployment at a management group
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
 
+### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at management group scope. 
+
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
 given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
@@ -128,11 +134,17 @@ Lists all Azure RBAC roles that are available for assignment.
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
 
+### [Get-AzTemplateSpec](Get-AzTemplateSpec.md)
+Gets or lists Template Specs
+
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
 
 ### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
 Get deployment operation for deployment at tenant scope
+
+### [Get-AzTenantDeploymentWhatIfResult](Get-AzTenantDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at tenant scope. 
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -209,6 +221,9 @@ Finally, use this command to create a custom role using role definition.
 
 ### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
+
+### [New-AzTemplateSpec](New-AzTemplateSpec.md)
+Creates a new Template Spec.
 
 ### [New-AzTenantDeployment](New-AzTenantDeployment.md)
 Create a deployment at tenant scope
@@ -293,6 +308,9 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
 
+### [Remove-AzTemplateSpec](Remove-AzTemplateSpec.md)
+Removes a Template Spec
+
 ### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
 Removes a deployment at tenant scope and any associated operations
 
@@ -335,12 +353,18 @@ Modifies a resource group.
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
+### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
+Update a role assignment.
+
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
 First, use the Get-AzRoleDefinition command to retrieve the custom role that you wish to modify.
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
+
+### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
+Modifies a Template Spec.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancel a running deployment
@@ -366,6 +390,9 @@ Validates a resource group deployment.
 ### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
 Validates a deployment at tenant scope.
 
+### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
+Unregisters an Azure provider feature in your account.
+
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
@@ -383,4 +410,3 @@ Updates a Management Group
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.
-

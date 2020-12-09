@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for WorkerSizeOptions.</summary>
+    /// <summary>Size of the machines.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptionsTypeConverter))]
     public partial struct WorkerSizeOptions :
         System.Management.Automation.IArgumentCompleter

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for SolutionType.</summary>
+    /// <summary>Type of Solution</summary>
     public partial class SolutionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

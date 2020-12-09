@@ -61,7 +61,7 @@ This command gets a specified reference data set.
 ### Example 3: Get a specified reference data set by object
 ```powershell
 PS C:\> $ds = Get-AzTimeSeriesInsightsReferenceDataSet -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x -Name tsirdsqwufij 
-PS C:\>Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
+PS C:\> Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
 
 Location Name         Type
 -------- ----         ----
@@ -172,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 
 ## NOTES
 

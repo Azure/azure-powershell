@@ -1929,6 +1929,7 @@
     "Remove-AzRoleAssignment": "Remove-AzureRmRoleAssignment",
     "Get-AzRoleAssignment": "Get-AzureRmRoleAssignment",
     "New-AzRoleAssignment": "New-AzureRmRoleAssignment",
+    "Set-AzRoleAssignment": "Set-AzureRmRoleAssignment",
     "Get-AzRoleDefinition": "Get-AzureRmRoleDefinition",
     "New-AzRoleDefinition": "New-AzureRmRoleDefinition",
     "Set-AzRoleDefinition": "Set-AzureRmRoleDefinition",

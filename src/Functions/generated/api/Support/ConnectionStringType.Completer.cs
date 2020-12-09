@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for ConnectionStringType.</summary>
+    /// <summary>Type of database.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ConnectionStringTypeTypeConverter))]
     public partial struct ConnectionStringType :
         System.Management.Automation.IArgumentCompleter

@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
+        protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventhubResourceIdParameterSet = "EventhubResourceIdParameterSet";
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+        protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -90,6 +92,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
 
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
+
+        //Parametersets for Authorizationrules
+        protected const string ClusterPropertiesParameterSet = "ClusterPropertiesSet";
+        protected const string ClusterGetPropertiesParameterSet = "ClusterGetPropertiesSet";
+        protected const string ClusterListPropertiesParameterSet = "ClusterListPropertiesSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
@@ -118,8 +125,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string Basic = "Basic";
             internal const string Standard = "Standard";
             internal const string Premium = "Premium";
-        }
-
+        }        
         protected struct RegeneKeys
         {
             internal const string PrimaryKey = "PrimaryKey";

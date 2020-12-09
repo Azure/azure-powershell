@@ -15,7 +15,7 @@ while(-not $mockingPath) {
 Describe 'Restore-AzMariaDbServer' {
     It 'PointInTimeRestore' {
         $restoreMariaDbName = $env.rstrgp02 + 'rst01'
-        $restorePointInTime = [datetime]::parse($env.restorePointInTime)
+        $restorePointInTime = (Get-Date).AddMinutes(-1)
         #-UsePointInTimeRestore
         Restore-AzMariaDBServer -Name $restoreMariaDbName -ServerName $env.rstrgp02 -ResourceGroupName $env.ResourceGroup -RestorePointInTime $restorePointInTime -Location $env.Location
         $restoreMariaDb = Get-AzMariaDBServer -Name $restoreMariaDbName -ResourceGroup $env.ResourceGroup
@@ -23,7 +23,7 @@ Describe 'Restore-AzMariaDbServer' {
     }
     It 'PointInTimeRestoreServerObject' {
         $restoreMariaDbName = $env.rstrgp02 +'rst12'
-        $restorePointInTime = [datetime]::parse($env.restorePointInTime)
+        $restorePointInTime = (Get-Date).AddMinutes(-1)
         $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $env.rstrgp02
         #-UsePointInTimeRestore
         Restore-AzMariaDBServer -Name $restoreMariaDbName -InputObject $mariadb -RestorePointInTime $restorePointInTime -Location $env.Location
@@ -37,7 +37,7 @@ Describe 'Restore-AzMariaDbServer' {
         $geoMariaDbName = $dbname + '-geo01' 
         $repMariaDbName = $dbname + '-geo01rep01'
         $location = 'eastus2'
-        New-AzMariaDbServerReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
+        New-AzMariaDbReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
         Restore-AzMariaDBServer -Name $geoMariaDbName -ServerName $repMariaDbName -ResourceGroupName $env.ResourceGroup -UseGeoRetore -Location $location
         $geoMariaDb = Get-AzMariaDBServer -Name $geoMariaDbName -ResourceGroupName $env.ResourceGroup
         $geoMariaDb.Name | Should -Be $geoMariaDbName
@@ -49,7 +49,7 @@ Describe 'Restore-AzMariaDbServer' {
         $geoMariaDbName = $dbname + '-geo02' 
         $repMariaDbName = $dbname + '-geo02rep01'
         $location = 'eastus2'
-        New-AzMariaDbServerReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
+        New-AzMariaDbReplica -Name $repMariaDbName -ServerName $dbname -ResourceGroupName $env.ResourceGroup
         $mariadb = Get-AzMariaDbServer -ResourceGroupName $env.ResourceGroup -Name $repMariaDbName
         Restore-AzMariaDBServer -Name $geoMariaDbName -InputObject $mariadb -UseGeoRetore -Location $location
         $geoMariaDb = Get-AzMariaDBServer -Name $geoMariaDbName -ResourceGroupName $env.ResourceGroup

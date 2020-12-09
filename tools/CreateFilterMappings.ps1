@@ -148,7 +148,7 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @( "Authentication", "Authentication.ResourceManager", "Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @("Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
@@ -220,7 +220,7 @@ function Create-ModuleMappings
     $Script:ModuleMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $Key = "src/$($ServiceFolder.Name)"
+        $Key = "src/$($ServiceFolder.Name)/"
         $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -notlike "*.Test*" -and `
                                                                                                                       $_.FullName -notlike "*Release*" -and `
                                                                                                                       $_.FullName -notlike "*Debug*" -and `

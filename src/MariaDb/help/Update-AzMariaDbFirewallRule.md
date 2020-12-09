@@ -19,6 +19,19 @@ Update-AzMariaDbFirewallRule -Name <String> -ResourceGroupName <String> -ServerN
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ClientIPAddress
+```
+Update-AzMariaDbFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> -EndIPAddress <String> -StartIPAddress <String>
@@ -30,16 +43,40 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: Update MariaDb firewall rule
+### Example 1: Update MariaDB firewall rule
 ```powershell
 PS C:\> Update-AzMariaDbFirewallRule -Name fr-cfgl3y -ServerName mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StartIPAddress 0.0.3.1 -EndIPAddress 0.0.3.255
 
-Name      Type
-----      ----
-fr-cfgl3y Microsoft.DBforMariaDB/servers/firewallRules
+Name      StartIPAddress EndIPAddress
+----      -------------- ------------
+fr-cfgl3y 0.0.3.1        0.0.3.255
 ```
 
-This command updates a MariaDb firewall rule.
+This command updates a MariaDB firewall rule.
+
+### Example 2: Update MariaDB Firewall Rule by identity.
+```powershell
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/mariadb-test-qu5ov0/providers/Microsoft.DBforMariaDB/servers/mariadb-test-4rmtig/firewallRules/fr-cfgl3y"
+PS C:\> Update-AzMariaDbFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
+
+Name      StartIPAddress EndIPAddress
+----      -------------- ------------
+fr-cfgl3y 0.0.0.2        0.0.0.3
+```
+
+The cmdlet updates MariaDB Firewall Rule by identity.
+
+### Example 3: Update MariaDB Firewall Rule by -ClientIPAddress.
+```powershell
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/mariadb-test-qu5ov0/providers/Microsoft.DBforMariaDB/servers/mariadb-test-4rmtig/firewallRules/fr-cfgl3y"
+PS C:\> Update-AzMariaDbFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+
+Name      StartIPAddress EndIPAddress
+----      -------------- ------------
+fr-cfgl3y 0.0.0.2        0.0.0.2
+```
+
+The cmdlet updates MariaDB Firewall Rule by -ClientIPAddress.
 
 ## PARAMETERS
 
@@ -52,6 +89,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress, ClientIPAddressViaIdentity
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -79,7 +132,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -95,7 +148,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -110,7 +163,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases: FirewallRuleName
 
 Required: True
@@ -141,7 +194,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,7 +209,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -172,7 +225,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -187,7 +240,7 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: False
@@ -244,6 +297,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 

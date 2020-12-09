@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 
     /// <summary>Update access policies in a key vault in the specified subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Vaults_UpdateAccessPolicy=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/accessPolicies/{operationKind}"
+    /// [OpenAPI] UpdateAccessPolicy=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/accessPolicies/{operationKind}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzVaultAccessPolicy_UpdateExpanded", SupportsShouldProcess = true)]

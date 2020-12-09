@@ -56,7 +56,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(hostGroupName))
                 {
-                    var result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
+                    DedicatedHostGroup result;
+                    if (this.InstanceView.IsPresent)
+                    {
+                        result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName, InstanceViewTypes.InstanceView);
+                    }
+                    else 
+                    {
+                        result = DedicatedHostGroupsClient.Get(resourceGroupName, hostGroupName);
+                    }
                     var psObject = new PSHostGroup();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHostGroup, PSHostGroup>(result, psObject);
                     WriteObject(psObject);
@@ -120,6 +128,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/hostGroups", "ResourceGroupName")]
         public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory=false
+        )]
+        public SwitchParameter InstanceView { get; set; } = false;
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

@@ -42,7 +42,7 @@ policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsaccesspolicy
 #>
 function Get-AzTimeSeriesInsightsAccessPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -216,7 +216,7 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
@@ -239,7 +239,7 @@ DataAccessId                        : 3de1d1e1-4f9b-4bc6-aad3-a835597dcd86
 Id                                  : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/ 
                                       tsill
 IngressState                        :
-Kind                                : LongTerm
+Kind                                : Gen2
 Location                            : EastUs
 Name                                : tsill
 PropertyUsageState                  :
@@ -262,7 +262,7 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
@@ -278,7 +278,7 @@ StorageLimitExceededBehavior : PurgeOldData
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
 Type                         : Microsoft.TimeSeriesInsights/Environments
 .Example
-PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x 
+PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -Name tsi-envv8u56x 
 PS C:\> Get-AzTimeSeriesInsightsEnvironment -InputObject $env
 
 DataAccessFqdn               : d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com
@@ -286,7 +286,7 @@ DataAccessId                 : d76a61f2-8a30-41a5-9587-f241eb9b48d9
 DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-i01k5l/providers/Microsoft.TimeSeriesInsights/environments/tsi-envv8u56x
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus2
 Name                         : tsi-envv8u56x
 PartitionKeyProperty         :
@@ -305,7 +305,7 @@ Type                         : Microsoft.TimeSeriesInsights/Environments
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -323,7 +323,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsenvironment
 #>
 function Get-AzTimeSeriesInsightsEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -537,7 +537,7 @@ Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -555,7 +555,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightseventsource
 #>
 function Get-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -717,7 +717,7 @@ Location Name      Type
 eastus   dstest001 Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets
 .Example
 PS C:\> $ds = Get-AzTimeSeriesInsightsReferenceDataSet -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x -Name tsirdsqwufij 
-PS C:\>Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
+PS C:\> Get-AzTimeSeriesInsightsReferenceDataSet -InputObject $ds
 
 Location Name         Type
 -------- ----         ----
@@ -726,7 +726,7 @@ eastus2  tsirdsqwufij Microsoft.TimeSeriesInsights/Environments/ReferenceDataSet
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -744,7 +744,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
 #>
 function Get-AzTimeSeriesInsightsReferenceDataSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -899,12 +899,12 @@ Name      Type
 policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
 #>
 function New-AzTimeSeriesInsightsAccessPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1067,7 +1067,7 @@ Location Name      Type
 eastus   dstest001 Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1080,7 +1080,7 @@ KEYPROPERTY <IReferenceDataSetKeyProperty[]>: The list of key properties for the
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsreferencedataset
 #>
 function New-AzTimeSeriesInsightsReferenceDataSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1111,7 +1111,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetKeyProperty[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]]
     # The list of key properties for the reference data set.
     # To construct, see NOTES section for KEYPROPERTY properties and create a hash table.
     ${KeyProperty},
@@ -1133,7 +1133,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
@@ -1957,7 +1957,7 @@ Name      Type
 ----      ----
 policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies
 .Example
-PS C:\> $policy = Get-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName $env.resourceGroup -Name policy001
+PS C:\> $policy = Get-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name policy001
 PS C:\> Update-AzTimeSeriesInsightsAccessPolicy -InputObject $policy -Role Contributor
 
 Name      Type
@@ -1967,7 +1967,7 @@ policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1985,7 +1985,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsaccesspolicy
 #>
 function Update-AzTimeSeriesInsightsAccessPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IAccessPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2142,7 +2142,7 @@ Updates the environment with the specified name in the specified subscription an
 .Description
 Updates the environment with the specified name in the specified subscription and resource group.
 .Example
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Capacity 5 -Sku S1
+PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -2150,7 +2150,7 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
@@ -2167,7 +2167,7 @@ Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsi
 Type                         : Microsoft.TimeSeriesInsights/Environments
 .Example
 PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
-PS C:\> PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Capacity 6 -Sku S1
+PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -2175,13 +2175,13 @@ DataRetentionTime            : 1.01:25:00
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/tsitest 
                                001
 IngressState                 :
-Kind                         : Standard
+Kind                         : Gen1
 Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
 PropertyUsageState           :
 Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
-SkuCapacity                  : 6
+SkuCapacity                  : 5
 SkuName                      : S1
 StateDetailCode              :
 StateDetailCurrentCount      :
@@ -2194,7 +2194,7 @@ Type                         : Microsoft.TimeSeriesInsights/Environments
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2208,15 +2208,11 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ReferenceDataSetName <String>]: Name of the reference data set.
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
-
-PARTITIONKEYPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties which will be used to partition data in the environment.
-  [Name <String>]: The name of the property.
-  [Type <PropertyType?>]: The type of the property.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsenvironment
 #>
 function Update-AzTimeSeriesInsightsEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2248,44 +2244,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [System.Int32]
-    # The capacity of the sku.
-    # For standard environments, this value can be changed to support scale out of environments after they have been created.
-    ${Capacity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [System.TimeSpan]
-    # ISO8601 timespan specifying the minimum number of days the environment's events will be available for query.
-    ${DataRetentionTime},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]]
-    # The list of event properties which will be used to partition data in the environment.
-    # To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
-    ${PartitionKeyProperty},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName])]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName]
-    # The name of this SKU.
-    ${Sku},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior])]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior]
-    # The behavior the Time Series Insights service should take when the environment's capacity has been exceeded.
-    # If "PauseIngress" is specified, new events will not be read from the event source.
-    # If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment.
-    # The default behavior is PurgeOldData.
-    ${StorageLimitExceededBehavior},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the environment.
     ${Tag},
@@ -2424,8 +2383,8 @@ Tag                   : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Mo
 TimestampPropertyName :
 Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 .Example
-PS C:\>$es = Get-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name iots001
-PS C:\> Update-AzTimeSeriesInsightsEventSource -InputObject -Tag @{"tgb"="002"}
+PS C:\> $es = Get-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name iots001
+PS C:\> Update-AzTimeSeriesInsightsEventSource -InputObject $es -Tag @{"tgb"="002"}
 
 ConsumerGroupName     : testgroup2
 EventSourceResourceId : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup2/providers/Microsoft.Devices/IotHubs/iotname001
@@ -2442,7 +2401,7 @@ Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2460,7 +2419,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
 #>
 function Update-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2498,7 +2457,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the event source.
     ${Tag},
@@ -2627,7 +2586,7 @@ eastus   dstest001 Microsoft.TimeSeriesInsights/Environments/ReferenceDataSets
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2645,7 +2604,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsreferencedataset
 #>
 function Update-AzTimeSeriesInsightsReferenceDataSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2683,7 +2642,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IReferenceDataSetUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the reference data set.
     ${Tag},
@@ -2797,23 +2756,22 @@ Create an environment in the specified subscription and resource group.
 Create an environment in the specified subscription and resource group.
 .Example
 PS C:\> $TimeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Standard -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Gen1 -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-Standard eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
+Gen1 eastus   tsitest001 2           S1      Microsoft.TimeSeriesInsights/Environments
 .Example
-PS C:\> New-AzStorageAccount -ResourceGroupName testgroup -AccountName staccount001 -Location eastus -SkuName Standard_GRS
 PS C:\> $ks = Get-AzStorageAccountKey -ResourceGroupName "testgroup" -Name "staccount001"
-PS C:\> $k  = $ks[0] | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind LongTerm -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
+PS C:\> $k  = $ks[0].Value | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind Gen2 -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
 
 Kind     Location Name       SkuCapacity SkuName Type
 ----     -------- ----       ----------- ------- ----
-LongTerm eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
+Gen2 eastus   tsitest002 1           L1      Microsoft.TimeSeriesInsights/Environments
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2830,8 +2788,8 @@ TIMESERIESIDPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties whi
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEnvironmentResource])]
-[CmdletBinding(DefaultParameterSetName='standard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
+[CmdletBinding(DefaultParameterSetName='Gen1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('EnvironmentName')]
@@ -2854,7 +2812,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Standard', 'LongTerm')})]
+    [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Gen1', 'Gen2')})]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind]
     # The kind of the environment.
@@ -2873,27 +2831,27 @@ param(
     # The name of this SKU.
     ${Sku},
 
-    [Parameter(ParameterSetName='standard', Mandatory)]
+    [Parameter(ParameterSetName='Gen1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.Int32]
     # The capacity of the sku.
-    # For standard environments, this value can be changed to support scale out of environments after they have been created.
+    # For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
     ${Capacity},
 
-    [Parameter(ParameterSetName='standard', Mandatory)]
+    [Parameter(ParameterSetName='Gen1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.TimeSpan]
     # The data retention time.
     ${DataRetentionTime},
 
-    [Parameter(ParameterSetName='standard')]
+    [Parameter(ParameterSetName='Gen1')]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
     # The list of event properties which will be used to partition data in the environment.
     # To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
     ${PartitionKeyProperty},
 
-    [Parameter(ParameterSetName='standard')]
+    [Parameter(ParameterSetName='Gen1')]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.String]
     # The behavior the Time Series Insights service should take when the environment's capacity has been exceeded
@@ -2901,31 +2859,31 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},
 
-    [Parameter(ParameterSetName='longterm', Mandatory)]
+    [Parameter(ParameterSetName='Gen2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ITimeSeriesIdProperty[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
     # The list of event properties which will be used to define the environment's time series id.
     # To construct, see NOTES section for TIMESERIESIDPROPERTY properties and create a hash table.
     ${TimeSeriesIdProperty},
 
-    [Parameter(ParameterSetName='longterm', Mandatory)]
+    [Parameter(ParameterSetName='Gen2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.String]
     # The name of the storage account that will hold the environment's long term data.
     ${StorageAccountName},
 
-    [Parameter(ParameterSetName='longterm', Mandatory)]
+    [Parameter(ParameterSetName='Gen2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.Security.SecureString]
     # The value of the management key that grants the Time Series Insights service write access to the storage account.
     ${StorageAccountKey},
 
-    [Parameter(ParameterSetName='longterm')]
+    [Parameter(ParameterSetName='Gen2')]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
     [System.TimeSpan]
     # ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
@@ -2999,10 +2957,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            standard = 'Az.TimeSeriesInsights.custom\New-AzTimeSeriesInsightsEnvironment';
-            longterm = 'Az.TimeSeriesInsights.custom\New-AzTimeSeriesInsightsEnvironment';
+            Gen1 = 'Az.TimeSeriesInsights.custom\New-AzTimeSeriesInsightsEnvironment';
+            Gen2 = 'Az.TimeSeriesInsights.custom\New-AzTimeSeriesInsightsEnvironment';
         }
-        if (('standard', 'longterm') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Gen1', 'Gen2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3051,32 +3009,32 @@ Create an event source under the specified environment.
 .Description
 Create an event source under the specified environment.
 .Example
-PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup2 -NamespaceName spacename001 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
-PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup2 -NamespaceName spacename001 -AuthorizationRuleName RootManageSharedAccessKey
+PS C:\> New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
+PS C:\> $ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
 PS C:\> $k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename001 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Kind               Location Name      Type
 ----               -------- ----      ----
 Microsoft.EventHub eastus   estest001 Microsoft.TimeSeriesInsights/Environments/EventSources
 .Example
-PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup2 -Location eastus -Name iotname001 -SkuName S1 -Units 100
-PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup2 -Name iotname001
+PS C:\> $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
+PS C:\> $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
 PS C:\> $k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 
--EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup2 -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
+PS C:\> New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 
 Location Name    Type                                                   Kind
 -------- ----    ----                                                   ----
 eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsoft.IoTHub
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource
+Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
 [CmdletBinding(DefaultParameterSetName='eventhub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3156,7 +3114,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
     [System.Collections.Hashtable]
     # Key-value pairs of additional properties for the resource.
     ${Tag},

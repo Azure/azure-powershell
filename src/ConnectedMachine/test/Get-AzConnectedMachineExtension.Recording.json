@@ -1,0 +1,80 @@
+{
+  "Get-AzConnectedMachineExtension+[NoContext]+List all extensions+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions?api-version=2020-08-02+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions?api-version=2020-08-02",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "f763bd1c-a54c-4a43-a4d4-f0cad8c8b502" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "342a47b1-4a9e-4100-b2bb-90b14c26d248" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "9b8fbb23-3ddc-4205-9afa-1493ac1ff643" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20200911T033245Z:9b8fbb23-3ddc-4205-9afa-1493ac1ff643" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Sep 2020 03:32:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1667" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions/custom1\",\"name\":\"custom1\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.9\",\"autoUpgradeMinorVersion\":false,\"settings\":{\"commandToExecute\":\"dir\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.9\",\"status\":{\"code\":\"success\",\"level\":\"Information\",\"message\":\"formattedMessage: Command execution finished, StdOut:  Volume in drive C is OSDisk\\r\\n Volume Serial Number is 1A6C-AF4E\\r\\n\\r\\n Directory of C:\\\\Packages\\\\Plugins\\\\custom1\\\\1.10.9\\\\Downloads\\\\0\\r\\n\\r\\n09/10/2020  08:26 PM    \u003cDIR\u003e          .\\r\\n09/10/2020  08:26 PM    \u003cDIR\u003e          ..\\r\\n               0 File(s)              0 bytes\\r\\n               2 Dir(s)  350,639,656,960 bytes free\\r\\n\"}}}},{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions/custom2\",\"name\":\"custom2\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Azure.Monitoring.DependencyAgent\",\"type\":\"DependencyAgentWindows\",\"typeHandlerVersion\":\"9.10.5.10940\",\"autoUpgradeMinorVersion\":false,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom2\",\"type\":\"DependencyAgentWindows\",\"typeHandlerVersion\":\"9.10.5.10940\",\"status\":{\"code\":\"success\",\"level\":\"Information\",\"message\":\"\"}}}}]}"
+    }
+  },
+  "Get-AzConnectedMachineExtension+[NoContext]+Get a specific extension+$GET+https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions/custom1?api-version=2020-08-02+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions/custom1?api-version=2020-08-02",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "87cc41b3-3f88-4030-b3f7-2b65d25afb52" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "277da8e1-b127-4c1b-8b58-8d76b1b97937" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "92867c1d-06e3-4142-a60a-5ec5458635d3" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20200911T033245Z:92867c1d-06e3-4142-a60a-5ec5458635d3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Sep 2020 03:32:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1024" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/connectedmachine-rg-uh0x1q/providers/Microsoft.HybridCompute/machines/cujhyl/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.9\",\"autoUpgradeMinorVersion\":false,\"settings\":{\"commandToExecute\":\"dir\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.9\",\"status\":{\"code\":\"success\",\"level\":\"Information\",\"message\":\"formattedMessage: Command execution finished, StdOut:  Volume in drive C is OSDisk\\r\\n Volume Serial Number is 1A6C-AF4E\\r\\n\\r\\n Directory of C:\\\\Packages\\\\Plugins\\\\custom1\\\\1.10.9\\\\Downloads\\\\0\\r\\n\\r\\n09/10/2020  08:26 PM    \u003cDIR\u003e          .\\r\\n09/10/2020  08:26 PM    \u003cDIR\u003e          ..\\r\\n               0 File(s)              0 bytes\\r\\n               2 Dir(s)  350,639,656,960 bytes free\\r\\n\"}}}}"
+    }
+  }
+}

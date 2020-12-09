@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     /// </summary>
     public static class ResourceIdUtility
     {
+        private static readonly Regex ManagementGroupRegex =
+            new Regex(@"^\/?providers\/Microsoft.Management\/managementGroups\/(?<managementGroupId>[\w\d_\.\(\)-]+)", RegexOptions.IgnoreCase);
+
         private static readonly Regex SubscriptionRegex =
-            new Regex(@"^\/?subscriptions\/(?<subscriptionId>[a-f0-9-]+)", RegexOptions.IgnoreCase);
+            new Regex(@"^\/?subscriptions\/(?<subscriptionId>[\w\d-]+)", RegexOptions.IgnoreCase);
 
         private static readonly Regex ResourceGroupRegex =
             new Regex(@"^\/resourceGroups\/(?<resourceGroupName>[-\w\._\(\)]+)", RegexOptions.IgnoreCase);
@@ -308,47 +311,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Parses a fully qualified resource ID.
+        /// Split a fully qualified resource identifier into two parts (resource scope, relative resource identifier).
         /// </summary>
-        /// <param name="fullyQualifiedResourceId">The fully qualified resource ID to parse. Only subscription resource IDs are supported for now.</param>
-        /// <returns>The resource scope and the relative resource ID (resource provider/name).</returns>
-        public static (string scope, string relativeResourceId) ParseResourceId(string fullyQualifiedResourceId)
+        /// <param name="fullyQualifiedResourceId">The fully qualified resource identifier to split.</param>
+        /// <returns>The resource scope and the relative resource identifier.</returns>
+        public static (string scope, string relativeResourceId) SplitResourceId(string fullyQualifiedResourceId)
         {
             string remaining = fullyQualifiedResourceId;
 
-            // Parse subscriptionId.
+            Match managementGroupMatch = ManagementGroupRegex.Match(remaining);
+            string managementGroupId = managementGroupMatch.Groups["managementGroupId"].Value;
+            remaining = remaining.Substring(managementGroupMatch.Length);
+
             Match subscriptionMatch = SubscriptionRegex.Match(remaining);
             string subscriptionId = subscriptionMatch.Groups["subscriptionId"].Value;
             remaining = remaining.Substring(subscriptionMatch.Length);
 
-            // Parse resourceGroupName.
             Match resourceGroupMatch = ResourceGroupRegex.Match(remaining);
             string resourceGroupName = resourceGroupMatch.Groups["resourceGroupName"].Value;
             remaining = remaining.Substring(resourceGroupMatch.Length);
 
-            // Parse relativeResourceId.
             Match relativeResourceIdMatch = RelativeResourceIdRegex.Match(remaining);
             string relativeResourceId = relativeResourceIdMatch.Groups["relativeResourceId"].Value;
 
-            // The resourceId represents a resource group as a resource with
-            // the format /subscription/{subscriptionId}/resourceGroups/{resourceGroupName},
-            // which is a subscription-level resource ID. The resourceGroupName should belong to
-            // the relativePath but not the scope.
-            if (subscriptionMatch.Success && resourceGroupMatch.Success && !relativeResourceIdMatch.Success)
+            if (managementGroupMatch.Success)
             {
-                relativeResourceId = $"resourceGroups/{resourceGroupName}";
-                resourceGroupName = string.Empty;
+                return relativeResourceIdMatch.Success
+                    ? ($"/providers/Microsoft.Management/ManagementGroups/{managementGroupId}", relativeResourceId)
+                    : ("/", $"Microsoft.Management/ManagementGroups/{managementGroupId}");
             }
 
-            // Construct scope.
-            string scope = $"/subscriptions/{subscriptionId.ToLowerInvariant()}";
-
-            if (!string.IsNullOrEmpty(resourceGroupName))
+            if (subscriptionMatch.Success)
             {
-                scope += $"/resourceGroups/{resourceGroupName}";
+                if (resourceGroupMatch.Success)
+                {
+                    return relativeResourceIdMatch.Success
+                        ? ($"/subscriptions/{subscriptionId.ToLowerInvariant()}/resourceGroups/{resourceGroupName}", relativeResourceId)
+                        : ($"/subscriptions/{subscriptionId.ToLowerInvariant()}", $"resourceGroups/{resourceGroupName}");
+                }
+
+                return ($"/subscriptions/{subscriptionId.ToLowerInvariant()}", relativeResourceId);
             }
 
-            return (scope, relativeResourceId);
+            return ("/", relativeResourceId);
         }
 
         /// <summary>

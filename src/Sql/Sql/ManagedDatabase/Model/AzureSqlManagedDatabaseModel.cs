@@ -99,6 +99,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string LongTermRetentionBackupResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the autocomplete restore flag
+        /// </summary>
+        public bool? AutoCompleteRestore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last backup name
+        /// </summary>
+        public string LastBackupName { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -134,6 +144,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             RecoverableDatabaseId = database.RecoverableDatabaseId;
             RestorableDroppedDatabaseId = database.RestorableDroppedDatabaseId;
             LongTermRetentionBackupResourceId = database.LongTermRetentionBackupResourceId;
+            AutoCompleteRestore = database.AutoCompleteRestore;
+            LastBackupName = database.LastBackupName;
         }
     }
 }

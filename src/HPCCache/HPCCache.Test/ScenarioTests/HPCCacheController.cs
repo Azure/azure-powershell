@@ -86,6 +86,26 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Gets storage management client.
+        /// </summary>
+        static public IRecordMatcher GetRecordMatcher()
+        {
+            var d = new Dictionary<string, string>
+            {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Network", null },
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" },
+                { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10" },
+            };
+            return new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+        }
+
+        /// <summary>
         /// RunPsTestWorkflow.
         /// </summary>
         /// <param name="logger">logger.</param>
@@ -103,18 +123,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
             Action initialize = null)
         {
             this.helper.TracingInterceptor = logger;
-            var d = new Dictionary<string, string>
-            {
-                { "Microsoft.Resources", null },
-                { "Microsoft.Features", null },
-                { "Microsoft.Authorization", null },
-            };
-            var providersToIgnore = new Dictionary<string, string>
-            {
-                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" },
-                { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10" },
-            };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = GetRecordMatcher();
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (var context = new HpcCacheTestContext(callingClassType, mockName))
             {

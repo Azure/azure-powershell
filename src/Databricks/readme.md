@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -109,17 +109,48 @@ directive:
       parameter-name: RequireInfrastructureEncryptionValue
     set:
       parameter-name: RequireInfrastructureEncryption
-  # Remove the set-* cmdlet
   - where:
-      verb: Set
-    remove: true
-  # Hide the New-* cmdlet for customization
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name 
+  # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      verb: New
+      subject: VNetPeering
+      parameter-name: DatabrickVirtualNetworkId 
+    set:
+      parameter-name: DatabricksVirtualNetworkId 
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: Workspace
+    remove: true
+  # Hide the New Workspace cmdlet for customization
+  - where:
+      verb: New
+      subject: Workspace
     hide: true
-  # Hide the Update- cmdlet for customization
+  # Hide the Update Workspace cmdlet for customization
   - where:
       verb: Update
+      subject: Workspace
+    hide: true
+  # Hide the Set VNetPeering cmdlet for customization
+  - where:
+      verb: Set
+      subject: VNetPeering
     hide: true
   - where:
       model-name: Workspace
@@ -162,8 +193,5 @@ directive:
       property-name: RequireInfrastructureEncryptionValue
     set:
       property-name: RequireInfrastructureEncryption
-  # Remove vnet peering cmdlets (not in scope)
-  - where:
-      subject: VNetPeering
-    remove: true
+
 ```

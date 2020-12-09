@@ -108,6 +108,20 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
+        [Parameter(
+    Mandatory = true,
+    ParameterSetName = "SetByResourceIdPublicIpAddressPrefix",
+    HelpMessage = "The reference of the Public IP Prefix resource.",
+    ValueFromPipelineByPropertyName = true)]
+        public string PublicIpAddressPrefixId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourcePublicIpAddressPrefix",
+            HelpMessage = "The reference of the Public IP Prefix resource.",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public PSPublicIpPrefix PublicIpAddressPrefix { get; set; }
 
         public override void Execute()
         {
@@ -127,6 +141,15 @@ namespace Microsoft.Azure.Commands.Network
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
                 }
             }
+
+            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressPrefix"))
+            {
+                if (this.PublicIpAddressPrefix != null)
+                {
+                    this.PublicIpAddressPrefixId = this.PublicIpAddressPrefix.Id;
+                }
+            }
+
             var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
 
             vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
@@ -159,6 +182,15 @@ namespace Microsoft.Azure.Commands.Network
                     vFrontendIpConfigurations.PublicIpAddress = new PSPublicIpAddress();
                 }
                 vFrontendIpConfigurations.PublicIpAddress.Id = this.PublicIpAddressId;
+            }
+            if (!string.IsNullOrEmpty(this.PublicIpAddressPrefixId))
+            {
+                // PublicIpAddressPrefix
+                if (vFrontendIpConfigurations.PublicIPPrefix == null)
+                {
+                    vFrontendIpConfigurations.PublicIPPrefix = new PSPublicIpPrefix();
+                }
+                vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
             }
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",

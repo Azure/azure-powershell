@@ -12,6 +12,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SparkSql = "sql";
 
+        public const string Python = "python";
+
+        public const string Scala = "scala";
+
+        public const string CSharp = "csharp";
+
         public static string Parse(string language)
         {
             switch (language?.ToLower())

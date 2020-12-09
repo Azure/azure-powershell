@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Management.Sql.Models.LongTermRetentionDatabaseState.All, Management.Sql.Models.LongTermRetentionDatabaseState.Deleted, Management.Sql.Models.LongTermRetentionDatabaseState.Live,
+        [ValidateSet("All", "Deleted", "Live",
             IgnoreCase = true)]
         public string DatabaseState { get; set; }
 

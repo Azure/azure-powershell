@@ -12,27 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to change current Azure context.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = ContextParameterSet,SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = ContextParameterSet, SupportsShouldProcess = true)]
     [Alias("Select-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Subscription")]
     [OutputType(typeof(PSAzureContext))]
     public class SetAzureRMContextCommand : AzureContextModificationCmdlet
@@ -86,9 +84,9 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
                         {
-                            profile.SetContextWithCache(new AzureContext(Context.Subscription,
+                            profile.TrySetDefaultContext(name, new AzureContext(Context.Subscription,
                               Context.Account,
-                              Context.Environment, Context.Tenant), name);
+                                Context.Environment, Context.Tenant));
                             CompleteContextProcessing(profile);
                         });
                 }

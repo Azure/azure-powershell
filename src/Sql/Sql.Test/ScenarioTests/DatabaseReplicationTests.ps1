@@ -19,7 +19,7 @@
 function Test-CreateDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -67,10 +67,10 @@ function Test-CreateDatabaseCopy()
 function Test-CreateVcoreDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
-	$db = Create-VcoreDatabaseForTest $rg $server 1 BasePrice
+	$db = Create-VcoreDatabaseForTest $rg $server 2 BasePrice
 
 	try
 	{
@@ -121,7 +121,7 @@ function Test-CreateVcoreDatabaseCopy()
 function Test-CreateSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -162,33 +162,44 @@ function Test-CreateSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
+	$hsDatabase = Create-HyperscaleDatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{
-		# Create Named Readable Secondary
-		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All
-		Assert-NotNull $readSecondary.LinkId
-		Assert-AreEqual $readSecondary.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $readSecondary.ServerName $server.ServerName
-		Assert-AreEqual $readSecondary.DatabaseName $database.DatabaseName
-		Assert-AreEqual $readSecondary.Role "Primary"
-		Assert-AreEqual $readSecondary.Location $location
-		Assert-AreEqual $readSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
-		Assert-AreEqual $readSecondary.PartnerServerName $partServer.ServerName
-		Assert-AreEqual $readSecondary.PartnerDatabaseName "secondary"
-		Assert-NotNull $readSecondary.PartnerRole
-		Assert-AreEqual $readSecondary.PartnerLocation $location
-		Assert-NotNull $readSecondary.AllowConnections
-		Assert-NotNull $readSecondary.ReplicationState
-		Assert-NotNull $readSecondary.PercentComplete
+		# Create Geo Secondary
+		$geoSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All -SecondaryType "Geo"
+		Assert-NotNull $geoSecondary.LinkId
+		Assert-AreEqual $geoSecondary.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $geoSecondary.ServerName $server.ServerName
+		Assert-AreEqual $geoSecondary.DatabaseName $database.DatabaseName
+		Assert-AreEqual $geoSecondary.Role "Primary"
+		Assert-AreEqual $geoSecondary.Location $location
+		Assert-AreEqual $geoSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
+		Assert-AreEqual $geoSecondary.PartnerServerName $partServer.ServerName
+		Assert-AreEqual $geoSecondary.PartnerDatabaseName "secondary"
+		Assert-NotNull $geoSecondary.PartnerRole
+		Assert-AreEqual $geoSecondary.PartnerLocation $location
+		Assert-NotNull $geoSecondary.AllowConnections
+		Assert-NotNull $geoSecondary.ReplicationState
+		Assert-NotNull $geoSecondary.PercentComplete
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName "secondary"
+		Assert-AreEqual "Geo" $newDb.SecondaryType
+
+		# Create Named Replica
+		$namedReplica = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $hsDatabase.DatabaseName `
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named"
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName "secondary"
+		Assert-AreEqual "Named" $newDb.SecondaryType
 	}
 	finally
 	{
@@ -204,7 +215,7 @@ function Test-CreateNamedSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabaseNegative()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -238,7 +249,7 @@ function Test-CreateNamedSecondaryDatabaseNegative()
 function Test-GetReplicationLink()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -283,7 +294,7 @@ function Test-GetReplicationLink()
 function Test-RemoveSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -314,7 +325,7 @@ function Test-RemoveSecondaryDatabase()
 function Test-FailoverSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -350,13 +361,87 @@ function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
 }
 
+<#
+	.SYNOPSIS
+	Creates test database
+#>
+function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
+{
+	$databaseName = Get-DatabaseName
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType
+}
 
 <#
 	.SYNOPSIS
 	Creates test database
 #>
-function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 1, $licenseType = "LicenseIncluded")
+function Create-HyperscaleDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType
+}
+
+<#
+	.SYNOPSIS
+	Creates test database with BackupStorageRedundancy
+#>
+function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
+{
+	# Setup
+	$location = "eastus"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server "Standard"
+
+	$copyRg = Create-ResourceGroupForTest $location
+	$copyServer = Create-ServerForTest $copyRg $location
+	$copyDatabaseName = Get-DatabaseName
+
+	try
+	{
+		# Create a local database copy
+		$dbLocalCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy zone
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $copyDatabaseName
+		Assert-AreEqual "Zone" $newDb.BackupStorageRedundancy 
+
+		# Create a cross server copy
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $copyRg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a secondary database
+#>
+function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
+{
+	# Setup
+    $location = "westcentralus"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $location
+
+	try
+	{
+		# Create Readable Secondary
+		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy local
+
+		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
+		Assert-AreEqual $secondaryDb.BackupStorageRedundancy "Local"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
 }

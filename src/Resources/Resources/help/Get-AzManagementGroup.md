@@ -161,7 +161,7 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: GetOperation
-Aliases:
+Aliases: GroupId
 
 Required: True
 Position: 0

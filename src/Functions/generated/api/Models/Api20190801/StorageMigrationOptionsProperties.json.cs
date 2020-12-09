@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             {_azurefilesConnectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azurefilesConnectionString"), out var __jsonAzurefilesConnectionString) ? (string)__jsonAzurefilesConnectionString : (string)AzurefilesConnectionString;}
             {_azurefilesShare = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azurefilesShare"), out var __jsonAzurefilesShare) ? (string)__jsonAzurefilesShare : (string)AzurefilesShare;}
-            {_blockWriteAccessToSite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("blockWriteAccessToSite"), out var __jsonBlockWriteAccessToSite) ? (bool?)__jsonBlockWriteAccessToSite : BlockWriteAccessToSite;}
             {_switchSiteAfterMigration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("switchSiteAfterMigration"), out var __jsonSwitchSiteAfterMigration) ? (bool?)__jsonSwitchSiteAfterMigration : SwitchSiteAfterMigration;}
+            {_blockWriteAccessToSite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("blockWriteAccessToSite"), out var __jsonBlockWriteAccessToSite) ? (bool?)__jsonBlockWriteAccessToSite : BlockWriteAccessToSite;}
             AfterFromJson(json);
         }
 
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             AddIf( null != (((object)this._azurefilesConnectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azurefilesConnectionString.ToString()) : null, "azurefilesConnectionString" ,container.Add );
             AddIf( null != (((object)this._azurefilesShare)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azurefilesShare.ToString()) : null, "azurefilesShare" ,container.Add );
-            AddIf( null != this._blockWriteAccessToSite ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._blockWriteAccessToSite) : null, "blockWriteAccessToSite" ,container.Add );
             AddIf( null != this._switchSiteAfterMigration ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._switchSiteAfterMigration) : null, "switchSiteAfterMigration" ,container.Add );
+            AddIf( null != this._blockWriteAccessToSite ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._blockWriteAccessToSite) : null, "blockWriteAccessToSite" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

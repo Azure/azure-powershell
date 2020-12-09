@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public VirtualMachineHealthStatus VmHealth { get; set; }
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
         public IList<InstanceViewStatus> Statuses { get; set; }
+        public string AssignedHost { get; set; }
         public string PlacementGroupId { get; set; }
 
     }

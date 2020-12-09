@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a),
+    /// Create (c), Update (u) and Process (p).
+    /// </summary>
     public partial struct Permissions :
         System.IEquatable<Permissions>
     {

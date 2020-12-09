@@ -13,9 +13,10 @@ Create a new managed Kubernetes cluster.
 ## SYNTAX
 
 ```
-New-AzAksCluster [-Force] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
- [-NodeOsType <String>] [-NodeSetPriority <String>] [-NodeScaleSetEvictionPolicy <String>]
- [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
+New-AzAksCluster [-Force] [-GenerateSshKey] [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>]
+ [-NodeMaxPodCount <Int32>] [-NodeSetPriority <String>] [-NodePoolMode <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
+ [-SubnetName <String>] [-AcrNameToAttach <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-LoadBalancerSku <String>]
  [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
@@ -64,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AddOnNameToBeEnabled
+Add-on names to be enabled when cluster is created.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -95,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -DnsNamePrefix
-The DNS name prefix for the cluster.
+The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.
 
 ```yaml
 Type: System.String
@@ -141,6 +157,21 @@ Accept wildcard characters: False
 
 ### -Force
 Create cluster even if it already exists
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateSshKey
+Generate ssh key file to {HOME}/.ssh/id_rsa.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -240,7 +271,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: azure
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -335,8 +366,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeOsType
-OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+### -NodePoolMode
+NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String
@@ -390,7 +421,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: VirtualMachineScaleSets
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -446,7 +477,7 @@ The client id and client secret associated with the AAD application / service pr
 ```yaml
 Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: ClientIdAndSecret
+Aliases:
 
 Required: False
 Position: 2
@@ -468,6 +499,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetName
+Subnet name of VirtualNode addon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -513,6 +559,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceResourceId
+Resource Id of the workspace of Monitoring addon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

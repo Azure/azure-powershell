@@ -9,10 +9,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResource"
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResource"
         /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.TrackedResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.TrackedResource();
 
         /// <summary>
         /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryption? InfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).InfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).InfrastructureEncryption = value; }
 
-        /// <summary>The location the resource resides in.</summary>
+        /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 1)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceInternal)__trackedResource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location = value; }
 
         /// <summary>The master server id of a replica server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -188,17 +188,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The size code, to be interpreted by resource as appropriate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 6)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
         public string SkuSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Size; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Size = value; }
 
         /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 7)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 6)]
         public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier? SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISkuInternal)Sku).Tier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 8)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 7)]
         public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum? SslEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).SslEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).SslEnforcement = value; }
 
         /// <summary>Backup retention days for the server.</summary>
@@ -221,10 +221,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 4)]
         public int? StorageProfileStorageMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).StorageProfileStorageMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesInternal)Property).StorageProfileStorageMb = value; }
 
-        /// <summary>Application-specific metadata in the form of key-value pairs.</summary>
+        /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceInternal)__trackedResource).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value; }
 
         /// <summary>
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     /// Represents a server.
     public partial interface IServer :
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResource
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResource
     {
         /// <summary>
         /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.",
         SerializedName = @"name",
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     }
     /// Represents a server.
     internal partial interface IServerInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ITrackedResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ITrackedResourceInternal
     {
         /// <summary>
         /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for

@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Gen1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
+                yield return new global::System.Management.Automation.CompletionResult("Gen1", "Gen1", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen1");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "LongTerm".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Gen2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LongTerm", "LongTerm", global::System.Management.Automation.CompletionResultType.ParameterValue, "LongTerm");
+                yield return new global::System.Management.Automation.CompletionResult("Gen2", "Gen2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.EventHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

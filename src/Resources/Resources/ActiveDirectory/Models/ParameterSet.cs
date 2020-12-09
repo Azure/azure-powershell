@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public const string InputObjectWithDisplayName = "InputObjectWithDisplayNameParameterSet";
         public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
         public const string RoleAssignment = "RoleAssignmentParameterSet";
+        public const string RoleAssignmentId = "RoleAssignmentIdParameterSet";
         public const string Explicit = "ExplicitParameterSet";
         public const string MemberUPNWithGroupDisplayName = "MemberUPNWithGroupDisplayNameParameterSet";
         public const string MemberUPNWithGroupObjectId = "MemberUPNWithGroupObjectIdParameterSet";

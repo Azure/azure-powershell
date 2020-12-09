@@ -159,7 +159,8 @@ C:\PS> Start-AzStorageBlobCopy -AbsoluteUri "http://www.contosointernal.com/plan
 
 This command creates a context for the account named ContosoGeneral that uses the specified key, and then stores that key in the $Context variable.
 The second command copies the file from the specified URI to the blob named ContosoPlanning in the container named ContosoArchive.
-The command starts the copy operation in the context stored in $Context.
+The command starts the copy operation to the destination context stored in $Context.
+There are no source storage context, so the source Uri must have access to the source object. E.g: if the source is a none public Azure blob, the Uri should contain SAS token which has read access to the blob.
 
 ### Example 6: Copy a block blob to destination container with a new blob name, and set destination blob StandardBlobTier as Hot, RehydratePriority as High
 ```

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
-    /// <summary>Argument completer implementation for ServerState.</summary>
+    /// <summary>A state of a server that is visible to user.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerStateTypeConverter))]
     public partial struct ServerState :
         System.Management.Automation.IArgumentCompleter

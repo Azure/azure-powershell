@@ -32,7 +32,7 @@ Update-AzScheduledQueryRule -ResourceId <String> -Enabled <Boolean> [-DefaultPro
 
 ## DESCRIPTION
 Updates a Log Alert rule, updating only "Enabled" property is supported by this command.
-To update other properties, see "Set-AzScheduledQueryRule" command.
+To update other properties, see [Set-AzScheduledQueryRule](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azscheduledqueryrule) command.
 
 ## EXAMPLES
 

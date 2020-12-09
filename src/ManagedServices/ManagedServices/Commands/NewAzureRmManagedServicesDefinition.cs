@@ -12,45 +12,61 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ManagedServices.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Text;
-
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Management.ManagedServices.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
+
     [Cmdlet(
-    VerbsCommon.New,
-    Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
-    DefaultParameterSetName = DefaultParameterSet,
-    SupportsShouldProcess = true), OutputType(typeof(PSRegistrationDefinition))]
+        VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
+        DefaultParameterSetName = DefaultParameterSet,
+        SupportsShouldProcess = true), OutputType(typeof(PSRegistrationDefinition))]
     public class NewAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
         protected const string ByPlanParameterSet = "ByPlan";
+        protected const string ByAuthorizationParameterSet = "ByAuthorization";
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = false, HelpMessage = "The unique name of the Registration Definition.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The display name of the Registration Definition.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
+        [ValidateNotNullOrEmpty]
         public string ManagedByTenantId { get; set; }
-
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Principal Identifier.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Principal Identifier.")]
-        public string PrincipalId { get; set; }
-
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managed Service Provider's Role Identifier.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managed Service Provider's Role Identifier.")]
-        public string RoleDefinitionId { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]
+        [ValidateNotNullOrEmpty]
         public string Description { get; set; }
+
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Principal Identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string PrincipalId { get; set; }
+
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The role definition identifier to grant permissions to principal identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string RoleDefinitionId { get; set; }
+
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The authorization mapping list with principalId - roleDefinitionId.")]
+        [Parameter(ParameterSetName = ByAuthorizationParameterSet, Mandatory = true, HelpMessage = "The authorization mapping list with principalId - roleDefinitionId.")]
+        [ValidateNotNull]
+        public Authorization[] Authorization { get; set; }
 
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the plan.")]
         [ValidateNotNullOrEmpty]
@@ -71,77 +87,95 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public Guid RegistrationDefinitionId { get; set; } = default(Guid);
-
         public override void ExecuteCmdlet()
         {
             var scope = this.GetDefaultScope();
+            var definitionId = Guid.NewGuid().ToString();
+            var managedByTenantId = string.Empty;
+
+            if (this.IsParameterBound(x => x.Name))
+            {
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
+                definitionId = (new Guid(this.Name)).ToString();
+            }
 
             if (!this.ManagedByTenantId.IsGuid())
             {
                 throw new ApplicationException("ManagedByTenantId must be a valid GUID.");
             }
-
-            if (!this.PrincipalId.IsGuid())
+            else
             {
-                throw new ApplicationException("PrincipalId must be a valid GUID.");
+                managedByTenantId = (new Guid(this.ManagedByTenantId)).ToString();
             }
 
-            if (!this.RoleDefinitionId.IsGuid())
+            if (this.IsParameterBound(x => x.Authorization) &&
+                (this.IsParameterBound(x => x.PrincipalId) || this.IsParameterBound(x => x.RoleDefinitionId)))
             {
-                throw new ApplicationException("RoleDefinitionId must be a valid GUID.");
+                throw new ApplicationException("Authorization parameter is supported only when RoleDefinitionId and PrincipalId are null.");
             }
 
-            if (this.RegistrationDefinitionId == default(Guid))
+            if (!this.IsParameterBound(x => x.Authorization) &&
+                (!this.IsParameterBound(x => x.PrincipalId) || !this.IsParameterBound(x => x.RoleDefinitionId)))
             {
-                this.RegistrationDefinitionId = Guid.NewGuid();
+                throw new ApplicationException("Please provide RoleDefinitionId and PrincipalId parameters together or Authorization parameter.");
+            }
+
+            if (this.Authorization == null &&
+                this.IsParameterBound(x => x.PrincipalId) &&
+                this.IsParameterBound(x => x.RoleDefinitionId))
+            {
+                this.Authorization = new Authorization[]
+                {
+                    new Authorization
+                    {
+                        RoleDefinitionId = this.RoleDefinitionId,
+                        PrincipalId = this.PrincipalId
+                    }
+                };
+            }
+
+            Plan plan = null;
+            if (this.IsParameterBound(x => x.PlanName) &&
+                this.IsParameterBound(x => x.PlanPublisher) &&
+                this.IsParameterBound(x => x.PlanProduct) &&
+                this.IsParameterBound(x => x.PlanVersion))
+            {
+                plan = new Plan
+                {
+                    Name = this.PlanName,
+                    Product = this.PlanProduct,
+                    Publisher = this.PlanPublisher,
+                    Version = this.PlanVersion
+                };
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                $"{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{this.RegistrationDefinitionId}",
-                () =>
+            $"{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{definitionId}",
+            () =>
+            {
+                var registrationDefinition = new RegistrationDefinition
                 {
-                    Plan plan = null;
-                    if (this.IsParameterBound(x => x.PlanName) &&
-                            this.IsParameterBound(x => x.PlanPublisher) &&
-                            this.IsParameterBound(x => x.PlanProduct) &&
-                            this.IsParameterBound(x => x.PlanVersion))
+                    Plan = plan,
+                    Properties = new RegistrationDefinitionProperties
                     {
-                        plan = new Plan
-                        {
-                            Name = this.PlanName,
-                            Product = this.PlanProduct,
-                            Publisher = this.PlanPublisher,
-                            Version = this.PlanVersion
-                        };
+                        Description = this.Description,
+                        RegistrationDefinitionName = this.DisplayName,
+                        ManagedByTenantId = managedByTenantId,
+                        Authorizations = this.Authorization
                     }
+                };
 
-                    var registrationDefinition = new RegistrationDefinition
-                    {
-                        Plan = plan,
-                        Properties = new RegistrationDefinitionProperties
-                        {
-                            Description = this.Description,
-                            RegistrationDefinitionName = this.Name,
-                            ManagedByTenantId = this.ManagedByTenantId,
-                            Authorizations = new List<Authorization>
-                                    {
-                                            new Authorization
-                                            {
-                                                PrincipalId =this.PrincipalId,
-                                                RoleDefinitionId =this.RoleDefinitionId
-                                            }
-                                    }
-                        }
-                    };
+                var result = this.PSManagedServicesClient.CreateOrUpdateRegistrationDefinition(
+                    scope: scope,
+                    registrationDefinition: registrationDefinition,
+                    registratonDefinitionId: definitionId);
 
-                    var result = this.PSManagedServicesClient.CreateOrUpdateRegistrationDefinition(
-                        scope: scope,
-                            registrationDefinition: registrationDefinition,
-                            registratonDefinitionId: this.RegistrationDefinitionId);
-
-                    WriteObject(new PSRegistrationDefinition(result), true);
-                });
+                WriteObject(new PSRegistrationDefinition(result), true);
+            });
         }
     }
 }

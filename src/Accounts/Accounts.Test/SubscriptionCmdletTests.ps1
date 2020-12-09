@@ -45,6 +45,7 @@ function Test-GetSubscriptionsEndToEnd
 	Assert-True {$mostSubscriptions.Count -gt 0}
 	$tenantSubscriptions = Get-AzSubscription -Tenant $tenant
 	Assert-True {$tenantSubscriptions.Count -gt 0}
+	Assert-NotNull $subscription.SubscriptionPolicies
 }
 
 <#

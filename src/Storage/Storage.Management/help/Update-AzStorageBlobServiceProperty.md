@@ -15,22 +15,22 @@ Modifies the service properties for the Azure Storage Blob service.
 ### AccountName (Default)
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultServiceVersion <String>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
- [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
- [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,27 @@ IsVersioningEnabled           :
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
-### Example 2: Enable Versioning on Blob service of a Storage account
+### Example 2: Enable Changefeed on Blob service of a Storage account
+```
+C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true
+
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : False
+DeleteRetentionPolicy.Days    : 
+RestorePolicy.Enabled         : 
+RestorePolicy.Days            : 
+ChangeFeed                    : True
+IsVersioningEnabled           :
+```
+
+This command enables Changefeed on Blob service of a Storage account
+Change feed support in Azure Blob Storage works by listening to a GPv2 or Blob storage account for any blob level creation, modification, or deletion events. 
+It then outputs an ordered log of events for the blobs stored in the $blobchangefeed container within the storage account. 
+The serialized changes are persisted as an Apache Avro file and can be processed asynchronously and incrementally.
+
+### Example 3: Enable Versioning on Blob service of a Storage account
 ```
 C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IsVersioningEnabled $true
 
@@ -94,6 +114,21 @@ Default Service Version to Set
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableChangeFeed
+Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

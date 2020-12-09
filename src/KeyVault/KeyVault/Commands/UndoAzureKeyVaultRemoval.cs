@@ -95,9 +95,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(VaultName, Properties.Resources.RecoverVault))
             {
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationOrUpdateParameters()
                 {
-                    VaultName = this.VaultName,
+                    Name = this.VaultName,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     Tags = this.Tag,

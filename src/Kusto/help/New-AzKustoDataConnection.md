@@ -25,10 +25,10 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 ### CreateExpandedEventGrid
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -DataFormat <EventGridDataFormat>
- -EventHubResourceId <String> -Kind <Kind> -Location <String> -StorageAccountResourceId <String>
- -TableName <String> [-SubscriptionId <String>] [-MappingRuleName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
+ -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
+ [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedIotHub
@@ -39,6 +39,24 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
  [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### UpdateExpandedEventGrid
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
+ [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
+ [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpandedEventGrid
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
+ [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
+ [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +77,7 @@ The above command creates a new EventHub data connection named "myeventhubdc" fo
 
 ### Example 2: Create a new EventGrid data connection
 ```powershell
-PS C:\> New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location="East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId $storageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
+PS C:\> New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location="East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId $storageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping" -IgnoreFirstRecord "false" -BlobStorageEventType "Microsoft.Storage.BlobRenamed"
 
 Kind      Location Name                                              Type
 ----      -------- ----                                              ----
@@ -87,6 +105,21 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobStorageEventType
+The name of blob storage event type to process.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
+Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
 Required: False
@@ -165,7 +198,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -208,6 +241,21 @@ System properties of the event/iot hub.
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpandedEventHub, CreateExpandedIotHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IgnoreFirstRecord
+If set to true, indicates that ingestion should ignore the first record of every file.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
 Required: False
@@ -378,7 +426,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -423,7 +471,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnection
 
 ## NOTES
 

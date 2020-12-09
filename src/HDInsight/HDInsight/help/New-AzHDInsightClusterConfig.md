@@ -14,16 +14,15 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 ## SYNTAX
 
 ```
-New-AzHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
- [-DefaultStorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
+New-AzHDInsightClusterConfig [-StorageAccountResourceId <String>] [-StorageAccountKey <String>]
+ [-StorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
  [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
  [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-MinSupportedTlsVersion <String>]
  [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
- [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-PublicNetworkAccessType <String>]
- [-OutboundPublicNetworkAccessType <String>] [-EncryptionInTransit <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
+ [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +34,8 @@ The **New-AzHDInsightClusterConfig** cmdlet creates a non-persisted object that 
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountName = "yourstorageacct001"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
+PS C:\> $storageAccountName = "yourstorageaccountname"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
@@ -63,9 +63,9 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageContainer
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
 ```
 
 This command creates a cluster configuration object.
@@ -223,52 +223,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultStorageAccountKey
-Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageAccountName
-Specifies the name of the default storage account that the HDInsight cluster will use.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultStorageAccountType
-Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.
-
-```yaml
-Type: Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureStorage, AzureDataLakeStore
-
-Required: False
-Position: Named
-Default value: AzureStorage
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EdgeNodeSize
 Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
 
@@ -292,6 +246,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+Gets or sets the flag which indicates whether enable encryption at host or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -439,14 +408,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OutboundPublicNetworkAccessType
-Gets or sets the outbound access type to the public network.
+### -StorageAccountKey
+Gets or sets the storage account access key.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: PublicLoadBalancer, UDR
 
 Required: False
 Position: Named
@@ -455,14 +423,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccessType
-Gets or sets the public network access type.
+### -StorageAccountResourceId
+Gets or sets the storage account resource id.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: InboundAndOutbound, OutboundOnly
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+Gets or sets the type of the default storage account.
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureStorage, AzureDataLakeStore, AzureDataLakeStorageGen2
 
 Required: False
 Position: Named

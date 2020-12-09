@@ -25,7 +25,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Get a directory from a Filesystem, and show the details
 ```
-PS C:\> $dir1 = Get-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
+PS C:\> $dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 PS C:\> $dir1
 
    FileSystem Name: filesystem1

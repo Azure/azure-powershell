@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support
 {
 
+    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
     public partial struct SslEnforcementEnum :
         System.IEquatable<SslEnforcementEnum>
     {

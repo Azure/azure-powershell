@@ -7,4 +7,4 @@ steps:
   inputs:
     artifactName: ${{ parameters.artifactName }}
     targetPath: artifacts
-  condition: succeededOrFailed()
+  condition: always()

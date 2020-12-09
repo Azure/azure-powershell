@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = ShareResourceIdParameterSet)]
         public string Name { get; set; }
 
-
         [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
             Mandatory = false,
             ParameterSetName = AccountObjectSingleParameterSet)]
@@ -121,6 +120,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             ParameterSetName = ShareResourceIdParameterSet)]
         public SwitchParameter GetShareUsage { get; set; }
+        
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
+            ParameterSetName = AccountObjectParameterSet)]
+        public SwitchParameter IncludeDeleted { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -164,9 +171,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
+                ListSharesExpand? listSharesExpand = null;
+                if (this.IncludeDeleted.IsPresent)
+                {
+                    listSharesExpand = ListSharesExpand.Deleted;
+                }
                 IPage<FileShareItem> shares = this.StorageClient.FileShares.List(
                            this.ResourceGroupName,
-                           this.StorageAccountName);
+                           this.StorageAccountName,
+                           expand: listSharesExpand);
                 WriteShareList(shares);
                 while (shares.NextPageLink != null)
                 {

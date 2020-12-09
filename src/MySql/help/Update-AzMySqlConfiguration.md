@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a configuration of a server.
+Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## SYNTAX
 
@@ -27,6 +28,7 @@ Update-AzMySqlConfiguration -InputObject <IMySqlIdentity> [-Source <String>] [-V
 
 ## DESCRIPTION
 Updates a configuration of a server.
+Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 
@@ -86,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
+Identity Parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -254,14 +256,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
   - `[Id <String>]`: Resource identity path
+  - `[KeyName <String>]`: The name of the server key.
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.

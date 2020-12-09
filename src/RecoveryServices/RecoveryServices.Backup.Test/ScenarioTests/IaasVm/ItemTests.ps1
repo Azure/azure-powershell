@@ -12,6 +12,32 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureBackupDataMove
+{
+	$sourceLocation = "eastus2euap"
+	$sourceResourceGroup = Create-ResourceGroup $sourceLocation 21
+
+	$targetLocation = "centraluseuap"
+	$targetResourceGroup = Create-ResourceGroup $targetLocation 23
+		
+	$vm = Create-VM $sourceResourceGroup $sourceLocation 3
+	$vault1 = Create-RecoveryServicesVault $sourceResourceGroup $sourceLocation
+	$vault2 = Create-RecoveryServicesVault $targetResourceGroup $targetLocation
+	Enable-Protection $vault1 $vm
+		
+	# disable soft delete for successful cleanup
+	Set-AzRecoveryServicesVaultProperty -VaultId $vault1.ID -SoftDeleteFeatureState "Disable"
+	Set-AzRecoveryServicesVaultProperty -VaultId $vault2.ID -SoftDeleteFeatureState "Disable"
+
+	# data move v2 to v1 fails due to TargetVaultNotEmpty
+	Assert-ThrowsContains { Copy-AzRecoveryServicesVault -SourceVault $vault2 -TargetVault $vault1 -Force } `
+		"Please provide an empty target vault. The target vault should not have any backup items or backup containers";			
+
+	# data move from v1 to v2 succeeds
+	$dataMove = Copy-AzRecoveryServicesVault -SourceVault $vault1 -TargetVault $vault2 -Force;
+	Assert-True { $dataMove -contains "Please monitor the operation using Az-RecoveryServicesBackupJob cmdlet" }			
+}
+
 function Test-AzureVMGetItems
 {
 	$location = "southeastasia"

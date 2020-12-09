@@ -9,6 +9,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
     public partial struct EventHubDataFormat :
         System.IEquatable<EventHubDataFormat>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat Apacheavro = @"APACHEAVRO";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat Avro = @"AVRO";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat Csv = @"CSV";
@@ -36,6 +38,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat Tsve = @"TSVE";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat Txt = @"TXT";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventHubDataFormat W3Clogfile = @"W3CLOGFILE";
 
         /// <summary>the value for an instance of the <see cref="EventHubDataFormat" /> Enum.</summary>
         private string _value { get; set; }

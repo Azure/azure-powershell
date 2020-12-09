@@ -23,15 +23,15 @@ The **Get-AzStreamAnalyticsOutput** cmdlet lists all of the outputs that are def
 
 ## EXAMPLES
 
-### EXAMPLE 1: Get information about job outputs
-```
+### Example 1: Get information about job outputs
+```powershell
 PS C:\>Get-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob"
 ```
 
 This command returns information about the outputs defined on the job StreamingJob.
 
-### EXAMPLE 2: Get information about a specific job output
-```
+### Example 2: Get information about a specific job output
+```powershell
 PS C:\>Get-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "Output"
 ```
 

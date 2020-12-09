@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Maintenance" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Maintenance" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

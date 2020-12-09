@@ -56,6 +56,35 @@ namespace Microsoft.Azure.Commands.Maintenance
                         configuration.MaintenanceScope = this.MaintenanceScope;
                     }
 
+                    if (this.StartDateTime != null)
+                    {
+                        configuration.StartDateTime = this.StartDateTime;
+                    }
+
+                    if (this.ExpirationDateTime != null)
+                    {
+                        configuration.ExpirationDateTime = this.ExpirationDateTime;
+                    }
+
+                    if (this.Duration != null)
+                    {
+                        configuration.Duration = this.Duration.ToString((@"hh\:mm"));
+                    }
+
+                    if (this.Timezone != null)
+                    {
+                        configuration.TimeZone = this.Timezone;
+                    }
+
+                    if (this.RecurEvery != null)
+                    {
+                        configuration.RecurEvery = this.RecurEvery;
+                    }
+
+                    if (this.Visibility != null)
+                    {
+                        configuration.Visibility = this.Visibility;
+                    }
                     var result = MaintenanceConfigurationsClient.CreateOrUpdate(resourceGroupName, resourceName, configuration);
                     var psObject = new PSMaintenanceConfiguration();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
@@ -103,6 +132,37 @@ namespace Microsoft.Azure.Commands.Maintenance
             Mandatory = false,
             HelpMessage = "The Maintenance Scope.")]
         public string MaintenanceScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The StartDateTime in format YYYY-MM-DD hh:mm")]
+        public string StartDateTime { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ExpirationDateTime in format YYYY-MM-DD hh:mm")]
+        public string ExpirationDateTime { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Timezone")]
+        public string Timezone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Duration")]
+        public TimeSpan Duration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Visibility")]
+        public string Visibility { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Recurrence interval.")]
+        public string RecurEvery { get; set; }
+
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

@@ -13,8 +13,8 @@ function Get-AzFunctionApp {
         [System.String[]]
         ${SubscriptionId},
         
-        [Parameter(Mandatory=$true, ParameterSetName="ByName", HelpMessage='The name of the resource group.')]
-        [Parameter(ParameterSetName="ByResourceGroupName")]
+        [Parameter(Mandatory=$true, ParameterSetName="ByResourceGroupName", HelpMessage='The name of the resource group.')]
+        [Parameter(Mandatory=$true, ParameterSetName="ByName")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -32,7 +32,7 @@ function Get-AzFunctionApp {
         [System.String]
         ${Location},
         
-        [Parameter(Mandatory=$false, HelpMessage='Use to specify whether to include deployment slots in results.')]
+        [Parameter(Mandatory=$false, ParameterSetName="ByResourceGroupName", HelpMessage='Use to specify whether to include deployment slots in results.')]
         [System.Management.Automation.SwitchParameter]
         ${IncludeSlot},
 

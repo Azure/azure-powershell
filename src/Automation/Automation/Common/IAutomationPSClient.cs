@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbooName, ref string nextLink);
 
-        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, IDictionary parameters, bool? isEnabled);
+        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, IDictionary parameters, bool? isEnabled, string runOn);
 
         void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for BackupRestoreOperationType.</summary>
+    /// <summary>Operation type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationTypeTypeConverter))]
     public partial struct BackupRestoreOperationType :
         System.Management.Automation.IArgumentCompleter

@@ -1,0 +1,363 @@
+{
+  "Remove-AzDatabricksVNetPeering+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-al8ixc?api-version=2018-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-al8ixc?api-version=2018-04-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "66573f75-2652-48f1-9e45-24298b9b9b79" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2bd6a46ad3ac458cbec8587957e8d6f7" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "b5cd6449-8e27-4216-ba97-04848732f683" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090607Z:b5cd6449-8e27-4216-ba97-04848732f683" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"\"\n"
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82", "83" ],
+        "x-ms-client-request-id": [ "66573f75-2652-48f1-9e45-24298b9b9b79", "66573f75-2652-48f1-9e45-24298b9b9b79" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete", "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "c3797b72-9840-4486-92ba-9002aebcaeec" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "142f63d9-81a1-407c-831c-44777d3e2aa8" ],
+        "x-ms-arm-service-request-id": [ "89ad8e76-17ec-4c60-bdd5-21d173e8d634" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090638Z:7fb2b52b-f219-4f59-969d-39259198c08a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "82", "83", "84" ],
+        "x-ms-client-request-id": [ "66573f75-2652-48f1-9e45-24298b9b9b79", "66573f75-2652-48f1-9e45-24298b9b9b79", "66573f75-2652-48f1-9e45-24298b9b9b79" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete", "Remove-AzDatabricksVNetPeering_Delete", "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "c3797b72-9840-4486-92ba-9002aebcaeec" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/c3797b72-9840-4486-92ba-9002aebcaeec?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "142f63d9-81a1-407c-831c-44777d3e2aa8" ],
+        "x-ms-arm-service-request-id": [ "89ad8e76-17ec-4c60-bdd5-21d173e8d634" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090638Z:40a9cfe6-cece-47e2-bc72-28c73f5f81da" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings?api-version=2018-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings?api-version=2018-04-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "00290c80-ccb4-4e81-a6ad-078a92660a0c" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "321015196acc4f589a754960ea26efaa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
+        "x-ms-correlation-request-id": [ "79c74191-2f15-45ef-b5ed-8b4461fa8c04" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090638Z:79c74191-2f15-45ef-b5ed-8b4461fa8c04" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}\n"
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-hplrf5?api-version=2018-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-hplrf5?api-version=2018-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"remoteVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Network/virtualNetworks/databricks-vnet-olhdj4\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "236" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "50a941c846a4430cbc2c14b3f20ce731" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "85f57aa0-cffb-4d04-8282-66e1ba73f8d3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090640Z:85f57aa0-cffb-4d04-8282-66e1ba73f8d3" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "926" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-hplrf5\",\"name\":\"vnetpeering-hplrf5\",\"properties\":{\"allowVirtualNetworkAccess\":true,\"allowForwardedTraffic\":false,\"allowGatewayTransit\":false,\"useRemoteGateways\":false,\"remoteVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Network/virtualNetworks/databricks-vnet-olhdj4\"},\"remoteAddressSpace\":{\"addressPrefixes\":[\"10.0.0.0/16\"]},\"databricksVirtualNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-workspaceutbgcn-dac3f26keo8su/providers/Microsoft.Network/virtualNetworks/workers-vnet\"},\"databricksAddressSpace\":{\"addressPrefixes\":[\"10.139.0.0/16\"]},\"peeringState\":\"Initiated\",\"provisioningState\":\"Updating\"}}\n"
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-hplrf5?api-version=2018-04-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings/vnetpeering-hplrf5?api-version=2018-04-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "8d59be28-e6d3-4c54-bdbf-80600efb74e3" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c749e3653c824fab95c73932f1720b33" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-correlation-request-id": [ "a0a6a9d8-9a57-49a9-b03e-140f8c64a8b5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090641Z:a0a6a9d8-9a57-49a9-b03e-140f8c64a8b5" ],
+        "Date": [ "Mon, 12 Oct 2020 09:06:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"\"\n"
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "87", "88" ],
+        "x-ms-client-request-id": [ "8d59be28-e6d3-4c54-bdbf-80600efb74e3", "8d59be28-e6d3-4c54-bdbf-80600efb74e3" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_DeleteViaIdentity", "Remove-AzDatabricksVNetPeering_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "1afa3b59-999b-454b-829f-04e404274120" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "b5c2ea1b-edb0-4ccd-a97e-6b581f307a7c" ],
+        "x-ms-arm-service-request-id": [ "5bf30097-505c-4bf4-9ea3-ccc493eda81c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090711Z:4f330062-0ec8-4492-ac70-9ffa9a31845f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 12 Oct 2020 09:07:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "87", "88", "89" ],
+        "x-ms-client-request-id": [ "8d59be28-e6d3-4c54-bdbf-80600efb74e3", "8d59be28-e6d3-4c54-bdbf-80600efb74e3", "8d59be28-e6d3-4c54-bdbf-80600efb74e3" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering", "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_DeleteViaIdentity", "Remove-AzDatabricksVNetPeering_DeleteViaIdentity", "Remove-AzDatabricksVNetPeering_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "1afa3b59-999b-454b-829f-04e404274120" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/1afa3b59-999b-454b-829f-04e404274120?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "b5c2ea1b-edb0-4ccd-a97e-6b581f307a7c" ],
+        "x-ms-arm-service-request-id": [ "5bf30097-505c-4bf4-9ea3-ccc493eda81c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090711Z:05ae6743-8b0c-499b-a8d9-226286a8e68b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 12 Oct 2020 09:07:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDatabricksVNetPeering+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings?api-version=2018-04-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-fjyw9q/providers/Microsoft.Databricks/workspaces/workspaceutbgcn/virtualNetworkPeerings?api-version=2018-04-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "96e3abc5-c6af-4d58-9b17-20f667ec0256" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ec92904c3b504e2b9ff845dacaa6bdcd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-correlation-request-id": [ "1836165e-b857-493f-8667-5e2477a5d731" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201012T090712Z:1836165e-b857-493f-8667-5e2477a5d731" ],
+        "Date": [ "Mon, 12 Oct 2020 09:07:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}\n"
+    }
+  }
+}

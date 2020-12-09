@@ -14,28 +14,19 @@
 
 <#
 .Synopsis
-Creates a new MariaDb.
+Creates a new MariaDB.
 .Description
-Creates a new MariaDb.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
+Creates a new MariaDB.
 #>
 function New-AzMariaDbServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage='MariaDb server name.')]
+        [Parameter(Mandatory, HelpMessage='MariaDB server name.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
         [System.String]
-        # MariaDb server name.
+        # MariaDB server name.
         ${Name},
     
         [Parameter(Mandatory, HelpMessage='The name of the resource group that contains the resource.')]
@@ -85,6 +76,8 @@ function New-AzMariaDbServer {
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
         # Enable Storage Auto Grow.
@@ -246,8 +239,7 @@ function New-AzMariaDbServer {
             $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
             $null = $PSBoundParameters.Remove('AdministratorUsername')
 
-            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($PSBoundParameters['AdministratorLoginPassword'])
-            $Parameter.Property.AdministratorLoginPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
             $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
@@ -258,4 +250,3 @@ function New-AzMariaDbServer {
           }
     }
 }
-    

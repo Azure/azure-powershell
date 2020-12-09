@@ -13,14 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Extensions
 {
     public static class ManagedServicesUtility
     {
+        // TODO: Remove these three string as well as breaking changes attributes for Oct. 27th change
+        public const string UpcomingVersion = "1.3.0";
+        public const string UpcomingVersionReleaseDate = "10/27/2020";
+        public const string DeprecatedParameterDescription = "Parameter is being deprecated without being replaced";
+
         public static readonly Regex AssignmentRegex = new Regex(@"(.*?)/providers/microsoft.managedservices/registrationAssignments/(?<assignmentName>[^/]+)",
     RegexOptions.IgnoreCase | RegexOptions.Compiled);
 

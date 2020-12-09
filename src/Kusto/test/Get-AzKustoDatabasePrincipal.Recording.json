@@ -1,16 +1,16 @@
 {
-  "Get-AzKustoDatabasePrincipal+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/listPrincipals?api-version=2020-02-15+1": {
+  "Get-AzKustoDatabasePrincipal+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/listPrincipals?api-version=2020-06-14+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/sdkpowershellrg/providers/Microsoft.Kusto/Clusters/sdkpsclustereu/Databases/sdkpowershelldb/listPrincipals?api-version=2020-02-15",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouplbfexs/providers/Microsoft.Kusto/Clusters/testclusterlbfexs/Databases/testdatabaselbfexs/listPrincipals?api-version=2020-06-14",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "100" ],
-        "x-ms-client-request-id": [ "923dfd7d-3468-48ef-be1f-5dbae2db06f4" ],
+        "x-ms-unique-id": [ "173" ],
+        "x-ms-client-request-id": [ "69cb9624-f239-42d2-8180-4f274566e1f0" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -19,25 +19,25 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "3d1c3cc5-07fb-4b96-83c7-d18072c869c8" ],
-        "x-ms-correlation-request-id": [ "c0366396-9595-428e-b643-23bb7b9d808a" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20200407T224416Z:c0366396-9595-428e-b643-23bb7b9d808a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "b557cad7-e7dd-4fa5-a771-594287390c3c" ],
+        "Set-Cookie": [ "ARRAffinity=c4c56cbfa1f31e59b0464659d34eccda0294610fd03b5c877b0ab8b9618d4fc3;Path=/;HttpOnly;Domain=armrp-kustorpeus.kusto.windows.net" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "b73d6814-3630-4bbd-ab4e-e9094eef153c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20200802T232831Z:b73d6814-3630-4bbd-ab4e-e9094eef153c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Tue, 07 Apr 2020 22:44:16 GMT" ],
-        "Set-Cookie": [ "ARRAffinity=ef3de0f4cd17f8e9f7d2fa3d3db2dfb16b68de461929f7c4880cf75c0d094a4e;Path=/;HttpOnly;Domain=rp-kustorpeus-website.azurewebsites.net" ],
-        "X-Powered-By": [ "ASP.NET" ]
+        "Date": [ "Sun, 02 Aug 2020 23:28:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "661" ],
+        "Content-Length": [ "459" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"Royi Shauli\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=c526e8b3-ad30-4963-bdd2-a75a2757e7e3;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"roshauli@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"lugoldbekusto\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=e60fe5c8-d6a5-4dee-b382-fb4502588dd0;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"e60fe5c8-d6a5-4dee-b382-fb4502588dd0\",\"tenantName\":\"Microsoft\"},{\"name\":\"Lucy Goldberg\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=4140ca90-d0db-4781-ab7a-099ece50e2fa;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"lugoldbe@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"}]}"
+      "Content": "{\"value\":[{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"Royi Shauli\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=c526e8b3-ad30-4963-bdd2-a75a2757e7e3;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"roshauli@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"}]}"
     }
   }
 }

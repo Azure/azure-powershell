@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for PurgeState.</summary>
+    /// <summary>Status of the operation represented by the requested Id.</summary>
     public partial class PurgeStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

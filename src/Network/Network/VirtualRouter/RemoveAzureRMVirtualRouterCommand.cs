@@ -98,7 +98,10 @@ namespace Microsoft.Azure.Commands.Network
                     this.RouterName,
                 () =>
                 {
-                    this.NetworkClient.NetworkManagementClient.VirtualRouters.Delete(ResourceGroupName, RouterName);
+                    string ipConfigName = "ipconfig1";
+
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Delete(ResourceGroupName, RouterName, ipConfigName);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubs.Delete(ResourceGroupName, RouterName);
                     if (PassThru)
                     {
                         WriteObject(true);

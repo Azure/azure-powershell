@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of the Azure resource the hostname is assigned to.</summary>
     public partial struct AzureResourceType :
         System.IEquatable<AzureResourceType>
     {

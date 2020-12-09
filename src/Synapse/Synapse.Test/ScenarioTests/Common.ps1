@@ -41,6 +41,15 @@ function Get-SynapseSqlPoolName
 
 <#
 .SYNOPSIS
+Gets a Synapse Analytics SQL database name to use for testing
+#>
+function Get-SynapseSqlDatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets a DataLake Analytics storage name to use for testing
 #>
 function Get-DataLakeStorageAccountName

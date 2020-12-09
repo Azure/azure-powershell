@@ -69,14 +69,14 @@ Microsoft.Kusto/clusters
 ...
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IAzureResourceSku
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IAzureResourceSku
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ISkuDescription
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200215.IAzureResourceSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IAzureResourceSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

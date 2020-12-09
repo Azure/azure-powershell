@@ -94,7 +94,7 @@ The allowed Options:
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
 Aliases:
-Accepted values: Deny, Allow
+Accepted values: Allow, Deny
 
 Required: False
 Position: Named

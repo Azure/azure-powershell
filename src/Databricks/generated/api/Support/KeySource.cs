@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
+    /// <summary>
+    /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+    /// </summary>
     public partial struct KeySource :
         System.IEquatable<KeySource>
     {

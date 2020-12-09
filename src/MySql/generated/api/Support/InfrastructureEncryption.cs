@@ -6,11 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>
+    /// Add a second layer of encryption for your data using new encryption algorithm which gives additional data protection.
+    /// Value is optional but if passed in, must be 'Disabled' or 'Enabled'.
+    /// </summary>
     public partial struct InfrastructureEncryption :
         System.IEquatable<InfrastructureEncryption>
     {
+        /// <summary>Additional (2nd) layer of encryption for data at rest</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryption Disabled = @"Disabled";
 
+        /// <summary>Default value for single layer of encryption for data at rest.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.InfrastructureEncryption Enabled = @"Enabled";
 
         /// <summary>the value for an instance of the <see cref="InfrastructureEncryption" /> Enum.</summary>

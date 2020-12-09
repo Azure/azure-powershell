@@ -74,7 +74,7 @@ If the value has been applied to any resources or resource groups, the command f
 
 ### Example 3: Deletes the entire set of tags on a subscription
 
-``` powershell
+```powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}
 ```
 
@@ -82,7 +82,7 @@ This command deletes the entire set of tags on the subscription with {subId}. It
 
 ### Example 4: Deletes the entire set of tags on a resource
 
-``` powershell
+```powershell
 PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
 
 Id         : {Id}

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
+    /// <summary>Gets or sets the blockchain member provision state.</summary>
     public partial struct NodeProvisioningState :
         System.IEquatable<NodeProvisioningState>
     {

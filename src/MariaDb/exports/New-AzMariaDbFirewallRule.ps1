@@ -21,10 +21,24 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Example
 PS C:\> New-AzMariaDbFirewallRule -Name firewall-101 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -EndIPAddress 0.0.2.255 -StartIPAddress 0.0.2.1
 
-Name         Type
-----         ----
-firewall-101 Microsoft.DBforMariaDB/servers/firewallRules
+Name         StartIPAddress EndIPAddress
+----         -------------- ------------
+firewall-101 0.0.2.1        0.0.2.255
+.Example
+PS C:\> New-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -ClientIPAddress 0.0.0.1
 
+Name                                StartIPAddress EndIPAddress
+----                                -------------- ------------
+ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+.Example
+PS C:\> New-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-asd-01 -AllowAll
+
+Name                         StartIPAddress EndIPAddress
+----                         -------------- ------------
+AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>
@@ -32,13 +46,6 @@ function New-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('FirewallRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-    [System.String]
-    # The name of the server firewall rule.
-    ${Name},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [System.String]
@@ -53,25 +60,47 @@ param(
     ${ServerName},
 
     [Parameter()]
+    [Alias('FirewallRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
+    [System.String]
+    # The name of the server firewall rule.
+    # If not specified, the default is undefined.
+    # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
+    ${Name},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
     [System.String]
     # The start IP address of the server firewall rule.
     # Must be IPv4 format.
     ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
+
+    [Parameter(ParameterSetName='AllowAll', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
+    ${AllowAll},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -141,9 +170,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            CreateExpanded = 'Az.MariaDb.private\New-AzMariaDbFirewallRule_CreateExpanded';
+            CreateExpanded = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
+            ClientIPAddress = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
+            AllowAll = 'Az.MariaDb.custom\New-AzMariaDbFirewallRule';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'ClientIPAddress', 'AllowAll') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

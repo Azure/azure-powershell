@@ -15,4 +15,5 @@
 - [ ] If applicable, the changes made in the PR have proper test coverage
 - [ ] For public API changes to cmdlets:
     - [ ] a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (_Microsoft internal only_)
+        - {Please put the link here}
     - [ ] the markdown help files have been regenerated using the commands listed [here](../blob/master/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)

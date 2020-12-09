@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Scope = "Scope.";
         public const string Kind = "Kind.";
         public const string InputObject = "Input Object.";
+        public const string InputObjectV3 = "Input Object V3.";
         public const string Location = "Location.";
         public const string PassThru = "Return whether the operation was successful.";
         public const string Tags = "Tags.";
@@ -140,6 +141,17 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #endregion
 
+        #region Adaptive Network Hardenings
+
+        public const string ResourceNamespace = "Resource namespace";
+        public const string ResourceType = "Resource type";
+        public const string RulesToEnforce = "Rule to enforce";
+        public const string AdaptiveNetworkHardeningResourceName = "Adaptive Network Hardening resource name";
+        public const string AdaptiveNetworkHardeningEnforceAction = "Adaptive Network Hardening enforce action";
+        public const string EffectiveNetworkSecurityGroups = "The Azure resource IDs of the effective network security groups";
+
+        #endregion
+ 
         #region Adaptive Application Controls
 
         public const string AdaptiveApplicationControlsGroupName = "Name of an application control VM/server group";

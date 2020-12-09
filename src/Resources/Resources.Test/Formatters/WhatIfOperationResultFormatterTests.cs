@@ -26,24 +26,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Format_OnSuccess_FormatPreviewNotice()
-        {
-            // Arrange.
-            var psWhatIfOperationResult = new PSWhatIfOperationResult(new WhatIfOperationResult());
-            string previewNotice = new ColoredStringBuilder()
-                .AppendLine("Note: As What-If is currently in preview, the result may contain false positive predictions (noise).")
-                .AppendLine("You can help us improve the accuracy of the result by opening an issue here: https://aka.ms/WhatIfIssues.")
-                .ToString();
-
-            // Act.
-            string result = WhatIfOperationResultFormatter.Format(psWhatIfOperationResult);
-
-            // Assert.
-            Assert.StartsWith(previewNotice, result);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_EmptyResourceChanges_ReturnsNoChangeInfo()
         {
             // Arrange.
@@ -191,12 +173,12 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             {
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p1/foo1",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1/providers/p1/foo1",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
@@ -206,7 +188,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
+                    ResourceId = "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
                     ChangeType = ChangeType.Ignore
                 },
                 new WhatIfChange
@@ -222,7 +204,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             };
 
             string changesInfo = $@"
-Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1
 {Color.Green}
   + p1/foo1
   + p2/bar
@@ -291,9 +273,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
-  ! p4/foo{Color.Reset}{Color.Gray}
-  * p1/foo{Color.Reset}{Color.Reset}
-  = p3/foo
+  ! p4/foo{Color.Reset}{Color.Reset}
+  = p3/foo{Color.Reset}{Color.Gray}
+  * p1/foo
 {Color.Reset}
 "
                 .Replace("\r\n", Environment.NewLine);
@@ -401,7 +383,22 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                             PropertyChangeType = PropertyChangeType.Modify,
                             Before = "foo",
                             After = "bar"
-                        }
+                        },
+                        new WhatIfPropertyChange
+                        {
+                            Path = "path.to.array.change",
+                            PropertyChangeType = PropertyChangeType.Array,
+                            Children = new List<WhatIfPropertyChange>
+                            {
+                                new WhatIfPropertyChange
+                                {
+                                    Path = "1",
+                                    PropertyChangeType = PropertyChangeType.Modify,
+                                    Before = "foo",
+                                    After = "bar"
+                                }
+                            }
+                        },
                     }
                 }
             };
@@ -412,6 +409,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 {Color.Purple}
   ~ p1/foo{Color.Reset}
+    {Color.Purple}~{Color.Reset} path.to.array.change{Color.Reset}:{Color.Reset} [
+      {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+      ]
     {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
 "
                 .Replace(@"""foo""", foo)

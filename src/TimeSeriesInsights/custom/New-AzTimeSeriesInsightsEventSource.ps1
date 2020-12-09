@@ -23,7 +23,7 @@ Create an event source under the specified environment.
 https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IEventSourceResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
     [CmdletBinding(DefaultParameterSetName='eventhub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -67,7 +67,7 @@ function New-AzTimeSeriesInsightsEventSource {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
         [System.Collections.Hashtable]
         # Key-value pairs of additional properties for the resource.
         ${Tag},
@@ -172,8 +172,8 @@ function New-AzTimeSeriesInsightsEventSource {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'Microsoft.EventHub') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.EventHubEventSourceCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.EventHubEventSourceCreationProperties]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.EventHubEventSourceCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.EventHubEventSourceCreationProperties]::new()
                 
                 $Parameter.Property.EventHubName = $PSBoundParameters['EventHubName']
                 $null = $PSBoundParameters.Remove('EventHubName')
@@ -181,8 +181,8 @@ function New-AzTimeSeriesInsightsEventSource {
                 $Parameter.Property.ServiceBusNameSpace = $PSBoundParameters['ServiceBusNameSpace']
                 $null = $PSBoundParameters.Remove('ServiceBusNameSpace')
             } else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IoTHubEventSourceCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.IoTHubEventSourceCreationProperties]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IoTHubEventSourceCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IoTHubEventSourceCreationProperties]::new()
                 
                 $Parameter.Property.IoTHubName = $PSBoundParameters['IoTHubName']
                 $null = $PSBoundParameters.Remove('IoTHubName')

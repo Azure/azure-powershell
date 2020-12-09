@@ -60,8 +60,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             }
             {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("blob"), out var __jsonBlob) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionService.FromJson(__jsonBlob) : Blob;}
             {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("file"), out var __jsonFile) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionService.FromJson(__jsonFile) : File;}
-            {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("queue"), out var __jsonQueue) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionService.FromJson(__jsonQueue) : Queue;}
             {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("table"), out var __jsonTable) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionService.FromJson(__jsonTable) : Table;}
+            {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("queue"), out var __jsonQueue) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.EncryptionService.FromJson(__jsonQueue) : Queue;}
             AfterFromJson(json);
         }
 
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             AddIf( null != this._file ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._file.ToJson(null,serializationMode) : null, "file" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._queue ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._queue.ToJson(null,serializationMode) : null, "queue" ,container.Add );
+                AddIf( null != this._table ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._table.ToJson(null,serializationMode) : null, "table" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._table ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._table.ToJson(null,serializationMode) : null, "table" ,container.Add );
+                AddIf( null != this._queue ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._queue.ToJson(null,serializationMode) : null, "queue" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

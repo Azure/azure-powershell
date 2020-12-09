@@ -29,7 +29,8 @@ function Test-IotCentralAppLifecycleManagement{
 	$rname = Get-ResourceName
 	$subdomain = ($rname) + "subdomain"
 	$location = Get-Location "Microsoft.IoTCentral" "IotApps"
-	$sku = "ST2"
+	$st2Sku = "ST2"
+	$st1Sku = "ST1"
 	$displayName = "Custom IoT Central App DisplayName"
 	$tagKey = "key1"
 	$tagValue = "value1"
@@ -43,7 +44,7 @@ function Test-IotCentralAppLifecycleManagement{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $sku -DisplayName $displayName -Tag $tags
+		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $st2Sku -DisplayName $displayName -Tag $tags
 		$actual = Get-AzIotCentralApp -ResourceGroupName $rgname -Name $rname
 
 		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
@@ -55,7 +56,7 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Tag.Item($tagkey) $tagvalue
 		Assert-AreEqual 1 @($list).Count
 		Assert-AreEqual $actual.Name $list[0].Name
-		Assert-AreEqual $actual.Sku.Name $sku
+		Assert-AreEqual $actual.Sku.Name $st2Sku
 
 		# Get App
 		$rname1 = $rname
@@ -93,7 +94,7 @@ function Test-IotCentralAppLifecycleManagement{
 		$tags = $actual.Tag
 		$tags.add($tt2, $tv2)
 		# Set resource
-		$job = Set-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -Subdomain $newSubdomain -AsJob
+		$job = Set-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -Subdomain $newSubdomain -Sku $st1Sku -AsJob
 		$job | Wait-Job
 		$result = $job | Receive-Job
 
@@ -106,6 +107,7 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.DisplayName $displayName
 		Assert-AreEqual $actual.Subdomain $newSubdomain
 		Assert-AreEqual $actual.Name $rname
+		Assert-AreEqual $actual.Sku.Name $st1Sku
 
 		# Delete
 		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob

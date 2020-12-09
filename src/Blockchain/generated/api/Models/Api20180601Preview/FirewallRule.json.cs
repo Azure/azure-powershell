@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return;
             }
-            {_endIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("endIpAddress"), out var __jsonEndIPAddress) ? (string)__jsonEndIPAddress : (string)EndIPAddress;}
             {_ruleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("ruleName"), out var __jsonRuleName) ? (string)__jsonRuleName : (string)RuleName;}
             {_startIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("startIpAddress"), out var __jsonStartIPAddress) ? (string)__jsonStartIPAddress : (string)StartIPAddress;}
+            {_endIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("endIpAddress"), out var __jsonEndIPAddress) ? (string)__jsonEndIPAddress : (string)EndIPAddress;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
             {
                 return container;
             }
-            AddIf( null != (((object)this._endIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._endIPAddress.ToString()) : null, "endIpAddress" ,container.Add );
             AddIf( null != (((object)this._ruleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._ruleName.ToString()) : null, "ruleName" ,container.Add );
             AddIf( null != (((object)this._startIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._startIPAddress.ToString()) : null, "startIpAddress" ,container.Add );
+            AddIf( null != (((object)this._endIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._endIPAddress.ToString()) : null, "endIpAddress" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -14,18 +14,9 @@
 
 <#
 .Synopsis
-Restore a MariaDb from a existing MariaDb.
+Restore a MariaDB from a existing MariaDB.
 .Description
-Restore a MariaDb from a existing MariaDb.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
+Restore a MariaDB from a existing MariaDB.
 #>
 function Restore-AzMariaDbServer
 {
@@ -185,7 +176,24 @@ function Restore-AzMariaDbServer
 
             $ServerObject = $InputObject
             if (-not $PSBoundParameters.ContainsKey('InputObject')) {
-                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId
+
+                $GetMariadbDbPSBoundParameters = @{}
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $GetMariadbDbPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                if ($PSBoundParameters.ContainsKey('Proxy')) {
+                    $GetMariadbDbPSBoundParameters['Proxy'] = $Proxy
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
+                    $GetMariadbDbPSBoundParameters['ProxyCredential'] = $ProxyCredential
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                    $GetMariadbDbPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
+                }
+                $ServerObject = Get-AzMariaDbServer -ResourceGroupName $ResourceGroupName -Name $ServerName -SubscriptionId $SubscriptionId @GetMariadbDbPSBoundParameters
                 
                 $Null = $PSBoundParameters.Remove('ServerName')
             } else {

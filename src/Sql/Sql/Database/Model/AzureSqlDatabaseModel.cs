@@ -176,9 +176,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public double? MinimumCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of readonly replicas for the database
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
         /// </summary>
         public int? ReadReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
+        /// </summary>
+        public int? HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup storage redundancy for the database
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -233,6 +248,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
             ReadReplicaCount = null;
+            HighAvailabilityReplicaCount = null;
+            BackupStorageRedundancy = null;
+            SecondaryType = null;
         }
 
         /// <summary>
@@ -283,7 +301,29 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
-            ReadReplicaCount = database.ReadReplicaCount;
+            HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
+            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            SecondaryType = database.SecondaryType;
+        }
+
+        /// <summary>
+        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
+        {
+            switch (backupStorageRedundancy)
+            {
+                case "GRS":
+                    return "Geo";
+                case "LRS":
+                    return "Local";
+                case "ZRS":
+                    return "Zone";
+                default:
+                    return null;
+            }
         }
     }
 }

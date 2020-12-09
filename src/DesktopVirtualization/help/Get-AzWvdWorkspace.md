@@ -40,9 +40,9 @@ Get a workspace.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Worksapce by name
+### Example 1: Get a Windows Virtual Desktop Workspace by name
 ```powershell
-PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName -Name WorkspaceName
+PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
 
 Location   Name                 Type
 --------   ----                 ----
@@ -53,7 +53,7 @@ This command gets a Windows Virtual Desktop Workspace in a Resource Group.
 
 ### Example 2: List Windows Virtual Desktop Workspaces
 ```powershell
-PS C:\> Get-AzWvdWorksapce -ResourceGroupName ResourceGroupName
+PS C:\> Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
 
 Location   Name           Type
 --------   ----           ----
@@ -151,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IWorkspace
 
 ## NOTES
 
@@ -168,6 +168,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
   - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
   - `[Id <String>]`: Resource identity path
+  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SessionHostName <String>]`: The name of the session host within the specified host pool
   - `[SubscriptionId <String>]`: The ID of the target subscription.

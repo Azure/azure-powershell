@@ -100,6 +100,48 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtSubscriptionScope");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MGLevelWhatIf_CreateResources_ReturnsCreateChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfCreateResourcesAtManagementGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MGLevelWhatIf_ResourceIdOnlyMode_ReturnsChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfWithResourceIdOnlyAtManagementGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MGLevelWhatIf_SetExcludeChangeType_HidesResourceChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtManagementGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelWhatIf_CreateResources_ReturnsCreateChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfCreateResourcesAtTenantScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelWhatIf_ResourceIdOnlyMode_ReturnsChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfWithResourceIdOnlyAtTenantScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelWhatIf_SetExcludeChangeType_HidesResourceChanges()
+        {
+            TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtTenantScope");
+        }
     }
 }
 

@@ -130,6 +130,11 @@ assigned to the service principal. The default values for the **Role** and **Sco
 properties if an ApplicationId is not provided. To update the application-specific parameters, use
 the [Update-AzADApplication](./update-azadapplication.md) cmdlet.
 
+> [!WARNING]
+> When you create a service principal using the **New-AzADServicePrincipal** command, the output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. As an alternative, consider using [managed identities](/azure/active-directory/managed-identities-azure-resources/overview) to avoid the need to use credentials.
+>
+> By default, **New-AzADServicePrincipal** assigns the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role to the service principal at the subscription scope. To reduce your risk of a compromised service principal, assign a more specific role and narrow the scope to a resource or resource group. See [Steps to add a role assignment](/azure/role-based-access-control/role-assignments-steps) for more information.
+
 ## EXAMPLES
 
 ### Example 1: Simple AD service principal creation
@@ -609,12 +614,10 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
 -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
 -WarningAction, and -WarningVariable. For more information, see
 [about_CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
-
 ## INPUTS
 
 ### System.Guid

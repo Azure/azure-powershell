@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for SkuName.</summary>
+    /// <summary>
+    /// Gets or sets the SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was
+    /// called accountType.
+    /// </summary>
     public partial class SkuNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -33,6 +35,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public ContainerRegistryClient(IAzureContext context)
         {
             _client = AzureSession.Instance.ClientFactory.CreateArmClient<ContainerRegistryManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+        }
+
+        public List<PSRegistryUsage> ListUsage(string resourceGroupName, string registryName)
+        {
+            return _client.Registries.ListUsages(resourceGroupName, registryName).Value.Select(x => new PSRegistryUsage(x)).ToList();
+        }
+
+        public void ImportImage(string resourceGroupName, string registryName, PSImportImageParameters parameter)
+        {
+             _client.Registries.ImportImage(resourceGroupName, registryName, parameter.GetImportImageParameters());
         }
 
         public Registry CreateRegistry(string resourceGroupName, string registryName, Registry registry)
@@ -51,6 +63,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             bool? adminUserEnabled,
             string sku = null,
             string storageAccountId = null,
+            PSNetworkRuleSet networkRuleSet = null,
             IDictionary<string, string> tags = null)
         {
             var parameters = new RegistryUpdateParameters()
@@ -63,17 +76,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 parameters.Sku = new Management.ContainerRegistry.Models.Sku(sku);
             }
 
-            if (storageAccountId != null)
-            {
-                parameters.StorageAccount = new StorageAccountProperties()
-                {
-                    Id = storageAccountId
-                };
-            }
-
             if (tags != null)
             {
                 parameters.Tags = tags;
+            }
+
+            if (networkRuleSet != null)
+            {
+                parameters.NetworkRuleSet = networkRuleSet.GetNetworkRuleSet();
             }
 
             return _client.Registries.Update(resourceGroupName, registryName, parameters);
