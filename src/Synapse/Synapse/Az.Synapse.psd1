@@ -121,7 +121,9 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Stop-AzSynapseTrigger', 'Get-AzSynapseTriggerRun', 
                'Set-AzSynapseDataset', 'Get-AzSynapseDataset',
                'Remove-AzSynapseDataset', 'Set-AzSynapseDataFlow',
-               'Get-AzSynapseDataFlow', 'Remove-AzSynapseDataFlow'
+               'Get-AzSynapseDataFlow', 'Remove-AzSynapseDataFlow',
+               'Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord','Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan',
+               'Start-AzSynapseSqlPoolVulnerabilityAssessmentScanInitialziation'
 
 # Variables to export from this module
 # VariablesToExport = @()

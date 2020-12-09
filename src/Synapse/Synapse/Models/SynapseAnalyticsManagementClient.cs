@@ -21,7 +21,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TriggerType = Microsoft.Azure.Documents.TriggerType;
+using TriggerType = Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model.TriggerType;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -303,9 +303,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Run a new Vulnerability Assessment scan
         /// </summary>
-        public void StartVulnerabilityAssessmentScan(string resourceGroup, string serverName, string databaseName, string scanId)
+        public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
         {
-             _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, serverName, databaseName, scanId);
+             _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
           
         }
         internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 ResourceGroupName = resourceGroup,
                 ScanId = scanRecord.ScanId,
-                TriggerType = (VulnerabilityAssessment.Model.TriggerType)scanTriggerType,
+                TriggerType = scanTriggerType,
                 State = scanRecord.State,
                 StartTime = scanRecord.StartTime,
                 EndTime = scanRecord.EndTime,

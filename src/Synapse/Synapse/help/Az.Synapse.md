@@ -77,6 +77,15 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
 
+### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
+Gets a Synapse Analytics SQL pool vulnerability assessment scan record.
+
+### [Convert-AzSynapseVulnerabilityAssessmentScan](Convert-AzSynapseVulnerabilityAssessmentScan.md)
+Converts to a Synapse Analytics SQL pool vulnerability assessment scan record.
+
+### [Start-AzSynapseVulnerabilityAssessmentScanInitialziation](Start-AzSynapseVulnerabilityAssessmentScanInitialziation.md)
+Start a Synapse Analytics SQL pool vulnerability assessment scan record.
+
 ### [Get-AzSynapseTrigger](Get-AzSynapseTrigger.md)
 Gets information about triggers in a workspace.
 
