@@ -53,22 +53,22 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             using (new ServicePointHandler(pageBlob.Uri, this.maxParallelism))
             using (new ProgressTracker(uploadStatus))
             {
-                var loopResult = Parallel.ForEach(dataWithRanges,
-                                                  () => new PageBlobClient(pageBlob.Uri),
-                                                  (dwr, b) =>
-                                                  {
-                                                      using (dwr)
-                                                      {
-                                                          var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
-                                                          using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
-                                                          {
-                                                              //b.Properties.ContentMD5 = md5HashOfDataChunk;
-                                                              b.UploadPagesAsync(stream, dwr.Range.StartIndex)
-                                                                        .ConfigureAwait(false).GetAwaiter().GetResult();
-                                                          }
-                                                      }
-                                                      uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
-                                                  }, this.maxParallelism);
+                var loopResult = Parallel.ForEach(dataWithRanges
+                    () => new PageBlobClient(pageBlob.Uri),
+                    (dwr, b) =>
+                    {
+                        using (dwr)
+                        {
+                            var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
+                            using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
+                            {
+                                b.Properties.ContentMD5 = md5HashOfDataChunk;
+                                b.UploadPagesAsync(stream, dwr.Range.StartIndex)
+                                          .ConfigureAwait(false).GetAwaiter().GetResult();
+                            }
+                        }
+                        uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
+                    }, this.maxParallelism);
                 if (loopResult.IsExceptional)
                 {
                     if (loopResult.Exceptions.Any())
