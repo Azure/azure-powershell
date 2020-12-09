@@ -23,5 +23,9 @@ namespace Microsoft.Azure.Commands.Network
         public const string SourceIpGroupAndTargetFqdn = @"SourceIpGroupAndTargetFqdn";
 
         public const string SourceIpGroupAndFqdnTag = @"SourceIpGroupAndFqdnTag";
+
+        public const string SourceAddressAndWebCategory = @"SourceAddressAndWebCategory";
+
+        public const string SourceIpGroupAndWebCategory = @"SourceIpGroupAndWebCategory";
     }
 }

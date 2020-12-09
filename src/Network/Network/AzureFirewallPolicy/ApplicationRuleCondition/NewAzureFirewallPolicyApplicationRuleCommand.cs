@@ -48,6 +48,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceAddressAndFqdnTag,
             HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceAddressAndWebCategory,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
@@ -58,6 +62,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndFqdnTag,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndWebCategory,
             HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
@@ -81,8 +89,23 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndFqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndWebCategory,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] FqdnTag { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceAddressAndWebCategory,
+            HelpMessage = "The Web Categories of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndWebCategory,
+            HelpMessage = "The Web Categories of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] WebCategory { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -91,6 +114,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndTargetFqdn,
+            HelpMessage = "The protocols of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceAddressAndWebCategory,
+            HelpMessage = "The protocols of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.SourceIpGroupAndWebCategory,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] Protocol { get; set; }
@@ -115,6 +146,7 @@ namespace Microsoft.Azure.Commands.Network
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList(),
+                WebCategories = this.WebCategory?.ToList(),
                 RuleType = "ApplicationRule"
             };
             WriteObject(applicationRule);
