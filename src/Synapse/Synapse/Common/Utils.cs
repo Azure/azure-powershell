@@ -1,6 +1,4 @@
 ﻿using Azure;
-using Azure.Analytics.Synapse.Artifacts;
-using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
@@ -185,16 +183,5 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
             return operation;
         }
-
-        //public static T Poll<T>(this Operation<T> operation) where T: SubResource
-        //{
-        //    while (!operation.HasValue)
-        //    {
-        //        operation.UpdateStatus();
-        //        System.Threading.Thread.Sleep(SynapseConstants.DefaultPollingInterval);
-        //    }
-
-        //    return operation.Value;
-        //}
     }
 }
