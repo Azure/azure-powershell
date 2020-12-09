@@ -34,6 +34,7 @@
     - Add `Get-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
     - Add `Set-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
 * Fixed deserialization error when create Pipeline/Dataset/Trigger through DefinitionFile
+* Added polling for artifacts cmdlets
 
 ## Version 0.5.0
 * Added support for operation of Synapse SQL Pool Restore Point
