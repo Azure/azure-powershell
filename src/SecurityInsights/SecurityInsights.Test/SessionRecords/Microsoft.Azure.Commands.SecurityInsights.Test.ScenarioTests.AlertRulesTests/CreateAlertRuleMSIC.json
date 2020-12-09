@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/06ea512a-b2fa-4aa5-994a-77008e6f38c6?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzA2ZWE1MTJhLWIyZmEtNGFhNS05OTRhLTc3MDA4ZTZmMzhjNj9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/d9de76d7-193f-4f64-83e4-858d471a4fa5?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2Q5ZGU3NmQ3LTE5M2YtNGY2NC04M2U0LTg1OGQ0NzFhNGZhNT9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dad821c8-4860-42eb-ac62-486f7158ac6d"
+          "f0b96fc8-873b-47d6-bfc9-62623643b343"
         ],
         "Accept-Language": [
           "en-US"
@@ -42,13 +42,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "57e1297b-1559-44d1-a3ed-8a10aa2c65ad"
+          "6d4f2302-259b-4b38-ad9f-a33aaa47b8c5"
         ],
         "x-ms-correlation-request-id": [
-          "57e1297b-1559-44d1-a3ed-8a10aa2c65ad"
+          "6d4f2302-259b-4b38-ad9f-a33aaa47b8c5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201128T200730Z:57e1297b-1559-44d1-a3ed-8a10aa2c65ad"
+          "WESTUS2:20201209T170122Z:6d4f2302-259b-4b38-ad9f-a33aaa47b8c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,7 +57,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 28 Nov 2020 20:07:29 GMT"
+          "Wed, 09 Dec 2020 17:01:22 GMT"
         ],
         "Content-Length": [
           "757"
@@ -69,17 +69,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/06ea512a-b2fa-4aa5-994a-77008e6f38c6\",\r\n  \"name\": \"06ea512a-b2fa-4aa5-994a-77008e6f38c6\",\r\n  \"etag\": \"\\\"b001abf2-0000-0100-0000-5fc2ae020000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"severitiesFilter\": null,\r\n    \"displayNamesFilter\": null,\r\n    \"displayNamesExcludeFilter\": null,\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"lastModifiedUtc\": \"2020-11-28T20:07:30.4668133Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/d9de76d7-193f-4f64-83e4-858d471a4fa5\",\r\n  \"name\": \"d9de76d7-193f-4f64-83e4-858d471a4fa5\",\r\n  \"etag\": \"\\\"a5004f9c-0000-0100-0000-5fd102e20000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"severitiesFilter\": null,\r\n    \"displayNamesFilter\": null,\r\n    \"displayNamesExcludeFilter\": null,\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"lastModifiedUtc\": \"2020-12-09T17:01:22.5320596Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/06ea512a-b2fa-4aa5-994a-77008e6f38c6?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzA2ZWE1MTJhLWIyZmEtNGFhNS05OTRhLTc3MDA4ZTZmMzhjNj9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/d9de76d7-193f-4f64-83e4-858d471a4fa5?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2Q5ZGU3NmQ3LTE5M2YtNGY2NC04M2U0LTg1OGQ0NzFhNGZhNT9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7f4fa497-3269-48ca-9b91-877d6d2e603b"
+          "29bb6473-cb02-4b77-a274-f76a71172315"
         ],
         "Accept-Language": [
           "en-US"
@@ -108,13 +108,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "726c4bac-fbdc-4aeb-bfe7-7086e5b7f977"
+          "336073e6-5679-48a2-a6ff-df3199d91467"
         ],
         "x-ms-correlation-request-id": [
-          "726c4bac-fbdc-4aeb-bfe7-7086e5b7f977"
+          "336073e6-5679-48a2-a6ff-df3199d91467"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201128T200730Z:726c4bac-fbdc-4aeb-bfe7-7086e5b7f977"
+          "WESTUS2:20201209T170122Z:336073e6-5679-48a2-a6ff-df3199d91467"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 28 Nov 2020 20:07:29 GMT"
+          "Wed, 09 Dec 2020 17:01:22 GMT"
         ],
         "Content-Length": [
           "2"

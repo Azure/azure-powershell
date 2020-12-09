@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/07cb2830-8c1c-466a-b407-c4a8786764b4?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzA3Y2IyODMwLThjMWMtNDY2YS1iNDA3LWM0YTg3ODY3NjRiND9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/e809972c-e918-4738-b62e-c4411fafffeb?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2U4MDk5NzJjLWU5MTgtNDczOC1iNjJlLWM0NDExZmFmZmZlYj9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"kind\": \"Fusion\",\r\n  \"properties\": {\r\n    \"alertRuleTemplateName\": \"f71aba3d-28fb-450b-b192-4e76a83015c8\",\r\n    \"enabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b3e892f-e29d-4a71-97e4-9feb9fa3cd57"
+          "6110810f-5425-4556-bf51-bf41228cf59b"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "api-supported-versions": [
           "2019-01-01-preview"
@@ -42,13 +42,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "108211e5-7c66-4121-b25a-aa18a352bc73"
+          "99cf4427-4057-447a-a092-f907646848f2"
         ],
         "x-ms-correlation-request-id": [
-          "108211e5-7c66-4121-b25a-aa18a352bc73"
+          "99cf4427-4057-447a-a092-f907646848f2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201128T201319Z:108211e5-7c66-4121-b25a-aa18a352bc73"
+          "WESTUS2:20201209T170126Z:99cf4427-4057-447a-a092-f907646848f2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 28 Nov 2020 20:13:18 GMT"
+          "Wed, 09 Dec 2020 17:01:25 GMT"
         ],
         "Content-Length": [
-          "2125"
+          "2126"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,17 +69,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/07cb2830-8c1c-466a-b407-c4a8786764b4\",\r\n  \"name\": \"07cb2830-8c1c-466a-b407-c4a8786764b4\",\r\n  \"etag\": \"\\\"b1010d08-0000-0100-0000-5fc2af5f0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"Fusion\",\r\n  \"properties\": {\r\n    \"displayName\": \"Advanced Multistage Attack Detection\",\r\n    \"description\": \"Using Fusion technology based on machine learning, Azure Sentinel automatically detects multistage attacks by identifying combinations of anomalous behaviors and suspicious activities observed at various stages of the kill chain. On the basis of these discoveries, Azure Sentinel generates incidents that would otherwise be very difficult to catch. By design, these incidents are low-volume, high-fidelity, and high-severity, which is why this detection is turned ON by default.\\n\\nThere are a total of 70 Fusion incident types detected by Azure Sentinel.\\n- 65 of these show the combination of suspicious Azure Active Directory sign-in events followed by anomalous Office 365 activity. Out of these 65, 30 are in public preview. \\n- The remaining five incident types show the combination of anomalous signals from Microsoft Defender Advanced Threat Protection and from Palo Alto Networks firewalls. These five types are all in public preview.\\n\\nTo detect these multistage attacks, the following data connectors must be configured:\\n- Azure Active Directory Identity Protection.\\n- Microsoft Cloud App Security.\\n- Microsoft Defender Advanced Threat Protection.\\n- Palo Alto Networks.\\n\\nFor a full list and description of each scenario that is supported for these multistage attacks, go to https://aka.ms/SentinelFusion.\",\r\n    \"alertRuleTemplateName\": \"f71aba3d-28fb-450b-b192-4e76a83015c8\",\r\n    \"tactics\": [\r\n      \"Collection\",\r\n      \"CommandAndControl\",\r\n      \"DefenseEvasion\",\r\n      \"Discovery\",\r\n      \"Execution\",\r\n      \"Exfiltration\",\r\n      \"Impact\",\r\n      \"InitialAccess\",\r\n      \"LateralMovement\",\r\n      \"Persistence\",\r\n      \"PrivilegeEscalation\"\r\n    ],\r\n    \"severity\": \"High\",\r\n    \"enabled\": true,\r\n    \"lastModifiedUtc\": \"2020-11-28T20:13:19.213732Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/e809972c-e918-4738-b62e-c4411fafffeb\",\r\n  \"name\": \"e809972c-e918-4738-b62e-c4411fafffeb\",\r\n  \"etag\": \"\\\"a500a99c-0000-0100-0000-5fd102e60000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"Fusion\",\r\n  \"properties\": {\r\n    \"displayName\": \"Advanced Multistage Attack Detection\",\r\n    \"description\": \"Using Fusion technology based on machine learning, Azure Sentinel automatically detects multistage attacks by identifying combinations of anomalous behaviors and suspicious activities observed at various stages of the kill chain. On the basis of these discoveries, Azure Sentinel generates incidents that would otherwise be very difficult to catch. By design, these incidents are low-volume, high-fidelity, and high-severity, which is why this detection is turned ON by default.\\n\\nThere are a total of 70 Fusion incident types detected by Azure Sentinel.\\n- 65 of these show the combination of suspicious Azure Active Directory sign-in events followed by anomalous Office 365 activity. Out of these 65, 30 are in public preview. \\n- The remaining five incident types show the combination of anomalous signals from Microsoft Defender Advanced Threat Protection and from Palo Alto Networks firewalls. These five types are all in public preview.\\n\\nTo detect these multistage attacks, the following data connectors must be configured:\\n- Azure Active Directory Identity Protection.\\n- Microsoft Cloud App Security.\\n- Microsoft Defender Advanced Threat Protection.\\n- Palo Alto Networks.\\n\\nFor a full list and description of each scenario that is supported for these multistage attacks, go to https://aka.ms/SentinelFusion.\",\r\n    \"alertRuleTemplateName\": \"f71aba3d-28fb-450b-b192-4e76a83015c8\",\r\n    \"tactics\": [\r\n      \"Collection\",\r\n      \"CommandAndControl\",\r\n      \"DefenseEvasion\",\r\n      \"Discovery\",\r\n      \"Execution\",\r\n      \"Exfiltration\",\r\n      \"Impact\",\r\n      \"InitialAccess\",\r\n      \"LateralMovement\",\r\n      \"Persistence\",\r\n      \"PrivilegeEscalation\"\r\n    ],\r\n    \"severity\": \"High\",\r\n    \"enabled\": true,\r\n    \"lastModifiedUtc\": \"2020-12-09T17:01:25.9888686Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/07cb2830-8c1c-466a-b407-c4a8786764b4?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzLzA3Y2IyODMwLThjMWMtNDY2YS1iNDA3LWM0YTg3ODY3NjRiND9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/e809972c-e918-4738-b62e-c4411fafffeb?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2U4MDk5NzJjLWU5MTgtNDczOC1iNjJlLWM0NDExZmFmZmZlYj9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "977f1864-ff4d-4055-928c-65452af0598e"
+          "a92e2dfd-083a-4acf-87cd-ec8d62eb923e"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "api-supported-versions": [
           "2019-01-01-preview"
@@ -108,13 +108,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "91a38e8e-2df4-40d9-b83d-208f01bf22f9"
+          "32be1933-5d38-44c5-8146-cbb91aa9b9fa"
         ],
         "x-ms-correlation-request-id": [
-          "91a38e8e-2df4-40d9-b83d-208f01bf22f9"
+          "32be1933-5d38-44c5-8146-cbb91aa9b9fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201128T201319Z:91a38e8e-2df4-40d9-b83d-208f01bf22f9"
+          "WESTUS2:20201209T170126Z:32be1933-5d38-44c5-8146-cbb91aa9b9fa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 28 Nov 2020 20:13:18 GMT"
+          "Wed, 09 Dec 2020 17:01:25 GMT"
         ],
         "Content-Length": [
           "2"
