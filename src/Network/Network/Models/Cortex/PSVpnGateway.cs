@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        public List<PSVpnGatewayIpConfiguration> IpConfigurations { get; set;} 
+        public List<PSVpnGatewayIpConfiguration> IpConfigurations { get; set;}
+
+        [Ps1Xml(Label = "Enable RoutingPreferenceInternet", Target = ViewControl.Table)]
+        public bool? IsRoutingPreferenceInternet { get; set; }
     }
 }
