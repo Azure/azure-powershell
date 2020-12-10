@@ -98,14 +98,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ServicePrincipalKey");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new Office365LinkedService(this.Office365TenantId, this.ServicePrincipalTenantId, this.ServicePrincipalId, this.ServicePrincipalKey);
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

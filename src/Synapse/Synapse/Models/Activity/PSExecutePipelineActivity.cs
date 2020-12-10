@@ -70,15 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Pipeline");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ExecutePipelineActivity(this.Name, this.Pipeline);
-            this.Parameters?.ForEach(item => activity.Parameters.Add(item));
-            activity.WaitOnCompletion = this.WaitOnCompletion;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

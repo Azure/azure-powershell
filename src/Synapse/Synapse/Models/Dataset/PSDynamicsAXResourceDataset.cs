@@ -58,13 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Path");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new DynamicsAXResourceDataset(this.LinkedServiceName, this.Path);
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -106,20 +106,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ClusterUri");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new HDInsightLinkedService(this.ClusterUri);
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.LinkedServiceName = this.LinkedServiceName;
-            linkedService.HcatalogLinkedServiceName = this.HcatalogLinkedServiceName;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.IsEspEnabled = this.IsEspEnabled;
-            linkedService.FileSystem = this.FileSystem;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

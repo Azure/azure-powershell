@@ -67,16 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Command");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new AzureDataExplorerCommandActivity(this.Name, this.Command);
-            activity.CommandTimeout = this.CommandTimeout;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

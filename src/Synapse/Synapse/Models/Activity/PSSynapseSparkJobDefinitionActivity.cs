@@ -57,13 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "SparkJob");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new SynapseSparkJobDefinitionActivity(this.Name, this.SparkJob);
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

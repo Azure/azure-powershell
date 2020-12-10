@@ -18,16 +18,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object EnableCompression { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public StagingSettings ToSdkObject()
-        {
-            var settings = new StagingSettings(this.LinkedServiceName)
-            {
-                Path = this.Path,
-                EnableCompression = this.EnableCompression
-            };
-            this.AdditionalProperties?.ForEach(item => settings.Add(item.Key, item.Value));
-            return settings;
-        }
     }
 }

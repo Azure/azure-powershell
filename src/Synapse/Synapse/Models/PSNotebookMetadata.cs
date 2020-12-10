@@ -30,16 +30,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public NotebookMetadata ToSdkObject()
-        {
-            var metadata = new NotebookMetadata()
-            {
-                Kernelspec = this.Kernelspec?.ToSdkObject(),
-                LanguageInfo = this.LanguageInfo?.ToSdkObject()
-            };
-            this.AdditionalProperties?.ForEach(item => metadata.Add(item.Key, item.Value));
-            return metadata;
-        }
     }
 }

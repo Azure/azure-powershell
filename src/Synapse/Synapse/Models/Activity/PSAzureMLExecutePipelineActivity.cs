@@ -96,19 +96,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "MlPipelineId");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new AzureMLExecutePipelineActivity(this.Name, this.MlPipelineId);
-            activity.ExperimentName = this.ExperimentName;
-            activity.MlPipelineParameters = this.MlPipelineParameters;
-            activity.MlParentRunId = this.MlParentRunId;
-            activity.ContinueOnStepFailure = this.ContinueOnStepFailure;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

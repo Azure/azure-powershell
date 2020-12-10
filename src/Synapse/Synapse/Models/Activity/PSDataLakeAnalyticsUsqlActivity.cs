@@ -107,20 +107,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ScriptLinkedService");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new DataLakeAnalyticsUsqlActivity(this.Name, this.ScriptPath, this.ScriptLinkedService);
-            activity.DegreeOfParallelism = this.DegreeOfParallelism;
-            activity.Priority = this.Priority;
-            this.Parameters?.ForEach(item => activity.Parameters.Add(item));
-            activity.RuntimeVersion = this.RuntimeVersion;
-            activity.CompilationMode = this.CompilationMode;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

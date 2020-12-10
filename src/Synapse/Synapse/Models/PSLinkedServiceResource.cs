@@ -20,12 +20,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "properties")]
         internal PSLinkedService PropertiesForCreate { get; set; }
-
-        public LinkedServiceResource ToSdkObject()
-        {
-            LinkedService linkedService = this.PropertiesForCreate?.ToSdkObject();
-            LinkedServiceResource linkedServiceResource = new LinkedServiceResource(linkedService);
-            return linkedServiceResource;
-        }
     }
 }

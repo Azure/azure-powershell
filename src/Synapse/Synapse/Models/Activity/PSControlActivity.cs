@@ -44,13 +44,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ControlActivity(this.Name);
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

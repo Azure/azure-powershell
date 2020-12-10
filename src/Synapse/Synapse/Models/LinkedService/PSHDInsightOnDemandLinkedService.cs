@@ -315,39 +315,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ClusterResourceGroup");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new HDInsightOnDemandLinkedService(this.ClusterSize, this.TimeToLive, this.Version, this.LinkedServiceName, this.HostSubscriptionId, this.Tenant, this.ClusterResourceGroup);
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.ClusterNamePrefix = this.ClusterNamePrefix;
-            linkedService.ClusterUserName = this.ClusterUserName;
-            linkedService.ClusterPassword = this.ClusterPassword;
-            linkedService.ClusterSshUserName = this.ClusterSshUserName;
-            linkedService.ClusterSshPassword = this.ClusterSshPassword;
-            this.AdditionalLinkedServiceNames?.ForEach(item => linkedService.AdditionalLinkedServiceNames.Add(item));
-            linkedService.HcatalogLinkedServiceName = this.HcatalogLinkedServiceName;
-            linkedService.ClusterType = this.ClusterType;
-            linkedService.SparkVersion = this.SparkVersion;
-            linkedService.CoreConfiguration = this.CoreConfiguration;
-            linkedService.HBaseConfiguration = this.HBaseConfiguration;
-            linkedService.HdfsConfiguration = this.HdfsConfiguration;
-            linkedService.HiveConfiguration = this.HiveConfiguration;
-            linkedService.MapReduceConfiguration = this.MapReduceConfiguration;
-            linkedService.OozieConfiguration = this.OozieConfiguration;
-            linkedService.StormConfiguration = this.StormConfiguration;
-            linkedService.YarnConfiguration = this.YarnConfiguration;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.HeadNodeSize = this.HeadNodeSize;
-            linkedService.DataNodeSize = this.DataNodeSize;
-            linkedService.ZookeeperNodeSize = this.ZookeeperNodeSize;
-            this.ScriptActions?.ForEach(item => linkedService.ScriptActions.Add(item));
-            linkedService.VirtualNetworkId = this.VirtualNetworkId;
-            linkedService.SubnetName = this.SubnetName;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

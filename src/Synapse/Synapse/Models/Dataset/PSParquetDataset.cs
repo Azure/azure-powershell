@@ -63,15 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new ParquetDataset(this.LinkedServiceName);
-            dataset.Location = this.Location?.ToSdkObject();
-            dataset.CompressionCodec = this.CompressionCodec ?? "none";
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

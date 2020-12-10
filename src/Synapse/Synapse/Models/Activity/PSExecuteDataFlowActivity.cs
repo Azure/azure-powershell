@@ -74,18 +74,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "DataFlow");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ExecuteDataFlowActivity(this.Name, this.DataFlow?.ToSdkObject());
-            activity.Staging = this.Staging;
-            activity.IntegrationRuntime = this.IntegrationRuntime;
-            activity.Compute = this.Compute;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

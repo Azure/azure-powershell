@@ -125,26 +125,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new DelimitedTextDataset(this.LinkedServiceName);
-            dataset.Location = this.Location?.ToSdkObject();
-            dataset.ColumnDelimiter = this.ColumnDelimiter;
-            dataset.RowDelimiter = this.RowDelimiter;
-            dataset.EncodingName = this.EncodingName;
-            if (this.CompressionCodec != null)
-            {
-                dataset.CompressionCodec = this.CompressionCodec;
-                dataset.CompressionLevel = this.CompressionLevel;
-            }
-            dataset.QuoteChar = this.QuoteChar;
-            dataset.EscapeChar = this.EscapeChar;
-            dataset.FirstRowAsHeader = this.FirstRowAsHeader;
-            dataset.NullValue = this.NullValue;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

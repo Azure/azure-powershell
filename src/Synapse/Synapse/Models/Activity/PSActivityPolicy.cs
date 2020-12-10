@@ -24,19 +24,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public bool? SecureOutput { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public ActivityPolicy ToSdkObject()
-        {
-            var policy = new ActivityPolicy()
-            {
-                Timeout = this.Timeout,
-                Retry = this.Retry,
-                RetryIntervalInSeconds = this.RetryIntervalInSeconds,
-                SecureInput = this.SecureInput,
-                SecureOutput = this.SecureOutput
-            };
-            this.AdditionalProperties?.ForEach(item => policy.Add(item.Key, item.Value));
-            return policy;
-        }
     }
 }

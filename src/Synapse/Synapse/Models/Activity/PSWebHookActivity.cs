@@ -114,18 +114,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new WebHookActivity(this.Name, new WebHookActivityMethod(PSWebHookActivity.Method), this.Url);
-            activity.Timeout = this.Timeout;
-            activity.Headers = this.Headers;
-            activity.Body = this.Body;
-            activity.Authentication = this.Authentication;
-            activity.ReportStatusOnCallBack = this.ReportStatusOnCallBack;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

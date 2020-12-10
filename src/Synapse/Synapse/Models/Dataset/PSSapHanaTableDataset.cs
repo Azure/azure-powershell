@@ -60,15 +60,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SapHanaTableDataset(this.LinkedServiceName);
-            dataset.SchemaTypePropertiesSchema = this.SapHanaTableDatasetSchema;
-            dataset.Table = this.Table;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

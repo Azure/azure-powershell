@@ -117,20 +117,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new HttpLinkedService(this.Url);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.EmbeddedCertData = this.EmbeddedCertData;
-            linkedService.CertThumbprint = this.CertThumbprint;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.EnableServerCertificateValidation = this.EnableServerCertificateValidation;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

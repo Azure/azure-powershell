@@ -15,16 +15,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public int? Occurrence { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public RecurrenceScheduleOccurrence ToSdkObject()
-        {
-            var recurrenceScheduleOccurrence = new RecurrenceScheduleOccurrence()
-            {
-                Day = this.Day,
-                Occurrence = this.Occurrence
-            };
-            this.AdditionalProperties?.ForEach(item => recurrenceScheduleOccurrence.Add(item.Key, item.Value));
-            return recurrenceScheduleOccurrence;
-        }
     }
 }

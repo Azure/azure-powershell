@@ -52,13 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new WaitActivity(this.Name, this.WaitTimeInSeconds);
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

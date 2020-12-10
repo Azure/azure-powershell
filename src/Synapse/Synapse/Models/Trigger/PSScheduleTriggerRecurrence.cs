@@ -28,20 +28,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSRecurrenceSchedule Schedule { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public ScheduleTriggerRecurrence ToSdkObject()
-        {
-            var scheduleTriggerRecurrence = new ScheduleTriggerRecurrence
-            {
-                Frequency = this.Frequency,
-                Interval = this.Interval,
-                StartTime = this.StartTime,
-                EndTime = this.EndTime,
-                TimeZone = this.TimeZone,
-                Schedule = this.Schedule?.ToSdkObject()
-            };
-            this.AdditionalProperties?.ForEach(item => scheduleTriggerRecurrence.Add(item.Key, item.Value));
-            return scheduleTriggerRecurrence;
-        }
     }
 }

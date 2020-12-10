@@ -107,18 +107,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ClientId");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new ResponsysLinkedService(this.Endpoint, this.ClientId);
-            linkedService.ClientSecret = this.ClientSecret;
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.UseHostVerification = this.UseHostVerification;
-            linkedService.UsePeerVerification = this.UsePeerVerification;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

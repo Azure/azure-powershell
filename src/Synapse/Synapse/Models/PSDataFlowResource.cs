@@ -20,10 +20,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "properties")]
         internal PSDataFlow PropertiesForCreate { get; set; }
-
-        public DataFlowResource ToSdkObject()
-        {
-            return new DataFlowResource(this.PropertiesForCreate?.ToSdkObject());
-        }
     }
 }

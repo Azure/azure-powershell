@@ -90,19 +90,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxConcurrentConnections", 1);
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new DeleteActivity(this.Name, this.Dataset);
-            activity.Recursive = this.Recursive;
-            activity.MaxConcurrentConnections = this.MaxConcurrentConnections;
-            activity.EnableLogging = this.EnableLogging;
-            activity.LogStorageSettings = this.LogStorageSettings?.ToSdkObject();
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

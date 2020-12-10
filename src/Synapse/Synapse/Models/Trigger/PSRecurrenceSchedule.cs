@@ -24,12 +24,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IList<PSRecurrenceScheduleOccurrence> MonthlyOccurrences { get; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public RecurrenceSchedule ToSdkObject()
-        {
-            var recurrenceSchedule = new RecurrenceSchedule();
-            this.AdditionalProperties?.ForEach(item => recurrenceSchedule.Add(item.Key, item.Value));
-            return recurrenceSchedule;
-        }
     }
 }

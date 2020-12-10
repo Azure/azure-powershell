@@ -18,17 +18,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object MaxConcurrentConnections { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public CopySource ToSdkObject()
-        {
-            var copySource = new CopySource()
-            {
-                SourceRetryCount = this.SourceRetryCount,
-                SourceRetryWait = this.SourceRetryWait,
-                MaxConcurrentConnections = this.MaxConcurrentConnections
-            };
-            this.AdditionalProperties?.ForEach(item => copySource.Add(item.Key, item.Value));
-            return copySource;
-        }
     }
 }

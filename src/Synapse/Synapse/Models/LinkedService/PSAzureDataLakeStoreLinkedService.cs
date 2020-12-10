@@ -112,20 +112,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "DataLakeStoreUri");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureDataLakeStoreLinkedService(this.DataLakeStoreUri);
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.Tenant = this.Tenant;
-            linkedService.AccountName = this.AccountName;
-            linkedService.SubscriptionId = this.SubscriptionId;
-            linkedService.ResourceGroupName = this.ResourceGroupName;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

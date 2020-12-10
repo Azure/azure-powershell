@@ -75,15 +75,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "OpenHubDestinationName");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SapOpenHubTableDataset(this.LinkedServiceName, this.OpenHubDestinationName);
-            dataset.ExcludeLastRequest = this.ExcludeLastRequest;
-            dataset.BaseRequestId = this.BaseRequestId;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

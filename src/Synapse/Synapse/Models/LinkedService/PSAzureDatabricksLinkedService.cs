@@ -174,25 +174,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AccessToken");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureDatabricksLinkedService(this.Domain, this.AccessToken);
-            linkedService.ExistingClusterId = this.ExistingClusterId;
-            linkedService.InstancePoolId = this.InstancePoolId;
-            linkedService.NewClusterVersion = this.NewClusterVersion;
-            linkedService.NewClusterNumOfWorker = this.NewClusterNumOfWorker;
-            linkedService.NewClusterNodeType = this.NewClusterNodeType;
-            this.NewClusterSparkConf?.ForEach(item => linkedService.NewClusterSparkConf.Add(item));
-            this.NewClusterSparkEnvVars?.ForEach(item => linkedService.NewClusterSparkEnvVars.Add(item));
-            this.NewClusterCustomTags?.ForEach(item => linkedService.NewClusterCustomTags.Add(item));
-            linkedService.NewClusterDriverNodeType = this.NewClusterDriverNodeType;
-            linkedService.NewClusterInitScripts = this.NewClusterInitScripts;
-            linkedService.NewClusterEnableElasticDisk = this.NewClusterEnableElasticDisk;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

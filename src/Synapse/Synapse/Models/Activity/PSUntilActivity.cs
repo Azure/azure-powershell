@@ -90,14 +90,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new UntilActivity(this.Name, this.Expression, this.Activities?.Select(element => element?.ToSdkObject()));
-            activity.Timeout = this.Timeout;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

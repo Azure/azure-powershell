@@ -88,15 +88,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new SwitchActivity(this.Name, this.On);
-            this.Cases?.ForEach(item => activity.Cases.Add(item));
-            this.DefaultActivities?.ForEach(item => activity.DefaultActivities.Add(item?.ToSdkObject()));
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

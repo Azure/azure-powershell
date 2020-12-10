@@ -116,19 +116,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Tenant");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureDataLakeAnalyticsLinkedService(this.AccountName, this.Tenant);
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.SubscriptionId = this.SubscriptionId;
-            linkedService.ResourceGroupName = this.ResourceGroupName;
-            linkedService.DataLakeAnalyticsUri = this.DataLakeAnalyticsUri;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

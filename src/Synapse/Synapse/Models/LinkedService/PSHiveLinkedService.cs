@@ -178,28 +178,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new HiveLinkedService(this.Host, this.AuthenticationType);
-            linkedService.Port = this.Port;
-            linkedService.ServerType = this.ServerType;
-            linkedService.ThriftTransportProtocol = this.ThriftTransportProtocol;
-            linkedService.ServiceDiscoveryMode = this.ServiceDiscoveryMode;
-            linkedService.ZooKeeperNameSpace = this.ZooKeeperNameSpace;
-            linkedService.UseNativeQuery = this.UseNativeQuery;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.HttpPath = this.HttpPath;
-            linkedService.EnableSsl = this.EnableSsl;
-            linkedService.TrustedCertPath = this.TrustedCertPath;
-            linkedService.UseSystemTrustStore = this.UseSystemTrustStore;
-            linkedService.AllowHostNameCNMismatch = this.AllowHostNameCNMismatch;
-            linkedService.AllowSelfSignedServerCert = this.AllowSelfSignedServerCert;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

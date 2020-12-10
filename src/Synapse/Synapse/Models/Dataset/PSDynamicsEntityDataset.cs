@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new DynamicsEntityDataset(this.LinkedServiceName);
-            dataset.EntityName = this.EntityName;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -115,17 +115,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ClientId");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SapOpenHubLinkedService(this.Server, this.SystemNumber, this.ClientId);
-            linkedService.Language = this.Language;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

@@ -43,13 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SapBwCubeDataset(this.LinkedServiceName);
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

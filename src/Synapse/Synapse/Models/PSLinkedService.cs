@@ -45,30 +45,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public virtual void Validate() { }
-
-        public virtual LinkedService ToSdkObject()
-        {
-            LinkedService linkedService = new LinkedService();
-            SetProperties(linkedService);
-            return linkedService;
-        }
-
-        protected void SetProperties(LinkedService linkedService)
-        {
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            this.Annotations?.ForEach(item => linkedService.Annotations.Add(item));
-            this.Parameters?.ForEach(item => linkedService.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
-            if (this.AdditionalProperties != null)
-            {
-                foreach(var item in this.AdditionalProperties)
-                {
-                    if (item.Key != "typeProperties")
-                    {
-                        linkedService.Add(item.Key, item.Value);
-                    }
-                }
-            }
-        }
     }
 }

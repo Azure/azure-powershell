@@ -58,16 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzurePostgreSqlLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

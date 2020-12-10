@@ -91,17 +91,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Dataset");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ValidationActivity(this.Name, this.Dataset);
-            activity.Timeout = this.Timeout;
-            activity.Sleep = this.Sleep;
-            activity.MinimumSize = this.MinimumSize;
-            activity.ChildItems = this.ChildItems;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

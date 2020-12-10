@@ -69,16 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new AzurePostgreSqlTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.Table = this.Table;
-            dataset.SchemaTypePropertiesSchema = this.AzurePostgreSqlTableDatasetSchema;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

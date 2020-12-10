@@ -103,18 +103,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Database");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SybaseLinkedService(this.Server, this.Database);
-            linkedService.Schema = this.Schema;
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

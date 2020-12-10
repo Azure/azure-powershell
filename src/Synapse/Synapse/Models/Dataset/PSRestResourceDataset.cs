@@ -83,18 +83,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new RestResourceDataset(this.LinkedServiceName);
-            dataset.RelativeUrl = this.RelativeUrl;
-            dataset.RequestMethod = this.RequestMethod;
-            dataset.RequestBody = this.RequestBody;
-            dataset.AdditionalHeaders = this.AdditionalHeaders;
-            dataset.PaginationRules = this.PaginationRules;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

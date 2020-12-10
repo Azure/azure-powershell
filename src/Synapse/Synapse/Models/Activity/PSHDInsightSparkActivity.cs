@@ -110,21 +110,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "EntryFilePath");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new HDInsightSparkActivity(this.Name, this.RootPath, this.EntryFilePath);
-            this.Arguments?.ForEach(item => activity.Arguments.Add(item));
-            activity.GetDebugInfo = this.GetDebugInfo;
-            activity.SparkJobLinkedService = this.SparkJobLinkedService;
-            activity.ClassName = this.ClassName;
-            activity.ProxyUser = this.ProxyUser;
-            this.SparkConfig?.ForEach(item => activity.SparkConfig.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

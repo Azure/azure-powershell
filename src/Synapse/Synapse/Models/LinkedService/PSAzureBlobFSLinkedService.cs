@@ -95,18 +95,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureBlobFSLinkedService(this.Url);
-            linkedService.AccountKey = this.AccountKey;
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.Tenant = this.Tenant;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

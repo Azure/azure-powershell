@@ -79,16 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Host");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureFileStorageLinkedService(this.Host);
-            linkedService.UserId = this.UserId;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

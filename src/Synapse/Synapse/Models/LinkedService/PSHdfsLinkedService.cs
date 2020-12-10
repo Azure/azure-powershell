@@ -87,17 +87,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new HdfsLinkedService(this.Url);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

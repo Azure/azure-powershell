@@ -59,13 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "BaseUrl");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureKeyVaultLinkedService(this.BaseUrl);
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

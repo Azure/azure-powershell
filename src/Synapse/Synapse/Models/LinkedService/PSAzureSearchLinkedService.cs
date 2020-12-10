@@ -71,15 +71,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureSearchLinkedService(this.Url);
-            linkedService.Key = this.Key;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

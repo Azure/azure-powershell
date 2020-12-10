@@ -95,18 +95,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ConnectionString");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new MicrosoftAccessLinkedService(this.ConnectionString);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.Credential = this.Credential;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

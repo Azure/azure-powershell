@@ -60,15 +60,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new AppendVariableActivity(this.Name);
-            activity.VariableName = this.VariableName;
-            activity.Value = this.Value;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

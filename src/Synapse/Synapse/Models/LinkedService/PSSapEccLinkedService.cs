@@ -80,16 +80,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SapEccLinkedService(this.Url);
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

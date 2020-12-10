@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SalesforceObjectDataset(this.LinkedServiceName);
-            dataset.ObjectApiName = this.ObjectApiName;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -143,23 +143,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new PhoenixLinkedService(this.Host, this.AuthenticationType);
-            linkedService.Port = this.Port;
-            linkedService.HttpPath = this.HttpPath;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EnableSsl = this.EnableSsl;
-            linkedService.TrustedCertPath = this.TrustedCertPath;
-            linkedService.UseSystemTrustStore = this.UseSystemTrustStore;
-            linkedService.AllowHostNameCNMismatch = this.AllowHostNameCNMismatch;
-            linkedService.AllowSelfSignedServerCert = this.AllowSelfSignedServerCert;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

@@ -9,12 +9,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSDatasetCompression() { }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public DatasetCompression ToSdkObject()
-        {
-            var datasetCompression = new DatasetCompression();
-            this.AdditionalProperties?.ForEach(item => datasetCompression.Add(item.Key, item.Value));
-            return datasetCompression;
-        }
     }
 }

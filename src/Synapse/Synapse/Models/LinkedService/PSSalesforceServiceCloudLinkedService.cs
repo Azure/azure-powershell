@@ -94,19 +94,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SalesforceServiceCloudLinkedService();
-            linkedService.EnvironmentUrl = this.EnvironmentUrl;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.SecurityToken = this.SecurityToken;
-            linkedService.ExtendedProperties = this.ExtendedProperties;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

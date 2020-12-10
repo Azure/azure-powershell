@@ -60,15 +60,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new CassandraTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.Keyspace = this.Keyspace;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

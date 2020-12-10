@@ -86,17 +86,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "FunctionName");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new AzureFunctionActivity(this.Name, this.Method, this.FunctionName);
-            activity.Headers = this.Headers;
-            activity.Body = this.Body;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

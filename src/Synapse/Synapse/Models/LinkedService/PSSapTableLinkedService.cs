@@ -166,29 +166,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SapTableLinkedService();
-            linkedService.Server = this.Server;
-            linkedService.SystemNumber = this.SystemNumber;
-            linkedService.ClientId = this.ClientId;
-            linkedService.Language = this.Language;
-            linkedService.SystemId = this.SystemId;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.MessageServer = this.MessageServer;
-            linkedService.MessageServerService = this.MessageServerService;
-            linkedService.SncMode = this.SncMode;
-            linkedService.SncMyName = this.SncMyName;
-            linkedService.SncPartnerName = this.SncPartnerName;
-            linkedService.SncLibraryPath = this.SncLibraryPath;
-            linkedService.SncQop = this.SncQop;
-            linkedService.LogonGroup = this.LogonGroup;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

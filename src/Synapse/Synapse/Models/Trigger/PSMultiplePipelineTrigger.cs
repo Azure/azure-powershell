@@ -41,13 +41,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "pipelines")]
         public IList<TriggerPipelineReference> Pipelines { get; set; }
-
-        public override Trigger ToSdkObject()
-        {
-            var trigger = new MultiplePipelineTrigger();
-            this.Pipelines?.ForEach(item => trigger.Pipelines.Add(item));
-            SetProperties(trigger);
-            return trigger;
-        }
     }
 }

@@ -136,25 +136,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ConnectVia");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ExecuteSsisPackageActivity(this.Name, this.PackageLocation, this.ConnectVia);
-            activity.Runtime = this.Runtime;
-            activity.LoggingLevel = this.LoggingLevel;
-            activity.EnvironmentPath = this.EnvironmentPath;
-            activity.ExecutionCredential = this.ExecutionCredential;
-            this.ProjectParameters?.ForEach(item => activity.ProjectParameters.Add(item));
-            this.PackageParameters?.ForEach(item => activity.PackageParameters.Add(item));
-            this.ProjectConnectionManagers?.ForEach(item => activity.ProjectConnectionManagers.Add(item.Key, item.Value));
-            this.PackageConnectionManagers?.ForEach(item => activity.PackageConnectionManagers.Add(item.Key, item.Value));
-            this.PropertyOverrides?.ForEach(item => activity.PropertyOverrides.Add(item));
-            activity.LogLocation = this.LogLocation;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

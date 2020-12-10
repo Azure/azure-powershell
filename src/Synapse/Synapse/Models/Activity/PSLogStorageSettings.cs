@@ -15,15 +15,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object Path { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public LogStorageSettings ToSdkObject()
-        {
-            var logStorageSettings = new LogStorageSettings(this.LinkedServiceName)
-            {
-                Path = this.Path
-            };
-            this.AdditionalProperties?.ForEach(item => logStorageSettings.Add(item.Key, item.Value));
-            return logStorageSettings;
-        }
     }
 }

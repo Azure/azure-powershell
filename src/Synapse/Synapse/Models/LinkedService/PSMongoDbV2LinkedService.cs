@@ -69,13 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Database");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new MongoDbV2LinkedService(this.ConnectionString, this.Database);
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

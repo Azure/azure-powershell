@@ -78,18 +78,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new AzureMLBatchExecutionActivity(this.Name);
-            this.GlobalParameters?.ForEach(item => activity.GlobalParameters.Add(item));
-            this.WebServiceOutputs?.ForEach(item => activity.WebServiceOutputs.Add(item));
-            this.WebServiceInputs?.ForEach(item => activity.WebServiceInputs.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

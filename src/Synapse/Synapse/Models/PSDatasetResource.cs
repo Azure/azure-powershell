@@ -20,10 +20,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "properties")]
         internal PSDataset PropertiesForCreate { get; set; }
-
-        public DatasetResource ToSdkObject()
-        {
-            return new DatasetResource(this.PropertiesForCreate?.ToSdkObject());
-        }
     }
 }

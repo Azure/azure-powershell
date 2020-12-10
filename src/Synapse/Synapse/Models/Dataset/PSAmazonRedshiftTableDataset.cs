@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new AmazonRedshiftTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.Table = this.Table;
-            dataset.SchemaTypePropertiesSchema = this.AmazonRedshiftTableDatasetSchema;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -55,13 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "TypeProperties");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CustomDataSourceLinkedService(this.TypeProperties);
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

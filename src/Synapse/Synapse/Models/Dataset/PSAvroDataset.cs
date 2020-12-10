@@ -76,16 +76,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "AvroCompressionLevel", 1);
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new AvroDataset(this.LinkedServiceName);
-            dataset.Location = this.Location?.ToSdkObject();
-            dataset.AvroCompressionCodec = this.AvroCompressionCodec ?? "none";
-            dataset.AvroCompressionLevel = this.AvroCompressionLevel;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

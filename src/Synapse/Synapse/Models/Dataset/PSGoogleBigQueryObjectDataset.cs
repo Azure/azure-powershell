@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new GoogleBigQueryObjectDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.Table = this.Table;
-            dataset.Dataset = this.Dataset;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

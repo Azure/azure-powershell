@@ -67,16 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new VerticaTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.Table = this.Table;
-            dataset.SchemaTypePropertiesSchema = this.VerticaTableDatasetSchema;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

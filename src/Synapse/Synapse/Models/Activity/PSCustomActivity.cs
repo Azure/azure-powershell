@@ -93,20 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Command");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new CustomActivity(this.Name, this.Command);
-            activity.ResourceLinkedService = this.ResourceLinkedService;
-            activity.FolderPath = this.FolderPath;
-            activity.ReferenceObjects = this.ReferenceObjects;
-            this.ExtendedProperties?.ForEach(item => activity.ExtendedProperties.Add(item));
-            activity.RetentionTimeInDays = this.RetentionTimeInDays;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

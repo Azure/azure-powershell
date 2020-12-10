@@ -73,17 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "MainClassName");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new DatabricksSparkJarActivity(this.Name, this.MainClassName);
-            this.Parameters?.ForEach(item => activity.Parameters.Add(item));
-            this.Libraries?.ForEach(item => activity.Libraries.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

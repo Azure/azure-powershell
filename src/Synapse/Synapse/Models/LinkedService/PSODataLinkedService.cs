@@ -143,24 +143,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new ODataLinkedService(this.Url);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.Tenant = this.Tenant;
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.AadResourceId = this.AadResourceId;
-            linkedService.AadServicePrincipalCredentialType = this.AadServicePrincipalCredentialType;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.ServicePrincipalEmbeddedCert = this.ServicePrincipalEmbeddedCert;
-            linkedService.ServicePrincipalEmbeddedCertPassword = this.ServicePrincipalEmbeddedCertPassword;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

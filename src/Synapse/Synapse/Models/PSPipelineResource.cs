@@ -70,33 +70,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
         
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public PipelineResource ToSdkObject()
-        {
-            PipelineResource pipeline = new PipelineResource
-            {
-                Description = this.Description,
-                Concurrency = this.Concurrency,
-                Folder = this.Folder?.ToSdkObject()
-            };
-            this.ActivitiesForCreate?.ForEach(item => pipeline.Activities.Add(item?.ToSdkObject()));
-            this.Variables?.ForEach(item => pipeline.Variables.Add(item.Key, item.Value?.ToSdkObject()));
-            this.Annotations?.ForEach(item => pipeline.Annotations.Add(item));
-            this.RunDimensions?.ForEach(item => pipeline.RunDimensions.Add(item));
-            this.Parameters?.ForEach(item => pipeline.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
-            List<string> properties = new List<string> { "description", "activities", "variables", "concurrency",
-                "annotations", "runDimensions", "folder", "parameters" };
-            if (this.AdditionalProperties != null)
-            {
-                foreach (var item in this.AdditionalProperties)
-                {
-                    if (!properties.Contains(item.Key))
-                    {
-                        pipeline.Add(item.Key, item.Value);
-                    }
-                }
-            }
-            return pipeline;
-        }
     }
 }

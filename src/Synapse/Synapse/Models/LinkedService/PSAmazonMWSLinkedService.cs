@@ -131,19 +131,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AccessKeyId");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AmazonMWSLinkedService(this.Endpoint, this.MarketplaceID, this.SellerID, this.AccessKeyId);
-            linkedService.MwsAuthToken = this.MwsAuthToken;
-            linkedService.SecretKey = this.SecretKey;
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.UseHostVerification = this.UseHostVerification;
-            linkedService.UsePeerVerification = this.UsePeerVerification;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

@@ -43,20 +43,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IList<PSNotebookCellOutputItem> Outputs { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public NotebookCell ToSdkObject()
-        {
-            if(this.Metadata == null)
-            {
-                this.Metadata = new System.Collections.Generic.Dictionary<string, object>();
-            }
-            var cell = new NotebookCell(this.CellType, this.Metadata, this.Source)
-            {
-                Attachments = this.Attachments,
-            };
-            this.Outputs?.ForEach(item => cell.Outputs.Add(item?.ToSdkObject()));
-            this.AdditionalProperties?.ForEach(item => cell.Add(item.Key, item.Value));
-            return cell;
-        }
     }
 }

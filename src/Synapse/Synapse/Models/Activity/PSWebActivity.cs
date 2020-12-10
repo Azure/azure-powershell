@@ -111,21 +111,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new WebActivity(this.Name, this.Method, this.Url);
-            activity.Headers = this.Headers;
-            activity.Body = this.Body;
-            activity.Authentication = this.Authentication;
-            this.Datasets?.ForEach(item => activity.Datasets.Add(item));
-            this.LinkedServices?.ForEach(item => activity.LinkedServices.Add(item));
-            activity.ConnectVia = this.ConnectVia;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

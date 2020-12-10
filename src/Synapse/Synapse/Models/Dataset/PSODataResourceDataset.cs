@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new ODataResourceDataset(this.LinkedServiceName);
-            dataset.Path = this.Path;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

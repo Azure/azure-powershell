@@ -57,16 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CouchbaseLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.CredString = this.CredString;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

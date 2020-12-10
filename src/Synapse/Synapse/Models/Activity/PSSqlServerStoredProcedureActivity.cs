@@ -66,16 +66,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "StoredProcedureName");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new SqlServerStoredProcedureActivity(this.Name, this.StoredProcedureName);
-            this.StoredProcedureParameters?.ForEach(item => activity.StoredProcedureParameters.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

@@ -67,16 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SqlServerTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            dataset.SchemaTypePropertiesSchema = this.SqlServerTableDatasetSchema;
-            dataset.Table = this.Table;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

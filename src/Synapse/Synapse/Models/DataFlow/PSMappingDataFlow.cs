@@ -60,16 +60,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.script")]
         public string Script { get; set; }
-
-        public override DataFlow ToSdkObject()
-        {
-            var dataFlow = new MappingDataFlow();
-            this.Sources?.ForEach(item => dataFlow.Sources.Add(item));
-            this.Sinks?.ForEach(item => dataFlow.Sinks.Add(item));
-            this.Transformations?.ForEach(item => dataFlow.Transformations.Add(item));
-            dataFlow.Script = this.Script;
-            SetProperties(dataFlow);
-            return dataFlow;
-        }
     }
 }

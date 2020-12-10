@@ -18,15 +18,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object DatasetParameters { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public DataFlowReference ToSdkObject()
-        {
-            var dataFlowReference = new DataFlowReference(this.Type.GetValueOrDefault(), this.ReferenceName)
-            {
-                DatasetParameters = this.DatasetParameters
-            };
-            this.AdditionalProperties?.ForEach(item => dataFlowReference.Add(item.Key, item.Value));
-            return dataFlowReference;
-        }
     }
 }

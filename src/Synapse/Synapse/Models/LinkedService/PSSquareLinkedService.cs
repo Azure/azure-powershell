@@ -115,18 +115,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "RedirectUri");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SquareLinkedService(this.Host, this.ClientId, this.RedirectUri);
-            linkedService.ClientSecret = this.ClientSecret;
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.UseHostVerification = this.UseHostVerification;
-            linkedService.UsePeerVerification = this.UsePeerVerification;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

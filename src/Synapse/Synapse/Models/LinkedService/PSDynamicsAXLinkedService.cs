@@ -113,14 +113,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AadResourceId");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new DynamicsAXLinkedService(this.Url, this.ServicePrincipalId, this.ServicePrincipalKey, this.Tenant, this.AadResourceId);
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

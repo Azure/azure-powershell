@@ -137,23 +137,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Host");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SftpServerLinkedService(this.Host);
-            linkedService.Port = this.Port;
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            linkedService.PrivateKeyPath = this.PrivateKeyPath;
-            linkedService.PrivateKeyContent = this.PrivateKeyContent;
-            linkedService.PassPhrase = this.PassPhrase;
-            linkedService.SkipHostKeyValidation = this.SkipHostKeyValidation;
-            linkedService.HostKeyFingerprint = this.HostKeyFingerprint;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

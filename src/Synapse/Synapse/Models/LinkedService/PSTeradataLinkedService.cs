@@ -88,19 +88,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new TeradataLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.Server = this.Server;
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

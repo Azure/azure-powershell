@@ -17,16 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object FileName { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public DatasetLocation ToSdkObject()
-        {
-            var datasetLocation = new DatasetLocation()
-            {
-                FolderPath = this.FolderPath,
-                FileName = this.FileName
-            };
-            this.AdditionalProperties?.ForEach(item => datasetLocation.Add(item.Key, item.Value));
-            return datasetLocation;
-        }
     }
 }

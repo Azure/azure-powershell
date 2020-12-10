@@ -65,14 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "TableName");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new Office365Dataset(this.LinkedServiceName, this.TableName);
-            dataset.Predicate = this.Predicate;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

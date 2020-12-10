@@ -63,16 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Dataset");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new GetMetadataActivity(this.Name, this.Dataset);
-            this.FieldList?.ForEach(item => activity.FieldList.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

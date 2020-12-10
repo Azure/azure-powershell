@@ -86,21 +86,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new HDInsightPigActivity(this.Name);
-            this.StorageLinkedServices?.ForEach(item => activity.StorageLinkedServices.Add(item));
-            activity.Arguments = this.Arguments;
-            activity.GetDebugInfo = this.GetDebugInfo;
-            activity.ScriptPath = this.ScriptPath;
-            activity.ScriptLinkedService = this.ScriptLinkedService;
-            this.Defines?.ForEach(item => activity.Defines.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

@@ -57,13 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "IndexName");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new AzureSearchIndexDataset(this.LinkedServiceName, this.IndexName);
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -98,17 +98,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Database");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AmazonRedshiftLinkedService(this.Server, this.Database);
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.Port = this.Port;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

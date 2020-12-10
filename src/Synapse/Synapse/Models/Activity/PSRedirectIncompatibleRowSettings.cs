@@ -15,15 +15,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object Path { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public RedirectIncompatibleRowSettings ToSdkObject()
-        {
-            var settings = new RedirectIncompatibleRowSettings(this.LinkedServiceName)
-            {
-                Path = this.Path
-            };
-            this.AdditionalProperties?.ForEach(item => settings.Add(item.Key, item.Value));
-            return settings;
-        }
     }
 }

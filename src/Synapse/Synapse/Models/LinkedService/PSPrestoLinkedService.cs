@@ -163,23 +163,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new PrestoLinkedService(this.Host, this.ServerVersion, this.Catalog, this.AuthenticationType);
-            linkedService.Port = this.Port;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EnableSsl = this.EnableSsl;
-            linkedService.TrustedCertPath = this.TrustedCertPath;
-            linkedService.UseSystemTrustStore = this.UseSystemTrustStore;
-            linkedService.AllowHostNameCNMismatch = this.AllowHostNameCNMismatch;
-            linkedService.AllowSelfSignedServerCert = this.AllowSelfSignedServerCert;
-            linkedService.TimeZoneID = this.TimeZoneID;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

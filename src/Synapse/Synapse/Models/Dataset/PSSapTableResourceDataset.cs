@@ -57,13 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "TableName");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new SapTableResourceDataset(this.LinkedServiceName, this.TableName);
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

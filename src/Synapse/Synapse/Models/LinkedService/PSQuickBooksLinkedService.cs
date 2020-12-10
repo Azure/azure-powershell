@@ -122,15 +122,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AccessTokenSecret");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new QuickBooksLinkedService(this.Endpoint, this.CompanyId, this.ConsumerKey, this.ConsumerSecret, this.AccessToken, this.AccessTokenSecret);
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

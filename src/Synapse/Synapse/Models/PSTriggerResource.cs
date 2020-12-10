@@ -20,10 +20,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "properties")]
         internal PSTrigger PropertiesForCreate { get; set; }
-
-        public TriggerResource ToSdkObject()
-        {
-            return new TriggerResource(this.PropertiesForCreate?.ToSdkObject());
-        }
     }
 }

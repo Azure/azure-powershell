@@ -92,18 +92,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Server");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new SapHanaLinkedService(this.Server);
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.UserName = this.UserName;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

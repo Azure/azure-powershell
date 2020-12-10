@@ -95,15 +95,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new ForEachActivity(this.Name, this.Items, this.Activities?.Select(element => element?.ToSdkObject()));
-            activity.IsSequential = this.IsSequential;
-            activity.BatchCount = this.BatchCount;
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

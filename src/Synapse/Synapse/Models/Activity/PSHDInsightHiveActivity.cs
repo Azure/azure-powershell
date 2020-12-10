@@ -98,23 +98,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new HDInsightHiveActivity(this.Name);
-            this.StorageLinkedServices?.ForEach(item => activity.StorageLinkedServices.Add(item));
-            this.Arguments?.ForEach(item => activity.Arguments.Add(item));
-            activity.GetDebugInfo = this.GetDebugInfo;
-            activity.ScriptPath = this.ScriptPath;
-            activity.ScriptLinkedService = this.ScriptLinkedService;
-            this.Defines?.ForEach(item => activity.Defines.Add(item));
-            this.Variables?.ForEach(item => activity.Variables.Add(item));
-            activity.QueryTimeout = this.QueryTimeout;
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

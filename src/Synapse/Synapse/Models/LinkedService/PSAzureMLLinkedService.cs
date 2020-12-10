@@ -108,18 +108,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ApiKey");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureMLLinkedService(this.MlEndpoint, this.ApiKey);
-            linkedService.UpdateResourceEndpoint = this.UpdateResourceEndpoint;
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalKey = this.ServicePrincipalKey;
-            linkedService.Tenant = this.Tenant;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

@@ -71,15 +71,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "ConnectionString");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new MySqlLinkedService(this.ConnectionString);
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

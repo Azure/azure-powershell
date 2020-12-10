@@ -22,13 +22,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "typeProperties.recurrence")]
         public PSScheduleTriggerRecurrence Recurrence { get; set; }
-
-        public override Trigger ToSdkObject()
-        {
-            var trigger = new ScheduleTrigger(this.Recurrence?.ToSdkObject());
-            this.Pipelines?.ForEach(item => trigger.Pipelines.Add(item));
-            SetProperties(trigger);
-            return trigger;
-        }
     }
 }

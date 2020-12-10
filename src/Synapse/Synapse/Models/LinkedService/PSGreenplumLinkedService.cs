@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new GreenplumLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.Pwd = this.Pwd;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

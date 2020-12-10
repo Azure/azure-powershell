@@ -48,18 +48,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IList<PSNotebookCell> Cells { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public Notebook ToSdkObject()
-        {
-            var notebook = new Notebook(this.Metadata?.ToSdkObject(), this.NotebookFormat.GetValueOrDefault(), this.NotebookFormatMinor.GetValueOrDefault(),
-                this.Cells?.Select(element => element?.ToSdkObject()))
-            {
-                Description = this.Description,
-                BigDataPool = this.BigDataPool?.ToSdkObject(),
-                SessionProperties = this.SessionProperties?.ToSdkObject()
-            };
-            this.AdditionalProperties?.ForEach(item => notebook.Add(item.Key, item.Value));
-            return notebook;
-        }
     }
 }

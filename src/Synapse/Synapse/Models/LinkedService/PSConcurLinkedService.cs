@@ -104,18 +104,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Username");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new ConcurLinkedService(this.ClientId, this.Username);
-            linkedService.Password = this.Password;
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.UseHostVerification = this.UseHostVerification;
-            linkedService.UsePeerVerification = this.UsePeerVerification;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

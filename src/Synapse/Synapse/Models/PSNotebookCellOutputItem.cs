@@ -34,17 +34,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "metadata")]
         public object Metadata { get; set; }
-
-        public NotebookCellOutputItem ToSdkObject()
-        {
-            return new NotebookCellOutputItem(new CellOutputType(this.OutputType))
-            {
-                Name = this.Name,
-                ExecutionCount = this.ExecutionCount,
-                Text = this.Text,
-                Data = this.Data,
-                Metadata = this.Metadata
-            };
-        }
     }
 }

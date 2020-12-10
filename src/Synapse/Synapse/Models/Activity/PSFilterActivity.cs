@@ -66,13 +66,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Condition");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new FilterActivity(this.Name, this.Items, this.Condition);
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

@@ -82,18 +82,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CosmosDbLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.AccountEndpoint = this.AccountEndpoint;
-            linkedService.Database = this.Database;
-            linkedService.AccountKey = this.AccountKey;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

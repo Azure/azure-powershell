@@ -147,22 +147,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "FilePaths");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new HDInsightStreamingActivity(this.Name, this.Mapper, this.Reducer, this.Input, this.Output, this.FilePaths);
-            this.StorageLinkedServices?.ForEach(item => activity.StorageLinkedServices.Add(item));
-            this.Arguments?.ForEach(item => activity.Arguments.Add(item));
-            activity.GetDebugInfo = this.GetDebugInfo;
-            activity.FileLinkedService = this.FileLinkedService;
-            activity.Combiner = this.Combiner;
-            this.CommandEnvironment?.ForEach(item => activity.CommandEnvironment.Add(item));
-            this.Defines?.ForEach(item => activity.Defines.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

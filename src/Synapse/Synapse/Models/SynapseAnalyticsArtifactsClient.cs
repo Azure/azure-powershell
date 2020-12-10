@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PipelineResource CreateOrUpdatePipeline(string pipelineName, string rawJsonContent)
         {
-            PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent);
-            PipelineResource pipeline = psPipeline.ToSdkObject();
+            PipelineResource pipeline = JsonConvert.DeserializeObject<PipelineResource>(rawJsonContent);
             var operation = _pipelineClient.StartCreateOrUpdatePipeline(pipelineName, pipeline);
             return operation.Poll().Value;
         }
@@ -112,8 +111,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkedServiceResource CreateOrUpdateLinkedService(string linkedServiceName, string rawJsonContent)
         {
-            PSLinkedServiceResource psLinkedService = JsonConvert.DeserializeObject<PSLinkedServiceResource>(rawJsonContent);
-            LinkedServiceResource linkedService = psLinkedService.ToSdkObject();
+            LinkedServiceResource linkedService = JsonConvert.DeserializeObject<LinkedServiceResource>(rawJsonContent);
             var operation = _linkedServiceClient.StartCreateOrUpdateLinkedService(linkedServiceName, linkedService);
             return operation.Poll().Value;
         }
@@ -154,8 +152,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public TriggerResource CreateOrUpdateTrigger(string triggerName, string rawJsonContent)
         {
-            PSTriggerResource pSTrigger = JsonConvert.DeserializeObject<PSTriggerResource>(rawJsonContent);
-            TriggerResource trigger = pSTrigger.ToSdkObject();
+            TriggerResource trigger = JsonConvert.DeserializeObject<TriggerResource>(rawJsonContent);
             var operation = _triggerClient.StartCreateOrUpdateTrigger(triggerName, trigger);
             return operation.Poll().Value;
         }
@@ -212,8 +209,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DatasetResource CreateOrUpdateDataset(string datasetName, string rawJsonContent)
         {
-            PSDatasetResource pSDatasetResource = JsonConvert.DeserializeObject<PSDatasetResource>(rawJsonContent);
-            DatasetResource dataset = pSDatasetResource.ToSdkObject();
+           DatasetResource dataset = JsonConvert.DeserializeObject<DatasetResource>(rawJsonContent);
             var operation = _datasetClient.StartCreateOrUpdateDataset(datasetName, dataset);
             return operation.Poll().Value;
         }
@@ -239,8 +235,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DataFlowResource CreateOrUpdateDataFlow(string dataFlowName, string rawJsonContent)
         {
-            PSDataFlowResource pSDatasetResource = JsonConvert.DeserializeObject<PSDataFlowResource>(rawJsonContent);
-            DataFlowResource dataFlow = pSDatasetResource.ToSdkObject();
+            DataFlowResource dataFlow = JsonConvert.DeserializeObject<DataFlowResource>(rawJsonContent);
             var operation = _dataFlowClient.StartCreateOrUpdateDataFlow(dataFlowName, dataFlow);
             return operation.Poll().Value;
         }

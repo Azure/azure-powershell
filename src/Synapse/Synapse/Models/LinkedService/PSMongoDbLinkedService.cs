@@ -127,21 +127,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "DatabaseName");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new MongoDbLinkedService(this.Server, this.DatabaseName);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.AuthSource = this.AuthSource;
-            linkedService.Port = this.Port;
-            linkedService.EnableSsl = this.EnableSsl;
-            linkedService.AllowSelfSignedServerCert = this.AllowSelfSignedServerCert;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

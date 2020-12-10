@@ -148,23 +148,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new GoogleBigQueryLinkedService(this.Project, this.AuthenticationType);
-            linkedService.AdditionalProjects = this.AdditionalProjects;
-            linkedService.RequestGoogleDriveScope = this.RequestGoogleDriveScope;
-            linkedService.RefreshToken = this.RefreshToken;
-            linkedService.ClientId = this.ClientId;
-            linkedService.ClientSecret = this.ClientSecret;
-            linkedService.Email = this.Email;
-            linkedService.KeyFilePath = this.KeyFilePath;
-            linkedService.TrustedCertPath = this.TrustedCertPath;
-            linkedService.UseSystemTrustStore = this.UseSystemTrustStore;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

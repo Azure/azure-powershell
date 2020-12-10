@@ -73,16 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new JsonDataset(this.LinkedServiceName);
-            dataset.Location = this.Location?.ToSdkObject();
-            dataset.EncodingName = this.EncodingName;
-            dataset.Compression = this.Compression?.ToSdkObject();
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -74,18 +74,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public string EncryptedCredential { get; set; }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureStorageLinkedService();
-            linkedService.ConnectionString = this.ConnectionString;
-            linkedService.AccountKey = this.AccountKey;
-            linkedService.SasUri = this.SasUri;
-            linkedService.SasToken = this.SasToken;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

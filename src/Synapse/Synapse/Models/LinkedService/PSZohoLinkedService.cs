@@ -93,18 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Endpoint");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new ZohoLinkedService(this.Endpoint);
-            linkedService.AccessToken = this.AccessToken;
-            linkedService.UseEncryptedEndpoints = this.UseEncryptedEndpoints;
-            linkedService.UseHostVerification = this.UseHostVerification;
-            linkedService.UsePeerVerification = this.UsePeerVerification;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

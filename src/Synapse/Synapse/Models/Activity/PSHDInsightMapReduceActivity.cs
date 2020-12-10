@@ -108,21 +108,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "JarFilePath");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new HDInsightMapReduceActivity(this.Name, this.ClassName, this.JarFilePath);
-            this.StorageLinkedServices?.ForEach(item => activity.StorageLinkedServices.Add(item));
-            this.Arguments?.ForEach(item => activity.Arguments.Add(item));
-            activity.GetDebugInfo = this.GetDebugInfo;
-            activity.JarLinkedService = this.JarLinkedService;
-            this.JarLibs?.ForEach(item => activity.JarLibs.Add(item));
-            this.Defines?.ForEach(item => activity.Defines.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

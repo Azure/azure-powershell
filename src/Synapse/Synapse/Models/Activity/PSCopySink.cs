@@ -24,19 +24,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object MaxConcurrentConnections { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public CopySink ToSdkObject()
-        {
-            var copySink = new CopySink()
-            {
-                WriteBatchSize = this.WriteBatchSize,
-                WriteBatchTimeout = this.WriteBatchTimeout,
-                SinkRetryCount = this.SinkRetryCount,
-                SinkRetryWait = this.SinkRetryWait,
-                MaxConcurrentConnections = this.MaxConcurrentConnections
-            };
-            this.AdditionalProperties?.ForEach(item => copySink.Add(item.Key, item.Value));
-            return copySink;
-        }
     }
 }

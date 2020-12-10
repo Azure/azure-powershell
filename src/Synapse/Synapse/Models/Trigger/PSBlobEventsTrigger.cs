@@ -34,16 +34,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "typeProperties.scope")]
         public string Scope { get; set; }
-
-        public override Trigger ToSdkObject()
-        {
-            var trigger = new BlobEventsTrigger(this.Events?.Select(element => new BlobEventTypes(element)), this.Scope);
-            trigger.BlobPathBeginsWith = this.BlobPathBeginsWith;
-            trigger.BlobPathEndsWith = this.BlobPathEndsWith;
-            this.IgnoreEmptyBlobs = this.IgnoreEmptyBlobs;
-            this.Pipelines?.ForEach(item => trigger.Pipelines.Add(item));
-            SetProperties(trigger);
-            return trigger;
-        }
     }
 }

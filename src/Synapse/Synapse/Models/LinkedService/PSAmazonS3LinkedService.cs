@@ -79,17 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AmazonS3LinkedService();
-            linkedService.AccessKeyId = this.AccessKeyId;
-            linkedService.SecretAccessKey = this.SecretAccessKey;
-            linkedService.ServiceUrl = this.ServiceUrl;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

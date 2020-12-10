@@ -31,12 +31,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string DisplayName { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public NotebookKernelSpec ToSdkObject()
-        {
-            var notebookKernelSpec = new NotebookKernelSpec(this.Name, this.DisplayName);
-            this.AdditionalProperties?.ForEach(item => notebookKernelSpec.Add(item.Key, item.Value));
-            return notebookKernelSpec;
-        }
     }
 }

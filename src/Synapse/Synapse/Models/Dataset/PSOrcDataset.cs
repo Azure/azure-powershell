@@ -63,15 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new OrcDataset(this.LinkedServiceName);
-            dataset.Location = this.Location?.ToSdkObject();
-            dataset.OrcCompressionCodec = this.OrcCompressionCodec ?? "none";
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

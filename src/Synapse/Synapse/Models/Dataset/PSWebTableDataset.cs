@@ -64,14 +64,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Index");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new WebTableDataset(this.LinkedServiceName, this.Index);
-            dataset.Path = this.Path;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

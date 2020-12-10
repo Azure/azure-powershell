@@ -53,14 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             base.Validate();
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new MySqlTableDataset(this.LinkedServiceName);
-            dataset.TableName = this.TableName;
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -75,17 +75,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "NotebookPath");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new DatabricksNotebookActivity(this.Name, this.NotebookPath);
-            this.BaseParameters?.ForEach(item => activity.BaseParameters.Add(item));
-            this.Libraries?.ForEach(item => activity.Libraries.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

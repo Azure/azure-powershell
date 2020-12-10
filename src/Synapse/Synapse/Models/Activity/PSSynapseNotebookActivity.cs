@@ -63,14 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Notebook");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new SynapseNotebookActivity(this.Name, this.Notebook);
-            this.Parameters?.ForEach(item => activity.Parameters.Add(item));
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

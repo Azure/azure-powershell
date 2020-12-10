@@ -144,21 +144,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new GoogleAdWordsLinkedService(this.ClientCustomerID, this.DeveloperToken, this.AuthenticationType);
-            linkedService.RefreshToken = this.RefreshToken;
-            linkedService.ClientId = this.ClientId;
-            linkedService.ClientSecret = this.ClientSecret;
-            linkedService.Email = this.Email;
-            linkedService.KeyFilePath = this.KeyFilePath;
-            linkedService.TrustedCertPath = this.TrustedCertPath;
-            linkedService.UseSystemTrustStore = this.UseSystemTrustStore;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

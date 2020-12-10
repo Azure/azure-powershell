@@ -76,14 +76,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "StoredProcedureName");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new SqlPoolStoredProcedureActivity(this.Name, this.SqlPool, this.StoredProcedureName);
-            this.StoredProcedureParameters?.ForEach(item => activity.StoredProcedureParameters.Add(item));
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

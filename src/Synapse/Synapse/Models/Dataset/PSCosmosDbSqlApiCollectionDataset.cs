@@ -58,13 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "CollectionName");
             }
         }
-
-        public override Dataset ToSdkObject()
-        {
-            var dataset = new CosmosDbSqlApiCollectionDataset(this.LinkedServiceName, this.CollectionName);
-            SetProperties(dataset);
-            return dataset;
-        }
     }
 }
 

@@ -103,15 +103,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "LinkedServiceName");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureBatchLinkedService(this.AccountName, this.BatchUri, this.PoolName, this.LinkedServiceName);
-            linkedService.AccessKey = this.AccessKey;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

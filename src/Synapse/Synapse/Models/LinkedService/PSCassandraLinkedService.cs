@@ -92,18 +92,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Host");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CassandraLinkedService(this.Host);
-            linkedService.AuthenticationType = this.AuthenticationType;
-            linkedService.Port = this.Port;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

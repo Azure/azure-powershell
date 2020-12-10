@@ -106,13 +106,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Tenant");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureDataExplorerLinkedService(this.Endpoint, this.ServicePrincipalId, this.ServicePrincipalKey, this.Database, this.Tenant);
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

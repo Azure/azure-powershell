@@ -73,17 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "PythonFile");
             }
         }
-
-        public override Activity ToSdkObject()
-        {
-            var activity = new DatabricksSparkPythonActivity(this.Name, this.PythonFile);
-            this.Parameters?.ForEach(item => activity.Parameters.Add(item));
-            this.Libraries?.ForEach(item => activity.Libraries.Add(item));
-            activity.LinkedServiceName = this.LinkedServiceName;
-            activity.Policy = this.Policy?.ToSdkObject();
-            SetProperties(activity);
-            return activity;
-        }
     }
 }
 

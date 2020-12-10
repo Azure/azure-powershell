@@ -72,15 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "FunctionAppUrl");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new AzureFunctionLinkedService(this.FunctionAppUrl);
-            linkedService.FunctionKey = this.FunctionKey;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

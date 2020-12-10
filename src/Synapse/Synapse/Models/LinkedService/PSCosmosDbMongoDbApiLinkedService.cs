@@ -71,13 +71,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "Database");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CosmosDbMongoDbApiLinkedService(this.ConnectionString, this.Database);
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 

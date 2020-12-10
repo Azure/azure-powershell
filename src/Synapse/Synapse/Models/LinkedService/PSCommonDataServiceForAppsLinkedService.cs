@@ -164,23 +164,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new ValidationException(ValidationRules.CannotBeNull, "AuthenticationType");
             }
         }
-
-        public override LinkedService ToSdkObject()
-        {
-            var linkedService = new CommonDataServiceForAppsLinkedService(this.DeploymentType, this.AuthenticationType);
-            linkedService.HostName = this.HostName;
-            linkedService.Port = this.Port;
-            linkedService.ServiceUri = this.ServiceUri;
-            linkedService.OrganizationName = this.OrganizationName;
-            linkedService.Username = this.Username;
-            linkedService.Password = this.Password;
-            linkedService.ServicePrincipalId = this.ServicePrincipalId;
-            linkedService.ServicePrincipalCredentialType = this.ServicePrincipalCredentialType;
-            linkedService.ServicePrincipalCredential = this.ServicePrincipalCredential;
-            linkedService.EncryptedCredential = this.EncryptedCredential;
-            SetProperties(linkedService);
-            return linkedService;
-        }
     }
 }
 
