@@ -111,6 +111,7 @@ function Test-DSCExtensionVMPiping
 
     try
     {
+
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname = 'v' + $rgname;
@@ -175,10 +176,16 @@ function Test-DSCExtensionVMPiping
         #Install DSC Extension handler
 	    Set-AzVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
 
-
-        #$vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel1;
-
         $dscGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname | Get-AzVmDscExtensionStatus;
+
+
+        # Test expected error message when missing ResourceGroup. 
+        $vmname2 = "errorvm";
+        $vmConfig = New-AzVMConfig -Name $vmname2 -VMSize $vmsize;
+        Assert-ThrowsContains {
+            $vmError = $vmconfig | Get-AzVMDSCExtensionStatus; } `
+            "The incoming virtual machine must have a 'resourceGroupName'.";
+
     }
     finally 
     {
