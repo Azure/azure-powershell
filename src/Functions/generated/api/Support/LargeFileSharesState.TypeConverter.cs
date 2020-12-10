@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for LargeFileSharesState.</summary>
+    /// <summary>
+    /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
+    /// </summary>
     public partial class LargeFileSharesStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

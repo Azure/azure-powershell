@@ -8,10 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.KeyVault.Properties {
+namespace Microsoft.Azure.Commands.KeyVault.Properties
+{
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,98 +23,118 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.KeyVault.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory..
         /// </summary>
-        internal static string ActiveDirectoryClientNull {
-            get {
+        internal static string ActiveDirectoryClientNull
+        {
+            get
+            {
                 return ResourceManager.GetString("ActiveDirectoryClientNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add certificate.
         /// </summary>
-        internal static string AddCertificate {
-            get {
+        internal static string AddCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("AddCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add certificate contact.
         /// </summary>
-        internal static string AddCertificateContact {
-            get {
+        internal static string AddCertificateContact
+        {
+            get
+            {
                 return ResourceManager.GetString("AddCertificateContact", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add key.
         /// </summary>
-        internal static string AddKey {
-            get {
+        internal static string AddKey
+        {
+            get
+            {
                 return ResourceManager.GetString("AddKey", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add Key Vault managed Storage Account.
         /// </summary>
-        internal static string AddManagedStorageAccount {
-            get {
+        internal static string AddManagedStorageAccount
+        {
+            get
+            {
                 return ResourceManager.GetString("AddManagedStorageAccount", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Add vault network rule.
         /// </summary>
-        internal static string AddNetworkRule {
-            get {
+        internal static string AddNetworkRule
+        {
+            get
+            {
                 return ResourceManager.GetString("AddNetworkRule", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`..
         /// </summary>
@@ -126,1082 +147,1589 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active Directory..
         /// </summary>
-        internal static string ADObjectAmbiguous {
-            get {
+        internal static string ADObjectAmbiguous
+        {
+            get
+            {
                 return ResourceManager.GetString("ADObjectAmbiguous", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retrieving object ID from Azure Active Directory failed. {0}
         ///
         ///Please provide object ID for the user or service principle to set a vault access policy.
         ///You can find the object ID using Azure Active Directory Module for Windows PowerShell..
         /// </summary>
-        internal static string ADObjectIDRetrievalFailed {
-            get {
+        internal static string ADObjectIDRetrievalFailed
+        {
+            get
+            {
                 return ResourceManager.GetString("ADObjectIDRetrievalFailed", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active directory..
         /// </summary>
-        internal static string ADObjectNotFound {
-            get {
+        internal static string ADObjectNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The &apos;all&apos; permission will be removed in May 2018 and does not include the &apos;purge&apos; permission. &apos;Purge&apos; permission must be explicitly set..
         /// </summary>
-        internal static string AllPermissionExpansionWarning {
-            get {
+        internal static string AllPermissionExpansionWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("AllPermissionExpansionWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find application by &apos;{0}&apos;..
+        /// </summary>
+        internal static string ApplicationNotFoundBy
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationNotFoundBy", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
         /// </summary>
-        internal static string ArmAccountNotFound {
-            get {
+        internal static string ArmAccountNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Assign role &apos;{0}&apos; to principal &apos;{1}&apos; at scope &apos;{2}&apos;..
+        /// </summary>
+        internal static string AssignRole
+        {
+            get
+            {
+                return ResourceManager.GetString("AssignRole", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Backup certificate.
         /// </summary>
-        internal static string BackupCertificate {
-            get {
+        internal static string BackupCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The backup file &apos;{0}&apos; already exists..
         /// </summary>
-        internal static string BackupFileAlreadyExists {
-            get {
+        internal static string BackupFileAlreadyExists
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupFileAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find backup file &apos;{0}&apos;..
         /// </summary>
-        internal static string BackupFileNotFound {
-            get {
+        internal static string BackupFileNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupFileNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup key.
         /// </summary>
-        internal static string BackupKey {
-            get {
+        internal static string BackupKey
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupKey", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The backup key file &apos;{0}&apos; already exists..
         /// </summary>
-        internal static string BackupKeyFileAlreadyExists {
-            get {
+        internal static string BackupKeyFileAlreadyExists
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupKeyFileAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find backup key file &apos;{0}&apos;.
         /// </summary>
-        internal static string BackupKeyFileNotFound {
-            get {
+        internal static string BackupKeyFileNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupKeyFileNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup managed storage account.
         /// </summary>
-        internal static string BackupManagedStorageAccount {
-            get {
+        internal static string BackupManagedStorageAccount
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupManagedStorageAccount", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup secret.
         /// </summary>
-        internal static string BackupSecret {
-            get {
+        internal static string BackupSecret
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupSecret", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The backup secret file &apos;{0}&apos; already exists..
         /// </summary>
-        internal static string BackupSecretFileAlreadyExists {
-            get {
+        internal static string BackupSecretFileAlreadyExists
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupSecretFileAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find backup secret file &apos;{0}&apos;.
         /// </summary>
-        internal static string BackupSecretFileNotFound {
-            get {
+        internal static string BackupSecretFileNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupSecretFileNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bad Parameter Set Name.
         /// </summary>
-        internal static string BadParameterSetName {
-            get {
+        internal static string BadParameterSetName
+        {
+            get
+            {
                 return ResourceManager.GetString("BadParameterSetName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find certificate file &apos;{0}&apos;..
         /// </summary>
-        internal static string CertificateFileNotFound {
-            get {
+        internal static string CertificateFileNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("CertificateFileNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create certificate administrator.
         /// </summary>
-        internal static string CreateCertificateAdministrator {
-            get {
+        internal static string CreateCertificateAdministrator
+        {
+            get
+            {
                 return ResourceManager.GetString("CreateCertificateAdministrator", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create certificate organization.
         /// </summary>
-        internal static string CreateCertificateOrganization {
-            get {
+        internal static string CreateCertificateOrganization
+        {
+            get
+            {
                 return ResourceManager.GetString("CreateCertificateOrganization", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create certificate policy.
         /// </summary>
-        internal static string CreateCertificatePolicy {
-            get {
+        internal static string CreateCertificatePolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("CreateCertificatePolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Create key vault.
+        /// </summary>
+        internal static string CreateKeyVault
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateKeyVault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
+        /// </summary>
+        internal static string DecryptSecurityDomainFailure {
+            get {
+                return ResourceManager.GetString("DecryptSecurityDomainFailure", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create key vault.
+        ///   Looks up a localized string similar to Not enough keys to decrypt security domain backup. {0} required, {0} provided..
         /// </summary>
-        internal static string CreateKeyVault {
+        internal static string DecryptSecurityDomainKeyNotEnough {
             get {
-                return ResourceManager.GetString("CreateKeyVault", resourceCulture);
+                return ResourceManager.GetString("DecryptSecurityDomainKeyNotEnough", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
         /// </summary>
-        internal static string DeletedVaultNotFound {
-            get {
+        internal static string DeletedVaultNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("DeletedVaultNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Perform a full backup and stores it in {0}..
+        /// </summary>
+        internal static string DoFullBackup
+        {
+            get
+            {
+                return ResourceManager.GetString("DoFullBackup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restores the managed HSM from the backup stored in {0}..
+        /// </summary>
+        internal static string DoFullRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("DoFullRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for downloading. (Supported types: RSA, RSA-HSM).
+        /// </summary>
+        internal static string DownloadNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("DownloadNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        /// </summary>
+        internal static string DownloadSecurityDomainFail {
+            get {
+                return ResourceManager.GetString("DownloadSecurityDomainFail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for downloading. (Supported types: RSA, RSA-HSM).
+        ///   Looks up a localized string similar to Failed to download security domain exchange key..
         /// </summary>
-        internal static string DownloadNotSupported {
+        internal static string DownloadSecurityDomainKeyFail {
             get {
-                return ResourceManager.GetString("DownloadNotSupported", resourceCulture);
+                return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Overwrite File ?.
         /// </summary>
-        internal static string FileOverwriteCaption {
-            get {
+        internal static string FileOverwriteCaption
+        {
+            get
+            {
                 return ResourceManager.GetString("FileOverwriteCaption", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Overwrite existing file at &apos;{0}&apos; ?.
         /// </summary>
-        internal static string FileOverwriteMessage {
-            get {
+        internal static string FileOverwriteMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("FileOverwriteMessage", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to backup managed HSM {0}..
+        /// </summary>
+        internal static string FullBackupFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("FullBackupFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to To encrypt the security domain data, please provide at least {0} and at most {1} certificates..
+        /// </summary>
+        internal static string HsmCertRangeWarning {
+            get {
+                return ResourceManager.GetString("HsmCertRangeWarning", resourceCulture);
+                }
+        }
         
+        ///   Looks up a localized string similar to The specified HSM already exists..
+        /// </summary>
+        internal static string HsmAlreadyExists
+        {
+            get
+            {
+                return ResourceManager.GetString("HsmAlreadyExists", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to restore managed HSM {0}..
+        /// </summary>
+        internal static string FullRestoreFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("FullRestoreFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find HSM &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string HsmNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("HsmNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
-        internal static string ImportByokAsSoftkeyError {
-            get {
+        internal static string ImportByokAsSoftkeyError
+        {
+            get
+            {
                 return ResourceManager.GetString("ImportByokAsSoftkeyError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Import certificate.
         /// </summary>
-        internal static string ImportCertificate {
-            get {
+        internal static string ImportCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("ImportCertificate", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Key type &apos;{0}&apos; is not supported for importing. (Supported types: RSA-HSM).
+        /// </summary>
+        internal static string ImportNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ImportNotSupported", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid application Id..
         /// </summary>
-        internal static string InvalidApplicationId {
-            get {
+        internal static string InvalidApplicationId
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidApplicationId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid AzureEnvironment..
         /// </summary>
-        internal static string InvalidAzureEnvironment {
-            get {
+        internal static string InvalidAzureEnvironment
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidAzureEnvironment", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No current subscription has been designated. Use Set-AzContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
-        internal static string InvalidCurrentSubscription {
-            get {
+        internal static string InvalidCurrentSubscription
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidCurrentSubscription", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid HSM name..
+        /// </summary>
+        internal static string InvalidHsmName
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidHsmName", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid key attributes.
         /// </summary>
-        internal static string InvalidKeyAttributes {
-            get {
+        internal static string InvalidKeyAttributes
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyAttributes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid &apos;{0}&apos; key blob..
         /// </summary>
-        internal static string InvalidKeyBlob {
-            get {
+        internal static string InvalidKeyBlob
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyBlob", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid KeyBundle..
         /// </summary>
-        internal static string InvalidKeyBundle {
-            get {
+        internal static string InvalidKeyBundle
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyBundle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Can not create given key material in specified destination..
         /// </summary>
-        internal static string InvalidKeyDestination {
-            get {
+        internal static string InvalidKeyDestination
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyDestination", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid key identifier.
         /// </summary>
-        internal static string InvalidKeyIdentifier {
-            get {
+        internal static string InvalidKeyIdentifier
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyIdentifier", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid key name..
         /// </summary>
-        internal static string InvalidKeyName {
-            get {
+        internal static string InvalidKeyName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid key properties.
+        /// </summary>
+        internal static string InvalidKeyProperties
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidKeyProperties", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid key uri &apos;{0}&apos;..
         /// </summary>
-        internal static string InvalidKeyUri {
-            get {
+        internal static string InvalidKeyUri
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidKeyUri", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid managed storage account bundle..
         /// </summary>
-        internal static string InvalidManagedStorageAccountBundle {
-            get {
+        internal static string InvalidManagedStorageAccountBundle
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidManagedStorageAccountBundle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid managed storage account identifier..
         /// </summary>
-        internal static string InvalidManagedStorageAccountIdentifier {
-            get {
+        internal static string InvalidManagedStorageAccountIdentifier
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidManagedStorageAccountIdentifier", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid key vault managed storage acccount name..
         /// </summary>
-        internal static string InvalidManagedStorageAccountName {
-            get {
+        internal static string InvalidManagedStorageAccountName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidManagedStorageAccountName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid managed storage account or storage SAS definition attributes..
         /// </summary>
-        internal static string InvalidManagedStorageObjectAttributes {
-            get {
+        internal static string InvalidManagedStorageObjectAttributes
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidManagedStorageObjectAttributes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid number of certificates..
         /// </summary>
-        internal static string InvalidNumberOfCertificates {
-            get {
+        internal static string InvalidNumberOfCertificates
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidNumberOfCertificates", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot parse ObjectId into Guid..
         /// </summary>
-        internal static string InvalidObjectIdSyntax {
-            get {
+        internal static string InvalidObjectIdSyntax
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidObjectIdSyntax", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid Sas permission &apos;{0}&apos;..
         /// </summary>
-        internal static string InvalidSasPermission {
-            get {
+        internal static string InvalidSasPermission
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSasPermission", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid secret attributes.
         /// </summary>
-        internal static string InvalidSecretAttributes {
-            get {
+        internal static string InvalidSecretAttributes
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSecretAttributes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid secret identifier.
         /// </summary>
-        internal static string InvalidSecretIdentifier {
-            get {
+        internal static string InvalidSecretIdentifier
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSecretIdentifier", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid secret name..
         /// </summary>
-        internal static string InvalidSecretName {
-            get {
+        internal static string InvalidSecretName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSecretName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid secret uri &apos;{0}&apos;..
         /// </summary>
-        internal static string InvalidSecretUri {
-            get {
+        internal static string InvalidSecretUri
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSecretUri", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No subscription is currently selected. Use Set-AzContext to activate a subscription..
         /// </summary>
-        internal static string InvalidSelectedSubscription {
-            get {
+        internal static string InvalidSelectedSubscription
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSelectedSubscription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid storage SAS definition identifier..
         /// </summary>
-        internal static string InvalidStorageSasDefinitionIdentifier {
-            get {
+        internal static string InvalidStorageSasDefinitionIdentifier
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidStorageSasDefinitionIdentifier", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials..
         /// </summary>
-        internal static string InvalidSubscriptionState {
-            get {
+        internal static string InvalidSubscriptionState
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSubscriptionState", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
         /// </summary>
-        internal static string InvalidTagFormat {
-            get {
+        internal static string InvalidTagFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid vault name..
         /// </summary>
-        internal static string InvalidVaultName {
-            get {
+        internal static string InvalidVaultName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidVaultName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid vault uri &apos;{0}&apos;. Vault uri must contain valid dns host name with domain suffix &apos;{1}&apos;..
         /// </summary>
-        internal static string InvalidVaultUri {
-            get {
+        internal static string InvalidVaultUri
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidVaultUri", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to When KeyOps is &apos;import&apos;, Destination must be HSM..
         /// </summary>
-        internal static string KEKMustBeHSM {
-            get {
+        internal static string KEKMustBeHSM
+        {
+            get
+            {
                 return ResourceManager.GetString("KEKMustBeHSM", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Can not find key file &apos;{0}&apos;..
         /// </summary>
-        internal static string KeyFileNotFound {
-            get {
+        internal static string KeyFileNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("KeyFileNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The &quot;import&quot; operation is exclusive, it cannot be combined with any other value(s)..
         /// </summary>
-        internal static string KeyOpsImportIsExclusive {
-            get {
+        internal static string KeyOpsImportIsExclusive
+        {
+            get
+            {
                 return ResourceManager.GetString("KeyOpsImportIsExclusive", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load security domain data from {0}. Please make sure the file exists and is not modified..
+        /// </summary>
+        internal static string LoadSecurityDomainFileFailed {
+            get {
+                return ResourceManager.GetString("LoadSecurityDomainFileFailed", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault..
         /// </summary>
-        internal static string NoDefaultUserAccount {
-            get {
+        internal static string NoDefaultUserAccount
+        {
+            get
+            {
                 return ResourceManager.GetString("NoDefaultUserAccount", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
-        internal static string NoTenantInContext {
-            get {
+        internal static string NoTenantInContext
+        {
+            get
+            {
                 return ResourceManager.GetString("NoTenantInContext", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid permissions to {0}. The list contains &quot;all&quot; along with other permissions. Please remove &quot;all&quot; from the list or include only &quot;all&quot; in the list..
         /// </summary>
-        internal static string PermissionSetIncludesAllPlusOthers {
-            get {
+        internal static string PermissionSetIncludesAllPlusOthers
+        {
+            get
+            {
                 return ResourceManager.GetString("PermissionSetIncludesAllPlusOthers", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to At least one permission should be selected for key access or secret access..
         /// </summary>
-        internal static string PermissionsNotSpecified {
-            get {
+        internal static string PermissionsNotSpecified
+        {
+            get
+            {
                 return ResourceManager.GetString("PermissionsNotSpecified", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Public key saved at &apos;{0}&apos;..
         /// </summary>
-        internal static string PublicKeySavedAt {
-            get {
+        internal static string PublicKeySavedAt
+        {
+            get
+            {
                 return ResourceManager.GetString("PublicKeySavedAt", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove vault &apos;{0}&apos; forever..
         /// </summary>
-        internal static string PurgeVaultWarning {
-            get {
+        internal static string PurgeVaultWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("PurgeVaultWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Purge vault.
         /// </summary>
-        internal static string PurgeVaultWhatIfMessage {
-            get {
+        internal static string PurgeVaultWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("PurgeVaultWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover certificate.
         /// </summary>
-        internal static string RecoverCertificate {
-            get {
+        internal static string RecoverCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover key.
         /// </summary>
-        internal static string RecoverKey {
-            get {
+        internal static string RecoverKey
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverKey", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover KeyVault-managed storage account.
         /// </summary>
-        internal static string RecoverManagedStorageAccount {
-            get {
+        internal static string RecoverManagedStorageAccount
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverManagedStorageAccount", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover KeyVault-managed storage account SAS definition..
         /// </summary>
-        internal static string RecoverManagedStorageSasDefinition {
-            get {
+        internal static string RecoverManagedStorageSasDefinition
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverManagedStorageSasDefinition", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover secret.
         /// </summary>
-        internal static string RecoverSecret {
-            get {
+        internal static string RecoverSecret
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverSecret", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Recover vault.
         /// </summary>
-        internal static string RecoverVault {
-            get {
+        internal static string RecoverVault
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoverVault", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to regenerate &apos;{0}&apos; of storage account &apos;{1}&apos; and make it an active key of Key Vault managed Storage Account..
         /// </summary>
-        internal static string RegenerateManagedStorageAccountKeyWarning {
-            get {
+        internal static string RegenerateManagedStorageAccountKeyWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RegenerateManagedStorageAccountKeyWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Regenerate &apos;{0}&apos;.
         /// </summary>
-        internal static string RegenerateManagedStorageAccountKeyWhatIfMessage {
-            get {
+        internal static string RegenerateManagedStorageAccountKeyWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RegenerateManagedStorageAccountKeyWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove certificate contact.
         /// </summary>
-        internal static string RemoveCertificateContact {
-            get {
+        internal static string RemoveCertificateContact
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveCertificateContact", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove certificate issuer.
         /// </summary>
-        internal static string RemoveCertificateIssuer {
-            get {
+        internal static string RemoveCertificateIssuer
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveCertificateIssuer", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove certificate operation.
         /// </summary>
-        internal static string RemoveCertificateOperation {
-            get {
+        internal static string RemoveCertificateOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveCertificateOperation", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveCertWarning {
-            get {
+        internal static string RemoveCertWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveCertWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove certificate.
         /// </summary>
-        internal static string RemoveCertWhatIfMessage {
-            get {
+        internal static string RemoveCertWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveCertWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to purge certificate &apos;{0}&apos;.
         /// </summary>
-        internal static string RemoveDeletedCertificateWarning {
-            get {
+        internal static string RemoveDeletedCertificateWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedCertificateWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Purge certificate.
         /// </summary>
-        internal static string RemoveDeletedCertificateWhatIfMessage {
-            get {
+        internal static string RemoveDeletedCertificateWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedCertificateWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to purge key &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveDeletedKeyWarning {
-            get {
+        internal static string RemoveDeletedKeyWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedKeyWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Purge key.
         /// </summary>
-        internal static string RemoveDeletedKeyWhatIfMessage {
-            get {
+        internal static string RemoveDeletedKeyWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedKeyWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to purge managed storage account &apos;{0}&apos;.
         /// </summary>
-        internal static string RemoveDeletedManagedStorageAccountWarning {
-            get {
+        internal static string RemoveDeletedManagedStorageAccountWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedManagedStorageAccountWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Purge managed storage account.
         /// </summary>
-        internal static string RemoveDeletedManagedStorageAccountWhatIfMessage {
-            get {
+        internal static string RemoveDeletedManagedStorageAccountWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedManagedStorageAccountWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to purge secret &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveDeletedSecretWarning {
-            get {
+        internal static string RemoveDeletedSecretWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedSecretWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Purge secret.
         /// </summary>
-        internal static string RemoveDeletedSecretWhatIfMessage {
-            get {
+        internal static string RemoveDeletedSecretWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveDeletedSecretWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove HSM &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveKeyWarning {
-            get {
+        internal static string RemoveHsmWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveHsmWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Remove HSM.
+        /// </summary>
+        internal static string RemoveHsmWhatIfMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveHsmWhatIfMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveKeyWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveKeyWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove key.
         /// </summary>
-        internal static string RemoveKeyWhatIfMessage {
-            get {
+        internal static string RemoveKeyWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveKeyWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove managed storage account &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveManagedStorageAccountWarning {
-            get {
+        internal static string RemoveManagedStorageAccountWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveManagedStorageAccountWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove managed storage account.
         /// </summary>
-        internal static string RemoveManagedStorageAccountWhatIfMessage {
-            get {
+        internal static string RemoveManagedStorageAccountWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveManagedStorageAccountWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove managed storage sas definition &apos;{0}&apos;.
         /// </summary>
-        internal static string RemoveManagedStorageSasDefinitionWarning {
-            get {
+        internal static string RemoveManagedStorageSasDefinitionWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveManagedStorageSasDefinitionWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove managed storage sas definition.
         /// </summary>
-        internal static string RemoveManagedStorageSasDefinitionWhatIfMessage {
-            get {
+        internal static string RemoveManagedStorageSasDefinitionWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveManagedStorageSasDefinitionWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove vault network rule.
         /// </summary>
-        internal static string RemoveNetworkRule {
-            get {
+        internal static string RemoveNetworkRule
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveNetworkRule", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Remove role &apos;{0}&apos; of principal &apos;{1}&apos; at scope &apos;{2}&apos;..
         /// </summary>
-        internal static string RemoveSecretWarning {
-            get {
+        internal static string RemoveRole
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveRole", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove secret &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSecretWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveSecretWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove secret.
         /// </summary>
-        internal static string RemoveSecretWhatIfMessage {
-            get {
+        internal static string RemoveSecretWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveSecretWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove vault access policy.
         /// </summary>
-        internal static string RemoveVaultAccessPolicy {
-            get {
+        internal static string RemoveVaultAccessPolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveVaultAccessPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove vault &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveVaultWarning {
-            get {
+        internal static string RemoveVaultWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveVaultWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Remove vault.
         /// </summary>
-        internal static string RemoveVaultWhatIfMessage {
-            get {
+        internal static string RemoveVaultWhatIfMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restore certificate.
         /// </summary>
-        internal static string RestoreCertificate {
-            get {
+        internal static string RestoreCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreCertificate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restore key.
         /// </summary>
-        internal static string RestoreKey {
-            get {
+        internal static string RestoreKey
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreKey", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restore managed storage account.
         /// </summary>
-        internal static string RestoreManagedStorageAccount {
-            get {
+        internal static string RestoreManagedStorageAccount
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreManagedStorageAccount", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restore secret.
+        /// </summary>
+        internal static string RestoreSecret
+        {
+            get
+            {
+                return ResourceManager.GetString("RestoreSecret", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find the role assignment by given parameters..
+        /// </summary>
+        internal static string RoleAssignmentNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("RoleAssignmentNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Could not to find role definition by &apos;{0}&apos;..
+        /// </summary>
+        internal static string RoleDefinitionNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("RoleDefinitionNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;PublicKey&quot; and &quot;PrivateKey&quot; are mandatory properties in each object in &quot;Keys&quot;..
+        /// </summary>
+        internal static string RestoreSecurityDomainBadKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainBadKey", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restore secret.
+        ///   Looks up a localized string similar to Failed to restore security domain from backup..
         /// </summary>
-        internal static string RestoreSecret {
+        internal static string RestoreSecurityDomainFailure {
             get {
-                return ResourceManager.GetString("RestoreSecret", resourceCulture);
+                return ResourceManager.GetString("RestoreSecurityDomainFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
+        /// </summary>
+        internal static string RestoreSecurityDomainNotEnoughKey {
+            get {
+                return ResourceManager.GetString("RestoreSecurityDomainNotEnoughKey", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Set certificate attribute.
         /// </summary>
-        internal static string SetCertificateAttributes {
-            get {
+        internal static string SetCertificateAttributes
+        {
+            get
+            {
                 return ResourceManager.GetString("SetCertificateAttributes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set certificate issuer.
         /// </summary>
-        internal static string SetCertificateIssuer {
-            get {
+        internal static string SetCertificateIssuer
+        {
+            get
+            {
                 return ResourceManager.GetString("SetCertificateIssuer", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set certificate policy.
         /// </summary>
-        internal static string SetCertificatePolicy {
-            get {
+        internal static string SetCertificatePolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("SetCertificatePolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set key attribute.
         /// </summary>
-        internal static string SetKeyAttribute {
-            get {
+        internal static string SetKeyAttribute
+        {
+            get
+            {
                 return ResourceManager.GetString("SetKeyAttribute", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set Key Vault managed Storage Account attribute.
         /// </summary>
-        internal static string SetManagedStorageAccountKeysAttribute {
-            get {
+        internal static string SetManagedStorageAccountKeysAttribute
+        {
+            get
+            {
                 return ResourceManager.GetString("SetManagedStorageAccountKeysAttribute", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set Key Vault managed Storage SAS definition.
         /// </summary>
-        internal static string SetManagedStorageSasDefinition {
-            get {
+        internal static string SetManagedStorageSasDefinition
+        {
+            get
+            {
                 return ResourceManager.GetString("SetManagedStorageSasDefinition", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set secret.
         /// </summary>
-        internal static string SetSecret {
-            get {
+        internal static string SetSecret
+        {
+            get
+            {
                 return ResourceManager.GetString("SetSecret", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set  secret attribute.
         /// </summary>
-        internal static string SetSecretAttribute {
-            get {
+        internal static string SetSecretAttribute
+        {
+            get
+            {
                 return ResourceManager.GetString("SetSecretAttribute", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set vault access policy.
         /// </summary>
-        internal static string SetVaultAccessPolicy {
-            get {
+        internal static string SetVaultAccessPolicy
+        {
+            get
+            {
                 return ResourceManager.GetString("SetVaultAccessPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Stop certificate operation.
         /// </summary>
-        internal static string StopCertificateOperation {
-            get {
+        internal static string StopCertificateOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("StopCertificateOperation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Key vault cmdlet does not support account type &apos;{0}&apos;..
         /// </summary>
-        internal static string UnsupportedAccountType {
-            get {
+        internal static string UnsupportedAccountType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedAccountType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The file format of &apos;{0}&apos; is not supported..
         /// </summary>
-        internal static string UnsupportedFileFormat {
-            get {
+        internal static string UnsupportedFileFormat
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedFileFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Update vault network rule.
         /// </summary>
-        internal static string UpdateNetworkRule {
-            get {
+        internal static string UpdateNetworkRule
+        {
+            get
+            {
                 return ResourceManager.GetString("UpdateNetworkRule", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The network rule set has been turned off for this vault..
         /// </summary>
-        internal static string UpdateNetworkRuleWarning {
-            get {
+        internal static string UpdateNetworkRuleWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("UpdateNetworkRuleWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find user by &apos;{0}&apos;..
+        /// </summary>
+        internal static string UserNotFoundBy
+        {
+            get
+            {
+                return ResourceManager.GetString("UserNotFoundBy", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The specified vault already exists..
         /// </summary>
-        internal static string VaultAlreadyExists {
-            get {
+        internal static string VaultAlreadyExists
+        {
+            get
+            {
                 return ResourceManager.GetString("VaultAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault..
         /// </summary>
-        internal static string VaultDoesNotExist {
-            get {
+        internal static string VaultDoesNotExist
+        {
+            get
+            {
                 return ResourceManager.GetString("VaultDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzKeyVaultAccessPolicy to set access policies..
         /// </summary>
-        internal static string VaultNoAccessPolicyWarning {
-            get {
+        internal static string VaultNoAccessPolicyWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("VaultNoAccessPolicyWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find vault &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
-        internal static string VaultNotFound {
-            get {
+        internal static string VaultNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("VaultNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to At least one of -EnabledForDeployment, -EnabledForTemplateDeployment, or -EnabledForDiskEncryption must be specified..
         /// </summary>
-        internal static string VaultPermissionFlagMissing {
-            get {
+        internal static string VaultPermissionFlagMissing
+        {
+            get
+            {
                 return ResourceManager.GetString("VaultPermissionFlagMissing", resourceCulture);
             }
         }

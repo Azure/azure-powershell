@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Predefined action to be taken.</summary>
     public partial struct AutoHealActionType :
         System.IEquatable<AutoHealActionType>
     {

@@ -49,8 +49,15 @@ function Test-AzureIotDpsLifeCycle
 	# Create or Update Resource Group
 	$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location 
 
+	# Add Tags to Iot Hub Device Provisioning Service
+	$tags = @{}
+	$tags.Add($Tag1Key, $Tag1Value)
+
 	# Create Iot Hub Device Provisioning Service
-	$newIotDps1 = New-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location
+	$newIotDps1 = New-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Location $Location -Tag $tags
+	Assert-True { $newIotDps1.Name -eq $IotDpsName }
+	Assert-True { $newIotDps1.Tags.Count -eq 1 }
+	Assert-True { $newIotDps1.Tags.Item($Tag1Key) -eq $Tag1Value }	
 
 	# Get Iot Hub Device Provisioning Service
 	$iotDps = Get-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName 
@@ -62,13 +69,6 @@ function Test-AzureIotDpsLifeCycle
 	$updatedIotDps1 = Get-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName | Update-AzIotDps -AllocationPolicy $NewAllocationPolicy
 	Assert-True { $updatedIotDps1.Properties.AllocationPolicy -eq $NewAllocationPolicy }
 
-	# Add Tags to Iot Hub Device Provisioning Service
-	$tags = @{}
-	$tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotDps2 = Update-AzIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
-	Assert-True { $updatedIotDps2.Tags.Count -eq 1 }
-	Assert-True { $updatedIotDps2.Tags.Item($Tag1Key) -eq $Tag1Value }
-	
 	# Add more Tags to Iot Hub Device Provisioning Service
 	$tags.Clear()
 	$tags.Add($Tag2Key, $Tag2Value)

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Replaces the application settings of an app.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_UpdateApplicationSettings=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings"
+    /// [OpenAPI] UpdateApplicationSettings=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzWebAppApplicationSetting_UpdateExpanded", SupportsShouldProcess = true)]

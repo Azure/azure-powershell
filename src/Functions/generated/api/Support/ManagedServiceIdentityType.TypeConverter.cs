@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ManagedServiceIdentityType.</summary>
+    /// <summary>Type of managed service identity.</summary>
     public partial class ManagedServiceIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

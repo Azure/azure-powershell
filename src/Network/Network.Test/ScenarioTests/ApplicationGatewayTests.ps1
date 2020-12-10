@@ -3251,3 +3251,177 @@ function Test-ApplicationGatewayPrivateEndpointWorkFlows
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-ApplicationGatewayCRUDWithMutualAuthentication
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPortName = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listenerName = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSettingName = Get-ResourceName
+
+	$sslCertName = Get-ResourceName
+	$trustedClientCert01Name = Get-ResourceName
+	$trustedClientCert02Name = Get-ResourceName
+	$sslProfile01Name = Get-ResourceName
+	$sslProfile02Name = Get-ResourceName
+    
+	$ruleName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		# Frontend part
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCertPath = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
+		$sslCert = New-AzApplicationGatewaySslCertificate -Name $sslCertName -CertificateFile $sslCertPath -Password $password
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$port = New-AzApplicationGatewayFrontendPort -Name $frontendPortName  -Port 443
+
+		$clientCertFilePath = $basedir + "/ScenarioTests/Data/TrustedClientCertificate.cer"
+		$trustedClient01 = New-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -CertificateFile $clientCertFilePath
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
+		$sslProfile01 = New-AzApplicationGatewaySslProfile -Name $sslProfile01Name -SslPolicy $sslPolicy -ClientAuthConfiguration $clientAuthConfig -TrustedClientCertificates $trustedClient01
+		
+		$listener = New-AzApplicationGatewayHttpListener -Name $listenerName -Protocol Https -SslCertificate $sslCert -FrontendIPConfiguration $fipconfig -FrontendPort $port -SslProfile $sslProfile01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name $poolSettingName -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot
+		
+		# rule
+		$rule = New-AzApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+		
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+		$sslPolicyGlobal = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $port -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslPolicy $sslPolicyGlobal -TrustedRootCertificate $trustedRoot -AutoscaleConfiguration $autoscaleConfig -TrustedClientCertificates $trustedClient01 -SslProfiles $sslProfile01 -SslCertificates $sslCert
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		$sslProfile01 = Get-AzApplicationGatewaySslProfile -Name $sslProfile01Name -ApplicationGateway $getgw 
+		$sslProfiles = Get-AzApplicationGatewaySslProfile -ApplicationGateway $getgw
+		Assert-AreEqual $sslProfiles.Count 1
+		Assert-AreEqual $sslProfiles[0].Id $sslProfile01.Id
+        Assert-AreEqual $sslProfile01.TrustedClientCertificates.Count 1
+        Assert-AreEqual $sslProfiles.TrustedClientCertificates[0].Id $trustedClient01.Id
+
+        $trustedClient01 = Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -ApplicationGateway $getgw 
+		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
+		Assert-AreEqual $trustedClients.Count 1
+		Assert-AreEqual $trustedClients[0].Id $trustedClient01.Id
+
+		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
+		Assert-NotNull $clientAuthConfig
+		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
+		Assert-AreEqual $sslPolicy.MinProtocolVersion $getpolicy.MinProtocolVersion
+
+		$getgpolicy = Get-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw
+		Assert-AreEqual $sslPolicyGlobal.MinProtocolVersion $getgpolicy.MinProtocolVersion
+		
+		$listener = Get-AzApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listenerName
+		Assert-AreEqual $listener.SslProfile.Id $sslProfile01.Id
+
+		# Add and Set operations.
+		$getgw = Add-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw -CertificateFile $clientCertFilePath
+		$trustedClient02 =  Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
+		$getgw = Add-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01,$trustedClient02
+		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
+		$sslProfile01 = Set-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01 -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+		$sslPolicy02 = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+		$getgw = Set-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -SslPolicy $sslPolicy02 -TrustedClientCertificates $trustedClient01,$trustedClient02 -ClientAuthConfiguration $clientAuthConfig 
+
+		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		$sslProfile01 = Get-AzApplicationGatewaySslProfile -Name $sslProfile01Name -ApplicationGateway $getgw
+		$sslProfile02 = Get-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw 
+		$sslProfiles = Get-AzApplicationGatewaySslProfile -ApplicationGateway $getgw
+		Assert-AreEqual $sslProfiles.Count 2
+        Assert-AreEqual $sslProfile02.TrustedClientCertificates.Count 2
+        Assert-AreEqual $sslProfile02.TrustedClientCertificates[0].Id $trustedClient01.Id
+		Assert-AreEqual $sslProfile02.TrustedClientCertificates[1].Id $trustedClient02.Id
+
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
+		Assert-AreEqual $getpolicy.MinProtocolVersion $sslPolicyGlobal.MinProtocolVersion
+
+        $trustedClient02 = Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw 
+		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
+		Assert-AreEqual $trustedClients.Count 2
+		Assert-AreEqual $trustedClients[0].Id $trustedClient01.Id
+		Assert-AreEqual $trustedClients[1].Id $trustedClient02.Id
+
+		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $getgw.SslProfiles[0]
+		Assert-AreEqual $False $clientAuthConfig.VerifyClientCertIssuerDN
+		
+		# Remove operations.
+		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
+		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
+		Assert-Null $getpolicy
+		$sslProfile02 = Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile02
+		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile02
+		Assert-Null $clientAuthConfig
+		$getgw = Remove-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw
+		$getgw = Remove-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+		$sslProfiles = Get-AzApplicationGatewaySslProfile -ApplicationGateway $getgw
+		Assert-AreEqual $sslProfiles.Count 1
+		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
+		Assert-AreEqual $trustedClients.Count 1
+
+		# Negative tests.
+		Assert-ThrowsLike { Add-AzApplicationGatewaySslProfile -Name $sslProfile01Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01 } "*already exist*"
+		Assert-ThrowsLike { Set-AzApplicationGatewaySslProfile -Name "fakeName" -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01 } "*does not exist*"
+		Assert-ThrowsLike { Add-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -ApplicationGateway $getgw -CertificateFile $clientCertFilePath } "*already exist*"
+		Assert-ThrowsLike { Set-AzApplicationGatewayTrustedClientCertificate -Name "fakeName" -ApplicationGateway $getgw -CertificateFile $clientCertFilePath } "*does not exist*"
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}

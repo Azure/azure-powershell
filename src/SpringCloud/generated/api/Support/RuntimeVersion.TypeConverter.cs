@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>TypeConverter implementation for RuntimeVersion.</summary>
+    /// <summary>Runtime version</summary>
     public partial class RuntimeVersionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

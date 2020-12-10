@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for IPFilterTag.</summary>
+    /// <summary>
+    /// Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    /// </summary>
     public partial class IPFilterTagTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

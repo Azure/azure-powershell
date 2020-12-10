@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
@@ -257,10 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         private bool SetAudit(DatabaseAuditModel model)
         {
-            if (!IsDatabaseInServiceTierForPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName))
-            {
-                throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
-            }
+            ValidateDatabaseInServiceTierForPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName);
 
             if (string.IsNullOrEmpty(model.PredicateExpression))
             {
@@ -394,13 +392,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        private bool IsDatabaseInServiceTierForPolicy(string resourceGroupName, string serverName, string databaseName)
+        private void ValidateDatabaseInServiceTierForPolicy(string resourceGroupName, string serverName, string databaseName)
         {
             var dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
             var database = dbCommunicator.Get(resourceGroupName, serverName, databaseName);
-            Enum.TryParse(database.Edition, true, out Database.Model.DatabaseEdition edition);
-            return edition != Database.Model.DatabaseEdition.None &&
-                edition != Database.Model.DatabaseEdition.Free;
+
+            if (!Enum.TryParse(database.Edition, true, out Database.Model.DatabaseEdition edition))
+            {
+                throw new Exception(string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resources.UnsupportedDatabaseEditionForAuditingPolicy, database.Edition));
+            }
+
+            if (edition == Database.Model.DatabaseEdition.None || edition == Database.Model.DatabaseEdition.Free)
+            {
+                throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
+            }
         }
 
         private void PolicizeAuditModel(ServerAuditModel model, dynamic policy)

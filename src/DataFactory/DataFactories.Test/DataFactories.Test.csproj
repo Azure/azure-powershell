@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.3" />
-    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.11.6898.1" />
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
   </ItemGroup>
 
   <ItemGroup>

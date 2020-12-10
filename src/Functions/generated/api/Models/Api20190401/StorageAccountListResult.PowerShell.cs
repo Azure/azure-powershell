@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.StorageAccountTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.StorageAccountTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

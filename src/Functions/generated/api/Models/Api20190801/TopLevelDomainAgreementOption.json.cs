@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._forTransfer ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._forTransfer) : null, "forTransfer" ,container.Add );
             AddIf( null != this._includePrivacy ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._includePrivacy) : null, "includePrivacy" ,container.Add );
+            AddIf( null != this._forTransfer ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._forTransfer) : null, "forTransfer" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_forTransfer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("forTransfer"), out var __jsonForTransfer) ? (bool?)__jsonForTransfer : ForTransfer;}
             {_includePrivacy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("includePrivacy"), out var __jsonIncludePrivacy) ? (bool?)__jsonIncludePrivacy : IncludePrivacy;}
+            {_forTransfer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("forTransfer"), out var __jsonForTransfer) ? (bool?)__jsonForTransfer : ForTransfer;}
             AfterFromJson(json);
         }
     }

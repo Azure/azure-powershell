@@ -232,25 +232,25 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>At least one permission should be selected for key access or secret access.</value>
   </data>
   <data name="RemoveCertWarning" xml:space="preserve">
-    <value>Are you sure you want to remove certificate '{0}'.</value>
+    <value>Are you sure you want to remove certificate '{0}'?</value>
   </data>
   <data name="RemoveCertWhatIfMessage" xml:space="preserve">
     <value>Remove certificate</value>
   </data>
   <data name="RemoveKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to remove key '{0}'.</value>
+    <value>Are you sure you want to remove key '{0}'?</value>
   </data>
   <data name="RemoveKeyWhatIfMessage" xml:space="preserve">
     <value>Remove key</value>
   </data>
   <data name="RemoveSecretWarning" xml:space="preserve">
-    <value>Are you sure you want to remove secret '{0}'</value>
+    <value>Are you sure you want to remove secret '{0}'?</value>
   </data>
   <data name="RemoveSecretWhatIfMessage" xml:space="preserve">
     <value>Remove secret</value>
   </data>
   <data name="RemoveManagedStorageAccountWarning" xml:space="preserve">
-    <value>Are you sure you want to remove managed storage account '{0}'</value>
+    <value>Are you sure you want to remove managed storage account '{0}'?</value>
   </data>
   <data name="RemoveManagedStorageAccountWhatIfMessage" xml:space="preserve">
     <value>Remove managed storage account</value>
@@ -281,6 +281,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="VaultAlreadyExists" xml:space="preserve">
     <value>The specified vault already exists.</value>
+  </data>
+  <data name="HsmAlreadyExists" xml:space="preserve">
+    <value>The specified HSM already exists.</value>
   </data>
   <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
     <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
@@ -497,6 +500,81 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
+  </data>
+  <data name="ApplicationNotFoundBy" xml:space="preserve">
+    <value>Could not find application by '{0}'.</value>
+  </data>
+  <data name="AssignRole" xml:space="preserve">
+    <value>Assign role '{0}' to principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RemoveRole" xml:space="preserve">
+    <value>Remove role '{0}' of principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RoleAssignmentNotFound" xml:space="preserve">
+    <value>Could not find the role assignment by given parameters.</value>
+  </data>
+  <data name="RoleDefinitionNotFound" xml:space="preserve">
+    <value>Could not to find role definition by '{0}'.</value>
+  </data>
+  <data name="UserNotFoundBy" xml:space="preserve">
+    <value>Could not find user by '{0}'.</value>
+  </data>
+  <data name="DoFullBackup" xml:space="preserve">
+    <value>Perform a full backup and stores it in {0}.</value>
+  </data>
+  <data name="DoFullRestore" xml:space="preserve">
+    <value>Restores the managed HSM from the backup stored in {0}.</value>
+  </data>
+  <data name="FullBackupFailed" xml:space="preserve">
+    <value>Failed to backup managed HSM {0}.</value>
+  </data>
+  <data name="FullRestoreFailed" xml:space="preserve">
+    <value>Failed to restore managed HSM {0}.</value>
+  </data>
+  <data name="HsmCertRangeWarning" xml:space="preserve">
+    <value>To encrypt the security domain data, please provide at least {0} and at most {1} certificates.</value>
+  </data>
+  <data name="LoadSecurityDomainFileFailed" xml:space="preserve">
+    <value>Failed to load security domain data from {0}. Please make sure the file exists and is not modified.</value>
+  </data>
+  <data name="RestoreSecurityDomainBadKey" xml:space="preserve">
+    <value>"PublicKey" and "PrivateKey" are mandatory properties in each object in "Keys".</value>
+  </data>
+  <data name="RestoreSecurityDomainNotEnoughKey" xml:space="preserve">
+    <value>There need to be at least {0} keys to decrypt security domain backup data.</value>
+  </data>
+  <data name="DecryptSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct.</value>
+  </data>
+  <data name="DecryptSecurityDomainKeyNotEnough" xml:space="preserve">
+    <value>Not enough keys to decrypt security domain backup. {0} required, {0} provided.</value>
+  </data>
+  <data name="DownloadSecurityDomainFail" xml:space="preserve">
+    <value>Failed to download security domain backup data.</value>
+  </data>
+  <data name="DownloadSecurityDomainKeyFail" xml:space="preserve">
+    <value>Failed to download security domain exchange key.</value>
+  </data>
+  <data name="RestoreSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to restore security domain from backup.</value>
+  </data>
+  <data name="InvalidKeyProperties" xml:space="preserve">
+    <value>Invalid key properties</value>
+  </data>
+  <data name="InvalidHsmName" xml:space="preserve">
+    <value>Invalid HSM name.</value>
+  </data>
+  <data name="ImportNotSupported" xml:space="preserve">
+    <value>Key type '{0}' is not supported for importing. (Supported types: RSA-HSM)</value>
+  </data>
+  <data name="HsmNotFound" xml:space="preserve">
+    <value>Cannot find HSM '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="RemoveHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove HSM '{0}'?</value>
+  </data>
+  <data name="RemoveHsmWhatIfMessage" xml:space="preserve">
+    <value>Remove HSM</value>
   </data>
   <data name="ADGraphPermissionWarning" xml:space="preserve">
     <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>

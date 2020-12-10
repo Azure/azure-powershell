@@ -60,9 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage = (long?) content.GetValueForProperty("MaxUsage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage = (long?) content.GetValueForProperty("MaxUsage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             AfterDeserializeDictionary(content);
         }
 
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage = (long?) content.GetValueForProperty("MaxUsage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Usage = (long?) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Usage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage = (long?) content.GetValueForProperty("MaxUsage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).MaxUsage, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit = (long?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerMemoryStatisticsInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             AfterDeserializePSObject(content);
         }
 

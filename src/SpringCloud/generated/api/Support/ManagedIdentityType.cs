@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Type of the managed identity</summary>
     public partial struct ManagedIdentityType :
         System.IEquatable<ManagedIdentityType>
     {

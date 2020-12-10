@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>The status of the static site build.</summary>
     public partial struct BuildStatus :
         System.IEquatable<BuildStatus>
     {

@@ -2,7 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
 
-    /// <summary>Resource metric definition properties.</summary>
+    /// <summary>ResourceMetricDefinition resource specific properties</summary>
     public partial class ResourceMetricDefinitionProperties1
     {
 
@@ -62,8 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject into a new instance of <see cref="ResourceMetricDefinitionProperties1" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject instance to deserialize from.</param>
-        /// <param name="exclusions"></param>
-        internal ResourceMetricDefinitionProperties1(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal ResourceMetricDefinitionProperties1(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -71,7 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<string>)this).AdditionalProperties, null ,exclusions );
+            {_unit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("unit"), out var __jsonUnit) ? (string)__jsonUnit : (string)Unit;}
+            {_primaryAggregationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("primaryAggregationType"), out var __jsonPrimaryAggregationType) ? (string)__jsonPrimaryAggregationType : (string)PrimaryAggregationType;}
+            {_metricAvailability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("metricAvailabilities"), out var __jsonMetricAvailabilities) ? If( __jsonMetricAvailabilities as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricAvailability.FromJson(__u) )) ))() : null : MetricAvailability;}
+            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionProperties.FromJson(__jsonProperties) : Property;}
             AfterFromJson(json);
         }
 
@@ -95,7 +98,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IAssociativeArray<string>)this).AdditionalProperties, container);
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._unit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._unit.ToString()) : null, "unit" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._primaryAggregationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._primaryAggregationType.ToString()) : null, "primaryAggregationType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._metricAvailability)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._metricAvailability )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("metricAvailabilities",__w);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._resourceUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceUri.ToString()) : null, "resourceUri" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

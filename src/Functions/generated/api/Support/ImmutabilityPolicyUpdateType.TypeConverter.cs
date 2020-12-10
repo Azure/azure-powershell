@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ImmutabilityPolicyUpdateType.</summary>
+    /// <summary>
+    /// The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.
+    /// </summary>
     public partial class ImmutabilityPolicyUpdateTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

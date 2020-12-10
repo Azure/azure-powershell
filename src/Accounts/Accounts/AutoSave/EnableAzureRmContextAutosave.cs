@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -31,8 +29,15 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
+            if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
+            {
+                WriteWarning(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
             {
                 ConfirmAction("Autosave the context in the current session", "Current session", () =>
@@ -82,48 +87,36 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
-            try
+
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache originalTokenCache);
+            var stream = new MemoryStream();
+            originalTokenCache.Serialize(stream);
+            var tokenData = stream.ToArray();
+            //must use explicit interface type PowerShellTokenCacheProvider below instead of var, otherwise could not retrieve registered component
+            PowerShellTokenCacheProvider cacheProvider = new SharedTokenCacheProvider();
+            if (tokenData != null && tokenData.Length > 0)
             {
-                if (diskCache == null)
-                {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
-                        {
-                            diskCache.Deserialize(memoryCache.Serialize());
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
-                }
-
-                if (writeAutoSaveFile)
-                {
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                        string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                        session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-                    }
-                    catch
-                    {
-                        // do not fail for file system errors in writing the autosave setting
-                    }
-
-                }
+                cacheProvider.UpdateTokenDataWithoutFlush(tokenData);
+                cacheProvider.FlushTokenData();
             }
-            catch
+            var tokenCache = cacheProvider.GetTokenCache();
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
+            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
+
+
+            if (writeAutoSaveFile)
             {
-                // do not throw if there are file system error
+                try
+                {
+                    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                }
+                catch
+                {
+                    // do not fail for file system errors in writing the autosave setting
+                    // it may impact automation environment and module import.
+                }
             }
         }
 

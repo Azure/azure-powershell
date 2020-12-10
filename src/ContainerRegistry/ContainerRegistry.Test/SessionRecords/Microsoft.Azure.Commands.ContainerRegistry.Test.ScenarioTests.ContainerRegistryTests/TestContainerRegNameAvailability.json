@@ -1,32 +1,61 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyUmVnaXN0cnkvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyUmVnaXN0cnkvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"regps4453\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"regps4820\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c874812d-29ee-4e05-af3f-ef6223978648"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ContainerRegistry.ContainerRegistryManagementClient/4.0.0.0"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
           "80"
-        ],
-        "x-ms-client-request-id": [
-          "95986755-07f8-4901-801d-8ccdfce95f7f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2633.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ContainerRegistry.ContainerRegistryManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"nameAvailable\": true\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "5e908ccb-0e2f-45f2-acd2-2fdba8bca11c"
+        ],
+        "x-ms-correlation-request-id": [
+          "5e908ccb-0e2f-45f2-acd2-2fdba8bca11c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20201014T061036Z:5e908ccb-0e2f-45f2-acd2-2fdba8bca11c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 14 Oct 2020 06:10:36 GMT"
+        ],
         "Content-Length": [
           "22"
         ],
@@ -35,6 +64,39 @@
         ],
         "Expires": [
           "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"nameAvailable\": true\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2019-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyUmVnaXN0cnkvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTktMDUtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"name\": \"Microsoft\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2416ac8f-5c02-417c-8f20-259ab1c5eccd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ContainerRegistry.ContainerRegistryManagementClient/4.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "80"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
@@ -42,109 +104,47 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "c8f33334-a0c9-4575-b547-10e73f4dc9a8"
+          "e4f92a90-d474-4f9e-8549-dad3b5b43737"
         ],
         "x-ms-correlation-request-id": [
-          "c8f33334-a0c9-4575-b547-10e73f4dc9a8"
+          "e4f92a90-d474-4f9e-8549-dad3b5b43737"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180328T001856Z:c8f33334-a0c9-4575-b547-10e73f4dc9a8"
+          "SOUTHEASTASIA:20201014T061037Z:e4f92a90-d474-4f9e-8549-dad3b5b43737"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Wed, 28 Mar 2018 00:18:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2017-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyUmVnaXN0cnkvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"Microsoft\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
+          "Wed, 14 Oct 2020 06:10:36 GMT"
         ],
         "Content-Length": [
-          "80"
-        ],
-        "x-ms-client-request-id": [
-          "e29ccea8-4df0-4f70-bf2c-68f9c980d6b1"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2633.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.ContainerRegistry.ContainerRegistryManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"nameAvailable\": false,\r\n  \"reason\": \"Invalid\",\r\n  \"message\": \"The specified resource name is disallowed\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "96"
+          "97"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
-        ],
-        "x-ms-request-id": [
-          "c98e4a68-bb1c-4b89-9b2b-8289ecc427ba"
-        ],
-        "x-ms-correlation-request-id": [
-          "c98e4a68-bb1c-4b89-9b2b-8289ecc427ba"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180328T001857Z:c98e4a68-bb1c-4b89-9b2b-8289ecc427ba"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 28 Mar 2018 00:18:56 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
         ]
       },
+      "ResponseBody": "{\r\n  \"nameAvailable\": false,\r\n  \"reason\": \"Invalid\",\r\n  \"message\": \"The specified resource name is disallowed.\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {
     "Test-AzureContainerRegistryNameAvailability": [
-      "ps4453"
+      "ps4820"
     ]
   },
   "Variables": {
-    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+    "SubscriptionId": "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
   }
 }

@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for SignedResource.</summary>
+    /// <summary>
+    /// The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share
+    /// (s).
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SignedResourceTypeConverter))]
     public partial struct SignedResource :
         System.Management.Automation.IArgumentCompleter

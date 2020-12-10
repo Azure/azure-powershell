@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
+    /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+    /// </summary>
     public partial struct Bypass :
         System.IEquatable<Bypass>
     {

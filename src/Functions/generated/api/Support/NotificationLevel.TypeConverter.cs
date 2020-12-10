@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for NotificationLevel.</summary>
+    /// <summary>Level indicating how critical this recommendation can impact.</summary>
     public partial class NotificationLevelTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

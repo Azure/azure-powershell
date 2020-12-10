@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for SiteLoadBalancing.</summary>
+    /// <summary>Site load balancing.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancingTypeConverter))]
     public partial struct SiteLoadBalancing :
         System.Management.Automation.IArgumentCompleter

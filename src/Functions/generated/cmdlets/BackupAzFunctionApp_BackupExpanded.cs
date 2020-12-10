@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Creates a backup of an app.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_Backup=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup"
+    /// [OpenAPI] Backup=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Backup, @"AzFunctionApp_BackupExpanded", SupportsShouldProcess = true)]

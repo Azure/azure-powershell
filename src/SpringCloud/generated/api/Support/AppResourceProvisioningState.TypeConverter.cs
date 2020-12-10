@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>TypeConverter implementation for AppResourceProvisioningState.</summary>
+    /// <summary>Provisioning state of the App</summary>
     public partial class AppResourceProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -406,20 +406,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
-            if(targetResourceGroupName != null && restoreAsUnmanagedDisks.IsPresent)
-            {
-                throw new Exception(Resources.TargetRGUnmanagedRestoreDuplicateParamsException);
-            }
-
-            if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
-            {
-                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
-            }
-
+            // if the vm is managed virtual machine then either target rg or the unmanaged restore intent should be provided
             if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null
                 && restoreAsUnmanagedDisks.IsPresent == false)
             {
-                Logger.Instance.WriteWarning(Resources.UnmanagedVMRestoreWarning);
+                throw new Exception(Resources.UnmanagedVMRestoreWarning);
+            }
+
+            // if the vm is unmanaged, target rg should not be provided
+            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null)
+            {
+                Logger.Instance.WriteWarning(Resources.TargetResourcegroupNotSupported);
             }
 
             IList<int?> restoreDiskLUNS;

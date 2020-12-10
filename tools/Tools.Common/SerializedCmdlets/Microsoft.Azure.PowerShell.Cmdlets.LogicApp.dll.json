@@ -6,7 +6,7 @@
       "Name": "Get-AzIntegrationAccountAgreement",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountAgreementCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -361,7 +361,7 @@
       "Name": "Get-AzIntegrationAccountAssembly",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountAssemblyCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByIntegrationAccount",
       "OutputTypes": [
@@ -369,7 +369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1083,7 +1083,7 @@
       "Name": "Get-AzIntegrationAccountBatchConfiguration",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountBatchConfigurationCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByIntegrationAccount",
       "OutputTypes": [
@@ -1091,7 +1091,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1805,7 +1805,7 @@
       "Name": "Get-AzIntegrationAccountCallbackUrl",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountCallbackUrlCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -2094,7 +2094,7 @@
       "Name": "Get-AzIntegrationAccountCertificate",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountCertificateCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -2429,7 +2429,7 @@
       "Name": "Get-AzIntegrationAccount",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -2707,7 +2707,7 @@
       "Name": "Get-AzIntegrationAccountGeneratedIcn",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountGeneratedIcnCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -2715,7 +2715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -3035,7 +3035,7 @@
       "Name": "Get-AzIntegrationAccountMap",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountMapCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -3427,7 +3427,7 @@
       "Name": "Get-AzIntegrationAccountPartner",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountPartnerCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -3762,7 +3762,7 @@
       "Name": "Get-AzIntegrationAccountReceivedIcn",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountReceivedIcnCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -3770,7 +3770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -4132,7 +4132,7 @@
       "Name": "Get-AzIntegrationAccountSchema",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountSchemaCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -5283,7 +5283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7340,7 +7340,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13290,7 +13290,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13422,7 +13422,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13554,7 +13554,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13660,7 +13660,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13794,7 +13794,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13862,7 +13862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13935,7 +13935,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14027,7 +14027,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14095,7 +14095,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14227,7 +14227,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14333,7 +14333,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14467,7 +14467,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14535,7 +14535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14608,7 +14608,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14700,7 +14700,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14768,7 +14768,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14919,7 +14919,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15051,7 +15051,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15184,7 +15184,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15292,7 +15292,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15443,7 +15443,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15575,7 +15575,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15726,7 +15726,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15858,7 +15858,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16344,7 +16344,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16476,7 +16476,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16551,7 +16551,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16657,7 +16657,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17381,7 +17381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17546,7 +17546,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17711,7 +17711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18299,7 +18299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18405,7 +18405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19399,7 +19399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19564,7 +19564,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19729,7 +19729,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -20997,7 +20997,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21373,7 +21373,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21708,7 +21708,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21960,7 +21960,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22212,7 +22212,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -22372,7 +22372,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22447,7 +22447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -23097,7 +23097,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -23354,7 +23354,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23655,7 +23655,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -23861,7 +23861,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23936,7 +23936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -24635,7 +24635,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -24889,7 +24889,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -25039,7 +25039,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -25170,7 +25170,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -25237,7 +25237,7 @@
       "Name": "Get-AzLogicApp",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ListWorkflows",
       "OutputTypes": [
@@ -25862,7 +25862,7 @@
       "Name": "Get-AzLogicAppRunAction",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppRunActionCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -26252,7 +26252,7 @@
       "Name": "Get-AzLogicAppRunHistory",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.AzureLogicAppRunHistoryCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -26444,6 +26444,46 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "FollowNextPageLink",
+          "AliasList": [
+            "FL"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaximumFollowNextPageLink",
+          "AliasList": [
+            "ML"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -26557,6 +26597,58 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "FollowNextPageLink",
+                "AliasList": [
+                  "FL"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaximumFollowNextPageLink",
+                "AliasList": [
+                  "ML"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -26605,7 +26697,7 @@
       "Name": "Get-AzLogicAppTriggerCallbackUrl",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppTriggerCallbackUrlCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -26913,7 +27005,7 @@
       "Name": "Get-AzLogicAppTrigger",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppTriggerCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -27251,7 +27343,7 @@
       "Name": "Get-AzLogicAppTriggerHistory",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppTriggerHistoryCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -27641,7 +27733,7 @@
       "Name": "Get-AzLogicAppUpgradedDefinition",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureLogicAppUpgradedDefinitionCommand",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -28876,7 +28968,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -28983,7 +29075,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -29414,7 +29506,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -29543,7 +29635,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -29797,7 +29889,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -30086,7 +30178,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -30154,7 +30246,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -30375,7 +30467,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -30442,7 +30534,7 @@
       "Name": "Test-AzLogicApp",
       "ClassName": "Microsoft.Azure.Commands.LogicApp.Cmdlets.ValidateAzureLogicApp",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -35802,6 +35894,8 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -35811,7 +35905,6 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
-        "StorageEndpointSuffix": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -35820,8 +35913,8 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
-        "AdTenant": "System.String",
-        "Name": "System.String"
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -36991,7 +37084,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -37003,7 +37096,7 @@
     "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType": {
       "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
       "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

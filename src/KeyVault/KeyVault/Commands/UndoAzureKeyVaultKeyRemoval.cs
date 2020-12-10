@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string VaultName { get; set; }
 
         /// <summary>
-        /// Secret name
+        /// Key name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,

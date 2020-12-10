@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourcegroups/ps1716?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlZ3JvdXBzL3BzMTcxNj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourcegroups/ps6039?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlZ3JvdXBzL3BzNjAzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a40ef299-cec4-44c4-88d7-cf0d6bf6abfa"
+          "a65b0c20-39b4-44cd-865b-fe7a21b99326"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "29"
+          "35"
         ]
       },
       "ResponseHeaders": {
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "d4a57891-eaaa-4554-a534-ae183f17d816"
+          "951c5c1c-630f-4c3b-94de-87681777814b"
         ],
         "x-ms-correlation-request-id": [
-          "d4a57891-eaaa-4554-a534-ae183f17d816"
+          "951c5c1c-630f-4c3b-94de-87681777814b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125250Z:d4a57891-eaaa-4554-a534-ae183f17d816"
+          "FRANCESOUTH:20201108T115721Z:951c5c1c-630f-4c3b-94de-87681777814b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:52:49 GMT"
+          "Sun, 08 Nov 2020 11:57:21 GMT"
         ],
         "Content-Length": [
-          "166"
+          "172"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,32 +63,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716\",\r\n  \"name\": \"ps1716\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039\",\r\n  \"name\": \"ps6039\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczMxMzQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczg4MDA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cfde7222-270b-4c93-b15c-9eae4f0a30d3"
+          "20cd20de-8765-40d9-aa58-4fc7a5a338e1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "73"
+          "79"
         ]
       },
       "ResponseHeaders": {
@@ -99,13 +99,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"datetime'2020-09-04T12%3A52%3A56.9455352Z'\""
+          "W/\"datetime'2020-11-08T11%3A57%3A30.6212433Z'\""
         ],
         "x-ms-request-id": [
-          "bd9cd0a3-405b-4f2e-b845-d504255751e9"
+          "ff9fc87a-82d7-4e1e-8589-0c565b190ac7"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/ef760669-7d5b-4a82-b569-2db850ab7683?api-version=2020-02-01"
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/18227029-7de9-4f06-841b-f2dbf17c3a3a?api-version=2020-06-01"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -123,10 +123,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "e08942cb-a696-48f7-b453-c983b2a14889"
+          "7da6a542-0592-41e7-b9d9-f350d012de2f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125258Z:e08942cb-a696-48f7-b453-c983b2a14889"
+          "FRANCESOUTH:20201108T115732Z:7da6a542-0592-41e7-b9d9-f350d012de2f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -135,10 +135,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:52:57 GMT"
+          "Sun, 08 Nov 2020 11:57:31 GMT"
         ],
         "Content-Length": [
-          "342"
+          "347"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -147,20 +147,20 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n  \"name\": \"ps3134\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A52%3A56.9455352Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n  \"name\": \"ps8800\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A57%3A30.6212433Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczMxMzQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/18227029-7de9-4f06-841b-f2dbf17c3a3a?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvMTgyMjcwMjktN2RlOS00ZjA2LTg0MWItZjJkYmYxN2MzYTNhP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -170,11 +170,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "ETag": [
-          "W/\"datetime'2020-09-04T12%3A52%3A57.014584Z'\""
-        ],
         "x-ms-request-id": [
-          "a42f4192-6708-431b-9e34-7f63bdf02a29"
+          "d7e2b2ae-955a-4cf2-9470-5789e1b4f67e"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -192,10 +189,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "f6bba62c-fb2c-4d0a-a948-40c01c34f89e"
+          "ce37504b-6932-4eed-9a0b-6f1ca563503d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125258Z:f6bba62c-fb2c-4d0a-a948-40c01c34f89e"
+          "FRANCESOUTH:20201108T115802Z:ce37504b-6932-4eed-9a0b-6f1ca563503d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -204,10 +201,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:52:57 GMT"
+          "Sun, 08 Nov 2020 11:58:01 GMT"
         ],
         "Content-Length": [
-          "341"
+          "495"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -216,254 +213,20 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n  \"name\": \"ps3134\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A52%3A57.014584Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/18227029-7de9-4f06-841b-f2dbf17c3a3a\",\r\n  \"name\": \"18227029-7de9-4f06-841b-f2dbf17c3a3a\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-11-08T11:57:30.3959458Z\",\r\n  \"endTime\": \"2020-11-08T11:57:30.6927829Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczMxMzQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "55f37fad-a6ee-4648-8441-7031290a9db5"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"datetime'2020-09-04T12%3A52%3A57.014584Z'\""
-        ],
-        "x-ms-request-id": [
-          "613f1ac8-3a14-44a6-9522-772994033b1e"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-correlation-request-id": [
-          "de6a145d-e226-45ba-a31f-be700fe77cf4"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125302Z:de6a145d-e226-45ba-a31f-be700fe77cf4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:01 GMT"
-        ],
-        "Content-Length": [
-          "341"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n  \"name\": \"ps3134\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A52%3A57.014584Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczMxMzQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f6f609e8-4d3f-42b9-958d-c975fbaf9455"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"datetime'2020-09-04T12%3A52%3A57.014584Z'\""
-        ],
-        "x-ms-request-id": [
-          "7b614a1c-bead-422a-826d-e67aff4e6538"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-correlation-request-id": [
-          "33ef4eb6-ffbf-46c5-b491-de9dcd2ee0a9"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125302Z:33ef4eb6-ffbf-46c5-b491-de9dcd2ee0a9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:01 GMT"
-        ],
-        "Content-Length": [
-          "341"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n  \"name\": \"ps3134\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A52%3A57.014584Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE1MTM/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7a9be2da-2cad-4c00-87f1-be14790d8297"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"datetime'2020-09-04T12%3A53%3A00.6591876Z'\""
-        ],
-        "x-ms-request-id": [
-          "ea79430d-37b4-4425-924e-0985d8a5d4a3"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/574ab4c2-4a19-46bd-a772-787a7d8467bd?api-version=2020-02-01"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "b4c5e2a0-9444-448c-8570-8bceaa56cb22"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125301Z:b4c5e2a0-9444-448c-8570-8bceaa56cb22"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:00 GMT"
-        ],
-        "Content-Length": [
-          "314"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\",\r\n  \"name\": \"ps1513\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A00.6591876Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE1MTM/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczg4MDA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -474,10 +237,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"datetime'2020-09-04T12%3A53%3A00.7292355Z'\""
+          "W/\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\""
         ],
         "x-ms-request-id": [
-          "d54714a3-6393-4ac9-8c52-861a9dc9feed"
+          "140e38a4-ce42-4934-9194-e31498557290"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -495,10 +258,10 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "8756c24c-6350-4676-b04c-f8e308c573f8"
+          "f3a1a9ae-4a25-46f2-aa8a-808e38194246"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125302Z:8756c24c-6350-4676-b04c-f8e308c573f8"
+          "FRANCESOUTH:20201108T115802Z:f3a1a9ae-4a25-46f2-aa8a-808e38194246"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -507,10 +270,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:53:01 GMT"
+          "Sun, 08 Nov 2020 11:58:01 GMT"
         ],
         "Content-Length": [
-          "314"
+          "348"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -519,26 +282,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\",\r\n  \"name\": \"ps1513\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A00.7292355Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n  \"name\": \"ps8800\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTAyLTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczg4MDA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bfc53352-de01-4bba-9a13-d9a529e39c67"
+          "f7707ef8-754c-493c-8cc1-6b44c179b3ca"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -548,281 +311,11 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "a5fb8c1d-091c-41c5-88c8-e7c5721a5cb5"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "8becb5d8-784a-42d1-9c1d-8320822d8a0a"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125302Z:8becb5d8-784a-42d1-9c1d-8320822d8a0a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:01 GMT"
-        ],
-        "Content-Length": [
-          "668"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\",\r\n      \"name\": \"ps1513\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A00.7292355Z'\\\"\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n      \"name\": \"ps3134\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-09-04T12%3A52%3A57.014584Z'\\\"\",\r\n      \"location\": \"westus2\",\r\n      \"tags\": {\r\n        \"tag1\": \"tagValue1\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTAyLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d095ba09-3ee1-4715-a3c1-357dc6fc764e"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
+        "ETag": [
+          "W/\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\""
         ],
         "x-ms-request-id": [
-          "fc6ad0b1-e9b6-4d1d-a954-df18b9265f1f"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "841ab104-0991-4d19-af92-d6b14e600fc3"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125334Z:841ab104-0991-4d19-af92-d6b14e600fc3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:33 GMT"
-        ],
-        "Content-Length": [
-          "326"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\",\r\n      \"name\": \"ps1513\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A00.7292355Z'\\\"\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTAyLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2588dee6-667f-4e0e-a1aa-51dad1e711af"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "x-ms-request-id": [
-          "6c58acac-f148-4093-9644-f0cb1fadbc22"
-        ],
-        "x-ms-correlation-request-id": [
-          "6c58acac-f148-4093-9644-f0cb1fadbc22"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125405Z:6c58acac-f148-4093-9644-f0cb1fadbc22"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:54:04 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "12"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczMxMzQ/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "290d3c17-fc8d-41b2-9a2e-e827fb1a1dbf"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/7dc42b02-7dda-4c65-a049-c983b4dc49e7?api-version=2020-02-01&operationResultResponseType=Location"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/7dc42b02-7dda-4c65-a049-c983b4dc49e7?api-version=2020-02-01"
-        ],
-        "Request-Context": [
-          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
-        ],
-        "Access-Control-Expose-Headers": [
-          "Request-Context"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "e93cc1a2-2399-45c4-9052-22db3be3a014"
-        ],
-        "x-ms-correlation-request-id": [
-          "e93cc1a2-2399-45c4-9052-22db3be3a014"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125303Z:e93cc1a2-2399-45c4-9052-22db3be3a014"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 04 Sep 2020 12:53:02 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/7dc42b02-7dda-4c65-a049-c983b4dc49e7?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvblJlc3VsdHMvN2RjNDJiMDItN2RkYS00YzY1LWEwNDktYzk4M2I0ZGM0OWU3P2FwaS12ZXJzaW9uPTIwMjAtMDItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29130.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "16fd2802-8541-43ee-b7df-1e65bd7d0b7b"
+          "0f5927cb-37b5-41b0-b7d0-f3c41d9374a4"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -840,10 +333,10 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "00b7e112-dc86-4f49-99bc-8bf64c196329"
+          "99ba2205-42ea-415f-a6a1-6ccf2caa6131"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125333Z:00b7e112-dc86-4f49-99bc-8bf64c196329"
+          "FRANCESOUTH:20201108T115836Z:99ba2205-42ea-415f-a6a1-6ccf2caa6131"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -852,10 +345,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:53:33 GMT"
+          "Sun, 08 Nov 2020 11:58:35 GMT"
         ],
         "Content-Length": [
-          "488"
+          "348"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -864,20 +357,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/7dc42b02-7dda-4c65-a049-c983b4dc49e7\",\r\n  \"name\": \"7dc42b02-7dda-4c65-a049-c983b4dc49e7\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-09-04T12:53:03.3164362Z\",\r\n  \"endTime\": \"2020-09-04T12:53:03.388436Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n  \"name\": \"ps8800\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/7dc42b02-7dda-4c65-a049-c983b4dc49e7?api-version=2020-02-01&operationResultResponseType=Location",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvblJlc3VsdHMvN2RjNDJiMDItN2RkYS00YzY1LWEwNDktYzk4M2I0ZGM0OWU3P2FwaS12ZXJzaW9uPTIwMjAtMDItMDEmb3BlcmF0aW9uUmVzdWx0UmVzcG9uc2VUeXBlPUxvY2F0aW9u",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczg4MDA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "47770583-acc7-4ab9-b956-f63b38445b5e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -887,8 +386,11 @@
         "Pragma": [
           "no-cache"
         ],
+        "ETag": [
+          "W/\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\""
+        ],
         "x-ms-request-id": [
-          "3952e4cc-157d-4787-bc7b-b2687177a74f"
+          "33da17c8-72e3-40db-8320-baaf841f1825"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -906,10 +408,10 @@
           "11993"
         ],
         "x-ms-correlation-request-id": [
-          "b54d4022-eff7-4eab-9bf2-0d317b01989f"
+          "0a21ab3e-a2c0-4ce8-a1ad-edfc9b4b415e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125333Z:b54d4022-eff7-4eab-9bf2-0d317b01989f"
+          "FRANCESOUTH:20201108T115836Z:0a21ab3e-a2c0-4ce8-a1ad-edfc9b4b415e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -918,10 +420,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:53:33 GMT"
+          "Sun, 08 Nov 2020 11:58:36 GMT"
         ],
         "Content-Length": [
-          "357"
+          "348"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -930,26 +432,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps3134\",\r\n  \"name\": \"ps3134\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A03.3521069Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"ps3134\",\r\n    \"provisioningState\": \"Deleting\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n  \"name\": \"ps8800\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzMTcxNi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE1MTM/YXBpLXZlcnNpb249MjAyMC0wMi0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE3ODY/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a4bb157-90c2-498e-9c81-7d8a57449a8a"
+          "01cf9688-21fa-493a-93e0-98f5a07dbbc4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
         ]
       },
       "ResponseHeaders": {
@@ -959,11 +467,14 @@
         "Pragma": [
           "no-cache"
         ],
-        "Location": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9?api-version=2020-02-01&operationResultResponseType=Location"
+        "ETag": [
+          "W/\"datetime'2020-11-08T11%3A58%3A04.3449338Z'\""
+        ],
+        "x-ms-request-id": [
+          "b7e09aba-ecc7-4490-bf45-e18038704c31"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9?api-version=2020-02-01"
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/fc4e929c-ac87-4e0e-b9ca-34b02ec79721?api-version=2020-06-01"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -977,17 +488,14 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
-        ],
-        "x-ms-request-id": [
-          "97d69695-2569-4c29-b9dc-f13d09d76e9e"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "97d69695-2569-4c29-b9dc-f13d09d76e9e"
+          "29baa219-0e9a-4028-9574-a4bd3f6d3c0b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125334Z:97d69695-2569-4c29-b9dc-f13d09d76e9e"
+          "FRANCESOUTH:20201108T115805Z:29baa219-0e9a-4028-9574-a4bd3f6d3c0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -996,29 +504,32 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:53:34 GMT"
+          "Sun, 08 Nov 2020 11:58:04 GMT"
+        ],
+        "Content-Length": [
+          "319"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\",\r\n  \"name\": \"ps1786\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A58%3A04.3449338Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9?api-version=2020-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvblJlc3VsdHMvMmY1ZjVjZGItZGY0Ny00NmQ0LThhM2MtODQ1YmE5YmY1NGQ5P2FwaS12ZXJzaW9uPTIwMjAtMDItMDE=",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/fc4e929c-ac87-4e0e-b9ca-34b02ec79721?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvZmM0ZTkyOWMtYWM4Ny00ZTBlLWI5Y2EtMzRiMDJlYzc5NzIxP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1029,7 +540,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "917383d7-ce21-4cd6-98b3-21967e46c297"
+          "5dc12b43-c656-4146-ba5a-cab3c8d701a6"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -1044,13 +555,13 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "ceca600c-1d54-4eb1-9720-2ce082422ff5"
+          "23762c06-4ed2-4ad5-b7da-6a4763e25c10"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125405Z:ceca600c-1d54-4eb1-9720-2ce082422ff5"
+          "FRANCESOUTH:20201108T115835Z:23762c06-4ed2-4ad5-b7da-6a4763e25c10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1059,10 +570,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:04 GMT"
+          "Sun, 08 Nov 2020 11:58:35 GMT"
         ],
         "Content-Length": [
-          "489"
+          "495"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1071,20 +582,95 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9\",\r\n  \"name\": \"2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-09-04T12:53:34.6833012Z\",\r\n  \"endTime\": \"2020-09-04T12:53:34.7770529Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/fc4e929c-ac87-4e0e-b9ca-34b02ec79721\",\r\n  \"name\": \"fc4e929c-ac87-4e0e-b9ca-34b02ec79721\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-11-08T11:58:04.2503855Z\",\r\n  \"endTime\": \"2020-11-08T11:58:04.4223149Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westus2/operationResults/2f5f5cdb-df47-46d4-8a3c-845ba9bf54d9?api-version=2020-02-01&operationResultResponseType=Location",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0dXMyL29wZXJhdGlvblJlc3VsdHMvMmY1ZjVjZGItZGY0Ny00NmQ0LThhM2MtODQ1YmE5YmY1NGQ5P2FwaS12ZXJzaW9uPTIwMjAtMDItMDEmb3BlcmF0aW9uUmVzdWx0UmVzcG9uc2VUeXBlPUxvY2F0aW9u",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE3ODY/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.6.0.0"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"datetime'2020-11-08T11%3A58%3A04.4209874Z'\""
+        ],
+        "x-ms-request-id": [
+          "3a008451-f952-429c-b445-58e2294c0f7f"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "75a08616-8920-4880-885f-ab60fd3ebfba"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115835Z:75a08616-8920-4880-885f-ab60fd3ebfba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:58:35 GMT"
+        ],
+        "Content-Length": [
+          "320"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\",\r\n  \"name\": \"ps1786\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A58%3A04.4209874Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8bbbe5b-3454-40f8-9f55-5d4e5da509c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1095,7 +681,79 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9010cfa9-480c-47ae-a8a4-f7aaa786c9a6"
+          "9b057be2-4750-43b6-8cc0-dafcefc15f40"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "21988c68-eab3-4685-8d2f-226f3f87d7f5"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115836Z:21988c68-eab3-4685-8d2f-226f3f87d7f5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:58:35 GMT"
+        ],
+        "Content-Length": [
+          "681"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\",\r\n      \"name\": \"ps1786\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-11-08T11%3A58%3A04.4209874Z'\\\"\",\r\n      \"location\": \"westcentralus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n      \"name\": \"ps8800\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-11-08T11%3A57%3A30.6893709Z'\\\"\",\r\n      \"location\": \"westcentralus\",\r\n      \"tags\": {\r\n        \"tag1\": \"tagValue1\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8ce2daf5-bba3-4774-ba4c-463856a39b48"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "576557e3-5782-4530-b961-f7e8c83eac5f"
         ],
         "Request-Context": [
           "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
@@ -1113,10 +771,10 @@
           "11990"
         ],
         "x-ms-correlation-request-id": [
-          "290d9762-4bc7-411a-bb39-f8d710de3934"
+          "d7f6ea0e-cea0-4570-85ea-b9d8acc91aca"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125405Z:290d9762-4bc7-411a-bb39-f8d710de3934"
+          "FRANCESOUTH:20201108T115908Z:d7f6ea0e-cea0-4570-85ea-b9d8acc91aca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1125,10 +783,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:04 GMT"
+          "Sun, 08 Nov 2020 11:59:07 GMT"
         ],
         "Content-Length": [
-          "329"
+          "332"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1137,26 +795,86 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps1716/providers/Microsoft.NetApp/netAppAccounts/ps1513\",\r\n  \"name\": \"ps1513\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-09-04T12%3A53%3A34.7475131Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"name\": \"ps1513\",\r\n    \"provisioningState\": \"Deleting\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\",\r\n      \"name\": \"ps1786\",\r\n      \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n      \"etag\": \"W/\\\"datetime'2020-11-08T11%3A58%3A04.4209874Z'\\\"\",\r\n      \"location\": \"westcentralus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourcegroups/ps1716?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlZ3JvdXBzL3BzMTcxNj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f3dea7a4-d6f9-4d58-8628-5fd21834d020"
+          "960aadc5-6af7-4637-8472-0f351ca76d72"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "63ae1b9f-9e4e-4ac0-b20a-ed920d59a65a"
+        ],
+        "x-ms-correlation-request-id": [
+          "63ae1b9f-9e4e-4ac0-b20a-ed920d59a65a"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115945Z:63ae1b9f-9e4e-4ac0-b20a-ed920d59a65a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:45 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczg4MDA/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "06bc930c-f699-477e-8bc7-2fcd24797ced"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1167,7 +885,421 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/4c74d07f-28c8-4cc6-b569-28e0ae8757b2?api-version=2020-06-01&operationResultResponseType=Location"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/4c74d07f-28c8-4cc6-b569-28e0ae8757b2?api-version=2020-06-01"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "84663132-e7ae-4748-b60c-4cb22dcfb9e9"
+        ],
+        "x-ms-correlation-request-id": [
+          "84663132-e7ae-4748-b60c-4cb22dcfb9e9"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115837Z:84663132-e7ae-4748-b60c-4cb22dcfb9e9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:58:37 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/4c74d07f-28c8-4cc6-b569-28e0ae8757b2?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvNGM3NGQwN2YtMjhjOC00Y2M2LWI1NjktMjhlMGFlODc1N2IyP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d2004789-44d2-4a3c-b757-6b8817976736"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e1582e3-9646-4991-8b2f-bce713a1a9b0"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115907Z:3e1582e3-9646-4991-8b2f-bce713a1a9b0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:06 GMT"
+        ],
+        "Content-Length": [
+          "495"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/4c74d07f-28c8-4cc6-b569-28e0ae8757b2\",\r\n  \"name\": \"4c74d07f-28c8-4cc6-b569-28e0ae8757b2\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-11-08T11:58:37.4309759Z\",\r\n  \"endTime\": \"2020-11-08T11:58:37.5871903Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/4c74d07f-28c8-4cc6-b569-28e0ae8757b2?api-version=2020-06-01&operationResultResponseType=Location",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvNGM3NGQwN2YtMjhjOC00Y2M2LWI1NjktMjhlMGFlODc1N2IyP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEmb3BlcmF0aW9uUmVzdWx0UmVzcG9uc2VUeXBlPUxvY2F0aW9u",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7f9c9a7d-b27b-4867-92bb-a8a9a3ec5058"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "853caa44-2338-4732-90b8-29db0e2465da"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115908Z:853caa44-2338-4732-90b8-29db0e2465da"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:07 GMT"
+        ],
+        "Content-Length": [
+          "363"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps8800\",\r\n  \"name\": \"ps8800\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A58%3A37.5555285Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"tag1\": \"tagValue1\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"ps8800\",\r\n    \"provisioningState\": \"Deleting\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlR3JvdXBzL3BzNjAzOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldEFwcC9uZXRBcHBBY2NvdW50cy9wczE3ODY/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a489489-5b55-425c-a1b5-2bd34308150b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/28f27658-a103-4b9d-add7-5e48a549c147?api-version=2020-06-01&operationResultResponseType=Location"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/28f27658-a103-4b9d-add7-5e48a549c147?api-version=2020-06-01"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "a8c4cdbd-2e2e-406f-8d52-ff82013c385b"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8c4cdbd-2e2e-406f-8d52-ff82013c385b"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115915Z:a8c4cdbd-2e2e-406f-8d52-ff82013c385b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:15 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/28f27658-a103-4b9d-add7-5e48a549c147?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvMjhmMjc2NTgtYTEwMy00YjlkLWFkZDctNWU0OGE1NDljMTQ3P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f5e87c97-c3bf-4001-81bd-5fc8d721e9f0"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "de5272ab-f780-402b-a751-28857dc891b2"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115945Z:de5272ab-f780-402b-a751-28857dc891b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:44 GMT"
+        ],
+        "Content-Length": [
+          "494"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/28f27658-a103-4b9d-add7-5e48a549c147\",\r\n  \"name\": \"28f27658-a103-4b9d-add7-5e48a549c147\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-11-08T11:59:15.271061Z\",\r\n  \"endTime\": \"2020-11-08T11:59:15.3810907Z\",\r\n  \"percentComplete\": 100.0,\r\n  \"properties\": {\r\n    \"resourceName\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/providers/Microsoft.NetApp/locations/westcentralus/operationResults/28f27658-a103-4b9d-add7-5e48a549c147?api-version=2020-06-01&operationResultResponseType=Location",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvMjhmMjc2NTgtYTEwMy00YjlkLWFkZDctNWU0OGE1NDljMTQ3P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEmb3BlcmF0aW9uUmVzdWx0UmVzcG9uc2VUeXBlPUxvY2F0aW9u",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/1.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3c277541-e3b8-41ad-ae71-8fe5e89023c5"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:2c4cb680-0a1f-424d-bb8d-8e650ba68d53"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "5cae06be-2c62-47b5-8646-c8b6b77bbb2b"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20201108T115945Z:5cae06be-2c62-47b5-8646-c8b6b77bbb2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2020 11:59:45 GMT"
+        ],
+        "Content-Length": [
+          "335"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/ps6039/providers/Microsoft.NetApp/netAppAccounts/ps1786\",\r\n  \"name\": \"ps1786\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2020-11-08T11%3A59%3A15.3455745Z'\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"name\": \"ps1786\",\r\n    \"provisioningState\": \"Deleting\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourcegroups/ps6039?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL3Jlc291cmNlZ3JvdXBzL3BzNjAzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c612efa0-f428-4b1b-b117-4eb0f5fad518"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1176,13 +1308,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "1c06a252-8c3a-4e61-b3b6-22507d60d7bd"
+          "ec00c54d-99bc-4d80-bd2f-ce2d6fde98b5"
         ],
         "x-ms-correlation-request-id": [
-          "1c06a252-8c3a-4e61-b3b6-22507d60d7bd"
+          "ec00c54d-99bc-4d80-bd2f-ce2d6fde98b5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125408Z:1c06a252-8c3a-4e61-b3b6-22507d60d7bd"
+          "FRANCESOUTH:20201108T115950Z:ec00c54d-99bc-4d80-bd2f-ce2d6fde98b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1191,7 +1323,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:08 GMT"
+          "Sun, 08 Nov 2020 11:59:49 GMT"
         ],
         "Expires": [
           "-1"
@@ -1204,16 +1336,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM01UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZd016a3RWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
         ]
       },
       "ResponseHeaders": {
@@ -1224,7 +1356,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1233,13 +1365,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "49fd8ad7-0174-4e18-a151-5fe09f9eaa79"
+          "53fb529e-607a-477c-b5fa-36cf78f30f3c"
         ],
         "x-ms-correlation-request-id": [
-          "49fd8ad7-0174-4e18-a151-5fe09f9eaa79"
+          "53fb529e-607a-477c-b5fa-36cf78f30f3c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125423Z:49fd8ad7-0174-4e18-a151-5fe09f9eaa79"
+          "FRANCESOUTH:20201108T120005Z:53fb529e-607a-477c-b5fa-36cf78f30f3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1248,7 +1380,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:23 GMT"
+          "Sun, 08 Nov 2020 12:00:05 GMT"
         ],
         "Expires": [
           "-1"
@@ -1261,16 +1393,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM01UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZd016a3RWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
         ]
       },
       "ResponseHeaders": {
@@ -1281,7 +1413,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1290,13 +1422,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "bdc09804-552c-4c5b-9bcd-f0c690afb6bd"
+          "44c7cbc8-796b-4e31-b8f5-888eb6458bfa"
         ],
         "x-ms-correlation-request-id": [
-          "bdc09804-552c-4c5b-9bcd-f0c690afb6bd"
+          "44c7cbc8-796b-4e31-b8f5-888eb6458bfa"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125438Z:bdc09804-552c-4c5b-9bcd-f0c690afb6bd"
+          "FRANCESOUTH:20201108T120020Z:44c7cbc8-796b-4e31-b8f5-888eb6458bfa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1305,7 +1437,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:38 GMT"
+          "Sun, 08 Nov 2020 12:00:20 GMT"
         ],
         "Expires": [
           "-1"
@@ -1318,16 +1450,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM01UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZd016a3RWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
         ]
       },
       "ResponseHeaders": {
@@ -1341,13 +1473,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "2c514962-2b91-4054-92a8-f08aeec39ffb"
+          "0ffa9e89-dbfc-42d9-9287-e4c98e80f4bc"
         ],
         "x-ms-correlation-request-id": [
-          "2c514962-2b91-4054-92a8-f08aeec39ffb"
+          "0ffa9e89-dbfc-42d9-9287-e4c98e80f4bc"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125454Z:2c514962-2b91-4054-92a8-f08aeec39ffb"
+          "FRANCESOUTH:20201108T120036Z:0ffa9e89-dbfc-42d9-9287-e4c98e80f4bc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1356,7 +1488,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:53 GMT"
+          "Sun, 08 Nov 2020 12:00:35 GMT"
         ],
         "Expires": [
           "-1"
@@ -1369,16 +1501,16 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzE3MTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFM01UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzYwMzktV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlhNzViZGEtODgyZS00NGQ1LTg0MzEtNjM0MjEyMDQxMzJhL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZd016a3RWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.29321.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.23"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.24"
         ]
       },
       "ResponseHeaders": {
@@ -1392,13 +1524,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "bb23bb89-be03-454f-9758-f8c3c624435b"
+          "7563290b-2565-4994-a27b-34d8f7d5fa32"
         ],
         "x-ms-correlation-request-id": [
-          "bb23bb89-be03-454f-9758-f8c3c624435b"
+          "7563290b-2565-4994-a27b-34d8f7d5fa32"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20200904T125454Z:bb23bb89-be03-454f-9758-f8c3c624435b"
+          "FRANCESOUTH:20201108T120036Z:7563290b-2565-4994-a27b-34d8f7d5fa32"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1407,7 +1539,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 04 Sep 2020 12:54:53 GMT"
+          "Sun, 08 Nov 2020 12:00:36 GMT"
         ],
         "Expires": [
           "-1"
@@ -1422,10 +1554,10 @@
   ],
   "Names": {
     "Test-AccountCrud": [
-      "ps1716",
-      "ps3134",
-      "ps1513",
-      "ps4994"
+      "ps6039",
+      "ps8800",
+      "ps1786",
+      "ps4860"
     ]
   },
   "Variables": {

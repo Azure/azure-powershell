@@ -143,6 +143,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
          HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "The network access type for Fhir service. Commonly `Enabled` or `Disabled`.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The network access type for Fhir service. Commonly `Enabled` or `Disabled`.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        public string PublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -281,7 +286,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     {
                         StorageAccountName = ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
                     },
-                    AccessPolicies = accessPolicies
+                    AccessPolicies = accessPolicies,
+                    PublicNetworkAccess = PublicNetworkAccess ?? healthcareApisAccount.Properties.PublicNetworkAccess
                 },
                 Kind = healthcareApisAccount.Kind,
                 Tags = GetTags(healthcareApisAccount)
@@ -289,7 +295,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
             if (this.EnableManagedIdentity.ToBool() && healthcareApisAccount.Identity == null)
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "SystemAssigned" };
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ServicesResourceIdentity() { Type = "SystemAssigned" };
             }
             else if (!this.DisableManagedIdentity.ToBool())
             {
@@ -297,7 +303,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
             else
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity() { Type = "None" };
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ServicesResourceIdentity() { Type = "None" };
             }
 
             return servicesDescription;
@@ -382,7 +388,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     {
                         StorageAccountName = InputObject.ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
                     },
-                    AccessPolicies = accessPolicies
+                    AccessPolicies = accessPolicies,
+                    PublicNetworkAccess = healthcareApisAccount.Properties.PublicNetworkAccess
                 },
                 Kind = ParseKind(InputObject.Kind),
                 Tags = InputObject.Tags
@@ -390,7 +397,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
             if (!String.IsNullOrEmpty(InputObject.IdentityType))
             {
-                servicesDescription.Identity = new Management.HealthcareApis.Models.ResourceIdentity(InputObject.IdentityPrincipalId, InputObject.IdentityTenantId, InputObject.IdentityType);
+                servicesDescription.Identity = new Management.HealthcareApis.Models.ServicesResourceIdentity(InputObject.IdentityPrincipalId, InputObject.IdentityTenantId, InputObject.IdentityType);
             }
             else
             {

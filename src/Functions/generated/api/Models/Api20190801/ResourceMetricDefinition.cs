@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>List of time grains supported for the metric together with retention period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[] MetricAvailability { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).MetricAvailability; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[] MetricAvailability { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).MetricAvailability; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -36,22 +36,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Type = value; }
 
         /// <summary>Internal Acessors for MetricAvailability</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[] Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.MetricAvailability { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).MetricAvailability; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).MetricAvailability = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[] Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.MetricAvailability { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).MetricAvailability; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).MetricAvailability = value; }
 
         /// <summary>Internal Acessors for PrimaryAggregationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.PrimaryAggregationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).PrimaryAggregationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).PrimaryAggregationType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.PrimaryAggregationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).PrimaryAggregationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).PrimaryAggregationType = value; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionProperties()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionProperties1()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ResourceMetricDefinitionProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.ResourceMetricDefinitionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.ResourceMetricDefinitionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Property = value; }
 
         /// <summary>Internal Acessors for ResourceUri</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.ResourceUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).ResourceUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).ResourceUri = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.ResourceUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).ResourceUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).ResourceUri = value; }
 
         /// <summary>Internal Acessors for Unit</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Unit = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionInternal.Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Unit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Unit = value; }
 
         /// <summary>Resource Name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -59,22 +59,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Primary aggregation type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string PrimaryAggregationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).PrimaryAggregationType; }
+        public string PrimaryAggregationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).PrimaryAggregationType; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 _property;
 
         /// <summary>ResourceMetricDefinition resource specific properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionProperties1()); set => this._property = value; }
 
         /// <summary>Resource metric definition properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 ResourceMetricDefinitionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Property; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties ResourceMetricDefinitionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Property; }
 
         /// <summary>Resource URI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ResourceUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).ResourceUri; }
+        public string ResourceUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).ResourceUri; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Unit of the metric.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionPropertiesInternal)Property).Unit; }
+        public string Unit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)Property).Unit; }
 
         /// <summary>Creates an new <see cref="ResourceMetricDefinition" /> instance.</summary>
         public ResourceMetricDefinition()
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         ReadOnly = true,
         Description = @"Resource metric definition properties.",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 ResourceMetricDefinitionProperty { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties ResourceMetricDefinitionProperty { get;  }
         /// <summary>Resource URI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Primary aggregation type.</summary>
         string PrimaryAggregationType { get; set; }
         /// <summary>ResourceMetricDefinition resource specific properties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 Property { get; set; }
         /// <summary>Resource metric definition properties.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1 ResourceMetricDefinitionProperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties ResourceMetricDefinitionProperty { get; set; }
         /// <summary>Resource URI.</summary>
         string ResourceUri { get; set; }
         /// <summary>Unit of the metric.</summary>

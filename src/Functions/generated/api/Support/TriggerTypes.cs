@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>The trigger type of the function</summary>
     public partial struct TriggerTypes :
         System.IEquatable<TriggerTypes>
     {

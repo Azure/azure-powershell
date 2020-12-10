@@ -2,7 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
-    /// <summary>Resource metric definition properties.</summary>
+    /// <summary>ResourceMetricDefinition resource specific properties</summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceMetricDefinitionProperties1TypeConverter))]
     public partial class ResourceMetricDefinitionProperties1
     {
@@ -96,8 +96,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Unit, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).PrimaryAggregationType = (string) content.GetValueForProperty("PrimaryAggregationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).PrimaryAggregationType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).MetricAvailability = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[]) content.GetValueForProperty("MetricAvailability",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).MetricAvailability, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricAvailabilityTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).ResourceUri, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionPropertiesTypeConverter.ConvertFrom);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +118,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Unit, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).PrimaryAggregationType = (string) content.GetValueForProperty("PrimaryAggregationType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).PrimaryAggregationType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).MetricAvailability = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability[]) content.GetValueForProperty("MetricAvailability",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).MetricAvailability, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricAvailability>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricAvailabilityTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).ResourceUri, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceMetricDefinitionProperties1Internal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceMetricDefinitionPropertiesTypeConverter.ConvertFrom);
             AfterDeserializePSObject(content);
         }
 
@@ -125,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// Resource metric definition properties.
+    /// ResourceMetricDefinition resource specific properties
     [System.ComponentModel.TypeConverter(typeof(ResourceMetricDefinitionProperties1TypeConverter))]
     public partial interface IResourceMetricDefinitionProperties1
 

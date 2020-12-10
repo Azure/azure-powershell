@@ -1264,6 +1264,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Target ResourceGroup parameter is not supported for Unmanaged Virtual machine restore.
+        /// </summary>
+        public static string TargetResourcegroupNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetResourcegroupNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>
         public static string TrackingOperationStatusURLForCompletion {

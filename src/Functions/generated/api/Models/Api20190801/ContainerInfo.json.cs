@@ -58,13 +58,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_currentCpuStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("currentCpuStats"), out var __jsonCurrentCpuStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerCpuStatistics.FromJson(__jsonCurrentCpuStats) : CurrentCpuStat;}
-            {_eth0 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("eth0"), out var __jsonEth0) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerNetworkInterfaceStatistics.FromJson(__jsonEth0) : Eth0;}
-            {_memoryStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("memoryStats"), out var __jsonMemoryStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerMemoryStatistics.FromJson(__jsonMemoryStats) : MemoryStat;}
             {_previousCpuStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("previousCpuStats"), out var __jsonPreviousCpuStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerCpuStatistics.FromJson(__jsonPreviousCpuStats) : PreviousCpuStat;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
+            {_memoryStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("memoryStats"), out var __jsonMemoryStats) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerMemoryStatistics.FromJson(__jsonMemoryStats) : MemoryStat;}
+            {_eth0 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("eth0"), out var __jsonEth0) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerNetworkInterfaceStatistics.FromJson(__jsonEth0) : Eth0;}
             {_currentTimeStamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("currentTimeStamp"), out var __jsonCurrentTimeStamp) ? global::System.DateTime.TryParse((string)__jsonCurrentTimeStamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCurrentTimeStampValue) ? __jsonCurrentTimeStampValue : CurrentTimeStamp : CurrentTimeStamp;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             {_previousTimeStamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("previousTimeStamp"), out var __jsonPreviousTimeStamp) ? global::System.DateTime.TryParse((string)__jsonPreviousTimeStamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonPreviousTimeStampValue) ? __jsonPreviousTimeStampValue : PreviousTimeStamp : PreviousTimeStamp;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
 
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != this._currentCpuStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._currentCpuStat.ToJson(null,serializationMode) : null, "currentCpuStats" ,container.Add );
-            AddIf( null != this._eth0 ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._eth0.ToJson(null,serializationMode) : null, "eth0" ,container.Add );
-            AddIf( null != this._memoryStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._memoryStat.ToJson(null,serializationMode) : null, "memoryStats" ,container.Add );
             AddIf( null != this._previousCpuStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._previousCpuStat.ToJson(null,serializationMode) : null, "previousCpuStats" ,container.Add );
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != this._memoryStat ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._memoryStat.ToJson(null,serializationMode) : null, "memoryStats" ,container.Add );
+            AddIf( null != this._eth0 ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._eth0.ToJson(null,serializationMode) : null, "eth0" ,container.Add );
             AddIf( null != this._currentTimeStamp ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._currentTimeStamp?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "currentTimeStamp" ,container.Add );
-            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AddIf( null != this._previousTimeStamp ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._previousTimeStamp?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "previousTimeStamp" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

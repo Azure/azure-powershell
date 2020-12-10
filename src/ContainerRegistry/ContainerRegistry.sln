@@ -10,6 +10,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry.Test", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{2EF2B093-6C82-4AC4-A073-89DA030980E7}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{3E016018-D65D-4336-9F64-17DA97783AD0}"
@@ -32,6 +36,10 @@ Global
 		{094709D1-0301-44F4-8BB2-203162006A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{094709D1-0301-44F4-8BB2-203162006A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{094709D1-0301-44F4-8BB2-203162006A3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF2B093-6C82-4AC4-A073-89DA030980E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF2B093-6C82-4AC4-A073-89DA030980E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF2B093-6C82-4AC4-A073-89DA030980E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF2B093-6C82-4AC4-A073-89DA030980E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Current DNS type</summary>
     public partial struct DnsType :
         System.IEquatable<DnsType>
     {

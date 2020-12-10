@@ -88,7 +88,7 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>BackupTime</Label>
+            <Label>BackupTime (UTC)</Label>
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -139,7 +139,7 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>BackupTime</Label>
+            <Label>BackupTime (UTC)</Label>
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -190,7 +190,7 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>BackupTime</Label>
+            <Label>BackupTime (UTC)</Label>
             <Width>25</Width>
           </TableColumnHeader>
           <TableColumnHeader>

@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
     public class AzureSqlDatabaseBackupShortTermRetentionPolicyModel
@@ -36,12 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the retention days of this policy.
         /// </summary>
-        public int? RetentionDays { get; set; }
-
-        /// <summary>
-        /// Gets or sets the differential backup interval of this policy.
-        /// </summary>
-        public int? DiffBackupIntervalInHours { get; set; }
+        public int RetentionDays { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseBackupShortTermRetentionPolicyModel from Management.Sql.BackupShortTermRetentionPolicy object
@@ -51,16 +44,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <param name="policy"></param>
         public AzureSqlDatabaseBackupShortTermRetentionPolicyModel(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.BackupShortTermRetentionPolicy policy)
         {
-            if (policy.RetentionDays == null && policy.DiffBackupIntervalInHours == null)
-            {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters, "RetentionDays", "DiffBackupIntervalInHours"));
-            }
-
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             DatabaseName = databaseName;
-            RetentionDays = policy.RetentionDays;
-            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours;
+            RetentionDays = policy.RetentionDays.Value;
         }
     }
 }

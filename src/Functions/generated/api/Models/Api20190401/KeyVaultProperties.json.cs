@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             {_keyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("keyname"), out var __jsonKeyname) ? (string)__jsonKeyname : (string)KeyName;}
-            {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("keyvaulturi"), out var __jsonKeyvaulturi) ? (string)__jsonKeyvaulturi : (string)KeyVaultUri;}
             {_keyVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("keyversion"), out var __jsonKeyversion) ? (string)__jsonKeyversion : (string)KeyVersion;}
+            {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("keyvaulturi"), out var __jsonKeyvaulturi) ? (string)__jsonKeyvaulturi : (string)KeyVaultUri;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return container;
             }
             AddIf( null != (((object)this._keyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._keyName.ToString()) : null, "keyname" ,container.Add );
-            AddIf( null != (((object)this._keyVaultUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._keyVaultUri.ToString()) : null, "keyvaulturi" ,container.Add );
             AddIf( null != (((object)this._keyVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._keyVersion.ToString()) : null, "keyversion" ,container.Add );
+            AddIf( null != (((object)this._keyVaultUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._keyVaultUri.ToString()) : null, "keyvaulturi" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -70,5 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
 
+        public string Tier { get; set; }
+
     }
 }

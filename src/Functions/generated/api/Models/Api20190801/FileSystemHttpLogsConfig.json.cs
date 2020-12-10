@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
-            {_retentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("retentionInDays"), out var __jsonRetentionInDays) ? (int?)__jsonRetentionInDays : RetentionInDay;}
             {_retentionInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("retentionInMb"), out var __jsonRetentionInMb) ? (int?)__jsonRetentionInMb : RetentionInMb;}
+            {_retentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("retentionInDays"), out var __jsonRetentionInDays) ? (int?)__jsonRetentionInDays : RetentionInDay;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._enabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._enabled) : null, "enabled" ,container.Add );
-            AddIf( null != this._retentionInDay ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._retentionInDay) : null, "retentionInDays" ,container.Add );
             AddIf( null != this._retentionInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._retentionInMb) : null, "retentionInMb" ,container.Add );
+            AddIf( null != this._retentionInDay ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._retentionInDay) : null, "retentionInDays" ,container.Add );
+            AddIf( null != this._enabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._enabled) : null, "enabled" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

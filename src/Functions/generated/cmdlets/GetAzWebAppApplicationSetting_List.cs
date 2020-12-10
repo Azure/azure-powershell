@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Gets the application settings of an app.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_ListApplicationSettings=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list"
+    /// [OpenAPI] ListApplicationSettings=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppApplicationSetting_List", SupportsShouldProcess = true)]

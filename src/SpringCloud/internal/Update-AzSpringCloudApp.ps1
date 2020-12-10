@@ -72,7 +72,7 @@ TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -93,7 +93,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.springcloud/update-azspringcloudapp
 #>
 function Update-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -152,20 +152,20 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
-    # .
+    # Principal Id
     ${IdentityPrincipalId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
-    # .
+    # Tenant Id
     ${IdentityTenantId},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]
-    # .
+    # Type of the managed identity
     ${IdentityType},
 
     [Parameter()]

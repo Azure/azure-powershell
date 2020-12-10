@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for SignedResource.</summary>
+    /// <summary>
+    /// The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share
+    /// (s).
+    /// </summary>
     public partial class SignedResourceTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

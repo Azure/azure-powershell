@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AppServicePlanRestrictions.</summary>
+    /// <summary>App Service plans this offer is restricted to.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AppServicePlanRestrictionsTypeConverter))]
     public partial struct AppServicePlanRestrictions :
         System.Management.Automation.IArgumentCompleter

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>SCM type.</summary>
     public partial struct ScmType :
         System.IEquatable<ScmType>
     {

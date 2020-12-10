@@ -10,20 +10,44 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Restores the data and configuration for a Backup item to a recovery point.
+Restores the data and configuration for a Backup item to the specified recovery point. The required parameters vary with the backup item type.
+The same command is used to restore Azure Virtual machines, databases running within Azure Virtual machines and Azure file shares as well.
 
 ## SYNTAX
 
 ### AzureVMParameterSet (Default)
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
- [[-TargetResourceGroupName] <String>] [-UseOriginalStorageAccount] [-RestoreOnlyOSDisk]
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
+ [-RestoreDiskList <String[]>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### AzureVMManagedDiskParameterSet
+```
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
+ [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureVMRestoreManagedAsUnmanaged
+```
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AzureFileParameterSet
+### AzureVMUnManagedDiskParameterSet
+```
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount]
+ [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureFileShareParameterSet
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
@@ -41,43 +65,119 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-WLRecoveryConfi
 ## DESCRIPTION
 
 The **Restore-AzRecoveryServicesBackupItem** cmdlet restores the data and configuration for an Azure Backup item to a specified recovery point.
-This cmdlet starts the restore from the Recovery Services vault to customer's storage account.
-The restore operation does not restore the full virtual machine.
-It restores the managed disks to a target resource group and configuration information to customer storage account
-After the restore operation is finished, you must create the virtual machine and start it. 
-Please refter to different possible parameter sets and parameter text for more information.
-Set the vault context by using the -VaultId parameter.
 
-Note: To successfully execute this cmdlet in addition to -VaultId parameter -VaultLocation parameter should be used as well.
+**For Azure VM  backup**
+
+You can backup Azure virtual machines and restore disks (both managed and un-managed) using this command. The restore operation does not restore the full virtual machine.
+If this is a managed disk VM, a target Resource group should be specified where the restored disks are kept. When target resource group is specified, if the snapshots are present in the resource group that was specified in backup policy, the restore operation will be instant and the disks are created from local snapshots and kept in target-resource group. There is also an option to restore them as un-managed disks but this will leverage the data present in Azure recovery services vault and hence will be lot slower. The configuration of the VM and the deployment template which can be used to create VM out of the restored disks will be downloaded to the specified storage account.
+If this is an un-managed disk VM, then the snapshots are present in disk's original storage account and/or in the recovery services vault. If user gives an option to use Original storage account to restore, then instant restore can be provided. Otherwise, data is fetched from Azure Recovery services vault and disks are created in specified storage account along with the configuration of the VM and the deployment template.
+
+> [!IMPORTANT]
+> By default, Azure VM backup backs up all disks. You can selectively backup relevant disks using the exclusionList or InclusionList parameters during Enable-Backup. The option to selectively restore disks is available only if one has selectively backed them up.
+
+Please refer to different possible parameter sets and parameter text for more information.
+
+> [!NOTE]
+> If -VaultId parameter is used then -VaultLocation parameter should be used as well.
+
+**For Azure File share backup**
+
+You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
+
+**For Azure Workloads**
+
+You can restore SQL DBs within Azure VMs
+
 
 ## EXAMPLES
 
-### Example 1: Restore an item to a recovery point
+### Example 1: Restore the disks of a backed up Managed disk Azure VM from a given recovery point
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
 PS C:\> $StartDate = (Get-Date).AddDays(-7)
 PS C:\> $EndDate = Get-Date
 PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
-PS C:\> $restoreDiskLUNs = ("0", "1")
-PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetRG $ManagedDiskRG -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -VaultId $vault.ID -VaultLocation $vault.Location
     WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-The first command gets the Backup container of type AzureVM, and then stores it in the $Container variable.
-The second command gets the Backup item named V2VM from $Container, and then stores it in the $BackupItem variable.
+The first command gets the Recovery Services vault and stores it in $vault variable.
+The second command gets the Backup item of type AzureVM, of the name "V2VM", and stores it in the $BackupItem variable.
 The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
 The fourth command gets the current date, and then stores it in the $EndDate variable.
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
-The date range specified is the last 7 days.
-The seventh command specifies which disks to restore from the recovery point and stores it in $restoreDiskLUNs variable.
-The last command restores the disks to the target storage account DestAccount in the DestRG resource group.
+The last command restores all the disks to the target Resource group Target_RG, and then provides the VM configuration information and the deployment template in the storage account DestAccount in the DestRG resource group.
 
-### Example 2: Restore Multiple files of an AzureFileShare item
+### Example 2: Restore specified disks of a backed up Managed disk Azure VM from a given recovery point
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+PS C:\> $StartDate = (Get-Date).AddDays(-7)
+PS C:\> $EndDate = Get-Date
+PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $restoreDiskLUNs = ("0", "1")
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
+    WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+The first command gets the Recovery Services vault and stores it in $vault variable.
+The second command gets the Backup item of type AzureVM, of the name "V2VM", and stores it in the $BackupItem variable.
+The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
+The fourth command gets the current date, and then stores it in the $EndDate variable.
+The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
+The sixth command stores the list of disks to be restored in the restoreDiskLUN variable.
+The last command restores the given disks, of the specified LUNs, to the target Resource group Target_RG, and then provides the VM configuration information and the deployment template in the storage account DestAccount in the DestRG resource group.
+
+### Example 3: Restore disks of a managed VM as unmanaged Disks
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+PS C:\> $StartDate = (Get-Date).AddDays(-7)
+PS C:\> $EndDate = Get-Date
+PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem[0] -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -RestoreAsUnmanagedDisks -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -VaultId $vault.ID -VaultLocation $vault.Location
+    WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+The first command gets the RecoveryServices vault and stores it in $vault variable.
+The second command gets the Backup item and then stores it in the $BackupItem variable.
+The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
+The fourth command gets the current date, and then stores it in the $EndDate variable.
+The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
+The sixth command restores the disks as unmanaged disks.
+
+### Example 4: Restore an unmanaged VM as unmanaged Disks using original storage account
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "UnManagedVM" -VaultId $vault.ID
+PS C:\> $StartDate = (Get-Date).AddDays(-7)
+PS C:\> $EndDate = Get-Date
+PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem[0] -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -UseOriginalStorageAccount -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -VaultId $vault.ID -VaultLocation $vault.Location
+    WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+The first command gets the RecoveryServices vault and stores it in $vault variable.
+The second command gets the Backup item and then stores it in the $BackupItem variable.
+The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
+The fourth command gets the current date, and then stores it in the $EndDate variable.
+The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
+The sixth command restores the disks as unmanaged disks to their original storage accounts
+
+### Example 5: Restore Multiple files of an AzureFileShare item
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
@@ -87,21 +187,45 @@ PS C:\> $files = ("file1.txt", "file2.txt")
 PS C:\> $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
     WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
-    fileshareitem            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+    fileshareitem   Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-The first command gets the Backup container of type AzureVM, and then stores it in the $Container variable.
+The first command gets the Recovery Services vault and stores it in $vault variable.
 The second command gets the Backup item named fileshareitem and then stores it in the $BackupItem variable.
 The third command gets a list of recovery points for the specific backup item.
-The fourth command spceifies which files to restore and stores it in $files variable.
+The fourth command specifies which files to restore and stores it in $files variable.
 The last command restores the specified files to its original location.
 
-### Example 3
+### Example 6: Restore a SQL DB within an Azure VM to another target VM for a distinct full recovery point
 
-Restores the data and configuration for a Backup item to a recovery point. (autogenerated)
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Name "MSSQLSERVER;model"
+PS C:\> $StartDate = (Get-Date).AddDays(-7)
+PS C:\> $EndDate = Get-Date
+PS C:\> $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $vault.ID
+PS C:\> $AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $vault.ID
+PS C:\> Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $vault.ID
+    WorkloadName       Operation        Status            StartTime                 EndTime          JobID
+    ------------       ---------        ------            ---------                 -------          -----
+    MSSQLSERVER/m...   Restore          InProgress        3/17/2019 10:02:45 AM                      3274xg2b-e4fg-5952-89b4-8cb566gc1748
 
-```powershell <!-- Aladdin Generated Example --> 
-Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -WLRecoveryConfig <RecoveryConfigBase>
+```
+
+### Example 7: Restore a SQL DB within an Azure VM to another target VM for a log recovery point
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Name "MSSQLSERVER;model"
+PS C:\> $PointInTime = Get-Date -Date "2019-03-20 01:00:00Z"
+PS C:\> $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $vault.ID
+PS C:\> $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $BackupItem -AlternateWorkloadRestore -VaultId $vault.ID
+PS C:\> Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $vault.ID
+    WorkloadName     Operation      Status           StartTime                 EndTime           JobID
+    ------------     ---------      ------           ---------                 -------           -----
+    MSSQLSERVER/m... Restore        InProgress       3/17/2019 10:02:45 AM                       3274xg2b-e4fg-5952-89b4-8cb566gc1748
+
 ```
 
 ## PARAMETERS
@@ -144,7 +268,7 @@ To obtain an **AzureRmRecoveryServicesBackupRecoveryPoint** object, use the **Ge
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
-Parameter Sets: AzureVMParameterSet, AzureFileParameterSet
+Parameter Sets: AzureVMParameterSet, AzureFileParameterSet, AzureVMRestoreAsUnmanaged, AzureVMTargetRGParameterSet, AzureVMUseOSAParameterSet
 Aliases:
 
 Required: True
@@ -180,10 +304,10 @@ Use this switch to specify to restore as unmanaged disks
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMRestoreAsUnmanaged
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,7 +319,7 @@ Specify which disks to recover of the backed up VM
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreAsUnmanaged, AzureVMTargetRGParameterSet, AzureVMUseOSAParameterSet
 Aliases:
 
 Required: False
@@ -210,7 +334,7 @@ Use this switch to restore only OS disks of a backed up VM
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreAsUnmanaged, AzureVMTargetRGParameterSet, AzureVMUseOSAParameterSet
 Aliases:
 
 Required: False
@@ -264,7 +388,7 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreAsUnmanaged, AzureVMTargetRGParameterSet, AzureVMUseOSAParameterSet
 Aliases:
 
 Required: True
@@ -281,7 +405,7 @@ As a part of the restore process, this cmdlet stores the disks and the configura
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreAsUnmanaged, AzureVMTargetRGParameterSet, AzureVMUseOSAParameterSet
 Aliases:
 
 Required: True
@@ -329,10 +453,10 @@ The resource group to which the managed disks are restored. Applicable to backup
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMTargetRGParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -361,10 +485,10 @@ Use this switch if the disks from the recovery point are to be restored to their
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMParameterSet
+Parameter Sets: AzureVMUseOSAParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -35,38 +35,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public virtual Cluster CreateNewCluster(string resourceGroupName, string clusterName, OSType osType, ClusterCreateParameters parameters,
-            string minSupportedTlsVersion = default(string), string cloudAadAuthority = default(string),
-            string cloudDataLakeAudience = default(string), string PublicNetworkAccessType = default(string),
-            string OutboundOnlyNetworkAccessType = default(string), bool? EnableEncryptionInTransit = default(bool?), Autoscale autoscaleParameter=null)
+        public virtual Cluster CreateCluster(string resourceGroupName, string clusterName, ClusterCreateParametersExtended createParams)
         {
-            var createParams = CreateParametersConverter.GetExtendedClusterCreateParameters(clusterName, parameters);
-            createParams.Properties.OsType = osType;
-            createParams.Properties.MinSupportedTlsVersion = minSupportedTlsVersion;
-            ResetClusterIdentity(createParams, cloudAadAuthority, cloudDataLakeAudience);
-
-            if (EnableEncryptionInTransit.HasValue)
-            {
-                createParams.Properties.EncryptionInTransitProperties = new EncryptionInTransitProperties()
-                {
-                    IsEncryptionInTransitEnabled = EnableEncryptionInTransit
-                };
-            }
-
-            if (!string.IsNullOrEmpty(PublicNetworkAccessType) || !string.IsNullOrEmpty(OutboundOnlyNetworkAccessType)){
-                NetworkSettings networkSettings = new NetworkSettings()
-                {
-                    PublicNetworkAccess = PublicNetworkAccessType,
-                    OutboundOnlyPublicNetworkAccessType = OutboundOnlyNetworkAccessType
-                };
-                createParams.Properties.NetworkSettings = networkSettings;
-            }
-
-            if (autoscaleParameter != null)
-            {
-                createParams.Properties.ComputeProfile.Roles.FirstOrDefault(role => role.Name.Equals("workernode")).AutoscaleConfiguration = autoscaleParameter;
-            }
-
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, createParams);
         }
 

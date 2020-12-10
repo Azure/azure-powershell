@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.BackupItemTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.BackupItemTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItemCollectionInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

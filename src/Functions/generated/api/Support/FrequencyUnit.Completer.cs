@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for FrequencyUnit.</summary>
+    /// <summary>
+    /// The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval
+    /// should be set to 7)
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnitTypeConverter))]
     public partial struct FrequencyUnit :
         System.Management.Automation.IArgumentCompleter

@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

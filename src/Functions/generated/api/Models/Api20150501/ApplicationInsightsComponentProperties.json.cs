@@ -58,18 +58,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             {
                 return;
             }
-            {_appId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("AppId"), out var __jsonAppId) ? (string)__jsonAppId : (string)AppId;}
             {_applicationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("ApplicationId"), out var __jsonApplicationId) ? (string)__jsonApplicationId : (string)ApplicationId;}
+            {_appId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("AppId"), out var __jsonAppId) ? (string)__jsonAppId : (string)AppId;}
             {_applicationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("Application_Type"), out var __jsonApplicationType) ? (string)__jsonApplicationType : (string)ApplicationType;}
-            {_creationDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("CreationDate"), out var __jsonCreationDate) ? global::System.DateTime.TryParse((string)__jsonCreationDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationDateValue) ? __jsonCreationDateValue : CreationDate : CreationDate;}
             {_flowType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("Flow_Type"), out var __jsonFlowType) ? (string)__jsonFlowType : (string)FlowType;}
+            {_requestSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("Request_Source"), out var __jsonRequestSource) ? (string)__jsonRequestSource : (string)RequestSource;}
+            {_instrumentationKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("InstrumentationKey"), out var __jsonInstrumentationKey) ? (string)__jsonInstrumentationKey : (string)InstrumentationKey;}
+            {_creationDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("CreationDate"), out var __jsonCreationDate) ? global::System.DateTime.TryParse((string)__jsonCreationDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationDateValue) ? __jsonCreationDateValue : CreationDate : CreationDate;}
+            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("TenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)TenantId;}
             {_hockeyAppId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("HockeyAppId"), out var __jsonHockeyAppId) ? (string)__jsonHockeyAppId : (string)HockeyAppId;}
             {_hockeyAppToken = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("HockeyAppToken"), out var __jsonHockeyAppToken) ? (string)__jsonHockeyAppToken : (string)HockeyAppToken;}
-            {_instrumentationKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("InstrumentationKey"), out var __jsonInstrumentationKey) ? (string)__jsonInstrumentationKey : (string)InstrumentationKey;}
-            {_requestSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("Request_Source"), out var __jsonRequestSource) ? (string)__jsonRequestSource : (string)RequestSource;}
-            {_samplingPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("SamplingPercentage"), out var __jsonSamplingPercentage) ? (double?)__jsonSamplingPercentage : SamplingPercentage;}
-            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("TenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)TenantId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_samplingPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("SamplingPercentage"), out var __jsonSamplingPercentage) ? (double?)__jsonSamplingPercentage : SamplingPercentage;}
             AfterFromJson(json);
         }
 
@@ -107,18 +107,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._appId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._appId.ToString()) : null, "AppId" ,container.Add );
+                AddIf( null != (((object)this._applicationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._applicationId.ToString()) : null, "ApplicationId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._applicationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._applicationId.ToString()) : null, "ApplicationId" ,container.Add );
+                AddIf( null != (((object)this._appId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._appId.ToString()) : null, "AppId" ,container.Add );
             }
             AddIf( null != (((object)this._applicationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._applicationType.ToString()) : null, "Application_Type" ,container.Add );
+            AddIf( null != (((object)this._flowType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._flowType.ToString()) : null, "Flow_Type" ,container.Add );
+            AddIf( null != (((object)this._requestSource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._requestSource.ToString()) : null, "Request_Source" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._instrumentationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._instrumentationKey.ToString()) : null, "InstrumentationKey" ,container.Add );
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._creationDate ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._creationDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "CreationDate" ,container.Add );
             }
-            AddIf( null != (((object)this._flowType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._flowType.ToString()) : null, "Flow_Type" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "TenantId" ,container.Add );
+            }
             AddIf( null != (((object)this._hockeyAppId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._hockeyAppId.ToString()) : null, "HockeyAppId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -126,18 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._instrumentationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._instrumentationKey.ToString()) : null, "InstrumentationKey" ,container.Add );
-            }
-            AddIf( null != (((object)this._requestSource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._requestSource.ToString()) : null, "Request_Source" ,container.Add );
-            AddIf( null != this._samplingPercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._samplingPercentage) : null, "SamplingPercentage" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "TenantId" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            AddIf( null != this._samplingPercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._samplingPercentage) : null, "SamplingPercentage" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

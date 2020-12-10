@@ -252,12 +252,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime
             {
                 clone.Properties.Add(prop);
             }
-
+            
             foreach (KeyValuePair<string, IEnumerable<string>> header in original.Headers)
-            {
+            {   
+                /*
+                **temporarily skip cloning telemetry related headers**
                 clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                */
+                if (!"x-ms-unique-id".Equals(header.Key) && !"x-ms-client-request-id".Equals(header.Key) && !"CommandName".Equals(header.Key) && !"FullCommandName".Equals(header.Key) && !"ParameterSetName".Equals(header.Key) && !"User-Agent".Equals(header.Key))
+                {
+                    clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
             }
-
+            
             return clone;
         }
 

@@ -605,6 +605,61 @@ function Test-PublicIpAddressCRUD-StandardSku
 
 <#
 .SYNOPSIS
+Tests creating new simple publicIpAddress with Static allocation and global tier.
+#>
+function Test-PublicIpAddressCRUD-StandardSkuGlobalTier
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = "eastus2euap"
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create publicIpAddres
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -Tier Global -DomainNameLabel $domainNameLabel
+      $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.IpAddress
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+      # list
+      $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $list[0].Name $actual.Name
+      Assert-AreEqual $list[0].Location $actual.Location
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
+      Assert-NotNull $list[0].IpAddress
+      Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+
+      # delete
+      $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpAddress.
 #>
 function Test-PublicIpAddressZones

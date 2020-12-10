@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Starts an app (or deployment slot, if specified).</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/start"
+    /// [OpenAPI] Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/start"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzFunctionApp_StartViaIdentity", SupportsShouldProcess = true)]

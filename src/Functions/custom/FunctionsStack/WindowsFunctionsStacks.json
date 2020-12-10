@@ -11,7 +11,7 @@
                 "majorVersions": [
                     {
                         "displayVersion": "3.1",
-                        "runtimeVersion": null,
+                        "runtimeVersion": "3.1",
                         "supportedFunctionsExtensionVersions": [
                             "~3"
                         ],
@@ -21,7 +21,28 @@
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "dotnet"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
+                        "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "2.2",
+                        "runtimeVersion": "2.2",
+                        "supportedFunctionsExtensionVersions": [
+                            "~2"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -41,6 +62,26 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "14",
+                        "runtimeVersion": "~14",
+                        "supportedFunctionsExtensionVersions": [
+                            "~3"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "node",
+                            "WEBSITE_NODE_DEFAULT_VERSION": "~14"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": true
+                    },
+                    {
                         "displayVersion": "12",
                         "runtimeVersion": "~12",
                         "supportedFunctionsExtensionVersions": [
@@ -53,7 +94,9 @@
                             "FUNCTIONS_WORKER_RUNTIME": "node",
                             "WEBSITE_NODE_DEFAULT_VERSION": "~12"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -65,14 +108,16 @@
                             "~2",
                             "~3"
                         ],
-                        "isDefault": false,
+                        "isDefault": true,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "node",
                             "WEBSITE_NODE_DEFAULT_VERSION": "~10"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -81,7 +126,6 @@
                         "displayVersion": "8",
                         "runtimeVersion": "~8",
                         "supportedFunctionsExtensionVersions": [
-                            "~1",
                             "~2"
                         ],
                         "isDefault": false,
@@ -91,7 +135,9 @@
                             "FUNCTIONS_WORKER_RUNTIME": "node",
                             "WEBSITE_NODE_DEFAULT_VERSION": "~8"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -123,7 +169,10 @@
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "java"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "javaVersion": "1.8",
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -134,13 +183,16 @@
                         "supportedFunctionsExtensionVersions": [
                             "~3"
                         ],
-                        "isDefault": true,
+                        "isDefault": false,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
                             "FUNCTIONS_WORKER_RUNTIME": "java"
                         },
-                        "siteConfigPropertiesDictionary": {},
+                        "siteConfigPropertiesDictionary": {
+                            "javaVersion": "11",
+                            "use32BitWorkerProcess": true
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
@@ -173,10 +225,11 @@
                             "FUNCTIONS_WORKER_RUNTIME": "powershell"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "PowerShellVersion": "~6"
+                            "powerShellVersion": "~6",
+                            "use32BitWorkerProcess": true
                         },
                         "isPreview": false,
-                        "isDeprecated": false,
+                        "isDeprecated": true,
                         "isHidden": false
                     },
                     {
@@ -192,7 +245,8 @@
                             "FUNCTIONS_WORKER_RUNTIME": "powershell"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "PowerShellVersion": "~7"
+                            "powerShellVersion": "~7",
+                            "use32BitWorkerProcess": true
                         },
                         "isPreview": false,
                         "isDeprecated": false,

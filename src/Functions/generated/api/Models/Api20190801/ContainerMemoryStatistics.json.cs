@@ -57,9 +57,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_limit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("limit"), out var __jsonLimit) ? (long?)__jsonLimit : Limit;}
-            {_maxUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxUsage"), out var __jsonMaxUsage) ? (long?)__jsonMaxUsage : MaxUsage;}
             {_usage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("usage"), out var __jsonUsage) ? (long?)__jsonUsage : Usage;}
+            {_maxUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxUsage"), out var __jsonMaxUsage) ? (long?)__jsonMaxUsage : MaxUsage;}
+            {_limit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("limit"), out var __jsonLimit) ? (long?)__jsonLimit : Limit;}
             AfterFromJson(json);
         }
 
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._limit ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._limit) : null, "limit" ,container.Add );
-            AddIf( null != this._maxUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxUsage) : null, "maxUsage" ,container.Add );
             AddIf( null != this._usage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._usage) : null, "usage" ,container.Add );
+            AddIf( null != this._maxUsage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._maxUsage) : null, "maxUsage" ,container.Add );
+            AddIf( null != this._limit ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._limit) : null, "limit" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

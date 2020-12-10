@@ -31,6 +31,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string CapacityScaleType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuCapacityInternal)Capacity).ScaleType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuCapacityInternal)Capacity).ScaleType = value; }
 
+        /// <summary>Current number of instances assigned to the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public int? IntegerCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescriptionInternal)Sku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescriptionInternal)Sku).Capacity = value; }
+
         /// <summary>Internal Acessors for Capacity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuCapacity Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuInfoInternal.Capacity { get => (this._capacity = this._capacity ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SkuCapacity()); set { {_capacity = value;} } }
 
@@ -46,10 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Resource type that this SKU applies to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string ResourceType { get => this._resourceType; set => this._resourceType = value; }
-
-        /// <summary>Current number of instances assigned to the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public int? Schemas576Capacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescriptionInternal)Sku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescriptionInternal)Sku).Capacity = value; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescription _sku;
@@ -140,6 +140,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"scaleType",
         PossibleTypes = new [] { typeof(string) })]
         string CapacityScaleType { get; set; }
+        /// <summary>Current number of instances assigned to the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Current number of instances assigned to the resource.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        int? IntegerCapacity { get; set; }
         /// <summary>Resource type that this SKU applies to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -148,14 +156,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceType { get; set; }
-        /// <summary>Current number of instances assigned to the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Current number of instances assigned to the resource.",
-        SerializedName = @"capacity",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Schemas576Capacity { get; set; }
         /// <summary>Capabilities of the SKU, e.g., is traffic manager enabled?</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         int? CapacityMinimum { get; set; }
         /// <summary>Available scale configurations for an App Service plan.</summary>
         string CapacityScaleType { get; set; }
+        /// <summary>Current number of instances assigned to the resource.</summary>
+        int? IntegerCapacity { get; set; }
         /// <summary>Resource type that this SKU applies to.</summary>
         string ResourceType { get; set; }
-        /// <summary>Current number of instances assigned to the resource.</summary>
-        int? Schemas576Capacity { get; set; }
         /// <summary>Name and tier of the SKU.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISkuDescription Sku { get; set; }
         /// <summary>Capabilities of the SKU, e.g., is traffic manager enabled?</summary>

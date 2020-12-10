@@ -40,7 +40,7 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml', 'MSSharedLibKey.snk', 'generate-info.json')
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', '*.psm1', '*.ps1xml')
         Foreach($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
@@ -96,12 +96,29 @@ Function Move-Generation2Master {
         }
         #EndRegion
 
+        #Region generate-info.json
+        
+        $generate_info = @{}
+        $repo = "https://github.com/Azure/azure-rest-api-specs"
+        $commit = git ls-remote $repo HEAD
+        $generate_info.Add("swagger_commit", $commit.Substring(0, 40))
+        $generate_info.Add("node", (node --version))
+        $autorest_info = (npm ls -g @autorest/autorest).Split('@')
+        $generate_info.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
+        $extensions = ls ~/.autorest
+        ForEach ($ex in $extensions) {
+            $info = $ex.Name.Split('@')
+            $generate_info.Add($info[1], $info[2])
+        }
+        Set-Content -Path (Join-Path $DestPath generate-info.json) -Value (ConvertTo-Json $generate_info)
+        #EndRegion
+
         #Region update azure-powershell-modules.md
         
         #EndRegion
 
         #Region update GeneratedModuleList
-        $GeneratedModuleListPath = [System.IO.Path]::Combine(@($PSScriptRoot, "..", "GeneratedModuleList.txt"))
+        $GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "..", "GeneratedModuleList.txt")
         $Modules = Get-Content $GeneratedModuleListPath + "Az.$ModuleName"
         $NewModules = $Modules | Sort-Object
         Set-Content -Path $GeneratedModuleListPath -Value $NewModules

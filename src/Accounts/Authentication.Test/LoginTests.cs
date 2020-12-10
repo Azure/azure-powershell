@@ -17,9 +17,6 @@ using Common.Authentication.Test.Cmdlets;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -133,30 +130,8 @@ namespace Common.Authentication.Test
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
             try
             {
-                if (diskCache == null)
-                {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
-                        {
-                            diskCache.Deserialize(memoryCache.Serialize());
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
-                }
-
                 if (writeAutoSaveFile)
                 {
                     try

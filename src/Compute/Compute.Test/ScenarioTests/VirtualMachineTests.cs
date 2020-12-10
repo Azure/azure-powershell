@@ -346,5 +346,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineImageListTopOrderExpand");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVirtualMachineBootDiagnostics()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineBootDiagnostics");
+        }
     }
 }

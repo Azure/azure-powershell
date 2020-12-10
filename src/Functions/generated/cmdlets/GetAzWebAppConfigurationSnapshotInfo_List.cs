@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// and the ID of the snapshot.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_ListConfigurationSnapshotInfo=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots"
+    /// [OpenAPI] ListConfigurationSnapshotInfo=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppConfigurationSnapshotInfo_List")]

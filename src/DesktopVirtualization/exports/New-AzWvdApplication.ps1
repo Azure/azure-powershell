@@ -35,12 +35,12 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -103,6 +103,13 @@ param(
     ${AppAlias},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType]
+    # Resource Type of Application.
+    ${ApplicationType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Command Line Arguments for Application.
@@ -125,6 +132,18 @@ param(
     [System.String]
     # Path to icon.
     ${IconPath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Specifies the package application Id for MSIX applications
+    ${MsixPackageApplicationId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Specifies the package family name for MSIX applications
+    ${MsixPackageFamilyName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

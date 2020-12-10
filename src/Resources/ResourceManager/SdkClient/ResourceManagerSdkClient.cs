@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return result;
         }
 
+        public ResourceGroupExportResult ExportResourceGroup(string resourceGroupName, ExportTemplateRequest properties)
+        {
+            return ResourceManagementClient.ResourceGroups.ExportTemplate(resourceGroupName, properties);
+        }
+
         private void WriteVerbose(string progress)
         {
             if (VerboseLogger != null)

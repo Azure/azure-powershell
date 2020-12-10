@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for LogLevel.</summary>
+    /// <summary>Log level.</summary>
     public partial class LogLevelTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_tableName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("tableName"), out var __jsonTableName) ? (string)__jsonTableName : (string)TableName;}
             {_column = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("columns"), out var __jsonColumns) ? If( __jsonColumns as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DataTableResponseColumn.FromJson(__u) )) ))() : null : Column;}
             {_row = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("rows"), out var __jsonRows) ? If( __jsonRows as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __p) ? new global::System.Func<string[][]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__p, (__o)=>(string[]) (If( __o as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __n) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__n, (__m)=>(string) (__m is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __l ? (string)(__l.ToString()) : null)) ))() : null /* arrayOf */)) ))() : null : Row;}
-            {_tableName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("tableName"), out var __jsonTableName) ? (string)__jsonTableName : (string)TableName;}
             AfterFromJson(json);
         }
 
@@ -95,6 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._tableName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tableName.ToString()) : null, "tableName" ,container.Add );
             if (null != this._column)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
@@ -113,7 +114,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("rows",__r);
             }
-            AddIf( null != (((object)this._tableName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._tableName.ToString()) : null, "tableName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

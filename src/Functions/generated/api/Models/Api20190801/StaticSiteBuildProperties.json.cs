@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_appLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("appLocation"), out var __jsonAppLocation) ? (string)__jsonAppLocation : (string)AppLocation;}
             {_apiLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("apiLocation"), out var __jsonApiLocation) ? (string)__jsonApiLocation : (string)ApiLocation;}
             {_appArtifactLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("appArtifactLocation"), out var __jsonAppArtifactLocation) ? (string)__jsonAppArtifactLocation : (string)AppArtifactLocation;}
-            {_appLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("appLocation"), out var __jsonAppLocation) ? (string)__jsonAppLocation : (string)AppLocation;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._appLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._appLocation.ToString()) : null, "appLocation" ,container.Add );
             AddIf( null != (((object)this._apiLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._apiLocation.ToString()) : null, "apiLocation" ,container.Add );
             AddIf( null != (((object)this._appArtifactLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._appArtifactLocation.ToString()) : null, "appArtifactLocation" ,container.Add );
-            AddIf( null != (((object)this._appLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._appLocation.ToString()) : null, "appLocation" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
