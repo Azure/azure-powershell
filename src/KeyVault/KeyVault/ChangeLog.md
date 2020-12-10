@@ -18,8 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added missing return objects of `Get-Secret` in SecretManagement module
+
+## Version 3.2.0
+* Supported "all" as an option when setting key vault access policies
 * Supported new version of SecretManagement module [#13366]
 * Supported ByteArray, String, PSCredential and Hashtable for `SecretValue` in SecretManagementModule [#12190]
+* [Breaking change] redesigned the API surface of cmdlets related to managed HSM.
 
 ## Version 3.1.0
 * Supported updating key vault tag

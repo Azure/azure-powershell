@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSDeletedKeyVaultKey()
         { }
 
-        internal PSDeletedKeyVaultKey(Azure.KeyVault.Models.DeletedKeyBundle deletedKeyBundle, VaultUriHelper vaultUriHelper)
+        internal PSDeletedKeyVaultKey(Azure.KeyVault.Models.DeletedKeyBundle deletedKeyBundle, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (deletedKeyBundle == null)
                 throw new ArgumentNullException("keyItem");
@@ -59,9 +59,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             ScheduledPurgeDate = deletedKeyBundle.ScheduledPurgeDate;
             DeletedDate = deletedKeyBundle.DeletedDate;
+            IsHsm = isHsm;
         }
 
-        internal PSDeletedKeyVaultKey(DeletedKey deletedKey, VaultUriHelper vaultUriHelper)
+        internal PSDeletedKeyVaultKey(DeletedKey deletedKey, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (deletedKey == null)
                 throw new ArgumentNullException("deletedKey");
@@ -93,6 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = deletedKey.Properties.Tags.ConvertToHashtable();
             ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
             DeletedDate = deletedKey.DeletedOn?.UtcDateTime;
+            IsHsm = isHsm;
         }
 
         public PSKeyVaultKeyAttributes Attributes { get; set; }

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 Name,
                 () =>
                 {
-                    SynapseAnalyticsClient.StartUnsubscribeTriggerFromEvents(this.Name);
+                    SynapseAnalyticsClient.UnsubscribeTriggerFromEvents(this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);

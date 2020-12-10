@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Management.Synapse.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -14,9 +15,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.RecoverableDatabaseId = sqlPool?.RecoverableDatabaseId;
             this.ProvisioningState = sqlPool?.ProvisioningState;
             this.Status = sqlPool?.Status;
-            this.RestorePointInTime = sqlPool?.RestorePointInTime;
             this.CreateMode = sqlPool?.CreateMode;
             this.CreationDate = sqlPool?.CreationDate;
+
+            if (sqlPool?.RestorePointInTime != null)
+            {
+                this.RestorePointInTime = DateTime.Parse(sqlPool.RestorePointInTime);
+            }
         }
 
         /// <summary>

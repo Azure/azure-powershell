@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
 * Prevent duplicate access restriction rules
 
 ## Version 2.1.0

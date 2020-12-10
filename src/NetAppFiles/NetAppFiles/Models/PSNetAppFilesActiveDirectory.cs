@@ -126,5 +126,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public string ServerRootCACertificate { get; set; }
 
+        /// <summary>
+        /// Gets or sets AesEncryption
+        /// </summary>
+        /// <value>If enabled, AES encryption will be enabled for SMB communication
+        /// </value>
+        public bool? AesEncryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets LdapSigning
+        /// </summary>
+        /// <value>Specifies whether or not the LDAP traffic needs to be signed
+        /// </value>
+        public bool? LdapSigning { get; set; }
     }
 }
