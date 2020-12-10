@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Shopify Service dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ShopifyObject")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSShopifyObjectDataset : PSDataset
     {

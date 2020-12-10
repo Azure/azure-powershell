@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// A linked service for an SSH File Transfer Protocol (SFTP) server.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Sftp")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSSftpServerLinkedService : PSLinkedService
     {

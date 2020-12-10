@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Greenplum Database dataset.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GreenplumTable")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSGreenplumTableDataset : PSDataset
     {

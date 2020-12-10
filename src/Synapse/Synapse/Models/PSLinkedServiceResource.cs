@@ -1,5 +1,4 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {

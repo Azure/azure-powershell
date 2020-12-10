@@ -12,8 +12,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -22,7 +21,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// to pipeline.
     /// </summary>
 
-    [Newtonsoft.Json.JsonObject("MultiplePipelineTrigger")]
     public partial class PSMultiplePipelineTrigger : PSTrigger
     {
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Synapse.Models

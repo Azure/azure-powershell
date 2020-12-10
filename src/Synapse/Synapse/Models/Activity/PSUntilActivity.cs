@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -22,7 +21,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// This activity executes inner activities until the specified boolean
     /// expression results to true or timeout is reached, whichever is earlier.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Until")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSUntilActivity : PSControlActivity
     {

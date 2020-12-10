@@ -14,15 +14,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Activity to get metadata of dataset
     /// </summary>
-    [Newtonsoft.Json.JsonObject("GetMetadata")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSGetMetadataActivity : PSExecutionActivity
     {

@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Linked service for CosmosDB (MongoDB API) data source.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CosmosDbMongoDbApi")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSCosmosDbMongoDbApiLinkedService : PSLinkedService
     {

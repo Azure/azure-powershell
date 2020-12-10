@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// This activity suspends pipeline execution for the specified interval.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Wait")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSWaitActivity : PSControlActivity
     {

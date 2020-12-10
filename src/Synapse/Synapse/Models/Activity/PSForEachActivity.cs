@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -22,7 +21,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// This activity is used for iterating over a collection and execute given
     /// activities.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("ForEach")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSForEachActivity : PSControlActivity
     {

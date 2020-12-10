@@ -12,15 +12,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Custom linked service.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CustomDataSource")]
     public partial class PSCustomDataSourceLinkedService : PSLinkedService
     {
         /// <summary>

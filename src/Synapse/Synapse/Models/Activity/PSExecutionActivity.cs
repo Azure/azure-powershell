@@ -11,15 +11,13 @@
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Base class for all execution activities.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Execution")]
     public partial class PSExecutionActivity : PSActivity
     {
         /// <summary>

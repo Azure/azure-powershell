@@ -14,8 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// activities under the ifTrueActivities property or the ifFalseActivities
     /// property depending on the result of the expression.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("IfCondition")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSIfConditionActivity : PSControlActivity
     {

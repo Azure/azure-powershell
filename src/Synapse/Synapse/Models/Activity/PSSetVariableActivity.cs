@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Set value for a Variable.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SetVariable")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSSetVariableActivity : PSControlActivity
     {

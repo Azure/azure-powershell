@@ -14,15 +14,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Azure Databricks linked service.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AzureDatabricks")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSAzureDatabricksLinkedService : PSLinkedService
     {

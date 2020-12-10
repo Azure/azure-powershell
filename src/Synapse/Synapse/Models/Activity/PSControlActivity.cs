@@ -11,8 +11,7 @@
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -20,7 +19,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// Base class for all control activities like IfCondition, ForEach ,
     /// Until.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Container")]
     public partial class PSControlActivity : PSActivity
     {
         /// <summary>

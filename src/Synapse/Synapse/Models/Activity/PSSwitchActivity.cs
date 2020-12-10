@@ -14,8 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     /// cases property that correspond to the expression evaluation expected in
     /// the equals property.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Switch")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSSwitchActivity : PSControlActivity
     {

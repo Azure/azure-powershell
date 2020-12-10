@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The dataset points to a HTML table in the web page.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("WebTable")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSWebTableDataset : PSDataset
     {

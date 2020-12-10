@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// SAP HANA Table properties.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SapHanaTable")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSSapHanaTableDataset : PSDataset
     {

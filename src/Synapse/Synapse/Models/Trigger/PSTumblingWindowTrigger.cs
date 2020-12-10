@@ -6,12 +6,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     using global::Azure.Analytics.Synapse.Artifacts.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
-    using System.Collections;
+        using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
-    [Newtonsoft.Json.JsonObject("TumblingWindowTrigger")]
     [Rest.Serialization.JsonTransformation]
     public partial class PSTumblingWindowTrigger : PSSinglePipelineTrigger
     {
