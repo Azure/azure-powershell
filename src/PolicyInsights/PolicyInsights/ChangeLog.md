@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for returning paginated results for Get-AzPolicyState
 
 ## Version 1.3.1
 * Corrected example 3 for `Start-AzPolicyComplianceScan`
