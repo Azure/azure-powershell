@@ -5,7 +5,6 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -83,8 +82,8 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseNotebook, this.Name, this.WorkspaceName)))
             {
                 string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                PSNotebook pSNotebook = JsonConvert.DeserializeObject<PSNotebook>(rawJsonContent);
-                NotebookResource notebookResource = new NotebookResource(pSNotebook.ToSdkObject());
+                Notebook notebook = JsonConvert.DeserializeObject<Notebook>(rawJsonContent);
+                NotebookResource notebookResource = new NotebookResource(notebook);
 
                 if (this.IsParameterBound(c => c.SparkPoolName))
                 {
@@ -120,6 +119,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     string path = this.TryResolvePath(DefinitionFile);
                     this.Name = Path.GetFileNameWithoutExtension(path);
                 }
+
                 WriteObject(new PSNotebookResource(SynapseAnalyticsClient.CreateOrUpdateNotebook(this.Name, notebookResource), this.WorkspaceName));
             }
         }
