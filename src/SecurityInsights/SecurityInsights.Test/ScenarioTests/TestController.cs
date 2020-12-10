@@ -116,7 +116,6 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.SecurityInsights.psd1"),
-                    _helper.GetRMModulePath("AzureRM.LogicApp.psd1"),
                     "AzureRM.Resources.ps1",
                     "AzureRM.Storage.ps1");
                 try
