@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         {
             var queryOptions = new RestApiModels.QueryOptions
             {
-                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : null,
+                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : int.MaxValue,
                 OrderBy = OrderBy,
                 Select = Select,
                 FromProperty = MyInvocation.BoundParameters.ContainsKey("From") ? (DateTime?)From : null,
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                 Expand = Expand
             };
 
-            RestApiModels.PolicyStatesQueryResults policyStatesQueryResults;
+            RestApiModels.PolicyStatesQueryResults policyStatesQueryResults=null;
 
             var policyStatesResource = !All.IsPresent
                 ? RestApiModels.PolicyStatesResource.Latest
