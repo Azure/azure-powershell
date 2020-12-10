@@ -239,6 +239,12 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
 
+        public const string DoNotConfigureVulnerabilityAssessment = "Do not auto enable Vulnerability Assessment (This will not create a storage account).";
+
+        public const string DeploymentName = "Supply a custom name for Advanced Data Security deployment.";
+
+        public const string TransparentDataEncryptionState = "The Azure Synapse Analytics Sql Pool Transparent Data Encryption state.";
+
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 
         public const string StartIpAddress = "The start IP address of the firewall rule. Must be IPv4 format.";

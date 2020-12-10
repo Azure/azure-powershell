@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for operation of Advanced Threat Protection settings in SqlPool-level
+    - Add `Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
+* Added support for operation of Vulnerability Assessment settings in SqlPool-level
+    - Add `Update-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
+    - Add `Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
+    - Add `Reset-AzSynapseSqlPoolVulnerabilityAssessmentSetting` cmdlet
+* Added support for operation of SQL Advanced Data Security
+    - Add `Enable-AzSynapseSqlAdvancedDataSecurity` cmdlet
+    - Add `Disable-AzSynapseSqlAdvancedDataSecurity` cmdlet
+    - Add `Get-AzSynapseSqlAdvancedDataSecurityPolicy` cmdlet
+* Added support for operation of Transparent Data Encryption in SqlPool-level
+    - Add `Get-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
+    - Add `Set-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
+* Fixed deserialization error when create Pipeline/Dataset/Trigger through DefinitionFile
+* Added polling for artifacts cmdlets
+
+## Version 0.5.0
 * Added support for operation of Synapse SQL Pool Restore Point
     - Add `New-AzSynapseSqlPoolRestorePoint` cmdlet
     - Add `Remove-AzSynapseSqlPoolRestorePoint` cmdlet

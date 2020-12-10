@@ -131,7 +131,8 @@ function Test-SynapseSqlPool
 
 <#
 .SYNOPSIS
-Tests Synapse Workspace SQL Pool Auditing settings.
+Tests Synapse SQL Pool Security settings.
+Including SQL Pool Auditing settings, Advanced threat protection settings, Vulnerability assessment settings and Transparent Data Encryption.
 #>
 function Test-SynapseSqlPool-Security
 {
@@ -151,22 +152,62 @@ function Test-SynapseSqlPool-Security
         $sqlPoolName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("sqlPoolName", $sqlPoolName)
         $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_LRS -Kind StorageV2
         
-        # Set SQL Auditing
+        # Set SQL Pool Auditing
         Set-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -BlobStorageTargetState Enabled -StorageAccountResourceId $account.id -StorageKeyType Primary
 
-        # Get SQL Auditing
+        # Get SQL Pool Auditing
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual $auditing.BlobStorageTargetState Enabled
         Assert-AreEqual $auditing.StorageAccountResourceId $account.id
 
-        # Remove SQL Auditing
+        # Set SQL Pool Advanced threat protection
+        $threatProtectionSet = Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -NotificationRecipientsEmails "mail1@mail.com;mail2@mail.com" `
+        -EmailAdmins $False -ExcludedDetectionType "Sql_Injection","Unsafe_Action" -StorageAccountName $storageGen2AccountName
+
+        Assert-AreEqual $threatProtectionSet.ThreatDetectionState Enabled
+        Assert-AreEqual $threatProtectionSet.StorageAccountName $storageGen2AccountName
+
+        # Set SQL Pool Vulnerability assessment
+        $vulnerabilityAssessmentSet = Update-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -StorageAccountName $storageGen2AccountName `
+        -RecurringScansInterval Weekly -EmailAdmins $False -NotificationEmail "mail1@mail.com","mail2@mail.com"
+
+        Assert-AreEqual $vulnerabilityAssessmentSet.StorageAccountName $storageGen2AccountName
+        Assert-AreEqual $vulnerabilityAssessmentSet.RecurringScansInterval Weekly
+
+        # Remove SQL Pool Vulnerability assessment
+        Assert-True {Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+
+        # Verify that SQL Pool Vulnerability assessment was deleted
+        $vulnerabilityAssessmentGet = Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $vulnerabilityAssessmentGet.RecurringScansInterval None
+
+        # Remove SQL Pool Advanced threat protection
+        Assert-True {Clear-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+
+        # Verify that SQL Pool Advanced threat protection was deleted
+        $threatProtectionGet = Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
+
+        # Remove SQL Pool Auditing
         Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
 
-        # Verify that SQL Auditing was deleted
+        # Verify that SQL Pool Auditing was deleted
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual $auditing.BlobStorageTargetState Disabled
+
+        # Set SQL Pool Transparent Data Encryption
+        $tdeSet = Set-AzSynapseSqlPoolTransparentDataEncryption -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -State Enabled
+
+        Assert-AreEqual $tdeSet.State Enabled
+
+        # Get SQL Pool Transparent Data Encryption
+        $tdeGet = Get-AzSynapseSqlPoolTransparentDataEncryption -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $tdeGet.State Enabled
     }
     finally
     {

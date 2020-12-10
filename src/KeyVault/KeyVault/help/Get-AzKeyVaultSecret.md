@@ -176,19 +176,26 @@ This command gets a specific version of the secret named secret1 in the key vaul
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
 PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
+
+# Method 1: requires PowerShell >= 7.0
+PS C:\> $secretInPlainText = $secret.SecretValue | ConvertFrom-SecureString -AsPlainText
+
+# Method 2: works on older PowerShell versions
 PS C:\> $secretValueText = '';
 PS C:\> $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 PS C:\> try {
-    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+    $secretInPlainText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
 } finally {
     [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
 }
-PS C:\> Write-Host "Secret Value is:" $secretValueText
 
-Secret Value is: P@ssw0rd
+# Method 3: works in ConstrainedLanguage mode
+$secretInPlainText = [pscredential]::new("DoesntMatter", $secret.SecretValue).GetNetworkCredential().Password
 ```
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
+
+(Note: use method 3 if you are working in PowerShell [ConstrainedLanguage mode](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language), for example, on secure/privileged access workstations.)
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
@@ -217,7 +224,7 @@ Expires              :
 Not Before           :
 Created              : 4/6/2018 8:39:15 PM
 Updated              : 4/6/2018 10:11:24 PM
-Content Type         : 
+Content Type         :
 Tags                 :
 ```
 

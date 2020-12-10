@@ -6,7 +6,7 @@
       "Name": "Get-AzHealthcareApisService",
       "ClassName": "Microsoft.Azure.Commands.HealthcareApis.Commands.GetAzureRmHealthcareApisService",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
+      "ConfirmImpact": 0,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ListParameterSet",
       "OutputTypes": [
@@ -14,30 +14,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+              "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
               "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+              "IdentityTenantId": "System.String",
+              "IdentityPrincipalId": "System.String",
               "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "ResourceGroupName": "System.String",
-              "Name": "System.String",
-              "Etag": "System.String",
-              "Kind": "System.String",
-              "Id": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "ExportStorageAccountName": "System.String",
-              "Authority": "System.String",
               "Audience": "System.String",
+              "ResourceGroupName": "System.String",
+              "Kind": "System.String",
               "Location": "System.String",
-              "IdentityTenantId": "System.String"
+              "Authority": "System.String",
+              "PublicNetworkAccess": "System.String",
+              "Etag": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "CosmosDbKeyVaultKeyUri": "System.String",
+              "Name": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -481,30 +484,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+              "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
               "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+              "IdentityTenantId": "System.String",
+              "IdentityPrincipalId": "System.String",
               "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "ResourceGroupName": "System.String",
-              "Name": "System.String",
-              "Etag": "System.String",
-              "Kind": "System.String",
-              "Id": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "ExportStorageAccountName": "System.String",
-              "Authority": "System.String",
               "Audience": "System.String",
+              "ResourceGroupName": "System.String",
+              "Kind": "System.String",
               "Location": "System.String",
-              "IdentityTenantId": "System.String"
+              "Authority": "System.String",
+              "PublicNetworkAccess": "System.String",
+              "Etag": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "CosmosDbKeyVaultKeyUri": "System.String",
+              "Name": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -660,7 +666,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -781,6 +787,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "CosmosKeyVaultKeyUri",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "CosmosOfferThroughput",
           "AliasList": [],
           "Type": {
@@ -824,7 +848,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -842,7 +866,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -898,7 +922,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -906,6 +930,27 @@
             "Constructors": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PublicNetworkAccess",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Enabled",
+            "Disabled"
+          ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
@@ -1075,7 +1120,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1238,6 +1283,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CosmosKeyVaultKeyUri",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "CosmosOfferThroughput",
                 "AliasList": [],
                 "Type": {
@@ -1293,7 +1362,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1317,7 +1386,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1391,7 +1460,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1399,6 +1468,33 @@
                   "Constructors": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
@@ -1524,30 +1620,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+              "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
               "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+              "IdentityTenantId": "System.String",
+              "IdentityPrincipalId": "System.String",
               "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "ResourceGroupName": "System.String",
-              "Name": "System.String",
-              "Etag": "System.String",
-              "Kind": "System.String",
-              "Id": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "ExportStorageAccountName": "System.String",
-              "Authority": "System.String",
               "Audience": "System.String",
+              "ResourceGroupName": "System.String",
+              "Kind": "System.String",
               "Location": "System.String",
-              "IdentityTenantId": "System.String"
+              "Authority": "System.String",
+              "PublicNetworkAccess": "System.String",
+              "Etag": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "CosmosDbKeyVaultKeyUri": "System.String",
+              "Name": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1630,7 +1729,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1648,7 +1747,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1756,7 +1855,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1780,7 +1879,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1848,30 +1947,33 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+                    "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
                     "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
                     "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
                     "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-                    "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+                    "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsMaxAge": "System.Nullable`1[System.Int32]",
                     "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+                    "IdentityTenantId": "System.String",
+                    "IdentityPrincipalId": "System.String",
                     "IdentityType": "System.String",
                     "ResourceType": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Name": "System.String",
-                    "Etag": "System.String",
-                    "Kind": "System.String",
-                    "Id": "System.String",
-                    "IdentityPrincipalId": "System.String",
-                    "ExportStorageAccountName": "System.String",
-                    "Authority": "System.String",
                     "Audience": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Kind": "System.String",
                     "Location": "System.String",
-                    "IdentityTenantId": "System.String"
+                    "Authority": "System.String",
+                    "PublicNetworkAccess": "System.String",
+                    "Etag": "System.String",
+                    "ExportStorageAccountName": "System.String",
+                    "CosmosDbKeyVaultKeyUri": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1942,7 +2044,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1966,7 +2068,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2058,7 +2160,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2082,7 +2184,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2150,7 +2252,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2174,7 +2276,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2249,30 +2351,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+              "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
               "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+              "IdentityTenantId": "System.String",
+              "IdentityPrincipalId": "System.String",
               "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "ResourceGroupName": "System.String",
-              "Name": "System.String",
-              "Etag": "System.String",
-              "Kind": "System.String",
-              "Id": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "ExportStorageAccountName": "System.String",
-              "Authority": "System.String",
               "Audience": "System.String",
+              "ResourceGroupName": "System.String",
+              "Kind": "System.String",
               "Location": "System.String",
-              "IdentityTenantId": "System.String"
+              "Authority": "System.String",
+              "PublicNetworkAccess": "System.String",
+              "Etag": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "CosmosDbKeyVaultKeyUri": "System.String",
+              "Name": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2389,6 +2494,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "CosmosKeyVaultKeyUri",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Authority",
           "AliasList": [],
           "Type": {
@@ -2430,7 +2553,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2448,7 +2571,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2540,7 +2663,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2558,7 +2681,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2612,7 +2735,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2630,7 +2753,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2668,30 +2791,33 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
             "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+              "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
               "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
               "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
               "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+              "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
               "CorsMaxAge": "System.Nullable`1[System.Int32]",
               "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+              "IdentityTenantId": "System.String",
+              "IdentityPrincipalId": "System.String",
               "IdentityType": "System.String",
               "ResourceType": "System.String",
-              "ResourceGroupName": "System.String",
-              "Name": "System.String",
-              "Etag": "System.String",
-              "Kind": "System.String",
-              "Id": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "ExportStorageAccountName": "System.String",
-              "Authority": "System.String",
               "Audience": "System.String",
+              "ResourceGroupName": "System.String",
+              "Kind": "System.String",
               "Location": "System.String",
-              "IdentityTenantId": "System.String"
+              "Authority": "System.String",
+              "PublicNetworkAccess": "System.String",
+              "Etag": "System.String",
+              "ExportStorageAccountName": "System.String",
+              "CosmosDbKeyVaultKeyUri": "System.String",
+              "Name": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2774,7 +2900,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2782,6 +2908,27 @@
             "Constructors": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PublicNetworkAccess",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Enabled",
+            "Disabled"
+          ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
@@ -2900,6 +3047,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CosmosKeyVaultKeyUri",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Authority",
                 "AliasList": [],
                 "Type": {
@@ -2953,7 +3124,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2977,7 +3148,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3099,7 +3270,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3123,7 +3294,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3195,7 +3366,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3219,7 +3390,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3264,12 +3435,39 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3358,6 +3556,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CosmosKeyVaultKeyUri",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Authority",
                 "AliasList": [],
                 "Type": {
@@ -3411,7 +3633,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3435,7 +3657,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3557,7 +3779,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3581,7 +3803,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3653,7 +3875,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3677,7 +3899,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3746,12 +3968,39 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3819,30 +4068,33 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
                   "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+                    "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
                     "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
                     "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
                     "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-                    "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+                    "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
                     "CorsMaxAge": "System.Nullable`1[System.Int32]",
                     "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+                    "IdentityTenantId": "System.String",
+                    "IdentityPrincipalId": "System.String",
                     "IdentityType": "System.String",
                     "ResourceType": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Name": "System.String",
-                    "Etag": "System.String",
-                    "Kind": "System.String",
-                    "Id": "System.String",
-                    "IdentityPrincipalId": "System.String",
-                    "ExportStorageAccountName": "System.String",
-                    "Authority": "System.String",
                     "Audience": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Kind": "System.String",
                     "Location": "System.String",
-                    "IdentityTenantId": "System.String"
+                    "Authority": "System.String",
+                    "PublicNetworkAccess": "System.String",
+                    "Etag": "System.String",
+                    "ExportStorageAccountName": "System.String",
+                    "CosmosDbKeyVaultKeyUri": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3913,7 +4165,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3981,7 +4233,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4200,7 +4452,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4212,7 +4464,7 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ObjectId": "System.String"
       },
@@ -4268,6 +4520,230 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection, Microsoft.Azure.Management.HealthcareApis, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection": {
+      "Namespace": "Microsoft.Azure.Management.HealthcareApis.Models",
+      "Name": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection, Microsoft.Azure.Management.HealthcareApis, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "PrivateEndpoint": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpoint",
+        "PrivateLinkServiceConnectionState": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateLinkServiceConnectionState",
+        "ProvisioningState": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "privateLinkServiceConnectionState",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "id",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "privateEndpoint",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provisioningState",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpoint": {
+      "Namespace": "Microsoft.Azure.Management.HealthcareApis.Models",
+      "Name": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpoint",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpoint, Microsoft.Azure.Management.HealthcareApis, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "id",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.HealthcareApis.Models.PrivateLinkServiceConnectionState": {
+      "Namespace": "Microsoft.Azure.Management.HealthcareApis.Models",
+      "Name": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateLinkServiceConnectionState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.HealthcareApis.Models.PrivateLinkServiceConnectionState, Microsoft.Azure.Management.HealthcareApis, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Status": "System.String",
+        "Description": "System.String",
+        "ActionsRequired": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "status",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "description",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "actionsRequired",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.String]",
@@ -4307,30 +4783,33 @@
     "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService": {
       "Namespace": "Microsoft.Azure.Commands.HealthcareApis.Models",
       "Name": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisFhirServiceAccessPolicyEntry]",
+        "PrivateEndpointConnections": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.HealthcareApis.Models.PrivateEndpointConnection]",
         "CorsHeaders": "System.Collections.Generic.IList`1[System.String]",
         "CorsMethods": "System.Collections.Generic.IList`1[System.String]",
         "CorsOrigins": "System.Collections.Generic.IList`1[System.String]",
-        "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
         "CorsAllowCredentials": "System.Nullable`1[System.Boolean]",
+        "SmartProxyEnabled": "System.Nullable`1[System.Boolean]",
         "CorsMaxAge": "System.Nullable`1[System.Int32]",
         "CosmosDbOfferThroughput": "System.Nullable`1[System.Int32]",
+        "IdentityTenantId": "System.String",
+        "IdentityPrincipalId": "System.String",
         "IdentityType": "System.String",
         "ResourceType": "System.String",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Kind": "System.String",
-        "Id": "System.String",
-        "IdentityPrincipalId": "System.String",
-        "ExportStorageAccountName": "System.String",
-        "Authority": "System.String",
         "Audience": "System.String",
+        "ResourceGroupName": "System.String",
+        "Kind": "System.String",
         "Location": "System.String",
-        "IdentityTenantId": "System.String"
+        "Authority": "System.String",
+        "PublicNetworkAccess": "System.String",
+        "Etag": "System.String",
+        "ExportStorageAccountName": "System.String",
+        "CosmosDbKeyVaultKeyUri": "System.String",
+        "Name": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4423,6 +4902,8 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -4432,7 +4913,6 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
-        "StorageEndpointSuffix": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -4441,8 +4921,8 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
-        "AdTenant": "System.String",
-        "Name": "System.String"
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4499,16 +4979,6 @@
       "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": "System.Byte",
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Void": {
-      "Namespace": "System",
-      "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []

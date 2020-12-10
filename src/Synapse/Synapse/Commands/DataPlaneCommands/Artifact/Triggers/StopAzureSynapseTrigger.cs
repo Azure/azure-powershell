@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, String.Format(Resources.StoppingSynapseTrigger, this.Name, this.WorkspaceName)))
             {
-                SynapseAnalyticsClient.StartStopTrigger(this.Name);
+                SynapseAnalyticsClient.StopTrigger(this.Name);
                 if (PassThru)
                 {
                     WriteObject(true);

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Added byDict parameter set for New-AzSapMonitorProviderInstance
 
 ## Version 0.2.0
