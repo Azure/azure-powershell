@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "maxConcurrentConnections")]
         public object MaxConcurrentConnections { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public CopySource ToSdkObject()

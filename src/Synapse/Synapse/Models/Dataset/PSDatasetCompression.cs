@@ -8,7 +8,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSDatasetCompression() { }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public DatasetCompression ToSdkObject()

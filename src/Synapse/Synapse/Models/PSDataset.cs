@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "folder")]
         public PSDatasetFolder Folder { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public virtual void Validate() { }

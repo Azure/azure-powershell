@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "path")]
         public object Path { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public LogStorageSettings ToSdkObject()

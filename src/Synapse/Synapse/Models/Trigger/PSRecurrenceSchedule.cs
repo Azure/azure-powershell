@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "monthlyOccurrences")]
         public IList<PSRecurrenceScheduleOccurrence> MonthlyOccurrences { get; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public RecurrenceSchedule ToSdkObject()

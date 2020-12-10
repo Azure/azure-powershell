@@ -29,14 +29,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "dependencyConditions")]
         public IList<DependencyCondition> DependencyConditions { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public ActivityDependency ToSdkObject()
-        {
-            var dependency = new ActivityDependency(this.Activity, this.DependencyConditions);
-            this.AdditionalProperties?.ForEach(item => dependency.Add(item.Key, item.Value));
-            return dependency;
-        }
     }
 }

@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "language_info")]
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookMetadata ToSdkObject()

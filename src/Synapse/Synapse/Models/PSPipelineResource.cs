@@ -69,8 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "properties.parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
         
-        [JsonProperty(PropertyName = "properties")]
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public PipelineResource ToSdkObject()

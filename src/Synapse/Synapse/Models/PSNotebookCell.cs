@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "outputs")]
         public IList<PSNotebookCellOutputItem> Outputs { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookCell ToSdkObject()

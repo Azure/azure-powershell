@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "schedule")]
         public PSRecurrenceSchedule Schedule { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public ScheduleTriggerRecurrence ToSdkObject()

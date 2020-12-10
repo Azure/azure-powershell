@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookKernelSpec ToSdkObject()

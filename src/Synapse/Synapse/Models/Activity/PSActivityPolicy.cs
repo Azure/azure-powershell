@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "secureOutput")]
         public bool? SecureOutput { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public ActivityPolicy ToSdkObject()

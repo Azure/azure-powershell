@@ -38,33 +38,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "userProperties")]
         public IList<PSUserProperty> UserProperties { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public virtual void Validate() { }
-
-        public virtual Activity ToSdkObject()
-        {
-            Activity activity = new Activity(this.Name);
-            SetProperties(activity);
-            return activity;
-        }
-
-        protected void SetProperties(Activity activity)
-        {
-            activity.Description = this.Description;
-            this.DependsOn?.ForEach(item => activity.DependsOn.Add(item?.ToSdkObject()));
-            this.UserProperties?.ForEach(item => activity.UserProperties.Add(item?.ToSdkObject()));
-            if (this.AdditionalProperties != null)
-            {
-                foreach (var item in this.AdditionalProperties)
-                {
-                    if (item.Key != "typeProperties")
-                    {
-                        activity.Add(item.Key, item.Value);
-                    }
-                }
-            }
-        }
     }
 }

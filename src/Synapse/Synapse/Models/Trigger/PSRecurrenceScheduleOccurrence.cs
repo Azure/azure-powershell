@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "occurrence")]
         public int? Occurrence { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public RecurrenceScheduleOccurrence ToSdkObject()

@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string CodemirrorMode { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public NotebookLanguageInfo ToSdkObject()

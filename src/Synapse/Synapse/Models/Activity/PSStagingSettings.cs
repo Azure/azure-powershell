@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         [JsonProperty(PropertyName = "enableCompression")]
         public object EnableCompression { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public StagingSettings ToSdkObject()
