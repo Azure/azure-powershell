@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                 Expand = Expand
             };
 
-            RestApiModels.PolicyStatesQueryResults policyStatesQueryResults=null;
+            RestApiModels.PolicyStatesQueryResults policyStatesQueryResults;
 
             var policyStatesResource = !All.IsPresent
                 ? RestApiModels.PolicyStatesResource.Latest
