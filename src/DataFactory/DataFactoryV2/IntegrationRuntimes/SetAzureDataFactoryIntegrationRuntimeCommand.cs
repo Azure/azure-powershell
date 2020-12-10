@@ -26,7 +26,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName, SupportsShouldProcess = false), OutputType(typeof(PSIntegrationRuntime))]
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -271,8 +271,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
-        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General, 
-            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized, 
+        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General,
+            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized,
             Management.DataFactory.Models.DataFlowComputeType.ComputeOptimized)]
         [ValidateNotNullOrEmpty]
         public string DataFlowComputeType { get; set; }

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = false), OutputType(typeof(PSDataFactory))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2")]
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
-                
+
                 this.GlobalParameterDefinition = InputObject.GlobalParameters;
             }
 
