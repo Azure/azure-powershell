@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.Tactics)]
         [ValidateNotNullOrEmpty]
-        public IList<string> Tactics { get; set; }
+        public IList<string> Tactic { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerOperator)]
         [ValidateNotNullOrEmpty]
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
                 convertedScheduledAlertRule.QueryFrequency = this.IsParameterBound(c => c.QueryFrequency) ? this.QueryFrequency : convertedScheduledAlertRule.QueryFrequency;
                 convertedScheduledAlertRule.QueryPeriod = this.IsParameterBound(c => c.QueryPeriod) ? this.QueryPeriod : convertedScheduledAlertRule.QueryPeriod;
                 convertedScheduledAlertRule.Severity = this.IsParameterBound(c => c.Severity) ? this.Severity : convertedScheduledAlertRule.Severity;
-                convertedScheduledAlertRule.Tactics = this.IsParameterBound(c => c.Tactics) ? this.Tactics : convertedScheduledAlertRule.Tactics;
+                convertedScheduledAlertRule.Tactics = this.IsParameterBound(c => c.Tactic) ? this.Tactic : convertedScheduledAlertRule.Tactics;
                 convertedScheduledAlertRule.TriggerOperator = this.IsParameterBound(c => c.TriggerOperator) ? this.TriggerOperator : convertedScheduledAlertRule.TriggerOperator;
                 convertedScheduledAlertRule.TriggerThreshold = this.IsParameterBound(c => c.TriggerThreshold) ? this.TriggerThreshold : convertedScheduledAlertRule.TriggerThreshold;
 

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         public IList<string> Label { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.Notes)]
-        public string Notes { get; set; }
+        public string Note { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.BookmarkQuery)]
         public string Query { get; set; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
             updatedbookmark.DisplayName = this.IsParameterBound(c => c.DisplayName) ? this.DisplayName : bookmark.DisplayName;
             //bookmark.IncidentInfo = this.IsParameterBound(c => c.IncidentInfo) ? this.IncidentInfo : bookmark.IncidentInfo;
             updatedbookmark.Labels = this.IsParameterBound(c => c.Label) ? this.Label : bookmark.Labels;
-            updatedbookmark.Notes = this.IsParameterBound(c => c.Notes) ? this.Notes : bookmark.Notes;
+            updatedbookmark.Notes = this.IsParameterBound(c => c.Note) ? this.Note : bookmark.Notes;
             updatedbookmark.Query = this.IsParameterBound(c => c.Query) ? this.Query : bookmark.Query;
             updatedbookmark.QueryResult = this.IsParameterBound(c => c.QueryResult) ? this.QueryResult : bookmark.QueryResult;
             

@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/bookmarks/8ce322af-462e-46c0-ac37-e322b629d210?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9ib29rbWFya3MvOGNlMzIyYWYtNDYyZS00NmMwLWFjMzctZTMyMmI2MjlkMjEwP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/bookmarks/a18251f2-1a0f-45f2-bb0d-ad4121911fce?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9ib29rbWFya3MvYTE4MjUxZjItMWEwZi00NWYyLWJiMGQtYWQ0MTIxOTExZmNlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"created\": \"2020-12-09T17:01:32.4760353Z\",\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"query\": \"SecurityAlert | take 1\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"created\": \"2020-12-10T21:13:21.8456035Z\",\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"query\": \"SecurityAlert | take 1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "29ada8ba-5560-485b-922d-63412120a820"
+          "a5beac69-7073-4d68-b573-c522d4f222ff"
         ],
         "Accept-Language": [
           "en-US"
@@ -42,13 +42,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "a3a60eef-3160-4335-ba9c-16dbd93500ea"
+          "d601e04a-7269-446f-a1f5-3f28dd137c8f"
         ],
         "x-ms-correlation-request-id": [
-          "a3a60eef-3160-4335-ba9c-16dbd93500ea"
+          "d601e04a-7269-446f-a1f5-3f28dd137c8f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201209T170133Z:a3a60eef-3160-4335-ba9c-16dbd93500ea"
+          "WESTUS2:20201210T211322Z:d601e04a-7269-446f-a1f5-3f28dd137c8f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,7 +57,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Dec 2020 17:01:33 GMT"
+          "Thu, 10 Dec 2020 21:13:22 GMT"
         ],
         "Content-Length": [
           "935"
@@ -69,17 +69,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Bookmarks/8ce322af-462e-46c0-ac37-e322b629d210\",\r\n  \"name\": \"8ce322af-462e-46c0-ac37-e322b629d210\",\r\n  \"etag\": \"\\\"1a004655-0000-0100-0000-5fd102ec0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Bookmarks\",\r\n  \"properties\": {\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"created\": \"2020-12-09T17:01:32.9056076+00:00\",\r\n    \"updated\": \"2020-12-09T17:01:32+00:00\",\r\n    \"createdBy\": {\r\n      \"objectId\": \"14c93cf3-e5e3-45cf-8b4e-1a6f62bdf202\",\r\n      \"name\": \"Bookmark created from external application - azsposh\"\r\n    },\r\n    \"updatedBy\": {\r\n      \"objectId\": \"14c93cf3-e5e3-45cf-8b4e-1a6f62bdf202\",\r\n      \"name\": \"Bookmark created from external application - azsposh\"\r\n    },\r\n    \"eventTime\": \"2020-12-09T17:01:32.9056076+00:00\",\r\n    \"labels\": [],\r\n    \"query\": \"SecurityAlert | take 1\",\r\n    \"incidentInfo\": {\r\n      \"incidentId\": null,\r\n      \"title\": null,\r\n      \"relationName\": null,\r\n      \"severity\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Bookmarks/a18251f2-1a0f-45f2-bb0d-ad4121911fce\",\r\n  \"name\": \"a18251f2-1a0f-45f2-bb0d-ad4121911fce\",\r\n  \"etag\": \"\\\"240095d7-0000-0100-0000-5fd28f720000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Bookmarks\",\r\n  \"properties\": {\r\n    \"displayName\": \"PoshModuleTest\",\r\n    \"created\": \"2020-12-10T21:13:22.0659618+00:00\",\r\n    \"updated\": \"2020-12-10T21:13:22+00:00\",\r\n    \"createdBy\": {\r\n      \"objectId\": \"14c93cf3-e5e3-45cf-8b4e-1a6f62bdf202\",\r\n      \"name\": \"Bookmark created from external application - azsposh\"\r\n    },\r\n    \"updatedBy\": {\r\n      \"objectId\": \"14c93cf3-e5e3-45cf-8b4e-1a6f62bdf202\",\r\n      \"name\": \"Bookmark created from external application - azsposh\"\r\n    },\r\n    \"eventTime\": \"2020-12-10T21:13:22.0659618+00:00\",\r\n    \"labels\": [],\r\n    \"query\": \"SecurityAlert | take 1\",\r\n    \"incidentInfo\": {\r\n      \"incidentId\": null,\r\n      \"title\": null,\r\n      \"relationName\": null,\r\n      \"severity\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/bookmarks/8ce322af-462e-46c0-ac37-e322b629d210?api-version=2020-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9ib29rbWFya3MvOGNlMzIyYWYtNDYyZS00NmMwLWFjMzctZTMyMmI2MjlkMjEwP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/bookmarks/a18251f2-1a0f-45f2-bb0d-ad4121911fce?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9ib29rbWFya3MvYTE4MjUxZjItMWEwZi00NWYyLWJiMGQtYWQ0MTIxOTExZmNlP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb292a40-83f8-4798-9c48-7295bcde3df8"
+          "17be64e7-80d5-48a1-997c-5672678eee56"
         ],
         "Accept-Language": [
           "en-US"
@@ -108,13 +108,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "00ee2a21-be8c-40ab-9749-bfbfdfbbae1f"
+          "9644cf5f-8dbf-4564-9f6e-1ddf55c3cf9b"
         ],
         "x-ms-correlation-request-id": [
-          "00ee2a21-be8c-40ab-9749-bfbfdfbbae1f"
+          "9644cf5f-8dbf-4564-9f6e-1ddf55c3cf9b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201209T170134Z:00ee2a21-be8c-40ab-9749-bfbfdfbbae1f"
+          "WESTUS2:20201210T211323Z:9644cf5f-8dbf-4564-9f6e-1ddf55c3cf9b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 09 Dec 2020 17:01:33 GMT"
+          "Thu, 10 Dec 2020 21:13:23 GMT"
         ],
         "Content-Length": [
           "2"

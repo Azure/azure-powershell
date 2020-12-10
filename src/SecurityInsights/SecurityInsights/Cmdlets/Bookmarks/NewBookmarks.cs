@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
         public IList<string> Label { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = false, HelpMessage = ParameterHelpMessages.Notes)]
-        public string Notes { get; set; }
+        public string Note { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BookmarkId, Mandatory = true, HelpMessage = ParameterHelpMessages.BookmarkQuery)]
         public string Query { get; set; }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Bookmarks
                 DisplayName = DisplayName,
                 IncidentInfo = IncidentInfo?.CreatePSType(),
                 Labels = Label,
-                Notes = Notes,
+                Notes = Note,
                 Query = Query,
                 QueryResult = QueryResult
 

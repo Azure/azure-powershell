@@ -18,10 +18,12 @@ List Incidents
 #>
 function Get-AzSentinelIncident-List
 {
+	$IncidentId = "9948fe0a-433c-4230-ab18-41ba430d68bc"
+	$IncidentId2 = "93a8577f-b4e6-4225-9240-57bd52238502"
 	#Create Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 	#Create Incident
-	$Incident2 = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest2" -Severity Low -Status New
+	$Incident2 = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId2 -Title "PoshModuleTest2" -Severity Low -Status New
 	
 	#Get Incidents
     $Incidents = Get-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName)
@@ -39,8 +41,9 @@ Get Incident
 #>
 function Get-AzSentinelIncident-Get
 {
+	$IncidentId = "a45dd647-301b-427b-ac4c-6455f65d3081"
 	#Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 		
 	#Get Incident
     $Incident = Get-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)
@@ -57,8 +60,9 @@ Create Incident
 #>
 function New-AzSentinelIncident-Create
 {
-    #Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+    $IncidentId = "1877f91c-570c-46aa-8a2e-b2c6c3fd4a37"
+	#Create $Incident
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 		
 	# Validate
 	Validate-Incident $Incident
@@ -73,8 +77,9 @@ Update Incident
 #>
 function Update-AzSentinelIncident-Update
 {
+	$IncidentId = "4c3f56e0-c40c-4c03-af08-a40f6be36715"
 	#Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 		
 	#update $Incident
 	$Incident = Update-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name) -Status Closed -Classification FalsePositive -ClassificationReason InaccurateData
@@ -90,8 +95,9 @@ function Update-AzSentinelIncident-Update
 
 	function Update-AzSentinelIncident-InputObject
 {
+	$IncidentId = "1624cb38-732b-4775-9aef-6206344b3b92"
 	#Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 	#update $Incident
 	$Incident2 =  Update-AzSentinelIncident -Severity Medium -InputObject $Incident
 	
@@ -110,8 +116,9 @@ Delete Incident
 #>
 function Remove-AzSentinelIncident-Delete
 {
+	$IncidentId = "a91c3054-ced5-4e5b-90ba-ef3d031a34e2"
 	#Create $Incident
-	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -Title "PoshModuleTest" -Severity Low -Status New
+	$Incident = New-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId $IncidentId -Title "PoshModuleTest" -Severity Low -Status New
 	
 	#delete
 	Remove-AzSentinelIncident -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -IncidentId ($Incident.Name)

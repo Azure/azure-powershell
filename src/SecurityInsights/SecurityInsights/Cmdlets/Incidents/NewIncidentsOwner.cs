@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.SecurityInsights.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentOwner", DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSentinelIncident))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SentinelIncidentOwner", DefaultParameterSetName = ParameterSetNames.GeneralScope, SupportsShouldProcess = true), OutputType(typeof(PSSentinelIncident))]
     public class NewIncidentsOwner : SecurityInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.GeneralScope, Mandatory = true, HelpMessage = ParameterHelpMessages.AssignedTo)]
@@ -47,7 +47,10 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Incidents
                 UserPrincipalName = UserPrincipalName
             };
 
-            WriteObject(owner, enumerateCollection: false);
+            if (ShouldProcess(ObjectId, VerbsCommon.New))
+            {
+                WriteObject(owner, enumerateCollection: false);
+            }
         }
     }
 }

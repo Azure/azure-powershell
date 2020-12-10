@@ -18,10 +18,12 @@ List Bookmarks
 #>
 function Get-AzSentinelBookmark-List
 {
+	$BookmarkId = "a85e3b3b-c95e-4f8d-b5d6-0e9bcbd2e664"
+	$BookmarkId2 = "91c29052-8ec9-4395-ad6c-e5c6cf562eec"
 	#Create bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 	#Create bookmark
-	$bookmark2 = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest2" -Query "SecurityAlert | take 1"
+	$bookmark2 = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId2 -DisplayName "PoshModuleTest2" -Query "SecurityAlert | take 1"
 	
 	#Get Bookmarks
     $bookmarks = Get-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName)
@@ -39,8 +41,9 @@ Get Bookmark
 #>
 function Get-AzSentinelBookmark-Get
 {
+	$BookmarkId = "2032256f-9912-476d-805b-ea3f60243ac8"
 	#Create $bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	#Get Bookmark
     $bookmark = Get-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)
@@ -57,8 +60,9 @@ Create Bookmark
 #>
 function New-AzSentinelBookmark-Create
 {
-    #Create $bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+    $BookmarkId = "3a1bd654-9986-4fb9-8584-36f9aba00356"
+	#Create $bookmark
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	# Validate
 	Validate-Bookmark $bookmark
@@ -73,11 +77,12 @@ Update Bookmark
 #>
 function Update-AzSentinelBookmark-Update
 {
+	$BookmarkId = "e1606ca5-cd05-42ba-ac77-cdf0da4b719f"
 	#Create $bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 		
 	#update $bookmark
-	$bookmark2 = Update-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Notes "PoshModuleTest"
+	$bookmark2 = Update-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name) -Note "PoshModuleTest"
 	
 	# Validate
 	Validate-Bookmark $bookmark
@@ -90,10 +95,11 @@ function Update-AzSentinelBookmark-Update
 
 	function Update-AzSentinelBookmark-InputObject
 {
+	$BookmarkId = "4324441a-de38-42c2-83dd-bb93db929e7c"
 	#Create $bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 	#update $bookmark
-	$bookmark2 = Update-AzSentinelBookmark -Notes "testnotes" -InputObject $bookmark 
+	$bookmark2 = Update-AzSentinelBookmark -Note "testnotes" -InputObject $bookmark 
 	
 	# Validate
 	Validate-Bookmark $bookmark2
@@ -110,8 +116,9 @@ Delete Bookmark
 #>
 function Remove-AzSentinelBookmark-Remove
 {
+	$BookmarkId = "a18251f2-1a0f-45f2-bb0d-ad4121911fce"
 	#Create $bookmark
-	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
+	$bookmark = New-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId $BookmarkId -DisplayName "PoshModuleTest" -Query "SecurityAlert | take 1"
 	
 	#delete
 	Remove-AzSentinelBookmark -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -BookmarkId ($bookmark.Name)

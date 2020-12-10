@@ -26,6 +26,7 @@ function Get-TestWorkspaceName
 	"azsposh"
 }
 
+
 <#
 .SYNOPSIS
 Gets test resource group name

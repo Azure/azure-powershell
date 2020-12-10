@@ -18,9 +18,9 @@ List Data Connectors
 #>
 function Get-AzSentinelDataConnector-List
 {
-	
+	$DataConnectorId = "934ce201-63c5-4911-9e04-50b348020378"
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	#Get Data Connector
     $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName)
 	# Validate
@@ -37,8 +37,9 @@ Get Data Connector
 #>
 function Get-AzSentinelDataConnector-Get
 {
+	$DataConnectorId = "3da7055e-fcd4-4715-b2ab-72170ee57612"
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Get Data Connector
     $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
@@ -55,8 +56,9 @@ Create Data Connector
 #>
 function New-AzSentinelDataConnector-Create
 {
-    #Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+    $DataConnectorId = "cd2f31a6-98db-4834-8696-36a184436387"
+	#Create Data Connector
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	# Validate
 	Validate-DataConnector $DataConnector
@@ -71,8 +73,9 @@ Update DataConnector
 #>
 function Update-AzSentinelDataConnector-Update
 {
+	$DataConnectorId = "f3abb0bf-9f8b-4f03-8865-8e71e2889ba2"
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Update Data Connector
     $DataConnector2 = Update-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name) -Alerts Disabled
@@ -85,8 +88,9 @@ function Update-AzSentinelDataConnector-Update
 
 function Update-AzSentinelDataConnector-InputObject
 {
+	$DataConnectorId = "44c3bfc6-5361-41af-a50d-65232c3f9b13"
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	#Update Data Connector
     $DataConnector2 = $DataConnector | Update-AzSentinelDataConnector -Alerts Disabled
 	# Validate
@@ -102,8 +106,9 @@ Delete Data Connector
 #>
 function Remove-AzSentinelDataConnector-Delete
 {
+	$DataConnectorId = "f2bc6c20-6785-4b98-8dd3-26767b7de5b4"
 	#Create Data Connector
-	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
+	$DataConnector = New-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId $DataConnectorId -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 	
 	#Update Data Connector
     Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
