@@ -41,27 +41,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the name of the Amazon Redshift server. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
         /// Gets or sets the username of the Amazon Redshift source. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password of the Amazon Redshift source.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the database name of the Amazon Redshift source. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.database")]
         public object Database { get; set; }
 
         /// <summary>
@@ -69,7 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// uses to listen for client connections. The default value is 5439.
         /// Type: integer (or Expression with resultType integer).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

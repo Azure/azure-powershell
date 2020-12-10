@@ -26,13 +26,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSTrigger() { }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "runtimeState")]
         public TriggerRuntimeState? RuntimeState { get; set; }
 
-        [JsonProperty(PropertyName = "annotations")]
         public IList<object> Annotations { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

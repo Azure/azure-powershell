@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// SecureString or AzureKeyVaultSecretReference. Type: string,
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the MongoDB database that you want to
         /// access. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.database")]
         public object Database { get; set; }
 
         /// <summary>

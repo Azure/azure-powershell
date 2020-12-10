@@ -40,33 +40,28 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the Azure Batch account name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accountName")]
         public object AccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Batch account access key.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accessKey")]
         public SecretBase AccessKey { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Batch URI. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.batchUri")]
         public object BatchUri { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Batch pool name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.poolName")]
         public object PoolName { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Storage linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

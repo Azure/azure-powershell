@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// integer. This is used to determine the block of activities in cases
         /// that will be executed.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.on")]
         public Expression On { get; set; }
 
         /// <summary>
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// provided, the activity will execute activities provided in
         /// defaultActivities.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.cases")]
         public IList<SwitchCase> Cases { get; set; }
 
         /// <summary>
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// satisfied. This is an optional property and if not provided, the
         /// activity will exit without any action.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.defaultActivities")]
         public IList<PSActivity> DefaultActivities { get; set; }
 
         /// <summary>

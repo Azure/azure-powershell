@@ -39,19 +39,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the avro storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'none', 'deflate', 'snappy',
         /// 'xz', 'bzip2'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.avroCompressionCodec")]
         public string AvroCompressionCodec { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.avroCompressionLevel")]
         public int? AvroCompressionLevel { get; set; }
 
         /// <summary>

@@ -39,21 +39,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the delimited text storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets the column delimiter. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.columnDelimiter")]
         public object ColumnDelimiter { get; set; }
 
         /// <summary>
         /// Gets or sets the row delimiter. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.rowDelimiter")]
         public object RowDelimiter { get; set; }
 
         /// <summary>
@@ -64,35 +61,30 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https://msdn.microsoft.com/library/system.text.encoding.aspx. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encodingName")]
         public object EncodingName { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'bzip2', 'gzip', 'deflate',
         /// 'zipDeflate', 'snappy', 'lz4'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compressionCodec")]
         public string CompressionCodec { get; set; }
 
         /// <summary>
         /// Gets or sets the data compression method used for DelimitedText.
         /// Possible values include: 'Optimal', 'Fastest'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compressionLevel")]
         public string CompressionLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the quote character. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.quoteChar")]
         public object QuoteChar { get; set; }
 
         /// <summary>
         /// Gets or sets the escape character. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.escapeChar")]
         public object EscapeChar { get; set; }
 
         /// <summary>
@@ -101,14 +93,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the first row of data. The default value is false. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.firstRowAsHeader")]
         public object FirstRowAsHeader { get; set; }
 
         /// <summary>
         /// Gets or sets the null value string. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.nullValue")]
         public object NullValue { get; set; }
 
         /// <summary>

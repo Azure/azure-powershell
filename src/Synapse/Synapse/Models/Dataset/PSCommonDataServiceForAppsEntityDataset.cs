@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the logical name of the entity. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.entityName")]
         public object EntityName { get; set; }
 
         /// <summary>

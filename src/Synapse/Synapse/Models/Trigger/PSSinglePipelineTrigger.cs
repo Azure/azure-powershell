@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         partial void CustomInit();
 
-        [JsonProperty(PropertyName = "pipeline")]
         public TriggerPipelineReference Pipeline { get; set; }
     }
 }

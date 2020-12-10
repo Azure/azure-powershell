@@ -40,34 +40,29 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets teradata ODBC connection string. Type: string,
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets server name for connection. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
         /// Gets or sets authenticationType to be used for connection. Possible
         /// values include: 'Basic', 'Windows'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets username for authentication. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets password for authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

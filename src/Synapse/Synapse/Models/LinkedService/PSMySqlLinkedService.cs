@@ -39,14 +39,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the connection string.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in
         /// connection string.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public AzureKeyVaultSecretReference Password { get; set; }
 
         /// <summary>
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

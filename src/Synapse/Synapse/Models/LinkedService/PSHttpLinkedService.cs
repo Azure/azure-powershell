@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// http://www.microsoft.com. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// HTTP server. Possible values include: 'Basic', 'Anonymous',
         /// 'Digest', 'Windows', 'ClientCertificate'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
@@ -57,14 +55,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// authentication. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password for Basic, Digest, Windows, or
         /// ClientCertificate with EmbeddedCertData authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -74,7 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// should be specified. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.embeddedCertData")]
         public object EmbeddedCertData { get; set; }
 
         /// <summary>
@@ -84,7 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// or EmbeddedCertData/Password should be specified. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.certThumbprint")]
         public object CertThumbprint { get; set; }
 
         /// <summary>
@@ -92,7 +86,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
@@ -100,7 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Default value is true. Type: boolean (or Expression with resultType
         /// boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableServerCertificateValidation")]
         public object EnableServerCertificateValidation { get; set; }
 
         /// <summary>

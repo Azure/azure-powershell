@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// specify, for example, 'https://[domain].my.salesforce.com'. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.environmentUrl")]
         public object EnvironmentUrl { get; set; }
 
         /// <summary>
@@ -51,21 +50,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Salesforce instance. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password for Basic authentication of the
         /// Salesforce instance.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the security token is required to remotely access
         /// Salesforce instance.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.securityToken")]
         public SecretBase SecurityToken { get; set; }
 
         /// <summary>
@@ -73,7 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

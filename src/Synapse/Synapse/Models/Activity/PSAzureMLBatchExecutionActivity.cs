@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Values will be passed in the GlobalParameters property of the Azure
         /// ML batch execution request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.globalParameters")]
         public IDictionary<string, object> GlobalParameters { get; set; }
 
         /// <summary>
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// passed in the WebServiceOutputs property of the Azure ML batch
         /// execution request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.webServiceOutputs")]
         public IDictionary<string, AzureMLWebServiceFile> WebServiceOutputs { get; set; }
 
         /// <summary>
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// passed in the WebServiceInputs property of the Azure ML batch
         /// execution request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.webServiceInputs")]
         public IDictionary<string, AzureMLWebServiceFile> WebServiceInputs { get; set; }
 
         /// <summary>

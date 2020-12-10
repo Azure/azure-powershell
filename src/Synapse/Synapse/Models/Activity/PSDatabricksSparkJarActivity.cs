@@ -43,20 +43,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// to be executed. This class must be contained in a JAR provided as a
         /// library. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mainClassName")]
         public object MainClassName { get; set; }
 
         /// <summary>
         /// Gets or sets parameters that will be passed to the main method.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.parameters")]
         public IList<object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets a list of libraries to be installed on the cluster
         /// that will execute the job.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.libraries")]
         public IList<IDictionary<string, object>> Libraries { get; set; }
 
         /// <summary>

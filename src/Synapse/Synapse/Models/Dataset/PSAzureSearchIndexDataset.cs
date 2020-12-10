@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the name of the Azure Search Index. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.indexName")]
         public object IndexName { get; set; }
 
         /// <summary>

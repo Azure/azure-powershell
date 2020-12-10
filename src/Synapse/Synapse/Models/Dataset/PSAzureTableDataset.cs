@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the table name of the Azure Table storage. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>

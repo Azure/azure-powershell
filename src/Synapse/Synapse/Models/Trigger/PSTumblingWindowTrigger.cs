@@ -20,28 +20,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         partial void CustomInit();
 
-        [JsonProperty(PropertyName = "typeProperties.frequency")]
         public TumblingWindowFrequency Frequency { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.interval")]
         public int Interval { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.startTime")]
         public DateTimeOffset StartTime { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.endTime")]
         public DateTimeOffset? EndTime { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.delay")]
         public object Delay { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.maxConcurrency")]
         public int MaxConcurrency { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.retryPolicy")]
         public RetryPolicy RetryPolicy { get; set; }
 
-        [JsonProperty(PropertyName = "typeProperties.dependsOn")]
         public IList<DependencyReference> DependsOn { get; set; }
     }
 }

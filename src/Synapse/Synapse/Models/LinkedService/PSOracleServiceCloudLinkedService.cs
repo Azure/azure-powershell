@@ -40,21 +40,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the URL of the Oracle Service Cloud instance.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
         /// Gets or sets the user name that you use to access Oracle Service
         /// Cloud server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password corresponding to the user name that you
         /// provided in the username key.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// encrypted using HTTPS. The default value is true. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useEncryptedEndpoints")]
         public object UseEncryptedEndpoints { get; set; }
 
         /// <summary>
@@ -71,7 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// connecting over SSL. The default value is true. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useHostVerification")]
         public object UseHostVerification { get; set; }
 
         /// <summary>
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// when connecting over SSL. The default value is true. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.usePeerVerification")]
         public object UsePeerVerification { get; set; }
 
         /// <summary>
@@ -87,7 +81,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

@@ -41,13 +41,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the endpoint of the Azure Function App. URL will be in
         /// the format https://&amp;lt;accountName&amp;gt;.azurewebsites.net.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.functionAppUrl")]
         public object FunctionAppUrl { get; set; }
 
         /// <summary>
         /// Gets or sets function or Host key for Azure Function App.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.functionKey")]
         public SecretBase FunctionKey { get; set; }
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

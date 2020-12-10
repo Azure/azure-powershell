@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https://&amp;lt;clusterName&amp;gt;.&amp;lt;regionName&amp;gt;.kusto.windows.net.
         /// Type: string (or Expression with resultType string)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.endpoint")]
         public object Endpoint { get; set; }
 
         /// <summary>
@@ -51,21 +50,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// against Azure Data Explorer. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
         /// Gets or sets the key of the service principal used to authenticate
         /// against Kusto.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
         /// Gets or sets database name for connection. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.database")]
         public object Database { get; set; }
 
         /// <summary>
@@ -73,7 +69,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// principal belongs. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>

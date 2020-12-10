@@ -24,10 +24,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

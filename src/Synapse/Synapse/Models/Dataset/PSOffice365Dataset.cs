@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets name of the dataset to extract from Office 365. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// specific rows to extract from Office 365. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.predicate")]
         public object Predicate { get; set; }
 
         /// <summary>

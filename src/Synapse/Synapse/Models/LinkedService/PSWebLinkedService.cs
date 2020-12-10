@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets web linked service properties.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties")]
         public WebLinkedServiceTypeProperties TypeProperties { get; set; }
 
         /// <summary>

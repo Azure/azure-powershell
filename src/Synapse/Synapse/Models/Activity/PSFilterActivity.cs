@@ -39,13 +39,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets input array on which filter should be applied.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.items")]
         public Expression Items { get; set; }
 
         /// <summary>
         /// Gets or sets condition to be used for filtering the input.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.condition")]
         public Expression Condition { get; set; }
 
         /// <summary>

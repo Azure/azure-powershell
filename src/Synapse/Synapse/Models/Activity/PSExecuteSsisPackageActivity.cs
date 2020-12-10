@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets SSIS package location.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.packageLocation")]
         public SsisPackageLocation PackageLocation { get; set; }
 
         /// <summary>
@@ -49,73 +48,62 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// value should be "x86" or "x64". Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.runtime")]
         public object Runtime { get; set; }
 
         /// <summary>
         /// Gets or sets the logging level of SSIS package execution. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.loggingLevel")]
         public object LoggingLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the environment path to execute the SSIS package.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.environmentPath")]
         public object EnvironmentPath { get; set; }
 
         /// <summary>
         /// Gets or sets the package execution credential.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.executionCredential")]
         public SsisExecutionCredential ExecutionCredential { get; set; }
 
         /// <summary>
         /// Gets or sets the integration runtime reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectVia")]
         public IntegrationRuntimeReference ConnectVia { get; set; }
 
         /// <summary>
         /// Gets or sets the project level parameters to execute the SSIS
         /// package.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.projectParameters")]
         public IDictionary<string, SsisExecutionParameter> ProjectParameters { get; set; }
 
         /// <summary>
         /// Gets or sets the package level parameters to execute the SSIS
         /// package.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.packageParameters")]
         public IDictionary<string, SsisExecutionParameter> PackageParameters { get; set; }
 
         /// <summary>
         /// Gets or sets the project level connection managers to execute the
         /// SSIS package.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.projectConnectionManagers")]
         public IDictionary<string, IDictionary<string, SsisExecutionParameter>> ProjectConnectionManagers { get; set; }
 
         /// <summary>
         /// Gets or sets the package level connection managers to execute the
         /// SSIS package.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.packageConnectionManagers")]
         public IDictionary<string, IDictionary<string, SsisExecutionParameter>> PackageConnectionManagers { get; set; }
 
         /// <summary>
         /// Gets or sets the property overrides to execute the SSIS package.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.propertyOverrides")]
         public IDictionary<string, SsisPropertyOverride> PropertyOverrides { get; set; }
 
         /// <summary>
         /// Gets or sets SSIS package execution log location.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.logLocation")]
         public SsisLogLocation LogLocation { get; set; }
 
         /// <summary>

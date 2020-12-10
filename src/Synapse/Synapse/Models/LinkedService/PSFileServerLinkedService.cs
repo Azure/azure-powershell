@@ -40,20 +40,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets host name of the server. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
         /// Gets or sets user ID to logon the server. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userId")]
         public object UserId { get; set; }
 
         /// <summary>
         /// Gets or sets password to logon the server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -61,7 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

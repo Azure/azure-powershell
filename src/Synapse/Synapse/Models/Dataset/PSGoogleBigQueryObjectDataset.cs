@@ -41,21 +41,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets this property will be retired. Please consider using
         /// database + table properties instead.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the table name of the Google BigQuery. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.table")]
         public object Table { get; set; }
 
         /// <summary>
         /// Gets or sets the database name of the Google BigQuery. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataset")]
         public object Dataset { get; set; }
 
         /// <summary>

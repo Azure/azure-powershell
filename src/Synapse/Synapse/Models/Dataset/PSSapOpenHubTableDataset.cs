@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// type as Database Table. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.openHubDestinationName")]
         public object OpenHubDestinationName { get; set; }
 
         /// <summary>
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// The default value is true. Type: boolean (or Expression with
         /// resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.excludeLastRequest")]
         public object ExcludeLastRequest { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// will be retrieved. The default value is 0. Type: integer (or
         /// Expression with resultType integer ).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.baseRequestId")]
         public object BaseRequestId { get; set; }
 
         /// <summary>

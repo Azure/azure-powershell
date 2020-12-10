@@ -8,19 +8,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSRecurrenceSchedule() { }
 
-        [JsonProperty(PropertyName = "minutes")]
         public IList<int> Minutes { get; }
 
-        [JsonProperty(PropertyName = "hours")]
         public IList<int> Hours { get; }
 
-        [JsonProperty(PropertyName = "weekDays")]
         public IList<DaysOfWeek> WeekDays { get; }
 
-        [JsonProperty(PropertyName = "monthDays")]
         public IList<int> MonthDays { get; }
 
-        [JsonProperty(PropertyName = "monthlyOccurrences")]
         public IList<PSRecurrenceScheduleOccurrence> MonthlyOccurrences { get; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

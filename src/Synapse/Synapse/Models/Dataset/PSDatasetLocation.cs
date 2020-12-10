@@ -10,10 +10,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSDatasetLocation() { }
 
-        [JsonProperty(PropertyName = "folderPath")]
         public object FolderPath { get; set; }
 
-        [JsonProperty(PropertyName = "fileName")]
         public object FileName { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

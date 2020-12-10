@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the endpoint of the Amazon MWS server, (i.e.
         /// mws.amazonservices.com)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.endpoint")]
         public object Endpoint { get; set; }
 
         /// <summary>
@@ -48,38 +47,32 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// from. To retrieve data from multiple Marketplace IDs, separate them
         /// with a comma (,). (i.e. A2EUQ1WTGCTBG2)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.marketplaceID")]
         public object MarketplaceID { get; set; }
 
         /// <summary>
         /// Gets or sets the Amazon seller ID.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sellerID")]
         public object SellerID { get; set; }
 
         /// <summary>
         /// Gets or sets the Amazon MWS authentication token.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mwsAuthToken")]
         public SecretBase MwsAuthToken { get; set; }
 
         /// <summary>
         /// Gets or sets the access key id used to access data.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accessKeyId")]
         public object AccessKeyId { get; set; }
 
         /// <summary>
         /// Gets or sets the secret key used to access data.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.secretKey")]
         public SecretBase SecretKey { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data source endpoints are
         /// encrypted using HTTPS. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useEncryptedEndpoints")]
         public object UseEncryptedEndpoints { get; set; }
 
         /// <summary>
@@ -87,14 +80,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// server's certificate to match the host name of the server when
         /// connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useHostVerification")]
         public object UseHostVerification { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to verify the identity of the server
         /// when connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.usePeerVerification")]
         public object UsePeerVerification { get; set; }
 
         /// <summary>
@@ -102,7 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

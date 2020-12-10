@@ -42,21 +42,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the URI of the Python file to be executed. DBFS paths
         /// are supported. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.pythonFile")]
         public object PythonFile { get; set; }
 
         /// <summary>
         /// Gets or sets command line parameters that will be passed to the
         /// Python file.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.parameters")]
         public IList<object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets a list of libraries to be installed on the cluster
         /// that will execute the job.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.libraries")]
         public IList<IDictionary<string, object>> Libraries { get; set; }
 
         /// <summary>

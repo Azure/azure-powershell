@@ -40,20 +40,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets dataset-specific source properties, same as copy
         /// activity source.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.source")]
         public PSCopySource Source { get; set; }
 
         /// <summary>
         /// Gets or sets lookup activity dataset reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
 
         /// <summary>
         /// Gets or sets whether to return first row or all rows. Default value
         /// is true. Type: boolean (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.firstRowOnly")]
         public object FirstRowOnly { get; set; }
 
         /// <summary>

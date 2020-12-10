@@ -43,30 +43,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string WorkspaceName { get; set; }
 
-        [JsonProperty(PropertyName = "properties.description")]
         public string Description { get; set; }
 
         public IList<Activity> Activities { get; set; }
 
-        [JsonProperty(PropertyName = "properties.activities")]
         internal IList<PSActivity> ActivitiesForCreate { get; set; }
 
-        [JsonProperty(PropertyName = "properties.variables")]
         public IDictionary<string, PSVariableSpecification> Variables { get; set; }
 
-        [JsonProperty(PropertyName = "properties.concurrency")]
         public int? Concurrency { get; set; }
 
-        [JsonProperty(PropertyName = "properties.annotations")]
         public IList<object> Annotations { get; set; }
 
-        [JsonProperty(PropertyName = "properties.runDimensions")]
         public IDictionary<string, object> RunDimensions { get; set; }
 
-        [JsonProperty(PropertyName = "properties.folder")]
         public PSPipelineFolder Folder { get; set; }
 
-        [JsonProperty(PropertyName = "properties.parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
         
         public IDictionary<string, object> AdditionalProperties { get; set; }

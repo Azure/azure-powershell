@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the table name of the Azure Data Explorer database.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.table")]
         public object Table { get; set; }
 
         /// <summary>

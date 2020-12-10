@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets host name of the SAP BW instance. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// decimal number represented as a string.) Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.systemNumber")]
         public object SystemNumber { get; set; }
 
         /// <summary>
@@ -56,20 +54,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// three-digit decimal number represented as a string) Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets username to access the SAP BW server. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password to access the SAP BW server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

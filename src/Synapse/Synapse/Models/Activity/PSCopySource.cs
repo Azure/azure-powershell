@@ -8,13 +8,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSCopySource() { }
 
-        [JsonProperty(PropertyName = "sourceRetryCount")]
         public object SourceRetryCount { get; set; }
 
-        [JsonProperty(PropertyName = "sourceRetryWait")]
         public object SourceRetryWait { get; set; }
 
-        [JsonProperty(PropertyName = "maxConcurrentConnections")]
         public object MaxConcurrentConnections { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

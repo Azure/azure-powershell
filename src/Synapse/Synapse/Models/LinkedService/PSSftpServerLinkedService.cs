@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the SFTP server host name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
@@ -48,28 +47,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// listen for client connections. Default value is 22. Type: integer
         /// (or Expression with resultType integer), minimum: 0.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication type to be used to connect to the
         /// FTP server. Possible values include: 'Basic', 'SshPublicKey'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the username used to log on to the SFTP server. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password to logon the SFTP server for Basic
         /// authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
@@ -88,7 +82,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// OpenSSH format. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.privateKeyPath")]
         public object PrivateKeyPath { get; set; }
 
         /// <summary>
@@ -97,14 +90,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// authentication, either PrivateKeyPath or PrivateKeyContent should
         /// be specified. SSH private key should be OpenSSH format.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.privateKeyContent")]
         public SecretBase PrivateKeyContent { get; set; }
 
         /// <summary>
         /// Gets or sets the password to decrypt the SSH private key if the SSH
         /// private key is encrypted.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.passPhrase")]
         public SecretBase PassPhrase { get; set; }
 
         /// <summary>
@@ -112,7 +103,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// value is false. Type: boolean (or Expression with resultType
         /// boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.skipHostKeyValidation")]
         public object SkipHostKeyValidation { get; set; }
 
         /// <summary>
@@ -120,7 +110,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// SkipHostKeyValidation is false, HostKeyFingerprint should be
         /// specified. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hostKeyFingerprint")]
         public object HostKeyFingerprint { get; set; }
 
         /// <summary>

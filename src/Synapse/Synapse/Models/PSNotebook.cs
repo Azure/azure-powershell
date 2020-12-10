@@ -30,21 +30,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         public PSBigDataPoolReference BigDataPool { get; set; }
 
         public PSNotebookSessionProperties SessionProperties { get; set; }
 
-        [JsonProperty(PropertyName = "metadata")]
         public PSNotebookMetadata Metadata { get; set; }
 
+        [DefaultValue(4)]
         public int? NotebookFormat { get; set; }
 
+        [DefaultValue(2)]
         public int? NotebookFormatMinor { get; set; }
 
-        [JsonProperty(PropertyName = "cells")]
         public IList<PSNotebookCell> Cells { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets custom dataset properties.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties")]
         public object TypeProperties { get; set; }
 
         /// <summary>

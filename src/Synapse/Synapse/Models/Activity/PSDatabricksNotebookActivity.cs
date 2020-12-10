@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Databricks Workspace. This path must begin with a slash. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.notebookPath")]
         public object NotebookPath { get; set; }
 
         /// <summary>
@@ -51,14 +50,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the notebook takes a parameter that is not specified, the default
         /// value from the notebook will be used.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.baseParameters")]
         public IDictionary<string, object> BaseParameters { get; set; }
 
         /// <summary>
         /// Gets or sets a list of libraries to be installed on the cluster
         /// that will execute the job.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.libraries")]
         public IList<IDictionary<string, object>> Libraries { get; set; }
 
         /// <summary>

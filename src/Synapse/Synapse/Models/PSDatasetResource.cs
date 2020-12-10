@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public Dataset Properties { get; set; }
 
-        [JsonProperty(PropertyName = "properties")]
         internal PSDataset PropertiesForCreate { get; set; }
     }
 }

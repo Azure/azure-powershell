@@ -40,20 +40,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the on-premises Windows authentication user name.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the on-premises Windows authentication password.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -61,7 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

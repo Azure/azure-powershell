@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets webHook activity target endpoint and path. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Type: string. Pattern:
         /// ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.timeout")]
         public string Timeout { get; set; }
 
         /// <summary>
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// "application/json" }. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.headers")]
         public object Headers { get; set; }
 
         /// <summary>
@@ -75,13 +72,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// endpoint. Required for POST/PUT method, not allowed for GET method
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.body")]
         public object Body { get; set; }
 
         /// <summary>
         /// Gets or sets authentication method used for calling the endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authentication")]
         public WebActivityAuthentication Authentication { get; set; }
 
         /// <summary>
@@ -91,13 +86,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// callback request. Default is false. Type: boolean (or Expression
         /// with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.reportStatusOnCallBack")]
         public object ReportStatusOnCallBack { get; set; }
 
         /// <summary>
         /// Rest API method for target endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.method")]
         public static string Method { get; private set; }
 
         /// <summary>

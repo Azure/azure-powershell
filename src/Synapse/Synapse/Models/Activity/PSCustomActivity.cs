@@ -41,26 +41,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets command for custom activity Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.command")]
         public object Command { get; set; }
 
         /// <summary>
         /// Gets or sets resource linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.resourceLinkedService")]
         public LinkedServiceReference ResourceLinkedService { get; set; }
 
         /// <summary>
         /// Gets or sets folder path for resource files Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.folderPath")]
         public object FolderPath { get; set; }
 
         /// <summary>
         /// Gets or sets reference objects
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.referenceObjects")]
         public CustomActivityReferenceObject ReferenceObjects { get; set; }
 
         /// <summary>
@@ -69,14 +65,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// activity has the full responsibility to consume and interpret the
         /// content defined.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.extendedProperties")]
         public IDictionary<string, object> ExtendedProperties { get; set; }
 
         /// <summary>
         /// Gets or sets the retention time for the files submitted for custom
         /// activity. Type: double (or Expression with resultType double).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.retentionTimeInDays")]
         public object RetentionTimeInDays { get; set; }
 
         /// <summary>

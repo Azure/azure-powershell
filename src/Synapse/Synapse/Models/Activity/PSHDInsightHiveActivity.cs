@@ -40,52 +40,44 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets storage linked service references.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.storageLinkedServices")]
         public IList<LinkedServiceReference> StorageLinkedServices { get; set; }
 
         /// <summary>
         /// Gets or sets user specified arguments to HDInsightActivity.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.arguments")]
         public IList<object> Arguments { get; set; }
 
         /// <summary>
         /// Gets or sets debug info option. Possible values include: 'None',
         /// 'Always', 'Failure'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.getDebugInfo")]
         public string GetDebugInfo { get; set; }
 
         /// <summary>
         /// Gets or sets script path. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptPath")]
         public object ScriptPath { get; set; }
 
         /// <summary>
         /// Gets or sets script linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptLinkedService")]
         public LinkedServiceReference ScriptLinkedService { get; set; }
 
         /// <summary>
         /// Gets or sets allows user to specify defines for Hive job request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.defines")]
         public IDictionary<string, object> Defines { get; set; }
 
         /// <summary>
         /// Gets or sets user specified arguments under hivevar namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.variables")]
         public IList<object> Variables { get; set; }
 
         /// <summary>
         /// Gets or sets query timeout value (in minutes).  Effective when the
         /// HDInsight cluster is with ESP (Enterprise Security Package)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.queryTimeout")]
         public int? QueryTimeout { get; set; }
 
         /// <summary>

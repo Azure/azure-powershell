@@ -8,10 +8,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSRedirectIncompatibleRowSettings() { }
 
-        [JsonProperty(PropertyName = "linkedServiceName")]
         public object LinkedServiceName { get; set; }
 
-        [JsonProperty(PropertyName = "path")]
         public object Path { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

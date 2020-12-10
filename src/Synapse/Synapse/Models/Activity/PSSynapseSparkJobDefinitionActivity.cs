@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets synapse spark job reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sparkJob")]
         public SynapseSparkJobReference SparkJob { get; set; }
 
         /// <summary>

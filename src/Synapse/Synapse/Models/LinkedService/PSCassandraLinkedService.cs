@@ -40,34 +40,29 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets host name for connection. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
         /// Gets or sets authenticationType to be used for connection. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public object AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the port for the connection. Type: integer (or
         /// Expression with resultType integer).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
         /// Gets or sets username for authentication. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets password for authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

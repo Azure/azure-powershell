@@ -41,80 +41,68 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets storage linked service references.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.storageLinkedServices")]
         public IList<LinkedServiceReference> StorageLinkedServices { get; set; }
 
         /// <summary>
         /// Gets or sets user specified arguments to HDInsightActivity.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.arguments")]
         public IList<object> Arguments { get; set; }
 
         /// <summary>
         /// Gets or sets debug info option. Possible values include: 'None',
         /// 'Always', 'Failure'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.getDebugInfo")]
         public string GetDebugInfo { get; set; }
 
         /// <summary>
         /// Gets or sets mapper executable name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mapper")]
         public object Mapper { get; set; }
 
         /// <summary>
         /// Gets or sets reducer executable name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.reducer")]
         public object Reducer { get; set; }
 
         /// <summary>
         /// Gets or sets input blob path. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.input")]
         public object Input { get; set; }
 
         /// <summary>
         /// Gets or sets output blob path. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.output")]
         public object Output { get; set; }
 
         /// <summary>
         /// Gets or sets paths to streaming job files. Can be directories.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.filePaths")]
         public IList<object> FilePaths { get; set; }
 
         /// <summary>
         /// Gets or sets linked service reference where the files are located.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.fileLinkedService")]
         public LinkedServiceReference FileLinkedService { get; set; }
 
         /// <summary>
         /// Gets or sets combiner executable name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.combiner")]
         public object Combiner { get; set; }
 
         /// <summary>
         /// Gets or sets command line environment values.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.commandEnvironment")]
         public IList<object> CommandEnvironment { get; set; }
 
         /// <summary>
         /// Gets or sets allows user to specify defines for streaming job
         /// request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.defines")]
         public IDictionary<string, object> Defines { get; set; }
 
         /// <summary>

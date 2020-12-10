@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the table name of the Cassandra database. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the keyspace of the Cassandra database. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.keyspace")]
         public object Keyspace { get; set; }
 
         /// <summary>

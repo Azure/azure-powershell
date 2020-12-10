@@ -34,25 +34,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSDataset() { }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "structure")]
         public object Structure { get; set; }
 
-        [JsonProperty(PropertyName = "schema")]
         public object Schema { get; set; }
 
-        [JsonProperty(PropertyName = "linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
-        [JsonProperty(PropertyName = "parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
 
-        [JsonProperty(PropertyName = "annotations")]
         public IList<object> Annotations { get; set; }
 
-        [JsonProperty(PropertyName = "folder")]
         public PSDatasetFolder Folder { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

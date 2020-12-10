@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets rest API method for target endpoint. Possible values
         /// include: 'GET', 'POST', 'PUT', 'DELETE'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.method")]
         public string Method { get; set; }
 
         /// <summary>
         /// Gets or sets web activity target endpoint and path. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// "application/json" }. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.headers")]
         public object Headers { get; set; }
 
         /// <summary>
@@ -66,31 +63,26 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// endpoint. Required for POST/PUT method, not allowed for GET method
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.body")]
         public object Body { get; set; }
 
         /// <summary>
         /// Gets or sets authentication method used for calling the endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authentication")]
         public WebActivityAuthentication Authentication { get; set; }
 
         /// <summary>
         /// Gets or sets list of datasets passed to web endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.datasets")]
         public IList<DatasetReference> Datasets { get; set; }
 
         /// <summary>
         /// Gets or sets list of linked services passed to web endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.linkedServices")]
         public IList<LinkedServiceReference> LinkedServices { get; set; }
 
         /// <summary>
         /// Gets or sets the integration runtime reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectVia")]
         public IntegrationRuntimeReference ConnectVia { get; set; }
 
         /// <summary>

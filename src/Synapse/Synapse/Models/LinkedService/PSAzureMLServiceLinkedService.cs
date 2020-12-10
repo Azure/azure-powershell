@@ -41,21 +41,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets azure ML Service workspace subscription ID. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.subscriptionId")]
         public object SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets azure ML Service workspace resource group name. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.resourceGroupName")]
         public object ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets azure ML Service workspace name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mlWorkspaceName")]
         public object MlWorkspaceName { get; set; }
 
         /// <summary>
@@ -63,14 +60,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// against the endpoint of a published Azure ML Service pipeline.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
         /// Gets or sets the key of the service principal used to authenticate
         /// against the endpoint of a published Azure ML Service pipeline.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -78,7 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// principal belongs. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
@@ -86,7 +80,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

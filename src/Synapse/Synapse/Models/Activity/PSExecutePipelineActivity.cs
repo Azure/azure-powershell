@@ -40,20 +40,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets pipeline reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.pipeline")]
         public PipelineReference Pipeline { get; set; }
 
         /// <summary>
         /// Gets or sets pipeline parameters.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.parameters")]
         public IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets defines whether activity execution will wait for the
         /// dependent pipeline execution to finish. Default is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.waitOnCompletion")]
         public bool? WaitOnCompletion { get; set; }
 
         /// <summary>

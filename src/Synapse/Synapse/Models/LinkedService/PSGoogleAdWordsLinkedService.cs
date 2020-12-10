@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the Client customer ID of the AdWords account that you
         /// want to fetch report data for.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientCustomerID")]
         public object ClientCustomerID { get; set; }
 
         /// <summary>
         /// Gets or sets the developer token associated with the manager
         /// account that you use to grant access to the AdWords API.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.developerToken")]
         public SecretBase DeveloperToken { get; set; }
 
         /// <summary>
@@ -57,14 +55,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// self-hosted IR. Possible values include: 'ServiceAuthentication',
         /// 'UserAuthentication'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the refresh token obtained from Google for authorizing
         /// access to AdWords for UserAuthentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.refreshToken")]
         public SecretBase RefreshToken { get; set; }
 
         /// <summary>
@@ -72,21 +68,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// acquire the refresh token. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret of the google application used to
         /// acquire the refresh token.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientSecret")]
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the service account email ID that is used for
         /// ServiceAuthentication and can only be used on self-hosted IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.email")]
         public object Email { get; set; }
 
         /// <summary>
@@ -94,7 +87,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// authenticate the service account email address and can only be used
         /// on self-hosted IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.keyFilePath")]
         public object KeyFilePath { get; set; }
 
         /// <summary>
@@ -103,7 +95,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// This property can only be set when using SSL on self-hosted IR. The
         /// default value is the cacerts.pem file installed with the IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trustedCertPath")]
         public object TrustedCertPath { get; set; }
 
         /// <summary>
@@ -111,7 +102,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// system trust store or from a specified PEM file. The default value
         /// is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useSystemTrustStore")]
         public object UseSystemTrustStore { get; set; }
 
         /// <summary>
@@ -119,7 +109,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

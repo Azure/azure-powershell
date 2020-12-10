@@ -42,14 +42,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// experiment to be updated. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trainedModelName")]
         public object TrainedModelName { get; set; }
 
         /// <summary>
         /// Gets or sets name of Azure Storage linked service holding the
         /// .ilearner file that will be uploaded by the update operation.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trainedModelLinkedServiceName")]
         public LinkedServiceReference TrainedModelLinkedServiceName { get; set; }
 
         /// <summary>
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// represent the .ilearner file that will be uploaded by the update
         /// operation.  Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trainedModelFilePath")]
         public object TrainedModelFilePath { get; set; }
 
         /// <summary>

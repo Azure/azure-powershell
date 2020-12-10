@@ -41,21 +41,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets this property will be retired. Please consider using
         /// schema + table properties instead.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the Amazon Redshift table name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.table")]
         public object Table { get; set; }
 
         /// <summary>
         /// Gets or sets the Amazon Redshift schema name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.schema")]
         public object AmazonRedshiftTableDatasetSchema { get; set; }
 
         /// <summary>

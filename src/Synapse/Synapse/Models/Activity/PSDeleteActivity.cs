@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// path will be deleted recursively. Default is false. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.recursive")]
         public object Recursive { get; set; }
 
         /// <summary>
         /// Gets or sets the max concurrent connections to connect data source
         /// at the same time.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.maxConcurrentConnections")]
         public int? MaxConcurrentConnections { get; set; }
 
         /// <summary>
@@ -56,20 +54,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// execution. Default value is false. Type: boolean (or Expression
         /// with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableLogging")]
         public object EnableLogging { get; set; }
 
         /// <summary>
         /// Gets or sets log storage settings customer need to provide when
         /// enableLogging is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.logStorageSettings")]
         public PSLogStorageSettings LogStorageSettings { get; set; }
 
         /// <summary>
         /// Gets or sets delete activity dataset reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
 
         /// <summary>

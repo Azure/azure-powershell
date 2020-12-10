@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// and Access Management (IAM) user. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accessKeyId")]
         public object AccessKeyId { get; set; }
 
         /// <summary>
         /// Gets or sets the secret access key of the Amazon S3 Identity and
         /// Access Management (IAM) user.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.secretAccessKey")]
         public SecretBase SecretAccessKey { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https and http. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.serviceUrl")]
         public object ServiceUrl { get; set; }
 
         /// <summary>
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

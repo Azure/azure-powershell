@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets pipelines that need to be started.
         /// </summary>
-        [JsonProperty(PropertyName = "pipelines")]
         public IList<TriggerPipelineReference> Pipelines { get; set; }
     }
 }

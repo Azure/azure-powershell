@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the path of the SAP Cloud for Customer OData entity.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.path")]
         public object Path { get; set; }
 
         /// <summary>

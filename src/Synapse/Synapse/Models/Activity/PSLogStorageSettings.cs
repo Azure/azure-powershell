@@ -8,10 +8,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSLogStorageSettings() { }
 
-        [JsonProperty(PropertyName = "linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
-        [JsonProperty(PropertyName = "path")]
         public object Path { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https://myakv.vault.azure.net Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.baseUrl")]
         public object BaseUrl { get; set; }
 
         /// <summary>

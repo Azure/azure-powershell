@@ -40,53 +40,45 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the IP address or host name of the Presto server.
         /// (i.e. 192.168.222.160)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
         /// Gets or sets the version of the Presto server. (i.e. 0.148-t)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.serverVersion")]
         public object ServerVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the catalog context for all request against the
         /// server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.catalog")]
         public object Catalog { get; set; }
 
         /// <summary>
         /// Gets or sets the TCP port that the Presto server uses to listen for
         /// client connections. The default value is 8080.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication mechanism used to connect to the
         /// Presto server. Possible values include: 'Anonymous', 'LDAP'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the user name used to connect to the Presto server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password corresponding to the user name.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the connections to the server are
         /// encrypted using SSL. The default value is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableSsl")]
         public object EnableSsl { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// This property can only be set when using SSL on self-hosted IR. The
         /// default value is the cacerts.pem file installed with the IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trustedCertPath")]
         public object TrustedCertPath { get; set; }
 
         /// <summary>
@@ -103,7 +94,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// system trust store or from a specified PEM file. The default value
         /// is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useSystemTrustStore")]
         public object UseSystemTrustStore { get; set; }
 
         /// <summary>
@@ -111,14 +101,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// certificate name to match the host name of the server when
         /// connecting over SSL. The default value is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.allowHostNameCNMismatch")]
         public object AllowHostNameCNMismatch { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to allow self-signed certificates
         /// from the server. The default value is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.allowSelfSignedServerCert")]
         public object AllowSelfSignedServerCert { get; set; }
 
         /// <summary>
@@ -126,7 +114,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// values for this option are specified in the IANA Time Zone
         /// Database. The default value is the system time zone.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.timeZoneID")]
         public object TimeZoneID { get; set; }
 
         /// <summary>
@@ -134,7 +121,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

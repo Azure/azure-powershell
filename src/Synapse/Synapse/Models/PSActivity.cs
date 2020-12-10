@@ -26,16 +26,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSActivity() { }
 
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "dependsOn")]
         public IList<PSActivityDependency> DependsOn { get; set; }
 
-        [JsonProperty(PropertyName = "userProperties")]
         public IList<PSUserProperty> UserProperties { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

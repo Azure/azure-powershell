@@ -40,28 +40,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the endpoint of the Azure CosmosDB account. Type:
         /// string (or Expression with resultType string)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accountEndpoint")]
         public object AccountEndpoint { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database. Type: string (or Expression
         /// with resultType string)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.database")]
         public object Database { get; set; }
 
         /// <summary>
         /// Gets or sets the account key of the Azure CosmosDB account. Type:
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accountKey")]
         public SecretBase AccountKey { get; set; }
 
         /// <summary>
@@ -69,7 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

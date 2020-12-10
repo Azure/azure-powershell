@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// used to determine the block of activities (ifTrueActivities or
         /// ifFalseActivities) that will be executed.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.expression")]
         public Expression Expression { get; set; }
 
         /// <summary>
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// evaluated to true. This is an optional property and if not
         /// provided, the activity will exit without any action.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.ifTrueActivities")]
         public IList<PSActivity> IfTrueActivities { get; set; }
 
         /// <summary>
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// evaluated to false. This is an optional property and if not
         /// provided, the activity will exit without any action.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.ifFalseActivities")]
         public IList<PSActivity> IfFalseActivities { get; set; }
 
         /// <summary>

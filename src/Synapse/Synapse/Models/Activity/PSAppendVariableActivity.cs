@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets name of the variable whose value needs to be appended
         /// to.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.variableName")]
         public string VariableName { get; set; }
 
         /// <summary>
         /// Gets or sets value to be appended. Could be a static value or
         /// Expression
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.value")]
         public object Value { get; set; }
 
         /// <summary>

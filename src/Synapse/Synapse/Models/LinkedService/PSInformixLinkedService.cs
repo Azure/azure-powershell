@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// string as well as an optional encrypted credential. Type: string,
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
@@ -49,27 +48,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// as ODBC data store. Possible values are: Anonymous and Basic. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public object AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the access credential portion of the connection string
         /// specified in driver-specific property-value format.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.credential")]
         public SecretBase Credential { get; set; }
 
         /// <summary>
         /// Gets or sets user name for Basic authentication. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password for Basic authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

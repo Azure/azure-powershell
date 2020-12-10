@@ -42,14 +42,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets stored procedure name. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.storedProcedureName")]
         public object StoredProcedureName { get; set; }
 
         /// <summary>
         /// Gets or sets value and type setting for stored procedure
         /// parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.storedProcedureParameters")]
         public IDictionary<string, StoredProcedureParameter> StoredProcedureParameters { get; set; }
 
         /// <summary>

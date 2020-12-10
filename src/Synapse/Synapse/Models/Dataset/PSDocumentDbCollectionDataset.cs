@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets document Database collection name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.collectionName")]
         public object CollectionName { get; set; }
 
         /// <summary>

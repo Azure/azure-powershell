@@ -42,21 +42,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// includes both schema and table. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the table name of the Azure PostgreSQL database. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.table")]
         public object Table { get; set; }
 
         /// <summary>
         /// Gets or sets the schema name of the Azure PostgreSQL database.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.schema")]
         public object AzurePostgreSqlTableDatasetSchema { get; set; }
 
         /// <summary>

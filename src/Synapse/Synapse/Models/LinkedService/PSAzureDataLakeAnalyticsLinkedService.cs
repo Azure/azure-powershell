@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the Azure Data Lake Analytics account name. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accountName")]
         public object AccountName { get; set; }
 
         /// <summary>
@@ -49,14 +48,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the Azure Data Lake Analytics account. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
         /// Gets or sets the Key of the application used to authenticate
         /// against the Azure Data Lake Analytics account.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -64,7 +61,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// principal belongs. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// different from Data Factory account). Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.subscriptionId")]
         public object SubscriptionId { get; set; }
 
         /// <summary>
@@ -80,14 +75,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// different from Data Factory account). Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.resourceGroupName")]
         public object ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets azure Data Lake Analytics URI Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataLakeAnalyticsUri")]
         public object DataLakeAnalyticsUri { get; set; }
 
         /// <summary>
@@ -95,7 +88,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

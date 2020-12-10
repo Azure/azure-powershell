@@ -23,10 +23,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "activity")]
         public string Activity { get; set; }
 
-        [JsonProperty(PropertyName = "dependencyConditions")]
         public IList<DependencyCondition> DependencyConditions { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets an expression that would evaluate to Boolean. The loop
         /// will continue until this expression evaluates to true
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.expression")]
         public Expression Expression { get; set; }
 
         /// <summary>
@@ -53,13 +52,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// (or Expression with resultType string), pattern:
         /// ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.timeout")]
         public object Timeout { get; set; }
 
         /// <summary>
         /// Gets or sets list of activities to execute.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.activities")]
         public IList<PSActivity> Activities { get; set; }
 
         /// <summary>

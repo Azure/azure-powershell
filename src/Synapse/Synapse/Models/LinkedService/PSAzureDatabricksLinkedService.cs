@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// name of your Databricks deployment. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.domain")]
         public object Domain { get; set; }
 
         /// <summary>
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https://docs.azuredatabricks.net/api/latest/authentication.html.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accessToken")]
         public SecretBase AccessToken { get; set; }
 
         /// <summary>
@@ -59,7 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// used for all runs of this activity. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.existingClusterId")]
         public object ExistingClusterId { get; set; }
 
         /// <summary>
@@ -67,7 +64,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// for all runs of this activity. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.instancePoolId")]
         public object InstancePoolId { get; set; }
 
         /// <summary>
@@ -77,7 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// instancePoolId is specified. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterVersion")]
         public object NewClusterVersion { get; set; }
 
         /// <summary>
@@ -90,7 +85,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// worker nodes, such as '2'. Required if newClusterVersion is
         /// specified. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterNumOfWorker")]
         public object NewClusterNumOfWorker { get; set; }
 
         /// <summary>
@@ -99,28 +93,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// not specified. If instancePoolId is specified, this property is
         /// ignored. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterNodeType")]
         public object NewClusterNodeType { get; set; }
 
         /// <summary>
         /// Gets or sets a set of optional, user-specified Spark configuration
         /// key-value pairs.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterSparkConf")]
         public IDictionary<string, object> NewClusterSparkConf { get; set; }
 
         /// <summary>
         /// Gets or sets a set of optional, user-specified Spark environment
         /// variables key-value pairs.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterSparkEnvVars")]
         public IDictionary<string, object> NewClusterSparkEnvVars { get; set; }
 
         /// <summary>
         /// Gets or sets additional tags for cluster resources. This property
         /// is ignored in instance pool configurations.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterCustomTags")]
         public IDictionary<string, object> NewClusterCustomTags { get; set; }
 
         /// <summary>
@@ -128,7 +118,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// property is ignored in instance pool configurations. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterDriverNodeType")]
         public object NewClusterDriverNodeType { get; set; }
 
         /// <summary>
@@ -136,7 +125,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// cluster. Type: array of strings (or Expression with resultType
         /// array of strings).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterInitScripts")]
         public object NewClusterInitScripts { get; set; }
 
         /// <summary>
@@ -145,7 +133,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// behavior in Databricks (elastic disks are always enabled). Type:
         /// boolean (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.newClusterEnableElasticDisk")]
         public object NewClusterEnableElasticDisk { get; set; }
 
         /// <summary>
@@ -153,7 +140,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

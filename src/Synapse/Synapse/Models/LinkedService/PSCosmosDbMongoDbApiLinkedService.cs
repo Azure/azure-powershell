@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// string, SecureString or AzureKeyVaultSecretReference. Type: string,
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// you want to access. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.database")]
         public object Database { get; set; }
 
         /// <summary>

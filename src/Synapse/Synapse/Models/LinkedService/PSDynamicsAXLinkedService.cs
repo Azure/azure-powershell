@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the Dynamics AX (or Dynamics 365 Finance and
         /// Operations) instance OData endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
         /// Gets or sets specify the application's client ID. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// secret stored in Azure Key Vault. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -65,14 +62,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the mouse in the top-right corner of the Azure portal. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
         /// Gets or sets specify the resource you are requesting authorization.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.aadResourceId")]
         public object AadResourceId { get; set; }
 
         /// <summary>
@@ -80,7 +75,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

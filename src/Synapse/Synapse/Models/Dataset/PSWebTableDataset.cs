@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the zero-based index of the table in the web page.
         /// Type: integer (or Expression with resultType integer), minimum: 0.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.index")]
         public object Index { get; set; }
 
         /// <summary>
         /// Gets or sets the relative URL to the web page from the linked
         /// service URL. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.path")]
         public object Path { get; set; }
 
         /// <summary>

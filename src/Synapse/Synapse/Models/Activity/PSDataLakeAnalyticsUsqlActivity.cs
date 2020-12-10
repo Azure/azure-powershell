@@ -42,13 +42,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets case-sensitive path to folder that contains the U-SQL
         /// script. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptPath")]
         public object ScriptPath { get; set; }
 
         /// <summary>
         /// Gets or sets script linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptLinkedService")]
         public LinkedServiceReference ScriptLinkedService { get; set; }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the job. Default value is 1. Type: integer (or Expression with
         /// resultType integer), minimum: 1.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.degreeOfParallelism")]
         public object DegreeOfParallelism { get; set; }
 
         /// <summary>
@@ -65,20 +62,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the priority. Default value is 1000. Type: integer (or Expression
         /// with resultType integer), minimum: 1.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.priority")]
         public object Priority { get; set; }
 
         /// <summary>
         /// Gets or sets parameters for U-SQL job request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.parameters")]
         public IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets runtime version of the U-SQL engine to use. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.runtimeVersion")]
         public object RuntimeVersion { get; set; }
 
         /// <summary>
@@ -86,7 +80,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// : Semantic, Full and SingleBox. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compilationMode")]
         public object CompilationMode { get; set; }
 
         /// <summary>

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the json data storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
@@ -50,13 +49,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// https://msdn.microsoft.com/library/system.text.encoding.aspx. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encodingName")]
         public object EncodingName { get; set; }
 
         /// <summary>
         /// Gets or sets the data compression method used for the json dataset.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compression")]
         public PSDatasetCompression Compression { get; set; }
 
         /// <summary>

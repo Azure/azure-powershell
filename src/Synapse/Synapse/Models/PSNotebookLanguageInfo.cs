@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         public string CodemirrorMode { get; set; }

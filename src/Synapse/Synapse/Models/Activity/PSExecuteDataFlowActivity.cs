@@ -39,25 +39,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets data flow reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataFlow")]
         public PSDataFlowReference DataFlow { get; set; }
 
         /// <summary>
         /// Gets or sets staging info for execute data flow activity.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.staging")]
         public DataFlowStagingInfo Staging { get; set; }
 
         /// <summary>
         /// Gets or sets the integration runtime reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.integrationRuntime")]
         public IntegrationRuntimeReference IntegrationRuntime { get; set; }
 
         /// <summary>
         /// Gets or sets compute properties for data flow activity.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compute")]
         public ExecuteDataFlowActivityTypePropertiesCompute Compute { get; set; }
 
         /// <summary>

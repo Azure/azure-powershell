@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets synapse notebook reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.notebook")]
         public SynapseNotebookReference Notebook { get; set; }
 
         /// <summary>
         /// Gets or sets notebook parameters.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.parameters")]
         public IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>

@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the ORC data storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'none', 'zlib', 'snappy'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.orcCompressionCodec")]
         public string OrcCompressionCodec { get; set; }
 
         /// <summary>

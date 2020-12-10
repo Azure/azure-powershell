@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets getMetadata activity dataset reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
 
         /// <summary>
         /// Gets or sets fields of metadata to get from dataset.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.fieldList")]
         public IList<object> FieldList { get; set; }
 
         /// <summary>

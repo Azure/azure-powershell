@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the Azure MySQL database table name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tableName")]
         public object TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of Azure MySQL database table. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.table")]
         public object Table { get; set; }
 
         /// <summary>

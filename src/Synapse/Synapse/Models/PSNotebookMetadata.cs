@@ -23,10 +23,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "kernelspec")]
         public PSNotebookKernelSpec Kernelspec { get; set; }
 
-        [JsonProperty(PropertyName = "language_info")]
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

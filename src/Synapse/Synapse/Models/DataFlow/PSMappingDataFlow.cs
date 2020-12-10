@@ -40,25 +40,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets list of sources in data flow.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sources")]
         public IList<DataFlowSource> Sources { get; set; }
 
         /// <summary>
         /// Gets or sets list of sinks in data flow.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sinks")]
         public IList<DataFlowSink> Sinks { get; set; }
 
         /// <summary>
         /// Gets or sets list of transformations in data flow.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.transformations")]
         public IList<Transformation> Transformations { get; set; }
 
         /// <summary>
         /// Gets or sets dataFlow script.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.script")]
         public string Script { get; set; }
     }
 }

@@ -40,41 +40,35 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the IP address or server name of the MongoDB server.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication type to be used to connect to the
         /// MongoDB database. Possible values include: 'Basic', 'Anonymous'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the MongoDB database that you want to
         /// access. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.databaseName")]
         public object DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets username for authentication. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets password for authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets database to verify the username and password. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authSource")]
         public object AuthSource { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// listen for client connections. The default value is 27017. Type:
         /// integer (or Expression with resultType integer), minimum: 0.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// encrypted using SSL. The default value is false. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableSsl")]
         public object EnableSsl { get; set; }
 
         /// <summary>
@@ -98,7 +90,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// from the server. The default value is false. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.allowSelfSignedServerCert")]
         public object AllowSelfSignedServerCert { get; set; }
 
         /// <summary>
@@ -106,7 +97,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

@@ -39,14 +39,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the parquet storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'none', 'gzip', 'snappy',
         /// 'lzo'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compressionCodec")]
         public string CompressionCodec { get; set; }
 
         /// <summary>

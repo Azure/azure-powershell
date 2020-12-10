@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         partial void CustomInit();
 
-        [JsonProperty(PropertyName = "typeProperties.recurrence")]
         public PSScheduleTriggerRecurrence Recurrence { get; set; }
     }
 }

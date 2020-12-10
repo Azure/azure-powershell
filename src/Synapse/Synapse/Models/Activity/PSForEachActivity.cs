@@ -41,26 +41,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets should the loop be executed in sequence or in parallel
         /// (max 50)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.isSequential")]
         public bool? IsSequential { get; set; }
 
         /// <summary>
         /// Gets or sets batch count to be used for controlling the number of
         /// parallel execution (when isSequential is set to false).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.batchCount")]
         public int? BatchCount { get; set; }
 
         /// <summary>
         /// Gets or sets collection to iterate.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.items")]
         public Expression Items { get; set; }
 
         /// <summary>
         /// Gets or sets list of activities to execute .
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.activities")]
         public IList<PSActivity> Activities { get; set; }
 
         /// <summary>

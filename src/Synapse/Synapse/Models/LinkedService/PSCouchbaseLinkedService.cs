@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets an ODBC connection string. Type: string, SecureString
         /// or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of credString in
         /// connection string.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.credString")]
         public AzureKeyVaultSecretReference CredString { get; set; }
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
     }
 }

@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets rest API method for target endpoint. Possible values
         /// include: 'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'TRACE'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.method")]
         public string Method { get; set; }
 
         /// <summary>
         /// Gets or sets name of the Function that the Azure Function Activity
         /// will call. Type: string (or Expression with resultType string)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.functionName")]
         public object FunctionName { get; set; }
 
         /// <summary>
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// "application/json" }. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.headers")]
         public object Headers { get; set; }
 
         /// <summary>
@@ -65,7 +62,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// endpoint. Required for POST/PUT method, not allowed for GET method
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.body")]
         public object Body { get; set; }
 
         /// <summary>

@@ -39,21 +39,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the endpoint of the Responsys server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.endpoint")]
         public object Endpoint { get; set; }
 
         /// <summary>
         /// Gets or sets the client ID associated with the Responsys
         /// application. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret associated with the Responsys
         /// application. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientSecret")]
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
@@ -61,7 +58,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// encrypted using HTTPS. The default value is true. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useEncryptedEndpoints")]
         public object UseEncryptedEndpoints { get; set; }
 
         /// <summary>
@@ -70,7 +66,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// connecting over SSL. The default value is true. Type: boolean (or
         /// Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useHostVerification")]
         public object UseHostVerification { get; set; }
 
         /// <summary>
@@ -78,7 +73,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// when connecting over SSL. The default value is true. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.usePeerVerification")]
         public object UsePeerVerification { get; set; }
 
         /// <summary>
@@ -86,7 +80,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

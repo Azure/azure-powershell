@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkedService Properties { get; set; }
 
-        [JsonProperty(PropertyName = "properties")]
         internal PSLinkedService PropertiesForCreate { get; set; }
     }
 }

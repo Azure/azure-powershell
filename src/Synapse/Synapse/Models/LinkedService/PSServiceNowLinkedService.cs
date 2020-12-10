@@ -40,47 +40,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the endpoint of the ServiceNow server. (i.e.
         /// &amp;lt;instance&amp;gt;.service-now.com)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.endpoint")]
         public object Endpoint { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication type to use. Possible values
         /// include: 'Basic', 'OAuth2'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the user name used to connect to the ServiceNow server
         /// for Basic and OAuth2 authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password corresponding to the user name for Basic
         /// and OAuth2 authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the client id for OAuth2 authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret for OAuth2 authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientSecret")]
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data source endpoints are
         /// encrypted using HTTPS. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useEncryptedEndpoints")]
         public object UseEncryptedEndpoints { get; set; }
 
         /// <summary>
@@ -88,14 +81,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// server's certificate to match the host name of the server when
         /// connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useHostVerification")]
         public object UseHostVerification { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to verify the identity of the server
         /// when connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.usePeerVerification")]
         public object UsePeerVerification { get; set; }
 
         /// <summary>
@@ -103,7 +94,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

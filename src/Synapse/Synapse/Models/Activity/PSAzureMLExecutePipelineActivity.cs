@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets ID of the published Azure ML pipeline. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mlPipelineId")]
         public object MlPipelineId { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// published pipeline execution request. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.experimentName")]
         public object ExperimentName { get; set; }
 
         /// <summary>
@@ -61,7 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// request. Type: object with key value pairs (or Expression with
         /// resultType object).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mlPipelineParameters")]
         public object MlPipelineParameters { get; set; }
 
         /// <summary>
@@ -70,7 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// published pipeline execution request. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mlParentRunId")]
         public object MlParentRunId { get; set; }
 
         /// <summary>
@@ -79,7 +75,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// continueOnStepFailure property of the published pipeline execution
         /// request. Type: boolean (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.continueOnStepFailure")]
         public object ContinueOnStepFailure { get; set; }
 
         /// <summary>

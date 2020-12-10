@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the base URL of the REST service.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// connecting to the endpoint.The default value is true. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableServerCertificateValidation")]
         public object EnableServerCertificateValidation { get; set; }
 
         /// <summary>
@@ -55,33 +53,28 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// service. Possible values include: 'Anonymous', 'Basic',
         /// 'AadServicePrincipal', 'ManagedServiceIdentity'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the user name used in Basic authentication type.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password used in Basic authentication type.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the application's client ID used in
         /// AadServicePrincipal authentication type.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
         /// Gets or sets the application's key used in AadServicePrincipal
         /// authentication type.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -89,13 +82,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// in AadServicePrincipal authentication type under which your
         /// application resides.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
         /// Gets or sets the resource you are requesting authorization to use.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.aadResourceId")]
         public object AadResourceId { get; set; }
 
         /// <summary>
@@ -103,7 +94,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

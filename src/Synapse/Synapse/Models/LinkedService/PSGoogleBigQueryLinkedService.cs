@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the default BigQuery project to query against.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.project")]
         public object Project { get; set; }
 
         /// <summary>
         /// Gets or sets a comma-separated list of public BigQuery projects to
         /// access.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.additionalProjects")]
         public object AdditionalProjects { get; set; }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// combine BigQuery data with data from Google Drive. The default
         /// value is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.requestGoogleDriveScope")]
         public object RequestGoogleDriveScope { get; set; }
 
         /// <summary>
@@ -65,14 +62,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// self-hosted IR. Possible values include: 'ServiceAuthentication',
         /// 'UserAuthentication'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the refresh token obtained from Google for authorizing
         /// access to BigQuery for UserAuthentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.refreshToken")]
         public SecretBase RefreshToken { get; set; }
 
         /// <summary>
@@ -80,21 +75,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// acquire the refresh token. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret of the google application used to
         /// acquire the refresh token.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientSecret")]
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the service account email ID that is used for
         /// ServiceAuthentication and can only be used on self-hosted IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.email")]
         public object Email { get; set; }
 
         /// <summary>
@@ -102,7 +94,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// authenticate the service account email address and can only be used
         /// on self-hosted IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.keyFilePath")]
         public object KeyFilePath { get; set; }
 
         /// <summary>
@@ -111,7 +102,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// This property can only be set when using SSL on self-hosted IR. The
         /// default value is the cacerts.pem file installed with the IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trustedCertPath")]
         public object TrustedCertPath { get; set; }
 
         /// <summary>
@@ -119,7 +109,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// system trust store or from a specified PEM file. The default value
         /// is false.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useSystemTrustStore")]
         public object UseSystemTrustStore { get; set; }
 
         /// <summary>
@@ -127,7 +116,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// on-premises with Ifd. Type: string (or Expression with resultType
         /// string). Possible values include: 'Online', 'OnPremisesWithIfd'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.deploymentType")]
         public string DeploymentType { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// property is required for on-prem and not allowed for online. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hostName")]
         public string HostName { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// is required for on-prem and not allowed for online. Default is 443.
         /// Type: integer (or Expression with resultType integer), minimum: 0.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public string Port { get; set; }
 
         /// <summary>
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// is required for on-line and not allowed for on-prem. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.serviceUri")]
         public string ServiceUri { get; set; }
 
         /// <summary>
@@ -75,7 +71,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// are more than one Dynamics instances associated with the user.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.organizationName")]
         public string OrganizationName { get; set; }
 
         /// <summary>
@@ -86,20 +81,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// string). Possible values include: 'Office365', 'Ifd',
         /// 'AADServicePrincipal'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets user name to access the Dynamics instance. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets password to access the Dynamics instance.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -107,7 +99,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Directory used for Server-To-Server authentication. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
@@ -117,7 +108,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// (or Expression with resultType string). Possible values include:
         /// 'ServicePrincipalKey', 'ServicePrincipalCert'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalCredentialType")]
         public string ServicePrincipalCredentialType { get; set; }
 
         /// <summary>
@@ -129,7 +119,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// servicePrincipalCredential can only be
         /// AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalCredential")]
         public SecretBase ServicePrincipalCredential { get; set; }
 
         /// <summary>
@@ -137,7 +126,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

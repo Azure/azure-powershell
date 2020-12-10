@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets number of worker/data nodes in the cluster. Suggestion
         /// value: 4. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterSize")]
         public object ClusterSize { get; set; }
 
         /// <summary>
@@ -52,55 +51,47 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// active jobs in the cluster. The minimum value is 5 mins. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.timeToLive")]
         public object TimeToLive { get; set; }
 
         /// <summary>
         /// Gets or sets version of the HDInsight cluster.  Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.version")]
         public object Version { get; set; }
 
         /// <summary>
         /// Gets or sets azure Storage linked service to be used by the
         /// on-demand cluster for storing and processing data.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
         /// <summary>
         /// Gets or sets the customer’s subscription to host the cluster. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hostSubscriptionId")]
         public object HostSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the service principal id for the hostSubscriptionId.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
         /// Gets or sets the key for the service principal id.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
         /// Gets or sets the Tenant id/name to which the service principal
         /// belongs. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group where the cluster belongs. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterResourceGroup")]
         public object ClusterResourceGroup { get; set; }
 
         /// <summary>
@@ -108,34 +99,29 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// with timestamp. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterNamePrefix")]
         public object ClusterNamePrefix { get; set; }
 
         /// <summary>
         /// Gets or sets the username to access the cluster. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterUserName")]
         public object ClusterUserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password to access the cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterPassword")]
         public SecretBase ClusterPassword { get; set; }
 
         /// <summary>
         /// Gets or sets the username to SSH remotely connect to cluster’s node
         /// (for Linux). Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterSshUserName")]
         public object ClusterSshUserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password to SSH remotely connect cluster’s node
         /// (for Linux).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterSshPassword")]
         public SecretBase ClusterSshPassword { get; set; }
 
         /// <summary>
@@ -143,7 +129,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// HDInsight linked service so that the Data Factory service can
         /// register them on your behalf.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.additionalLinkedServiceNames")]
         public IList<LinkedServiceReference> AdditionalLinkedServiceNames { get; set; }
 
         /// <summary>
@@ -151,77 +136,66 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// HCatalog database. The on-demand HDInsight cluster is created by
         /// using the Azure SQL database as the metastore.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hcatalogLinkedServiceName")]
         public LinkedServiceReference HcatalogLinkedServiceName { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster type. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterType")]
         public object ClusterType { get; set; }
 
         /// <summary>
         /// Gets or sets the version of spark if the cluster type is 'spark'.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sparkVersion")]
         public object SparkVersion { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the core configuration parameters (as in
         /// core-site.xml) for the HDInsight cluster to be created.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.coreConfiguration")]
         public object CoreConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the HBase configuration parameters
         /// (hbase-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hBaseConfiguration")]
         public object HBaseConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the HDFS configuration parameters
         /// (hdfs-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hdfsConfiguration")]
         public object HdfsConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the hive configuration parameters
         /// (hive-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hiveConfiguration")]
         public object HiveConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the MapReduce configuration parameters
         /// (mapred-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.mapReduceConfiguration")]
         public object MapReduceConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Oozie configuration parameters
         /// (oozie-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.oozieConfiguration")]
         public object OozieConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Storm configuration parameters
         /// (storm-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.stormConfiguration")]
         public object StormConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Yarn configuration parameters
         /// (yarn-site.xml) for the HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.yarnConfiguration")]
         public object YarnConfiguration { get; set; }
 
         /// <summary>
@@ -229,28 +203,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of the head node for the HDInsight
         /// cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.headNodeSize")]
         public object HeadNodeSize { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of the data node for the HDInsight
         /// cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataNodeSize")]
         public object DataNodeSize { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of the Zoo Keeper node for the
         /// HDInsight cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.zookeeperNodeSize")]
         public object ZookeeperNodeSize { get; set; }
 
         /// <summary>
@@ -258,7 +228,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// once it's up. Please refer to
         /// https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&amp;amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptActions")]
         public IList<ScriptAction> ScriptActions { get; set; }
 
         /// <summary>
@@ -266,7 +235,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// should be joined after creation. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.virtualNetworkId")]
         public object VirtualNetworkId { get; set; }
 
         /// <summary>
@@ -274,7 +242,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// virtualNetworkId was specified, then this property is required.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.subnetName")]
         public object SubnetName { get; set; }
 
         /// <summary>

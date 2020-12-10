@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DataFlow Properties { get; set; }
 
-        [JsonProperty(PropertyName = "properties")]
         internal PSDataFlow PropertiesForCreate { get; set; }
     }
 }

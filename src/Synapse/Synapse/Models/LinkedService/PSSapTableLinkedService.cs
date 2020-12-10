@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets host name of the SAP instance where the table is
         /// located. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// located. (Usually a two-digit decimal number represented as a
         /// string.) Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.systemNumber")]
         public object SystemNumber { get; set; }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// table is located. (Usually a three-digit decimal number represented
         /// as a string) Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
@@ -64,42 +61,36 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// The default value is EN. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.language")]
         public object Language { get; set; }
 
         /// <summary>
         /// Gets or sets systemID of the SAP system where the table is located.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.systemId")]
         public object SystemId { get; set; }
 
         /// <summary>
         /// Gets or sets username to access the SAP server where the table is
         /// located. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password to access the SAP server where the table is
         /// located.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the hostname of the SAP Message Server. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.messageServer")]
         public object MessageServer { get; set; }
 
         /// <summary>
         /// Gets or sets the service name or port number of the Message Server.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.messageServerService")]
         public object MessageServerService { get; set; }
 
         /// <summary>
@@ -107,7 +98,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// where the table is located. Must be either 0 (off) or 1 (on). Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sncMode")]
         public object SncMode { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// the table is located. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sncMyName")]
         public object SncMyName { get; set; }
 
         /// <summary>
@@ -123,7 +112,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// server where the table is located. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sncPartnerName")]
         public object SncPartnerName { get; set; }
 
         /// <summary>
@@ -131,21 +119,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// server where the table is located. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sncLibraryPath")]
         public object SncLibraryPath { get; set; }
 
         /// <summary>
         /// Gets or sets SNC Quality of Protection. Allowed value include: 1,
         /// 2, 3, 8, 9. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sncQop")]
         public object SncQop { get; set; }
 
         /// <summary>
         /// Gets or sets the Logon Group for the SAP System. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.logonGroup")]
         public object LogonGroup { get; set; }
 
         /// <summary>
@@ -153,7 +138,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

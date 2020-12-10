@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Explorer command syntax. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.command")]
         public object Command { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// with resultType string), pattern:
         /// ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9]))..)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.commandTimeout")]
         public object CommandTimeout { get; set; }
 
         /// <summary>

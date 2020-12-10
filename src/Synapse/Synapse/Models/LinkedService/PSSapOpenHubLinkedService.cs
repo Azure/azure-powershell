@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// destination is located. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.server")]
         public object Server { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// represented as a string.) Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.systemNumber")]
         public object SystemNumber { get; set; }
 
         /// <summary>
@@ -59,7 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// number represented as a string) Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
@@ -67,7 +64,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// destination is located. The default value is EN. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.language")]
         public object Language { get; set; }
 
         /// <summary>
@@ -75,14 +71,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// hub destination is located. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password to access the SAP BW server where the open
         /// hub destination is located.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -90,7 +84,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

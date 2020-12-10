@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Expression with resultType string), pattern:
         /// ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.timeout")]
         public object Timeout { get; set; }
 
         /// <summary>
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// value is specified, 10 seconds will be used as the default. Type:
         /// integer (or Expression with resultType integer).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sleep")]
         public object Sleep { get; set; }
 
         /// <summary>
@@ -59,7 +57,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// be greater than or equal in size to the value specified. Type:
         /// integer (or Expression with resultType integer).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.minimumSize")]
         public object MinimumSize { get; set; }
 
         /// <summary>
@@ -68,13 +65,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// folder must be empty. Type: boolean (or Expression with resultType
         /// boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.childItems")]
         public object ChildItems { get; set; }
 
         /// <summary>
         /// Gets or sets validation activity dataset reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.dataset")]
         public DatasetReference Dataset { get; set; }
 
         /// <summary>

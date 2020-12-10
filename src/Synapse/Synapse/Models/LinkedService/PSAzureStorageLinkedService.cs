@@ -42,14 +42,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// sasUri property. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of accountKey in
         /// connection string.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.accountKey")]
         public AzureKeyVaultSecretReference AccountKey { get; set; }
 
         /// <summary>
@@ -57,14 +55,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// exclusive with connectionString property. Type: string,
         /// SecureString or AzureKeyVaultSecretReference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sasUri")]
         public object SasUri { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of sasToken in
         /// sas uri.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sasToken")]
         public AzureKeyVaultSecretReference SasToken { get; set; }
 
         /// <summary>
@@ -72,7 +68,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public string EncryptedCredential { get; set; }
     }
 }

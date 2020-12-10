@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the root path in 'sparkJobLinkedService' for all the
         /// job’s files. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.rootPath")]
         public object RootPath { get; set; }
 
         /// <summary>
@@ -49,47 +48,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// code/package to be executed. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.entryFilePath")]
         public object EntryFilePath { get; set; }
 
         /// <summary>
         /// Gets or sets the user-specified arguments to
         /// HDInsightSparkActivity.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.arguments")]
         public IList<object> Arguments { get; set; }
 
         /// <summary>
         /// Gets or sets debug info option. Possible values include: 'None',
         /// 'Always', 'Failure'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.getDebugInfo")]
         public string GetDebugInfo { get; set; }
 
         /// <summary>
         /// Gets or sets the storage linked service for uploading the entry
         /// file and dependencies, and for receiving logs.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sparkJobLinkedService")]
         public LinkedServiceReference SparkJobLinkedService { get; set; }
 
         /// <summary>
         /// Gets or sets the application's Java/Spark main class.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.className")]
         public string ClassName { get; set; }
 
         /// <summary>
         /// Gets or sets the user to impersonate that will execute the job.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.proxyUser")]
         public object ProxyUser { get; set; }
 
         /// <summary>
         /// Gets or sets spark configuration property.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.sparkConfig")]
         public IDictionary<string, object> SparkConfig { get; set; }
 
         /// <summary>

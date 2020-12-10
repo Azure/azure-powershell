@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the URL of the OData service endpoint. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
@@ -48,20 +47,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// service. Possible values include: 'Basic', 'Anonymous', 'Windows',
         /// 'AadServicePrincipal', 'ManagedServiceIdentity'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets user name of the OData service. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password of the OData service.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -69,7 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// ID) under which your application resides. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.tenant")]
         public object Tenant { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// registered in Azure Active Directory. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
         public object ServicePrincipalId { get; set; }
 
         /// <summary>
@@ -85,7 +79,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// to use Directory. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.aadResourceId")]
         public object AadResourceId { get; set; }
 
         /// <summary>
@@ -93,7 +86,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// service principal. Possible values include: 'ServicePrincipalKey',
         /// 'ServicePrincipalCert'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.aadServicePrincipalCredentialType")]
         public string AadServicePrincipalCredentialType { get; set; }
 
         /// <summary>
@@ -101,7 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Azure Active Directory. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey { get; set; }
 
         /// <summary>
@@ -109,7 +100,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// application registered in Azure Active Directory. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCert")]
         public SecretBase ServicePrincipalEmbeddedCert { get; set; }
 
         /// <summary>
@@ -118,7 +108,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// authentication. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCertPassword")]
         public SecretBase ServicePrincipalEmbeddedCertPassword { get; set; }
 
         /// <summary>
@@ -126,7 +115,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

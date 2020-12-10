@@ -30,16 +30,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSLinkedService() { }
 
-        [JsonProperty(PropertyName = "connectVia")]
         public PSIntegrationRuntimeReference ConnectVia { get; set; }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
 
-        [JsonProperty(PropertyName = "annotations")]
         public IList<object> Annotations { get; set; }
 
         public IDictionary<string, object> AdditionalProperties { get; set; }

@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the relative URL to the resource that the RESTful API
         /// provides. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.relativeUrl")]
         public object RelativeUrl { get; set; }
 
         /// <summary>
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// default is GET. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.requestMethod")]
         public object RequestMethod { get; set; }
 
         /// <summary>
@@ -56,21 +54,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// requestMethod is POST. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.requestBody")]
         public object RequestBody { get; set; }
 
         /// <summary>
         /// Gets or sets the additional HTTP headers in the request to the
         /// RESTful API. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.additionalHeaders")]
         public object AdditionalHeaders { get; set; }
 
         /// <summary>
         /// Gets or sets the pagination rules to compose next page requests.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.paginationRules")]
         public object PaginationRules { get; set; }
 
         /// <summary>

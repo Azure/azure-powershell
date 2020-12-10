@@ -39,14 +39,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets the location of the Binary storage.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.location")]
         public PSDatasetLocation Location { get; set; }
 
         /// <summary>
         /// Gets or sets the data compression method used for the binary
         /// dataset.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.compression")]
         public PSDatasetCompression Compression { get; set; }
 
         /// <summary>

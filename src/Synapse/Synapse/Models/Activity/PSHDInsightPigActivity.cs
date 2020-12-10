@@ -40,40 +40,34 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets storage linked service references.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.storageLinkedServices")]
         public IList<LinkedServiceReference> StorageLinkedServices { get; set; }
 
         /// <summary>
         /// Gets or sets user specified arguments to HDInsightActivity. Type:
         /// array (or Expression with resultType array).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.arguments")]
         public object Arguments { get; set; }
 
         /// <summary>
         /// Gets or sets debug info option. Possible values include: 'None',
         /// 'Always', 'Failure'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.getDebugInfo")]
         public string GetDebugInfo { get; set; }
 
         /// <summary>
         /// Gets or sets script path. Type: string (or Expression with
         /// resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptPath")]
         public object ScriptPath { get; set; }
 
         /// <summary>
         /// Gets or sets script linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.scriptLinkedService")]
         public LinkedServiceReference ScriptLinkedService { get; set; }
 
         /// <summary>
         /// Gets or sets allows user to specify defines for Pig job request.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.defines")]
         public IDictionary<string, object> Defines { get; set; }
 
         /// <summary>

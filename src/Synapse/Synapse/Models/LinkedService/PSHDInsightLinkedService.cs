@@ -40,33 +40,28 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets hDInsight cluster URI. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clusterUri")]
         public object ClusterUri { get; set; }
 
         /// <summary>
         /// Gets or sets hDInsight cluster user name. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets hDInsight cluster password.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Storage linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
         /// <summary>
         /// Gets or sets a reference to the Azure SQL linked service that
         /// points to the HCatalog database.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.hcatalogLinkedServiceName")]
         public LinkedServiceReference HcatalogLinkedServiceName { get; set; }
 
         /// <summary>
@@ -74,14 +69,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
         /// Gets or sets specify if the HDInsight is created with ESP
         /// (Enterprise Security Package). Type: Boolean.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.isEspEnabled")]
         public object IsEspEnabled { get; set; }
 
         /// <summary>
@@ -89,7 +82,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// HDInsight is ADLS Gen2. Type: string (or Expression with resultType
         /// string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.fileSystem")]
         public object FileSystem { get; set; }
 
         /// <summary>

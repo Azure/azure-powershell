@@ -36,13 +36,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets linked service reference.
         /// </summary>
-        [JsonProperty(PropertyName = "linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
         /// <summary>
         /// Gets or sets activity policy.
         /// </summary>
-        [JsonProperty(PropertyName = "policy")]
         public PSActivityPolicy Policy { get; set; }
 
         /// <summary>

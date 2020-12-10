@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public Trigger Properties { get; set; }
 
-        [JsonProperty(PropertyName = "properties")]
         internal PSTrigger PropertiesForCreate { get; set; }
     }
 }

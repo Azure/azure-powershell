@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets duration in seconds.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.waitTimeInSeconds")]
         public int WaitTimeInSeconds { get; set; }
 
         /// <summary>

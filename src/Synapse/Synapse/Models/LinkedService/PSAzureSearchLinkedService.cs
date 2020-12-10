@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets URL for Azure Search service. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
         /// Gets or sets admin Key for Azure Search service
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.key")]
         public SecretBase Key { get; set; }
 
         /// <summary>
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

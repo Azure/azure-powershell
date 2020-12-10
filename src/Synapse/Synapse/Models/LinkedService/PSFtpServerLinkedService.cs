@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets host name of the FTP server. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
@@ -48,27 +47,23 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// for client connections. Default value is 21. Type: integer (or
         /// Expression with resultType integer), minimum: 0.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.port")]
         public object Port { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication type to be used to connect to the
         /// FTP server. Possible values include: 'Basic', 'Anonymous'
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public string AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets username to logon the FTP server. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }
 
         /// <summary>
         /// Gets or sets password to logon the FTP server.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -76,7 +71,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// channel. Default value is true. Type: boolean (or Expression with
         /// resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableSsl")]
         public object EnableSsl { get; set; }
 
         /// <summary>
@@ -92,7 +85,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// connect over SSL/TLS channel. Default value is true. Type: boolean
         /// (or Expression with resultType boolean).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.enableServerCertificateValidation")]
         public object EnableServerCertificateValidation { get; set; }
 
         /// <summary>

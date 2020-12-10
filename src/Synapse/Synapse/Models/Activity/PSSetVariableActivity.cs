@@ -39,13 +39,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets or sets name of the variable whose value needs to be set.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.variableName")]
         public string VariableName { get; set; }
 
         /// <summary>
         /// Gets or sets value to be set. Could be a static value or Expression
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.value")]
         public object Value { get; set; }
 
         /// <summary>

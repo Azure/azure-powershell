@@ -40,34 +40,29 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the URL of the Square instance. (i.e.
         /// mystore.mysquare.com)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.host")]
         public object Host { get; set; }
 
         /// <summary>
         /// Gets or sets the client ID associated with your Square application.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientId")]
         public object ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client secret associated with your Square
         /// application.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.clientSecret")]
         public SecretBase ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the redirect URL assigned in the Square application
         /// dashboard. (i.e. http://localhost:2500)
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.redirectUri")]
         public object RedirectUri { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data source endpoints are
         /// encrypted using HTTPS. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useEncryptedEndpoints")]
         public object UseEncryptedEndpoints { get; set; }
 
         /// <summary>
@@ -75,14 +70,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// server's certificate to match the host name of the server when
         /// connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useHostVerification")]
         public object UseHostVerification { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to verify the identity of the server
         /// when connecting over SSL. The default value is true.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.usePeerVerification")]
         public object UsePeerVerification { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Credentials are encrypted using the integration runtime credential
         /// manager. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>

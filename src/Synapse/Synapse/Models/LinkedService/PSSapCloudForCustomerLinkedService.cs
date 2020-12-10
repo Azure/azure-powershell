@@ -43,20 +43,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// '[https://[tenantname].crm.ondemand.com/sap/c4c/odata/v1]'. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.url")]
         public object Url { get; set; }
 
         /// <summary>
         /// Gets or sets the username for Basic authentication. Type: string
         /// (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.username")]
         public object Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password for Basic authentication.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.password")]
         public SecretBase Password { get; set; }
 
         /// <summary>
@@ -65,7 +62,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// manager. Either encryptedCredential or username/password must be
         /// provided. Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public object EncryptedCredential { get; set; }
 
         /// <summary>
