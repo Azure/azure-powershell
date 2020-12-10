@@ -300,20 +300,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        /// <summary>
-        /// Run a new Vulnerability Assessment scan
-        /// </summary>
         public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
-        {
-             _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
-          
-        }
-        internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
         {
             try
             {
-                var response =  _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, scanId);
-                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, response.Result.Body);
+                _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+          
+        }
+        internal async Task<PSVulnerabilityAssessmentScanRecordModel> GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
+        {
+            try
+            {
+                var response = await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, scanId);
+                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, response.Body);
             }
             catch (ErrorContractException ex)
             {
@@ -321,12 +325,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        internal List<PSVulnerabilityAssessmentScanRecordModel> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
+        internal async Task<List<PSVulnerabilityAssessmentScanRecordModel>> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
             try
             {
-                var response = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
-                return response.Result.Body.Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, scanRecord)).ToList();
+                var response = await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
+                return response.Body.Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, scanRecord)).ToList();
             }
             catch (ErrorContractException ex)
             {
