@@ -1,0 +1,43 @@
+{
+  "Get-AzStreamAnalyticsClusterStreamingJob+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-4i63n7/listStreamingJobs?api-version=2020-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-4i63n7/listStreamingJobs?api-version=2020-03-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "bc6d0c17-e1ee-483d-b1e9-c74a002bb7bf" ],
+        "CommandName": [ "Get-AzStreamAnalyticsClusterStreamingJob" ],
+        "FullCommandName": [ "Get-AzStreamAnalyticsClusterStreamingJob_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "bc6d0c17-e1ee-483d-b1e9-c74a002bb7bf" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-correlation-request-id": [ "7cd4694e-d72d-47e5-b99d-708f1e976f00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201210T014952Z:7cd4694e-d72d-47e5-b99d-708f1e976f00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 10 Dec 2020 01:49:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "445" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/streamingjobs/job-hnkl5r\",\"jobState\":\"Created\",\"streamingUnits\":3},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/streamingjobs/job-79123m\",\"jobState\":\"Created\",\"streamingUnits\":3}],\"nextLink\":null}"
+    }
+  }
+}
