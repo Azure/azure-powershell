@@ -281,8 +281,9 @@
     </Type>
     <Type ID="35" Check="0">
       <Name>Binary files</Name>
+      <Extensions>
         <Ext Check="1">.cspkg</Ext>
-      <Extensions />
+      </Extensions>
     </Type>
   </PckFileTypes>
 </xmldata>
