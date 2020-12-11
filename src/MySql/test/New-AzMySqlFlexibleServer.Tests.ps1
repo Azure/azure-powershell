@@ -17,7 +17,10 @@ $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
 If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
-    If (!(Get-Module -ListAvailable -Name Az.Network)) { Install-Module -Name Az.Network }
+    If (!(Get-Module -ListAvailable -Name Az.Network)) { 
+        Write-Host "Installing the network module to resolve any dependency issue."
+        Install-Module -Name Az.Network 
+    }
     Import-Module -Name Az.Network
 }
 
