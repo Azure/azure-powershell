@@ -43,10 +43,13 @@ function setupEnv() {
     $FlexibleSku = "Standard_B1ms"
     $env.Add("Sku", $Sku)
     $env.Add("FlexibleSku", $FlexibleSku)
+<<<<<<< HEAD
     # Create the test Vnet
     write-host "Deploy Vnet template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
+=======
+>>>>>>> cbe554e98f94b399a80e365ee778fba7e0afe8db
 
     write-host (Get-AzContext | Out-String)
 

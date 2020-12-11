@@ -13,6 +13,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Creates a new MySQL flexible server
+.Description
+Creates a new MySQL flexible server
+#>
+
 $DEFAULT_DB_NAME = 'flexibleserverdb'
 $DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
@@ -25,116 +32,87 @@ function New-AzMySqlFlexibleServer {
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new server.')]
     param(
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the server.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${Name},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         ${SubscriptionId},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${Location},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${AdministratorUserName},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The password of the administrator. Minimum 8 characters and maximum 128 characters. Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Security.SecureString]
         [ValidateNotNullOrEmpty()]
         ${AdministratorLoginPassword},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2ds_v4.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${Sku},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Compute tier of the server. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${SkuTier},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
         ${BackupRetentionDay},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
         ${StorageInMb},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Server version.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion])]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion]
         ${Version},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
         [System.String]
         ${SubnetPrefix},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The Name or Id of an existing Subnet or name of a new one to create. Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
         [System.String]
         ${Subnet},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/16.')]
         [System.String]
         ${VnetPrefix},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The Name or Id of an existing virtual network or name of a new one to create. The name must be between 2 to 64 characters. The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.')]
         [System.String]
         ${Vnet},
 
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = "
             Determines the public access. Enter single or range of IP addresses to be 
             included in the allowed list of IPs. IP address ranges must be dash-
@@ -145,8 +123,6 @@ function New-AzMySqlFlexibleServer {
         [System.String]
         ${PublicAccess},
 
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = 'Enable or disable high availability feature.  Default value is Disabled. Default: Disabled.')]
         ${HighAvailability},
 

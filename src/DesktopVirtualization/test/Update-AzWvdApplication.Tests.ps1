@@ -19,7 +19,7 @@ Describe 'Update-AzWvdApplication' {
                             -Location $env.Location `
                             -FriendlyName 'fri' `
                             -Description 'des' `
-                            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1' `
+                            -HostPoolArmPath $env.HostPoolArmPath `
                             -ApplicationGroupType 'RemoteApp'
         
         $application = New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
@@ -70,5 +70,83 @@ Describe 'Update-AzWvdApplication' {
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -Name 'ApplicationGroupPowershell1'
+    }
+
+    It 'Update-MsixApplication' {
+        $enc = [system.Text.Encoding]::UTF8
+        $string1 = "some image"
+        $data1 = $enc.GetBytes($string1) 
+
+        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+
+        $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\SingleMsix.vhd' `
+            -IsActive `
+            -IsRegularRegistration `
+            -LastUpdated '0001-01-01T00:00:00' `
+            -PackageApplication $apps `
+            -PackageDependency $deps `
+            -PackageFamilyName 'MsixUnitTest_FamilyName' `
+            -PackageName 'MsixUnitTest_Name' `
+            -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
+            -Version '0.0.18838.722' 
+
+        # create MSIX App 
+
+        $application = New-AzWvdApplication -GroupName $env.RemoteApplicationGroup `
+            -Name 'UnitTest-MSIX-Application' `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -ApplicationType 1 `
+            -MsixPackageApplicationId 'MsixTest_Application_Id' `
+            -MsixPackageFamilyName 'MsixUnitTest_FamilyName'`
+            -Description 'Unit Test MSIX Application' `
+            -FriendlyName 'friendlyname'`
+            -IconIndex 0  `
+            -IconPath 'c:\unittest_img.png' `
+            -CommandLineSetting 0
+
+        $application = Get-AzWvdApplication -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -GroupName $env.RemoteApplicationGroup `
+            -Name 'UnitTest-MSIX-Application'
+
+        $application.Name | Should -Be 'datr-hp2-RAG/UnitTest-MSIX-Application'
+        $application.FriendlyName | Should -Be 'friendlyname'
+        $application.Description | Should -Be 'Unit Test MSIX Application'
+        $application.IconIndex | Should -Be 0
+        $application.IconPath | Should -Be 'c:\unittest_img.png'
+        $application.ShowInPortal | Should -Be $true
+
+        #Update application 
+        $application = Update-AzWvdApplication  -GroupName $env.RemoteApplicationGroup `
+            -Name 'UnitTest-MSIX-Application' `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId `
+            -FriendlyName 'Updated-FriendlyName' `
+            -Description 'Updated-Description' `
+            -IconIndex 1 `
+            -IconPath 'C:\windows\system32\Updated.exe' 
+                          
+        $application.Name | Should -Be 'datr-hp2-RAG/UnitTest-MSIX-Application' 
+        $application.FriendlyName | Should -Be 'Updated-FriendlyName'
+        $application.Description | Should -Be 'Updated-Description'
+        $application.IconIndex | Should -Be 1
+        $application.IconPath | Should -Be 'C:\windows\system32\Updated.exe'
+
+
+        $application = Remove-AzWvdApplication -GroupName $env.RemoteApplicationGroup `
+            -Name 'UnitTest-MSIX-Application' `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
+
+        $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
+            -HostPoolName $env.HostPool `
+            -ResourceGroupName $env.ResourceGroup `
+            -SubscriptionId $env.SubscriptionId 
     }
 }
