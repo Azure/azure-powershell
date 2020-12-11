@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for SsoSecretType.</summary>
+    /// <summary>The type of single sign on Secret Type.</summary>
     public partial class SsoSecretTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

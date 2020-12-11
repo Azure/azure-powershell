@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for SessionState.</summary>
+    /// <summary>State of user session.</summary>
     public partial class SessionStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
