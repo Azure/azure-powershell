@@ -204,6 +204,12 @@ directive:
       parameter-name: Name
       alias: ConfigurationName
   - where:
+      subject: ^CapabilityProperty$
+      parameter-name: LocationName
+    set:
+      parameter-name: Location
+      alias: LocationName
+  - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server
     set:

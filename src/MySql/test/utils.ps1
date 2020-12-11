@@ -14,13 +14,14 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $env.Add("serverName2", "mysql-test-100-2")
+    $env.Add("serverName3", "mysql-test-100-3")
     $env.Add("restoreName", "mysql-test-100-restore")
     $env.Add("restoreName2", "mysql-test-100-restore-2")
     $env.Add("replicaName", "mysql-test-100-replica")
     $env.Add("firewallRuleName", "mysqlrule01")
     $env.Add("firewallRuleName2", "mysqlrule02")
     $env.Add("databaseName", "mysqldb")
-    $env.Add("VNetName", "mysql-test-vnet")
+    $env.Add("VNetName", "mysqlvnet")
     $env.Add("SubnetName", "mysql-test-subnet")
 
     # Create the test group
@@ -29,7 +30,7 @@ function setupEnv() {
     $location = "westus2"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
-    # New-AzResourceGroup -Name $resourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroup -Location $location
 
     write-host "Deploy Vnet template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
@@ -44,16 +45,16 @@ function setupEnv() {
     $env.Add("FlexibleSku", $FlexibleSku)
     # Create the test Vnet
     write-host "Deploy Vnet template"
-    # New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
 
     write-host (Get-AzContext | Out-String)
 
-    # write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
-    # New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
+    write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
+    New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
 
-    # write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
-    # New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
+    write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
+    New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -65,5 +66,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
     write-host "Clean resources you create for testing."
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
