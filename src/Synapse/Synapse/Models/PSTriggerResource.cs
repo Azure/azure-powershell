@@ -17,7 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string WorkspaceName { get; set; }
 
         public Trigger Properties { get; set; }
-
-        internal PSTrigger PropertiesForCreate { get; set; }
     }
 }

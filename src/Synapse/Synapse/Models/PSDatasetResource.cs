@@ -17,7 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string WorkspaceName { get; set; }
 
         public Dataset Properties { get; set; }
-
-        internal PSDataset PropertiesForCreate { get; set; }
     }
 }

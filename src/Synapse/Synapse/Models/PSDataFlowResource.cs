@@ -17,7 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string WorkspaceName { get; set; }
 
         public DataFlow Properties { get; set; }
-
-        internal PSDataFlow PropertiesForCreate { get; set; }
     }
 }

@@ -17,7 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string WorkspaceName { get; set; }
 
         public LinkedService Properties { get; set; }
-
-        internal PSLinkedService PropertiesForCreate { get; set; }
     }
 }

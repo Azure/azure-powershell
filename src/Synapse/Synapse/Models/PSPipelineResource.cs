@@ -47,8 +47,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public IList<Activity> Activities { get; set; }
 
-        internal IList<PSActivity> ActivitiesForCreate { get; set; }
-
         public IDictionary<string, PSVariableSpecification> Variables { get; set; }
 
         public int? Concurrency { get; set; }
