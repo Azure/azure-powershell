@@ -12,11 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzPostgreSqlFlexibleServerLocationBasedCapability' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $Result = Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+            $Result.Length | Should -BeGreaterThan 0 
+        } | Should -Not -Throw
     }
 }

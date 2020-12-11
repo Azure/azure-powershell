@@ -8,13 +8,13 @@ schema: 2.0.0
 # Get-AzPostgreSqlFlexibleServerLocationBasedCapability
 
 ## SYNOPSIS
-
+Get the available SKU information for the location
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzPostgreSqlFlexibleServerLocationBasedCapability -LocationName <String> [-SubscriptionId <String[]>]
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -25,32 +25,40 @@ Get-AzPostgreSqlFlexibleServerLocationBasedCapability -InputObject <IPostgreSqlI
 ```
 
 ## DESCRIPTION
-
+Get the available SKU information for the location
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get location capabilities by location name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
 
-{{ Add output here }}
+SKU              Tier            Memory vCore
+---              ----            ------ -----
+Standard_B1ms    Burstable         2048     1
+Standard_B2s     Burstable         2048     2
+Standard_D2s_v3  GeneralPurpose    4096     2
+Standard_D4s_v3  GeneralPurpose    4096     4
+Standard_D8s_v3  GeneralPurpose    4096     8
+Standard_D16s_v3 GeneralPurpose    4096    16
+Standard_D32s_v3 GeneralPurpose    4096    32
+Standard_D48s_v3 GeneralPurpose    4096    48
+Standard_D64s_v3 GeneralPurpose    4096    64
+Standard_E2s_v3  MemoryOptimized   8192     2
+Standard_E4s_v3  MemoryOptimized   8192     4
+Standard_E8s_v3  MemoryOptimized   8192     8
+Standard_E16s_v3 MemoryOptimized   8192    16
+Standard_E32s_v3 MemoryOptimized   8192    32
+Standard_E48s_v3 MemoryOptimized   8192    48
+Standard_E64s_v3 MemoryOptimized   6912    64
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet shows basic sku information of the provided location.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -65,6 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -79,8 +88,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LocationName
-
+### -Location
+The name of the location.
 
 ```yaml
 Type: System.String
@@ -95,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -129,7 +138,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: 
+INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

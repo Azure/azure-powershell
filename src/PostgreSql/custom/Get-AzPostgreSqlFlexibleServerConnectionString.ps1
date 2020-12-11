@@ -12,6 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Get the connection string according to client connection provider.
+.Description
+Get the connection string according to client connection provider.
+#>
 function Get-AzPostgreSqlFlexibleServerConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
@@ -34,14 +40,9 @@ function Get-AzPostgreSqlFlexibleServerConnectionString {
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer]
-        ${InputObject},
-
         [Parameter(Mandatory, HelpMessage = 'Client connection provider.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
-        [Validateset('ADO.NET', 'C++', 'JDBC', 'Node.js', 'PHP', 'psql', 'Python', 'Ruby', 'WebApp')]
+        [Validateset('ADO.NET', 'C++', 'JDBC', 'Node.js', 'PHP', 'psql', 'Python', 'Ruby')]
         [System.String]
         ${Client},
 
@@ -92,49 +93,21 @@ function Get-AzPostgreSqlFlexibleServerConnectionString {
     )
 
     process {
-        function GetConnectionStringSslPart {
-            param(
-                [Parameter()]
-                [string]
-                ${Client},
-                [Parameter()]
-                [string]
-                ${SslEnforcement}
-            )
-            $SslEnforcementTemplateMap = @{
-            'ADO.NET' = 'Ssl Mode=Require;'
-            'C++' = 'sslmode=require'
-            'JDBC' = 'sslmode=require'
-            'Node.js' = 'sslmode=require'
-            'PHP' = 'sslmode=require'
-            'psql' = 'sslmode=require'
-            'Python' = "sslmode='true'"
-            'Ruby' = 'sslmode=require'
-            'WebApp' = ''
-           }
-           if ($SslEnforcement -eq 'Enabled') {
-               return $SslEnforcementTemplateMap[$Client]
-           }
-           return ''
-        }
-
-        $clientConnection = $PSBoundParameters['Client']
         $null = $PSBoundParameters.Remove('Client')
         $postgreSql = Az.PostgreSql\Get-AzPostgreSqlFlexibleServer @PSBoundParameters
         $DBHost = $postgreSql.FullyQualifiedDomainName
         $DBPort = 5432
         $adminName = $postgreSql.AdministratorLogin
-        $SslConnectionString = GetConnectionStringSslPart -Client $clientConnection -SslEnforcement $postgreSql.SslEnforcement
+        
         $ConnectionStringMap = @{
-            'ADO.NET' = "Server=${DBHost};Database={your_database};Port=${DBPort};User Id=${adminName};Password={your_password};$SslConnectionString"
-            'C++' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password} $SslConnectionString"
-            'JDBC' = "jdbc:postgresql://${DBHost}:${DBPort}/{your_database}?user=${adminName}&password={your_password}&$SslConnectionString"
-            'Node.js' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password} $SslConnectionString"
-            'PHP' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password} $SslConnectionString"
-            'psql' = "psql ""host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password} $SslConnectionString"""
-            'Python' = "dbname='{your_database}' user='${adminName}' host='${DBHost}' password='{your_password}' port='${DBPort}' $SslConnectionString"
-            'Ruby' = "host=${DBHost}; dbname={your_database} user=${adminName} password={your_password} port=${DBPort} $SslConnectionString"
-            'WebApp' = "Database={your_database}; Data Source=${DBHost}; User Id=${adminName}; Password={your_password}$SslConnectionString"
+            'ADO.NET' = "Server=${DBHost};Database={your_database};Port=${DBPort};User Id=${adminName};Password={your_password};"
+            'C++' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password}"
+            'JDBC' = "jdbc:postgresql://${DBHost}:${DBPort}/{your_database}?user=${adminName}&password={your_password}&"
+            'Node.js' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password}"
+            'PHP' = "host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password}"
+            'psql' = "psql ""host=${DBHost} port=${DBPort} dbname={your_database} user=${adminName} password={your_password}"""
+            'Python' = "dbname='{your_database}' user='${adminName}' host='${DBHost}' password='{your_password}' port='${DBPort}'"
+            'Ruby' = "host=${DBHost}; dbname={your_database} user=${adminName} password={your_password} port=${DBPort}"
         }
         return $ConnectionStringMap[$Client]
     }

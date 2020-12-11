@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PostgreSql
-Module Guid: 7f3ddd45-b61b-4428-b772-fa17334d12a1
+Module Guid: 6dd1550d-918b-47a6-98f0-fc7356b4bd91
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.postgresql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -33,7 +33,7 @@ Get the connection string according to client connection provider.
 List all the firewall rules in a given server.
 
 ### [Get-AzPostgreSqlFlexibleServerLocationBasedCapability](Get-AzPostgreSqlFlexibleServerLocationBasedCapability.md)
-
+Get the available SKU information for the location
 
 ### [Get-AzPostgreSqlReplica](Get-AzPostgreSqlReplica.md)
 List all the replicas for a given server.

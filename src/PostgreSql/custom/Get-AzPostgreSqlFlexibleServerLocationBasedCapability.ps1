@@ -1,3 +1,24 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Get the available SKU information for the location
+.Description
+Get the available SKU information for the location
+#>
+
 function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
@@ -6,7 +27,7 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
         [System.String]
         # The name of the location.
-        ${LocationName},
+        ${Location},
     
         [Parameter(ParameterSetName='Get')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -72,7 +93,34 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
         
     process {
         try {
-            Az.PostgreSql.internal\Get-AzPostgreSqlFlexibleServerLocationBasedCapability @PSBoundParameters
+            $PSBoundParameters.LocationName = $PSBoundParameters['Location']
+            $null = $PSBoundParameters.Remove('Location')
+
+            $Result = Az.PostgreSql.internal\Get-AzPostgreSqlFlexibleServerLocationBasedCapability @PSBoundParameters
+            Write-Host "Please refer to https://aka.ms/postgresql-pricing for pricing details"
+            $SkusTiers = $Result[0].SupportedFlexibleServerEdition
+            $TableResult = @()
+
+            ForEach ($Skus in $SkusTiers) {
+                $TierName = $Skus.Name
+                Try {
+                    $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
+                    
+                    ForEach ($Key in $Keys) {
+                        $NewEntry = @{}
+                        $NewEntry.SKU = $Key.Name
+                        $NewEntry.Tier = $TierName
+                        $NewEntry.vCore = $Key.Vcore
+                        $NewEntry.Memory = $Key.SupportedMemoryPerVcoreMb
+                        $TableResult += $NewEntry
+                    }
+                }
+                Catch {
+                    Throw "No SKU info for this location"
+                }
+            }
+            $TableResult | ForEach-Object {[PSCustomObject]$_} | Format-Table 'SKU', 'Tier', 'Memory', 'vCore'  -AutoSize
+
         } catch {
             throw
         }
