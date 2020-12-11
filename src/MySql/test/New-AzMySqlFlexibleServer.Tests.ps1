@@ -15,8 +15,9 @@ $DEFAULT_DB_NAME = 'flexibleserverdb'
 $DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
+
+If (!(Get-Module -ListAvailable -Name Az.Network)) { Install-Module -Name Az.Network }
 Import-Module -Name Az.Network
-Import-Module -Name Az.Resources
 
 Describe 'New-AzMySqlFlexibleServer' {
     function WaitServerDelete(){
