@@ -1,12 +1,12 @@
 {
-  "Get-AzDigitalTwinsEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31+1": {
+  "Get-AzDigitalTwinsEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints?api-version=2020-10-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints?api-version=2020-10-31",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "4463246e-9849-4e6a-99de-b3068637744a" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "8ac24bdc-34cb-4bba-8d21-6172bd7b0068" ],
         "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
         "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,29 +23,29 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-request-id": [ "abe1cc17-e7be-4f78-bcfe-f6e1d67d615f" ],
-        "x-ms-correlation-request-id": [ "abe1cc17-e7be-4f78-bcfe-f6e1d67d615f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055439Z:abe1cc17-e7be-4f78-bcfe-f6e1d67d615f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-request-id": [ "64ebc188-0e3c-40a8-840f-e00132c0cf46" ],
+        "x-ms-correlation-request-id": [ "64ebc188-0e3c-40a8-840f-e00132c0cf46" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T073436Z:64ebc188-0e3c-40a8-840f-e00132c0cf46" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 25 Oct 2020 05:54:39 GMT" ]
+        "Date": [ "Fri, 11 Dec 2020 07:34:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1609" ],
+        "Content-Length": [ "1610" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly\",\"name\":\"eventHubEndpointNameogkdly\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:22.069028+00:00\"}},{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/ServiceBusEndpointNamepn9rkm\",\"name\":\"ServiceBusEndpointNamepn9rkm\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:33.6299792+00:00\"}},{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5\",\"name\":\"eventGridEndpointNamewndrh5\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://###\",\"accessKey1\":\"***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:53:27.6174696+00:00\"}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp\",\"name\":\"eventHubEndpointNames13nvp\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:33:49.7018697+00:00\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventGridEndpointName0wvrmb\",\"name\":\"eventGridEndpointName0wvrmb\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://###\",\"accessKey1\":\"***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:34:11.3987245+00:00\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/ServiceBusEndpointNameri2eu8\",\"name\":\"ServiceBusEndpointNameri2eu8\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:34:22.6975965+00:00\"}}]}"
     }
   },
-  "Get-AzDigitalTwinsEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31+1": {
+  "Get-AzDigitalTwinsEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "adec19ea-5f31-45df-9893-c08251a21b75" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "6c461786-68dc-4159-94c5-a5d6104ba112" ],
         "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
         "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,29 +62,29 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-request-id": [ "4c70fd35-3234-4373-a6e5-c8dcf5bbc038" ],
-        "x-ms-correlation-request-id": [ "4c70fd35-3234-4373-a6e5-c8dcf5bbc038" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055440Z:4c70fd35-3234-4373-a6e5-c8dcf5bbc038" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-request-id": [ "32f8d108-8d9b-4d81-a37f-7a13a501a56b" ],
+        "x-ms-correlation-request-id": [ "32f8d108-8d9b-4d81-a37f-7a13a501a56b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T073436Z:32f8d108-8d9b-4d81-a37f-7a13a501a56b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 25 Oct 2020 05:54:39 GMT" ]
+        "Date": [ "Fri, 11 Dec 2020 07:34:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "549" ],
+        "Content-Length": [ "550" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly\",\"name\":\"eventHubEndpointNameogkdly\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:22.069028+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp\",\"name\":\"eventHubEndpointNames13nvp\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:33:49.7018697+00:00\"}}"
     }
   },
-  "Get-AzDigitalTwinsEndpoint+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31+1": {
+  "Get-AzDigitalTwinsEndpoint+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "e738ee0e-ae0e-4fec-9c45-913aedf9735a" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "23282fe7-f62c-48f8-ba97-32f71a17142a" ],
         "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
         "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -101,29 +101,29 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-request-id": [ "acb16caa-fec3-4b7c-811c-7eb02f3fdee0" ],
-        "x-ms-correlation-request-id": [ "acb16caa-fec3-4b7c-811c-7eb02f3fdee0" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055440Z:acb16caa-fec3-4b7c-811c-7eb02f3fdee0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-request-id": [ "a909a908-42d0-40cb-b4a7-4395efdc5b19" ],
+        "x-ms-correlation-request-id": [ "a909a908-42d0-40cb-b4a7-4395efdc5b19" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T073437Z:a909a908-42d0-40cb-b4a7-4395efdc5b19" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 25 Oct 2020 05:54:40 GMT" ]
+        "Date": [ "Fri, 11 Dec 2020 07:34:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "549" ],
+        "Content-Length": [ "550" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly\",\"name\":\"eventHubEndpointNameogkdly\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:22.069028+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp\",\"name\":\"eventHubEndpointNames13nvp\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:33:49.7018697+00:00\"}}"
     }
   },
-  "Get-AzDigitalTwinsEndpoint+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31+2": {
+  "Get-AzDigitalTwinsEndpoint+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp?api-version=2020-10-31",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "b2362e04-87df-4657-bf2a-7c1c8afe3e4a" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "6ba7ef2f-762d-4680-b395-144a601247da" ],
         "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
         "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -140,19 +140,19 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-request-id": [ "31dcad55-75ce-4c6b-bccd-cb4e68119be6" ],
-        "x-ms-correlation-request-id": [ "31dcad55-75ce-4c6b-bccd-cb4e68119be6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055440Z:31dcad55-75ce-4c6b-bccd-cb4e68119be6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-request-id": [ "29808848-d84c-483f-8bc2-1ab5605cdd3c" ],
+        "x-ms-correlation-request-id": [ "29808848-d84c-483f-8bc2-1ab5605cdd3c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T073437Z:29808848-d84c-483f-8bc2-1ab5605cdd3c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 25 Oct 2020 05:54:40 GMT" ]
+        "Date": [ "Fri, 11 Dec 2020 07:34:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "549" ],
+        "Content-Length": [ "550" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly\",\"name\":\"eventHubEndpointNameogkdly\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:22.069028+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/youridigitaltwins-rge4n8kg/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinsbwxlqo/endpoints/eventHubEndpointNames13nvp\",\"name\":\"eventHubEndpointNames13nvp\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-12-11T07:33:49.7018697+00:00\"}}"
     }
   }
 }
