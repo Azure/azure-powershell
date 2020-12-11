@@ -13,8 +13,8 @@ while(-not $mockingPath) {
 $DELEGATION_SERVICE_NAME = "Microsoft.DBforPostgreSQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
-Import-Module -Name Az.Network -RequiredVersion 3.0.0
-Import-Module -Name Az.Resources -RequiredVersion 2.0.1
+Import-Module -Name Az.Network
+Import-Module -Name Az.Resources
 
 Describe 'New-AzPostgreSqlFlexibleServer' {
     function WaitServerDelete(){

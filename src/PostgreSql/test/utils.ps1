@@ -20,7 +20,7 @@ function setupEnv() {
     $env.Add("replicaName", "postgresql-test-100-replica")
     $env.Add("firewallRuleName", "postgresqlrule01")
     $env.Add("firewallRuleName2", "postgresqlrule02")
-    $env.Add("VNetName", "postgresql-vnet")
+    $env.Add("VNetName", "postgresqlvnet")
     $env.Add("SubnetName", "postgresql-subnet")
 
     # Create the test group
