@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text.Json;
 
@@ -10,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         internal static T DeserializeObject<T>(string rawJsonContent)
         {
             var document = JsonDocument.Parse(rawJsonContent, default);
-            MethodInfo deserializer = typeof(T).GetMethod($"Deserialize{nameof(T)}", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo deserializer = typeof(T).GetMethod($"Deserialize{typeof(T).Name}", BindingFlags.NonPublic | BindingFlags.Static);
             return (T) deserializer.Invoke(null, new object[] { document.RootElement });
         }
 
