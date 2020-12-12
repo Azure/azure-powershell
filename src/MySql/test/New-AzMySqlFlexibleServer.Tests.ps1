@@ -171,11 +171,14 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'VnetNameScenario-InvalidVnet' {
-        {
-            # invalid vnet name
-            $InvalidName = "hi/df!@$@#$@"
-            New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $InvalidName
-        } | Should -Throw
+        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            {
+                # invalid vnet name
+                $InvalidName = "hi/df!@$@#$@"
+                New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $InvalidName
+                
+            } | Should -Throw
+        }
     }
 
     It 'VnetIdScenario-ValidVnet' {
@@ -207,11 +210,13 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'VnetIdScenario-InvalidVnet' {
-        {
-            # invalid vnet Id
-            $VnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/virtualNetworks/Vnet/Wrong/Vnet/itis"
-            New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
-        } | Should -Throw
+        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            {
+                # invalid vnet Id
+                $VnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/virtualNetworks/Vnet/Wrong/Vnet/itis"
+                New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
+            } | Should -Throw
+        }
     }
     
     It 'SubnetIdScenario-ValidSubnet' {
@@ -286,22 +291,24 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'SubnetIdScenario-InvalidSubnet' {
-        {
-            # invalid subnet Id
-            $SubnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/VirtualNetworks/Wrong/subnetss/wrong"
-            New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
-        } | Should -Throw
-        {
-            # invalid delegation on the subnet
-            $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
-            $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
-            $Subnet = Add-AzDelegation -Name "faultydelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $Subnet
-            Set-AzVirtualNetwork -VirtualNetwork $Vnet
-            $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
-            New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id  | Should -Throw
-            Remove-AzDelegation -Name "faultydelegation" -Subnet $Subnet
-            Set-AzVirtualNetwork $Vnet
-            Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup
+        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            {
+                # invalid subnet Id
+                $SubnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/VirtualNetworks/Wrong/subnetss/wrong"
+                New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
+            } | Should -Throw
+            {
+                # invalid delegation on the subnet
+                $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
+                $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
+                $Subnet = Add-AzDelegation -Name "faultydelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $Subnet
+                Set-AzVirtualNetwork -VirtualNetwork $Vnet
+                $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
+                New-AzMySqlFlexibleServer -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id  | Should -Throw
+                Remove-AzDelegation -Name "faultydelegation" -Subnet $Subnet
+                Set-AzVirtualNetwork $Vnet
+                Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup
+            }
         }
     }
 
