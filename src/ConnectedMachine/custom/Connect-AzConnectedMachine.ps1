@@ -241,7 +241,7 @@ function Connect-AzConnectedMachine {
     # Handle show result by getting the name and getting the machine object
     $showResult | ForEach-Object {
         # Get name of machine registered
-        $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:(?<resourceName>.*)\n"
+        $selectStrResult = $ShowResult | Select-String -Pattern "^Resource Name\s+:\s(?<resourceName>.*)\n"
         $Name = $selectStrResult.Matches.Groups |
             Where-Object Name -EQ resourceName |
             Select-Object -ExpandProperty Value
