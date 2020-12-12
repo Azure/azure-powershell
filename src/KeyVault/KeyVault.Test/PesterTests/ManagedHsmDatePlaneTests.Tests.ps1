@@ -4,11 +4,12 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 
 . $PSScriptRoot/ManagedHsmDatePlaneTests.ps1
 # ImportModules
-$hsmName = 'yeminghsm02'
+$hsmName = 'bezmhsm'
 $signInName = 'yeliu@microsoft.com'
-$storageAccount = 'yemingsa01'
-$containerName = 'hsmbackup'
-$sasToken = ConvertTo-SecureString -AsPlainText -Force 'insert sas token'
+$storageAccount = 'bezstorageaccount'
+$containerName = 'backup'
+$keyName = 'test'
+# $sasToken = ConvertTo-SecureString -AsPlainText -Force 'insert sas token'
 $certs = "D:\sd1.cer", "D:\sd2.cer", "D:\sd3.cer" # for security domain
 $certsKeys = @{PublicKey = "D:\sd1.cer"; PrivateKey = "D:\sd1.key" }, @{PublicKey = "D:\sd2.cer"; PrivateKey = "D:\sd2.key" }, @{PublicKey = "D:\sd3.cer"; PrivateKey = "D:\sd3.key" }
 
@@ -170,15 +171,24 @@ Describe "BackupAndRestoreAzManagedHsmKey" {
 Describe "BackupAndRestoreAzManagedHsm" {
     $script:backupUri = ''
     $containerUri = "https://$storageAccount.blob.core.windows.net/$containerName"
-
     It "Backup then restore a managed HSM" {
         $script:backupUri = Backup-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -SasToken $sasToken
         $script:backupUri | Should -Not -Be $null
     }
 
+    It "Selective restore a managed HSM"{
+        $script:backupUri = [System.Uri]::new($script:backupUri)
+        $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
+        $restoreResult = Restore-AzKeyVault -HsmName $hsmName -KeyName $keyName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
+        $restoreResult | Should -Be $True
+    }
+
     It "Restore a managed HSM" {
         $script:backupUri = [System.Uri]::new($script:backupUri)
         $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
+        # Clean hsm
+        Get-AzKeyVaultKey -HsmName $hsmName | Remove-AzKeyVaultKey -Force
+        Get-AzKeyVaultKey -HsmName $hsmName -InRemovedState| Remove-AzKeyVaultKey -InRemovedState -Force
         $restoreResult = Restore-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
         $restoreResult | Should -Be $True
     }
