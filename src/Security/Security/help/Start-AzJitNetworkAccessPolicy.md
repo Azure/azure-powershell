@@ -40,7 +40,7 @@ The request will be logged in the policy for later review and will be terminated
 
 ### Example 1
 ```powershell
-$MyResource = Get-AzResource -Id /subscriptions/c85c1e96-a251-49cd-8b78-050291feeea1/resourceGroups/PolicyDemo/providers/Microsoft.Compute/virtualMachines/PolicyDemoVM1
+$MyResource = Get-AzResource -Id /subscriptions/xxxxxxx-xxxxx-xxxxx-xxxxxxx/resourceGroups/PolicyDemo/providers/Microsoft.Compute/virtualMachines/PolicyDemoVM1
 $JitPolicy = (@{
         id    = $MyResource.ResourceId; 
         ports = (@{
