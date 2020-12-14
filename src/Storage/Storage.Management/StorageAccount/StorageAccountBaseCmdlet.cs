@@ -27,18 +27,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         private StorageManagementClientWrapper storageClientWrapper;
 
-        protected const string StorageAccountNounStr = "AzureRmStorageAccount";
+        protected const string StorageAccountNounStr = "StorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
         protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
         protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
+        protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
+        protected const string NameAlias = "Name";
 
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
-
+        
         protected const string StorageAccountKeySourceStr = StorageAccountNounStr + "EncryptionKeySource";
 
         protected const string TagsAlias = "Tags";
@@ -47,24 +49,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageUsageNounStr = "AzureRmStorageUsage";
 
-        protected struct AccountTypeString
-        {
-            internal const string StandardLRS = "Standard_LRS";
-            internal const string StandardZRS = "Standard_ZRS";
-            internal const string StandardGRS = "Standard_GRS";
-            internal const string StandardRAGRS = "Standard_RAGRS";
-            internal const string PremiumLRS = "Premium_LRS";
-        }
-        protected struct AccountKind
-        {
-            internal const string Storage = "Storage";
-            internal const string StorageV2 = "StorageV2";
-            internal const string BlobStorage = "BlobStorage";
-        }
+        internal const string StandardGZRS = "Standard_GZRS";
+        internal const string StandardRAGZRS = "Standard_RAGZRS";
+
         protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
+        }
+        protected struct AzureBlobType
+        {
+            internal const string BlockBlob = "blockBlob";
+            internal const string PageBlob = "pageBlob";
+            internal const string AppendBlob = "appendBlob";
+        }
+        protected struct ManagementPolicyAction
+        {
+            internal const string TierToCool = "TierToCool";
+            internal const string TierToArchive = "TierToArchive";
+            internal const string Delete = "Delete";
         }
 
         [Flags]
@@ -100,25 +103,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
-        protected static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        protected static Kind ParseAccountKind(string accountKind)
-        {
-            Kind returnKind;
-            if (!Enum.TryParse<Kind>(accountKind, true, out returnKind))
-            {
-                throw new ArgumentOutOfRangeException("Kind");
-            }
-            return returnKind;
-        }
         protected static AccessTier ParseAccessTier(string accessTier)
         {
             AccessTier returnAccessTier;

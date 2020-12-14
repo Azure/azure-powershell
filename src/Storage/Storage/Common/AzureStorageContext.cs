@@ -16,9 +16,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
+    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// Storage context
@@ -53,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         public virtual string FileEndPoint { get; protected set; }
 
         /// <summary>
-        /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
+        /// Self reference, it could enable New-AzStorageContext can be used in pipeline 
         /// </summary>
         public IStorageContext Context { get; protected set; }
 
@@ -66,6 +68,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Storage account in context
         /// </summary>
         public virtual CloudStorageAccount StorageAccount { get; protected set; }
+
+        /// <summary>
+        /// Storage account in context
+        /// </summary>
+        public virtual XTable.CloudStorageAccount TableStorageAccount { get; protected set; }
+
+        /// <summary>
+        /// Storage Library Track2 Oauth credential
+        /// </summary>
+        public virtual AzureSessionCredential Track2OauthToken { get; set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -130,9 +142,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
-        public AzureStorageContext(CloudStorageAccount account)
+        public AzureStorageContext(CloudStorageAccount account, string accountName = null, IAzureContext DefaultContext = null, DebugLogWriter logWriter = null)
         {
             StorageAccount = account;
+            TableStorageAccount = XTable.CloudStorageAccount.Parse(StorageAccount.ToString(true));
 
             if (account.BlobEndpoint != null)
             {
@@ -154,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 FileEndPoint = account.FileEndpoint.ToString();
             }
 
-            StorageAccountName = account.Credentials.AccountName;
+            StorageAccountName = string.IsNullOrEmpty(accountName) ? account.Credentials.AccountName : accountName;
             Context = this;
             Name = String.Empty;
 
@@ -164,10 +177,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 {
                     StorageAccountName = "[SasToken]";
                 }
+                else if (account.Credentials.IsToken)
+                {
+                    StorageAccountName = "[AccessToken]";
+                }
                 else
                 {
                     StorageAccountName = "[Anonymous]";
                 }
+            }
+            if (account.Credentials.IsToken)
+            {
+                Track2OauthToken = new AzureSessionCredential(DefaultContext, logWriter);
             }
         }
 

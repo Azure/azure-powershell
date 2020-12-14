@@ -14,16 +14,19 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using StorageClient = WindowsAzure.Storage.Shared.Protocol;
+    using StorageClient = Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Show azure storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.StorageServiceLogging),
-        OutputType(typeof(StorageClient.LoggingProperties))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceLoggingProperty"),OutputType(typeof(StorageClient.LoggingProperties))]
     public class SetAzureStorageServiceLoggingCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
@@ -37,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public int? RetentionDays { get; set; }
 
         public const string LoggingOperationHelpMessage =
-            "Logging operations. (All, None, combinations of Read, Write, Delete that are seperated by semicolon.)";
+            "Logging operations. (All, None, combinations of Read, Write, Delete that are separated by semicolon.)";
         [Parameter(HelpMessage = LoggingOperationHelpMessage)]
         public StorageClient.LoggingOperations[] LoggingOperations { get; set; }
 
@@ -111,6 +114,63 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
 
         /// <summary>
+        /// Update the Table service properties according to the input
+        /// </summary>
+        /// <param name="logging">Service properties</param>
+        internal void UpdateTableServiceProperties(XTable.LoggingProperties logging)
+        {
+            if (Version != null)
+            {
+                logging.Version = Version.ToString();
+            }
+
+            if (RetentionDays != null)
+            {
+                if (RetentionDays == -1)
+                {
+                    //Disable logging retention policy
+                    logging.RetentionDays = null;
+                }
+                else if (RetentionDays < 1 || RetentionDays > 365)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidRetentionDay, RetentionDays));
+                }
+                else
+                {
+                    logging.RetentionDays = RetentionDays;
+                }
+            }
+
+            if (LoggingOperations != null && LoggingOperations.Length > 0)
+            {
+                XTable.LoggingOperations logOperations = default(XTable.LoggingOperations);
+
+                for (int i = 0; i < LoggingOperations.Length; i++)
+                {
+                    if (LoggingOperations[i] == StorageClient.LoggingOperations.None
+                        || LoggingOperations[i] == StorageClient.LoggingOperations.All)
+                    {
+                        if (LoggingOperations.Length > 1)
+                        {
+                            throw new ArgumentException(Resources.NoneAndAllOperationShouldBeAlone);
+                        }
+                    }
+
+                    logOperations |= (XTable.LoggingOperations)Enum.Parse(typeof(XTable.LoggingOperations), LoggingOperations[i].ToString(), true);
+
+                }
+
+                logging.LoggingOperations = logOperations;
+                // Set default logging version
+                if (string.IsNullOrEmpty(logging.Version))
+                {
+                    string defaultLoggingVersion = StorageNouns.DefaultLoggingVersion;
+                    logging.Version = defaultLoggingVersion;
+                }
+            }
+        }
+
+        /// <summary>
         /// Get logging operations
         /// </summary>
         /// <param name="LoggingOperations">The string type of Logging operations</param>
@@ -166,19 +226,62 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 throw new PSInvalidOperationException(Resources.FileNotSupportLogging);
             }
 
-            StorageClient.ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-            StorageClient.ServiceProperties serviceProperties = new StorageClient.ServiceProperties();
-            serviceProperties.Clean();
-            serviceProperties.Logging = currentServiceProperties.Logging;
-
-            UpdateServiceProperties(serviceProperties.Logging);
-
-            Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                GetRequestOptions(ServiceType), OperationContext);
-
-            if (PassThru)
+            if (ServiceType != StorageServiceType.Table)
             {
-                WriteObject(serviceProperties.Logging);
+                StorageClient.ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+
+                // Premium Account not support classic metrics and logging
+                if (currentServiceProperties.Logging == null)
+                {
+                    AccountProperties accountProperties = Channel.GetAccountProperties();
+                    if (accountProperties.SkuName.Contains("Premium"))
+                    {
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                    }
+                }
+
+                StorageClient.ServiceProperties serviceProperties = new StorageClient.ServiceProperties();
+                serviceProperties.Clean();
+                serviceProperties.Logging = currentServiceProperties.Logging;
+
+                UpdateServiceProperties(serviceProperties.Logging);
+
+                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
+                    GetRequestOptions(ServiceType), OperationContext);
+
+                if (PassThru)
+                {
+                    WriteObject(serviceProperties.Logging);
+                }
+            }
+            else //Table use old XSCL
+            {
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+
+                // Premium Account not support classic metrics and logging
+                if (currentServiceProperties.Logging == null)
+                {
+                    AccountProperties accountProperties = Channel.GetAccountProperties();
+                    if (accountProperties.SkuName.Contains("Premium"))
+                    {
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "This Storage account doesn't support Classic Logging, since it’s a Premium Storage account: {0}", Channel.StorageContext.StorageAccountName));
+                    }
+                }
+
+                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
+                serviceProperties.Clean();
+                serviceProperties.Logging = currentServiceProperties.Logging;
+
+                UpdateTableServiceProperties(serviceProperties.Logging);
+
+                tableChannel.SetStorageTableServiceProperties(serviceProperties,
+                    GetTableRequestOptions(), TableOperationContext);
+
+                if (PassThru)
+                {
+                    WriteObject(serviceProperties.Logging);
+                }
             }
         }
     }

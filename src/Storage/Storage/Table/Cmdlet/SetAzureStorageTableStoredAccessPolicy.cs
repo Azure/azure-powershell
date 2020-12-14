@@ -17,13 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Set, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(String))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             //Get existing permissions
             CloudTable table = localChannel.GetTableReference(Table);
-            TablePermissions tablePermissions = localChannel.GetTablePermissions(table);
+            TablePermissions tablePermissions = localChannel.GetTablePermissions(table, this.RequestOptions, this.TableOperationContext);
 
             //Set the policy with new value
             if (!tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             tablePermissions.SharedAccessPolicies[policyName] = policy;
 
             //Set permission back to table
-            localChannel.SetTablePermissions(table, tablePermissions);
+            localChannel.SetTablePermissions(table, tablePermissions, null, TableOperationContext);
             WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessTablePolicy>(tablePermissions.SharedAccessPolicies, policyName));
             return policyName;
         }
@@ -121,5 +121,3 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
-
-

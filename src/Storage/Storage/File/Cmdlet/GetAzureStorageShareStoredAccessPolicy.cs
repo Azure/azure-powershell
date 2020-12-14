@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.Azure.Storage.File;
     using Model.Contract;
     using System;
     using System.Globalization;
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.ShareStoredAccessPolicy), OutputType(typeof(SharedAccessFilePolicy))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareStoredAccessPolicy"), OutputType(typeof(SharedAccessFilePolicy))]
     public class GetAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         internal async Task<SharedAccessFilePolicies> GetPoliciesAsync(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             CloudFileShare share = localChannel.GetShareReference(shareName);
-            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, null, CmdletCancellationToken).ConfigureAwait(false);
+            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             return permissions.SharedAccessPolicies;
         }
 
@@ -86,5 +86,3 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
-
-

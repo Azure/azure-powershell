@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Storage</PsModuleName>
@@ -13,8 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage.Hybrid_2019_03_01" Version="9.2.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement.Hybrid_2019_03_01" Version="0.7.1" />
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.2" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
@@ -24,9 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<Reference Include="Microsoft.Azure.Storage.DataMovement">
+    <Reference Include="Microsoft.Azure.Storage.DataMovement">
       <HintPath>$(RepoSrc)lib\Microsoft.Azure.Storage.DataMovement.dll</HintPath>
-    </Reference>-->
+    </Reference>
   </ItemGroup>
 
 </Project>

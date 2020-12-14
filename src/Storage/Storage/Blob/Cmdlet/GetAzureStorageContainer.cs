@@ -17,8 +17,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -28,9 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// List azure storage container
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.Container, DefaultParameterSetName = NameParameterSet),
-        OutputType(typeof(AzureStorageContainer))]
-    [Alias("Get-AzStorageContainerAcl")]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageContainer))]
+    [Alias("Get-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl", "Get-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DatalakeGen2FileSystem")]
     public class GetAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -207,8 +206,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 return;
             }
 
-            // Only write warning for SAS when use cmdlet alias Get-AzureStorageContainerAcl, since the cmdlets alias specified get container ACL
-            if (this.MyInvocation.Line.ToLower().Contains("get-azurestoragecontaineracl"))
+            // Only write warning for SAS when use cmdlet alias Get-AzStorageContainerAcl, since the cmdlets alias specified get container ACL
+            if (this.MyInvocation.Line.ToLower().Contains("get-azstoragecontaineracl"))
             {
                 // Write warning when user SAS credential since get container ACL will fail
                 AzureStorageContext storageContext = this.GetCmdletStorageContext();

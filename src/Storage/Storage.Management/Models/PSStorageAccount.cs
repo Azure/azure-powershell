@@ -17,11 +17,11 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
-using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
-            this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
+            this.ResourceGroupName = new ResourceIdentifier(storageAccount.Id).ResourceGroupName;
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
-            this.Sku = storageAccount.Sku;
+            this.Sku = new PSSku(storageAccount.Sku);
             this.Encryption = storageAccount.Encryption;
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
-            this.CustomDomain = storageAccount.CustomDomain;
+            this.CustomDomain = storageAccount.CustomDomain is null ? null : new PSCustomDomain(storageAccount.CustomDomain);
             this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
@@ -51,6 +51,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
+            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+            this.FailoverInProgress = storageAccount.FailoverInProgress;
+            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
+            this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
+            this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
+            this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
+
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -61,14 +70,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Id { get; set; }
 
-        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
-        public Sku Sku { get; set; }
+        public PSSku Sku { get; set; }
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
-        public Kind? Kind { get; set; }
+        public string Kind { get; set; }
         public Encryption Encryption { get; set; }
 
         [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, Position = 5)]
@@ -77,7 +85,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "CreationTime", Target = ViewControl.Table, Position = 6)]
         public DateTime? CreationTime { get; set; }
 
-        public CustomDomain CustomDomain { get; set; }
+        public PSCustomDomain CustomDomain { get; set; }
 
         public Identity Identity { get; set; }
 
@@ -85,6 +93,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public Endpoints PrimaryEndpoints { get; set; }
 
+        [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
@@ -103,7 +112,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "EnableHttpsTrafficOnly", Target = ViewControl.Table, Position = 8)]
         public bool? EnableHttpsTrafficOnly { get; set; }
 
+        public PSAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuth { get; set; }
+
+        public bool? EnableHierarchicalNamespace { get; set; }
+
+        public bool? FailoverInProgress { get; set; }
+
+        public string LargeFileSharesState { get; set; }
+
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
+
+        public PSGeoReplicationStats GeoReplicationStats { get; set; }
+
+        public bool? AllowBlobPublicAccess { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
@@ -114,18 +139,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
              }, result.StorageAccountName) as AzureStorageContext; 
 
             return result;
-        }
-
-        private static string ParseResourceGroupFromId(string idFromServer)
-        {
-            if (!string.IsNullOrEmpty(idFromServer))
-            {
-                string[] tokens = idFromServer.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                return tokens[3];
-            }
-
-            return null;
         }
 
         public IStorageContext Context { get; private set; }
@@ -140,6 +153,48 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             // Allow listing storage contents through piping
             return null;
+        }
+    }
+
+    public class PSCustomDomain
+    {
+        public string Name { get; set; }
+        public bool? UseSubDomain { get; set; }
+
+        public PSCustomDomain(CustomDomain input)
+        {
+            this.Name = input.Name;
+            this.UseSubDomain = input.UseSubDomainName;
+        }
+
+        public CustomDomain ParseCustomDomain()
+        {
+            return new CustomDomain(this.Name, this.UseSubDomain);
+        }
+    }
+
+    public class PSSku
+    {
+        public string Name { get; set; }
+        public SkuTier? Tier { get; set; }
+        public string ResourceType { get; set; }
+        public string Kind { get; set; }
+        public IList<string> Locations { get; set; }
+        public IList<SKUCapability> Capabilities { get; set; }
+        public IList<Restriction> Restrictions { get; set; }
+
+        public PSSku(Sku sku)
+        {
+            if (sku != null)
+            {
+                this.Name = sku.Name;
+                this.Tier = sku.Tier;
+            }
+        }
+
+        public Sku ParseSku()
+        {
+            return new Sku(Name, Tier);
         }
     }
 }

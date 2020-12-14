@@ -12,22 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.Azure.Storage.DataMovement;
+    using System;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
+    using System.Runtime.InteropServices;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
-    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
-    [OutputType(typeof(CloudFile))]
-    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [OutputType(typeof(AzureStorageFile))]
+    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
         [Parameter(
            Position = 0,
@@ -41,27 +47,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
         [ValidateNotNull]
+        [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
         [Parameter(
@@ -111,8 +123,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                Destination = this.GetUnresolvedProviderPathFromPSPath(
+                    string.IsNullOrWhiteSpace(Destination) ? "." : Destination);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
             CloudFile fileToBeDownloaded;
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
@@ -138,9 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            string resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
-                string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
-
+            string resolvedDestination = this.Destination;
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
             if (LocalDirectory.Exists(resolvedDestination))
@@ -179,7 +210,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             targetFile,
                             new DownloadOptions
                             {
-                                DisableContentMD5Validation = !this.CheckMd5
+                                DisableContentMD5Validation = !this.CheckMd5,
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
@@ -189,10 +221,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
+                        WriteCloudFileObject(taskId, this.Channel, fileToBeDownloaded);
                     }
                 });
             }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
+            }
         }
+        public object GetDynamicParameters()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                context = new WindowsOnlyParameters();
+                return context;
+            }
+            else return null;
+        }
+        private WindowsOnlyParameters context;
     }
 }

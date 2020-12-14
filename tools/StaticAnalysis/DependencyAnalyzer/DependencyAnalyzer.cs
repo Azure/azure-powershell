@@ -384,7 +384,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 var assembly = CreateAssemblyRecord(file);
-                if (!IsFrameworkAssembly(assembly.Name))
+                if (assembly?.Name != null && !IsFrameworkAssembly(assembly.Name))
                 {
                     _assemblies[assembly.Name] = assembly;
                     AddSharedAssembly(assembly);

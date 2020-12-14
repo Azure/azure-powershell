@@ -56,7 +56,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ### -Context
 Specifies the storage context.
 To create it, you can use the New-AzStorageContext cmdlet.
-The cmdlet will fail when you use a storage context created from SAS Token because the cmdlet will query for container permissions which require Storage account key permission.
+The container permissions won't be retrieved when you use a storage context created from SAS Token, because query container permissions requires Storage account key permission.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies a continuation token for the blob list.
 
 ```yaml
-Type: Microsoft.WindowsAz.Storage.Blob.BlobContinuationToken
+Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,7 +186,7 @@ If the specified interval elapses before the service processes the request, the 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

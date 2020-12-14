@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: Microsoft.WindowsAz.Storage.Shared.Protocol.LoggingOperations[]
+Type: Microsoft.Azure.Storage.Shared.Protocol.LoggingOperations[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Read, Write, Delete, All
@@ -168,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAz.Storage.Shared.Protocol.LoggingProperties
+### Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties
 
 ## NOTES
 

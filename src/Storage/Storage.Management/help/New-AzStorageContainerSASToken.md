@@ -17,14 +17,16 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,11 +55,22 @@ PS C:\>New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
 
 This example generates a container SAS token with shared access policy.
 
+### Example 3: Generate a User Identity container SAS token with storage context based on OAuth authentication
+```
+PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+PS C:\> $StartTime = Get-Date
+PS C:\> $EndTime = $startTime.AddDays(6)
+PS C:\> New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+```
+
+This example generates a User Identity container SAS token with storage context based on OAuth authentication
+
 ## PARAMETERS
 
 ### -Context
 Specifies an Azure storage context.
 You can create it by using the New-AzStorageContext cmdlet.
+When the storage context is based on OAuth authentication, will generates a User Identity container SAS token.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -75,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,6 +103,7 @@ Accept wildcard characters: False
 Specifies the time at which the shared access signature becomes invalid.
 If the user sets the start time but not the expiry time, the expiry time is set to the start time plus one hour.
 If neither the start time nor the expiry time is specified, the expiry time is set to the current time plus one hour.
+When the storage context is based on OAuth authentication, the expire time must be in 7 days from current time, and must not be earlier than current time.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -188,7 +202,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAz.Storage.SharedAccessProtocol]
+Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -207,6 +221,36 @@ Specifies the time at which the shared access signature becomes valid.
 Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

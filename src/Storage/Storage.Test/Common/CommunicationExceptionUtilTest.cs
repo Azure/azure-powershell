@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD
 using System.ServiceModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -32,3 +32,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
     }
 }
+#endif

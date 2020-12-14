@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
     using System;
 
     /// <summary>
@@ -77,9 +77,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     e.Message,
                     e.RequestInformation.HttpStatusCode,
                     e.RequestInformation.HttpStatusMessage);
+
+                if (e.RequestInformation.ExtendedErrorInformation != null)
+                {
+                    String extendErrorInfo = String.Format(
+                        "\nErrorCode: {0}\nErrorMessage: {1}",
+                        e.RequestInformation.ExtendedErrorInformation.ErrorCode,
+                        e.RequestInformation.ExtendedErrorInformation.ErrorMessage);
+
+                    if (e.RequestInformation.ExtendedErrorInformation.AdditionalDetails != null
+                        && e.RequestInformation.ExtendedErrorInformation.AdditionalDetails.Count > 0)
+                    {
+                        string additionalDetails = string.Empty;
+                        foreach (var key in e.RequestInformation.ExtendedErrorInformation.AdditionalDetails)
+                        {
+                            additionalDetails += String.Format("\n{0}: {1}", key.Key, key.Value);
+                        }
+                        extendErrorInfo += additionalDetails;
+                    }
+                    msg += extendErrorInfo;
+                }
+                else
+                {
+                    String errorInfo = String.Format(
+                        "\nErrorCode: {0}\nErrorMessage: {1}\nRequestId: {2}\nTime: {3}",
+                        e.RequestInformation.ErrorCode,
+                        e.RequestInformation.HttpStatusMessage,
+                        e.RequestInformation.ServiceRequestID,
+                        e.RequestInformation.RequestDate);
+                    msg += errorInfo;
+                }
                 e = new StorageException(e.RequestInformation, msg, e);
             }
-
             return e;
         }
     }
