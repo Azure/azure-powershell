@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             ParameterSetName = VMParameterSetName,
             ValueFromPipeline = true, 
-            HelpMessage = "test")]
+            HelpMessage = "Specifies the virtual machine object the extension is on.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
