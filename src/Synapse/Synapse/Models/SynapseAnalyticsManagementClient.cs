@@ -300,11 +300,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
+        public async Task StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
         {
             try
             {
-                _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
+                await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScanAsync(resourceGroup, workspaceName, sqlPoolName, scanId);
             }
             catch (ErrorContractException ex)
             {
@@ -361,7 +361,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 NumberOfFailedSecurityChecks = scanRecord.NumberOfFailedSecurityChecks
             };
         }
-
 
         internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
