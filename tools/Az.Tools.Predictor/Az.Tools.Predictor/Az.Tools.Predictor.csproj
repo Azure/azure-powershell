@@ -43,5 +43,6 @@ For more information on Az Predictor, please visit the following: https://aka.ms
   <ItemGroup>
     <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
     <None Include="AzPredictorSettings.json" CopyToOutputDirectory="PreserveNewest" />
+	<None Include="command_param_to_resource_map.json" CopyToOutputDirectory="PreserveNewest" />  
   </ItemGroup>
 </Project>

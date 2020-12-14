@@ -1,8 +1,15 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
+using Newtonsoft.Json;
+
+
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -17,6 +24,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static readonly IReadOnlyCollection<string> _specialLocalParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "location", "credential", "addressprefix" };
 
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
+
+        private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
+
+        public ParameterValuePredictor()
+        {
+            var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
+            var directory = fileInfo.DirectoryName;
+            var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
+            _command_param_to_resource_map = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath));
+        }
 
         /// <summary>
         /// Process the command from history
@@ -38,16 +55,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// > Get-AzVM -VMName &lt;TestVM&gt;
         /// "TestVM" is predicted for Get-AzVM.
         /// </summary>
+        /// <param name="commandName">The command noun</param>
         /// <param name="parameterName">The parameter name</param>
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
-        public string GetParameterValueFromAzCommand(string parameterName)
+        public string GetParameterValueFromAzCommand(string commandName, string parameterName)
         {
-            parameterName = parameterName.TrimStart(AzPredictorConstants.ParameterIndicator);
-            if (_localParameterValues.TryGetValue(parameterName.ToUpper(), out var value))
+            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName); ;
+            
+            if (_command_param_to_resource_map.ContainsKey(commandNoun.ToLower()))
             {
-                return value;
+                if (_command_param_to_resource_map[commandNoun.ToLower()].ContainsKey(parameterName.ToLower()))
+                {
+                    var key = _command_param_to_resource_map[commandNoun.ToLower()][parameterName.ToLower()];
+                    if (_localParameterValues.TryGetValue(key, out var value))
+                    {
+                        return value;
+                    }
+                }
             }
-
             return null;
         }
 
@@ -102,11 +127,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (command[i - 1] is CommandParameterAst && command[i] is StringConstantExpressionAst)
                 {
-                    var parameterName = command[i - 1].ToString().TrimStart(AzPredictorConstants.ParameterIndicator);
-                    var key = ParameterValuePredictor.GetLocalParameterKey(commandNoun, parameterName);
-                    var parameterValue = command[i].ToString();
-                    this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
-                }
+                    var parameterName = command[i - 1].ToString().ToLower();
+                    if (_command_param_to_resource_map.ContainsKey(commandNoun.ToLower()))
+                    {
+                        if (_command_param_to_resource_map[commandNoun.ToLower()].ContainsKey(parameterName))
+                        {
+                            var key = _command_param_to_resource_map[commandNoun.ToLower()][parameterName];
+                            var parameterValue = command[i].ToString();
+                            this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
+                        }
+                    }
+                }   
             }
         }
     }
