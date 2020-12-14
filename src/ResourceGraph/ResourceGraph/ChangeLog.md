@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets to support query resource
 
 ## Version 0.7.7
 * Update references in .psd1 to use relative path
