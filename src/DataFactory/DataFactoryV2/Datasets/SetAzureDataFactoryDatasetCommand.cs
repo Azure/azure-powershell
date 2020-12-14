@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = false), OutputType(typeof(PSDataset))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset")]
     public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
     {
