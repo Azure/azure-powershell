@@ -56,15 +56,15 @@ The **Set-AzDataCollectionRule** cmdlet replaces an existing data collection rul
 
 Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
 
-To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see [Example #1](#example1)).
+To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1).
 
 You may find here the [schema detail](https://docs.microsoft.com/en-us/rest/api/monitor/datacollectionrules/create).
 
-The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported ([Example #2](#example2)).
+The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported (Example #2).
 
 ## EXAMPLES
 
-### <a id="example1" name="example1"></a>Example 1: Update data collection rule, JSON from Rest API
+### Example 1: Update data collection rule, JSON from Rest API
 ```
 PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
                                 -ResourceGroupName 'testdcr' 
@@ -85,9 +85,9 @@ Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
 
-This command replaces an existing data collection rules for the current subscription. [Note #1](#note1) has the content of the Rule File.
+This command replaces an existing data collection rules for the current subscription. Note #1 has the content of the Rule File.
 
-### <a id="example2" name="example2"></a>Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
+### Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
 ```
 PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
                                 -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' 
@@ -107,7 +107,7 @@ Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
 
-This command replaces an existing data collection rules for the current subscription. [Note #2](#note2) has the content of the Rule File.
+This command replaces an existing data collection rules for the current subscription. Note #2 has the content of the Rule File.
 
 ### Example 3: Update data collection rule from object
 ```
@@ -356,7 +356,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-### <a id="note1" name="note1"></a>Note #1: Content of C:\samples\dcr1.json
+### Note #1: Content of C:\samples\dcr1.json
 ```yaml
 {
   "properties": {
@@ -394,7 +394,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 }
 ```
 
-### <a id="note2" name="note2"></a>Note #2: Content of C:\samples\dcr2.json
+### Note #2: Content of C:\samples\dcr2.json
 ```yaml
 {
   "DataSources": {
