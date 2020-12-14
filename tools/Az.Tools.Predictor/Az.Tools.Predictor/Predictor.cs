@@ -245,13 +245,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="parameter">The parameter name and vlaue from prediction</param>
         private void BuildParameterValue(StringBuilder builder, Tuple<string, string> parameter)
         {
-            //Console.WriteLine(" @:" + builder.ToString().Split(' ')[0].ToLower().Split("-az")[1]);
             var parameterName = parameter.Item1;
             _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
             _ = builder.Append(parameterName);
 
 
-            //string commandNoun = builder.ToString().Split(' ')[0].ToLower().Split("-az")[1];                                           // Added
             string commandName = builder.ToString().Split(' ')[0];
             string parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(commandName,parameterName);
 
