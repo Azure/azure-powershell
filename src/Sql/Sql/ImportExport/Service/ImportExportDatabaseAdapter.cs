@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 ErrorMessage = response.ErrorMessage,
                 LastModifiedTime = response.LastModifiedTime,
                 QueuedTime = response.QueuedTime,
-                Status = response.Status,
+                StatusMessage = response.Status, // in spite of the name, the field called "Status" is the correct one to put into the "StatusMessage" field
                 RequestType = response.RequestType,
                 PrivateEndpointRequestStatus = response.PrivateEndpointConnections?.Select(pec => new PrivateEndpointRequestStatus()
                 {
@@ -168,6 +168,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         {
             AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
             model.OperationStatusLink = statusLink?.ToString();
+
+            // It looks like the ExportDatabase SDK call is currently broken (and returns "null" instead of the response object).
+            // I need to check in a sev2 hotfix now. Once the SDK issue has been resolved, un-comment this and the asserts in
+            // the test code
+            // Also can probably remove the "LastLocationHeader" hack and just rely on the header in the returned results
+            // model.Status = response.Status;
             return model;
         }
     }
