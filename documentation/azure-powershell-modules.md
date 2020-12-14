@@ -102,6 +102,7 @@ Resource Mover                        | `Az.ResourceMover`                      
 Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery]
 Search                                | `Az.Search`                             | [![Search]][SearchGallery]
 Security                              | `Az.Security`                           | [![Security]][SecurityGallery]
+Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
@@ -218,6 +219,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Resources]:                  https://img.shields.io/powershellgallery/v/Az.Resources.svg?style=flat-square&label=Az.Resources
 [Search]:                     https://img.shields.io/powershellgallery/v/Az.Search.svg?style=flat-square&label=Az.Search
 [Security]:                   https://img.shields.io/powershellgallery/v/Az.Security.svg?style=flat-square&label=Az.Security
+[SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
@@ -332,6 +334,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ResourcesGallery]:                  https://www.powershellgallery.com/packages/Az.Resources/
 [SearchGallery]:                     https://www.powershellgallery.com/packages/Az.Search/
 [SecurityGallery]:                   https://www.powershellgallery.com/packages/Az.Security/
+[SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
