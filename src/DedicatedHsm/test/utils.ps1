@@ -65,9 +65,6 @@ function setupEnv() {
 
     # Virtual network subnet id
     $env.vnetSubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/hsmsubnet";
-    # # Create Dedicated Hsm for test.
-    # Write-Host -ForegroundColor Green "Create Dedicated Hsm for test"
-    # New-AzDedicatedHsm -Name  $env.dedicatedHsmName01 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku "SafeNet Luna Network HSM A790" -StampId stamp1 -SubnetId $env.vnetSubnetId -NetworkInterface @{PrivateIPAddress = '10.2.1.120' }
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
