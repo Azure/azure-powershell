@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Added new cmdlets to support query resource
 
 ## Version 0.7.7
