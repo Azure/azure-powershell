@@ -25,6 +25,7 @@ Billing                               | `Az.Billing`                            
 Blockchain                            | `Az.Blockchain`                         | [![Blockchain]][BlockchainGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
+Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
@@ -32,6 +33,7 @@ Connected Machine                     | `Az.ConnectedMachine`                   
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
 Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
 Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
+Cost Management                       | `Az.CostManagement`                     | [![CostManagement]][CostManagementGallery]
 Custom Resource Providers             | `Az.CustomProviders`                    | [![CustomProviders]][CustomProvidersGallery]
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
@@ -100,6 +102,7 @@ Resource Mover                        | `Az.ResourceMover`                      
 Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery]
 Search                                | `Az.Search`                             | [![Search]][SearchGallery]
 Security                              | `Az.Security`                           | [![Security]][SecurityGallery]
+Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
@@ -118,7 +121,7 @@ Time Series Insights                  | `Az.TimeSeriesInsights`                 
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
 VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
-
+Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
 <!-- References -->
 
@@ -139,6 +142,7 @@ Web App Service                       | `Az.Websites`                           
 [Blockchain]:                 https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
+[CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
@@ -146,6 +150,7 @@ Web App Service                       | `Az.Websites`                           
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
+[CostManagement]:             https://img.shields.io/powershellgallery/v/Az.CostManagement.svg?style=flat-square&label=Az.CostManagement
 [CustomProviders]:            https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
@@ -214,6 +219,7 @@ Web App Service                       | `Az.Websites`                           
 [Resources]:                  https://img.shields.io/powershellgallery/v/Az.Resources.svg?style=flat-square&label=Az.Resources
 [Search]:                     https://img.shields.io/powershellgallery/v/Az.Search.svg?style=flat-square&label=Az.Search
 [Security]:                   https://img.shields.io/powershellgallery/v/Az.Security.svg?style=flat-square&label=Az.Security
+[SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
@@ -232,6 +238,7 @@ Web App Service                       | `Az.Websites`                           
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
 [VMWare]:                     https://img.shields.io/powershellgallery/v/Az.VMWare.svg?style=flat-square&label=Az.VMWare
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
+[WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -250,6 +257,7 @@ Web App Service                       | `Az.Websites`                           
 [BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
+[CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
@@ -257,6 +265,7 @@ Web App Service                       | `Az.Websites`                           
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
+[CostManagementGallery]:             https://www.powershellgallery.com/packages/Az.CostManagement/
 [CustomProvidersGallery]:            https://www.powershellgallery.com/packages/Az.CustomProviders/
 [DataBoxGallery]:                    https://www.powershellgallery.com/packages/Az.DataBox/
 [DataBoxEdgeGallery]:                https://www.powershellgallery.com/packages/Az.DataBoxEdge/
@@ -325,6 +334,7 @@ Web App Service                       | `Az.Websites`                           
 [ResourcesGallery]:                  https://www.powershellgallery.com/packages/Az.Resources/
 [SearchGallery]:                     https://www.powershellgallery.com/packages/Az.Search/
 [SecurityGallery]:                   https://www.powershellgallery.com/packages/Az.Security/
+[SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
@@ -343,3 +353,4 @@ Web App Service                       | `Az.Websites`                           
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
 [VMWareGallery]:                     https://www.powershellgallery.com/packages/Az.VMWare/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
+[WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/

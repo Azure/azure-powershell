@@ -600,5 +600,17 @@
   {
     "regex": "DigitalTwins",
     "alias": "DigitalTwins"
+  },
+  {
+    "regex": "CloudService",
+    "alias": "CloudService"
+  },
+  {
+    "alias": "WindowsIotServices",
+    "regex": "WindowsIotServices"
+  },
+  {
+    "regex": "CostManagement",
+    "alias": "CostManagement"
   }
 ]

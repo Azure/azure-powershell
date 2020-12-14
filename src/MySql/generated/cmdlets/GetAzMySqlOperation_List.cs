@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>Lists all of the available REST API operations.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.DBforMySQL/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.DBForMySQL/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlOperation_List")]

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>SecurityInsights</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SqlInformationProtectionPolicies\**" />
+    <EmbeddedResource Remove="SqlInformationProtectionPolicies\**" />
+    <None Remove="SqlInformationProtectionPolicies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="ScenarioTests\ActionsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+</Project>
