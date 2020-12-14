@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
     {
         internal static T DeserializeObject<T>(string rawJsonContent)
         {
-            var document = JsonDocument.Parse(rawJsonContent, default);
+            var document = JsonDocument.Parse(rawJsonContent);
             MethodInfo deserializer = typeof(T).GetMethod($"Deserialize{typeof(T).Name}", BindingFlags.NonPublic | BindingFlags.Static);
             return (T) deserializer.Invoke(null, new object[] { document.RootElement });
         }
