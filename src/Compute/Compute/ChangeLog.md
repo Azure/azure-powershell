@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDSCExtensionStatus` cmdlet. 
 
 ## Version 4.7.0
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
