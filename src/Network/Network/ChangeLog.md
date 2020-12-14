@@ -24,6 +24,8 @@
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
     - Added parameter WebCategory
+* Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
+    - Added parameter EnableRoutingPreferenceInternetFlag
 
 ## Version 4.3.0
 * Updated below cmdlet 
