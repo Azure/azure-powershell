@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added functionality to accept input from pipeline for `Get-AzEventHub` from `Get-AzEventHubNamespace`.
 
 ## Version 1.7.1
 * Fixed Cluster commands for EventHub cluster without tags
