@@ -15,13 +15,13 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
-Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,13 +33,13 @@ Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
 
 ### ByInputObjectVaultName
 ```
-Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretName
 ```
-Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,13 +51,13 @@ Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersi
 
 ### ByResourceIdVaultName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdSecretName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -175,27 +175,10 @@ This command gets a specific version of the secret named secret1 in the key vaul
 
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
-
-# Method 1: requires PowerShell >= 7.0
-PS C:\> $secretInPlainText = $secret.SecretValue | ConvertFrom-SecureString -AsPlainText
-
-# Method 2: works on older PowerShell versions
-PS C:\> $secretValueText = '';
-PS C:\> $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
-PS C:\> try {
-    $secretInPlainText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
-} finally {
-    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
-}
-
-# Method 3: works in ConstrainedLanguage mode
-$secretInPlainText = [pscredential]::new("DoesntMatter", $secret.SecretValue).GetNetworkCredential().Password
+PS C:\> $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
 ```
 
-These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
-
-(Note: use method 3 if you are working in PowerShell [ConstrainedLanguage mode](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language), for example, on secure/privileged access workstations.)
+The cmdlet returns the secret as a string when `-AsPlainText` is applied.
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
@@ -284,6 +267,21 @@ Tags         :
 This command gets the current versions of all secrets in the key vault named Contoso that start with "secret".
 
 ## PARAMETERS
+
+### -AsPlainText
+When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, ByResourceIdVaultName, ByResourceIdSecretName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
