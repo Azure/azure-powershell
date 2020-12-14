@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.ToTime = this.ToTime;
                     parameters.GroupByResourceName = this.GroupByResourceName;
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
+                    parameters.GroupByClientApplicationId = this.GroupByApplicationId;
+                    parameters.GroupByUserAgent = this.GroupByUserAgent;
                     string location = this.Location.Canonicalize();
 
                     if (NoWait.IsPresent)
@@ -123,5 +125,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by Application Id.")]
+        public SwitchParameter GroupByApplicationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by UserAgent.")]
+        public SwitchParameter GroupByUserAgent { get; set; }
     }
 }

@@ -15,8 +15,8 @@ Export logs that show Api requests made by this subscription in the given time w
 ```
 Export-AzLogAnalyticRequestRateByInterval [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
  [-BlobContainerSasUri] <String> [-IntervalLength] <IntervalInMins> [-GroupByOperationName]
- [-GroupByResourceName] [-GroupByThrottlePolicy] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GroupByResourceName] [-GroupByThrottlePolicy] [-AsJob] [-NoWait] [-GroupByApplicationId] [-GroupByUserAgent]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupByApplicationId
+Group query result by Application Id.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupByOperationName
 Group query result by Operation Name.
 
@@ -128,6 +143,21 @@ Accept wildcard characters: False
 
 ### -GroupByThrottlePolicy
 Group query result by Throttle Policy applied.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupByUserAgent
+Group query result by UserAgent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
