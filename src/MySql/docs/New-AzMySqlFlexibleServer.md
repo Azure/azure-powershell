@@ -28,7 +28,6 @@ Creates a new server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
-PS C:\> $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 
@@ -47,10 +46,6 @@ Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to h
 "username": "mysqltest",
 "version": "5.7"
 
-
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
 ```
 
 
