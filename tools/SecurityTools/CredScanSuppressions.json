@@ -1106,6 +1106,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\DigitalTwins\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\TimeSeriesInsights\\test\\New-AzTimeSeriesInsightsEnvironment.Recording.json",
       "_justification": "Test resource is deleted"
     },
