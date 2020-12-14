@@ -45,5 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ExportLogAnalytics");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportLogAnalytics2()
+        {
+            TestRunner.RunTestScript("Test-ExportLogAnalytics2");
+        }
     }
 }
