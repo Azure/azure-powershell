@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public const string SourceAddressAndFqdnTag = @"SourceAddressAndFqdnTag";
 
+        public const string SourceAddressAndTargetUrl = @"SourceAddressAndTargetUrl";
+
         public const string SourceIpGroupAndTargetFqdn = @"SourceIpGroupAndTargetFqdn";
 
         public const string SourceIpGroupAndFqdnTag = @"SourceIpGroupAndFqdnTag";
@@ -27,5 +29,7 @@ namespace Microsoft.Azure.Commands.Network
         public const string SourceAddressAndWebCategory = @"SourceAddressAndWebCategory";
 
         public const string SourceIpGroupAndWebCategory = @"SourceIpGroupAndWebCategory";
+
+        public const string SourceIpGroupAndTargetUrl = @"SourceIpGroupAndTargetUrl";
     }
 }
