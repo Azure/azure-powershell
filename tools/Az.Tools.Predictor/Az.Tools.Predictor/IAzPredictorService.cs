@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
@@ -37,7 +38,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Requests predictions, given a command string.
         /// </summary>
         /// <param name="commands">A list of commands.</param>
-        public void RequestPredictions(IEnumerable<string> commands);
+        /// <param name="version">The version of the Az module.</param>
+        public void RequestPredictions(IEnumerable<string> commands, Version version);
 
         /// <summary>
         /// Record the history from PSReadLine.

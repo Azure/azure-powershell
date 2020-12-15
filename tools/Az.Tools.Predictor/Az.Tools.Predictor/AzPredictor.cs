@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
 
                 _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
-                _service.RequestPredictions(_lastTwoMaskedCommands);
+                _service.RequestPredictions(_lastTwoMaskedCommands, _azContext.AzVersion);
             }
 
             ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)

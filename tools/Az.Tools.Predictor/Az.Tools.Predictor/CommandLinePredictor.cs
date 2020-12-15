@@ -41,23 +41,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="modelPredictions">List of suggestions from the model, sorted by frequency (most to least).</param>
         /// <param name="parameterValuePredictor">Provide the prediction to the parameter values.</param>
-        public CommandLinePredictor(IList<string> modelPredictions, ParameterValuePredictor parameterValuePredictor)
+        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor)
         {
             Validation.CheckArgument(modelPredictions, $"{nameof(modelPredictions)} cannot be null.");
 
             _parameterValuePredictor = parameterValuePredictor;
             var commnadLines =  new List<CommandLine>();
 
-            foreach (var predictionTextRaw in modelPredictions ?? Enumerable.Empty<string>())
+            foreach (var predictiveCommand in modelPredictions ?? Enumerable.Empty<PredictiveCommand>())
             {
-                var predictionText = CommandLineUtilities.EscapePredictionText(predictionTextRaw);
+                var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
                 Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
                 var commandAst = (ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst);
 
                 if (commandAst?.CommandElements[0] is StringConstantExpressionAst commandName)
                 {
                     var parameterSet = new ParameterSet(commandAst);
-                    this._commandLinePredictions.Add(new CommandLine(commandName.Value, parameterSet));
+                    this._commandLinePredictions.Add(new CommandLine(commandName.Value, predictiveCommand.Description, parameterSet));
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             const int commandCollectionCapacity = 10;
             CommandLineSuggestion result = new();
-            var resultsTemp = new Dictionary<string, string>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
+            var resultsTemp = new Dictionary<string, TemporaryResult>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
 
             var isCommandNameComplete = inputParameterSet.Parameters.Any() || rawUserInput.EndsWith(' ');
 
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
                             presentCommands.Add(_commandLinePredictions[i].Name, 1);
                         }
                         else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDuplicate)
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
                             presentCommands[_commandLinePredictions[i].Name] += 1;
                         }
                         else
                         {
-                            _ = resultsTemp.TryAdd(prediction, sourceBuilder.ToString());
+                            _ = resultsTemp.TryAdd(prediction, new TemporaryResult(sourceBuilder.ToString(), _commandLinePredictions[i].Description));
                         }
                     }
                 }
@@ -166,11 +166,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 foreach (var temp in resultsTemp.Take(suggestionCount - resultCount))
                 {
-                    result.AddSuggestion(new PredictiveSuggestion(temp.Key), temp.Value);
+                    result.AddSuggestion(new PredictiveSuggestion(temp.Key, temp.Value.Description), temp.Value.Source);
                 }
             }
 
             return result;
+        }
+
+        private class TemporaryResult
+        {
+            public string Source { get; set; }
+
+            public string Description { get; set; }
+
+            public TemporaryResult(string source, string description)
+            {
+                this.Source = source;
+                this.Description = description;
+            }
         }
 
         /// <summary>

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
+        public Version AzVersion { get; private set; } = new Version("0.0.0.0");
+
+        /// <inheritdoc/>
         public string UserId { get; private set; } = string.Empty;
 
         private string _macAddress;
@@ -100,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public void UpdateContext()
         {
+            AzVersion = GetAzVersion();
             UserId = GenerateSha256HashString(GetUserAccountId());
         }
 
@@ -118,6 +122,36 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Gets the latest version from the loaded Az modules.
+        /// </summary>
+        private Version GetAzVersion()
+        {
+            Version defaultVersion = new Version("0.0.0");
+
+            Version latestAz = defaultVersion;
+
+            try
+            {
+                var outputs = AzContext.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                foreach (PSObject obj in outputs)
+                {
+                    string psVersion = obj.Properties["Version"].Value.ToString();
+                    int pos = psVersion.IndexOf('-');
+                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                    if (currentAz > latestAz)
+                    {
+                        latestAz = currentAz;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return latestAz;
         }
 
         /// <summary>
