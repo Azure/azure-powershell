@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for SsoSecretType.</summary>
+    /// <summary>The type of single sign on Secret Type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretTypeTypeConverter))]
     public partial struct SsoSecretType :
         System.Management.Automation.IArgumentCompleter

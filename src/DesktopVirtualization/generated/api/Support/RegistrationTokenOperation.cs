@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>The type of resetting the token.</summary>
     public partial struct RegistrationTokenOperation :
         System.IEquatable<RegistrationTokenOperation>
     {

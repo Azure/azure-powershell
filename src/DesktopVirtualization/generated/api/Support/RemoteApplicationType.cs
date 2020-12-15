@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>Resource Type of Application.</summary>
     public partial struct RemoteApplicationType :
         System.IEquatable<RemoteApplicationType>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for RemoteApplicationType.</summary>
+    /// <summary>Resource Type of Application.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationTypeTypeConverter))]
     public partial struct RemoteApplicationType :
         System.Management.Automation.IArgumentCompleter

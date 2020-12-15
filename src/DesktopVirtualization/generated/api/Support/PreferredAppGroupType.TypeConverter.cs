@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for PreferredAppGroupType.</summary>
+    /// <summary>
+    /// The type of preferred application group type, default to Desktop Application Group
+    /// </summary>
     public partial class PreferredAppGroupTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
