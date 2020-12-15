@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Disable `SupportsShouldProcess` for 26 ADF commands which temporary do not support `SupportsShouldProcess`
 
 ## Version 1.11.2
 * Updated ADF .Net SDK version to 4.13.0
