@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-GroupByApplicationId` and `-GroupByUserAgent` parameters to the `Export-AzLogAnalyticThrottledRequest` and `Export-AzLogAnalyticRequestRateByInterval` cmdlets.
 
 ## Version 4.7.0
 * Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
