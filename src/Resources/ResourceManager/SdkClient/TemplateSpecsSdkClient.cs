@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 if (!throwIfNotExists && 
-                    ex is DefaultErrorResponseException dex && 
+                    ex is TemplateSpecsErrorException dex && 
                     dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     // Template spec does not exist
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 if (!throwIfNotExists &&
-                    ex is DefaultErrorResponseException dex &&
+                    ex is TemplateSpecsErrorException dex &&
                     dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     // Template spec version does not exist
