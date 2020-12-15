@@ -337,8 +337,14 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
+            else
+            {
+                vpnServerConfigurationToUpdate.VpnClientRevokedCertificates = null;
+                vpnServerConfigurationToUpdate.VpnClientRootCertificates = null;
+            }
+
             // VpnAuthenticationType = Radius related validations.
-            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
                 {
@@ -404,8 +410,17 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
+            else
+            {
+                vpnServerConfigurationToUpdate.RadiusServerAddress = null;
+                vpnServerConfigurationToUpdate.RadiusServerSecret = null;
+                vpnServerConfigurationToUpdate.RadiusClientRootCertificates = null;
+                vpnServerConfigurationToUpdate.RadiusServerRootCertificates = null;
+                vpnServerConfigurationToUpdate.RadiusServers = null;
+            }
+
             // VpnAuthenticationType = AAD related validations.
-            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (vpnServerConfigurationToUpdate.AadAuthenticationParameters == null)
                 {
@@ -431,6 +446,12 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = this.AadIssuer;
                 }
+            }
+            else
+            {
+                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant = null;
+                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = null;
+                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience = null;
             }
 
             ConfirmAction(
