@@ -1,44 +1,43 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlpoolgeobackup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqldeleteddatabasebackup
 schema: 2.0.0
 ---
 
-# Get-AzSynapseSqlPoolGeoBackup
+# Get-AzSynapseSqlDeletedDatabaseBackup
 
 ## SYNOPSIS
-Gets a geo-redundant backup of a Sql Pool.
+Gets a deleted database backup of a Synapse Sql Pool.
 
 ## SYNTAX
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlPoolGeoBackup [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Get-AzSynapseSqlDeletedDatabaseBackup [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 ## DESCRIPTION
-The **Get-AzSynapseSqlPoolGeoBackup** cmdlet gets a specified geo-redundant backup of a SQL Pool or all available geo-redundant backups on a specified workspace.
-A geo-redundant backup is a restorable resource using data files from a separate geographic location.
-You can use Geo-Restore to restore a geo-redundant backup in the event of a regional outage to recover your Sql Pool to a new region.
+The **Get-AzSynapseSqlDeletedDatabaseBackup** cmdlet gets a specified deleted SQL database backup that you can restore, or all deleted backups that you can restore in a workspace. 
+
 
 ## EXAMPLES
 
-### Example 1: Get a specified geo-redundant backup
+### Example 1: Get a specified backup from a sql pool
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+PS C:\> Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
-The cmdlet retrieves Geo Backup for a sql pool.
+The cmdlet retrieves  Backup for a sql pool.
 
-### Example 2: Get all geo-redundant backups on a workspace
+### Example 2: Get all backups on a workspace
 ```
-PS C:\>Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+PS C:\>Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
-This command gets all available geo-redundant backups on a specified workspace.
+This command gets all available backups on a specified workspace.
 
 ### Example 3: Get all geo-redundant backups on a workspace using filtering
 ```
-PS C:\>Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
+PS C:\>Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
 ```
 This command gets all available geo-redundant backups on a specified workspace that start with "Contoso".
 
@@ -65,7 +64,7 @@ The Synapse Sql pool.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
-Aliases: The Synapse Sql pool.
+Aliases: AzSynapseSqlDeletedDatabaseBackup
 
 Required: True
 Position: Named
@@ -115,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSBackupModel
+### Microsoft.Azure.Commands.Synapse.Models.PSDeletedDatabaseBackupModel
 
 ## NOTES
 
