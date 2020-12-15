@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             for (int i = 2; i < command.Count; i += 2)
             {
-                if (command[i - 1] is CommandParameterAst && command[i] is StringConstantExpressionAst)
+                if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
                 {
                     var parameterName = command[i - 1].ToString().ToLower();
                     if (_command_param_to_resource_map.ContainsKey(commandNoun.ToLower()))

@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,62 +43,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string WorkspaceName { get; set; }
 
-        [JsonProperty(PropertyName = "properties.description")]
         public string Description { get; set; }
 
         public IList<Activity> Activities { get; set; }
 
-        [JsonProperty(PropertyName = "properties.activities")]
-        internal IList<PSActivity> ActivitiesForCreate { get; set; }
-
-        [JsonProperty(PropertyName = "properties.variables")]
         public IDictionary<string, PSVariableSpecification> Variables { get; set; }
 
-        [JsonProperty(PropertyName = "properties.concurrency")]
         public int? Concurrency { get; set; }
 
-        [JsonProperty(PropertyName = "properties.annotations")]
         public IList<object> Annotations { get; set; }
 
-        [JsonProperty(PropertyName = "properties.runDimensions")]
         public IDictionary<string, object> RunDimensions { get; set; }
 
-        [JsonProperty(PropertyName = "properties.folder")]
         public PSPipelineFolder Folder { get; set; }
 
-        [JsonProperty(PropertyName = "properties.parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
         
-        [JsonProperty(PropertyName = "properties")]
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public PipelineResource ToSdkObject()
-        {
-            PipelineResource pipeline = new PipelineResource
-            {
-                Description = this.Description,
-                Concurrency = this.Concurrency,
-                Folder = this.Folder?.ToSdkObject()
-            };
-            this.ActivitiesForCreate?.ForEach(item => pipeline.Activities.Add(item?.ToSdkObject()));
-            this.Variables?.ForEach(item => pipeline.Variables.Add(item.Key, item.Value?.ToSdkObject()));
-            this.Annotations?.ForEach(item => pipeline.Annotations.Add(item));
-            this.RunDimensions?.ForEach(item => pipeline.RunDimensions.Add(item));
-            this.Parameters?.ForEach(item => pipeline.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
-            List<string> properties = new List<string> { "description", "activities", "variables", "concurrency",
-                "annotations", "runDimensions", "folder", "parameters" };
-            if (this.AdditionalProperties != null)
-            {
-                foreach (var item in this.AdditionalProperties)
-                {
-                    if (!properties.Contains(item.Key))
-                    {
-                        pipeline.Add(item.Key, item.Value);
-                    }
-                }
-            }
-            return pipeline;
-        }
     }
 }

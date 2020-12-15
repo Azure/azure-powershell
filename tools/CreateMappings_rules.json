@@ -612,5 +612,13 @@
   {
     "regex": "CostManagement",
     "alias": "CostManagement"
+  },
+  {
+    "regex": "Communication",
+    "alias": "Communication"
+  },
+  {
+    "regex": "RedisEnterpriseCache",
+    "alias": "RedisEnterpriseCache"
   }
 ]

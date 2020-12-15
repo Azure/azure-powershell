@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
+            HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string AllowReadOnlyFailoverToPrimary { get; set; }
