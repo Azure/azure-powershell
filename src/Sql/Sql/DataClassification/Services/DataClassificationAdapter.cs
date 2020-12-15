@@ -285,16 +285,20 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         private static SensitivityLabelModel ToSensitivityLabelModel(SensitivityLabel sensitivityLabel)
         {
-            int indexOfSchema = sensitivityLabel.Id.IndexOf("/schemas/");
-            int indexOfTables = sensitivityLabel.Id.IndexOf("/tables/");
-            int indexOfColumns = sensitivityLabel.Id.IndexOf("/columns/");
-            int indexOfSensitivityLabels = sensitivityLabel.Id.IndexOf("/sensitivityLabels/");
+            const string schemas = "/schemas/";
+            const string tables = "/tables/";
+            const string columns = "/columns/";
+            const string sensitivityLabels = "/sensitivityLabels/";
+            int indexOfSchema = sensitivityLabel.Id.IndexOf(schemas);
+            int indexOfTables = sensitivityLabel.Id.IndexOf(tables);
+            int indexOfColumns = sensitivityLabel.Id.IndexOf(columns);
+            int indexOfSensitivityLabels = sensitivityLabel.Id.IndexOf(sensitivityLabels);
 
             return new SensitivityLabelModel
             {
-                SchemaName = sensitivityLabel.Id.Substring(indexOfSchema + 9, indexOfTables - indexOfSchema + 9),
-                TableName = sensitivityLabel.Id.Substring(indexOfTables + 8, indexOfColumns - indexOfTables + 8),
-                ColumnName = sensitivityLabel.Id.Substring(indexOfColumns + 9, indexOfSensitivityLabels - indexOfColumns + 8),
+                SchemaName = sensitivityLabel.Id.Substring(indexOfSchema + schemas.Length, indexOfTables - indexOfSchema - schemas.Length),
+                TableName = sensitivityLabel.Id.Substring(indexOfTables + tables.Length, indexOfColumns - indexOfTables - tables.Length),
+                ColumnName = sensitivityLabel.Id.Substring(indexOfColumns + columns.Length, indexOfSensitivityLabels - indexOfColumns - columns.Length),
                 SensitivityLabel = NullifyStringIfEmpty(sensitivityLabel.LabelName),
                 SensitivityLabelId = NullifyStringIfEmpty(sensitivityLabel.LabelId),
                 InformationType = NullifyStringIfEmpty(sensitivityLabel.InformationType),
