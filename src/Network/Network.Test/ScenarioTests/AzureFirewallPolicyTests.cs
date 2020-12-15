@@ -108,5 +108,29 @@ namespace Commands.Network.Test.ScenarioTests
             }
             TestRunner.RunTestScript(string.Format("Test-AzureFirewallPolicyPremiumFeatures -baseDir '{0}' -spn '{1}'", AppDomain.CurrentDomain.BaseDirectory, servicePrincipal));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyPremiumWithTerminateTLSEnabled()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyPremiumWithTerminateTLSEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyPremiumWithTerminateTLSDisabledAndTargetUrls()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyPremiumWithTerminateTLSDisabledAndTargetUrls");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyPremiumWithTerminateTLSEnabledAndTargetUrls()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyPremiumWithTerminateTLSEnabledAndTargetUrls");
+        }
     }
 }
