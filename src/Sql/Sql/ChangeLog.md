@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed parameter description for `InstanceFailoverGroup` command.
+* SQL Data Classification commands - Updated the logic in which schemaName, tableName and columnName are being extracted from the id.
 
 ## Version 2.13.0
 * Added SecondaryType to the following: 
