@@ -28,7 +28,7 @@ You can use Geo-Restore to restore a geo-redundant backup in the event of a regi
 ```powershell
 PS C:\> Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
-The cmdlet retrieves Geo Backup for a sql pool'.
+The cmdlet retrieves Geo Backup for a sql pool.
 
 ### Example 2: Get all geo-redundant backups on a workspace
 ```
