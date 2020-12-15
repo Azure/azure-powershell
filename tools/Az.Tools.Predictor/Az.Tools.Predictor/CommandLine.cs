@@ -12,38 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A prediction candidate consists of the command name and list of parameter sets,
-    /// where each parameter set is a set of parameters (order independent) that go along with the command.
+    /// A command line consists of the command name and the parameter set,
+    /// where the parameter set is a set of parameters (order independent) that go along with the command.
     /// </summary>
-    sealed class Prediction
+    sealed class CommandLine
     {
         /// <summary>
-        /// Gets the command name
+        /// Gets the command name.
         /// </summary>
-        public string Command { get; }
+        public string Name { get; }
 
         /// <summary>
-        /// Gets the list of <see cref="ParameterSet "/>
+        /// Gets the <see cref="ParameterSet "/>.
         /// </summary>
-        public IList<ParameterSet> ParameterSets { get; }
+        public ParameterSet ParameterSet { get; }
 
         /// <summary>
-        /// Create a new instance of <see cref="Prediction "/> with the command and parameter set.
+        /// Create a new instance of <see cref="CommandLine"/> with the command name and parameter set.
         /// </summary>
-        /// <param name="command">The command name</param>
-        /// <param name="parameters">The parameter set</param>
-        public Prediction(string command, ParameterSet parameters)
+        /// <param name="name">The command name.</param>
+        /// <param name="parameterSet">The parameter set.</param>
+        public CommandLine(string name, ParameterSet parameterSet)
         {
-            this.Command = command;
-            ParameterSets = new List<ParameterSet>
-            {
-                parameters
-            };
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(name), $"{nameof(name)} must not be null or whitespace.");
+
+            Name = name;
+            ParameterSet = parameterSet;
         }
     }
 }

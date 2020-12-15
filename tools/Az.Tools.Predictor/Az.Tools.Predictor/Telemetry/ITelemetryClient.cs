@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
     /// The telemetry client that collects and sends the telemetry data.
@@ -35,41 +32,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Collects the event of the history command.
         /// </summary>
-        /// <param name="historyLine">The history command from PSReadLine.</param>
-        public void OnHistory(string historyLine);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnHistory(HistoryTelemetryData telemetryData);
 
         /// <summary>
         /// Collects the event when a prediction is requested.
         /// </summary>
-        /// <param name="command">The command to that we request the prediction for.</param>
-        public void OnRequestPrediction(string command);
-
-        /// <summary>
-        /// Collects the event when we fail to get the prediction for the command
-        /// </summary>
-        /// <param name="command">The command to that we request the prediction for.</param>
-        /// <param name="e">The exception</param>
-        public void OnRequestPredictionError(string command, Exception e);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData);
 
         /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
-        /// <param name="acceptedSuggestion">The suggestion that's accepted by the user.</param>
-        public void OnSuggestionAccepted(string acceptedSuggestion);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData);
 
         /// <summary>
         /// Collects when we return a suggestion
         /// </summary>
-        /// <param name="maskedUserInput">The user input that the suggestions are for</param>
-        /// <param name="suggestions">The list of suggestion and its source</param>
-        /// <param name="isCancelled">Indicates whether the caller has cancelled the call to get suggestion. Usually that's because of time out </param>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled);
-
-        /// <summary>
-        /// Collects when an exception is thrown when we return a suggestion.
-        /// </summary>
-        /// <param name="e">The exception</param>
-
-        public void OnGetSuggestionError(Exception e);
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
     }
 }

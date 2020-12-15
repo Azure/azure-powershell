@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Threading;
@@ -27,23 +26,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gest the suggestions for the user input.
         /// </summary>
-        /// <param name="input">User input from PSReadLine</param>
+        /// <param name="input">User input from PSReadLine.</param>
         /// <param name="suggestionCount">The number of suggestion to return.</param>
-        /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
         /// <param name="cancellationToken">The cancellation token</param>
-        /// <returns>The list of suggestions for <paramref name="input"/> and the source that create the suggestion. The maximum number of suggestion is <paramref name="suggestionCount"/></returns>
-        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
+        /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
+        /// <returns>The suggestions for <paramref name="input"/>. The maximum number of suggestions is <paramref name="suggestionCount"/>.</returns>
+        public CommandLineSuggestion GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests predictions, given a command string.
         /// </summary>
-        /// <param name="commands">A list of commands</param>
+        /// <param name="commands">A list of commands.</param>
         public void RequestPredictions(IEnumerable<string> commands);
 
         /// <summary>
         /// Record the history from PSReadLine.
         /// </summary>
-        /// <param name="history">The last command in history</param>
+        /// <param name="history">The last command in history.</param>
         public void RecordHistory(CommandAst history);
 
         /// <summary>

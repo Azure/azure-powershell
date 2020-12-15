@@ -12,35 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// An enum for the source where we get the prediction.
+    /// The class represents a name-value pair of a parameter.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PredictionSource
+    struct Parameter
     {
         /// <summary>
-        /// There is no predictions.
+        /// Gets the name of the parameter.
         /// </summary>
-        None,
+        public string Name { get; }
 
         /// <summary>
-        /// The prediction is from the static command list.
+        /// Gets or sets the valus of the parameter.
+        /// null if there is no valud is expected or set for this parameter.
         /// </summary>
-        StaticCommands,
+        public string Value { get; set; }
 
         /// <summary>
-        /// The prediction is from the list for the older command.
+        /// Creates a new instance of <see cref="Parameter"/>
         /// </summary>
-        PreviousCommand,
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="value">The value of the parameter. If the parameter is a switch parameter, it's null.</param>
+        public Parameter(string name, string value)
+        {
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(name), $"{nameof(name)} cannot be null or whitespace");
 
-        /// <summary>
-        /// The prediction is from the list for the currentc command.
-        /// </summary>
-        CurrentCommand
+            Name = name;
+            Value = value;
+        }
     }
 }
