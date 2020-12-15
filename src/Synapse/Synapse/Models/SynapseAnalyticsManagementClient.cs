@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 {"workspaceName", new Dictionary<string, object> { {"value", workspaceName } }},
                 {"location", new Dictionary<string, object> { {"value", workspaceLocation } }},
             };
-            string parameters = JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
+            string parameters = Newtonsoft.Json.JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.None,
                 Formatting = Formatting.Indented
