@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.1.0
 * Added StartVMOnConnect property to hostpool.
 
 ## Version 2.0.1
