@@ -124,7 +124,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new MSIX Package cmdlets and updated Applications cmdlets.'
+        ReleaseNotes = '* Added StartVMOnConnect property to hostpool.'
 
         # Prerelease string of this module
         # Prerelease = ''
