@@ -24,6 +24,16 @@
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
     - Added parameter WebCategory
+    - Added parameter TargetUrl
+    - Added parameter TerminateTLS
+* Updated 'New-AzFirewallPolicy' cmdlet:
+    - Added parameter IntrusionDetection
+    - Added parameter TransportSecurityKeyVaultSecretId 
+    - Added parameter Identity 
+* Added new cmdlets to support Firewall Policy Premium Tier
+    - `New-AzFirewallPolicyIntrusionDetection`
+    - `New-AzFirewallPolicyIntrusionDetectionBypassTraffic`
+    - `New-AzFirewallPolicyIntrusionDetectionSignatureOverride`
 
 ## Version 4.3.0
 * Updated below cmdlet 
