@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (_command_param_to_resource_map.ContainsKey(commandNoun))
             {
-                parameterName = "-" + parameterName.ToLower();
+                parameterName = parameterName.ToLower();
                 if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
                 {
                     var key = _command_param_to_resource_map[commandNoun][parameterName];
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
                 {
-                    var parameterName = command[i - 1].ToString().ToLower();
+                    var parameterName = command[i - 1].ToString().ToLower().Trim('-');
                     if (_command_param_to_resource_map.ContainsKey(commandNoun))
                     {
                         if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
