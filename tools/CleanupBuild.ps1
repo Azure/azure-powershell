@@ -53,6 +53,13 @@ foreach($RMPath in $resourceManagerPaths)
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)
         {
+            # if the nested module is script module, we need to keep the dll behind the script module
+            if ($cmdAssembly.EndsWith(".psm1")) {
+                if (!$cmdAssembly.Contains("/") -and !$cmdAssembly.Contains("\")) {
+                    $acceptedDlls += "Microsoft.Azure.PowerShell.Cmdlets." + $cmdAssembly.Split(".")[-2] + ".dll"
+                }
+                continue
+            }
             if($cmdAssembly.Contains("/")) {
                 $acceptedDlls += $cmdAssembly.Split("/")[-1]
             } else {

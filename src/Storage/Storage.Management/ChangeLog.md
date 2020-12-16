@@ -18,11 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support upload Azure File size up to 4 TiB
+* Support create/update/get/list EncryptionScope of a Storage account
+    - `New-AzStorageEncryptionScope`
+    - `Update-AzStorageEncryptionScope`
+    - `Get-AzStorageEncryptionScope`
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzRmStorageContainer`
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
+
+## Version 3.1.0
+* Supported upload Azure File size up to 4 TiB
     - `Set-AzStorageFileContent`
-* Upgraded Azure.Storage..Blobs to 12.7.0
+* Upgraded Azure.Storage.Blobs to 12.7.0
 * Upgraded Azure.Storage.Files.Shares to 12.5.0
 * Upgraded Azure.Storage.Files.DataLake to 12.5.0
+* Upgraded Azure.Storage.Queues to 12.5.0
 
 ## Version 3.0.0
 * Removed obsolete property RestorePolicy.LastEnabledTime

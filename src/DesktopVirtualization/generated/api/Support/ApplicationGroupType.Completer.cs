@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for ApplicationGroupType.</summary>
+    /// <summary>Resource Type of ApplicationGroup.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupTypeTypeConverter))]
     public partial struct ApplicationGroupType :
         System.Management.Automation.IArgumentCompleter

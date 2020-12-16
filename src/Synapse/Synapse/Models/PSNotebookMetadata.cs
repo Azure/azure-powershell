@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,24 +23,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "kernelspec")]
         public PSNotebookKernelSpec Kernelspec { get; set; }
 
-        [JsonProperty(PropertyName = "language_info")]
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public NotebookMetadata ToSdkObject()
-        {
-            var metadata = new NotebookMetadata()
-            {
-                Kernelspec = this.Kernelspec?.ToSdkObject(),
-                LanguageInfo = this.LanguageInfo?.ToSdkObject()
-            };
-            this.AdditionalProperties?.ForEach(item => metadata.Add(item.Key, item.Value));
-            return metadata;
-        }
     }
 }

@@ -20,7 +20,7 @@ Describe 'Restart-AzMySqlServer' {
 
     It 'RestartViaIdentity' {
         { 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/restart"
             Restart-AzMySqlServer -InputObject $ID
         } | Should -Not -Throw
     }

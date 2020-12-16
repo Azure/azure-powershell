@@ -17,7 +17,12 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Fixed a NullRef exception issue in `New-AzureManagedApplication` and `Set-AzureManagedApplication`.
+* Updated Azure Resource Manager SDK to use latest DeploymentScripts GA api-version: 2020-10-01.
+
+## Version 3.1.0
 * Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
 * Added Tag display support to default formatter for Template Specs 
 

@@ -6,19 +6,14 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Rest.Serialization;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsArtifactsClient
     {
-        private readonly JsonSerializerSettings Settings;
         private readonly PipelineClient _pipelineClient;
         private readonly PipelineRunClient _pipelineRunClient;
         private readonly LinkedServiceClient _linkedServiceClient;
@@ -34,25 +29,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 throw new SynapseException(Resources.InvalidDefaultSubscription);
             }
-
-            Settings = new JsonSerializerSettings
-            {
-                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
-                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                ContractResolver = new ReadOnlyJsonContractResolver(),
-                Converters = new List<JsonConverter>
-                    {
-                        new Iso8601TimeSpanConverter()
-                    }
-            };
-            Settings.Converters.Add(new TransformationJsonConverter());
-            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSActivity>("type"));
-            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSLinkedService>("type"));
-            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSTrigger>("type"));
-            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSDataset>("type"));
-            Settings.Converters.Add(new PolymorphicDeserializeJsonConverter<PSDataFlow>("type"));
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
@@ -70,14 +46,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PipelineResource CreateOrUpdatePipeline(string pipelineName, string rawJsonContent)
         {
-            PSPipelineResource psPipeline = JsonConvert.DeserializeObject<PSPipelineResource>(rawJsonContent,Settings);
-            PipelineResource pipeline = psPipeline.ToSdkObject();
+            PipelineResource pipeline = JsonConvert.DeserializeObject<PipelineResource>(rawJsonContent);
             var operation = _pipelineClient.StartCreateOrUpdatePipeline(pipelineName, pipeline);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public PipelineResource GetPipeline(string pipelineName)
@@ -92,17 +63,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeletePipeline(string pipelineName)
         {
-            _pipelineClient.StartDeletePipeline(pipelineName);
-        }
-
-        public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
-        {
-            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+            _pipelineClient.StartDeletePipeline(pipelineName).Poll();
         }
 
         #endregion
 
         #region pipeline run
+
+        public CreateRunResponse CreatePipelineRun(string pipelineName, string referencePipelineRunId, bool? isRecovery, string startActivityName, IDictionary<string, object> parameters)
+        {
+            return _pipelineClient.CreatePipelineRun(pipelineName, referencePipelineRunId, isRecovery, startActivityName, parameters);
+        }
 
         public PipelineRun GetPipelineRun(string runId)
         {
@@ -140,19 +111,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkedServiceResource CreateOrUpdateLinkedService(string linkedServiceName, string rawJsonContent)
         {
-            PSLinkedServiceResource psLinkedService = JsonConvert.DeserializeObject<PSLinkedServiceResource>(rawJsonContent, Settings);
-            LinkedServiceResource linkedService = psLinkedService.ToSdkObject();
+            LinkedServiceResource linkedService = JsonConvert.DeserializeObject<LinkedServiceResource>(rawJsonContent);
             var operation = _linkedServiceClient.StartCreateOrUpdateLinkedService(linkedServiceName, linkedService);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public void DeleteLinkedService(string linkedServiceName)
         {
-            _linkedServiceClient.StartDeleteLinkedService(linkedServiceName);
+            _linkedServiceClient.StartDeleteLinkedService(linkedServiceName).Poll();
         }
 
         #endregion
@@ -162,16 +128,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public NotebookResource CreateOrUpdateNotebook(string notebookName, NotebookResource notebook)
         {
             var operation = _notebookClient.StartCreateOrUpdateNotebook(notebookName, notebook);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public void DeleteNotebook(string notebookName)
         {
-            _notebookClient.StartDeleteNotebook(notebookName);
+            _notebookClient.StartDeleteNotebook(notebookName).Poll();
         }
 
         public NotebookResource GetNotebook(string notebookName)
@@ -190,14 +152,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public TriggerResource CreateOrUpdateTrigger(string triggerName, string rawJsonContent)
         {
-            PSTriggerResource pSTrigger = JsonConvert.DeserializeObject<PSTriggerResource>(rawJsonContent, Settings);
-            TriggerResource trigger = pSTrigger.ToSdkObject();
+            TriggerResource trigger = JsonConvert.DeserializeObject<TriggerResource>(rawJsonContent);
             var operation = _triggerClient.StartCreateOrUpdateTrigger(triggerName, trigger);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public TriggerResource GetTrigger(string triggerName)
@@ -212,7 +169,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteTrigger(string triggerName)
         {
-            _triggerClient.StartDeleteTrigger(triggerName);
+            _triggerClient.StartDeleteTrigger(triggerName).Poll();
         }
 
         public TriggerSubscriptionOperationStatus GetEventSubscriptionStatus(string triggerName)
@@ -220,29 +177,25 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _triggerClient.GetEventSubscriptionStatus(triggerName);
         }
 
-        public TriggerSubscriptionOperationStatus StartSubscribeTriggerToEvents(string triggerName)
+        public TriggerSubscriptionOperationStatus SubscribeTriggerToEvents(string triggerName)
         {
             var operation = _triggerClient.StartSubscribeTriggerToEvents(triggerName);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
-        public void StartUnsubscribeTriggerFromEvents(string triggerName)
+        public void UnsubscribeTriggerFromEvents(string triggerName)
         {
-            _triggerClient.StartUnsubscribeTriggerFromEvents(triggerName);
+            _triggerClient.StartUnsubscribeTriggerFromEvents(triggerName).Poll();
         }
 
-        public void StartStartTrigger(string triggerName)
+        public void StartTrigger(string triggerName)
         {
-            _triggerClient.StartStartTrigger(triggerName);
+            _triggerClient.StartStartTrigger(triggerName).Poll();
         }
 
-        public void StartStopTrigger(string triggerName)
+        public void StopTrigger(string triggerName)
         {
-            _triggerClient.StartStopTrigger(triggerName);
+            _triggerClient.StartStopTrigger(triggerName).Poll();
         }
 
         public IReadOnlyList<TriggerRun> QueryTriggerRunsByWorkspace(RunFilterParameters filterParameters)
@@ -256,14 +209,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DatasetResource CreateOrUpdateDataset(string datasetName, string rawJsonContent)
         {
-            PSDatasetResource pSDatasetResource = JsonConvert.DeserializeObject<PSDatasetResource>(rawJsonContent, Settings);
-            DatasetResource dataset = pSDatasetResource.ToSdkObject();
+           DatasetResource dataset = JsonConvert.DeserializeObject<DatasetResource>(rawJsonContent);
             var operation = _datasetClient.StartCreateOrUpdateDataset(datasetName, dataset);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public DatasetResource GetDataset(string datasetName)
@@ -278,7 +226,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteDataset(string datasetName)
         {
-            _datasetClient.StartDeleteDataset(datasetName);
+            _datasetClient.StartDeleteDataset(datasetName).Poll();
         }
 
         #endregion
@@ -287,14 +235,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DataFlowResource CreateOrUpdateDataFlow(string dataFlowName, string rawJsonContent)
         {
-            PSDataFlowResource pSDatasetResource = JsonConvert.DeserializeObject<PSDataFlowResource>(rawJsonContent, Settings);
-            DataFlowResource dataFlow = pSDatasetResource.ToSdkObject();
+            DataFlowResource dataFlow = JsonConvert.DeserializeObject<DataFlowResource>(rawJsonContent);
             var operation = _dataFlowClient.StartCreateOrUpdateDataFlow(dataFlowName, dataFlow);
-            while (!operation.HasValue)
-            {
-                operation.UpdateStatus();
-            }
-            return operation.Value;
+            return operation.Poll().Value;
         }
 
         public DataFlowResource GetDataFlow(string dataFlowName)
@@ -309,7 +252,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteDataFlow(string dataFlowName)
         {
-            _dataFlowClient.StartDeleteDataFlow(dataFlowName);
+            _dataFlowClient.StartDeleteDataFlow(dataFlowName).Poll();
         }
 
         #endregion

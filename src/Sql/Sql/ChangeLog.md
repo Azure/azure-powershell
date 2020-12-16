@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parameter description for `InstanceFailoverGroup` command.
+
+## Version 2.13.0
 * Added SecondaryType to the following: 
     - `New-AzSqlDatabase`
     - `Set-AzSqlDatabase`
