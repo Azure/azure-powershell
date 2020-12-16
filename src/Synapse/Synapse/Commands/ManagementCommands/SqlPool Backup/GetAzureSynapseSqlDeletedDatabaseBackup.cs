@@ -41,27 +41,24 @@ namespace Microsoft.Azure.Commands.Synapse
 
         public override void ExecuteCmdlet()
         {
-            ICollection<PSDeletedDatabaseBackupModel> results;
-
             if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 if (MyInvocation.BoundParameters.ContainsKey("DeletionDate"))
                 {
-                    results = new List<PSDeletedDatabaseBackupModel>();
-                    // The Sql pool expects a deleted database ID that consists of the database name and deletion time as a windows file time separated by a comma.
-                    results.Add(this.SynapseAnalyticsClient.GetDeletedDatabaseBackup(this.ResourceGroupName, this.WorkspaceName, this.Name + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()).ConfigureAwait(true).GetAwaiter().GetResult());
+                    var result = this.SynapseAnalyticsClient.GetDroppedSqlPoolBackup(this.ResourceGroupName, this.WorkspaceName, this.Name + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()).ConfigureAwait(true).GetAwaiter().GetResult();
+                    WriteObject(result, true);
                 }
                 else
                 {
-                    results = this.SynapseAnalyticsClient.ListDeletedDatabaseBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult().Where(backup => backup.DatabaseName == Name).ToList();
+                    var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult().Where(backup => backup.SqlpoolName == Name).ToList();
+                    WriteObject(results, true);
                 }
             }
             else
             {
-                results = this.SynapseAnalyticsClient.ListDeletedDatabaseBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult();
+                var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult();
+                WriteObject(results, true);
             }
-
-            WriteObject(results, true);
         }
     }
 }

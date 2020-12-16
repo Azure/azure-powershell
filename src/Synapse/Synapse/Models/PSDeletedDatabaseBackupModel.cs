@@ -9,9 +9,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSDeletedDatabaseBackupModel(RestorableDroppedSqlPool restorableDroppedSqlPool)
         {
-            this.Edition = restorableDroppedSqlPool.Location;
-            this.ServiceLevelObjective = restorableDroppedSqlPool.DatabaseName;
-            this.ElasticPoolName = restorableDroppedSqlPool.Edition;
+            this.Location = restorableDroppedSqlPool.Location;
+            this.SqlpoolName = restorableDroppedSqlPool.DatabaseName;
+            this.Edition = restorableDroppedSqlPool.Edition;
             this.MaxSizeBytes = restorableDroppedSqlPool.MaxSizeBytes;
             this.ServiceLevelObjective = restorableDroppedSqlPool.ServiceLevelObjective;
             this.ElasticPoolName = restorableDroppedSqlPool.ElasticPoolName;
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         //
         // Summary:
         //     Gets the name of the database
-        public string DatabaseName { get; }
+        public string SqlpoolName { get; }
 
         //
         // Summary:
