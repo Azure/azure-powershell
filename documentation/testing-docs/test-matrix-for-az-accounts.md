@@ -1,6 +1,6 @@
 # Test Matrix for Authentication in Az.Accounts
 
-Az.Accounts and its authentication feature is one of most important piece for Azure PowerShell, to make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix and it should be honored by each release of Az.Accounts.
+The authentication functionality in Az.Accounts is one of most important piece for Azure PowerShell, to make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix and it should be honored by each release of Az.Accounts.
 
 **Priority Clarification**
 
@@ -55,7 +55,7 @@ There's no need to run all tests on each of above platforms, the recommendation 
 ### Connect-AzAccount Using MSA Account
 
 |Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|
-|----|----|----|----|
+|----|----|----|
 |`No parameter`|P0(SemiAuto)|P0|
 |`-Subscription sub-id`|P2(SemiAuto)|P2|
 |`-Tenant tenant-id`|P2(SemiAuto)|P2|
@@ -84,13 +84,13 @@ It should be fine to run these test cases in just one platform.
 - ADFS Env (P1)
 - SAW Machine (P2)
 
-1. Azure Government Instances (Will be covered by dedicated teams)
+2. Azure Government Instances (Will be covered by dedicated teams)
 
 - Mooncake
 - Blackforest
 - Fairfax
 
-1. Special Scenario:
+3. Special Scenario:
 
 - Interactive authentication should return warning if connecting to Linux using SSH (P0, Auto)
 - Interactive authentication should be successful even the port 8400 is taken by other process first (P0, Auto)
@@ -99,7 +99,7 @@ It should be fine to run these test cases in just one platform.
 - Service Principal authentication should be successful if http proxy is set (P2, Manual, please refer to `How To Test` section)
 - FMR scenario(Integrated Windows Auth) (P2, Manual, please refer `How To Test` section)
 
-1. If possible, we should provide preview/engineering bits to our partners for verifying: (P2)
+4. If possible, we should provide preview/engineering bits to our partners for verifying: (P2)
 
 - Azure Stack team to verify ADFS scenario
 - Azure Function team
@@ -165,13 +165,13 @@ You may save json content below as template file, make sure the value of `parame
 }
 ```
 
-1. How to test Http Proxy
+2. How to test Http Proxy
 
     a. Start Fiddler
     b. Restart Windows PowerShell and run `Connect-AzAccount`
     c. You should see http request in Fiddler like `https://login.microsoftonline.com/organizations/oauth2/v2.0/token`
 
-1. How to test compatability with az
+3. How to test compatability with az
 
     Expect no error happens:
     a. az login
@@ -181,7 +181,7 @@ You may save json content below as template file, make sure the value of `parame
     e. az group list
     f. Disconnect-AzAccount
 
-1. How to test Integrated Windows Auth
+4. How to test Integrated Windows Auth
 
     a. Start Fiddler
     b. Restart Windows PowerShell and Connect-AzAccount using your corp account
