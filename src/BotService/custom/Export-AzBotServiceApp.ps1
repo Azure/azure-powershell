@@ -21,7 +21,7 @@ Returns a BotService specified by the parameters.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.botservice/invoke-azbotservicedownloadapp
 #>
-function Invoke-AzBotServiceDownloadApp {
+function Export-AzBotServiceApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
@@ -144,6 +144,7 @@ function Invoke-AzBotServiceDownloadApp {
 
 function DownloadBotZip
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.DoNotExportAttribute()]
     param(
         [Parameter()]
         [System.String]
@@ -159,6 +160,7 @@ function DownloadBotZip
         ${EnvParameters}
     )
     process {
+        Import-Module Az.Websites
         $WebApp = Get-AzWebApp -ResourceGroupName $ResourceGroupName -Name $Name @EnvParameters
         foreach ($HostNameSslState in $WebApp.HostNameSslStates)
         {

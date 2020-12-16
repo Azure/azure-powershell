@@ -250,6 +250,7 @@ function New-AzBotService {
 function RetrieveBotTemplateLink
 {
     [OutputType([System.String])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.DoNotExportAttribute()]
     param(
         [Parameter()]
         [System.String]
