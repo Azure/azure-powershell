@@ -23,7 +23,9 @@ In theory all the combination of different OS platforms and PWSH versions should
 - PWSH 7.0.0 on Ubuntu
 - PWSH 7.0.x on Ubuntu
 - PWSH 7.1.0 on Ubuntu
+- PWSH 7.0.0 on MacOS
 - PWSH 7.0.x on MacOS
+- PWSH 7.1.0 on MacOS
 - CloudShell
 - Docker Env for Ubuntu
 
