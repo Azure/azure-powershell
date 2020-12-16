@@ -23,17 +23,19 @@
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
-    - Added parameter WebCategory
     - Added parameter TargetUrl
     - Added parameter TerminateTLS
-* Updated 'New-AzFirewallPolicy' cmdlet:
-    - Added parameter IntrusionDetection
-    - Added parameter TransportSecurityKeyVaultSecretId 
-    - Added parameter Identity 
-* Added new cmdlets to support Firewall Policy Premium Tier
+* Added new cmdlets for Azure Firewall Premium Features
     - `New-AzFirewallPolicyIntrusionDetection`
     - `New-AzFirewallPolicyIntrusionDetectionBypassTraffic`
     - `New-AzFirewallPolicyIntrusionDetectionSignatureOverride`
+* Updated New-AzFirewallPolicy cmdlet:
+    - Added parameter -SkuTier
+    - Added parameter -Identity
+    - Added parameter -UserAssignedIdentityId
+    - Added parameter -IntrusionDetection
+    - Added parameter -TransportSecurityName
+    - Added parameter -TransportSecurityKeyVaultSecretId
 
 ## Version 4.3.0
 * Updated below cmdlet 
