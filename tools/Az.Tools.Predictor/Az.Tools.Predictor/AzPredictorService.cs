@@ -34,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string ClientType = "AzurePowerShell";
 
+        // Default to the latest model version?
+        private static readonly Version DefaultModelVersion = new Version(5, 1);
+
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -113,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         protected AzPredictorService()
         {
-            RequestAllPredictiveCommands(this._azContext.AzVersion);
+            RequestAllPredictiveCommands(this._azContext?.AzVersion);
         }
 
         /// <inhericdoc/>
@@ -229,6 +232,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
+            if(version == null)
+            {
+                version = DefaultModelVersion;
+            }
+
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
             bool postSuccess = false;
             Exception exception = null;
@@ -324,6 +332,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         protected virtual void RequestAllPredictiveCommands(Version version)
         {
+            if(version == null)
+            {
+                version = DefaultModelVersion;
+            }
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {

@@ -169,7 +169,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzKeyVault -VaultName")]
         [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
         [InlineData("new-azresourcegroup -name hello")]
-        [InlineData("Get-AzContext -Name")]
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -237,7 +236,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            Assert.Equal("Connect-AzAccount -Credential <PSCredential> -ServicePrincipal -Tenant <>", result.PredictiveSuggestions.First().SuggestionText);
+            Assert.Equal("Connect-AzAccount -Identity", result.PredictiveSuggestions.First().SuggestionText);
         }
 
         /// <summary>
@@ -260,7 +259,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            Assert.Equal("Get-AzStorageAccountKey -Name 'ContosoStorage' -ResourceGroupName 'ContosoGroup02'", result.PredictiveSuggestions.First().SuggestionText);
+            Assert.Equal("Get-AzStorageAccountKey -Name 'myStorageAccount' -ResourceGroupName 'ContosoGroup02'", result.PredictiveSuggestions.First().SuggestionText);
         }
     }
 }

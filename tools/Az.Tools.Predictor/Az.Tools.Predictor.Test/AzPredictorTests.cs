@@ -137,8 +137,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Theory]
         [InlineData("new-azresourcegroup -name hello")]
         [InlineData("Get-AzContext -Name")]
-        [InlineData("Get-AzContext -ErrorAction")]
-        [InlineData("Get-AzADServicePrincipal -ApplicationObject")]
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -164,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             null);
 
             var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
-            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Verbose ***";
+            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Tag value1";
 
             var predictionContext = PredictionContext.Create(userInput);
             var actual = localAzPredictor.GetSuggestion(predictionContext, CancellationToken.None);

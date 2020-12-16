@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             const int commandCollectionCapacity = 10;
             CommandLineSuggestion result = new();
-            var resultsTemp = new Dictionary<string, TemporaryResult>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
+            var duplicateResults = new Dictionary<string, DuplicateResult>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
 
             var isCommandNameComplete = inputParameterSet.Parameters.Any() || rawUserInput.EndsWith(' ');
 
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         else
                         {
-                            _ = resultsTemp.TryAdd(prediction, new TemporaryResult(sourceBuilder.ToString(), _commandLinePredictions[i].Description));
+                            _ = duplicateResults.TryAdd(prediction, new DuplicateResult(sourceBuilder.ToString(), _commandLinePredictions[i].Description));
                         }
                     }
                 }
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var resultCount = result.Count;
 
-            if ((resultCount < suggestionCount) && (resultsTemp.Count > 0))
+            if ((resultCount < suggestionCount) && (duplicateResults.Count > 0))
             {
-                foreach (var temp in resultsTemp.Take(suggestionCount - resultCount))
+                foreach (var temp in duplicateResults.Take(suggestionCount - resultCount))
                 {
                     result.AddSuggestion(new PredictiveSuggestion(temp.Key, temp.Value.Description), temp.Value.Source);
                 }
@@ -173,13 +173,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return result;
         }
 
-        private class TemporaryResult
+        private class DuplicateResult
         {
             public string Source { get; set; }
 
             public string Description { get; set; }
 
-            public TemporaryResult(string source, string description)
+            public DuplicateResult(string source, string description)
             {
                 this.Source = source;
                 this.Description = description;
