@@ -16,6 +16,7 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
+-->
 
 ## Upcoming Release
 * Added breaking change notification in AzSecurityAlert:
@@ -28,11 +29,7 @@
 
 ## Version 0.8.0
 * Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
-<<<<<<< HEAD
-* Added new cmdlet: `Get-AzSecurityAdaptiveNetworkHardening` and `Add-AzSecurityAdaptiveNetworkHardening`
-=======
 * Added new cmdlet: `Get-AzSecurityTopology`, `Get-AzSecurityAdaptiveNetworkHardening` and `Add-AzSecurityAdaptiveNetworkHardening`
->>>>>>> upstream/master
 
 ## Version 0.7.10
 * Added new cmdlet: `Get-AzAllowedConnection`
