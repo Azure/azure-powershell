@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzSqlServerMSSupportAudit : SetSqlServerAuditCmdlet<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
+    public class SetAzSqlServerMSSupportAudit : SetSqlServerAuditCmdlet<ServerDevOpsAuditingSettings, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
         protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {

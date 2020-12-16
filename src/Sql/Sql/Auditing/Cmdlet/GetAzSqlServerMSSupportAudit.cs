@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerDevOpsAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName),
         OutputType(typeof(ServerDevOpsAuditModel))]
-    public class GetAzSqlServerMSSupportAudit : SqlServerAuditCmdlet<ServerDevOpsAuditingPolicy, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
+    public class GetAzSqlServerMSSupportAudit : SqlServerAuditCmdlet<ServerDevOpsAuditingSettings, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
         protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {
