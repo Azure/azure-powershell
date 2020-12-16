@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDataClassificationOnSqlDatabase()
+        public void TestDataClassificationOnSqlPool()
         {
             NewInstance.RunPsTest(
                 _logger,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestEnableDisableRecommendationsOnSqlDatabase()
+        public void TestEnableDisableRecommendationsOnSqlPool()
         {
             NewInstance.RunPsTest(
                 _logger,
