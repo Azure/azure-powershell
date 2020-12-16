@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System;
 using System.IO;
 using System.Text;
 using System.Text.Json;
@@ -7,7 +8,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
-using Newtonsoft.Json;
 
 
 
@@ -18,11 +18,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     sealed class ParameterValuePredictor
     {
-        /// <summary>
-        /// The collections of the parameter names that is used directly as the key in local parameter collection.
-        /// </summary>
-        private static readonly IReadOnlyCollection<string> _specialLocalParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "location", "credential", "addressprefix" };
-
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
 
         private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
@@ -32,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
             var directory = fileInfo.DirectoryName;
             var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
-            _command_param_to_resource_map = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath));
+            _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
         }
 
         /// <summary>
@@ -55,18 +50,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// > Get-AzVM -VMName &lt;TestVM&gt;
         /// "TestVM" is predicted for Get-AzVM.
         /// </summary>
-        /// <param name="commandName">The command noun</param>
+        /// <param name="commandNoun">The command noun</param>
         /// <param name="parameterName">The parameter name</param>
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
-        public string GetParameterValueFromAzCommand(string commandName, string parameterName)
+        public string GetParameterValueFromAzCommand(string commandNoun, string parameterName)
         {
-            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName); ;
-            
-            if (_command_param_to_resource_map.ContainsKey(commandNoun.ToLower()))
+            if (_command_param_to_resource_map.ContainsKey(commandNoun))
             {
-                if (_command_param_to_resource_map[commandNoun.ToLower()].ContainsKey(parameterName.ToLower()))
+                parameterName = "-" + parameterName.ToLower();
+                if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
                 {
-                    var key = _command_param_to_resource_map[commandNoun.ToLower()][parameterName.ToLower()];
+                    var key = _command_param_to_resource_map[commandNoun][parameterName];
                     if (_localParameterValues.TryGetValue(key, out var value))
                     {
                         return value;
@@ -76,18 +70,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return null;
         }
 
-        /// <summary>
-        /// Gets the key to the local parameter dictionary from the command noun and the parameter name.
-        /// </summary>
-        /// <param name="commandNoun">The noun in the PowerShell command, e.g. the noun for command New-AzVM is VM.</param>
-        /// <param name="parameterName">The command's parameter name, e.g. "New-AzVM -Name" the parameter name is Name</param>
-        /// <returns></returns>
-        private static string GetLocalParameterKey(string commandNoun, string parameterName)
-        {
-            return _specialLocalParameterNames.Contains(parameterName) ? parameterName.ToUpper() : string.Concat(commandNoun, parameterName).ToUpper();
-        }
-
-        private static string GetAzCommandNoun(string commandName)
+        
+        public static string GetAzCommandNoun(string commandName)
         {
             var monikerIndex = commandName?.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
 
@@ -117,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We need to extract the noun to construct the parameter name.
 
             var commandName = command.FirstOrDefault()?.ToString();
-            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName);
+            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName).ToLower();
             if (commandNoun == null)
             {
                 return;
@@ -128,11 +112,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
                 {
                     var parameterName = command[i - 1].ToString().ToLower();
-                    if (_command_param_to_resource_map.ContainsKey(commandNoun.ToLower()))
+                    if (_command_param_to_resource_map.ContainsKey(commandNoun))
                     {
-                        if (_command_param_to_resource_map[commandNoun.ToLower()].ContainsKey(parameterName))
+                        if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
                         {
-                            var key = _command_param_to_resource_map[commandNoun.ToLower()][parameterName];
+                            var key = _command_param_to_resource_map[commandNoun][parameterName];
                             var parameterValue = command[i].ToString();
                             this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
                         }
