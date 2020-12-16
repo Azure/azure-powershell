@@ -34,9 +34,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <param name="commands">The commands collection</param>
         public MockAzPredictorService(string history, IList<string> suggestions, IList<string> commands)
         {
-            SetPredictionCommand(history);
-            SetCommandsPredictor(commands);
-            SetSuggestionPredictor(history, suggestions);
+            if (history != null)
+            {
+                SetCommandToRequestPrediction(history);
+
+                if (suggestions != null)
+                {
+                    SetCommandBasedPreditor(history, suggestions);
+                }
+            }
+
+            if (commands != null)
+            {
+                SetFallbackPredictor(commands);
+            }
         }
 
         /// <inheritdoc/>
@@ -46,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        protected override void RequestCommands()
+        protected override void RequestAllPredictiveCommands()
         {
             // Do nothing since we've set the command and suggestion predictors.
         }

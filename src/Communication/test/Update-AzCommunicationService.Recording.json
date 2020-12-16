@@ -1,0 +1,112 @@
+{
+  "Update-AzCommunicationService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"ExampleKey1\": \"ExampleValue1\",\r\n    \"ExampleKey2\": \"ExampleValue2\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"910271dd-0000-0700-0000-5fab0a3d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "4e1779af-f899-4c41-b56e-361aa5d64f3e" ],
+        "x-ms-correlation-request-id": [ "fd23a445-3cc3-4aa1-9322-46f0c1d0f0b9" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214638Z:fd23a445-3cc3-4aa1-9322-46f0c1d0f0b9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "796" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"tags\":{\"ExampleKey1\":\"ExampleValue1\",\"ExampleKey2\":\"ExampleValue2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\",\"notificationHubId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}}"
+    }
+  },
+  "Update-AzCommunicationService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "516d1f1f-db89-45c2-9e79-8e54d7c51529" ],
+        "CommandName": [ "Get-AzCommunicationService" ],
+        "FullCommandName": [ "Get-AzCommunicationService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"910271dd-0000-0700-0000-5fab0a3d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "c56f0685-bc16-47c6-b62e-5419bf055c98" ],
+        "x-ms-correlation-request-id": [ "1aece5d1-ddd1-48a3-a8c8-ebc3df293f1b" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214638Z:1aece5d1-ddd1-48a3-a8c8-ebc3df293f1b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "796" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"tags\":{\"ExampleKey1\":\"ExampleValue1\",\"ExampleKey2\":\"ExampleValue2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\",\"notificationHubId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}}"
+    }
+  },
+  "Update-AzCommunicationService+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51?api-version=2020-08-20-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"ExampleKey1\": \"ExampleValue1\",\r\n    \"ExampleKey2\": \"ExampleValue2\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"9102fcdd-0000-0700-0000-5fab0a3e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "3cf57a52-3841-48a8-be64-c4e041bd1f31" ],
+        "x-ms-correlation-request-id": [ "2ffd712c-ea78-4f14-ae9a-3486e9ecfeb3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214639Z:2ffd712c-ea78-4f14-ae9a-3486e9ecfeb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:46:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "796" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51\",\"name\":\"persistentResourceNamepvbt51\",\"type\":\"Microsoft.Communication/communicationServices\",\"location\":\"Global\",\"tags\":{\"ExampleKey1\":\"ExampleValue1\",\"ExampleKey2\":\"ExampleValue2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"hostName\":\"persistentresourcenamepvbt51.communication.azure.com\",\"immutableResourceId\":\"33269212-49b4-4d49-9571-db37fc8c6321\",\"dataLocation\":\"UnitedStates\",\"notificationHubId\":\"/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourcegroups/ContosoResourceProvider1/providers/Microsoft.NotificationHubs/namespaces/contosonotificationhubnamespace/notificationHubs/contosonotificationhub\"}}"
+    }
+  }
+}

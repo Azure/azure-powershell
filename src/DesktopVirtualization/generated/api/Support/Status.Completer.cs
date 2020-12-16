@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for Status.</summary>
+    /// <summary>Status for a SessionHost.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StatusTypeConverter))]
     public partial struct Status :
         System.Management.Automation.IArgumentCompleter

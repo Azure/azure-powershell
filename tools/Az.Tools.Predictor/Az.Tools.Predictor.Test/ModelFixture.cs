@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Text.Json;
 using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
@@ -54,8 +55,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var commandsModel = ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson);
             var predictionsModel = ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson);
 
-            this.CommandCollection = JsonConvert.DeserializeObject<IList<string>>(commandsModel);
-            this.PredictionCollection = JsonConvert.DeserializeObject<IDictionary<string, IList<string>>>(predictionsModel);
+            this.CommandCollection = JsonSerializer.Deserialize<IList<string>>(commandsModel, JsonUtilities.DefaultSerializerOptions);
+            this.PredictionCollection = JsonSerializer.Deserialize<IDictionary<string, IList<string>>>(predictionsModel, JsonUtilities.DefaultSerializerOptions);
         }
 
         /// <inheritdoc/>

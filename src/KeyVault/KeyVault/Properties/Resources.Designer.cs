@@ -1261,6 +1261,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to selective restore key {0} of managed HSM {1}..
+        /// </summary>
+        internal static string SelectiveRestoreFailed {
+            get {
+                return ResourceManager.GetString("SelectiveRestoreFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set certificate attribute.
         /// </summary>
         internal static string SetCertificateAttributes {
