@@ -791,6 +791,15 @@ Creates a Azure Firewall Network Collection of Network rules.
 ### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
 Creates a new Azure Firewall Policy
 
+### [New-AzFirewallPolicyIntrusionDetection](New-AzFirewallPolicy.md)
+Creates a new Azure Firewall Policy Intrusion Detection
+
+### [New-AzFirewallPolicyIntrusionDetectionBypassTraffic](New-AzFirewallPolicy.md)
+Creates a new Azure Firewall Policy Intrusion Detection Bypass Traffic
+
+### [New-AzFirewallPolicyIntrusionDetectionSignatureOverride](New-AzFirewallPolicy.md)
+Creates a new Azure Firewall Policy Intrusion Detection Signature Override
+
 ### [New-AzFirewallPolicyApplicationRule](New-AzFirewallPolicyApplicationRule.md)
 Create a new Azure Firewall Policy Application Rule
 
