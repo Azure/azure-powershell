@@ -11,8 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# !Important: some test cases are skipped and require to be recorded again
+# See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Remove-AzMySqlFlexibleServer' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         {
             #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
