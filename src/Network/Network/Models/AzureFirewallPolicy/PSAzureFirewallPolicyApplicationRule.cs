@@ -35,15 +35,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 7, PropertyName = "sourceIpGroups")]
         public List<string> SourceIpGroups { get; set; }
-
-        [JsonProperty(Order = 8, PropertyName = "targetUrls")]
-        public List<string> TargetUrls { get; set; }
-
-        [JsonProperty(Order = 9, PropertyName = "terminateTLS")]
-        public bool? TerminateTLS { get; set; }
-
+        
         [JsonProperty(Order = 8, PropertyName = "webCategories")]
         public List<string> WebCategories { get; set; }
+
+        [JsonProperty(Order = 9, PropertyName = "targetUrls")]
+        public List<string> TargetUrls { get; set; }
+
+        [JsonProperty(Order = 10, PropertyName = "terminateTLS")]
+        public bool? TerminateTLS { get; set; }
+
 
         [JsonIgnore]
         public string ProtocolsText
