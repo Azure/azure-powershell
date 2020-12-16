@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix the command `Invoke-AzDataFactoryV2Pipeline` for SupportsShouldProcess issue
 
 ## Version 1.11.2
 * Updated ADF .Net SDK version to 4.13.0
