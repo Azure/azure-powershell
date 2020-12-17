@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -139,6 +144,13 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnConnection != null && this.VpnConnection.Any())
             {
                 vpnGateway.Connections.AddRange(this.VpnConnection);
+            }
+
+            //// VpnGatewayNatRules, if specified
+            vpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                vpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
             }
 
             //// Scale unit, if specified

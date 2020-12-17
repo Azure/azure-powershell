@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for CRUD of VpnGatewayNATRule.
+    - `New-AzAzVpnGatewayNatRule`
+    - `Update-AzAzVpnGatewayNatRule`
+    - `Get-AzAzVpnGatewayNatRule`
+    - `Remove-AzAzVpnGatewayNatRule`	
+* Updated cmdlets to set NATRule on VpnGateway resource and associate it with VpnSiteLinkConnection resource.
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`	
+    - `New-AzVpnSiteLinkConnection`
 * Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
