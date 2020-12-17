@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyIntrusionDetection",
-        SupportsShouldProcess = false),
+        SupportsShouldProcess = true),
         OutputType(typeof(PSAzureFirewallPolicyIntrusionDetection))]
     public class NewAzureFirewallPolicyIntrusionDetectionCommand : NetworkBaseCmdlet
     {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              HelpMessage = "List of specific signatures states."
          )]
-        public PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[] SignatureOverrides { get; set; }
+        public PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[] SignatureOverride { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
                 Mode = this.Mode
             };
 
-            if (this.SignatureOverrides?.Count() > 0 || this.BypassTraffic?.Count() > 0)
+            if (this.SignatureOverride?.Count() > 0 || this.BypassTraffic?.Count() > 0)
             {
                 intrusionDetection.Configuration = new PSAzureFirewallPolicyIntrusionDetectionConfiguration
                 {
-                    SignatureOverrides = this.SignatureOverrides?.ToList(),
+                    SignatureOverrides = this.SignatureOverride?.ToList(),
                     BypassTrafficSettings = this.BypassTraffic?.ToList()
                 };
             }

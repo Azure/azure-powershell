@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New,
             ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyIntrusionDetectionBypassTraffic",
-            SupportsShouldProcess = false),
+            SupportsShouldProcess = true),
             OutputType(typeof(PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting))]
     public class NewAzureFirewallPolicyIntrusionDetectionBypassTrafficCommand : NetworkBaseCmdlet
     {

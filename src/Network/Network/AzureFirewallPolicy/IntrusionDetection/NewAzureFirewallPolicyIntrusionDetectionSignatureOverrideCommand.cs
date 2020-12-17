@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyIntrusionDetectionSignatureOverride",
-            SupportsShouldProcess = false),
+            SupportsShouldProcess = true),
             OutputType(typeof(PSAzureFirewallPolicyIntrusionDetectionSignatureOverride))]
     public class NewAzureFirewallPolicyIntrusionDetectionSignatureOverrideCommand : NetworkBaseCmdlet
     {
