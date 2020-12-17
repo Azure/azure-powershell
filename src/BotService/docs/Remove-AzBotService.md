@@ -31,7 +31,7 @@ Deletes a Bot Service from the resource group.
 
 ### Example 1: Delete the BotService By Name and ResourceGroupName
 ```powershell
-PS C:\> Remove-AzBotService -Name youri-bot1 -ResourceGroupName youriBotTest
+PS C:\> Remove-AzBotService -Name youri-bot -ResourceGroupName youriBotTest
 
 ```
 
