@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Kind.
+Jit Network Access Policy Kind.
 
 ```yaml
 Type: System.String
