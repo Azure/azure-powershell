@@ -1,8 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Publish your BotService to Azure
 ```powershell
 PS C:\> Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips\MyEchoBot -Name youriechobottest
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Publish your BotService to Azure by code

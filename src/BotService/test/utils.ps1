@@ -21,10 +21,13 @@ function setupEnv() {
     $NewBotService1 = 'BotService-' + (RandomString -allChars $false -len 6)
     $NewBotService2 = 'BotService-' + (RandomString -allChars $false -len 6)
 
+    $Secret = "youriSecret"
     $null = $env.Add('WebApplicationName1', $WebApplicationName1)
     $null = $env.Add('WebApplicationName2', $WebApplicationName2)
     $null = $env.Add('NewBotService1', $NewBotService1)
     $null = $env.Add('NewBotService2', $NewBotService2)
+    $null = $env.Add('Secret', $Secret)
+    
 
     Write-Host -ForegroundColor Green "Create test group..."
     $ResourceGroupName = 'youriBotService-rg-' + (RandomString -allChars $false -len 6)
