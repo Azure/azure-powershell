@@ -68,7 +68,7 @@ Function Move-Generation2Master {
         }
         If ($Null -eq $RequiredModule) {
             $FullDestPath = Resolve-Path -path $DestPath
-            $AccountsModulePath = [System.IO.Path]::Combine($FullDestPath, 'Accounts', 'Accounts')
+            $AccountsModulePath = [System.IO.Path]::Combine($FullDestPath, '..', 'Accounts', 'Accounts')
             $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
             $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }

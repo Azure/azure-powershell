@@ -42,7 +42,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
         public string GetParameterValueFromAzCommand(string parameterName)
         {
-            parameterName = parameterName.TrimStart(AzPredictorConstants.ParameterIndicator);
             if (_localParameterValues.TryGetValue(parameterName.ToUpper(), out var value))
             {
                 return value;
@@ -100,9 +99,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             for (int i = 2; i < command.Count; i += 2)
             {
-                if (command[i - 1] is CommandParameterAst && command[i] is StringConstantExpressionAst)
+                if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
                 {
-                    var parameterName = command[i - 1].ToString().TrimStart(AzPredictorConstants.ParameterIndicator);
+                    var parameterName = parameterAst.ParameterName;
                     var key = ParameterValuePredictor.GetLocalParameterKey(commandNoun, parameterName);
                     var parameterValue = command[i].ToString();
                     this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);

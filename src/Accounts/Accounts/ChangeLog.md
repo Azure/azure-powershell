@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved debug log of long running operations in generated modules
 
 ## Version 2.2.2
 * Managed to parse ExpiresOn time from raw token if could not get from underlying library

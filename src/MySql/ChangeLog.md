@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Fixed secure string issue
+
 ## Version 0.3.0
 * Added MySql flexible server cmdlets
 

@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.RestoringSynapseSqlPool, this.BackupSqlPoolName, this.ResourceGroupName, this.WorkspaceName, this.Name)))
             {
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
+                var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
                 WriteObject(result);
             }
         }

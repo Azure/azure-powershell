@@ -19,13 +19,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public ParameterType Type { get; set; }
 
         public object DefaultValue { get; set; }
-
-        public ParameterSpecification ToSdkObject()
-        {
-            return  new ParameterSpecification(this.Type)
-            {
-                DefaultValue = this.DefaultValue
-            };
-        }
     }
 }

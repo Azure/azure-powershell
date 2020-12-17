@@ -13,13 +13,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
 
         public string Name { get; set; }
-
-        public DatasetFolder ToSdkObject()
-        {
-            return new DatasetFolder()
-            {
-                Name = this.Name
-            };
-        }
     }
 }

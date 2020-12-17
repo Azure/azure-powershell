@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added StartVMOnConnect property to hostpool.
 
 ## Version 2.0.1
 * Added new MSIX Package cmdlets and updated Applications cmdlets.
