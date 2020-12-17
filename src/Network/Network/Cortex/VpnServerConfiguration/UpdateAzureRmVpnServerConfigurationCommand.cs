@@ -33,13 +33,21 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnServerConfiguration))]
     public class UpdateAzureRmVpnServerConfigurationCommand : VpnServerConfigurationBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -48,7 +56,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName", "VpnServerConfigurationName")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
@@ -57,7 +73,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VpnServerConfiguration")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The vpn server configuration object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The vpn server configuration object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The vpn server configuration object to be modified")]
@@ -66,7 +92,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VpnServerConfigurationId")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the vpn server configuration.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the vpn server configuration.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpn server configuration.")]
@@ -95,143 +131,143 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         public string[] VpnClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
         public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusServerRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD tenant for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD tenant for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD tenant for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadTenant { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD audience for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD audience for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD audience for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadAudience { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD issuer for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD issuer for P2S AAD authentication.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD issuer for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadIssuer { get; set; }
@@ -337,14 +373,8 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
-            else
-            {
-                vpnServerConfigurationToUpdate.VpnClientRevokedCertificates = null;
-                vpnServerConfigurationToUpdate.VpnClientRootCertificates = null;
-            }
-
             // VpnAuthenticationType = Radius related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
                 {
@@ -410,17 +440,8 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
-            else
-            {
-                vpnServerConfigurationToUpdate.RadiusServerAddress = null;
-                vpnServerConfigurationToUpdate.RadiusServerSecret = null;
-                vpnServerConfigurationToUpdate.RadiusClientRootCertificates = null;
-                vpnServerConfigurationToUpdate.RadiusServerRootCertificates = null;
-                vpnServerConfigurationToUpdate.RadiusServers = null;
-            }
-
             // VpnAuthenticationType = AAD related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
+            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (vpnServerConfigurationToUpdate.AadAuthenticationParameters == null)
                 {
@@ -446,12 +467,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = this.AadIssuer;
                 }
-            }
-            else
-            {
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant = null;
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = null;
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience = null;
             }
 
             ConfirmAction(

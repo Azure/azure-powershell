@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
             // VpnAuthenticationType = Radius related validations.
-            if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
+            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if (radiusServerAddress != null)
                 {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
             // VpnAuthenticationType = AAD related validations.
-            if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
+            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (aadTenant == null || aadAudience == null || aadIssuer == null)
                 {
