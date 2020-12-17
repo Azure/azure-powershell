@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
                 return container;
             }
             AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "tenantId" ,container.Add );
             if (null != this._accessPolicy)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.XNodeArray();
@@ -87,13 +88,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
                 }
                 container.Add("accessPolicies",__w);
             }
-            AddIf( null != (((object)this._createMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._createMode.ToString()) : null, "createMode" ,container.Add );
-            AddIf( null != this._enablePurgeProtection ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enablePurgeProtection) : null, "enablePurgeProtection" ,container.Add );
-            AddIf( null != this._enableSoftDelete ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enableSoftDelete) : null, "enableSoftDelete" ,container.Add );
             AddIf( null != this._enabledForDeployment ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enabledForDeployment) : null, "enabledForDeployment" ,container.Add );
             AddIf( null != this._enabledForDiskEncryption ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enabledForDiskEncryption) : null, "enabledForDiskEncryption" ,container.Add );
             AddIf( null != this._enabledForTemplateDeployment ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enabledForTemplateDeployment) : null, "enabledForTemplateDeployment" ,container.Add );
-            AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "tenantId" ,container.Add );
+            AddIf( null != this._enableSoftDelete ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enableSoftDelete) : null, "enableSoftDelete" ,container.Add );
+            AddIf( null != (((object)this._createMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._createMode.ToString()) : null, "createMode" ,container.Add );
+            AddIf( null != this._enablePurgeProtection ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enablePurgeProtection) : null, "enablePurgeProtection" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -111,14 +111,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
                 return;
             }
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.Sku.FromJson(__jsonSku) : Sku;}
+            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)TenantId;}
             {_accessPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray>("accessPolicies"), out var __jsonAccessPolicies) ? If( __jsonAccessPolicies as Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IAccessPolicyEntry[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IAccessPolicyEntry) (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.AccessPolicyEntry.FromJson(__u) )) ))() : null : AccessPolicy;}
-            {_createMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("createMode"), out var __jsonCreateMode) ? (string)__jsonCreateMode : (string)CreateMode;}
-            {_enablePurgeProtection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enablePurgeProtection"), out var __jsonEnablePurgeProtection) ? (bool?)__jsonEnablePurgeProtection : EnablePurgeProtection;}
-            {_enableSoftDelete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enableSoftDelete"), out var __jsonEnableSoftDelete) ? (bool?)__jsonEnableSoftDelete : EnableSoftDelete;}
             {_enabledForDeployment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enabledForDeployment"), out var __jsonEnabledForDeployment) ? (bool?)__jsonEnabledForDeployment : EnabledForDeployment;}
             {_enabledForDiskEncryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enabledForDiskEncryption"), out var __jsonEnabledForDiskEncryption) ? (bool?)__jsonEnabledForDiskEncryption : EnabledForDiskEncryption;}
             {_enabledForTemplateDeployment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enabledForTemplateDeployment"), out var __jsonEnabledForTemplateDeployment) ? (bool?)__jsonEnabledForTemplateDeployment : EnabledForTemplateDeployment;}
-            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)TenantId;}
+            {_enableSoftDelete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enableSoftDelete"), out var __jsonEnableSoftDelete) ? (bool?)__jsonEnableSoftDelete : EnableSoftDelete;}
+            {_createMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("createMode"), out var __jsonCreateMode) ? (string)__jsonCreateMode : (string)CreateMode;}
+            {_enablePurgeProtection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enablePurgeProtection"), out var __jsonEnablePurgeProtection) ? (bool?)__jsonEnablePurgeProtection : EnablePurgeProtection;}
             AfterFromJson(json);
         }
     }

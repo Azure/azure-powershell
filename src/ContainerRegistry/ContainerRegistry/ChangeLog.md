@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Supported parameter `Name` for and value from pipeline input for `Get-AzContainerRegistryUsage` [#13605]
+* Polished exceptions for `Connect-AzContainerRegistry`
+
 ## Version 2.0.0
 * [Breaking Change] Updates API version to 2019-05-01
 * [Breaking Change] Removed SKU "Classic" and parameter `StorageAccountName` from `New-AzContainerRegistry`

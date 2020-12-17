@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>
+    /// Specifies whether this published application can be launched with command line arguments provided by the client, command
+    /// line arguments specified at publish time, or no command line arguments at all.
+    /// </summary>
     public partial struct CommandLineSetting :
         System.IEquatable<CommandLineSetting>
     {

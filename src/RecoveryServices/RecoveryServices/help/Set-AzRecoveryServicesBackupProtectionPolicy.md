@@ -38,10 +38,10 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ```
 PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 PS C:\> $SchPol.ScheduleRunTimes.Clear()
-PS C:\> $Date = Get-Date
-PS C:\> $date1 = Get-Date -Year $Date.Year -Month $Date.Month -Day $Date.Day -Hour $Date.Hour -Minute 0 -Second 0 -Millisecond 0
-PS C:\> $date1 = $date1.ToUniversalTime()
-PS C:\> $SchPol.ScheduleRunTimes.Add($date1)
+PS C:\> $Time = Get-Date
+PS C:\> $Time1 = Get-Date -Year $Time.Year -Month $Time.Month -Day $Time.Day -Hour $Time.Hour -Minute 0 -Second 0 -Millisecond 0
+PS C:\> $Time1 = $Time1.ToUniversalTime()
+PS C:\> $SchPol.ScheduleRunTimes.Add($Time1)
 PS C:\> $SchPol.ScheduleRunFrequency.Clear
 PS C:\> $SchPol.ScheduleRunDays.Add("Monday")
 PS C:\> $SchPol.ScheduleRunFrequency="Weekly"
@@ -51,7 +51,9 @@ PS C:\> $RetPol.DailySchedule.DurationCountInDays = 0
 PS C:\> $RetPol.IsWeeklyScheduleEnabled=$true 
 PS C:\> $RetPol.WeeklySchedule.DaysOfTheWeek.Add("Monday")
 PS C:\> $RetPol.WeeklySchedule.DurationCountInWeeks = 365
-PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy"
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+PS C:\> $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
+PS C:\> $Pol.SnapshotRetentionInDays=5
 PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
 

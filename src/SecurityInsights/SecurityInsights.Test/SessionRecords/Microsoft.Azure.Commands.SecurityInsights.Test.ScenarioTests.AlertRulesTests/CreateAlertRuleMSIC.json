@@ -1,0 +1,146 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2IzY2NjNTE3LWMzYmEtNDEzNC1hYmQxLTQzMjU2ZDBkOWY0ZT9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a11bbc4a-5368-4799-b9d4-03649dabdf76"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "258"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "c84accd1-6c56-47e7-80d4-835719229e53"
+        ],
+        "x-ms-correlation-request-id": [
+          "c84accd1-6c56-47e7-80d4-835719229e53"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201210T212029Z:c84accd1-6c56-47e7-80d4-835719229e53"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Dec 2020 21:20:29 GMT"
+        ],
+        "Content-Length": [
+          "757"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"name\": \"b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"etag\": \"\\\"c20049e0-0000-0100-0000-5fd2911d0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"severitiesFilter\": null,\r\n    \"displayNamesFilter\": null,\r\n    \"displayNamesExcludeFilter\": null,\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"lastModifiedUtc\": \"2020-12-10T21:20:29.6469805Z\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9hbGVydFJ1bGVzL2IzY2NjNTE3LWMzYmEtNDEzNC1hYmQxLTQzMjU2ZDBkOWY0ZT9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5e76a682-4ca5-48ae-887a-afcad59cd62c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "e5acae25-57ec-4a94-b924-daa3f3d5c799"
+        ],
+        "x-ms-correlation-request-id": [
+          "e5acae25-57ec-4a94-b924-daa3f3d5c799"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201210T212029Z:e5acae25-57ec-4a94-b924-daa3f3d5c799"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Dec 2020 21:20:29 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "1c61ccbf-70b3-45a3-a1fb-848ce46d70a6"
+  }
+}

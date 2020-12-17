@@ -24,13 +24,14 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update attribute of a key vault key.
     /// </summary>
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyAttribute")]
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+        private const string HsmInteractiveParameterSet = "HsmInteractive";
         private const string InputObjectParameterSet = "InputObject";
 
         #endregion
@@ -48,6 +49,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInteractiveParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string HsmName { get; set; }
+
         /// <summary>
         /// key name
         /// </summary>
@@ -55,6 +63,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = HsmInteractiveParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -80,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Version { get; set; }
 
         /// <summary>
-        /// If present, enable a key if value is true. 
+        /// If present, enable a key if value is true.
         /// Disable a key if value is false.
         /// If not present, no change on current key enabled/disabled state.
         /// </summary>
@@ -96,50 +107,74 @@ namespace Microsoft.Azure.Commands.KeyVault
         public DateTime? Expires { get; set; }
 
         /// <summary>
-        /// The UTC time before which key can't be used 
+        /// The UTC time before which key can't be used
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The UTC time before which key can't be used. If not specified, the existing NotBefore attribute of the key remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
-        /// Key operations 
+        /// Key operations
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.")]
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
-           HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
+            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
-           HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
+            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                Name = InputObject.Name;
-            }
+            NormalizeParameterSets();
 
             if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
-                var keyBundle = DataServiceClient.UpdateKey(
-                VaultName,
-                Name,
-                Version ?? string.Empty,
-                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                PSKeyVaultKey keyBundle;
+                if (string.IsNullOrEmpty(HsmName))
+                {
+                    keyBundle = DataServiceClient.UpdateKey(
+                        VaultName,
+                        Name,
+                        Version ?? string.Empty,
+                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                }
+                else
+                {
+                    keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
+                        HsmName,
+                        Name,
+                        Version ?? string.Empty,
+                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                }
 
                 if (PassThru)
                 {
                     WriteObject(keyBundle);
                 }
+            }
+        }
+
+        private void NormalizeParameterSets()
+        {
+            if (InputObject != null)
+            {
+                if (InputObject.IsHsm)
+                {
+                    HsmName = InputObject.VaultName;
+                }
+                else
+                {
+                    VaultName = InputObject.VaultName;
+                }
+                Name = InputObject.Name;
             }
         }
     }

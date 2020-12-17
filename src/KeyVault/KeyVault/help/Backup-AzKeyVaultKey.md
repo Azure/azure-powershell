@@ -19,6 +19,12 @@ Backup-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <Stri
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### HsmByKeyName
+```
+Backup-AzKeyVaultKey -HsmName <String> [-Name] <String> [[-OutputFile] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByKey
 ```
 Backup-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-OutputFile] <String>] [-Force]
@@ -98,6 +104,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByKeyName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Key bundle to back up, pipelined in from the output of a retrieval call.
 
@@ -118,7 +139,7 @@ Specifies the name of the key to back up.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyName
+Parameter Sets: ByKeyName, HsmByKeyName
 Aliases: KeyName
 
 Required: True

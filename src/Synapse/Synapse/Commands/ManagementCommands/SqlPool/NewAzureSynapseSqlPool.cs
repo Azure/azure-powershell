@@ -7,7 +7,6 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections;
 using System.Management.Automation;
 using Sku = Microsoft.Azure.Management.Synapse.Models.Sku;
@@ -39,6 +38,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessages.SqlPoolName)]
+        [Alias(nameof(SynapseConstants.SqlPoolName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
                 {
-                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
+                    var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
                     WriteObject(result);
                 }
             }

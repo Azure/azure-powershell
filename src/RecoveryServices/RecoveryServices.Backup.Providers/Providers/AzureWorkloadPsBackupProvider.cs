@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
+
         /// <summary>
         /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
@@ -104,7 +105,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new Exception(Resources.SoftdeleteNotImplementedException);
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
@@ -379,9 +405,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
-                // validate container name to be a full name
-                AzureWorkloadProviderHelper.ValidateContainerName(wLRecoveryConfig.RecoveryPoint.ContainerName);
-
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
 

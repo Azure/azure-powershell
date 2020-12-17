@@ -19,7 +19,8 @@
 --->
 
 ## Upcoming Release
-
+* Bugfix in Remove peering and connection commandlet for ExpressrouteCircuit scenario
+    - Remove-AzExpressRouteCircuitPeeringConfig and Remove-AzExpressRouteCircuitConnectionConfig
 ## Version 4.3.0
 * Updated below cmdlet 
     - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:
@@ -64,6 +65,10 @@
     - `Get-AzApplicationGatewaySslProfilePolicy`
     - `Remove-AzApplicationGatewaySslProfilePolicy`
     - `Set-AzApplicationGatewaySslProfilePolicy`
+* Added new parameter 'Priority' to support Rule Priority in Application Gateway RequestRoutingRule for the below cmdlets
+    - `Add-AzApplicationGatewayRequestRoutingRule`
+    - `New-AzApplicationGatewayRequestRoutingRule`
+    - `Set-AzApplicationGatewayRequestRoutingRule`
 
 ## Version 4.2.0
 * Added warning messages for upcoming breaking change for Virtual Router Peer Routes

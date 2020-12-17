@@ -15,13 +15,13 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
-Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,13 +33,13 @@ Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
 
 ### ByInputObjectVaultName
 ```
-Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretName
 ```
-Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,13 +51,13 @@ Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersi
 
 ### ByResourceIdVaultName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdSecretName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -175,20 +175,10 @@ This command gets a specific version of the secret named secret1 in the key vaul
 
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
-PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
-PS C:\> $secretValueText = '';
-PS C:\> $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
-PS C:\> try {
-    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
-} finally {
-    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
-}
-PS C:\> Write-Host "Secret Value is:" $secretValueText
-
-Secret Value is: P@ssw0rd
+PS C:\> $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
 ```
 
-These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
+The cmdlet returns the secret as a string when `-AsPlainText` is applied.
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
@@ -217,7 +207,7 @@ Expires              :
 Not Before           :
 Created              : 4/6/2018 8:39:15 PM
 Updated              : 4/6/2018 10:11:24 PM
-Content Type         : 
+Content Type         :
 Tags                 :
 ```
 
@@ -277,6 +267,21 @@ Tags         :
 This command gets the current versions of all secrets in the key vault named Contoso that start with "secret".
 
 ## PARAMETERS
+
+### -AsPlainText
+When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, ByResourceIdVaultName, ByResourceIdSecretName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -353,7 +358,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -365,7 +370,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId

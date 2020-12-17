@@ -1,8 +1,8 @@
 {
-  "Get-AzWvdSessionHost+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2020-10-19-preview+1": {
+  "Get-AzWvdSessionHost+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
@@ -38,10 +38,10 @@
       "Content": "{\"name\":\"HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHosts\",\"properties\":{\"lastHeartBeat\":\"2019-11-04T21:16:04.6900182\",\"sessions\":0,\"agentVersion\":\"1.0.1603.0\",\"allowNewSession\":true,\"assignedUser\":null,\"status\":\"Available\",\"statusTimestamp\":\"2019-11-04T21:16:33.6680089\",\"osVersion\":\"10.0.18362\",\"sxSStackVersion\":\"rdp-sxs191015002\",\"updateState\":\"Succeeded\",\"lastUpdateTime\":\"2019-11-04T21:16:33.6680089\",\"updateErrorMessage\":\"\"}}"
     }
   },
-  "Get-AzWvdSessionHost+[NoContext]+List+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts?api-version=2020-10-19-preview+1": {
+  "Get-AzWvdSessionHost+[NoContext]+List+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts?api-version=2020-10-19-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "2" ],

@@ -26,7 +26,7 @@ function Test-ManagedHsmCRUD {
 
     try {
         # Test create a default managed HSM
-        $hsm = New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
         Assert-AreEqual $hsmName $hsm.Name
         Assert-AreEqual $rgName $hsm.ResourceGroupName
         Assert-AreEqual $hsmLocation $hsm.Location
@@ -38,22 +38,22 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual 90 $hsm.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
         # Test get managed HSM
-        $got = Get-AzManagedHsm -Name $hsmName    
+        $got = Get-AzKeyVaultManagedHsm -Name $hsmName    
         Assert-NotNull $got
         Assert-AreEqual $hsmName $got.Name
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
         
         # Test throws for existing managed HSM
-        Assert-Throws { New-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator }
+        Assert-Throws { New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator }
 
         # Test remove managed HSM
-        Remove-AzManagedHsm -InputObject $got -Force
-        $deletedMhsm = Get-AzManagedHsm -Name $hsmName -ResourceGroupName $rgName
+        Remove-AzKeyVaultManagedHsm -InputObject $got -Force
+        $deletedMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
         Assert-Null $deletedMhsm
 
         # Test throws for resourcegroup nonexistent
-        Assert-Throws {  New-AzManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator }
+        Assert-Throws {  New-AzKeyVaultManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator }
     }
 
     finally {

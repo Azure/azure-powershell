@@ -82,7 +82,7 @@ if ($ValidateMarkdownHelp)
 }
 
 # We need to define new version of module instead of hardcode here
-$GeneratedModuleListPath = [System.IO.Path]::Combine(@($PSScriptRoot, "GeneratedModuleList.txt"))
+$GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "GeneratedModuleList.txt")
 $NewModules = Get-Content $GeneratedModuleListPath
 if ($GenerateMamlHelp)
 {

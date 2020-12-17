@@ -67,7 +67,6 @@ Sets a Instance Failover Group's failover policy to 'Manual' by piping in the Fa
 
 ### -AllowReadOnlyFailoverToPrimary
 Whether outages on the secondary server should trigger automatic failover of the read-only endpoint.
-This feature is not yet supported.
 
 ```yaml
 Type: System.String

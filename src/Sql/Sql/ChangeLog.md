@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parameter description for `InstanceFailoverGroup` command.
+* Fixed Status and StatusMessage fields in `Get-AzSqlDatabaseImportExportStatus` to conform to documentation
+
+## Version 2.13.0
+* Added SecondaryType to the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+* Added HighAvailabilityReplicaCount to the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+* Made ReadReplicaCount an alias of HighAvailabilityReplicaCount in the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
 
 ## Version 2.12.0
 * Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
