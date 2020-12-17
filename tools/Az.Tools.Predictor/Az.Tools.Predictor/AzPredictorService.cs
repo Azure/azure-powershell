@@ -34,9 +34,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string ClientType = "AzurePowerShell";
 
-        // Default to the latest model version?
-        private static readonly Version DefaultModelVersion = new Version(5, 1);
-
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -108,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _client = new HttpClient();
 
-            RequestAllPredictiveCommands(this._azContext.AzVersion);
+            RequestAllPredictiveCommands();
         }
 
         /// <summary>
@@ -116,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         protected AzPredictorService()
         {
-            RequestAllPredictiveCommands(this._azContext?.AzVersion);
+            RequestAllPredictiveCommands();
         }
 
         /// <inhericdoc/>
@@ -228,14 +225,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual void RequestPredictions(IEnumerable<string> commands, Version version)
+        public virtual void RequestPredictions(IEnumerable<string> commands)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
-
-            if(version == null)
-            {
-                version = DefaultModelVersion;
-            }
 
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
             bool postSuccess = false;
@@ -272,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             {
                                 SessionId = _telemetryClient.SessionId,
                                 CorrelationId = _telemetryClient.CorrelationId,
-                                VersionNumber = version
+                                VersionNumber = this._azContext.AzVersion
                             };
 
                             var requestBody = new PredictionRequestBody(localCommands)
@@ -330,12 +322,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Requests a list of popular commands from service. These commands are used as fall back suggestion
         /// if none of the predictions fit for the current input. This method should be called once per session.
         /// </summary>
-        protected virtual void RequestAllPredictiveCommands(Version version)
+        protected virtual void RequestAllPredictiveCommands()
         {
-            if(version == null)
-            {
-                version = DefaultModelVersion;
-            }
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
@@ -364,8 +352,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // Initialize predictions
                         RequestPredictions(new string[] {
                                 AzPredictorConstants.CommandPlaceholder,
-                                AzPredictorConstants.CommandPlaceholder},
-                                version);
+                                AzPredictorConstants.CommandPlaceholder});
                     });
         }
 

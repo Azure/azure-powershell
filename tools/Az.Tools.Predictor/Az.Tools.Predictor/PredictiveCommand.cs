@@ -12,12 +12,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     public class PredictiveCommand
     {
         /// <summary>
-        /// The command name
+        /// The command name.
         /// </summary>
         public string Command { get; set; }
 
         /// <summary>
-        /// The description of the command
+        /// The description of the command.
         /// </summary>
         public string Description { get; set; }
     }

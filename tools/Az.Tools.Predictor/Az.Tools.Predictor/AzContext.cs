@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
-        public Version AzVersion { get; private set; } = new Version("0.0.0.0");
+        public Version AzVersion { get; private set; } = DefaultVersion;
 
         /// <inheritdoc/>
         public string UserId { get; private set; } = string.Empty;
@@ -129,9 +129,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private Version GetAzVersion()
         {
-            Version defaultVersion = new Version("0.0.0");
-
-            Version latestAz = defaultVersion;
+            Version latestAz = DefaultVersion;
 
             try
             {

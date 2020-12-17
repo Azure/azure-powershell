@@ -33,6 +33,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </remarks>
     internal sealed class CommandLinePredictor
     {
+        private class DuplicateResult
+        {
+            public string Source { get; set; }
+
+            public string Description { get; set; }
+
+            public DuplicateResult(string source, string description)
+            {
+                this.Source = source;
+                this.Description = description;
+            }
+        }
+
         private readonly IList<CommandLine> _commandLinePredictions = new List<CommandLine>();
         private readonly ParameterValuePredictor _parameterValuePredictor;
 
@@ -171,19 +184,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             return result;
-        }
-
-        private class DuplicateResult
-        {
-            public string Source { get; set; }
-
-            public string Description { get; set; }
-
-            public DuplicateResult(string source, string description)
-            {
-                this.Source = source;
-                this.Description = description;
-            }
         }
 
         /// <summary>
