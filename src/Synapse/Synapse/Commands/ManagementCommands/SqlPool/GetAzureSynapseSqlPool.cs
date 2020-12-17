@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Synapse
             ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
+        [Alias(nameof(SynapseConstants.SqlPoolName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -84,12 +85,12 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 if (!string.IsNullOrEmpty(this.Name))
                 {
-                    var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                    var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
                     WriteObject(result);
                 }
                 else
                 {
-                    var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(r));
+                    var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, r));
                     WriteObject(result, true);
                 }
             }

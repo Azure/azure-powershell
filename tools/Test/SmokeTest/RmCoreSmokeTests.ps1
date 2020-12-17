@@ -61,7 +61,8 @@ $resourceTestCommands = @(
     @{Name = "Az.DataShare";                  Command = {Get-AzDataShareAccount -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     # Waiting for an issue fix: https://github.com/Azure/azure-powershell/issues/13522#issuecomment-728659457
     # @{Name = "Az.DeploymentManager";          Command = {try {Get-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName  -ErrorAction Stop}catch {if ($_.ToString() -notlike "*not found*") {throw $_}}}},
-    @{Name = "Az.DesktopVirtualization";      Command = {Get-AzWvdApplicationGroup -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
+    # Waiting for api '2020-11-02-preview' ready
+    # @{Name = "Az.DesktopVirtualization";      Command = {Get-AzWvdApplicationGroup -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     @{Name = "Az.DevTestLabs ";               Command = {try {Get-AzDtlAllowedVMSizesPolicy -LabName nonexistent -ResourceGroupName nonexistent -ErrorAction Stop} catch {if ($_.ToString() -notlike "*'nonexistent' could not be found.") {throw $_}}}},
     @{Name = "Az.Dns";                        Command = {Get-AzureRmDnsZone -ErrorAction Stop}},
     @{Name = "Az.EventGrid";                  Command = {Get-AzureRmEventGridTopic -ErrorAction Stop}},

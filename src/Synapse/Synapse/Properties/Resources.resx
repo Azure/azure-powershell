@@ -621,4 +621,16 @@ Are you sure you want to continue?</value>
   <data name="SettingSqlPoolTransparentDataEncryption" xml:space="preserve">
     <value>Setting transparent data encryption protector in SQL pool '{0}' under workspace '{1}'.</value>
   </data>
+  <data name="BaseConfirmActionProcessMessage" xml:space="preserve">
+    <value>About to process resource</value>
+  </data>
+  <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
+    <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  </data>
+  <data name="VulnerabilityAssessmentTypeNotSupported" xml:space="preserve">
+    <value>Requested type is not supported by Vulnerability Assessment.</value>
+  </data>
+  <data name="VulnerabilityAssessmentWrongParameterType" xml:space="preserve">
+    <value>Wrong parameter type</value>
+  </data>
 </root>
