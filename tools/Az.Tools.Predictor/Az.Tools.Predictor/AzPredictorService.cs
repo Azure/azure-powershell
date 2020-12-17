@@ -44,11 +44,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
 
-            public string[] History { get; set; }
+            public IEnumerable<string> History { get; set; }
             public string ClientType { get; set; } = AzPredictorService.ClientType;
             public RequestContext Context { get; set; } = new RequestContext();
 
-            public PredictionRequestBody(string command) => History = command.Split('\n');
+            public PredictionRequestBody(IEnumerable<string> commands) => History = commands;
         };
 
         private sealed class CommandRequestContext
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                 VersionNumber = this._azContext.AzVersion
                             };
 
-                            var requestBody = new PredictionRequestBody(localCommands)
+                            var requestBody = new PredictionRequestBody(commands)
                             {
                                 Context = requestContext,
                             };
