@@ -101,7 +101,7 @@ function Test-GetAzureRmVMDscExtension
 
 <#
 .SYNOPSIS
-Test Get-AzVM piping to Get-AzVMDSCExtensionStatus cmdlet.
+Test Get-AzVM piping to Get-AzVMDSCExtensionStatus and Get-AzVMDscExtension cmdlets.
 #>
 function Test-DSCExtensionVMPiping
 {
@@ -177,7 +177,7 @@ function Test-DSCExtensionVMPiping
 	    Set-AzVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
 
         $dscGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname | Get-AzVmDscExtensionStatus;
-
+        Assert-AreEqual $dscGet.Version $version;
 
         # Test expected error message when missing ResourceGroup. 
         $vmname2 = "errorvm";
@@ -185,7 +185,17 @@ function Test-DSCExtensionVMPiping
         Assert-ThrowsContains {
             $vmError = $vmconfig | Get-AzVMDSCExtensionStatus; } `
             "The incoming virtual machine must have a 'resourceGroupName'.";
+        
+        # Test Get-AzVMDscExtension piping scenario
+        $dscGetExt = Get-AzVM -ResourceGroupName $rgname -Name $vmname | Get-AzVmDscExtension;
+        Assert-AreEqual $dscGetExt.TypeHandlerVersion $version; 
 
+        # Test expected error message when missing ResourceGroup. 
+        $vmname3 = "errorvm3";
+        $vmConfigError = New-AzVMConfig -Name $vmname3 -VMSize $vmsize;
+        Assert-ThrowsContains {
+            $vmError = $vmconfigError | Get-AzVMDSCExtension; } `
+            "The incoming virtual machine must have a 'resourceGroupName'.";
     }
     finally 
     {

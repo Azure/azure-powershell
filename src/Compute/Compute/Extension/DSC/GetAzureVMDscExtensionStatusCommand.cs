@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string Name { get; set; }
 
         [Parameter(
+            ValueFromPipeline = true,
             ParameterSetName = VMParameterSetName,
-            ValueFromPipeline = true, 
             HelpMessage = "Specifies the virtual machine object the extension is on.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
