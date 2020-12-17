@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Set-AzCommunicationServiceNotificationHub' {
     It 'LinkExpanded' {
-        $returnedResourceId = Set-AzCommunicationServiceNotificationHub -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -ConnectionString $env.notificationHubConnectionString -ResourceId $env.notificationHubResourceId
+        $returnedResourceId = Set-AzCommunicationServiceNotificationHub -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -ConnectionString $env.notificationHubConnectionString -NotificationHubResourceId $env.notificationHubResourceId
         $returnedResourceId | Should -Be $env.notificationHubResourceId
     }
 
