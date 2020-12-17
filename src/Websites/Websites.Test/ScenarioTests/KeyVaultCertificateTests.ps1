@@ -26,6 +26,7 @@ function Test-ImportAzWebAppKeyVaultCertificate
 
 		#Setup
 		$kvcert = Import-AzWebAppKeyVaultCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyVaultName $keyvaultname -CertName $keyvaultcertname
+
 	}
 	finally
 	{

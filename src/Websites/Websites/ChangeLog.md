@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Importing a keyvault certificate to WebApp.
 
 ## Version 2.1.0
 * Added support for new access restriction features: ServiceTag, multi-ip and http-headers

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
@@ -79,16 +80,14 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             set { _keyVaultClient = value; }
         }
 
-        private ActiveDirectoryClient _activeDirectoryClient;
         private DataServiceCredential _dataServiceCredential;
+        private ActiveDirectoryClient _activeDirectoryClient;
         public ActiveDirectoryClient ActiveDirectoryClient
         {
             get
             {
                 if (_activeDirectoryClient != null) return _activeDirectoryClient;
-
                 _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-                // TODO: Remove IfDef
 #if NETSTANDARD
                 try
                 {

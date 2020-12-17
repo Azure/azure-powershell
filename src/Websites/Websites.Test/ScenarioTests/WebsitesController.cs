@@ -27,8 +27,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Azure.Management.KeyVault;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -43,8 +43,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
-
-        public ActiveDirectoryClient ActiveDirectoryClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -126,14 +124,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             NewResourceManagementClient = GetResourceManagementClient(context);
             WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
-
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             var armStorageManagementClient = GetArmStorageManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
                 KeyVaultManagementClient,
-                ActiveDirectoryClient,
                 armStorageManagementClient
                 );
         }
@@ -161,11 +158,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static ActiveDirectoryClient GetActiveDirectoryClient(MockContext context)
-        {
-            return context.GetServiceClient<ActiveDirectoryClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

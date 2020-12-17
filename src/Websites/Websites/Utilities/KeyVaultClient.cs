@@ -27,17 +27,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public Vault GetKeyVault(string resourceGroupName, string vaultName)
         {
-            //Vault vault = null;
             try
             {
-                //this.WrappedKeyVaultClient.SubscriptionId = "3e929699-b7a4-46cc-97cf-8a95e04318b8";
                 return this.WrappedKeyVaultClient.Vaults.Get(resourceGroupName, vaultName);
-                //var res = this.WrappedKeyVaultClient.Vaults.ListBySubscription();
-                //foreach (var item in res)
-                //{
-                //    vault = item;
-                //}
-                //return vault;
             }
             catch (Exception ex)
             {
