@@ -17,7 +17,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.11.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="14.5.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.2.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>
 

@@ -859,6 +859,121 @@ function Test-AzureFirewallPolicyCRUDWithNatRuleTranslatedFQDN {
         Assert-AreEqual $natRule1TranslatedFqdn $natRule.TranslatedFqdn
         Assert-AreEqual $natRule1TranslatedPort $natRule.TranslatedPort
 
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        $testPipelineRg|Set-AzFirewallPolicyRuleCollectionGroup -Priority $pipelineRcPriority
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        Assert-AreEqual $pipelineRcPriority $testPipelineRg.properties.Priority 
+
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewallPolicyWithWebCategories.
+#>
+function Test-AzureFirewallPolicyWithWebCategories {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
+
+    $ruleGroupName = Get-ResourceName
+
+    # AzureFirewallPolicyApplicationRuleCollection
+    $appRcName = "appRc"
+    $appRcPriority = 400
+    $appRcActionType = "Allow"
+
+    $pipelineRcPriority = 154
+
+    # AzureFirewallPolicyApplicationRule 1
+    $appRule1Name = "appRule"
+    $appRule1Desc = "desc1"
+    $appRule1WC1 = "DatingAndPersonals"
+    $appRule1WC2 = "Tasteless"
+    $appRule1Protocol1 = "http:80"
+    $appRule1Port1 = 80
+    $appRule1ProtocolType1 = "http"
+    $appRule1Protocol2 = "https:443"
+    $appRule1Port2 = 443
+    $appRule1ProtocolType2 = "https"
+    $appRule1SourceAddress1 = "192.168.0.0/16"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+
+
+        #Create Application Rules
+        $appRule = New-AzFirewallPolicyApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -WebCategory $appRule1WC1, $appRule1WC2 -SourceAddress $appRule1SourceAddress1
+
+        # Create Filter Rule with 2 application rules
+        $appRc = New-AzFirewallPolicyFilterRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
+
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc -FirewallPolicyObject $azureFirewallPolicy
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual $location $getAzureFirewallPolicy.Location
+
+        # Check rule groups count
+        Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
+
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+
+        Assert-AreEqual 1 @($getRg.properties.ruleCollection).Count
+
+        $filterRuleCollection1 = $getRg.Properties.GetRuleCollectionByName($appRcName)
+
+        # Verify Filter Rule Collection1
+        Assert-AreEqual $appRcName $filterRuleCollection1.Name
+        Assert-AreEqual $appRcPriority $filterRuleCollection1.Priority
+        Assert-AreEqual $appRcActionType $filterRuleCollection1.Action.Type
+        Assert-AreEqual 1 $filterRuleCollection1.Rules.Count
+
+        $appRule = $filterRuleCollection1.GetRuleByName($appRule1Name)
+        # Verify application rule 1
+        Assert-AreEqual $appRule1Name $appRule.Name
+
+        Assert-AreEqual 1 $appRule.SourceAddresses.Count
+        Assert-AreEqual $appRule1SourceAddress1 $appRule.SourceAddresses[0]
+
+        Assert-AreEqual 2 $appRule.Protocols.Count 
+        Assert-AreEqual $appRule1ProtocolType1 $appRule.Protocols[0].ProtocolType
+        Assert-AreEqual $appRule1ProtocolType2 $appRule.Protocols[1].ProtocolType
+        Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
+        Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
+
+        Assert-AreEqual 2 $appRule.WebCategories.Count 
+        Assert-AreEqual $appRule1WC1 $appRule.WebCategories[0]
+        Assert-AreEqual $appRule1WC2 $appRule.WebCategories[1]
+
 
         $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
         $testPipelineRg|Set-AzFirewallPolicyRuleCollectionGroup -Priority $pipelineRcPriority
