@@ -1,0 +1,1759 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a3af653-63d0-4591-ba53-de5bd5c9d8b0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "751422ab-9c47-470c-a7a0-e6ff092fe59e"
+        ],
+        "x-ms-correlation-request-id": [
+          "751422ab-9c47-470c-a7a0-e6ff092fe59e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224905Z:751422ab-9c47-470c-a7a0-e6ff092fe59e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:04 GMT"
+        ],
+        "Content-Length": [
+          "98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a30caf7e-362e-42a0-9456-461599ae9ef3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "986280c2-99d8-43fc-ae77-e321552176d2"
+        ],
+        "x-ms-correlation-request-id": [
+          "986280c2-99d8-43fc-ae77-e321552176d2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224912Z:986280c2-99d8-43fc-ae77-e321552176d2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:12 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US 2\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "95df8a74-451e-4dbb-a874-15cd7d4dafa5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "6ec835fd-84d9-4184-88aa-ecef05bf5ef6"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ec835fd-84d9-4184-88aa-ecef05bf5ef6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224906Z:6ec835fd-84d9-4184-88aa-ecef05bf5ef6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:05 GMT"
+        ],
+        "Content-Length": [
+          "210"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199\",\r\n  \"name\": \"ps2199\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976/validate?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Ni92YWxpZGF0ZT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"queryString\": \"sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-01-02T00:02:18Z&st=2020-12-16T16:02:18Z&spr=https&sig=ZzMj3%2B49g1r%2FQ9eFBzNjqvq2dccEqLcTmcZjLvoIgMM%3D\"\r\n    },\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8d94daa7-1931-469d-8981-7c89f65f047f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "395"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "4ab8a7c7-a3b9-4b86-aa5f-afd8a2736d36"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ab8a7c7-a3b9-4b86-aa5f-afd8a2736d36"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224907Z:4ab8a7c7-a3b9-4b86-aa5f-afd8a2736d36"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:06 GMT"
+        ],
+        "Content-Length": [
+          "864"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2020-12-16T22:49:07.4803692Z\",\r\n    \"duration\": \"PT0S\",\r\n    \"correlationId\": \"4ab8a7c7-a3b9-4b86-aa5f-afd8a2736d36\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"validatedResources\": [\r\n      {\r\n        \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"queryString\": \"sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-01-02T00:02:18Z&st=2020-12-16T16:02:18Z&spr=https&sig=ZzMj3%2B49g1r%2FQ9eFBzNjqvq2dccEqLcTmcZjLvoIgMM%3D\"\r\n    },\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1cd62114-a8ec-4fc6-b881-ba57faf345dc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "395"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976/operationStatuses/08585934479372943686?api-version=2020-10-01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4"
+        ],
+        "x-ms-correlation-request-id": [
+          "e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224908Z:e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:08 GMT"
+        ],
+        "Content-Length": [
+          "707"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2020-12-16T22:49:08.546111Z\",\r\n    \"duration\": \"PT0.3628627S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0f67a19b-238f-418c-b873-176dc9b3429b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "490e9794-60a5-4fab-a025-6788121050bd"
+        ],
+        "x-ms-correlation-request-id": [
+          "490e9794-60a5-4fab-a025-6788121050bd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:490e9794-60a5-4fab-a025-6788121050bd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "63aa6294-61b7-458e-a6d9-5aa6ec1c48e9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "687a22ed-3bfd-4c9c-906e-a34850238449"
+        ],
+        "x-ms-correlation-request-id": [
+          "687a22ed-3bfd-4c9c-906e-a34850238449"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:687a22ed-3bfd-4c9c-906e-a34850238449"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7308b4c4-bf5d-4586-9452-61c9e6617c08"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "f8b32efe-cc01-450a-9c4a-7692bc43fefb"
+        ],
+        "x-ms-correlation-request-id": [
+          "f8b32efe-cc01-450a-9c4a-7692bc43fefb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:f8b32efe-cc01-450a-9c4a-7692bc43fefb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75f4fed1-ded7-4b3e-b03a-7b03de36e112"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "d44ae5c2-5686-4d94-8b3d-6abcf0c4e037"
+        ],
+        "x-ms-correlation-request-id": [
+          "d44ae5c2-5686-4d94-8b3d-6abcf0c4e037"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224910Z:d44ae5c2-5686-4d94-8b3d-6abcf0c4e037"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "721"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976/operations/94CA6663970F6FA0\",\r\n      \"operationId\": \"94CA6663970F6FA0\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Running\",\r\n        \"timestamp\": \"2020-12-16T22:49:10.0954994Z\",\r\n        \"duration\": \"PT0.7192578S\",\r\n        \"trackingId\": \"6702ab63-a453-4d7d-ae9e-e877bc9e5f6b\",\r\n        \"serviceRequestId\": \"c6460cde-8e53-4282-82e8-fc890469f9ea\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate\",\r\n          \"resourceType\": \"Microsoft.Resources/deployments\",\r\n          \"resourceName\": \"linkedTemplate\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e20fa45-b639-4c85-b1e9-050e646f3da7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-request-id": [
+          "f062b36d-b9cc-41c3-b043-b861f825a239"
+        ],
+        "x-ms-correlation-request-id": [
+          "f062b36d-b9cc-41c3-b043-b861f825a239"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224910Z:f062b36d-b9cc-41c3-b043-b861f825a239"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:10 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "721"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976/operations/94CA6663970F6FA0\",\r\n      \"operationId\": \"94CA6663970F6FA0\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Running\",\r\n        \"timestamp\": \"2020-12-16T22:49:10.1723234Z\",\r\n        \"duration\": \"PT0.7960818S\",\r\n        \"trackingId\": \"a18305db-5a67-4e48-95ab-f65ea5c141de\",\r\n        \"serviceRequestId\": \"c6460cde-8e53-4282-82e8-fc890469f9ea\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate\",\r\n          \"resourceType\": \"Microsoft.Resources/deployments\",\r\n          \"resourceName\": \"linkedTemplate\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/ps976/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9wczk3Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "318cd121-14fa-4906-a884-3d3cdacc8ad0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-request-id": [
+          "b16b4a29-0523-4262-a45f-faf021a215d5"
+        ],
+        "x-ms-correlation-request-id": [
+          "b16b4a29-0523-4262-a45f-faf021a215d5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224911Z:b16b4a29-0523-4262-a45f-faf021a215d5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1154"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976/operations/94CA6663970F6FA0\",\r\n      \"operationId\": \"94CA6663970F6FA0\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2020-12-16T22:49:11.4531366Z\",\r\n        \"duration\": \"PT2.076895S\",\r\n        \"trackingId\": \"fb568bc8-eaca-4f52-829b-4fcb9cdcbfe2\",\r\n        \"serviceRequestId\": \"c6460cde-8e53-4282-82e8-fc890469f9ea\",\r\n        \"statusCode\": \"OK\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate\",\r\n          \"resourceType\": \"Microsoft.Resources/deployments\",\r\n          \"resourceName\": \"linkedTemplate\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976/operations/08585934479372943686\",\r\n      \"operationId\": \"08585934479372943686\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2020-12-16T22:49:11.5146705Z\",\r\n        \"duration\": \"PT2.1384289S\",\r\n        \"trackingId\": \"63de53ad-567e-4882-be8b-4428838f8d99\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1dd7f74a-4c0a-4d97-9b35-ed8d58dc1c07"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "ed7b2b32-674c-4f0e-8464-88d6756372ab"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed7b2b32-674c-4f0e-8464-88d6756372ab"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:ed7b2b32-674c-4f0e-8464-88d6756372ab"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "707"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2020-12-16T22:49:08.546111Z\",\r\n    \"duration\": \"PT0.3628627S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c487c9bf-0fcc-4b21-a708-43ea3c81c005"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "88c53148-c552-482d-9a82-16db76e69642"
+        ],
+        "x-ms-correlation-request-id": [
+          "88c53148-c552-482d-9a82-16db76e69642"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:88c53148-c552-482d-9a82-16db76e69642"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:08 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "707"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2020-12-16T22:49:09.3291385Z\",\r\n    \"duration\": \"PT1.1458902S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f10ae8ed-82e0-4e3e-a447-fcecc2cdec1b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "2b364b7a-c3a5-499b-b219-9345b98c8df2"
+        ],
+        "x-ms-correlation-request-id": [
+          "2b364b7a-c3a5-499b-b219-9345b98c8df2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224909Z:2b364b7a-c3a5-499b-b219-9345b98c8df2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "707"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2020-12-16T22:49:09.3291385Z\",\r\n    \"duration\": \"PT1.1458902S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "020052ab-f0fb-4211-8012-0540890b0dd4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "821ee0f9-69b4-47ce-93ee-ca4b84becc3a"
+        ],
+        "x-ms-correlation-request-id": [
+          "821ee0f9-69b4-47ce-93ee-ca4b84becc3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224910Z:821ee0f9-69b4-47ce-93ee-ca4b84becc3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:10 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "707"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2020-12-16T22:49:10.1442641Z\",\r\n    \"duration\": \"PT1.9610158S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7b137db3-f7e1-4870-ba10-46b8d8526f58"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-request-id": [
+          "f0e2478a-cf43-4c8f-a68b-fcfa03243870"
+        ],
+        "x-ms-correlation-request-id": [
+          "f0e2478a-cf43-4c8f-a68b-fcfa03243870"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224911Z:f0e2478a-cf43-4c8f-a68b-fcfa03243870"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:10 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "707"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2020-12-16T22:49:10.1442641Z\",\r\n    \"duration\": \"PT1.9610158S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/ps976?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9wczk3Nj9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "828d2d59-91d6-40b5-8e73-a9cae5ccb2f2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-request-id": [
+          "d9e3b2bf-305e-4857-ac34-115ca3e9b21e"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9e3b2bf-305e-4857-ac34-115ca3e9b21e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224912Z:d9e3b2bf-305e-4857-ac34-115ca3e9b21e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "743"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/ps976\",\r\n  \"name\": \"ps976\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"properties\": {\r\n    \"templateLink\": {\r\n      \"uri\": \"https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json\",\r\n      \"contentVersion\": \"1.0.0.0\"\r\n    },\r\n    \"templateHash\": \"12440681897186865293\",\r\n    \"parameters\": {},\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2020-12-16T22:49:11.5309976Z\",\r\n    \"duration\": \"PT3.3477493S\",\r\n    \"correlationId\": \"e099ee9c-d10b-4eee-a2c6-7e0692b7a0f4\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              null\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"outputs\": {},\r\n    \"outputResources\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ffbee420-9efc-415e-ab1b-56041be31a92"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "6ce83ffa-49f7-44e5-b46b-232a9e294c2d"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ce83ffa-49f7-44e5-b46b-232a9e294c2d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224910Z:6ce83ffa-49f7-44e5-b46b-232a9e294c2d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:09 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ef9f0efa-90a7-47bd-975d-d6a21f693c64"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-request-id": [
+          "6c5a44df-b13f-447d-b93f-941b0edd303d"
+        ],
+        "x-ms-correlation-request-id": [
+          "6c5a44df-b13f-447d-b93f-941b0edd303d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224911Z:6c5a44df-b13f-447d-b93f-941b0edd303d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:10 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3e017dfc-8b88-450c-b866-54b80938d50b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-request-id": [
+          "8a5bdc9a-38b3-4efc-bf4e-0cac781aab68"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a5bdc9a-38b3-4efc-bf4e-0cac781aab68"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224911Z:8a5bdc9a-38b3-4efc-bf4e-0cac781aab68"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:11 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/linkedTemplate/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZS9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9b3d8ce9-c45a-421e-acaa-a1ed6ceca9db"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "0dc36a38-c49d-4f84-beee-55f681163913"
+        ],
+        "x-ms-correlation-request-id": [
+          "0dc36a38-c49d-4f84-beee-55f681163913"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224910Z:0dc36a38-c49d-4f84-beee-55f681163913"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:09 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "457"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate/operations/08585934479354847318\",\r\n      \"operationId\": \"08585934479354847318\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2020-12-16T22:49:10.1114347Z\",\r\n        \"duration\": \"PT0.0268396S\",\r\n        \"trackingId\": \"aabf7f4e-ee24-4c31-9757-70b4815a274a\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/linkedTemplate/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZS9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c0f973b2-b9a8-4e15-ae3a-0056f178d78a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "357ae623-9a9e-47ad-964d-4bf9cf5e2adc"
+        ],
+        "x-ms-correlation-request-id": [
+          "357ae623-9a9e-47ad-964d-4bf9cf5e2adc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224911Z:357ae623-9a9e-47ad-964d-4bf9cf5e2adc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:10 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "457"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate/operations/08585934479354847318\",\r\n      \"operationId\": \"08585934479354847318\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2020-12-16T22:49:10.1114347Z\",\r\n        \"duration\": \"PT0.0268396S\",\r\n        \"trackingId\": \"aabf7f4e-ee24-4c31-9757-70b4815a274a\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199/deployments/linkedTemplate/operations?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OS9kZXBsb3ltZW50cy9saW5rZWRUZW1wbGF0ZS9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "11202aac-56ac-4a90-a1cb-20a3636e4d5f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-request-id": [
+          "4180b104-fae7-4e6f-8914-fd21d4381066"
+        ],
+        "x-ms-correlation-request-id": [
+          "4180b104-fae7-4e6f-8914-fd21d4381066"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224912Z:4180b104-fae7-4e6f-8914-fd21d4381066"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "457"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/ps2199/providers/Microsoft.Resources/deployments/linkedTemplate/operations/08585934479354847318\",\r\n      \"operationId\": \"08585934479354847318\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2020-12-16T22:49:10.1114347Z\",\r\n        \"duration\": \"PT0.0268396S\",\r\n        \"trackingId\": \"aabf7f4e-ee24-4c31-9757-70b4815a274a\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourcegroups/ps2199?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Jlc291cmNlZ3JvdXBzL3BzMjE5OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "89134c5e-d9ec-405f-971e-875d06f4c0ca"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "ecfa5018-54b1-43d1-a2f8-4c7b070a4332"
+        ],
+        "x-ms-correlation-request-id": [
+          "ecfa5018-54b1-43d1-a2f8-4c7b070a4332"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224913Z:ecfa5018-54b1-43d1-a2f8-4c7b070a4332"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:13 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeE9Ua3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "03455bad-65df-4855-9d2a-afb82c1b0a37"
+        ],
+        "x-ms-correlation-request-id": [
+          "03455bad-65df-4855-9d2a-afb82c1b0a37"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224928Z:03455bad-65df-4855-9d2a-afb82c1b0a37"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:28 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeE9Ua3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "2d10bfa6-b406-44c8-85f9-0bcccb5ebf10"
+        ],
+        "x-ms-correlation-request-id": [
+          "2d10bfa6-b406-44c8-85f9-0bcccb5ebf10"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224944Z:2d10bfa6-b406-44c8-85f9-0bcccb5ebf10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:43 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeE9Ua3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "00738691-6d0a-45b5-a9d1-e89a300dfde2"
+        ],
+        "x-ms-correlation-request-id": [
+          "00738691-6d0a-45b5-a9d1-e89a300dfde2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224959Z:00738691-6d0a-45b5-a9d1-e89a300dfde2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIxOTktV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeE9Ua3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "2a81abce-df2b-4b15-9b1e-e11396b2a7a7"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a81abce-df2b-4b15-9b1e-e11396b2a7a7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20201216T224959Z:2a81abce-df2b-4b15-9b1e-e11396b2a7a7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 16 Dec 2020 22:49:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-NewDeploymentWithQueryString": [
+      "ps2199",
+      "ps976"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+  }
+}
