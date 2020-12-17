@@ -18,7 +18,8 @@ Describe 'New-AzBotService' {
         $NewAzBot.Name | Should -Be $env.NewBotService1
     }
 
-    It 'WebApp' {
+    #this case use the cmdlet 'New-AzResourceGroupDeployment' and it is can not be recorded.
+    It 'WebApp' -Skip {
         $NewApplication = New-AzApplicationInsights -ResourceGroupName $env.ResourceGroupName -Name $env.WebApplicationName2 -Location $env.Location
         $ApplicationSecret = ConvertTo-SecureString -String "youriSecret" -Force -AsPlainText
         write-host $ApplicationSecret

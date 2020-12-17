@@ -160,7 +160,6 @@ function DownloadBotZip
         ${EnvParameters}
     )
     process {
-        Import-Module Az.Websites
         $WebApp = Get-AzWebApp -ResourceGroupName $ResourceGroupName -Name $Name @EnvParameters
         foreach ($HostNameSslState in $WebApp.HostNameSslStates)
         {

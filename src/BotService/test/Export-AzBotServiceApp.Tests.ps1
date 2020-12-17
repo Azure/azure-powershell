@@ -11,8 +11,9 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+#this case use the cmdlet 'Invoke-WebRequest' and it can not be recorded.
 Describe 'Export-AzBotServiceApp' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -Skip {
         $DownloadAppService = Export-AzBotServiceApp -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService2
         $DownloadAppService.Name | Should -Be $env.NewBotService2
     }
