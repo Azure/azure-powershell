@@ -59,7 +59,7 @@ Name of Synapse SQL pool.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: SqlPoolName
 
 Required: True
 Position: Named

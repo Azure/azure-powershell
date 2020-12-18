@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
+
         /// <summary>
         /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
@@ -404,9 +405,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
-                // validate container name to be a full name
-                AzureWorkloadProviderHelper.ValidateContainerName(wLRecoveryConfig.RecoveryPoint.ContainerName);
-
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
 
