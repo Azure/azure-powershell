@@ -14,7 +14,7 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 
 ```
 New-AzFirewallPolicyIntrusionDetection -Mode <String>
- [-SignatureOverrides <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
+ [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
  [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ This example creates intrusion detection with Alert (detection) mode
 ### Example 2: 2. Create intrusion detection with signature overrides
 ```powershell
 PS C:\> $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverrides $signatureOverride
+PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
 ```
 
 This example creates intrusion detection with specific signature override
@@ -96,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SignatureOverrides
+### -SignatureOverride
 List of specific signatures states.
 
 ```yaml
