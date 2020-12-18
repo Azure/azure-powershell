@@ -658,7 +658,7 @@ function Test-NewDeploymentWithQueryString
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
 		#Create deployment
-		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.file.core.windows.net/tsquerystring/linkedTemplateParent.json" -QueryString "sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-01-02T00:02:18Z&st=2020-12-16T16:02:18Z&spr=https&sig=ZzMj3%2B49g1r%2FQ9eFBzNjqvq2dccEqLcTmcZjLvoIgMM%3D"
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.blob.core.windows.net/testqsblob/linkedTemplateParent.json" -QueryString "foo"
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
