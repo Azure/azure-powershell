@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We need to extract the noun to construct the parameter name.
 
             var commandName = command.FirstOrDefault()?.ToString();
-            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName).ToLower();
+            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName)?.ToLower();
             if (commandNoun == null)
             {
                 return;
