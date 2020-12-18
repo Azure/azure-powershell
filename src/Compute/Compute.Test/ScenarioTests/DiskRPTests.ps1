@@ -246,7 +246,7 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettingsCollection.Enabled = $false;
         $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -619,7 +619,7 @@ function Test-SnapshotEncrypt
         Assert-AreEqual 0 $snapshotconfig.CreationData.ImageReference.Lun;
 
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -1336,4 +1336,42 @@ function Test-DiskConfigTierSectorSizeReadOnly
             # Cleanup
             Clean-ResourceGroup $rgname
 		}
+}
+
+<#
+.SYNOPSIS
+Test the New-AzSnapshot cmdlet throws an error when attempting to create a snapshot with 
+the same name in the same resource group. 
+#>
+function Test-SnapshotDuplicateCreationFails
+{
+    # Setup 
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $snapshotName = "test1";
+
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty;
+        
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig;
+        Assert-NotNull $snapshot;
+
+        # Assert duplicate snapshot fails to create.
+        Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+
+        # Assert update snapshot succeeds. 
+        $snapshotconfig2 = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Standard_LRS -OsType Windows;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -SnapshotUpdate $snapshotconfig2 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

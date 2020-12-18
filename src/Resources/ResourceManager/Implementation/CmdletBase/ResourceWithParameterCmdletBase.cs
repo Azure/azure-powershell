@@ -17,11 +17,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 
@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string templateUri;
 
         private string templateSpecId;
+
+        private ITemplateSpecsClient templateSpecsClient;
 
         protected ResourceWithParameterCmdletBase()
         {
@@ -142,30 +144,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                                     "to provide a better error message in the case where not all required parameters are satisfied.")]
         public SwitchParameter SkipTemplateParameterPrompt { get; set; }
 
-        private TemplateSpecsSdkClient templateSpecsSdkClient;
-
         /// <summary>
-        /// Gets or sets the Template Specs Azure sdk client wrapper
+        /// Gets or sets the Template Specs Azure SDK client 
         /// </summary>
-        public TemplateSpecsSdkClient TemplateSpecsSdkClient
+        public ITemplateSpecsClient TemplateSpecsClient
         {
             get
             {
-                if (this.templateSpecsSdkClient == null)
+                if (this.templateSpecsClient == null)
                 {
-                    this.templateSpecsSdkClient = new TemplateSpecsSdkClient(DefaultContext);
+                    this.templateSpecsClient =
+                        AzureSession.Instance.ClientFactory.CreateArmClient<TemplateSpecsClient>(
+                            DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager
+                        );
                 }
 
-                return this.templateSpecsSdkClient;
+                return this.templateSpecsClient;
             }
 
-            set { this.templateSpecsSdkClient = value; }
+            set { this.templateSpecsClient = value; }
         }
 
         public object GetDynamicParameters()
         {
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
+                // Resolve the static parameter names for this cmdlet:
+                string[] staticParameterNames = this.GetStaticParameterNames();
+
                 if (TemplateObject != null && TemplateObject != templateObject)
                 {
                     templateObject = TemplateObject;
@@ -175,7 +182,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             TemplateObject,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                     else
                     {
@@ -183,7 +190,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             TemplateObject,
                             TemplateParameterObject,
                             TemplateParameterUri,
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                 }
                 else if (!string.IsNullOrEmpty(TemplateFile) &&
@@ -196,7 +203,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             this.ResolvePath(TemplateFile),
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                     else
                     {
@@ -204,7 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             this.ResolvePath(TemplateFile),
                             TemplateParameterObject,
                             TemplateParameterUri,
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                 }
                 else if (!string.IsNullOrEmpty(TemplateUri) &&
@@ -217,7 +224,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             TemplateUri,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                     else
                     {
@@ -225,7 +232,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             TemplateUri,
                             TemplateParameterObject,
                             TemplateParameterUri,
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                 }
                 else if (!string.IsNullOrEmpty(TemplateSpecId) &&
@@ -238,12 +245,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSArgumentException("No version found in Resource ID");
                     }
 
-                    var templateSpecVersion = TemplateSpecsSdkClient.GetTemplateSpec(
-                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
-                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        resourceIdentifier.ResourceName).Versions.Single();
+                    if (!string.IsNullOrEmpty(resourceIdentifier.Subscription) &&
+                        TemplateSpecsClient.SubscriptionId != resourceIdentifier.Subscription)
+                    {
+                        // The template spec is in a different subscription than our default 
+                        // context. Force the client to use that subscription:
+                        TemplateSpecsClient.SubscriptionId = resourceIdentifier.Subscription;
+                    }
 
-                    var templateObj = JObject.Parse(templateSpecVersion.Template);
+                    var templateSpecVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
+                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
+                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
+                        resourceIdentifier.ResourceName);
+
+                    if (!(templateSpecVersion.Template is JObject))
+                    {
+                        throw new InvalidOperationException("Unexpected type."); // Sanity check
+                    }
+
+                    JObject templateObj = (JObject)templateSpecVersion.Template;
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
@@ -251,7 +271,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             templateObj,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                     else
                     {
@@ -259,7 +279,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             templateObj,
                             TemplateParameterObject,
                             TemplateParameterUri,
-                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                            staticParameterNames);
                     }
                 }
             }
@@ -344,6 +364,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             return debugSetting;
+        }
+
+        /// <summary>
+        /// Gets the names of the static parameters defined for this cmdlet.
+        /// </summary>
+        protected string[] GetStaticParameterNames()
+        {
+            if (MyInvocation.MyCommand != null)
+            {
+                // We're running inside the shell... parameter information will already
+                // be resolved for us:
+                return MyInvocation.MyCommand.Parameters.Keys.ToArray();
+            }
+
+            // This invocation is internal (e.g: through a unit test), fallback to
+            // collecting the command/parameter info explicitly from our current type:
+
+            CmdletAttribute cmdletAttribute = (CmdletAttribute)this.GetType()
+                .GetCustomAttributes(typeof(CmdletAttribute), true)
+                .FirstOrDefault();
+
+            if (cmdletAttribute == null)
+            {
+                throw new InvalidOperationException(
+                    $"Expected type '{this.GetType().Name}' to have CmdletAttribute."
+                );
+            }
+
+            // The command name we provide for the temporary CmdletInfo isn't consumed
+            // anywhere other than instantiation, but let's resolve it anyway:
+            string commandName = $"{cmdletAttribute.VerbName}-{cmdletAttribute.NounName}";
+
+            CmdletInfo cmdletInfo = new CmdletInfo(commandName, this.GetType());
+            return cmdletInfo.Parameters.Keys.ToArray();
         }
     }
 }

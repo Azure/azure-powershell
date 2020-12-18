@@ -19,7 +19,10 @@
 --->
 
 ## Upcoming Release
-
+* Bugfix in Remove peering and connection commandlet for ExpressrouteCircuit scenario
+    - Remove-AzExpressRouteCircuitPeeringConfig and Remove-AzExpressRouteCircuitConnectionConfig
+* Added multiple Authentication support for p2sVpnGateway
+    - Updated `New-AzVpnServerConfiguration` and `Update-AzVpnServerConfiguration` to allow multiple authentication parameters to be set.
 ## Version 4.3.0
 * Updated below cmdlet 
     - `New-AzLoadBalancerFrontendIpConfigCommand`, `Set-AzLoadBalancerFrontendIpConfigCommand`, `Add-AzLoadBalancerFrontendIpConfigCommand`:

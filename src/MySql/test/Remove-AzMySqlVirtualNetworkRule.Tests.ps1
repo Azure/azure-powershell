@@ -23,7 +23,7 @@ Describe 'Remove-AzMySqlVirtualNetworkRule' {
     It 'DeleteViaIdentity' {
         $VnetID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1"
         New-AzMySqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $VnetID
-        $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
+        $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
         {
             Remove-AzMySqlVirtualNetworkRule -InputObject $RuleID
         } | Should -Not -Throw

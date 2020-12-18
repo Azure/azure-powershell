@@ -171,9 +171,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Get the MAC address of the default NIC, or null if none can be found
+        /// Get the MAC address of the default NIC, or null if none can be found.
         /// </summary>
-        /// <returns>The MAC address of the defautl nic, or null if none is found</returns>
+        /// <returns>The MAC address of the defautl nic, or null if none is found.</returns>
         private static string GetMACAddress()
         {
             return NetworkInterface.GetAllNetworkInterfaces()?

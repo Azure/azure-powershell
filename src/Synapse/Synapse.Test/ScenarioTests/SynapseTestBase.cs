@@ -29,6 +29,7 @@ using Microsoft.Azure.Synapse;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
+using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
@@ -57,6 +58,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected static string TestWorkspaceName;
 
         protected static string TestSparkPoolName;
+
+        protected static string TestSqlPoolName;
 
         protected SynapseTestBase()
         {
@@ -138,7 +141,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 SynapseSqlV3ManagementClient,
                 SynapseClient,
                 StorageManagementClient,
-                NewResourceManagementClient
+                NewResourceManagementClient,
+                GetNewSynapseManagementClient(context)
             );
 
             // register the namespace.
@@ -163,6 +167,11 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static NewStorageManagementClient GetNewSynapseManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NewStorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static SynapseManagementClient GetSynapseManagementClient(MockContext context)

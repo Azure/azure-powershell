@@ -35,7 +35,7 @@ ApplicationGroupName/ApplicationName2 Microsoft.DesktopVirtualization/applicatio
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +57,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdapplication
 #>
 function Get-AzWvdApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IApplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

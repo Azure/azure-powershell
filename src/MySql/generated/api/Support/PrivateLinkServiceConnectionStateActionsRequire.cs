@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>The actions required for private link service connection.</summary>
     public partial struct PrivateLinkServiceConnectionStateActionsRequire :
         System.IEquatable<PrivateLinkServiceConnectionStateActionsRequire>
     {

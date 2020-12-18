@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
-    /// <summary>TypeConverter implementation for GeoRedundantBackup.</summary>
+    /// <summary>Enable Geo-redundant or not for server backup.</summary>
     public partial class GeoRedundantBackupTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
