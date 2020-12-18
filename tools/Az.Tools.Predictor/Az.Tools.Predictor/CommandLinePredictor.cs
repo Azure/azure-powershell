@@ -122,10 +122,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     resultBuilder.Clear();
                     resultBuilder.Append(_commandLinePredictions[i].Name);
                     usedParams.Clear();
+                    string commandNoun = ParameterValuePredictor.GetAzCommandNoun(_commandLinePredictions[i].Name).ToLower();
 
-                    if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, _commandLinePredictions[i].ParameterSet, usedParams))
+                    if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, commandNoun, _commandLinePredictions[i].ParameterSet, usedParams))
                     {
-                        PredictRestOfParameters(resultBuilder, _commandLinePredictions[i].ParameterSet.Parameters, usedParams);
+                        PredictRestOfParameters(resultBuilder, commandNoun, _commandLinePredictions[i].ParameterSet.Parameters, usedParams);
 
                         if (resultBuilder.Length <= rawUserInput.Length)
                         {
@@ -177,15 +178,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Appends unused parameters to the builder.
         /// </summary>
         /// <param name="builder">StringBuilder that aggregates the prediction text output.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="parameters">Chosen prediction parameters.</param>
         /// <param name="usedParams">Set of used parameters for set.</param>
-        private void PredictRestOfParameters(StringBuilder builder, IReadOnlyList<Parameter> parameters, HashSet<int> usedParams)
+        private void PredictRestOfParameters(StringBuilder builder, string commandNoun, IReadOnlyList<Parameter> parameters, HashSet<int> usedParams)
         {
             for (var j = 0; j < parameters.Count; j++)
             {
                 if (!usedParams.Contains(j))
                 {
-                    BuildParameterValue(builder, parameters[j]);
+                    BuildParameterValue(builder, commandNoun, parameters[j]);
                 }
             }
         }
@@ -195,9 +197,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="builder">StringBuilder that aggregates the prediction text output.</param>
         /// <param name="inputParameters">Parsed ParameterSet from the user input AST.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="predictionParameters">Candidate prediction parameter set.</param>
         /// <param name="usedParams">Set of used parameters for set.</param>
-        private bool DoesPredictionParameterSetMatchInput(StringBuilder builder, ParameterSet inputParameters, ParameterSet predictionParameters, HashSet<int> usedParams)
+        private bool DoesPredictionParameterSetMatchInput(StringBuilder builder, ParameterSet inputParameters, string commandNoun,ParameterSet predictionParameters, HashSet<int> usedParams)
         {
             foreach (var inputParameter in inputParameters.Parameters)
             {
@@ -215,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
                     else
                     {
-                        BuildParameterValue(builder, predictionParameters.Parameters[matchIndex]);
+                        BuildParameterValue(builder, commandNoun, predictionParameters.Parameters[matchIndex]);
                     }
                 }
             }
@@ -234,11 +237,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// "TestVM" is predicted for Get-AzVM.
         /// </summary>
         /// <param name="builder">The string builder to create the whole predicted command line.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="parameter">The parameter name and value from prediction.</param>
-        private void BuildParameterValue(StringBuilder builder, Parameter parameter)
+        private void BuildParameterValue(StringBuilder builder, string commandNoun, Parameter parameter)
         {
             var parameterName = parameter.Name;
-            var parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(parameterName);
+            string parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(commandNoun, parameterName);
 
             if (string.IsNullOrWhiteSpace(parameterValue))
             {
