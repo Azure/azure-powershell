@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>
+    /// The data format of the message. Optionally the data format can be added to each message.
+    /// </summary>
     public partial struct EventGridDataFormat :
         System.IEquatable<EventGridDataFormat>
     {

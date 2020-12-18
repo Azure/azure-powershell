@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
 online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqlpoolrestorepoint
@@ -14,14 +14,16 @@ Deletes a Synapse Analytics SQL pool restore point.
 
 ### DeleteByNameParameterSet (Default)
 ```
-Remove-AzSynapseSqlPoolRestorePoint [-ResourceGroupName <String>] -WorkspaceName <String> -SqlPoolName <String> -Name <String> 
-[-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSqlPoolRestorePoint [-ResourceGroupName <String>] -WorkspaceName <String> -SqlPoolName <String>
+ -RestorePointCreationDate <DateTime> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByParentObjectParameterSet
 ```
-Remove-AzSynapseSqlPoolRestorePoint -Name <String> -SqlPoolObject <PSSynapseSqlPool> [-PassThru]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSqlPoolRestorePoint -RestorePointCreationDate <DateTime> -SqlPoolObject <PSSynapseSqlPool>
+ [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteByInputObjectParameterSet
@@ -88,13 +90,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases:
+Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -102,6 +105,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 SQL pool restore point creation time input object, usually passed through the pipeline.
@@ -115,21 +132,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -RestorePointCreationDate
-Name of Synapse SQL Restore Point Creation Date .
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -178,6 +180,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RestorePointCreationDate
+Name of Synapse SQL Restore Point Creation Date .
+
+```yaml
+Type: System.DateTime
+Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SqlPoolName
 Name of Synapse Sql pool.
 
@@ -220,21 +237,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceObject
-workspace input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: DeleteByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -39,7 +39,7 @@ Resets the P2SVpnGateway
 
 ### Example 1:
 ```
-$Gateway = Get-AzVpnGateway -Name "ContosoVirtualGateway" -ResourceGroupName "RGName"
+$Gateway = Get-AzP2SVpnGateway -Name "ContosoVirtualGateway" -ResourceGroupName "RGName"
 Reset-AzP2sVpnGateway -P2SVpnGateway $Gateway
 ```
 

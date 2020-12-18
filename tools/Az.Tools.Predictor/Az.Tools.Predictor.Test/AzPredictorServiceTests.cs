@@ -107,8 +107,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzKeyVault -VaultName")]
         [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
         [InlineData("new-azresourcegroup -name hello")]
-        [InlineData("Get-AzContext -Name")]
-        [InlineData("Get-AzContext -ErrorAction")]
         public void VerifyUsingCommandBasedPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -150,8 +148,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verifies that when no prediction is in the command based list, we'll use the fallback list.
         /// </summary>
         [Theory]
-        [InlineData("Get-AzResource -Name hello -Pre")]
-        [InlineData("Get-AzADServicePrincipal -ApplicationObject")]
+        [InlineData("New-AzApiManagementContext -ResourceGroupName hello -Serv")]
+        [InlineData("Get-AzAlert -TimeRange '1h' -Incl")]
         public void VerifyUsingFallbackPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);

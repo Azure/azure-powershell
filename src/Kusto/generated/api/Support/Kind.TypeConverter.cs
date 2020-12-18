@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for Kind.</summary>
+    /// <summary>Kind of the database</summary>
     public partial class KindTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

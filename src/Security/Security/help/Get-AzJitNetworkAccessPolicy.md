@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+The resource id of the jit Network Access Policy resource.
 
 ```yaml
 Type: System.String
