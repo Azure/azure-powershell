@@ -14,9 +14,11 @@
 
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -49,6 +51,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpTagsForFactory)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
@@ -70,10 +75,25 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name))
-            {
-                WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
-            }
+            //if (ShouldProcess(Name))
+            //{
+            //    WriteObject(DataFactoryClient.UpdatePSDataFactory(parameters));
+            //}
+
+            ConfirmAction(
+                  Force.IsPresent,
+                  string.Format(
+                      CultureInfo.InvariantCulture,
+                      Resources.DataFactoryConfirmationMessage,
+                      Name,
+                      ResourceGroupName),
+                  string.Format(
+                      CultureInfo.InvariantCulture,
+                      Resources.DataFactoryRemoving,
+                      Name,
+                      ResourceGroupName),
+                  Name,
+                 ()=>DataFactoryClient.UpdatePSDataFactory(parameters));
         }
     }
 }
