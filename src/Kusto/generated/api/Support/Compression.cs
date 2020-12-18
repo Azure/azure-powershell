@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The compression type</summary>
     public partial struct Compression :
         System.IEquatable<Compression>
     {
