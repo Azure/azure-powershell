@@ -201,10 +201,18 @@ namespace Microsoft.Azure.Commands.Synapse
         public string SourceResourceId { get { return BackupResourceId; } set { this.BackupResourceId = value; } }
 
         [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RestorePoint)]
+            Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
         [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RestorePoint)]
-        public DateTime? RestorePoint { get; set; }
+            Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
+        [Parameter(ParameterSetName = RestoreFromRestorePointInputObjectByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
+        [Parameter(ParameterSetName = RestoreFromRestorePointNameByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
+        [Alias(SynapseConstants.PointInTime)]
+        [ValidateNotNullOrEmpty]
+        public DateTime RestorePoint { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -217,18 +225,20 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.IsParameterBound(c => c.BackupResourceId))
+            if (!string.IsNullOrEmpty(this.BackupResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.BackupResourceId);
+                this.BackupResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.BackupWorkspaceName = resourceIdentifier.ParentResource;
                 this.BackupWorkspaceName = this.BackupWorkspaceName.Substring(this.BackupWorkspaceName.LastIndexOf('/') + 1);
                 this.BackupSqlPoolName = resourceIdentifier.ResourceName;
             }
 
-            if (this.IsParameterBound(c => c.BackupSqlPoolObject))
+            if (BackupSqlPoolObject != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.BackupSqlPoolObject.Id);
                 this.BackupResourceId = this.BackupSqlPoolObject.Id;
+                this.BackupResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.BackupWorkspaceName = resourceIdentifier.ParentResource;
                 this.BackupWorkspaceName = this.BackupWorkspaceName.Substring(this.BackupWorkspaceName.LastIndexOf('/') + 1);
                 this.BackupSqlPoolName = resourceIdentifier.ResourceName;
@@ -293,11 +303,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 case RestoreFromRestorePointIdByNameParameterSet:
                 case RestoreFromRestorePointIdByParentObjectParameterSet:
                 case RestoreFromRestorePointInputObjectByNameParameterSet:
-                    if (!this.IsParameterBound(c => c.RestorePoint))
-                    {
-                        this.RestorePoint = GetNewestRestorePoint();
-                    }
-
                     createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
                     createParams.SourceDatabaseId = this.SourceResourceId;
                     createParams.RestorePointInTime = this.RestorePoint.ToString();
@@ -315,35 +320,6 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
                 WriteObject(result);
-            }
-        }
-
-        private DateTime GetNewestRestorePoint()
-        {
-            string sourceResourceGroupName = this.SourceResourceGroupName;
-            string sourceWorkspaceName = this.SourceWorkspaceName;
-            sourceWorkspaceName = sourceWorkspaceName.Substring(sourceWorkspaceName.LastIndexOf('/') + 1);
-            string sourceSqlPoolName = this.SourceSqlPoolName;
-
-            var sourceSqlDatabase = this.SynapseAnalyticsClient.GetSqlPool(sourceResourceGroupName, sourceWorkspaceName, sourceSqlPoolName);
-            if (sourceSqlDatabase == null)
-            {
-                throw new SynapseException(string.Format(Resources.SqlPoolDoesNotExist, sourceSqlPoolName));
-            }
-
-            var restorePoints = this.SynapseAnalyticsClient.ListSqlPoolRestorePoints(
-                sourceResourceGroupName,
-                sourceWorkspaceName,
-                sourceSqlPoolName);
-
-            var neweastRestorePoint = restorePoints.MaxOrDefault(rp => rp.RestorePointCreationDate, null);
-            if (!neweastRestorePoint.HasValue)
-            {
-                throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPoolRestorePoints, sourceSqlPoolName, sourceResourceGroupName, sourceWorkspaceName));
-            }
-            else
-            {
-                return neweastRestorePoint.Value;
             }
         }
 

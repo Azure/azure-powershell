@@ -135,6 +135,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SensitivityRecommendation = nameof(SensitivityRecommendation);
 
+        public const string PointInTime = nameof(PointInTime);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

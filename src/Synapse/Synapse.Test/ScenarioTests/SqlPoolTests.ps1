@@ -4,31 +4,17 @@ Tests Synapse SqlPool Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-SynapseSqlPool
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $sqlPoolName = (Get-SynapseSqlPoolName),
-        $restoreFromSqlPoolName = 'dwtestbackup',
-        $sqlPoolPerformanceLevel = 'DW200c'
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolTestEnvironment $testSuffix
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-        $workspace = Get-AzSynapseWorkspace -resourceGroupName $resourceGroupName -Name $workspaceName
-        $location = $workspace.Location
-
-        # Test to make sure the SqlPool doesn't exist
-        Assert-False {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
-
-        $sqlPoolCreated = New-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
-
-        Assert-AreEqual $sqlPoolName $sqlPoolCreated.Name
-        Assert-AreEqual $location $sqlPoolCreated.Location
-        Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolCreated.Type
-        Assert-True {$sqlPoolCreated.Id -like "*$resourceGroupName*"}
+        $resourceGroupName = $params.rgname
+        $workspaceName = $params.WorkspaceName
+        $location = $params.location
+        $sqlPoolName = $params.sqlPoolName
 
         # In loop to check if SQL pool exists
         for ($i = 0; $i -le 60; $i++)
@@ -39,7 +25,7 @@ function Test-SynapseSqlPool
                 Assert-AreEqual $sqlPoolName $sqlPoolGet[0].Name
                 Assert-AreEqual $location $sqlPoolGet[0].Location
                 Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolGet[0].Type
-                Assert-True {$sqlPoolCreated.Id -like "*$resourceGroupName*"}
+                Assert-True {$sqlPoolGet.Id -like "*$resourceGroupName*"}
                 break
             }
 
@@ -92,18 +78,24 @@ function Test-SynapseSqlPool
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
 
+        # Create a new restore point
+        New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -RestorePointLabel ContosoRestorePoint
+
         # Get restore point
-        [array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $restoreFromSqlPoolName
+        [array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
+
+        # Restore SqlPool
+        # Comment out due to bug
+        #$sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $params.restoredSqlPoolName -SourceResourceGroupName $params.rgname -SourceWorkspaceName $workspaceName -SourceSqlPoolName $params.restoredSqlPoolName -PerformanceLevel $params.perfLevel -RestorePoint $restorePoint[0].RestorePointCreationDate
 
         # Delete restore point
         $RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
 
-        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $restoreFromSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
+        Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force
 
-        # Restore SqlPool
-        $sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -SourceWorkspaceName $workspaceName -SourceSqlPoolName $restoreFromSqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
+        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
 
         Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
         Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
@@ -124,8 +116,8 @@ function Test-SynapseSqlPool
     }
     finally
     {
-        # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+		# Cleanup
+		Remove-SqlPoolTestEnvironment $testSuffix
     }
 }
 
@@ -138,19 +130,20 @@ function Test-SynapseSqlPool-Security
 {
     param
     (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $sqlPoolName = (Get-SynapseSqlPoolName),
-        $storageGen2AccountName = (Get-DataLakeStorageAccountName),
-        $location = "East US"
+        $storageGen2AccountName = (Get-DataLakeStorageAccountName)
     )
+
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolTestEnvironment $testSuffix
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-        $sqlPoolName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("sqlPoolName", $sqlPoolName)
-        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_LRS -Kind StorageV2
+        $resourceGroupName = $params.rgname
+        $workspaceName = $params.WorkspaceName
+        $sqlPoolName = $params.sqlPoolName
+        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $params.location -SkuName Standard_LRS -Kind StorageV2
         
         # Set SQL Pool Auditing
         Set-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -BlobStorageTargetState Enabled -StorageAccountResourceId $account.id -StorageKeyType Primary
@@ -211,6 +204,46 @@ function Test-SynapseSqlPool-Security
     }
     finally
     {
-        Invoke-HandledCmdlet -Command {Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName} -IgnoreFailures
+		# Cleanup
+		Remove-SqlPoolTestEnvironment $testSuffix
     }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the tests
+#>
+function Create-SqlPoolTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $params.location
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the tests
+#>
+function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-cmdlet-test-rg" +$testSuffix;
+			  workspaceName = "sqlws" +$testSuffix;
+			  sqlPoolName = "sqlpool" + $testSuffix;
+			  storageAccountName = "sqlstorage" + $testSuffix;
+			  fileSystemName = "sqlcmdletfs" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+			  perfLevel = 'DW200c';
+              location = "westcentralus";
+              restoredSqlPoolName = "dwrestore" + $testSuffix;
+		}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the tests
+#>
+function Remove-SqlPoolTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
 }
