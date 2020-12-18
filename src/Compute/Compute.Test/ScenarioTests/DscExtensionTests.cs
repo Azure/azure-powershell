@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetAzureRmVMDscExtension");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDSCExtensionVMPiping()
+        {
+            TestRunner.RunTestScript("Test-DSCExtensionVMPiping");
+        }
     }
 }

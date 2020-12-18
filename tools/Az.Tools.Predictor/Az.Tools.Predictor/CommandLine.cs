@@ -28,6 +28,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public string Name { get; }
 
         /// <summary>
+        /// Gets the description text for the command.
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
         /// Gets the <see cref="ParameterSet "/>.
         /// </summary>
         public ParameterSet ParameterSet { get; }
@@ -36,12 +41,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Create a new instance of <see cref="CommandLine"/> with the command name and parameter set.
         /// </summary>
         /// <param name="name">The command name.</param>
+        /// <param name="description">The command's description</param>
         /// <param name="parameterSet">The parameter set.</param>
-        public CommandLine(string name, ParameterSet parameterSet)
+        public CommandLine(string name, string description, ParameterSet parameterSet)
         {
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(name), $"{nameof(name)} must not be null or whitespace.");
 
             Name = name;
+            Description = description;
             ParameterSet = parameterSet;
         }
     }

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed parameter description for `InstanceFailoverGroup` command.
+* Updated the logic in which schemaName, tableName and columnName are being extracted from the id of SQL Data Classification commands.
 * Fixed Status and StatusMessage fields in `Get-AzSqlDatabaseImportExportStatus` to conform to documentation
 
 ## Version 2.13.0

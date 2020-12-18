@@ -44,11 +44,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
 
-            public string History { get; set; }
+            public IEnumerable<string> History { get; set; }
             public string ClientType { get; set; } = AzPredictorService.ClientType;
             public RequestContext Context { get; set; } = new RequestContext();
 
-            public PredictionRequestBody(string command) => History = command;
+            public PredictionRequestBody(IEnumerable<string> commands) => History = commands;
         };
 
         private sealed class CommandRequestContext
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
 
-            _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context={JsonSerializer.Serialize(new CommandRequestContext(), JsonUtilities.DefaultSerializerOptions)}";
+            _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
             _telemetryClient = telemetryClient;
             _azContext = azContext;
@@ -264,9 +264,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             {
                                 SessionId = _telemetryClient.SessionId,
                                 CorrelationId = _telemetryClient.CorrelationId,
+                                VersionNumber = this._azContext.AzVersion
                             };
 
-                            var requestBody = new PredictionRequestBody(localCommands)
+                            var requestBody = new PredictionRequestBody(commands)
                             {
                                 Context = requestContext,
                             };
@@ -277,7 +278,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                             httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
-                            var suggestionsList = await JsonSerializer.DeserializeAsync<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
 
                             SetCommandBasedPreditor(localCommands, suggestionsList);
                         }
@@ -336,7 +337,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                             httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                            var commandsReply = JsonSerializer.Deserialize<IList<string>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            var commandsReply = JsonSerializer.Deserialize<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
                             SetFallbackPredictor(commandsReply);
                         }
                         catch (Exception e)
@@ -359,12 +360,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Sets the fallback predictor.
         /// </summary>
         /// <param name="commands">The command collection to set the predictor</param>
-        protected void SetFallbackPredictor(IList<string> commands)
+        protected void SetFallbackPredictor(IList<PredictiveCommand> commands)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
             _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor);
-            _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
+            _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x.Command)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
         /// <summary>
@@ -372,7 +373,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="commands">The commands that the suggestions are for</param>
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
-        protected void SetCommandBasedPreditor(string commands, IList<string> suggestions)
+        protected void SetCommandBasedPreditor(string commands, IList<PredictiveCommand> suggestions)
         {
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(commands), $"{nameof(commands)} cannot be null or whitespace.");
             Validation.CheckArgument(suggestions, $"{nameof(suggestions)} cannot be null.");

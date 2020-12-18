@@ -47,6 +47,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version ModuleVersion { get; }
 
         /// <summary>
+        /// Gets the current Az module version.
+        /// </summary>
+        public Version AzVersion { get; }
+
+        /// <summary>
         /// Updates the Az context.
         /// </summary>
         public void UpdateContext();
