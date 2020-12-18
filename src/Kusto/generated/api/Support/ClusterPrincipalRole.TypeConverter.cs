@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for ClusterPrincipalRole.</summary>
+    /// <summary>Cluster principal role.</summary>
     public partial class ClusterPrincipalRoleTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

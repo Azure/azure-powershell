@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Scale type.</summary>
     public partial struct AzureScaleType :
         System.IEquatable<AzureScaleType>
     {

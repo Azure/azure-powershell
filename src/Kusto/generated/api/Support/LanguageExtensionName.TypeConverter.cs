@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for LanguageExtensionName.</summary>
+    /// <summary>Language extension that can run within KQL query.</summary>
     public partial class LanguageExtensionNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

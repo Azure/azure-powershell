@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added 2020-09-18 version
 
 ## Version 1.0.0
 * General availability of 'Az.Kusto' module
