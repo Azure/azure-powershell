@@ -59,6 +59,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditServerUpdatePolicyWithStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyWithStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableDatabaseAudit()
         {
             RunPowerShellTest("Test-BlobAuditDisableDatabaseAudit");
@@ -69,6 +76,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestBlobAuditDisableServerAudit()
         {
             RunPowerShellTest("Test-BlobAuditDisableServerAudit");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditDisableServerAudit()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditDisableServerAudit");
         }
 
         [Fact]
@@ -87,6 +101,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
@@ -97,6 +118,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestBlobAuditServerUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
@@ -153,6 +181,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestBlobAuditOnServer()
         {
             RunPowerShellTest("Test-BlobAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditOnServer");
         }
 
         [Fact]

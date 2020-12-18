@@ -110,6 +110,34 @@ function Test-BlobAuditServerUpdatePolicyWithStorage
 
 <#
 .SYNOPSIS
+Tests that when setting the storage account property's value in a server's DevOps blob auditing policy, that value is later fetched properly
+#>
+function Test-MSSupportBlobAuditServerUpdatePolicyWithStorage
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled" 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that after setting the storage account property's value in a database's auditing policy, this value is used on next policy set operations as default. Meaning: if you don't want to change the 
 storage account, you don't need to provide it.
 #>
@@ -161,6 +189,39 @@ function Test-BlobAuditServerUpdatePolicyKeepPreviousStorage
 
 		Set-AzSqlServerAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName 
 		$policyAfter = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policyBefore.StorageAccountResourceId $policyAfter.StorageAccountResourceId
+		Assert-AreEqual $policyAfter.StorageAccountResourceId $params.storageAccountResourceId 
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that after setting the storage account property's value in a server's DevOps blob auditing policy, this value is used on next policy set operations as default. Meaning: if you don't want to change the 
+storage account, you don't need to provide it.
+#>
+function Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+
+	try 
+	{
+		# Test
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
+		$policyBefore = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policyAfter = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policyBefore.StorageAccountResourceId $policyAfter.StorageAccountResourceId
@@ -239,6 +300,34 @@ function Test-BlobAuditDisableServerAudit
 
 <#
 .SYNOPSIS
+Tests that when asking to disable DevOps auditing of a server, later when fetching the policy, it is marked as disabled
+#>
+function Test-MSSupportBlobAuditDisableServerAudit
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.BlobStorageTargetState "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that a failure occurs when trying to set a policy to a database, and that database does not have a policy as well as the policy does not have a storage account  
 #>
 function Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage
@@ -275,6 +364,29 @@ function Test-BlobAuditFailedServerUpdatePolicyWithNoStorage
 	{
 		# Assert
 		Assert-Throws { Set-AzSqlServerAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that a failure occurs when trying to set a DevOps policy to a server, and that policy does not have a storage account  
+#>
+function Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Assert
+		Assert-Throws { Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy}
 	}
 	finally
 	{
@@ -594,6 +706,47 @@ function Test-BlobAuditOnServer
 		# Test
 		Set-AzSqlServerAudit -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
 		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.BlobStorageTargetState "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that when modifying properties of a server's DevOps blob auditing policy, these properties are later fetched properly
+#>
+function Test-MSSupportBlobAuditOnServer
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test - Tests that when setting blob auditing policy on server without StorageKeyType parameter, it gets the default value - "Primary".
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
+
+		# Test	
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
+
+		# Test
+		Set-AzSqlServerMSSupportAudit -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.BlobStorageTargetState "Disabled"
