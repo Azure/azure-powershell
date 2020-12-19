@@ -265,6 +265,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
+        {
+            RunPowerShellTest("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-RemoveAuditOnServer");
@@ -296,6 +303,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
             RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]

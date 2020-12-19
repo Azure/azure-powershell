@@ -2567,6 +2567,215 @@ function Test-NewServerAuditDiagnosticsAreCreatedOnNeed
 
 <#
 .SYNOPSIS
+Tests that new DevOps diagnostic settings are created when needed while enabling or disabling policy.
+#>
+function Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/master"
+
+	try
+	{
+		# Verify event hub DevOps auditing policy is disabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+
+		# Verify log analytics DevOps auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+
+		# Enable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+
+		# Verify log analytics DevOps auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+
+		# Verify only one diagnostic settings exists.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count (($diagnostics).count + "1")
+
+		# Enable a new category in existing Diagnostic Settings.
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+
+		# Enable log analytics DevOps auditing policy and verify it
+		Set-AzSqlServerMSSupportAudit -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -WorkspaceResourceId $workspaceResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+
+		# Verify event hub DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify Diagnostic Settings were splitted.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count "2"
+		
+		# Remove old Diagnostics.
+		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
+		
+		# Verify only one diagnostic settings exists.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count "3"
+		
+		# Enable a new category in Diagnostic Settings.
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Verify event hub DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Enable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings were splitted.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count "4"
+		
+		# Remove old Diagnostics.
+		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
+		
+		# Verify only one diagnostic settings exist.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count "5"
+		
+		# Enable a new category in Diagnostic Settings
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		# Verify event hub DevOps auditing settings is enabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Disable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings were splitted.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count "6"
+		
+		# Remove old Diagnostics
+		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
+		# Verify only one diagnostic settings exist.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count "7"
+		
+		# Verify event hub DevOps auditing policy is disabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Enable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Enable a new category in Diagnostic Settings.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count "8"
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
+		# Disable log analytics DevOps auditing policy and verify it
+		Set-AzSqlServerMSSupportAudit -LogAnalyticsTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify event hub DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify Diagnostic Settings were splitted.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count "9"
+		
+		# Remove old Diagnostics
+		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
+		# Verify log analytics DevOps auditing policy is Disabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify event hub DevOps auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Disable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that auditing settings are removed when multiple diagnostic settings which enable audit category exist
 #>
 function Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings
@@ -2744,6 +2953,96 @@ function Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings
 		Foreach ($log in $diagnostics[0].Logs)
 		{
 			if ($log.Category -eq "SQLSecurityAuditEvents")
+			{
+				$foundAuditCategory = $True
+				Assert-AreEqual $False $log.Enabled
+				break
+			}
+		}
+		
+		Assert-AreEqual $True $foundAuditCategory
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that DevOps auditing settings are removed when multiple diagnostic settings which enable audit category exist
+#>
+function Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/master"
+
+	try
+	{
+		# Verify event hub DevOps auditing policy is disabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Enable event hub DevOps auditing policy and verify it.
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify only one diagnostic settings exists.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+		
+		# Enable a new category in existing Diagnostic Settings.
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
+		# Create new Diagnostic Settings and enable auditing category
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Category DevOpsOperationsAudit -WorkspaceId $workspaceResourceId
+		
+		# Verify Diagnostic Settings count.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+		
+		# Remove DevOps auditing settings.
+		Remove-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		
+		# Verify event hub DevOps auditing policy is disabled.
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics DevOps auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		 
+		# Verify only one Diagnostic Settings was removed.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+		
+		# Verify audit category is disabled in remaining Diagnostic Settings.
+		$foundAuditCategory = $False
+		Foreach ($log in $diagnostics[0].Logs)
+		{
+			if ($log.Category -eq "DevOpsOperationsAudit")
 			{
 				$foundAuditCategory = $True
 				Assert-AreEqual $False $log.Enabled
