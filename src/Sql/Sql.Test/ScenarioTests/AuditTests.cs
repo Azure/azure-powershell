@@ -143,6 +143,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditFailWithBadServerIndentity()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditFailWithBadServerIndentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseStorageKeyRotation");
@@ -236,6 +243,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestMSSupportAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
@@ -253,6 +268,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-RemoveAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportRemoveAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportRemoveAuditOnServer");
         }
 
         [Fact]
@@ -281,6 +303,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestServerAuditingToStorageInVNet()
         {
             RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportServerAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-MSSupportServerAuditingToStorageInVNet");
         }
 
         [Fact]
