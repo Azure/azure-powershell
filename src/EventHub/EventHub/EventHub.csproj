@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.49.0-preview" />
   </ItemGroup>
 
 </Project>
