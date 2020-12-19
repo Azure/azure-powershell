@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
 * Added MaintenanceConfigurationId to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* Added Microsoft support operations (DevOps) auditing cmdlets: Get-AzSqlServerMSSupportAudit, Set-AzSqlServerMSSupportAudit, Remove-AzSqlServerMSSupportAudit
 
 ## Version 2.11.1
 * Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
