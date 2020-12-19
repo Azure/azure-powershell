@@ -40,6 +40,7 @@ The **Update-AzVpnGatewayNatRule** cmdlet updates a NAT rule associated with Vpn
 ## EXAMPLES
 
 ### Example
+
 ```powershell
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"

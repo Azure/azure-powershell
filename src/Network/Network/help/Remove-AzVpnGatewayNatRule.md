@@ -35,7 +35,8 @@ Removes a NAT rule associated with VpnGateway.
 
 ## EXAMPLES
 
-### Example
+### Example1
+
 ```powershell
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"

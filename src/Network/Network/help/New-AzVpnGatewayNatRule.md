@@ -37,7 +37,9 @@ New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String
 ## DESCRIPTION
 Creates a NAT rule on a VpnGateway which can be associated with VpnGateway.
 
-### Example
+## EXAMPLES
+
+### Example 1
 
 ```powershell
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
