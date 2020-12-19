@@ -2039,8 +2039,8 @@ function Test-MSSupportRemoveAuditOnServer
 		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
 
 		# Enable event hub DevOps auditing policy and verify it
-		Set-AzSqlServerAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzSqlServerMSSupportAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerMSSupportAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
