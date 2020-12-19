@@ -4401,6 +4401,10 @@
                 <Label>Connections</Label>
                 <PropertyName>Connections</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>NatRules</Label>
+                <PropertyName>NatRules</PropertyName>
+              </ListItem>			  
             </ListItems>
           </ListEntry>
         </ListEntries>

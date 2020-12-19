@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvpngatewaynatrule
 schema: 2.0.0
 ---
 
 # Update-AzVpnGatewayNatRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a NAT rule associated with VpnGateway.
 
 ## SYNTAX
 
@@ -35,16 +35,39 @@ Update-AzVpnGatewayNatRule -InputObject <PSVpnGatewayNatRule> [-Type <String>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzVpnGatewayNatRule** cmdlet updates a NAT rule associated with VpnGateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> $vpnGateway = Get-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+PS C:\> New-AzVpnGatewayNatRule -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testNatRule" -Type Static -Mode EgressSnat -InternalMapping "10.0.0.1/26" -ExternalMapping "192.168.0.0/26"
+PS C:\> $natRule = Update-AzVpnGatewayNatRule -InputObject $vpnConnection -IpSecPolicy $ipsecPolicy
+PS C:\> Update-AzVpnGatewayNatRule -InputObject $natRule -Type Dynamic -Mode IngressSnat
+
+Type             		  : Dynamic
+Mode                      : IngressSnat
+VpnConnectionProtocolType : IKEv2
+InternalMappings          : 10.0.0.1/26
+ExternalMappings          : 192.168.0.0/26
+IpConfigurationId   	  :
+IngressVpnSiteLinkConnections : [Microsoft.Azure.Commands.Network.Models.PSResourceId]
+EgressVpnSiteLinkConnections  : [Microsoft.Azure.Commands.Network.Models.PSResourceId]
+ProvisioningState         : Provisioned
+Name                      : ps9709
+Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/natRules/testNatRule
+
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub. Then, we will create VpnGateway under that Virtual Hub. Then, create new NAT rule associated with created VpnGateway.
+Using this command: Update-AzVpnGatewayNatRule, update NAT rule.
+
 
 ## PARAMETERS
 
