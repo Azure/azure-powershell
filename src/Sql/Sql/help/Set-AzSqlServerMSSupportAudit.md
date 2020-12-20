@@ -340,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Nullable`1[[System.UInt32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
-### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerDevOpsAuditModel
 
 ## OUTPUTS
 

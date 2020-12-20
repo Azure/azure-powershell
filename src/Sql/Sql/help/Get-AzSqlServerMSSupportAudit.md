@@ -161,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerDevOpsAuditModel
 
 ## NOTES
 

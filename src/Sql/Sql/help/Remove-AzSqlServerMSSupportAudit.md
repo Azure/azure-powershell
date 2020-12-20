@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Remove-AzSqlServerMSSupportAudit
 schema: 2.0.0
 ---
 
 # Remove-AzSqlServerMSSupportAudit
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes the Microsoft support operations auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
@@ -33,6 +34,11 @@ To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to id
 ### Example 1: Remove the Microsoft support operations auditing settings of an Azure SQL server
 ```powershell
 PS C:\>Remove-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```
+
+### Example 2: Remove, through pipeline, the Microsoft support auditing settings of an Azure SQL server
+```
+PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Remove-AzSqlServerMSSupportAudit
 ```
 
 ## PARAMETERS
@@ -128,8 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -147,6 +152,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
