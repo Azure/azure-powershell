@@ -36,13 +36,8 @@ Specify the *ResourceGroupName* and *ServerName* parameters to identify the serv
 PS C:\>Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
-AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                                       BATCH_COMPLETED_GROUP, ...}
-PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
 StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
-StorageKeyType                      : Primary
-RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
@@ -55,13 +50,8 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Get-AzSqlServerMSSupportAudit
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
-AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                                       BATCH_COMPLETED_GROUP, ...}
-PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
 StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
-StorageKeyType                      : Primary
-RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
@@ -74,13 +64,8 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 PS C:\>Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
-AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                                       BATCH_COMPLETED_GROUP, ...}
-PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
 StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
-StorageKeyType                      : Primary
-RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId

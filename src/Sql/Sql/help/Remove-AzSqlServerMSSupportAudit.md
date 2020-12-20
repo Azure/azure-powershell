@@ -25,16 +25,15 @@ Remove-AzSqlServerMSSupportAudit -ServerObject <AzureSqlServerModel> [-AsJob]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSqlServerMSSupportAudit** cmdlet removes the  Microsoft support operations auditing settings of an Azure SQL server.
+To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to identify the server.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove the Microsoft support operations auditing settings of an Azure SQL server
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Remove-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

@@ -16,7 +16,7 @@ Changes the Microsoft support operations auditing settings of an Azure SQL serve
 ### ServerParameterSet (Default)
 ```
 Set-AzSqlServerMSSupportAudit
- [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
+ [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
  [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>]
  [-PassThru] [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob]
@@ -25,9 +25,8 @@ Set-AzSqlServerMSSupportAudit
 
 ### ServerObjectParameterSet
 ```
-Set-AzSqlServerMSSupportAudit [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpression <String>]
- [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>] [-StorageKeyType <String>]
- [-RetentionInDays <UInt32>] [-EventHubTargetState <String>] [-EventHubName <String>]
+Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
+ [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] -ServerObject <AzureSqlServerModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -36,7 +35,7 @@ Set-AzSqlServerMSSupportAudit [-AuditActionGroup <AuditActionGroups[]>] [-Predic
 ## DESCRIPTION
 The **Set-AzSqlServerMSSupportAudit** cmdlet changes the  Microsoft support operations auditing settings of an Azure SQL server.
 To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to identify the server.
-When blob storage is a destination for audit logs, specify the *StorageAccountResourceId* parameter to determine the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys. You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
+When blob storage is a destination for audit logs, specify the *StorageAccountResourceId* parameter to determine the storage account for the audit logs.
 
 ## EXAMPLES
 
@@ -50,47 +49,37 @@ PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -Serve
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Disabled
 ```
 
-### Example 3: Enable the blob storage Microsoft support operations auditing policy of an Azure SQL server with advanced filtering using a T-SQL predicate
-```powershell
-PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -PredicateExpression "statement <> 'select 1'"
-```
-
-### Example 4: Remove the advanced filtering setting from the Microsoft support operations auditing policy of an Azure SQL server
-```powershell
-PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -PredicateExpression ""
-```
-
-### Example 5: Enable the event hub Microsoft support operations auditing policy of an Azure SQL server
+### Example 3: Enable the event hub Microsoft support operations auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
 ```
 
-### Example 6: Disable the event hub Microsoft support operations auditing policy of an Azure SQL server
+### Example 4: Disable the event hub Microsoft support operations auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventHubTargetState Disabled
 ```
 
-### Example 7: Enable the log analytics Microsoft support operations auditing policy of an Azure SQL server
+### Example 5: Enable the log analytics Microsoft support operations auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalyticsTargetState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
-### Example 8: Disable the log analytics Microsoft support operations auditing policy of an Azure SQL server
+### Example 6: Disable the log analytics Microsoft support operations auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalyticsTargetState Disabled
 ```
 
-### Example 9: Disable, through pipeline, the log analytics Microsoft support operations auditing policy of an Azure SQL server
+### Example 7: Disable, through pipeline, the log analytics Microsoft support operations auditing policy of an Azure SQL server
 ```powershell
 PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Set-AzSqlServerMSSupportAudit -LogAnalyticsTargetState Disabled
 ```
 
-### Example 10: Disable sending Microsoft support operations audit records of an Azure SQL server to blob storage, and enable sending them to log analytics.
+### Example 8: Disable sending Microsoft support operations audit records of an Azure SQL server to blob storage, and enable sending them to log analytics.
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -LogAnalyticsTargetState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -BlobStorageTargetState Disabled
 ```
 
-### Example 11: Enable sending Microsoft support operations audit records of an Azure SQL server to blob storage, event hub and log analytics.
+### Example 9: Enable sending Microsoft support operations audit records of an Azure SQL server to blob storage, event hub and log analytics.
 ```powershell
 PS C:\>Set-AzSqlServerMSSupportAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsTargetState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
@@ -280,9 +269,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageKeyType
-Specifies which of the storage access keys to use.
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -349,8 +335,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-
-### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
 
 ### System.Guid
 
