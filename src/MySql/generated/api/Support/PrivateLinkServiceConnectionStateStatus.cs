@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
 {
 
+    /// <summary>The private link service connection status.</summary>
     public partial struct PrivateLinkServiceConnectionStateStatus :
         System.IEquatable<PrivateLinkServiceConnectionStateStatus>
     {

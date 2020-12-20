@@ -70,14 +70,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
             {
                 return;
             }
-            {_enableCustomerAnalytic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enableCustomerAnalytics"), out var __jsonEnableCustomerAnalytics) ? (bool?)__jsonEnableCustomerAnalytics : EnableCustomerAnalytic;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_managedResourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("managedResourceGroupName"), out var __jsonManagedResourceGroupName) ? (string)__jsonManagedResourceGroupName : (string)ManagedResourceGroupName;}
             {_logAnalyticsWorkspaceArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("logAnalyticsWorkspaceArmId"), out var __jsonLogAnalyticsWorkspaceArmId) ? (string)__jsonLogAnalyticsWorkspaceArmId : (string)LogAnalyticsWorkspaceArmId;}
+            {_enableCustomerAnalytic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean>("enableCustomerAnalytics"), out var __jsonEnableCustomerAnalytics) ? (bool?)__jsonEnableCustomerAnalytics : EnableCustomerAnalytic;}
             {_logAnalyticsWorkspaceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("logAnalyticsWorkspaceId"), out var __jsonLogAnalyticsWorkspaceId) ? (string)__jsonLogAnalyticsWorkspaceId : (string)LogAnalyticsWorkspaceId;}
             {_logAnalyticsWorkspaceSharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("logAnalyticsWorkspaceSharedKey"), out var __jsonLogAnalyticsWorkspaceSharedKey) ? (string)__jsonLogAnalyticsWorkspaceSharedKey : (string)LogAnalyticsWorkspaceSharedKey;}
-            {_managedResourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("managedResourceGroupName"), out var __jsonManagedResourceGroupName) ? (string)__jsonManagedResourceGroupName : (string)ManagedResourceGroupName;}
-            {_monitorSubnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("monitorSubnet"), out var __jsonMonitorSubnet) ? (string)__jsonMonitorSubnet : (string)MonitorSubnet;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             {_sapMonitorCollectorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("sapMonitorCollectorVersion"), out var __jsonSapMonitorCollectorVersion) ? (string)__jsonSapMonitorCollectorVersion : (string)SapMonitorCollectorVersion;}
+            {_monitorSubnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString>("monitorSubnet"), out var __jsonMonitorSubnet) ? (string)__jsonMonitorSubnet : (string)MonitorSubnet;}
             AfterFromJson(json);
         }
 
@@ -100,23 +100,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
             {
                 return container;
             }
-            AddIf( null != this._enableCustomerAnalytic ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enableCustomerAnalytic) : null, "enableCustomerAnalytics" ,container.Add );
-            AddIf( null != (((object)this._logAnalyticsWorkspaceArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceArmId.ToString()) : null, "logAnalyticsWorkspaceArmId" ,container.Add );
-            AddIf( null != (((object)this._logAnalyticsWorkspaceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceId.ToString()) : null, "logAnalyticsWorkspaceId" ,container.Add );
-            AddIf( null != (((object)this._logAnalyticsWorkspaceSharedKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceSharedKey.ToString()) : null, "logAnalyticsWorkspaceSharedKey" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._managedResourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._managedResourceGroupName.ToString()) : null, "managedResourceGroupName" ,container.Add );
-            }
-            AddIf( null != (((object)this._monitorSubnet)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._monitorSubnet.ToString()) : null, "monitorSubnet" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != (((object)this._managedResourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._managedResourceGroupName.ToString()) : null, "managedResourceGroupName" ,container.Add );
+            }
+            AddIf( null != (((object)this._logAnalyticsWorkspaceArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceArmId.ToString()) : null, "logAnalyticsWorkspaceArmId" ,container.Add );
+            AddIf( null != this._enableCustomerAnalytic ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonBoolean((bool)this._enableCustomerAnalytic) : null, "enableCustomerAnalytics" ,container.Add );
+            AddIf( null != (((object)this._logAnalyticsWorkspaceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceId.ToString()) : null, "logAnalyticsWorkspaceId" ,container.Add );
+            AddIf( null != (((object)this._logAnalyticsWorkspaceSharedKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._logAnalyticsWorkspaceSharedKey.ToString()) : null, "logAnalyticsWorkspaceSharedKey" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 AddIf( null != (((object)this._sapMonitorCollectorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._sapMonitorCollectorVersion.ToString()) : null, "sapMonitorCollectorVersion" ,container.Add );
             }
+            AddIf( null != (((object)this._monitorSubnet)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json.JsonString(this._monitorSubnet.ToString()) : null, "monitorSubnet" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -66,9 +66,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AttachedDatabaseConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AttachedDatabaseConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AttachedDatabaseConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AttachedDatabaseConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -100,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AttachedDatabaseConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AttachedDatabaseConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AttachedDatabaseConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AttachedDatabaseConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -146,9 +146,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureCapacity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -186,9 +186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -208,9 +208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.AzureSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.AzureSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -242,9 +242,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CheckNameRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -270,9 +270,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CheckNameResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CheckNameResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CheckNameResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CheckNameResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -310,9 +310,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -344,9 +344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Cluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Cluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Cluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Cluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -384,9 +384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterCheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterCheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterCheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterCheckNameRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -412,9 +412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalAssignment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalAssignment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalAssignment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalAssignment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -440,9 +440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalAssignmentCheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalAssignmentCheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalAssignmentCheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalAssignmentCheckNameRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -468,9 +468,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterPrincipalProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterPrincipalProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -526,9 +526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -546,6 +546,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EnableStreamingIngest</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EngineType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -579,6 +582,9 @@
                 <PropertyName>EnableStreamingIngest</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EngineType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -596,9 +602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -630,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ClusterUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ClusterUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -652,9 +658,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -680,9 +686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Database</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Database</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Database</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Database</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -720,9 +726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipal</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipal</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipal</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipal</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -778,9 +784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalAssignment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalAssignment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalAssignment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalAssignment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -806,9 +812,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalAssignmentCheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalAssignmentCheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalAssignmentCheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalAssignmentCheckNameRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -834,9 +840,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabasePrincipalProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabasePrincipalProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -892,9 +898,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabaseStatistics</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabaseStatistics</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DatabaseStatistics</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DatabaseStatistics</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -914,9 +920,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -954,9 +960,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionCheckNameRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionCheckNameRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionCheckNameRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionCheckNameRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -982,9 +988,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionValidation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionValidation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1004,9 +1010,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionValidationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DataConnectionValidationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DataConnectionValidationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1026,9 +1032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DiagnoseVirtualNetworkResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DiagnoseVirtualNetworkResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.DiagnoseVirtualNetworkResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.DiagnoseVirtualNetworkResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1048,9 +1054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventGridConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventGridConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1071,6 +1077,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MappingRuleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StorageAccountResourceId</Label>
@@ -1101,6 +1110,9 @@
                 <PropertyName>MappingRuleName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>StorageAccountResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1112,9 +1124,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventGridDataConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventGridDataConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventGridDataConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1152,9 +1164,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventHubConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventHubConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1175,6 +1187,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MappingRuleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TableName</Label>
@@ -1202,6 +1217,9 @@
                 <PropertyName>MappingRuleName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>TableName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1210,9 +1228,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventHubDataConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.EventHubDataConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.EventHubDataConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1250,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.FollowerDatabaseDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.FollowerDatabaseDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.FollowerDatabaseDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.FollowerDatabaseDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1284,9 +1302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Identity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Identity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Identity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1318,9 +1336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IotHubConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IotHubConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1338,6 +1356,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MappingRuleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SharedAccessPolicyName</Label>
@@ -1365,6 +1386,9 @@
                 <PropertyName>MappingRuleName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SharedAccessPolicyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1376,9 +1400,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IotHubDataConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IotHubDataConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IotHubDataConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,9 +1440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.KeyVaultProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.KeyVaultProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.KeyVaultProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.KeyVaultProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1430,6 +1454,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserIdentity</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1444,15 +1471,18 @@
               <TableColumnItem>
                 <PropertyName>KeyVersion</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserIdentity</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.LanguageExtension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.LanguageExtension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.LanguageExtension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.LanguageExtension</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1472,9 +1502,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1500,9 +1530,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1540,9 +1570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1562,9 +1592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OptimizedAutoscale</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OptimizedAutoscale</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.OptimizedAutoscale</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.OptimizedAutoscale</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1602,9 +1632,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadOnlyFollowingDatabase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadOnlyFollowingDatabase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadOnlyFollowingDatabase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadOnlyFollowingDatabase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1642,9 +1672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadOnlyFollowingDatabaseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadOnlyFollowingDatabaseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadOnlyFollowingDatabaseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadOnlyFollowingDatabaseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1682,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadWriteDatabase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadWriteDatabase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadWriteDatabase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadWriteDatabase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1722,9 +1752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadWriteDatabaseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadWriteDatabaseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ReadWriteDatabaseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ReadWriteDatabaseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1750,9 +1780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.SkuDescription</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.SkuDescription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.SkuDescription</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.SkuDescription</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1790,9 +1820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.SkuLocationInfoItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.SkuLocationInfoItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.SkuLocationInfoItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.SkuLocationInfoItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1818,9 +1848,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.TrustedExternalTenant</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.TrustedExternalTenant</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.TrustedExternalTenant</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.TrustedExternalTenant</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1840,9 +1870,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.VirtualNetworkConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.VirtualNetworkConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.VirtualNetworkConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.VirtualNetworkConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

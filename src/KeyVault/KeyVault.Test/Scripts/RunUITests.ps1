@@ -7,8 +7,8 @@
     [string] $StorageResourceId = $null
 )
 
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Common.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Assert.ps1")
 . (Join-Path $PSScriptRoot "Common.ps1");
 . (Join-Path $PSScriptRoot "VaultUITests.ps1");
 

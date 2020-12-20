@@ -86,7 +86,7 @@ function Test-SynapseSqlPoolV3
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
         # Delete SqlPool
-        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PassThru} "Remove SqlPool failed."
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PassThru -Force} "Remove SqlPool failed."
 
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
 
@@ -96,6 +96,6 @@ function Test-SynapseSqlPoolV3
     finally
     {
         # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -ErrorAction SilentlyContinue -Force} -IgnoreFailures
     }
 }

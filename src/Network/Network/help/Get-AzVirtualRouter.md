@@ -40,7 +40,7 @@ Get-AzVirtualRouter -ResourceGroupName virtualRouterRG -RouterName virtualRouter
 
 ### Example 2
 ```powershell
-$virtualRouterId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualRouters/virtualRouter'
+$virtualRouterId = '/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualRouters/virtualRouter'
 Get-AzVirtualRouter -ResourceId $virtualRouterId
 ```
 

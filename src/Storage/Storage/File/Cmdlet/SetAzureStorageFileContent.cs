@@ -14,22 +14,26 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.DataMovement;
+    using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.File;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Net;
+    using System.Runtime.InteropServices;
+    using System.Security.Cryptography;
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
-    using System.Runtime.InteropServices;
-    using Microsoft.Azure.Storage.DataMovement;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
@@ -110,11 +114,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
             }
+            long fileSize = localFile.Length;
 
-            // if FIPS policy is enabled, must use native MD5
+            // if FIPS policy is enabled, must use native MD5 for DMlib. 
             if (fipsEnabled)
             {
-                CloudStorageAccount.UseV1MD5 = false;
+                if (fileSize < sizeTB)
+                {
+                    CloudStorageAccount.UseV1MD5 = false;
+                }
+                else // use Track2 SDK
+                {
+                    WriteWarning("The uploaded file won't have Content MD5 hash, since caculate MD5 hash fail, most possiblly caused by FIPS is enabled on this machine.");
+                }
             }
 
             bool isDirectory;
@@ -133,19 +145,141 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
                         Resources.PrepareUploadingFile);
 
-                    await DataMovementTransferHelper.DoTransfer(() =>
-                    this.TransferManager.UploadAsync(
-                            localFile.FullName,
-                            cloudFileToBeUploaded,
-                            new UploadOptions
-                            {
-                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
-                            },
-                            this.GetTransferContext(progressRecord, localFile.Length),
-                            this.CmdletCancellationToken),
-                        progressRecord,
-                        this.OutputStream).ConfigureAwait(false);
+                    if (fileSize <= sizeTB)
+                    {
 
+
+                        await DataMovementTransferHelper.DoTransfer(() =>
+                            this.TransferManager.UploadAsync(
+                                    localFile.FullName,
+                                    cloudFileToBeUploaded,
+                                    new UploadOptions
+                                    {
+                                        PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+                                    },
+                                    this.GetTransferContext(progressRecord, localFile.Length),
+                                    this.CmdletCancellationToken),
+                                progressRecord,
+                                this.OutputStream).ConfigureAwait(false);
+                    }
+                    else // use Track2 SDK
+                    {
+                        //Create File
+                        ShareFileClient fileClient = AzureStorageFile.GetTrack2FileClient(cloudFileToBeUploaded, Channel.StorageContext);
+
+                        // confirm overwrite if file exist
+                        if(!this.Force.IsPresent && 
+                            fileClient.Exists(this.CmdletCancellationToken) && 
+                            !await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(cloudFileToBeUploaded))))
+                        {
+                            return;
+                        }                     
+
+                        await fileClient.CreateAsync(fileSize, cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+
+                        //Prepare progress Handler
+                        IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
+                        {
+                            if (progressRecord != null)
+                            {
+                                // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                                progressRecord.PercentComplete = 0 == fileSize ? 100 : (int)(finishedBytes * 100 / fileSize);
+                                progressRecord.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, progressRecord.PercentComplete);
+                                this.OutputStream.WriteProgress(progressRecord);
+                            }
+                        });
+
+                        long blockSize = 4 * 1024 * 1024;
+                        int maxWorkers = 4;
+
+                        List<Task> runningTasks = new List<Task>();
+
+                        IncrementalHash hash = null;
+                        if (!fipsEnabled)
+                        {
+                            hash = IncrementalHash.CreateHash(HashAlgorithmName.MD5);
+                        }
+
+                        using (FileStream stream = File.OpenRead(localFile.FullName))
+                        {
+                            byte[] buffer = null;
+                            long lastBlockSize = 0;
+                            for (long offset = 0; offset < fileSize; offset += blockSize)
+                            {
+                                long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
+                                
+                                // Only need to create new buffer when chunk size change
+                                if (currentBlockSize != lastBlockSize)
+                                {
+                                    buffer = new byte[currentBlockSize];
+                                    lastBlockSize = currentBlockSize;
+                                }
+                                await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)currentBlockSize);
+                                if (!fipsEnabled && hash != null)
+                                {
+                                    hash.AppendData(buffer);
+                                }
+
+                                Task task = UploadFileRangAsync(fileClient,
+                                    new HttpRange(offset, currentBlockSize),
+                                    new MemoryStream(buffer),
+                                    progressHandler);
+                                runningTasks.Add(task);
+
+                                // Check if any of upload range tasks are still busy
+                                if (runningTasks.Count >= maxWorkers)
+                                {
+                                    await Task.WhenAny(runningTasks).ConfigureAwait(false);
+
+                                    // Clear any completed blocks from the task list
+                                    for (int i = 0; i < runningTasks.Count; i++)
+                                    {
+                                        Task runningTask = runningTasks[i];
+                                        if (!runningTask.IsCompleted)
+                                        {
+                                            continue;
+                                        }
+
+                                        await runningTask.ConfigureAwait(false);
+                                        runningTasks.RemoveAt(i);
+                                        i--;
+                                    }
+                                }
+                            }
+                            // Wait for all upload range tasks finished
+                            await Task.WhenAll(runningTasks).ConfigureAwait(false);
+                        }
+
+                        // Need set file properties
+                        if ((!fipsEnabled && hash != null) || (context != null && context.PreserveSMBAttribute.IsPresent))
+                        {
+                            ShareFileHttpHeaders header = null;
+                            if (!fipsEnabled && hash != null)
+                            {
+                                header = new ShareFileHttpHeaders();
+                                header.ContentHash = hash.GetHashAndReset();
+                            }
+
+                            FileSmbProperties smbProperties = null;
+                            if (context != null && context.PreserveSMBAttribute.IsPresent)
+                            {
+                                FileInfo sourceFileInfo = new FileInfo(localFile.FullName);
+                                smbProperties = new FileSmbProperties();
+                                smbProperties.FileCreatedOn = sourceFileInfo.CreationTimeUtc;
+                                smbProperties.FileLastWrittenOn = sourceFileInfo.LastWriteTimeUtc;
+                                smbProperties.FileAttributes = Util.LocalAttributesToAzureFileNtfsAttributes(File.GetAttributes(localFile.FullName));
+                            }
+
+                            // set file header and attributes to the file
+                            fileClient.SetHttpHeaders(httpHeaders: header, smbProperties: smbProperties);
+                        }
+
+                        if (this.PassThru)
+                        {
+                            // fetch latest file properties for output
+                            cloudFileToBeUploaded.FetchAttributes();
+                        }
+                    }
 
                     if (this.PassThru)
                     {
@@ -158,6 +292,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 DoEndProcessing();
             }
+        }
+
+        private long Finishedbytes = 0;
+        private async Task UploadFileRangAsync(ShareFileClient file, HttpRange range, Stream content, IProgress<long> progressHandler = null)
+        {
+            await file.UploadRangeAsync(
+                range,
+                content,
+                cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+            Finishedbytes += range.Length is null? 0 : range.Length.Value;
+            progressHandler.Report(Finishedbytes);
         }
 
         private async Task<CloudFile> BuildCloudFileInstanceFromPathAsync(string defaultFileName, string[] path, bool pathIsDirectory)

@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Name of the backend address pool.")]
         public string Name { get; set; }
 
-
         public override void Execute()
         {
             base.Execute();

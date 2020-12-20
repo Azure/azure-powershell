@@ -31,5 +31,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Snapshot properties
         /// </remark>        
         public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets VolumeBackupProperties 
+        /// </summary>
+        /// <remark>
+        /// Volume Backup properties
+        /// </remark>                
+        public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
     }
 }

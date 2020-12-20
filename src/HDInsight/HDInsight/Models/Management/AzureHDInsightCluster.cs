@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Id = cluster.Id;
             Name = cluster.Name;
             Location = cluster.Location;
+            ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OsType ?? OSType.Linux;
             ClusterTier = cluster.Properties.Tier ?? Tier.Standard;
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             VirtualNetworkId = vnet?.Id;
             SubnetName = Utils.GetResourceNameFromResourceId(vnet?.Subnet);
             ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
-            KafkaRestProperties = cluster?.Properties.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
+            KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
+            NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -130,6 +132,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The location of the resource.
         /// </summary>
         public string Location { get; set; }
+
+        /// <summary>
+        /// The ClusterId of the cluster.
+        /// </summary>
+        public string ClusterId { get; set; }
 
         /// <summary>
         /// The version of the cluster.
@@ -262,5 +269,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the kafka rest properties.
         /// </summary>
         public AzureHDInsightKafkaRestProperties KafkaRestProperties;
+
+        /// <summary>
+        /// Gets or sets the network properties.
+        /// </summary>
+        public AzureHDInsightNetworkProperties NetworkProperties;
     }
 }

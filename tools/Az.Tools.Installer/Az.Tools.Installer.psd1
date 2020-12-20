@@ -109,8 +109,8 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Fix wildcard error in Install-AzModule
-            * Fix syntax errors in Windows Powershell'
+            ReleaseNotes = '* Fix bugs for Install-AzModule
+            * Fix syntax errors when run in Windows Powershell'
     
             # Prerelease string of this module
             # Prerelease = ''

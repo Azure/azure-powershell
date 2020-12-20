@@ -84,7 +84,7 @@
                 <ScriptBlock>$_.DirectoryTag</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Length</ScriptBlock>
+                <ScriptBlock>$_.Properties.Length</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Name</ScriptBlock>

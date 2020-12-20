@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for AzureSkuTier.</summary>
+    /// <summary>SKU tier.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTierTypeConverter))]
     public partial struct AzureSkuTier :
         System.Management.Automation.IArgumentCompleter

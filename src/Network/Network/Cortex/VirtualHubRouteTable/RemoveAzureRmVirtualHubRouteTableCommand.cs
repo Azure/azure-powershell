@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzVHubRouteTable")]
     [Cmdlet(VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
