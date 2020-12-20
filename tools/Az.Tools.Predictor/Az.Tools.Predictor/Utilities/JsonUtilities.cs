@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities.Converters;
 using System;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -24,24 +25,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
     /// </summary>
     internal static class JsonUtilities
     {
-        private sealed class VersionConverter : JsonConverter<Version>
-        {
-            public override Version Read (ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-            {
-                if (Version.TryParse(reader.GetString(), out var version))
-                {
-                    return version;
-                }
-
-                throw new JsonException();
-            }
-
-            public override void Write (Utf8JsonWriter writer, Version value, JsonSerializerOptions options)
-            {
-                writer.WriteStringValue(value.ToString());
-            }
-        }
-
         /// <summary>
         /// The default serialization options:
         /// 1. Use camel case in the naming.
@@ -54,6 +37,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             {
                 new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 new VersionConverter(),
+                new DictionaryTKeyVersionTValueConverter()
             },
         };
 
