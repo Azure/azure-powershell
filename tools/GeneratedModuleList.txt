@@ -1,5 +1,6 @@
 Az.AppConfiguration
 Az.Blockchain
+Az.BotService
 Az.CloudService
 Az.Communication
 Az.ConnectedKubernetes
