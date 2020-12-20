@@ -38,6 +38,8 @@
 ## Version 2.12.0
 * Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
 * Added MaintenanceConfigurationId to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* Fixed a bug in GetAzureSqlDatabaseReplicationLink.cs where PartnerServerName parameter was being checked for by value instead of key
+
 ## Version 2.11.1
 * Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
 * Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object [#13097]
