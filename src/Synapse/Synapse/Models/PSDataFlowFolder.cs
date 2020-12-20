@@ -13,13 +13,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
 
         public string Name { get; set; }
-
-        public DataFlowFolder ToSdkObject()
-        {
-            return new DataFlowFolder()
-            {
-                Name = this.Name
-            };
-        }
     }
 }

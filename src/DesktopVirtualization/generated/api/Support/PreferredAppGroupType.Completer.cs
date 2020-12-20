@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for PreferredAppGroupType.</summary>
+    /// <summary>
+    /// The type of preferred application group type, default to Desktop Application Group
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupTypeTypeConverter))]
     public partial struct PreferredAppGroupType :
         System.Management.Automation.IArgumentCompleter

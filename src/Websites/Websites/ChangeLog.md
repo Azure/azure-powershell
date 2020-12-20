@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
+* Prevent duplicate access restriction rules
+
+## Version 2.1.0
 * Added support for new access restriction features: ServiceTag, multi-ip and http-headers
 
 ## Version 2.0.0

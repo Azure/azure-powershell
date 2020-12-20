@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for UpdateState.</summary>
+    /// <summary>Update state of a SessionHost.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateStateTypeConverter))]
     public partial struct UpdateState :
         System.Management.Automation.IArgumentCompleter

@@ -22,8 +22,9 @@ function Test-AccountActiveDirectory
     $accName1 = Get-ResourceName
     $accName2 = Get-ResourceName
     $accName3 = Get-ResourceName
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
-    
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = 'westus2'
+
     $activeDirectory1 = @{
         Username = "sdkuser"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
@@ -57,7 +58,7 @@ function Test-AccountActiveDirectory
             $newTagValue = "tagValue1"
             #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
 
-            Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories} 'Only one active directory allowed';
+            Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
             #Assert-True { $false }
         }
         catch

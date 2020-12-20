@@ -51,6 +51,17 @@ PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "my
 
 Update allocation policy and hubs for an enrollment group.
 
+### Example 2
+```powershell
+PS C:\> $tag = @{}
+PS C:\> $tag.Add("environment","updatedenv")
+PS C:\> $desired = @{}
+PS C:\> $desired.add("version_dps", "updateddps")
+PS C:\> Set-AzIoTDeviceProvisioningServiceEnrollmentGroup -ResourceGroupName "myresourcegroup" -DpsName "mydps" -Name "enroll1" -tag $tag -Desired $desired
+```
+
+Update an enrollment group's initial twin state.
+
 ## PARAMETERS
 
 ### -AllocationPolicy

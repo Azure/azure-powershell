@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmSecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
+    [Cmdlet(VerbsData.Import, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
     [OutputType(typeof(bool))]
     public class RestoreSecurityDomain : SecurityDomainCmdlet
     {

@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             var netAppAccountBody = new NetAppAccountPatch()
             {
                 Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
+                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
                 Tags =tagPairs,
                                                     
             };

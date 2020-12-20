@@ -87,7 +87,7 @@ Name of Synapse SQL pool.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
-Aliases:
+Aliases: SqlPoolName
 
 Required: False
 Position: Named
