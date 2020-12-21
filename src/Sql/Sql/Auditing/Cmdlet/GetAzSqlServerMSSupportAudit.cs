@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Management.Sql.Models;
@@ -19,16 +20,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     [Cmdlet(
-        VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class RemoveAzSqlServerAudit : RemoveSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+        VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerDevOpsAuditCmdletsSuffix,
+        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName),
+        OutputType(typeof(ServerDevOpsAuditModel))]
+    public class GetAzSqlServerMSSupportAudit : SqlServerAuditCmdlet<ServerDevOpsAuditingSettings, ServerDevOpsAuditModel, SqlDevOpsAuditAdapter>
     {
-        protected override SqlServerAuditAdapter InitModelAdapter()
+        protected override SqlDevOpsAuditAdapter InitModelAdapter()
         {
-            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
+            return new SqlDevOpsAuditAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

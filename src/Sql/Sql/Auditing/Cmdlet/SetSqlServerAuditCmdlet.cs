@@ -15,35 +15,17 @@
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.DatabaseAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.DatabaseParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class SetAzSqlDatabaseAudit : SqlDatabaseAuditCmdlet
+    public abstract class SetSqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> 
+        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.AuditActionGroupsHelpMessage)]
-        public AuditActionGroups[] AuditActionGroup { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.AuditActionHelpMessage)]
-        public string[] AuditAction { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
-        [ValidateNotNull]
-        public string PredicateExpression { get; set; }
-
         [Parameter(
             Mandatory = false,
             HelpMessage = AuditingHelpMessages.BlobStorageTargetState)]
@@ -56,21 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.AuditStorageAccountResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
-        [ValidateSet(
-            SecurityConstants.Primary,
-            SecurityConstants.Secondary,
-            IgnoreCase = false)]
-        public string StorageKeyType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public uint? RetentionInDays { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -111,24 +78,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         public Guid RoleAssignmentId { get; set; } = default(Guid);
 
-        protected override DatabaseAuditModel ApplyUserInputToModel(DatabaseAuditModel model)
+        protected override ServerAuditModelType ApplyUserInputToModel(ServerAuditModelType model)
         {
             base.ApplyUserInputToModel(model);
-
-            if (AuditAction != null)
-            {
-                model.AuditAction = AuditAction;
-            }
-
-            if (AuditActionGroup != null)
-            {
-                model.AuditActionGroup = AuditActionGroup;
-            }
-
-            if (PredicateExpression != null)
-            {
-                model.PredicateExpression = PredicateExpression = PredicateExpression;
-            }
 
             if (BlobStorageTargetState != null)
             {
@@ -139,16 +91,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (StorageAccountResourceId != null)
             {
                 model.StorageAccountResourceId = StorageAccountResourceId;
-            }
-
-            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
-            {
-                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
-            }
-
-            if (RetentionInDays != null)
-            {
-                model.RetentionInDays = RetentionInDays;
             }
 
             if (EventHubTargetState != null)
@@ -181,15 +123,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return model;
         }
 
-        protected override DatabaseAuditModel PersistChanges(DatabaseAuditModel entity)
+        protected override ServerAuditModelType PersistChanges(ServerAuditModelType entity)
         {
             ModelAdapter.PersistAuditChanges(entity);
             return null;
-        }
-
-        protected override SqlDatabaseAuditAdapter InitModelAdapter()
-        {
-            return new SqlDatabaseAuditAdapter(DefaultProfile.DefaultContext, DatabaseName, RoleAssignmentId);
         }
 
         protected override bool WriteResult() => PassThru;
