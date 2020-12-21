@@ -72,34 +72,28 @@ function Test-SynapseSqlPool
         }
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
-        # Delete SqlPool
-        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
+        ## Create a new restore point
+        #New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -RestorePointLabel ContosoRestorePoint
 
-        # Verify that it is gone by trying to get it again
-        Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
+        ## Get restore point
+        #[array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
-        # Create a new restore point
-        New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -RestorePointLabel ContosoRestorePoint
+        #Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
 
-        # Get restore point
-        [array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+        ## Restore SqlPool
+        ## Comment out due to bug
+        ##$sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $params.restoredSqlPoolName -SourceResourceGroupName $params.rgname -SourceWorkspaceName $workspaceName -SourceSqlPoolName $params.restoredSqlPoolName -PerformanceLevel $params.perfLevel -RestorePoint $restorePoint[0].RestorePointCreationDate
 
-        Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
+        ## Delete restore point
+        #$RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
 
-        # Restore SqlPool
-        # Comment out due to bug
-        #$sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $params.restoredSqlPoolName -SourceResourceGroupName $params.rgname -SourceWorkspaceName $workspaceName -SourceSqlPoolName $params.restoredSqlPoolName -PerformanceLevel $params.perfLevel -RestorePoint $restorePoint[0].RestorePointCreationDate
+        #Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force
 
-        # Delete restore point
-        $RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
+        #Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
 
-        Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force
-
-        Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
-
-        Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
-        Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
-        Assert-True {$sqlPoolRestored.Id -like "*$resourceGroupName*"}
+        #Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
+        #Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
+        #Assert-True {$sqlPoolRestored.Id -like "*$resourceGroupName*"}
 
         # Suspend SqlPool
         $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
@@ -113,6 +107,9 @@ function Test-SynapseSqlPool
 
         # Delete SqlPool
         Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
+
+        # Verify that it is gone by trying to get it again
+        Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
     }
     finally
     {
@@ -234,7 +231,6 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
               location = "westcentralus";
-              restoredSqlPoolName = "dwrestore" + $testSuffix;
 		}
 }
 
