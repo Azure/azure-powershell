@@ -193,13 +193,14 @@ function New-AzMySqlFlexibleServer {
             }
             $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
-            If (!(Get-Module -ListAvailable -Name Az.Resources)) { Throw 'Please install Az.Resources module by entering "Install-Module -Name Az.Resources"'}
-            Else { Import-Module -Name Az.Resources }
+            Import-Module -Name Az.Resources
             If(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
                 $PSBoundParameters.ResourceGroupName = Get-RandomNumbers -Prefix 'group' -Length 10
                 $Msg = "Creating Resource Group {0}..." -f $PSBoundParameters.ResourceGroupName
                 Write-Host $Msg
-                $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location
+                if($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
+                    $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location -Force
+                }
             }
             Else {
                 $Msg = 'Checking the existence of the resource group {0} ...' -f $PSBoundParameters.ResourceGroupName
@@ -214,7 +215,9 @@ function New-AzMySqlFlexibleServer {
                     Write-Host $Msg
                     $Msg = "Creating Resource Group {0}..." -f $PSBoundParameters.ResourceGroupName
                     Write-Host $Msg
-                    $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location
+                    if($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
+                        $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location -Force
+                    }
 
                 }
             }
@@ -279,9 +282,9 @@ function New-AzMySqlFlexibleServer {
                 $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
                 $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
                 $PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId = $SubnetId
-            }
-            If ([string]::IsNullOrEmpty($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)) {
-                $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
+                If ([string]::IsNullOrEmpty($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)) {
+                    $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
+                }
             }
 
             $Msg = 'Creating MySQL server {0} in group {1}...' -f $PSBoundParameters.Name, $PSBoundParameters.resourceGroupName
@@ -330,8 +333,7 @@ function New-AzMySqlFlexibleServer {
 function CreateNetworkResource($NetworkParameters) {
     [OutputType([hashtable])]
     $WarningPreference = 'silentlycontinue'
-    If (!(Get-Module -ListAvailable -Name Az.Network)) { Throw 'Please install Az.Network module by entering "Install-Module -Name Az.Network"' }
-    Else { Import-Module -Name Az.Network }
+    Import-Module -Name Az.Network
 
     # 1. Error Handling
     # Raise error when user passes values for both parameters
@@ -344,7 +346,7 @@ function CreateNetworkResource($NetworkParameters) {
         if (($NetworkParameters.ContainsKey('VnetPrefix') -And !$NetworkParameters.ContainsKey('SubnetPrefix')) -Or
             (!$NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix')) -Or 
             ($NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix') -And (!$NetworkParameters.ContainsKey('Vnet') -Or !$NetworkParameters.ContainsKey('Subnet')))){
-                Throw "Incorrect usage : --vnet, --subnet, --vnet-address-prefix, --subnet-address-prefix must be supplied together."
+                Throw "Incorrect usage : -Vnet, -Subnet, -VnetPrefix, -SubnetPrefix must be supplied together."
         }
     }
     
@@ -442,7 +444,7 @@ function GetSubnetId($ResourceGroupName, $VnetName, $SubnetName){
     Return $Subnet.Id 
 }
 
-function CreateVnetSubnet($Parameters){
+function CreateVnetSubnet($Parameters) {
     If (!$Parameters.ContainsKey('SubnetPrefix')){$Parameters.SubnetPrefix = $DEFAULT_SUBNET_PREFIX}
     If (!$Parameters.ContainsKey('VnetPrefix')){$Parameters.VnetPrefix = $DEFAULT_VNET_PREFIX}
 
@@ -454,7 +456,9 @@ function CreateVnetSubnet($Parameters){
     Catch {
         $Msg = "Creating new vnet {0} in resource group {1}" -f $Parameters.VnetName, $Parameters.ResourceGroupName
         Write-Host $Msg
-        New-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -Location $Parameters.Location -AddressPrefix $Parameters.VnetPrefix -Force
+        if($PSCmdlet.ShouldProcess($Parameters.VnetName)) {
+            New-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -Location $Parameters.Location -AddressPrefix $Parameters.VnetPrefix -Force
+        }
     }
 
     $Subnet = CreateAndDelegateSubnet $Parameters
@@ -533,8 +537,11 @@ function CreateFirewallRule($Parameters) {
             Write-Host $Msg
             $FirewallRule = New-AzMySqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $Parameters.ResourceGroupName -ServerName $Parameters.Name -EndIPAddress $EndIp -StartIPAddress $StartIp
         }
+        Return $FirewallRule.Name
     }
-    Return $FirewallRule.Name
+    ElseIf ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
+        Write-Host "No firewall rule was set"
+    }
 }
 function IsValidVnetId($Rid){
     $VnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups\/[-\w\._\(\)]+\/providers\/Microsoft.Network\/virtualNetworks\/[^<>%&:\\?/]{1,260}$"
