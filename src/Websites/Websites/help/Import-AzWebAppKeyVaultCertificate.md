@@ -1,8 +1,7 @@
-﻿using System;
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebapp
+online version:
 schema: 2.0.0
 ---
 
@@ -14,9 +13,10 @@ Import an SSL certificate to a web app from Key Vault.
 ## SYNTAX
 
 ```
-Import-AzWebAppKeyVaultCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
-[-KeyVaultName] <String> [-CertName] <String> 
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Import-AzWebAppKeyVaultCertificate [[-KeyVaultName] <String>] [[-CertName] <String>]
+ [[-ResourceGroupName] <String>] [[-WebAppName] <String>] [[-Slot] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Import-AzWebAppKeyVaultCertificate** cmdlet imports an SSL certificate to a web app from Key Vault.
@@ -30,7 +30,7 @@ PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestU
 
 This command imports an SSL certificate to a web app from Key Vault.
 
-### Example 2
+### Example 1
 ```powershell
 PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
 -KeyVaultName  '/subscriptions/[sub id]/resourceGroups/[rg]/providers/Microsoft.KeyVault/vaults/[vault name]' -CertName "ContosoCertname"
@@ -38,25 +38,13 @@ PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestU
 
 This command Import an SSL certificate to a web app from Key Vault using resource id (typically if Key Vault is in another subscription).
 
-### -KeyVaultName
-Keyvault Name
+## PARAMETERS
 
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 ### -CertName
-Keyvault Certificate Name
+KeyVaultCertName of the certificate created in keyvault
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,11 +55,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Slot
-WebApp Slot Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultName
+The name of the keyvault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the webapp resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Slot
+The name of the webapp slot.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,30 +115,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -WebAppName
+The name of the webapp.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebApp
-WebApp Name
-
-```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
