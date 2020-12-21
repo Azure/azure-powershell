@@ -35,7 +35,7 @@ steps:
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   Get-ChildItem -Directory Az.* | ForEach-Object {. $_/test-module.ps1}
+   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   errorActionPreference: 'Stop'
