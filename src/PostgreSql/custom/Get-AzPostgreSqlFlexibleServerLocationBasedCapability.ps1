@@ -100,7 +100,7 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
                     $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
                     
                     ForEach ($Key in $Keys) {
-                        New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
+                        $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
                         $TableResult += $NewEntry
                     }
                 }
