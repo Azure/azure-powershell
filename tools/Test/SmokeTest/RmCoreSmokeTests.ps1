@@ -23,9 +23,18 @@ $testInfo = @{
     FailureDetails = @();
     Times = @()
 }
-$randomValue = Get-Random -Minimum 1000 -Maximum 10000
-$resourceGroupName = "smokergtest$randomValue"
-$storageAccountName = "smokesatest$randomValue"
+
+# Generate random suffix ^\d[\da-z]{9}$
+$strarray = "0123456789abcdefghijklmnopqurstuvxxyz"
+$randomValue = $strarray[(Get-Random -Maximum 10)]
+for($i=0; $i -lt 9; $i++) 
+{
+    $randomValue += $strarray[(Get-Random -Maximum $strarray.Length)]
+}
+# The name of resource group is 1~90 charactors complying with ^[-\w\._\(\)]+$
+$resourceGroupName = "azpssmokerg$randomValue"
+# The name of storage account should be 3~24 lowercase letters and numbers.
+$storageAccountName = "azpssmokesa$randomValue"
 
 $resourceSetUpCommands=@(
     @{Name = "Az.Resources";                  Command = {New-AzureRmResourceGroup -Name $resourceGroupName -Location westus -ErrorAction Stop}}
