@@ -262,7 +262,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
 [BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
-[BotService]:                        https://www.powershellgallery.com/packages/Az.BotService/
+[BotServiceGallery]:                 https://www.powershellgallery.com/packages/Az.BotService/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
