@@ -36,13 +36,6 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
         # The ID of the target subscription.
         ${SubscriptionId},
     
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-    
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -107,11 +100,7 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
                     $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
                     
                     ForEach ($Key in $Keys) {
-                        $NewEntry = @{}
-                        $NewEntry.SKU = $Key.Name
-                        $NewEntry.Tier = $TierName
-                        $NewEntry.vCore = $Key.Vcore
-                        $NewEntry.Memory = $Key.SupportedMemoryPerVcoreMb
+                        New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
                         $TableResult += $NewEntry
                     }
                 }
@@ -119,7 +108,7 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
                     Throw "No SKU info for this location"
                 }
             }
-            $TableResult | ForEach-Object {[PSCustomObject]$_} | Format-Table 'SKU', 'Tier', 'Memory', 'vCore'  -AutoSize
+            $TableResult
 
         } catch {
             throw
