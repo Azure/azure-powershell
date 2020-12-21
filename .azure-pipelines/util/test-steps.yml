@@ -45,7 +45,7 @@ steps:
    Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
-  errorActionPreference: 'stop'
+  errorActionPreference: 'Stop'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
 
 - task: PublishTestResults@2
