@@ -21,13 +21,6 @@ steps:
     packageType: sdk
     version: 3.1.x
 
-- task: DotNetCoreCLI@2
-  displayName: Test
-  inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
-
 - powershell: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
@@ -42,7 +35,8 @@ steps:
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   Get-ChildItem -Directory Az.* | ForEach-Object {if (Test-Path $_/test-module.ps1) {cd $_; ./test-module.ps1}}
+   cd Az.BotService
+   ./test-module.ps1
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   errorActionPreference: 'Stop'
