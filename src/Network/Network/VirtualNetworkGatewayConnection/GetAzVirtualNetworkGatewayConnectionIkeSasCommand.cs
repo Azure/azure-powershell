@@ -91,21 +91,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
 
-                PSVirtuaNetworkGatewayConnectionIkeSas output = new PSVirtuaNetworkGatewayConnectionIkeSas()
-                {
-                    Name = existingConnection.Name,
-                    ResourceGroupName = existingConnection.ResourceGroupName,
-                    Tag = existingConnection.Tag,
-                    ResourceGuid = existingConnection.ResourceGuid,
-                    Location = existingConnection.Location
-                };
+                var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
 
-                //var result = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(this.ResourceGroupName, this.Name);
-
-                var ans = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
-
-                WriteObject($"This is ans: {ans}");
-                WriteObject($"This is ans.ikesas: {ans.ikesas}");
+                WriteObject($"\nIKE Security Associations are:-\n{ikesas}\n");
             }
         }
     }
