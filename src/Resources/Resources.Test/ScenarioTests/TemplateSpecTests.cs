@@ -51,5 +51,69 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RemoveTemplateSpec");
         }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewTemplateSpec_Tags_AppliesTagsToBothTemplateSpecAndVersionIfNotExist()
+        {
+            TestRunner.RunTestScript("Test-NewAppliesTagsToBothTemplateSpecAndVersionIfNotExist");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewTemplateSpec_Tags_AppliesTagsToOnlyVersionIfTemplateSpecExists()
+        {
+            TestRunner.RunTestScript("Test-NewAppliesTagsToOnlyVersionIfTemplateSpecExists");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewTemplateSpec_Tags_AppliesInheritedTagsIfNoTagsSuppliedAndSpecExists()
+        {
+            TestRunner.RunTestScript("Test-NewAppliesInheritedTagsIfNoTagsSuppliedAndSpecExists");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewTemplateSpec_Tags_RemovesTagsFromExistingVersionIfTagsExplicityEmpty()
+        {
+            TestRunner.RunTestScript("Test-NewRemovesTagsFromExistingVersionIfTagsExplicitlyEmpty");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_Tags_AppliesTagsToBothTemplateSpecAndVersionIfNotExist()
+        {
+            TestRunner.RunTestScript("Test-SetAppliesTagsToBothTemplateSpecAndVersionIfNotExist");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_Tags_AppliesTagsOnlyToVersionIfVersionSpecified()
+        {
+            TestRunner.RunTestScript("Test-SetAppliesTagsOnlyToVersionIfVersionSpecified");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_Tags_AppliesTagsToTemplateSpecIfNoVersionSpecified()
+        {
+            TestRunner.RunTestScript("Test-SetAppliesTagsToTemplateSpecIfNoVersionSpecified");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_Tags_AppliesInheritedTagsIfNewVersionAndNoTagsProvidedAndSpecExists()
+        {
+            TestRunner.RunTestScript("Test-SetAppliesInheritedTagsIfNewVersionAndNoTagsProvidedAndSpecExists");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetTemplateSpec_Tags_RemovesTagsIfTagsExplicitlyEmpty()
+        {
+            TestRunner.RunTestScript("Test-SetRemovesTagsIfTagsExplicitlyEmpty");
+        }
+
     }
 }

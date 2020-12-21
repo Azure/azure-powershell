@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -119,7 +119,11 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Add-AzSecurityAdaptiveNetworkHardening',
                'Get-AzAllowedConnection',
                'Get-AzSecurityAdaptiveApplicationControlGroup',
-               'Get-AzSecurityAdaptiveApplicationControl'
+               'Get-AzSecurityAdaptiveApplicationControl',
+               'Get-AzSecuritySecureScore',
+               'Get-AzSecuritySecureScoreControl',
+               'Get-AzSecuritySecureScoreControlDefinition'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -154,7 +158,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlet: ''Get-AzSecurityAdaptiveApplicationControl'' and ''Get-AzSecurityAdaptiveApplicationControlGroup'''
+        ReleaseNotes = '* Breaking changes in `Get-AzSecurityAlert` and `Set-AzSecurityAlert` * Added new cmdlets: `Get-AzSecuritySecureScore` `Get-AzSecuritySecureScoreControl` `Get-AzSecuritySecureScoreControlDefinition`'
 
         # Prerelease string of this module
         # Prerelease = ''

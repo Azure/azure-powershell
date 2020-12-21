@@ -32,10 +32,31 @@ Use **Set-AzServiceFabricSetting** to add or update Service Fabric settings in a
 
 ### Example 1
 ```
-PS c:\> Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
+Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
+
+
+### Example 2
+```
+$fabricSettings = @(
+    @{ 
+        "name" = "NamingService";
+        "parameters" =  [System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]]@(
+            @{ "Name" = "MaxFileOperationTimeout"; "Value" = "5000"  };
+            @{ "Name" = "MaxOperationTimeout"; "Value" = "1200"  })
+    },
+    @{ 
+        "name" = "Hosting";
+        "parameters" =  [System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]]@(
+            @{ "Name" = "ActivationMaxFailureCount"; "Value" = "11"  })
+    })
+
+Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SettingsSectionDescription $fabricSettings -Verbose
+```
+
+This command will trigger an upgrade to set multiple fabric setting using SettingsSectionDescription parameter.
 
 ## PARAMETERS
 

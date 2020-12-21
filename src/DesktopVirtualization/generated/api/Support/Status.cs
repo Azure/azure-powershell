@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>Status for a SessionHost.</summary>
     public partial struct Status :
         System.IEquatable<Status>
     {

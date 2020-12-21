@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
     public partial struct PersonalDesktopAssignmentType :
         System.IEquatable<PersonalDesktopAssignmentType>
     {

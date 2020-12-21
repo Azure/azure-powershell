@@ -1,0 +1,41 @@
+{
+  "Get-AzCommunicationServiceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgrouppvbt51/providers/Microsoft.Communication/communicationServices/persistentResourceNamepvbt51/listKeys?api-version=2020-08-20-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "6e49c599-bcd6-4cdd-acb1-e672b59b7aea" ],
+        "CommandName": [ "Get-AzCommunicationServiceKey" ],
+        "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "8ed09673-3dc0-4a97-a82b-2b7205bcd605" ],
+        "x-ms-correlation-request-id": [ "bed5f644-ad93-4a32-b942-edc41a636078" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201110T214600Z:bed5f644-ad93-4a32-b942-edc41a636078" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Nov 2020 21:45:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejsza5y.communication.azure.com/;accesskey=**************************************************************************************==\"}"
+    }
+  }
+}

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for LoadBalancerType.</summary>
+    /// <summary>The type of the load balancer.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerTypeTypeConverter))]
     public partial struct LoadBalancerType :
         System.Management.Automation.IArgumentCompleter

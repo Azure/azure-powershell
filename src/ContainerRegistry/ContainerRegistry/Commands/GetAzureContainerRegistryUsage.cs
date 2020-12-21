@@ -26,18 +26,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
     [OutputType(typeof(PSRegistryUsage))]
     public class GetAzureContainerRegistryUsage : ContainerRegistryCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Resource group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource group name.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Target registry name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Target registry name.")]
+        [Alias("RegistryName")]
         [ValidateNotNullOrEmpty]
-        public string RegistryName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(RegistryClient.ListUsage(ResourceGroupName, RegistryName), true);
+            WriteObject(RegistryClient.ListUsage(ResourceGroupName, Name), true);
         }
     }
 }

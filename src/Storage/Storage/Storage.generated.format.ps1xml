@@ -348,7 +348,7 @@
                 <ScriptBlock>if ($_.CloudFile -eq $null) {"Directory"} else {"File"}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Properties.Length</ScriptBlock>
+                <ScriptBlock>$_.Length</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Name</ScriptBlock>

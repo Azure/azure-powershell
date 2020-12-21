@@ -19,6 +19,9 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.3.29-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.29-preview"/>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Core" Version="1.6.0"/>
+  </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0">
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>

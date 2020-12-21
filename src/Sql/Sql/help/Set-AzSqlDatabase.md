@@ -18,9 +18,10 @@ Sets properties for a database, or moves an existing database into an elastic po
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ReadReplicaCount <Int32>]
- [-BackupStorageRedundancy <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
+ [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -28,16 +29,17 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
  [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ReadReplicaCount <Int32>]
- [-BackupStorageRedundancy <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
+ [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Rename
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupStorageRedundancy <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SecondaryType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +121,43 @@ Tags                          :
 ```
 
 This command updates a database named Database01 to set its max size to 1 TB.
+
+### Example 4: Update a existing General Purpose database to Hyperscale service tier
+```
+PS C:\>Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "Hyperscale" -RequestedServiceObjectiveName "HS_Gen5_2"
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : 56246136-839f-4171-80af-4c28142463b1
+Edition                       : Hyperscale
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : -1
+Status                        : Online
+CreationDate                  : 12/6/2020 5:34:16 PM
+CurrentServiceObjectiveId     : 00000000-0000-0000-0000-000000000000
+CurrentServiceObjectiveName   : HS_Gen5_2
+RequestedServiceObjectiveName : HS_Gen5_2
+RequestedServiceObjectiveId   :
+ElasticPoolName               :
+EarliestRestoreDate           : 12/6/2020 5:34:16 PM
+Tags                          : {}
+ResourceId                    : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/servers/Server01/databases/Database01
+CreateMode                    :
+ReadScale                     : Enabled
+ZoneRedundant                 :
+Capacity                      : 2
+Family                        : Gen5
+SkuName                       : HS_Gen5
+LicenseType                   : LicenseIncluded
+AutoPauseDelayInMinutes       :
+MinimumCapacity               :
+ReadReplicaCount              : 1
+BackupStorageRedundancy       : Geo
+```
+
+This command updates a database named Database01 from General Purpose to Hyperscale service tier.
 
 ## PARAMETERS
 
@@ -239,6 +278,7 @@ The acceptable values for this parameter are:
 - Free
 - Stretch
 - GeneralPurpose
+- Hyperscale
 - BusinessCritical
 
 ```yaml
@@ -260,6 +300,21 @@ Specifies name of the elastic pool in which to move the database.
 Type: System.String
 Parameter Sets: Update
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighAvailabilityReplicaCount
+The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases: ReadReplicaCount
 
 Required: False
 Position: Named
@@ -331,21 +386,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReadReplicaCount
-The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.
-
-```yaml
-Type: System.Int32
-Parameter Sets: Update, VcoreBasedDatabase
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ReadScale
 If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
 
@@ -391,6 +431,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecondaryType
+The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Named, Geo
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

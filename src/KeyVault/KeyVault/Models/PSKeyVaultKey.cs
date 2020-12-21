@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKey()
         { }
 
-        internal PSKeyVaultKey(Microsoft.Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultKey(Microsoft.Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
@@ -53,9 +53,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = (keyBundle.Tags == null) ? null : keyBundle.Tags.ConvertToHashtable();
+
+            IsHsm = isHsm;
         }
 
-        internal PSKeyVaultKey(Track2Sdk.KeyVaultKey key, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultKey(Track2Sdk.KeyVaultKey key, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (key == null)
                 throw new ArgumentNullException("key");
@@ -85,6 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = key.Properties.UpdatedOn?.UtcDateTime;
             RecoveryLevel = key.Properties.RecoveryLevel;
             Tags = key.Properties.Tags.ConvertToHashtable();
+            IsHsm = isHsm;
         }
 
         public PSKeyVaultKeyAttributes Attributes { get; set; }
