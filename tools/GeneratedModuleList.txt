@@ -7,6 +7,7 @@ Az.ConnectedKubernetes
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
+Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.Functions
 Az.HanaOnAzure
