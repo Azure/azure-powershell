@@ -40,10 +40,6 @@ namespace Tools.Common.Loaders
                 {
                     var assemblyName = args.Name.Substring(0, args.Name.IndexOf(","));
                     var dll = Directory.GetFiles(commonOutputFolder, "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
-                    if (dll == null && Directory.Exists(commonOutputFolder + "\\PreloadAssemblies"))
-                    {
-                        dll = Directory.GetFiles(commonOutputFolder + "\\PreloadAssemblies", "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
-                    }
                     if (dll == null)
                     {
                         continue;
@@ -216,7 +212,7 @@ namespace Tools.Common.Loaders
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
             ModuleMetadata.Cmdlets = results;
