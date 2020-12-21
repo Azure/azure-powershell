@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support create/update/get/list EncryptionScope of a Storage account
+* Supported create/update/get/list EncryptionScope of a Storage account
     - `New-AzStorageEncryptionScope`
     - `Update-AzStorageEncryptionScope`
     - `Get-AzStorageEncryptionScope`

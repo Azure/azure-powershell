@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix Add-AzServiceFabricNodeType. Add node type to service fabric cluster before creating virtual machine scale set.
+* Fixed `Add-AzServiceFabricNodeType`. Added node type to service fabric cluster before creating virtual machine scale set.
 
 ## Version 2.2.1
 * Added example to `Set-AzServiceFabricSetting` with SettingsSectionDescription param

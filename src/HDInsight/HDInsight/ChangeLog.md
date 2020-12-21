@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Add properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
+* Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
 
 ## Version 4.1.0
 

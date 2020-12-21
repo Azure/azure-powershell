@@ -12,7 +12,7 @@
 RootModule = './Az.Kusto.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.4'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -135,7 +135,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* General availability of ''Az.Kusto'' module'
 
         # Prerelease string of this module
         # Prerelease = ''
