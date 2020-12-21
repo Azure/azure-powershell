@@ -36,7 +36,7 @@ steps:
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $tests = Get-ChildItem -File -Recurse -Depth 1 test-module.ps1
-   foreach ($test in $tests) { cd $test.DirectoryName; ./test-module.ps1 }
+   foreach ($test in $tests) { cd Az.BotService; ./test-module.ps1 }
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   errorActionPreference: 'Stop'
