@@ -21,123 +21,123 @@ Creates a new firewall rule for MySQL flexible server
 #>
 
 function New-AzMySqlFlexibleServerFirewallRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    param(
-        [Parameter()]
-        [Alias('FirewallRuleName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
-        [System.String]
-        # The name of the server firewall rule.
-        # If not specified, the default is undefined.
-        # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
-        ${Name},
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter()]
+    [Alias('FirewallRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [System.String]
+    # The name of the server firewall rule.
+    # If not specified, the default is undefined.
+    # If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
+    ${Name},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
-        [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
-        ${ResourceGroupName},
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
-        [System.String]
-        # The name of the server.
-        ${ServerName},
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The ID of the target subscription.
-        ${SubscriptionId},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [System.String]
-        # The end IP address of the server firewall rule.
-        # Must be IPv4 format.
-        ${EndIPAddress},
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The end IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${EndIPAddress},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [System.String]
-        # The start IP address of the server firewall rule.
-        # Must be IPv4 format.
-        ${StartIPAddress},
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The start IP address of the server firewall rule.
+    # Must be IPv4 format.
+    ${StartIPAddress},
 
-        [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [System.String]
-        # Client specified single IP of the server firewall rule.
-        # Must be IPv4 format.
-        ${ClientIPAddress},
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
 
-        [Parameter(ParameterSetName='AllowAll', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
-        ${AllowAll},
+    [Parameter(ParameterSetName='AllowAll', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
+    ${AllowAll},
 
-        [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile},
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
 )
 
 process {
