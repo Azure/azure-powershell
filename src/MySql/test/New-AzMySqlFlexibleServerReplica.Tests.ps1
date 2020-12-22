@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 # !Important: some test cases are skipped and require to be recorded again
 # See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'New-AzMySqlFlexibleServerReplica' {
-    It 'CreateExpanded' -Skip {
+    It 'CreateExpanded' {
         {
             $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
             # Possible bug: above line should be
