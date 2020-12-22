@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzBotService' {
-    It 'Registration' {
+    It 'Registration' -skip {
         $NewApplication = New-AzApplicationInsights -ResourceGroupName $env.ResourceGroupName -Name $env.WebApplicationName1 -Location $env.Location
         $NewAzBot = New-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService1 -ApplicationId $NewApplication.AppId -Location $env.Location -Sku F0 -Description "description" -Registration
         $NewAzBot.Name | Should -Be $env.NewBotService1
