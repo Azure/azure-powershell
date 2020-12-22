@@ -908,7 +908,8 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"169f1d2f-3665-498c-b4a8-5bdef0b59066\",\"status\":\"Failed\",\"startTime\":\"2020-07-24T08:26:33.757Z\",\"error\":{\"code\":\"SubscriptionDoesNotHaveServer\",\"message\":\"Subscription \u00277fec3109-5b78-4a24-b834-5d47d63e2596\u0027 does not have the server \u0027mysql-test-100-replica\u0027.\"}}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
+    
     }
   },
   "Restore-AzMySqlServer+[NoContext]+GeoRestore+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+24": {

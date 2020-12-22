@@ -14,7 +14,8 @@ while(-not $mockingPath) {
 Describe 'Get-AzMySqlFlexibleServerReplica' {
     It 'List' {
         {
-            $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+            Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+            $replica = Get-AzMySqlFlexibleServerReplica -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
             $replica.Count | Should -Be 1
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)"
             Remove-AzMySqlFlexibleServer -InputObject $ID

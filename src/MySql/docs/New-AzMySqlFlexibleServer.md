@@ -326,13 +326,13 @@ Accept wildcard characters: False
 ### -PublicAccess
 Determines the public access.
 Enter single or range of IP addresses to be 
-            included in the allowed list of IPs.
+        included in the allowed list of IPs.
 IP address ranges must be dash-
-            separated and not contain any spaces.
+        separated and not contain any spaces.
 Specifying 0.0.0.0 allows public
-            access from any resources deployed within Azure to access your server.
-            Specifying no IP address sets the server in public access mode but does
-            not create a firewall rule.
+        access from any resources deployed within Azure to access your server.
+        Specifying no IP address sets the server in public access mode but does
+        not create a firewall rule.
 
 ```yaml
 Type: System.String
