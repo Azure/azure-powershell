@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzCostManagementQueryColumnObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         { New-AzCostManagementQueryColumnObject -Name 'SubscriptionGuid' -Type 'string' } | Should -Not -Throw
     }
 }
