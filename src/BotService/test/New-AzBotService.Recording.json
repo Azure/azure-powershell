@@ -1,0 +1,36 @@
+{
+  "New-AzBotService+[NoContext]+WebApp+$POST+https://management.azure.com/providers/Microsoft.BotService/checkNameAvailability?api-version=2018-07-12+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BotService/checkNameAvailability?api-version=2018-07-12",
+      "Content": "{\r\n  \"name\": \"BotService-v5kgny\",\r\n  \"type\": \"sdk\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c1582637-c843-4584-b09b-d7df1984c07d" ],
+        "x-ms-correlation-request-id": [ "c1582637-c843-4584-b09b-d7df1984c07d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201216T123323Z:c1582637-c843-4584-b09b-d7df1984c07d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Dec 2020 12:33:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "42" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"valid\":true,\"message\":\"\",\"absCode\":null}"
+    }
+  }
+}

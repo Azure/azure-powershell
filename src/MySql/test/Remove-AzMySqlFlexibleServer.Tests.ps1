@@ -11,8 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# !Important: some test cases are skipped and require to be recorded again
+# See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Remove-AzMySqlFlexibleServer' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         {
             If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]

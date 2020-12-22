@@ -11,8 +11,11 @@ while (-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# !Important: some test cases are skipped and require to be recorded again
+# See https://github.com/Azure/autorest.powershell/issues/580
+
 Describe 'Invoke-AzResourceMoverCommit' {
-    It 'CommitExpanded' {
+    It 'CommitExpanded' -Skip {
             $commitResponse = Invoke-AzResourceMoverCommit -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
             $commitResponse.Status.Length | Should -BeGreaterOrEqual 6
     }
