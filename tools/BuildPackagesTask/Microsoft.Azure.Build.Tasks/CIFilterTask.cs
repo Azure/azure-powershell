@@ -1,0 +1,420 @@
+﻿//
+// Copyright (c) Microsoft.  All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
+
+using Newtonsoft.Json;
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Serilog;
+
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
+namespace Microsoft.WindowsAzure.Build.Tasks
+{
+    /// <summary>
+    /// A simple Microsoft Build task used to generate a list of test assemblies to be
+    /// used for testing Azure PowerShell.
+    /// </summary>
+    public class CIFilterTask : Task
+    {
+        /// <summary>
+        /// Gets or sets the files changed in a given pull request.
+        /// </summary>
+        [Required]
+        public string[] FilesChanged { get; set; }
+
+        /// <summary>
+        /// Gets or set the TargetModule, e.g. Storage
+        /// </summary>
+        public string TargetModule { get; set; }
+
+        /// <summary>
+        /// Gets or set the Mode, e.g. Release
+        /// </summary>
+        [Required]
+        public string Mode { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the path to the files-to-csproj map.
+        /// </summary>
+        [Required]
+        public string CsprojMapFilePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test assemblies output produced by the task.
+        /// </summary>
+        [Output]
+        public CIFilterTaskResult FilterTaskResult { get; set; }
+
+        private const string TaskMappingConfigName = ".ci-config.yml";
+
+        private const string AllModule = "all";
+        private const string SingleModule = "module";
+        private const string DependenceModule = "dependence-module"; // self and modules dependent on this module
+        private const string DependentModule = "dependent-module"; // self and modules that self dependent on
+        private const string RelatedModule = "related-module"; // self, modules that self dependent on and modules dependent on this module
+
+        private const string BUILD_PHASE = "build";
+        private const string ANALYSIS_BREAKING_CHANGE_PHASE = "breaking-change";
+        private const string ANALYSIS_HELP_PHASE = "help";
+        private const string ANALYSIS_DEPENDENCY_PHASE = "dependency";
+        private const string ANALYSIS_SIGNATURE_PHASE = "signature";
+        private const string TEST_PHASE = "test";
+
+        private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
+
+        private Dictionary<string, string[]> ReadMapFile(string mapFilePath, string mapFileName)
+        {
+            if (mapFilePath == null)
+            {
+                throw new ArgumentNullException(string.Format("The {0} cannot be null.", mapFileName));
+            }
+
+            if (!File.Exists(mapFilePath))
+            {
+                throw new FileNotFoundException(string.Format("The {0} provided could not be found. Please provide a valid MapFilePath.", mapFileName));
+            }
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(mapFilePath));
+        }
+
+        private List<string> GetCsprojListUnderModule(string moduleName, string[] csprojList)
+        {
+            return csprojList.Where(x => x.Replace("\\", "/").Contains("/" + moduleName + "/"))
+                .ToList();
+        }
+
+        private List<string> GetRelatedCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
+        {
+            List<string> csprojList = new List<string>();
+
+            if (csprojMap.ContainsKey(moduleName))
+            {
+                csprojList.AddRange(csprojMap[moduleName]);
+            }
+            else
+            {
+                string expectKey = string.Format("src/{0}/", moduleName);
+                foreach (string key in csprojMap.Keys)
+                {
+                    if (key.ToLower().Equals(expectKey.ToLower()))
+                    {
+                        csprojList.AddRange(csprojMap[key]);
+                    }
+                }
+            }
+
+            return csprojList;
+        }
+
+        private List<string> GetBuildCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
+        {
+            if (moduleName.Equals(AllModule))
+            {
+                moduleName = "Accounts";
+            }
+            string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => !x.Contains("Test")).ToArray();
+            return GetCsprojListUnderModule(moduleName, csprojList);
+        }
+
+        private string GetModuleNameFromCsprojPath(string csprojPath)
+        {
+            return csprojPath.Replace('/', '\\')
+                .Split(new string[] { "src\\" }, StringSplitOptions.None)[1]
+                .Split('\\')[0];
+        }
+
+        private List<string> GetDependenceModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
+        {
+            List<string> moduleList = new List<string>();
+
+            foreach (string key in csprojMap.Keys)
+            {
+                bool isDependent = false;
+                foreach (string csproj in csprojMap[key])
+                {
+                    if (csproj.Replace("/", "\\").Contains("\\" + moduleName + "\\"))
+                    {
+                        isDependent = true;
+                    }
+                }
+                if (isDependent)
+                {
+                    moduleList.Add(key.Split('/')[1]);
+                }
+            }
+
+            return moduleList;
+        }
+
+        private List<string> GetDependentModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
+        {
+            if (moduleName.Equals(AllModule))
+            {
+                moduleName = "Accounts";
+            }
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Select(GetModuleNameFromCsprojPath)
+                .Distinct()
+                .ToList();
+        }
+
+        private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
+        {
+            if (moduleName.Equals(AllModule))
+            {
+                moduleName = "Accounts";
+            }
+            string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => x.Contains("Test")).ToArray();
+            return GetCsprojListUnderModule(moduleName, csprojList);
+        }
+
+        private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
+        {
+            Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
+            {
+                [BUILD_PHASE] = new HashSet<string>(from x in GetBuildCsprojList(TargetModule, csprojMap).ToList() select x),
+                [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
+                [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
+                [ANALYSIS_HELP_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
+                [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
+                [TEST_PHASE] = new HashSet<string>(from x in GetTestCsprojList(TargetModule, csprojMap).ToList() select x)
+            };
+
+            Serilog.Log.Information("----------------- InfluencedModuleInfo -----------------");
+            foreach (string phaseName in influencedModuleInfo.Keys)
+            {
+                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+            }
+            Serilog.Log.Information("--------------------------------------------------------");
+
+            FilterTaskResult.PhaseInfo = influencedModuleInfo;
+            
+            return true;
+        }
+
+        private string ProcessSinglePattern(string pattern)
+        {
+            return pattern.Replace("**", ".*").Replace("{ModuleName}", "(?<ModuleName>[^/]+)");
+        }
+
+        private Dictionary<string, HashSet<string>> CalculateInfluencedModuleInfoForEachPhase(List<(Regex, List<string>)> ruleList, Dictionary<string, string[]> csprojMap)
+        {
+            Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>();
+
+            foreach (string filePath in FilesChanged)
+            {
+                List<string> phaseList = new List<string>();
+                bool isMatched = false;
+                string machedModuleName = "";
+                foreach ((Regex regex, List<string> phaseConfigList) in ruleList)
+                {
+                    var regexResult = regex.Match(filePath);
+                    if (regexResult.Success)
+                    {
+                        phaseList = phaseConfigList;
+                        isMatched = true;
+                        if (regexResult.Groups[MODULE_NAME_PLACEHOLDER].Success)
+                        {
+                            machedModuleName = regexResult.Groups[MODULE_NAME_PLACEHOLDER].Value;
+                        }
+                        Serilog.Log.Debug(string.Format("File {0} match rule: {1} and phaseConfig is: [{2}]", filePath, regex.ToString(), string.Join(", ", phaseConfigList)));
+                        break;
+                    }
+                }
+                if (!isMatched)
+                {
+                    Serilog.Log.Warning(string.Format("File {0} doesn't match any rule, goto fallback logic.", filePath));
+                    phaseList = new List<string>()
+                    {
+                        BUILD_PHASE + ":" + AllModule,
+                        ANALYSIS_BREAKING_CHANGE_PHASE + ":" + AllModule,
+                        ANALYSIS_DEPENDENCY_PHASE + ":" + AllModule,
+                        ANALYSIS_HELP_PHASE + ":" + AllModule,
+                        ANALYSIS_SIGNATURE_PHASE + ":" + AllModule,
+                        TEST_PHASE + ":" + AllModule,
+                    };
+                }
+                foreach (string phase in phaseList)
+                {
+                    string phaseName = phase.Split(':')[0];
+                    string scope = phase.Split(':')[1];
+                    HashSet<string> scopes = influencedModuleInfo.ContainsKey(phaseName) ? influencedModuleInfo[phaseName] : new HashSet<string>();
+                    if (!scopes.Contains(AllModule))
+                    {
+                        if (scope.Equals(AllModule))
+                        {
+                            scopes.Clear();
+                            scopes.Add(AllModule);
+                        }
+                        else
+                        {
+                            string moduleName = machedModuleName == "" ? filePath.Split('/')[1] : machedModuleName;
+                            if (scope.Equals(SingleModule))
+                            {
+                                scopes.Add(moduleName);
+                            }
+                            else if (scope.Equals(DependenceModule))
+                            {
+                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                            }
+                            else if (scope.Equals(DependentModule))
+                            {
+                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
+                            }
+                            else if (scope.Equals(RelatedModule))
+                            {
+                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
+                            }
+                            else
+                            {
+                                scopes.Add(scope);
+                            }
+                        }
+                        influencedModuleInfo[phaseName] = scopes;
+                    }
+                }
+            }
+            var keys = influencedModuleInfo.Keys.ToList();
+            foreach (string phaseName in keys)
+            {
+                if (influencedModuleInfo[phaseName].Contains(AllModule))
+                {
+                    influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList("Accounts", csprojMap));
+                }
+            }
+            Serilog.Log.Information("----------------- InfluencedModuleInfo -----------------");
+            foreach (string phaseName in influencedModuleInfo.Keys)
+            {
+                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+            }
+            Serilog.Log.Information("--------------------------------------------------------");
+
+            return influencedModuleInfo;
+        }
+
+        /*
+         * Calculate the csproj path for modules in Build and Test phase.
+         */
+        private Dictionary<string, HashSet<string>> CalculateCsprojForBuildAndTest(Dictionary<string, HashSet<string>> influencedModuleInfo, Dictionary<string, string[]> csprojMap)
+        {
+            var keys = influencedModuleInfo.Keys.ToList();
+            foreach (string phaseName in keys)
+            {
+                if (phaseName.Equals(BUILD_PHASE))
+                {
+                    HashSet<string> csprojSet = new HashSet<string>();
+                    foreach (string moduleName in influencedModuleInfo[phaseName])
+                    {
+                        csprojSet.UnionWith(GetBuildCsprojList(moduleName, csprojMap));
+                    }
+                    foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories))
+                    {
+                        csprojSet.Add(filename);
+                    }
+                    influencedModuleInfo[phaseName] = csprojSet;
+                }
+                else if (phaseName.Equals(TEST_PHASE))
+                {
+                    HashSet<string> csprojSet = new HashSet<string>();
+                    foreach (string moduleName in influencedModuleInfo[phaseName])
+                    {
+                        csprojSet.UnionWith(GetTestCsprojList(moduleName, csprojMap));
+                    }
+                    if (csprojSet.Count != 0)
+                    {
+                        csprojSet.Add("tools/TestFx/TestFx.csproj");
+                    }
+                    influencedModuleInfo[phaseName] = csprojSet;
+                }
+            }
+
+            foreach (string phaseName in influencedModuleInfo.Keys)
+            {
+                Serilog.Log.Information("-----------------------------------");
+                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+            }
+
+            return influencedModuleInfo;
+        }
+
+        private bool ProcessFileChanged(Dictionary<string, string[]> csprojMap)
+        {
+            string configPath = Path.GetFullPath(TaskMappingConfigName);
+            if (!File.Exists(configPath))
+            {
+                throw new Exception("CI phase config is not found!");
+            }
+            var deserializer = new DeserializerBuilder()
+                .WithNamingConvention(new CamelCaseNamingConvention())
+                .Build();
+            string content = File.ReadAllText(configPath);
+
+            CIPhaseFilterConfig config = deserializer.Deserialize<CIPhaseFilterConfig>(content);
+            List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern))), rule.Phases)).ToList();
+
+            DateTime startTime = DateTime.Now;
+
+            Dictionary<string, HashSet<string>> influencedModuleInfo = CalculateInfluencedModuleInfoForEachPhase(ruleList, csprojMap);
+            DateTime endOfRegularExpressionTime = DateTime.Now;
+
+            influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
+            DateTime endTime = DateTime.Now;
+            Serilog.Log.Information(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
+            
+            FilterTaskResult.PhaseInfo = influencedModuleInfo;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Executes the task to generate a list of test assemblies
+        /// based on file changes from a specified Pull Request.
+        /// The output it produces is said list.
+        /// </summary>
+        /// <returns> Returns a value indicating wheter the success status of the task. </returns>
+        public override bool Execute()
+        {
+            Serilog.Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console(outputTemplate: "[{Level:u3}] {Message}{NewLine}{Exception}")
+                .WriteTo.File("logs\\.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            FilterTaskResult = new CIFilterTaskResult();
+
+            var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
+
+            Serilog.Log.Information(string.Format("FilesChanged: {0}", FilesChanged.Length));
+            if (FilesChanged != null && FilesChanged.Length > 0)
+            {
+                return ProcessFileChanged(csprojMap);
+            }
+            else if (!string.IsNullOrWhiteSpace(TargetModule))
+            {
+                return ProcessTargetModule(csprojMap);
+            }
+            return true;
+        }
+    }
+}
