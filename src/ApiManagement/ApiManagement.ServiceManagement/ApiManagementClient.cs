@@ -3592,6 +3592,65 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
         #endregion
 
+        public void BackendReset(
+            string resourceGroupName,
+            string serviceName,
+            string backendId,
+            string url,
+            string protocol,
+            int timeToReset,
+            PsApiManagementBackendCredential credential,
+            PsApiManagementBackendProxy proxy)
+            {
+                var backendUpdateParams = new BackendUpdateParameters();
+                if (!string.IsNullOrEmpty(url))
+                {
+                    backendUpdateParams.Url = url;
+                }
+
+                if (!string.IsNullOrEmpty(protocol))
+                {
+                    backendUpdateParams.Protocol = protocol;
+                }
+
+                if (credential != null)
+                {
+                    backendUpdateParams.Credentials = new BackendCredentialsContract();
+                    if (credential.Query != null)
+                    {
+                        backendUpdateParams.Credentials.Query = Utils.HashTableToDictionary(credential.Query);
+                    }
+
+                    if (credential.Header != null)
+                    {
+                        backendUpdateParams.Credentials.Header = Utils.HashTableToDictionary(credential.Header);
+                    }
+
+                    if (credential.Certificate != null && credential.Certificate.Any())
+                    {
+                        backendUpdateParams.Credentials.Certificate = credential.Certificate.ToList();
+                    }
+
+                    if (credential.Authorization != null)
+                    {
+                        backendUpdateParams.Credentials.Authorization =
+                            Mapper.Map<BackendAuthorizationHeaderCredentials>(credential.Authorization);
+                    }
+                }
+
+                if (proxy != null)
+                {
+                    backendUpdateParams.Proxy = Mapper.Map<BackendProxyContract>(proxy);
+                }
+                BackendReconnectContract contract = new BackendReconnectContract();
+                if (timeToReset > 0)
+                {
+
+                    contract.After = TimeSpan.FromSeconds(timeToReset);
+                }
+                Client.Backend.Reconnect(resourceGroupName, serviceName, backendId);
+            }
+
         #region Caches
         public PsApiManagementCache CacheCreate(
             PsApiManagementContext context,
