@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Publish-AzBotServiceApp' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $PublishService = Publish-AzBotServiceApp -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService2 -CodeDir "./$($env.NewBotService2)"
         $PublishService.Name | Should -Be $env.NewBotService2
     }

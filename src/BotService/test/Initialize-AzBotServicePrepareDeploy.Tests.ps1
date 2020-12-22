@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Initialize-AzBotServicePrepareDeploy' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         # Join-Path $PSScriptRoot 'resources\MyEchoBot'
         Initialize-AzBotServicePrepareDeploy -CodeDir $env.NewBotService2 -ProjFileName EchoBot.csproj
         $IsExit = Test-Path "$($env.NewBotService2)\.deployment"
