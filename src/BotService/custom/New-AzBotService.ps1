@@ -181,6 +181,9 @@ function New-AzBotService {
             if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                 $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
             }
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $EnvPSBoundParameters['SubscriptionId'] = $SubscriptionId
+            }
             $BotKind = 'bot'
             If ($PSBoundParameters.ContainsKey('Registration'))
             {
