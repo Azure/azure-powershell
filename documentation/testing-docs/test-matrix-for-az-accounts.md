@@ -1,16 +1,16 @@
 # Test Matrix for Authentication in Az.Accounts
 
-The authentication functionality in Az.Accounts is one of most important piece for Azure PowerShell, to make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix and it should be honored by each release of Az.Accounts.
+The authentication functionality in Az.Accounts is one of the most important pieces in Azure PowerShell. To make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix which should be honored by each release of Az.Accounts when there is any change related to authentication.
 
 **Priority Clarification**
 
-- `P0`: Run if any authentication related code change in Az.Accounts
-- `P1`: Run if upgrading minor version of Azure.Identity and/or MSAL library
-- `P2`: Run if upgrading major version of Azure.Identity and/or MSAL library
+- `P0`: Run if any authentication related code change in Az.Accounts, or upgrading Azure.Identity or MSAL library
+- `P1`: Run if upgrading minor or major version of Azure.Identity or MSAL library
+- `P2`: Run if upgrading major version of Azure.Identity or MSAL library
 
-## Azure Global Instance
+## Azure Public Cloud
 
-Azure Global Instance is the most important Azure instance, all tests should run against it.
+Azure Public Cloud is the most important Azure instance, all tests should run against it.
 
 ### PWSH Platform Matrix
 
@@ -18,14 +18,12 @@ In theory all the combination of different OS platforms and PWSH versions should
 
 - Windows PowerShell 5.1
 - PWSH 7.0.0 on Windows
-- PWSH 7.0.x on Windows (latest patch version of PWSH 7.0)
+- PWSH 7.0.x(latest patch version) on Windows
 - PWSH 7.1.0 on Windows
 - PWSH 7.0.0 on Ubuntu
 - PWSH 7.0.x on Ubuntu
 - PWSH 7.1.0 on Ubuntu
-- PWSH 7.0.0 on MacOS
 - PWSH 7.0.x on MacOS
-- PWSH 7.1.0 on MacOS
 - CloudShell
 - Docker Env for Ubuntu
 
