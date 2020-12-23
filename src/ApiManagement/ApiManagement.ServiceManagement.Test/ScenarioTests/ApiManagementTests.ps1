@@ -2959,6 +2959,13 @@ function Backend-CrudTest {
         Assert-NotNull $backend.Proxy
         Assert-AreEqual $backend.Proxy.Url "http://12.168.1.1:8080"
         Assert-NotNull $backend.Proxy.ProxyCredentials
+
+        #Reset Backend Connection
+        $backendmessage = 'Successfully scheduled the backend connection reset for powershellsdkservice. The Reset will occur in 120 seconds(s)'
+        $backend = $null
+        $backend = Reset-AzApiManagementBackendConnection -Context $context -BackendId $backendId
+
+        Assert-AreEqual $backendmessage $backend
     }
     finally {
         # remove created backend
