@@ -197,7 +197,7 @@ function New-AzBotService {
                 throw
             }
             if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $EnvPSBoundParameters['SubscriptionId'] = $SubscriptionId
+                $EnvPSBoundParameters['SubscriptionId'] = [System.String]$SubscriptionId
             }
             if ($BotKind -eq $Kind)
             {
