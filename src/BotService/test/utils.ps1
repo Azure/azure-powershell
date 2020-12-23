@@ -16,14 +16,14 @@ function setupEnv() {
     Import-Module Az.Resources
     Import-Module Az.Websites
     # For any resources you created for test, you should add it to $env here.
-    $WebApplicationName1 = 'WebApplication-' + (RandomString -allChars $false -len 6)
-    $WebApplicationName2 = 'WebApplication-' + (RandomString -allChars $false -len 6)
+    $WebApplication1 = '2d00693f-17b0-4b43-b850-1d3fb485272e'
+    $WebApplication2 = '88527e5d-3cc9-4c64-905e-f6d4f59a45f3'
     $NewBotService1 = 'BotService-' + (RandomString -allChars $false -len 6)
     $NewBotService2 = 'BotService-' + (RandomString -allChars $false -len 6)
 
     $Secret = "youriSecret"
-    $null = $env.Add('WebApplicationName1', $WebApplicationName1)
-    $null = $env.Add('WebApplicationName2', $WebApplicationName2)
+    $null = $env.Add('WebApplication1', $WebApplication1)
+    $null = $env.Add('WebApplication2', $WebApplication2)
     $null = $env.Add('NewBotService1', $NewBotService1)
     $null = $env.Add('NewBotService2', $NewBotService2)
     $null = $env.Add('Secret', $Secret)

@@ -196,6 +196,9 @@ function New-AzBotService {
                 Write-Error $NameAvailabilityResponse.Message
                 throw
             }
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $EnvPSBoundParameters['SubscriptionId'] = [System.String]$SubscriptionId
+            }
             if ($BotKind -eq $Kind)
             {
                 if (-not $PSBoundParameters.ContainsKey('DisplayName'))
