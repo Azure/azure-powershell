@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSas"), OutputType(typeof(IkeSaParameters))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSas"), OutputType(typeof(string))]
     public class GetAzVirtualNetworkGatewayConnectionIkeSasCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]
@@ -60,11 +60,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            PSVirtualNetworkGatewayConnection existingConnection = null;
-
             if (ParameterSetName.Equals("ByInputObject"))
             {
-                existingConnection = InputObject;
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
                 this.Name = this.InputObject.Name;
             }
@@ -77,23 +74,33 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = parsedResourceId.ResourceGroupName;
                 }
 
-                existingConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
+                //existingConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
             }
 
-            if (existingConnection == null)
-            {
-                throw new PSArgumentException(Properties.Resources.ResourceNotFound, "Virtual Network Gateway Connection");
-            }
+            //if (existingConnection == null)
+            //{
+            //    throw new PSArgumentException(Properties.Resources.ResourceNotFound, "Virtual Network Gateway Connection");
+            //}
 
             base.Execute();
 
-            if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
+            //if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
+            //{
+            //    //WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+
+            //    var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
+
+            //    WriteObject($"\nIKE Security Associations are:-\n{ikesas}\n");
+            //}
+            if(this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
-                WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-
                 var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
+                WriteObject($"\nThe IKE SAs are:-\n{ikesas}\n");
 
-                WriteObject($"\nIKE Security Associations are:-\n{ikesas}\n");
+            }
+            else
+            {
+                throw new PSArgumentException(Properties.Resources.ResourceNotFound, this.Name);
             }
         }
     }

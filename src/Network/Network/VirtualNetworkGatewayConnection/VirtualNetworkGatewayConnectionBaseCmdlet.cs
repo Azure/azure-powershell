@@ -17,6 +17,7 @@ using AutoMapper;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
@@ -83,9 +84,13 @@ namespace Microsoft.Azure.Commands.Network
 
         public string GetVirtualNetworkGatewayConnectionIkeSas(string resourceGroupName, string name)
         {
+            string result = string.Empty;
+
             this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
-            
-            return this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+
+            result = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+
+            return result;
         }
 
         public bool IsVirtualNetworkGatewayConnectionSharedKeyPresent(string resourceGroupName, string name)
