@@ -181,9 +181,6 @@ function New-AzBotService {
             if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                 $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
             }
-            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $EnvPSBoundParameters['SubscriptionId'] = $SubscriptionId
-            }
             $BotKind = 'bot'
             If ($PSBoundParameters.ContainsKey('Registration'))
             {
@@ -198,6 +195,9 @@ function New-AzBotService {
             {
                 Write-Error $NameAvailabilityResponse.Message
                 throw
+            }
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $EnvPSBoundParameters['SubscriptionId'] = $SubscriptionId
             }
             if ($BotKind -eq $Kind)
             {
