@@ -2,12 +2,6 @@
 
 The authentication functionality in Az.Accounts is one of the most important pieces in Azure PowerShell. To make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix which should be honored by each release of Az.Accounts when there is any change related to authentication.
 
-**Priority Clarification**
-
-- `P0`: Run if any authentication related code change in Az.Accounts, or upgrading Azure.Identity or MSAL library
-- `P1`: Run if upgrading minor or major version of Azure.Identity or MSAL library
-- `P2`: Run if upgrading major version of Azure.Identity or MSAL library
-
 ## Azure Public Cloud
 
 Azure Public Cloud is the most important Azure instance, all tests should run against it.
@@ -26,16 +20,31 @@ In theory all the combination of different OS platforms and PWSH versions should
 - PWSH 7.0.x on MacOS
 - CloudShell
 - Docker Env for Ubuntu
+- Windows PowerShell 5.1 on SAW machine
 
-There's no need to run all tests on each of above platforms, the recommendation is to run most of tests on `Windows PowerShell 5.1` and to run the remaining tests on `PWSH 7.0.x on Windows`; just run smoke test `Connect-AzAccount`/`Connect-AzAccount -DeviceCode` on other platforms.
+There's no need to run all tests on each of above platforms, the recommendation is:
+
+1. For `Windows PowerShell 5.1`, run all tests.
+2. For `PWSH 7.0.x on Windows`, run tests on columns **Interactive/Device Code/SP Secret** (please refer to test scenario table).
+3. For other platforms, just run smoke test `Connect-AzAccount`/`Connect-AzAccount -DeviceCode`.
 
 ### Connect-AzAccount Using Work/School Account
+
+**Category Clarification**
+
+All test scenario are grouped into three different category: P0, P1 and P2. Whether to verify test scenario in one category or not depends on change scope in Az.Accounts. In the following table, `Yes` means test scenario in that category need to be verified , `No` means no need to verify.
+
+|Category\Change in Az.Accounts|Upgrade major version of Azure.Identity/MSAL lib|Upgrade minor version of Azure.Identity/MSAL lib| Auth related code change in Az.Accounts |
+|----|----|----|----|
+|P0|Yes|Yes|Yes|
+|P1|Yes|Yes|No|
+|P2|Yes|No|No|
 
 |Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
 |----|----|----|----|----|----|----|----|----|----|
 |`No parameter`|P0(SemiAuto)|P0|P0(SemiAuto-No)|P0(SemiAuto-No)|P0(SemiAuto-No)|P0(SemiAuto-No)|P0|P0|P0|
 |`-Subscription sub-id`|P0(SemiAuto)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P2(SemiAuto-No)|P1|P1|P1|
-|`-Subscription sub-name`|P1(SemiAuto)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|(SemiAuto-No)|P2(SemiAuto-No)|P2|P2|P2|
+|`-Subscription sub-name`|P1(SemiAuto)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2|P2|P2|
 |`-Subscription sub-id-in-2nd-tenant`|P0(SemiAuto-No)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|NA|NA|NA|
 |`-Tenant tenant-id`|P0(SemiAuto)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P2(SemiAuto-No)|P1|P1|P1|
 |`-Tenant 2nd-tenant-id`|P1(SemiAuto-No)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|NA|NA|NA|
@@ -192,3 +201,7 @@ You may save json content below as template file, make sure the value of `parame
     ```
 
     c. Although failed to login, but the http reqeust `https://msft.sts.microsoft.com/adfs/services/trust/2005/usernamemixed` should be successful.
+
+5. How to test on SAW machine
+
+    It would be great if you have real SAW machine. If not, please run PowerShell under [Constrained Language Mode](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/) which should have similar effect as on SAW machine.
