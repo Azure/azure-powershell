@@ -234,8 +234,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-### Note #1: Content of C:\samples\dcrEx1.json
-```yaml
+Note #1: Content of C:\samples\dcrEx1.json
+```json
 {
   "properties": {
     "dataSources": {
@@ -272,8 +272,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 }
 ```
 
-### Note #2: Content of C:\samples\dcrEx2.json
-```yaml
+Note #2: Content of C:\samples\dcrEx2.json
+```json
 {
   "DataSources": {
     "PerformanceCounters": [
