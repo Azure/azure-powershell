@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new `Reset-AzApiManagementBackendConnection` cmdlet.
 
 ## Version 2.2.0
 * [Breaking change] `New-AzApiManagementProduct` by default has no subscription limit.
