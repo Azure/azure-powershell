@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Changed `Get-AzAlertHistory` cmdlet title and description.
 
 ## Version 2.3.0
 * Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]
