@@ -1,3 +1,88 @@
+## 5.3.0 - December 2020
+#### Az.Accounts
+* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
+* Improved debug log of long running operations in generated modules
+
+#### Az.Automation
+* Fixed issue that parameters of 'Start-AzAutomationRunbook' cannot convert PSObject wrapped string to JSON string [#13240]
+* Fixed location completer for New-AzAutomationUpdateManagementAzureQuery cmdlet
+
+#### Az.Compute
+* New parameter 'VM' in new parameter set 'VMParameterSet' added to 'Get-AzVMDscExtensionStatus' and 'Get-AzVMDscExtension' cmdlets. 
+
+#### Az.Databricks
+* Fixed an issue that may cause 'New-AzDatabricksVNetPeering' to return before it is fully provisioned (https://github.com/Azure/autorest.powershell/issues/610)
+
+#### Az.DataFactory
+* Fixed the command 'Invoke-AzDataFactoryV2Pipeline' for SupportsShouldProcess issue
+
+#### Az.DesktopVirtualization
+* Added StartVMOnConnect property to hostpool.
+
+#### Az.HDInsight
+* Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
+
+#### Az.KeyVault
+* Added a new parameter '-AsPlainText' to 'Get-AzKeyVaultSecret' to directly return the secret in plain text [#13630]
+* Supported selective restore a key from a managed HSM full backup [#13526]
+* Fixed some minor issues [#13583] [#13584]
+* Added missing return objects of 'Get-Secret' in SecretManagement module
+* Fixed an issue that may cause vault to be created without default access policy [#13687]
+
+#### Az.Kusto
+* Updated API version to 2020-09-18.
+
+#### Az.Network
+* Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario
+    - 'Remove-AzExpressRouteCircuitPeeringConfig' and 'Remove-AzExpressRouteCircuitConnectionConfig'
+
+#### Az.PolicyInsights
+* Added support for returning paginated results for Get-AzPolicyState
+
+#### Az.RecoveryServices
+* Enabled softdelete feature for SQL.
+* Fixed SQL AG restore and removed the container name check.
+* Changed container name format for Azure Files backup item.
+* Added CMK feature support for Recovery services vault.
+
+#### Az.Resources
+* Fixed a NullRef exception issue in 'New-AzureManagedApplication' and 'Set-AzureManagedApplication'.
+* Updated Azure Resource Manager SDK to use latest DeploymentScripts GA api-version: 2020-10-01.
+
+#### Az.ServiceFabric
+* Fixed 'Add-AzServiceFabricNodeType'. Added node type to service fabric cluster before creating virtual machine scale set.
+
+#### Az.Sql
+* Fixed parameter description for 'InstanceFailoverGroup' command.
+* Updated the logic in which schemaName, tableName and columnName are being extracted from the id of SQL Data Classification commands.
+* Fixed Status and StatusMessage fields in 'Get-AzSqlDatabaseImportExportStatus' to conform to documentation
+* Added Microsoft support operations (DevOps) auditing cmdlets: Get-AzSqlServerMSSupportAudit, Set-AzSqlServerMSSupportAudit, Remove-AzSqlServerMSSupportAudit
+
+#### Az.Storage
+* Supported create/update/get/list EncryptionScope of a Storage account
+    - 'New-AzStorageEncryptionScope'
+    - 'Update-AzStorageEncryptionScope'
+    - 'Get-AzStorageEncryptionScope'
+* Supported create container and upload blob with Encryption Scope setting
+    - 'New-AzRmStorageContainer'
+    - 'New-AzStorageContainer'
+    - 'Set-AzStorageBlobContent'
+
+### Thanks to our community contributors
+* Andreas Wolter (@AndreasWolter), removed marketing language, better example filter (#13671)
+* Tidjani Belmansour (@BelRarr), Update Get-AzBillingInvoice.md (#13634)
+* David Klempfner (@DavidKlempfner)
+  * Fixed spelling mistake (#13677)
+  * Update PSMetricNoDetails.cs (#13676)
+* @kilobyte97, bugfix for remove cmdlet to delete config (#13655)
+* @kongou-ae, Update Set-AzFirewall.md (#13727)
+* @MasterKuat, Fix swap between title and code in documentation (#13666)
+* NickT (@nukeulis), Update Set-AzContext.md (#13702)
+* @PaulHCode, Update Start-AzJitNetworkAccessPolicy.md - Fix the Example to display the proper cmdlet being demonstrated (#13713)
+* Ryan Borstelmann (@ryanborMSFT), Removed Subscription ID (#13715)
+* Shashikant Shakya (@shshakya), Update Set-AzSqlDatabase.md (#13674)
+* Sebastian Olsen (@Spacebjorn), Update Get-AzRecoveryServicesBackupItem.md (#13719)
+
 ## 5.2.0 - December 2020
 #### Az.Accounts
 * Managed to parse ExpiresOn time from raw token if could not get from underlying library
