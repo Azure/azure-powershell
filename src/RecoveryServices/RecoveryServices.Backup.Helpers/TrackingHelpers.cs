@@ -44,10 +44,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -71,10 +75,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -98,9 +106,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -122,11 +134,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T: ServiceClientModel.OperationStatus
         {
             var operationId = response.Response.Headers.GetOperationResultId();
-            var opStatusResponse = getOpStatus(operationId);            
-            
+            var opStatusResponse = getOpStatus(operationId);
+
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status == "InProgress")
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -149,9 +165,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             var operationId = response.Response.Headers.GetOperationResultId();
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -188,10 +208,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             var operationId = response.Response.Headers.GetOperationResultId();
 
             var opStatusResponse = getOpStatus(operationId);
-
+            
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                Thread.Sleep(5000);
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 

@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // sleep for 30 seconds before checking again
                     string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
                     
-                    if(String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0)
+                    if(String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0  && !TestMockSupport.RunningMocked)
                     {
                         Thread.Sleep(30000);
                     }                    

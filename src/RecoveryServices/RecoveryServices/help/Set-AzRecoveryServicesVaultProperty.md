@@ -21,7 +21,7 @@ Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <
 
 ### AzureRSVaultCMKParameterSet
 ```
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyID <string> -KeyVaultSubscriptionId <string> [-InfrastructureEncryption] [-VaultId <String>]
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId <string> -KeyVaultSubscriptionId <string> [-InfrastructureEncryption] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

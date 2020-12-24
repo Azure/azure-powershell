@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultContext");
         }
 
-        [Fact]
+        [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMSetVaultProperty()
