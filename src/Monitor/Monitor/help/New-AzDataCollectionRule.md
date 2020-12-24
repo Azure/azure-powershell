@@ -14,7 +14,7 @@ Create a data collection rule.
 
 ### ByFile (Default)
 ```
-New-AzDataCollectionRule 
+New-AzDataCollectionRule
    -Location <string>
    -ResourceGroupName <string>
    -RuleName <string>
@@ -41,10 +41,10 @@ The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported 
 ## EXAMPLES
 
 ### Example 1: Create data collection rule, JSON from Rest API
-```
-PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcrEx1' -RuleFile 'C:\samples\dcrEx1.json' 
-                                -Description 'Dcr description' 
+```powershell
+PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr'
+                                -RuleName 'newDcrEx1' -RuleFile 'C:\samples\dcrEx1.json'
+                                -Description 'Dcr description'
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : Dcr description
@@ -58,15 +58,51 @@ Name              : newDcrEx1
 Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
+
+# Note: Content of C:\samples\dcrEx1.json
+{
+  "properties": {
+    "dataSources": {
+      "performanceCounters": [
+        {
+          "streams": [
+            "Microsoft-InsightsMetrics"
+          ],
+          "scheduledTransferPeriod": "PT1M",
+          "samplingFrequencyInSeconds": 10,
+          "counterSpecifiers": [
+            "\\Processor Information(_Total)\\% Processor Time"
+          ],
+          "name": "perfCounter01"
+        }
+      ]
+    },
+    "destinations": {
+      "azureMonitorMetrics": {
+        "name": "azureMonitorMetrics-default"
+      }
+    },
+    "dataFlows": [
+      {
+        "streams": [
+          "Microsoft-InsightsMetrics"
+        ],
+        "destinations": [
+          "azureMonitorMetrics-default"
+        ]
+      }
+    ]
+  }
+}
 ```
 
-This command creates a data collection rules for the current subscription. Note #1 has the content of the Rule File.
+This command creates a data collection rules for the current subscription.
 
 ### Example 2: Create data collection rule, JSON from PSDataCollectionRuleResource
-```
-PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcrEx2' -RuleFile 'C:\samples\dcrEx2.json' 
-                                -Description 'Dcr description' 
+```powershell
+PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr'
+                                -RuleName 'newDcrEx2' -RuleFile 'C:\samples\dcrEx2.json'
+                                -Description 'Dcr description'
                                 -Tags @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : Dcr description
@@ -80,9 +116,43 @@ Name              : newDcrEx2
 Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
+
+# Note: Content of C:\samples\dcrEx2.json
+{
+  "DataSources": {
+    "PerformanceCounters": [
+      {
+        "Streams": [
+          "Microsoft-InsightsMetrics"
+        ],
+        "ScheduledTransferPeriod": "PT1M",
+        "SamplingFrequencyInSeconds": 10,
+        "CounterSpecifiers": [
+          "\\Processor Information(_Total)\\% Processor Time"
+        ],
+        "Name": "perfCounter01"
+      }
+    ]
+  },
+  "Destinations": {
+    "AzureMonitorMetrics": {
+      "Name": "azureMonitorMetrics-default"
+    }
+  },
+  "DataFlows": [
+    {
+      "Streams": [
+        "Microsoft-InsightsMetrics"
+      ],
+      "Destinations": [
+        "azureMonitorMetrics-default"
+      ]
+    }
+  ]
+}
 ```
 
-This command creates a data collection rules for the current subscription. Note #2 has the content of the Rule File.
+This command creates a data collection rules for the current subscription.
 
 ## PARAMETERS
 
@@ -233,80 +303,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
 
 ## NOTES
-
-Note #1: Content of C:\samples\dcrEx1.json
-```json
-{
-  "properties": {
-    "dataSources": {
-      "performanceCounters": [
-        {
-          "streams": [
-            "Microsoft-InsightsMetrics"
-          ],
-          "scheduledTransferPeriod": "PT1M",
-          "samplingFrequencyInSeconds": 10,
-          "counterSpecifiers": [
-            "\\Processor Information(_Total)\\% Processor Time"
-          ],
-          "name": "perfCounter01"
-        }
-      ]
-    },
-    "destinations": {
-      "azureMonitorMetrics": {
-        "name": "azureMonitorMetrics-default"
-      }
-    },
-    "dataFlows": [
-      {
-        "streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "destinations": [
-          "azureMonitorMetrics-default"
-        ]
-      }
-    ]
-  }
-}
-```
-
-Note #2: Content of C:\samples\dcrEx2.json
-```json
-{
-  "DataSources": {
-    "PerformanceCounters": [
-      {
-        "Streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "ScheduledTransferPeriod": "PT1M",
-        "SamplingFrequencyInSeconds": 10,
-        "CounterSpecifiers": [
-          "\\Processor Information(_Total)\\% Processor Time"
-        ],
-        "Name": "perfCounter01"
-      }
-    ]
-  },
-  "Destinations": {
-    "AzureMonitorMetrics": {
-      "Name": "azureMonitorMetrics-default"
-    }
-  },
-  "DataFlows": [
-    {
-      "Streams": [
-        "Microsoft-InsightsMetrics"
-      ],
-      "Destinations": [
-        "azureMonitorMetrics-default"
-      ]
-    }
-  ]
-}
-```
 
 ## RELATED LINKS
 

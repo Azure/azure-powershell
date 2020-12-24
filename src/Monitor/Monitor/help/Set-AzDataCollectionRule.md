@@ -65,7 +65,7 @@ The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported 
 ## EXAMPLES
 
 ### Example 1: Update data collection rule, JSON from Rest API
-```
+```powershell
 PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
                                 -ResourceGroupName 'testdcr' 
                                 -RuleName 'newDcr' 
@@ -83,12 +83,48 @@ Name              : newDcr
 Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
+
+# Note: Content of C:\samples\dcr1.json
+{
+  "properties": {
+    "dataSources": {
+      "performanceCounters": [
+        {
+          "streams": [
+            "Microsoft-InsightsMetrics"
+          ],
+          "scheduledTransferPeriod": "PT1M",
+          "samplingFrequencyInSeconds": 10,
+          "counterSpecifiers": [
+            "\\Processor Information(_Total)\\% Processor Time"
+          ],
+          "name": "perfCounter01"
+        }
+      ]
+    },
+    "destinations": {
+      "azureMonitorMetrics": {
+        "name": "azureMonitorMetrics-default"
+      }
+    },
+    "dataFlows": [
+      {
+        "streams": [
+          "Microsoft-InsightsMetrics"
+        ],
+        "destinations": [
+          "azureMonitorMetrics-default"
+        ]
+      }
+    ]
+  }
+}
 ```
 
-This command replaces an existing data collection rules for the current subscription. Note #1 has the content of the Rule File.
+This command replaces an existing data collection rules for the current subscription.
 
 ### Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
-```
+```powershell
 PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
                                 -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' 
                                 -RuleFile 'C:\samples\dcr2.json'
@@ -105,12 +141,46 @@ Name              : newDcr
 Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
+
+# Note: Content of C:\samples\dcr2.json
+{
+  "DataSources": {
+    "PerformanceCounters": [
+      {
+        "Streams": [
+          "Microsoft-InsightsMetrics"
+        ],
+        "ScheduledTransferPeriod": "PT1M",
+        "SamplingFrequencyInSeconds": 10,
+        "CounterSpecifiers": [
+          "\\Processor Information(_Total)\\% Processor Time"
+        ],
+        "Name": "perfCounter01"
+      }
+    ]
+  },
+  "Destinations": {
+    "AzureMonitorMetrics": {
+      "Name": "azureMonitorMetrics-default"
+    }
+  },
+  "DataFlows": [
+    {
+      "Streams": [
+        "Microsoft-InsightsMetrics"
+      ],
+      "Destinations": [
+        "azureMonitorMetrics-default"
+      ]
+    }
+  ]
+}
 ```
 
-This command replaces an existing data collection rules for the current subscription. Note #2 has the content of the Rule File.
+This command replaces an existing data collection rules for the current subscription.
 
 ### Example 3: Update data collection rule from object
-```
+```powershell
 PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
 PS C:\>$dcr.Description = 'This is a test'
 PS C:\>$dcr | Set-AzDataCollectionRule
@@ -355,80 +425,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
 
 ## NOTES
-
-Note #1: Content of C:\samples\dcr1.json
-```json
-{
-  "properties": {
-    "dataSources": {
-      "performanceCounters": [
-        {
-          "streams": [
-            "Microsoft-InsightsMetrics"
-          ],
-          "scheduledTransferPeriod": "PT1M",
-          "samplingFrequencyInSeconds": 10,
-          "counterSpecifiers": [
-            "\\Processor Information(_Total)\\% Processor Time"
-          ],
-          "name": "perfCounter01"
-        }
-      ]
-    },
-    "destinations": {
-      "azureMonitorMetrics": {
-        "name": "azureMonitorMetrics-default"
-      }
-    },
-    "dataFlows": [
-      {
-        "streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "destinations": [
-          "azureMonitorMetrics-default"
-        ]
-      }
-    ]
-  }
-}
-```
-
-Note #2: Content of C:\samples\dcr2.json
-```json
-{
-  "DataSources": {
-    "PerformanceCounters": [
-      {
-        "Streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "ScheduledTransferPeriod": "PT1M",
-        "SamplingFrequencyInSeconds": 10,
-        "CounterSpecifiers": [
-          "\\Processor Information(_Total)\\% Processor Time"
-        ],
-        "Name": "perfCounter01"
-      }
-    ]
-  },
-  "Destinations": {
-    "AzureMonitorMetrics": {
-      "Name": "azureMonitorMetrics-default"
-    }
-  },
-  "DataFlows": [
-    {
-      "Streams": [
-        "Microsoft-InsightsMetrics"
-      ],
-      "Destinations": [
-        "azureMonitorMetrics-default"
-      ]
-    }
-  ]
-}
-```
 
 ## RELATED LINKS
 
