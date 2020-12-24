@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
             this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
             this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
+            this.Identity = vault.Identity;
         }
 
         #endregion
@@ -121,6 +122,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Properties.
         /// </summary>
         public ARSVaultProperties Properties { get; set; }
+
+        /// <summary>
+        /// Gets or sets Identity.
+        /// </summary>
+        public IdentityData Identity { get; set; }
 
         #endregion
     }
@@ -195,6 +201,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         GeoRedundant = 1,
         LocallyRedundant
+    }
+
+    /// <summary>
+    /// Class to define the vault BackupStorageRedundancy settings.
+    /// </summary>
+    public enum MSIdentity
+    {
+        SystemAssigned = 1,
+        None
     }
 
     /// <summary>

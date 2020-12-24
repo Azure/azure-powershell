@@ -21,6 +21,7 @@
 * Enabled softdelete feature for SQL.
 * Fixing SQL AG restore, removing the container name check.
 * Changed container name format for Azure Files backup item.
+* Adding CMK feature support for Recovery services vault.
 
 ## Version 3.1.0
 * Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.

@@ -74,7 +74,7 @@ function Test-AzureFSItem
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-2: Get items for container with ProtectionStatus filter
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -82,7 +82,7 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-ProtectionStatus Healthy;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-3: Get items for container with Status filter
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -90,7 +90,7 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-ProtectionState IRPending;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-4: Get items for container with friendly name and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -99,7 +99,7 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
 			-ProtectionStatus Healthy;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-5: Get items for container with friendly name and Status filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -108,7 +108,7 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
 			-ProtectionState IRPending;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-6: Get items for container with Status and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -117,13 +117,13 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-ProtectionState IRPending `
 			-ProtectionStatus Healthy;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-7: Get items for Vault Id and Policy
 		$items = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Policy $policy;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-8: Get items for container with friendly name, Status and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -133,7 +133,7 @@ function Test-AzureFSItem
 			-Name $fileShareFriendlyName `
 			-ProtectionState IRPending `
 			-ProtectionStatus Healthy;
-		Assert-True { $items.Name -contains $fileShareName }
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 	}
 	finally
 	{
@@ -192,7 +192,7 @@ function Test-AzureFSProtection
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles
-		Assert-True { $item.Name -contains $fileShareName }
+		Assert-True { $item.FriendlyName -contains $fileShareFriendlyName }
 		Assert-True { $item.LastBackupStatus -eq "IRPending" }
 		Assert-True { $item.ProtectionPolicyName -eq $policyName }
 		
@@ -211,7 +211,7 @@ function Test-AzureFSProtection
 		-Container $container `
 		-WorkloadType AzureFiles
 
-		Assert-True { $item.Name -contains $fileShareName }
+		Assert-True { $item.FriendlyName -contains $fileShareFriendlyName }
 		Assert-True { $item.LastBackupStatus -eq "IRPending" }
 		Assert-True { $item.ProtectionPolicyName -eq $newPolicyName }
 	}
