@@ -14,6 +14,7 @@
 
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Extensions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
@@ -24,15 +25,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
     {
-        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue, IList<Regex> matchers = null)
+        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue, IList<Regex> matchers = null, string clientRequestId = null)
         {
             MessageQueue = queue;
             Matchers = matchers;
+            this.clientRequestId = clientRequestId;
         }
 
         public ConcurrentQueue<string> MessageQueue { get; private set; }
 
         private IList<Regex> Matchers { get; set; }
+
+        private string clientRequestId;
 
         public void Configuration(string source, string name, string value)
         {
@@ -62,8 +66,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
         {
-            string requestAsString = request == null ? string.Empty : GeneralUtilities.GetLog(request, Matchers);
-            MessageQueue.CheckAndEnqueue(requestAsString);
+            // CmdletInfoHandler sets/updates x-ms-client-request-id during SendAsync() no matter if SDK sets x-ms-client-request-id.
+            // Update request here to ensure its value consistent with real result.
+            if (request != null && clientRequestId != null)
+            {
+                request.AddClientRequestId(clientRequestId);
+            }
+            MessageQueue.CheckAndEnqueue(GeneralUtilities.GetLog(request, Matchers));
         }
 
         public void TraceError(string invocationId, Exception exception)

@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             ServiceClientTracing.IsEnabled = true;
             base.SetupDebuggingTraces();
             _serviceClientTracingInterceptor = _serviceClientTracingInterceptor
-                ?? new ServiceClientTracingInterceptor(DebugMessages, _matchers);
+                ?? new ServiceClientTracingInterceptor(DebugMessages, _matchers, _clientRequestId);
             ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
         }
 

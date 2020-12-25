@@ -311,6 +311,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpResponseMessage response, IList<Regex> matchers = null)
         {
+            if (response == null)
+            {
+                return string.Empty;
+            }
+
             string body = response.Content == null ? string.Empty
                 : FormatString(response.Content.ReadAsStringAsync().Result);
 
@@ -323,6 +328,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetLog(HttpRequestMessage request, IList<Regex> matchers = null)
         {
+            if (request == null)
+            {
+                return string.Empty;
+            }
+
             string body = request.Content == null ? string.Empty
                 : FormatString(request.Content.ReadAsStringAsync().Result);
 
