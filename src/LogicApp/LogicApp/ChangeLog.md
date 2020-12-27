@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for Get-AzLogicAppTriggerHistory and Get-AzLogicAppRunAction only retrieving the first page of results
 
 ## Version 1.4.0
 * Fixed for Get-AzLogicAppRunHistory only retrieving the first page of results
