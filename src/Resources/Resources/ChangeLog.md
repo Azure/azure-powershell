@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.1
 * Fixed a NullRef exception issue in `New-AzureManagedApplication` and `Set-AzureManagedApplication`.
 * Updated Azure Resource Manager SDK to use latest DeploymentScripts GA api-version: 2020-10-01.
 

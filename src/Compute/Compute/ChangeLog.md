@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.8.0
 * New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDscExtensionStatus` and `Get-AzVMDscExtension` cmdlets. 
 
 ## Version 4.7.0

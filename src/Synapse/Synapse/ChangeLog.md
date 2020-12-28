@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.0
 * Added support for operation of Advanced Threat Protection settings in SqlPool-level
     - Add `Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
     - Add `Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
