@@ -11,14 +11,16 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa"), OutputType(typeof(PSVirtuaNetworkGatewayConnectionIkeSa))]
-    public class GetAzVirtualNetworkGatewayConnectionIkeSaCommand : VirtualNetworkGatewayConnectionBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSas"), OutputType(typeof(string))]
+    public class GetAzVirtualNetworkGatewayConnectionIkeSasCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]
         [Parameter(
@@ -71,31 +73,29 @@ namespace Microsoft.Azure.Commands.Network
                     Name = parsedResourceId.ResourceName;
                     ResourceGroupName = parsedResourceId.ResourceGroupName;
                 }
+
+                //existingConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
             }
 
+            //if (existingConnection == null)
+            //{
+            //    throw new PSArgumentException(Properties.Resources.ResourceNotFound, "Virtual Network Gateway Connection");
+            //}
+
             base.Execute();
-            
+
+            //if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
+            //{
+            //    //WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+
+            //    var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
+
+            //    WriteObject($"\nIKE Security Associations are:-\n{ikesas}\n");
+            //}
             if(this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
-                PSVirtuaNetworkGatewayConnectionIkeSa ikesas = this.GetVirtualNetworkGatewayConnectionIkeSa(this.ResourceGroupName, this.Name);
-
-                WriteObject(this.ResourceGroupName);
-                WriteObject(this.Name);
-
-                WriteObject("\n\n\n\n\n");
-
-                foreach (var mmsa in ikesas.IkeSa)
-                {
-                    WriteObject($"\n{mmsa}\n");
-                    foreach (var qmsa in mmsa.quickModeSa)
-                    {
-                        WriteObject($"\n{qmsa}\n");
-                    }
-                }
-
-                WriteObject("\n\n\n\n\n");
-
-                WriteObject(ikesas.IkeSa, true);
+                var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
+                WriteObject($"\nThe IKE SAs are:-\n{ikesas}\n");
 
             }
             else

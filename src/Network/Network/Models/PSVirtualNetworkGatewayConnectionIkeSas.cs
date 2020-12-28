@@ -15,16 +15,17 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
 
-    public class PSVirtuaNetworkGatewayConnectionIkeSa
+    public class PSVirtuaNetworkGatewayConnectionIkeSas : PSTopLevelResource
     {
-        public List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa> IkeSa { get; set; }
+        public List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa> ikesas;
 
-        public PSVirtuaNetworkGatewayConnectionIkeSa()
+        public PSVirtuaNetworkGatewayConnectionIkeSas()
         {
-            IkeSa = new List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa>();
+            ikesas = new List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa>();
         }
     }
 

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.network/ge
 schema: 2.0.0
 ---
 
-# Get-AzVirtualNetworkGatewayConnectionIkeSa
+# Get-AzVirtualNetworkGatewayConnectionIkeSas
 
 ## SYNOPSIS
 Get IKE Security Associations of a Virtual Network Gateway Connection
@@ -14,48 +14,43 @@ Get IKE Security Associations of a Virtual Network Gateway Connection
 
 ### ByName (Default)
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName <String> -Name <String>
+Get-AzVirtualNetworkGatewayConnectionIkeSas -ResourceGroupName <String> -Name <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject <PSVirtualNetworkGatewayConnection>
+Get-AzVirtualNetworkGatewayConnectionIkeSas -InputObject <PSVirtualNetworkGatewayConnection>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
  ```
 
  ### ByResourceId
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceId <String>
+Get-AzVirtualNetworkGatewayConnectionIkeSas -ResourceId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzVirtualNetworkGatewayConnectionIkeSa** cmdlet returns the IKE Security Associations of your connection based on the Connection Name and Resource Group Name.
+The **Get-AzVirtualNetworkGatewayConnectionIkeSas** cmdlet returns the IKE Security Associations of your connection based on the Connection Name and Resource Group Name.
 If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specifying the -Name parameter, the output will not show the IKE Security Associations.
 
 ## EXAMPLES
 
-### 1: Get-AzVirtualNetworkGatewayConnectionIkeSa by Connection Name.
+### 1: Get-AzVirtualNetworkGatewayConnectionIkeSas by Connection Name.
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -Name myTunnel -ResourceGroupName myRG
-```
-
-Returns the object of PSVirtualNetworkGatewayConnectionIkeSa for the connection "myTunnel" within the resource group "myRG"
-
-### 2: Get-AzVirtualNetworkGatewayConnectionIkeSa by Connection object.
-```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $myTunnel
+Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
 
-Returns the object of PSVirtualNetworkGatewayConnectionIkeSa for the connection "$myTunnel" where "$myTunnel" is the Virtual Network Gateway Connection object
+Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
-### 3: Get-AzVirtualNetworkGatewayConnectionIkeSa by Connection Resource ID.
+### 2: Get-AzVirtualNetworkGatewayConnectionIkeSas by Connection object.
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceId $resourceUri
+Get-AzVirtualNetworkGatewayConnection -Name myTunnel* -ResourceGroupName myRG
 ```
 
-Returns the object of PSVirtualNetworkGatewayConnectionIkeSa for the Virtual Network Gateway Connection with resource URI as "$resourceUri"
+Returns all Virtual Network Gateway Connections that start with "myTunnel" within the resource group "myRG"
+
+### 3: Get-AzVirtualNetworkGatewayConnectionIkeSas by Connection Resource ID.
 
 ## PARAMETERS
 
@@ -191,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtuaNetworkGatewayConnectionIkeSa
+### Microsoft.Azure.Commands.Network.Models.IkeSaParameters
 
 ## NOTES
 
