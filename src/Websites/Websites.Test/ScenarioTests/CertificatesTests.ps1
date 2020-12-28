@@ -19,13 +19,14 @@ Tests creating a new managed cert for app.
 function Test-NewAzWebAppCertificate
 {
 	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"	
+	$appname = "lketmtestantps10"
+	$certName = "adorenowcert"
 	$prodHostname = "www.adorenow.net"	
 	$thumbprint=""
 
 	try{		
 
-		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $prodHostname
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert
@@ -47,12 +48,13 @@ function Test-NewAzWebAppCertificateWithSSLBinding
 {
 	$rgname = "lketmtestantps10"
 	$appname = "lketmtestantps10"	
-	$prodHostname = "www.adorenow.net"	
+	$prodHostname = "www.adorenow.net"
+	$certName = "adorenowcert"
 	$thumbprint=""
 
 	try{		
 
-		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname -AddBinding
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $prodHostname -AddBinding
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert
@@ -86,11 +88,12 @@ function Test-NewAzWebAppCertificateForSlot
 	$appname = "lketmtestantps10"	
 	$slot = "testslot"	
 	$slotHostname = "testslot.adorenow.net"
+	$certName = "adorenowcert"
 	$thumbprint=""
 
 	try{
 		
-		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $slotHostname -Slot $slot
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $slotHostname -Slot $slot
 		$thumbprint=$cert.ThumbPrint
 		
 		# Assert
@@ -114,11 +117,12 @@ function Test-RemoveAzWebAppCertificate
 	$rgname = "lketmtestantps10"
 	$appname = "lketmtestantps10"	
 	$prodHostname = "www.adorenow.net"	
+	$certName = "adorenowcert"
 	$thumbprint=""
 
 	try{		
 
-		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -WebAppName $appname -HostName $prodHostname
+		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $prodHostname
 		$thumbprint=$cert.ThumbPrint
 
 		# Assert

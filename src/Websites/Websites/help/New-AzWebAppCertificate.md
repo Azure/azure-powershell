@@ -13,8 +13,8 @@ Creates an App service managed certificate for an Azure Web App.
 ## SYNTAX
 
 ```
-New-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
- [-HostName] <String> [-AddCertBinding] [[-SslState] <SslState>] [-DefaultProfile <IAzureContextContainer>]
+New-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [-Name] <String> [[-Slot] <String>]
+ [-HostName] <String> [-AddBinding] [[-SslState] <SslState>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,28 +24,28 @@ The **New-AzWebAppCertificate** cmdlet creates an Azure App Service Managed Cert
 
 ### Example 1
 ```powershell
-PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net"
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -Name"ContosoCert" -HostName "www.ContosoSite.net"
 ```
 
 This command create an App Service Managed Certificate for the given WebApp
 
 ### Example 2
 ```powershell
-PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -Slot "test" -AddCertBinding
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -Name"ContosoCert" -HostName "www.ContosoSite.net" -Slot "test" -AddCertBinding
 ```
 
 This command create an App Service Managed Certificate and binds to the given WebApp Slot.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -HostName "www.ContosoSite.net" -AddCertBinding
+PS C:\> New-AzWebAppCertificate -ResourceGroupName Default-Web-WestUS -WebAppName "ContosoSite" -Name"ContosoCert" -HostName "www.ContosoSite.net" -AddBinding
 ```
 
 This command create an App Service Managed Certificate and binds to the given WebApp.
 
 ## PARAMETERS
 
-### -AddCertBinding
+### -AddBinding
 To add the created certificate to WebApp/slot.
 
 ```yaml
@@ -54,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -84,7 +84,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the certificate.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +129,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -132,7 +147,7 @@ Aliases:
 Accepted values: Disabled, SniEnabled, IpBasedEnabled
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

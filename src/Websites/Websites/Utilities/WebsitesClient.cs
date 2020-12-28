@@ -1003,6 +1003,23 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 webSiteName,
                 sourceSlotName);
         }
+        public IAccessToken GetAccessToken(IAzureContext context)
+        {
+            string tenant = null;
+
+            if (context.Subscription != null && context.Account != null)
+            {
+                tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                      .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                      .FirstOrDefault();
+            }
+
+            if (tenant == null && context.Tenant != null && new Guid(context.Tenant.Id) != Guid.Empty)
+            {
+                tenant = context.Tenant.Id.ToString();
+            }
+            return AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
+        }
 
         private void WriteVerbose(string verboseFormat, params object[] args)
         {

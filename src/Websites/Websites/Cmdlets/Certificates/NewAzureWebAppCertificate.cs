@@ -19,10 +19,15 @@ using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,6 +41,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCertificate))]
     public class NewAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
+        // Poll status for a maximum of 6 minutes (360 seconds / 2 seconds per status check)
+        private const int NumStatusChecks = 72;
         const string CertNamePostFixSeparator = "_";
         const string ParameterSet1Name = "S1";
 
@@ -49,12 +56,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = true, HelpMessage = "The name of the certificate")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "WebAppName")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true, HelpMessage = "Custom hostnames associated with web app/slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = true, HelpMessage = "Custom hostnames associated with web app/slot.")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
@@ -70,11 +81,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         {
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
             {
+                string certName = null;
                 HttpStatusCode statusCode = HttpStatusCode.OK;
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
                 var location = webApp.Location;
 
-                Certificate createdCertdetails = null;
+                Certificate createdCertdetails = new Certificate();
 
                 var certificate = new Certificate(
                     webApp.Location,
@@ -86,7 +98,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                 {
                     try
                     {
-                        createdCertdetails=WebsitesClient.CreateCertificate(ResourceGroupName, HostName, certificate);
+                        //Default certName is HostName
+                        certName = Name != null ? Name : HostName;
+                        createdCertdetails = (PSCertificate)WebsitesClient.CreateCertificate(ResourceGroupName, certName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
@@ -98,35 +112,35 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
                         {
                             throw;
                         }
-                    }
-                    //Try to get the certificate post the create call return 'Accepted' status
-                    var watch = new System.Diagnostics.Stopwatch();
-                    if (statusCode == HttpStatusCode.Accepted)
-                    {
-                        watch.Start();
-                        for (; watch.Elapsed.Minutes < 6;)
+                        if (e.Response.StatusCode == HttpStatusCode.Accepted)
                         {
-                            try
+                            var poll_url = e.Response.Headers["Location"].FirstOrDefault();
+                            var token=WebsitesClient.GetAccessToken(DefaultContext);
+                            HttpClient client = new HttpClient();
+                            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+                            
+                            HttpResponseMessage r;
+                            int numChecks = 0;
+                            do
                             {
-                                createdCertdetails = WebsitesClient.GetCertificate(ResourceGroupName, HostName);
-                                break;
-                            }
-                            catch (DefaultErrorResponseException e)
+                                Thread.Sleep(TimeSpan.FromSeconds(5));
+                                r = client.GetAsync(poll_url).Result;
+                                numChecks++;
+                            } while (r.StatusCode == HttpStatusCode.Accepted && numChecks < NumStatusChecks);
+
+                            if (r.StatusCode == HttpStatusCode.Accepted && numChecks >= NumStatusChecks)
                             {
-                                //if 'NotFound' lets retry for every 5 seconds to get the certificate 
-                                if (e.Response.StatusCode == HttpStatusCode.NotFound)
-                                    Thread.Sleep(5000);
-                                else
-                                    throw;
+                                var rec = new ErrorRecord(new Exception(string.Format($"The creation of the managed certificate '{this.HostName}' is taking longer than expected." +
+                                                                                    $" Please re-try the operation '{CreateInputCommand()}'")),
+                                                                                    string.Empty, ErrorCategory.OperationTimeout, null);
+                                WriteError(rec);
                             }
-                        }
-                        watch.Stop();
-                        if (createdCertdetails == null)
-                        {
-                            throw new Exception(string.Format($"The creation of the managed certificate '{this.HostName}' is taking longer than expected." +
-                                $" Please re-try the operation '{CreateInputCommand()}'"));
+
+
                         }
                     }
+                    createdCertdetails = WebsitesClient.GetCertificate(ResourceGroupName, certName);
+
                     //Add only when user is opted for Binding
                     if (AddBinding)
                     {
@@ -144,7 +158,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
             }
 
         }
-
         private string CreateInputCommand()
         {
             StringBuilder command = new StringBuilder("New-AzWebAppCertificate ");

@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
-        const string ParameterSet1Name = "S1";
-        const string ParameterSet2Name = "S2";
+        const string ParameterSet1Name = "S1";        
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         //[Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]

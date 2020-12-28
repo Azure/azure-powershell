@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45139bc8-efda-47f7-b47c-8f62d94f997d"
+          "14a033f6-000d-470e-9481-71a5e33cfe2b"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"1D6C16FDC413580\""
+          "\"1D6DD162104F3C0\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b0c1d240-5ec0-49d1-ae76-7f45ab4c4702"
+          "fa09a059-3ea1-4fb5-bf88-0169bb7cd0bb"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -45,22 +45,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11985"
         ],
         "x-ms-correlation-request-id": [
-          "a2bcbc57-1d96-48ca-9fa0-09626c5c93ee"
+          "6f8c4836-ef0f-454f-a51a-70f68a31e0d5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T080950Z:a2bcbc57-1d96-48ca-9fa0-09626c5c93ee"
+          "SOUTHINDIA:20201228T123800Z:6f8c4836-ef0f-454f-a51a-70f68a31e0d5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:09:49 GMT"
+          "Mon, 28 Dec 2020 12:38:00 GMT"
         ],
         "Content-Length": [
-          "5532"
+          "5531"
         ],
         "Content-Type": [
           "application/json"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/sites/lketmtestantps10\",\r\n  \"name\": \"lketmtestantps10\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"test\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"lketmtestantps10\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"www.adorenow.net\",\r\n      \"lketmtestantps10.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"lketmtestantps10-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-057.api.azurewebsites.windows.net:454/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/webspaces/lketmtestantps10-CentralUSwebspace/sites/lketmtestantps10\",\r\n    \"repositorySiteName\": \"lketmtestantps10\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"www.adorenow.net\",\r\n      \"lketmtestantps10.azurewebsites.net\",\r\n      \"lketmtestantps10.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"lketmtestantps10.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"www.adorenow.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"lketmtestantps10.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/serverfarms/lketmtestantps10ASP\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2020-11-23T08:08:43.48\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": null,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": null,\r\n      \"windowsFxVersion\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"azureStorageAccounts\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": null,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": null,\r\n      \"minTlsVersion\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0\r\n    },\r\n    \"deploymentId\": \"lketmtestantps10\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"C3E7C05FE8A97695B3AE08C1935F4251C48E338FE439627B2E788D9D718C8A70\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"52.165.155.237\",\r\n    \"possibleInboundIpAddresses\": \"52.165.155.237\",\r\n    \"ftpUsername\": \"lketmtestantps10\\\\$lketmtestantps10\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-057.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"52.165.155.237,52.165.163.74,52.165.156.51,52.165.153.226,52.173.23.151\",\r\n    \"possibleOutboundIpAddresses\": \"52.165.155.237,52.165.163.74,52.165.156.51,52.165.153.226,52.173.23.151\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-057\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {\r\n      \"test\": \"test\"\r\n    },\r\n    \"resourceGroup\": \"lketmtestantps10\",\r\n    \"defaultHostName\": \"lketmtestantps10.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/sites/lketmtestantps10\",\r\n  \"name\": \"lketmtestantps10\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"test\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"lketmtestantps10\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"www.adorenow.net\",\r\n      \"lketmtestantps10.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"lketmtestantps10-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-057.api.azurewebsites.windows.net:454/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/webspaces/lketmtestantps10-CentralUSwebspace/sites/lketmtestantps10\",\r\n    \"repositorySiteName\": \"lketmtestantps10\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"www.adorenow.net\",\r\n      \"lketmtestantps10.azurewebsites.net\",\r\n      \"lketmtestantps10.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"lketmtestantps10.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"www.adorenow.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"lketmtestantps10.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/serverfarms/lketmtestantps10ASP\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2020-12-28T12:36:56.7\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": null,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": null,\r\n      \"windowsFxVersion\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"azureStorageAccounts\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": null,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": null,\r\n      \"minTlsVersion\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0\r\n    },\r\n    \"deploymentId\": \"lketmtestantps10\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"C3E7C05FE8A97695B3AE08C1935F4251C48E338FE439627B2E788D9D718C8A70\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"52.165.155.237\",\r\n    \"possibleInboundIpAddresses\": \"52.165.155.237\",\r\n    \"ftpUsername\": \"lketmtestantps10\\\\$lketmtestantps10\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-057.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"52.165.155.237,52.165.163.74,52.165.156.51,52.165.153.226,52.173.23.151\",\r\n    \"possibleOutboundIpAddresses\": \"52.165.155.237,52.165.163.74,52.165.156.51,52.165.153.226,52.173.23.151\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-057\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {\r\n      \"test\": \"test\"\r\n    },\r\n    \"resourceGroup\": \"lketmtestantps10\",\r\n    \"defaultHostName\": \"lketmtestantps10.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6f6780b1-88ab-4904-8033-dbc3ebf9200a"
+          "6c3c44d6-cf57-453f-9da2-f62a592c56d9"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,7 +102,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5d87aaaf-73be-468e-80c3-431871c8a538"
+          "963eee66-ebed-4862-9c08-2393d4c5ff39"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -114,19 +114,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11984"
         ],
         "x-ms-correlation-request-id": [
-          "bbe4279a-34c1-48eb-9c6f-80521b013fc1"
+          "e66a9a58-ad5a-4fd2-a338-d06968ba585d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T080951Z:bbe4279a-34c1-48eb-9c6f-80521b013fc1"
+          "SOUTHINDIA:20201228T123801Z:e66a9a58-ad5a-4fd2-a338-d06968ba585d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:09:51 GMT"
+          "Mon, 28 Dec 2020 12:38:00 GMT"
         ],
         "Content-Length": [
           "4103"
@@ -148,7 +148,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "55d2f628-80a4-4250-90d2-37a992de2f16"
+          "053de0ce-ebbe-4c13-a219-febdae891703"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,7 +171,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c3ebd029-c3e9-49d1-b709-671f6361d44c"
+          "519f42a2-3e7b-449e-b935-9cc21af4b5dc"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -183,19 +183,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11996"
+          "11981"
         ],
         "x-ms-correlation-request-id": [
-          "43e9fe32-6e17-4952-927c-ac840cbde770"
+          "ff6f2dcc-8521-4190-884b-c00e7d345db1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T080952Z:43e9fe32-6e17-4952-927c-ac840cbde770"
+          "SOUTHINDIA:20201228T123801Z:ff6f2dcc-8521-4190-884b-c00e7d345db1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:09:52 GMT"
+          "Mon, 28 Dec 2020 12:38:01 GMT"
         ],
         "Content-Length": [
           "740"
@@ -217,7 +217,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50ab673e-a67e-4d72-965b-c50bab3a570d"
+          "ae7acfb5-6f29-4f38-a49e-26ed0490fb03"
         ],
         "Accept-Language": [
           "en-US"
@@ -240,7 +240,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "df3e8018-4fec-46a0-a000-4b3bd7173137"
+          "8d457905-a53a-4d08-8d77-d17f05c9b6c5"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -252,19 +252,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11995"
+          "11980"
         ],
         "x-ms-correlation-request-id": [
-          "59e662cd-b18c-4013-a120-0906d9a1246e"
+          "938ecf4c-7239-4f6e-b209-876b5823ba92"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T080952Z:59e662cd-b18c-4013-a120-0906d9a1246e"
+          "SOUTHINDIA:20201228T123802Z:938ecf4c-7239-4f6e-b209-876b5823ba92"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:09:52 GMT"
+          "Mon, 28 Dec 2020 12:38:01 GMT"
         ],
         "Content-Length": [
           "290"
@@ -286,7 +286,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "98ca37bb-1894-4b8c-9500-44f5b6688e3f"
+          "98d65880-853d-4396-8ad1-9a9017d7ae12"
         ],
         "Accept-Language": [
           "en-US"
@@ -309,7 +309,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "db778598-6879-4cf6-90dd-65e12b5b16e3"
+          "25231cb1-0110-4487-bcbe-b93ea4afe3df"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -321,19 +321,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11994"
+          "11979"
         ],
         "x-ms-correlation-request-id": [
-          "e32391b7-3ab4-44bd-af0d-ccaac26e5fed"
+          "28c4fc7f-00eb-4760-b64c-cb6da5ea479e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T080953Z:e32391b7-3ab4-44bd-af0d-ccaac26e5fed"
+          "SOUTHINDIA:20201228T123802Z:28c4fc7f-00eb-4760-b64c-cb6da5ea479e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:09:53 GMT"
+          "Mon, 28 Dec 2020 12:38:02 GMT"
         ],
         "Content-Length": [
           "287"
@@ -349,13 +349,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3d3dy5hZG9yZW5vdy5uZXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/adorenowcert?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL2Fkb3Jlbm93Y2VydD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/serverfarms/lketmtestantps10ASP\",\r\n    \"canonicalName\": \"www.adorenow.net\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5e2a3442-5afd-44a5-a8c7-5269bdf365cc"
+          "808ad42d-617e-4b96-bf20-089eab1e47fb"
         ],
         "Accept-Language": [
           "en-US"
@@ -381,7 +381,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net/operationresults/e17ff3c9-43e6-4488-a48e-e2b556c9c4bb?api-version=2020-06-01"
+          "https://management.azure.com/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/adorenowcert/operationresults/9760f837-6672-4ac1-a94d-3b129c2407b6?api-version=2020-06-01"
         ],
         "Retry-After": [
           "15"
@@ -402,19 +402,19 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "f924f673-3162-440b-b253-4a734195063c"
+          "0b7601bd-a499-4138-a0da-2a60aee824a6"
         ],
         "x-ms-correlation-request-id": [
-          "f924f673-3162-440b-b253-4a734195063c"
+          "0b7601bd-a499-4138-a0da-2a60aee824a6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081003Z:f924f673-3162-440b-b253-4a734195063c"
+          "SOUTHINDIA:20201228T123810Z:0b7601bd-a499-4138-a0da-2a60aee824a6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:10:03 GMT"
+          "Mon, 28 Dec 2020 12:38:10 GMT"
         ],
         "Expires": [
           "-1"
@@ -427,220 +427,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3d3dy5hZG9yZW5vdy5uZXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/adorenowcert?api-version=2020-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL2Fkb3Jlbm93Y2VydD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1e3b85e1-8ced-4720-acc0-8bf651e5943f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "a34e0e64-63a9-4b40-808b-3ffc298abcfe"
-        ],
-        "x-ms-correlation-request-id": [
-          "a34e0e64-63a9-4b40-808b-3ffc298abcfe"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081004Z:a34e0e64-63a9-4b40-808b-3ffc298abcfe"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 23 Nov 2020 08:10:03 GMT"
-        ],
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"Code\": \"NotFound\",\r\n  \"Message\": \"Cannot find Certificate with name www.adorenow.net.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n    },\r\n    {\r\n      \"Code\": \"NotFound\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"51004\",\r\n        \"MessageTemplate\": \"Cannot find {0} with name {1}.\",\r\n        \"Parameters\": [\r\n          \"Certificate\",\r\n          \"www.adorenow.net\"\r\n        ],\r\n        \"Code\": \"NotFound\",\r\n        \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3d3dy5hZG9yZW5vdy5uZXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "293f1d04-63c5-46e2-a64e-1c879d4c7c81"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-request-id": [
-          "397e24aa-3432-42a2-872b-eddd1a1103e3"
-        ],
-        "x-ms-correlation-request-id": [
-          "397e24aa-3432-42a2-872b-eddd1a1103e3"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081009Z:397e24aa-3432-42a2-872b-eddd1a1103e3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 23 Nov 2020 08:10:09 GMT"
-        ],
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"Code\": \"NotFound\",\r\n  \"Message\": \"Cannot find Certificate with name www.adorenow.net.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n    },\r\n    {\r\n      \"Code\": \"NotFound\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"51004\",\r\n        \"MessageTemplate\": \"Cannot find {0} with name {1}.\",\r\n        \"Parameters\": [\r\n          \"Certificate\",\r\n          \"www.adorenow.net\"\r\n        ],\r\n        \"Code\": \"NotFound\",\r\n        \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3d3dy5hZG9yZW5vdy5uZXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d30e11a0-6aa2-45ad-a816-4c6401b0061f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "7b9f0297-a4eb-4b4b-9993-45c9d19ee794"
-        ],
-        "x-ms-correlation-request-id": [
-          "7b9f0297-a4eb-4b4b-9993-45c9d19ee794"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081014Z:7b9f0297-a4eb-4b4b-9993-45c9d19ee794"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 23 Nov 2020 08:10:14 GMT"
-        ],
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"Code\": \"NotFound\",\r\n  \"Message\": \"Cannot find Certificate with name www.adorenow.net.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n    },\r\n    {\r\n      \"Code\": \"NotFound\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"ExtendedCode\": \"51004\",\r\n        \"MessageTemplate\": \"Cannot find {0} with name {1}.\",\r\n        \"Parameters\": [\r\n          \"Certificate\",\r\n          \"www.adorenow.net\"\r\n        ],\r\n        \"Code\": \"NotFound\",\r\n        \"Message\": \"Cannot find Certificate with name www.adorenow.net.\"\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3d3dy5hZG9yZW5vdy5uZXQ/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "cdc03bdb-d7ab-4c09-852a-cbb7f4021d23"
+          "bcab9745-bc3b-4663-9104-1c7fc4502bf3"
         ],
         "Accept-Language": [
           "en-US"
@@ -663,7 +456,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d33c7dcb-9ea8-40f5-bd4e-6be89416d575"
+          "f1a9dc60-c782-461b-bf0b-a13632ac1696"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -675,22 +468,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11983"
         ],
         "x-ms-correlation-request-id": [
-          "8a747c30-da39-44bc-9881-4ae010080771"
+          "498f8c76-9364-45ff-afb7-ad4ef1e6afb9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081020Z:8a747c30-da39-44bc-9881-4ae010080771"
+          "SOUTHINDIA:20201228T123827Z:498f8c76-9364-45ff-afb7-ad4ef1e6afb9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:10:19 GMT"
+          "Mon, 28 Dec 2020 12:38:26 GMT"
         ],
         "Content-Length": [
-          "905"
+          "897"
         ],
         "Content-Type": [
           "application/json"
@@ -699,7 +492,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/www.adorenow.net\",\r\n  \"name\": \"www.adorenow.net\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"www.adorenow.net\",\r\n    \"hostNames\": [\r\n      \"www.adorenow.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n    \"issueDate\": \"2020-11-23T05:30:00+05:30\",\r\n    \"expirationDate\": \"2021-05-23T05:29:59+05:30\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"C1CC3D2E3BC3E583D4235D975B53A5962F2DB2AD\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"keyVaultSecretStatus\": \"Initialized\",\r\n    \"webSpace\": \"lketmtestantps10-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"canonicalName\": \"www.adorenow.net\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/adorenowcert\",\r\n  \"name\": \"adorenowcert\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"www.adorenow.net\",\r\n    \"hostNames\": [\r\n      \"www.adorenow.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n    \"issueDate\": \"2020-12-28T05:30:00+05:30\",\r\n    \"expirationDate\": \"2021-06-28T05:29:59+05:30\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"FC9EF6286B82FBEC67560E750B0AB94C15207391\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"keyVaultSecretStatus\": \"Initialized\",\r\n    \"webSpace\": \"lketmtestantps10-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"canonicalName\": \"www.adorenow.net\",\r\n    \"tags\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -709,7 +502,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8f9164d3-8015-424c-acdc-bb602083a0b7"
+          "cfa88fae-9cdb-4e0c-aec7-c79d528932d4"
         ],
         "Accept-Language": [
           "en-US"
@@ -729,16 +522,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11994"
         ],
         "x-ms-request-id": [
-          "d2ec0fc5-c2c1-46e1-b0c5-8056429a7613"
+          "5ca2a7b5-9a16-4e02-989e-3a780c76224f"
         ],
         "x-ms-correlation-request-id": [
-          "d2ec0fc5-c2c1-46e1-b0c5-8056429a7613"
+          "5ca2a7b5-9a16-4e02-989e-3a780c76224f"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20201123T081021Z:d2ec0fc5-c2c1-46e1-b0c5-8056429a7613"
+          "SOUTHINDIA:20201228T123827Z:5ca2a7b5-9a16-4e02-989e-3a780c76224f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -747,7 +540,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 23 Nov 2020 08:10:20 GMT"
+          "Mon, 28 Dec 2020 12:38:27 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -756,79 +549,10 @@
           "-1"
         ],
         "Content-Length": [
-          "253"
+          "12"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/testslot.adorenow.net\",\r\n      \"name\": \"testslot.adorenow.net\",\r\n      \"type\": \"Microsoft.Web/certificates\",\r\n      \"location\": \"centralus\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/testslot.adorenow.net?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL2xrZXRtdGVzdGFudHBzMTAvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3Rlc3RzbG90LmFkb3Jlbm93Lm5ldD9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "091df364-dba3-4384-b7f7-bdebedef2c82"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29017.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "8e1554f1-b1ee-45eb-a79a-72329af64148"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "3a078361-9cc6-4020-9a4d-36c1869df521"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20201123T081021Z:3a078361-9cc6-4020-9a4d-36c1869df521"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 23 Nov 2020 08:10:21 GMT"
-        ],
-        "Content-Length": [
-          "930"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/lketmtestantps10/providers/Microsoft.Web/certificates/testslot.adorenow.net\",\r\n  \"name\": \"testslot.adorenow.net\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"testslot.adorenow.net\",\r\n    \"hostNames\": [\r\n      \"testslot.adorenow.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"GeoTrust TLS DV RSA Mixed SHA256 2020 CA-1\",\r\n    \"issueDate\": \"2020-11-23T05:30:00+05:30\",\r\n    \"expirationDate\": \"2021-05-23T05:29:59+05:30\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"D6CCF51819274501188BEA29AD17FFF3FBB386CD\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"keyVaultSecretStatus\": \"Initialized\",\r\n    \"webSpace\": \"lketmtestantps10-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"canonicalName\": \"testslot.adorenow.net\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "StatusCode": 200
     }
   ],
