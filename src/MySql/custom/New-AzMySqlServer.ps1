@@ -184,6 +184,11 @@ function New-AzMySqlServer {
               $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]::Enable
           }
 
+          if ($PSBoundParameters.ContainsKey('MinimalTlsVersion')) {
+            $Parameter.MinimalTlsVersion = $PSBoundParameters['MinimalTlsVersion']
+            $null = $PSBoundParameters.Remove('MinimalTlsVersion')
+          }
+
           if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
               $Parameter.StorageProfileBackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
               $null = $PSBoundParameters.Remove('BackupRetentionDay')
