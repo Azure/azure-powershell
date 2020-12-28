@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Workload config, blocking target item to be an availability group.
 
 ## Version 3.2.0
 * Enabled softdelete feature for SQL.
