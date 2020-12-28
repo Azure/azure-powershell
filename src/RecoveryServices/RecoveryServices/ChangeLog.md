@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Making help text changes to Restore-AzRecoveryServicesBackupItem cmdlet.
+
+## Version 3.2.0
+* Enabled softdelete feature for SQL.
+* Fixed SQL AG restore and removed the container name check.
+* Changed container name format for Azure Files backup item.
+* Added CMK feature support for Recovery services vault.
+
+## Version 3.1.0
+* Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.
 
 ## Version 3.0.1
 * Specifying policy BackupTime is in UTC.

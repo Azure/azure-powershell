@@ -20,12 +20,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string ReferenceName { get; set; }
 
         public IDictionary<string, object> Parameters { get; set; }
-
-        public IntegrationRuntimeReference ToSdkObject()
-        {
-            IntegrationRuntimeReference integrationRuntimeReference = new IntegrationRuntimeReference(this.Type.GetValueOrDefault(), this.ReferenceName);
-            this.Parameters?.ForEach(item => integrationRuntimeReference.Parameters.Add(item));
-            return integrationRuntimeReference;
-        }
     }
 }

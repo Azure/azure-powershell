@@ -22,7 +22,8 @@
 	-New Cmdlets
 		-New-AzWebAppCertificate
 		-Remove-AzWebAppCertificate
-
+    
+## Version 2.1.1
 * Prevent duplicate access restriction rules
 
 ## Version 2.1.0

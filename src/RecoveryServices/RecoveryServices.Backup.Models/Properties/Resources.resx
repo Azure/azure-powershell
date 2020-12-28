@@ -610,9 +610,6 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetVaultStorageRedundancy" xml:space="preserve">
     <value>Are you sure you want to copy items to the {0} whose storage redundancy is {1}</value>
   </data>
-  <data name="ContainerNameIsInvalid" xml:space="preserve">
-    <value>container name is invalid.</value>
-  </data>
   <data name="TargetResourcegroupNotSupported" xml:space="preserve">
     <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>

@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
+using System.Text.Json;
 using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
@@ -31,16 +33,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private const string PredictionsModelZip = "PredictionsModel.zip";
         private const string PredictionsModelJson = "PredictionsModel.json";
         private const string DataDirectoryName = "Data";
+        private static readonly Version CommandsVersionToUse = new Version("5.1.0");
+        private static readonly Version PredictionsVersionToUse = new Version("5.1.0");
 
         /// <summary>
         /// Gets a list of string for the commands.
         /// </summary>
-        public IList<string> CommandCollection { get; private set; }
+        public IList<PredictiveCommand> CommandCollection { get; private set; }
 
         /// <summary>
         /// Gets a dictionary for the predictions.
         /// </summary>
-        public IDictionary<string, IList<string>> PredictionCollection { get; private set; }
+        public IDictionary<string, IList<PredictiveCommand>> PredictionCollection { get; private set; }
 
         /// <summary>
         /// Constructs a new instance of <see cref="ModelFixture" />
@@ -51,11 +55,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var fileInfo = new FileInfo(currentLocation);
             var directory = fileInfo.DirectoryName;
             var dataDirectory = Path.Join(directory, ModelFixture.DataDirectoryName);
-            var commandsModel = ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson);
-            var predictionsModel = ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson);
+            var commandsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, IList<ModelEntry>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson), JsonUtilities.DefaultSerializerOptions);
+            var predictionsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, Dictionary<string, IList<ModelEntry>>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson), JsonUtilities.DefaultSerializerOptions);
 
-            this.CommandCollection = JsonConvert.DeserializeObject<IList<string>>(commandsModel);
-            this.PredictionCollection = JsonConvert.DeserializeObject<IDictionary<string, IList<string>>>(predictionsModel);
+            var commandsModel = commandsModelVersions[CommandsVersionToUse];
+            var predictionsModel = predictionsModelVersions[PredictionsVersionToUse];
+
+            this.CommandCollection = commandsModel.Select(x => x.TransformEntry()).ToList();
+            var predictiveCollection = new Dictionary<string, IList<PredictiveCommand>>();
+            foreach (var command in predictionsModel)
+            {
+                var predictiveCommandEntries = new List<PredictiveCommand>();
+                foreach (var modelEntry in command.Value)
+                {
+                    predictiveCommandEntries.Add(modelEntry.TransformEntry());
+                }
+                predictiveCollection.Add(command.Key, predictiveCommandEntries);
+            }
+            this.PredictionCollection = predictiveCollection;
         }
 
         /// <inheritdoc/>
