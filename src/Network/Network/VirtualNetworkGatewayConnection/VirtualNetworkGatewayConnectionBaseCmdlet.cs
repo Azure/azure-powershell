@@ -14,15 +14,11 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
-using System;
-using System.Linq.Expressions;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
@@ -82,11 +78,13 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualNetworkGatewayConnectionSharedKey;
         }
 
-        public PSVirtualNetworkGatewayConnectionIkeSa GetVirtualNetworkGatewayConnectionIkeSas(string resourceGroupName, string name)
+        public PSVirtualNetworkGatewayConnectionIkeSa GetVirtualNetworkGatewayConnectionIkeSa(string resourceGroupName, string name)
         {
             this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
 
             string response = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+
+            WriteObject(response);
 
             PSVirtualNetworkGatewayConnectionIkeSa result = JsonConvert.DeserializeObject<PSVirtualNetworkGatewayConnectionIkeSa>(response);
 

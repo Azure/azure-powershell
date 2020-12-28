@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSas"), OutputType(typeof(string))]
-    public class GetAzVirtualNetworkGatewayConnectionIkeSasCommand : VirtualNetworkGatewayConnectionBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa"), OutputType(typeof(PSVirtualNetworkGatewayConnectionIkeSa))]
+    public class GetAzVirtualNetworkGatewayConnectionIkeSaCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]
         [Parameter(
@@ -73,29 +73,14 @@ namespace Microsoft.Azure.Commands.Network
                     Name = parsedResourceId.ResourceName;
                     ResourceGroupName = parsedResourceId.ResourceGroupName;
                 }
-
-                //existingConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
             }
-
-            //if (existingConnection == null)
-            //{
-            //    throw new PSArgumentException(Properties.Resources.ResourceNotFound, "Virtual Network Gateway Connection");
-            //}
 
             base.Execute();
 
-            //if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
-            //{
-            //    //WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-
-            //    var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
-
-            //    WriteObject($"\nIKE Security Associations are:-\n{ikesas}\n");
-            //}
             if(this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
-                var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
-                WriteObject(ikesas.ikesas, true);
+                var result = this.GetVirtualNetworkGatewayConnectionIkeSa(this.ResourceGroupName, this.Name);
+                WriteObject(result.ikesas, true);
 
             }
             else
