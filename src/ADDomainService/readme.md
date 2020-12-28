@@ -54,6 +54,26 @@ directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}"].delete.responses
+    transform: >-
+        return {
+          "200": {
+            "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
+          },
+          "202": {
+            "description": "HTTP 202 (Accepted) if the operation was successfully started and will complete asynchronously."
+          },
+          "204": {
+            "description": "HTTP 204 (Not Content) should be used if the resource does not exist and the request is well formed."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+          }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true

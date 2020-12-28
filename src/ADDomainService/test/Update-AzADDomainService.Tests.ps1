@@ -12,11 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzADDomainService' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 $env.TlsV1Status1
+        $UpdateADDomain = Update-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName -DomainSecuritySetting $ADDomainSetting
+        $UpdateADDomain.DomainSecuritySettingTlsV1 | Should -Be $env.TlsV1Status1
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        Start-Sleep -s 240
+        $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 $env.TlsV1Status2
+        $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+        $UpdateADDomain = Update-AzADDomainService -InputObject $GetADDomainExample -DomainSecuritySetting $ADDomainSetting
+        $UpdateADDomain.DomainSecuritySettingTlsV1 | Should -Be $env.TlsV1Status2
     }
 }

@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzADDomainService' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $ReplicaSet = New-AzADDomainServiceReplicaSetObject -Location $env.Location -SubnetId $env.SubnetId
+        $NewAdDomain = New-AzADDomainService -name $env.ADdomainName -ResourceGroupName $env.ResourceGroupName -DomainName $env.ADDomainNameCom -ReplicaSet $ReplicaSet
+        $NewAdDomain.name | Should -Be $env.ADdomainName
     }
 }

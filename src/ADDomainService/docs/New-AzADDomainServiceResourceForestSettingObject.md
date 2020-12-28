@@ -24,18 +24,11 @@ Create a in-memory object for ResourceForestSettings
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzADDomainServiceResourceForestSettingObject -ResourceForest resourcetest
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+ResourceForest
+--------------
+resourcetest
 ```
 
 {{ Add description here }}

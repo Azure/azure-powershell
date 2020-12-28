@@ -1,18 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete the AzADDomain by ResourceGroupName and Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete the AzADDomain by ResourceGroupName and Name
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete the AzADDomain by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+Remove-AzADDomainService -InputObject $GetADDomainExample
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete the AzADDomain by InputObject 
 

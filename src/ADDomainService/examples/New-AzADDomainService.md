@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new ADDomainService
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $NewAdDomain = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
+New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $NewAdDomain -debug
 
-{{ Add output here }}
+Name          Domain Name       Location Sku
+----          -----------       -------- ---
+youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-{{ Add description here }}
+Create new ADDomainService
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

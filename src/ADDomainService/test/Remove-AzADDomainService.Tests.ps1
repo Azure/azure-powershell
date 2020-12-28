@@ -12,11 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzADDomainService' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+        $GetADDomainList = Get-AzADDomainService
+        $GetADDomainList.Name | Should -Not -Contain $env.ADdomainName
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $ReplicaSet = New-AzADDomainServiceReplicaSetObject -Location $env.Location -SubnetId $env.SubnetId
+        $NewAdDomain = New-AzADDomainService -name $env.ADdomainName -ResourceGroupName $env.ResourceGroupName -DomainName $env.ADDomainNameCom -ReplicaSet $ReplicaSet
+        Start-Sleep -s 120
+        $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+        Remove-AzADDomainService -InputObject $GetADDomainExample
+        $GetADDomainList = Get-AzADDomainService
+        $GetADDomainList.Name | Should -Not -Contain $env.ADdomainName
     }
 }

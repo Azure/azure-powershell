@@ -21,23 +21,14 @@ Create a in-memory object for ReplicaSet
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create ReplicaSet for AzADDomain
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/youritest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
 
-{{ Add output here }}
+$NewAdDomain = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create ReplicaSet for AzADDomain
 
 ## PARAMETERS
 

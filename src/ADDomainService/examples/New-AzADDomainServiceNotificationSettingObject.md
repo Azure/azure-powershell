@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create NotificationSetting for AzADDomain
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzADDomainServiceNotificationSettingObject -AdditionalRecipient test@microsoft.com -NotifyDcAdmin Enabled -NotifyGlobalAdmin Enabled
 
-{{ Add output here }}
+AdditionalRecipient  NotifyDcAdmin NotifyGlobalAdmin
+-------------------  ------------- -----------------
+{test@microsoft.com} Enabled       Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create NotificationSetting for AzADDomain
 

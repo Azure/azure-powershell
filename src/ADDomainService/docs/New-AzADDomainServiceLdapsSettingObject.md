@@ -22,23 +22,17 @@ Create a in-memory object for LdapsSettings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create LdapsSetting for AzADDomain
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $secstr = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+New-AzADDomainServiceLdapsSettingObject -ExternalAccess Enabled -Ldap Enabled -PfxCertificatePath sahg -PfxCertificatePassword $secstr
 
-{{ Add output here }}
+CertificateNotAfter CertificateThumbprint ExternalAccess Ldap    PfxCertificate PfxCertificatePassword PublicCertificate
+------------------- --------------------- -------------- ----    -------------- ---------------------- -----------------
+                                          Enabled        Enabled                Password
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create LdapsSetting for AzADDomain
 
 ## PARAMETERS
 

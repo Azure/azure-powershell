@@ -209,16 +209,15 @@ function Update-AzADDomainService {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
-    begin {
+    process {
         try {
-            
             if ($PSBoundParameters.ContainsKey('DomainSecuritySetting')) {
                 $PSBoundParameters['DomainSecuritySettingNtlmV1'] = $PSBoundParameters['DomainSecuritySetting'].NtlmV1
                 $PSBoundParameters['DomainSecuritySettingSyncKerberosPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncKerberosPassword
                 $PSBoundParameters['DomainSecuritySettingSyncNtlmPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncNtlmPassword
                 $PSBoundParameters['DomainSecuritySettingSyncOnPremPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncOnPremPassword
                 $PSBoundParameters['DomainSecuritySettingTlsV1'] = $PSBoundParameters['DomainSecuritySetting'].TlsV1
+                $null = $PSBoundParameters.Remove('DomainSecuritySetting')
             }
 
             if ($PSBoundParameters.ContainsKey('LdapSetting')) {
@@ -226,40 +225,27 @@ function Update-AzADDomainService {
                 $PSBoundParameters['LdapSettingLdap'] = $PSBoundParameters['LdapSetting'].Ldap
                 $PSBoundParameters['LdapSettingPfxCertificate'] = $PSBoundParameters['LdapSetting'].PfxCertificate
                 $PSBoundParameters['LdapSettingPfxCertificatePassword'] = $PSBoundParameters['LdapSetting'].PfxCertificatePassword
+                $null = $PSBoundParameters.Remove('LdapSetting')
             }
 
             if ($PSBoundParameters.ContainsKey('ResourceForestSetting')) {
+                write-host 'exist ResourceForestSetting'
                 $PSBoundParameters['ResourceForest'] = $PSBoundParameters['ResourceForestSetting'].ResourceForest
                 $PSBoundParameters['ForestTrust'] = $PSBoundParameters['ResourceForestSetting'].Setting
+                $null = $PSBoundParameters.Remove('ResourceForestSetting')
             }
    
             if ($PSBoundParameters.ContainsKey('NotificationSetting')) {
                 $PSBoundParameters['NotificationSettingAdditionalRecipient'] = $PSBoundParameters['NotificationSetting'].AdditionalRecipient
                 $PSBoundParameters['NotificationSettingNotifyDcAdmin'] = $PSBoundParameters['NotificationSetting'].NotifyDcAdmin
                 $PSBoundParameters['NotificationSettingNotifyGlobalAdmin'] = $PSBoundParameters['NotificationSetting'].NotifyGlobalAdmin
+                $null = $PSBoundParameters.Remove('NotificationSetting')
             }
-
             Az.ADDomainServices.internal\Update-AzADDomainService @PSBoundParameters
+        } catch {
+            throw
+        }
+    }
+}
 
-        } catch {
-            throw
-        }
-    }
-    
-    process {
-        try {
-            $steppablePipeline.Process($_)
-        } catch {
-            throw
-        }
-    }
-    
-    end {
-        try {
-            $steppablePipeline.End()
-        } catch {
-            throw
-        }
-    }
-    }
     

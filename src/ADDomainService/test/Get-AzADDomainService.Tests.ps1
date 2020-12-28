@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzADDomainService' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $GetADDomainList = Get-AzADDomainService
+        $GetADDomainList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $GetADDomain = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+        $GetADDomain.Name | Should -Be $env.ADdomainName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $GetADDomainList = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName
+        $GetADDomainList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+        $GetADDomain = Get-AzADDomainService -InputObject $GetADDomainExample
+        $GetADDomain.Name | Should -Be $env.ADdomainName
     }
 }

@@ -22,23 +22,16 @@ Create a in-memory object for DomainSecuritySettings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create SecuritySetting for ADDOmain
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzADDomainServiceDomainSecuritySettingObject -NtlmV1 Disabled -SyncKerberosPassword Disabled -SyncNtlmPassword Disabled -SyncOnPremPassword Disabled -TlsV1 Disabled
 
-{{ Add output here }}
+NtlmV1   SyncKerberosPassword SyncNtlmPassword SyncOnPremPassword TlsV1
+------   -------------------- ---------------- ------------------ -----
+Disabled Disabled             Disabled         Disabled           Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create SecuritySetting for ADDOmain
 
 ## PARAMETERS
 
