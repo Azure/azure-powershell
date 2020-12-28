@@ -188,10 +188,6 @@ function New-AzPostgreSqlServer {
             $Parameter.MinimalTlsVersion = $PSBoundParameters['MinimalTlsVersion']
             $null = $PSBoundParameters.Remove('MinimalTlsVersion')
           }
-          else
-          {
-              $Parameter.MinimalTlsVersion = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum]::TlsEnforcementDisabled
-          }
 
           if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
               $Parameter.StorageProfileBackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
