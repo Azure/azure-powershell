@@ -100,9 +100,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
-        public void TestVirtualNetworkGatewayConnectionIkeSas()
+        public void TestVirtualNetworkGatewayConnectionIkeSa()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionIkeSas");
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionIkeSa");
         }
     }
 }

@@ -82,15 +82,26 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualNetworkGatewayConnectionSharedKey;
         }
 
-        public string GetVirtualNetworkGatewayConnectionIkeSas(string resourceGroupName, string name)
+        public PSVirtuaNetworkGatewayConnectionIkeSa GetVirtualNetworkGatewayConnectionIkeSa(string resourceGroupName, string name)
         {
-            string result = string.Empty;
-
             this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
 
-            result = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+            string result = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
 
-            return result;
+            WriteObject("Result:-\n");
+            WriteObject(result);
+
+            var result2 = JsonConvert.DeserializeObject(result);
+
+            WriteObject("Result2:-\n");
+            WriteObject(result2, true);
+
+            PSVirtuaNetworkGatewayConnectionIkeSa response = JsonConvert.DeserializeObject<PSVirtuaNetworkGatewayConnectionIkeSa>(result);
+
+            WriteObject("Response:-\n");
+            WriteObject(response.IkeSa, true);
+
+            return response;
         }
 
         public bool IsVirtualNetworkGatewayConnectionSharedKeyPresent(string resourceGroupName, string name)

@@ -775,7 +775,7 @@ function Test-VirtualNetworkGatewayConnectionPacketCapture
      }
 }
 
-function Test-VirtualNetworkGatewayConnectionIkeSas
+function Test-VirtualNetworkGatewayConnectionIkeSa
 {
     # Setup
     $rgname = Get-ResourceGroupName
