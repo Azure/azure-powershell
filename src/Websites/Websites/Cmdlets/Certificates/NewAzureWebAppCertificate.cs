@@ -18,19 +18,13 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.Rest.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
 {
@@ -56,16 +50,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = true, HelpMessage = "The name of the certificate")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The name of the certificate")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "WebAppName")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = true, HelpMessage = "Custom hostnames associated with web app/slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true, HelpMessage = "Custom hostnames associated with web app/slot.")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
