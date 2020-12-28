@@ -143,7 +143,7 @@ function Test-SnapshotPipelines
         $retrievedVolume = New-AnfVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
         
         # create a snapshot from the piped volume input
-        $retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot -SnapshotName $snName1
+        $retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot   -SnapshotName $snName1
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
         
         # delete the snapshot by piping from snapshot get

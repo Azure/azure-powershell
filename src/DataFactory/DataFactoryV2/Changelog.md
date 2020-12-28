@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.1
 * Improved error message of `New-AzDataFactoryV2LinkedServiceEncryptedCredential` command
 
 ## Version 1.11.0

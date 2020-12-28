@@ -577,6 +577,114 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove filewall rule &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveFirewallRule {
+            get {
+                return ResourceManager.GetString("RemoveFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove data flow &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseDataFlow {
+            get {
+                return ResourceManager.GetString("RemoveSynapseDataFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove data set &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseDataset {
+            get {
+                return ResourceManager.GetString("RemoveSynapseDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove linked service &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseLinkedService {
+            get {
+                return ResourceManager.GetString("RemoveSynapseLinkedService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove notebook &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseNotebook {
+            get {
+                return ResourceManager.GetString("RemoveSynapseNotebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove pipeline &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapsePipeline {
+            get {
+                return ResourceManager.GetString("RemoveSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse Spark pool &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkPool {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL database &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSqlDatabase {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL pool &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSqlPool {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseTrigger {
+            get {
+                return ResourceManager.GetString("RemoveSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unsubscribe the event trigger &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseTriggerSubscription {
+            get {
+                return ResourceManager.GetString("RemoveSynapseTriggerSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse workspace &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseWorkspace {
+            get {
+                return ResourceManager.GetString("RemoveSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting firewall rule &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
         internal static string RemovingFirewallRule {

@@ -16,9 +16,10 @@ Creates the metadata of a service instance.
 New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
  [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
  [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
- [-CosmosOfferThroughput <Int32>] [-ExportStorageAccountName <String>] [-EnableSmartProxy] [-ManagedIdentity]
- [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>] [-ExportStorageAccountName <String>]
+ [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob]
+ [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,11 +29,7 @@ Creates or updates the metadata of a service instance.
 
 ### Example 1 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
 ```powershell
-PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  400
-
-ResourceGroupName Name Location        Kind   CosmosOfferThroughput
------------------ ----------- -------------------------------
-MyResourceGroup   MyService   westus2    fhir-R4   400
+PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput 400
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -42,6 +39,33 @@ CorsHeaders             : {}
 CorsMaxAge              : 0
 CorsMethods             : {}
 CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  : 
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
+```
+
+### Example 2 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400 and key vault key uri "https://\<my-keyvault>.vault.azure.net/keys/\<my-key>"
+```powershell
+PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput 400 -CosmosKeyVaultKeyUri "https://<my-keyvault>.vault.azure.net/keys/<my-key>"
+
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbKeyVaultKeyUri  : https://<my-keyvault>.vault.azure.net/keys/<my-key>
 CosmosDbOfferThroughput : 400
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -73,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCorsCredential
-HealthcareApis Fhir Service AllowCorsCredential.
+HealthcareApis Fhir Service AllowCorsCredentials.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -133,7 +157,9 @@ Accept wildcard characters: False
 ```
 
 ### -CorsHeader
-HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use * for any header.
+HealthcareApis Fhir Service List of Cors Header.
+Specify HTTP headers which can be used during the request.
+Use " * " for any header.
 
 ```yaml
 Type: System.String[]
@@ -148,7 +174,9 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMaxAge
-HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.
+HealthcareApis Fhir Service Cors Max Age.
+Specify how long a result from a request can be cached in seconds.
+Example: 600 means 10 minutes.
 
 ```yaml
 Type: System.Int32
@@ -178,10 +206,27 @@ Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use * to allow access from any site.
+HealthcareApis Fhir Service List of Cors Origin.
+Specify URLs of origin sites that can access this API, or use " * " to allow access from any site.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosKeyVaultKeyUri
+HealthcareApis Fhir Service CosmosKeyVaultKeyUri.
+The URI of the customer-managed key for the backing database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -328,6 +373,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+The network access type for Fhir service. Commonly `Enabled` or `Disabled`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
@@ -398,7 +459,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
+### Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 
 ## NOTES
 

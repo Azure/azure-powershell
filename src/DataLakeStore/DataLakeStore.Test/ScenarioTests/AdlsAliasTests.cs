@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", AdlsTestsBase.TestFileSystemPermissionResourceGroupLocation));
         }
 
         [Fact]

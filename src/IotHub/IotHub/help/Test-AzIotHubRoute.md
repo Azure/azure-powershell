@@ -95,6 +95,19 @@ Syntax error. error    1                 29                  1               30
 
 Test a specific route and showing the reason of failure.
 
+### Example 4
+```
+PS C:\> $ap = @{}
+PS C:\> $ap.add("key0","value0")
+PS C:\> $sp = @{}
+PS C:\> $sp.add("key1", "value1")
+PS C:\> Test-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -AppProperty $ap -SystemProperty $sp
+
+Result : true
+```
+
+Test a specific route with AppProperty and SystemProperty.
+
 ## PARAMETERS
 
 ### -AppProperty

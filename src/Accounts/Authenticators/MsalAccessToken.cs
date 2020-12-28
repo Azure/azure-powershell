@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public IDictionary<string, string> ExtendedProperties { get; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        private DateTimeOffset ExpiredOn { get; set; }
+        public DateTimeOffset ExpiresOn { get; set; }
 
         private readonly static TimeSpan ExpirationThreshold = TimeSpan.FromMinutes(5);
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             TokenCredential = tokenCredential;
             TokenRequestContext = tokenRequestContext;
             AccessToken = token;
-            ExpiredOn = expiresOn;
+            ExpiresOn = expiresOn;
             UserId = userId;
             TenantId = tenantId;
             HomeAccountId = homeAccountId;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             string userId = null,
             string homeAccountId = "")
         {
-            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken);
+            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
 
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             TokenRequestContext requestContext,
             CancellationToken cancellationToken)
         {
-            var record = await authTask;
+            var record = await authTask.ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
-            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken);
+            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
 
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
         }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 var token = TokenCredential.GetToken(TokenRequestContext, default(CancellationToken));
                 AccessToken = token.Token;
-                ExpiredOn = token.ExpiresOn;
+                ExpiresOn = token.ExpiresOn;
             }
         }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 return true;
             }
 #endif
-            var timeUntilExpiration = ExpiredOn - DateTimeOffset.UtcNow;
+            var timeUntilExpiration = ExpiresOn - DateTimeOffset.UtcNow;
             return timeUntilExpiration < ExpirationThreshold;
         }
     }

@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        WriteWarning,
+                        WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation));
@@ -419,7 +419,8 @@ namespace Microsoft.Azure.Commands.Profile
 
                    try
                    {
-                       var result = (PSAzureProfile)(task.ConfigureAwait(false).GetAwaiter().GetResult());
+                       //Must not use task.Result as it wraps inner exception into AggregateException
+                       var result = (PSAzureProfile)task.GetAwaiter().GetResult();
                        WriteObject(result);
                    }
                    catch (AuthenticationFailedException ex)
@@ -431,7 +432,11 @@ namespace Microsoft.Azure.Commands.Profile
                        }
                        else
                        {
-                           WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                           if (ParameterSetName == UserParameterSet && UseDeviceAuthentication == false)
+                           {
+                               //Display only if user is using Interactive auth
+                               WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                           }
                            WriteDebug(ex.ToString());
                            throw;
                        }
@@ -489,23 +494,24 @@ namespace Microsoft.Azure.Commands.Profile
                     originalShouldRefreshContextsFromCache = profile.ShouldRefreshContextsFromCache;
                     profile.ShouldRefreshContextsFromCache = false;
                 }
-            if (!CheckForExistingContext(profile, name)
-                || Force.IsPresent
-                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
-                string.Format(Resources.ReplaceContextCaption, name)))
-            {
-                ModifyContext((prof, client) => setContextAction(prof, client, name));
+                if (!CheckForExistingContext(profile, name)
+                    || Force.IsPresent
+                    || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
+                    string.Format(Resources.ReplaceContextCaption, name)))
+                {
+                    ModifyContext((prof, client) => setContextAction(prof, client, name));
+                }
             }
-        }
             finally
             {
-                if(profile != null && originalShouldRefreshContextsFromCache.HasValue)
+                if (profile != null && originalShouldRefreshContextsFromCache.HasValue)
                 {
                     profile.ShouldRefreshContextsFromCache = originalShouldRefreshContextsFromCache.Value;
                 }
             }
         }
 
+        //This method may throw exception because of permission issue, exception should be handled from caller
         private static IAzureContextContainer GetAzureContextContainer()
         {
             var provider = new ProtectedProfileProvider();
@@ -522,7 +528,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
 #endif
                 AzureSessionInitializer.InitializeAzureSession();
-                AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer);
+                AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer, WriteInitializationWarnings);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
@@ -540,11 +546,21 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = localAutosave;
                 }
 
-                if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
+                try
                 {
-                    // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
-                    // We cannot just throw an exception here because this is called when importing the module
-                    WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+                    if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
+                    {
+                        // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
+                        // We cannot just throw an exception here because this is called when importing the module
+                        WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    //Likely the exception is related permission, fall back context save mode to process
+                    autoSaveEnabled = false;
+                    AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
+                    WriteInitializationWarnings(Resources.FallbackContextSaveModeDueCacheCheckError.FormatInvariant(ex.Message));
                 }
 
                 if(!InitializeProfileProvider(autoSaveEnabled))

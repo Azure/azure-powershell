@@ -24,12 +24,16 @@ Describe 'Update-AzWvdHostPool' {
                             -Description 'des' `
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
-                            -VMTemplate $null `
+                            -VMTemplate '{option1}' `
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'RailApplications'
+                            -PreferredAppGroupType 'RailApplications' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -38,7 +42,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des'
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
-            $hostPool.VMTemplate | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option1}'
             $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
@@ -46,6 +50,10 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'RailApplications'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
 
         $hostPool = Update-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -54,11 +62,16 @@ Describe 'Update-AzWvdHostPool' {
                             -Description 'des2' `
                             -FriendlyName 'fri2' `
                             -MaxSessionLimit 6 `
+                            -VMTemplate '{option2}' `
                             -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name2' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert2' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs2' `
+                            -SsoSecretType 'CertificateInKeyVault'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -66,7 +79,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des2'
             $hostPool.FriendlyName | Should -Be 'fri2'
             $hostPool.MaxSessionLimit | Should -Be 6
-            $hostPool.VMTemplate | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option2}'
             $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
@@ -74,6 +87,10 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false3
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name2'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert2'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs2'
+            $hostPool.SsoSecretType | Should -Be 'CertificateInKeyVault'
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -85,7 +102,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des2'
             $hostPool.FriendlyName | Should -Be 'fri2'
             $hostPool.MaxSessionLimit | Should -Be 6
-            $hostPool.VMTemplate | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option2}'
             $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
@@ -93,6 +110,10 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name2'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert2'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs2'
+            $hostPool.SsoSecretType | Should -Be 'CertificateInKeyVault'
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
