@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System;
     using System.Collections.Generic;
 
-    public class PSVirtuaNetworkGatewayConnectionIkeSas : PSTopLevelResource
+    public class PSVirtualNetworkGatewayConnectionIkeSa
     {
-        public List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa> ikesas;
+        public List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa> ikesas;
 
-        public PSVirtuaNetworkGatewayConnectionIkeSas()
+        public PSVirtualNetworkGatewayConnectionIkeSa()
         {
-            ikesas = new List<PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa>();
+            ikesas = new List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa>();
         }
     }
 
-    public class PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa
+    public class PSVirtualNetworkGatewayConnectionIkeSaMainModeSa
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string localEndpoint { get; set; }
@@ -67,15 +67,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public UInt32 elapsedTimeInseconds { get; set; }
 
-        public List<PSVirtuaNetworkGatewayConnectionIkeSaQuickModeSa> quickModeSa { get; set; }
+        public List<PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa> quickModeSa { get; set; }
 
-        public PSVirtuaNetworkGatewayConnectionIkeSaMainModeSa()
+        public PSVirtualNetworkGatewayConnectionIkeSaMainModeSa()
         {
-            quickModeSa = new List<PSVirtuaNetworkGatewayConnectionIkeSaQuickModeSa>();
+            quickModeSa = new List<PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa>();
         }
     }
 
-    public class PSVirtuaNetworkGatewayConnectionIkeSaQuickModeSa
+    public class PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string localEndpoint { get; set; }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public UInt32 elapsedTimeInseconds { get; set; }
 
-        public PSVirtuaNetworkGatewayConnectionIkeSaQuickModeSa()
+        public PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa()
         {
             localTrafficSelectors = new List<string>();
             remoteTrafficSelectors = new List<string>();

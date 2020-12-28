@@ -69,8 +69,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
-        public PSVirtuaNetworkGatewayConnectionIkeSas IkeSas { get; set; }
-
         public List<PSTrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
 
         public bool ExpressRouteGatewayBypass { get; set; }

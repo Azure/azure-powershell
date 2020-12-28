@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             if(this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
                 var ikesas = this.GetVirtualNetworkGatewayConnectionIkeSas(this.ResourceGroupName, this.Name);
-                WriteObject($"\nThe IKE SAs are:-\n{ikesas}\n");
+                WriteObject(ikesas.ikesas, true);
 
             }
             else

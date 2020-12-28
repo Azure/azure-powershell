@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualNetworkGatewayConnectionSharedKey;
         }
 
-        public string GetVirtualNetworkGatewayConnectionIkeSas(string resourceGroupName, string name)
+        public PSVirtualNetworkGatewayConnectionIkeSa GetVirtualNetworkGatewayConnectionIkeSas(string resourceGroupName, string name)
         {
-            string result = string.Empty;
-
             this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
 
-            result = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+            string response = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
+
+            PSVirtualNetworkGatewayConnectionIkeSa result = JsonConvert.DeserializeObject<PSVirtualNetworkGatewayConnectionIkeSa>(response);
 
             return result;
         }
