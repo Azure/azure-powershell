@@ -22,7 +22,7 @@ Create a in-memory object for ResourceForestSettings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Generate ForestSetting for ADDomain
 ```powershell
 PS C:\> New-AzADDomainServiceResourceForestSettingObject -ResourceForest resourcetest
 
@@ -31,7 +31,7 @@ ResourceForest
 resourcetest
 ```
 
-{{ Add description here }}
+Generate ForestSetting for ADDomain
 
 ## PARAMETERS
 
