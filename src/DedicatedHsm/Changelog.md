@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Fixed an issue that may cause `New-AzDedicatedHsm` to return before the HSM is fully provisioned (https://github.com/Azure/autorest.powershell/issues/610)
 
 ## Version 0.1.0
