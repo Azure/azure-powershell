@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Commands.Compute
                             Name = SkuName.PremiumLRS
                         },
                         Location = Location,
-                        Kind = Kind.Storage
+                        Kind = Kind.StorageV2
                     });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
