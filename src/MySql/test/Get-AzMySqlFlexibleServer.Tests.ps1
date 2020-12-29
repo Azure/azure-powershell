@@ -21,8 +21,8 @@ Describe 'Get-AzMySqlFlexibleServer' {
 
     It 'Get'  {
         {
-            $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
-            $servers.Name | Should -Be $env.serverName
+            $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+            $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
     }
 

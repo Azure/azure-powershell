@@ -36,6 +36,8 @@ function setupEnv() {
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "mysql-test-100"
     $env.Add("serverName", $serverName)
+    $flexibleServerName = "flexible-mysql-test-100"
+    $env.Add("FlexibleServerName", $flexibleServerName)
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_B1ms"
     $env.Add("Sku", $Sku)
