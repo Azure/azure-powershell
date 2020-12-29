@@ -129,8 +129,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (TargetItem != null)
                 {
-                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLInstance.ToString()) != 0)
+                    if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
+                        ProtectableItemType.SQLInstance.ToString()))
                     {
                         throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
                     }
