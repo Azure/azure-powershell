@@ -486,12 +486,12 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                     {
-                        //Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
                         Sku = new Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.Sku
                         {
                             Name = SkuName.PremiumLRS
                         },
-                        Location = Location
+                        Location = Location,
+                        Kind = Kind.Storage
                     });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
