@@ -52,8 +52,8 @@ function setupEnv() {
     write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
     New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
 
-    write-host "New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
-    New-AzMySqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
+    write-host "New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
+    New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
