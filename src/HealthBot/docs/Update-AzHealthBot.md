@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.Healthbot
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/update-azhealthbotbot
+Module Name: Az.HealthBot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/update-azhealthbot
 schema: 2.0.0
 ---
 
-# Update-AzHealthbotBot
+# Update-AzHealthBot
 
 ## SYNOPSIS
 Patch a HealthBot.
@@ -14,26 +14,13 @@ Patch a HealthBot.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthbotBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkuName <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzHealthbotBot -Name <String> -ResourceGroupName <String> -Parameter <IHealthBotUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzHealthbotBot -InputObject <IHealthbotIdentity> -Parameter <IHealthBotUpdateParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzHealthBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkuName <SkuName>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzHealthbotBot -InputObject <IHealthbotIdentity> [-SkuName <SkuName>] [-Tag <Hashtable>]
+Update-AzHealthBot -InputObject <IHealthBotIdentity> [-SkuName <SkuName>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -42,23 +29,28 @@ Patch a HealthBot.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: update HealthBot by Resourcegroupname and Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -SkuName S1
 
-{{ Add output here }}
+Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
+-------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
+eastus   yourihealthbot 2020/12/29 8:19:10  test@microsoft.com User                    2020/12/30 6:12:33       test@microsoft.com    User                         Microsoft.HealthBot/health…
 ```
 
-{{ Add description here }}
+update HealthBot by Resourcegroupname and Name
 
-### Example 2: {{ Add title here }}
+### Example 2: update HealthBot by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
+Update-AzHealthBot -InputObject $getHealth -SkuName F0
 
-{{ Add output here }}
+Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
+-------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
+eastus   yourihealthbot 2020/12/29 8:19:10  test@microsoft.com User                    2020/12/30 6:12:33       test@microsoft.com    User                         Microsoft.HealthBot/health…
 ```
 
-{{ Add description here }}
+update HealthBot by InputObject
 
 ## PARAMETERS
 
@@ -82,8 +74,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.IHealthbotIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -98,7 +90,7 @@ The name of the Bot resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: BotName
 
 Required: True
@@ -108,28 +100,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters for updating a HealthBot.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.Api20201208.IHealthBotUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the Bot resource group in the user subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -143,8 +119,8 @@ Accept wildcard characters: False
 The name of the HealthBot SKU
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Support.SkuName
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -159,7 +135,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -174,7 +150,7 @@ Tags for a HealthBot.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,13 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.Api20201208.IHealthBotUpdateParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.IHealthbotIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.Api20201208.IHealthBot
+### Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot
 
 ## NOTES
 
@@ -237,16 +211,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthbotIdentity>: Identity Parameter
+INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
   - `[BotName <String>]`: The name of the Bot resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Bot resource group in the user subscription.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-PARAMETER <IHealthBotUpdateParameters>: Parameters for updating a HealthBot.
-  - `SkuName <SkuName>`: The name of the HealthBot SKU
-  - `[Tag <IHealthBotUpdateParametersTags>]`: Tags for a HealthBot.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

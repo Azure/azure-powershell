@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.Healthbot
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/remove-azhealthbotbot
+Module Name: Az.HealthBot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/remove-azhealthbot
 schema: 2.0.0
 ---
 
-# Remove-AzHealthbotBot
+# Remove-AzHealthBot
 
 ## SYNOPSIS
 Delete a HealthBot.
@@ -14,13 +14,13 @@ Delete a HealthBot.
 
 ### Delete (Default)
 ```
-Remove-AzHealthbotBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzHealthBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzHealthbotBot -InputObject <IHealthbotIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzHealthBot -InputObject <IHealthBotIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,23 +29,22 @@ Delete a HealthBot.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete HealthBot by ResourceGroupName and Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzHealthBot -Name yourihealthbot -ResourceGroupName youriTest
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete HealthBot by ResourceGroupName and Name
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete HealthBot by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $gethealthbot = Get-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest
+Remove-AzHealthBot -InputObject $gethealthbot
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete HealthBot by InputObject
 
 ## PARAMETERS
 
@@ -84,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.IHealthbotIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -206,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Healthbot.Models.IHealthbotIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity
 
 ## OUTPUTS
 
@@ -221,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthbotIdentity>: Identity Parameter
+INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
   - `[BotName <String>]`: The name of the Bot resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Bot resource group in the user subscription.

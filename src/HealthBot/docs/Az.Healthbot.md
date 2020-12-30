@@ -1,25 +1,25 @@
 ---
-Module Name: Az.Healthbot
+Module Name: Az.HealthBot
 Module Guid: dc715b9e-d983-441e-be3d-b8c4c1403443
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.healthbot
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Healthbot Module
+# Az.HealthBot Module
 ## Description
-Microsoft Azure PowerShell: Healthbot cmdlets
+Microsoft Azure PowerShell: HealthBot cmdlets
 
-## Az.Healthbot Cmdlets
-### [Get-AzHealthbotBot](Get-AzHealthbotBot.md)
+## Az.HealthBot Cmdlets
+### [Get-AzHealthBot](Get-AzHealthBot.md)
 Get a HealthBot.
 
-### [New-AzHealthbotBot](New-AzHealthbotBot.md)
+### [New-AzHealthBot](New-AzHealthBot.md)
 Create a new HealthBot.
 
-### [Remove-AzHealthbotBot](Remove-AzHealthbotBot.md)
+### [Remove-AzHealthBot](Remove-AzHealthBot.md)
 Delete a HealthBot.
 
-### [Update-AzHealthbotBot](Update-AzHealthbotBot.md)
+### [Update-AzHealthBot](Update-AzHealthBot.md)
 Patch a HealthBot.
 

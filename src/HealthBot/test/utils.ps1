@@ -11,7 +11,21 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.Location = 'eastus'
     # For any resources you created for test, you should add it to $env here.
+    $env.HealthBot1 = 'yourihealthbot' + (RandomString -allChars $false -len 6)
+    $env.HealthBot2 = 'yourihealthbot' + (RandomString -allChars $false -len 6)
+    $null = $env.Add('S1', 'S1')
+    $null = $env.Add('F0', 'F0')
+
+    Write-Host -ForegroundColor Green "Create test group..."
+    $ResourceGroupName = 'youriADDomain-rg-' + (RandomString -allChars $false -len 6)
+    Write-Host $ResourceGroupName
+    New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+
+    $null = $env.Add('ResourceGroupName', $ResourceGroupName)
+    Write-Host -ForegroundColor Green 'The test group create completed.'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -20,5 +34,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
