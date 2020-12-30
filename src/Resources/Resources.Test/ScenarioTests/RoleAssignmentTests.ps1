@@ -707,17 +707,19 @@ function Test-RaCreatedBySP
     #Setup
     # Conect to azure with SP
     # If you need to re-record replace this setup
-    $passwd = ConvertTo-SecureString 'MCg1SVb3MX' -AsPlainText -Force
-    $pscredential = New-Object System.Management.Automation.PSCredential('c82180ed-2f4b-4cb2-965f-ec5088751710' , $passwd)
-    $tenantId = '1462fd46-afe5-491b-a340-31ebae81d1ce'
-    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
+    $passwd = ConvertTo-SecureString 'm7XHgb9cDVP60L4.3bT~VN1Rhjpo-.ZTU-' -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('9edfc002-3176-4571-95fb-ec9cb4d839d9' , $passwd)
+    $tenantId = '1273adef-00a3-4086-a51a-dbcce1857d36'
+    $subId = '4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
+    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId -Subscription $subId
 
     # Create role assignment
-    $testUser = '1d2121a7-1943-4c7a-a872-b1b2069db55a'
+    $testUser = '11b1042e-d5b6-4f65-b308-d69565f16f1e'
+    $userUPN = 'daorozco_testuser@rbacclitest.onmicrosoft.com'
     $data = New-AzRoleAssignmentWithId `
-    -ObjectId $testUser `
+    -SignInName $userUPN `
     -RoleDefinitionName 'Contributor' `
-    -Scope '/subscriptions/3e123c33-5ffc-400f-a9f8-a073bf35f8ca/resourceGroups/daorozco_bug_repro' `
+    -Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro' `
     -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca
 
     Assert-NotNull $data
@@ -757,9 +759,10 @@ Create role assignment with v2 conditions
 #>
 function Test-RaWithV2Conditions{
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
+    $PrincipalId = "37f3094a-d6e2-48cf-849e-cfa8546088ee"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $Scope = '/subscriptions/ba90acaf-20c8-48bc-a73d-8643dbe0fee6/resourceGroups/contoso_rg'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -794,9 +797,9 @@ Create role assignment with v2 conditions
 #>
 function Test-RaWithV2ConditionsOnly{
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
+    $PrincipalId = "37f3094a-d6e2-48cf-849e-cfa8546088ee"
+    $Scope = '/subscriptions/ba90acaf-20c8-48bc-a73d-8643dbe0fee6/resourceGroups/contoso_rg'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
 
@@ -855,9 +858,9 @@ update role assignment with v2 conditions
 function Test-UpdateRa{
 
     # Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
+    $PrincipalId = "37f3094a-d6e2-48cf-849e-cfa8546088ee"
+    $Scope = '/subscriptions/ba90acaf-20c8-48bc-a73d-8643dbe0fee6/resourceGroups/contoso_rg'
     $Description1 = "This test should not fail"
     $Condition1 = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
