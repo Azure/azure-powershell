@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreProtectableItemException", resourceCulture);
             }
         }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreLocationException", resourceCulture);
             }
         }        
 
