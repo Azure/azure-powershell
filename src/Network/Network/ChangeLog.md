@@ -24,6 +24,8 @@
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
     - Added parameter WebCategory
+* Adding new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+    - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
 
 ## Version 4.3.0
 * Updated below cmdlet 
