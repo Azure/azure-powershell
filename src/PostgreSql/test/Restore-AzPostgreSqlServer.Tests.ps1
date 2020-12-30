@@ -11,9 +11,13 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# !Important: some test cases are skipped and require to be recorded again
+# See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Restore-AzPostgreSqlServer' {
-    It 'GeoRestore' {
+    It 'GeoRestore' -Skip {
         $replica = Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
+        # Possible bug: above line should be
+        # $replica = Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzPostgreSqlReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup
         $restoreServer = Restore-AzPostgreSqlServer -Name $env.serverName -ResourceGroupName $env.resourceGroup -InputObject $replica -UseGeoRestore 
         $restoreServer.Name | Should -Be $env.serverName
         $restoreServer.SkuName | Should -Be $env.Sku

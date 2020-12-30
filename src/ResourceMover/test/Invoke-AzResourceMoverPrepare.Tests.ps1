@@ -11,8 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# !Important: some test cases are skipped and require to be recorded again
+# See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Invoke-AzResourceMoverPrepare' {
-    It 'PrepareExpanded'  {
+    It 'PrepareExpanded' -Skip {
         Resolve-AzResourceMoverMoveCollectionDependency -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName
         $prepareResponse = Invoke-AzResourceMoverPrepare -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
         $prepareResponse.Status.Length | Should -BeGreaterOrEqual 6

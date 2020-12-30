@@ -32,7 +32,7 @@ This will delete the YAML file used to set up the Source control configuration, 
 
 ### Example 1: Remove a configuation of kubernetes cluster by name
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ClusterName connaks-d983yc -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test01
+PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name  k8sconfig-t02 -ClusterType ConnectedClusters
 
 ```
 
