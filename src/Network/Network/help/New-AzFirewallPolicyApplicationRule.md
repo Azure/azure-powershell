@@ -30,6 +30,18 @@ New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -Sour
  -WebCategory <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SourceAddressAndTargetUrl
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+ -TargetUrl <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SourceIpGroupAndTargetUrl
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -TargetUrl <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### SourceIpGroupAndTargetFqdn
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
@@ -198,6 +210,36 @@ Parameter Sets: SourceAddressAndWebCategory, SourceIpGroupAndWebCategory
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetUrl
+The Target Url of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceAddressAndTargetUrl, SourceIpGroupAndTargetUrl
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TerminateTLS
+Indicates terminating TLS
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
