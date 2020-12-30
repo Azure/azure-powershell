@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzPostgreSqlFlexibleServerLocationBasedCapability' {
     It 'Get' {
         {
-            $Result = Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+            $Result = Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus2euap
             $Result.Length | Should -BeGreaterThan 0 
         } | Should -Not -Throw
     }

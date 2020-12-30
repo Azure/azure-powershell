@@ -17,7 +17,7 @@ Describe 'Remove-AzPostgreSqlFlexibleServer' {
             If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
-                New-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
+                New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
             }
             Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2
         } | Should -Not -Throw
@@ -26,6 +26,11 @@ Describe 'Remove-AzPostgreSqlFlexibleServer' {
     It 'DeleteViaIdentity' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName2)"
+            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+                $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
+                New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
+            }
             Remove-AzPostgreSqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

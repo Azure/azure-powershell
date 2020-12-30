@@ -14,13 +14,13 @@ while(-not $mockingPath) {
 Describe 'Restart-AzPostgreSqlFlexibleServer' {
     It 'Restart' {
         {
-            Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
+            Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
         } | Should -Not -Throw
     }
 
     It 'RestartViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzPostgreSqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

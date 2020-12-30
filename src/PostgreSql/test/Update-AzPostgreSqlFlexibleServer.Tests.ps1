@@ -14,15 +14,15 @@ while(-not $mockingPath) {
 Describe 'Update-AzPostgreSqlFlexibleServer' {
     It 'UpdateExpanded' {
         {
-            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName -BackupRetentionDay 15 
+            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 15 
             $server.StorageProfileBackupRetentionDay | Should -Be 15
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSql/flexibleServers/$($env.serverName)/"
-            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName -BackupRetentionDay 20
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSql/flexibleServers/$($env.flexibleServerName)/"
+            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 20
             $server.StorageProfileBackupRetentionDay | Should -Be 20
         } | Should -Not -Throw
     }

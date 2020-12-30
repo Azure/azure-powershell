@@ -1,8 +1,8 @@
 {
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/restart?api-version=2020-02-14-preview+1": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/restart?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "16" ],
@@ -21,9 +21,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "8b4dd334-f0d0-49d6-a6fc-2c82432a6450" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
@@ -41,10 +41,10 @@
       "Content": "{\"operation\":\"RestartServerManagementOperation\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+2": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -81,10 +81,10 @@
       "Content": "{\"name\":\"8b4dd334-f0d0-49d6-a6fc-2c82432a6450\",\"status\":\"InProgress\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+3": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -121,10 +121,10 @@
       "Content": "{\"name\":\"8b4dd334-f0d0-49d6-a6fc-2c82432a6450\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+4": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -157,13 +157,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"postgresql-test-100\",\"type\":\"PostgreSQL\"}"
+      "Content": "{\"name\":\"postgresql-flexible-test-100\",\"type\":\"PostgreSQL\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/restart?api-version=2020-02-14-preview+1": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100/restart?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
@@ -182,9 +182,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "32cd6b29-57ad-4f46-a743-fb23b263341b" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
@@ -202,10 +202,10 @@
       "Content": "{\"operation\":\"RestartServerManagementOperation\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+2": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -242,10 +242,10 @@
       "Content": "{\"name\":\"32cd6b29-57ad-4f46-a743-fb23b263341b\",\"status\":\"InProgress\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+3": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -282,10 +282,10 @@
       "Content": "{\"name\":\"32cd6b29-57ad-4f46-a743-fb23b263341b\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
     }
   },
-  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+4": {
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -318,7 +318,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"postgresql-test-100\",\"type\":\"PostgreSQL\"}"
+      "Content": "{\"name\":\"postgresql-flexible-test-100\",\"type\":\"PostgreSQL\"}"
     }
   }
 }

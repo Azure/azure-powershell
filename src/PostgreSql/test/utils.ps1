@@ -26,7 +26,7 @@ function setupEnv() {
     # Create the test group
     write-host "start to create test group."
     $resourceGroup = "PostgreSqlTest"
-    $location = "eastus"
+    $location = "eastus2euap"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
@@ -38,7 +38,9 @@ function setupEnv() {
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "postgresql-test-100"
+    $flexibleServerName = "postgresql-flexible-test-100"
     $env.Add("serverName", $serverName)
+    $env.Add("flexibleServerName", $flexibleServerName)
     $Sku = "GP_Gen5_4"
     $env.Add("Sku", $Sku)
     $FlexibleSku = "Standard_D2s_v3"
@@ -49,8 +51,8 @@ function setupEnv() {
     write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
     New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
 
-    write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password"
-    New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password
+    write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess all"
+    New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess all
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

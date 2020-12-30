@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzPostgreSqlFlexibleServerConfiguration' {
     It 'UpdateExpanded' {
-        $config = Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -Value 10240
+        $config = Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Value 10240
         $config.Value | Should -Be 10240
         $config.DefaultValue | Should -Be 4096
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName)/configurations/work_mem"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/configurations/work_mem"
         $config = Update-AzPostgreSqlFlexibleServerConfiguration -InputObject $ID -Value 4096
         $config.Value | Should -Be 4096
         $config.DefaultValue | Should -Be 4096

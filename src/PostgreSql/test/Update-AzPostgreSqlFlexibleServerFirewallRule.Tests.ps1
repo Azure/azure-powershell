@@ -13,27 +13,27 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzPostgreSqlFlexibleServerFirewallRule' {
     It 'UpdateExpanded' {
-        New-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
+        New-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
         $rule.StartIPAddress | Should -Be 0.0.0.2
         $rule.EndIPAddress | Should -Be 0.0.0.3
     }
 
     It 'ClientIPAddress' {
-        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -ClientIPAddress 0.0.0.2
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -ClientIPAddress 0.0.0.2
         $rule.StartIPAddress | Should -Be 0.0.0.2
         $rule.EndIPAddress | Should -Be 0.0.0.2
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.5 -StartIPAddress 0.0.0.4
         $rule.StartIPAddress | Should -Be 0.0.0.4
         $rule.EndIPAddress | Should -Be 0.0.0.5
     }
 
     It 'ClientIPAddressViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.9
         $rule.StartIPAddress | Should -Be 0.0.0.9
         $rule.EndIPAddress | Should -Be 0.0.0.9

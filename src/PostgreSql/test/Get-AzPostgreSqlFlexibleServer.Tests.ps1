@@ -21,8 +21,8 @@ Describe 'Get-AzPostgreSqlFlexibleServer' {
 
     It 'Get'  {
         {
-            $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
-            $servers.Name | Should -Be $env.serverName
+            $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+            $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
     }
 
@@ -35,9 +35,9 @@ Describe 'Get-AzPostgreSqlFlexibleServer' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)"
             $servers = Get-AzPostgreSqlFlexibleServer -InputObject $ID
-            $servers.Name | Should -Be $env.serverName
+            $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
     }
 }
