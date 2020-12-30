@@ -16,11 +16,9 @@ while(-not $mockingPath) {
 Describe 'New-AzMySqlFlexibleServerReplica' {
     It 'CreateExpanded' {
         {
-            $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
-            # Possible bug: above line should be
-            # $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+            $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
             $replica.Name | Should -Be $env.replicaName
-            $replica.SkuName | Should -Be $env.FlexibleSku
+            $replica.SkuName | Should -Be $env.flexibleSku
             $replica.Location | Should -Be "West US 2"
             Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.replicaName
         } | Should -Not -Throw

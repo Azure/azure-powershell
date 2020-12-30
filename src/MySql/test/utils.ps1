@@ -27,7 +27,7 @@ function setupEnv() {
     # Create the test group
     write-host "start to create test group."
     $resourceGroup = "MySqlTest"
-    $location = "westus2"
+    $location = "eastus2euap"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
@@ -36,24 +36,23 @@ function setupEnv() {
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "mysql-test-100"
     $env.Add("serverName", $serverName)
-    $flexibleServerName = "flexible-mysql-test-100"
-    $env.Add("FlexibleServerName", $flexibleServerName)
+    $flexibleServerName = "mysql-flexible-test-100"
+    $env.Add("flexibleServerName", $flexibleServerName)
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_B1ms"
     $env.Add("Sku", $Sku)
-    $env.Add("FlexibleSku", $FlexibleSku)
+    $env.Add("flexibleSku", $FlexibleSku)
     # Create the test Vnet
     write-host "Deploy Vnet template"
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
-
 
     write-host (Get-AzContext | Out-String)
 
     write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
     New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
 
-    write-host "New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password"
-    New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password
+    write-host "New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -PubclicAccess all -Location eastus2euap"
+    New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -PublicAccess all -Location eastus2euap
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
