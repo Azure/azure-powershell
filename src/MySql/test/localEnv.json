@@ -13,6 +13,6 @@
   "serverName2": "mysql-test-100-2",
   "VNetName": "mysqlvnet",
   "resourceGroup": "MySqlTest",
-  "location": "westus2",
+  "location": "eastus2euap",
   "Sku": "GP_Gen5_4"
 }

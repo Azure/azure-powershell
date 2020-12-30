@@ -19,7 +19,7 @@ Describe 'Remove-AzMySqlFlexibleServer' {
             If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
-                New-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
+                New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
             }
             Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2
         } | Should -Not -Throw
@@ -30,7 +30,7 @@ Describe 'Remove-AzMySqlFlexibleServer' {
             If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
-                New-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
+                New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
             }
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName2)"
             Remove-AzMySqlFlexibleServer -InputObject $ID
