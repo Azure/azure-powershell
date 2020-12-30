@@ -30,6 +30,7 @@ For information on how to develop for `Az.ADDomainServices`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
+Branch: 394ab556cb4aed1196918856a24be9b02609cc93
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -57,23 +58,9 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}"].delete.responses
     transform: >-
-        return {
-          "200": {
-            "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
-          },
-          "202": {
-            "description": "HTTP 202 (Accepted) if the operation was successfully started and will complete asynchronously."
-          },
-          "204": {
-            "description": "HTTP 204 (Not Content) should be used if the resource does not exist and the request is well formed."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-          }
+        $["200"] = {
+          "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
+        }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
