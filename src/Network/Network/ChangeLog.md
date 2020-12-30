@@ -24,6 +24,8 @@
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
     - Added parameter WebCategory
+* add multiple Authentication support for p2sVpnGateway
+    - updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 
 ## Version 4.3.0
 * Updated below cmdlet 
