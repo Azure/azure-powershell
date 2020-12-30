@@ -761,7 +761,6 @@ function Test-RaWithV2Conditions{
     #Given
     $RoleDefinitionId = "0353ee0a-19ae-4380-ba3d-d54767c75d5b"
     $PrincipalId = "37f3094a-d6e2-48cf-849e-cfa8546088ee"
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
     $Scope = '/subscriptions/ba90acaf-20c8-48bc-a73d-8643dbe0fee6/resourceGroups/contoso_rg'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
