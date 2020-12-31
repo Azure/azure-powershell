@@ -20,14 +20,6 @@ The update call only supports the properties listed in the PATCH body.
 .Description
 The Update Domain Service operation can be used to update the existing deployment.
 The update call only supports the properties listed in the PATCH body.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity
