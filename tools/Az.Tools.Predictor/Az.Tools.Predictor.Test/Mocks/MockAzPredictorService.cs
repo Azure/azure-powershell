@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -23,9 +23,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     sealed class MockAzPredictorService : AzPredictorService
     {
         /// <summary>
-        /// Gets or sets if a predictions is requested.
+        /// Gets or sets the commands in history to request prediction for.
         /// </summary>
-        public bool IsPredictionRequested { get; set; }
+        public IEnumerable<string> Commands { get; set; }
+
+        /// <summary>
+        /// Gets or sets the commands that's recorded in history.
+        /// </summary>
+        public CommandAst History { get; set; }
 
         /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
@@ -52,15 +57,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override void RequestPredictions(IEnumerable<string> history)
+        public override void RequestPredictions(IEnumerable<string> commands)
         {
-            this.IsPredictionRequested = true;
+            Commands = commands;
         }
 
         /// <inheritdoc/>
         protected override void RequestAllPredictiveCommands()
         {
             // Do nothing since we've set the command and suggestion predictors.
+        }
+
+        /// <inheritdoc/>
+        public override void RecordHistory(CommandAst history)
+        {
+            History = history;
         }
     }
 }
