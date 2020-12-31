@@ -11,12 +11,10 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa"), OutputType(typeof(PSVirtualNetworkGatewayConnectionIkeSa))]
