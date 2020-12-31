@@ -26,7 +26,7 @@ function setupEnv() {
 
     # Create the test group
     write-host "start to create test group."
-    $resourceGroup = "MySqlTest"
+    $resourceGroup = "MySqlTestGroup"
     $location = "eastus2euap"
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)

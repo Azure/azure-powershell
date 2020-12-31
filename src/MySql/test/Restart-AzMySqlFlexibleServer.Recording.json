@@ -1,8 +1,8 @@
 {
-  "Restart-AzMySqlFlexibleServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview+1": {
+  "Restart-AzMySqlFlexibleServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
@@ -160,10 +160,10 @@
       "Content": "{\"name\":\"mysql-flexible-test-100\",\"type\":\"MySQL\"}"
     }
   },
-  "Restart-AzMySqlFlexibleServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview+1": {
+  "Restart-AzMySqlFlexibleServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/restart?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "5" ],

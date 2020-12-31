@@ -1,8 +1,8 @@
 {
-  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+1": {
+  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
@@ -35,14 +35,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_B1ms\",\"tier\":\"Burstable\",\"capacity\":0},\"properties\":{\"administratorLogin\":\"gleefulOrange3\",\"storageProfile\":{\"storageMB\":10240,\"storageIops\":0,\"backupRetentionDays\":7,\"storageAutogrow\":\"Disabled\",\"fileStorageSkuName\":\"Premium_LRS\"},\"version\":\"5.7\",\"state\":\"Ready\",\"haState\":\"NotEnabled\",\"fullyQualifiedDomainName\":\"mysql-flexible-test-100.mysql.database.azure.com\",\"sourceServerId\":\"\",\"publicNetworkAccess\":\"Enabled\",\"sslEnforcement\":\"Disabled\",\"haEnabled\":\"Disabled\",\"earliestRestoreDate\":\"2020-12-22T05:12:15.3040713+00:00\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"None\",\"replicaCapacity\":10,\"byokEnforcement\":\"Disabled\"},\"location\":\"West US 2\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\"name\":\"mysql-flexible-test-100\",\"type\":\"Microsoft.DBforMySQL/flexibleServers\"}"
+      "Content": "{\"sku\":{\"name\":\"Standard_B1ms\",\"tier\":\"Burstable\",\"capacity\":0},\"properties\":{\"administratorLogin\":\"gleefulOrange3\",\"storageProfile\":{\"storageMB\":10240,\"storageIops\":0,\"backupRetentionDays\":7,\"storageAutogrow\":\"Disabled\",\"fileStorageSkuName\":\"Premium_LRS\"},\"version\":\"5.7\",\"state\":\"Ready\",\"haState\":\"NotEnabled\",\"fullyQualifiedDomainName\":\"mysql-flexible-test-100.mysql.database.azure.com\",\"sourceServerId\":\"\",\"publicNetworkAccess\":\"Enabled\",\"sslEnforcement\":\"Disabled\",\"haEnabled\":\"Disabled\",\"earliestRestoreDate\":\"2020-12-22T05:12:15.3040713+00:00\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"None\",\"replicaCapacity\":10,\"byokEnforcement\":\"Disabled\"},\"location\":\"West US 2\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\"name\":\"mysql-flexible-test-100\",\"type\":\"Microsoft.DBforMySQL/flexibleServers\"}"
     }
   },
-  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+2": {
+  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
-      "Content": "{\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"sourceServerId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\r\n    \"createMode\": \"Replica\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
+      "Content": "{\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"sourceServerId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\r\n    \"createMode\": \"Replica\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -515,10 +515,10 @@
       "Content": "{\"name\":\"d8133f0f-f476-4fcb-9178-ec041aba8bf0\",\"status\":\"Succeeded\",\"startTime\":\"2020-12-22T05:12:16.46Z\"}"
     }
   },
-  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+14": {
+  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -551,13 +551,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_B1ms\",\"tier\":\"Burstable\",\"capacity\":0},\"properties\":{\"administratorLogin\":\"gleefulOrange3\",\"storageProfile\":{\"storageMB\":10240,\"storageIops\":0,\"backupRetentionDays\":7,\"storageAutogrow\":\"Disabled\",\"fileStorageSkuName\":\"Premium_LRS\"},\"version\":\"5.7\",\"state\":\"Ready\",\"haState\":\"NotEnabled\",\"fullyQualifiedDomainName\":\"mysql-test-100-replica.mysql.database.azure.com\",\"sourceServerId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\"publicNetworkAccess\":\"Enabled\",\"sslEnforcement\":\"Disabled\",\"haEnabled\":\"Disabled\",\"earliestRestoreDate\":\"2020-12-22T05:23:19.0409909+00:00\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"Replica\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\"},\"location\":\"West US 2\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100-replica\",\"name\":\"mysql-test-100-replica\",\"type\":\"Microsoft.DBforMySQL/flexibleServers\"}"
+      "Content": "{\"sku\":{\"name\":\"Standard_B1ms\",\"tier\":\"Burstable\",\"capacity\":0},\"properties\":{\"administratorLogin\":\"gleefulOrange3\",\"storageProfile\":{\"storageMB\":10240,\"storageIops\":0,\"backupRetentionDays\":7,\"storageAutogrow\":\"Disabled\",\"fileStorageSkuName\":\"Premium_LRS\"},\"version\":\"5.7\",\"state\":\"Ready\",\"haState\":\"NotEnabled\",\"fullyQualifiedDomainName\":\"mysql-test-100-replica.mysql.database.azure.com\",\"sourceServerId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100\",\"publicNetworkAccess\":\"Enabled\",\"sslEnforcement\":\"Disabled\",\"haEnabled\":\"Disabled\",\"earliestRestoreDate\":\"2020-12-22T05:23:19.0409909+00:00\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"Replica\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\"},\"location\":\"West US 2\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100-replica\",\"name\":\"mysql-test-100-replica\",\"type\":\"Microsoft.DBforMySQL/flexibleServers\"}"
     }
   },
-  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+15": {
+  "New-AzMySqlFlexibleServerReplica+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview+15": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100-replica?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "16" ],
