@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
         /// <param name="value">the value to convert to an instance of <see cref="CustomParameterType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CustomParameterType(System.Convert.ToString(value));
+            return new CustomParameterType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="CustomParameterType" Enum class./></summary>

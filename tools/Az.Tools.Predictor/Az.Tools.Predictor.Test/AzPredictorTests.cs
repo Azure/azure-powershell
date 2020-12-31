@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             this._azPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
             {
                 SuggestionCount = 1,
+                MaxAllowedCommandDuplicate = 1,
             },
             null);
         }
@@ -134,18 +135,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verifies AzPredictor returns the same value as AzPredictorService for the prediction.
         /// </summary>
         [Theory]
-        [InlineData("git status")]
         [InlineData("new-azresourcegroup -name hello")]
         [InlineData("Get-AzContext -Name")]
-        [InlineData("Get-AzContext -ErrorAction")]
-        [InlineData("Get-AzADServicePrincipal -ApplicationObject")]
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
             var expected = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
             var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
 
-            Assert.Equal(expected.Select(e => e.Item1), actual.Select(a => a.SuggestionText));
+            Assert.Equal(expected.Count, actual.Count);
+            Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.First().SuggestionText);
         }
 
         /// <summary>
@@ -158,16 +157,35 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var localAzPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
+                MaxAllowedCommandDuplicate = 1,
             },
             null);
 
             var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
-            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Verbose ***";
+            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Tag value1";
 
             var predictionContext = PredictionContext.Create(userInput);
             var actual = localAzPredictor.GetSuggestion(predictionContext, CancellationToken.None);
 
             Assert.Equal(expected, actual.First().SuggestionText);
+        }
+
+
+        /// <summary>
+        /// Verify when we cannot parse the user input correctly.
+        /// </summary>
+        /// <remarks>
+        /// When we can parse them correctly, please move the InlineData to the corresponding test methods, for example, "git status"
+        /// can be moved to <see cref="VerifySuggestion"/>.
+        /// </remarks>
+        [Theory]
+        [InlineData("git status")]
+        public void VerifyMalFormattedCommandLine(string userInput)
+        {
+            var predictionContext = PredictionContext.Create(userInput);
+            var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
+
+            Assert.Empty(actual);
         }
     }
 }

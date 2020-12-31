@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
@@ -31,6 +32,7 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -125,15 +127,15 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Port number for managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Port number for managed service login.")]
         [PSDefaultValue(Help = "50342", Value = 50342)]
         public int ManagedServicePort { get; set; } = 50342;
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Host name for managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Host name for managed service login.")]
         [PSDefaultValue(Help = "localhost", Value = "localhost")]
         public string ManagedServiceHostName { get; set; } = "localhost";
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Secret, used for some kinds of managed service login.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Secret, used for some kinds of managed service login.")]
         [ValidateNotNullOrEmpty]
         public SecureString ManagedServiceSecret { get; set; }
 
@@ -195,6 +197,8 @@ namespace Microsoft.Azure.Commands.Profile
         /// This cmdlet should work even if there isn't a default context
         /// </summary>
         protected override bool RequireDefaultContext() { return false; }
+
+        internal TokenCachePersistenceChecker TokenCachePersistenceChecker { get; set; } = new TokenCachePersistenceChecker();
 
         protected override void BeginProcessing()
         {
@@ -295,6 +299,12 @@ namespace Microsoft.Azure.Commands.Profile
                         Path = "/oauth2/token"
                     };
 
+                    //ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete, should be removed in next major release
+                    if (this.IsBound(nameof(ManagedServiceHostName)) || this.IsBound(nameof(ManagedServicePort)) || this.IsBound(nameof(ManagedServiceSecret)))
+                    {
+                        WriteWarning(Resources.ObsoleteManagedServiceParameters);
+                    }
+
                     var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
 
                     var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
@@ -329,7 +339,7 @@ namespace Microsoft.Azure.Commands.Profile
                         azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
                     }
 
-                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
+                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format(Constants.DefaultMsiAccountIdPrefix + "{0}", ManagedServicePort);
                     break;
                 default:
                     //Support username + password for both Windows PowerShell and PowerShell 6+
@@ -387,6 +397,17 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
+                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies))
+                {
+                    commonUtitilies = new CommonUtilities();
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtitilies);
+                }
+                if(!commonUtitilies.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                {
+                    WriteWarning(Resources.InteractiveAuthNotSupported);
+                    return;
+                }
+
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
                    bool shouldPopulateContextList = true;
@@ -425,14 +446,14 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
-                       if(IsUnableToOpenWebPageError(ex))
+                       if (IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
                        }
                        else
                        {
-                           if (ParameterSetName == UserParameterSet && UseDeviceAuthentication == false)
+                           if (IsUsingInteractiveAuthentication())
                            {
                                //Display only if user is using Interactive auth
                                WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
@@ -443,6 +464,11 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                });
             }
+        }
+
+        private bool IsUsingInteractiveAuthentication()
+        {
+            return ParameterSetName == UserParameterSet && UseDeviceAuthentication == false;
         }
 
         private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
@@ -548,7 +574,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 try
                 {
-                    if (autoSaveEnabled && !SharedTokenCacheProvider.SupportCachePersistence(out string message))
+                    if (autoSaveEnabled && !TokenCachePersistenceChecker.Verify())
                     {
                         // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                         // We cannot just throw an exception here because this is called when importing the module
@@ -591,10 +617,12 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 var tokenCache = provider.GetTokenCache();
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
+                AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
-
+                AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
+                AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

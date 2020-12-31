@@ -32,18 +32,15 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }
 
-        /// <summary>
-        /// Sets or gets the Logs of the Diagnostic Setting.
-        /// This property in transitional until the namesace change is taken
-        /// </summary>
-        public new IList<Microsoft.Azure.Management.Monitor.Management.Models.LogSettings> Logs { get; set; }
+        //public new string Id { get; set; }
 
-        /// <summary>
-        /// Sets or gets the Logs of the Diagnostic Setting.
-        /// This property in transitional until the namesace change is taken
-        /// </summary>
-        public new IList<Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings> Metrics { get; set; }
+        //public new string Name { get; set; } = "service";
 
+        public PSServiceDiagnosticSettings() { }
+
+        public PSServiceDiagnosticSettings(string id = default(string), string name = default(string)) : base(id, name)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
@@ -65,19 +62,19 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
                 if (serviceDiagnosticSettings.Metrics != null)
                 {
-                    this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
+                    this.Metrics = new List<MetricSettings>();
                     foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
                     {
-                        this.Metrics.Add(new PSMetricSettings(metricSettings));
+                        this.Metrics.Add(metricSettings);
                     }
                 }
 
                 if (serviceDiagnosticSettings.Logs != null)
                 {
-                    this.Logs = new List<Management.Monitor.Management.Models.LogSettings>();
+                    this.Logs = new List<LogSettings>();
                     foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
                     {
-                        this.Logs.Add(new PSLogSettings(logSettings));
+                        this.Logs.Add(logSettings);
                     }
                 }
 

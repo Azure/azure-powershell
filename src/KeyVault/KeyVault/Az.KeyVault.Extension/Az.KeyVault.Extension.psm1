@@ -44,14 +44,13 @@ function Get-Secret
             {
                 $SecretValue = Get-String $Secret
             }
-
             'PSCredential' 
             {
-                Get-PSCredential $Secret
+                $SecretValue = Get-PSCredential $Secret
             }
             'Hashtable' 
             {  
-                Get-Hashtable $Secret
+                $SecretValue = Get-Hashtable $Secret
             }
             Default 
             {

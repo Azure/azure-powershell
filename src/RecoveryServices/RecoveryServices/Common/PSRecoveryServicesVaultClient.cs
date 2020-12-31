@@ -63,6 +63,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 resouceGroupName, vaultName, vault, GetRequestHeaders()).Result.Body;
         }
 
+        /// <summary>  
+        /// Method to create or update Recovery Services Vault.
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="vault">patch vault object to patch the recovery services Vault</param>
+        /// <returns>Azure Recovery Services Vault.</returns> 
+        public Vault UpdateRSVault(string resouceGroupName, string vaultName, PatchVault vault)
+        {
+            var response = GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(resouceGroupName, vaultName, vault).Result;
+            return response.Body;
+        }
+
         /// <summary>
         /// Method to delete Azure Recovery Services Vault
         /// </summary>

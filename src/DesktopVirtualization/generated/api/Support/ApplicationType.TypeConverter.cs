@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for ApplicationType.</summary>
+    /// <summary>Application type of application.</summary>
     public partial class ApplicationTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

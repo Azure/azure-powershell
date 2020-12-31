@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for Compression.</summary>
+    /// <summary>The compression type</summary>
     public partial class CompressionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

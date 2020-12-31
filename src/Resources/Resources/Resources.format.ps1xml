@@ -383,6 +383,13 @@
                 <ScriptBlock>$_.Location.ToLowerInvariant().Replace(" ", "")</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>Tags</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Tags -ne $null -and $_.Tags.Count -gt 0</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$_.Tags</ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Description</Label>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.Description -ne $null</ScriptBlock>
@@ -425,6 +432,13 @@
               <ListItem>
                 <Label>Name</Label>
                 <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Tags -ne $null -and $_.Tags.Count -gt 0</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$_.Tags</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Description</Label>
