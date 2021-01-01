@@ -23,7 +23,7 @@ using System.Management.Automation.Subsystem;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-[assembly:InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
 
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
+                suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
                 return returnedValue ?? new List<PredictiveSuggestion>();

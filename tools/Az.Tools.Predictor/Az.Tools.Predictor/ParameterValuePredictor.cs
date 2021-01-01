@@ -1,13 +1,10 @@
 ﻿using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
-using System.IO;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Management.Automation.Language;
+using System.Text.Json;
 
 
 
@@ -27,7 +24,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
             var directory = fileInfo.DirectoryName;
             var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
-            _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+
+            try
+            {
+                _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+            }
+            catch
+            {
+                // We don't want it to crash the module when the file doesn't exist or when it's mal-formatted.
+            }
         }
 
         /// <summary>
@@ -38,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (command != null)
             {
-                ExtractLocalParameters(command.CommandElements);
+                ExtractLocalParameters(command);
             }
         }
 
@@ -55,18 +60,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
         public string GetParameterValueFromAzCommand(string commandNoun, string parameterName)
         {
-            if (_command_param_to_resource_map.ContainsKey(commandNoun))
+            parameterName = parameterName.ToLower();
+            var key = parameterName;
+            Dictionary<string, string> commandNounMap = null;
+
+            if (_command_param_to_resource_map?.TryGetValue(commandNoun, out commandNounMap) == true)
             {
-                parameterName = parameterName.ToLower();
-                if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
+                if (commandNounMap.TryGetValue(parameterName, out var parameterNameMappedValue))
                 {
-                    var key = _command_param_to_resource_map[commandNoun][parameterName];
-                    if (_localParameterValues.TryGetValue(key, out var value))
-                    {
-                        return value;
-                    }
+                    key = parameterNameMappedValue;
                 }
             }
+
+            if (_localParameterValues.TryGetValue(key, out var value))
+            {
+                return value;
+            }
+
             return null;
         }
 
@@ -94,34 +104,69 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         ///   ResourceGroupName => Hello
         ///   Location => 'EastUS'
         /// </summary>
-        /// <param name="command">The command ast elements</param>
-        private void ExtractLocalParameters(System.Collections.ObjectModel.ReadOnlyCollection<CommandElementAst> command)
+        /// <param name="command">The command ast element</param>
+        /// <remarks>
+        /// This doesn't support positional parameter.
+        /// </remarks>
+        private void ExtractLocalParameters(CommandAst command)
         {
             // Azure PowerShell command is in the form of {Verb}-Az{Noun}, e.g. New-AzResource.
             // We need to extract the noun to construct the parameter name.
 
-            var commandName = command.FirstOrDefault()?.ToString();
+            var commandName = command.GetCommandName();
             var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName)?.ToLower();
             if (commandNoun == null)
             {
                 return;
             }
 
-            for (int i = 2; i < command.Count; i += 2)
+            Dictionary<string, string> commandNounMap = null;
+            _command_param_to_resource_map?.TryGetValue(commandNoun, out commandNounMap);
+
+            for (int i = 1; i < command.CommandElements.Count;)
             {
-                if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
+                if (command.CommandElements[i] is CommandParameterAst parameterAst)
                 {
-                    var parameterName = command[i - 1].ToString().ToLower().Trim('-');
-                    if (_command_param_to_resource_map.ContainsKey(commandNoun))
+                    var parameterName = parameterAst.ParameterName.ToLower();
+                    string parameterValue = null;
+
+                    // In the form of "-Name:Value"
+                    if (parameterAst.Argument != null)
                     {
-                        if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
+                        parameterValue = parameterAst.Argument.ToString();
+                        ++i;
+                    }
+                    else if (i + 1 < command.CommandElements.Count)
+                    {
+                        // We don't support positional parameter.
+                        // The next element is either
+                        // 1. The value of this parameter name.
+                        // 2. This parameter is a switch parameter which doesn't have a value. The next element is a parameter.
+
+                        var nextElement = command.CommandElements[i + 1];
+
+                        if (nextElement is CommandParameterAst)
                         {
-                            var key = _command_param_to_resource_map[commandNoun][parameterName];
-                            var parameterValue = command[i].ToString();
-                            this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
+                            ++i;
+                            continue;
+                        }
+
+                        parameterValue = command.CommandElements[i + 1].ToString();
+                        i += 2;
+                    }
+
+                    var parameterKey = parameterName;
+
+                    if (commandNounMap != null)
+                    {
+                        if (commandNounMap.TryGetValue(parameterName, out var mappedValue))
+                        {
+                            parameterKey = mappedValue;
                         }
                     }
-                }   
+
+                    _localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
+                }
             }
         }
     }
