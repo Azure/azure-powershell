@@ -42,14 +42,14 @@ All test scenario are grouped into three different category: P0, P1 and P2. Whet
 
 |Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
 |----|----|----|----|----|----|----|----|----|----|
-|`No parameter`|P0(SemiAuto)|P0|P0(SemiAuto-No)|P0(SemiAuto-No)|P0(SemiAuto-No)|P0(SemiAuto-No)|P0|P0|P0|
-|`-Subscription sub-id`|P0(SemiAuto)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P2(SemiAuto-No)|P1|P1|P1|
-|`-Subscription sub-name`|P1(SemiAuto)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2|P2|P2|
-|`-Subscription sub-id-in-2nd-tenant`|P0(SemiAuto-No)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|NA|NA|NA|
-|`-Tenant tenant-id`|P0(SemiAuto)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P2(SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id`|P1(SemiAuto-No)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|NA|NA|NA|
-|`-Tenant tenant-id -Subscription sub-id`|P0(SemiAuto)|P1|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P1(SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1(SemiAuto-No)|P2|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|P2(SemiAuto-No)|NA|NA|NA|
+|`No parameter`|P0(SemiAuto)|P0|P0(Auto-No)|P0(SemiAuto-No)|P0(Auto-No)|P0(SemiAuto-No)|P0|P0|P0|
+|`-Subscription sub-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P2(SemiAuto-No)|P1|P1|P1|
+|`-Subscription sub-name`|P1(SemiAuto)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|P2|P2|P2|
+|`-Subscription sub-id-in-2nd-tenant`|P0(SemiAuto-No)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|NA|NA|NA|
+|`-Tenant tenant-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P2(SemiAuto-No)|P1|P1|P1|
+|`-Tenant 2nd-tenant-id`|P1(SemiAuto-No)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P1(SemiAuto-No)|NA|NA|NA|
+|`-Tenant tenant-id -Subscription sub-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P1(SemiAuto-No)|P1|P1|P1|
+|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1(SemiAuto-No)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|NA|NA|NA|
 |`No Parameter` Click back button before inputing password(Negative)|P2|P2|NA|NA|NA|NA|NA|NA|NA|
 |`-Subscripiton -sub-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
 |`-Tenant -tenant-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
@@ -59,6 +59,7 @@ All test scenario are grouped into three different category: P0, P1 and P2. Whet
 
 - *SemiAuto* means the test case is available, but it needs manual input during running test.
 - *SemiAuto-No* means the test case could be written in SemiAuto way, but it is not there yet.
+- *Auto-No* means the test case could be written in automatic way(by environment variable), but it is not there yet.
 - Test case without any status means manual, the cost for automation is high.
 
 ### Connect-AzAccount Using MSA Account
