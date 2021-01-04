@@ -304,24 +304,11 @@ process {
         # Create Firewallrules
         $FirewallRuleName = CreateFirewallRule $NetworkParameters
 
-        $Msg = "
-`"databaseName`": `"$DEFAULT_DB_NAME`",
-`"id`": `"/subscriptions/$($PSBoundParameters.SubscriptionId)/resourceGroups/$($PSBoundParameters.ResourceGroupName)/providers/Microsoft.DBForMySql/flexibleServers/$($PSBoundParameters.Name)`",
-`"location`": `"$($PSBoundParameters.Location)`",
-`"password`": `"$($PSBoundParameters.AdministratorLoginPassword)`",
-`"resourceGroup`": `"$($PSBoundParameters.ResourceGroupName)`",
-`"skuname`": `"$($PSBoundParameters.SkuName)`",
-`"username`": `"$($PSBoundParameters.AdministratorLogin)`",
-`"version`": `"$($PSBoundParameters.Version)`"
-"
-
-        If ($PSBoundParameters.ContainsKey('DelegatedSubnetArgumentSubnetArmResourceId')) {
-            $Msg += "`"subnetId`": `"$($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)`""
+        If (![string]::IsNullOrEmpty($FirewallRuleName)) {
+            $Server.FirewallRuleName = $FirewallRuleName
         }
-        ElseIf (![string]::IsNullOrEmpty($FirewallRuleName)) {
-            $Msg += "`"firewallName`": `"$FirewallRuleName`""
-        }
-        Write-Host $Msg
+        $Server.DatabaseName = $DEFAULT_DB_NAME
+        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
 
         return $Server
 
