@@ -36,7 +36,7 @@
     - Added parameter -IntrusionDetection
     - Added parameter -TransportSecurityName
     - Added parameter -TransportSecurityKeyVaultSecretId
-* Adding new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+* Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
     - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
 
 ## Version 4.3.0
