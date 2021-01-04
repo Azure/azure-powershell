@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionikesa
+online version:
 schema: 2.0.0
 ---
 
@@ -12,22 +12,22 @@ Get IKE Security Associations of a Virtual Network Gateway Connection
 
 ## SYNTAX
 
-### ByName (Default)
+### ByName
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName <String> -Name <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzVirtualNetworkGatewayConnectionIkeSa [-Name <String>] -ResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject <PSVirtualNetworkGatewayConnection>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- ```
-
- ### ByResourceId
+Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject <PSVirtualNetworkGatewayConnection> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceId <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+### ByResourceId
+```
+Get-AzVirtualNetworkGatewayConnectionIkeSa [-ResourceId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,52 +36,35 @@ If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specif
 
 ## EXAMPLES
 
-### 1: Get-AzVirtualNetworkGatewayConnectionIkeSa by Connection Name.
-```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName myRG -Name myTunnel
+### Example 1
+```powershell
+PS C:\> Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName myRG -Name myTunnel
+localEndpoint              : 52.180.160.154
+remoteEndpoint             : 104.208.54.1
+initiatorCookie            : 5490733703579933026
+responderCookie            : 15460013388959380535
+localUdpEncapsulationPort  : 0
+remoteUdpEncapsulationPort : 0
+encryption                 : AES256
+integrity                  : SHA1
+dhGroup                    : DHGroup2
+lifeTimeSeconds            : 28800
+isSaInitiator              : True
+elapsedTimeInseconds       : 23092
+quickModeSa                : {}
 ```
 
 Returns the IKE Security Associations for the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
-### 2: Get-AzVirtualNetworkGatewayConnectionIkeSa by Connection object.
-```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $conn
-```
-
-Returns the IKE Security Associations for the Virtual Network Gateway Connection "$conn"
-
-### 3: Get-AzVirtualNetworkGatewayConnectionIkeSas by Connection Resource ID.
-```
-Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceId $resourceUri
-```
-
-Returns the IKE Security Associations for the Virtual Network Gateway Connection with resource URI "$resourceUri"
-
 ## PARAMETERS
 
-
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -111,12 +94,12 @@ The virtual network gateway connection object for which IKE SAs needs to be fetc
 ```yaml
 Type: PSVirtualNetworkGatewayConnection
 Parameter Sets: ByInputObject
-Aliases: VirtualNetworkGatewayConnection
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +111,7 @@ Type: String
 Parameter Sets: ByName
 Aliases: ResourceName, ConnectionName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +129,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -157,22 +140,6 @@ The Azure resource ID of the Virtual Network Gateway Connection for which IKE SA
 Type: String
 Parameter Sets: ByResourceId
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
@@ -187,7 +154,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
 
 ## OUTPUTS
 
