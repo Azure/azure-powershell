@@ -128,16 +128,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// KeyVault resource id
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdByVaultNameParameterSet,
             HelpMessage = "KeyVault Resource Id.")]
         [Parameter(Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdByKeyNameParameterSet)]
         [Parameter(Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdByKeyVersionsParameterSet)]
         [ValidateNotNullOrEmpty]

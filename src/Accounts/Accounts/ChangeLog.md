@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.3
+* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
 * Improved debug log of long running operations in generated modules
 
 ## Version 2.2.2

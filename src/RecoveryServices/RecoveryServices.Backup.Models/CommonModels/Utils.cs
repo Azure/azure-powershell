@@ -229,6 +229,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureStorage;
                 case ServiceClientModel.BackupManagementType.AzureWorkload:
                     return BackupManagementType.AzureWorkload;
+                case "":
+                    return BackupManagementType.NA;
                 default:
                     throw new Exception("Unsupported BackupManagementType: " + backupManagementType);
             }

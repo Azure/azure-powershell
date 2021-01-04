@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.14.0
 * Fixed parameter description for `InstanceFailoverGroup` command.
 * Updated the logic in which schemaName, tableName and columnName are being extracted from the id of SQL Data Classification commands.
 * Fixed Status and StatusMessage fields in `Get-AzSqlDatabaseImportExportStatus` to conform to documentation
+* Added Microsoft support operations (DevOps) auditing cmdlets: Get-AzSqlServerMSSupportAudit, Set-AzSqlServerMSSupportAudit, Remove-AzSqlServerMSSupportAudit
 
 ## Version 2.13.0
 * Added SecondaryType to the following: 
