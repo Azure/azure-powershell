@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Search.Models;
 using System;
 using System.Management.Automation;
 
@@ -91,9 +92,10 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
 
                     // UPDATE
-                    service.PartitionCount = PartitionCount;
-                    service.ReplicaCount = ReplicaCount;
-                    service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
+                    SearchServiceUpdate update = new SearchServiceUpdate();
+                    update.PartitionCount = PartitionCount;
+                    update.ReplicaCount = ReplicaCount;
+                    service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, update).Result.Body;
 
                     // OUTPUT
                     WriteSearchService(service);
