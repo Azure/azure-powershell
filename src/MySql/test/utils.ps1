@@ -35,8 +35,16 @@ function setupEnv() {
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "mysql-test-100"
-    $env.Add("serverName", $serverName)
     $flexibleServerName = "mysql-flexible-test-100"
+    if ($TestMode -eq 'live') {
+        $serverName = "server"
+        $flexibleServerName = "flexibleserver"
+        for($i = 0; $i -lt 10; $i++){ 
+            $serverName += Get-Random -Maximum 10
+            $flexibleServerName += Get-Random -Maximum 10
+        }
+    }
+    $env.Add("serverName", $serverName)
     $env.Add("flexibleServerName", $flexibleServerName)
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_B1ms"
