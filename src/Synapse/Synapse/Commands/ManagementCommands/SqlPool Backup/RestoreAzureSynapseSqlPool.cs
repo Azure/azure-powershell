@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
         [Parameter(ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
+        [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
+        [Parameter(ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

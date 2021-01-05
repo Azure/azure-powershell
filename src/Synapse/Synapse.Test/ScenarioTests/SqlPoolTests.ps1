@@ -72,29 +72,6 @@ function Test-SynapseSqlPool
         }
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
-        ## Create a new restore point
-        #New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -RestorePointLabel ContosoRestorePoint
-
-        ## Get restore point
-        #[array]$restorePoint = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
-
-        #Assert-AreEqual "DISCRETE" $restorePoint[0].RestorePointType
-
-        ## Restore SqlPool
-        ## Comment out due to bug
-        ##$sqlPoolRestored = Restore-AzSynapseSqlPool -FromRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $params.restoredSqlPoolName -SourceResourceGroupName $params.rgname -SourceWorkspaceName $workspaceName -SourceSqlPoolName $params.restoredSqlPoolName -PerformanceLevel $params.perfLevel -RestorePoint $restorePoint[0].RestorePointCreationDate
-
-        ## Delete restore point
-        #$RestorePointCreationDate = Get-Date $restorePoint[-1].RestorePointCreationDate
-
-        #Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force
-
-        #Assert-True {Remove-AzSynapseSqlPoolRestorePoint -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -SqlPoolName $params.restoredSqlPoolName -RestorePointCreationDate $RestorePointCreationDate -PassThru -Force} "Remove Restore Point failed."
-
-        #Assert-AreEqual $sqlPoolName $sqlPoolRestored.Name
-        #Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolRestored.Type
-        #Assert-True {$sqlPoolRestored.Id -like "*$resourceGroupName*"}
-
         # Suspend SqlPool
         $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 

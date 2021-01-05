@@ -27,10 +27,19 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreFromRestorePoint(){
+        public void TestRestoreFromRestorePoint()
+        {
             NewInstance.RunPsTest(
                 _logger,
                 "Test-RestoreFromRestorePoint");
+        }
+
+        [Fact(Skip = "Currently the test case cannot pass due to some backend issues.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreFromBackup(){
+            NewInstance.RunPsTest(
+                _logger,
+                "Test-RestoreFromBackup");
         }
     }
 }
