@@ -2,11 +2,87 @@
 
 The authentication functionality in Az.Accounts is one of the most important pieces in Azure PowerShell. To make sure Azure PowerShell be delivered to customers with high quality, we define the test matrix which should be honored by each release of Az.Accounts when there is any change related to authentication.
 
-## Azure Public Cloud
+## Test Scenario
 
-Azure Public Cloud is the most important Azure instance, all tests should run against it.
+Each test scenario is marked with one priority P0, P1, P2 based on two factors:
 
-### PWSH Platform Matrix
+- The importance of the test scenario, i.e. whether used by customers popularly, P0 means most popular.
+- Whether be easily affected by authentication related code change, P0 means most easily be affected.
+
+### Connect-AzAccount Using Work/School Account
+
+|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
+|----|----|----|----|----|----|----|----|----|----|
+|`No Subscrption/Tenant`|P0 (SemiAuto)|P0|P0 (Auto-No)|P0 (SemiAuto-No)|P0 (Auto-No)|P0 (SemiAuto-No)|P0|P0|P0|
+|`-Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P2 (SemiAuto-No)|P1|P1|P1|
+|`-Subscription sub-name`|P1 (SemiAuto)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|P2|P2|P2|
+|`-Subscription sub-id-in-2nd-tenant`|P0 (SemiAuto-No)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
+|`-Tenant tenant-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P2 (SemiAuto-No)|P1|P1|P1|
+|`-Tenant 2nd-tenant-id`|P1 (SemiAuto-No)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P1 (SemiAuto-No)|NA|NA|NA|
+|`-Tenant tenant-id -Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P1 (SemiAuto-No)|P1|P1|P1|
+|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1 (SemiAuto-No)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
+|`No Parameter` Click back button before inputing password(Negative)|P2|P2|NA|NA|NA|NA|NA|NA|NA|
+|`-Subscripiton -sub-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
+|`-Tenant -tenant-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
+|`-Tenant 1st-tenant-id -Subscription sub-id-in-2nd-tenant`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
+
+**Test Case Automation Status**
+
+- *SemiAuto* means the test case is available, but it needs manual input during running test.
+- *SemiAuto-No* means the test case could be written in SemiAuto way, but it is not there yet.
+- *Auto-No* means the test case could be written in automatic way(by environment variable), but it is not there yet.
+- Test case without any status means manual, the cost for automation is high.
+
+### Connect-AzAccount Using MSA Account
+
+|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|
+|----|----|----|
+|`No Subscription/Tenant`|P0 (SemiAuto)|P0|
+|`-Subscription sub-id`|P2 (SemiAuto)|P2|
+|`-Tenant tenant-id`|P2 (SemiAuto)|P2|
+|`-Tenant tenant-id -Subscription sub-id`|P2 (SemiAuto)|P2|
+
+### Connect-AzAccount - Special Test Scenario
+
+|Test|Priority|Comment|
+|----|----|----|
+|Interactive authentication should return warning if connecting to Linux using SSH|P0 (Auto)||
+|Interactive authentication should be successful even the port 8400 is taken by other process first|P0 (Auto)||
+|Token should be auto refreshed for long running operation(> 1 hour)|P2|Please refer `How To Test` section|
+|Token cache file should be compatible with az|P2|Please refer `How To Test` section|
+|Service Principal authentication should be successful if http proxy is set|P2|Please refer `How To Test` section|
+|FMR scenario(Integrated Windows Auth)|P2|Please refer `How To Test` section|
+
+### Other Authentication Test Scenario
+
+It should be fine to run these test cases in just one platform, e.g. Windows PowerShell 5.1.
+
+|Test|Priority|
+|---|---|
+|Login in Process scope `-Scope`|P1|
+|Login with Multi Users|P1|
+|Disconnect-AzAccount|P0|
+|Disconnect-AzAccount(Service Principal) `-ApplicationId xxx -TenantId xxx`|P2|
+|Disconnect-AzAccount(specifying context) `-AzureContext contextObject`|P2|
+|Disconnect-AzAccount(Login with multi users, log out one)|P2|
+|Save-AzContext and Import-AzContext|P2|
+|Get-AzAccessToken|P1|
+|Token Cache Fallback(Linux Only)|P1|
+
+## Test Strategy
+
+### Azure Environments
+
+|Azure Environment|Priority|Comment|
+|----|-----|----|
+|Azure Global Instance|P0||
+|Azure US Instance|P2|Will be covered by dedicated team|
+|Azure China Instance|P2|Will be covered by dedicated team|
+|Azure German Instance|P2|Will be covered by dedicated team|
+|ADFS Environment|P1|Ask Azure Stack team to help|
+|SAW Machine|P2||
+
+### PWSH Platforms
 
 In theory all the combination of different OS platforms and PWSH versions should be covered, to compromise time effort and platform coverages, we should at least cover the following platforms. (For different versions of pwsh 7, need to cover at least smallest and biggest patch version for each major.minor version, currently it should be 7.0.0, 7.0.3 and 7.1.0. The reason to cover 7.0.0 is the future version of Azure.Core may contain higher version of built-in assemblies of pwsh.)
 
@@ -24,92 +100,29 @@ In theory all the combination of different OS platforms and PWSH versions should
 
 There's no need to run all tests on each of above platforms, the recommendation is:
 
-1. For `Windows PowerShell 5.1`, run all tests.
+1. For `Windows PowerShell 5.1`, run all applicable tests.
 2. For `PWSH 7.0.x on Windows`, run tests on columns **Interactive/Device Code/SP Secret** (please refer to test scenario table).
 3. For other platforms, just run smoke test `Connect-AzAccount`/`Connect-AzAccount -DeviceCode`.
 
-### Connect-AzAccount Using Work/School Account
+### Auth Code Change Impact
 
-**Category Clarification**
+When there is auth related code change in Az.Accounts, there's no need to run all test scenario on all platforms and environments. In contrast, we may choose to run different test scenario based on different auth code change impact, so that only affected test cases are covered.
 
-All test scenario are grouped into three different category: P0, P1 and P2. Whether to verify test scenario in one category or not depends on change scope in Az.Accounts. In the following table, `Yes` means test scenario in that category need to be verified , `No` means no need to verify.
+#### Just Auth Code Change without Version Upgrade of MSAL/Azure.Identity in Az.Accounts
 
-|Category\Change in Az.Accounts|Upgrade major version of Azure.Identity/MSAL lib|Upgrade minor version of Azure.Identity/MSAL lib| Auth related code change in Az.Accounts |
-|----|----|----|----|
-|P0|Yes|Yes|Yes|
-|P1|Yes|Yes|No|
-|P2|Yes|No|No|
+Only need to verify P0 test scenario.
 
-|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
-|----|----|----|----|----|----|----|----|----|----|
-|`No parameter`|P0(SemiAuto)|P0|P0(Auto-No)|P0(SemiAuto-No)|P0(Auto-No)|P0(SemiAuto-No)|P0|P0|P0|
-|`-Subscription sub-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P2(SemiAuto-No)|P1|P1|P1|
-|`-Subscription sub-name`|P1(SemiAuto)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|P2|P2|P2|
-|`-Subscription sub-id-in-2nd-tenant`|P0(SemiAuto-No)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|NA|NA|NA|
-|`-Tenant tenant-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P2(SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id`|P1(SemiAuto-No)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P1(SemiAuto-No)|NA|NA|NA|
-|`-Tenant tenant-id -Subscription sub-id`|P0(SemiAuto)|P1|P1(Auto-No)|P1(SemiAuto-No)|P1(Auto-No)|P1(SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1(SemiAuto-No)|P2|P2(Auto-No)|P2(SemiAuto-No)|P2(Auto-No)|P2(SemiAuto-No)|NA|NA|NA|
-|`No Parameter` Click back button before inputing password(Negative)|P2|P2|NA|NA|NA|NA|NA|NA|NA|
-|`-Subscripiton -sub-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
-|`-Tenant -tenant-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
-|`-Tenant 1st-tenant-id -Subscription sub-id-in-2nd-tenant`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
+#### Minor/Patch Version Upgrade of MSAL/Azure.Identity in Az.Accounts
 
-**Test Case Automation Status**
+Only need to verify P0 and P1 test scenario.
 
-- *SemiAuto* means the test case is available, but it needs manual input during running test.
-- *SemiAuto-No* means the test case could be written in SemiAuto way, but it is not there yet.
-- *Auto-No* means the test case could be written in automatic way(by environment variable), but it is not there yet.
-- Test case without any status means manual, the cost for automation is high.
+#### Major Version Upgrade of MSAL/Azure.Identity in Az.Accounts
 
-### Connect-AzAccount Using MSA Account
+Need to verify P0, P1 and P2 test scenario.
 
-|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|
-|----|----|----|
-|`No parameter`|P0(SemiAuto)|P0|
-|`-Subscription sub-id`|P2(SemiAuto)|P2|
-|`-Tenant tenant-id`|P2(SemiAuto)|P2|
-|`-Tenant tenant-id -Subscription sub-id`|P2(SemiAuto)|P2|
+### Partner Teams
 
-### Other Authentication Related Tests
-
-It should be fine to run these test cases in just one platform.
-
-|Test|Priority|
-|---|---|
-|Login in Process scope `-Scope`|P1|
-|Login with Multi Users|P1|
-|Disconnect-AzAccount|P0|
-|Disconnect-AzAccount(Service Principal) `-ApplicationId xxx -TenantId xxx`|P2|
-|Disconnect-AzAccount(specifying context) `-AzureContext contextObject`|P2|
-|Disconnect-AzAccount(Login with multi users, log out one)|P2|
-|Save-AzContext and Import-AzContext|P2|
-|Get-AzAccessToken|P1|
-|Token Cache Fallback(Linux Only)|P1|
-
-**NOTE**
-
-1. Special Test Environments
-
-- ADFS Env (P1)
-- SAW Machine (P2)
-
-2. Azure Government Instances (Will be covered by dedicated teams)
-
-- Mooncake
-- Blackforest
-- Fairfax
-
-3. Special Scenario:
-
-- Interactive authentication should return warning if connecting to Linux using SSH (P0, Auto)
-- Interactive authentication should be successful even the port 8400 is taken by other process first (P0, Auto)
-- Token should be auto refreshed for long running operation(> 1 hour) (P2, Manual, please refer `How To Test` section)
-- Token cache file should be compatible with az (P2, Manual, please refer `How To Test` section)
-- Service Principal authentication should be successful if http proxy is set (P2, Manual, please refer to `How To Test` section)
-- FMR scenario(Integrated Windows Auth) (P2, Manual, please refer `How To Test` section)
-
-4. If possible, we should provide preview/engineering bits to our partners for verifying: (P2)
+If possible, we should provide preview/engineering bits to our partners for verifying: (P2)
 
 - Azure Stack team to verify ADFS scenario
 - Azure Function team
