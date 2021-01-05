@@ -22,7 +22,7 @@ Create a in-memory object for ResourceForestSettings
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServicesResourceForestSettingsObject
+https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceResourceForestSettingsObject
 #>
 function New-AzADDomainServiceResourceForestSettingObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings')]
