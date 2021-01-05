@@ -2539,6 +2539,73 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
 
 <#
 .SYNOPSIS
+    create a VMSS in orchestration mode then add a vm to it
+#>
+function Test-VirtualMachineScaleSetOrchestrationVM
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssOrchestrationMode' + $rgname;
+        $vmName = 'vm' + $rgname;
+        $domainName = 'domain' + $rgname;
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+
+        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
+        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
+
+        Assert-AreEqual $VmssWithoutVmProfile.id $vm.virtualmachinescaleset.id
+
+        # Test PlatformFaultDomainCount parameter
+        $vmssNameSimple = $vmssname + "Simple";
+        $vmssNameDefault = $vmssname + "Default";
+        $platformFaultDomainCount = 5;
+        $platformFaultDomainCountConfig = 3;
+        $zone = "2";
+        $domainNameLabel = $rgname + "domainlabel";
+        $VmSku = "Standard_D2s_v3";
+
+ 
+        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig;
+        Assert-NotNull $vmssConfigFaultDomain;
+        Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss DefaultParameterSet 
+        $vmssDefault = New-AzVmss -Name $vmssNameDefault -ResourceGroup $rgname -VirtualMachineScaleSet $vmssConfigFaultDomain;
+        Assert-NotNull $vmssDefault;
+        Assert-AreEqual $vmssDefault.PlatformFaultDomainCount $platformFaultDomainCountConfig;
+
+        # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet 
+        $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
+        Assert-NotNull $vmssSimple; 
+        Assert-AreEqual $vmssSimple.PlatformFaultDomainCount $platformFaultDomainCount;
+
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+} 
+
+<#
+.SYNOPSIS
     testing encryptionAtHost cmdlet for
     new-azvmss - create vmss using simple parameter set and hostencryption tag.
     update-azvmss test boolean parameter 
@@ -2581,5 +2648,38 @@ function Test-VirtualMachineScaleSetAssignedHost
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS Extension rolling upgrade cmdlet.
+This is a LiveOnly test and requires some manual setup.  
+#>
+function Test-VirtualMachineScaleSetExtRollingUpgrade
+{
+    # create a VM scale set manually in Azure Portal, use its default values. 
+    # Provide the Location, ResourceGroupName, and VM scale set name below. 
+
+    try
+    {
+        
+        # Common
+        [string]$loc = "eastus";
+
+        $rgname = "adamvmssupdate";
+        $vmssname = "windowsvmss";
+        $vmss = Get-Azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssname;
+        
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True -Setting "";
+
+        $job = Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+    }
+    finally
+    {
+        
     }
 }

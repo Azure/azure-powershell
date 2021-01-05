@@ -31,6 +31,13 @@ PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.1 -
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
+.Example
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -60,6 +67,7 @@ function Update-AzPostgreSqlFirewallRule {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Alias('FirewallRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -67,6 +75,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -74,18 +83,21 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ClientIPAddress')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
@@ -93,19 +105,29 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # The end IP address of the server firewall rule.
     # Must be IPv4 format.
     ${EndIPAddress},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # The start IP address of the server firewall rule.
     # Must be IPv4 format.
     ${StartIPAddress},
+
+    [Parameter(ParameterSetName='ClientIPAddress', Mandatory)]
+    [Parameter(ParameterSetName='ClientIPAddressViaIdentity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # Client specified single IP of the server firewall rule.
+    # Must be IPv4 format.
+    ${ClientIPAddress},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,10 +197,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFirewallRule_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.PostgreSql.custom\Update-AzPostgreSqlFirewallRule';
+            ClientIPAddress = 'Az.PostgreSql.custom\Update-AzPostgreSqlFirewallRule';
+            ClientIPAddressViaIdentity = 'Az.PostgreSql.custom\Update-AzPostgreSqlFirewallRule';
+            UpdateViaIdentityExpanded = 'Az.PostgreSql.custom\Update-AzPostgreSqlFirewallRule';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'ClientIPAddress') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

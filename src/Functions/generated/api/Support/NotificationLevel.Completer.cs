@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for NotificationLevel.</summary>
+    /// <summary>Level indicating how critical this recommendation can impact.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.NotificationLevelTypeConverter))]
     public partial struct NotificationLevel :
         System.Management.Automation.IArgumentCompleter

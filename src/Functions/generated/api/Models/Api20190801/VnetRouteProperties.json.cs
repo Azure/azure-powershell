@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._startAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._startAddress.ToString()) : null, "startAddress" ,container.Add );
             AddIf( null != (((object)this._endAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._endAddress.ToString()) : null, "endAddress" ,container.Add );
             AddIf( null != (((object)this._routeType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._routeType.ToString()) : null, "routeType" ,container.Add );
-            AddIf( null != (((object)this._startAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._startAddress.ToString()) : null, "startAddress" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_startAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("startAddress"), out var __jsonStartAddress) ? (string)__jsonStartAddress : (string)StartAddress;}
             {_endAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("endAddress"), out var __jsonEndAddress) ? (string)__jsonEndAddress : (string)EndAddress;}
             {_routeType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("routeType"), out var __jsonRouteType) ? (string)__jsonRouteType : (string)RouteType;}
-            {_startAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("startAddress"), out var __jsonStartAddress) ? (string)__jsonStartAddress : (string)StartAddress;}
             AfterFromJson(json);
         }
     }

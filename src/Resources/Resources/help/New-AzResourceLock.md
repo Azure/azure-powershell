@@ -67,6 +67,13 @@ PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "My lock notes" -Lo
 
 This command creates a resource lock on a website.
 
+### Example 2: Create a resource lock on a database
+```
+PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "Lock note" -LockName "db-lock" -ResourceName "server1/ContosoDB"  -ResourceGroupName "RG1" -ResourceType "Microsoft.Sql/servers/databases"
+```
+
+This command creates a resource lock on a Azure database.
+
 ## PARAMETERS
 
 ### -ApiVersion

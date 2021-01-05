@@ -1304,3 +1304,40 @@ function Test-Capabilities
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test ApiProperties
+#>
+function Test-ApiProperties
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'QnAMaker';
+        $loc = "West US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $apiProperties = New-AzCognitiveServicesAccountApiProperty
+        $apiProperties.QnaRuntimeEndpoint = "https://sdk-test-qna-maker.azurewebsites.net"
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -ApiProperty $apiProperties -Force;
+        Assert-NotNull $createdAccount;
+        Assert-True {$createdAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://sdk-test-qna-maker.azurewebsites.net"}
+        
+        $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
+        
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -ApiProperty $apiProperties -Force;
+        Assert-NotNull $updatedAccount;
+        Assert-True {$updatedAccount.ApiProperties.QnaRuntimeEndpoint -eq "https://qnamaker.azurewebsites.net"}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

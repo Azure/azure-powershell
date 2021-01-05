@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
     public partial struct DefaultAction :
         System.IEquatable<DefaultAction>
     {

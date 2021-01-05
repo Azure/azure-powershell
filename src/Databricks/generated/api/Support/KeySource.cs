@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
+    /// <summary>
+    /// The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault
+    /// </summary>
     public partial struct KeySource :
         System.IEquatable<KeySource>
     {
@@ -20,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
         /// <param name="value">the value to convert to an instance of <see cref="KeySource" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new KeySource(System.Convert.ToString(value));
+            return new KeySource(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type KeySource</summary>

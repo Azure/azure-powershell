@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for DatabaseType.</summary>
+    /// <summary>Database type (e.g. SqlAzure / MySql).</summary>
     public partial class DatabaseTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

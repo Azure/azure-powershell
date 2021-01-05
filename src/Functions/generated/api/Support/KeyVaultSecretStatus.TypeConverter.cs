@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for KeyVaultSecretStatus.</summary>
+    /// <summary>Status of the Key Vault secret.</summary>
     public partial class KeyVaultSecretStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

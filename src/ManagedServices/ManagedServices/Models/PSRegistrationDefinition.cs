@@ -14,19 +14,17 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
-    using System;
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PSRegistrationDefinition
     {
-        [Ps1Xml(Label = "ManagedByTenantId", Target = ViewControl.Table, ScriptBlock = "$_.Properties.ManagedByTenantId", Position = 1)]
-        [Ps1Xml(Label = "PrincipalId", Target = ViewControl.Table, ScriptBlock = "$_.Properties.Authorization.PrincipalId", Position = 2)]
-        [Ps1Xml(Label = "RoleDefinitionId", Target = ViewControl.Table, ScriptBlock = "$_.Properties.Authorization.RoleDefinitionId", Position = 3)]
+        [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, ScriptBlock = "$_.Properties.ProvisioningState", Position = 2)]
         public PSRegistrationDefinitionProperties Properties { get; set; }
 
         public PSPlan Plan { get; set; }
 
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
         public string Id { get; set; }
 
         public string Type { get; set; }

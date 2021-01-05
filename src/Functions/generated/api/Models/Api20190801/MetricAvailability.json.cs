@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_blobDuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("blobDuration"), out var __jsonBlobDuration) ? (string)__jsonBlobDuration : (string)BlobDuration;}
             {_timeGrain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("timeGrain"), out var __jsonTimeGrain) ? (string)__jsonTimeGrain : (string)TimeGrain;}
+            {_blobDuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("blobDuration"), out var __jsonBlobDuration) ? (string)__jsonBlobDuration : (string)BlobDuration;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._blobDuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._blobDuration.ToString()) : null, "blobDuration" ,container.Add );
             AddIf( null != (((object)this._timeGrain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._timeGrain.ToString()) : null, "timeGrain" ,container.Add );
+            AddIf( null != (((object)this._blobDuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._blobDuration.ToString()) : null, "blobDuration" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 1,
                    ParameterSetName = DNSNamesParameterSet,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the DNS names in the certificate.")]
+                   HelpMessage = "Specifies the DNS names in the certificate. Subject Alternative Names (SANs) can be specified as DNS names.")]
         [Alias("DnsNames")]
         public List<string> DnsName { get; set; }
 

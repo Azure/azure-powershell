@@ -131,4 +131,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
 
-[Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
+[Get-AzExpressRouteCircuitStat](./Get-AzExpressRouteCircuitStat.md)

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
-    /// <summary>TypeConverter implementation for NodeProvisioningState.</summary>
+    /// <summary>Gets or sets the blockchain member provision state.</summary>
     public partial class NodeProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

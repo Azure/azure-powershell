@@ -174,12 +174,17 @@ function Test-SsisAzure-IntegrationRuntime
 		$licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakelicensekey')
 		$setup4 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName2, $licenseKey)
 
-		$setups = New-Object System.Collections.ArrayList
-		$setups.Add($setup1)
-		$setups.Add($setup2)
-		# Disable these two setup as it cannot be faked and the other two have already covered the function test
-		# $setups.Add($setup3)
-		# $setups.Add($setup4)
+        # Create setup for Azure PowerShell
+        $version = '4.5.0'
+        $setup5 = New-Object Microsoft.Azure.Management.DataFactory.Models.AzPowerShellSetup($version)
+
+        $setups = New-Object System.Collections.ArrayList
+        $setups.Add($setup1)
+        $setups.Add($setup2)
+        # Disable these two setup as it cannot be faked and the other two have already covered the function test
+        # $setups.Add($setup3)
+        # $setups.Add($setup4)
+        $setups.Add($setup5)
 
         # Replace following variables with network resource ids
         $vnetId = $Env:VnetId

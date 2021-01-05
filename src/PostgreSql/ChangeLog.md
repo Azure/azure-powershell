@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* New/Update-AzPostgreSqlFirewallRule create a default name with time stamp when no name is passed (#12738)
+* Added validateset for parameter StorageAutogrow (#12736)
+* Used 'master' and 'replica' to avoid confusion when created postgresql replica server (#12743)
+* Provided hint in doc to use Update-AzPostgreSqlServer & Update-AzPostgreSqlServerConfiguration as a candidate for each other (#12745)
+* Fix secure string decrytion issue in PowerShell 7 (#12956)
+
 ## Version 0.1.0
 * the first preview release
 

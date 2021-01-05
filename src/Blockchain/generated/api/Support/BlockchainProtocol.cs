@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
 {
 
+    /// <summary>Gets or sets the blockchain protocol.</summary>
     public partial struct BlockchainProtocol :
         System.IEquatable<BlockchainProtocol>
     {

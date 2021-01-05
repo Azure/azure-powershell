@@ -89,6 +89,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+                {"Microsoft.Network", null},
                 {"Microsoft.Authorization", null}
             };
 

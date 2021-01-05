@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).TenantId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IResourceIdentityInternal)this).TenantId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

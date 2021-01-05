@@ -11,7 +11,12 @@ schema: 2.0.0
 This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit.
 
 > [!Note]  
-> The Invoke-AzStorageSyncChangeDetection cmdlet will not detect files that are deleted in the Azure file share. If files are deleted in the Azure file share, they will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
+> The Invoke-AzStorageSyncChangeDetection cmdlet will not detect the following changes in the Azure file share:
+> - Files that are deleted. 
+> - Files that are moved out of the share.
+> - Files that are deleted and created with the same name.  
+> 
+>  These changes will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ## SYNTAX
 
@@ -54,31 +59,31 @@ Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -Path <Stri
 ```
 
 ## DESCRIPTION
-Periodically, Azure File Sync checks the namespace inside a syncing Azure file share for changes that came into the file share by other means than sync. The goal is to identify these changes and ultimately sync them to connected servers. This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within a 10,000 changes limit.
+Periodically, Azure File Sync checks the namespace inside a syncing Azure file share for changes that came into the file share by other means than sync. The goal is to identify these changes and ultimately sync them to connected servers. This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 items limit.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "myCloudEndpointName" -Path "Data","Reporting\Templates"
+PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "b38fc242-8100-4807-89d0-399cef5863bf" -Path "Data","Reporting\Templates"
 ```
 
 In this example, change detection is run in the "Data" and "Reporting\Templates" directories of a syncing Azure file share. All paths are relative to the root of the Azure file share namespace.
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "myCloudEndpointName" -Path "Data\results.xslx","Reporting\Templates\generated.pptx"
+PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "b38fc242-8100-4807-89d0-399cef5863bf" -Path "Data\results.xslx","Reporting\Templates\generated.pptx"
 ```
 
 In this example, change detection is run for a set of files that are known to the command caller to have changed. The goal is to have Azure file sync detect and sync these changes as well.
 
 ### Example 3
 ```powershell
-PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "myCloudEndpointName" -DirectoryPath "Examples" -Recursive
+PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "b38fc242-8100-4807-89d0-399cef5863bf" -DirectoryPath "Examples" -Recursive
 ```
 
 In this example, change detection is run for the "Examples" directory and will recursively detect changes in subdirectories. 
-Keep in mind that this command can detect up to 10,000 changes before it is automatically aborted. If you suspect more than 10,000 changes to have occurred, run the command on sub-parts of the namespace.
+Keep in mind the cmdlet will fail if the path contains more than 10,000 items. If the path contains more than 10,000 items, run the command on sub-parts of the namespace.
 
 ## PARAMETERS
 
@@ -143,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the CloudEndpoint.
+Name of the CloudEndpoint. The name is a GUID, not the friendly name that's displayed in the portal. To get the CloudEndpointName, use the Get-AzStorageSyncCloudEndpoint cmdlet.
 
 ```yaml
 Type: System.String

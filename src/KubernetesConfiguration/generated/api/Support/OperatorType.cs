@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
+    /// <summary>Type of the operator</summary>
     public partial struct OperatorType :
         System.IEquatable<OperatorType>
     {

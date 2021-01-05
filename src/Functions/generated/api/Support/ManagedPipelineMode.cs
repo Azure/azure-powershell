@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Managed pipeline mode.</summary>
     public partial struct ManagedPipelineMode :
         System.IEquatable<ManagedPipelineMode>
     {

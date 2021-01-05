@@ -193,6 +193,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var recoveryPlanAction = new RecoveryPlanAction();
 
             recoveryPlanAction.ActionName = asrRecoveryPlanAction.ActionName;
+            recoveryPlanAction.FailoverTypes = asrRecoveryPlanAction.FailoverTypes;
             recoveryPlanAction.FailoverDirections = asrRecoveryPlanAction.FailoverDirections;
 
             if (asrRecoveryPlanAction.CustomDetails is ASRRecoveryPlanAutomationRunbookActionDetails)

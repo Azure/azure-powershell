@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for LeaseDuration.</summary>
+    /// <summary>
+    /// Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
+    /// </summary>
     public partial class LeaseDurationTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
@@ -41,6 +42,10 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "A PSKubernetesCluster object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
+        [PSArgumentCompleter("System", "User")]
+        public string NodePoolMode { get; set; }
 
         /// <summary>
         /// Cluster name
@@ -176,6 +181,12 @@ namespace Microsoft.Azure.Commands.Aks
                                 WriteVerbose(Resources.UpdatingNodeOsDiskSize);
                                 defaultAgentPoolProfile.OsDiskSizeGB = NodeOsDiskSize;
                             }
+
+                            if (this.IsParameterBound(c => c.NodePoolMode))
+                            {
+                                WriteVerbose(Resources.UpdatingNodePoolMode);
+                                defaultAgentPoolProfile.Mode = NodePoolMode;
+                            }
                         }
 
                         if (this.IsParameterBound(c => c.KubernetesVersion))
@@ -218,7 +229,8 @@ namespace Microsoft.Azure.Commands.Aks
         {
             return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
-                this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount);
+                this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
+                this.IsParameterBound(c => c.NodePoolMode);
         }
     }
 }

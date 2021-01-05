@@ -389,6 +389,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] restoreDiskList = (string[])ProviderData[RestoreVMBackupItemParams.RestoreDiskList];
             SwitchParameter restoreOnlyOSDisk = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreOnlyOSDisk];
             SwitchParameter restoreAsUnmanagedDisks = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreAsUnmanagedDisks];
+            String DiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.DiskEncryptionSetId) ?
+                (string)ProviderData[RestoreVMBackupItemParams.DiskEncryptionSetId].ToString() : null;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -406,20 +408,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
-            if(targetResourceGroupName != null && restoreAsUnmanagedDisks.IsPresent)
-            {
-                throw new Exception(Resources.TargetRGUnmanagedRestoreDuplicateParamsException);
-            }
-
-            if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
-            {
-                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
-            }
-
+            // if the vm is managed virtual machine then either target rg or the unmanaged restore intent should be provided
             if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null
                 && restoreAsUnmanagedDisks.IsPresent == false)
             {
-                Logger.Instance.WriteWarning(Resources.UnmanagedVMRestoreWarning);
+                throw new Exception(Resources.UnmanagedVMRestoreWarning);
+            }
+
+            // if the vm is unmanaged, target rg should not be provided
+            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null)
+            {
+                Logger.Instance.WriteWarning(Resources.TargetResourcegroupNotSupported);
             }
 
             IList<int?> restoreDiskLUNS;
@@ -448,7 +447,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     "/subscriptions/" + ServiceClientAdapter.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
                     null,
                 OriginalStorageAccountOption = useOsa,
-                RestoreDiskLunList = restoreDiskLUNS
+                RestoreDiskLunList = restoreDiskLUNS,
+                DiskEncryptionSetId = DiskEncryptionSetId
             };
 
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
         {
-            if (azureVmPolicy.ProtectedItemsCount > 100)
+            if (azureVmPolicy.ProtectedItemsCount > 1000)
             {
                 throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
             }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
+             HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             DeploymentMode = Mode,
             TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
             TemplateObject = TemplateObject,
+            TemplateSpecId = TemplateSpecId,
             TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
             ParameterUri = TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             resourceGroupName: this.ResourceGroupName,
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
+            templateSpecId: TemplateSpecId,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.WhatIfResultFormat,

@@ -56,6 +56,9 @@ Removes the advanced threat protection settings from a server.
 ### [Clear-AzSqlServerVulnerabilityAssessmentSetting](Clear-AzSqlServerVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a server.
 
+### [Complete-AzSqlInstanceDatabaseLogReplay](Complete-AzSqlInstanceDatabaseLogReplay.md)
+Completes Log Replay service for the given database.
+
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
@@ -64,6 +67,9 @@ Converts a vulnerability assessment scan results to Excel format.
 
 ### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the database.
+
+### [Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Disables Azure AD only authentication for a specific SQL Managed Instance.
 
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
@@ -83,11 +89,17 @@ Disables Advanced Threat Protection on a server.
 ### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
 
+### [Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Managed Instance.
+
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
 
 ### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL managed instance database.
+
+### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Server.
 
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
@@ -236,17 +248,29 @@ Returns information about Azure SQL Managed Database Instance.
 ### [Get-AzSqlInstanceActiveDirectoryAdministrator](Get-AzSqlInstanceActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Managed Instance.
 
+### [Get-AzSqlInstanceActiveDirectoryOnlyAuthentication](Get-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Managed Instance.
+
 ### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a managed instance.
 
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
 
+### [Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+Gets a managed database's long term retention policy
+
 ### [Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Gets a backup short term retention policy.
 
 ### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
 Returns information about Azure SQL Managed Instance database redundant backup.
+
+### [Get-AzSqlInstanceDatabaseLogReplay](Get-AzSqlInstanceDatabaseLogReplay.md)
+Gets the Log Replay service status.
+
+### [Get-AzSqlInstanceDatabaseLongTermRetentionBackup](Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+Gets long term retention backup(s).
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
@@ -287,6 +311,9 @@ Returns information about SQL Database servers.
 ### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
 
+### [Get-AzSqlServerActiveDirectoryOnlyAuthentication](Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Server.
+
 ### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a server.
 
@@ -301,6 +328,9 @@ Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
+
+### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
+Gets the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
@@ -506,6 +536,9 @@ Removes an Azure AD administrator for SQL Managed Instance.
 ### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
 
+### [Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+Deletes a long term retention backup.
+
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
@@ -538,6 +571,9 @@ Deletes a firewall rule from a SQL Database server.
 
 ### [Remove-AzSqlServerKeyVaultKey](Remove-AzSqlServerKeyVaultKey.md)
 Removes a Key Vault key from a SQL server.
+
+### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
+Removes the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
@@ -635,6 +671,9 @@ Sets properties for an Azure SQL Database Managed Instance.
 ### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for SQL Managed Instance.
 
+### [Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed database's long term retention policy.
+
 ### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Sets a backup short term retention policy.
 
@@ -671,6 +710,9 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 ### [Set-AzSqlServerFirewallRule](Set-AzSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
 
+### [Set-AzSqlServerMSSupportAudit](Set-AzSqlServerMSSupportAudit.md)
+Changes the Microsoft support operations auditing settings for an Azure SQL database.
+
 ### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.
 
@@ -689,6 +731,9 @@ Starts a vulnerability assessment scan.
 ### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
 Starts a job, returning a job execution id that can be polled to view it's status
 
+### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
+Starts a Log Replay service with the given parameters.
+
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
@@ -706,6 +751,9 @@ Stops a job given it's job execution id
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
+
+### [Stop-AzSqlInstanceDatabaseLogReplay](Stop-AzSqlInstanceDatabaseLogReplay.md)
+Cancels the Log Replay service by dropping the database.
 
 ### [Stop-AzSqlInstanceOperation](Stop-AzSqlInstanceOperation.md)
 Stops a SQL managed instance's operations.

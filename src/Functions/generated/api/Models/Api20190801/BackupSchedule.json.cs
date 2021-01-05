@@ -64,9 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {_frequencyInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("frequencyInterval"), out var __jsonFrequencyInterval) ? (int)__jsonFrequencyInterval : FrequencyInterval;}
             {_frequencyUnit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("frequencyUnit"), out var __jsonFrequencyUnit) ? (string)__jsonFrequencyUnit : (string)FrequencyUnit;}
             {_keepAtLeastOneBackup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("keepAtLeastOneBackup"), out var __jsonKeepAtLeastOneBackup) ? (bool)__jsonKeepAtLeastOneBackup : KeepAtLeastOneBackup;}
-            {_lastExecutionTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastExecutionTime"), out var __jsonLastExecutionTime) ? global::System.DateTime.TryParse((string)__jsonLastExecutionTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastExecutionTimeValue) ? __jsonLastExecutionTimeValue : LastExecutionTime : LastExecutionTime;}
             {_retentionPeriodInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("retentionPeriodInDays"), out var __jsonRetentionPeriodInDays) ? (int)__jsonRetentionPeriodInDays : RetentionPeriodInDay;}
             {_startTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("startTime"), out var __jsonStartTime) ? global::System.DateTime.TryParse((string)__jsonStartTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonStartTimeValue) ? __jsonStartTimeValue : StartTime : StartTime;}
+            {_lastExecutionTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastExecutionTime"), out var __jsonLastExecutionTime) ? global::System.DateTime.TryParse((string)__jsonLastExecutionTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastExecutionTimeValue) ? __jsonLastExecutionTimeValue : LastExecutionTime : LastExecutionTime;}
             AfterFromJson(json);
         }
 
@@ -104,12 +104,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber(this._frequencyInterval), "frequencyInterval" ,container.Add );
             AddIf( null != (((object)this._frequencyUnit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._frequencyUnit.ToString()) : null, "frequencyUnit" ,container.Add );
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean(this._keepAtLeastOneBackup), "keepAtLeastOneBackup" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber(this._retentionPeriodInDay), "retentionPeriodInDays" ,container.Add );
+            AddIf( null != this._startTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._startTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "startTime" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._lastExecutionTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastExecutionTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastExecutionTime" ,container.Add );
             }
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber(this._retentionPeriodInDay), "retentionPeriodInDays" ,container.Add );
-            AddIf( null != this._startTime ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._startTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "startTime" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

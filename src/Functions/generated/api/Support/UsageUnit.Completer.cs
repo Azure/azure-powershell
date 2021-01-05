@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for UsageUnit.</summary>
+    /// <summary>Gets the unit of measurement.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UsageUnitTypeConverter))]
     public partial struct UsageUnit :
         System.Management.Automation.IArgumentCompleter

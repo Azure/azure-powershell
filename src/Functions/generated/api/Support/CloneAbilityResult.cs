@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Name of app.</summary>
     public partial struct CloneAbilityResult :
         System.IEquatable<CloneAbilityResult>
     {

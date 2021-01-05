@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>The type of the load balancer.</summary>
     public partial struct LoadBalancerType :
         System.IEquatable<LoadBalancerType>
     {

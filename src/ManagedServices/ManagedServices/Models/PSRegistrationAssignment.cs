@@ -16,20 +16,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class PSRegistrationAssignment
     {
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
         public string Id { get; set; }
 
-        public string Type { get; }
+        public string Type { get; set; }
 
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
 
-        [Ps1Xml(Label = "RegistrationDefinitionId", Target = ViewControl.Table, ScriptBlock = "$_.Properties.RegistrationDefinitionId")]
+        [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, ScriptBlock = "$_.Properties.ProvisioningState", Position = 2)]
         public PSRegistrationAssignmentProperties Properties { get; set; }
 
         public PSRegistrationAssignment(RegistrationAssignment registrationAssignment)

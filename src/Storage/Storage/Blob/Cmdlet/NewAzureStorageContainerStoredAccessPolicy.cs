@@ -15,9 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -41,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any subset of \"rwdl\".")]
+        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any subset of \"racwdxlt\", make the permission order also same as it")]
         public string Permission { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
@@ -49,6 +53,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(HelpMessage = "Expiry Time")]
         public DateTime? ExpiryTime { get; set; }
+
+        protected override bool UseTrack2Sdk()
+        {
+            return true;
+        }
 
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageContainerStoredAccessPolicyCommand class.
@@ -75,22 +84,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
             }
 
-            //Get existing permissions
-            CloudBlobContainer container = localChannel.GetContainerReference(containerName);
-            BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container, null, null, OperationContext);
+            //Get container instance, Get existing permissions
+            CloudBlobContainer container_Track1 = Channel.GetContainerReference(containerName);
+            BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
+            BlobContainerAccessPolicy accessPolicy = container.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
+            IEnumerable<BlobSignedIdentifier> signedIdentifiers = accessPolicy.SignedIdentifiers;
 
             //Add new policy
-            if (blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
+            foreach (BlobSignedIdentifier identifier in signedIdentifiers)
             {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
+                if (identifier.Id == policyName)
+                {
+                    throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
+                }
             }
-
-            SharedAccessBlobPolicy policy = new SharedAccessBlobPolicy();
-            AccessPolicyHelper.SetupAccessPolicy<SharedAccessBlobPolicy>(policy, startTime, expiryTime, permission);
-            blobContainerPermissions.SharedAccessPolicies.Add(policyName, policy);
+            BlobSignedIdentifier signedIdentifier = new BlobSignedIdentifier();
+            signedIdentifier.Id = policyName;
+            signedIdentifier.AccessPolicy = new BlobAccessPolicy();
+            if (StartTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyStartsOn = StartTime.Value.ToUniversalTime();
+            }
+            if (ExpiryTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = ExpiryTime.Value.ToUniversalTime();
+            }
+            signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderBlobPermission(this.Permission);
+            var newsignedIdentifiers = new List<BlobSignedIdentifier>(signedIdentifiers);
+            newsignedIdentifiers.Add(signedIdentifier);
 
             //Set permissions back to container
-            localChannel.SetContainerPermissions(container, blobContainerPermissions, null, null, OperationContext);
+            container.SetAccessPolicy(accessPolicy.BlobPublicAccess, newsignedIdentifiers, BlobRequestConditions, CmdletCancellationToken);
             return policyName;
         }
 

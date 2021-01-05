@@ -26,6 +26,8 @@ Name     Type
 ----     ----
 vnet-001 Microsoft.DBforMariaDB/servers/virtualNetworkRules
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
 #>

@@ -34,6 +34,7 @@ using Microsoft.Azure.Commands.Profile.Context;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private MockPowerShellTokenCacheProvider tokenCacheProviderMock;
         const string guid1 = "a0cc8bd7-2c6a-47e9-a4c4-3f6ed136e240";
         const string guid2 = "eab635c0-a35a-4f70-9e46-e5351c7b5c8b";
         const string guid3 = "52f66548-2550-417b-941e-9d6e04f3ac8d";
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            tokenCacheProviderMock = new MockPowerShellTokenCacheProvider();
+            AzureSession.Instance.RegisterComponent<PowerShellTokenCacheProvider>(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenCacheProviderMock);
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "True");
         }
 

@@ -101,11 +101,11 @@ Specifies the address family that needs to be removed from the config
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: IPv4, IPv6
+Accepted values: IPv4, IPv6, All
 
 Required: False
 Position: Named
-Default value: None 
+Default value: IPv4 
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

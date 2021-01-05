@@ -26,6 +26,7 @@ using System.Linq;
 using InternalResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using ResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using NetworkManagementClient = Microsoft.Azure.Management.Network.NetworkManagementClient;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 {
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
             _helper.SetupManagementClients(
                 context.GetServiceClient<ContainerRegistryManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
                 context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
-                context.GetServiceClient<InternalResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
+                context.GetServiceClient<InternalResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
+                context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -60,7 +62,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Network", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -79,6 +82,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
                     "AzureRM.Resources.ps1",
                     "ScenarioTests\\Common.ps1",
                     _helper.RMProfileModule,
+                    _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.ContainerRegistry.psd1"));
 
                 if (scripts != null)

@@ -124,7 +124,7 @@ function Test-StartStopRestartWebApp
 		$webApp = $webApp | Stop-AzWebApp
 
 		Assert-AreEqual "Stopped" $webApp.State
-		$ping = PingWebApp $webApp
+		# $ping = PingWebApp $webApp
 
 		# Start web app
 		$webApp = $webApp | Start-AzWebApp
@@ -136,7 +136,7 @@ function Test-StartStopRestartWebApp
 		$webApp = Stop-AzWebApp -ResourceGroupName $rgname -Name $wname
 
 		Assert-AreEqual "Stopped" $webApp.State
-		$ping = PingWebApp $webApp
+		# $ping = PingWebApp $webApp
 
 		# Start web app
 		$webApp = Start-AzWebApp -ResourceGroupName $rgname -Name $wname
@@ -469,10 +469,10 @@ function Test-CreateNewWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -736,10 +736,10 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest"
-    $containerRegistryUrl = "https://mcr.microsoft.com"
-	$containerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
 	$dockerPrefix = "DOCKER|"
 
@@ -1027,10 +1027,10 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -1038,13 +1038,13 @@ function Test-SetAzureStorageWebAppHyperV
 	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "\mymountpath"
+	$azureStorageAccountMountPath1 = "/mymountpath"
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
 	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "\mymountpath2"
+	$azureStorageAccountMountPath2 = "/mymountpath2"
 
 	try
 	{
@@ -1144,11 +1144,11 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
-	$rgname = "mnresourcegroup"
+	$rgname = "11698RG1"
 	$wname = Get-WebsiteName
-	$location = "South Central US"
+	$location = "East US"
 	$whpName = "powershellasp"
-	$aseName = "mnASE"
+	$aseName = "11698ASP-PS"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{

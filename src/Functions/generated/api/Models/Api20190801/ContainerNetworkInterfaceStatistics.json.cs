@@ -58,13 +58,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_rxByte = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxBytes"), out var __jsonRxBytes) ? (long?)__jsonRxBytes : RxByte;}
-            {_rxDropped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxDropped"), out var __jsonRxDropped) ? (long?)__jsonRxDropped : RxDropped;}
-            {_rxError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxErrors"), out var __jsonRxErrors) ? (long?)__jsonRxErrors : RxError;}
             {_rxPacket = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxPackets"), out var __jsonRxPackets) ? (long?)__jsonRxPackets : RxPacket;}
+            {_rxError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxErrors"), out var __jsonRxErrors) ? (long?)__jsonRxErrors : RxError;}
+            {_rxDropped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("rxDropped"), out var __jsonRxDropped) ? (long?)__jsonRxDropped : RxDropped;}
             {_txByte = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txBytes"), out var __jsonTxBytes) ? (long?)__jsonTxBytes : TxByte;}
-            {_txDropped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txDropped"), out var __jsonTxDropped) ? (long?)__jsonTxDropped : TxDropped;}
-            {_txError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txErrors"), out var __jsonTxErrors) ? (long?)__jsonTxErrors : TxError;}
             {_txPacket = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txPackets"), out var __jsonTxPackets) ? (long?)__jsonTxPackets : TxPacket;}
+            {_txError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txErrors"), out var __jsonTxErrors) ? (long?)__jsonTxErrors : TxError;}
+            {_txDropped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("txDropped"), out var __jsonTxDropped) ? (long?)__jsonTxDropped : TxDropped;}
             AfterFromJson(json);
         }
 
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != this._rxByte ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxByte) : null, "rxBytes" ,container.Add );
-            AddIf( null != this._rxDropped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxDropped) : null, "rxDropped" ,container.Add );
-            AddIf( null != this._rxError ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxError) : null, "rxErrors" ,container.Add );
             AddIf( null != this._rxPacket ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxPacket) : null, "rxPackets" ,container.Add );
+            AddIf( null != this._rxError ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxError) : null, "rxErrors" ,container.Add );
+            AddIf( null != this._rxDropped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._rxDropped) : null, "rxDropped" ,container.Add );
             AddIf( null != this._txByte ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txByte) : null, "txBytes" ,container.Add );
-            AddIf( null != this._txDropped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txDropped) : null, "txDropped" ,container.Add );
-            AddIf( null != this._txError ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txError) : null, "txErrors" ,container.Add );
             AddIf( null != this._txPacket ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txPacket) : null, "txPackets" ,container.Add );
+            AddIf( null != this._txError ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txError) : null, "txErrors" ,container.Add );
+            AddIf( null != this._txDropped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((long)this._txDropped) : null, "txDropped" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -133,15 +133,14 @@ function NamespaceAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
-    
-    Write-Debug "Get updated Namespace AuthorizationRules"
-    $updatedAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
+
+
+	Write-Debug "Update Namespace AuthorizationRules"
+    $updatedAuthRule = Set-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen")
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
-    Assert-AreEqual 3 $updatedAuthRule.Rights.Count "Rights Count does not match"
+    Assert-AreEqual 1 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Send" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	
     Write-Debug "Get namespace authorizationRules connectionStrings"
     $namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName

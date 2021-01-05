@@ -894,10 +894,10 @@ function Test-SetAzureStorageWebAppHyperVSlot
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-	$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+	$containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -905,13 +905,13 @@ function Test-SetAzureStorageWebAppHyperVSlot
 	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "\mymountpath"
+	$azureStorageAccountMountPath1 = "/mymountpath"
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
 	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "\mymountpath2"
+	$azureStorageAccountMountPath2 = "/mymountpath2"
 
 	try
 	{

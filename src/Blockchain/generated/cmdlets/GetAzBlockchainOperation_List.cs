@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
 
     /// <summary>Lists the available operations of Microsoft.Blockchain resource provider.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.Blockchain/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.Blockchain/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzBlockchainOperation_List")]

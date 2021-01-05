@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Aks
 {
     public static class Constants
@@ -27,5 +29,17 @@ namespace Microsoft.Azure.Commands.Aks
         public const string ParentObjectParameterSet = "ParentObjectParameterSet";
 
         public const string NodePool = "AksNodePool";
+
+
+        public readonly static IDictionary<string, string> AddOnUserReadNameToServiceNameMapper = new Dictionary<string, string>
+        {
+            { "HttpApplicationRouting", "httpapplicationrouting" },
+            { "Monitoring", "omsagent" },
+            { "VirtualNode", "aciConnector" },
+            { "AzurePolicy", "azurepolicy " },
+            { "KubeDashboard", "kubeDashboard" },
+        };
+        public const string AddOnNameMonitoring = "Monitoring";
+        public const string AddOnNameVirtualNode = "VirtualNode";
     }
 }

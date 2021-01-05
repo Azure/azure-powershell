@@ -19,11 +19,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Type { get => this._type; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue _value;
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny _value;
 
         /// <summary>The value which should be used for this field.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue Value { get => (this._value = this._value ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.WorkspaceCustomObjectParameterValue()); set => this._value = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny Value { get => (this._value = this._value ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Any()); set => this._value = value; }
 
         /// <summary>Creates an new <see cref="WorkspaceCustomObjectParameter" /> instance.</summary>
         public WorkspaceCustomObjectParameter()
@@ -49,8 +49,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         ReadOnly = false,
         Description = @"The value which should be used for this field.",
         SerializedName = @"value",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue Value { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny Value { get; set; }
 
     }
     /// The value which should be used for this field.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
         /// <summary>The type of variable that this is</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType? Type { get; set; }
         /// <summary>The value which should be used for this field.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceCustomObjectParameterValue Value { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny Value { get; set; }
 
     }
 }

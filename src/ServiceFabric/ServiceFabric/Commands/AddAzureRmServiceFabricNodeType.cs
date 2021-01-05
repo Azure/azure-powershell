@@ -34,6 +34,8 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
+using LoadBalancingRule = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.LoadBalancingRule;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -122,8 +124,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var cluster = GetCurrentCluster();
                 this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
-                CreateVmss(cluster.ClusterId);
                 var pscluster = AddNodeTypeToSfrp(cluster);
+                CreateVmss(cluster.ClusterId);
                 WriteObject(pscluster, true);
             }
         }

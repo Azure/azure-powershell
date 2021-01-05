@@ -99,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetResourceGroup, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetSubnetName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetResourceGroup = (string) content.GetValueForProperty("VnetResourceGroup",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetResourceGroup, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName = (string) content.GetValueForProperty("VnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetSubnetName = (string) content.GetValueForProperty("VnetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetParametersPropertiesInternal)this).VnetSubnetName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

@@ -70,41 +70,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_cloningInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("cloningInfo"), out var __jsonCloningInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CloningInfo.FromJson(__jsonCloningInfo) : CloningInfo;}
             {_hostingEnvironmentProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("hostingEnvironmentProfile"), out var __jsonHostingEnvironmentProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostingEnvironmentProfile.FromJson(__jsonHostingEnvironmentProfile) : HostingEnvironmentProfile;}
+            {_cloningInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("cloningInfo"), out var __jsonCloningInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.CloningInfo.FromJson(__jsonCloningInfo) : CloningInfo;}
             {_slotSwapStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("slotSwapStatus"), out var __jsonSlotSwapStatus) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SlotSwapStatus.FromJson(__jsonSlotSwapStatus) : SlotSwapStatus;}
+            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
+            {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostNames"), out var __jsonHostNames) ? If( __jsonHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : HostName;}
+            {_repositorySiteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("repositorySiteName"), out var __jsonRepositorySiteName) ? (string)__jsonRepositorySiteName : (string)RepositorySiteName;}
+            {_usageState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("usageState"), out var __jsonUsageState) ? (string)__jsonUsageState : (string)UsageState;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
+            {_enabledHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("enabledHostNames"), out var __jsonEnabledHostNames) ? If( __jsonEnabledHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : EnabledHostName;}
             {_availabilityState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("availabilityState"), out var __jsonAvailabilityState) ? (string)__jsonAvailabilityState : (string)AvailabilityState;}
+            {_hostNameSslState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostNameSslStates"), out var __jsonHostNameSslStates) ? If( __jsonHostNameSslStates as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostNameSslState.FromJson(__k) )) ))() : null : HostNameSslState;}
+            {_serverFarmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serverFarmId"), out var __jsonServerFarmId) ? (string)__jsonServerFarmId : (string)ServerFarmId;}
+            {_reserved = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("reserved"), out var __jsonReserved) ? (bool?)__jsonReserved : Reserved;}
+            {_isXenon = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isXenon"), out var __jsonIsXenon) ? (bool?)__jsonIsXenon : IsXenon;}
+            {_hyperV = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hyperV"), out var __jsonHyperV) ? (bool?)__jsonHyperV : HyperV;}
+            {_lastModifiedTimeUtc = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastModifiedTimeUtc"), out var __jsonLastModifiedTimeUtc) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTimeUtc, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeUtcValue) ? __jsonLastModifiedTimeUtcValue : LastModifiedTimeUtc : LastModifiedTimeUtc;}
+            {_trafficManagerHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("trafficManagerHostNames"), out var __jsonTrafficManagerHostNames) ? If( __jsonTrafficManagerHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : TrafficManagerHostName;}
+            {_scmSiteAlsoStopped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("scmSiteAlsoStopped"), out var __jsonScmSiteAlsoStopped) ? (bool?)__jsonScmSiteAlsoStopped : ScmSiteAlsoStopped;}
+            {_targetSwapSlot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("targetSwapSlot"), out var __jsonTargetSwapSlot) ? (string)__jsonTargetSwapSlot : (string)TargetSwapSlot;}
             {_clientAffinityEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("clientAffinityEnabled"), out var __jsonClientAffinityEnabled) ? (bool?)__jsonClientAffinityEnabled : ClientAffinityEnabled;}
             {_clientCertEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("clientCertEnabled"), out var __jsonClientCertEnabled) ? (bool?)__jsonClientCertEnabled : ClientCertEnabled;}
             {_clientCertExclusionPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("clientCertExclusionPaths"), out var __jsonClientCertExclusionPaths) ? (string)__jsonClientCertExclusionPaths : (string)ClientCertExclusionPath;}
-            {_containerSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("containerSize"), out var __jsonContainerSize) ? (int?)__jsonContainerSize : ContainerSize;}
-            {_dailyMemoryTimeQuota = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("dailyMemoryTimeQuota"), out var __jsonDailyMemoryTimeQuota) ? (int?)__jsonDailyMemoryTimeQuota : DailyMemoryTimeQuota;}
-            {_defaultHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("defaultHostName"), out var __jsonDefaultHostName) ? (string)__jsonDefaultHostName : (string)DefaultHostName;}
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
-            {_enabledHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("enabledHostNames"), out var __jsonEnabledHostNames) ? If( __jsonEnabledHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : EnabledHostName;}
-            {_hostNameSslState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostNameSslStates"), out var __jsonHostNameSslStates) ? If( __jsonHostNameSslStates as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostNameSslState.FromJson(__p) )) ))() : null : HostNameSslState;}
-            {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("hostNames"), out var __jsonHostNames) ? If( __jsonHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : HostName;}
             {_hostNamesDisabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hostNamesDisabled"), out var __jsonHostNamesDisabled) ? (bool?)__jsonHostNamesDisabled : HostNamesDisabled;}
-            {_httpsOnly = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("httpsOnly"), out var __jsonHttpsOnly) ? (bool?)__jsonHttpsOnly : HttpsOnly;}
-            {_hyperV = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("hyperV"), out var __jsonHyperV) ? (bool?)__jsonHyperV : HyperV;}
-            {_inProgressOperationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("inProgressOperationId"), out var __jsonInProgressOperationId) ? (string)__jsonInProgressOperationId : (string)InProgressOperationId;}
-            {_isDefaultContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isDefaultContainer"), out var __jsonIsDefaultContainer) ? (bool?)__jsonIsDefaultContainer : IsDefaultContainer;}
-            {_isXenon = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isXenon"), out var __jsonIsXenon) ? (bool?)__jsonIsXenon : IsXenon;}
-            {_lastModifiedTimeUtc = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("lastModifiedTimeUtc"), out var __jsonLastModifiedTimeUtc) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTimeUtc, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeUtcValue) ? __jsonLastModifiedTimeUtcValue : LastModifiedTimeUtc : LastModifiedTimeUtc;}
-            {_maxNumberOfWorker = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxNumberOfWorkers"), out var __jsonMaxNumberOfWorkers) ? (int?)__jsonMaxNumberOfWorkers : MaxNumberOfWorker;}
             {_outboundIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("outboundIpAddresses"), out var __jsonOutboundIPAddresses) ? (string)__jsonOutboundIPAddresses : (string)OutboundIPAddress;}
             {_possibleOutboundIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("possibleOutboundIpAddresses"), out var __jsonPossibleOutboundIPAddresses) ? (string)__jsonPossibleOutboundIPAddresses : (string)PossibleOutboundIPAddress;}
-            {_redundancyMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("redundancyMode"), out var __jsonRedundancyMode) ? (string)__jsonRedundancyMode : (string)RedundancyMode;}
-            {_repositorySiteName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("repositorySiteName"), out var __jsonRepositorySiteName) ? (string)__jsonRepositorySiteName : (string)RepositorySiteName;}
-            {_reserved = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("reserved"), out var __jsonReserved) ? (bool?)__jsonReserved : Reserved;}
-            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)ResourceGroup;}
-            {_scmSiteAlsoStopped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("scmSiteAlsoStopped"), out var __jsonScmSiteAlsoStopped) ? (bool?)__jsonScmSiteAlsoStopped : ScmSiteAlsoStopped;}
-            {_serverFarmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serverFarmId"), out var __jsonServerFarmId) ? (string)__jsonServerFarmId : (string)ServerFarmId;}
-            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
+            {_containerSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("containerSize"), out var __jsonContainerSize) ? (int?)__jsonContainerSize : ContainerSize;}
+            {_dailyMemoryTimeQuota = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("dailyMemoryTimeQuota"), out var __jsonDailyMemoryTimeQuota) ? (int?)__jsonDailyMemoryTimeQuota : DailyMemoryTimeQuota;}
             {_suspendedTill = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("suspendedTill"), out var __jsonSuspendedTill) ? global::System.DateTime.TryParse((string)__jsonSuspendedTill, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonSuspendedTillValue) ? __jsonSuspendedTillValue : SuspendedTill : SuspendedTill;}
-            {_targetSwapSlot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("targetSwapSlot"), out var __jsonTargetSwapSlot) ? (string)__jsonTargetSwapSlot : (string)TargetSwapSlot;}
-            {_trafficManagerHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("trafficManagerHostNames"), out var __jsonTrafficManagerHostNames) ? If( __jsonTrafficManagerHostNames as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : TrafficManagerHostName;}
-            {_usageState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("usageState"), out var __jsonUsageState) ? (string)__jsonUsageState : (string)UsageState;}
+            {_maxNumberOfWorker = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxNumberOfWorkers"), out var __jsonMaxNumberOfWorkers) ? (int?)__jsonMaxNumberOfWorkers : MaxNumberOfWorker;}
+            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)ResourceGroup;}
+            {_isDefaultContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("isDefaultContainer"), out var __jsonIsDefaultContainer) ? (bool?)__jsonIsDefaultContainer : IsDefaultContainer;}
+            {_defaultHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("defaultHostName"), out var __jsonDefaultHostName) ? (string)__jsonDefaultHostName : (string)DefaultHostName;}
+            {_httpsOnly = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("httpsOnly"), out var __jsonHttpsOnly) ? (bool?)__jsonHttpsOnly : HttpsOnly;}
+            {_redundancyMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("redundancyMode"), out var __jsonRedundancyMode) ? (string)__jsonRedundancyMode : (string)RedundancyMode;}
+            {_inProgressOperationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("inProgressOperationId"), out var __jsonInProgressOperationId) ? (string)__jsonInProgressOperationId : (string)InProgressOperationId;}
             {_siteConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("siteConfig"), out var __jsonSiteConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig.FromJson(__jsonSiteConfig) : SiteConfig;}
             AfterFromJson(json);
         }
@@ -128,110 +128,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._cloningInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._cloningInfo.ToJson(null,serializationMode) : null, "cloningInfo" ,container.Add );
             AddIf( null != this._hostingEnvironmentProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._hostingEnvironmentProfile.ToJson(null,serializationMode) : null, "hostingEnvironmentProfile" ,container.Add );
+            AddIf( null != this._cloningInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._cloningInfo.ToJson(null,serializationMode) : null, "cloningInfo" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._slotSwapStatus ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._slotSwapStatus.ToJson(null,serializationMode) : null, "slotSwapStatus" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._availabilityState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._availabilityState.ToString()) : null, "availabilityState" ,container.Add );
+                AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
             }
-            AddIf( null != this._clientAffinityEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._clientAffinityEnabled) : null, "clientAffinityEnabled" ,container.Add );
-            AddIf( null != this._clientCertEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._clientCertEnabled) : null, "clientCertEnabled" ,container.Add );
-            AddIf( null != (((object)this._clientCertExclusionPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._clientCertExclusionPath.ToString()) : null, "clientCertExclusionPaths" ,container.Add );
-            AddIf( null != this._containerSize ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._containerSize) : null, "containerSize" ,container.Add );
-            AddIf( null != this._dailyMemoryTimeQuota ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._dailyMemoryTimeQuota) : null, "dailyMemoryTimeQuota" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._defaultHostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._defaultHostName.ToString()) : null, "defaultHostName" ,container.Add );
+                if (null != this._hostName)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._hostName )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("hostNames",__w);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._repositorySiteName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._repositorySiteName.ToString()) : null, "repositorySiteName" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._usageState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._usageState.ToString()) : null, "usageState" ,container.Add );
             }
             AddIf( null != this._enabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._enabled) : null, "enabled" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._enabledHostName)
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._enabledHostName )
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._enabledHostName )
                     {
-                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                        AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
                     }
-                    container.Add("enabledHostNames",__w);
+                    container.Add("enabledHostNames",__r);
                 }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._availabilityState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._availabilityState.ToString()) : null, "availabilityState" ,container.Add );
             }
             if (null != this._hostNameSslState)
             {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __s in this._hostNameSslState )
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
+                foreach( var __n in this._hostNameSslState )
                 {
-                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                 }
-                container.Add("hostNameSslStates",__r);
+                container.Add("hostNameSslStates",__m);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._hostName)
-                {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._hostName )
-                    {
-                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
-                    }
-                    container.Add("hostNames",__m);
-                }
-            }
-            AddIf( null != this._hostNamesDisabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hostNamesDisabled) : null, "hostNamesDisabled" ,container.Add );
-            AddIf( null != this._httpsOnly ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._httpsOnly) : null, "httpsOnly" ,container.Add );
+            AddIf( null != (((object)this._serverFarmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serverFarmId.ToString()) : null, "serverFarmId" ,container.Add );
+            AddIf( null != this._reserved ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._reserved) : null, "reserved" ,container.Add );
+            AddIf( null != this._isXenon ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isXenon) : null, "isXenon" ,container.Add );
             AddIf( null != this._hyperV ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hyperV) : null, "hyperV" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._inProgressOperationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._inProgressOperationId.ToString()) : null, "inProgressOperationId" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._isDefaultContainer ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDefaultContainer) : null, "isDefaultContainer" ,container.Add );
-            }
-            AddIf( null != this._isXenon ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isXenon) : null, "isXenon" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != this._lastModifiedTimeUtc ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._lastModifiedTimeUtc?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastModifiedTimeUtc" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._maxNumberOfWorker ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._maxNumberOfWorker) : null, "maxNumberOfWorkers" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._outboundIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._outboundIPAddress.ToString()) : null, "outboundIpAddresses" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._possibleOutboundIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._possibleOutboundIPAddress.ToString()) : null, "possibleOutboundIpAddresses" ,container.Add );
-            }
-            AddIf( null != (((object)this._redundancyMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._redundancyMode.ToString()) : null, "redundancyMode" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._repositorySiteName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._repositorySiteName.ToString()) : null, "repositorySiteName" ,container.Add );
-            }
-            AddIf( null != this._reserved ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._reserved) : null, "reserved" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._resourceGroup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceGroup.ToString()) : null, "resourceGroup" ,container.Add );
-            }
-            AddIf( null != this._scmSiteAlsoStopped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._scmSiteAlsoStopped) : null, "scmSiteAlsoStopped" ,container.Add );
-            AddIf( null != (((object)this._serverFarmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serverFarmId.ToString()) : null, "serverFarmId" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._suspendedTill ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._suspendedTill?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "suspendedTill" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._targetSwapSlot)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._targetSwapSlot.ToString()) : null, "targetSwapSlot" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -245,9 +204,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                     container.Add("trafficManagerHostNames",__h);
                 }
             }
+            AddIf( null != this._scmSiteAlsoStopped ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._scmSiteAlsoStopped) : null, "scmSiteAlsoStopped" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._usageState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._usageState.ToString()) : null, "usageState" ,container.Add );
+                AddIf( null != (((object)this._targetSwapSlot)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._targetSwapSlot.ToString()) : null, "targetSwapSlot" ,container.Add );
+            }
+            AddIf( null != this._clientAffinityEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._clientAffinityEnabled) : null, "clientAffinityEnabled" ,container.Add );
+            AddIf( null != this._clientCertEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._clientCertEnabled) : null, "clientCertEnabled" ,container.Add );
+            AddIf( null != (((object)this._clientCertExclusionPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._clientCertExclusionPath.ToString()) : null, "clientCertExclusionPaths" ,container.Add );
+            AddIf( null != this._hostNamesDisabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._hostNamesDisabled) : null, "hostNamesDisabled" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._outboundIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._outboundIPAddress.ToString()) : null, "outboundIpAddresses" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._possibleOutboundIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._possibleOutboundIPAddress.ToString()) : null, "possibleOutboundIpAddresses" ,container.Add );
+            }
+            AddIf( null != this._containerSize ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._containerSize) : null, "containerSize" ,container.Add );
+            AddIf( null != this._dailyMemoryTimeQuota ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._dailyMemoryTimeQuota) : null, "dailyMemoryTimeQuota" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._suspendedTill ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._suspendedTill?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "suspendedTill" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._maxNumberOfWorker ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._maxNumberOfWorker) : null, "maxNumberOfWorkers" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._resourceGroup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceGroup.ToString()) : null, "resourceGroup" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._isDefaultContainer ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._isDefaultContainer) : null, "isDefaultContainer" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._defaultHostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._defaultHostName.ToString()) : null, "defaultHostName" ,container.Add );
+            }
+            AddIf( null != this._httpsOnly ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._httpsOnly) : null, "httpsOnly" ,container.Add );
+            AddIf( null != (((object)this._redundancyMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._redundancyMode.ToString()) : null, "redundancyMode" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._inProgressOperationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._inProgressOperationId.ToString()) : null, "inProgressOperationId" ,container.Add );
             }
             AddIf( null != this._siteConfig ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._siteConfig.ToJson(null,serializationMode) : null, "siteConfig" ,container.Add );
             AfterToJson(ref container);

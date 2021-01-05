@@ -19,6 +19,19 @@ Update-AzPostgreSqlFirewallRule -Name <String> -ResourceGroupName <String> -Serv
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ClientIPAddress
+```
+Update-AzPostgreSqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzPostgreSqlFirewallRule -InputObject <IPostgreSqlIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPostgreSqlFirewallRule -InputObject <IPostgreSqlIdentity> -EndIPAddress <String>
@@ -54,6 +67,18 @@ rule 0.0.0.0        0.0.0.1
 
 These cmdlets update PostgreSql Firewall Rule by identity.
 
+### Example 3: Update PostgreSql Firewall Rule by -ClientIPAddress.
+```powershell
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+PS C:\> Update-AzPostgreSqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.2
+```
+
+These cmdlets update PostgreSql Firewall Rule by -ClientIPAddress.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -65,6 +90,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress, ClientIPAddressViaIdentity
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,7 +133,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -108,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -123,7 +164,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases: FirewallRuleName
 
 Required: True
@@ -154,7 +195,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -169,7 +210,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: True
@@ -185,7 +226,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -200,7 +241,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded
 Aliases:
 
 Required: False

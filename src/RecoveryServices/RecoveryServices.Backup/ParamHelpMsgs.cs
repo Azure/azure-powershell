@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Configuration.Internal;
 using System.Runtime.CompilerServices;
 
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string WorkloadType = "Workload type of the resource. The current supported values are ";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
             public const string BackupManagementType = "The class of resources being protected. Currently the values supported for this cmdlet are ";
+            public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
         }
 
         internal static class Policy
@@ -180,6 +182,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoeAsFiles = "Specifies to restore Database as files in a machine.";
             public const string FilePath = "Specifies the filepath which is used for restore operation.";
             public const string FromFull = "Specifies the Full RecoveryPoint to which Log backups will be applied.";
+        }
+
+        internal static class DSMove
+        {
+            public const string SourceVault = "The source vault object to trigger data move.";
+            public const string TargetVault = "The target vault object where the data has to be moved.";
+            public const string ForceOption = "Forces the data move operation (prevents confirmation dialog). This parameter is optional.";
+            public const string CmdletOutput = "Please monitor the operation using Get-AzRecoveryServicesBackupJob cmdlet";
+            public const string RetryOnlyFailed = "Switch parameter to try data move only for containers in the source vault which are not yet moved.";
+        }
+
+        internal static class Encryption
+        {
+            public const string EncryptionSettings = "Get CMK vault encryption settings."; 
+            public const string EncryptionKeyID = "KeyID of the encryption key to be used for CMK.";
+            public const string KeyVaultSubscriptionId = "Subscription Id where the key vault is created.";
+            public const string InfrastructureEncryption = "Enables infrastructure encryption on this vault. Infrastructure encryption must be enabled when configuring encryption." +
+                " of the vault for the first time. Once enabled, infrastructure encryption cannot be disabled. ";
+            public const string DES = "The disk encryption set is used to encrypt disks at rest when they are created from vault-based recovery points. Please ensure that the disk encryption" +
+                " set also has access to the relevant key vault. For instant restores, where data is restored from snapshot recovery points, the currently active disk encryption set is automatically" +
+                " used to encrypt newly created disks.";
         }
     }
 }

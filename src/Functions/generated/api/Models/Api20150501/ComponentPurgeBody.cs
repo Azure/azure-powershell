@@ -9,13 +9,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
     {
 
         /// <summary>Backing field for <see cref="Filter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters1[] _filter;
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters[] _filter;
 
         /// <summary>
         /// The set of columns and filters (queries) to run over them to purge the resulting data.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters1[] Filter { get => this._filter; set => this._filter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters[] Filter { get => this._filter; set => this._filter = value; }
 
         /// <summary>Backing field for <see cref="Table" /> property.</summary>
         private string _table;
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         ReadOnly = false,
         Description = @"The set of columns and filters (queries) to run over them to purge the resulting data.",
         SerializedName = @"filters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters1) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters1[] Filter { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters[] Filter { get; set; }
         /// <summary>Table from which to purge data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = true,
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// <summary>
         /// The set of columns and filters (queries) to run over them to purge the resulting data.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters1[] Filter { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentPurgeBodyFilters[] Filter { get; set; }
         /// <summary>Table from which to purge data.</summary>
         string Table { get; set; }
 

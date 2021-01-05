@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 2.3.0
+* Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]
+* Added new cmdlets to support creating diagnostic settings more flexible:
+    * `Get-AzDiagnosticSettingCategory`
+    * `New-AzDiagnosticSetting`
+    * `New-AzDiagnosticDetailSetting`
+
+## Version 2.2.0
+* Fixed the bug that warning message cannot be suppressed. [#12889]
+* Supported `SkipMetricValidation` parameter in alert rule criteria. Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+
 ## Version 2.1.0
 * Extended the parameter set in `Set-AzDiagnosticSetting` for separation of Logs and Metrics enablement [#12482]
 * Fixed bug for `Add-AzMetricAlertRuleV2` when getting metric alert from pipeline

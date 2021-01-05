@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ApplicationType.</summary>
+    /// <summary>Type of application being monitored.</summary>
     public partial class ApplicationTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

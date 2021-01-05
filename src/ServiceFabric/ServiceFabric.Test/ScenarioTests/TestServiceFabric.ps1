@@ -83,7 +83,7 @@ function Test-RemoveAzureRmServiceFabricClusterCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-    $thumbprint  = Get-Thumbprint
+    $thumbprint  = Get-InitialThumbprint
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
 

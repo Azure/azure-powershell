@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AccountStatus.</summary>
+    /// <summary>
+    /// Gets the status indicating whether the primary location of the storage account is available or unavailable.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AccountStatusTypeConverter))]
     public partial struct AccountStatus :
         System.Management.Automation.IArgumentCompleter

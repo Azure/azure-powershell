@@ -25,8 +25,8 @@ You will not be charged for a job in the Stopped state.
 
 ## EXAMPLES
 
-### EXAMPLE 1: Stop a running job
-```
+### Example 1: Stop a running job
+```powershell
 PS C:\>Stop-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob"
 ```
 

@@ -69,7 +69,7 @@ $firewall.Deallocate()
 $firewall | Set-AzFirewall
 
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
-$pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
@@ -82,8 +82,8 @@ Set-AzFirewall must be called.
 ### 5: Allocate with a management public IP address for forced tunneling scenarios
 ```
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
-$pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
-$mgmtPip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name MgmtPublicIpName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
+$mgmtPip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name MgmtPublicIpName
 $firewall.Allocate($vnet, $pip, $mgmtPip)
 $firewall | Set-AzFirewall
 ```
@@ -139,11 +139,21 @@ In this example, DNS Proxy and DNS Server configuration is attached to the Firew
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
 $rule=$ruleCollection.GetRuleByName("ruleName")
-$rule.DestinationAddresses="10.10.10.10"
+$rule.DestinationAddresses = "10.10.10.10"
 Set-AzFirewall -AzureFirewall $azFw
 ```
 
 This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
+
+### 11:	Allow Active FTP on Azure Firewall
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.AllowActiveFTP = $true
+
+$azFw | Set-AzFirewall
+```
+
+In this example, Active FTP is allowed on the Firewall.
 
 ## PARAMETERS
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for RenderingType.</summary>
+    /// <summary>Rendering Type</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingTypeTypeConverter))]
     public partial struct RenderingType :
         System.Management.Automation.IArgumentCompleter

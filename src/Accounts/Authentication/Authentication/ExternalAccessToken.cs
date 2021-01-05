@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication
             get; set;
         }
 
+        public string HomeAccountId { get; set; }
+
+        public IDictionary<string, string> ExtendedProperties { get; set; }
+
         private readonly Func<string> _refresh;
 
         public ExternalAccessToken(string token, Func<string> refresh = null)

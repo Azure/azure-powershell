@@ -6,6 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Name of the format. Valid values are:
+    /// FileZilla3
+    /// WebDeploy -- default
+    /// Ftp
+    /// </summary>
     public partial struct PublishingProfileFormat :
         System.IEquatable<PublishingProfileFormat>
     {

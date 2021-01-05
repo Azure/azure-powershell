@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ImmutabilityPolicyState.</summary>
+    /// <summary>
+    /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
+    /// </summary>
     public partial class ImmutabilityPolicyStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -27,6 +27,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblogfile
 #>

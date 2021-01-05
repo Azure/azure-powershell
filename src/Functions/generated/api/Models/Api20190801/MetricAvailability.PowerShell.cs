@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).TimeGrain = (string) content.GetValueForProperty("TimeGrain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).TimeGrain, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).TimeGrain = (string) content.GetValueForProperty("TimeGrain",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).TimeGrain, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration = (string) content.GetValueForProperty("BlobDuration",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMetricAvailabilityInternal)this).BlobDuration, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for ManagedServiceIdentityType.</summary>
+    /// <summary>Type of managed service identity.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityTypeTypeConverter))]
     public partial struct ManagedServiceIdentityType :
         System.Management.Automation.IArgumentCompleter

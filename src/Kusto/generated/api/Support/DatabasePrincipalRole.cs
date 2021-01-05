@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Database principal role.</summary>
     public partial struct DatabasePrincipalRole :
         System.IEquatable<DatabasePrincipalRole>
     {

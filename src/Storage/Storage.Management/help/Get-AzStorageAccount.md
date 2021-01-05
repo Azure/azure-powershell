@@ -25,6 +25,12 @@ Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeGeo
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### BlobRestoreStatusParameterSet
+```
+Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeBlobRestoreStatus] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of the Storage accounts in a resource group or the subscription.
 
@@ -50,6 +56,19 @@ PS C:\>Get-AzStorageAccount
 ```
 
 This command gets all of the Storage accounts in the subscription.
+
+### Example 4:  Get a Storage accounts with its blob restore status
+```
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -IncludeBlobRestoreStatus
+
+PS C:\> $account.BlobRestoreStatus
+
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges                 
+------     ---------                            ------------- ------------------------     ---------------------                 
+InProgress a70cd4a1-f223-4c86-959f-cc13eb4795a8               2020-02-10T13:45:04.7155962Z [container1/blob1 -> container2/blob2]
+```
+
+This command gets a Storage accounts with its blob restore status, and show the blob restore status.
 
 ## PARAMETERS
 
@@ -83,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeBlobRestoreStatus
+Get the BlobRestoreStatus of the Storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: BlobRestoreStatusParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncludeGeoReplicationStats
 Get the GeoReplicationStats of the Storage account.
 
@@ -103,7 +137,7 @@ Specifies the name of the Storage account to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, BlobRestoreStatusParameterSet
 Aliases: StorageAccountName, AccountName
 
 Required: True
@@ -130,7 +164,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, BlobRestoreStatusParameterSet
 Aliases:
 
 Required: True

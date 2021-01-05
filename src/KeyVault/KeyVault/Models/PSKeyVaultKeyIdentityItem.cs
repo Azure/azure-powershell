@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyIdentityItem()
         { }
 
-        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm = false)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");
@@ -41,9 +42,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyItem.Attributes.Updated;
             RecoveryLevel = keyItem.Attributes.RecoveryLevel;
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
+            IsHsm = isHsm;
         }
 
-        internal PSKeyVaultKeyIdentityItem(PSKeyVaultKey keyBundle)
+        internal PSKeyVaultKeyIdentityItem(PSKeyVaultKey keyBundle, bool isHsm = false)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
@@ -59,6 +61,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = keyBundle.Attributes.Tags;
+
+            IsHsm = isHsm;
+        }
+        internal PSKeyVaultKeyIdentityItem(Track2Sdk.KeyProperties keyProperties, VaultUriHelper vaultUriHelper, bool isHsm = false)
+        {
+            if (keyProperties == null)
+                throw new ArgumentNullException("keyProperties");
+            if (keyProperties.Id == null || keyProperties.Name == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyProperties);
+
+            SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(keyProperties.Id.ToString()));
+
+            Enabled = keyProperties.Enabled;
+            Expires = keyProperties.ExpiresOn?.UtcDateTime;
+            NotBefore = keyProperties.NotBefore?.UtcDateTime;
+            Created = keyProperties.CreatedOn?.UtcDateTime;
+            Updated = keyProperties.UpdatedOn?.UtcDateTime;
+            RecoveryLevel = keyProperties.RecoveryLevel;
+            Tags = keyProperties.Tags.ConvertToHashtable();
+
+            IsHsm = isHsm;
         }
 
         public bool? Enabled { get; set; }
@@ -79,5 +102,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             get { return (Tags == null) ? null : Tags.ConvertToTagsTable(); }
         }
+
+        public bool IsHsm { get; protected set; }
     }
 }

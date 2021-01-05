@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Newtonsoft.Json;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -97,6 +99,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     AzureFabricName,
                     containerName,
                     operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets status of prepare data move operation on the source vault 
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetDataMoveOperationStatus(
+            string operationId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.GetOperationStatusWithHttpMessagesAsync(
+                                vaultName,
+                                resourceGroupName,
+                                operationId).Result;
+        }
+
+        /// <summary>
+        /// Gets correlationId result of prepare data move operation on the source vault 
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns></returns>
+        public ServiceClientModel.PrepareDataMoveResponse
+            GetPrepareDataMoveOperationResult(
+            string operationId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.BeginGetWithHttpMessagesAsync(
+                                vaultName,
+                                resourceGroupName,
+                                operationId).Result.Body;
+
+            var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
+            PrepareDataMoveResponse prepareResponseDerived = JsonConvert.DeserializeObject<PrepareDataMoveResponse>(prepareResponseSerialized);
+            return prepareResponseDerived;
         }
 
         /// <summary>

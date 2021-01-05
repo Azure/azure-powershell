@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for ScmType.</summary>
+    /// <summary>SCM type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmTypeTypeConverter))]
     public partial struct ScmType :
         System.Management.Automation.IArgumentCompleter

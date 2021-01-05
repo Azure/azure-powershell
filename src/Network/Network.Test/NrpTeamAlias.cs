@@ -64,5 +64,8 @@ namespace Commands.Network.Test
 
         // Azure Network IPAM dev team
         public const string ipam = "ipamdev";
+
+        // Azure Network Billing and Telemetry team
+        public const string billingandtelemetry = "azurenetworkbilling";
     }
 }

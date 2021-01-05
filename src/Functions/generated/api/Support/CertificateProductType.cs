@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Certificate product type.</summary>
     public partial struct CertificateProductType :
         System.IEquatable<CertificateProductType>
     {

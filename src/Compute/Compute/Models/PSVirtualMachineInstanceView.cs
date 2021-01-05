@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
+        public VirtualMachinePatchStatus PatchStatus { get; set; }
+        public VirtualMachineHealthStatus VMHealth { get; set; }
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -71,6 +73,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 OsName = virtualMachineInstanceView.OsName,
                 OsVersion = virtualMachineInstanceView.OsVersion,
                 HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
+                PatchStatus = virtualMachineInstanceView.PatchStatus,
+                VMHealth = virtualMachineInstanceView.VmHealth,
                 AssignedHost = virtualMachineInstanceView.AssignedHost
             };
 

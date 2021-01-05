@@ -29,6 +29,9 @@ Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource 
 ### [CreateFunctionsIdentity](CreateFunctionsIdentity.md)
 
 
+### [FormatListToString](FormatListToString.md)
+
+
 ### [GetApplicationInsightsProject](GetApplicationInsightsProject.md)
 
 
@@ -71,9 +74,6 @@ Description for This is to allow calling via powershell and ARM template.
 ### [GetDefaultOSType](GetDefaultOSType.md)
 
 
-### [GetDefaultRuntimeVersion](GetDefaultRuntimeVersion.md)
-
-
 ### [GetErrorMessage](GetErrorMessage.md)
 
 
@@ -89,10 +89,10 @@ Description for This is to allow calling via powershell and ARM template.
 ### [GetFunctionAppServicePlanInfo](GetFunctionAppServicePlanInfo.md)
 
 
-### [GetLinuxFxVersion](GetLinuxFxVersion.md)
-
-
 ### [GetParameterKeyValues](GetParameterKeyValues.md)
+
+
+### [GetRuntimeJsonDefinition](GetRuntimeJsonDefinition.md)
 
 
 ### [GetServicePlan](GetServicePlan.md)
@@ -107,7 +107,7 @@ Description for This is to allow calling via powershell and ARM template.
 ### [GetSupportedRuntimes](GetSupportedRuntimes.md)
 
 
-### [GetWorkerVersion](GetWorkerVersion.md)
+### [GetSupportedRuntimeVersions](GetSupportedRuntimeVersions.md)
 
 
 ### [Move-Az](Move-Az.md)
@@ -161,6 +161,9 @@ Description for Syncs function trigger metadata to the management database
 ### [Test-Az](Test-Az.md)
 Description for Validate if a resource can be created.
 
+### [ThrowRuntimeNotSupportedException](ThrowRuntimeNotSupportedException.md)
+
+
 ### [ThrowTerminatingError](ThrowTerminatingError.md)
 
 
@@ -179,6 +182,12 @@ Adds or updates app settings in a function app.
 ### [ValidateFunctionName](ValidateFunctionName.md)
 
 
+### [ValidateFunctionsV2NotAvailableLocation](ValidateFunctionsV2NotAvailableLocation.md)
+
+
+### [ValidateFunctionsVersion](ValidateFunctionsVersion.md)
+
+
 ### [ValidatePlanLocation](ValidatePlanLocation.md)
 
 
@@ -186,8 +195,5 @@ Adds or updates app settings in a function app.
 
 
 ### [ValidatePremiumPlanLocation](ValidatePremiumPlanLocation.md)
-
-
-### [ValidateRuntimeAndRuntimeVersion](ValidateRuntimeAndRuntimeVersion.md)
 
 

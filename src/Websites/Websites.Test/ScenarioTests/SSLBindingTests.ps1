@@ -22,7 +22,7 @@ $appname = "lketmtestantps10"
 $slot = "testslot"
 $prodHostname = "www.adorenow.net"
 $slotHostname = "testslot.adorenow.net"
-$thumbprint = "F75A7A8C033FBEA02A1578812DB289277E23EAB1"
+$thumbprint = "16659E73A97D079A389CD8FC8C78B9F2DDD1BABE"
 
 <#
 .SYNOPSIS

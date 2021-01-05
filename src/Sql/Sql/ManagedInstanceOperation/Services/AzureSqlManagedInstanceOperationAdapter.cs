@@ -123,6 +123,48 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Adapter
             managedInstanceOperation.State = resp.State;
             managedInstanceOperation.IsUserError = resp.IsUserError;
 
+            if (resp.OperationParameters != null)
+            {
+                Management.Sql.Models.UpsertManagedServerOperationParameters currentParameters = new Management.Sql.Models.UpsertManagedServerOperationParameters();
+                if (resp.OperationParameters.CurrentParameters != null)
+                {
+                    currentParameters.Family = resp.OperationParameters.CurrentParameters.Family;
+                    currentParameters.Tier = resp.OperationParameters.CurrentParameters.Tier;
+                    currentParameters.VCores = resp.OperationParameters.CurrentParameters.VCores;
+                    currentParameters.StorageSizeInGB = resp.OperationParameters.CurrentParameters.StorageSizeInGB;
+                }
+
+                Management.Sql.Models.UpsertManagedServerOperationParameters requestedParameters = new Management.Sql.Models.UpsertManagedServerOperationParameters();
+                if (resp.OperationParameters.RequestedParameters != null)
+                {
+                    requestedParameters.Family = resp.OperationParameters.RequestedParameters.Family;
+                    requestedParameters.Tier = resp.OperationParameters.RequestedParameters.Tier;
+                    requestedParameters.VCores = resp.OperationParameters.RequestedParameters.VCores;
+                    requestedParameters.StorageSizeInGB = resp.OperationParameters.RequestedParameters.StorageSizeInGB;
+                }
+
+                managedInstanceOperation.OperationParameters = new Management.Sql.Models.ManagedInstanceOperationParametersPair(currentParameters, requestedParameters);
+            }
+            else
+            {
+                managedInstanceOperation.OperationParameters = new Management.Sql.Models.ManagedInstanceOperationParametersPair();
+            }
+
+            IList<Management.Sql.Models.UpsertManagedServerOperationStep> stepsList = new List<Management.Sql.Models.UpsertManagedServerOperationStep>();
+            if (resp.OperationSteps != null && resp.OperationSteps.StepsList != null)
+            {
+                foreach (Management.Sql.Models.UpsertManagedServerOperationStep step in resp.OperationSteps.StepsList)
+                {
+                    stepsList.Add(new Management.Sql.Models.UpsertManagedServerOperationStep(step.Order, step.Name, step.Status));
+                }
+
+                managedInstanceOperation.OperationSteps = new Management.Sql.Models.ManagedInstanceOperationSteps(resp.OperationSteps.TotalSteps, resp.OperationSteps.CurrentStep, stepsList);
+            }
+            else
+            {
+                managedInstanceOperation.OperationSteps = new Management.Sql.Models.ManagedInstanceOperationSteps();
+            }
+
             return managedInstanceOperation;
         }
     }

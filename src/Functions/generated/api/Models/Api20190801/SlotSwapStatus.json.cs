@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_destinationSlotName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("destinationSlotName"), out var __jsonDestinationSlotName) ? (string)__jsonDestinationSlotName : (string)DestinationSlotName;}
-            {_sourceSlotName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sourceSlotName"), out var __jsonSourceSlotName) ? (string)__jsonSourceSlotName : (string)SourceSlotName;}
             {_timestampUtc = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("timestampUtc"), out var __jsonTimestampUtc) ? global::System.DateTime.TryParse((string)__jsonTimestampUtc, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonTimestampUtcValue) ? __jsonTimestampUtcValue : TimestampUtc : TimestampUtc;}
+            {_sourceSlotName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sourceSlotName"), out var __jsonSourceSlotName) ? (string)__jsonSourceSlotName : (string)SourceSlotName;}
+            {_destinationSlotName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("destinationSlotName"), out var __jsonDestinationSlotName) ? (string)__jsonDestinationSlotName : (string)DestinationSlotName;}
             AfterFromJson(json);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._destinationSlotName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._destinationSlotName.ToString()) : null, "destinationSlotName" ,container.Add );
+                AddIf( null != this._timestampUtc ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._timestampUtc?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "timestampUtc" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._timestampUtc ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._timestampUtc?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "timestampUtc" ,container.Add );
+                AddIf( null != (((object)this._destinationSlotName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._destinationSlotName.ToString()) : null, "destinationSlotName" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

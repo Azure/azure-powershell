@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for SkuTier.</summary>
+    /// <summary>Gets the SKU tier. This is based on the SKU name.</summary>
     public partial class SkuTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

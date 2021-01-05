@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
     /// <summary>Lists all of the available REST API operations.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.DBforMariaDB/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.DBforMariaDB/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMariaDbOperation_List")]

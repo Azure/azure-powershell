@@ -70,8 +70,8 @@ param(
     [string] $StorageResourceId = $null
 )
 
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Common.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Assert.ps1")
 . (Join-Path $PSScriptRoot "Common.ps1")
 . (Join-Path $PSScriptRoot "VaultKeyTests.ps1")
 . (Join-Path $PSScriptRoot "VaultSecretTests.ps1")
@@ -79,7 +79,6 @@ param(
 . (Join-Path $PSScriptRoot "VaultManagedStorageAccountTests.ps1");
 . (Join-Path $PSScriptRoot "VaultManagementTests.ps1")
 . (Join-Path $PSScriptRoot "ControlPlane\KeyVaultManagementTests.ps1")  # Shared between PSH scenario tests and KV-specific script based tests.
-. (Join-Path $PSScriptRoot "ControlPlane\Common.ps1")
 
 $global:totalCount = 0
 $global:passedCount = 0

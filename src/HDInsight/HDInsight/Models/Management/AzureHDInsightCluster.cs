@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Id = cluster.Id;
             Name = cluster.Name;
             Location = cluster.Location;
+            ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OsType ?? OSType.Linux;
             ClusterTier = cluster.Properties.Tier ?? Tier.Standard;
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var clusterSecurityProfile = cluster.Properties.SecurityProfile;
             SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
             {
-                Domain = clusterSecurityProfile.Domain,
+                DomainResourceId = clusterSecurityProfile.AaddsResourceId,
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
                 OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
@@ -70,13 +71,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = cluster.Identity;
-            PublicNetworkAccessType = cluster.Properties?.NetworkSettings?.PublicNetworkAccess;
-            OutboundPublicNetworkAccessType = cluster.Properties?.NetworkSettings?.OutboundOnlyPublicNetworkAccessType;
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
-            var vnet = cluster.Properties?.ComputeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals("workernode"))?.VirtualNetworkProfile;
+            var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
-            SubnetName = vnet?.Subnet;
+            SubnetName = Utils.GetResourceNameFromResourceId(vnet?.Subnet);
+            ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
+            KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
+            NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -92,26 +94,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
                 if (defaultAccount != null)
                 {
-                    DefaultStorageAccount = defaultAccount.StorageAccountName;
+                    StorageAccount = defaultAccount.StorageAccountName;
 
                     var wasbAccount = defaultAccount as AzureHDInsightWASBDefaultStorageAccount;
                     var adlAccount = defaultAccount as AzureHDInsightDataLakeDefaultStorageAccount;
+                    var abfsAccount = defaultAccount as AzureHDInsightDataLakeGen2DefaultStorageAccount;
 
                     if (wasbAccount != null)
                     {
-                        DefaultStorageContainer =  wasbAccount.StorageContainerName;
+                        StorageContainer =  wasbAccount.StorageContainerName;
                     }
                     else if(adlAccount != null)
                     {
-                        DefaultStorageRootPath = adlAccount.StorageRootPath;
+                        StorageRootPath = adlAccount.StorageRootPath;
                     }
-                    else
+                    else if(abfsAccount!=null)
                     {
-                        DefaultStorageContainer = string.Empty;
+                        StorageFileSystem = abfsAccount.StorageFileSystem;
                     }
 
-
-                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, StorageAccount);
                 }
             }
         }
@@ -130,6 +132,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The location of the resource.
         /// </summary>
         public string Location { get; set; }
+
+        /// <summary>
+        /// The ClusterId of the cluster.
+        /// </summary>
+        public string ClusterId { get; set; }
 
         /// <summary>
         /// The version of the cluster.
@@ -174,17 +181,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Default storage account for this cluster.
         /// </summary>
-        public string DefaultStorageAccount { get; set; }
+        public string StorageAccount { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.
         /// </summary>
-        public string DefaultStorageContainer { get; set; }
+        public string StorageContainer { get; set; }
 
         /// <summary>
-        /// Default storage path where this Azure Data Lake Cluster is rooted
+        /// Default storage path where this Azure Data Lake Cluster is rooted.
         /// </summary>
-        public string DefaultStorageRootPath { get; set; }
+        public string StorageRootPath { get; set; }
+
+        /// <summary>
+        /// Default storage file system for this cluster.
+        /// </summary>
+        public string StorageFileSystem { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.
@@ -192,7 +204,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Additional storage accounts for this cluster
+        /// Additional storage accounts for this cluster.
         /// </summary>
         public List<string> AdditionalStorageAccounts { get; set; }
 
@@ -234,16 +246,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string PrivateEndpoint;
 
         /// <summary>
-        /// Gets or sets the public network access.
-        /// </summary>
-        public string PublicNetworkAccessType;
-
-        /// <summary>
-        /// Gets or sets the outbound public network access.
-        /// </summary>
-        public string OutboundPublicNetworkAccessType;
-
-        /// <summary>
         /// Gets or sets the encryption in transit.
         /// </summary>
         public bool? EncryptionInTransit;
@@ -257,5 +259,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the subnet name.
         /// </summary>
         public string SubnetName;
+
+        /// <summary>
+        /// Gets or sets the compute profile.
+        /// </summary>
+        public AzureHDInsightComputeProfile ComputeProfile;
+
+        /// <summary>
+        /// Gets or sets the kafka rest properties.
+        /// </summary>
+        public AzureHDInsightKafkaRestProperties KafkaRestProperties;
+
+        /// <summary>
+        /// Gets or sets the network properties.
+        /// </summary>
+        public AzureHDInsightNetworkProperties NetworkProperties;
     }
 }

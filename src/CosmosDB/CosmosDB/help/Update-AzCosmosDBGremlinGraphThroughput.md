@@ -14,23 +14,23 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBGremlinGraphThroughput -ResourceGroupName <String> -AccountName <String>
- -DatabaseName <String> [-Name <String>] [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
+Update-AzCosmosDBGremlinGraphThroughput -DatabaseName <String> [-Name <String>] -ResourceGroupName <String>
+ -AccountName <String> [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] -ParentObject <PSGremlinDatabaseGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -ParentObject <PSGremlinDatabaseGetResults>
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] [-Throughput <Int32>]
- [-AutoscaleMaxThroughput <Int32>] -InputObject <PSGremlinGraphGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCosmosDBGremlinGraphThroughput [-Name <String>] -InputObject <PSGremlinGraphGetResults>
+ [-Throughput <Int32>] [-AutoscaleMaxThroughput <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

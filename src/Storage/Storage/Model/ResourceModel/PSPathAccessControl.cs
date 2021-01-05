@@ -64,6 +64,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             return acls;
         }
 
+        public static List<RemovePathAccessControlItem> ParseRemoveAccessControls(PSPathAccessControlEntry[] psacls)
+        {
+            if (psacls == null || psacls.Count() == 0)
+            {
+                return null;
+            }
+            List<RemovePathAccessControlItem> acls = new List<RemovePathAccessControlItem>();
+            foreach (PSPathAccessControlEntry psacl in psacls)
+            {
+                acls.Add(new RemovePathAccessControlItem(psacl.AccessControlType, psacl.DefaultScope, psacl.EntityId));
+            }
+            return acls;
+        }
+
         public static PSPathAccessControlEntry[] ParsePSPathAccessControlEntrys(IEnumerable<PathAccessControlItem> acls)
         {
             if (acls == null || acls.Count() == 0)

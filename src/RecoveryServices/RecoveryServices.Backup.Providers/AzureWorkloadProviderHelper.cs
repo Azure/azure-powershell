@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // call validation
             policy.Validate();
         }
-
+                
         public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "")
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))

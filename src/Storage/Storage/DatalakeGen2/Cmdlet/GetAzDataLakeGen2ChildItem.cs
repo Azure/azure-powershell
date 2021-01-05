@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = false, HelpMessage =
                 "The path in the specified FileSystem that should be retrieved. Can be a directory " +
-                "In the format 'directory1/directory2/'")]
+                "In the format 'directory1/directory2/', Skip set this parameter to list items from root directory of the Filesystem.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 

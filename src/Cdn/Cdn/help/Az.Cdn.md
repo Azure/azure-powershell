@@ -44,6 +44,9 @@ Gets the resource usage of a CDN endpoint.
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets a CDN origin server.
 
+### [Get-AzCdnOriginGroup](Get-AzCdnOriginGroup.md)
+Gets a CDN origin group
+
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 Gets a CDN profile.
 
@@ -77,6 +80,12 @@ Creates a delivery rule condition.
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
 
+### [New-AzCdnOrigin](New-AzCdnOrigin.md)
+Creates a CDN origin
+
+### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
+Creates a CDN origin group
+
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
@@ -89,6 +98,12 @@ Removes a custom domain.
 ### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Removes a CDN endpoint.
 
+### [Remove-AzCdnOrigin](Remove-AzCdnOrigin.md)
+Removes a CDN origin
+
+### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
+Removes a CDN origin group
+
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Removes a CDN profile.
 
@@ -97,6 +112,9 @@ Updates a CDN endpoint.
 
 ### [Set-AzCdnOrigin](Set-AzCdnOrigin.md)
 Updates a CDN origin server.
+
+### [Set-AzCdnOriginGroup](Set-AzCdnOriginGroup.md)
+Updates a CDN origin group
 
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.

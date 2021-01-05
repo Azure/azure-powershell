@@ -168,7 +168,8 @@ function Get-ApiKey
 
     $secret = Get-AzureKeyVaultSecret -VaultName kv-azuresdk -Name $vaultKey
 
-    $secret.SecretValueText
+    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($secret.SecretValue))
+    $secretValueText
 }
 
 if ([string]::IsNullOrEmpty($nugetExe))

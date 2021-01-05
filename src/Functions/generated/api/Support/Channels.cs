@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>List of channels that this recommendation can apply.</summary>
     public partial struct Channels :
         System.IEquatable<Channels>
     {

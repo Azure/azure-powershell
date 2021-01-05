@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for CustomHostNameDnsRecordType.</summary>
+    /// <summary>Type of the DNS record.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CustomHostNameDnsRecordTypeTypeConverter))]
     public partial struct CustomHostNameDnsRecordType :
         System.Management.Automation.IArgumentCompleter

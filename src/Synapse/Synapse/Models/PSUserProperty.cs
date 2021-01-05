@@ -17,10 +17,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string Name { get; set; }
         
         public object Value { get; set; }
-
-        public UserProperty ToSdkObject()
-        {
-            return new UserProperty(this.Name, this.Value);
-        }
     }
 }

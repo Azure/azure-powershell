@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for AzureResourceType.</summary>
+    /// <summary>Type of the Azure resource the hostname is assigned to.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureResourceTypeTypeConverter))]
     public partial struct AzureResourceType :
         System.Management.Automation.IArgumentCompleter

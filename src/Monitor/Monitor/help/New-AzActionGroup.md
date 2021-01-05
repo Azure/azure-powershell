@@ -105,5 +105,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./New-AzActivityLogAlertCondition.md)
 

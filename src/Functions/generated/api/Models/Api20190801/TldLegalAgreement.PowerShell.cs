@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).AgreementKey = (string) content.GetValueForProperty("AgreementKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).AgreementKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content = (string) content.GetValueForProperty("Content",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Title = (string) content.GetValueForProperty("Title",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Title, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content = (string) content.GetValueForProperty("Content",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Url, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).AgreementKey = (string) content.GetValueForProperty("AgreementKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).AgreementKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content = (string) content.GetValueForProperty("Content",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Title = (string) content.GetValueForProperty("Title",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Title, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content = (string) content.GetValueForProperty("Content",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Content, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Url = (string) content.GetValueForProperty("Url",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ITldLegalAgreementInternal)this).Url, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

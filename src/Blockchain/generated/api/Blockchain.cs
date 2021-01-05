@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain
 
     /// <summary>
     /// Low-level API implementation for the Blockchain service.
+    /// REST API for Azure Blockchain Service
     /// </summary>
     public partial class Blockchain
     {

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_azureBlobStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureBlobStorage"), out var __jsonAzureBlobStorage) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageApplicationLogsConfig.FromJson(__jsonAzureBlobStorage) : AzureBlobStorage;}
-            {_azureTableStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureTableStorage"), out var __jsonAzureTableStorage) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureTableStorageApplicationLogsConfig.FromJson(__jsonAzureTableStorage) : AzureTableStorage;}
             {_fileSystem = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("fileSystem"), out var __jsonFileSystem) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.FileSystemApplicationLogsConfig.FromJson(__jsonFileSystem) : FileSystem;}
+            {_azureTableStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureTableStorage"), out var __jsonAzureTableStorage) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureTableStorageApplicationLogsConfig.FromJson(__jsonAzureTableStorage) : AzureTableStorage;}
+            {_azureBlobStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("azureBlobStorage"), out var __jsonAzureBlobStorage) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AzureBlobStorageApplicationLogsConfig.FromJson(__jsonAzureBlobStorage) : AzureBlobStorage;}
             AfterFromJson(json);
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._azureBlobStorage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureBlobStorage.ToJson(null,serializationMode) : null, "azureBlobStorage" ,container.Add );
-            AddIf( null != this._azureTableStorage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureTableStorage.ToJson(null,serializationMode) : null, "azureTableStorage" ,container.Add );
             AddIf( null != this._fileSystem ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._fileSystem.ToJson(null,serializationMode) : null, "fileSystem" ,container.Add );
+            AddIf( null != this._azureTableStorage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureTableStorage.ToJson(null,serializationMode) : null, "azureTableStorage" ,container.Add );
+            AddIf( null != this._azureBlobStorage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._azureBlobStorage.ToJson(null,serializationMode) : null, "azureBlobStorage" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

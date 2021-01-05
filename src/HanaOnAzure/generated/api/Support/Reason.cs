@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
+    /// <summary>
+    /// The reason that a vault name could not be used. The Reason element is only returned if NameAvailable is false.
+    /// </summary>
     public partial struct Reason :
         System.IEquatable<Reason>
     {
