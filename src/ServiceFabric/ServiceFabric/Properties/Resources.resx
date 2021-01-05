@@ -324,4 +324,7 @@
   <data name="CertificateThumbprintMismatch" xml:space="preserve">
     <value>The thumprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
   </data>
+  <data name="NodeTypeUpdateIsNoOp" xml:space="preserve">
+    <value>No change has been found for NodeType {0}. Operation is canceled.</value>
+  </data>
 </root>

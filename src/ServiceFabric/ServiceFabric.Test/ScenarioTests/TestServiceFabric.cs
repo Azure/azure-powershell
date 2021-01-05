@@ -179,9 +179,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
 
-            string linuxTemplateDirectory = Path.Combine(assemblyFolder, Constants.LinuxTemplateRelativePath);
-            templateFilePath = Path.Combine(linuxTemplateDirectory, Constants.TemplateFileName);
-            parameterFilePath = Path.Combine(linuxTemplateDirectory, Constants.ParameterFileName);
+            string ubuntu16TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer16TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu16TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu16TemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string ubuntu18TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer18TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu18TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu18TemplateDirectory, Constants.ParameterFileName);
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
         }

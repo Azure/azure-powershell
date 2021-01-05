@@ -27,8 +27,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class UpdateAzServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         /// <summary>
         /// Resource group name
@@ -45,34 +45,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("ClusterName")]
         public override string Name { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+           HelpMessage = "Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.")]
+        public bool? IsPrimaryNodeType { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state. " +
-                "Run 'Remove-ServiceFabricNodeState' on those nodes to fix them. Read this document for details: " +
-                "https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
-
             var cluster = GetCurrentCluster();
-            var vmssExists = VmssExists();
-            var existingNodeType = GetNodeType(cluster, this.NodeType, ignoreErrors:true);
-            if (existingNodeType != null)
-            {
-                if (existingNodeType.IsPrimary)
-                {
-                    throw new PSInvalidOperationException(
-                        string.Format(
-                            ServiceFabricProperties.Resources.CannotDeletePrimaryNodeType,
-                            this.NodeType));
-                }
+            var existingNodeType = GetNodeType(cluster, this.NodeType, ignoreErrors: true);
 
-                //var durabilityLevel = GetDurabilityLevel(existingNodeType.DurabilityLevel);
-                //if (durabilityLevel == DurabilityLevel.Bronze)
-                //{
-                //    throw new PSInvalidOperationException(
-                //        ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
-                //}
-            }
-
-            if (!vmssExists && existingNodeType == null)
+            if (existingNodeType == null)
             {
                 throw new PSArgumentException(
                     string.Format(
@@ -80,30 +62,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.NodeType));
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0}", this.NodeType)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Update nodetype {0}", this.NodeType)))
             {
-                if (vmssExists)
-                {
-                    this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
-                }
-
                 if (cluster.NodeTypes == null)
                 {
                     throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NodeTypesNotDefinedInCluster);
                 }
 
-                if (existingNodeType != null)
+                if (PatchRequired(existingNodeType))
                 {
-                    cluster.NodeTypes.Remove(existingNodeType);
-
-                    /**
-                     * * Pulled this out after discussion with Justin. Opened Issue #6246 to track the Null Ptr Exception.
-                    cluster.UpgradeDescription.DeltaHealthPolicy = new ClusterUpgradeDeltaHealthPolicy()
+                    if (this.IsPrimaryNodeType.HasValue && this.IsPrimaryNodeType.Value != existingNodeType.IsPrimary)
                     {
-                        MaxPercentDeltaUnhealthyApplications = 0,
-                        MaxPercentDeltaUnhealthyNodes = 0,
-                        MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
-                    };**/
+                        existingNodeType.IsPrimary = this.IsPrimaryNodeType.Value;
+                    }
 
                     var patchRequest = new ClusterUpdateParameters
                     {
@@ -111,13 +82,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     };
 
                     var psCluster = SendPatchRequest(patchRequest);
+
                     WriteObject(psCluster, true);
                 }
                 else
                 {
+                    WriteVerbose(string.Format(ServiceFabricProperties.Resources.NodeTypeUpdateIsNoOp, this.NodeType));
                     WriteObject(new PSCluster(cluster), true);
                 }
             }
+        }
+
+        private bool PatchRequired(NodeTypeDescription existingNodeType)
+        {
+            return this.IsPrimaryNodeType.HasValue && this.IsPrimaryNodeType.Value != existingNodeType.IsPrimary;
         }
     }
 }
