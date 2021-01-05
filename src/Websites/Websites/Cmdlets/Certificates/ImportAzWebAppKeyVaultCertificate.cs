@@ -5,6 +5,7 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Management.KeyVault.Models;
 using System.Management.Automation;
 using System.Net;
 
@@ -13,34 +14,35 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you import a keyvault to Webapp
     /// </summary>
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppKeyVaultCertificate")]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppKeyVaultCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(PSCertificate))]
     public class ImportAzWebAppKeyVaultCertificate : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the keyvault.")]
+        const string ParameterSet1Name = "S1";
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The name of the keyvault.")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "KeyVaultCertName of the certificate created in keyvault")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "KeyVaultCertName of the certificate created in keyvault")]
         [ValidateNotNullOrEmpty]
         public string CertName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the webapp resource group.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The name of the webapp resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the webapp.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The name of the webapp.")]
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the webapp slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The name of the webapp slot.")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
         public override void ExecuteCmdlet()
         {
-
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
             {
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
@@ -95,7 +97,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     {
                         if (e.Response.StatusCode != HttpStatusCode.Conflict)
                         {
-                            throw;
+                            throw e;
                         }
                     }
                 }
