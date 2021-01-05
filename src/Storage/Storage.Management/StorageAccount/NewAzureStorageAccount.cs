@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                 }
             }
-            if(this.EnableLargeFileShare.IsPresent)
+            if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }

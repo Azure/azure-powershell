@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 minimumTlsVersion = value;
             }
         }
-        private string minimumTlsVersion = null;
+        private string minimumTlsVersion = null;        
 
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
