@@ -128,8 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected override AzureSqlManagedDatabaseModel PersistChanges(AzureSqlManagedDatabaseModel entity)
         {
-            ModelAdapter.StartManagedDatabaseLogReplay(entity);
-            return entity;
+            return ModelAdapter.StartManagedDatabaseLogReplay(entity);
         }
     }
 }
