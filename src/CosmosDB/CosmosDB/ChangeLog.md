@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+## Version 1.0.0
+* Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 
 ## Version 0.2.0
 * Introduced support for throughput Migration, allowing custoers to migrate their resources from manually provisioned throughput to autoscaled throughput. Customers can use this feature using the following cmdlets:
