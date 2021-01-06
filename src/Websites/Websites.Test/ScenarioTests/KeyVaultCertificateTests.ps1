@@ -22,11 +22,10 @@ function Test-ImportAzWebAppKeyVaultCertificate
 	$wname = "testasewebapp"
 	$keyvaultname =	"testkv1611"
 	$keyvaultcertname =	"testcertname1611"
-	try{		
-
+	try
+	{		
 		#Setup
 		$kvcert = Import-AzWebAppKeyVaultCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyVaultName $keyvaultname -CertName $keyvaultcertname
-
 	}
 	finally
 	{

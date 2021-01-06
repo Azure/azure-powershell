@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2c2d8c33-a07a-4482-8fcf-8a6ba975c758"
+          "582a15a9-1f1e-41c1-b34d-df6e858697df"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,7 +33,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "67c5b00c-b3e8-4d55-b8e4-99e5c4bb0d79"
+          "787711c7-1152-466c-82ad-b29d7f9e5f61"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -45,19 +45,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "6ff104c0-3af1-4379-b98c-0c235237f365"
+          "1bf14316-f59f-4d37-8c9b-b74240bfee80"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145758Z:6ff104c0-3af1-4379-b98c-0c235237f365"
+          "WESTINDIA:20210106T170924Z:1bf14316-f59f-4d37-8c9b-b74240bfee80"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:57:57 GMT"
+          "Wed, 06 Jan 2021 17:09:24 GMT"
         ],
         "Content-Length": [
           "5493"
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8a18f7c2-73b4-4577-86a1-933c391e72dd"
+          "ceca0c69-0d32-4af5-a54b-0bd29b5ade08"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,7 +102,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "99bbed4b-2247-402f-8e1c-6ee1e55e826c"
+          "c2c7d4c8-d660-4565-9b26-312ccf6b0c3d"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -114,19 +114,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "e6893dcb-008c-4f49-8c12-b89b03ae992f"
+          "b04e455b-ca6d-48b8-a37f-27ccac6f1600"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145759Z:e6893dcb-008c-4f49-8c12-b89b03ae992f"
+          "WESTINDIA:20210106T170925Z:b04e455b-ca6d-48b8-a37f-27ccac6f1600"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:57:58 GMT"
+          "Wed, 06 Jan 2021 17:09:25 GMT"
         ],
         "Content-Length": [
           "3568"
@@ -148,7 +148,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ee5c0ee1-2388-4d9e-a85c-e4180d468fab"
+          "93897482-e249-4afe-81bf-a1432ba48858"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,7 +171,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9394ef76-889c-4fab-bff2-f5efd7e1fae1"
+          "85432148-315d-40c1-b71c-b6528aa9d84c"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -186,16 +186,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "893535c2-459a-4b70-b2c7-61fe66ff477d"
+          "6e5c2a6e-469e-4339-8bea-d4c53f76a270"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145759Z:893535c2-459a-4b70-b2c7-61fe66ff477d"
+          "WESTINDIA:20210106T170926Z:6e5c2a6e-469e-4339-8bea-d4c53f76a270"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:57:58 GMT"
+          "Wed, 06 Jan 2021 17:09:26 GMT"
         ],
         "Content-Length": [
           "612"
@@ -217,7 +217,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a777ee05-436f-4b75-a65b-ab26647f6644"
+          "605185af-16b8-4580-b228-be03d47921be"
         ],
         "Accept-Language": [
           "en-US"
@@ -240,7 +240,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a113ae5b-44fb-44c7-9691-0eb4469891b9"
+          "a9b0b1d7-8aaa-43bd-8728-1fc5b6e50aa7"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -255,16 +255,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "c52c2aaa-7489-4da2-b69e-5cffb3856006"
+          "5fcde0d6-6bcc-44c7-bc2d-6e2eb6f9f0ee"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145800Z:c52c2aaa-7489-4da2-b69e-5cffb3856006"
+          "WESTINDIA:20210106T170927Z:5fcde0d6-6bcc-44c7-bc2d-6e2eb6f9f0ee"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:57:59 GMT"
+          "Wed, 06 Jan 2021 17:09:27 GMT"
         ],
         "Content-Length": [
           "255"
@@ -286,7 +286,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5ebd478a-5aa8-4aee-b9f6-2e8dc3c840b2"
+          "057b988f-c351-49d5-92d4-3e63bd7b9dca"
         ],
         "Accept-Language": [
           "en-US"
@@ -309,7 +309,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2fd314c7-f603-49bc-ab6b-3a41278d045a"
+          "afe0f720-4262-4a76-83f7-517dd30c1955"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -324,16 +324,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "4b3fc242-5de1-471e-8fb2-cb2e5a01c626"
+          "1f3d7f83-4d83-4ea2-9223-489d489a0001"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145800Z:4b3fc242-5de1-471e-8fb2-cb2e5a01c626"
+          "WESTINDIA:20210106T170929Z:1f3d7f83-4d83-4ea2-9223-489d489a0001"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:57:59 GMT"
+          "Wed, 06 Jan 2021 17:09:28 GMT"
         ],
         "Content-Length": [
           "252"
@@ -355,7 +355,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6677f5b0-a855-4515-a275-02c2d817c140"
+          "6ecabf34-caa2-40ae-ad8b-309a260389f9"
         ],
         "Accept-Language": [
           "en-US"
@@ -375,16 +375,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "a2b1be90-0fc4-45ae-882d-d5e7def656c3"
+          "3d56ea90-2765-47f4-aaa9-e82ddb2a9d9a"
         ],
         "x-ms-correlation-request-id": [
-          "a2b1be90-0fc4-45ae-882d-d5e7def656c3"
+          "3d56ea90-2765-47f4-aaa9-e82ddb2a9d9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145801Z:a2b1be90-0fc4-45ae-882d-d5e7def656c3"
+          "WESTINDIA:20210106T170930Z:3d56ea90-2765-47f4-aaa9-e82ddb2a9d9a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -393,7 +393,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:58:00 GMT"
+          "Wed, 06 Jan 2021 17:09:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -409,85 +409,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL3Rlc3RrdjE2MTEvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvdGVzdGt2MTYxMT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1946f1ac-f7b8-4a9c-a7c0-4fd5772ef83f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/3.1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-keyvault-service-version": [
-          "1.1.163.0"
-        ],
-        "x-ms-request-id": [
-          "cc709320-6c7d-4bea-b63a-8ebc86487766"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "6222fc26-24ee-4df4-a981-4b84121d269f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145814Z:6222fc26-24ee-4df4-a981-4b84121d269f"
-        ],
-        "Date": [
-          "Tue, 05 Jan 2021 14:58:14 GMT"
-        ],
-        "Content-Length": [
-          "1235"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611\",\r\n  \"name\": \"testkv1611\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"588c663a-2a62-4d5c-91dc-30ed35d1d91a\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"Get\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"f8daea97-62e7-4026-becf-13c2ea98e8b4\",\r\n        \"permissions\": {\r\n          \"secrets\": [\r\n            \"Get\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\"\r\n          ],\r\n          \"keys\": []\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://testkv1611.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
       "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.Web/certificates/testcertname1611?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL3Rlc3RrdjE2MTEvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvY2VydGlmaWNhdGVzL3Rlc3RjZXJ0bmFtZTE2MTE/YXBpLXZlcnNpb249MjAyMC0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"keyVaultId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611\",\r\n    \"keyVaultSecretName\": \"testcertname1611\",\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/ASE109/providers/Microsoft.Web/serverfarms/appthek29\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc38688a-7a71-449c-9ab1-cca5dcc20c5c"
+          "9234aa70-3b5a-43c0-851d-d566dd67ba21"
         ],
         "Accept-Language": [
           "en-US"
@@ -516,7 +444,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b9cb9992-5cac-4972-a9f3-eb01d015b0ec"
+          "af1cc07e-786d-45e1-8eb9-fe1d220b2cdf"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -531,16 +459,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "6d927125-31a3-44ac-ac52-8b6c2b0141d5"
+          "bb1cb9c9-d415-40cd-81a5-8d5484661751"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20210105T145817Z:6d927125-31a3-44ac-ac52-8b6c2b0141d5"
+          "WESTINDIA:20210106T170931Z:bb1cb9c9-d415-40cd-81a5-8d5484661751"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 05 Jan 2021 14:58:17 GMT"
+          "Wed, 06 Jan 2021 17:09:30 GMT"
         ],
         "Content-Length": [
           "1151"

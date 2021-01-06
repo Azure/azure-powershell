@@ -5,7 +5,6 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Azure.Management.KeyVault.Models;
 using System.Management.Automation;
 using System.Net;
 
