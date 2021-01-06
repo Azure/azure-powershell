@@ -88,7 +88,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$hostname = $iothub.Properties.HostName
 	$deviceMessageUri = "https://$hostname/devices/$device1/messages/events?api-version=$dataplaneApiVersion"
 	$deviceMessageResult = Invoke-WebRequest -Uri $deviceMessageUri -Method Post -Body "test" -Headers @{Authorization = $deviceToken}
-	Assert-True { $deviceMessageResult.StatusCode -eq 202 }
+	Assert-True { $deviceMessageResult.StatusCode -eq 204 }
 
 	# Expected error while generating SAS token for device
 	$errorMessage = "This device does not support SAS auth."
