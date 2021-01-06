@@ -157,6 +157,12 @@ param(
     # Policy Id
     ${PolicyId},
 
+    [Parameter(ParameterSetName='dppplatform', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Datasource Type
+    ${DatasourceType},
+
     [Parameter(ParameterSetName='Put')]
     [Parameter(ParameterSetName='PutExpanded')]
     [Alias('AzureRMContext', 'AzureCredential')]

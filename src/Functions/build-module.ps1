@@ -80,7 +80,7 @@ if(-not $Debugger) {
   if($Release) {
     $buildConfig = 'Release'
   }
-  dotnet publish $PSScriptRoot --verbosity quiet --configuration $buildConfig /nologo
+  dotnet publish "Az.Functions.csproj" --verbosity quiet --configuration $buildConfig /nologo
   if($LastExitCode -ne 0) {
     Write-Error 'Compilation failed.'
   }

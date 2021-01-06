@@ -21,7 +21,7 @@ function Prepare-AzDataProtectionDatasourceInfo {
         [Parameter(ParameterSetName='GetById', Mandatory, HelpMessage='Datasource Type')]
         [Parameter(ParameterSetName='GetByName', Mandatory, HelpMessage='Datasource Type')]
         [System.String]
-        [ValidateSet("PostGreSQLServer", "AzureBlob", IgnoreCase = $true)]
+        [ValidateSet("AzureDatabaseForPostgreSQL", "AzureBlob", IgnoreCase = $true)]
         # ...
         ${DatasourceType},
 
@@ -48,19 +48,24 @@ function Prepare-AzDataProtectionDatasourceInfo {
 
     process {
 
+        $manifest = LoadManifest -DatasourceType $DatasourceType
         $datasource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.Datasource]::new()
-        $datasourceTypeMap = @{PostGreSQLServer = "Microsoft.DBforPostgreSQL/servers/databases"; AzureBlob = "Microsoft.Storage/storageAccounts/blobServices"}
         if($PSBoundParameters.ContainsKey("DatasourceId")){
             $datasource.ObjectType = "Datasource"
             $datasource.ResourceId = $DatasourceId
             $datasource.ResourceLocation = $Location
             $datasource.ResourceName = $DatasourceId.Split("/")[-1]
-            $datasource.ResourceType = $datasourceTypeMap[$DatasourceType]
+            $datasource.ResourceType = $manifest.resourceType
             $datasource.ResourceUri = ""
-            $datasource.Type = $datasourceTypeMap[$DatasourceType]
+            if($manifest.isProxyResource -eq $false)
+            {
+                $datasource.ResourceUri = $DatasourceId
+            }
+            $datasource.Type = $manifest.datasourceType
         }
 
         $datasource
        
+        #/subscriptions/e3d2d341-4ddb-4c5d-9121-69b7e719485e/resourceGroups/sarath-dpprg/providers/Microsoft.Storage/storageAccounts/sarathblobsa
     }
 }

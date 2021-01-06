@@ -1,0 +1,6 @@
+﻿{
+  "isProxyResource": true,
+  "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
+  "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases"
+}
