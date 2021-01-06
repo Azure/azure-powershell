@@ -104,6 +104,9 @@ Gets the stored access policy or policies for an Azure storage container.
 ### [Get-AzStorageCORSRule](Get-AzStorageCORSRule.md)
 Gets CORS rules for a Storage service type.
 
+### [Get-AzStorageEncryptionScope](Get-AzStorageEncryptionScope.md)
+Get or list encryption scopes from a Storage account.
+
 ### [Get-AzStorageFile](Get-AzStorageFile.md)
 Lists directories and files for a path.
 
@@ -208,6 +211,9 @@ Creates an Azure Storage context.
 
 ### [New-AzStorageDirectory](New-AzStorageDirectory.md)
 Creates a directory.
+
+### [New-AzStorageEncryptionScope](New-AzStorageEncryptionScope.md)
+Creates an encryption scope for a Storage account.
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
@@ -403,6 +409,9 @@ Update the NetworkRule property of a Storage account
 
 ### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
 Modifies the service properties for the Azure Storage Blob service.
+
+### [Update-AzStorageEncryptionScope](Update-AzStorageEncryptionScope.md)
+Modify an encryption scope for a Storage account.
 
 ### [Update-AzStorageFileServiceProperty](Update-AzStorageFileServiceProperty.md)
 Modifies the service properties for the Azure Storage File service.

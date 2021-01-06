@@ -47,6 +47,17 @@ PS C:\> Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubNa
 
 Alter the priority of a device configuration and update its target condition
 
+### Example 2
+```powershell
+PS C:\> $labels = @{}
+PS C:\> $labels.add("key0","value0")
+PS C:\> $metrics = @{}
+PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
+PS C:\> Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Label $labels -Metric $metrics
+```
+
+Update the metrics and labels of a device configuration
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -19,8 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.3
+* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
+* Improved debug log of long running operations in generated modules
+
+## Version 2.2.2
+* Managed to parse ExpiresOn time from raw token if could not get from underlying library
+* Improved warning message if Interactive authentication is unavailable
+
 ## Version 2.2.1
-* Fixed the issue that incorrectly use Task.Result causes unclear error message if browser is not avaialable for Interactive auth
+* Fixed the issue that using Task.Result incorrectly causes unclear error message if browser is not available for Interactive auth
 
 ## Version 2.2.0
 * Fixed an issue that TenantId may be not respected if using `Connect-AzAccount -DeviceCode`[#13477]

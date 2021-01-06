@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,6 @@ using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 
 [assembly:InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
@@ -27,7 +28,7 @@ using System.Threading;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestion in PSReadLine.
+    /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestions in PSReadLine.
     /// </summary>
     internal sealed class AzPredictor : ICommandPredictor
     {
@@ -49,8 +50,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         internal static readonly Guid Identifier = new Guid("599d1760-4ee1-4ed2-806e-f2a1b1a0ba4d");
 
         private const int SuggestionCountForTelemetry = 5;
-        private const string ParameterValueMask = "***";
-        private const char ParameterValueSeperator = ':';
 
         private static readonly string[] CommonParameters = new string[] { "location" };
 
@@ -61,33 +60,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
 
-        // This contains the user modified texts and the original suggestion.
-        private Dictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
-
         /// <summary>
-        /// Constructs a new instance of <see cref="AzPredictor"/>
+        /// Constructs a new instance of <see cref="AzPredictor"/>.
         /// </summary>
-        /// <param name="service">The service that provides the suggestion</param>
-        /// <param name="telemetryClient">The client to collect telemetry</param>
-        /// <param name="settings">The settings of the service</param>
-        /// <param name="azContext">The Az context which this module runs with</param>
+        /// <param name="service">The service that provides the suggestion.</param>
+        /// <param name="telemetryClient">The client to collect telemetry.</param>
+        /// <param name="settings">The settings for <see cref="AzPredictor"/>.</param>
+        /// <param name="azContext">The Az context which this module runs in.</param>
         public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings, IAzContext azContext)
         {
-            this._service = service;
-            this._telemetryClient = telemetryClient;
-            this._settings = settings;
-            this._azContext = azContext;
+            _service = service;
+            _telemetryClient = telemetryClient;
+            _settings = settings;
+            _azContext = azContext;
         }
 
         /// <inhericdoc />
         public void StartEarlyProcessing(IReadOnlyList<string> history)
         {
             // The context only changes when the user executes the corresponding command.
-            this._azContext?.UpdateContext();
-            lock (_userAcceptedAndSuggestion)
-            {
-                _userAcceptedAndSuggestion.Clear();
-            }
+            _azContext?.UpdateContext();
 
             if (history.Count > 0)
             {
@@ -125,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _service.RecordHistory(lastCommand.Item1);
                 }
 
-                _telemetryClient.OnHistory(lastCommand.Item2);
+                _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
                 _service.RequestPredictions(_lastTwoMaskedCommands);
             }
 
@@ -140,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 if (_service.IsSupportedCommand(commandName))
                 {
-                    maskedCommandLine = AzPredictor.MaskCommandLine(commandAst);
+                    maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
                 }
                 else
                 {
@@ -154,129 +146,42 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public void OnSuggestionAccepted(string acceptedSuggestion)
         {
-            IDictionary<string, string> localSuggestedTexts = null;
-            lock (_userAcceptedAndSuggestion)
-            {
-                localSuggestedTexts = _userAcceptedAndSuggestion;
-            }
-
-            if (localSuggestedTexts.TryGetValue(acceptedSuggestion, out var suggestedText))
-            {
-                _telemetryClient.OnSuggestionAccepted(suggestedText);
-            }
-            else
-            {
-                _telemetryClient.OnSuggestionAccepted("NoRecord");
-            }
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(acceptedSuggestion));
         }
 
         /// <inhericdoc />
         public List<PredictiveSuggestion> GetSuggestion(PredictionContext context, CancellationToken cancellationToken)
         {
-            var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
+            if (_settings.SuggestionCount.Value <= 0)
+            {
+                return new List<PredictiveSuggestion>();
+            }
 
-            IEnumerable<ValueTuple<string, string, PredictionSource>> suggestions = Enumerable.Empty<ValueTuple<string, string, PredictionSource>>();
-            string maskedUserInput = string.Empty;
-            // This is the list of records of the source suggestion and the prediction source.
-            var telemetryData = new List<ValueTuple<string, PredictionSource>>();
+            Exception exception = null;
+            CommandLineSuggestion suggestions = null;
 
             try
             {
-                maskedUserInput = AzPredictor.MaskCommandLine(context.InputAst.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+                var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
 
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, localCancellationToken);
+                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
-                localCancellationToken.ThrowIfCancellationRequested();
-
-                var userAcceptedAndSuggestion = new Dictionary<string, string>();
-
-                foreach (var s in suggestions)
-                {
-                    telemetryData.Add(ValueTuple.Create(s.Item2, s.Item3));
-                    userAcceptedAndSuggestion[s.Item1] = s.Item2;
-                }
-
-                lock (_userAcceptedAndSuggestion)
-                {
-                    foreach (var u in userAcceptedAndSuggestion)
-                    {
-                        _userAcceptedAndSuggestion[u.Key] = u.Value;
-                    }
-                }
-
-                localCancellationToken.ThrowIfCancellationRequested();
-
-                var returnedValue = suggestions.Select((r, index) =>
-                    {
-                        return new PredictiveSuggestion(r.Item1);
-                    })
-                    .ToList();
-
-                _telemetryClient.OnGetSuggestion(maskedUserInput,
-                        telemetryData,
-                        cancellationToken.IsCancellationRequested);
-
-                return returnedValue;
-
+                var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
+                return returnedValue ?? new List<PredictiveSuggestion>();
             }
             catch (Exception e) when (!(e is OperationCanceledException))
             {
-                this._telemetryClient.OnGetSuggestionError(e);
+                exception = e;
+                return new List<PredictiveSuggestion>();
             }
-
-            return new List<PredictiveSuggestion>();
-        }
-
-        /// <summary>
-        /// Masks the user input of any data, like names and locations.
-        /// Also alphabetizes the parameters to normalize them before sending
-        /// them to the model.
-        /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
-        /// </summary>
-        /// <param name="cmdAst">The last user input command</param>
-        private static string MaskCommandLine(CommandAst cmdAst)
-        {
-            var commandElements = cmdAst?.CommandElements;
-
-            if (commandElements == null)
+            finally
             {
-                return null;
-            }
 
-            if (commandElements.Count == 1)
-            {
-                return cmdAst.Extent.Text;
+                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(context.InputAst,
+                        suggestions,
+                        cancellationToken.IsCancellationRequested,
+                        exception));
             }
-
-            var sb = new StringBuilder(cmdAst.Extent.Text.Length);
-            _ = sb.Append(commandElements[0].ToString());
-            var parameters = commandElements
-                .Skip(1)
-                .Where(element => element is CommandParameterAst)
-                .Cast<CommandParameterAst>()
-                .OrderBy(ast => ast.ParameterName);
-
-            foreach (CommandParameterAst param in parameters)
-            {
-                _ = sb.Append(AzPredictorConstants.CommandParameterSeperator);
-                if (param.Argument != null)
-                {
-                    // Parameter is in the form of `-Name:name`
-                    _ = sb.Append(AzPredictorConstants.ParameterIndicator)
-                        .Append(param.ParameterName)
-                        .Append(AzPredictor.ParameterValueSeperator)
-                        .Append(AzPredictor.ParameterValueMask);
-                }
-                else
-                {
-                    // Parameter is in the form of `-Name`
-                    _ = sb.Append(AzPredictorConstants.ParameterIndicator)
-                        .Append(param.ParameterName)
-                        .Append(AzPredictorConstants.CommandParameterSeperator)
-                        .Append(AzPredictor.ParameterValueMask);
-                }
-            }
-            return sb.ToString();
         }
     }
 

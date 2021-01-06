@@ -101,7 +101,7 @@ Name of Synapse SQL pool.
 ```yaml
 Type: System.String
 Parameter Sets: ResumeByNameParameterSet, ResumeByParentObjectParameterSet
-Aliases:
+Aliases: SqlPoolName
 
 Required: True
 Position: Named

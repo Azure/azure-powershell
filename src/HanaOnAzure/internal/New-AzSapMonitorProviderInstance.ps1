@@ -30,6 +30,31 @@ PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonit
 Name           Type
 ----           ----
 sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+.Example
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-promclt   -SapMonitorName dolauli-test04 -ProviderType PrometheusHaCluster -InstanceProperty @{prometheusUrl='http://10.4.1.10:9664/metrics'}
+
+
+Name                     Type
+----                     ----
+dolauli-instance-promclt Microsoft.HanaOnAzure/sapMonitors/providerInstances
+.Example
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-prom   -SapMonitorName dolauli-test04 -ProviderType PrometheusOS -InstanceProperty @{prometheusUrl='http://10.3.1.6:9100/metrics'}
+
+Name                  Type
+----                  ----
+dolauli-instance-prom Microsoft.HanaOnAzure/sapMonitors/providerInstances
+.Example
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-ms   -SapMonitorName dolauli-test04 -ProviderType MsSqlServer -InstanceProperty @{sqlHostname="10.4.8.90";sqlPort=1433;sqlUsername="AMFSS";sqlPassword="fakepassword"}
+
+Name                Type
+----                ----
+dolauli-instance-ms Microsoft.HanaOnAzure/sapMonitors/providerInstances
+.Example
+PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-hana   -SapMonitorName dolauli-test04 -ProviderType SapHana -InstanceProperty @{hanaHostname="10.1.2.6";hanaDbName="SYSTEMDB";hanaDbSqlPort=30113;hanaDbUsername="SYSTEM"; hanaDbPassword="Manager1"}
+
+Name                  Type
+----                  ----
+dolauli-instance-hana Microsoft.HanaOnAzure/sapMonitors/providerInstances
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance

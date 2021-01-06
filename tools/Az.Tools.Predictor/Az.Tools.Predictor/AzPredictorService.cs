@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,19 +21,19 @@ using System.Management.Automation.Language;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A service that talk to Aladdin endpoints to get the commands and predictions.
+    /// A service that connects to Aladdin endpoints to get the model and provides suggestions to PSReadLine.
     /// </summary>
     internal class AzPredictorService : IAzPredictorService, IDisposable
     {
         private const string ClientType = "AzurePowerShell";
 
-        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -44,14 +44,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
 
-            public string History { get; set; }
+            public IEnumerable<string> History { get; set; }
             public string ClientType { get; set; } = AzPredictorService.ClientType;
             public RequestContext Context { get; set; } = new RequestContext();
 
-            public PredictionRequestBody(string command) => this.History = command;
+            public PredictionRequestBody(IEnumerable<string> commands) => History = commands;
         };
 
-        [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
         private sealed class CommandRequestContext
         {
             public Version VersionNumber{ get; set; } = new Version(0, 0);
@@ -61,10 +60,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly HttpClient _client;
         private readonly string _commandsEndpoint;
         private readonly string _predictionsEndpoint;
-        private volatile Tuple<string, Predictor> _commandSuggestions; // The command and the prediction for that.
-        private volatile Predictor _commands;
-        private volatile string _commandForPrediction;
-        private HashSet<string> _commandSet;
+
+        /// <summary>
+        /// The history command line and the predictor based on that.
+        /// </summary>
+        private volatile Tuple<string, CommandLinePredictor> _commandBasedPredictor;
+
+        /// <summary>
+        /// The predictor to used when <see cref="_commandBasedPredictor"/> doesn't return enough suggestions.
+        /// </summary>
+        private volatile CommandLinePredictor _fallbackPredictor;
+
+        /// <summary>
+        /// The history command line that we request prediction for.
+        /// </summary>
+        private volatile string _commandToRequestPrediction;
+
+        /// <summary>
+        /// All the command lines we can provide as suggestions.
+        /// </summary>
+        private HashSet<string> _allPredictiveCommands;
         private CancellationTokenSource _predictionRequestCancellationSource;
         private readonly ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
 
@@ -72,31 +87,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly IAzContext _azContext;
 
         /// <summary>
-        /// The AzPredictor service interacts with the Aladdin service specified in serviceUri.
-        /// At initialization, it requests a list of the popular commands.
+        /// Creates a new instance of <see cref="AzPredictorService"/>.
         /// </summary>
         /// <param name="serviceUri">The URI of the Aladdin service.</param>
         /// <param name="telemetryClient">The telemetry client.</param>
-        /// <param name="azContext">The Az context which this module runs with</param>
+        /// <param name="azContext">The Az context which this module runs in.</param>
         public AzPredictorService(string serviceUri, ITelemetryClient telemetryClient, IAzContext azContext)
         {
-            this._commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context={JsonConvert.SerializeObject(new CommandRequestContext())}";
-            this._predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
-            this._telemetryClient = telemetryClient;
-            this._azContext = azContext;
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(serviceUri), $"{nameof(serviceUri)} cannot be null or whitespace.");
+            Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
+            Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
 
-            this._client = new HttpClient();
-            this._client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, this._azContext.UserId);
+            _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
+            _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
+            _telemetryClient = telemetryClient;
+            _azContext = azContext;
 
-            RequestCommands();
+            _client = new HttpClient();
+
+            RequestAllPredictiveCommands();
         }
 
         /// <summary>
-        /// A default constructor for the derived class.
+        /// A default constructor for the derived class. This is used in test cases.
         /// </summary>
         protected AzPredictorService()
         {
-            RequestCommands();
+            RequestAllPredictiveCommands();
         }
 
         /// <inhericdoc/>
@@ -106,155 +123,231 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Dispose the object
+        /// Dispose the object.
         /// </summary>
-        /// <param name="disposing">Indicate if this is called from <see cref="Dispose()"/></param>
+        /// <param name="disposing">Indicate if this is called from <see cref="Dispose()"/>.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (this._predictionRequestCancellationSource != null)
+                if (_predictionRequestCancellationSource != null)
                 {
-                    this._predictionRequestCancellationSource.Dispose();
-                    this._predictionRequestCancellationSource = null;
+                    _predictionRequestCancellationSource.Dispose();
+                    _predictionRequestCancellationSource = null;
                 }
             }
         }
 
         /// <inheritdoc/>
         /// <remarks>
-        /// Queries the Predictor with the user input if predictions are available, otherwise uses commands
+        /// Tries to get the suggestions for the user input from the command history. If that doesn't find
+        /// <paramref name="suggestionCount"/> suggestions, it'll fallback to find the suggestion regardless of command history.
         /// </remarks>
-        public IEnumerable<ValueTuple<string, string, PredictionSource>> GetSuggestion(Ast input, int suggestionCount, CancellationToken cancellationToken)
+        public CommandLineSuggestion GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
         {
-            var commandSuggestions = this._commandSuggestions;
-            var command = this._commandForPrediction;
+            Validation.CheckArgument(input, $"{nameof(input)} cannot be null");
+            Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
+            Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
-            IList<ValueTuple<string, string, PredictionSource>> results = new List<ValueTuple<string, string, PredictionSource>>();
+            var commandAst = input.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
 
-            var resultsFromSuggestion = commandSuggestions?.Item2?.Query(input, suggestionCount, cancellationToken);
-
-            if (resultsFromSuggestion != null)
+            if (string.IsNullOrWhiteSpace(commandName))
             {
-                var predictionSource = PredictionSource.None;
+                return null;
+            }
 
-                if (string.Equals(command, commandSuggestions?.Item1, StringComparison.Ordinal))
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = input.Extent.Text;
+            var presentCommands = new Dictionary<string, int>();
+            var commandBasedPredictor = _commandBasedPredictor;
+            var commandToRequestPrediction = _commandToRequestPrediction;
+
+            var result = commandBasedPredictor?.Item2?.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    suggestionCount,
+                    maxAllowedCommandDuplicate,
+                    cancellationToken);
+
+            if ((result != null) && (result.Count > 0))
+            {
+                var suggestionSource = SuggestionSource.PreviousCommand;
+
+                if (string.Equals(commandToRequestPrediction, commandBasedPredictor?.Item1, StringComparison.Ordinal))
                 {
-                    predictionSource = PredictionSource.CurrentCommand;
-                }
-                else
-                {
-                    predictionSource = PredictionSource.PreviousCommand;
+                    suggestionSource = SuggestionSource.CurrentCommand;
                 }
 
-                if (resultsFromSuggestion != null)
+                for (var i = 0; i < result.Count; ++i)
                 {
-                    foreach (var r in resultsFromSuggestion)
-                    {
-                        results.Add(ValueTuple.Create(r.Key, r.Value, predictionSource));
-                    }
+                    result.UpdateSuggestionSource(i, suggestionSource);
                 }
             }
 
-            if ((resultsFromSuggestion == null) || (resultsFromSuggestion.Count() < suggestionCount))
+            if ((result == null) || (result.Count < suggestionCount))
             {
-                var commands = this._commands;
-                var resultsFromCommands = commands?.Query(input, suggestionCount - resultsFromSuggestion.Count(), cancellationToken);
+                var fallbackPredictor = _fallbackPredictor;
+                var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
+                var resultsFromFallback = fallbackPredictor?.GetSuggestion(commandName,
+                        inputParameterSet,
+                        rawUserInput,
+                        presentCommands,
+                        suggestionCountToRequest,
+                        maxAllowedCommandDuplicate,
+                        cancellationToken);
 
-                if (resultsFromCommands != null)
+                if ((result == null) && (resultsFromFallback != null))
                 {
-                    foreach (var r in resultsFromCommands)
+                    result = resultsFromFallback;
+
+                    for (var i = 0; i < result.Count; ++i)
                     {
-                        if (resultsFromSuggestion?.ContainsKey(r.Key) == true)
+                        result.UpdateSuggestionSource(i, SuggestionSource.StaticCommands);
+                    }
+                }
+                else if ((resultsFromFallback != null) && (resultsFromFallback.Count > 0))
+                {
+                    for (var i = 0; i < resultsFromFallback.Count; ++i)
+                    {
+                        if (result.SourceTexts.Contains(resultsFromFallback.SourceTexts[i]))
                         {
                             continue;
                         }
 
-                        results.Add(ValueTuple.Create(r.Key, r.Value, PredictionSource.StaticCommands));
+                        result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], SuggestionSource.StaticCommands);
                     }
                 }
             }
 
-            return results;
+            return result;
         }
 
         /// <inheritdoc/>
         public virtual void RequestPredictions(IEnumerable<string> commands)
         {
-            AzPredictorService.ReplaceThrottleUserIdToHeader(this._client?.DefaultRequestHeaders, this._azContext.UserId);
+            Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
+
             var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
-            this._telemetryClient.OnRequestPrediction(localCommands);
+            bool postSuccess = false;
+            Exception exception = null;
+            bool startRequestTask = false;
 
-            if (string.Equals(localCommands, this._commandForPrediction, StringComparison.Ordinal))
+            try
             {
-                // It's the same history we've already requested the prediction for last time, skip it.
-                return;
+                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
+                {
+                    // It's the same history we've already requested the prediction for last time, skip it.
+                    return;
+                }
+
+                if (commands.Any())
+                {
+                    SetCommandToRequestPrediction(localCommands);
+
+                    // When it's called multiple times, we only need to keep the one for the latest command.
+
+                    _predictionRequestCancellationSource?.Cancel();
+                    _predictionRequestCancellationSource = new CancellationTokenSource();
+
+                    var cancellationToken = _predictionRequestCancellationSource.Token;
+
+                    // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+                    startRequestTask = true;
+                    Task.Run(async () => {
+                        try
+                        {
+                            AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
+
+                            var requestContext = new PredictionRequestBody.RequestContext()
+                            {
+                                SessionId = _telemetryClient.SessionId,
+                                CorrelationId = _telemetryClient.CorrelationId,
+                                VersionNumber = this._azContext.AzVersion
+                            };
+
+                            var requestBody = new PredictionRequestBody(commands)
+                            {
+                                Context = requestContext,
+                            };
+
+                            var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
+                            var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
+                            postSuccess = true;
+
+                            httpResponseMessage.EnsureSuccessStatusCode();
+                            var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
+                            var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+
+                            SetCommandBasedPreditor(localCommands, suggestionsList);
+                        }
+                        catch (Exception e) when (!(e is OperationCanceledException))
+                        {
+                            exception = e;
+                        }
+                        finally
+                        {
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, postSuccess, exception));
+                        }
+                    },
+                    cancellationToken);
+                }
             }
-            else
+            catch (Exception e)
             {
-                this.SetPredictionCommand(localCommands);
-
-                // When it's called multiple times, we only need to keep the one for the latest command.
-
-                this._predictionRequestCancellationSource?.Cancel();
-                this._predictionRequestCancellationSource = new CancellationTokenSource();
-
-                var cancellationToken = this._predictionRequestCancellationSource.Token;
-
-                // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
-                Task.Run(async () => {
-                    try
-                    {
-                        var requestContext = new PredictionRequestBody.RequestContext()
-                        {
-                            SessionId = this._telemetryClient.SessionId,
-                            CorrelationId = this._telemetryClient.CorrelationId,
-                        };
-                        var requestBody = new PredictionRequestBody(localCommands)
-                        {
-                            Context = requestContext,
-                        };
-
-                        var requestBodyString = JsonConvert.SerializeObject(requestBody);
-                        var httpResponseMessage = await _client.PostAsync(this._predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
-
-                        var reply = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
-                        var suggestionsList = JsonConvert.DeserializeObject<List<string>>(reply);
-
-                        this.SetSuggestionPredictor(localCommands, suggestionsList);
-                    }
-                    catch (Exception e) when (!(e is OperationCanceledException))
-                    {
-                        this._telemetryClient.OnRequestPredictionError(localCommands, e);
-                    }
-                },
-                cancellationToken);
+                exception = e;
+            }
+            finally
+            {
+                if (!startRequestTask)
+                {
+                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, hasSentHttpRequest: false, exception: exception));
+                }
             }
         }
 
         /// <inheritdoc/>
         public virtual void RecordHistory(CommandAst history)
         {
-            this._parameterValuePredictor.ProcessHistoryCommand(history);
+            Validation.CheckArgument(history, $"{nameof(history)} cannot be null.");
+
+            _parameterValuePredictor.ProcessHistoryCommand(history);
         }
 
         /// <inheritdoc/>
-        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_commandSet?.Contains(cmd) == true);
+        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_allPredictiveCommands?.Contains(cmd) == true);
 
         /// <summary>
-        /// Requests a list of popular commands from service. These commands are used as fallback suggestion
+        /// Requests a list of popular commands from service. These commands are used as fall back suggestion
         /// if none of the predictions fit for the current input. This method should be called once per session.
         /// </summary>
-        protected virtual void RequestCommands()
+        protected virtual void RequestAllPredictiveCommands()
         {
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
-                        var httpResponseMessage = await this._client.GetAsync(this._commandsEndpoint);
+                        Exception exception = null;
 
-                        var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                        var commands_reply = JsonConvert.DeserializeObject<List<string>>(reply);
-                        this.SetCommandsPredictor(commands_reply);
+                        try
+                        {
+                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
+
+                            var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
+
+                            httpResponseMessage.EnsureSuccessStatusCode();
+                            var reply = await httpResponseMessage.Content.ReadAsStringAsync();
+                            var commandsReply = JsonSerializer.Deserialize<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            SetFallbackPredictor(commandsReply);
+                        }
+                        catch (Exception e)
+                        {
+                            exception = e;
+                        }
+                        finally
+                        {
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData("request_commands", hasSentHttpRequest: true, exception: exception));
+                        }
 
                         // Initialize predictions
                         RequestPredictions(new string[] {
@@ -264,32 +357,39 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Sets the commands predictor.
+        /// Sets the fallback predictor.
         /// </summary>
         /// <param name="commands">The command collection to set the predictor</param>
-        protected void SetCommandsPredictor(IList<string> commands)
+        protected void SetFallbackPredictor(IList<PredictiveCommand> commands)
         {
-            this._commands = new Predictor(commands, this._parameterValuePredictor);
-            this._commandSet = commands.Select(x => AzPredictorService.GetCommandName(x)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
+            Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
+
+            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor);
+            _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x.Command)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
         /// <summary>
-        /// Sets the suggestiosn predictor.
+        /// Sets the predictor based on the command history.
         /// </summary>
         /// <param name="commands">The commands that the suggestions are for</param>
         /// <param name="suggestions">The suggestion collection to set the predictor</param>
-        protected void SetSuggestionPredictor(string commands, IList<string> suggestions)
+        protected void SetCommandBasedPreditor(string commands, IList<PredictiveCommand> suggestions)
         {
-            this._commandSuggestions = Tuple.Create(commands, new Predictor(suggestions, this._parameterValuePredictor));
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(commands), $"{nameof(commands)} cannot be null or whitespace.");
+            Validation.CheckArgument(suggestions, $"{nameof(suggestions)} cannot be null.");
+
+            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor));
         }
 
         /// <summary>
         /// Updates the command for prediction.
         /// </summary>
         /// <param name="command">The command for the new prediction</param>
-        protected void SetPredictionCommand(string command)
+        protected void SetCommandToRequestPrediction(string command)
         {
-            this._commandForPrediction = command;
+            Validation.CheckArgument(!string.IsNullOrWhiteSpace(command), $"{nameof(command)} cannot be null or whitespace.");
+
+            _commandToRequestPrediction = command;
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet), OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -202,8 +202,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
         private StandardBlobTier? standardBlobTier = null;
 
+        [Parameter(HelpMessage = "Encryption scope to be used when making requests to the blob.",
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionScope { get; set; }
+
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
-        
+
+        protected override bool UseTrack2Sdk()
+        {
+            if (!string.IsNullOrEmpty(EncryptionScope))
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.
         /// </summary>
@@ -376,13 +390,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 }
                 else
                 {
-                   taskGenerator = (taskId) => UploadBlobwithSdk(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
+                    taskGenerator = (taskId) => UploadBlobwithSdk(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 RunTask(taskGenerator);
             }
 
             base.DoEndProcessing();
-        }        
+        }
 
         /// <summary>
         /// set blob AccessTier
@@ -396,7 +410,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 return;
             }
-            
+
             StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
             // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
@@ -416,7 +430,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         internal virtual async Task UploadBlobwithSdk(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
         {
-            BlobClientOptions options = null;
+            BlobClientOptions options = this.ClientOptions;
+            if (!string.IsNullOrEmpty(this.EncryptionScope))
+            {
+                options = new BlobClientOptions()
+                {
+                    EncryptionScope = this.EncryptionScope,
+                };
+            }
 
             if (this.Force.IsPresent
                 || !blob.Exists()
@@ -445,15 +466,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     }
                 });
 
+                BlobBaseClient outputBlobClient = null;
                 using (FileStream stream = System.IO.File.OpenRead(ResolvedFileName))
                 {
                     //block blob
                     if (string.Equals(blobType, BlockBlobType, StringComparison.InvariantCultureIgnoreCase))
                     {
                         BlobClient blobClient = GetTrack2BlobClient(blob, localChannel.StorageContext, options);
+                        outputBlobClient = blobClient;
                         StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
                         BlobUploadOptions uploadOptions = new BlobUploadOptions();
-
                         uploadOptions.Metadata = metadata;
                         uploadOptions.HttpHeaders = blobHttpHeaders;
                         uploadOptions.Conditions = this.BlobRequestConditions;
@@ -478,8 +500,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                                 throw new ArgumentException(String.Format("File size {0} Bytes is invalid for PageBlob, must be a multiple of 512 bytes.", fileSize.ToString()));
                             }
                             pageblobClient = GetTrack2PageBlobClient(blob, localChannel.StorageContext, options);
+                            outputBlobClient = pageblobClient;
                             PageBlobCreateOptions createOptions = new PageBlobCreateOptions();
-
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.PageBlobRequestConditions;
@@ -488,8 +510,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         else //append
                         {
                             appendblobClient = GetTrack2AppendBlobClient(blob, localChannel.StorageContext, options);
+                            outputBlobClient = appendblobClient;
                             AppendBlobCreateOptions createOptions = new AppendBlobCreateOptions();
-
                             createOptions.Metadata = metadata;
                             createOptions.HttpHeaders = blobHttpHeaders;
                             createOptions.Conditions = this.AppendBlobRequestConditions;
@@ -558,8 +580,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             BlobName));
                     }
                 }
-
-                WriteCloudBlobObject(taskId, localChannel, blob);
+                AzureStorageBlob outputBlob = new AzureStorageBlob(outputBlobClient, localChannel.StorageContext, null, ClientOptions);
+                OutputStream.WriteObject(taskId, outputBlob);
             }
         }
 
@@ -643,7 +665,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 type = StorageBlob.BlobType.PageBlob;
             }
-            else 
+            else
             {
                 type = StorageBlob.BlobType.Unspecified;
             }

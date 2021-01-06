@@ -37,9 +37,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public string ServiceUri { get; set; }
 
         /// <summary>
-        /// The number of suggestions to return to PSReadLine
+        /// The number of suggestions to return to PSReadLine.
         /// </summary>
         public int? SuggestionCount { get; set; }
+        public int? MaxAllowedCommandDuplicate { get; set; }
 
         private static bool? _isContinueOnTimeout;
         /// <summary>
@@ -114,12 +115,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                     if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
                     {
-                        this.ServiceUri = profileSettings.ServiceUri;
+                        ServiceUri = profileSettings.ServiceUri;
                     }
 
                     if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
                     {
-                        this.SuggestionCount = profileSettings.SuggestionCount;
+                        SuggestionCount = profileSettings.SuggestionCount;
+                    }
+
+                    if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
+                    {
+                        this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
                     }
                 }
                 catch
@@ -131,11 +137,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private void OverrideSettingsFromEnv()
         {
-            var serviceUri = System.Environment.GetEnvironmentVariable("ServiceUri");
+            var serviceUri = System.Environment.GetEnvironmentVariable("AzPredictorServiceUri");
 
             if (!string.IsNullOrWhiteSpace(serviceUri))
             {
-                this.ServiceUri = serviceUri;
+                ServiceUri = serviceUri;
             }
         }
     }

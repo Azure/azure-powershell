@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for BlobStorageEventType.</summary>
+    /// <summary>The name of blob storage event type to process.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventTypeTypeConverter))]
     public partial struct BlobStorageEventType :
         System.Management.Automation.IArgumentCompleter
