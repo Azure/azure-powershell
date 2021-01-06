@@ -13,47 +13,62 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.Add("serverName2", "postgresql-test-200")
-    $env.Add("serverName3", "postgresql-test-300")
-    $env.Add("restoreName", "postgresql-test-100-restore")
-    $env.Add("restoreName2", "postgresql-test-100-restore-2")
-    $env.Add("replicaName", "postgresql-test-100-replica")
-    $env.Add("firewallRuleName", "postgresqlrule01")
-    $env.Add("firewallRuleName2", "postgresqlrule02")
-    $env.Add("VNetName", "postgresqlvnet")
-    $env.Add("SubnetName", "postgresql-subnet")
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]  
+    $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
+    $serverName = "postgresql-test-100"
+    $serverName2 = "postgresql-test-200"
+    $serverName3 = "postgresql-test-300"
+    $restoreName = "postgresql-test-100-restore"
+    $restoreName2 = "postgresql-test-100-restore-2"
+    $replicaName = "postgresql-test-100-replica"
+    $firewallRuleName = "postgresqlrule01"
+    $firewallRuleName2 = "postgresqlrule02"
+    $VNetName = "postgresqlvnet"
+    $SubnetName = "postgresql-subnet"
+    $resourceGroup = "PostgreSqlTest"
+    $location = "eastus2euap"
+    $Sku = "GP_Gen5_4"
+    $FlexibleSku = "Standard_D2s_v3"
+    if ($TestMode -eq 'live') {
+        $PowershellPrefix = "powershell-pipeline-postgres-"
+        $RandomNumbers = ""
+        for($i = 0; $i -lt 10; $i++){ $RandomNumbers += Get-Random -Maximum 10  }
+        $serverName = $PowershellPrefix + "server" + $RandomNumbers
+        $serverName2 = $PowershellPrefix + "2-flexibleserver" + $RandomNumbers
+        $serverName3 = $PowershellPrefix + "3-flexibleserver" + $RandomNumbers
+        $flexibleServerName = $PowershellPrefix + "flexibleserver" + $RandomNumbers
+        $resourceGroup = $PowershellPrefix + "group" + $RandomNumbers
+        $restoreName = $PowershellPrefix + "restore-server" + $RandomNumbers
+        $restoreName2 = $PowershellPrefix + "2-restore-server" + $RandomNumbers
+        $restoreName = $PowershellPrefix + "replica-server" + $RandomNumbers
+        $firewallRuleName = $PowershellPrefix + "firewallrule" + $RandomNumbers
+    }
+
+
+    $env.Add("serverName", $serverName)
+    $env.Add("flexibleServerName", $flexibleServerName)
+    $env.Add("serverName2", $serverName2)
+    $env.Add("serverName3", $serverName3)
+    $env.Add("restoreName", $restoreName)
+    $env.Add("restoreName2", $restoreName2)
+    $env.Add("replicaName", $replicaName)
+    $env.Add("firewallRuleName", $firewallRuleName)
+    $env.Add("firewallRuleName2", $firewallRuleName2)
+    $env.Add("VNetName", $VNetName)
+    $env.Add("SubnetName", $SubnetName)
+    $env.Add("resourceGroup", $resourceGroup)
+    $env.Add("location", $location)
+    
+    $env.Add("Sku", $Sku)
+    $env.Add("FlexibleSku", $FlexibleSku)
 
     # Create the test group
     write-host "start to create test group."
-    $resourceGroup = "PostgreSqlTest"
-    $location = "eastus2euap"
-    $env.Add("resourceGroup", $resourceGroup)
-    $env.Add("location", $location)
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
     # Create the test Vnet
     write-host "Deploy Vnet template"
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
-
-    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
-    $serverName = "postgresql-test-100"
-    $flexibleServerName = "postgresql-flexible-test-100"
-    if ($TestMode -eq 'live') {
-        $serverName = "server"
-        $flexibleServerName = "flexibleserver"
-        for($i = 0; $i -lt 10; $i++){ 
-            $serverName += Get-Random -Maximum 10
-            $flexibleServerName += Get-Random -Maximum 10
-        }
-    }
-    $env.Add("serverName", $serverName)
-    $env.Add("flexibleServerName", $flexibleServerName)
-    
-    $Sku = "GP_Gen5_4"
-    $env.Add("Sku", $Sku)
-    $FlexibleSku = "Standard_D2s_v3"
-    $env.Add("FlexibleSku", $FlexibleSku)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
 
     write-host (Get-AzContext | Out-String)
 
