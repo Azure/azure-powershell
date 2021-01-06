@@ -184,11 +184,11 @@ function New-AzPostgreSqlFlexibleServer {
     process {
         try {
 
-            If (!$PSBoundParameters.ContainsKey('Location')) {
+            if (!$PSBoundParameters.ContainsKey('Location')) {
                 $PSBoundParameters.Location = 'eastus'
             }
 
-            If (!$PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
+            if (!$PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
                 $Password = Get-GeneratePassword
                 $PSBoundParameters.AdministratorLoginPassword = $Password | ConvertTo-SecureString -AsPlainText -Force
             }
@@ -196,76 +196,76 @@ function New-AzPostgreSqlFlexibleServer {
 
             Import-Module -Name Az.Resources
             
-            If(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
+            if(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
                 $PSBoundParameters.ResourceGroupName = Get-RandomNumbers -Prefix 'group' -Length 10
                 $Msg = "Creating Resource Group {0}..." -f $PSBoundParameters.ResourceGroupName
                 Write-Host $Msg
                 
-                If($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
+                if($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
                     $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location -Force
                 }
             }
-            Else {
+            else {
                 $Msg = 'Checking the existence of the resource group {0} ...' -f $PSBoundParameters.ResourceGroupName
                 Write-Host $Msg
-                Try {
+                try {
                     $null = Get-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -ErrorAction Stop
                     $Msg = 'Resource group {0} exists ? : True' -f $PSBoundParameters.ResourceGroupName
                     Write-Host $Msg
                 }
-                Catch {
+                catch {
                     $Msg = 'Resource group {0} exists ? : False' -f $PSBoundParameters.ResourceGroupName
                     Write-Host $Msg
                     $Msg = "Creating Resource Group {0}..." -f $PSBoundParameters.ResourceGroupName
                     Write-Host $Msg
-                    If($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
+                    if($PSCmdlet.ShouldProcess($PSBoundParameters.ResourceGroupName)) {
                         $null = New-AzResourceGroup -Name $PSBoundParameters.ResourceGroupName -Location $PSBoundParameters.Location -Force
                     }
 
                 }
             }
 
-            If (!$PSBoundParameters.ContainsKey('Name')) {
+            if (!$PSBoundParameters.ContainsKey('Name')) {
                 $PSBoundParameters.Name = Get-RandomNumbers -Prefix 'server' -Length 10
             }
 
-            If ($PSBoundParameters.ContainsKey('Sku')) {
+            if ($PSBoundParameters.ContainsKey('Sku')) {
                 $PSBoundParameters.SkuName = $PSBoundParameters['Sku']
                 $null = $PSBoundParameters.Remove('Sku')
             }
-            Else {
+            else {
                 $PSBoundParameters.SkuName = 'Standard_D2s_v3'
             }
 
-            If ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
+            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
                 $PSBoundParameters.StorageProfileBackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
                 $null = $PSBoundParameters.Remove('BackupRetentionDay')
             }
-            Else {
+            else {
                 $PSBoundParameters.StorageProfileBackupRetentionDay = 7
             }
 
-            If ($PSBoundParameters.ContainsKey('StorageInMb')) {
+            if ($PSBoundParameters.ContainsKey('StorageInMb')) {
                 $PSBoundParameters.StorageProfileStorageMb = $PSBoundParameters['StorageInMb']
                 $null = $PSBoundParameters.Remove('StorageInMb')
             }
-            Else {
+            else {
                 $PSBoundParameters.StorageProfileStorageMb = 128*1024
             }
 
-            If (!$PSBoundParameters.ContainsKey('Version')) {
+            if (!$PSBoundParameters.ContainsKey('Version')) {
                 $PSBoundParameters.Version = '12'
             }
 
-            If (!$PSBoundParameters.ContainsKey('SkuTier')) {
+            if (!$PSBoundParameters.ContainsKey('SkuTier')) {
                 $PSBoundParameters.SkuTier = 'GeneralPurpose'
             }            
 
-            If ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
+            if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
                 $PSBoundParameters.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
                 $null = $PSBoundParameters.Remove('AdministratorUserName')
             }
-            Else {
+            else {
                 $PSBoundParameters.AdministratorLogin = Get-RandomName
             }
 
@@ -274,20 +274,20 @@ function New-AzPostgreSqlFlexibleServer {
             # Handling Vnet & Subnet
             $NetworkKeys = 'PublicAccess', 'Subnet', 'Vnet', 'SubnetPrefix', 'VnetPrefix'
             $NetworkParameters = @{}
-            ForEach($Key in $NetworkKeys){
-                If ($PSBoundParameters.ContainsKey($Key)){ 
+            foreach($Key in $NetworkKeys){
+                if ($PSBoundParameters.ContainsKey($Key)){ 
                     $NetworkParameters[$Key] = $PSBoundParameters[$Key]
                     $null = $PSBoundParameters.Remove($Key)
                 }
             }
             $RequiredKeys = 'SubscriptionId', 'ResourceGroupName', 'Name', 'Location'
-            ForEach($Key in $RequiredKeys){ $NetworkParameters[$Key] = $PSBoundParameters[$Key] }
+            foreach($Key in $RequiredKeys){ $NetworkParameters[$Key] = $PSBoundParameters[$Key] }
 
-            If(!$NetworkParameters.ContainsKey('PublicAccess')){
+            if(!$NetworkParameters.ContainsKey('PublicAccess')){
                 $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
                 $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
                 $PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId = $SubnetId
-                If ([string]::IsNullOrEmpty($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)) {
+                if ([string]::IsNullOrEmpty($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)) {
                     $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
                 }
             }
@@ -301,7 +301,7 @@ function New-AzPostgreSqlFlexibleServer {
             # Create Firewallrules
             $FirewallRuleName = CreateFirewallRule $NetworkParameters
 
-            If (![string]::IsNullOrEmpty($FirewallRuleName)) {
+            if (![string]::IsNullOrEmpty($FirewallRuleName)) {
                 $Server.FirewallRuleName = $FirewallRuleName
             }
             $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
@@ -317,17 +317,17 @@ function CreateNetworkResource($NetworkParameters) {
     [OutputType([hashtable])]
     $WarningPreference = 'silentlycontinue'
     
-    If (!(Get-Module -ListAvailable -Name Az.Network)) {
-        Throw 'Please install Az.Network module by entering "Install-Module -Name Az.Network"'
+    if (!(Get-Module -ListAvailable -Name Az.Network)) {
+        throw 'Please install Az.Network module by entering "Install-Module -Name Az.Network"'
     }
-    Else {
+    else {
         Import-Module -Name Az.Network
     }
 
     # 1. Error Handling
     # Raise error when user passes values for both parameters
     if ($NetworkParameters.Containskey('Subnet') -And $NetworkParameters.ContainsKey('PublicAccess')) {
-        Throw "Incorrect usage : A combination of the parameters -Subnet and -PublicAccess is invalid. Use either one of them."
+        throw "Incorrect usage : A combination of the parameters -Subnet and -PublicAccess is invalid. Use either one of them."
     }
 
     # When address space parameters are passed, the only valid combination is : -Vnet -Subnet -VnetPrefix -SubnetPrefix
@@ -335,39 +335,39 @@ function CreateNetworkResource($NetworkParameters) {
         if (($NetworkParameters.ContainsKey('VnetPrefix') -And !$NetworkParameters.ContainsKey('SubnetPrefix')) -Or
             (!$NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix')) -Or 
             ($NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix') -And (!$NetworkParameters.ContainsKey('Vnet') -Or !$NetworkParameters.ContainsKey('Subnet')))){
-                Throw "Incorrect usage : -Vnet -Subnet -VnetPrefix -SubnetPrefix must be supplied together."
+                throw "Incorrect usage : -Vnet -Subnet -VnetPrefix -SubnetPrefix must be supplied together."
         }
     }
     
     #Handle Vnet, Subnet scenario
-    If ($NetworkParameters.ContainsKey('Vnet') -Or $NetworkParameters.ContainsKey('Subnet')) {
+    if ($NetworkParameters.ContainsKey('Vnet') -Or $NetworkParameters.ContainsKey('Subnet')) {
         # Only the Subnet ID provided.. 
-        If (!$NetworkParameters.ContainsKey('Vnet') -And $NetworkParameters.ContainsKey('Subnet')) {
-            If (IsValidSubnetId $NetworkParameters.Subnet) {
+        if (!$NetworkParameters.ContainsKey('Vnet') -And $NetworkParameters.ContainsKey('Subnet')) {
+            if (IsValidSubnetId $NetworkParameters.Subnet) {
                 Write-Host "You have supplied a subnet Id. Verifying its existence..."
                 $ParsedResult = ParseResourceId $NetworkParameters.Subnet 
                 $NetworkParameters.VnetName = $ParsedResult.VnetName
                 $NetworkParameters.SubnetName = $ParsedResult.SubnetName
                 $NetworkParameters.ResourceGroupName = $ParsedResult.ResourceGroupName
                 $SubnetFlag = $true
-                Try { # Valid Subnet ID is provided
+                try { # Valid Subnet ID is provided
                     $Subnet = Get-AzVirtualNetworkSubnetConfig -ResourceId $NetworkParameters.Subnet -ErrorAction Stop
                 }
-                Catch { # Invalid subnet ID is provided, creating a new one.
+                catch { # Invalid subnet ID is provided, creating a new one.
                     $SubnetFlag = $false
                     Write-Host "The subnet doesn't exist. Creating the subnet"
                     $Subnet = CreateVnetSubnet $NetworkParameters
                 }
 
-                If ($SubnetFlag){
+                if ($SubnetFlag){
                     $Delegations = Get-AzDelegation -Subnet $Subnet
-                    If ($null -ne $Delegations){ # Valid but incorrect delegation
-                        $Delegations | ForEach-Object {If ($PSItem.ServiceName -ne $DELEGATION_SERVICE_NAME) {
+                    if ($null -ne $Delegations){ # Valid but incorrect delegation
+                        $Delegations | ForEach-Object {if ($PSItem.ServiceName -ne $DELEGATION_SERVICE_NAME) {
                             $Msg = "Can not use subnet with existing delegations other than {0}" -f $DELEGATION_SERVICE_NAME
-                            Throw $Msg
+                            throw $Msg
                         }}
                     }
-                    Else { # Valid but no delegation
+                    else { # Valid but no delegation
                         $Vnet = Get-AzVirtualNetwork -ResourceGroupName $NetworkParameters.ResourceGroupName -Name $NetworkParameters.VnetName
                         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $NetworkParameters.SubnetName -VirtualNetwork $Vnet
                         $Subnet = Add-AzDelegation -Name $DELEGATION_SERVICE_NAME -ServiceName $DELEGATION_SERVICE_NAME -Subnet $Subnet
@@ -375,12 +375,12 @@ function CreateNetworkResource($NetworkParameters) {
                     }
                 }
             }
-            Else {
-                Throw "The Subnet ID is not a valid form of resource id."
+            else {
+                throw "The Subnet ID is not a valid form of resource id."
             }
         }
-        ElseIf ($NetworkParameters.ContainsKey('Vnet') -And !$NetworkParameters.ContainsKey('Subnet')) {
-            If (IsValidVnetId $NetworkParameters.Vnet){
+        elseif ($NetworkParameters.ContainsKey('Vnet') -And !$NetworkParameters.ContainsKey('Subnet')) {
+            if (IsValidVnetId $NetworkParameters.Vnet){
                 Write-Host "You have supplied a vnet Id. Verifying its existence..."
                 IsValidRgLocation $NetworkParameters.Vnet $NetworkParameters
                 $ParsedResult = ParseResourceId $NetworkParameters.Vnet 
@@ -388,34 +388,34 @@ function CreateNetworkResource($NetworkParameters) {
                 $NetworkParameters.SubnetName = 'Subnet' + $NetworkParameters.Name
                 $Subnet = CreateVnetSubnet $NetworkParameters
             }
-            ElseIf ($NetworkParameters.Vnet -Match $AZURE_ARMNAME) {
+            elseif ($NetworkParameters.Vnet -Match $AZURE_ARMNAME) {
                 Write-Host "You have supplied a vnet Name. Verifying its existence..."
                 $NetworkParameters.VnetName = $NetworkParameters.Vnet
                 $NetworkParameters.SubnetName = 'Subnet' + $NetworkParameters.Name
                 $Subnet = CreateVnetSubnet $NetworkParameters
                 IsValidRgLocation $Subnet.Id $NetworkParameters 
             }
-            Else {
-                Throw "Incorrectly formed Vnet id or Vnet name"
+            else {
+                throw "Incorrectly formed Vnet id or Vnet name"
             }
         }
-        Else { # Both Vnet and Subnet provided
-            IF ($NetworkParameters.Vnet -Match $AZURE_ARMNAME -And $NetworkParameters.Subnet -Match $AZURE_ARMNAME) {
+        else { # Both Vnet and Subnet provided
+            if ($NetworkParameters.Vnet -Match $AZURE_ARMNAME -And $NetworkParameters.Subnet -Match $AZURE_ARMNAME) {
                 $NetworkParameters.VnetName = $NetworkParameters.Vnet
                 $NetworkParameters.SubnetName = $NetworkParameters.Subnet
                 $Subnet = CreateVnetSubnet $NetworkParameters
             }
-            Else {
-                If ($NetworkParameters.ContainsKey('SubnetPrefix') -And $NetworkParameters.ContainsKey('VnetPrefix')) {
+            else {
+                if ($NetworkParameters.ContainsKey('SubnetPrefix') -And $NetworkParameters.ContainsKey('VnetPrefix')) {
                     $Msg = "If you pass an address prefix, please consider passing a name (instead of Id) for a subnet or vnet."
                 }
-                Else { $Msg = "If you pass both --vnet and --subnet, consider passing names instead of ids." }
-                Throw $Msg
+                else { $Msg = "If you pass both --vnet and --subnet, consider passing names instead of ids." }
+                throw $Msg
             }
         }
     }
     # Handling create command without arguments
-    ElseIf (!$NetworkParameters.ContainsKey('PublicAccess') -And !$NetworkParameters.ContainsKey('Subnet') -And !$NetworkParameters.ContainsKey('Vnet')) {
+    elseif (!$NetworkParameters.ContainsKey('PublicAccess') -And !$NetworkParameters.ContainsKey('Subnet') -And !$NetworkParameters.ContainsKey('Vnet')) {
         $NetworkParameters.VnetName = 'VNET' + $NetworkParameters.Name
         $NetworkParameters.SubnetName = 'Subnet' + $NetworkParameters.Name
         $NetworkParameters.VnetPrefix = $DEFAULT_VNET_PREFIX
@@ -428,22 +428,22 @@ function CreateNetworkResource($NetworkParameters) {
 
 
 function GetSubnetId($ResourceGroupName, $VnetName, $SubnetName){
-    If (!($ResourceGroupName -is [String])){ $ResourceGroupName = $ResourceGroupName[0]}
+    if (!($ResourceGroupName -is [String])){ $ResourceGroupName = $ResourceGroupName[0]}
     $Vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
     $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
-    Return $Subnet.Id 
+    return $Subnet.Id 
 }
 
 function CreateVnetSubnet($Parameters){
-    If (!$Parameters.ContainsKey('SubnetPrefix')){$Parameters.SubnetPrefix = $DEFAULT_SUBNET_PREFIX}
-    If (!$Parameters.ContainsKey('VnetPrefix')){$Parameters.VnetPrefix = $DEFAULT_VNET_PREFIX}
+    if (!$Parameters.ContainsKey('SubnetPrefix')){$Parameters.SubnetPrefix = $DEFAULT_SUBNET_PREFIX}
+    if (!$Parameters.ContainsKey('VnetPrefix')){$Parameters.VnetPrefix = $DEFAULT_VNET_PREFIX}
 
-    Try {
+    try {
         Get-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -ErrorAction Stop
         $Msg = "The provided vnet does exist."
         Write-Host $Msg
     }
-    Catch {
+    catch {
         $Msg = "Creating new vnet {0} in resource group {1}" -f $Parameters.VnetName, $Parameters.ResourceGroupName
         Write-Host $Msg
         if($PSCmdlet.ShouldProcess($Parameters.VnetName)) {
@@ -453,36 +453,36 @@ function CreateVnetSubnet($Parameters){
 
     $Subnet = CreateAndDelegateSubnet $Parameters
     
-    Return $Subnet
+    return $Subnet
 }
 
 function CreateAndDelegateSubnet($Parameters) {
     $SubnetFlag = $true
     $Vnet = Get-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -ErrorAction Stop
-    Try {
+    try {
         $Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $Vnet -Name $Parameters.SubnetName -ErrorAction Stop
         $Msg = "The provided subnet does exist."
         Write-Host $Msg
     }
-    Catch {
+    catch {
         $SubnetFlag = $false
         $Msg = 'Creating new subnet {0} in resource group {1} and delegating it to {2}' -f $Parameters.SubnetName, $Parameters.ResourceGroupName, $DELEGATION_SERVICE_NAME
         Write-Host $Msg
     }
 
-    If (!$SubnetFlag) {
+    if (!$SubnetFlag) {
         $Delegation = New-AzDelegation -Name $DELEGATION_SERVICE_NAME -ServiceName $DELEGATION_SERVICE_NAME
         Add-AzVirtualNetworkSubnetConfig -Name $Parameters.SubnetName -VirtualNetwork $Vnet -AddressPrefix $Parameters.SubnetPrefix -Delegation $Delegation | Set-AzVirtualNetwork
     }
-    Else { # check if existing subnet is delegated
+    else { # check if existing subnet is delegated
         $Delegations = Get-AzDelegation -Subnet $Subnet
-        If ($null -ne $Delegations){
+        if ($null -ne $Delegations){
             $Delegations | ForEach-Object {If ($PSItem.ServiceName -ne $DELEGATION_SERVICE_NAME) {
                 $Msg = "Can not use subnet with existing delegations other than {0}" -f $DELEGATION_SERVICE_NAME
-                Throw $Msg
+                throw $Msg
             }}
         }
-        Else { # Valid but no delegation
+        else { # Valid but no delegation
             $Subnet = Add-AzDelegation -Name $DELEGATION_SERVICE_NAME -ServiceName $DELEGATION_SERVICE_NAME -Subnet $Subnet
             $Vnet | Set-AzVirtualNetwork
         }
@@ -492,56 +492,56 @@ function CreateAndDelegateSubnet($Parameters) {
 }
 
 function CreateFirewallRule($FirewallRuleParameters) {
-     If ($FirewallRuleParameters.ContainsKey('PublicAccess') -And $FirewallRuleParameters.PublicAccess.ToLower() -ne 'none') {
+     if ($FirewallRuleParameters.ContainsKey('PublicAccess') -And $FirewallRuleParameters.PublicAccess.ToLower() -ne 'none') {
         $Date = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
-        If ($FirewallRuleParameters.PublicAccess.ToLower() -eq 'all'){
+        if ($FirewallRuleParameters.PublicAccess.ToLower() -eq 'all'){
             $StartIp = '0.0.0.0' 
             $EndIp = '255.255.255.255'
             $RuleName = "AllowAll_" + $Date 
             $FirewallRule = New-AzPostgreSqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $FirewallRuleParameters.ResourceGroupName -ServerName $FirewallRuleParameters.Name -EndIPAddress $EndIp -StartIPAddress $StartIp
         }
-        Else {
+        else {
             $Parsed = $FirewallRuleParameters.PublicAccess -split "-"
-            If ($Parsed.length -eq 1) {
+            if ($Parsed.length -eq 1) {
                 $StartIp = $Parsed[0]
                 $EndIp = $Parsed[0]
             }
-            ElseIf ($Parsed.length -eq 2) {
+            elseif ($Parsed.length -eq 2) {
                 $StartIp = $Parsed[0]
                 $EndIp = $Parsed[1]
             }
-            Else { Throw "Incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255" }
-            If ($StartIp -eq '0.0.0.0' -And $EndIp -eq '0.0.0.0') {
+            else { throw "Incorrect usage: --public-access. Acceptable values are \'all\', \'none\',\'<startIP>\' and \'<startIP>-<destinationIP>\' where startIP and destinationIP ranges from 0.0.0.0 to 255.255.255.255" }
+            if ($StartIp -eq '0.0.0.0' -And $EndIp -eq '0.0.0.0') {
                 $RuleName = "AllowAllAzureServicesAndResourcesWithinAzureIps_" + $Date
                 $Msg = 'Configuring server firewall rule to accept connections from all Azure resources...'
             }
-            ElseIf ($StartIP -eq $EndIP) {
+            elseif ($StartIP -eq $EndIP) {
                 $Msg = 'Configuring server firewall rule to accept connections from ' + $StartIP 
             } 
-            Else {
+            else {
                 $Msg = 'Configuring server firewall rule to accept connections from {0} to {1}' -f $StartIP, $EndIp
                 $RuleName = "FirewallIPAddress_" + $Date
             }
             Write-Host $Msg
             $FirewallRule = New-AzPostgreSqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $FirewallRuleParameters.ResourceGroupName -ServerName $FirewallRuleParameters.Name -EndIPAddress $EndIp -StartIPAddress $StartIp
         }
-        Return $FirewallRule.Name
+        return $FirewallRule.Name
     }
-    ElseIf ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
+    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
         Write-Host "No firewall rule was set"
     }
     
 }
 function IsValidVnetId($Rid){
     $VnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups\/[-\w\._\(\)]+\/providers\/Microsoft.Network\/virtualNetworks\/[^<>%&:\\?/]{1,260}$"
-    If ( $Rid -match $VnetFormat ) {
+    if ( $Rid -match $VnetFormat ) {
         return $True
     }
     return $False
 }
 function IsValidSubnetId($Rid){
     $SubnetFormat = "\/subscriptions\/[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}\/resourceGroups/[-\w\._\(\)]+\/providers\/Microsoft.Network\/virtualNetworks\/[^<>%&:\\?/]{1,260}\/subnets\/[^<>%&:\\?/]{1,260}$"
-    IF ( $Rid -match $SubnetFormat ) {
+    if ( $Rid -match $SubnetFormat ) {
         return $True
     }
     return $False
@@ -549,11 +549,11 @@ function IsValidSubnetId($Rid){
 function ParseResourceId($Rid){
     $Splits = $Rid -split "/"
     $ParsedResults = @{}
-    If ($Splits.length -gt 1){
+    if ($Splits.length -gt 1){
         $ParsedResults["SubscriptionId"] = $Splits[2]
         $ParsedResults["ResourceGroupName"] = $Splits[4]
         $ParsedResults["VnetName"] = $Splits[8]
-        If ($Splits.length -eq 11) {
+        if ($Splits.length -eq 11) {
             $ParsedResults["SubnetName"] = $Splits[10]
         }
     }
@@ -564,10 +564,10 @@ function IsValidRgLocation($ResourceId, $Parameters){
     $Group = Get-AzResourceGroup -Name $ParsedResults["ResourceGroupName"]
     $ParsedResults["Location"] = $Group.Location
 
-    If ($Parameters.SubscriptionId -eq $ParsedResults.SubscriptionId -And $Parameters.Location -eq $ParsedResults.Location) {
-        Return $True
+    if ($Parameters.SubscriptionId -eq $ParsedResults.SubscriptionId -And $Parameters.Location -eq $ParsedResults.Location) {
+        return $True
     }
-    Throw "Incorrect Usage : The location and subscription of the server, Vnet and Subnet should be same."
+    throw "Incorrect Usage : The location and subscription of the server, Vnet and Subnet should be same."
 }
 
 function Get-RandomNumbers($Prefix, $Length) {

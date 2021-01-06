@@ -94,18 +94,18 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
             $SkusTiers = $Result[0].SupportedFlexibleServerEdition
             $TableResult = @()
 
-            ForEach ($Skus in $SkusTiers) {
+            foreach ($Skus in $SkusTiers) {
                 $TierName = $Skus.Name
-                Try {
+                try {
                     $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
                     
-                    ForEach ($Key in $Keys) {
+                    foreach ($Key in $Keys) {
                         $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
                         $TableResult += $NewEntry
                     }
                 }
-                Catch {
-                    Throw "No SKU info for this location"
+                catch {
+                    throw "No SKU info for this location"
                 }
             }
             $TableResult
