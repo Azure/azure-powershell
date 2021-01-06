@@ -45,7 +45,7 @@ The **New-AzWebApp** cmdlet creates an Azure Web App in a given a resource group
 
 ### Example 1: Create a Web App
 ```
-PS C:\>New-AzWebApp -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan"
+PS C:\>New-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan"
 ```
 
 This command creates an Azure Web App named ContosoSite in the existing resource group named Default-Web-WestUS in data center West US.
