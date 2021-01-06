@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KeyVault\KeyVault\KeyVault.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="ScenarioTests\Resources\HelloJava.war">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
