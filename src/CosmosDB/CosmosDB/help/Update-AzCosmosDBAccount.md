@@ -188,21 +188,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAnalyticalStorage
-Bool to indicate if AnalyticalStorage is enabled on the account.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAutomaticFailover
 Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
 Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
@@ -267,7 +252,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IpRule
+### -IpRules
 Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
 
 ```yaml
@@ -431,7 +416,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

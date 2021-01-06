@@ -54,14 +54,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
         public string ServerVersion { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string[] Location { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public PSLocation[] LocationObject { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupTypeHelpMessage)]
         [PSArgumentCompleter("Periodic", "Continuous")]
         public string BackupPolicyType { get; set; }

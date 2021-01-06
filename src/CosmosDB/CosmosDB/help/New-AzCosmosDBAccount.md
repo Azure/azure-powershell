@@ -464,6 +464,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MongoDBServerVersion
+ServerVersion, valid only in case of MongoDB Accounts.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Cosmos DB database account.
 
@@ -503,21 +518,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerVersion
-ServerVersion, valid only in case of MongoDB Accounts.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
