@@ -12,7 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-AzMySqlConnectionString {
+<#
+.Synopsis
+Get the connection string according to client connection provider.
+.Description
+Get the connection string according to client connection provider.
+#>
+
+function Get-AzMySqlFlexibleServerConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Get the connection string according to client connection provider.')]
@@ -34,16 +41,16 @@ function Get-AzMySqlConnectionString {
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'Name of the server')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
-        ${InputObject},
-
         [Parameter(Mandatory, HelpMessage = 'Client connection provider.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [Validateset('ADO.NET', 'JDBC', 'Node.js', 'PHP', 'Python', 'Ruby', 'WebApp')]
         [System.String]
         ${Client},
+
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'Name of the server')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
+        ${InputObject},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -102,7 +109,7 @@ function Get-AzMySqlConnectionString {
                 ${SslEnforcement}
             )
             $SslEnforcementTemplateMap = @{
-            'ADO.NET' = 'SslMode=Preferred;'
+            'ADO.NET' = 'SslMode=MySqlSslMode.Required;SslCa="{ca-cert filename}"'
             'JDBC' = '?useSSL=true'
             'Node.js' = ', ssl:{ca:fs.readFileSync({ca-cert filename})}'
             'PHP' = 'mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL);'
@@ -118,20 +125,18 @@ function Get-AzMySqlConnectionString {
 
         $clientConnection = $PSBoundParameters['Client']
         $null = $PSBoundParameters.Remove('Client')
-        $mySqlServer = Az.MySql\Get-AzMySqlServer @PSBoundParameters
+        $mySqlServer = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $DBHost = $mySqlServer.FullyQualifiedDomainName
         $DBPort = 3306
         $adminName = $mySqlServer.AdministratorLogin
-        $serverName = $mySqlServer.Name
         $SslConnectionString = GetConnectionStringSslPart -Client $clientConnection -SslEnforcement $mySqlServer.SslEnforcement
         $ConnectionStringMap = @{
-            'ADO.NET' = "Server=${DBHost}; Port=${DBPort}; Database={your_database}; Uid=${adminName}@${serverName}; Pwd={your_password}; $SslConnectionString"
-            'JDBC' = "String url =`"jdbc:mysql://${DBHost}:${DBPort}/{your_database}$SslConnectionString`"; myDbConn = DriverManager.getConnection(url, `"${adminName}@${serverName}`", {your_password});"
-            'Node.js' = "var conn = mysql.createConnection({host: `"${DBHost}`", user: `"${adminName}@${serverName}`", password: {your_password}, database: {your_database}, port: ${DBPort}$SslConnectionString});"
-            'PHP' = "`$con=mysqli_init();$SslConnectionString mysqli_real_connect(`$con, `"${DBHost}`", `"${adminName}@${serverName}`", {your_password}, {your_database}, ${DBPort});"
-            'Python' = "cnx = mysql.connector.connect(user=`"${adminName}@${serverName}`", password={your_password}, host=`"${DBHost}`", port=${DBPort}, database={your_database}$SslConnectionString)"
-            'Ruby' = "client = Mysql2::Client.new(username: `"${adminName}@${serverName}`", password: {your_password}, database: {your_database}, host: `"${DBHost}`", port: ${DBPort}$SslConnectionString)"
-            'WebApp' = "Database={your_database}; Data Source=${DBHost}; User Id=${adminName}@${serverName}; Password={your_password}"
+            'ADO.NET' = "Server=${DBHost}; Port=${DBPort}; Database={your_database}; UserID=${adminName}; Password={your_password}; $SslConnectionString"
+            'JDBC' = "String url =`"jdbc:mysql://${DBHost}:${DBPort}/{your_database}$SslConnectionString`"; myDbConn = DriverManager.getConnection(url, `"${adminName}`", {your_password});"
+            'Node.js' = "var conn = mysql.createConnection({host: `"${DBHost}`", user: `"${adminName}`", password: {your_password}, database: {your_database}, port: ${DBPort}$SslConnectionString});"
+            'PHP' = "`$con=mysqli_init();$SslConnectionString mysqli_real_connect(`$con, `"${DBHost}`", `"${adminName}`", {your_password}, {your_database}, ${DBPort});"
+            'Python' = "cnx = mysql.connector.connect(user=`"${adminName}`", password={your_password}, host=`"${DBHost}`", port=${DBPort}, database={your_database}$SslConnectionString)"
+            'Ruby' = "client = Mysql2::Client.new(username: `"${adminName}`", password: {your_password}, database: {your_database}, host: `"${DBHost}`", port: ${DBPort}$SslConnectionString)"
         }
         return $ConnectionStringMap[$Client]
     }

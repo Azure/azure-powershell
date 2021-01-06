@@ -89,7 +89,7 @@ directive:
     hide: true
   - where:
       verb: Set
-      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase|^flexibleServerFirewallRule$
+      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase$|^flexibleServerFirewallRule$
     set:
       verb: Update
   - where:
@@ -203,6 +203,12 @@ directive:
     set:
       parameter-name: Name
       alias: ConfigurationName
+  - where:
+      subject: ^CapabilityProperty$
+      parameter-name: LocationName
+    set:
+      parameter-name: Location
+      alias: LocationName
   - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server

@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The source server object to create replica from.
+Name of the server
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -160,7 +160,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The source server object to create replica from.
+INPUTOBJECT <IServer>: Name of the server
   - `Location <String>`: The geo-location where the resource lives
   - `SkuName <String>`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   - `[Tag <ITrackedResourceTags>]`: Resource tags.

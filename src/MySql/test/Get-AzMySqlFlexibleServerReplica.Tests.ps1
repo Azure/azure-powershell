@@ -14,11 +14,10 @@ while(-not $mockingPath) {
 # !Important: some test cases are skipped and require to be recorded again
 # See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Get-AzMySqlFlexibleServerReplica' {
-    It 'List' -Skip {
+    It 'List' {
         {
-            $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
-            # Possible bug: above line should be
-            # $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | Get-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+            Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+            $replica = Get-AzMySqlFlexibleServerReplica -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
             $replica.Count | Should -Be 1
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)"
             Remove-AzMySqlFlexibleServer -InputObject $ID
