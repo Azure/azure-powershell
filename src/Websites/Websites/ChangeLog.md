@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added support for App Service Managed certificates
+    - New Cmdlets
+        - New-AzWebAppCertificate
+        - Remove-AzWebAppCertificate
+    
 ## Version 2.1.1
 * Prevent duplicate access restriction rules
 
