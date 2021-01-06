@@ -1,0 +1,320 @@
+---
+external help file:
+Module Name: Az.DesktopVirtualization
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
+schema: 2.0.0
+---
+
+# New-AzWvdScalingPlan
+
+## SYNOPSIS
+Create or update a scaling plan.
+
+## SYNTAX
+
+```
+New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>]
+ [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create or update a scaling plan.
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Description of scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExclusionTag
+Exclusion tag for scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+User friendly name of scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostPoolReference
+List of ScalingHostPoolReference definitions.
+To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingHostPoolReference[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostPoolType
+HostPool type for scaling plan.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ScalingPlanName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Schedule
+List of ScalingSchedule definitions.
+To construct, see NOTES section for SCHEDULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingSchedule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TimeZone
+Timezone of the scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
+  - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
+  - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
+
+SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
+  - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
+  - `[Name <String>]`: Name of the scaling schedule.
+  - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
+  - `[OffPeakStartTime <DateTime?>]`: Starting time for off-peak period.
+  - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
+  - `[PeakStartTime <DateTime?>]`: Starting time for peak period.
+  - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
+  - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
+  - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
+  - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
+  - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
+  - `[RampDownStartTime <DateTime?>]`: Starting time for ramp down period.
+  - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
+  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
+  - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
+  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
+  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
+  - `[RampUpStartTime <DateTime?>]`: Starting time for ramp up period.
+
+## RELATED LINKS
+

@@ -1,41 +1,51 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/disconnect-azwvdusersession
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdscalingplan
 schema: 2.0.0
 ---
 
-# Disconnect-AzWvdUserSession
+# Remove-AzWvdScalingPlan
 
 ## SYNOPSIS
-Disconnect a userSession.
+Remove a scaling plan.
 
 ## SYNTAX
 
-### Disconnect (Default)
+### Delete (Default)
 ```
-Disconnect-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DisconnectViaIdentity
+### DeleteViaIdentity
 ```
-Disconnect-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Disconnect a userSession.
+Remove a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Disconnect a Windows Virtual Desktop UserSession by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Disconnect-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command disconnects a Windows Virtual Desktop UserSession in a Session Host.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -54,49 +64,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolName
-The name of the host pool within the specified resource group
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-The name of the user session within the specified session host
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
-Aliases: UserSessionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DisconnectViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ScalingPlanName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -121,22 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SessionHostName
-The name of the session host within the specified host pool
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -151,7 +131,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Delete
 Aliases:
 
 Required: False

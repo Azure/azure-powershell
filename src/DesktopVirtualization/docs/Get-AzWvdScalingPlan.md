@@ -1,41 +1,68 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/disconnect-azwvdusersession
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 schema: 2.0.0
 ---
 
-# Disconnect-AzWvdUserSession
+# Get-AzWvdScalingPlan
 
 ## SYNOPSIS
-Disconnect a userSession.
+Get a scaling plan.
 
 ## SYNTAX
 
-### Disconnect (Default)
+### List1 (Default)
 ```
-Disconnect-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DisconnectViaIdentity
+### Get
 ```
-Disconnect-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Disconnect a userSession.
+Get a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Disconnect a Windows Virtual Desktop UserSession by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Disconnect-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command disconnects a Windows Virtual Desktop UserSession in a Session Host.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -59,23 +86,8 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: List2
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-The name of the user session within the specified session host
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
-Aliases: UserSessionId
 
 Required: True
 Position: Named
@@ -90,7 +102,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DisconnectViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -100,15 +112,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Name
+The name of the scaling plan.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Type: System.String
+Parameter Sets: Get
+Aliases: ScalingPlanName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,22 +133,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SessionHostName
-The name of the session host within the specified host pool
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Get, List, List2
 Aliases:
 
 Required: True
@@ -150,44 +147,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Disconnect
+Type: System.String[]
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -201,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
 
 ## NOTES
 

@@ -1,108 +1,58 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 schema: 2.0.0
 ---
 
-# Update-AzWvdApplication
+# Update-AzWvdScalingPlan
 
 ## SYNOPSIS
-Update an application.
+Update a scaling plan.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
- [-CommandLineSetting <CommandLineSetting>] [-Description <String>] [-FilePath <String>]
- [-FriendlyName <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-ShowInPortal] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>]
+ [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity>
- [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
- [-CommandLineSetting <CommandLineSetting>] [-Description <String>] [-FilePath <String>]
- [-FriendlyName <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-ShowInPortal] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
+ [-ExclusionTag <String>] [-FriendlyName <String>] [-HostPoolReference <IScalingHostPoolReference[]>]
+ [-HostPoolType <HostPoolType>] [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an application.
+Update a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Application
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
-                             -GroupName ApplicationGroupName `
-                             -Name ApplicationName `
-                             -FilePath 'C:\windows\system32\mspaint.exe' `
-                             -FriendlyName 'Friendly name' `
-                             -Description 'Description' `
-                             -IconIndex 0 `
-                             -IconPath 'C:\windows\system32\mspaint.exe' `
-                             -CommandLineSetting 'Allow' `
-                             -ShowInPortal:$true
+PS C:\> {{ Add code here }}
 
-Name                                 Type
-----                                 ----
-ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
+{{ Add output here }}
 ```
 
-This command updates a Windows Virtual Desktop Application in an applicaton Group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationType
-Resource Type of Application.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandLineArgument
-Command Line Arguments for Application.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandLineSetting
-Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -120,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Description of Application.
+Description of scaling plan.
 
 ```yaml
 Type: System.String
@@ -134,8 +84,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FilePath
-Specifies a path for the executable file for the application.
+### -ExclusionTag
+Exclusion tag for scaling plan.
 
 ```yaml
 Type: System.String
@@ -150,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Friendly name of Application.
+User friendly name of scaling plan.
 
 ```yaml
 Type: System.String
@@ -164,26 +114,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupName
-The name of the application group
+### -HostPoolReference
+List of ScalingHostPoolReference definitions.
+To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ApplicationGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IconIndex
-Index of the icon.
-
-```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -194,11 +130,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IconPath
-Path to icon.
+### -HostPoolType
+HostPool type for scaling plan.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
 Parameter Sets: (All)
 Aliases:
 
@@ -225,43 +161,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MsixPackageApplicationId
-Specifies the package application Id for MSIX applications
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MsixPackageFamilyName
-Specifies the package family name for MSIX applications
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the application within the specified application group
+The name of the scaling plan.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: ApplicationName
+Aliases: ScalingPlanName
 
 Required: True
 Position: Named
@@ -286,11 +192,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ShowInPortal
-Specifies whether to show the RemoteApp program in the RD Web Access server.
+### -Schedule
+List of ScalingSchedule definitions.
+To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -321,6 +228,21 @@ tags to be updated
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TimeZone
+Timezone of the scaling plan.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +293,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
 
 ## NOTES
 
@@ -381,6 +303,10 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
+  - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
+  - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
@@ -395,6 +321,26 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[UserSessionId <String>]`: The name of the user session within the specified session host
   - `[WorkspaceName <String>]`: The name of the workspace
+
+SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
+  - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
+  - `[Name <String>]`: Name of the scaling schedule.
+  - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
+  - `[OffPeakStartTime <DateTime?>]`: Starting time for off-peak period.
+  - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
+  - `[PeakStartTime <DateTime?>]`: Starting time for peak period.
+  - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
+  - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
+  - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
+  - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
+  - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
+  - `[RampDownStartTime <DateTime?>]`: Starting time for ramp down period.
+  - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
+  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
+  - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
+  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
+  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
+  - `[RampUpStartTime <DateTime?>]`: Starting time for ramp up period.
 
 ## RELATED LINKS
 
