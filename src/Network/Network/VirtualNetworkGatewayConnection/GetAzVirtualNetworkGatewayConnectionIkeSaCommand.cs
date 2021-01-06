@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "ConnectionName")]
         [Parameter(
             ParameterSetName = "ByName",
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The virtual network gateway connection name for which IKE SAs needs to be fetched.")]
         [ResourceNameCompleter("Microsoft.Network/connections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = "ByName",
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -41,12 +40,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = "ByInputObject",
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway connection object for which IKE SAs needs to be fetched.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualNetworkGatewayConnection InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID of the Virtual Network Gateway Connection for which IKE SAs needs to be fetched.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

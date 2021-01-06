@@ -84,8 +84,6 @@ namespace Microsoft.Azure.Commands.Network
 
             string response = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
 
-            WriteObject(response);
-
             PSVirtualNetworkGatewayConnectionIkeSa result = JsonConvert.DeserializeObject<PSVirtualNetworkGatewayConnectionIkeSa>(response);
 
             return result;
