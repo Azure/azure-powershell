@@ -16,8 +16,8 @@ $DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
-If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
-    If (!(Get-Module -ListAvailable -Name Az.Network)) { 
+if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+    if (!(Get-Module -ListAvailable -Name Az.Network)) { 
         Write-Host "Installing the network module to resolve any dependency issue."
         Install-Module -Name Az.Network 
     }
@@ -26,7 +26,7 @@ If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
 
 Describe 'New-AzMySqlFlexibleServer' {
     function WaitServerDelete(){
-        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+        if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             Start-Sleep -Seconds 450
         }
     }
@@ -52,7 +52,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'CreateExpanded' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
                 $server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -SkuTier GeneralPurpose -BackupRetentionDay 12 -StorageInMb 102400 -Location eastus2
@@ -65,7 +65,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'PublicAccessScenario-AllAzure' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # Public Access 0.0.0.0
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -PublicAccess 0.0.0.0
                 $FirewallRules = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.serverName2
@@ -80,7 +80,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'PublicAccessScenario-FirewallRule' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # Public Access 10.10.10.10-10.10.10.12
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName3 -PublicAccess 10.10.10.10-10.10.10.12
                 $FirewallRules = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.serverName3
@@ -95,7 +95,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'PublicAccessScenario-AllowAll' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # Public Access All
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -PublicAccess All
                 $FirewallRules = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.serverName2
@@ -110,7 +110,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'NoArgumentsScenario' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 $Server = New-AzMySqlFlexibleServer -Location $env.location 
                 $Splits = $Server.Id -Split "/" 
                 $ResourceGroupName = $Splits[4]
@@ -144,7 +144,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetNameScenario-ValidVnet' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid vnet name and the vnet exists
                 $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Force
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Name
@@ -158,7 +158,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetNameScenario-ValidVnetNotExist' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid vnet name but the vnet doesn't exist
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName3 -ResourceGroupName $env.resourceGroup -Vnet nonexistingvnetforpowershelltest
                 
@@ -170,7 +170,7 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'VnetNameScenario-InvalidVnet' {
-        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+        if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {
                 # invalid vnet name
                 $InvalidName = "hi/df!@$@#$@"
@@ -182,7 +182,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetIdScenario-ValidVnet' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {           
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {           
                 # valid vnet Id but the vnet doesn't exist
                 $VnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest"
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
@@ -196,7 +196,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetIdScenario-ValidVnetNotExist' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid vnet Id and the vnet exists (subnet does not exist) 
                 $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.Location -AddressPrefix $DEFAULT_VNET_PREFIX -Force
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName3 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Id
@@ -209,7 +209,7 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'VnetIdScenario-InvalidVnet' {
-        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+        if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {
                 # invalid vnet Id
                 $VnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/virtualNetworks/Vnet/Wrong/Vnet/itis"
@@ -220,7 +220,7 @@ Describe 'New-AzMySqlFlexibleServer' {
     
     It 'SubnetIdScenario-ValidSubnet' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid subnet Id and the subnet exists without delegation
                 $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
                 New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
@@ -235,7 +235,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'SubnetIdScenario-ValidSubnetDifferentRg' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid subnet Id and the subnet exists without delegation, different resource group
                 New-AzResourceGroup -Name MySqlTest2 -Location $env.location
                 $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
@@ -261,7 +261,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'SubnetIdScenario-ValidSubnetDelegation' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid subnet Id and the subnet exists with delegation
                 $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
                 $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
@@ -278,7 +278,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'SubnetIdScenario-ValidSubnetNotExist' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # valid subnet Id but the subnet doesn't exist
                 $SubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest/subnets/nonexistingsubnetforpowershelltest"
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName3 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
@@ -290,7 +290,7 @@ Describe 'New-AzMySqlFlexibleServer' {
     }
 
     It 'SubnetIdScenario-InvalidSubnet' {
-        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+        if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {
                 # invalid subnet Id
                 $SubnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/VirtualNetworks/Wrong/subnetss/wrong"
@@ -313,7 +313,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetSubnetScenario-ValidVnetSubnetNotExist' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # vnet name and subnet name resource do not exist
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName3 -ResourceGroupName $env.resourceGroup -Vnet $env.VNetName -Subnet $env.SubnetName -VnetPrefix $DEFAULT_VNET_PREFIX -SubnetPrefix $DEFAULT_SUBNET_PREFIX
                 
@@ -325,7 +325,7 @@ Describe 'New-AzMySqlFlexibleServer' {
 
     It 'VnetSubnetScenario-ValidVnetSubnet' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 # vnet name and subnet name, resource exist
                 $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.serverName2 -ResourceGroupName $env.resourceGroup -Vnet $env.VNetName -Subnet $env.SubnetName
             

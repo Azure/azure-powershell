@@ -16,7 +16,7 @@ while(-not $mockingPath) {
 Describe 'Remove-AzMySqlFlexibleServer' {
     It 'Delete' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
@@ -27,7 +27,7 @@ Describe 'Remove-AzMySqlFlexibleServer' {
 
     It 'DeleteViaIdentity' {
         {
-            If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            if ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
