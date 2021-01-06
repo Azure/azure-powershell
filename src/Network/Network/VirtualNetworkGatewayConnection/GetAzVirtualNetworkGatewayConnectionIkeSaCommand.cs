@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa"), OutputType(typeof(PSVirtualNetworkGatewayConnectionIkeSa))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa", DefaultParameterSetName = "ByName"), OutputType(typeof(PSVirtualNetworkGatewayConnectionIkeSa))]
     public class GetAzVirtualNetworkGatewayConnectionIkeSaCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]
