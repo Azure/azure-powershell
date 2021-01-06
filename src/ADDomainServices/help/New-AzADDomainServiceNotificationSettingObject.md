@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServicesNotificationSettingsObject
+online version: https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceNotificationSettingObject
 schema: 2.0.0
 ---
 
