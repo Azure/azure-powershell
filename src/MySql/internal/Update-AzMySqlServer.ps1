@@ -58,7 +58,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
-  SkuName <String>: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [AdministratorLoginPassword <String>]: The password of the administrator login.
   [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
@@ -66,6 +65,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
   [ReplicationRole <String>]: The replication role of the server.
   [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
   [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.

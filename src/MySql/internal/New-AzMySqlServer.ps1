@@ -54,13 +54,13 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 PARAMETER <IServerForCreate>: Represents a server to be created.
   CreateMode <CreateMode>: The mode to create a new server.
   Location <String>: The location the resource resides in.
-  SkuName <String>: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [InfrastructureEncryption <InfrastructureEncryption?>]: Status showing whether the server enabled infrastructure encryption.
   [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
   [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
   [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
