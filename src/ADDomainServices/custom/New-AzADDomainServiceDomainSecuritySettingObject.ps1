@@ -22,7 +22,7 @@ Create a in-memory object for DomainSecuritySettings
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServicesDomainSecuritySettingsObject
+https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceDomainSecuritySettingsObject
 #>
 function New-AzADDomainServiceDomainSecuritySettingObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings')]
