@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-## Version 1.0.0
 * Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 
 ## Version 0.2.0
