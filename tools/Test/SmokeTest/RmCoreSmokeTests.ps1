@@ -12,7 +12,7 @@ param(
 
 if (Get-Module -ListAVailable 'Az.Accounts')
 {
-    Enable-AzAlias
+    Enable-AzureRmAlias
 }
 
 $testInfo = @{
@@ -41,25 +41,43 @@ $resourceSetUpCommands=@(
 )
 $resourceCleanUpCommands = @(
     @{Name = "Az.Storage [Cleanup]";          Command = {
-                                                          $loopLimit = 0
-                                                          $flag = $false
-                                                          do {
-                                                            try {
-                                                              $loopLimit ++
-                                                              Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force -ErrorAction Stop
-                                                              $flag = $false
-                                                            }
-                                                            catch {
-                                                              $flag = $true
-                                                              Start-Sleep -Seconds 30
-                                                              if ($loopLimit -gt 30)
-                                                              {
-                                                                throw $_.Exception
-                                                              }
-                                                            }
-                                                          } while ($flag -and ($loopLimit -le 30))
+                                                            $loopLimit = 0
+                                                            do {
+                                                                try {
+                                                                    Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force -ErrorAction Stop
+                                                                    break
+                                                                }
+                                                                catch {
+                                                                    if (++$loopLimit -gt 30)
+                                                                    {
+                                                                        Write-Warning "Give up Az.Storage [Cleanup]"
+                                                                        break
+                                                                    } else {
+                                                                        Start-Sleep -Seconds 30
+                                                                        Write-Warning "Retry Az.Storage [Cleanup]"
+                                                                    }
+                                                                }
+                                                            } while ($true)
                                                         }},
-    @{Name = "Az.Resources [Cleanup]";        Command = {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction Stop}}
+    @{Name = "Az.Resources [Cleanup]";        Command = {
+                                                            $loopLimit = 0
+                                                            do {
+                                                                try {
+                                                                    Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction Stop
+                                                                    break
+                                                                }
+                                                                catch {
+                                                                    if (++$loopLimit -gt 30)
+                                                                    {
+                                                                        Write-Warning "Give up Az.Resources [Cleanup]"
+                                                                        break
+                                                                    } else {
+                                                                        Start-Sleep -Seconds 30
+                                                                        Write-Warning "Retry Az.Resources [Cleanup]"
+                                                                    }
+                                                                }
+                                                            } while ($true)
+                                                        }}
 )
 $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
