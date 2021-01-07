@@ -38,6 +38,8 @@
     - Added parameter -TransportSecurityKeyVaultSecretId
 * Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
     - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
+* Added multiple Authentication support for p2sVpnGateway
+    - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 
 ## Version 4.3.0
 * Updated below cmdlet 
@@ -678,4 +680,3 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
-
