@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzHealthBot' {
     It 'UpdateExpanded' {
-        $updateHealthBot = update-AzHealthBot -Name $env.HealthBot1 -ResourceGroupName $env.ResourceGroupName -SkuName $env.S1
+        $updateHealthBot = update-AzHealthBot -Name $env.HealthBot1 -ResourceGroupName $env.ResourceGroupName -Sku $env.S1
         $updateHealthBot.SkuName | Should -Be $env.S1
     }
 
     It 'UpdateViaIdentityExpanded' {
         $getHealthBot = Get-AzHealthBot -Name $env.HealthBot1 -ResourceGroupName $env.ResourceGroupName
-        $updateHealthBot = update-AzHealthBot -InputObject $getHealthBot -SkuName $env.F0
+        $updateHealthBot = update-AzHealthBot -InputObject $getHealthBot -Sku $env.F0
         $updateHealthBot.SkuName | Should -Be $env.F0
     }
 }

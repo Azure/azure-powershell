@@ -13,11 +13,9 @@ Create a new HealthBot.
 ## SYNTAX
 
 ```
-New-AzHealthBot -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
- [-SubscriptionId <String>] [-SystemDataCreatedAt <DateTime>] [-SystemDataCreatedBy <String>]
- [-SystemDataCreatedByType <IdentityType>] [-SystemDataLastModifiedAt <DateTime>]
- [-SystemDataLastModifiedBy <String>] [-SystemDataLastModifiedByType <IdentityType>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHealthBot -Name <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +25,7 @@ Create a new HealthBot.
 
 ### Example 1: Create new HealthBot
 ```powershell
-PS C:\> New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -SkuName F0
+PS C:\> New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -Sku F0
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----
@@ -128,7 +126,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the HealthBot SKU
 
 ```yaml
@@ -154,96 +152,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedAt
-The timestamp of resource creation (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedBy
-The identity that created the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedByType
-The type of identity that created the resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedAt
-The timestamp of resource last modification (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedBy
-The identity that last modified the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedByType
-The type of identity that last modified the resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

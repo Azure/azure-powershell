@@ -14,13 +14,13 @@ Patch a HealthBot.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkuName <SkuName>]
+Update-AzHealthBot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Sku <SkuName>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzHealthBot -InputObject <IHealthBotIdentity> [-SkuName <SkuName>] [-Tag <Hashtable>]
+Update-AzHealthBot -InputObject <IHealthBotIdentity> [-Sku <SkuName>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Patch a HealthBot.
 
 ### Example 1: update HealthBot by Resourcegroupname and Name
 ```powershell
-PS C:\> update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -SkuName S1
+PS C:\> update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
@@ -43,7 +43,7 @@ update HealthBot by Resourcegroupname and Name
 ### Example 2: update HealthBot by InputObject
 ```powershell
 PS C:\> $getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
-Update-AzHealthBot -InputObject $getHealth -SkuName F0
+Update-AzHealthBot -InputObject $getHealth -Sku F0
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
@@ -115,7 +115,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the HealthBot SKU
 
 ```yaml

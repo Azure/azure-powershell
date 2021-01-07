@@ -1,6 +1,6 @@
 ### Example 1: Create new HealthBot
 ```powershell
-PS C:\> New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -SkuName F0
+PS C:\> New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -Sku F0
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----

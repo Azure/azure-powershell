@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the HealthBot service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -43,6 +43,53 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document
+    where: $.definitions.SystemData.properties
+    transform: >-
+        return {
+          "createdBy": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The identity that created the resource."
+          },
+          "createdByType": {
+            "$ref": "#/definitions/IdentityType",
+            "readOnly": true,
+            "description": "The type of identity that created the resource"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "description": "The timestamp of resource creation (UTC)"
+          },
+          "lastModifiedBy": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The identity that last modified the resource."
+          },
+          "lastModifiedByType": {
+            "$ref": "#/definitions/IdentityType",
+            "readOnly": true,
+            "description": "The type of identity that last modified the resource"
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "description": "The timestamp of resource last modification (UTC)"
+          }
+        }
+  - where:
+      verb: New
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+  - where:
+      verb: Update
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true

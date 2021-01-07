@@ -19,7 +19,7 @@ Describe 'Remove-AzHealthBot' {
     }
 
     It 'DeleteViaIdentity' {
-        $newHealthBot = New-AzHealthBot -Name $env.HealthBot2 -ResourceGroupName $env.ResourceGroupName -Location $env.location -SkuName $env.F0
+        $newHealthBot = New-AzHealthBot -Name $env.HealthBot2 -ResourceGroupName $env.ResourceGroupName -Location $env.location -Sku $env.F0
         $gethealthbot = Get-AzHealthBot -Name $env.HealthBot2 -ResourceGroupName $env.ResourceGroupName
         Remove-AzHealthBot -InputObject $gethealthbot
         $gethealthbotList = Get-AzHealthBot

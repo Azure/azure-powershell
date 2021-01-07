@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzHealthBot' {
     It 'CreateExpanded' {
-        $newHealthBot = New-AzHealthBot -Name $env.HealthBot1 -ResourceGroupName $env.ResourceGroupName -Location $env.location -SkuName $env.F0
+        $newHealthBot = New-AzHealthBot -Name $env.HealthBot1 -ResourceGroupName $env.ResourceGroupName -Location $env.location -Sku $env.F0
         $newHealthBot.Name | Should -Be $env.HealthBot1
     }
 }
