@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix ContinuationToken never null when list blob with -IncludeVersion
+    - `Get-AzStorageBlob`
 
 ## Version 3.2.0
 * Supported create/update/get/list EncryptionScope of a Storage account
