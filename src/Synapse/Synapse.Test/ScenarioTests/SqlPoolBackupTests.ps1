@@ -28,9 +28,6 @@ function Test-SqlPoolRestorePoint
         # Get restore points
         $restorePoints = Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
 
-        # Check the SQL pool doesn't have any restore point
-        #Assert-AreEqual 0 $restorePoints.Count
-
         # Create a new restore point
         $restorePointLabelToSet = 'ContosoRestorePoint'
         New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName -RestorePointLabel $restorePointLabelToSet
