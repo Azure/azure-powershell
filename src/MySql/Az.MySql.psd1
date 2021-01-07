@@ -1,5 +1,5 @@
 @{
-  GUID = '0b8ac9f4-b926-4ac8-b73f-937a0d218521'
+  GUID = '9e6f7276-93b8-48dc-8c37-abd95fe7d667'
   RootModule = './Az.MySql.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
