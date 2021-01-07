@@ -500,10 +500,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
                 crrRestoreRequest.RestoreRequest = triggerRestoreRequest.Properties;
 
+                // storage account location isn't required in case of workload restore
                 var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
                     rp,
-                    "LocationNotRequired",
-                    crrRestoreRequest,
+                    triggerCRRRestoreRequest: crrRestoreRequest,
                     secondaryRegion: secondaryRegion);
                 return response;
             }

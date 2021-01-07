@@ -471,8 +471,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 
                 var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
                     rp,
-                    storageAccountResource.Location,
                     crrRestoreRequest,
+                    storageAccountResource.Location,
                     secondaryRegion: secondaryRegion);
                 
                 return response;

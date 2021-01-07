@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Job created by this operation</returns>
         public RestAzureNS.AzureOperationResponse RestoreDiskSecondryRegion(
             AzureRecoveryPoint rp,
-            string storageAccountLocation,
             CrossRegionRestoreRequest triggerCRRRestoreRequest,
+            string storageAccountLocation = null,
             string secondaryRegion = null)
         {  
             //validation block
