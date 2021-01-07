@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
         [ResourceNameCompleter(
-            ResourceTypes.SqlDataBaseGeoBackup,
+            ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse
             else
             {
                 var results = this.SynapseAnalyticsClient.ListRecoverableSqlPool(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult();
+                results = SubResourceWildcardFilter(Name, results);
                 WriteObject(results, true);
             }
         }

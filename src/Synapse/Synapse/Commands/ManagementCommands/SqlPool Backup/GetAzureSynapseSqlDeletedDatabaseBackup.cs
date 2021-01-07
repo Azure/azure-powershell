@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
         [ResourceNameCompleter(
-            ResourceTypes.SqlDeletedDatabaseBackup,
+            ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]

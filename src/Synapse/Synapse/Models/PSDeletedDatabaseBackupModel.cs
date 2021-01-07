@@ -15,6 +15,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.MaxSizeBytes = restorableDroppedSqlPool.MaxSizeBytes;
             this.ServiceLevelObjective = restorableDroppedSqlPool.ServiceLevelObjective;
             this.ElasticPoolName = restorableDroppedSqlPool.ElasticPoolName;
+            this.Id = restorableDroppedSqlPool.Id;
+            this.Name = restorableDroppedSqlPool.Name;
+            this.Type = restorableDroppedSqlPool.Type;
+            this.CreationDate = restorableDroppedSqlPool.CreationDate;
+            this.DeletionDate = restorableDroppedSqlPool.DeletionDate;
+            this.EarliestRestoreDate = restorableDroppedSqlPool.EarliestRestoreDate;
         }
 
         //
@@ -63,5 +69,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         // Summary:
         //     Gets the earliest restore date of the database (ISO8601 format)
         public DateTime? EarliestRestoreDate { get; }
+
+        public new string Id { get; set; }
+
+        public new string Name { get; set; }
+
+        public new string Type { get; set; }
     }
 }
