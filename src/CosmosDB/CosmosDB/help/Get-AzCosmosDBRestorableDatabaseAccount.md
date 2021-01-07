@@ -32,13 +32,17 @@ Location                  : West US
 DatabaseAccountName       : deleted-account-1
 CreationTime              : 8/2/2020 10:23:00 PM
 DeletionTime              : 8/2/2020 10:26:13 PM
+ApiType                   : Sql
+RestorableLocations       : {West US, East US}
 
-Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/ff921125-e31c-4e8c-ae0a-20fe719baca6
+Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/eastus/restorableDatabaseAccounts/ff921125-e31c-4e8c-ae0a-20fe719baca6
 DatabaseAccountInstanceId : ff921125-e31c-4e8c-ae0a-20fe719baca6
-Location                  : West US
+Location                  : East US
 DatabaseAccountName       : deleted-account-2
 CreationTime              : 8/2/2020 6:32:32 PM
 DeletionTime              : 8/2/2020 6:34:48 PM
+ApiType                   : Sql
+RestorableLocations       : {Australia Southeast, East US, West US}
 
 Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/c7b27ad9-3bc0-4955-8cc2-a81790e5c3b3
 DatabaseAccountInstanceId : c7b27ad9-3bc0-4955-8cc2-a81790e5c3b3
@@ -46,6 +50,8 @@ Location                  : West US
 DatabaseAccountName       : live-account-1
 CreationTime              : 8/2/2020 6:34:35 PM
 DeletionTime              :
+ApiType                   : MongoDB
+RestorableLocations       : {West US}
 ```
 
 Lists all the restorable database accounts in the current subscription
@@ -60,6 +66,8 @@ Location                  : West US
 DatabaseAccountName       : deleted-account-1
 CreationTime              : 8/2/2020 10:23:00 PM
 DeletionTime              : 8/2/2020 10:26:13 PM
+ApiType                   : Sql
+RestorableLocations       : {West US, East US}
 ```
 
 Gets the restorable database account with the given DatabaseInstanceId in the given ARM location  

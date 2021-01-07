@@ -13,9 +13,10 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 ## SYNTAX
 
 ```
-Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
- -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTimeOffset> -SourceDatabaseAccountName <String>
+ -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
+ [-DatabasesToRestore <PSDatabaseToRestore[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabasesToRestore
+The list of PSDatabaseToRestore objects which specify the subset of databases and collections to restore from the source account. (If not provided, all the databases will be restored)
+
+```yaml
+Type: PSDatabaseToRestore[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -130,7 +146,7 @@ Accept wildcard characters: False
 The timestamp to which the source account has to be restored to.
 
 ```yaml
-Type: DateTime
+Type: DateTimeOffset
 Parameter Sets: (All)
 Aliases:
 

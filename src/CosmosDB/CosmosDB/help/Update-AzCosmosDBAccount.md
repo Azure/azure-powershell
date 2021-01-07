@@ -16,11 +16,11 @@ Update a CosmosDB account attributes.
 ```
 Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWriteLocations <Boolean>]
  [-EnableVirtualNetwork <Boolean>] [-DisableKeyBasedMetadataWriteAccess <Boolean>] -ResourceGroupName <String>
- -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
- [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
- [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-Location <String[]>]
+ [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>]
+ [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,11 +29,12 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
 Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean>]
  [-EnableMultipleWriteLocations <Boolean>] [-EnableVirtualNetwork <Boolean>]
  [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
- [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
- [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Location <String[]>] [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>]
+ [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
+ [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-BackupIntervalInMinutes <Int32>]
+ [-BackupRetentionIntervalInHours <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -41,11 +42,12 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
 Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAutomaticFailover <Boolean>]
  [-EnableMultipleWriteLocations <Boolean>] [-EnableVirtualNetwork <Boolean>]
  [-DisableKeyBasedMetadataWriteAccess <Boolean>] [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
- [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
- [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Location <String[]>] [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>]
+ [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
+ [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
+ [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-BackupIntervalInMinutes <Int32>]
+ [-BackupRetentionIntervalInHours <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,6 +190,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAnalyticalStorage
+Bool to indicate if AnalyticalStorage is enabled on the account.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutomaticFailover
 Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage.
 Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
@@ -252,7 +269,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IpRules
+### -IpRule
 Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
 
 ```yaml
@@ -272,6 +289,36 @@ URI of the KeyVault
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocationObject
+Add a location to the Cosmos DB database account. Array of PSLocation objects.
+
+```yaml
+Type: PSLocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -416,7 +463,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

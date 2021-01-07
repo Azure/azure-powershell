@@ -14,13 +14,13 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
- [-FromPointInTimeBackup] [-ApiKind <String>] [-Location <String[]>] [-LocationObject <PSLocation[]>]
- [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>] [-ServerVersion <String>]
- [-BackupPolicyType <String>] -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>]
- [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
- [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
+ [-ServerVersion <String>] [-BackupPolicyType <String>] -ResourceGroupName <String> -Name <String>
+ [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-Location <String[]>]
+ [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>]
+ [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -137,6 +137,7 @@ CreateMode                         : Restore
 ```
 
 A new account with the name restoredDatabaseAccountName is created by restoring the restorable database account of the given Id to the given timestamp.
+
 ## PARAMETERS
 
 ### -ApiKind
@@ -464,21 +465,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MongoDBServerVersion
-ServerVersion, valid only in case of MongoDB Accounts.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the Cosmos DB database account.
 
@@ -518,6 +504,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerVersion
+ServerVersion, valid only in case of MongoDB Accounts.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
