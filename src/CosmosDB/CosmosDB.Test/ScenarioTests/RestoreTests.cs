@@ -40,5 +40,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreFromNewAccountCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoRestoreAccountCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoRestoreAccountCmdlets");
+        }
     }
 }

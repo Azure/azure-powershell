@@ -14,7 +14,7 @@
 
 function Test-AccountRelatedCmdlets
 {
-  $rgName = "CosmosDBResourceGroup89"
+  $rgName = "CosmosDBResourceGroup28"
   $location = "East US"
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"
@@ -22,11 +22,11 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb67"
+  $cosmosDBAccountName = "cosmosdb67-abc"
 
   #use an existing account with the following information for Account Update Operations
-  $cosmosDBExistingAccountName = "dbaccount27" 
-  $existingResourceGroupName = "CosmosDBResourceGroup27"
+  $cosmosDBExistingAccountName = "dbaccount28-1" 
+  $existingResourceGroupName = "CosmosDBResourceGroup28"
 
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
@@ -78,7 +78,7 @@ function Test-AccountRelatedCmdletsUsingRid
   $locationlist2 = "UK South"
 
   #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "dbaccount27" 
+  $cosmosDBExistingAccountName = "dbaccount27-1" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
   $IpRule = "201.168.50.1"
@@ -124,7 +124,7 @@ function Test-AccountRelatedCmdletsUsingRid
 function Test-AccountRelatedCmdletsUsingObject
 {
   #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "dbaccount27" 
+  $cosmosDBExistingAccountName = "dbaccount27-1" 
   $existingResourceGroupName = "CosmosDBResourceGroup27"
 
   $IpRule = "201.168.50.1"
@@ -163,10 +163,10 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup3"
+  $rgName = "CosmosDBResourceGroup27"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregionpowershell2"
+  $cosmosDBAccountName = "testupdateregionpowershell2-1"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try{
@@ -194,8 +194,8 @@ function Test-PrivateEndpoint
   $storageAccount = "xdmsa2";
   $vnetName = "MyVnetPE"
 	
-  $cosmosDBAccountName = "db945" 
-  $rgname = "CosmosDBResourceGroup9507"
+  $cosmosDBAccountName = "dbaccount27-1" 
+  $rgname = "CosmosDBResourceGroup27"
 
   try{
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName

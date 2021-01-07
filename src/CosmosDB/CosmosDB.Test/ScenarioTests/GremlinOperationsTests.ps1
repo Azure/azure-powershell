@@ -18,8 +18,8 @@ Test Gremlin CRUD cmdlets using Name paramter set
 #>
 function Test-GremlinOperationsCmdlets
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "gremlin-db1002"
+  $rgName = "CosmosDBResourceGroup27"
   $DatabaseName = "dbName"
   $graphName = "graph1"
 
@@ -143,12 +143,12 @@ Test Gremlin CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-GremlinOperationsCmdletsUsingInputObject
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
-  $DatabaseName = "dbName2"
+  $AccountName = "gremlin-db1002"
+  $rgName = "CosmosDBResourceGroup27"
+  $DatabaseName = "dbName4"
   $GraphName = "graph1"
 
-  $DatabaseName2 = "dbName2"
+  $DatabaseName2 = "dbName5"
   $graphName2 = "graph2"
 
   $PartitionKeyPathValue = "/foo"
@@ -252,8 +252,8 @@ Test Gremlin throughput cmdlets using all paramter sets
 #>
 function Test-GremlinThroughputCmdlets
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "gremlin-db1002"
+  $rgName = "CosmosDBResourceGroup27"
   $DatabaseName = "dbName3"
   $GraphName = "graphName"
 

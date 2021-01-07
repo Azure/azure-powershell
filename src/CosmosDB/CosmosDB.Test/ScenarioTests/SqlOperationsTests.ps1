@@ -18,8 +18,8 @@ Test SQL CRUD operations using Name parameter set
 #>
 function Test-SqlOperationsCmdlets
 {
-  $AccountName = "cosmosdb9921232812"
-  $rgName = "rgtest9921232812"
+  $AccountName = "dbaccount27-1"
+  $rgName = "CosmosDBResourceGroup27"
   $DatabaseName = "dbName"
   $ContainerName = "container1"
   $StoredProcedureName = "storedProcedure"
@@ -274,8 +274,8 @@ Test SQL CRUD operations using input object and parent object set
 #>
 function Test-SqlOperationsCmdletsUsingInputObject
 {
-  $AccountName = "cosmosdb9921232812"
-  $rgName = "rgtest9921232812"
+  $AccountName = "dbaccount27-1"
+  $rgName = "CosmosDBResourceGroup27"
   $DatabaseName = "dbName"
   $ContainerName = "container1"
   $StoredProcedureName = "storedProcedure"
@@ -489,8 +489,8 @@ Test SQL throughput cmdlets using all parameter sets
 #>
 function Test-SqlThroughputCmdlets
 {
-  $AccountName = "cosmosdb9921232812"
-  $rgName = "rgtest9921232812"
+  $AccountName = "dbaccount29-1"
+  $rgName = "CosmosDBResourceGroup29"
   $DatabaseName = "dbName3"
   $ContainerName = "containerName"
 
