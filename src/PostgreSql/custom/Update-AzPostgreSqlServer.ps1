@@ -173,7 +173,7 @@ function Update-AzPostgreSqlServer {
             if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
                 $bStr = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
                 $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-                $PSBoundParameters.Add('AdministratorLoginPassword', [System.Runtime.InteropServices.marshal]::PtrToStringAuto($bStr))
+                $PSBoundParameters.Add('AdministratorLoginPassword', $bStr)
             }
 
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
