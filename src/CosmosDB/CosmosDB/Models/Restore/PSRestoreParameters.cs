@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public PSRestoreParameters(RestoreParameters restoreParameters)
         {
+            if (restoreParameters == null)
+            {
+                return;
+            }
+
             RestoreSource = restoreParameters.RestoreSource;
             RestoreTimestampInUtc = restoreParameters.RestoreTimestampInUtc ?? default(DateTime);
             if (restoreParameters.DatabasesToRestore?.Count > 0)

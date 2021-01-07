@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string SourceDatabaseAccountName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTime RestoreTimestampInUtc { get; set; }
+        public DateTimeOffset RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabasesToRestoreHelpMessage)]
         public PSDatabaseToRestore[] DatabasesToRestore { get; set; }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             PSRestoreParameters restoreParameters = new PSRestoreParameters()
             {
                 RestoreSource = RestoreSourceId,
-                RestoreTimestampInUtc = RestoreTimestampInUtc,
+                RestoreTimestampInUtc = RestoreTimestampInUtc.DateTime,
                 DatabasesToRestore = DatabasesToRestore
             };
 

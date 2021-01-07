@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DatabaseAccountInstanceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTime RestoreTimestampInUtc { get; set; }
+        public DateTimeOffset RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreLocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]

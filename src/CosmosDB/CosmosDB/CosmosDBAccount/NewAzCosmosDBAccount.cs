@@ -146,6 +146,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountCreateUpdateProperties = new DefaultRequestDatabaseAccountCreateUpdateProperties();
             }
 
+            databaseAccountCreateUpdateProperties.Locations = LocationCollection;
+            databaseAccountCreateUpdateProperties.ConsistencyPolicy = consistencyPolicy;
             databaseAccountCreateUpdateProperties.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateProperties.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountCreateUpdateProperties.EnableAutomaticFailover = EnableAutomaticFailover;

@@ -48,8 +48,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         //     Gets the type of Azure resource.
         public string Type { get; }
 
-        /// <summary>
-        /// </summary>
+        //
+        // Summary:
+        //     Gets or sets the properties of the CosmosDB Sql container resource
         public PSRestorableSqlContainerPropertiesResource Resource { get; set; }
     }
 }

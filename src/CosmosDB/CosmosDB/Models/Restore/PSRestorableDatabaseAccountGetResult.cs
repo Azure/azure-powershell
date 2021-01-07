@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             DatabaseAccountName = restorableDatabaseAccountGetResult.AccountName;
             CreationTime = restorableDatabaseAccountGetResult.CreationTime;
             DeletionTime = restorableDatabaseAccountGetResult.DeletionTime;
+            ApiType = restorableDatabaseAccountGetResult.ApiType;
             RestorableLocations = restorableDatabaseAccountGetResult.RestorableLocations?.Select(restorableLocation => new PSRestorableLocationResource(restorableLocation)).ToArray();
         }
 

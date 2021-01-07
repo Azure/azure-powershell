@@ -29,19 +29,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
             Name = restorableSqlDatabaseGetResult.Name;
             Id = restorableSqlDatabaseGetResult.Id;
+            Type = restorableSqlDatabaseGetResult.Type;
             Resource = new PSRestorableSqlDatabasePropertiesResource(restorableSqlDatabaseGetResult.Resource);
         }
 
         /// <summary>
-        /// Gets or sets Name of the Cosmos DB MongoDB database
+        /// Gets or sets Name of the Cosmos DB Sql database
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Gets or sets Id of the Cosmos DB MongoDB database
+        /// Gets or sets Id of the Cosmos DB Sql database
         /// </summary>
         public string Id { get; set; }
 
-        //
+        /// <summary>
+        /// Gets or sets Type of the Cosmos DB resource
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the properties of the CosmosDB Sql database resource
+        /// </summary>
         public PSRestorableSqlDatabasePropertiesResource Resource { get; set; }
     }
 }

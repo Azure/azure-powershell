@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class RestoreAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTime RestoreTimestampInUtc { get; set; }
+        public DateTimeOffset RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreSourceDatabaseAccountNameHelpMessage)]
         public string SourceDatabaseAccountName { get; set; }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             PSRestoreParameters restoreParameters = new PSRestoreParameters()
             {
                 RestoreSource = sourceAccountToRestore.Id,
-                RestoreTimestampInUtc = RestoreTimestampInUtc,
+                RestoreTimestampInUtc = RestoreTimestampInUtc.DateTime,
                 DatabasesToRestore = DatabasesToRestore
             };
 

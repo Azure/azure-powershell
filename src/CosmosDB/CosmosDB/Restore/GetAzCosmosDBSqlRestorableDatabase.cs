@@ -19,7 +19,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBRestorableSqlDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableSqlDatabaseGetResult))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlRestorableDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableSqlDatabaseGetResult))]
     public class GetAzCosmosDBSqlRestorableDatabase : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
