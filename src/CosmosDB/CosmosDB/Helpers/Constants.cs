@@ -104,6 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
+        public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
