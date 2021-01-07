@@ -55,6 +55,9 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [Get-AzDataProtectionResourceOperationResultPatch](Get-AzDataProtectionResourceOperationResultPatch.md)
 
 
+### [LoadManifest](LoadManifest.md)
+Prepares Datasource object for backup
+
 ### [Prepare-AzDataProtectionDatasourceInfo](Prepare-AzDataProtectionDatasourceInfo.md)
 Prepares Datasource object for backup
 

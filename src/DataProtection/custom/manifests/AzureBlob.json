@@ -1,0 +1,6 @@
+﻿{
+  "isProxyResource": false,
+  "resourceType": "",
+  "parentResourceType": "",
+  "datasourceType": "Microsoft.Storage/storageAccounts/blobServices"
+}

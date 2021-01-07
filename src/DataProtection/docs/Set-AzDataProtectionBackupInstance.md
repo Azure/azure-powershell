@@ -21,8 +21,8 @@ Set-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -V
 
 ### dppplatform
 ```
-Set-AzDataProtectionBackupInstance -DatasourceInfo <IDatasource> -PolicyId <String> -VaultId <String>
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataProtectionBackupInstance -DatasourceInfo <IDatasource> -DatasourceType <String> -PolicyId <String>
+ -VaultId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Put
@@ -78,6 +78,21 @@ To construct, see NOTES section for DATASOURCEINFO properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDatasource
+Parameter Sets: dppplatform
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceType
+Datasource Type
+
+```yaml
+Type: System.String
 Parameter Sets: dppplatform
 Aliases:
 
