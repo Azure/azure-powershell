@@ -133,7 +133,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $connection.EnableBgp $actual.EnableBgp
 
-      $ikesa = Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $connection
+      $job = Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName $rgname -Name $vnetConnectionName -AsJob
       $job | Wait-Job
       $ikesa = $job | Receive-Job
       Assert-NotNull $ikesa
