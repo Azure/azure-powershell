@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Increased timeout for Publish-AzWebApp cmdlet
 * Added support for App Service Managed certificates
     - New Cmdlets
         - New-AzWebAppCertificate
