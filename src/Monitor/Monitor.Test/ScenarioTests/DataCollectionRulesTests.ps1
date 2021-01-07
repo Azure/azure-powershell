@@ -108,7 +108,7 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         Assert-AreEqual "perfCounterFromSet" $dcr3.DataSources.PerformanceCounters[0].Name
 
         Write-Verbose " ****** Update Tags (PATCH Operation) By Name"
-        Update-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01 -Tags @{"update1"="test by Name"; "tag2"="value2"}
+        Update-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01 -Tag @{"update1"="test by Name"; "tag2"="value2"}
         $dcrList = Get-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01
         Assert-NotNull $dcrList
         Assert-AreEqual 1 $dcrList.Length
@@ -116,7 +116,7 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         Assert-AreEqual "test by Name" $dcr1.Tags["update1"]
 
         Write-Verbose " ****** Update Tags (PATCH Operation) By Resource ID"
-        Update-AzDataCollectionRule -RuleId $dcr1.Id -Tags @{"update2"="test by Rule Id"; "tag2"="value2"}
+        Update-AzDataCollectionRule -RuleId $dcr1.Id -Tag @{"update2"="test by Rule Id"; "tag2"="value2"}
         $dcrList = Get-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01
         Assert-NotNull $dcrList
         Assert-AreEqual 1 $dcrList.Length
@@ -124,7 +124,7 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         Assert-AreEqual "test by Rule Id" $dcr1.Tags["update2"]
 
         Write-Verbose " ****** Update Tags (PATCH Operation) By Input Object"
-        $dcr1 | Update-AzDataCollectionRule -Tags @{"update3"="test by Input Object"; "tag2"="value2"}
+        $dcr1 | Update-AzDataCollectionRule -Tag @{"update3"="test by Input Object"; "tag2"="value2"}
         $dcrList = Get-AzDataCollectionRule -ResourceGroupName $resourceGroupName -RuleName $dcrName01
         Assert-NotNull $dcrList
         Assert-AreEqual 1 $dcrList.Length

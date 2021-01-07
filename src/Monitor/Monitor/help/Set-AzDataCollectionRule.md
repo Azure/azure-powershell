@@ -20,7 +20,7 @@ Set-AzDataCollectionRule
    -RuleName <string>
    -RuleFile <string>
    [-Description <string>]
-   [-Tags <hashtable>]
+   [-Tag <hashtable>]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -34,7 +34,7 @@ Set-AzDataCollectionRule
    -RuleId <string>
    -RuleFile <string>
    [-Description <string>]
-   [-Tags <hashtable>]
+   [-Tag <hashtable>]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -341,7 +341,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The resource tags
 
 ```yaml

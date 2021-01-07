@@ -20,7 +20,7 @@ New-AzDataCollectionRule
    -RuleName <string>
    -RuleFile <string>
    [-Description <string>]
-   [-Tags <hashtable>]
+   [-Tag <hashtable>]
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -45,7 +45,7 @@ The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported 
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr'
                                 -RuleName 'newDcrEx1' -RuleFile 'C:\samples\dcrEx1.json'
                                 -Description 'Dcr description'
-                                -Tags @{"tag1"="value1"; "tag2"="value2"}
+                                -Tag @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : Dcr description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -103,7 +103,7 @@ This command creates a data collection rules for the current subscription.
 PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr'
                                 -RuleName 'newDcrEx2' -RuleFile 'C:\samples\dcrEx2.json'
                                 -Description 'Dcr description'
-                                -Tags @{"tag1"="value1"; "tag2"="value2"}
+                                -Tag @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : Dcr description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -246,7 +246,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The resource tags
 
 ```yaml

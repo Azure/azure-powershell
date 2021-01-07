@@ -17,7 +17,7 @@ Updates a data collection rule tags property.
 Update-AzDataCollectionRule 
       -ResourceGroupName <string> 
       -RuleName <string> 
-      [-Tags <hashtable>] 
+      [-Tag <hashtable>] 
       [-DefaultProfile <IAzureContextContainer>] 
       [-WhatIf] 
       [-Confirm]
@@ -28,7 +28,7 @@ Update-AzDataCollectionRule
 ```
 Update-AzDataCollectionRule 
       -RuleId <string> 
-      [-Tags <hashtable>] 
+      [-Tag <hashtable>] 
       [-DefaultProfile <IAzureContextContainer>] 
       [-WhatIf] 
       [-Confirm]
@@ -39,7 +39,7 @@ Update-AzDataCollectionRule
 ```
 Update-AzDataCollectionRule 
       -InputObject <PSDataCollectionRuleResource> 
-      [-Tags <hashtable>] 
+      [-Tag <hashtable>] 
       [-DefaultProfile <IAzureContextContainer>]
       [-WhatIf]
       [-Confirm]
@@ -57,7 +57,7 @@ Data Collection Rules (DCR) define data coming into Azure Monitor and specify wh
 ```
 PS C:\>Update-AzDataCollectionRule -RuleName 'newDcr'
                                    -ResourceGroupName 'testdcr'
-                                   -Tags @{"tag1"="value1"; "tag2"="value2"}
+                                   -Tag @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -77,7 +77,7 @@ This command updates the tags property for the given data collection rule.
 ### Example 2: Update data collection rule tags
 ```
 PS C:\>Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr'
-                                   -Tags @{"tag1"="value1"; "tag2"="value2"}
+                                   -Tag @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -97,7 +97,7 @@ This command updates the tags property for the given data collection rule.
 ### Example 3: Update data collection rule tags
 ```
 PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
-PS C:\>$dcr | Update-AzDataCollectionRule -Tags @{"tag1"="value1"; "tag2"="value2"}
+PS C:\>$dcr | Update-AzDataCollectionRule -Tag @{"tag1"="value1"; "tag2"="value2"}
 
 Description       : 
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
@@ -191,7 +191,7 @@ Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The tags property of the data collection rule
 
 ```yaml

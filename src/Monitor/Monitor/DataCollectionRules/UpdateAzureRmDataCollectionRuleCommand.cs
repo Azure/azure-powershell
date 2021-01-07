@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         [Parameter(ParameterSetName = ByName, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
         #endregion
 
         /// <summary>
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
             var resourceForUpdate = new ResourceForUpdate();
 
-            if (Tags != null)
-                resourceForUpdate.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+            if (Tag != null)
+                resourceForUpdate.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             if (ShouldProcess(
                         target: string.Format("Data collection rule '{0}' in resource group '{1}'", RuleName, ResourceGroupName),

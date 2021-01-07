@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the data collection rule tags.
         /// </summary>
         [Parameter(ParameterSetName = ByFile, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         #endregion
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 
             if (!string.IsNullOrWhiteSpace(Location)) dcr.Location = Location;
             if (!string.IsNullOrWhiteSpace(Description)) dcr.Description = Description;
-            if (Tags != null) dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+            if (Tag != null) dcr.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             if (ShouldProcess(
                     target: string.Format("Data collection rule '{0}' in resource group '{1}'", RuleName, ResourceGroupName),
