@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for App Service Managed certificates
+    - New Cmdlets
+        - New-AzWebAppCertificate
+        - Remove-AzWebAppCertificate
+* Fix bug that causes Docker Password to be removed from appsettings in `Set-AzWebApp` and `Set-AzWebAppSlot`
 
 ## Version 2.1.1
 * Prevent duplicate access restriction rules
