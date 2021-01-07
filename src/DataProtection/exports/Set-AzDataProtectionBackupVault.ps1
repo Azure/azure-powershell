@@ -31,6 +31,8 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+.Outputs
+System.Management.Automation.PSObject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +55,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackupvault
 #>
 function Set-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource], [PSObject])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -89,18 +91,21 @@ param(
     ${ETag},
 
     [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='custom')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # The identityType which can be either SystemAssigned or None
     ${IdentityType},
 
     [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='custom', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
     [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='custom', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IStorageSetting[]]
     # Storage Settings
@@ -108,13 +113,15 @@ param(
     ${StorageSetting},
 
     [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='custom')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDppTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Put')]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
@@ -122,52 +129,60 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Put')]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Put')]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Put', DontShow)]
+    [Parameter(ParameterSetName='PutExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -184,8 +199,9 @@ begin {
         $mapping = @{
             Put = 'Az.DataProtection.private\Set-AzDataProtectionBackupVault_Put';
             PutExpanded = 'Az.DataProtection.private\Set-AzDataProtectionBackupVault_PutExpanded';
+            custom = 'Az.DataProtection.custom\Set-AzDataProtectionBackupVault_custom';
         }
-        if (('Put', 'PutExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Put', 'PutExpanded', 'custom') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
