@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Blocked getting workload config when target item is an availability group.
+
+## Version 3.2.0
+* Enabled softdelete feature for SQL.
+* Fixed SQL AG restore and removed the container name check.
+* Changed container name format for Azure Files backup item.
+* Added CMK feature support for Recovery services vault.
+
+## Version 3.1.0
+* Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.
+
+## Version 3.0.1
+* Specifying policy BackupTime is in UTC.
+* Modifying breaking change warning in Get-AzRecoveryServicesBackupJobDetails cmdlet.
+* Updating sample script help text for Set-AzRecoveryServicesBackupProtectionPolicy cmdlet.
+
+## Version 3.0.0
 * Fixing Workload Restore for contributor permissions.
 * Added new parameter sets and validations for Restore-AzRecoveryServicesBackupItem cmdlet.
 

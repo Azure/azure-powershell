@@ -26,20 +26,31 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected const string AdfsTenant = "adfs";
         protected const string OrganizationsTenant = "organizations";
 
+        protected CancellationToken AuthenticationCancellationToken
+        {
+            get
+            {
+                // todo: move "LoginCancellationToken" to common repo as a const
+                if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource))
+                {
+                    return cancellationTokenSource.Token;
+                }
+                return new CancellationTokenSource().Token;
+            }
+        }
+
         public IAuthenticator Next { get; set; }
         public abstract bool CanAuthenticate(AuthenticationParameters parameters);
         public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken);
 
         public Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var source = new CancellationTokenSource();
-            return Authenticate(parameters, source.Token);
+            return Authenticate(parameters, AuthenticationCancellationToken);
         }
 
         public bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token)
         {
-            var source = new CancellationTokenSource();
-            return TryAuthenticate(parameters, source.Token, out token);
+            return TryAuthenticate(parameters, AuthenticationCancellationToken, out token);
         }
 
         public bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token)

@@ -33,6 +33,13 @@ namespace Commands.Aks.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureKubernetesByServicePrincipal()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksByServicePrincipal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureKubernetesAddons()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksAddons");

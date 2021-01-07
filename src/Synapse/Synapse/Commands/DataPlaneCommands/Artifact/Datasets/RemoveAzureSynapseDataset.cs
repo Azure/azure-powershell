@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -62,14 +65,19 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = this.InputObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseDataset, this.Name, this.WorkspaceName)))
-            {
-                SynapseAnalyticsClient.DeleteDataset(this.Name);
-                if (PassThru)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveSynapseDataset, Name),
+                string.Format(Resources.RemovingSynapseDataset, this.Name, this.WorkspaceName),
+                Name,
+                () =>
                 {
-                    WriteObject(true);
-                }
-            }
+                    SynapseAnalyticsClient.DeleteDataset(this.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

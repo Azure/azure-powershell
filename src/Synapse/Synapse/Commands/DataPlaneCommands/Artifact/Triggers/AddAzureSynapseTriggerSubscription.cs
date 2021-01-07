@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.Name, String.Format(Resources.AddingSynapseTriggerSubscribe, this.Name)))
             {
-                WriteObject(new PSTriggerSubscriptionOperationStatus(SynapseAnalyticsClient.StartSubscribeTriggerToEvents(this.Name)));
+                WriteObject(new PSTriggerSubscriptionOperationStatus(SynapseAnalyticsClient.SubscribeTriggerToEvents(this.Name)));
             }
         }
     }

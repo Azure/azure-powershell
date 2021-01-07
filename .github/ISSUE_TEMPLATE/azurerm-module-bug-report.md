@@ -2,7 +2,7 @@
 name: AzureRM module bug report
 about: Report errors or unexpected behaviors for the AzureRM module
 title: ''
-labels: triage
+labels: needs-triage, AzureRM 6.x
 assignees: ''
 
 ---
@@ -37,7 +37,8 @@ assignees: ''
 
 ## Debug output
 
-<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block -->
+<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
 
 ```
 
@@ -45,7 +46,8 @@ assignees: ''
 
 ## Error output
 
-<!-- Please run Resolve-AzureRmError and paste the output in the below code block -->
+<!-- Please run Resolve-AzureRmError and paste the output in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
 
 ```
 

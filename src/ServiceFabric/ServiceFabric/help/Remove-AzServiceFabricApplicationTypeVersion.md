@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceFabricApplicationTypeVersion
 
 ## SYNOPSIS
-Remove Service fabric an application type version from the cluster.
+Remove Service fabric an application type version from the cluster. Only supports ARM deployed application type versions.
 
 ## SYNTAX
 

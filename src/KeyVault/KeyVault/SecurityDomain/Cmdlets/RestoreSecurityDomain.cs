@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ManagedHsmSecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
+    [Cmdlet(VerbsData.Import, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
     [OutputType(typeof(bool))]
     public class RestoreSecurityDomain : SecurityDomainCmdlet
     {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                     PublicKey = this.ResolveUserPath(key.PublicKey),
                     PrivateKey = this.ResolveUserPath(key.PrivateKey)
                     }).ToArray();
-                var securityDomain = LoadSdFromFile(SecurityDomainPath);
+                var securityDomain = LoadSdFromFile(ResolveUserPath(SecurityDomainPath));
                 var rawSecurityDomain = Client.DecryptSecurityDomain(securityDomain, Keys);
                 var exchangeKey = Client.DownloadSecurityDomainExchangeKey(Name);
                 var encryptedSecurityDomain = Client.EncryptForRestore(rawSecurityDomain, exchangeKey);

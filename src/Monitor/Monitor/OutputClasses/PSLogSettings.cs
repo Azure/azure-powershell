@@ -20,16 +20,24 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the LogSettings
     /// </summary>
-    public class PSLogSettings : Microsoft.Azure.Management.Monitor.Management.Models.LogSettings
+    public class PSLogSettings : PSDiagnosticDetailSettings
     {
         /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
         /// </summary>
-        public PSLogSettings(LogSettings logSettings) : base(logSettings)
+        public PSLogSettings(LogSettings logSettings)
         {
-            this.Enabled = logSettings.Enabled;
-            this.Category = logSettings.Category;
-            this.RetentionPolicy = new Management.Monitor.Management.Models.RetentionPolicy(logSettings.RetentionPolicy);
+            if (logSettings != null)
+            {
+                this.Enabled = logSettings.Enabled;
+                this.Category = logSettings.Category;
+                this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
+            }
+            this.CategoryType = PSDiagnosticSettingCategoryType.Logs;
+        }
+
+        public PSLogSettings() 
+        {
         }
 
         /// <summary>
@@ -44,6 +52,16 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AppendLine("Category        : " + Category);
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
             return output.ToString();
+        }
+
+        public LogSettings GetLogSetting()
+        {
+            return new LogSettings()
+            {
+                Enabled = this.Enabled,
+                Category = this.Category,
+                RetentionPolicy = this.RetentionPolicy
+            };
         }
     }
 }

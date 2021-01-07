@@ -47,7 +47,7 @@ function Test-SynapseFirewall
         Assert-AreEqual $NewEndIpAddress $firewallUpdate.EndIpAddress
 
         # Delete firewall
-        Assert-True {Remove-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $firewallRuleName -PassThru} "Remove firewall rule failed"
+        Assert-True {Remove-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $firewallRuleName -PassThru -Force} "Remove firewall rule failed"
 	}
     finally
     {

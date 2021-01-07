@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for Type.</summary>
+    /// <summary>The type of resource, Microsoft.Kusto/clusters.</summary>
     public partial class TypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

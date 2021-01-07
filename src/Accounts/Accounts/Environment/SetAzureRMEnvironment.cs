@@ -176,6 +176,12 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Dns suffix of Azure Synapse Analytics.")]
         public string AzureSynapseAnalyticsEndpointSuffix { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
@@ -339,6 +345,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureAttestationServiceEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix,
                                     nameof(AzureSynapseAnalyticsEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix,
+                                    nameof(ContainerRegistryEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
                                     nameof(AzureSynapseAnalyticsEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));

@@ -16,6 +16,7 @@ using System;
 using System.Linq;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
 
@@ -24,13 +25,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
     public class AdalTokenMigrator
     {
         protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
+        private const string TenantsString = "Tenants";
+
         private byte[] AdalToken { get; set; }
 
         private bool HasRegistered { get; set; }
 
-        public AdalTokenMigrator(byte[] adalToken)
+        private Lazy<IAzureContextContainer> ContextContainerInitializer { get; set; }
+
+        public AdalTokenMigrator(byte[] adalToken, Func<IAzureContextContainer> getContextContainer)
         {
             AdalToken = adalToken;
+            ContextContainerInitializer = new Lazy<IAzureContextContainer>(getContextContainer);
         }
 
         public void MigrateFromAdalToMsal()
@@ -85,7 +91,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                     }
 
                     var scopes = new string[] { string.Format("{0}{1}", environment.ActiveDirectoryServiceEndpointResourceId, ".default") };
-                    var token = clientApplication.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+
+                    try
+                    {
+                        clientApplication.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                    }
+                    catch //For MSA account, real AAD tenant must be specified, otherwise MSAL library will request token against its home tenant
+                    {
+                        var tenantId = GetTenantId(account.Username);
+                        if(!string.IsNullOrEmpty(tenantId))
+                        {
+                            clientApplication.AcquireTokenSilent(scopes, account).WithAuthority(environment.ActiveDirectoryAuthority, tenantId).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                        }
+                    }
                     //TODO: Set HomeAccountId for migration
                 }
                 catch
@@ -95,6 +113,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                 }
             }
             cacheHelper?.UnregisterCache(clientApplication.UserTokenCache);
+        }
+
+        private string GetTenantId(string accountId)
+        {
+            var contextContainer = ContextContainerInitializer.Value;
+            string tenantId = null;
+            if (contextContainer != null)
+            {
+                var matchedAccount = contextContainer?.Accounts?.FirstOrDefault(account => string.Equals(account.Id, accountId, StringComparison.InvariantCultureIgnoreCase));
+                if (matchedAccount != null && matchedAccount.ExtendedProperties.ContainsKey(TenantsString))
+                {
+                    tenantId = matchedAccount.ExtendedProperties[TenantsString]?.Split(',')?.FirstOrDefault();
+                }
+            }
+            return tenantId;
         }
     }
 }

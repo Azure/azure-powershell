@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreProtectableItemException", resourceCulture);
             }
         }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreLocationException", resourceCulture);
             }
         }        
 
@@ -1558,17 +1558,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("TargetVaultStorageRedundancy", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to container name is invalid.
-        /// </summary>
-        public static string ContainerNameIsInvalid
-        {
-            get
-            {
-                return ResourceManager.GetString("ContainerNameIsInvalid", resourceCulture);
             }
         }
     }

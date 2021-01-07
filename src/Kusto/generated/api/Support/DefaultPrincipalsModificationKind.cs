@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The default principals modification kind</summary>
     public partial struct DefaultPrincipalsModificationKind :
         System.IEquatable<DefaultPrincipalsModificationKind>
     {
