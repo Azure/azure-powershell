@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var result = this.GetVirtualNetworkGatewayConnectionIkeSa(this.ResourceGroupName, this.Name);
                 WriteObject(result.ikesas, true);
-
             }
             else
             {

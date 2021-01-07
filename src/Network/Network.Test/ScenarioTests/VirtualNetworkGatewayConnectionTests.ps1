@@ -132,6 +132,11 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $true
       $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $connection.EnableBgp $actual.EnableBgp
+
+      $ikesa = Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $connection
+      $job | Wait-Job
+      $ikesa = $job | Receive-Job
+      Assert-NotNull $ikesa
     
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
