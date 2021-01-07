@@ -4588,7 +4588,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IServer>: Name of the server
+INPUTOBJECT <IServer>: The server for the connection string.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -4650,7 +4650,7 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
-    # Name of the server
+    # The server for the connection string.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
@@ -4774,7 +4774,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMySqlIdentity>: Name of the server
+INPUTOBJECT <IMySqlIdentity>: The server for the connection string.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
   [FirewallRuleName <String>]: The name of the server firewall rule.
@@ -4822,7 +4822,7 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
-    # Name of the server
+    # The server for the connection string.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
@@ -5287,9 +5287,9 @@ end {
 
 <#
 .Synopsis
-Creates a new server.
+Creates a new MySQL flexible server.
 .Description
-Creates a new server.
+Creates a new MySQL flexible server.
 .Example
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none

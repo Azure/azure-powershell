@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMySqlFlexibleServer
 
 ## SYNOPSIS
-Creates a new server.
+Creates a new MySQL flexible server.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-Subsc
 ```
 
 ## DESCRIPTION
-Creates a new server.
+Creates a new MySQL flexible server.
 
 ## EXAMPLES
 

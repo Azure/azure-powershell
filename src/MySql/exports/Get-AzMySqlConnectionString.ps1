@@ -36,7 +36,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IServer>: Name of the server
+INPUTOBJECT <IServer>: The server for the connection string.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
-    # Name of the server
+    # The server for the connection string.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 

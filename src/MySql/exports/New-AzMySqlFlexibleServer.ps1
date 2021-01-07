@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Creates a new server.
+Creates a new MySQL flexible server.
 .Description
-Creates a new server.
+Creates a new MySQL flexible server.
 .Example
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
 -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none

@@ -47,7 +47,7 @@ function Get-AzMySqlFlexibleServerConnectionString {
         [System.String]
         ${Client},
 
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'Name of the server')]
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server for the connection string.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
         ${InputObject},

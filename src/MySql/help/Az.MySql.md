@@ -54,7 +54,7 @@ Gets a virtual network rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [New-AzMySqlFlexibleServer](New-AzMySqlFlexibleServer.md)
-Creates a new server.
+Creates a new MySQL flexible server.
 
 ### [New-AzMySqlFlexibleServerDatabase](New-AzMySqlFlexibleServerDatabase.md)
 Creates a new database or updates an existing database.
