@@ -1,0 +1,72 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using Xunit;
+
+namespace Commands.Network.Test.ScenarioTests
+{
+    public class ExpressRoutePortsMacSecTest : NetworkTestRunner
+    {
+        public ExpressRoutePortMacSecTest(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
+        {
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRoutePortMacSecConfigCRUD()
+        {
+
+            // Get and set the service principal based on test environment
+            // Use service principal to whitelist access to keyvault to store/get MACsec CAK/CKN
+            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+            string servicePrincipal = "fakefakefake";
+            string tenant = "fakefakefake";
+            if (!string.IsNullOrEmpty(environmentConnectionString))
+            {
+                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
+                var mode = connectionInfo.GetValue<string>(ConnectionStringKeys.HttpRecorderModeKey);
+                if (mode == HttpRecorderMode.Playback.ToString())
+                {
+                    servicePrincipal = HttpMockServer.GetVariable("spn", "fake");
+                    tenant = HttpMockServer.GetVariable("tenant", "fake");
+                }
+                else
+                {
+                    tenant = connectionInfo.GetValue<string>(ConnectionStringKeys.AADTenantKey);
+                    servicePrincipal = "bc93052d-397e-4fba-b486-f5915bfd2a53";
+                }
+            }
+
+            // Cannot dynamically assign template parameters using object for key vault
+            var path = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @".\..\..\..\ScenarioTests\CreateKeyVaultParameters.json"));
+            string json = File.ReadAllText(path);
+            dynamic jsonObj = JsonConvert.DeserializeObject(json);
+            jsonObj["tenantId"]["value"] = tenant;
+            jsonObj["objectId"]["value"] = servicePrincipal; // this id does not grant access to secrets
+            string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+            File.WriteAllText(path, output);
+
+            TestRunner.RunTestScript("Test-ExpressRoutePortMacSecConfigGcmAes128CRUD");
+        }
+    }
+}
