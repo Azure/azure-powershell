@@ -3221,7 +3221,7 @@
     }
   ],
   "Names": {
-    "Test-GetAzSearchPrivateLinkResourcesPipeline": [
+    "Test-GetAzSearchPrivateLinkResourcePipeline": [
       "ps594"
     ]
   },

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchprivatelinkresources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-AzSearchPrivateLinkResource
 schema: 2.0.0
 ---
 
-# Get-AzSearchPrivateLinkResources
+# Get-AzSearchPrivateLinkResource
 
 ## SYNOPSIS
 Gets private link resource details for the Azure Cognitive Search service.
@@ -14,30 +14,30 @@ Gets private link resource details for the Azure Cognitive Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzSearchPrivateLinkResources [-ResourceGroupName] <String> [-Name] <String>
+Get-AzSearchPrivateLinkResource [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSearchPrivateLinkResources [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Get-AzSearchPrivateLinkResource [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Get-AzSearchPrivateLinkResources [-InputObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSearchPrivateLinkResource [-InputObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchPrivateLinkResources** cmdlet gets private link resource details for the Azure Cognitive Search service.
+The **Get-AzSearchPrivateLinkResource** cmdlet gets private link resource details for the Azure Cognitive Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSearchPrivateLinkResources -ResourceGroupName arjagann -Name arjagann-test-cuseuap | ConvertTo-Json
+PS C:\> Get-AzSearchPrivateLinkResource -ResourceGroupName arjagann -Name arjagann-test-cuseuap | ConvertTo-Json
 
   "Id": "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourceGroups/arjagann/providers/Microsoft.Search/searchServices/arjagann-test-cuseuap/privateLinkResources/searchService",
   "Type": "Microsoft.Search/searchServices/privateLinkResources",

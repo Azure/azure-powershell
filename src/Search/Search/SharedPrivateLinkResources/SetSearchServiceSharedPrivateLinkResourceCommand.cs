@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
     [Cmdlet(
         "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SearchSharedPrivateLinkResource",
-        SupportsShouldProcess = true),
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceNameParameterSetName),
         OutputType(typeof(PSSharedPrivateLinkResource))]
     public class SetSearchServiceSharedPrivateLinkResourceCommand : SharedPrivateLinkResourceBaseCmdlet
     {

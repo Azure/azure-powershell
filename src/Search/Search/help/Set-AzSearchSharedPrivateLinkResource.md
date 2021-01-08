@@ -12,17 +12,17 @@ Update the shared private link resource for the Azure Cognitive Search service.
 
 ## SYNTAX
 
-### ParentObjectParameterSet
-```
-Set-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> -RequestMessage <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 Set-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ParentObjectParameterSet
+```
+Set-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> -RequestMessage <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -112,7 +112,7 @@ Azure Cognitive Search Shared private link resource
 
 ```yaml
 Type: System.String
-Parameter Sets: ParentObjectParameterSet, ResourceNameParameterSet
+Parameter Sets: ResourceNameParameterSet, ParentObjectParameterSet
 Aliases:
 
 Required: True

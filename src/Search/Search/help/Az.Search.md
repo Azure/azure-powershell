@@ -17,7 +17,7 @@ Gets admin key pair of the Azure Cognitive Search service.
 ### [Get-AzSearchPrivateEndpointConnection](Get-AzSearchPrivateEndpointConnection.md)
 Gets private endpoint connection(s) to the Azure Cognitive Search service.
 
-### [Get-AzSearchPrivateLinkResources](Get-AzSearchPrivateLinkResources.md)
+### [Get-AzSearchPrivateLinkResource](Get-AzSearchPrivateLinkResource.md)
 Gets private link resource details for the Azure Cognitive Search service.
 
 ### [Get-AzSearchQueryKey](Get-AzSearchQueryKey.md)

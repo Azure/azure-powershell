@@ -235,7 +235,7 @@ function Test-NewAzSearchServiceIpRules
 		New-AzResourceGroup -Name $rgname -Location $loc
 		
 		# Act
-		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -IpRules $ipRules
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -IpRuleList $ipRules
 		
 		# Assert
 		Assert-NotNull $newSearchService
@@ -573,9 +573,9 @@ function Test-ManageAzSearchServiceQueryKey
 
 <#
 .SYNOPSIS
-Test Get-AzSearchPrivateLinkResources
+Test Get-AzSearchPrivateLinkResource
 #>
-function Test-GetAzSearchPrivateLinkResources
+function Test-GetAzSearchPrivateLinkResource
 {
 	# Arrange
 	$rgname = getAssetName
@@ -593,7 +593,7 @@ function Test-GetAzSearchPrivateLinkResources
 		
 		# Create service
 		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
-		$privateLinkResources = Get-AzSearchPrivateLinkResources -ResourceGroupName $rgname -Name $svcName
+		$privateLinkResources = Get-AzSearchPrivateLinkResource -ResourceGroupName $rgname -Name $svcName
 
 		Assert-AreEqual 1 $privateLinkResources.Count
 
@@ -612,9 +612,9 @@ function Test-GetAzSearchPrivateLinkResources
 
 <#
 .SYNOPSIS
-Test Get-AzSearchPrivateLinkResourcesPipeline
+Test Get-AzSearchPrivateLinkResourcePipeline
 #>
-function Test-GetAzSearchPrivateLinkResourcesPipeline
+function Test-GetAzSearchPrivateLinkResourcePipeline
 {
 	# Arrange
 	$rgname = getAssetName
@@ -632,7 +632,7 @@ function Test-GetAzSearchPrivateLinkResourcesPipeline
 		
 		# Create service
 		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
-		$privateLinkResources = $newSearchService | Get-AzSearchPrivateLinkResources
+		$privateLinkResources = $newSearchService | Get-AzSearchPrivateLinkResource
 
 		Assert-AreEqual 1 $privateLinkResources.Count
 

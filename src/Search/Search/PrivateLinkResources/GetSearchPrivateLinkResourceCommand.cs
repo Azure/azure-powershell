@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet(
     "Get",
-    ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SearchPrivateLinkResources",
+    ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SearchPrivateLinkResource",
     DefaultParameterSetName = ResourceNameParameterSetName,
     SupportsShouldProcess = true),
     OutputType(typeof(PSSharedPrivateLinkResource))]
-    public class GetSearchPrivateLinkResourcesCommand : PrivateLinkResourcesBaseCmdlet
+    public class GetSearchPrivateLinkResourceCommand : PrivateLinkResourcesBaseCmdlet
     {
         [Parameter(
            Position = 0,

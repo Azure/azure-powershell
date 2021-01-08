@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Mandatory = false,
             HelpMessage = IPRulesMessage)]
-        public PSIpRule[] IPRules { get; set; }
+        public PSIpRule[] IPRuleList { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var networkRuleSet = IPRules?.Any() == true ? new PSNetworkRuleSet
+            var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
             {
-                IpRules = IPRules
+                IpRules = IPRuleList
             } : null;
 
             var identity = IdentityType.HasValue ? new PSIdentity

@@ -51,28 +51,24 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         public string Name { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
             HelpMessage = PrivateLinkResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
             HelpMessage = GroupIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string GroupId { get; set; }
 
         [Parameter(
-            Position = 5,
             Mandatory = true,
             HelpMessage = RequestMessageHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string RequestMessage { get; set; }
 
         [Parameter(
-            Position = 6,
             Mandatory = false,
             HelpMessage = ResourceRegionHelpMessage)]
         public string ResourceRegion { get; set; }

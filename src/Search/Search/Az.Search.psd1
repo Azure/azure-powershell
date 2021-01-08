@@ -80,7 +80,7 @@ CmdletsToExport = 'New-AzSearchService', 'Get-AzSearchService', 'Set-AzSearchSer
                'New-AzSearchQueryKey', 'Remove-AzSearchQueryKey',
                'Get-AzSearchPrivateEndpointConnection', 'Set-AzSearchPrivateEndpointConnection', 'Remove-AzSearchPrivateEndpointConnection',
                'New-AzSearchSharedPrivateLinkResource', 'Get-AzSearchSharedPrivateLinkResource', 'Set-AzSearchSharedPrivateLinkResource', 'Remove-AzSearchSharedPrivateLinkResource',
-               'Get-AzSearchPrivateLinkResources'
+               'Get-AzSearchPrivateLinkResource'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -111,16 +111,16 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPrivateLinkResources()
+        public void TestGetPrivateLinkResource()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResources");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPrivateLinkResourcesPipeline()
+        public void TestGetPrivateLinkResourcePipeline()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResourcesPipeline");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResourcePipeline");
         }
 
         [Fact]
