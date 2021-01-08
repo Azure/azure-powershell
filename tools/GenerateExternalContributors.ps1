@@ -12,16 +12,21 @@ Invoke-RestMethod: https://docs.microsoft.com/en-us/powershell/module/Microsoft.
 param(
     [Parameter(Mandatory)]
     [string]
-    $AccessToken
+    $AccessToken,
+    [Parameter(HelpMessage='Days back default 28')]
+    [int]
+    $DaysBack = 28
 )
-$SinceDate = (Get-Date).AddDays(-28)
+
+
+$SinceDate = (Get-Date).AddDays((0-$DaysBack))
 $SinceDateStr =  $SinceDate.ToString('yyyy-MM-ddTHH:mm:ssZ')
-$Branch = git branch --show-current # The Git 2.22 and above support.
+$Branch = 'master'#git branch --show-current # The Git 2.22 and above support.
 $rootPath = "$PSScriptRoot\.."
 $changeLogFile = Get-Item -Path "..\ChangeLog.md"
 $changeLogContent = Get-Content -Path $changeLogFile.FullName | Out-String
 
-Write-Host -ForegroundColor Green 'Create ExternalContributors.md'
+Write-Debug 'Create ExternalContributors.md'
 # Create md file to store contributors information.
 $contributorsMDFile = Join-Path $PSScriptRoot 'ExternalContributors.md'
 if ((Test-Path -Path $contributorsMDFile)) {
@@ -44,8 +49,31 @@ for ($pageNumber=1; $pageNumber -le $commintsLastPageNumber; $pageNumber++) {
     $commitsPageUrl = $commitsUrl + "&page=$pageNumber"
     $PRs += Invoke-RestMethod -Uri $commitsPageUrl -Authentication Bearer -Token $token -ResponseHeadersVariable 'ResponseHeaders'
 }
+Write-Debug "The PR count: $($PRs.Count)"
 
-$sortPRs = $PRs | Sort-Object -Property @{Expression = {$_.author.login}; Descending = $False}
+# Remove already existed commits
+$validPRs = @()
+foreach ($PR in $PRs)
+{
+  $index = $PR.commit.message.IndexOf("`n`n")
+  if ($index -lt 0) {
+      $commitMessage = $PR.commit.message
+  } else {
+      $commitMessage = $PR.commit.message.Substring(0, $index)
+  }
+  # The merge pr does not contain commit id.
+  if ($commitMessage.LastIndexOf('(') -gt 0)
+  {
+    if (!($changeLogContent.Contains($commitMessage.Substring($commitMessage.LastIndexOf('(')))))
+    {
+      $validPRs += $PR
+    }
+  }
+}
+
+Write-Debug "The Valid PR count: $($validPRs.Count)"
+
+$sortPRs = $validPRs | Sort-Object -Property @{Expression = {$_.author.login}; Descending = $False}
 
 $skipContributors = @('aladdindoc')
 
@@ -55,6 +83,7 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
     {
         continue
     }
+    # Check whether the contributor belongs to the Azure organization.
     Invoke-RestMethod -Uri "https://api.github.com/orgs/Azure/members/$($sortPRs[$PR].author.login)" -Authentication Bearer -Token $token -ResponseHeadersVariable 'ResponseHeaders' -StatusCodeVariable 'StatusCode' -SkipHttpErrorCheck > $null
     if ($StatusCode -eq '204') {
         # Add internal contributors to skipContributors to reduce the number of https requests sent.
@@ -62,9 +91,9 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
         continue
     }
     if ($contributorsMDHeaderFlag) {
-        Write-Host -ForegroundColor Green 'Output exteneral contributors infomation.'
+        Write-Debug 'Output exteneral contributors infomation.'
         '### Thanks to our community contributors' | Out-File -FilePath $contributorsMDFile -Force
-        Write-Host '### Thanks to our community contributors'
+        Write-Debug '### Thanks to our community contributors'
         $contributorsMDHeaderFlag = $False
     }
     $account = $sortPRs[$PR].author.login
@@ -75,16 +104,8 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
     } else {
         $commitMessage = $sortPRs[$PR].commit.message.Substring(0, $index)
     }
-    # Skip already exits commits.
-    if ($changeLogContent.Contains($commitMessage.Substring($commitMessage.LastIndexOf('('))))
-    {
-        # Only one of the multiple commits of the same user in this release is valuable.
-        # For display format of the external contributors. 
-        $sortPRs[$PR].author.login = 'CommitSkip'
-        continue
-    }
 
-    # The contributor hase many commits.
+    # Contributors have many submissions.
     if ( ($account -eq $sortPRs[$PR - 1].author.login) -or ($account -eq $sortPRs[$PR + 1].author.login)) {
         # Firt commit.
         if (!($sortPRs[$PR].author.login -eq $sortPRs[$PR - 1].author.login)) {
@@ -92,30 +113,30 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
                 "* @$account" | Out-File -FilePath $contributorsMDFile -Append -Force
                 "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-                Write-Host "* @$account"
-                Write-Host "  * $commitMessage"
+                Write-Debug "* @$account"
+                Write-Debug "  * $commitMessage"
             } else {
                 "* $($name) (@$account)" | Out-File -FilePath $contributorsMDFile -Append -Force
                 "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
                 
-                Write-Host "* $($name) (@$account)"
-                Write-Host "  * $commitMessage"
+                Write-Debug "* $($name) (@$account)"
+                Write-Debug "  * $commitMessage"
             }
         } else
         {
             "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Host "  * $commitMessage"
+            Write-Debug "  * $commitMessage"
         }
     } else {
         if (($account -eq $name)) {
             "* @$account, $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Host "* @$account, $commitMessage"
+            Write-Debug "* @$account, $commitMessage"
         } else {
             "* $name (@$account), $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Host "* $name (@$account), $commitMessage"
+            Write-Debug "* $name (@$account), $commitMessage"
         }
     }
 }
