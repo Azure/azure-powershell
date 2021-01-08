@@ -1,6 +1,6 @@
-﻿{
+{
   "vaultName": {
-    "value": "macSecKeyVault"
+    "value": "ps109"
   },
   "location": {
     "value": "East US"
@@ -18,12 +18,12 @@
     "value": "CAK"
   },
   "secretValue": {
-    "value": "123412341234"
+    "value": "b4355b9ccaf727d2ba7744ee991ce00e"
   },
   "secretName2": {
     "value": "CKN"
   },
   "secretValue2": {
-    "value": "123412341234"
+    "value": "93e9ce8469eff0536784fc4ad253b5a6"
   }
 }

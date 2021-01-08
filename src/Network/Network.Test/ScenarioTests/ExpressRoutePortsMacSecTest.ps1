@@ -26,36 +26,58 @@ function Check-CmdletReturnType
 
 <#
 .SYNOPSIS
-Test creating new ExpressRoutePort with MACsec configuration with GcmAes128 cipher
+Test creating ExpressRoutePort resource with MACsec configuration.
 #>
-function Test-ExpressRoutePortMacSecConfigGcmAes128CRUD
+function Test-ExpressRoutePortMacSecConfigCRUD
 {
+   
     # Setup
     # eastus --> Equinix-Ashburn-DC2 needed because MACsec can only be applied on juniper routers
-    $rgname = "frnarea2"
+    $rgname = Get-ResourceName
     $rglocation = "East US"
     $rname = Get-ResourceName
-    $vaultName = "macSecKeyVault"
+    $vaultName = Get-ResourceName
     $identityName = Get-ResourceName
 	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
     $location = "East US"
 	$peeringLocation = "Equinix-Ashburn-DC2"
 	$encapsulation = "QinQ"
 	$bandwidthInGbps = 10.0
-    $cakHexValue = "dbaf91848b0315763469ae990cc474ba"
-    $cknHexValue = "1b1c01d9d65bf70cf87e9c0d5ba258c1"
     $gcmAes128Cipher = "GcmAes128"
     $cakName = "CAK"
     $cknName = "CKN"
-    $templateName = "keyVaultMacSecTemplate"
     try
     {
-        # Can't assign service principal access to key vault while deploying in PS.  
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        # Can't assign service principal access to key vault while deploying in dev pipeline.  
+        # Service principal needs access to secret id value 
         # Solution: deploy key vault via arm template with service principal whitelisted 
-        New-AzResourceGroupDeployment -Name $rgName -ResourceGroupName $rgName -TemplateParameterFile .\..\..\..\ScenarioTests\CreateKeyVaultParameters.json -TemplateFile .\..\..\..\ScenarioTests\CreateKeyVaultTemplate.json
+        $pathToJson = ".\..\..\..\ScenarioTests\CreateKeyVaultParameters.json"
+        $keyVaultParametersJson = (Get-Content $pathToJson | ConvertFrom-Json)
+        $keyVaultParametersJson.tenantId.value = $tenantId
+        $keyVaultParametersJson.vaultName.value = $vaultName
+        $keyVaultParametersJson.secretName.value = $cakName
+        $keyVaultParametersJson.secretName2.value = $cknName
+
+        # Get tenant id for service principal whitelist 
+        $context = get-azcontext
+        $tenant = $context.Tenant.Id
+
+        # hard code service principal object id -- following CMD returned null locally
+        # $id = $context.Account.Id
+        $servicePrincipalObjectId = "bc93052d-397e-4fba-b486-f5915bfd2a53"
+
+        # Set service principal whitelist in ARM deployment parameters
+        $keyVaultParametersJson.tenantId.value = $tenant
+        $keyVaultParametersJson.objectId.value = $servicePrincipalObjectId
+        $keyVaultParametersJson | ConvertTo-Json | set-content $pathToJson
+        
+        New-AzResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateParameterFile .\..\..\..\ScenarioTests\CreateKeyVaultParameters.json -TemplateFile .\..\..\..\ScenarioTests\CreateKeyVaultTemplate.json
         Start-Sleep -Seconds 60
         
-        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName 
+        # Get key vault deployed via ARM 
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname 
         Assert-NotNull $keyVault
 
         # Keyvault with CAK/CKN secrets
@@ -76,22 +98,13 @@ function Test-ExpressRoutePortMacSecConfigGcmAes128CRUD
         Assert-True { Check-CmdletReturnType "Get-AzExpressRoutePort" $vExpressRoutePort }
         Assert-AreEqual $rname $vExpressRoutePort.Name
 
-        # Get ExpressRoutePort
-        $vExpressRoutePort = Get-AzureRmExpressRoutePort -ResourceId $vExpressRoutePort.Id
-        Assert-NotNull $vExpressRoutePort
-        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRoutePort" $vExpressRoutePort }
-        Assert-AreEqual $rname $vExpressRoutePort.Name
-
-        $vExpressRoutePorts = Get-AzureRmExpressRoutePort -ResourceGroupName $rgname
-        Assert-NotNull $vExpressRoutePorts
-
-        $vExpressRoutePortsAll = Get-AzureRmExpressRoutePort
-        Assert-NotNull $vExpressRoutePortsAll
-        
-        # Update ExpressRoutePort with MACsec configuration 
         # Create Managed Identity
         $identity = New-AzUserAssignedIdentity -Name $identityName -Location $rglocation -ResourceGroup $rgname
         
+        # Set manager identity permission to keyvault
+        # ERPort resource needs access to secret value and id 
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -PermissionsToSecrets get -ObjectId $identity.PrincipalId
+
         # Set this user identity to be used by ExpressRoute
         $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
         
@@ -119,14 +132,14 @@ function Test-ExpressRoutePortMacSecConfigGcmAes128CRUD
 		$vExpressRouteLink = $vExpressRoutePort | Get-AzExpressRoutePortLinkConfig -Name "Link1"
 		Assert-NotNull $vExpressRouteLink;
 		Assert-AreEqual $vExpressRouteLink.AdminState "Enabled"
-        Assert-AreEqual $vExpressRouteLink.MacSecConfig.Cipher "GcmAes128"
+        Assert-AreEqual $vExpressRouteLink.MacSecConfig.Cipher $gcmAes128Cipher
         Assert-Null $vExpressRouteLink.MacSecConfig.SciState
 
 		# Get ExpressRouteLink 2
         $vExpressRouteLink = $vExpressRoutePort | Get-AzExpressRoutePortLinkConfig -Name "Link2"
 		Assert-NotNull $vExpressRouteLink;
 		Assert-AreEqual $vExpressRouteLink.AdminState "Enabled"  
-        Assert-AreEqual $vExpressRouteLink.MacSecConfig.Cipher "GcmAes128"
+        Assert-AreEqual $vExpressRouteLink.MacSecConfig.Cipher $gcmAes128Cipher
         Assert-Null $vExpressRouteLink.MacSecConfig.SciState
 
         # Remove ExpressRoutePort
@@ -135,7 +148,7 @@ function Test-ExpressRoutePortMacSecConfigGcmAes128CRUD
     }
     finally
     {
-        Cleanup
+        # Cleanup
         Clean-ResourceGroup $rgname
     }
 }
