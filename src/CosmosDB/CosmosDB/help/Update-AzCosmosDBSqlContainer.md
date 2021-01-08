@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -AnalyticalStorageTtl
-TTL for Analytical Storage.
+TTL for Analytical Storage (in Seconds).
 
 ```yaml
 Type: Int32
