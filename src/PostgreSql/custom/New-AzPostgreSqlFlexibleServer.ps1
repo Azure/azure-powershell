@@ -577,8 +577,8 @@ function Get-RandomNumbers($Prefix, $Length) {
 }
 
 function Get-RandomName() {
-    $Noun = Get-Content -Path (Join-Path $PSScriptRoot "..\utils\nouns.txt") | Get-Random
-    $Adjective = Get-Content -Path (Join-Path $PSScriptRoot "..\utils\adjectives.txt") | Get-Random
+    $Noun = Get-Content -Path (Join-Path $PSScriptRoot ".\nouns.txt") | Get-Random
+    $Adjective = Get-Content -Path (Join-Path $PSScriptRoot ".\adjectives.txt") | Get-Random
     $Number = Get-Random -Maximum 10
     $RandomName =  $Adjective + (Get-Culture).TextInfo.ToTitleCase($Noun) + $Number
     return $RandomName
