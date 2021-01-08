@@ -164,7 +164,15 @@ This command creates a new deployment at the current subscription scope by using
 The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
 It uses the *TemplateVersion* parameter to specify the version of the template.
 
-### Example 2: Use a custom template object and parameter file to create a deployment
+### Example 2: Deploy a template stored in a non public storage account using a uri and SAS token
+```
+PS C:\> New-AzDeployment -Location "West US" -TemplateUri "https://example.com/example.json" -QueryString "foo"
+```
+This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
+Running this command effectively accesses the template using the url https://example.com/example.json?foo.
+This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
+
+### Example 3: Use a custom template object and parameter file to create a deployment
 ```
 PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
 PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
@@ -269,7 +277,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-The query string (for example, a SAS token) to be used with the templateLink URI. Would be used in case of linkded templates
+The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates
 
 ```yaml
 Type: System.String

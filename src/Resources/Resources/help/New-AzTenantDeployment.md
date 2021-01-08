@@ -270,7 +270,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-The query string (for example, a SAS token) to be used with the templateLink URI. Would be used in case of linkded templates
+The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates
 
 ```yaml
 Type: System.String
