@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             base.resourceTypesToIgnoreApiVersion = new string[] {
                 "Microsoft.Sql/managedInstances",
-                "Microsoft.Sql/managedInstances/databases"
+                "Microsoft.Sql/managedInstances/databases",
+                "Microsoft.Storage"
             };
         }
 

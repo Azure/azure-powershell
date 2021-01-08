@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.IO;
@@ -23,7 +24,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
-using SDKStorage = Microsoft.Azure.Management.Storage;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -186,9 +186,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-        protected static SDKStorage.StorageManagementClient GetSDKStorageManagementClient(MockContext context)
+
+        protected static StorageManagementClient GetSDKStorageManagementClient(MockContext context)
         {
-            return context.GetServiceClient<SDKStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         public void Dispose()
