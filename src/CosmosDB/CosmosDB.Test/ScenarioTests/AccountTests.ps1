@@ -14,7 +14,7 @@
 
 function Test-AccountRelatedCmdlets
 {
-  $rgName = "CosmosDBResourceGroup28"
+  $rgName = "CosmosDBResourceGroup32"
   $location = "East US"
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"
@@ -22,11 +22,11 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb67-abc"
+  $cosmosDBAccountName = "cosmosdb32-3"
 
   #use an existing account with the following information for Account Update Operations
-  $cosmosDBExistingAccountName = "dbaccount28-1" 
-  $existingResourceGroupName = "CosmosDBResourceGroup28"
+  $cosmosDBExistingAccountName = "dbaccount32-1"
+  $existingResourceGroupName = "CosmosDBResourceGroup32"
 
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
@@ -171,10 +171,10 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup27"
+  $rgName = "CosmosDBResourceGroup31"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregionpowershell2-1"
+  $cosmosDBAccountName = "testupdateregionpowershell2-2"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try {
