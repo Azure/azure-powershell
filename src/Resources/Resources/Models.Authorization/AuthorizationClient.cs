@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (asignee == null)
             {
-                throw new ArgumentException("No AD object could be found with current parameters, please confirm the information provided is correct and try again");
+                throw new ArgumentException(ProjectResources.NoADObjectFound);
             }
 
             string principalId = asignee.Id;
