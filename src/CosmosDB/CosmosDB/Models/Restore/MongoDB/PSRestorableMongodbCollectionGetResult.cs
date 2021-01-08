@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     public class PSRestorableMongodbCollectionGetResult
@@ -36,21 +38,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         //
         // Summary:
         //     Gets the unique resource identifier of the RestorableMongodbCollection resource.
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
         public string Id { get; }
 
         //
         // Summary:
         //     Gets the name of the RestorableMongodbCollection resource.
+        [Ps1Xml(Label = "Name", Target = ViewControl.List)]
         public string Name { get; }
 
         //
         // Summary:
         //     Gets the type of Azure resource.
+        [Ps1Xml(Label = "Type", Target = ViewControl.List)]
         public string Type { get; }
 
         //
         // Summary:
         //     Gets or sets the properties of the CosmosDB Mondodb collection resource
+        [Ps1Xml(Label = "Resource", Target = ViewControl.List)]
         public PSRestorableMongodbCollectionPropertiesResource Resource { get; set; }
     }
 }

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     public class PSRestorableSqlDatabaseGetResult
@@ -36,21 +38,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Gets or sets Name of the Cosmos DB Sql database
         /// </summary>
+        [Ps1Xml(Label = "Name", Target = ViewControl.List)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets Id of the Cosmos DB Sql database
         /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets Type of the Cosmos DB resource
         /// </summary>
+        [Ps1Xml(Label = "Type", Target = ViewControl.List)]
         public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the properties of the CosmosDB Sql database resource
         /// </summary>
+        [Ps1Xml(Label = "Resource", Target = ViewControl.List)]
         public PSRestorableSqlDatabasePropertiesResource Resource { get; set; }
     }
 }
