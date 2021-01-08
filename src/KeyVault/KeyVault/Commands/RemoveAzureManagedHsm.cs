@@ -9,7 +9,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedHsm", SupportsShouldProcess = true, DefaultParameterSetName = RemoveManagedHsmByNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true, DefaultParameterSetName = RemoveManagedHsmByNameParameterSet)]
     [OutputType(typeof(bool))]
     public class RemoveAzureManagedHsm : KeyVaultManagementCmdletBase
     {

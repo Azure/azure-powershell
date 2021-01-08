@@ -19,6 +19,8 @@ using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 {
@@ -138,14 +140,18 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// <returns>Operation status response</returns>
         public AzureSqlDatabaseImportExportStatusModel GetStatus(string operationStatusLink)
         {
-            ImportExportOperationResult response = Communicator.GetOperationStatus(operationStatusLink);
+            HttpResponseMessage rawHttpResponse;
+            ImportExportOperationResult response = Communicator.GetOperationStatus(operationStatusLink, out rawHttpResponse);
+
+            OperationStatus? operationStatus = GetOperationStatusFromHttpStatus(rawHttpResponse.StatusCode);
 
             AzureSqlDatabaseImportExportStatusModel status = new AzureSqlDatabaseImportExportStatusModel()
             {
                 ErrorMessage = response.ErrorMessage,
                 LastModifiedTime = response.LastModifiedTime,
                 QueuedTime = response.QueuedTime,
-                Status = response.Status,
+                StatusMessage = response.Status, // in spite of the name, the field called "Status" is the correct one to put into the "StatusMessage" field
+                Status = operationStatus.HasValue ? operationStatus.Value.ToString() : "",
                 RequestType = response.RequestType,
                 PrivateEndpointRequestStatus = response.PrivateEndpointConnections?.Select(pec => new PrivateEndpointRequestStatus()
                 {
@@ -168,7 +174,39 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         {
             AzureSqlDatabaseImportExportBaseModel model = originalModel == null ? new AzureSqlDatabaseImportExportBaseModel() : originalModel.Copy();
             model.OperationStatusLink = statusLink?.ToString();
+
+            // It looks like the ExportDatabase SDK call is currently broken (and returns "null" instead of the response object).
+            // I need to check in a sev2 hotfix now. Once the SDK issue has been resolved, un-comment this and the asserts in
+            // the test code
+            // Also can probably remove the "LastLocationHeader" hack and just rely on the header in the returned results
+            // model.Status = response.Status;
             return model;
+        }
+
+        /// <summary>
+        /// Get the "Status" value for the Import/Export request
+        ///
+        /// This logic is copied verbatim from the (generated) legacy SDK:
+        /// <see cref="Azure.Management.Sql.LegacySdk.ImportExportOperations.GetImportExportOperationStatusAsync"/>
+        /// </summary>
+        /// <param name="statusCode"></param>
+        /// <returns></returns>
+        protected OperationStatus? GetOperationStatusFromHttpStatus(HttpStatusCode statusCode)
+        {
+            OperationStatus? status = null;
+            switch (statusCode)
+            {
+                // We expect this switch statement to cover all possible cases of return values from the service
+                case HttpStatusCode.OK:
+                case HttpStatusCode.Created:
+                    status = OperationStatus.Succeeded;
+                    break;
+                case HttpStatusCode.Accepted:
+                    status = OperationStatus.InProgress;
+                    break;
+            }
+
+            return status;
         }
     }
 }

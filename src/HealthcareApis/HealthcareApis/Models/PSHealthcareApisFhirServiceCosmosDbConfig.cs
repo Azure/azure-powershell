@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public PSHealthcareApisFhirServiceCosmosDbConfig(ServiceCosmosDbConfigurationInfo serviceCosmosDbConfigurationInfo)
         {
             this.OfferThroughput = serviceCosmosDbConfigurationInfo.OfferThroughput;
+            this.KeyVaultKeyUri = serviceCosmosDbConfigurationInfo.KeyVaultKeyUri;
         }
+
+        public string KeyVaultKeyUri { get; private set; }
 
         public int? OfferThroughput { get; private set; }
     }

@@ -286,6 +286,17 @@ function Test-Blob
 		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
 		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
 		
+		# Encryption Scope Test
+		$scopename = "testscope"
+		$containerName2 = "testscopecontainer"
+		New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
+		$container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName2 -PreventEncryptionScopeOverride $true
+		Assert-AreEqual $scopename $container.BlobContainerProperties.DefaultEncryptionScope
+		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
+		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
+		Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
+		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
+
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
 

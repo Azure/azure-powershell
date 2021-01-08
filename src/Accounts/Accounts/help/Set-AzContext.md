@@ -60,7 +60,7 @@ The context includes tenant, subscription, and environment information.
 
 ### Example 1: Set the subscription context
 ```
-PS C:\>Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------

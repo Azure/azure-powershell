@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SecretManagementExtension\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Az.KeyVault.Extension\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

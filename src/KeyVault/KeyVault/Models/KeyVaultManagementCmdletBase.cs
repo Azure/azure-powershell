@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Graph20190326Ad = Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6_20190326;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
@@ -234,14 +236,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objectId = null;
             if (DefaultContext.Account.Type == AzureAccount.AccountType.User)
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
-                objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions { UPN = DefaultContext.Account.Id }).ToString();
-#else
-                var userFetcher = ActiveDirectoryClient.Me.ToUser();
-                var user = userFetcher.ExecuteAsync().Result;
-                objectId = user.ObjectId;
-#endif
+                var adClient = new Graph20190326Ad.ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                // this operation is only in 20190326 version of API
+                objectId = adClient.GraphClient.SignedInUser.Get()?.ObjectId;
             }
 
             return objectId;

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Principal type.</summary>
     public partial struct PrincipalType :
         System.IEquatable<PrincipalType>
     {

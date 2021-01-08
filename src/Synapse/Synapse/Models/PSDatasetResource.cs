@@ -1,7 +1,4 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -14,16 +11,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                   dataset?.Etag)
         {
             this.WorkspaceName = workspaceName;
-            this.Properties = new PSDataset(dataset?.Properties);
+            this.Properties = dataset?.Properties;
         }
 
         public string WorkspaceName { get; set; }
 
-        public PSDataset Properties { get; set; }
-
-        public DatasetResource ToSdkObject()
-        {
-            return new DatasetResource(this.Properties?.ToSdkObject());
-        }
+        public Dataset Properties { get; set; }
     }
 }

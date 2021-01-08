@@ -53,6 +53,13 @@ foreach($RMPath in $resourceManagerPaths)
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)
         {
+            # if the nested module is script module, we need to keep the dll behind the script module
+            if ($cmdAssembly.EndsWith(".psm1")) {
+                if (!$cmdAssembly.Contains("/") -and !$cmdAssembly.Contains("\")) {
+                    $acceptedDlls += "Microsoft.Azure.PowerShell.Cmdlets." + $cmdAssembly.Split(".")[-2] + ".dll"
+                }
+                continue
+            }
             if($cmdAssembly.Contains("/")) {
                 $acceptedDlls += $cmdAssembly.Split("/")[-1]
             } else {
@@ -77,7 +84,7 @@ foreach($RMPath in $resourceManagerPaths)
         Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"
         $exludedPsd1 = @(
             "PsSwaggerUtility*.psd1",
-            "SecretManagementExtension.psd1"
+            "Az.KeyVault.Extension.psd1"
             )
         $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude $exludedPsd1 -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
         $removedPsd1 | % { Write-Host "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }

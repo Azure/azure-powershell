@@ -2612,6 +2612,10 @@
                 <Label>VirtualNetwork</Label>
                 <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>LoadBalancerFrontendIPConfiguration</Label>
+                <PropertyName>LoadBalancerFrontendIPConfigurationIdText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5428,6 +5432,10 @@
                 <Label>VirtualRouterIps</Label>
                 <PropertyName>VirtualRouterIps</PropertyName>
               </ListItem>
+		      <ListItem>
+			    <Label>AllowBranchToBranchTraffic</Label>
+			    <PropertyName>AllowBranchToBranchTraffic</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>Peerings</Label>
                 <PropertyName>PeeringsText</PropertyName>

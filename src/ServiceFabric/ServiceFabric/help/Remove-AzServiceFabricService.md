@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceFabricService
 
 ## SYNOPSIS
-Remove a service from the cluster.
+Remove a service from the cluster. Only supports ARM deployed services.
 
 ## SYNTAX
 

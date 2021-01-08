@@ -116,9 +116,7 @@ function Test-AzureFSCancelJob
  		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		# Trigger backup and wait for completion
-		$backupJob = Backup-AzRecoveryServicesBackupItem ` -VaultId $vault.ID -Item $item
-		
-		Assert-True { $backupJob.Status -eq "InProgress" }
+		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
 
 		$cancelledJob = Stop-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
 

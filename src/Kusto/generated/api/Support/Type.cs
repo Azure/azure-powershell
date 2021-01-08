@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The type of resource, Microsoft.Kusto/clusters.</summary>
     public partial struct Type :
         System.IEquatable<Type>
     {

@@ -99,39 +99,46 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
-        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer)
+        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer, Action<string> writeWarning)
         {
-            if (session.ARMContextSaveMode == ContextSaveMode.Process)
-            {
-                // Don't attempt to migrate if context autosave is disabled
-                return;
-            }
-
-            var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
-            var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
-            var store = session.DataStore;
-            if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
-            {
-                // Return if
-                // (1) The ADAL cache doesn't exist (nothing to migrate), or
-                // (2) The MSAL cache does exist (don't override existing cache)
-                return;
-            }
-
-            byte[] adalData;
             try
             {
-                adalData = File.ReadAllBytes(adalCachePath);
-            }
-            catch
-            {
-                // Return if there was an error converting the ADAL data safely
-                return;
-            }
+                if (session.ARMContextSaveMode == ContextSaveMode.Process)
+                {
+                    // Don't attempt to migrate if context autosave is disabled
+                    return;
+                }
 
-            if(adalData != null && adalData.Length > 0)
+                var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+                var store = session.DataStore;
+                if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
+                {
+                    // Return if
+                    // (1) The ADAL cache doesn't exist (nothing to migrate), or
+                    // (2) The MSAL cache does exist (don't override existing cache)
+                    return;
+                }
+
+                byte[] adalData;
+                try
+                {
+                    adalData = File.ReadAllBytes(adalCachePath);
+                }
+                catch
+                {
+                    // Return if there was an error converting the ADAL data safely
+                    return;
+                }
+
+                if (adalData != null && adalData.Length > 0)
+                {
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
+                }
+            }
+            catch(Exception e)
             {
-                new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
+                writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
             }
         }
 
