@@ -40,6 +40,9 @@ Gets the operation result for a resource
 ### [Get-AzDataProtectionOperationStatus](Get-AzDataProtectionOperationStatus.md)
 Gets the operation status for a resource.
 
+### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
+Prepares Datasource object for backup
+
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
@@ -102,6 +105,24 @@ Validates if Restore can be triggered for a DataSource
 
 ### [Test-AzDataProtectionBackupVaultNameAvailability](Test-AzDataProtectionBackupVaultNameAvailability.md)
 API to check for resource name availability
+
+### [TranslateBackupParam](TranslateBackupParam.md)
+
+
+### [TranslateBackupPolicy](TranslateBackupPolicy.md)
+
+
+### [TranslateBackupPolicyRule](TranslateBackupPolicyRule.md)
+
+
+### [TranslateBackupPolicyTagCriteria](TranslateBackupPolicyTagCriteria.md)
+
+
+### [TranslateBackupPolicyTrigger](TranslateBackupPolicyTrigger.md)
+
+
+### [TranslatePolicyRetentionLifeCycle](TranslatePolicyRetentionLifeCycle.md)
+
 
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.
