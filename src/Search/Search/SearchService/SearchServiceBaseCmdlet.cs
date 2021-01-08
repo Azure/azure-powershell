@@ -138,5 +138,28 @@ namespace Microsoft.Azure.Commands.Management.Search
                 throw ae.InnerException;
             }
         }
+
+        protected static string GetServiceNameFromParentResource(string parentResourceIdentifier)
+        {
+            // when processing a valid parent resource from a resource identifier of a 
+            // child resource type of a search service, it should be in the format
+            // "searchServices/<serviceName>". Anything else is an error
+            string[] constituents = parentResourceIdentifier.Split('/');
+
+            if (constituents.Length != 2)
+            {
+                throw new ArgumentException("Invalid resource id");
+            }
+
+            string parentResourceType = constituents[0];
+            string serviceName = constituents[1];
+
+            if (!parentResourceType.Equals("searchServices", StringComparison.InvariantCulture))
+            {
+                throw new ArgumentException("Invalid parent resource type in resource id");
+            }
+
+            return serviceName;
+        }
     }
 }
