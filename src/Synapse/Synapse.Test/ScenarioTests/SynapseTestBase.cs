@@ -59,8 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         protected static string TestSparkPoolName;
 
-        protected static string TestSqlPoolName;
-
         protected SynapseTestBase()
         {
             _helper = new EnvironmentSetupHelper();

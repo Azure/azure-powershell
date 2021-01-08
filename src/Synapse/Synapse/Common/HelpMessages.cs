@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SourceSqlPoolName = "The name of source SQL pool object to create from.";
 
-        public const string SourceSqlPoolId = "The resource identifier of source SQL pool object to create from.";
+        public const string SourceDatabaseId = "The resource ID of the database to restore.";
 
         public const string FromBackup = "Indicates to restore from the most recent backup of any SQL pool in this subscription.";
 

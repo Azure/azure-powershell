@@ -64,6 +64,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
             typeof(NewAzureTenantDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Location = this.Location,
             DeploymentName = this.Name,
             DeploymentMode = DeploymentMode.Incremental,
+            QueryString = this.QueryString,
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
             TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
@@ -87,6 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             deploymentName : this.Name,
             location : this.Location,
             mode : DeploymentMode.Incremental,
+            queryString: this.QueryString,
             templateUri : TemplateUri ?? this.TryResolvePath(TemplateFile),
             templateObject : this.TemplateObject,
             templateParametersUri : this.TemplateParameterUri,

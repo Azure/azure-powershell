@@ -54,9 +54,9 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
-  Login <String>: The server administrator login account name.
-  Sid <String>: The server administrator Sid (Secure ID).
-  TenantId <String>: The server Active Directory Administrator tenant id.
+  [Login <String>]: The server administrator login account name.
+  [Sid <String>]: The server administrator Sid (Secure ID).
+  [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserveradministrator
 #>

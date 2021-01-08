@@ -62,6 +62,13 @@ function New-AzMySqlServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
         ${SslEnforcement},
 
+        [Parameter(HelpMessage = 'Set the minimal TLS version for connections to server when SSL is enabled. Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+        # Enforce a minimal Tls version for the server.
+        ${MinimalTlsVersion},
+
         [Parameter(HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.Int32]
@@ -175,6 +182,11 @@ function New-AzMySqlServer {
           else
           {
               $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]::Enable
+          }
+
+          if ($PSBoundParameters.ContainsKey('MinimalTlsVersion')) {
+            $Parameter.MinimalTlsVersion = $PSBoundParameters['MinimalTlsVersion']
+            $null = $PSBoundParameters.Remove('MinimalTlsVersion')
           }
 
           if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
