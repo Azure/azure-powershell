@@ -18,10 +18,9 @@ param(
     $DaysBack = 28
 )
 
-
 $SinceDate = (Get-Date).AddDays((0-$DaysBack))
 $SinceDateStr =  $SinceDate.ToString('yyyy-MM-ddTHH:mm:ssZ')
-$Branch = 'master'#git branch --show-current # The Git 2.22 and above support.
+$Branch = git branch --show-current # The Git 2.22 and above support.
 $rootPath = "$PSScriptRoot\.."
 $changeLogFile = Get-Item -Path "..\ChangeLog.md"
 $changeLogContent = Get-Content -Path $changeLogFile.FullName | Out-String
@@ -44,6 +43,7 @@ if (![string]::IsNullOrEmpty($commintsPagesLink)) {
         [int]$commintsLastPageNumber = $commintsPagesLink.Substring($commintsPagesLink.LastIndexOf('&page=') + '&page='.Length, 1) 
     }
 }
+
 $PRs = @()
 for ($pageNumber=1; $pageNumber -le $commintsLastPageNumber; $pageNumber++) {
     $commitsPageUrl = $commitsUrl + "&page=$pageNumber"
@@ -71,7 +71,7 @@ foreach ($PR in $PRs)
   }
 }
 
-Write-Debug "The Valid PR count: $($validPRs.Count)"
+Write-Debug "The valid PR count: $($validPRs.Count)"
 
 $sortPRs = $validPRs | Sort-Object -Property @{Expression = {$_.author.login}; Descending = $False}
 
@@ -105,7 +105,7 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
         $commitMessage = $sortPRs[$PR].commit.message.Substring(0, $index)
     }
 
-    # Contributors have many submissions.
+    # Contributors have many commits.
     if ( ($account -eq $sortPRs[$PR - 1].author.login) -or ($account -eq $sortPRs[$PR + 1].author.login)) {
         # Firt commit.
         if (!($sortPRs[$PR].author.login -eq $sortPRs[$PR - 1].author.login)) {
