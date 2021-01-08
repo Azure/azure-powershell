@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbmongodbrestorabledatabase
 schema: 2.0.0
 ---
 
@@ -24,10 +24,13 @@ Gets the list of all the restorable Azure Cosmos DB MongoDB databases available 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCosmosDBMongoDBRestorableDatabase -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
+
+Name    Id		Type		Resource
+{name}  {id}	{Type}		Microsoft.Azure.Management.CosmosDB.Models.PSRestorableMongoDBDatabasePropertiesResource
 ```
 
-{{ Add example description here }}
+The resource object contains the properties of the database resource
 
 ## PARAMETERS
 

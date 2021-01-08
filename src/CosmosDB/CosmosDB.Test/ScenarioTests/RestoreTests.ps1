@@ -15,9 +15,9 @@
 function Test-RestoreFromNewAccountCmdlets
 {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup27"
+  $rgName = "CosmosDBResourceGroup30"
   $location = "West US"
-  $restoreTimestampInUtc = "2021-01-06T22:57:48+00:00"
+  $restoreTimestampInUtc = "2021-01-08T04:59:30+00:00"
   $cosmosDBAccountName = "restored-cosmosdb-1212"
   $sourceCosmosDBAccountName = "cosmosdb-1212"
   $databaseName = "TestDB1";
@@ -42,7 +42,7 @@ function Test-RestoreFromNewAccountCmdlets
   $databaseRid=$restorableSqlDatabases[0].Resource.OwnerResourceId
   $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
   Assert-NotNull $restorableSqlContainers
-  Assert-True { $restorableSqlContainers.Count -gt 2 }
+  Assert-True { $restorableSqlContainers.Count -gt 1 }
 
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName
   $restoredCosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $sourceRestorableAccount.Location -FromPointInTimeBackup -RestoreSourceId $sourceRestorableAccount.Id -RestoreTimestampInUtc $restoreTimestampInUtc -DatabasesToRestore $datatabaseToRestore
