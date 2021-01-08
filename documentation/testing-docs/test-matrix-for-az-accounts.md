@@ -11,7 +11,7 @@ Each test scenario is marked with one priority P0, P1, P2 based on two factors:
 
 ### Connect-AzAccount Using Work/School Account
 
-|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
+|Scenario\AuthN Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
 |----|----|----|----|----|----|----|----|----|----|
 |`No Subscrption/Tenant`|P0 (SemiAuto)|P0|P0 (Auto-No)|P0 (SemiAuto-No)|P0 (Auto-No)|P0 (SemiAuto-No)|P0|P0|P0|
 |`-Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P2 (SemiAuto-No)|P1|P1|P1|
@@ -35,7 +35,7 @@ Each test scenario is marked with one priority P0, P1, P2 based on two factors:
 
 ### Connect-AzAccount Using MSA Account
 
-|Scenario\Auth Method|Interactive|Device Code (`-DeviceCode`)|
+|Scenario\AuthN Method|Interactive|Device Code (`-DeviceCode`)|
 |----|----|----|
 |`No Subscription/Tenant`|P0 (SemiAuto)|P0|
 |`-Subscription sub-id`|P2 (SemiAuto)|P2|
@@ -51,7 +51,7 @@ Each test scenario is marked with one priority P0, P1, P2 based on two factors:
 |Token should be auto refreshed for long running operation(> 1 hour)|P2|Please refer `How To Test` section|
 |Token cache file should be compatible with az|P2|Please refer `How To Test` section|
 |Service Principal authentication should be successful if http proxy is set|P2|Please refer `How To Test` section|
-|FMR scenario(Integrated Windows Auth)|P2|Please refer `How To Test` section|
+|FMR scenario(Integrated Windows Authentication)|P2|Please refer `How To Test` section|
 
 ### Other Authentication Test Scenario
 
@@ -80,35 +80,34 @@ It should be fine to run these test cases in just one platform, e.g. Windows Pow
 |Azure China Instance|P2|Will be covered by dedicated team|
 |Azure German Instance|P2|Will be covered by dedicated team|
 |ADFS Environment|P1|Ask Azure Stack team to help|
-|SAW Machine|P2||
 
-### PWSH Platforms
+### PowerShell Platforms
 
-In theory all the combination of different OS platforms and PWSH versions should be covered, to compromise time effort and platform coverages, we should at least cover the following platforms. (For different versions of pwsh 7, need to cover at least smallest and biggest patch version for each major.minor version, currently it should be 7.0.0, 7.0.3 and 7.1.0. The reason to cover 7.0.0 is the future version of Azure.Core may contain higher version of built-in assemblies of pwsh.)
+In theory all the combination of different OS platforms and PowerShell versions should be covered, to compromise time effort and platform coverages, we should at least cover the following platforms. (For different versions of PowerShell 7, need to cover at least smallest and biggest patch version for each major.minor version, currently it should be 7.0.0, 7.0.3 and 7.1.0. The reason to cover 7.0.0 is the future version of Azure.Core may contain higher version of built-in assemblies of PowerShell.)
 
 - Windows PowerShell 5.1
-- PWSH 7.0.0 on Windows
-- PWSH 7.0.x(latest patch version) on Windows
-- PWSH 7.1.0 on Windows
-- PWSH 7.0.0 on Ubuntu
-- PWSH 7.0.x on Ubuntu
-- PWSH 7.1.0 on Ubuntu
-- PWSH 7.0.x on MacOS
+- PowerShell 7.0.0 on Windows
+- PowerShell 7.0.x(latest patch version) on Windows
+- PowerShell 7.1.0 on Windows
+- PowerShell 7.0.0 on Ubuntu
+- PowerShell 7.0.x on Ubuntu
+- PowerShell 7.1.0 on Ubuntu
+- PowerShell 7.0.x on MacOS
 - CloudShell
 - Docker Env for Ubuntu
-- Windows PowerShell 5.1 on SAW machine
+- Windows PowerShell 5.1 in Constrained Language Mode
 
 There's no need to run all tests on each of above platforms, the recommendation is:
 
 1. For `Windows PowerShell 5.1`, run all applicable tests.
-2. For `PWSH 7.0.x on Windows`, run tests on columns **Interactive/Device Code/SP Secret** (please refer to test scenario table).
+2. For `PowerShell 7.0.x on Windows`, run tests on columns **Interactive/Device Code/SP Secret** (please refer to test scenario table).
 3. For other platforms, just run smoke test `Connect-AzAccount`/`Connect-AzAccount -DeviceCode`.
 
-### Auth Code Change Impact
+### Authentication Code Change Impact
 
-When there is auth related code change in Az.Accounts, there's no need to run all test scenario on all platforms and environments. In contrast, we may choose to run different test scenario based on different auth code change impact, so that only affected test cases are covered.
+When there is authentication related code change in Az.Accounts, there's no need to run all test scenario on all platforms and environments. In contrast, we may choose to run different test scenario based on different authentication code change impact, so that only affected test cases are covered.
 
-#### Just Auth Code Change without Version Upgrade of MSAL/Azure.Identity in Az.Accounts
+#### Just Authentication Code Change without Version Upgrade of MSAL/Azure.Identity in Az.Accounts
 
 Only need to verify P0 test scenario.
 
@@ -122,7 +121,7 @@ Need to verify P0, P1 and P2 test scenario.
 
 ### Partner Teams
 
-If possible, we should provide preview/engineering bits to our partners for verifying: (P2)
+If possible, we should provide preview/engineering bits to our partners for verifying their modules: (P2)
 
 - Azure Stack team to verify ADFS scenario
 - Azure Function team
@@ -130,7 +129,7 @@ If possible, we should provide preview/engineering bits to our partners for veri
 
 ## How To Test
 
-1. How to test LRO
+1. How to Test Long Running Operation (LRO)
 
 ```powershell
 New-AzResourceGroupDeployment -Name xxxx -ResourceGroupName xxxx -TemplateFile path-to-template-file
@@ -188,23 +187,23 @@ You may save json content below as template file, make sure the value of `parame
 }
 ```
 
-2. How to test Http Proxy
+2. How to Test Http Proxy
 
     a. Start Fiddler
     b. Restart Windows PowerShell and run `Connect-AzAccount`
     c. You should see http request in Fiddler like `https://login.microsoftonline.com/organizations/oauth2/v2.0/token`
 
-3. How to test compatability with az
+3. How to Test compatability with az
 
     Expect no error happens:
     a. az login
-    b. Delete the token cache file (C:\Users<user>\AppData\Local.IdentityService\msal.cache)
+    b. Delete the token cache file (C:\Users\<user>\AppData\Local.IdentityService\msal.cache)
     c. Connect-AzAccount
     d. Get-AzSubscription
     e. az group list
     f. Disconnect-AzAccount
 
-4. How to test Integrated Windows Auth
+4. How to Test Integrated Windows Authentication
 
     a. Start Fiddler
     b. Restart Windows PowerShell and Connect-AzAccount using your corp account
@@ -216,6 +215,6 @@ You may save json content below as template file, make sure the value of `parame
 
     c. Although failed to login, but the http reqeust `https://msft.sts.microsoft.com/adfs/services/trust/2005/usernamemixed` should be successful.
 
-5. How to test on SAW machine
+5. How to Test in Constrained Language Mode
 
-    It would be great if you have real SAW machine. If not, please run PowerShell under [Constrained Language Mode](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/) which should have similar effect as on SAW machine.
+    If you're from MSFT and have SAW machine at hand, you could just run Windows PowerShell on SAW Machine on which constrained language mode is enabled by default. If not, please run PowerShell under [Constrained Language Mode](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/).
