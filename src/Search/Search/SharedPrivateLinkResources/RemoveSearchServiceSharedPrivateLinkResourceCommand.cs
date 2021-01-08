@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -28,6 +29,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         OutputType(typeof(bool))]
     public class RemoveSearchServiceSharedPrivateLinkResourceConnectionCommand : SharedPrivateLinkResourceBaseCmdlet
     {
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectParameterSetName,
+            HelpMessage = InputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSearchService ParentObject { get; set; }
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -50,6 +60,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
            Mandatory = true,
            ParameterSetName = ResourceNameParameterSetName,
            HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
+        [Parameter(
+           Position = 1,
+           Mandatory = true,
+           ParameterSetName = ParentObjectParameterSetName,
+           HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -61,20 +76,38 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = InputObjectParameterSetName,
+            HelpMessage = SharedPrivateLinkInputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSharedPrivateLinkResource InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = AsJobMessage)]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
-                var resourceId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceId.ResourceGroupName;
-                ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
-                Name = resourceId.ResourceName;
+                SetParameters(ResourceId);
+            }
+            else if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                SetParameters(InputObject.Id);
+            }
+            else if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
             }
 
             ConfirmAction(Force.IsPresent,
@@ -94,6 +127,14 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     }
                 }
             );
+        }
+
+        private void SetParameters(string resourceIdentifier)
+        {
+            var resourceId = new ResourceIdentifier(resourceIdentifier);
+            ResourceGroupName = resourceId.ResourceGroupName;
+            ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
+            Name = resourceId.ResourceName;
         }
     }
 }

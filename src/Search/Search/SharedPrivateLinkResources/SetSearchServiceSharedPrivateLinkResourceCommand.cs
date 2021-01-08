@@ -32,6 +32,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectParameterSetName,
+            HelpMessage = InputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSearchService ParentObject { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -52,6 +61,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             Mandatory = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = ParentObjectParameterSetName,
+            HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -69,14 +83,32 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public string RequestMessage { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = InputObjectParameterSetName,
+            HelpMessage = SharedPrivateLinkInputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSharedPrivateLinkResource InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AsJobMessage)]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
-                var resourceId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceId.ResourceGroupName;
-                ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
-                Name = resourceId.ResourceName;
+                SetParameters(ResourceId);
+            }
+            else if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                SetParameters(InputObject.Id);
+            }
+            else if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
             }
 
             if (ShouldProcess(Name, Resources.UpdateSharedPrivateLinkResource))
@@ -102,6 +134,14 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     WriteSharedPrivateLinkResource(response.Body);
                 });
             }
+        }
+
+        private void SetParameters(string resourceIdentifier)
+        {
+            var resourceId = new ResourceIdentifier(resourceIdentifier);
+            ResourceGroupName = resourceId.ResourceGroupName;
+            ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
+            Name = resourceId.ResourceName;
         }
     }
 }

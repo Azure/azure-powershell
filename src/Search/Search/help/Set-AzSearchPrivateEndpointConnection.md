@@ -14,7 +14,14 @@ Update the private endpoint connection to the Azure Cognitive Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Set-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceName] <String> [[-Name] <String>]
+Set-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParentObjectParameterSet
+```
+Set-AzSearchPrivateEndpointConnection -ParentObject <PSSearchService> [-Name] <String>
  -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,6 +30,13 @@ Set-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceNam
 ```
 Set-AzSearchPrivateEndpointConnection [-ResourceId] <String> -Status <PSPrivateLinkServiceConnectionStatus>
  [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Set-AzSearchPrivateEndpointConnection -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
+ -InputObject <PSPrivateEndpointConnection> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,18 +96,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Private endpoint connection input object
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSPrivateEndpointConnection
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure Cognitive Search Service private endpoint connection name
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceNameParameterSet
+Parameter Sets: ResourceNameParameterSet, ParentObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Azure Cognitive Search Service Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameter Sets: ParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         protected const string RequestMessageHelpMessage = "Shared private link resource request message";
         protected const string ResourceRegionHelpMessage = "(Optional) Shared private link resource region";
         protected const string SharedPrivateLinkResourceIdHelpMessage = "Shared private link resource id";
+        protected const string SharedPrivateLinkInputObjectHelpMessage = "Shared private link resource input object";
 
         protected void WriteSharedPrivateLinkResource(SharedPrivateLinkResource resource)
         {

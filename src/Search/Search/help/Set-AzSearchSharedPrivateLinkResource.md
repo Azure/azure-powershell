@@ -12,16 +12,29 @@ Update the shared private link resource for the Azure Cognitive Search service.
 
 ## SYNTAX
 
+### ParentObjectParameterSet
+```
+Set-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> -RequestMessage <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ResourceNameParameterSet
 ```
 Set-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- -RequestMessage <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzSearchSharedPrivateLinkResource [-ResourceId] <String> -RequestMessage <String>
+Set-AzSearchSharedPrivateLinkResource [-ResourceId] <String> -RequestMessage <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Set-AzSearchSharedPrivateLinkResource -RequestMessage <String> -InputObject <PSSharedPrivateLinkResource>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +62,21 @@ This example updates the request message for the pending shared private link res
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -64,18 +92,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Shared private link resource input object
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure Cognitive Search Shared private link resource
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceNameParameterSet
+Parameter Sets: ParentObjectParameterSet, ResourceNameParameterSet
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Azure Cognitive Search Service Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameter Sets: ParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

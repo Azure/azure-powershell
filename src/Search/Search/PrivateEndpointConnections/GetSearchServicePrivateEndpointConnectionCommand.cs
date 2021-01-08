@@ -42,15 +42,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdParameterSetName,
-            HelpMessage = ResourceIdHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ResourceGroupCompleter()]
@@ -69,6 +60,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             Position = 2,
             Mandatory = false,
             ParameterSetName = ResourceNameParameterSetName,
+            HelpMessage = PrivateEndpointConnectionNameHelpMessage)]
+        [Parameter(
+            Position = 1,
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSetName,
             HelpMessage = PrivateEndpointConnectionNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -97,22 +93,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     GetPrivateEndpointConnection(ResourceGroupName, ServiceName, Name);
                 }
             }
-            // LIST
-            else if (ParameterSetName.Equals(ParentResourceIdParameterSetName, StringComparison.InvariantCulture))
-            {
-                var serviceResourceId = new ResourceIdentifier(ParentResourceId);
-
-                var resourceGroupName = serviceResourceId.ResourceGroupName;
-                var serviceName = serviceResourceId.ResourceName;
-
-                ListPrivateEndpointConnections(resourceGroupName, serviceName);
-            }
             else if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
             {
-                var resourceGroupName = ParentObject.ResourceGroupName;
-                var serviceName = ParentObject.Name;
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
 
-                ListPrivateEndpointConnections(resourceGroupName, serviceName);
+                // LIST
+                if (Name == null)
+                {
+                    ListPrivateEndpointConnections(ResourceGroupName, ServiceName);
+                }
+                // GET
+                else
+                {
+                    GetPrivateEndpointConnection(ResourceGroupName, ServiceName, Name);
+                }
             }
             else if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
@@ -123,10 +118,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 var resourceName = privateEndpointConnectionId.ResourceName;
 
                 GetPrivateEndpointConnection(resourceGroupName, serviceName, resourceName);
-            }
-            else
-            {
-                throw new InvalidOperationException("Invalid set of parameters specified.");
             }
         }
 

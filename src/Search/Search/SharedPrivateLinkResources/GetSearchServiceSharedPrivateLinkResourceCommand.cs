@@ -42,15 +42,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdParameterSetName,
-            HelpMessage = ResourceIdHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ResourceGroupCompleter()]
@@ -69,6 +60,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             Position = 2,
             Mandatory = false,
             ParameterSetName = ResourceNameParameterSetName,
+            HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
+        [Parameter(
+            Position = 1,
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSetName,
             HelpMessage = SharedPrivateLinkResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -97,22 +93,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     GetSharedPrivateLinkResource(ResourceGroupName, ServiceName, Name);
                 }
             }
-            // LIST
-            else if (ParameterSetName.Equals(ParentResourceIdParameterSetName, StringComparison.InvariantCulture))
-            {
-                var serviceResourceId = new ResourceIdentifier(ParentResourceId);
-
-                var resourceGroupName = serviceResourceId.ResourceGroupName;
-                var serviceName = serviceResourceId.ResourceName;
-
-                ListSharedPrivateLinkResources(resourceGroupName, serviceName);
-            }
             else if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
             {
-                var resourceGroupName = ParentObject.ResourceGroupName;
-                var serviceName = ParentObject.Name;
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
 
-                ListSharedPrivateLinkResources(resourceGroupName, serviceName);
+                // LIST
+                if (Name == null)
+                {
+                    ListSharedPrivateLinkResources(ResourceGroupName, ServiceName);
+                }
+                // GET
+                else
+                {
+                    GetSharedPrivateLinkResource(ResourceGroupName, ServiceName, Name);
+                }
             }
             else if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {

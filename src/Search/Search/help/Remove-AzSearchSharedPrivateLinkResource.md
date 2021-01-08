@@ -15,13 +15,26 @@ Remove the shared private link resource from the Azure Cognitive Search service.
 ### ResourceNameParameterSet (Default)
 ```
 Remove-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ParentObjectParameterSet
+```
+Remove-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzSearchSharedPrivateLinkResource -InputObject <PSSharedPrivateLinkResource> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +54,21 @@ Remove Shared Private Link Resource 'blob-pe'.
 This example deletes a shared private link resource by name of the Azure Cognitive Search service.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -72,18 +100,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Shared private link resource input object
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSharedPrivateLinkResource
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure Cognitive Search Shared private link resource
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceNameParameterSet
+Parameter Sets: ResourceNameParameterSet, ParentObjectParameterSet
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+Azure Cognitive Search Service Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameter Sets: ParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

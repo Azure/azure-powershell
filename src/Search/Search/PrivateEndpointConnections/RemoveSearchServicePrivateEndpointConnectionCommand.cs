@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -28,6 +29,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         OutputType(typeof(bool))]
     public class RemoveSearchServicePrivateEndpointConnectionCommand : PrivateEndpointConnectionBaseCmdlet
     {
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectParameterSetName,
+            HelpMessage = InputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSearchService ParentObject { get; set; }
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -50,8 +60,22 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
            Mandatory = true,
            ParameterSetName = ResourceNameParameterSetName,
            HelpMessage = PrivateEndpointConnectionNameHelpMessage)]
+        [Parameter(
+           Position = 1,
+           Mandatory = true,
+           ParameterSetName = ParentObjectParameterSetName,
+           HelpMessage = PrivateEndpointConnectionNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = InputObjectParameterSetName,
+            HelpMessage = PrivateEndpointInputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSPrivateEndpointConnection InputObject { get; set; }
 
         [Parameter(
            Position = 0,
@@ -71,10 +95,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         {
             if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
-                var resourceId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceId.ResourceGroupName;
-                ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
-                Name = resourceId.ResourceName;
+                SetParameters(ResourceId);
+            }
+            else if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                SetParameters(InputObject.Id);
+            }
+            else if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
             }
 
             ConfirmAction(Force.IsPresent,
@@ -94,6 +124,14 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     }
                 }
             );
+        }
+
+        private void SetParameters(string resourceIdentifier)
+        {
+            var resourceId = new ResourceIdentifier(resourceIdentifier);
+            ResourceGroupName = resourceId.ResourceGroupName;
+            ServiceName = GetServiceNameFromParentResource(resourceId.ParentResource);
+            Name = resourceId.ResourceName;
         }
     }
 }

@@ -24,6 +24,12 @@ Get-AzSearchPrivateLinkResources [-ResourceId] <String> [-DefaultProfile <IAzure
  [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Get-AzSearchPrivateLinkResources [-InputObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzSearchPrivateLinkResources** cmdlet gets private link resource details for the Azure Cognitive Search service.
 
@@ -85,7 +91,7 @@ The example shows how to get the private link resource details (in JSON form for
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -96,11 +102,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Azure Cognitive Search Service Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure Cognitive Search Service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -115,7 +136,7 @@ Accept wildcard characters: False
 Resource Group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -130,7 +151,7 @@ Accept wildcard characters: False
 Azure Cognitive Search Service Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -145,7 +166,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -161,7 +182,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = ResourceRegionHelpMessage)]
         public string ResourceRegion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = AsJobMessage)]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             SharedPrivateLinkResource resource =

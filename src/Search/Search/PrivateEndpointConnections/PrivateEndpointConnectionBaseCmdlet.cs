@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         protected const string PrivateEndpointConnectionStatusHelpMessage = "Private link service connection status";
         protected const string PrivateEndpointConnectionResourceIdHelpMessage = "Private link service resource id";
         protected const string PrivateEndpointConnectionDescriptionHelpMessage = "Private endpoint connection description";
+        protected const string PrivateEndpointInputObjectHelpMessage = "Private endpoint connection input object";
 
         protected void WritePrivateEndpointConnection(PrivateEndpointConnection privateEndpointConnection)
         {

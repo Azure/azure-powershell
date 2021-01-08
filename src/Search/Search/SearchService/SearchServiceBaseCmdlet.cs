@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string IdentityMessage = "(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)";
         protected const string IPRulesMessage = "(Optional) Azure Cognitive Search Service IP rules";
 
+        protected const string AsJobMessage = "Run cmdlet in the background";
+
         protected const string ParentObjectParameterSetName = "ParentObjectParameterSet";
         protected const string ParentResourceIdParameterSetName = "ParentResourceIdParameterSet";
 

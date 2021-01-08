@@ -55,6 +55,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = InputObjectParameterSetName,
+            HelpMessage = InputObjectHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSSearchService InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
@@ -62,6 +71,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 var resourceId = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = resourceId.ResourceGroupName;
                 Name = resourceId.ResourceName;
+            }
+            else if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                Name = InputObject.Name;
             }
 
             try

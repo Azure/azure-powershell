@@ -20,14 +20,8 @@ Get-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceNam
 
 ### ParentObjectParameterSet
 ```
-Get-AzSearchPrivateEndpointConnection [-ParentObject] <PSSearchService>
+Get-AzSearchPrivateEndpointConnection [-ParentObject] <PSSearchService> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParentResourceIdParameterSet
-```
-Get-AzSearchPrivateEndpointConnection [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -94,7 +88,7 @@ Azure Cognitive Search Service private endpoint connection name
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceNameParameterSet
+Parameter Sets: ResourceNameParameterSet, ParentObjectParameterSet
 Aliases:
 
 Required: False
@@ -116,21 +110,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ParentResourceId
-Azure Cognitive Search Service Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: ParentResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
