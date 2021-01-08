@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Search.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
@@ -70,6 +71,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = ReplicaCountHelpMessage)]
         public int? ReplicaCount { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = PublicNetworkAccessMessage)]
+        public PSPublicNetworkAccess? PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IdentityMessage)]
+        public PSIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IPRulesMessage)]
+        public PSIpRule[] IPRules { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
@@ -91,10 +107,35 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     // GET
                     var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
 
+                    var networkRuleSet = IPRules?.Any() == true ? new PSNetworkRuleSet
+                    {
+                        IpRules = IPRules
+                    } : null;
+
+                    var identity = IdentityType.HasValue ? new PSIdentity
+                    {
+                        Type = IdentityType.Value
+                    } : null;
+
                     // UPDATE
-                    SearchServiceUpdate update = new SearchServiceUpdate();
-                    update.PartitionCount = PartitionCount;
-                    update.ReplicaCount = ReplicaCount;
+                    var update = new SearchServiceUpdate
+                    {
+                        // Keep existing properties
+                        HostingMode = service.HostingMode,
+                        Location = service.Location,
+                        //NetworkRuleSet = service.NetworkRuleSet,
+                        Sku = service.Sku,
+                        Tags = service.Tags,
+
+                        // Update the properties passed in (treating nulls as no change to be consistent)
+                        NetworkRuleSet = (NetworkRuleSet)networkRuleSet ?? service.NetworkRuleSet,
+                        PublicNetworkAccess = (PublicNetworkAccess?)PublicNetworkAccess ?? service.PublicNetworkAccess,
+                        Identity = (Identity)identity ?? service.Identity,
+
+                        PartitionCount = PartitionCount,
+                        ReplicaCount = ReplicaCount,
+                    };
+
                     service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, update).Result.Body;
 
                     // OUTPUT
