@@ -610,28 +610,11 @@ function Test-GetAzSearchPrivateLinkResources
     }
 }
 
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
-Test New-AzSearchSharedPrivateLinkResource
-Test Get-AzSearchSharedPrivateLinkResource
-Test Set-AzSearchSharedPrivateLinkResource
-Test Remove-AzSearchSharedPrivateLinkResource
+Test Get-AzSearchPrivateLinkResourcesPipeline
 #>
-function Test-ManageAzSearchSharedPrivateLinkResource
+function Test-GetAzSearchPrivateLinkResourcesPipeline
 {
 	# Arrange
 	$rgname = getAssetName
@@ -643,15 +626,63 @@ function Test-ManageAzSearchSharedPrivateLinkResource
 	$replicaCount = 1
 	$hostingMode = "Default"
 
-	$resource1 = "blob-pe"
-	$resourceId1 = "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourcegroups/PETesting/providers/Microsoft.Storage/storageAccounts/petesting"
-	$resource2 = "blob-pe2"
-	$resourceId2 = "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourcegroups/PETesting/providers/Microsoft.Storage/storageAccounts/petesting2"
-	$groupId = "blob"
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Create service
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$privateLinkResources = $newSearchService | Get-AzSearchPrivateLinkResources
+
+		Assert-AreEqual 1 $privateLinkResources.Count
+
+		Assert-NotNull $privateLinkResources[0].Id
+		Assert-NotNull $privateLinkResources[0].GroupId
+		Assert-True { $privateLinkResources[0].RequiredMembers.Count -gt 0 }
+		Assert-True { $privateLinkResources[0].RequiredZoneNames.Count -gt 0 }
+		Assert-True { $privateLinkResources[0].ShareablePrivateLinkResourceTypes.Count -gt 0 }
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchSharedPrivateLinkResource
+Test Get-AzSearchSharedPrivateLinkResource
+Test Set-AzSearchSharedPrivateLinkResource
+Test Remove-AzSearchSharedPrivateLinkResource
+#>
+function Test-ManageAzSearchSharedPrivateLinkResources
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
 
 	try
     {
 		New-AzResourceGroup -Name $rgname -Location $loc
+
+		$resource1 = "blob-pe"
+		$storageAccount1 = "pssweanzmd"
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceId1 = $resourceObj1.Id
+
+		$resource2 = "blob-pe2"
+		$storageAccount2 = "pslnuvtdhp"
+		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceId2 = $resourceObj2.Id
+
+		$groupId = "blob"
 		
 		# Create service
 		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
@@ -729,6 +760,217 @@ function Test-ManageAzSearchSharedPrivateLinkResource
 		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
 		Assert-AreEqual 1 $sharedPrivateLinkResources.Count
 		Assert-AreEqual "table-pe" $sharedPrivateLinkResources[0].Name
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test ManageAzSearchSharedPrivateLinkResourcePipeline
+#>
+function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
+{
+# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+
+		$resource1 = "blob-pe"
+		$storageAccount1 = "pstalexsmn"
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceId1 = $resourceObj1.Id
+
+		$resource2 = "blob-pe2"
+		$storageAccount2 = "psotjpehnm"
+		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceId2 = $resourceObj2.Id
+
+		$groupId = "blob"
+		
+		# Create service
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		
+		# Create a shared private link resource to a pre-created storage account 
+		$sharedPrivateLinkResource1 = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource1 `
+			-PrivateLinkResourceId $resourceId1 `
+			-GroupId $groupId `
+			-RequestMessage "Please approve" 
+
+		Assert-NotNull $sharedPrivateLinkResource1
+
+		# Create a shared private link resource to another pre-created storage account 
+		$sharedPrivateLinkResource2 = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource2 `
+			-PrivateLinkResourceId $resourceId2 `
+			-GroupId $groupId `
+			-RequestMessage "Please approve" 
+
+		Assert-NotNull $sharedPrivateLinkResource2
+
+		# List all shared private link resources via pipeline object (parent)
+		$sharedPrivateLinkResources = Get-AzSearchService -ResourceGroupName $rgname -Name $svcName | Get-AzSearchSharedPrivateLinkResource
+		Assert-AreEqual 2 $sharedPrivateLinkResources.Count
+
+		# Get a specific shared private link resource via pipeline object (parent)
+		$sharedPrivateLinkResource = Get-AzSearchService -ResourceGroupName $rgname -Name $svcName `
+		| Get-AzSearchSharedPrivateLinkResource -Name $resource1
+		Assert-AreEqual $resource1 $sharedPrivateLinkResource.Name
+
+		# Update the request message of a specific shared private link resource via pipeline object (input)
+		$sharedPrivateLinkResourceUpdated = Get-AzSearchService -ResourceGroupName $rgname -Name $svcName `
+		| Get-AzSearchSharedPrivateLinkResource -Name $resource2 `
+		| Set-AzSearchSharedPrivateLinkResource -RequestMessage "Please kindly approve"
+
+		Assert-AreEqual $resource2 $sharedPrivateLinkResourceUpdated.Name
+		Assert-AreEqual "Please kindly approve" $sharedPrivateLinkResourceUpdated.RequestMessage
+
+		# Update the request message of a different shared private link resource via pipeline object (parent)
+		$sharedPrivateLinkResourceUpdated = Get-AzSearchService -ResourceGroupName $rgname -Name $svcName `
+		| Set-AzSearchSharedPrivateLinkResource -Name $resource1 -RequestMessage "Please kindly approve resource 1"
+
+		Assert-AreEqual $resource1 $sharedPrivateLinkResourceUpdated.Name
+		Assert-AreEqual "Please kindly approve resource 1" $sharedPrivateLinkResourceUpdated.RequestMessage
+
+		# Delete a specific shared private link resource via pipeline object (input)
+		Get-AzSearchService -ResourceGroupName $rgname -Name $svcName `
+		| Get-AzSearchSharedPrivateLinkResource -Name $resource1 `
+		| Remove-AzSearchSharedPrivateLinkResource -Force
+
+		# Delete a specific shared private link resource via pipeline object (parent)
+		Get-AzSearchService -ResourceGroupName $rgname -Name $svcName `
+		| Remove-AzSearchSharedPrivateLinkResource -Name $resource2 -Force
+
+		# List all the shared private link resources of the service
+		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
+		Assert-AreEqual 0 $sharedPrivateLinkResources.Count
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test ManageAzSearchSharedPrivateLinkResourceJob
+#>
+function Test-ManageAzSearchSharedPrivateLinkResourceJob
+{
+# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+
+		$resource1 = "blob-pe"
+
+		# A random name
+		$storageAccount1 = "psjiuxstbg"
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceId1 = $resourceObj1.Id
+
+		$groupId = "blob"
+		
+		# Create service
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		
+		# Create a shared private link resource to a pre-created storage account 
+		$createJob = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource1 `
+			-PrivateLinkResourceId $resourceId1 `
+			-GroupId $groupId `
+			-RequestMessage "Please approve" `
+			-AsJob
+
+		$stopwatch =  [system.diagnostics.stopwatch]::StartNew()
+		Write-Verbose "Querying for create job completion"
+		while ($true)
+		{
+			if ($stopwatch.Elapsed.TotalMinutes -gt 10)
+			{
+				throw [System.InvalidOperationException] "Took too long to create shared private link resource."
+			}
+
+			$createState = ($createJob | Get-Job).State
+			if ($createState -ne "Completed")
+			{
+				Write-Verbose "Job still running waiting for 30 seconds before trying again"
+				Start-Sleep -Seconds 30
+			}
+			else
+			{
+				Write-Verbose "Job completed"
+				break
+			}
+		} 
+		$stopwatch.Stop()
+
+		# List all the shared private link resources of the service
+		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
+		Assert-AreEqual 1 $sharedPrivateLinkResources.Count
+
+		$deleteJob = Remove-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource1 `
+			-Force `
+			-AsJob
+
+		$stopwatch =  [system.diagnostics.stopwatch]::StartNew()
+		Write-Verbose "Querying for delete job completion"
+		while ($true)
+		{
+			if ($stopwatch.Elapsed.TotalMinutes -gt 10)
+			{
+				throw [System.InvalidOperationException] "Took too long to delete shared private link resource."
+			}
+
+			$deleteState = ($deleteJob | Get-Job).State
+			if ($deleteState -ne "Completed")
+			{
+				Write-Verbose "Job still running waiting for 30 seconds before trying again"
+				Start-Sleep -Seconds 30
+			}
+			else
+			{
+				Write-Verbose "Job completed"
+				break
+			}
+		}
+		$stopwatch.Stop()
+
+		# List all the shared private link resources of the service
+		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
+		Assert-AreEqual 0 $sharedPrivateLinkResources.Count
 	}
 	finally
     {

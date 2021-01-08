@@ -118,9 +118,30 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateLinkResourcesPipeline()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResourcesPipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSharedPrivateLinkResources()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResource");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResources");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesPipeline()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResourcePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesJob()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResourceJob");
         }
     }
 }
