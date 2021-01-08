@@ -45,6 +45,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Sets the timespan in Milliseconds to wait before the request times out.")]
+        public double Timeout { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -72,8 +75,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
-                    // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout by 300 seconds.
-                    client.Timeout = TimeSpan.FromMilliseconds(300000);
+                    if (Timeout != 0)
+                    {
+                        // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
+                        client.Timeout = TimeSpan.FromMilliseconds(Timeout);
+                    }
                     var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                     HttpContent fileContent = new StreamContent(s);
