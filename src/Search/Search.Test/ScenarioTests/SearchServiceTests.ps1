@@ -16,7 +16,7 @@
 .SYNOPSIS
 Test New-AzSearchService
 #>
-function Test-NewAzureRmSearchService
+function Test-NewAzSearchService
 {
 	# Arrange
 	$rgname = getAssetName
@@ -54,7 +54,7 @@ function Test-NewAzureRmSearchService
 .SYNOPSIS
 Test New-AzSearchServiceBasic
 #>
-function Test-NewAzureRmSearchServiceBasic
+function Test-NewAzSearchServiceBasic
 {
 	# Arrange
 	$rgname = getAssetName
@@ -93,12 +93,12 @@ function Test-NewAzureRmSearchServiceBasic
 .SYNOPSIS
 Test New-AzSearchServiceL1
 #>
-function Test-NewAzureRmSearchServiceL1
+function Test-NewAzSearchServiceL1
 {
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Storage_Optimized_L1"
 	$partitionCount = 1
@@ -130,9 +130,135 @@ function Test-NewAzureRmSearchServiceL1
 
 <#
 .SYNOPSIS
+Test New-AzSearchServiceIdentity
+#>
+function Test-NewAzSearchServiceIdentity
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$identityType = "SystemAssigned"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -IdentityType $identityType
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-NotNull $newSearchService.Identity
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServicePublicNetworkAccessDisabled
+#>
+function Test-NewAzSearchServicePublicNetworkAccessDisabled
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$publicNetworkAccess = "Disabled"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -PublicNetworkAccess $publicNetworkAccess
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual $publicNetworkAccess $newSearchService.PublicNetworkAccess
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceIpRules
+#>
+function Test-NewAzSearchServiceIpRules
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$ipRules = 
+		@([pscustomobject]@{Value="55.5.64.73"},
+		[pscustomobject]@{Value="52.228.216.197"},
+		[pscustomobject]@{Value="101.37.222.205"})
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -IpRules $ipRules
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual 3 $newSearchService.NetworkRuleSet.Count
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get-AzSearchService
 #>
-function Test-GetAzureRmSearchService
+function Test-GetAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
@@ -167,7 +293,7 @@ function Test-GetAzureRmSearchService
 		Assert-AreEqual $newSearchService.Sku $retrievedSearchService1.Sku
 		Assert-AreEqual $newSearchService.Sku $retrievedSearchService2.Sku
 
-		# Create anther one in the same ResourceGroup.
+		# Create another one in the same ResourceGroup.
 		$svcName2 = $rgname + "-service2"
 		$newSearchService2 = New-AzSearchService -ResourceGroupName $rgname -Name $svcName2 -Sku $sku -Location $loc
 
@@ -187,7 +313,7 @@ function Test-GetAzureRmSearchService
 .SYNOPSIS
 Test Remove-AzSearchService
 #>
-function Test-RemoveAzureRmSearchService
+function Test-RemoveAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
@@ -254,7 +380,7 @@ function Test-RemoveAzureRmSearchService
 .SYNOPSIS
 Test Set-AzSearchService
 #>
-function Test-SetAzureRmSearchService
+function Test-SetAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
@@ -310,9 +436,9 @@ function Test-SetAzureRmSearchService
 
 <#
 .SYNOPSIS
-Test ManageAzureRmSearchServiceAdminKey
+Test ManageAzSearchServiceAdminKey
 #>
-function Test-ManageAzureRmSearchServiceAdminKey
+function Test-ManageAzSearchServiceAdminKey
 {
     # Arrange
 	$rgname = getAssetName
@@ -379,9 +505,9 @@ function Test-ManageAzureRmSearchServiceAdminKey
 
 <#
 .SYNOPSIS
-Test ManageAzureRmSearchServiceQueryKey
+Test ManageAzSearchServiceQueryKey
 #>
-function Test-ManageAzureRmSearchServiceQueryKey
+function Test-ManageAzSearchServiceQueryKey
 {
     # Arrange
 	$rgname = getAssetName
@@ -437,6 +563,172 @@ function Test-ManageAzureRmSearchServiceQueryKey
 		$allKeys = Get-AzSearchQueryKey -ParentResourceId $newSearchService.Id
 
 		Assert-AreEqual 1 $allKeys.Count
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzSearchPrivateLinkResources
+#>
+function Test-GetAzSearchPrivateLinkResources
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Create service
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		$privateLinkResources = Get-AzSearchPrivateLinkResources -ResourceGroupName $rgname -Name $svcName
+
+		Assert-AreEqual 1 $privateLinkResources.Count
+
+		Assert-NotNull $privateLinkResources[0].Id
+		Assert-NotNull $privateLinkResources[0].GroupId
+		Assert-True { $privateLinkResources[0].RequiredMembers.Count -gt 0 }
+		Assert-True { $privateLinkResources[0].RequiredZoneNames.Count -gt 0 }
+		Assert-True { $privateLinkResources[0].ShareablePrivateLinkResourceTypes.Count -gt 0 }
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.SYNOPSIS
+Test New-AzSearchSharedPrivateLinkResource
+Test Get-AzSearchSharedPrivateLinkResource
+Test Set-AzSearchSharedPrivateLinkResource
+Test Remove-AzSearchSharedPrivateLinkResource
+#>
+function Test-ManageAzSearchSharedPrivateLinkResource
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+
+	$resource1 = "blob-pe"
+	$resourceId1 = "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourcegroups/PETesting/providers/Microsoft.Storage/storageAccounts/petesting"
+	$resource2 = "blob-pe2"
+	$resourceId2 = "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourcegroups/PETesting/providers/Microsoft.Storage/storageAccounts/petesting2"
+	$groupId = "blob"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Create service
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+		
+		# Create a shared private link resource to a pre-created storage account 
+		$sharedPrivateLinkResource1 = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource1 `
+			-PrivateLinkResourceId $resourceId1 `
+			-GroupId $groupId `
+			-RequestMessage "Please approve" 
+
+		Assert-NotNull $sharedPrivateLinkResource1
+
+		# Create a shared private link resource to another pre-created storage account 
+		$sharedPrivateLinkResource2 = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource2 `
+			-PrivateLinkResourceId $resourceId2 `
+			-GroupId $groupId `
+			-RequestMessage "Please approve" 
+
+		Assert-NotNull $sharedPrivateLinkResource2
+
+		# Create a shared private link resource to the same pre-created storage account but with different group id
+		$sharedPrivateLinkResource3 = New-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name "table-pe" `
+			-PrivateLinkResourceId $resourceId2 `
+			-GroupId "table" `
+			-RequestMessage "Please approve" 
+
+		Assert-NotNull $sharedPrivateLinkResource3
+
+		# List all shared private link resources
+		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
+		Assert-AreEqual 3 $sharedPrivateLinkResources.Count
+
+		# Get a specific shared private link resource
+		$sharedPrivateLinkResource = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName -Name $resource1
+		Assert-AreEqual $resource1 $sharedPrivateLinkResource.Name
+
+		# Get a specific shared private link resource by resource id
+		$sharedPrivateLinkResource = Get-AzSearchSharedPrivateLinkResource -ResourceId $sharedPrivateLinkResource2.Id
+		Assert-AreEqual $resource2 $sharedPrivateLinkResource.Name
+
+		# Update the request message of a specific shared private link resource
+		$sharedPrivateLinkResourceUpdated = Set-AzSearchSharedPrivateLinkResource `
+			-ResourceGroupName $rgname `
+			-ServiceName $svcName `
+			-Name $resource2 `
+			-RequestMessage "Please kindly approve"
+
+		Assert-AreEqual $resource2 $sharedPrivateLinkResourceUpdated.Name
+		Assert-AreEqual "Please kindly approve" $sharedPrivateLinkResourceUpdated.RequestMessage
+
+		# Update the request message of a different shared private link resource by resource id
+		$sharedPrivateLinkResourceUpdated = Set-AzSearchSharedPrivateLinkResource `
+			-ResourceId $sharedPrivateLinkResource1.Id `
+			-RequestMessage "Please kindly approve resource 1"
+
+		Assert-AreEqual $resource1 $sharedPrivateLinkResourceUpdated.Name
+		Assert-AreEqual "Please kindly approve resource 1" $sharedPrivateLinkResourceUpdated.RequestMessage
+
+		# Delete a specific shared private link resource
+		Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName -Name $resource1 -Force
+
+		# Delete a specific shared private link resource by resource id
+		Remove-AzSearchSharedPrivateLinkResource -ResourceId $sharedPrivateLinkResource2.Id -Force
+
+		# List all the shared private link resources of the service
+		$sharedPrivateLinkResources = Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName
+		Assert-AreEqual 1 $sharedPrivateLinkResources.Count
+		Assert-AreEqual "table-pe" $sharedPrivateLinkResources[0].Name
 	}
 	finally
     {
