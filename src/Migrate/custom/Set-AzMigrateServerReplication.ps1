@@ -81,6 +81,12 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the storage account to be used for boot diagnostics.
+        ${TargetBootDiagnosticsStorageAccount},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription Id.
@@ -143,6 +149,8 @@ function Set-AzMigrateServerReplication {
             $HasNicToUpdate = $PSBoundParameters.ContainsKey('NicToUpdate')
             $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
             $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+            $HasTargetBootDignosticStorageAccount = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
+            
 
             $null = $PSBoundParameters.Remove('TargetObjectID')
             $null = $PSBoundParameters.Remove('TargetVMName')
@@ -174,13 +182,64 @@ function Set-AzMigrateServerReplication {
             $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
             if($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')){
                 $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtUpdateMigrationItemInput]::new()
+                
+                # Auto fill unchanged parameters
                 $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
-                if($HasTargetAvailabilitySet){ $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet }
-                if($HasTargetAvailabilityZone){ $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone }
-                if($HasTargetNetworkId){ $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId }
-                if($HasTargetVMName){ $ProviderSpecificDetails.TargetVMName = $TargetVMName }
-                if($HasTargetResourceGroupID){ $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID }
-                if($HasTargetVmSize){ $ProviderSpecificDetails.TargetVMSize = $TargetVmSize }
+                $ProviderSpecificDetails.LicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.LicenseType
+                $ProviderSpecificDetails.PerformAutoResync = $ReplicationMigrationItem.ProviderSpecificDetail.PerformAutoResync
+                
+                if($HasTargetAvailabilitySet){ 
+                    $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
+                }else{
+                    $ProviderSpecificDetails.TargetAvailabilitySetId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilitySetId
+                }
+
+                if($HasTargetAvailabilityZone){ 
+                    $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
+                }else{
+                    $ProviderSpecificDetails.TargetAvailabilityZone = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilityZone
+                }
+
+                if($HasTargetNetworkId){ 
+                    $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
+                }else{
+                    $ProviderSpecificDetails.TargetNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNetworkId
+                }
+
+                if($HasTargetVMName){ 
+                    $ProviderSpecificDetails.TargetVMName = $TargetVMName
+                }else{
+                    $ProviderSpecificDetails.TargetVMName = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVMName
+                }
+
+                if($HasTargetResourceGroupID){ 
+                    $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
+                }else{
+                    $ProviderSpecificDetails.TargetResourceGroupId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetResourceGroupId
+                }
+
+                if($HasTargetVmSize){ 
+                    $ProviderSpecificDetails.TargetVMSize = $TargetVmSize 
+                }else{
+                    $ProviderSpecificDetails.TargetVMSize = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmSize
+                }
+
+                if($HasTargetBootDignosticStorageAccount){
+                    $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $TargetBootDiagnosticsStorageAccount
+                }else{
+                    $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetBootDiagnosticsStorageAccountId
+                }
+                 
+                # Storage accounts need to be in the same subscription as that of the VM.
+                if (($null -ne $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId) -and ($ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId.length -gt 1)){
+                    $TargetBDSASubscriptionId = $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId.Split('/')[2]
+                    $TargetSubscriptionId = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[2]
+                    if($TargetBDSASubscriptionId -ne $TargetSubscriptionId){
+                        $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $null
+                    }
+                }
+
+
                 if($HasNicToUpdate){ 
 
                     $originalNics = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic
