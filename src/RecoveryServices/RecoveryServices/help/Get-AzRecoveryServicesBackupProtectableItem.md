@@ -40,9 +40,9 @@ A container that is registered to an Azure Recovery Services vault can have one 
 
 ### Example 1
 ```
-PS C:\>$Vault = Get-AzRecoveryServicesVault -Name "MyRecoveryVault"
-PS C:\>$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered -VaultId $Vault.Id
-PS C:\>$Item = Get-AzRecoveryServicesBackupProtectableItem -Container $Container -ItemType "SQLInstance" -WorkloadType "MSSQL" -VaultId $Vault.ID
+PS C:\> $Vault = Get-AzRecoveryServicesVault -Name "MyRecoveryVault"
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered -VaultId $Vault.Id
+PS C:\> $Item = Get-AzRecoveryServicesBackupProtectableItem -Container $Container -ItemType "SQLInstance" -WorkloadType "MSSQL" -VaultId $Vault.ID
 ```
 
 The first command gets the container of type MSSQL, and then stores it in the $Container variable.
