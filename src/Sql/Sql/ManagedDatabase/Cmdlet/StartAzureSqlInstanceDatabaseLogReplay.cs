@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string Collation { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
