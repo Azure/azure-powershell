@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for -QueryString parameter in New-Az*Deployments cmdlets
 
 ## Version 3.1.1
 * Fixed a NullRef exception issue in `New-AzureManagedApplication` and `Set-AzureManagedApplication`.
