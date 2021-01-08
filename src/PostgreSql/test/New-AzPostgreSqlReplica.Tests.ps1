@@ -16,7 +16,7 @@ Describe 'New-AzPostgreSqlReplica' {
         $replica = Get-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzPostgreSqlReplica -Name $env.replicaName -ResourceGroupName $env.resourceGroup 
         $replica.Name | Should -Be $env.replicaName
         $replica.SkuName | Should -Be $env.Sku
-        $replica.Location | Should -Be eastus
+        $replica.Location | Should -Be eastus2euap
         Remove-AzPostgreSqlServer -ResourceGroupName $env.resourceGroup -Name $env.replicaName
     }
 }
