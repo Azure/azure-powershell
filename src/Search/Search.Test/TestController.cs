@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath("AzureRM.Search.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    _helper.RMProfileModule,
-                    "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath("AzureRM.Search.psd1"),
-                    _helper.GetRMModulePath("AzureRM.Storage.psd1"));
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
