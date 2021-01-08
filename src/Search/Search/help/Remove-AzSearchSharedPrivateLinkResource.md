@@ -1,51 +1,44 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchsharedprivatelinkresource
 schema: 2.0.0
 ---
 
-# Remove-AzSearchService
+# Remove-AzSearchSharedPrivateLinkResource
 
 ## SYNOPSIS
-Remove an Azure Cognitive Search service.
+Remove the shared private link resource from the Azure Cognitive Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
-Remove-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Remove-AzSearchService [-InputObject] <PSSearchService> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzSearchService [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSearchService** cmdlet removes an Azure Cognitive Search service with specified parameters.
+The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared private link resource from the Azure Cognitive Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
+PS C:\> Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
 
 Confirm
-Are you sure you want to remove Search Service 'pstestazuresearch01'?
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-PS C:\>
+Remove Shared Private Link Resource 'blob-pe'.
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-The example removes an Azure Cognitive Search service.
+This example deletes a shared private link resource by name of the Azure Cognitive Search service.
 
 ## PARAMETERS
 
@@ -79,23 +72,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Azure Cognitive Search Service Input Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Azure Cognitive Search Service name.
+Azure Cognitive Search Shared private link resource
 
 ```yaml
 Type: System.String
@@ -103,14 +81,15 @@ Parameter Sets: ResourceNameParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+This Cmdlet does not return an object by default.
+If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure Cognitive Search Service Resource Id.
+Shared private link resource id
 
 ```yaml
 Type: System.String
@@ -150,7 +129,22 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceName
+Azure Cognitive Search Service name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -190,9 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-
-### System.String
+### None
 
 ## OUTPUTS
 
@@ -202,8 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzSearchService](./New-AzSearchService.md)
+[New-AzSearchSharedPrivateLinkResource.md](./New-AzSearchSharedPrivateLinkResource.md)
 
-[Get-AzSearchService](./Get-AzSearchService.md)
+[Get-AzSearchSharedPrivateLinkResource.md](./Get-AzSearchSharedPrivateLinkResource.md)
 
-[Set-AzSearchService](./Set-AzSearchService.md)
+[Set-AzSearchSharedPrivateLinkResource.md](./Set-AzSearchSharedPrivateLinkResource.md)
