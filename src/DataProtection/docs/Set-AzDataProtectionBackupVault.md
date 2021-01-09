@@ -19,6 +19,13 @@ Set-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> 
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### custom
+```
+Set-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
+ -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-IdentityType <String>] [-Tag <Hashtable>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Put
 ```
 Set-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String>
@@ -56,7 +63,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Put, PutExpanded
 Aliases:
 
 Required: False
@@ -71,7 +78,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Put, PutExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -101,7 +108,7 @@ The identityType which can be either SystemAssigned or None
 
 ```yaml
 Type: System.String
-Parameter Sets: PutExpanded
+Parameter Sets: custom, PutExpanded
 Aliases:
 
 Required: False
@@ -116,10 +123,10 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: PutExpanded
+Parameter Sets: custom, PutExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +138,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Put, PutExpanded
 Aliases:
 
 Required: False
@@ -178,10 +185,10 @@ To construct, see NOTES section for STORAGESETTING properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IStorageSetting[]
-Parameter Sets: PutExpanded
+Parameter Sets: custom, PutExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -208,7 +215,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: PutExpanded
+Parameter Sets: custom, PutExpanded
 Aliases:
 
 Required: False
@@ -274,6 +281,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+
+### System.Management.Automation.PSObject
 
 ## NOTES
 

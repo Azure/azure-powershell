@@ -26,6 +26,9 @@ Returns a resource belonging to a resource group.
 ### [Get-AzDataProtectionBackupVaultResource](Get-AzDataProtectionBackupVaultResource.md)
 Returns resource collection belonging to a subscription.
 
+### [Get-AzDataProtectionBackupVaultStorageSetting](Get-AzDataProtectionBackupVaultStorageSetting.md)
+Get Backup Vault storage setting object
+
 ### [Get-AzDataProtectionExportJobsOperationResult](Get-AzDataProtectionExportJobsOperationResult.md)
 Gets the operation result of operation triggered by Export Jobs API.
 If the operation is successful, then it also contains URL of a Blob and a SAS key to access the same.
