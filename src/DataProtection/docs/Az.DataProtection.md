@@ -128,6 +128,9 @@ API to check for resource name availability
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.
 
+### [Update-AzDataProtectionPolicyRetentionRule](Update-AzDataProtectionPolicyRetentionRule.md)
+Adds or removes Retention Rule to existing Policy
+
 ### [Update-AzDataProtectionResourceOperationGatekeeper](Update-AzDataProtectionResourceOperationGatekeeper.md)
 Updates a ResourceOperationGatekeeper resource belonging to a resource group.
 For example, updating tags for a resource.
