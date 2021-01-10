@@ -160,11 +160,11 @@ function Test-CortexCRUD
 		$natRuleInternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
 		$natRuleInternalMapping.AddressSpace = "192.168.0.0/24"
 		$natRule.InternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
-		natRule.InternalMappings[0] = $natRuleInternalMapping
+		$natRule.InternalMappings[0] = $natRuleInternalMapping
 		$natRuleExternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
 		$natRuleExternalMapping.AddressSpace = "10.0.0.0/24"
 		$natRule.ExternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
-		natRule.ExternalMappings[0] = $natRuleExternalMapping
+		$natRule.ExternalMappings[0] = $natRuleExternalMapping
 		$vpnGatewayNatRules = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[] 1
 		$vpnGatewayNatRules[0] = $natRule
 		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules
