@@ -98,17 +98,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Mode { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The list of private IP address subnet internal mappings for NAT")]
         public string[] InternalMapping { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The list of private IP address subnet external mappings for NAT")]
         public string[] ExternalMapping { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The IP Configuration ID this NAT rule applies to")]
         public string IpConfigurationId { get; set; }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 IpConfigurationId = this.IpConfigurationId,
                 Mode = this.Mode,
-                Type = this.Type,
+                VpnGatewayNatRulePropertiesType = this.Type,
                 InternalMappings = new List<PSVpnNatRuleMapping>(),
                 ExternalMappings = new List<PSVpnNatRuleMapping>()
             };

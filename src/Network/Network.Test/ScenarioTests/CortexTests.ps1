@@ -20,8 +20,7 @@ function Test-CortexCRUD
 {
  # Setup
     $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
-
+    $rglocation = Get-ProviderLocation ResourceManagement
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
 	$vpnSiteName = Get-ResourceName
@@ -78,18 +77,18 @@ function Test-CortexCRUD
         $virtualHubs = Get-AzureRmVirtualHub -ResourceGroupName $rgName
         Assert-NotNull $virtualHubs
 
-        $virtualHubsAll = Get-AzureRmVirtualHub
-        Assert-NotNull $virtualHubsAll
-         Assert-NotNull $virtualHubsAll[0].ResourceGroupName
+        #$virtualHubsAll = Get-AzureRmVirtualHub
+        #Assert-NotNull $virtualHubsAll
+        #Assert-NotNull $virtualHubsAll[0].ResourceGroupName
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*"
+        #Assert-NotNull $virtualHubsAll
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -Name "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzureRmVirtualHub -Name "*"
+        #Assert-NotNull $virtualHubsAll
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*" -Name "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*" -Name "*"
+        #Assert-NotNull $virtualHubsAll
 
 		# Update the Virtual Hub
 		$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
@@ -151,12 +150,55 @@ function Test-CortexCRUD
         Assert-NotNull $vpnSitesAll
 
 		# Create the VpnGateway
-		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3
-		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 #-VpnGatewayNatRule $natRule
+		
+		# Update VpnGateway with new NatRule2
+		$natRule = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule
+		$natRule.Name = "NatRule2"
+		$natRule.Mode = "EgressSnat"
+		$natRule.VpnGatewayNatRulePropertiesType = "Static"
+		$natRuleInternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
+		$natRuleInternalMapping.AddressSpace = "192.168.0.0/24"
+		$natRule.InternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
+		natRule.InternalMappings[0] = $natRuleInternalMapping
+		$natRuleExternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
+		$natRuleExternalMapping.AddressSpace = "10.0.0.0/24"
+		$natRule.ExternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
+		natRule.ExternalMappings[0] = $natRuleExternalMapping
+		$vpnGatewayNatRules = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[] 1
+		$vpnGatewayNatRules[0] = $natRule
+		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
 		Assert-AreEqual 4 $vpnGateway.VpnGatewayScaleUnit
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
+		Assert-AreEqual "NatRule2" $vpnGateway.NatRules[0].Name
+		Assert-AreEqual "EgressSnat" $vpnGateway.NatRules[0].Mode
+		Assert-AreEqual "Static" $vpnGateway.NatRules[0].VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "Succeeded" $vpnGateway.NatRules[0].ProvisioningState	
+
+		# Create one more NATRule using New-AzVpnGatewayNatRule
+		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Dynamic" -Mode "IngressSnat" -InternalMapping "192.168.1.0/24" -ExternalMapping "10.0.1.0/24"
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		Assert-AreEqual "NatRule3" $natRule.Name
+		Assert-AreEqual $vpnGatewayName $natRule.ParentResourceName
+		Assert-AreEqual "Dynamic" $natRule.VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "IngressSnat" $natRule.Mode
+		Assert-AreEqual 1 $natRule.InternalMappings.Count		
+		Assert-AreEqual "192.168.1.0/24" $natRule.InternalMappings[0].AddressSpace
+		Assert-AreEqual 1 $natRule.ExternalMappings.Count		
+		Assert-AreEqual "10.0.1.0/24" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual 0 $natRule.IngressVpnSiteLinkConnections.Count	
+		Assert-AreEqual 0 $natRule.EgressVpnSiteLinkConnections.Count
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState		
+
+		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/24" -ExternalMapping "10.0.2.0/24"
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		Assert-AreEqual "NatRule3" $$natRule.Name
+		Assert-AreEqual "192.168.2.0/24" $natRule.InternalMappings[0].AddressSpace
+		Assert-AreEqual "10.0.2.0/24" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState	
 
         $vpnGateways = Get-AzVpnGateway
         Assert-NotNull $vpnGateways
@@ -196,14 +238,26 @@ function Test-CortexCRUD
 		Assert-AreEqual $false $vpnConnection.UseLocalAzureIpAddress 
 
 		# Create the VpnConnection with site with links
-		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100
+		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
+		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100 -IngressNatRules $natRule2.Id
 	    $vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[1] -ConnectionBandwidth 10
 
 		$createdVpnConnection2 = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSite $vpnSite2 -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
 		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
+		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections[0].IngressNatRules.Count
+		Assert-AreEqual "NatRule2" $vpnConnection2.VpnLinkConnections[0].IngressNatRules[0].Name
+		Assert-AreEqual 0 $vpnConnection2.VpnLinkConnections[0].EgressNatRules.Count
+		
+		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
+		Assert-AreEqual 1 $natRule2.IngressVpnSiteLinkConnections.count
+		Assert-AreEqual $vpnConnection2.VpnLinkConnections[0].Id $natRule2.IngressVpnSiteLinkConnections[0]
+		Assert-AreEqual 0 $natRule2.EgressVpnSiteLinkConnections.count
 
+		$natRule3 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		$vpnSiteLinkConnection1.IngressNatRules.Clear()
+		$vpnSiteLinkConnection1.EgressNatRules.Add($natRule3)
 		$vpnSiteLinkConnection1.RoutingWeight = 10
 		Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSiteLinkConnection @($vpnSiteLinkConnection1)
 		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
@@ -211,12 +265,26 @@ function Test-CortexCRUD
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections.Count
 		Assert-AreEqual 10 $vpnConnection2.VpnLinkConnections[0].RoutingWeight
+		Assert-AreEqual 0 $vpnConnection2.VpnLinkConnections[0].IngressNatRules.Count
+		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections[0].EgressNatRules.Count
+		Assert-AreEqual "NatRule3" $vpnConnection2.VpnLinkConnections[0].EgressNatRules[0].Name
 
         $vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName
         Assert-NotNull $vpnConnections
 
 		$vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "*"
         Assert-NotNull $vpnConnections
+
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
+		Assert-AreEqual 2 $vpnGateway.NatRules.Count
+
+		# Remove NATRule using Remove-AzVpnGatewayNatRule
+		$delete = Remove-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2" -Force -PassThru
+		Assert-AreEqual $True $delete
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
 
 		# Create a HubVirtualNetworkConnection
 		$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"

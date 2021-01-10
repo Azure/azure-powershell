@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public string[] ExternalMapping { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The IP Configuration ID this NAT rule applies to")]
         public string IpConfigurationId { get; set; }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             if (this.Type != null)
             {
-                vpnGatewayNatRuleToModify.Type = Type;
+                vpnGatewayNatRuleToModify.VpnGatewayNatRulePropertiesType = Type;
             }
 
             if (this.InternalMapping != null)

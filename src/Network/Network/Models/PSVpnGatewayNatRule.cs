@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVpnGatewayNatRule : PSChildResource
     {
-        [Ps1Xml(Label = "type", Target = ViewControl.Table)]
-        public string Type { get; set; }
+        [Ps1Xml(Label = "VpnGatewayNatRuleType", Target = ViewControl.Table)]
+        public string VpnGatewayNatRulePropertiesType { get; set; }
 
         [Ps1Xml(Label = "Mode", Target = ViewControl.Table)]
         public string Mode { get; set; }
@@ -41,6 +41,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string InternalMappingsText
+        {
+            get { return JsonConvert.SerializeObject(InternalMappings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExternalMappingsText
+        {
+            get { return JsonConvert.SerializeObject(ExternalMappings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string IngressVpnSiteLinkConnectionsText
