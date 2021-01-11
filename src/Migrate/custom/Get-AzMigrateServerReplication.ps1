@@ -157,6 +157,7 @@ function Get-AzMigrateServerReplication {
             $HasSkipToken = $PSBoundParameters.ContainsKey('SkipToken')
             $null = $PSBoundParameters.Remove('Filter')
             $null = $PSBoundParameters.Remove('SkipToken')
+            $null = $PSBoundParameters.Remove('MachineName')
            
             if ($parameterSet -eq "GetBySDSID"){
                 $MachineIdArray = $DiscoveredMachineId.Split("/")
