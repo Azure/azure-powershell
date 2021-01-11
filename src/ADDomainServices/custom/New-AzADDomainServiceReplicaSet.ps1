@@ -22,9 +22,9 @@ Create a in-memory object for ReplicaSet
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSetObject
+https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSet
 #>
-function New-AzADDomainServiceReplicaSetObject {
+function New-AzADDomainServiceReplicaSet {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

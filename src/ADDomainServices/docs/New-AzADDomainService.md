@@ -16,10 +16,14 @@ If the specific service already exists, then any patchable properties will be up
 ```
 New-AzADDomainService -Name <String> -ResourceGroupName <String> -DomainName <String>
  -ReplicaSet <IReplicaSet[]> [-SubscriptionId <String>] [-DomainConfigurationType <String>]
- [-DomainSecuritySetting <DomainSecuritySettings>] [-FilteredSync <String>] [-LdapsSetting <LdapsSettings>]
- [-NotificationSetting <NotificationSettings>] [-ResourceForestSetting <ResourceForestSettings>]
- [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DomainSecuritySettingNtlmV1 <String>] [-DomainSecuritySettingSyncKerberosPassword <String>]
+ [-DomainSecuritySettingSyncNtlmPassword <String>] [-DomainSecuritySettingSyncOnPremPassword <String>]
+ [-DomainSecuritySettingTlsV1 <String>] [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>]
+ [-LdapSettingExternalAccess <String>] [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificate <String>]
+ [-LdapSettingPfxCertificatePassword <SecureString>] [-NotificationSettingAdditionalRecipient <String[]>]
+ [-NotificationSettingNotifyDcAdmin <String>] [-NotificationSettingNotifyGlobalAdmin <String>]
+ [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,12 +106,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainSecuritySetting
-Domain Security Settings.
-To construct, see NOTES section for DOMAINSECURITYSETTING properties and create a hash table.
+### -DomainSecuritySettingNtlmV1
+A flag to determine whether or not NtlmV1 is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainSecuritySettingSyncKerberosPassword
+A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainSecuritySettingSyncNtlmPassword
+A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainSecuritySettingSyncOnPremPassword
+A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainSecuritySettingTlsV1
+A flag to determine whether or not TlsV1 is enabled or disabled.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,12 +196,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LdapsSetting
-Secure LDAP Settings.
-To construct, see NOTES section for LDAPSSETTING properties and create a hash table.
+### -ForestTrust
+List of settings for Resource Forest
+To construct, see NOTES section for FORESTTRUST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.LdapsSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapSettingExternalAccess
+A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapSettingLdaps
+A flag to determine whether or not Secure LDAP is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapSettingPfxCertificate
+The certificate required to configure Secure LDAP.
+The parameter passed here should be a base64encoded representation of the certificate pfx file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapSettingPfxCertificatePassword
+The password to decrypt the provided Secure LDAP certificate pfx file.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -164,12 +288,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NotificationSetting
-Notification Settings.
-To construct, see NOTES section for NOTIFICATIONSETTING properties and create a hash table.
+### -NotificationSettingAdditionalRecipient
+The list of additional recipients
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.NotificationSettings
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingNotifyDcAdmin
+Should domain controller admins be notified
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingNotifyGlobalAdmin
+Should global admins be notified
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,12 +364,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceForestSetting
-Settings for Resource Forest.
-To construct, see NOTES section for RESOURCEFORESTSETTING properties and create a hash table.
+### -ResourceForest
+Resource Forest
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -338,36 +490,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DOMAINSECURITYSETTING <DomainSecuritySettings>: Domain Security Settings.
-  - `[NtlmV1 <NtlmV1?>]`: A flag to determine whether or not NtlmV1 is enabled or disabled.
-  - `[SyncKerberosPassword <SyncKerberosPasswords?>]`: A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
-  - `[SyncNtlmPassword <SyncNtlmPasswords?>]`: A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
-  - `[SyncOnPremPassword <SyncOnPremPasswords?>]`: A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
-  - `[TlsV1 <TlsV1?>]`: A flag to determine whether or not TlsV1 is enabled or disabled.
-
-LDAPSSETTING <LdapsSettings>: Secure LDAP Settings.
-  - `[ExternalAccess <ExternalAccess?>]`: A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
-  - `[Ldap <Ldaps?>]`: A flag to determine whether or not Secure LDAP is enabled or disabled.
-  - `[PfxCertificate <String>]`: The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
-  - `[PfxCertificatePassword <String>]`: The password to decrypt the provided Secure LDAP certificate pfx file.
-
-NOTIFICATIONSETTING <NotificationSettings>: Notification Settings.
-  - `[AdditionalRecipient <String[]>]`: The list of additional recipients
-  - `[NotifyDcAdmin <NotifyDcAdmins?>]`: Should domain controller admins be notified
-  - `[NotifyGlobalAdmin <NotifyGlobalAdmins?>]`: Should global admins be notified
+FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
+  - `[FriendlyName <String>]`: Friendly Name
+  - `[RemoteDnsIP <String>]`: Remote Dns ips
+  - `[TrustDirection <String>]`: Trust Direction
+  - `[TrustPassword <String>]`: Trust Password
+  - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
 REPLICASET <IReplicaSet[]>: List of ReplicaSets
   - `[Location <String>]`: Virtual network location
   - `[SubnetId <String>]`: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-
-RESOURCEFORESTSETTING <ResourceForestSettings>: Settings for Resource Forest.
-  - `[ResourceForest <String>]`: Resource Forest
-  - `[Setting <IForestTrust[]>]`: List of settings for Resource Forest
-    - `[FriendlyName <String>]`: Friendly Name
-    - `[RemoteDnsIP <String>]`: Remote Dns ips
-    - `[TrustDirection <String>]`: Trust Direction
-    - `[TrustPassword <String>]`: Trust Password
-    - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
 ## RELATED LINKS
 
