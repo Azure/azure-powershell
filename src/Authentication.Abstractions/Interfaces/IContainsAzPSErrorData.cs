@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.Common
 
         public static implicit operator string(ErrorKind error) => error.Value;
 
+        public override string ToString()
+        {
+            return Value;
+        }
+
         /// <summary>
         /// Error caused by user input
         /// </summary>
