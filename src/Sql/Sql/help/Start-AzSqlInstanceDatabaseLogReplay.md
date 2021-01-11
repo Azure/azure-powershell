@@ -15,7 +15,7 @@ Starts a Log Replay service with the given parameters.
 ### LogReplayInstanceDatabaseFromInputParameters (Default)
 ```
 Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
- [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-Name] <String>
+ [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-AsJob] [-Name] <String>
  [-InstanceName] <String> [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageConta
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
- [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-PassThru]
+ [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-AsJob] [-PassThru]
  [-InputObject] <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -53,6 +53,21 @@ PS C:\> Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01
 This command will create new managed database and will start restoring backups from the given container until Complete-AzSqlInstanceDatabaseLogReplay is called with the last backup wanted.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AutoCompleteRestore
 The indicator whether or not to auto-complete restore upon completion.
