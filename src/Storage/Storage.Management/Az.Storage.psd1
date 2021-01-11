@@ -190,7 +190,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageBlobInventoryPolicyRule', 
                'Get-AzStorageBlobInventoryPolicy', 
                'Remove-AzStorageBlobInventoryPolicy',
-               'Copy-AzStorageBlob'
+               'Copy-AzStorageBlob',
+               'Get-AzDataLakeGen2DeletedItem', 'Restore-AzDataLakeGen2DeletedItem'
 
 # Variables to export from this module
 # VariablesToExport = @()

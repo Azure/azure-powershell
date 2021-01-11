@@ -814,6 +814,9 @@ function Test-DatalakeGen2
         # Create FileSystem (actually a container)
         New-AzDatalakeGen2FileSystem $filesystemName -Context $storageContext
 
+		# enable soft delete
+		Enable-AzStorageDeleteRetentionPolicy -RetentionDays 1  -Context $storageContext
+
 		# Create folders
 		$dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 		Assert-AreEqual $dir1.Path $directoryPath1
@@ -926,6 +929,23 @@ function Test-DatalakeGen2
 		# Remove Items
         Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
         Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Force
+
+		# get deleted items from dir and restore with pipeline
+		$deletedItems = Get-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 
+		Assert-AreEqual 2 $deletedItems.Count
+		$restoredItems = $deletedItems | Restore-AzDataLakeGen2DeletedItem
+		Assert-AreEqual 2 $restoredItems.Count
+        $items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Recurse
+		Assert-AreEqual 2 $deletedItems.Count # the folder itself won't be list, so the count will be restored item count -1
+        
+        # get deleted items from filesystem and restore single
+        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
+		$deletedItems = Get-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName 
+        Assert-AreEqual $filePath1 $deletedItems[0].Name 
+		Assert-AreEqual 1 $deletedItems.Count
+		$restoredItems = Restore-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName  -Path $deletedItems[0].Path -DeletionId $deletedItems[0].DeletionId 
+		Assert-AreEqual 1 $restoredItems.Count
+        Assert-AreEqual $deletedItems.Name $restoredItems.Path		
 
         # Clean Storage Account
         Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force
