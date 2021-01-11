@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* General availability of 'Az.CosmosDB' module
 * Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 
 ## Version 0.2.0
