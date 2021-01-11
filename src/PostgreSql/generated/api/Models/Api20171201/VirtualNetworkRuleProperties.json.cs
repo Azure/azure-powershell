@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return container;
             }
+            AddIf( null != (((object)this._virtualNetworkSubnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._virtualNetworkSubnetId.ToString()) : null, "virtualNetworkSubnetId" ,container.Add );
             AddIf( null != this._ignoreMissingVnetServiceEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean((bool)this._ignoreMissingVnetServiceEndpoint) : null, "ignoreMissingVnetServiceEndpoint" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
             }
-            AddIf( null != (((object)this._virtualNetworkSubnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._virtualNetworkSubnetId.ToString()) : null, "virtualNetworkSubnetId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return;
             }
+            {_virtualNetworkSubnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("virtualNetworkSubnetId"), out var __jsonVirtualNetworkSubnetId) ? (string)__jsonVirtualNetworkSubnetId : (string)VirtualNetworkSubnetId;}
             {_ignoreMissingVnetServiceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean>("ignoreMissingVnetServiceEndpoint"), out var __jsonIgnoreMissingVnetServiceEndpoint) ? (bool?)__jsonIgnoreMissingVnetServiceEndpoint : IgnoreMissingVnetServiceEndpoint;}
             {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
-            {_virtualNetworkSubnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("virtualNetworkSubnetId"), out var __jsonVirtualNetworkSubnetId) ? (string)__jsonVirtualNetworkSubnetId : (string)VirtualNetworkSubnetId;}
             AfterFromJson(json);
         }
     }
