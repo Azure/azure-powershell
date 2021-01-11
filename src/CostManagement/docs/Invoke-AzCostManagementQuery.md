@@ -294,10 +294,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDefinition
-
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult
