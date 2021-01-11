@@ -191,7 +191,6 @@ process {
             $Password = Get-GeneratePassword
             $PSBoundParameters.AdministratorLoginPassword = $Password | ConvertTo-SecureString -AsPlainText -Force
         }
-        $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
         Import-Module -Name Az.Resources
         if(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
@@ -308,7 +307,7 @@ process {
             $Server.FirewallRuleName = $FirewallRuleName
         }
         $Server.DatabaseName = $DEFAULT_DB_NAME
-        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
+        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword
 
         return $Server
 
