@@ -59,25 +59,7 @@ $resourceCleanUpCommands = @(
                                                                 }
                                                             } while ($true)
                                                         }},
-    @{Name = "Az.Resources [Cleanup]";        Command = {
-                                                            $loopLimit = 0
-                                                            do {
-                                                                try {
-                                                                    Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction Stop
-                                                                    break
-                                                                }
-                                                                catch {
-                                                                    if (++$loopLimit -gt 30)
-                                                                    {
-                                                                        Write-Warning "Give up Az.Resources [Cleanup]"
-                                                                        break
-                                                                    } else {
-                                                                        Start-Sleep -Seconds 30
-                                                                        Write-Warning "Retry Az.Resources [Cleanup]"
-                                                                    }
-                                                                }
-                                                            } while ($true)
-                                                        }}
+    @{Name = "Az.Resources [Cleanup]";        Command = {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction Stop}}
 )
 $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
