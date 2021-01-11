@@ -90,6 +90,14 @@ param(
     ${SslEnforcement},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+    # Set the minimal TLS version for connections to server when SSL is enabled.
+    # Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+    ${MinimalTlsVersion},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.Int32]
     # Backup retention days for the server.

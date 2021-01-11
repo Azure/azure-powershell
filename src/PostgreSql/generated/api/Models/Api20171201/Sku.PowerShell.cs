@@ -95,10 +95,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Size, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ISkuInternal)this).Family, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

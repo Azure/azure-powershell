@@ -10,31 +10,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword = value; }
+        public string AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword = value ?? null; }
 
         /// <summary>delegated subnet arm resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string DelegatedSubnetArgumentSubnetArmResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgumentSubnetArmResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgumentSubnetArmResourceId = value; }
+        public string DelegatedSubnetArgumentSubnetArmResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgumentSubnetArmResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgumentSubnetArmResourceId = value ?? null; }
 
         /// <summary>Enable HA or not for a server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum? HaEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).HaEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).HaEnabled = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum? HaEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).HaEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).HaEnabled = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum)""); }
 
         /// <summary>indicates whether custom window is enabled or disabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string MaintenanceWindowCustomWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowCustomWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowCustomWindow = value; }
+        public string MaintenanceWindowCustomWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowCustomWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowCustomWindow = value ?? null; }
 
         /// <summary>day of week for maintenance window</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? MaintenanceWindowDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowDayOfWeek = value; }
+        public int? MaintenanceWindowDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowDayOfWeek = value ?? default(int); }
 
         /// <summary>start hour for maintenance window</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? MaintenanceWindowStartHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartHour = value; }
+        public int? MaintenanceWindowStartHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartHour = value ?? default(int); }
 
         /// <summary>start minute for maintenance window</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? MaintenanceWindowStartMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartMinute = value; }
+        public int? MaintenanceWindowStartMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).MaintenanceWindowStartMinute = value ?? default(int); }
 
         /// <summary>Internal Acessors for DelegatedSubnetArgument</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDelegatedSubnetArguments Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerForUpdateInternal.DelegatedSubnetArgument { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgument; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).DelegatedSubnetArgument = value; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
         /// <summary>The replication role of the server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string ReplicationRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).ReplicationRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).ReplicationRole = value; }
+        public string ReplicationRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).ReplicationRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).ReplicationRole = value ?? null; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGenerated _sku;
@@ -71,31 +71,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
         /// <summary>The name of the sku, e.g. Standard_D32s_v3.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Name = value; }
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Name = value ?? null; }
 
         /// <summary>The tier of the particular SKU, e.g. GeneralPurpose.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Tier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier? SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ISkuAutoGeneratedInternal)Sku).Tier = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum? SslEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).SslEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).SslEnforcement = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum? SslEnforcement { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).SslEnforcement; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).SslEnforcement = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum)""); }
 
         /// <summary>Backup retention days for the server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? StorageProfileBackupRetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileBackupRetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileBackupRetentionDay = value; }
+        public int? StorageProfileBackupRetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileBackupRetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileBackupRetentionDay = value ?? default(int); }
 
         /// <summary>Enable Storage Auto Grow.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow? StorageProfileStorageAutogrow { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageAutogrow; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageAutogrow = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow? StorageProfileStorageAutogrow { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageAutogrow; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageAutogrow = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow)""); }
 
         /// <summary>Storage IOPS for a server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? StorageProfileStorageIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageIop = value; }
+        public int? StorageProfileStorageIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageIop = value ?? default(int); }
 
         /// <summary>Max storage allowed for a server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? StorageProfileStorageMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageMb = value; }
+        public int? StorageProfileStorageMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).StorageProfileStorageMb = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerForUpdateTags _tag;
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         string ReplicationRole { get; set; }
         /// <summary>The name of the sku, e.g. Standard_D32s_v3.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The name of the sku, e.g. Standard_D32s_v3.",
         SerializedName = @"name",
@@ -188,12 +188,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         string SkuName { get; set; }
         /// <summary>The tier of the particular SKU, e.g. GeneralPurpose.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The tier of the particular SKU, e.g. GeneralPurpose.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier) })]
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier? SkuTier { get; set; }
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         /// <summary>The name of the sku, e.g. Standard_D32s_v3.</summary>
         string SkuName { get; set; }
         /// <summary>The tier of the particular SKU, e.g. GeneralPurpose.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier? SkuTier { get; set; }
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum? SslEnforcement { get; set; }
         /// <summary>Storage profile of a server.</summary>

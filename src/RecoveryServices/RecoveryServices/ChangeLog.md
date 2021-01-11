@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Cross Region Restore feature.  
 * Blocked getting workload config when target item is an availability group.
 
 ## Version 3.2.0

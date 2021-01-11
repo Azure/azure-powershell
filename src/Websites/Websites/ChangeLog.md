@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Importing a keyvault certificate to WebApp.
 
 ## Version 2.1.1
 * Prevent duplicate access restriction rules
