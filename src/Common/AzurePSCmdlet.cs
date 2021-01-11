@@ -87,6 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static string _sessionId = Guid.NewGuid().ToString();
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
         protected string _clientRequestId = Guid.NewGuid().ToString();
+        protected static DateTimeOffset? _previousEndTime = null;
         protected MetricHelper _metricHelper;
         protected AzurePSQoSEvent _qosEvent;
         protected DebugStreamTraceListener _adalListener;
@@ -376,15 +377,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
-            lock (lockObject)
+            if(_metricHelper == null)
             {
-                if (_metricHelper == null)
+                lock (lockObject)
                 {
-                    _metricHelper = new MetricHelper(profile);
-                    _metricHelper.AddTelemetryClient(new TelemetryClient
+                    if (_metricHelper == null)
                     {
-                        InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-                    });
+                        _metricHelper = new MetricHelper(profile);
+                        _metricHelper.AddTelemetryClient(new TelemetryClient
+                        {
+                            InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
+                        });
+                    }
                 }
             }
 
@@ -410,6 +414,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             LogCmdletEndInvocationInfo();
             TearDownDebuggingTraces();
             TearDownHttpClientPipeline();
+            _previousEndTime = DateTimeOffset.Now;
             base.EndProcessing();
         }
 
@@ -597,7 +602,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 ClientRequestId = this._clientRequestId,
                 SessionId = _sessionId,
                 IsSuccess = true,
-                ParameterSetName = this.ParameterSetName
+                ParameterSetName = this.ParameterSetName,
+                PreviousEndTime = _previousEndTime
             };
 
             if (AzVersion == null)

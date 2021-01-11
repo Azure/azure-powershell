@@ -15,7 +15,9 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -23,6 +25,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Management.Automation.Host;
 using System.Security.Cryptography;
 using System.Text;
@@ -200,7 +203,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
                         Timestamp = qos.StartTime
                     };
                     LoadTelemetryClientContext(qos, pageViewTelemetry.Context);
-                    PopulatePropertiesFromQos(qos, pageViewTelemetry.Properties);
+                    //we only need to populate exception details into pageview
+                    PopulatePropertiesFromQos(qos, pageViewTelemetry.Properties, true);
                     client.TrackPageView(pageViewTelemetry);
                 }
             }
@@ -256,13 +260,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
             _host = host;
         }
 
-        private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
+        private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties, bool populateException = false)
         {
             if (qos == null)
             {
                 return;
             }
 
+            eventProperties.Add("telemetry-version", "1");
             eventProperties.Add("Command", qos.CommandName);
             eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
             eventProperties.Add("ModuleName", qos.ModuleName);
@@ -270,7 +275,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("HostVersion", qos.HostVersion);
             eventProperties.Add("OS", Environment.OSVersion.ToString());
             eventProperties.Add("CommandParameters", qos.Parameters);
-            eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
             eventProperties.Add("UserAgent", qos.UserAgent);
             eventProperties.Add("HashMacAddress", HashMacAddress);
@@ -281,12 +285,84 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("start-time", qos.StartTime.ToUniversalTime().ToString("o"));
             eventProperties.Add("end-time", qos.EndTime.ToUniversalTime().ToString("o"));
             eventProperties.Add("duration", qos.Duration.ToString("c"));
-            eventProperties.Add("subscription-id", qos.SubscriptionId);
-            eventProperties.Add("tenant-id", qos.TenantId);
-
-            if(qos.Exception != null)
+            if (qos.Uid != null)
             {
-                eventProperties.Add("exception-type", qos.Exception.GetType().ToString());
+                eventProperties.Add("UserId", qos.Uid);
+            }
+            if (qos.SubscriptionId != null)
+            {
+                eventProperties.Add("subscription-id", qos.SubscriptionId);
+            }
+            if (qos.TenantId != null)
+            {
+                eventProperties.Add("tenant-id", qos.TenantId);
+            }
+
+            if (qos.PreviousEndTime != null)
+            {
+                eventProperties.Add("interval", ((TimeSpan)(qos.StartTime - qos.PreviousEndTime)).ToString("c"));
+            }
+
+            if (!qos.IsSuccess && qos.Exception?.Data?.Contains(AzurePSErrorDataKeys.ErrorKindKey) == true)
+            {
+                eventProperties.Add("pebcak", (qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey] == ErrorKind.UserError).ToString());
+            }
+
+            if (qos.Exception != null && populateException)
+            {
+                eventProperties["exception-type"] = qos.Exception.GetType().ToString();
+                if (qos.Exception is CloudException cloudException)
+                {
+                    eventProperties["exception-httpcode"] = cloudException.Response?.StatusCode.ToString();
+                }
+                Exception innerException = qos.Exception.InnerException;
+                List<Exception> innerExceptions = new List<Exception>();
+                string innerExceptionStr = string.Empty;
+                while (innerException != null)
+                {
+                    innerExceptions.Add(innerException);
+                    if (innerException is CloudException)
+                    {
+                        eventProperties["exception-httpcode"] = ((CloudException)qos.Exception).Response?.StatusCode.ToString();
+                    }
+                    innerException = innerException.InnerException;
+                }
+                if (innerExceptions.Count > 0)
+                {
+                    eventProperties["exception-inner"] = string.Join(";", innerExceptions.Select(e => e.GetType().ToString()));
+                }
+                if (exceptionTrackAcceptModuleList.Contains(qos.ModuleName, StringComparer.InvariantCultureIgnoreCase)
+                    || exceptionTrackAcceptCmdletList.Contains(qos.CommandName, StringComparer.InvariantCultureIgnoreCase))
+                {
+                    StackTrace trace = new StackTrace(qos.Exception);
+                    string stack = string.Join(";", trace.GetFrames().Take(2).Select(f => ConvertFrameToString(f)));
+                    eventProperties["exception-stack"] = stack;
+                }
+
+                if (qos.Exception.Data != null)
+                {
+                    if (qos.Exception.Data.Contains(AzurePSErrorDataKeys.HttpStatusCode))
+                    {
+                        eventProperties["exception-httpcode"] = qos.Exception.Data[AzurePSErrorDataKeys.HttpStatusCode].ToString();
+                    }
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var key in qos.Exception.Data?.Keys)
+                    {
+                        if (AzurePSErrorDataKeys.IsKeyPredefined(key.ToString()) 
+                            && !AzurePSErrorDataKeys.HttpStatusCode.Equals(key))
+                        {
+                            if (sb.Length > 0)
+                            {
+                                sb.Append(";");
+                            }
+                            sb.Append($"{key.ToString().Substring(AzurePSErrorDataKeys.KeyPrefix.Length)}={qos.Exception.Data[key]}");
+                        }
+                    }
+                    if(sb.Length > 0)
+                    {
+                        eventProperties["exception-data"] = sb.ToString();
+                    }
+                }
             }
 
             if (qos.InputFromPipeline != null)
@@ -301,6 +377,27 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 eventProperties[key] = qos.CustomProperties[key];
             }
+        }
+
+        private static string[] exceptionTrackAcceptModuleList = { "Az.Accounts", "Az.Compute", "Az.AKS", "Az.ContainerRegistry" };
+        private static string[] exceptionTrackAcceptCmdletList = { "Get-AzKeyVaultSecret", "Get-AzKeyVaultCert" };
+
+        private static string ConvertFrameToString(StackFrame frame)
+        {
+            string[] fullNameParts = frame?.GetMethod()?.DeclaringType?.FullName?.Split('.');
+            if(fullNameParts == null || fullNameParts.Length == 0)
+            {
+                return null;
+            }
+
+            string ret = string.Join(",", frame.GetMethod().GetParameters().Select(p => p.ParameterType.Name));
+            ret = $"{fullNameParts[fullNameParts.Length - 1]}.{frame.GetMethod().Name}({ret})";
+            if (fullNameParts.Length > 1)
+            {
+                ret = string.Join(".", fullNameParts.Take(fullNameParts.Length - 1).Select(s => s.Substring(0, 1)))
+                    + $".{ret}";
+            }
+            return ret;
         }
 
         public bool IsMetricTermAccepted()
@@ -382,6 +479,7 @@ public class AzurePSQoSEvent
 
     public DateTimeOffset StartTime { get; set; }
     public DateTimeOffset EndTime { get; set; }
+    public DateTimeOffset? PreviousEndTime { get; set; }
     public TimeSpan Duration { get; set; }
     public bool IsSuccess { get; set; }
     public string CommandName { get; set; }
@@ -432,7 +530,7 @@ public class AzurePSQoSEvent
     public override string ToString()
     {
         string ret = string.Format(
-            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2};", CommandName, IsSuccess, Duration);
+            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2}", CommandName, IsSuccess, Duration);
         if (Exception != null)
         {
             ret = $"{ret}; Exception - {Exception};";
