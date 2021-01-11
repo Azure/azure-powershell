@@ -13,16 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzADDomainService' {
     It 'UpdateExpanded' {
-        $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 $env.TlsV1Status1
-        $UpdateADDomain = Update-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName -DomainSecuritySetting $ADDomainSetting
+        $UpdateADDomain = Update-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName -DomainSecuritySettingTlsV1 $env.TlsV1Status1
         $UpdateADDomain.DomainSecuritySettingTlsV1 | Should -Be $env.TlsV1Status1
     }
 
     It 'UpdateViaIdentityExpanded' {
-        Start-Sleep -s 240
-        $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 $env.TlsV1Status2
+        # Start-Sleep -s 240
         $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
-        $UpdateADDomain = Update-AzADDomainService -InputObject $GetADDomainExample -DomainSecuritySetting $ADDomainSetting
+        $UpdateADDomain = Update-AzADDomainService -InputObject $GetADDomainExample -DomainSecuritySettingTlsV1 $env.TlsV1Status2
         $UpdateADDomain.DomainSecuritySettingTlsV1 | Should -Be $env.TlsV1Status2
     }
 }

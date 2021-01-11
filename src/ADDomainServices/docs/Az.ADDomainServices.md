@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ADDomainServices
-Module Guid: b532faf0-0d23-401e-9ca0-acaf561865ca
+Module Guid: bba49006-4c09-406e-8fad-dd48d1b381e7
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.addomainservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,20 +18,11 @@ The Get Domain Service operation retrieves a json representation of the Domain S
 The Create Domain Service operation creates a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 
-### [New-AzADDomainServiceDomainSecuritySettingObject](New-AzADDomainServiceDomainSecuritySettingObject.md)
-Create a in-memory object for DomainSecuritySettings
+### [New-AzADDomainServiceForestTrust](New-AzADDomainServiceForestTrust.md)
+Create a in-memory object for ForestTrust
 
-### [New-AzADDomainServiceLdapsSettingObject](New-AzADDomainServiceLdapsSettingObject.md)
-Create a in-memory object for LdapsSettings
-
-### [New-AzADDomainServiceNotificationSettingObject](New-AzADDomainServiceNotificationSettingObject.md)
-Create a in-memory object for NotificationSettings
-
-### [New-AzADDomainServiceReplicaSetObject](New-AzADDomainServiceReplicaSetObject.md)
+### [New-AzADDomainServiceReplicaSet](New-AzADDomainServiceReplicaSet.md)
 Create a in-memory object for ReplicaSet
-
-### [New-AzADDomainServiceResourceForestSettingObject](New-AzADDomainServiceResourceForestSettingObject.md)
-Create a in-memory object for ResourceForestSettings
 
 ### [Remove-AzADDomainService](Remove-AzADDomainService.md)
 The Delete Domain Service operation deletes an existing Domain Service.

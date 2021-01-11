@@ -98,6 +98,10 @@ directive:
       subject-prefix: ADDomainService
       subject: $2
   - where:
+      parameter-name: LdapSettingLdap
+    set:
+      parameter-name: LdapSettingLdaps
+  - where:
       parameter-name: ResourceForestSetting
     set:
       parameter-name: ForestTrust

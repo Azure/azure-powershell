@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServicesReplicaSetObject
+online version: https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSet
 schema: 2.0.0
 ---
 
-# New-AzADDomainServiceReplicaSetObject
+# New-AzADDomainServiceReplicaSet
 
 ## SYNOPSIS
 Create a in-memory object for ReplicaSet
@@ -13,7 +13,7 @@ Create a in-memory object for ReplicaSet
 ## SYNTAX
 
 ```
-New-AzADDomainServiceReplicaSetObject [-Location <String>] [-SubnetId <String>] [<CommonParameters>]
+New-AzADDomainServiceReplicaSet [-Location <String>] [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,16 +21,17 @@ Create a in-memory object for ReplicaSet
 
 ## EXAMPLES
 
-### Example 1: Create ReplicaSet for AzADDomain
+### Example 1: Create ReplicaSet for AdDomain
 ```powershell
-PS C:\> New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/youritest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default
+PS C:\> New-AzADDomainServiceReplicaSet -Location eastus -SubnetId /subscriptions/**********-****-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/Microsoft.Network/virtualNetworks/yourinttest/subnets/default
 
 DomainControllerIPAddress ExternalAccessIPAddress HealthLastEvaluated Location ServiceStatus SubnetId
 ------------------------- ----------------------- ------------------- -------- ------------- --------
-                                                                      westus                 /subscriptions/********-****-****-****-**********/resourceGroups/youritest/providers/Microsoft.Network…
+                                                                      eastus                 /subscriptions/****
+                                                                      ****-****-****-****-**********/resourceGroups/youriADDomain-rg-test/providers/M…
 ```
 
-Create ReplicaSet for AzADDomain
+Create ReplicaSet for AdDomain
 
 ## PARAMETERS
 

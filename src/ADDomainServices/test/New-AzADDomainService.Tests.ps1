@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzADDomainService' {
     It 'CreateExpanded' {
-        $ReplicaSet = New-AzADDomainServiceReplicaSetObject -Location $env.Location -SubnetId $env.SubnetId
+        $ReplicaSet = New-AzADDomainServiceReplicaSet -Location $env.Location -SubnetId $env.SubnetId
         $NewAdDomain = New-AzADDomainService -name $env.ADdomainName -ResourceGroupName $env.ResourceGroupName -DomainName $env.ADDomainNameCom -ReplicaSet $ReplicaSet
         $NewAdDomain.name | Should -Be $env.ADdomainName
     }

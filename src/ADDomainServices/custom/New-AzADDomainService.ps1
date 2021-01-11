@@ -81,30 +81,93 @@ function New-AzADDomainService {
         ${DomainName},
         
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings]
-        # Domain Security Settings.
-        ${DomainSecuritySetting},
+        [System.String]
+        # A flag to determine whether or not NtlmV1 is enabled or disabled.
+        ${DomainSecuritySettingNtlmV1},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+        ${DomainSecuritySettingSyncKerberosPassword},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
+        ${DomainSecuritySettingSyncNtlmPassword},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+        ${DomainSecuritySettingSyncOnPremPassword},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # A flag to determine whether or not TlsV1 is enabled or disabled.
+        ${DomainSecuritySettingTlsV1},
     
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-        [ValidateSet("Enabled", "Disabled")]
         [System.String]
         # Enabled or Disabled flag to turn on Group-based filtered sync
         ${FilteredSync},
     
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess])]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.LdapsSettings]
-        # Secure LDAP Settings.
-        ${LdapsSetting},
+        [System.String]
+        # A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
+        ${LdapSettingExternalAccess},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # A flag to determine whether or not Secure LDAP is enabled or disabled.
+        ${LdapSettingLdaps},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # The certificate required to configure Secure LDAP.
+        # The parameter passed here should be a base64encoded representation of the certificate pfx file.
+        ${LdapSettingPfxCertificate},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.Security.SecureString]
+        # The password to decrypt the provided Secure LDAP certificate pfx file.
+        ${LdapSettingPfxCertificatePassword},
             
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.NotificationSettings]
-        # Notification Settings.
-        ${NotificationSetting},
+        [System.String[]]
+        # The list of additional recipients
+        ${NotificationSettingAdditionalRecipient},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # Should domain controller admins be notified
+        ${NotificationSettingNotifyDcAdmin},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [System.String]
+        # Should global admins be notified
+        ${NotificationSettingNotifyGlobalAdmin},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
@@ -115,9 +178,16 @@ function New-AzADDomainService {
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings]
-        # Settings for Resource Forest.
-        ${ResourceForestSetting},
+        [System.String]
+        # Resource Forest
+        ${ResourceForest},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
+        # List of settings for Resource Forest
+        # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
+        ${ForestTrust},
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
@@ -197,36 +267,11 @@ function New-AzADDomainService {
         try {
             $PSBoundParameters['Location'] = $PSBoundParameters['ReplicaSet'][0].Location
 
-            if ($PSBoundParameters.ContainsKey('DomainSecuritySetting')) {
-                $PSBoundParameters['DomainSecuritySettingNtlmV1'] = $PSBoundParameters['DomainSecuritySetting'].NtlmV1
-                $PSBoundParameters['DomainSecuritySettingSyncKerberosPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncKerberosPassword
-                $PSBoundParameters['DomainSecuritySettingSyncNtlmPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncNtlmPassword
-                $PSBoundParameters['DomainSecuritySettingSyncOnPremPassword'] = $PSBoundParameters['DomainSecuritySetting'].SyncOnPremPassword
-                $PSBoundParameters['DomainSecuritySettingTlsV1'] = $PSBoundParameters['DomainSecuritySetting'].TlsV1
-                $null = $PSBoundParameters.Remove('DomainSecuritySetting')
-            }
+            if ($PSBoundParameters.ContainsKey('LdapSettingPfxCertificatePassword')) {
+                $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['LdapSettingPfxCertificatePassword']
+                $PSBoundParameters['LdapSettingPfxCertificatePassword'] = $psTxt
+            }  
 
-            if ($PSBoundParameters.ContainsKey('LdapsSetting')) {
-                $PSBoundParameters['LdapSettingExternalAccess'] = $PSBoundParameters['LdapsSetting'].ExternalAccess
-                $PSBoundParameters['LdapSettingLdap'] = $PSBoundParameters['LdapsSetting'].Ldap
-                $PSBoundParameters['LdapSettingPfxCertificate'] = $PSBoundParameters['LdapsSetting'].PfxCertificate
-                $PSBoundParameters['LdapSettingPfxCertificatePassword'] = $PSBoundParameters['LdapsSetting'].PfxCertificatePassword
-                $null = $PSBoundParameters.Remove('LdapsSetting')
-
-            }
-
-            if ($PSBoundParameters.ContainsKey('ResourceForestSetting')) {
-                $PSBoundParameters['ResourceForest'] = $PSBoundParameters['ResourceForestSetting'].ResourceForest
-                $PSBoundParameters['ForestTrust'] = $PSBoundParameters['ResourceForestSetting'].Setting
-                $null = $PSBoundParameters.Remove('ResourceForestSetting')
-            }
-   
-            if ($PSBoundParameters.ContainsKey('NotificationSetting')) {
-                $PSBoundParameters['NotificationSettingAdditionalRecipient'] = $PSBoundParameters['NotificationSetting'].AdditionalRecipient
-                $PSBoundParameters['NotificationSettingNotifyDcAdmin'] = $PSBoundParameters['NotificationSetting'].NotifyDcAdmin
-                $PSBoundParameters['NotificationSettingNotifyGlobalAdmin'] = $PSBoundParameters['NotificationSetting'].NotifyGlobalAdmin
-                $null = $PSBoundParameters.Remove('NotificationSetting')
-            }
             Az.ADDomainServices.internal\New-AzADDomainService @PSBoundParameters
         } catch {
             throw
