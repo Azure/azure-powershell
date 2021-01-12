@@ -174,6 +174,8 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             if (this.InternalMapping != null)
             {
+                vpnGatewayNatRuleToModify.InternalMappings.Clear();
+
                 foreach (string internalMappingSubnet in this.InternalMapping)
                 {
                     var internalMapping = new PSVpnNatRuleMapping();
@@ -184,6 +186,8 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             if (this.ExternalMapping != null)
             {
+                vpnGatewayNatRuleToModify.ExternalMappings.Clear();
+
                 foreach (string externalMappingSubnet in this.ExternalMapping)
                 {
                     var externalMapping = new PSVpnNatRuleMapping();

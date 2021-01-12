@@ -15,22 +15,22 @@ Creates a NAT rule on a VpnGateway which can be associated with VpnSiteLinkConne
 ### ByVpnGatewayName (Default)
 ```
 New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-Type <String>] [-Mode <String>] [-InternalMappings <String[]>] [-ExternalMappings <String[]>]
- -IpConfigurationId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-Mode <String>] -InternalMapping <String[]> -ExternalMapping <String[]>
+ [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
 ```
 New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <String>] [-Mode <String>]
- [-InternalMappings <String[]>] [-ExternalMappings <String[]>] -IpConfigurationId <String> [-AsJob]
+ -InternalMapping <String[]> -ExternalMapping <String[]> [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
 New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String>] [-Mode <String>]
- [-InternalMappings <String[]>] [-ExternalMappings <String[]>] -IpConfigurationId <String> [-AsJob]
+ -InternalMapping <String[]> -ExternalMapping <String[]> [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,6 @@ ProvisioningState         : Provisioned
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/natRules/testNatRule
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub. Then, we will create VpnGateway under that Virtual Hub. Then, using this command: New-AzVpnGatewayNatRule, NAT rule can be createdand associated with created VpnGateway.
@@ -99,7 +98,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalMappings
+### -ExternalMapping
 The list of private IP address subnet external mappings for NAT
 
 ```yaml
@@ -107,14 +106,14 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InternalMappings
+### -InternalMapping
 The list of private IP address subnet internal mappings for NAT
 
 ```yaml
@@ -122,7 +121,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,7 +136,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

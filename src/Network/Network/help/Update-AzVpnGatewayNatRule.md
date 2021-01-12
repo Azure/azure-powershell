@@ -15,22 +15,22 @@ Updates a NAT rule associated with VpnGateway.
 ### ByVpnGatewayNatRuleName (Default)
 ```
 Update-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-Type <String>] [-Mode <String>] [-InternalMappings <String[]>] [-ExternalMappings <String[]>]
- -IpConfigurationId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-Mode <String>] [-InternalMapping <String[]>] [-ExternalMapping <String[]>]
+ [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVpnGatewayNatRuleResourceId
 ```
-Update-AzVpnGatewayNatRule -ResourceId <String> [-Type <String>] [-Mode <String>]
- [-InternalMappings <String[]>] [-ExternalMappings <String[]>] -IpConfigurationId <String> [-AsJob]
+Update-AzVpnGatewayNatRule -ResourceId <String> [-Type <String>] [-Mode <String>] [-InternalMapping <String[]>]
+ [-ExternalMapping <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayNatRuleObject
 ```
 Update-AzVpnGatewayNatRule -InputObject <PSVpnGatewayNatRule> [-Type <String>] [-Mode <String>]
- [-InternalMappings <String[]>] [-ExternalMappings <String[]>] -IpConfigurationId <String> [-AsJob]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,12 +63,10 @@ ProvisioningState         : Provisioned
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/natRules/testNatRule
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub. Then, we will create VpnGateway under that Virtual Hub. Then, create new NAT rule associated with created VpnGateway.
 Using this command: Update-AzVpnGatewayNatRule, update NAT rule.
-
 
 ## PARAMETERS
 
@@ -102,7 +100,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalMappings
+### -ExternalMapping
 The list of private IP address subnet external mappings for NAT
 
 ```yaml
@@ -132,7 +130,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InternalMappings
+### -InternalMapping
 The list of private IP address subnet internal mappings for NAT
 
 ```yaml
@@ -155,7 +153,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

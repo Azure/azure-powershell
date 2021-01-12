@@ -16,7 +16,7 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
- [-IngressNatRules <PSResourceId[]>] [-EgressNatRules <PSResourceId[]>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -82,7 +82,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EgressNatRules
+### -EgressNatRule
 The list of egress  NAT rules that are associated with this link Connection.
 
 ```yaml
@@ -112,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngressNatRules
+### -IngressNatRule
 The list of ingress NAT rules that are associated with this link Connection.
 
 ```yaml

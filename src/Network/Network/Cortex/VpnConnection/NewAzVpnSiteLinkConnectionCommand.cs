@@ -77,12 +77,12 @@
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of ingress NAT rules that are associated with this link Connection.")]
-        public PSResourceId[] IngressNatRules { get; set; }
+        public PSResourceId[] IngressNatRule { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of egress  NAT rules that are associated with this link Connection.")]
-        public PSResourceId[] EgressNatRules { get; set; }
+        public PSResourceId[] EgressNatRule { get; set; }
 
         public override void Execute()
         {
@@ -95,8 +95,8 @@
                 UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent,
                 UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
                 RoutingWeight = Convert.ToInt32(this.RoutingWeight),
-                IngressNatRules = IngressNatRules?.ToList(),
-                EgressNatRules = EgressNatRules?.ToList()
+                IngressNatRules = IngressNatRule?.ToList(),
+                EgressNatRules = EgressNatRule?.ToList()
             };
 
             if (this.VpnSiteLink == null)
