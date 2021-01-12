@@ -11,6 +11,7 @@ Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.Functions
 Az.HanaOnAzure
+Az.HealthBot
 Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
