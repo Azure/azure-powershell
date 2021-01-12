@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
+
         /// <summary>
         /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
@@ -104,7 +105,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new Exception(Resources.SoftdeleteNotImplementedException);
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
@@ -239,6 +265,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -248,7 +275,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureWorkload,
-                DataSourceType.SQLDataBase);
+                DataSourceType.SQLDataBase,
+                UseSecondaryRegion);
 
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
@@ -377,11 +405,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
 
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
+
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
-                // validate container name to be a full name
-                AzureWorkloadProviderHelper.ValidateContainerName(wLRecoveryConfig.RecoveryPoint.ContainerName);
-
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
 
@@ -458,14 +486,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
 
-            var response = ServiceClientAdapter.RestoreDisk(
+            if (useSecondaryRegion)
+            {
+                AzureRecoveryPoint rp = (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                // get access token
+                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName);
+
+                // AzureWorkload  CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+
+                CrossRegionRestoreRequest crrRestoreRequest = new CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = triggerRestoreRequest.Properties;
+
+                // storage account location isn't required in case of workload restore
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    triggerCRRRestoreRequest: crrRestoreRequest,
+                    secondaryRegion: secondaryRegion);
+                return response;
+            }
+            else
+            {
+                var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation);
-            return response;
+                return response;
+            }          
+            
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> CreateorModifyPolicy()

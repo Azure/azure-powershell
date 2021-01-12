@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for PrincipalType.</summary>
+    /// <summary>Principal type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalTypeTypeConverter))]
     public partial struct PrincipalType :
         System.Management.Automation.IArgumentCompleter

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
 {
 
-    /// <summary>Argument completer implementation for HanaProvisioningStatesEnum.</summary>
+    /// <summary>State of provisioning of the HanaInstance</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.HanaProvisioningStatesEnumTypeConverter))]
     public partial struct HanaProvisioningStatesEnum :
         System.Management.Automation.IArgumentCompleter

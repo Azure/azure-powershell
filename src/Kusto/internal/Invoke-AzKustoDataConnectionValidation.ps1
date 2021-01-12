@@ -59,11 +59,11 @@ ErrorMessage
 event hub resource id and consumer group tuple provided are already used
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidation
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnectionValidation
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnectionValidationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -88,7 +88,7 @@ PARAMETER <IDataConnectionValidation>: Class representing an data connection val
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnectionValidationResult])]
 [CmdletBinding(DefaultParameterSetName='DataExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Data', Mandatory)]
@@ -132,7 +132,7 @@ param(
     [Parameter(ParameterSetName='Data', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='DataViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDataConnectionValidation]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnectionValidation]
     # Class representing an data connection validation.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

@@ -26,7 +26,7 @@ Describe 'Remove-AzMySqlServer' {
             #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
             New-AzMySqlServer -Name mysqldelete -ResourceGroupName $env.resourceGroup -Location $env.location -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku $env.Sku
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/servers/mysqldelete"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySQL/servers/mysqldelete"
             Remove-AzMySqlServer -InputObject $ID
         } | Should -Not -Throw
     }

@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string EncryptionScopeObjectParameterSet = "EncryptionScopeObject";
 
         /// <summary>
-        /// AccountName Parameter Set
+        /// AccountName KeyVault Parameter Set
         /// </summary>
         private const string AccountNameKeyVaultParameterSet = "AccountNameKeyVault";
 
         /// <summary>
-        /// Account object parameter set 
+        /// Account object KeyVault parameter set 
         /// </summary>
         private const string AccountObjectKeyVaultParameterSet = "AccountObjectKeyVault";
 
         /// <summary>
-        /// EncryptionScope object parameter set 
+        /// EncryptionScope object KeyVault parameter set 
         /// </summary>
         private const string EncryptionScopeObjectKeyVaultParameterSet = "EncryptionScopeObjectKeyVault";
 

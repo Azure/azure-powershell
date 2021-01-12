@@ -104,13 +104,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
+        public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
         public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
-        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
+        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
         public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
         public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
         public const string MongoIndexKey = "Array of key values as strings.";

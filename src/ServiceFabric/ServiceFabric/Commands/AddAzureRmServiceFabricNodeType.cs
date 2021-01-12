@@ -124,8 +124,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var cluster = GetCurrentCluster();
                 this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
-                CreateVmss(cluster.ClusterId);
                 var pscluster = AddNodeTypeToSfrp(cluster);
+                CreateVmss(cluster.ClusterId);
                 WriteObject(pscluster, true);
             }
         }

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Database principal type.</summary>
     public partial struct DatabasePrincipalType :
         System.IEquatable<DatabasePrincipalType>
     {

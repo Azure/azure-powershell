@@ -638,3 +638,36 @@ function Test-NewDeploymentFromNonexistentTemplateParameterFile
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests deployment from a template in a storage account using a query string.
+#>
+function Test-NewDeploymentWithQueryString
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		#Create deployment
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.blob.core.windows.net/testqsblob/linkedTemplateParent.json" -QueryString "foo"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Message providing the reason why the given name is invalid.</summary>
     public partial struct Reason :
         System.IEquatable<Reason>
     {

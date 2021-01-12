@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
     /// <summary>List all the servers in a given subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/servers"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSQL/servers"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlServer_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer))]

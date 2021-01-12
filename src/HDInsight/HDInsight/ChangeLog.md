@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.1
+* Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
+
+## Version 4.1.0
+
+* Add parameters `ResourceProviderConnection` and `PrivateLink` to cmdlet `New-AzHDInsightCluster` to support relay outbound and private link feature
+* Add parameter `AmbariDatabase` to cmdlet `New-AzHDInsightCluster` to support custom Ambari database feature
+* Add accept value "AmbariDatabase" to the parameter `MetastoreType` of the cmdlet `Add-AzHDInsightMetastore`
+
 ## Version 4.0.0
  * For New-AzHDInsightCluster cmdlet:
      - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`

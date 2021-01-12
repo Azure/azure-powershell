@@ -70,7 +70,7 @@ function Test-LoadBalancerCRUDMinimalParameters
         $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
         $FrontendIPConfiguration = New-AzLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -PublicIpAddress $PublicIPAddress;
         $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
-        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount;
+        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount -Protocol Tcp;
         $InboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $InboundNatPoolName -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $InboundNatPoolProtocol -FrontendPortRangeStart $InboundNatPoolFrontendPortRangeStart -FrontendPortRangeEnd $InboundNatPoolFrontendPortRangeEnd -BackendPort $InboundNatPoolBackendPort;
 
         # Create LoadBalancer
@@ -168,7 +168,7 @@ function Test-LoadBalancerCRUDAllParameters
         $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
         $FrontendIPConfiguration = New-AzLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -PublicIpAddress $PublicIPAddress;
         $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
-        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount;
+        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount -Protocol Tcp;
         $InboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $InboundNatPoolName -FrontendIpConfiguration $FrontendIPConfiguration -Protocol $InboundNatPoolProtocol -FrontendPortRangeStart $InboundNatPoolFrontendPortRangeStart -FrontendPortRangeEnd $InboundNatPoolFrontendPortRangeEnd -BackendPort $InboundNatPoolBackendPort;
 
         # Create LoadBalancer
@@ -608,7 +608,7 @@ function Test-LoadBalancingRuleCRUDMinimalParameters
         }
         $FrontendIPConfiguration = New-AzLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -Subnet $Subnet;
         $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
-        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount;
+        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount -Protocol Tcp;
 
         # Create LoadBalancingRule
         $vLoadBalancingRule = New-AzLoadBalancerRuleConfig -Name $rname -FrontendIpConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Probe $Probe -Protocol $Protocol -FrontendPort $FrontendPort -BackendPort $BackendPort;
@@ -764,7 +764,7 @@ function Test-LoadBalancingRuleCRUDAllParameters
         }
         $FrontendIPConfiguration = New-AzLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -Subnet $Subnet;
         $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName;
-        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount;
+        $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -Port $ProbePort -IntervalInSeconds $ProbeIntervalInSeconds -ProbeCount $ProbeProbeCount -Protocol Tcp;
 
         # Create LoadBalancingRule
         $vLoadBalancingRule = New-AzLoadBalancerRuleConfig -Name $rname -FrontendIpConfiguration $FrontendIPConfiguration -BackendAddressPool $BackendAddressPool -Probe $Probe -Protocol $Protocol -LoadDistribution $LoadDistribution -FrontendPort $FrontendPort -BackendPort $BackendPort -IdleTimeoutInMinutes $IdleTimeoutInMinutes -EnableFloatingIP;
@@ -913,7 +913,7 @@ function Test-ProbeCRUDMinimalParameters
         $FrontendIPConfiguration = New-AzLoadBalancerFrontendIpConfig -Name $FrontendIPConfigurationName -PublicIpAddress $PublicIPAddress;
 
         # Create Probe
-        $vProbe = New-AzLoadBalancerProbeConfig -Name $rname -Port $Port -IntervalInSeconds $IntervalInSeconds -ProbeCount $ProbeCount;
+        $vProbe = New-AzLoadBalancerProbeConfig -Name $rname -Port $Port -IntervalInSeconds $IntervalInSeconds -ProbeCount $ProbeCount -Protocol Tcp;
         Assert-NotNull $vProbe;
         Assert-True { Check-CmdletReturnType "New-AzLoadBalancerProbeConfig" $vProbe };
         $vLoadBalancer = New-AzLoadBalancer -ResourceGroupName $rgname -Name $rname -Probe $vProbe -FrontendIPConfiguration $FrontendIPConfiguration -Location $location;
@@ -937,7 +937,7 @@ function Test-ProbeCRUDMinimalParameters
         Assert-NotNull ($listProbe | Where-Object { $_.Name -eq $rname });
 
         # Set Probe
-        $vLoadBalancer = Set-AzLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet;
+        $vLoadBalancer = Set-AzLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet -Protocol Tcp;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
         Assert-NotNull $vLoadBalancer;
@@ -956,7 +956,7 @@ function Test-ProbeCRUDMinimalParameters
         Assert-NotNull ($listProbe | Where-Object { $_.Name -eq $rname });
 
         # Add Probe
-        $vLoadBalancer = Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd;
+        $vLoadBalancer = Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd -Protocol Tcp;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
         Assert-NotNull $vLoadBalancer;
@@ -975,7 +975,7 @@ function Test-ProbeCRUDMinimalParameters
         Assert-NotNull ($listProbe | Where-Object { $_.Name -eq $rnameAdd });
 
         # Try Add again
-        Assert-ThrowsContains { Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd } "already exists";
+        Assert-ThrowsContains { Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd -Protocol Tcp } "already exists";
 
         # Remove Probe
         $vLoadBalancer = Remove-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rnameAdd;
@@ -990,7 +990,7 @@ function Test-ProbeCRUDMinimalParameters
         Assert-ThrowsContains { Get-AzLoadBalancerProbeConfig -LoadBalancer $vLoadBalancer -Name $rname } "Sequence contains no matching element";
 
         # Set Probe should fail
-        Assert-ThrowsContains { Set-AzLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet } "does not exist";
+        Assert-ThrowsContains { Set-AzLoadBalancerProbeConfig -Name $rname -LoadBalancer $vLoadBalancer -Port $PortSet -IntervalInSeconds $IntervalInSecondsSet -ProbeCount $ProbeCountSet -Protocol Tcp } "does not exist";
     }
     finally
     {
@@ -1088,7 +1088,7 @@ function Test-ProbeCRUDAllParameters
         Assert-NotNull ($listProbe | Where-Object { $_.Name -eq $rname });
 
         # Add Probe
-        $vLoadBalancer = Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd;
+        $vLoadBalancer = Add-AzLoadBalancerProbeConfig -Name $rnameAdd -LoadBalancer $vLoadBalancer -Port $PortAdd -IntervalInSeconds $IntervalInSecondsAdd -ProbeCount $ProbeCountAdd -Protocol Tcp;
         Assert-NotNull $vLoadBalancer;
         $vLoadBalancer = Set-AzLoadBalancer -LoadBalancer $vLoadBalancer;
         Assert-NotNull $vLoadBalancer;

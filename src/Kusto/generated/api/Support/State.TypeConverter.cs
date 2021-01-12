@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for State.</summary>
+    /// <summary>The state of the resource.</summary>
     public partial class StateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

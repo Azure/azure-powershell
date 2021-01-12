@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
         /// <param name="databaseName">The name of the Azure SQL Managed database</param>
         /// <param name="model">Model describing the managed database log replay request</param>
-        public Task StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
+        public Management.Sql.Models.ManagedDatabase StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
         {
-            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdateAsync(
+            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdate(
                 resourceGroupName,
                 managedInstanceName,
                 databaseName,

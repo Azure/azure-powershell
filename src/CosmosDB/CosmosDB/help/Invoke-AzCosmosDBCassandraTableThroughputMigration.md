@@ -43,7 +43,6 @@ PS C:\>$NewTable =  New-AzCosmosDBCassandraTable -AccountName myAccountName -Res
       $AutoscaleThroughput = Invoke-AzCosmosDBCassandraTableThroughputMigration -InputObject $NewTable -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string AccountObjectParameterSet = "AccountObject";
 
         /// <summary>
-        /// AccountName Parameter Set
+        /// AccountName KeyVault Parameter Set
         /// </summary>
         private const string AccountNameKeyVaultParameterSet = "AccountNameKeyVault";
 
         /// <summary>
-        /// Account object parameter set 
+        /// Account object KeyVault parameter set 
         /// </summary>
         private const string AccountObjectKeyVaultParameterSet = "AccountObjectKeyVault";
 

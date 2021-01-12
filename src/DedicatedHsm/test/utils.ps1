@@ -16,11 +16,7 @@ function setupEnv() {
     $env.location = 'eastus'
     
     $dedicatedHsmName01 = 'hsm-' + (RandomString -allChars $false -len 6)
-    $dedicatedHsmName02 = 'hsm-' + (RandomString -allChars $false -len 6)
-    $dedicatedHsmName03 = 'hsm-' + (RandomString -allChars $false -len 6)
     $env.Add('dedicatedHsmName01', $dedicatedHsmName01)
-    $env.Add('dedicatedHsmName02', $dedicatedHsmName02)
-    $env.Add('dedicatedHsmName03', $dedicatedHsmName03)
     Write-Host "start to create test group"
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
@@ -69,9 +65,6 @@ function setupEnv() {
 
     # Virtual network subnet id
     $env.vnetSubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/hsmsubnet";
-    # Create Dedicated Hsm for test.
-    Write-Host -ForegroundColor Green "Create Dedicated Hsm for test"
-    New-AzDedicatedHsm -Name  $env.dedicatedHsmName01 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku "SafeNet Luna Network HSM A790" -StampId stamp1 -SubnetId $env.vnetSubnetId -NetworkInterface @{PrivateIPAddress = '10.2.1.120' }
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -360,7 +360,7 @@ function Test_NewCertificatePolicy
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
-    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15

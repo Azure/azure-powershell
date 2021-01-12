@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return;
             }
-            {_endIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("endIpAddress"), out var __jsonEndIPAddress) ? (string)__jsonEndIPAddress : (string)EndIPAddress;}
             {_startIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("startIpAddress"), out var __jsonStartIPAddress) ? (string)__jsonStartIPAddress : (string)StartIPAddress;}
+            {_endIPAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("endIpAddress"), out var __jsonEndIPAddress) ? (string)__jsonEndIPAddress : (string)EndIPAddress;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return container;
             }
-            AddIf( null != (((object)this._endIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._endIPAddress.ToString()) : null, "endIpAddress" ,container.Add );
             AddIf( null != (((object)this._startIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._startIPAddress.ToString()) : null, "startIpAddress" ,container.Add );
+            AddIf( null != (((object)this._endIPAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._endIPAddress.ToString()) : null, "endIpAddress" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

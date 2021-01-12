@@ -259,6 +259,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INITIALZATION: Failed to migrate ADAL token to MSAL token with error : {0}.
+        /// </summary>
+        public static string FailedToMigrateAdal2Msal {
+            get {
+                return ResourceManager.GetString("FailedToMigrateAdal2Msal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File path is not valid.
         /// </summary>
         public static string FilePathIsNotValid {

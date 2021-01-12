@@ -166,7 +166,7 @@ The list of language extensions.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
