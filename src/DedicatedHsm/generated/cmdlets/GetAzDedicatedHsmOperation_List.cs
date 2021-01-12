@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
 
     /// <summary>Get a list of Dedicated HSM operations.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.HardwareSecurityModules/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.HardwareSecurityModules/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDedicatedHsmOperation_List")]
@@ -302,12 +302,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
                     return ;
                 }
                 // Error Response : default
-                // Unrecognized Response. Create an error record based on what we have.
-                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError>(responseMessage, await response);
-                WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                var code = (await response)?.Error?.Code;
+                var message = (await response)?.Error?.Message;
+                if ((null == code || null == message))
                 {
-                  ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
-                });
+                    // Unrecognized Response. Create an error record based on what we have.
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
+                    });
+                }
+                else
+                {
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
+                    });
+                }
             }
         }
 

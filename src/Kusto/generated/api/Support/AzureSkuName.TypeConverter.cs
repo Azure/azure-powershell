@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for AzureSkuName.</summary>
+    /// <summary>SKU name.</summary>
     public partial class AzureSkuNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 
     /// <summary>Deletes the identity.</summary>
     /// <remarks>
-    /// [OpenAPI] UserAssignedIdentities_Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
+    /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzUserAssignedIdentity_Delete", SupportsShouldProcess = true)]
@@ -104,12 +104,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the resource group.")]
+        /// <summary>The name of the Resource Group to which the identity belongs.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Resource Group to which the identity belongs.")]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the resource group.",
+        Description = @"The name of the Resource Group to which the identity belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.ParameterCategory.Path)]

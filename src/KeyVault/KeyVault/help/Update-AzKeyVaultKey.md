@@ -19,6 +19,13 @@ Update-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### HsmInteractive
+```
+Update-AzKeyVaultKey -HsmName <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObject
 ```
 Update-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
@@ -127,6 +134,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractive
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Key object
 
@@ -164,7 +186,7 @@ Cmdlet constructs the FQDN of a key from vault name, currently selected environm
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: Default, HsmInteractive
 Aliases: KeyName
 
 Required: True

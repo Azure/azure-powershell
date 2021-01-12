@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for RemoteApplicationType.</summary>
+    /// <summary>Resource Type of Application.</summary>
     public partial class RemoteApplicationTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

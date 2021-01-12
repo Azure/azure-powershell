@@ -23,9 +23,27 @@
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
-    - Added parameter WebCategory
+    - Added parameter TargetUrl
+    - Added parameter TerminateTLS
+* Added new cmdlets for Azure Firewall Premium Features
+    - `New-AzFirewallPolicyIntrusionDetection`
+    - `New-AzFirewallPolicyIntrusionDetectionBypassTraffic`
+    - `New-AzFirewallPolicyIntrusionDetectionSignatureOverride`
+* Updated New-AzFirewallPolicy cmdlet:
+    - Added parameter -SkuTier
+    - Added parameter -Identity
+    - Added parameter -UserAssignedIdentityId
+    - Added parameter -IntrusionDetection
+    - Added parameter -TransportSecurityName
+    - Added parameter -TransportSecurityKeyVaultSecretId
+* Added multiple Authentication support for p2sVpnGateway
+    - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 * Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
     - Added parameter EnableRoutingPreferenceInternetFlag
+
+## Version 4.4.0
+* Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario
+    - `Remove-AzExpressRouteCircuitPeeringConfig` and `Remove-AzExpressRouteCircuitConnectionConfig`
 
 ## Version 4.3.0
 * Updated below cmdlet 
@@ -71,6 +89,10 @@
     - `Get-AzApplicationGatewaySslProfilePolicy`
     - `Remove-AzApplicationGatewaySslProfilePolicy`
     - `Set-AzApplicationGatewaySslProfilePolicy`
+* Added new parameter 'Priority' to support Rule Priority in Application Gateway RequestRoutingRule for the below cmdlets
+    - `Add-AzApplicationGatewayRequestRoutingRule`
+    - `New-AzApplicationGatewayRequestRoutingRule`
+    - `Set-AzApplicationGatewayRequestRoutingRule`
 
 ## Version 4.2.0
 * Added warning messages for upcoming breaking change for Virtual Router Peer Routes
@@ -666,4 +688,3 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
-

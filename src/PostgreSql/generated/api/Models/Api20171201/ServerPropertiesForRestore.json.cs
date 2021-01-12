@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             __serverPropertiesForCreate = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForCreate(json);
-            {_restorePointInTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("restorePointInTime"), out var __jsonRestorePointInTime) ? global::System.DateTime.TryParse((string)__jsonRestorePointInTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonRestorePointInTimeValue) ? __jsonRestorePointInTimeValue : RestorePointInTime : RestorePointInTime;}
             {_sourceServerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("sourceServerId"), out var __jsonSourceServerId) ? (string)__jsonSourceServerId : (string)SourceServerId;}
+            {_restorePointInTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("restorePointInTime"), out var __jsonRestorePointInTime) ? global::System.DateTime.TryParse((string)__jsonRestorePointInTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonRestorePointInTimeValue) ? __jsonRestorePointInTimeValue : RestorePointInTime : RestorePointInTime;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return container;
             }
             __serverPropertiesForCreate?.ToJson(container, serializationMode);
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._restorePointInTime.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "restorePointInTime" ,container.Add );
             AddIf( null != (((object)this._sourceServerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._sourceServerId.ToString()) : null, "sourceServerId" ,container.Add );
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._restorePointInTime.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "restorePointInTime" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

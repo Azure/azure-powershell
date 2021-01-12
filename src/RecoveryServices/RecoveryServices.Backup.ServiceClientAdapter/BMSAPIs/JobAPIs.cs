@@ -41,6 +41,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Gets CRR job details
+        /// </summary>
+        /// <param name="secondaryRegion">secondaryRegion for the vault </param>
+        /// <param name="jobRequest">JobId, ResourceId for the Job to be fetched </param>
+        /// <returns>Job response returned by the service</returns>
+        public JobResource GetCRRJobDetails(
+            string secondaryRegion,
+            CrrJobRequest jobRequest
+            )
+        {
+            return BmsAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest).Result.Body;
+        }
+
+        public List<JobResource> GetCrrJobs(string vaultId,
+            string jobId,
+            string status,
+            string operation,
+            DateTime startTime,
+            DateTime endTime,
+            string backupManagementType, 
+            string azureRegion = null)
+        {
+            ODataQuery<JobQueryObject> queryFilter = GetQueryObject(
+                backupManagementType,
+                startTime,
+                endTime,
+                jobId,
+                status, 
+                operation);
+            
+            CrrJobRequest crrJobRequest = new CrrJobRequest();
+            crrJobRequest.ResourceId = vaultId;
+            
+            Func<RestAzureNS.IPage<JobResource>> listAsync =
+                () => BmsAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest, queryFilter,  cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;   //  , crrJobRequest , queryFilter
+
+            Func<string, RestAzureNS.IPage<JobResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.BackupJobs.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList(listAsync, listNextAsync);
+        }
+                
+        /// <summary>
         /// Lists jobs according to the parameters
         /// </summary>
         /// <param name="jobId">ID of the job</param>

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The name of blob storage event type to process.</summary>
     public partial struct BlobStorageEventType :
         System.IEquatable<BlobStorageEventType>
     {

@@ -35,13 +35,26 @@ function Test-SecretManagementExtension
 
 	Get-SecretInfo -Vault AzKeyVault
 
-	Get-Secret -Vault AzKeyVault -Name secret1
+	[byte[]]$Arr = 1, 2, 3
+	Set-Secret -Name byteArraySecret -Secret $Arr -Vault AzKeyVault #ByteArray
 
-	$secure = ConvertTo-SecureString -String "test" -AsPlainText -Force
-	Set-Secret -Vault AzKeyVault -Name secret3 -SecureStringSecret $secure
+	Set-Secret -Name stringSecret -Secret 'test' -Vault AzKeyVault # String value
 
-	Get-SecretInfo -Vault AzKeyVault
-	Remove-Secret -Vault AzKeyVault -Name secret3
+	$credential = [System.Management.Automation.PSCredential]::new('<user>', ('<pwd>' | ConvertTo-SecureString -AsPlainText -Force)) 
+	Set-Secret -Name credentialSecret -Secret $credential -Vault AzKeyVault # PSCredential
 
+	$hashtable = @{'<key>'='<value>'}
+	Set-Secret -Name hashtableSecret -Secret $hashtable -Vault AzKeyVault # Hashtable
 
+	$secure = ConvertTo-SecureString -String "<text1>" -AsPlainText -Force
+	Set-Secret -Name secureSecret -SecureStringSecret $secure -Vault AzKeyVault
+
+	$secureString = ConvertTo-SecureString -String "<text2>" -AsPlainText -Force
+	Set-Secret -Name secureStringSecret -SecureStringSecret $secureString -Vault AzKeyVault
+
+	Get-SecretInfo -Vault AzKeyVault 
+
+	Get-Secret -Vault AzKeyVault -Name secureSecret
+
+	Get-SecretInfo -Vault AzKeyVault | Remove-Secret -Vault AzKeyVault	
 }

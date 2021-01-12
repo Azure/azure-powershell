@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for HostPoolType.</summary>
+    /// <summary>HostPool type for desktop.</summary>
     public partial class HostPoolTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

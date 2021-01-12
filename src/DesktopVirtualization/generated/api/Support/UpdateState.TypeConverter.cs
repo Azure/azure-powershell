@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for UpdateState.</summary>
+    /// <summary>Update state of a SessionHost.</summary>
     public partial class UpdateStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

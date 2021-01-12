@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>
-    /// Argument completer implementation for PrivateLinkServiceConnectionStateActionsRequire.
-    /// </summary>
+    /// <summary>The actions required for private link service connection.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PrivateLinkServiceConnectionStateActionsRequireTypeConverter))]
     public partial struct PrivateLinkServiceConnectionStateActionsRequire :
         System.Management.Automation.IArgumentCompleter

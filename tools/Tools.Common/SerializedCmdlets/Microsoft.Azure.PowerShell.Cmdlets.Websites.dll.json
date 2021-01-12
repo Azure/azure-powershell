@@ -1433,7 +1433,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -1600,7 +1600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -1935,7 +1935,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -2257,7 +2257,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -2500,7 +2500,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -2844,7 +2844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -3307,7 +3307,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -3552,7 +3552,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -3737,7 +3737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -4182,7 +4182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -4759,7 +4759,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -5166,7 +5166,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -5456,7 +5456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -5723,7 +5723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -5936,7 +5936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -6103,7 +6103,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -6370,7 +6370,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -6583,7 +6583,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -7115,7 +7115,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
             "GenericTypeArguments": [],
@@ -7267,7 +7267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -8019,7 +8019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
                   "GenericTypeArguments": [],
@@ -8652,7 +8652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -9411,7 +9411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -9890,7 +9890,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -10155,7 +10155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -10322,7 +10322,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -10589,7 +10589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -10802,7 +10802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -10969,7 +10969,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -11236,7 +11236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -11504,7 +11504,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -11580,7 +11580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -11779,7 +11779,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -11971,7 +11971,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -12067,7 +12067,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -12233,7 +12233,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -12338,7 +12338,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SnapshotTime": "System.DateTime",
               "ResourceGroupName": "System.String",
@@ -12466,7 +12466,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -12825,7 +12825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -13359,7 +13359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -13739,7 +13739,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeletionTime": "System.DateTime",
               "DeletedSiteId": "System.Int32",
@@ -14405,7 +14405,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
                   "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeletionTime": "System.DateTime",
                     "DeletedSiteId": "System.Int32",
@@ -14849,7 +14849,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -15502,7 +15502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -15960,7 +15960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -16105,7 +16105,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SnapshotTime": "System.DateTime",
               "ResourceGroupName": "System.String",
@@ -16378,7 +16378,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
                   "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SnapshotTime": "System.DateTime",
                     "ResourceGroupName": "System.String",
@@ -16579,7 +16579,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -16697,7 +16697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
                   "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SnapshotTime": "System.DateTime",
                     "ResourceGroupName": "System.String",
@@ -16905,7 +16905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -17298,7 +17298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -17626,7 +17626,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -18355,7 +18355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -18823,7 +18823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -19182,7 +19182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -19375,7 +19375,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -19626,7 +19626,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -20081,7 +20081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -20250,7 +20250,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
               "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -22047,7 +22047,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
               "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -22315,7 +22315,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
               "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -22967,7 +22967,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
               "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -23109,7 +23109,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
               "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -23431,7 +23431,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ScmSiteUseMainSiteRestrictionConfig": "System.Boolean",
                     "MainSiteAccessRestrictions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
@@ -23563,7 +23563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -23769,7 +23769,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -24452,7 +24452,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -24789,7 +24789,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeletionTime": "System.DateTime",
               "DeletedSiteId": "System.Int32",
@@ -25116,7 +25116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -25257,7 +25257,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -25616,7 +25616,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -25809,7 +25809,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -25925,7 +25925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -26192,7 +26192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -26405,7 +26405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -26528,7 +26528,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -26795,7 +26795,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -27008,7 +27008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -27149,7 +27149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -27640,7 +27640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -28101,7 +28101,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -28460,7 +28460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -28653,7 +28653,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "CerBlob": "System.Byte[]",
@@ -29075,7 +29075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -29434,7 +29434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -29769,7 +29769,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -30416,7 +30416,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -30676,7 +30676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -31142,7 +31142,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -31601,7 +31601,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -31953,7 +31953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -32360,7 +32360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -32650,7 +32650,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -32917,7 +32917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -33130,7 +33130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -33279,7 +33279,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -33516,7 +33516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -33886,7 +33886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -34325,7 +34325,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -34570,7 +34570,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Type": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.AzureStorageType]",
               "Name": "System.String",
@@ -35231,7 +35231,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -35590,7 +35590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -35783,7 +35783,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -35970,7 +35970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -36710,7 +36710,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -37528,7 +37528,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -37749,7 +37749,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -38204,7 +38204,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -38536,7 +38536,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -38919,7 +38919,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -39191,7 +39191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -39434,7 +39434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -39647,7 +39647,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -39796,7 +39796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -40039,7 +40039,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -40252,7 +40252,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -40802,7 +40802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
             "GenericTypeArguments": [],
@@ -40918,7 +40918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -41554,7 +41554,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
                   "GenericTypeArguments": [],
@@ -41986,7 +41986,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -42251,7 +42251,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -42400,7 +42400,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -42643,7 +42643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -42856,7 +42856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -43005,7 +43005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
               "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -43248,7 +43248,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
                     "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
@@ -43817,7 +43817,7 @@
     "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
       "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[], Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
       "GenericTypeArguments": [],
@@ -43827,7 +43827,7 @@
     "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
       "Name": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.AzureStorageType]",
         "Name": "System.String",
@@ -47842,7 +47842,7 @@
     "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Utilities",
       "Name": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48459,7 +48459,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -48471,7 +48471,7 @@
     "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
       "Name": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSAccessRestriction, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HttpHeader": "System.Collections.Hashtable",
         "Priority": "System.Int32",

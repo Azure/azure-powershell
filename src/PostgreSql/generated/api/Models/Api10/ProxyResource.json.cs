@@ -3,7 +3,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     public partial class ProxyResource
     {

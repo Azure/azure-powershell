@@ -1,14 +1,14 @@
 {
-  "New-AzKubernetesConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-iwu1qm-test?api-version=2019-11-01-preview+1": {
+  "New-AzKubernetesConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-1wh9yg-test?api-version=2020-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-iwu1qm-test?api-version=2019-11-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"enableHelmOperator\": \"false\",\n    \"operatorScope\": \"namespace\",\n    \"operatorType\": \"Flux\",\n    \"repositoryUrl\": \"http://github.com/xxxx\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-1wh9yg-test?api-version=2020-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"repositoryUrl\": \"http://github.com/xxxx\",\r\n    \"operatorType\": \"Flux\",\r\n    \"operatorScope\": \"namespace\",\r\n    \"enableHelmOperator\": \"false\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "168" ]
+        "Content-Length": [ "175" ]
       }
     },
     "Response": {
@@ -16,23 +16,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-iwu1qm-test" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Location": [ "file:///subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-1wh9yg-test" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview" ],
+        "api-supported-versions": [ "2019-11-01-Preview, 2020-07-01-Preview, 2020-10-01-Preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "openresty/1.15.8.2" ],
-        "x-ms-request-id": [ "aafa10ee-c2b0-483a-b682-a2e5c1c898f1" ],
-        "x-ms-correlation-request-id": [ "aafa10ee-c2b0-483a-b682-a2e5c1c898f1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200703T031535Z:aafa10ee-c2b0-483a-b682-a2e5c1c898f1" ],
-        "Date": [ "Fri, 03 Jul 2020 03:15:35 GMT" ]
+        "x-ms-request-id": [ "27937540-e643-4ef0-9771-5b5b5b7adf3b" ],
+        "x-ms-correlation-request-id": [ "27937540-e643-4ef0-9771-5b5b5b7adf3b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201221T062915Z:27937540-e643-4ef0-9771-5b5b5b7adf3b" ],
+        "Date": [ "Mon, 21 Dec 2020 06:29:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "918" ],
+        "Content-Length": [ "1083" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-iwu1qm-test\",\"name\":\"kubconf-iwu1qm-test\",\"type\":\"Microsoft.KubernetesConfiguration/sourceControlConfigurations\",\"properties\":{\"operatorNamespace\":\"default\",\"provisioningState\":\"Succeeded\",\"complianceStatus\":{\"complianceState\":\"Pending\",\"lastConfigApplied\":\"0001-01-01T00:00:00\",\"message\":\"{\\\"OperatorMessage\\\":null,\\\"ClusterState\\\":null}\",\"messageLevel\":3},\"enableHelmOperator\":false,\"repositoryUrl\":\"http://github.com/xxxx\",\"operatorInstanceName\":\"\",\"operatorType\":\"Flux\",\"operatorScope\":\"namespace\",\"operatorParams\":\"--git-readonly\",\"repositoryPublicKey\":\"\",\"configKind\":0,\"createdDate\":\"2020-07-03T03:15:35.7387005+00:00\",\"lastModifiedDate\":\"2020-07-03T03:15:35.7387007+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/ConnectedClusters/connaks-dkc29c/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/kubconf-1wh9yg-test\",\"name\":\"kubconf-1wh9yg-test\",\"type\":\"Microsoft.KubernetesConfiguration/sourceControlConfigurations\",\"properties\":{\"operatorNamespace\":\"default\",\"provisioningState\":\"Succeeded\",\"complianceStatus\":{\"complianceState\":\"Pending\",\"lastConfigApplied\":\"0001-01-01T00:00:00+00:00\",\"message\":\"{\\\"OperatorMessage\\\":null,\\\"ClusterState\\\":null}\",\"messageLevel\":\"Information\"},\"enableHelmOperator\":false,\"repositoryUrl\":\"http://github.com/xxxx\",\"operatorInstanceName\":\"\",\"operatorType\":\"Flux\",\"operatorScope\":\"namespace\",\"operatorParams\":\"--git-readonly\",\"sshKnownHostsContents\":null,\"configurationProtectedSettings\":{},\"repositoryPublicKey\":\"\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2020-12-21T06:29:15.7502444+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2020-12-21T06:29:15.7502446+00:00\"}}"
     }
   }
 }

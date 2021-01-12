@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
                 return;
             }
             {_code = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("code"), out var __jsonCode) ? (string)__jsonCode : (string)Code;}
-            {_innererror = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonObject>("innererror"), out var __jsonInnererror) ? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.Error.FromJson(__jsonInnererror) : Innererror;}
             {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)Message;}
+            {_innerError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonObject>("innererror"), out var __jsonInnererror) ? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.Error.FromJson(__jsonInnererror) : InnerError;}
             AfterFromJson(json);
         }
 
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._innererror ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) this._innererror.ToJson(null,serializationMode) : null, "innererror" ,container.Add );
+                AddIf( null != (((object)this._message)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._message.ToString()) : null, "message" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._message)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonString(this._message.ToString()) : null, "message" ,container.Add );
+                AddIf( null != this._innerError ? (Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Json.JsonNode) this._innerError.ToJson(null,serializationMode) : null, "innererror" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         OsaOption,
         RestoreDiskList,
         RestoreOnlyOSDisk,
-        RestoreAsUnmanagedDisks
+        RestoreAsUnmanagedDisks,
+        DiskEncryptionSetId
     }
 
     public enum RestoreFSBackupItemParams
@@ -77,6 +78,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreWLBackupItemParams
     {
         WLRecoveryConfig
+    }
+
+    public enum CRRParams
+    {
+        UseSecondaryRegion,
+        SecondaryRegion
     }
 
     public enum WorkloadRecoveryConfigParams

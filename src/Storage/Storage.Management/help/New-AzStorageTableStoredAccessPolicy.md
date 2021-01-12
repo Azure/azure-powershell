@@ -81,7 +81,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions in the stored access policy to access the storage table.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `raud` (for Read, Add, Update and Delete).
 
 ```yaml
 Type: System.String

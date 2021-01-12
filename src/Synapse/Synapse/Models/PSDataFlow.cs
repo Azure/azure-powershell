@@ -22,19 +22,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IList<object> Annotations { get; set; }
 
         public PSDataFlowFolder Folder { get; set; }
-
-        public virtual DataFlow ToSdkObject()
-        {
-            var dataFlow = new DataFlow();
-            SetProperties(dataFlow);
-            return dataFlow;
-        }
-
-        protected void SetProperties(DataFlow dataFlow)
-        {
-            dataFlow.Description = this.Description;
-            dataFlow.Folder = this.Folder?.ToSdkObject();
-            this.Annotations?.ForEach(item => dataFlow.Annotations.Add(item));
-        }
     }
 }
