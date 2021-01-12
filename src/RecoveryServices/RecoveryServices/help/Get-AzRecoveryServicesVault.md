@@ -34,7 +34,7 @@ The **Get-AzRecoveryServicesVault** cmdlet gets a list of Recovery Services vaul
 
 ### Example 1
 
-```powershell
+```
 PS C:\> Get-AzRecoveryServicesVault
 ```
 
@@ -42,7 +42,7 @@ Get the list of vault in selected subscription.
 
 ### Example 2
 
-```powershell
+```
 PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
 ```
 
@@ -50,11 +50,16 @@ Get the list of vault in resource group in selected subscription.
 
 ### Example 3
 
-```powershell
-PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+```
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $vault.Identity | fl
+
+PrincipalId : XXXXXXXX-XXXX-XXXX
+TenantId    : XXXXXXXX-XXXX-XXXX
+Type        : SystemAssigned
 ```
 
-Get the vault in resource group with given name.
+The first cmdlet gets the vault in resource group with given name. Then we access the MSI information from the vault.
 
 ## PARAMETERS
 

@@ -1,0 +1,210 @@
+{
+  "Remove-AzResourceGraphQuery+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fdbjcl?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fdbjcl?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "0abe2921-1468-4004-bbf1-d653a1042603" ],
+        "CommandName": [ "Remove-AzResourceGraphQuery" ],
+        "FullCommandName": [ "Remove-AzResourceGraphQuery_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "8a427e69-be21-4af0-b2af-0307c62df575" ],
+        "x-ms-correlation-request-id": [ "8a427e69-be21-4af0-b2af-0307c62df575" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071804Z:8a427e69-be21-4af0-b2af-0307c62df575" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:18:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzResourceGraphQuery+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/Microsoft.ResourceGraph/queries?api-version=2018-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/Microsoft.ResourceGraph/queries?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "e90c4404-a2ec-47c7-8b25-7725325d747e" ],
+        "CommandName": [ "Get-AzResourceGraphQuery" ],
+        "FullCommandName": [ "Get-AzResourceGraphQuery_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "54322750-99ac-45d4-940b-29d7ed503ee0" ],
+        "x-ms-correlation-request-id": [ "54322750-99ac-45d4-940b-29d7ed503ee0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071804Z:54322750-99ac-45d4-940b-29d7ed503ee0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:18:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1694" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:11:41.2305811Z\",\"query\":\"project id, name, type, location, tags\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-fidrpl\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fidrpl\",\"etag\":\"\\\"f600452a-0000-0d00-0000-5f97c82d0000\\\"\"},{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:11:45.9472094Z\",\"query\":\"project id, name, type, location, tags\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-1o3evc\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-1o3evc\",\"etag\":\"\\\"f600572a-0000-0d00-0000-5f97c8310000\\\"\"},{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:17:51.6149467Z\",\"query\":\"project id, name, type, location\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-wzje76\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76\",\"etag\":\"\\\"f600702c-0000-0d00-0000-5f97c99f0000\\\"\"}]}"
+    }
+  },
+  "Remove-AzResourceGraphQuery+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "f97cb272-4b3a-4df4-80bc-b0a14d36f4d9" ],
+        "CommandName": [ "Get-AzResourceGraphQuery" ],
+        "FullCommandName": [ "Get-AzResourceGraphQuery_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "58e47165-7446-483b-ae98-b3dd328d7e46" ],
+        "x-ms-correlation-request-id": [ "58e47165-7446-483b-ae98-b3dd328d7e46" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071805Z:58e47165-7446-483b-ae98-b3dd328d7e46" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:18:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:17:51.6149467Z\",\"query\":\"project id, name, type, location\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-wzje76\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76\",\"etag\":\"\\\"f600702c-0000-0d00-0000-5f97c99f0000\\\"\"}"
+    }
+  },
+  "Remove-AzResourceGraphQuery+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-wzje76?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "baf99740-1ac5-47b2-ad38-e3c6567ccfa4" ],
+        "CommandName": [ "Remove-AzResourceGraphQuery" ],
+        "FullCommandName": [ "Remove-AzResourceGraphQuery_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "a30b0b14-392e-4973-bbca-2b2173258f5a" ],
+        "x-ms-correlation-request-id": [ "a30b0b14-392e-4973-bbca-2b2173258f5a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071808Z:a30b0b14-392e-4973-bbca-2b2173258f5a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:18:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzResourceGraphQuery+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/Microsoft.ResourceGraph/queries?api-version=2018-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/Microsoft.ResourceGraph/queries?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "463e4904-1138-4849-bd3e-f53cf5131a34" ],
+        "CommandName": [ "Get-AzResourceGraphQuery" ],
+        "FullCommandName": [ "Get-AzResourceGraphQuery_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "1" ],
+        "x-ms-user-quota-remaining": [ "1" ],
+        "x-ms-user-quota-resets-after": [ "00:00:00" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "48e7c02f-884c-4d26-95d8-d83ae5b27bbc" ],
+        "x-ms-correlation-request-id": [ "48e7c02f-884c-4d26-95d8-d83ae5b27bbc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201027T071809Z:48e7c02f-884c-4d26-95d8-d83ae5b27bbc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 27 Oct 2020 07:18:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1137" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:11:41.2305811Z\",\"query\":\"project id, name, type, location, tags\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-fidrpl\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-fidrpl\",\"etag\":\"\\\"f600452a-0000-0d00-0000-5f97c82d0000\\\"\"},{\"properties\":{\"resultKind\":\"UnKnown\",\"timeModified\":\"2020-10-27T07:11:45.9472094Z\",\"query\":\"project id, name, type, location, tags\",\"description\":\"requesting a subset of resource fields.\"},\"type\":\"microsoft.resourcegraph/queries\",\"location\":\"global\",\"subscriptionId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"resourceGroup\":\"resourcegraph-rg-\",\"name\":\"query-1o3evc\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/resourcegraph-rg-/providers/microsoft.resourcegraph/queries/query-1o3evc\",\"etag\":\"\\\"f600572a-0000-0d00-0000-5f97c8310000\\\"\"}]}"
+    }
+  }
+}

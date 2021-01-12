@@ -23,6 +23,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class BackupUtils
     {
         /// <summary>
+        /// secondary region mapping
+        /// </summary>
+        public static Dictionary<string, string> regionMap = new Dictionary<string, string>(){
+            {"eastasia", "southeastasia"},
+            {"southeastasia", "eastasia"},
+            {"australiaeast", "australiasoutheast"},
+            {"australiasoutheast", "australiaeast"},
+            {"australiacentral", "australiacentral2"},
+            {"australiacentral2", "australiacentral"},
+            {"brazilsouth", "southcentralus"},
+            {"canadacentral", "canadaeast"},
+            {"canadaeast", "canadacentral"},
+            {"chinanorth", "chinaeast"},
+            {"chinaeast", "chinanorth"},
+            {"chinanorth2", "chinaeast2"},
+            {"chinaeast2", "chinanorth2"},
+            {"northeurope", "westeurope"},
+            {"westeurope", "northeurope"},
+            {"francecentral", "francesouth"},
+            {"francesouth", "francecentral"},
+            {"germanycentral", "germanynortheast"},
+            {"germanynortheast", "germanycentral"},
+            {"centralindia", "southindia"},
+            {"southindia", "centralindia"},
+            {"westindia", "southindia"},
+            {"japaneast", "japanwest"},
+            {"japanwest", "japaneast"},
+            {"koreacentral", "koreasouth"},
+            {"koreasouth", "koreacentral"},
+            {"eastus", "westus"},
+            {"westus", "eastus"},
+            {"eastus2", "centralus"},
+            {"centralus", "eastus2"},
+            {"northcentralus", "southcentralus"},
+            {"southcentralus", "northcentralus"},
+            {"westus2", "westcentralus"},
+            {"westcentralus", "westus2"},
+            {"centraluseuap", "eastus2euap"},
+            {"eastus2euap", "centraluseuap"},
+            {"southafricanorth", "southafricawest"},
+            {"southafricawest", "southafricanorth"},
+            {"switzerlandnorth", "switzerlandwest"},
+            {"switzerlandwest", "switzerlandnorth"},
+            {"ukwest", "uksouth"},
+            {"uksouth", "ukwest"},
+            {"uaenorth", "uaecentral"},
+            {"uaecentral", "uaenorth"},
+            {"usdodeast", "usdodcentral"},
+            {"usdodcentral", "usdodeast"},
+            {"usgovarizona", "usgovtexas"},
+            {"usgovtexas", "usgovarizona"},
+            {"usgoviowa", "usgovvirginia"},
+            {"usgovvirginia", "usgovtexas"}
+        };
+
+        /// <summary>
         /// Get Protected Items for particular workload type
         /// </summary>
         public static List<ProtectedItemResource> GetProtectedItems(

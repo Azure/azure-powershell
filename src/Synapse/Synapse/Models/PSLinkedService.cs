@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,46 +30,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSLinkedService() { }
 
-        [JsonProperty(PropertyName = "connectVia")]
         public PSIntegrationRuntimeReference ConnectVia { get; set; }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
 
-        [JsonProperty(PropertyName = "annotations")]
         public IList<object> Annotations { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public virtual void Validate() { }
-
-        public virtual LinkedService ToSdkObject()
-        {
-            LinkedService linkedService = new LinkedService();
-            SetProperties(linkedService);
-            return linkedService;
-        }
-
-        protected void SetProperties(LinkedService linkedService)
-        {
-            linkedService.ConnectVia = this.ConnectVia?.ToSdkObject();
-            linkedService.Description = this.Description;
-            this.Annotations?.ForEach(item => linkedService.Annotations.Add(item));
-            this.Parameters?.ForEach(item => linkedService.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
-            if (this.AdditionalProperties != null)
-            {
-                foreach(var item in this.AdditionalProperties)
-                {
-                    if (item.Key != "typeProperties")
-                    {
-                        linkedService.Add(item.Key, item.Value);
-                    }
-                }
-            }
-        }
     }
 }
