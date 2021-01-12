@@ -23,7 +23,6 @@
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
 * Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
-<<<<<<< HEAD
     - Added parameter TargetUrl
     - Added parameter TerminateTLS
 * Added new cmdlets for Azure Firewall Premium Features
