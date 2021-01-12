@@ -93,6 +93,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string KeyFileDownloadLocation { get; set; }
 
+        /// <summary>
+        /// Switch param to filter RecoveryPoints based on secondary region (Cross Region Restore).
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UseSecondaryRegion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -112,6 +119,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(VaultParams.VaultName, vaultName);
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
                 providerParameters.Add(RecoveryPointParams.Item, Item);
+                providerParameters.Add(CRRParams.UseSecondaryRegion, UseSecondaryRegion.IsPresent);
+                
 
                 if (ParameterSetName == DateTimeFilterParameterSet ||
                     ParameterSetName == NoFilterParameterSet)

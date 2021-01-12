@@ -24,7 +24,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotFormat]
         public bool? EnableCustomerAnalytic { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitorPropertiesInternal)Property).EnableCustomerAnalytic; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitorPropertiesInternal)Property).EnableCustomerAnalytic = value; }
 
-        /// <summary>The Azure Resource Manager resource ID for the key vault.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotFormat]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.IResourceInternal)__trackedResource).Id; }
@@ -80,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotFormat]
         public string MonitorSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitorPropertiesInternal)Property).MonitorSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitorPropertiesInternal)Property).MonitorSubnet = value; }
 
-        /// <summary>The name of the key vault.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.FormatTable(Index = 0)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.IResourceInternal)__trackedResource).Name; }
@@ -103,7 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value; }
 
-        /// <summary>The resource type of the key vault.</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotFormat]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.IResourceInternal)__trackedResource).Type; }

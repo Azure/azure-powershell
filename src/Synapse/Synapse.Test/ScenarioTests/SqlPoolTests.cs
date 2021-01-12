@@ -32,24 +32,18 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlPool()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
-            if (string.IsNullOrEmpty(testResourceGroupName))
-            {
-                testResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            if (string.IsNullOrEmpty(testWorkspaceName))
-            {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
-
             SynapseTestBase.NewInstance.RunPsTest(
                 _logger,
-                string.Format(
-                "Test-SynapseSqlPool -resourceGroupName '{0}' -workspaceName '{1}'",
-                testResourceGroupName,
-                testWorkspaceName));
+                "Test-SynapseSqlPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSynapseSqlPoolSecurity()
+        {
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
+                "Test-SynapseSqlPool-Security");
         }
     }
 }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for StorageAutogrow.</summary>
+    /// <summary>Enable Storage Auto Grow.</summary>
     public partial class StorageAutogrowTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

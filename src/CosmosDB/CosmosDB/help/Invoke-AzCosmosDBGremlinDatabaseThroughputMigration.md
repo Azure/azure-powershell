@@ -43,7 +43,6 @@ PS C:\> $NewDb =  New-AzCosmosDBGremlinDatabase -AccountName myAccountName -Reso
       $AutoscaleThroughput = Invoke-AzCosmosDBGremlinDatabaseThroughputMigration -InputObject $NewDb -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

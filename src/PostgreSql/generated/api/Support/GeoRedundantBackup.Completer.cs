@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for GeoRedundantBackup.</summary>
+    /// <summary>Enable Geo-redundant or not for server backup.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupTypeConverter))]
     public partial struct GeoRedundantBackup :
         System.Management.Automation.IArgumentCompleter

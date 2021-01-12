@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 
     /// <summary>Gets the identity.</summary>
     /// <remarks>
-    /// [OpenAPI] UserAssignedIdentities_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzUserAssignedIdentity_GetViaIdentity")]

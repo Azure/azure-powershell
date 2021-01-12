@@ -12,23 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Rest.Azure;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -114,7 +110,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return result;
         }
 
-        public ImportExportOperationResult GetOperationStatus(string operationStatusLink)
+        /// <summary>
+        /// Get the status of an operation given a raw Operation Status Link
+        /// </summary>
+        /// <param name="operationStatusLink">Status link as returned by the import or export commandlet</param>
+        /// <param name="rawHttpResponse">Out parameter for the raw HTTP response for further inspection</param>
+        /// <returns></returns>
+        public ImportExportOperationResult GetOperationStatus(string operationStatusLink, out HttpResponseMessage rawHttpResponse)
         {
             var client = GetCurrentSqlClient();
 
@@ -129,6 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             response.EnsureSuccessStatusCode();
 
+            rawHttpResponse = response;
             string responseString = response.Content.ReadAsStringAsync().Result;
 
             ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings

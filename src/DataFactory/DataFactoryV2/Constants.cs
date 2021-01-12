@@ -286,5 +286,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
 
+        public const string ActionDescriptionForInvokePipeline = "Starts a run for \"{0}\" pipeline in the \"{1}\" factory.";
     }
 }

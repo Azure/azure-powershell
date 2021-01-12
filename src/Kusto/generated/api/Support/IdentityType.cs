@@ -6,12 +6,20 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>
+    /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+    /// and a set of user-assigned identities. The type 'None' will remove all identities.
+    /// </summary>
     public partial struct IdentityType :
         System.IEquatable<IdentityType>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType None = @"None";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType SystemAssigned = @"SystemAssigned";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType SystemAssignedUserAssigned = @"SystemAssigned, UserAssigned";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType UserAssigned = @"UserAssigned";
 
         /// <summary>the value for an instance of the <see cref="IdentityType" /> Enum.</summary>
         private string _value { get; set; }

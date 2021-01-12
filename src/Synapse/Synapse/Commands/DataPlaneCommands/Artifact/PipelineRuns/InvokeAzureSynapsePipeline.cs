@@ -3,12 +3,12 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using JsonConvert = Newtonsoft.Json.JsonConvert;
 
 namespace Microsoft.Azure.Commands.Synapse
 {

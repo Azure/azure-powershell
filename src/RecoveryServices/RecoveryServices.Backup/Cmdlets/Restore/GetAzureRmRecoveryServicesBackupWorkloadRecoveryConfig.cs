@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -127,6 +126,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 TimeSpan timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1);
                 int offset = (int)timeSpan.TotalSeconds;
                 string targetDb = "";
+
+                if (TargetItem != null)
+                {
+                    if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
+                        ProtectableItemType.SQLInstance.ToString()))
+                    {
+                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
+                    }
+                }
+
                 if (ParameterSetName == RpParameterSet)
                 {
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
@@ -145,12 +154,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (AlternateWorkloadRestore.IsPresent && Item == null)
                 {
-                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLInstance.ToString()) != 0)
-                    {
-                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
-                    }
-
                     azureWorkloadRecoveryConfig.RestoredDBName =
                     GetRestoredDBName(RecoveryPoint.ItemName, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
@@ -199,12 +202,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (Item != null && TargetItem != null)
                 {
-                    if (string.Compare(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
-                        ProtectableItemType.SQLDataBase.ToString()) == 0)
-                    {
-                        throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
-                    }
-
                     azureWorkloadRecoveryConfig.RestoredDBName =
                     GetRestoredDBName(Item.Name, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";

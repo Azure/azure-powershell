@@ -1,0 +1,197 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/incidents/a91c3054-ced5-4e5b-90ba-ef3d031a34e2?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9pbmNpZGVudHMvYTkxYzMwNTQtY2VkNS00ZTViLTkwYmEtZWYzZDAzMWEzNGUyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"title\": \"PoshModuleTest\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "79022c4d-1d8d-4c3e-b521-788ef6be7c23"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "105"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "08b08cbe-7caa-41a2-865f-c18e1de26c9f"
+        ],
+        "x-ms-correlation-request-id": [
+          "08b08cbe-7caa-41a2-865f-c18e1de26c9f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201210T211154Z:08b08cbe-7caa-41a2-865f-c18e1de26c9f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Dec 2020 21:11:53 GMT"
+        ],
+        "Content-Length": [
+          "1115"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a91c3054-ced5-4e5b-90ba-ef3d031a34e2\",\r\n  \"name\": \"a91c3054-ced5-4e5b-90ba-ef3d031a34e2\",\r\n  \"etag\": \"\\\"bd0062a3-0000-0100-0000-5fd28f190000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Incidents\",\r\n  \"properties\": {\r\n    \"title\": \"PoshModuleTest\",\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"owner\": {\r\n      \"objectId\": null,\r\n      \"email\": null,\r\n      \"assignedTo\": null,\r\n      \"userPrincipalName\": null\r\n    },\r\n    \"labels\": [],\r\n    \"lastModifiedTimeUtc\": \"2020-12-10T21:11:53.9702619Z\",\r\n    \"createdTimeUtc\": \"2020-12-10T21:11:53.9702619Z\",\r\n    \"incidentNumber\": 94,\r\n    \"additionalData\": {\r\n      \"alertsCount\": 0,\r\n      \"bookmarksCount\": 0,\r\n      \"commentsCount\": 0,\r\n      \"alertProductNames\": [],\r\n      \"tactics\": []\r\n    },\r\n    \"relatedAnalyticRuleIds\": [],\r\n    \"incidentUrl\": \"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a91c3054-ced5-4e5b-90ba-ef3d031a34e2\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/incidents/a91c3054-ced5-4e5b-90ba-ef3d031a34e2?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9pbmNpZGVudHMvYTkxYzMwNTQtY2VkNS00ZTViLTkwYmEtZWYzZDAzMWEzNGUyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c1c432c-9fe2-4365-a350-226a086a1cbb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "6aae6056-4ef4-4e48-b0c7-4cae3cb7181f"
+        ],
+        "x-ms-correlation-request-id": [
+          "6aae6056-4ef4-4e48-b0c7-4cae3cb7181f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201210T211154Z:6aae6056-4ef4-4e48-b0c7-4cae3cb7181f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Dec 2020 21:11:53 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/incidents/a91c3054-ced5-4e5b-90ba-ef3d031a34e2?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MWNjYmYtNzBiMy00NWEzLWExZmItODQ4Y2U0NmQ3MGE2L3Jlc291cmNlR3JvdXBzL25kaWNvbGEtYXpzcG9zaC9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9henNwb3NoL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHlJbnNpZ2h0cy9pbmNpZGVudHMvYTkxYzMwNTQtY2VkNS00ZTViLTkwYmEtZWYzZDAzMWEzNGUyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "65db61ff-d330-47f4-9892-1618b0380909"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "1527eec9-5922-4915-ad31-5a50031a4e4e"
+        ],
+        "x-ms-correlation-request-id": [
+          "1527eec9-5922-4915-ad31-5a50031a4e4e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20201210T211154Z:1527eec9-5922-4915-ad31-5a50031a4e4e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 10 Dec 2020 21:11:54 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "1c61ccbf-70b3-45a3-a1fb-848ce46d70a6"
+  }
+}

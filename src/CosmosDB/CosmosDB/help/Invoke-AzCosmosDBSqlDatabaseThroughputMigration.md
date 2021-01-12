@@ -42,7 +42,6 @@ PS C:\> $NewSqlDatabase =  New-AzCosmosDBSqlDatabase -AccountName myAccountName 
       $AutoscaleThroughput = Invoke-AzCosmosDBSqlDatabaseThroughputMigration -InputObject $NewSqlDatabase -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

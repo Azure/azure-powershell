@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for Type.</summary>
+    /// <summary>The type of resource, Microsoft.Kusto/clusters.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.TypeTypeConverter))]
     public partial struct Type :
         System.Management.Automation.IArgumentCompleter

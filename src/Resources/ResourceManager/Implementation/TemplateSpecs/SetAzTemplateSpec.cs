@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
 
@@ -119,6 +120,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The location of the template spec. Only required if the template spec does not already exist.")]
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
+
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Hashtable of tags for the template spec and/or version")]
+        [ValidateNotNull]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
@@ -245,7 +253,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         packagedTemplate,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
-                        versionDescription: VersionDescription
+                        versionDescription: VersionDescription,
+                        templateSpecTags: Tag, // Note: Only applied if template spec doesn't exist
+                        versionTags: Tag
                     );
 
                     WriteObject(templateSpecVersion);
@@ -264,7 +274,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             Name,
                             Location,
                             templateSpecDescription: Description,
-                            templateSpecDisplayName: DisplayName
+                            templateSpecDisplayName: DisplayName,
+                            tags: Tag
                         );
 
                     // As the root template spec is a seperate resource type, it won't contain version 
