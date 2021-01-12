@@ -20,7 +20,7 @@ param(
 
 $SinceDate = (Get-Date).AddDays((0-$DaysBack))
 $SinceDateStr =  $SinceDate.ToString('yyyy-MM-ddTHH:mm:ssZ')
-$Branch = git branch --show-current # The Git 2.22 and above support.
+$Branch = 'master'#git branch --show-current # The Git 2.22 and above support.
 $rootPath = "$PSScriptRoot\.."
 $changeLogFile = Get-Item -Path "..\ChangeLog.md"
 $changeLogContent = Get-Content -Path $changeLogFile.FullName | Out-String
@@ -61,13 +61,10 @@ foreach ($PR in $PRs)
   } else {
       $commitMessage = $PR.commit.message.Substring(0, $index)
   }
-  # The merge pr does not contain commit id.
-  if ($commitMessage.LastIndexOf('(') -gt 0)
+
+  if (!($changeLogContent.Contains($commitMessage)))
   {
-    if (!($changeLogContent.Contains($commitMessage.Substring($commitMessage.LastIndexOf('(')))))
-    {
-      $validPRs += $PR
-    }
+    $validPRs += $PR
   }
 }
 
