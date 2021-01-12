@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// Start the managed database log replay
         /// </summary>
         /// <param name="parameters">The parameters for log replay</param>
-        public void StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        public AzureSqlManagedDatabaseModel StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
             var model = new Management.Sql.Models.ManagedDatabase()
             {
@@ -194,7 +194,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 StorageContainerUri = parameters.StorageContainerUri,
                 StorageContainerSasToken = parameters.StorageContainerSasToken
             };
-            Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+            var response = Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+            return CreateManagedDatabaseModelFromResponse(parameters.ResourceGroupName, parameters.ManagedInstanceName, response);
         }
 
         /// <summary>
