@@ -130,18 +130,6 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-        internal async Task OnCmdletException(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, Exception exception)
-        {
-            var data = EventDataConverter.ConvertFrom(getEventData());
-            await signal(Events.Debug, cancellationToken,
-                () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
-            AzurePSQoSEvent qos;
-            if (_telemetry.TryGetValue(processRecordId, out qos))
-            {
-                qos.Exception = exception;
-            }
-        }
-
         internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
             await signal(Events.Debug, cancellationToken,
@@ -198,6 +186,18 @@ namespace Microsoft.Azure.Commands.Common
                 } catch {
                     // response was disposed, ignore
                 }
+            }
+        }
+
+        internal async Task OnCmdletException(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, Exception exception)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
+            AzurePSQoSEvent qos;
+            if (_telemetry.TryGetValue(processRecordId, out qos))
+            {
+                qos.Exception = exception;
             }
         }
 
