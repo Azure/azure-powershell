@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for SslEnforcementEnum.</summary>
+    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
     public partial class SslEnforcementEnumTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

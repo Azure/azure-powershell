@@ -1,0 +1,195 @@
+{
+  "Get-AzADDomainService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/domainServices?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AAD/domainServices?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "a0e15185-01fc-4411-9892-e748d2e86cc0" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5e999a22-520e-42e5-aa17-f126e294e20d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b34a0565-6177-40b7-94da-c69f539fa43f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T125841Z:b34a0565-6177-40b7-94da-c69f539fa43f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 12:58:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "Get-AzADDomainService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "4755a984-a8e6-459f-878b-63efa16d5d2d" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\"" ],
+        "x-ms-request-id": [ "60955159-8b56-4755-b141-f54ef2df2f31" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "560b8372-1182-4975-9074-e46f593fdddd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T125842Z:560b8372-1182-4975-9074-e46f593fdddd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 12:58:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1390" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Get-AzADDomainService+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "23f64a3f-cdee-48ea-90e4-8d311d7156aa" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ead003bc-de48-4626-a36c-b49047275fc2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "036249e8-9c71-4b71-a811-3c2130b2fe2f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T125843Z:036249e8-9c71-4b71-a811-3c2130b2fe2f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 12:58:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "Get-AzADDomainService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "dfa112f8-6a08-4d0d-82ac-8b61c29d9441" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\"" ],
+        "x-ms-request-id": [ "76f2be9d-3fcf-49ec-8e70-a0bb5a9614b8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "dc972dd8-36ac-452b-bcc8-78c3454a3683" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T125844Z:dc972dd8-36ac-452b-bcc8-78c3454a3683" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 12:58:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1390" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Get-AzADDomainService+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3faed8ef-23c1-46d0-965d-8c274809e570" ],
+        "CommandName": [ "Get-AzADDomainService" ],
+        "FullCommandName": [ "Get-AzADDomainService_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\"" ],
+        "x-ms-request-id": [ "05110505-f7ae-4282-993a-31892fe95881" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "b9b1ead5-c42d-4ea1-a14c-b433a90fd1fa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201227T125845Z:b9b1ead5-c42d-4ea1-a14c-b433a90fd1fa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 27 Dec 2020 12:58:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1390" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.AAD/domainServices/youriADDomainTest0rzngb\",\"name\":\"youriADDomainTest0rzngb\",\"type\":\"Microsoft.AAD/domainServices\",\"etag\":\"W/\\\"datetime\u00272020-12-27T12%3A56%3A40.410047Z\u0027\\\"\",\"location\":\"westus\",\"properties\":{\"version\":2,\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"domainName\":\"youriAdDomain.com\",\"deploymentId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"syncOwner\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"replicaSets\":[{\"replicaSetId\":\"b68c69a0-9c7b-4a36-aad4-2fa674a5eb7f\",\"location\":\"West US\",\"subnetId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/virtualNetworks/youriNTW1f6kb0/subnets/default\",\"domainControllerIpAddress\":[\"10.0.0.4\"],\"externalAccessIpAddress\":\"\",\"serviceStatus\":\"Running\"}],\"ldapsSettings\":{\"ldaps\":\"Disabled\",\"certificateNotAfter\":\"0001-01-01T00:00:00Z\",\"externalAccess\":\"Disabled\"},\"domainSecuritySettings\":{\"ntlmV1\":\"Enabled\",\"tlsV1\":\"Enabled\",\"syncNtlmPasswords\":\"Enabled\",\"syncKerberosPasswords\":\"Enabled\",\"syncOnPremPasswords\":\"Enabled\"},\"filteredSync\":\"Disabled\",\"resourceForestSettings\":{\"settings\":[]},\"notificationSettings\":{\"notifyGlobalAdmins\":\"Enabled\",\"notifyDcAdmins\":\"Enabled\",\"additionalRecipients\":[]},\"sku\":\"Enterprise\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

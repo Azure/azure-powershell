@@ -1,0 +1,324 @@
+{
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "52fdb816-0e8e-4f9f-ae41-ec88ae19a2a0" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "8b4dd334-f0d0-49d6-a6fc-2c82432a6450" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "d394cede-2351-417a-844a-2332f5c0471d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T203908Z:d394cede-2351-417a-844a-2332f5c0471d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:39:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "87" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"RestartServerManagementOperation\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "52fdb816-0e8e-4f9f-ae41-ec88ae19a2a0" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "8b92a379-0742-4646-ae18-d44d9296a9f3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "88d4035c-33c7-4251-99d0-95c9cfd43d6a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204008Z:88d4035c-33c7-4251-99d0-95c9cfd43d6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:40:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"8b4dd334-f0d0-49d6-a6fc-2c82432a6450\",\"status\":\"InProgress\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "52fdb816-0e8e-4f9f-ae41-ec88ae19a2a0" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bc4adcaf-9f0b-4a63-a46f-a9ac97bac587" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "4fcfd472-9073-4e49-990d-ccbe440d5963" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204108Z:4fcfd472-9073-4e49-990d-ccbe440d5963" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:41:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"8b4dd334-f0d0-49d6-a6fc-2c82432a6450\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T20:39:07.837Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/8b4dd334-f0d0-49d6-a6fc-2c82432a6450?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "52fdb816-0e8e-4f9f-ae41-ec88ae19a2a0" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "77aed6ad-ce74-43fe-8e0c-bdeb07b47621" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "f29baa0b-da2e-446f-bcce-90aa0383fe29" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204109Z:f29baa0b-da2e-446f-bcce-90aa0383fe29" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:41:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "48" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"postgresql-flexible-test-100\",\"type\":\"PostgreSQL\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/restart?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "90a2b379-8790-4df0-910c-079b11eec74e" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "32cd6b29-57ad-4f46-a743-fb23b263341b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "70915cc4-c6d2-440f-9fc0-834845bff5c2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204109Z:70915cc4-c6d2-440f-9fc0-834845bff5c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:41:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "87" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"RestartServerManagementOperation\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "90a2b379-8790-4df0-910c-079b11eec74e" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0e2330e5-6ab8-4171-9c55-014c92ef1b76" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "50f70512-acff-4834-b782-312602b4c823" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204210Z:50f70512-acff-4834-b782-312602b4c823" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:42:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"32cd6b29-57ad-4f46-a743-fb23b263341b\",\"status\":\"InProgress\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "90a2b379-8790-4df0-910c-079b11eec74e" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6fb607c6-0753-42ee-b3c0-c76caac34258" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "a23c0025-e1af-4a33-a515-4db98fd03d7c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204310Z:a23c0025-e1af-4a33-a515-4db98fd03d7c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:43:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"32cd6b29-57ad-4f46-a743-fb23b263341b\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T20:41:09.377Z\"}"
+    }
+  },
+  "Restart-AzPostgreSqlFlexibleServer+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/32cd6b29-57ad-4f46-a743-fb23b263341b?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "90a2b379-8790-4df0-910c-079b11eec74e" ],
+        "CommandName": [ "Restart-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Restart-AzPostgreSqlFlexibleServer_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fe553573-7311-4471-8199-39687059939d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "2bd4bbee-e56b-4db7-bd4e-b3e7dea467bc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T204310Z:2bd4bbee-e56b-4db7-bd4e-b3e7dea467bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 20:43:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "48" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"postgresql-flexible-test-100\",\"type\":\"PostgreSQL\"}"
+    }
+  }
+}

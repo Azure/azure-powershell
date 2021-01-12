@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for PrivateEndpointProvisioningState.</summary>
+    /// <summary>State of the private endpoint connection.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PrivateEndpointProvisioningStateTypeConverter))]
     public partial struct PrivateEndpointProvisioningState :
         System.Management.Automation.IArgumentCompleter

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
 
 ## Version 2.14.0
 * Fixed parameter description for `InstanceFailoverGroup` command.
