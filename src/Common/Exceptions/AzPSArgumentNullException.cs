@@ -14,11 +14,12 @@
 
 using System;
 using System.IO;
+using System.Management.Automation;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Common.Exceptions
 {
-    public class AzPSArgumentNullException : ArgumentNullException, IContainsAzPSErrorData
+    public class AzPSArgumentNullException : PSArgumentNullException, IContainsAzPSErrorData
     {
         private string ErrorParamName
         {

@@ -14,11 +14,12 @@
 
 using System;
 using System.IO;
+using System.Management.Automation;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Common.Exceptions
 {
-    public class AzPSArgumentOutOfRangeException : ArgumentOutOfRangeException, IContainsAzPSErrorData
+    public class AzPSArgumentOutOfRangeException : PSArgumentOutOfRangeException, IContainsAzPSErrorData
     {
         private string ErrorParamName
         {

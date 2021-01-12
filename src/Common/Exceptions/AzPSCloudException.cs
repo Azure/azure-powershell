@@ -21,35 +21,20 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Common.Exceptions
 {
-    public class AzPSCloudException : Exception, IContainsAzPSErrorData
+    public class AzPSCloudException : CloudException, IContainsAzPSErrorData
     {
-        private HttpResponseMessageWrapper httpResponseMessageWrapper;
-
-        public HttpRequestMessageWrapper Request { get; set; }
-
         /// <summary>
         /// Gets information about the associated HTTP response.
         /// </summary>
-        public HttpResponseMessageWrapper Response
+        public new HttpResponseMessageWrapper Response
         {
-            get { return httpResponseMessageWrapper; }
+            get { return base.Response; }
             set
             {
-                httpResponseMessageWrapper = value;
-                HttpStatusCode = (int?)httpResponseMessageWrapper?.StatusCode;
+                base.Response = value;
+                HttpStatusCode = (int?)value?.StatusCode;
             }
         }
-
-        /// <summary>
-        /// Gets or sets the response object.
-        /// </summary>
-        public CloudError Body { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value that uniquely identifies a request 
-        /// made against the service.
-        /// </summary>
-        public string RequestId { get; set; }
 
         public ErrorKind ErrorKind
         {

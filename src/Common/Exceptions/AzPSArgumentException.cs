@@ -14,11 +14,12 @@
 
 using System;
 using System.IO;
+using System.Management.Automation;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Common.Exceptions
 {
-    public class AzPSArgumentException : ArgumentException, IContainsAzPSErrorData
+    public class AzPSArgumentException : PSArgumentException, IContainsAzPSErrorData
     {
         private string ErrorParamName
         {
@@ -53,11 +54,10 @@ namespace Microsoft.Azure.Commands.Common.Exceptions
         public AzPSArgumentException(
             string message,
             string paramName,
-            Exception innerException = null,
             string desensitizedMessage = null,
             [CallerLineNumber] int lineNumber = 0,
             [CallerFilePath] string filePath = null)
-            : this(message, paramName, ErrorKind.UserError, innerException, desensitizedMessage, lineNumber, filePath)
+            : this(message, paramName, ErrorKind.UserError, desensitizedMessage, lineNumber, filePath)
         {
         }
 
@@ -65,13 +65,41 @@ namespace Microsoft.Azure.Commands.Common.Exceptions
             string message,
             string paramName,
             ErrorKind errorKind,
-            Exception innerException = null,
             string desensitizedMessage = null,
             [CallerLineNumber] int lineNumber = 0,
             [CallerFilePath] string filePath = null)
-            :base(message, paramName, innerException)
+            :base(message, paramName)
         {
             ErrorParamName = paramName;
+            ErrorKind = errorKind;
+            DesensitizedErrorMessage = desensitizedMessage;
+            ErrorLineNumber = lineNumber;
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                ErrorFileName = Path.GetFileNameWithoutExtension(filePath);
+            }
+        }
+
+        public AzPSArgumentException(
+            string message,
+            Exception innerException,
+            string desensitizedMessage = null,
+            [CallerLineNumber] int lineNumber = 0,
+            [CallerFilePath] string filePath = null)
+            : this(message, innerException, ErrorKind.UserError, desensitizedMessage, lineNumber, filePath)
+        {
+        }
+
+        public AzPSArgumentException(
+            string message,
+            Exception innerException,
+            ErrorKind errorKind,
+            string desensitizedMessage = null,
+            [CallerLineNumber] int lineNumber = 0,
+            [CallerFilePath] string filePath = null)
+            : base(message, innerException)
+        {
             ErrorKind = errorKind;
             DesensitizedErrorMessage = desensitizedMessage;
             ErrorLineNumber = lineNumber;
