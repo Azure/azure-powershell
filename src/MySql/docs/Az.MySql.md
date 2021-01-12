@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MySql
-Module Guid: 6fb456f8-3967-40b0-a0af-3be8e13ae017
+Module Guid: 9e6f7276-93b8-48dc-8c37-abd95fe7d667
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
@@ -26,11 +26,17 @@ Gets information about a server.
 ### [Get-AzMySqlFlexibleServerConfiguration](Get-AzMySqlFlexibleServerConfiguration.md)
 Gets information about a configuration of server.
 
+### [Get-AzMySqlFlexibleServerConnectionString](Get-AzMySqlFlexibleServerConnectionString.md)
+Get the connection string according to client connection provider.
+
 ### [Get-AzMySqlFlexibleServerDatabase](Get-AzMySqlFlexibleServerDatabase.md)
 Gets information about a database.
 
 ### [Get-AzMySqlFlexibleServerFirewallRule](Get-AzMySqlFlexibleServerFirewallRule.md)
 Gets information about a server firewall rule.
+
+### [Get-AzMySqlFlexibleServerLocationBasedCapability](Get-AzMySqlFlexibleServerLocationBasedCapability.md)
+Get the available SKU information for the location
 
 ### [Get-AzMySqlFlexibleServerReplica](Get-AzMySqlFlexibleServerReplica.md)
 List all the replicas for a given server.
@@ -48,7 +54,7 @@ Gets a virtual network rule.
 Creates a new firewall rule or updates an existing firewall rule.
 
 ### [New-AzMySqlFlexibleServer](New-AzMySqlFlexibleServer.md)
-Creates a new server.
+Creates a new MySQL flexible server.
 
 ### [New-AzMySqlFlexibleServerDatabase](New-AzMySqlFlexibleServerDatabase.md)
 Creates a new database or updates an existing database.

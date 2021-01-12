@@ -14,13 +14,13 @@ while(-not $mockingPath) {
 Describe 'Restart-AzMySqlFlexibleServer' {
     It 'Restart' {
         {
-            Restart-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
+            Restart-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
         } | Should -Not -Throw
     }
 
     It 'RestartViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzMySqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

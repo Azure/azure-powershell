@@ -176,11 +176,6 @@ function Update-AzMariaDbServer
     
     process {
         try {
-            if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $PSBoundParameters['AdministratorLoginPassword'] = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
-                $Null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-            }
-
             if ($PSBoundParameters.ContainsKey('Sku')) {
                 $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
                 $null = $PSBoundParameters.Remove('Sku')

@@ -238,7 +238,7 @@ function New-AzMariaDbServer {
             $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
             $null = $PSBoundParameters.Remove('AdministratorUsername')
 
-            $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+            $Parameter.Property.AdministratorLoginPassword = $PSBoundParameters['AdministratorLoginPassword']
             $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)

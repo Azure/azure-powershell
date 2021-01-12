@@ -1,8 +1,8 @@
 {
-    "Restart-AzMySqlServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01+1": {
+    "Restart-AzMySqlServer+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01+1": {
       "Request": {
         "Method": "POST",
-        "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01",
+        "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01",
         "Content": null,
         "Headers": {
           "x-ms-unique-id": [ "1" ],
@@ -239,10 +239,10 @@
         "Content": null
       }
     },
-    "Restart-AzMySqlServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01+1": {
+    "Restart-AzMySqlServer+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01+1": {
       "Request": {
         "Method": "POST",
-        "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01",
+        "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/restart?api-version=2017-12-01",
         "Content": null,
         "Headers": {
           "x-ms-unique-id": [ "7" ],
