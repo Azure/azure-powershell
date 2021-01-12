@@ -195,6 +195,8 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        protected static DateTimeOffset? _previousEndTime = null;
+
         internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
         {
             var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
@@ -229,8 +231,6 @@ namespace Microsoft.Azure.Commands.Common
                 }
             }
         }
-
-        protected static DateTimeOffset? _previousEndTime = null;
 
         internal async Task OnCmdletBeginProcessing(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
