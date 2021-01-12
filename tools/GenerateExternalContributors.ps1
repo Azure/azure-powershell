@@ -20,7 +20,7 @@ param(
 
 $SinceDate = (Get-Date).AddDays((0-$DaysBack))
 $SinceDateStr =  $SinceDate.ToString('yyyy-MM-ddTHH:mm:ssZ')
-$Branch = 'master'#git branch --show-current # The Git 2.22 and above support.
+$Branch = git branch --show-current # The Git 2.22 and above support.
 $rootPath = "$PSScriptRoot\.."
 $changeLogFile = Get-Item -Path "..\ChangeLog.md"
 $changeLogContent = Get-Content -Path $changeLogFile.FullName | Out-String
