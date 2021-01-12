@@ -800,6 +800,8 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+      Assert-NotNull $vnet
+      Assert-NotNull $subnet
 
       # Create the publicip
       $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
@@ -810,10 +812,12 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
 	  # Also test overriding the gateway ASN
       $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
       $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-NotNull $vnetGateway
     
       # Create LocalNetworkGateway    
       $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10 -Asn 1337 -BgpPeeringAddress "192.168.1.1" -PeerWeight 5
       $localnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+      Assert-NotNull $localnetGateway
 
       # Create & Get VirtualNetworkGatewayConnection
       $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $true
