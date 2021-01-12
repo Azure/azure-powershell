@@ -824,6 +824,7 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
       $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-NotNull $connection
 
+      Wait-Seconds 100
       $ikesa = Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $connection
       Assert-NotNull $ikesa
     
