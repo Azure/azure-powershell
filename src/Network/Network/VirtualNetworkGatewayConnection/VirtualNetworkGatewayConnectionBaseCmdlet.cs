@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Newtonsoft.Json;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
@@ -76,17 +75,6 @@ namespace Microsoft.Azure.Commands.Network
             var getVirtualNetworkGatewayConnectionSharedKeyResponse = this.VirtualNetworkGatewayConnectionClient.GetSharedKey(resourceGroupName, name);
             var psVirtualNetworkGatewayConnectionSharedKey = NetworkResourceManagerProfile.Mapper.Map<string>(getVirtualNetworkGatewayConnectionSharedKeyResponse.Value);
             return psVirtualNetworkGatewayConnectionSharedKey;
-        }
-
-        public PSVirtualNetworkGatewayConnectionIkeSa GetVirtualNetworkGatewayConnectionIkeSa(string resourceGroupName, string name)
-        {
-            this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
-
-            string response = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(resourceGroupName, name);
-
-            PSVirtualNetworkGatewayConnectionIkeSa result = JsonConvert.DeserializeObject<PSVirtualNetworkGatewayConnectionIkeSa>(response);
-
-            return result;
         }
 
         public bool IsVirtualNetworkGatewayConnectionSharedKeyPresent(string resourceGroupName, string name)

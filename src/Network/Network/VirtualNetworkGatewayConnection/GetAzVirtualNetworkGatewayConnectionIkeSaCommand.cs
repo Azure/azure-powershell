@@ -11,13 +11,16 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
+    using Newtonsoft.Json;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa", DefaultParameterSetName = "ByName"), OutputType(typeof(PSVirtualNetworkGatewayConnectionIkeSa))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnectionIkeSa", DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa>))]
     public class GetAzVirtualNetworkGatewayConnectionIkeSaCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]
@@ -58,6 +61,63 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        public List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa> ConvertToPsReadableFormat(string response)
+        {
+            int startIndex = response.IndexOf("[");
+            string jsonArrayResponse = response.Substring(startIndex, response.Length - startIndex - 1);
+            var result = JsonConvert.DeserializeObject<List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa>>(jsonArrayResponse);
+
+            List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa> psIkeSa = new List<PSVirtualNetworkGatewayConnectionIkeSaMainModeSa>();
+
+            if (result != null)
+            {
+                foreach (var mmsa in result)
+                {
+                    PSVirtualNetworkGatewayConnectionIkeSaMainModeSa psMainModeSa = new PSVirtualNetworkGatewayConnectionIkeSaMainModeSa();
+
+                    psMainModeSa.localEndpoint = mmsa.localEndpoint;
+                    psMainModeSa.remoteEndpoint = mmsa.remoteEndpoint;
+                    psMainModeSa.initiatorCookie = mmsa.initiatorCookie;
+                    psMainModeSa.responderCookie = mmsa.responderCookie;
+                    psMainModeSa.localUdpEncapsulationPort = mmsa.localUdpEncapsulationPort;
+                    psMainModeSa.remoteUdpEncapsulationPort = mmsa.remoteUdpEncapsulationPort;
+                    psMainModeSa.encryption = mmsa.encryption;
+                    psMainModeSa.integrity = mmsa.integrity;
+                    psMainModeSa.dhGroup = mmsa.dhGroup;
+                    psMainModeSa.lifeTimeSeconds = mmsa.lifeTimeSeconds;
+                    psMainModeSa.isSaInitiator = mmsa.isSaInitiator;
+                    psMainModeSa.elapsedTimeInseconds = mmsa.elapsedTimeInseconds;
+
+                    if (mmsa.quickModeSa != null)
+                    {
+                        foreach (var qmsa in mmsa.quickModeSa)
+                        {
+                            PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa psQuickModeSa = new PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa();
+
+                            psQuickModeSa.localEndpoint = qmsa.localEndpoint;
+                            psQuickModeSa.remoteEndpoint = qmsa.remoteEndpoint;
+                            psQuickModeSa.encryption = qmsa.encryption;
+                            psQuickModeSa.integrity = qmsa.integrity;
+                            psQuickModeSa.pfsGroupId = qmsa.pfsGroupId;
+                            psQuickModeSa.inboundSPI = qmsa.inboundSPI;
+                            psQuickModeSa.outboundSPI = qmsa.outboundSPI;
+                            psQuickModeSa.lifetimeKilobytes = qmsa.lifetimeKilobytes;
+                            psQuickModeSa.lifeTimeSeconds = qmsa.lifeTimeSeconds;
+                            psQuickModeSa.isSaInitiator = qmsa.isSaInitiator;
+                            psQuickModeSa.elapsedTimeInseconds = qmsa.elapsedTimeInseconds;
+                            psQuickModeSa.localTrafficSelectors = qmsa.localTrafficSelectors;
+                            psQuickModeSa.remoteTrafficSelectors = qmsa.remoteTrafficSelectors;
+
+                            psMainModeSa.quickModeSa.Add(psQuickModeSa);
+                        }
+                    }
+                    psIkeSa.Add(psMainModeSa);
+                }
+            }
+
+            return psIkeSa;
+        }
+
         public override void Execute()
         {
             if (ParameterSetName.Equals("ByInputObject"))
@@ -79,8 +139,10 @@ namespace Microsoft.Azure.Commands.Network
 
             if(this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
-                var result = this.GetVirtualNetworkGatewayConnectionIkeSa(this.ResourceGroupName, this.Name);
-                WriteObject(result.ikesas, true);
+                this.VirtualNetworkGatewayConnectionClient.GetIkeSas(this.ResourceGroupName, this.Name);
+                string response = this.VirtualNetworkGatewayConnectionClient.GetIkeSas(this.ResourceGroupName, this.Name);
+
+                WriteObject(this.ConvertToPsReadableFormat(response), true);
             }
             else
             {
