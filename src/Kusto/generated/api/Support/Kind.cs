@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Kind of the database</summary>
     public partial struct Kind :
         System.IEquatable<Kind>
     {

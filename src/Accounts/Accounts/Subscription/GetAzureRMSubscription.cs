@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -134,7 +135,9 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void ThrowSubscriptionNotFoundError(string tenant, string subscription)
         {
-            throw new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            PSArgumentException exception = new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            exception.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
+            throw exception;
         }
 
         private void ThrowTenantAuthenticationError(string tenant, AadAuthenticationException exception)

@@ -21,14 +21,28 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the MetricSettings
     /// </summary>
-    public class PSMetricSettings : Management.Monitor.Management.Models.MetricSettings
+    public class PSMetricSettings : PSDiagnosticDetailSettings
     {
         /// <summary>
         /// Initializes a new instance of the PSMetricSettings class.
         /// </summary>
-        public PSMetricSettings(MetricSettings metricSettings) : base(metricSettings)
+        public PSMetricSettings(MetricSettings metricSettings)
+        {
+            if (metricSettings != null)
+            {
+                this.Category = metricSettings.Category;
+                this.Enabled = metricSettings.Enabled;
+                this.RetentionPolicy = new PSRetentionPolicy(metricSettings.RetentionPolicy);
+                this.TimeGrain = metricSettings.TimeGrain ?? default(System.TimeSpan);
+            }
+            this.CategoryType = PSDiagnosticSettingCategoryType.Metrics;
+        }
+
+        public PSMetricSettings()
         {
         }
+
+        public System.TimeSpan TimeGrain { get; set; }
 
         /// <summary>
         /// A string representation of the PSMetricSettings
@@ -40,9 +54,20 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AppendLine();
             output.AppendLine("Category        : " + Category);
             output.AppendLine("Enabled         : " + Enabled);
-            output.AppendLine("TimeGrain       : " + XmlConvert.ToString(TimeGrain));
+            output.AppendLine("TimeGrain       : " + XmlConvert.ToString((System.TimeSpan)TimeGrain));
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
             return output.ToString();
+        }
+
+        public MetricSettings GetMetricSetting()
+        {
+            return new MetricSettings()
+            {
+                Enabled = this.Enabled,
+                Category = this.Category,
+                RetentionPolicy = this.RetentionPolicy,
+                TimeGrain = this.TimeGrain
+            };
         }
     }
 }

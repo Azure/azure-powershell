@@ -5,6 +5,7 @@
         public const string Workspace = "Microsoft.Synapse/workspaces";
         public const string SparkPool = "Microsoft.Synapse/workspaces/bigDataPools";
         public const string SqlPool = "Microsoft.Synapse/workspaces/sqlPools";
+        public const string SqlPoolRestorePoint = "Microsoft.Synapse/workspaces/sqlPools/sqlPoolRestorePoints"; 
         public const string RecoverableSqlPool = "Microsoft.Synapse/workspaces/recoverableSqlPools";
         public const string StorageAccount = "Microsoft.Storage/storageAccounts";
         public const string SqlDatabase = "Microsoft.Sql/servers/databases";

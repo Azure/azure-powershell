@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for Status.</summary>
+    /// <summary>Status for a SessionHost.</summary>
     public partial class StatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

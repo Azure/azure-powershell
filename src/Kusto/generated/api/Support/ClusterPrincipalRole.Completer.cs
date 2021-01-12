@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for ClusterPrincipalRole.</summary>
+    /// <summary>Cluster principal role.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRoleTypeConverter))]
     public partial struct ClusterPrincipalRole :
         System.Management.Automation.IArgumentCompleter

@@ -45,7 +45,7 @@ jobs:
     displayName: 'Download BinSkim'
     inputs:
       command: custom
-      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools'
+      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools -Version 1.7.0'
   - task: PowerShell@2
     displayName: 'Run BinSkim'
     inputs:

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for RegistrationTokenOperation.</summary>
+    /// <summary>The type of resetting the token.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperationTypeConverter))]
     public partial struct RegistrationTokenOperation :
         System.Management.Automation.IArgumentCompleter

@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interactive authentication is not supported in this session, please run Connect-AzAccount using switch -DeviceCode..
+        ///   Looks up a localized string similar to Interactive authentication is not supported in this session, please run cmdlet &apos;Connect-AzAccount -UseDeviceAuthentication&apos;..
         /// </summary>
         internal static string InteractiveAuthNotSupported {
             get {
@@ -660,6 +660,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoValidTenant {
             get {
                 return ResourceManager.GetString("NoValidTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameters ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete. For ManagedServiceHostName/ManagedServicePort, please set environment variable MSI_ENDPOINT, e.g. &quot;http://localhost:50342/oauth2/token&quot;. For ManagedServiceSecret, please set environment variable MSI_SECRET..
+        /// </summary>
+        internal static string ObsoleteManagedServiceParameters {
+            get {
+                return ResourceManager.GetString("ObsoleteManagedServiceParameters", resourceCulture);
             }
         }
         

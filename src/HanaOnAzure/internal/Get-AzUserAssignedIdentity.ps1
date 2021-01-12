@@ -58,7 +58,7 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [System.String]
-    # Name of the resource group.
+    # The name of the Resource Group to which the identity belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]

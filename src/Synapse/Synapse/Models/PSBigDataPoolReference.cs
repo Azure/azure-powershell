@@ -16,17 +16,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public BigDataPoolReferenceType? Type { get; set; }
 
         public string ReferenceName { get; set; }
-
-        public BigDataPoolReference ToSdkObject()
-        {
-            if (this.ReferenceName == null)
-            {
-                return null;
-            }
-            else
-            {
-                return new BigDataPoolReference(this.Type.GetValueOrDefault(), this.ReferenceName);
-            }
-        }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzServiceFabricApplication
 
 ## SYNOPSIS
-Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade.
+Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade. Only supports ARM deployed applications.
 
 ## SYNTAX
 

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>SKU tier.</summary>
     public partial struct AzureSkuTier :
         System.IEquatable<AzureSkuTier>
     {
