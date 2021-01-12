@@ -830,7 +830,7 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
     
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
-      Assert-AreEqual true $delete
+      Assert-True $delete
 
      }
      finally
