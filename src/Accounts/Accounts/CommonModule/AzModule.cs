@@ -243,9 +243,9 @@ namespace Microsoft.Azure.Commands.Common
             AzurePSQoSEvent qos;
             if (_telemetry.TryGetValue(processRecordId, out qos))
             {
+                qos.IsSuccess = (qos.Exception == null);
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                qos.IsSuccess = (qos.Exception == null);
                 _telemetry.LogEvent(processRecordId);
                 _previousEndTime = DateTimeOffset.Now;
             }
