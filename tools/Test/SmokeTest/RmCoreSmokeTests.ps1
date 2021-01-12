@@ -50,11 +50,11 @@ $resourceCleanUpCommands = @(
                                                                 catch {
                                                                     if (++$loopLimit -gt 30)
                                                                     {
-                                                                        Write-Warning "Give up Az.Storage [Cleanup]"
+                                                                        throw "Failed to invoke Az.Storage [Cleanup]. $_"
                                                                         break
                                                                     } else {
+                                                                        Write-Warning "Retry Az.Storage [Cleanup] after 30 seconds"
                                                                         Start-Sleep -Seconds 30
-                                                                        Write-Warning "Retry Az.Storage [Cleanup]"
                                                                     }
                                                                 }
                                                             } while ($true)
