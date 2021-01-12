@@ -92,9 +92,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // 3. $resourceLocation="westus2"
                 // 4. New-AzVM -Name $resourceName -Location $resourceLocation
                 //
-                // We'll replace 2 and 3 with "start_of_snippet" but if we request prediction for 2 and 3, that'll reset the
-                // workflow. We want to predict only by Az commands. That's to use New-AzResourceGroup and New-AzVM for the
-                // prediction.
+                // We'll replace 2 and 3 with "start_of_snippet" but if we request prediction using 2 and 3, that'll reset the
+                // workflow. We want to predict only by Az commands. That's to use commands 1 and 4.
 
                 bool isLastTwoCommandsChanged = false;
 

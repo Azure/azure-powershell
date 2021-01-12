@@ -38,9 +38,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public AzPredictorTests(ModelFixture modelFixture)
         {
             _fixture = modelFixture;
-            var starory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
-            _service = new MockAzPredictorService(starory, _fixture.PredictionCollection[starory], _fixture.CommandCollection);
+            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection);
             _telemetryClient = new MockAzPredictorTelemetryClient();
             _azPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
