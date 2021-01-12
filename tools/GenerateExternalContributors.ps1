@@ -90,7 +90,7 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
     if ($contributorsMDHeaderFlag) {
         Write-Debug 'Output exteneral contributors infomation.'
         '### Thanks to our community contributors' | Out-File -FilePath $contributorsMDFile -Force
-        Write-Debug '### Thanks to our community contributors'
+        Write-Host '### Thanks to our community contributors'
         $contributorsMDHeaderFlag = $False
     }
     $account = $sortPRs[$PR].author.login
@@ -110,30 +110,30 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
                 "* @$account" | Out-File -FilePath $contributorsMDFile -Append -Force
                 "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-                Write-Debug "* @$account"
-                Write-Debug "  * $commitMessage"
+                Write-Host "* @$account"
+                Write-Host "  * $commitMessage"
             } else {
                 "* $($name) (@$account)" | Out-File -FilePath $contributorsMDFile -Append -Force
                 "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
                 
-                Write-Debug "* $($name) (@$account)"
-                Write-Debug "  * $commitMessage"
+                Write-Host "* $($name) (@$account)"
+                Write-Host "  * $commitMessage"
             }
         } else
         {
             "  * $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Debug "  * $commitMessage"
+            Write-Host "  * $commitMessage"
         }
     } else {
         if (($account -eq $name)) {
             "* @$account, $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Debug "* @$account, $commitMessage"
+            Write-Host "* @$account, $commitMessage"
         } else {
             "* $name (@$account), $commitMessage" | Out-File -FilePath $contributorsMDFile -Append -Force
 
-            Write-Debug "* $name (@$account), $commitMessage"
+            Write-Host "* $name (@$account), $commitMessage"
         }
     }
 }
