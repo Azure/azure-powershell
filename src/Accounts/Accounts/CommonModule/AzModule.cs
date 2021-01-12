@@ -130,12 +130,6 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
-        {
-            await signal(Events.Debug, cancellationToken,
-                () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
-        }
-
         internal async Task OnResponseCreated(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
             var data = EventDataConverter.ConvertFrom(getEventData());
@@ -201,6 +195,20 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
+        {
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
+            qos.PreviousEndTime = _previousEndTime;
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}': {qos?.ToString()}"));
+        }
+
+        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
+        }
+
         internal async Task OnFinally(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
             var data = EventDataConverter.ConvertFrom(getEventData());
@@ -241,14 +249,6 @@ namespace Microsoft.Azure.Commands.Common
                 _telemetry.LogEvent(processRecordId);
                 _previousEndTime = DateTimeOffset.Now;
             }
-        }
-
-        internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
-        {
-            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
-            qos.PreviousEndTime = _previousEndTime;
-            await signal(Events.Debug, cancellationToken,
-                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}': {qos?.ToString()}"));
         }
 
         internal async Task OnBeforeCall(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
