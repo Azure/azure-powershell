@@ -382,13 +382,29 @@ Get capabilities at specified location in a given subscription.
 .Description
 Get capabilities at specified location in a given subscription.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
+"Please refer to https://aka.ms/mysql-pricing for pricing details"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
+SKU               Tier            Memory vCore
+---               ----            ------ -----
+Standard_B1s      Burstable         1024     1
+Standard_B1ms     Burstable         2048     1
+Standard_B2s      Burstable         2048     2
+Standard_D2ds_v4  GeneralPurpose    4096     2
+Standard_D4ds_v4  GeneralPurpose    4096     4
+Standard_D8ds_v4  GeneralPurpose    4096     8
+Standard_D16ds_v4 GeneralPurpose    4096    16
+Standard_D32ds_v4 GeneralPurpose    4096    32
+Standard_D48ds_v4 GeneralPurpose    4096    48
+Standard_D64ds_v4 GeneralPurpose    4096    64
+Standard_E2ds_v4  MemoryOptimized   8192     2
+Standard_E4ds_v4  MemoryOptimized   8192     4
+Standard_E8ds_v4  MemoryOptimized   8192     8
+Standard_E16ds_v4 MemoryOptimized   8192    16
+Standard_E32ds_v4 MemoryOptimized   8192    32
+Standard_E48ds_v4 MemoryOptimized   8192    48
+Standard_E64ds_v4 MemoryOptimized   8192    64
 
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICapabilityProperties
@@ -2809,18 +2825,90 @@ Creates a new server or updates an existing server.
 The update action will overwrite the existing server.
 .Example
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
+-Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
+Checking the existence of the resource group PowershellMySqlTest ...
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group MySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 .Example
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--AdministratorUserName mysqltest -AdministratorLoginPassword $password
+PS C:\> New-AzMySqlFlexibleServer
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      131072                  Standard_B1ms   Burstable
+Creating resource group group00000000...
+Creating new vnet VNETserver00000000 in resource group group00000000
+Creating new subnet Subnetserver00000000 in resource group group00000000 and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group group00000000...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> $Vnet = 'vnetname'
+PS C:\> New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+or
+
+PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
+PS C:\> New-AzMySqlFlexibleServer  -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+Resource group PowershellMySqlTest exists ? : True
+You have supplied a vnet Id/name. Verifying its existence...
+Creating new vnet vnetname in resource group PowershellMySqlTest
+Creating new subnet Subnetserver00000000 in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group PowershellMySqlTest...
+Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Vnet mysql-vnet -Subnet mysql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
+
+Resource group PowershellMySqlTest exists ? : True
+Creating new vnet mysql-vnet in resource group PowershellMySqlTest
+Creating new subnet mysql-subnet in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess All
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess 10.10.10.10-10.10.10.12
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated
@@ -2848,8 +2936,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 
 PARAMETER <IServerAutoGenerated>: Represents a server.
   Location <String>: The geo-location where the resource lives
-  SkuName <String>: The name of the sku, e.g. Standard_D32s_v3.
-  SkuTier <SkuTier>: The tier of the particular SKU, e.g. GeneralPurpose.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
@@ -2868,6 +2954,8 @@ PARAMETER <IServerAutoGenerated>: Represents a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ReplicationRole <String>]: The replication role.
   [RestorePointInTime <DateTime?>]: Restore point creation time (ISO8601 format), specifying the time to restore from.
+  [SkuName <String>]: The name of the sku, e.g. Standard_D32s_v3.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. GeneralPurpose.
   [SourceServerId <String>]: The source MySQL server id.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
   [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
@@ -3274,9 +3362,9 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
-  Login <String>: The server administrator login account name.
-  Sid <String>: The server administrator Sid (Secure ID).
-  TenantId <String>: The server Active Directory Administrator tenant id.
+  [Login <String>]: The server administrator login account name.
+  [Sid <String>]: The server administrator Sid (Secure ID).
+  [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserveradministrator
 #>
@@ -3499,11 +3587,11 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
-  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
   [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
   [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
   [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
   [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
+  [State <ServerSecurityAlertPolicyState?>]: Specifies the state of the policy, whether it is enabled or disabled.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
@@ -3768,13 +3856,13 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 PARAMETER <IServerForCreate>: Represents a server to be created.
   CreateMode <CreateMode>: The mode to create a new server.
   Location <String>: The location the resource resides in.
-  SkuName <String>: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [InfrastructureEncryption <InfrastructureEncryption?>]: Status showing whether the server enabled infrastructure encryption.
   [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
   [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
   [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
@@ -5297,9 +5385,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IServerAdministratorResource>: Represents a and external administrator to be created.
-  Login <String>: The server administrator login account name.
-  Sid <String>: The server administrator Sid (Secure ID).
-  TenantId <String>: The server Active Directory Administrator tenant id.
+  [Login <String>]: The server administrator login account name.
+  [Sid <String>]: The server administrator Sid (Secure ID).
+  [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlserveradministrator
 #>
@@ -5490,11 +5578,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
-  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
   [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
   [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
   [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
   [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
+  [State <ServerSecurityAlertPolicyState?>]: Specifies the state of the policy, whether it is enabled or disabled.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
@@ -7261,8 +7349,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerForUpdate>: Parameters allowed to update for a server.
-  SkuName <String>: The name of the sku, e.g. Standard_D32s_v3.
-  SkuTier <SkuTier>: The tier of the particular SKU, e.g. GeneralPurpose.
   [AdministratorLoginPassword <String>]: The password of the administrator login.
   [DelegatedSubnetArgumentSubnetArmResourceId <String>]: delegated subnet arm resource id.
   [HaEnabled <HaEnabledEnum?>]: Enable HA or not for a server.
@@ -7271,6 +7357,8 @@ PARAMETER <IServerForUpdate>: Parameters allowed to update for a server.
   [MaintenanceWindowStartHour <Int32?>]: start hour for maintenance window
   [MaintenanceWindowStartMinute <Int32?>]: start minute for maintenance window
   [ReplicationRole <String>]: The replication role of the server.
+  [SkuName <String>]: The name of the sku, e.g. Standard_D32s_v3.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. GeneralPurpose.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
   [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
   [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.
@@ -7605,7 +7693,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
-  SkuName <String>: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [AdministratorLoginPassword <String>]: The password of the administrator login.
   [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
@@ -7613,6 +7700,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
   [ReplicationRole <String>]: The replication role of the server.
   [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
   [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.

@@ -52,11 +52,11 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
-  State <ServerSecurityAlertPolicyState>: Specifies the state of the policy, whether it is enabled or disabled.
   [DisabledAlert <String[]>]: Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
   [EmailAccountAdmin <Boolean?>]: Specifies that the alert is sent to the account administrators.
   [EmailAddress <String[]>]: Specifies an array of e-mail addresses to which the alert is sent.
   [RetentionDay <Int32?>]: Specifies the number of days to keep in the Threat Detection audit logs.
+  [State <ServerSecurityAlertPolicyState?>]: Specifies the state of the policy, whether it is enabled or disabled.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link

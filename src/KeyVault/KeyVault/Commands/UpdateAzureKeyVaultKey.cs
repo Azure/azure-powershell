@@ -175,6 +175,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     VaultName = InputObject.VaultName;
                 }
                 Name = InputObject.Name;
+                Version = InputObject.Version;
             }
         }
     }

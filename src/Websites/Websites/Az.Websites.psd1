@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll'
@@ -100,7 +100,8 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
                'Remove-AzWebAppAccessRestrictionRule', 
                'Update-AzWebAppAccessRestrictionConfig', 
                'Add-AzWebAppTrafficRouting', 'Remove-AzWebAppTrafficRouting', 
-               'Get-AzWebAppTrafficRouting', 'Update-AzWebAppTrafficRouting'
+               'Get-AzWebAppTrafficRouting', 'Update-AzWebAppTrafficRouting',
+			   'New-AzWebAppCertificate','Remove-AzWebAppCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()

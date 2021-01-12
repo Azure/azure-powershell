@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for AzureSkuName.</summary>
+    /// <summary>SKU name.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuNameTypeConverter))]
     public partial struct AzureSkuName :
         System.Management.Automation.IArgumentCompleter
@@ -73,6 +73,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dev(No SLA)_Standard_D11_v2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Dev(No SLA)_Standard_D11_v2", "Dev(No SLA)_Standard_D11_v2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dev(No SLA)_Standard_D11_v2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E64i_v3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Standard_E64i_v3", "Standard_E64i_v3", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_E64i_v3");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_E2a_v4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

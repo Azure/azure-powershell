@@ -25,6 +25,7 @@
             DeploymentMode mode = DeploymentMode.Incremental,
             string location = null,
             string managementGroupId = null,
+            string queryString = null,
             string resourceGroupName = null,
             string templateUri = null,
             string templateSpecId = null,
@@ -39,6 +40,7 @@
             this.Mode = mode;
             this.Location = location;
             this.ManagementGroupId = managementGroupId;
+            this.QueryString = queryString;
             this.ResourceGroupName = resourceGroupName;
             this.TemplateUri = templateUri;
             this.TemplateParametersUri = templateParametersUri;
@@ -65,6 +67,8 @@
         public string Location { get; set; }
 
         public DeploymentMode Mode { get; set; }
+
+        public string QueryString { get; set; }
 
         public string  ResourceGroupName { get; set; }
 

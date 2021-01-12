@@ -620,5 +620,9 @@
   {
     "regex": "RedisEnterpriseCache",
     "alias": "RedisEnterpriseCache"
+  },
+  {
+    "regex": "BotService",
+    "alias": "BotService"
   }
 ]

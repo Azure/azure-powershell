@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for ServerSecurityAlertPolicyState.</summary>
+    /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerSecurityAlertPolicyStateTypeConverter))]
     public partial struct ServerSecurityAlertPolicyState :
         System.Management.Automation.IArgumentCompleter

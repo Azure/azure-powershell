@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll'
@@ -109,7 +109,9 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Remove-AzInsightsPrivateLinkScope', 
                'New-AzInsightsPrivateLinkScopedResource', 
                'Get-AzInsightsPrivateLinkScopedResource', 
-               'Remove-AzInsightsPrivateLinkScopedResource'
+               'Remove-AzInsightsPrivateLinkScopedResource',
+               'Get-AzDataCollectionRule', 'New-AzDataCollectionRule', 'Set-AzDataCollectionRule', 'Update-AzDataCollectionRule', 'Remove-AzDataCollectionRule',
+               'Get-AzDataCollectionRuleAssociation', 'New-AzDataCollectionRuleAssociation', 'Remove-AzDataCollectionRuleAssociation'
 
 # Variables to export from this module
 # VariablesToExport = @()

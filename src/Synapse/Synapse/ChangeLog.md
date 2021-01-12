@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
+
+## Version 0.6.0
 * Added support for operation of Advanced Threat Protection settings in SqlPool-level
     - Add `Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
     - Add `Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
@@ -33,6 +36,17 @@
 * Added support for operation of Transparent Data Encryption in SqlPool-level
     - Add `Get-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
     - Add `Set-AzSynapseSqlPoolTransparentDataEncryption` cmdlet
+* Added support for operation of Data Classification in SqlPool-level
+    - Add `Disable-AzSynapseSqlPoolSensitivityRecommendation` cmdlet
+    - Add `Enable-AzSynapseSqlPoolSensitivityRecommendation` cmdlet
+    - Add `Get-AzSynapseSqlPoolSensitivityRecommendation` cmdlet
+    - Add `Get-AzSynapseSqlPoolSensitivityClassification` cmdlet
+    - Add `Remove-AzSynapseSqlPoolSensitivityClassification` cmdlet
+    - Add `Set-AzSynapseSqlPoolSensitivityClassification` cmdlet
+* Added support for operation of Vulnerability Assessment Baseline in SqlPool-level
+    - Add `Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline` cmdlet
+    - Add `Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline` cmdlet
+    - Add `Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline` cmdlet
 * Fixed deserialization error when create Pipeline/Dataset/Trigger through DefinitionFile
 * Added polling for artifacts cmdlets
 

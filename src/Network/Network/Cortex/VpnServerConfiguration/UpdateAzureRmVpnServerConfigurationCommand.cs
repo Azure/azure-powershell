@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // VpnAuthenticationType = Certificate related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes == null || 
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes == null ||
                 (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Certificate)))
             {
                 // Read the VpnClientRootCertificates if present

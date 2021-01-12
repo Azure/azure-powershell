@@ -19,7 +19,7 @@ Update a Kusto cluster.
 .Description
 Update a Kusto cluster.
 .Example
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard
+PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard -EngineType 'V2'
 
 Location Name                Type                     Zone
 -------- ----                ----                     ----
@@ -34,7 +34,7 @@ East US  testnewkustocluster Microsoft.Kusto/Clusters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants
 https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustocluster
 #>
 function Update-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -116,15 +116,24 @@ param(
     ${EnableStreamingIngest},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType]
+    # The engine type
+    ${EngineType},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType]
-    # The identity type.
+    # The type of managed identity used.
+    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+    # The type 'None' will remove all identities.
     ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the Kusto cluster.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -150,7 +159,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ILanguageExtension[]]
+    [System.String]
+    # The user assigned identity (ARM resource id) that has access to the key.
+    ${KeyVaultPropertyUserIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ILanguageExtension[]]
     # The list of language extensions.
     # To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
     ${LanguageExtensionValue},
@@ -207,14 +222,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IClusterUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IClusterUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ITrustedExternalTenant[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ITrustedExternalTenant[]]
     # The cluster's external tenants.
     # To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
     ${TrustedExternalTenant},

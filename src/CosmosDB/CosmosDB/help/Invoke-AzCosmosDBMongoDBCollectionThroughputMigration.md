@@ -44,7 +44,6 @@ PS C:\> $NewCollection =  New-AzCosmosDBMongoDBCollection -AccountName myAccount
       $AutoscaleThroughput = Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -InputObject $NewCollection -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

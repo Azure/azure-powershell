@@ -11,6 +11,7 @@ Azure PowerShell                      | `Az`                                    
 Azure Service                         | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]
+ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery]
 Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery]
 Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery]
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
@@ -24,6 +25,7 @@ Batch                                 | `Az.Batch`                              
 Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
 Blockchain                            | `Az.Blockchain`                         | [![Blockchain]][BlockchainGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
+BotService                            | `Az.BotService`                         | [![BotService]][BotServiceGallery]
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
 Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
@@ -130,6 +132,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- Shields -->
 [Az]:                         https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
 [Accounts]:                   https://img.shields.io/powershellgallery/v/Az.Accounts.svg?style=flat-square&label=Az.Accounts
+[ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
 [Aks]:                        https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
@@ -143,6 +146,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
 [Blockchain]:                 https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
+[BotService]:                 https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
@@ -247,6 +251,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
 [AccountsGallery]:                   https://www.powershellgallery.com/packages/Az.Accounts/
+[ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/
 [AksGallery]:                        https://www.powershellgallery.com/packages/Az.Aks/
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
@@ -260,6 +265,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
 [BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
+[BotServiceGallery]:                 https://www.powershellgallery.com/packages/Az.BotService/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/

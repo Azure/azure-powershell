@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for Kind.</summary>
+    /// <summary>Kind of the database</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.KindTypeConverter))]
     public partial struct Kind :
         System.Management.Automation.IArgumentCompleter
