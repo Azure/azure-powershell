@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using System.Management.Automation.Language;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -61,6 +61,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         protected override void RequestAllPredictiveCommands()
         {
             // Do nothing since we've set the command and suggestion predictors.
+        }
+
+        /// <inheritdoc/>
+        public override void RecordHistory(CommandAst history)
+        {
         }
     }
 }

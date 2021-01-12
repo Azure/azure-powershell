@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="suggestionCount">The number of suggestion to return.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
-        /// <returns>The suggestions for <paramref name="context"/>. The maximum number of suggestions is <paramref name="suggestionCount"/>.</returns>
+        /// <returns>The suggestions for <paramref name="context"/>. The maximum number of suggestions is <paramref name="suggestionCount"/>. A null will be returned if there the user input context isn't valid/supported at all.</returns>
         public CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
 
         /// <summary>

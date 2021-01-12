@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private HashSet<string> _allPredictiveCommands;
         private CancellationTokenSource _predictionRequestCancellationSource;
-        private readonly ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
+        private readonly ParameterValuePredictor _parameterValuePredictor;
 
         private readonly ITelemetryClient _telemetryClient;
         private readonly IAzContext _azContext;
@@ -98,6 +98,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(serviceUri), $"{nameof(serviceUri)} cannot be null or whitespace.");
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
+
+            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient);
 
             _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;

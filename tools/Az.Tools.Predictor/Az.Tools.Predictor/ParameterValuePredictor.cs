@@ -1,4 +1,19 @@
-﻿using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,20 +34,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
 
-        public ParameterValuePredictor()
+        private ITelemetryClient _telemetryClient;
+
+        public ParameterValuePredictor(ITelemetryClient telemetryClient)
         {
+            Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
+
+            _telemetryClient = telemetryClient;
+
             var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
             var directory = fileInfo.DirectoryName;
             var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
+            Exception exception = null;
 
             try
             {
                 _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
             }
-            catch
+            catch (Exception e)
             {
                 // We don't want it to crash the module when the file doesn't exist or when it's mal-formatted.
+                exception = e;
             }
+
+            _telemetryClient.OnLoadParameterMap(new ParameterMapTelemetryData(exception));
         }
 
         /// <summary>
@@ -80,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return null;
         }
 
-        
+
         public static string GetAzCommandNoun(string commandName)
         {
             var monikerIndex = commandName?.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
