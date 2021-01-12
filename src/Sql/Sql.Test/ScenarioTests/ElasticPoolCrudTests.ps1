@@ -67,15 +67,15 @@ function Test-CreateVcoreElasticPool
 		## Create Vcore based pool with all VcorePoolParameterSet
 		$poolName = Get-ElasticPoolName
 		$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -AsJob
+				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -DatabaseVCoreMin 0.25 -DatabaseVCoreMax 2 -AsJob
 		$job | Wait-Job
 		$ep1 = $job.Output
 
 		Assert-NotNull $ep1
-		Assert-AreEqual GP_Gen4 $ep1.SkuName
+		Assert-AreEqual GP_Gen5 $ep1.SkuName
 		Assert-AreEqual GeneralPurpose $ep1.Edition
 		Assert-AreEqual 2 $ep1.Capacity
-		Assert-AreEqual 0.1 $ep1.DatabaseCapacityMin
+		Assert-AreEqual 0.25 $ep1.DatabaseCapacityMin
 		Assert-AreEqual 2.0 $ep1.DatabaseCapacityMax
 
 		# Create BC_Gen4_1 elastic pool which is not supported and check the error Message
@@ -106,7 +106,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 		## Create default Vcore based pool
 		$poolName = Get-ElasticPoolName
 		$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2
+				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5  -DatabaseVCoreMin 0.25 -DatabaseVCoreMax 2
 
 		Assert-NotNull $ep1
 		Assert-AreEqual LicenseIncluded $ep1.LicenseType # default license type
@@ -114,7 +114,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 		## Create Vcore based pool with BasePrice license type
 		$poolName = Get-ElasticPoolName
 		$ep2 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType BasePrice
+				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5  -DatabaseVCoreMin 0.25 -DatabaseVCoreMax 2 -LicenseType BasePrice
 
 		Assert-NotNull $ep2
 		Assert-AreEqual BasePrice $ep2.LicenseType
@@ -122,7 +122,7 @@ function Test-CreateVcoreElasticPoolWithLicenseType
 		## Create Vcore based pool with LicenseIncluded license type
 		$poolName = Get-ElasticPoolName
 		$ep3 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType LicenseIncluded
+				-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5  -DatabaseVCoreMin 0.25 -DatabaseVCoreMax 2 -LicenseType LicenseIncluded
 
 		Assert-NotNull $ep3
 		Assert-AreEqual LicenseIncluded $ep3.LicenseType
@@ -241,7 +241,7 @@ function Test-UpdateVcoreElasticPool
 	# Create a Vcore Pool
 	$poolName = Get-ElasticPoolName
 	$ep1 = New-AzSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-		-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
+		-ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5
 	Assert-NotNull $ep1
 
 	# Create a Dtu pool
@@ -268,26 +268,26 @@ function Test-UpdateVcoreElasticPool
 
 		# Update a Dtu pool to Vcore pool using piping
 		$sep2 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 2 `
-			-Edition GeneralPurpose -ComputeGeneration Gen4 -StorageMB 204800
+			-Edition GeneralPurpose -ComputeGeneration Gen5 -StorageMB 204800
 
 		Assert-NotNull $sep2
 		Assert-AreEqual 2 $sep2.Capacity
 		Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
 		Assert-AreEqual GeneralPurpose $sep2.Edition
-		Assert-AreEqual GP_Gen4 $sep2.SkuName
+		Assert-AreEqual GP_Gen5 $sep2.SkuName
 		Assert-AreEqual 0 $sep2.DatabaseCapacityMin
 		Assert-AreEqual 2 $sep2.DatabaseCapacityMax
 
 		# Update VCore pool only on DatabaseVCoreMin
-		$sep3 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -DatabaseVCoreMin 0.1
+		$sep3 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -DatabaseVCoreMin 0.25
 		Assert-NotNull $sep3
-		Assert-AreEqual 0.1 $sep3.DatabaseCapacityMin
+		Assert-AreEqual 0.25 $sep3.DatabaseCapacityMin
 
 		# Update Vcore pool only on VCores
-		$sep4 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 1
+		$sep4 = $server | Set-AzSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 2
 		Assert-NotNull $sep4
-		Assert-AreEqual 1 $sep4.Capacity
-		Assert-AreEqual 0.1 $sep4.DatabaseCapacityMin
+		Assert-AreEqual 2 $sep4.Capacity
+		Assert-AreEqual 0.25 $sep4.DatabaseCapacityMin
 	}
 	finally
 	{

@@ -35,7 +35,7 @@ eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +57,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdhostpool
 #>
 function Get-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201019Preview.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

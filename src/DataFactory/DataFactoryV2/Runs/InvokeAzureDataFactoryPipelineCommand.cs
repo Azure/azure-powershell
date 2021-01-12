@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile,SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
     public class InvokeAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -157,7 +157,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
-            WriteObject(DataFactoryClient.CreatePipelineRun(ResourceGroupName, DataFactoryName, PipelineName, paramDictionary, ReferencePipelineRunId, isRecovery, StartActivityName, startFromFailure));
+            if (ShouldProcess(this.ResourceGroupName, string.Format(Constants.ActionDescriptionForInvokePipeline, this.PipelineName, this.DataFactoryName)))
+            {
+                WriteObject(DataFactoryClient.CreatePipelineRun(ResourceGroupName, DataFactoryName, PipelineName, paramDictionary, ReferencePipelineRunId, isRecovery, StartActivityName, startFromFailure));
+            }
         }
 
         private Dictionary<string, object> ReadParametersFromJson()

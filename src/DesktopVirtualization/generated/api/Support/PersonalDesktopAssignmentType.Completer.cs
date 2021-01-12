@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for PersonalDesktopAssignmentType.</summary>
+    /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentTypeTypeConverter))]
     public partial struct PersonalDesktopAssignmentType :
         System.Management.Automation.IArgumentCompleter

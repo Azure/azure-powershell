@@ -808,8 +808,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -868,8 +868,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -925,8 +925,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/412b782d-2511-4c6d-98f2-3ea01b1c83c3/resourceGroups/sql-ie-cmdlet-test-rg90070/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90070/databases/sql-ie-cmdlet-db90070?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDEyYjc4MmQtMjUxMS00YzZkLTk4ZjItM2VhMDFiMWM4M2MzL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MC9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDcwP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"maxSizeBytes\": 0,\r\n    \"readScale\": \"\"\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {

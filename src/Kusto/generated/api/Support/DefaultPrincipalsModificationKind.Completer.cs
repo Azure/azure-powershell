@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for DefaultPrincipalsModificationKind.</summary>
+    /// <summary>The default principals modification kind</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DefaultPrincipalsModificationKindTypeConverter))]
     public partial struct DefaultPrincipalsModificationKind :
         System.Management.Automation.IArgumentCompleter

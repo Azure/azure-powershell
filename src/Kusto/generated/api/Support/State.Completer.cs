@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for State.</summary>
+    /// <summary>The state of the resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.StateTypeConverter))]
     public partial struct State :
         System.Management.Automation.IArgumentCompleter

@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -124,11 +125,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
 
             var backupPolicyBody = new Management.NetApp.Models.BackupPolicy()
             {
                 Location = Location,
                 Enabled = Enabled,
+                Tags = tagPairs,
                 DailyBackupsToKeep = DailyBackupsToKeep,
                 WeeklyBackupsToKeep = WeeklyBackupsToKeep,
                 MonthlyBackupsToKeep = MonthlyBackupsToKeep,

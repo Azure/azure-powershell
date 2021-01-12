@@ -1,0 +1,42 @@
+{
+  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestdk2fgatb/providers/Microsoft.Compute/cloudServices/cscmdlettestank38pzb/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/5833e0eb-b53c-4156-b478-2eac8f04aec6/resourceGroups/cscmdlettestdk2fgatb/providers/Microsoft.Compute/cloudServices/cscmdlettestank38pzb/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "fda22afa-df18-4901-ba09-e8f914353b02" ],
+        "CommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "dd9d56c2-ce3c-4bfe-b707-22da8874a496" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "135065e2-12e4-4cda-97fb-bab599aababb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201124T063236Z:135065e2-12e4-4cda-97fb-bab599aababb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Nov 2020 06:32:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "109" ],
+        "Content-Type": [ "application/x-rdp" ],
+        "Expires": [ "-1" ],
+        "Content-Disposition": [ "attachment; filename=cscmdlettestank38pzb-WebRole_IN_0.rdp" ]
+      },
+      "Content": "ZnVsbCBhZGRyZXNzOnM6NTIuMjI1LjE3Ni4yMw0KdXNlcm5hbWU6czp1c2VyYXp1cmUNCkxvYWRCYWxhbmNlSW5mbzpzOkNvb2tpZTogbXN0c2hhc2g9V2ViUm9sZSNXZWJSb2xlX0lOXzANCg=="
+    }
+  }
+}

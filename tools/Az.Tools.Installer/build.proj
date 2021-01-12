@@ -29,6 +29,6 @@
 
   <Target Name="Package">
     <Message Text="Package $(ModuleName)" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)\PublishToolsModule.ps1 -RepositoryLocation $(ArtifactFolder) -ModuleName $(ModuleName)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)\PublishToolsModule.ps1 -RepositoryLocation $(ArtifactFolder) -PublishLocation $(ArtifactFolder) -ModuleName $(ModuleName)&quot;" />
   </Target>
 </Project>

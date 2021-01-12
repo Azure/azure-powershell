@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse
             ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
+        [Alias(nameof(SynapseConstants.SqlPoolName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

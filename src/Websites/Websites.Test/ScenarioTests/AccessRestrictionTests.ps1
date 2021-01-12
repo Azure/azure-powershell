@@ -594,3 +594,53 @@ function Test-AddWebAppAccessRestrictionSlot
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
+
+<#
+.SYNOPSIS
+Add Duplicate IpAddress Access Restriction
+#>
+function Test-AddWebAppAccessRestrictionDuplicate
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName	
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Shared"
+	$ipAddress = "130.220.0.0/27"
+	$duplicateErrorMessage = "Rule for '$ipAddress' already exist"
+
+	try
+	{
+		# Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webApp = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		
+		# Assert Setup
+		Assert-AreEqual $wname $webApp.Name
+		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
+		
+		# Run Tests
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress $ipAddress -Priority 200 -PassThru
+
+		try
+		{
+			Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress $ipAddress -Priority 200
+		}
+		catch [System.Exception]
+		{
+			$actualErrorMessage = $_.Exception.Message
+		}
+
+		# Assert
+		Assert-AreEqual $actualErrorMessage $duplicateErrorMessage
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}

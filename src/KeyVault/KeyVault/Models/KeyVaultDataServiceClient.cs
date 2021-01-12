@@ -2019,6 +2019,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException("Creating keys on managed HSM is only possible in track 2 SDK.");
         }
 
+        #region Full backup restore
         public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
         {
             throw new NotImplementedException();
@@ -2028,6 +2029,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             throw new NotImplementedException();
         }
+
+        public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string name, string scope)
         {
@@ -2102,6 +2109,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             throw new NotImplementedException("Purging deleted keys on managed HSM is only possible in track 2 SDK.");
         }
+
+
 
         private VaultUriHelper vaultUriHelper;
         private KeyVaultClient keyVaultClient;
