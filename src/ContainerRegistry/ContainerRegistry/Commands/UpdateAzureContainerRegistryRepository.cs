@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 
         public override void ExecuteChildCmdlet()
         {
-            WriteObject(this.RegistryDataPlaneClient.UpdateRepository(this.Name, new PSChangeableAttribute(DeleteEnabled, WriteEnabled, ListEnabled, ReadEnabled)));
+            if (this.ShouldProcess(string.Format("Update {0} under {1}", this.Name, this.RegistryName)))
+            {
+                WriteObject(this.RegistryDataPlaneClient.UpdateRepository(this.Name, new PSChangeableAttribute(DeleteEnabled, WriteEnabled, ListEnabled, ReadEnabled)));
+            }
         }
     }
 }

@@ -56,16 +56,22 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
             PSChangeableAttribute attribute = new PSChangeableAttribute(DeleteEnabled, WriteEnabled, ListEnabled, ReadEnabled);
             if (ParameterSetName.Equals(ByManifestParameterSet))
             {
-                WriteObject(this.RegistryDataPlaneClient.UpdateManifest(this.RepositoryName, this.Manifest, attribute));
+                if (this.ShouldProcess(string.Format("Update manitest {0}@{1} under {2}", this.RepositoryName, this.Manifest, this.RegistryName)))
+                {
+                    WriteObject(this.RegistryDataPlaneClient.UpdateManifest(this.RepositoryName, this.Manifest, attribute));
+                }
             }
-            else if(ParameterSetName.Equals(ByTagParameterSet))
+            else if (ParameterSetName.Equals(ByTagParameterSet))
             {
-                WriteObject(this.RegistryDataPlaneClient.UpdateManifestByTag(this.RepositoryName, this.Tag, attribute));
+                if (this.ShouldProcess(string.Format("Update manitest for {0}:{1} under {2}", this.RepositoryName, this.Tag, this.RegistryName)))
+                {
+                    WriteObject(this.RegistryDataPlaneClient.UpdateManifestByTag(this.RepositoryName, this.Tag, attribute));
+                }
             }
             else
             {
                 throw new PSArgumentException("Invalid parameter set");
-            }
+            }        
         }
     }
 }

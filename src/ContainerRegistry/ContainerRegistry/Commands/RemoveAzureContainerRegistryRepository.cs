@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 
         public override void ExecuteChildCmdlet()
         {
-            WriteObject(this.RegistryDataPlaneClient.RemoveRepository(this.Name));
+            if (this.ShouldProcess(string.Format("Delete {0} under {1}", this.Name, this.RegistryName)))
+            {
+                WriteObject(this.RegistryDataPlaneClient.RemoveRepository(this.Name));
+            }
         }
     }
 }

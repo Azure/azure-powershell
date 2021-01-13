@@ -30,7 +30,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 
         public override void ExecuteChildCmdlet()
         {
-            WriteObject(this.RegistryDataPlaneClient.RemoveTag(this.RepositoryName, this.Name));
+            if (this.ShouldProcess(string.Format("Untag {0}:{1} under {2}", this.RepositoryName, this.Name, this.RegistryName)))
+            {
+                WriteObject(this.RegistryDataPlaneClient.RemoveTag(this.RepositoryName, this.Name));
+            }
         }
     }
 }
