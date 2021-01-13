@@ -6,7 +6,6 @@ Location      Name                            Type
 --------      ----                            ----
 United States klaskkdls.onmicrosoft.com       Microsoft.AzureActiveDirectory/b2cDirectories
 United States asdsdsadsad.onmicrosoft.com     Microsoft.AzureActiveDirectory/b2cDirectories
-United States yishiTestTenant.onmicrosoft.com Microsoft.AzureActiveDirectory/b2cDirectories
 ```
 
 This command gets all tenants of the AzureActiveDirectory under a subscription.
@@ -37,7 +36,7 @@ This command gets a tenant of the AzureActiveDirectory by name.
 
 ### Example 3: Get a tenant of the AzureActiveDirectory by pipeline
 ```powershell
-PS C:\>New-AzADB2CTenant -ResourceGroupName azure-rg-test -Name asdsdsadsad.onmicrosoft.com -Location 'United States' -Sku Standard -CountryCode US -DisplayName "azure.onmicrosoft.com" |  Get-AzADB2CTenant
+PS C:\> Update-AzADB2CTenant -ResourceGroupName azure-rg-test -Name 'asdsdsadsad.onmicrosoft.com' -Tag @{"key1" = 1; "key2" = 2} |  Get-AzADB2CTenant
 
 Location      Name                        Type
 --------      ----                        ----
