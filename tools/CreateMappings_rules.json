@@ -628,5 +628,9 @@
   {
     "regex": "BotService",
     "alias": "BotService"
+  },
+  {
+    "alias": "HealthBot",
+    "regex": "HealthBot"
   }
 ]
