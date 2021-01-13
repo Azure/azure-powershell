@@ -31,23 +31,21 @@ The resource deletion can only happen as the last step in [the tenant deletion p
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a tenant of the AzureActiveDirectory by name 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzADB2CTenant -ResourceGroupName lucas-rg-test -Name 'klaskkdls.onmicrosoft.com'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a tenant of the AzureActiveDirectory by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a tenant of the AzureActiveDirectory by pipeline 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzADB2CTenant -ResourceGroupName lucas-rg-test -Name 'asdsdsadsad.onmicrosoft.com' | Remove-AzADB2CTenant
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a tenant of the AzureActiveDirectory by pipeline.
 
 ## PARAMETERS
 

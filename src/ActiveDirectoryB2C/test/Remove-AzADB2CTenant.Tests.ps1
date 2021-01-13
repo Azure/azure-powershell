@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzADB2CTenant' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName01
+        $tenantList = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup
+        $tenantList.Name | Should -Not -Contain $env.tenantName01
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $tenant = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName02
+        Remove-AzADB2CTenant -InputObject $tenant
+        $tenantList = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup
+        $tenantList.Name | Should -Not -Contain $env.tenantName02
     }
 }

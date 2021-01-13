@@ -1,0 +1,166 @@
+{
+  "New-AzADB2CTenant+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/3wtsdsv.onmicrosoft.com?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/3wtsdsv.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"createTenantProperties\": {\r\n      \"displayName\": \"3wtsdsv.onmicrosoft.com\",\r\n      \"countryCode\": \"US\"\r\n    }\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"A0\"\r\n  },\r\n  \"location\": \"United States\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "237" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview" ],
+        "Retry-After": [ "60" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "4feef0a4-51c8-4c47-857e-7b7baeeee4e4" ],
+        "x-ms-request-id": [ "e6a58df7-260a-4148-954e-687d60d0c884" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "e1499c5e-b67b-4203-8de1-65f46c284be9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T100227Z:e1499c5e-b67b-4203-8de1-65f46c284be9" ],
+        "Date": [ "Mon, 11 Jan 2021 10:02:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "New-AzADB2CTenant+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "5a64876a-2098-463c-85c7-8d9d842263b9" ],
+        "CommandName": [ "Az.ActiveDirectoryB2C.internal\\New-AzADB2CTenant" ],
+        "FullCommandName": [ "New-AzADB2CTenant_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "e108b389-735e-48c3-a565-1330b81203be" ],
+        "x-ms-request-id": [ "4ab0de42-34e6-420b-a401-c16d601a41ec" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "56d1ac45-8618-454b-8e33-dd74bdf65725" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T100327Z:56d1ac45-8618-454b-8e33-dd74bdf65725" ],
+        "Date": [ "Mon, 11 Jan 2021 10:03:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "384" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"subscriptionId\":\"0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"name\":\"fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"status\":\"Pending\",\"startTime\":\"01/11/2021 10:02:26\",\"endTime\":null,\"error\":null,\"properties\":{\"billingConfig\":null,\"tenantId\":null}}"
+    }
+  },
+  "New-AzADB2CTenant+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "5a64876a-2098-463c-85c7-8d9d842263b9" ],
+        "CommandName": [ "Az.ActiveDirectoryB2C.internal\\New-AzADB2CTenant" ],
+        "FullCommandName": [ "New-AzADB2CTenant_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "a25929cf-2eaa-493c-ac8b-53f8fe2aba10" ],
+        "x-ms-request-id": [ "f127a08e-c6b1-4b3b-913d-15bce37df11f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
+        "x-ms-correlation-request-id": [ "778b0f96-3c8c-4f47-86dd-ed4e2800692d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T100357Z:778b0f96-3c8c-4f47-86dd-ed4e2800692d" ],
+        "Date": [ "Mon, 11 Jan 2021 10:03:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"subscriptionId\":\"0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"name\":\"fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"status\":\"Succeeded\",\"startTime\":\"01/11/2021 10:02:26\",\"endTime\":\"01/11/2021 10:03:32\",\"error\":null,\"properties\":{\"billingConfig\":null,\"tenantId\":\"346013bd-70ea-4286-87a3-2660b7025d21\"}}"
+    }
+  },
+  "New-AzADB2CTenant+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "5a64876a-2098-463c-85c7-8d9d842263b9" ],
+        "CommandName": [ "Az.ActiveDirectoryB2C.internal\\New-AzADB2CTenant" ],
+        "FullCommandName": [ "New-AzADB2CTenant_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "3ccfb1c0-577c-4e52-9e31-75b8ebdb4052" ],
+        "x-ms-request-id": [ "d22f41f6-2364-454b-a8d7-d0521319a6d0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
+        "x-ms-correlation-request-id": [ "a0cca0af-072a-473e-be06-dd404b6870eb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T100357Z:a0cca0af-072a-473e-be06-dd404b6870eb" ],
+        "Date": [ "Mon, 11 Jan 2021 10:03:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"subscriptionId\":\"0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/microsoft.azureactivedirectory/operations/fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"name\":\"fa1f5495-7da3-4af1-bdf8-a1ac58c854e6\",\"status\":\"Succeeded\",\"startTime\":\"01/11/2021 10:02:26\",\"endTime\":\"01/11/2021 10:03:32\",\"error\":null,\"properties\":{\"billingConfig\":null,\"tenantId\":\"346013bd-70ea-4286-87a3-2660b7025d21\"}}"
+    }
+  }
+}

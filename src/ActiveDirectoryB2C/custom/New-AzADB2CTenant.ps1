@@ -149,6 +149,7 @@ function New-AzADB2CTenant {
     process {
         try {
             $PSBoundParameters['SkuTier'] = "A0"
+            Write-Debug $PSBoundParameters
             Az.ActiveDirectoryB2C.internal\New-AzADB2CTenant @PSBoundParameters
         } catch {
             throw

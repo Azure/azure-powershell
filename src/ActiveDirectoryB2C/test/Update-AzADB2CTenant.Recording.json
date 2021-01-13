@@ -1,0 +1,118 @@
+{
+  "Update-AzADB2CTenant+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key3\": \"3\",\r\n    \"key2\": \"2\",\r\n    \"key1\": \"1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "75" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "4fd989fc-3f0a-40d3-8be4-3c157dfaa76b" ],
+        "x-ms-request-id": [ "9f009193-ada6-41e5-a91f-b725a994cde2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
+        "x-ms-correlation-request-id": [ "40664a47-6456-4128-bf66-f587b4b204d8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T101206Z:40664a47-6456-4128-bf66-f587b4b204d8" ],
+        "Date": [ "Mon, 11 Jan 2021 10:12:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "559" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":{\"key3\":\"3\",\"key2\":\"2\",\"key1\":\"1\"}}"
+    }
+  },
+  "Update-AzADB2CTenant+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "f16d0b63-2662-4145-af91-e0750c75e9be" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "71827847-1f8c-484f-aed1-9ceaa0b753fc" ],
+        "x-ms-request-id": [ "560c3168-3284-4209-94b9-09e92b876c97" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "4a542ce7-6730-4b43-849f-6a2da0fca4ab" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T101207Z:4a542ce7-6730-4b43-849f-6a2da0fca4ab" ],
+        "Date": [ "Mon, 11 Jan 2021 10:12:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "559" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":{\"key3\":\"3\",\"key2\":\"2\",\"key1\":\"1\"}}"
+    }
+  },
+  "Update-AzADB2CTenant+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key1\": \"1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "39" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "d3806b8f-1189-4f2c-8c1a-e615dad3b55a" ],
+        "x-ms-request-id": [ "1934de70-aabb-405b-956f-929762165a3e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "97" ],
+        "x-ms-correlation-request-id": [ "a5cd1b66-5329-4d0e-9a0c-d0f07591cdb7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T101209Z:a5cd1b66-5329-4d0e-9a0c-d0f07591cdb7" ],
+        "Date": [ "Mon, 11 Jan 2021 10:12:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "537" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":{\"key1\":\"1\"}}"
+    }
+  }
+}

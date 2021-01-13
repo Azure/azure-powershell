@@ -23,23 +23,16 @@ Initiates an async request to create both the Azure AD B2C tenant and the corres
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a tenant of the AzureActiveDirectory by name 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzADB2CTenant -ResourceGroupName lucas-rg-test -Name asdsdsadsad.onmicrosoft.com -Location 'United States' -Sku Standard -CountryCode US -DisplayName "azure.onmicrosoft.com"
 
-{{ Add output here }}
+Location Name                                 Type
+-------- ----                                 ----
+         d005debc-8b64-4008-829c-e68f7d9349ab
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a tenant of the AzureActiveDirectory by name.
 
 ## PARAMETERS
 

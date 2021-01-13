@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzADB2CTenant' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1'  {
+        $tenantList = Get-AzADB2CTenant
+        $tenantList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+      $tenant = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName00
+      $tenant.Name | Should -Be $env.tenantName00
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $tenantList = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup
+        $tenantList.Count | Should -Be 2
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+      $tenant = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName00 
+      $tenant =  Get-AzADB2CTenant -InputObject $tenant
+      $tenant.Name | Should -Be $env.tenantName00
     }
 }

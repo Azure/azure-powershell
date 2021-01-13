@@ -1,0 +1,212 @@
+{
+  "Get-AzADB2CTenant+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AzureActiveDirectory/b2cDirectories?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.AzureActiveDirectory/b2cDirectories?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "0efce122-f93f-495e-aaf6-c2dc00b389c7" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "123bddd9-dc93-4b38-8ef9-aa0e4a32570a" ],
+        "x-ms-request-id": [ "64b9e69e-19f8-4734-a309-965523166744" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
+        "x-ms-correlation-request-id": [ "62a5887f-571b-4189-9bd7-8583e06660a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T095531Z:62a5887f-571b-4189-9bd7-8583e06660a9" ],
+        "Date": [ "Mon, 11 Jan 2021 09:55:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2154" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"dcb065cf-12c0-480b-b51d-d35b85dd2907\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/cdx2k1ym.onmicrosoft.com\",\"name\":\"cdx2k1ym.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null},{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP2\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"ac990f05-b4ee-4374-807a-acaf4f22cea5\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yishitest/providers/Microsoft.AzureActiveDirectory/b2cDirectories/yishiTestTenant.onmicrosoft.com\",\"name\":\"yishiTestTenant.onmicrosoft.com\",\"location\":\"United States\",\"tags\":{\"key\":\"value\"}},{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"761491ab-616e-45e4-a024-88a87f38101e\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/lucas-rg-test/providers/Microsoft.AzureActiveDirectory/b2cDirectories/klaskkdls.onmicrosoft.com\",\"name\":\"klaskkdls.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null},{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null}]}"
+    }
+  },
+  "Get-AzADB2CTenant+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "b2ecc5d9-3ad6-4b78-9a1a-e8a25b01c1a0" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "b6a67210-e2a6-4863-aa74-2adea07ab01d" ],
+        "x-ms-request-id": [ "edfe7da7-1078-4c33-82ca-bd1773f5c687" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
+        "x-ms-correlation-request-id": [ "34148489-6fcf-47d5-8af1-7d9516b49c6d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T095532Z:34148489-6fcf-47d5-8af1-7d9516b49c6d" ],
+        "Date": [ "Mon, 11 Jan 2021 09:55:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null}"
+    }
+  },
+  "Get-AzADB2CTenant+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "eaac35d6-c3b0-4796-b32a-7853d836f34b" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "85c3e63a-0742-43e8-8d06-787ff9c1126c" ],
+        "x-ms-request-id": [ "8260c4ca-2016-4b54-9b78-db03c7081a12" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
+        "x-ms-correlation-request-id": [ "0b6b29b9-1963-447c-aeb6-146aa2b2153f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T095532Z:0b6b29b9-1963-447c-aeb6-146aa2b2153f" ],
+        "Date": [ "Mon, 11 Jan 2021 09:55:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1071" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"dcb065cf-12c0-480b-b51d-d35b85dd2907\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/cdx2k1ym.onmicrosoft.com\",\"name\":\"cdx2k1ym.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null},{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null}]}"
+    }
+  },
+  "Get-AzADB2CTenant+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "321a599e-106b-4d30-96af-5b677bfb373d" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "479ea3c9-51f6-4b06-ab0c-bc2f361b7e8a" ],
+        "x-ms-request-id": [ "817e90ff-5e54-48f1-8a90-180cdf724391" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
+        "x-ms-correlation-request-id": [ "f7a21155-1497-472c-b7cb-6b66a5e4e3db" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T095532Z:f7a21155-1497-472c-b7cb-6b66a5e4e3db" ],
+        "Date": [ "Mon, 11 Jan 2021 09:55:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null}"
+    }
+  },
+  "Get-AzADB2CTenant+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com?api-version=2019-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "bcc56abf-b3c8-45b4-971d-c0b23eee9e6e" ],
+        "CommandName": [ "Get-AzADB2CTenant" ],
+        "FullCommandName": [ "Get-AzADB2CTenant_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-version": [ "1.0.1841.0" ],
+        "x-ms-gateway-requestid": [ "3300749a-e4e3-4789-a0ce-e03b0c7f0630" ],
+        "x-ms-request-id": [ "3e1e04f0-8572-497c-98ce-5fba6dec0d73" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-UA-Compatible": [ "IE=edge" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "291" ],
+        "x-ms-correlation-request-id": [ "eeeb68fa-b79b-423b-a2bf-748ac5f6693c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210111T095532Z:eeeb68fa-b79b-423b-a2bf-748ac5f6693c" ],
+        "Date": [ "Mon, 11 Jan 2021 09:55:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AzureActiveDirectory/b2cDirectories\",\"sku\":{\"name\":\"PremiumP1\",\"tier\":\"A0\",\"size\":null,\"family\":null,\"capacity\":null},\"properties\":{\"billingConfig\":{\"billingType\":\"MAU\",\"effectiveStartDateUtc\":\"1/1/0001 12:00:00 AM\"},\"tenantId\":\"8ac4818c-cf75-4154-9e64-a4bea9e706ee\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg-poj8m/providers/Microsoft.AzureActiveDirectory/b2cDirectories/25uyqt4w.onmicrosoft.com\",\"name\":\"25uyqt4w.onmicrosoft.com\",\"location\":\"United States\",\"tags\":null}"
+    }
+  }
+}

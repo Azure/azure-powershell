@@ -12,11 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzADB2CTenant' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $tenant = Update-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName00 -Tag @{"key1" = 1; "key2" = 2; "key3" = 3}
+        $tenant.Tag.Count | Should -Be 3
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+      $tenant = Get-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName00 
+      $tenant = Update-AzADB2CTenant -InputObject $tenant -Tag @{"key1" = 1}
+      $tenant.Tag.Count | Should -Be 1 
     }
 }

@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzADB2CTenant' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            New-AzADB2CTenant -ResourceGroupName $env.resourceGroup -Name $env.tenantName02  -Location 'United States' -Sku Standard -CountryCode US -DisplayName $env.tenantName02 
+        } | Should -Not -Throw
     }
 }
