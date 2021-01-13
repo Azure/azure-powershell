@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue in Secret Management module
 
 ## Version 3.3.0
 * Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text [#13630]
