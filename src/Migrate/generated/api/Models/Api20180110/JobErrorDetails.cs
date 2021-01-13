@@ -37,23 +37,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The Error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public int? ProviderErrorDetailErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorCode = value; }
+        public int? ProviderErrorDetailErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorCode = value ?? default(int); }
 
         /// <summary>The Provider error Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderErrorDetailErrorId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorId = value; }
+        public string ProviderErrorDetailErrorId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorId = value ?? null; }
 
         /// <summary>The Error message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderErrorDetailErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorMessage = value; }
+        public string ProviderErrorDetailErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).ErrorMessage = value ?? null; }
 
         /// <summary>The possible causes for the error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderErrorDetailPossibleCaus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).PossibleCaus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).PossibleCaus = value; }
+        public string ProviderErrorDetailPossibleCaus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).PossibleCaus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).PossibleCaus = value ?? null; }
 
         /// <summary>The recommended action to resolve the error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderErrorDetailRecommendedAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).RecommendedAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).RecommendedAction = value; }
+        public string ProviderErrorDetailRecommendedAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).RecommendedAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderErrorInternal)ProviderErrorDetail).RecommendedAction = value ?? null; }
 
         /// <summary>Backing field for <see cref="ServiceErrorDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceError _serviceErrorDetail;
@@ -64,23 +64,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Activity Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceErrorDetailActivityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).ActivityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).ActivityId = value; }
+        public string ServiceErrorDetailActivityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).ActivityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).ActivityId = value ?? null; }
 
         /// <summary>Error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceErrorDetailCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Code = value; }
+        public string ServiceErrorDetailCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Code = value ?? null; }
 
         /// <summary>Error message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceErrorDetailMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Message = value; }
+        public string ServiceErrorDetailMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).Message = value ?? null; }
 
         /// <summary>Possible causes of error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceErrorDetailPossibleCaus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).PossibleCaus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).PossibleCaus = value; }
+        public string ServiceErrorDetailPossibleCaus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).PossibleCaus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).PossibleCaus = value ?? null; }
 
         /// <summary>Recommended action to resolve error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceErrorDetailRecommendedAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).RecommendedAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).RecommendedAction = value; }
+        public string ServiceErrorDetailRecommendedAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).RecommendedAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IServiceErrorInternal)ServiceErrorDetail).RecommendedAction = value ?? null; }
 
         /// <summary>Backing field for <see cref="TaskId" /> property.</summary>
         private string _taskId;

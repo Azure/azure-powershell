@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for CredentialType.</summary>
+    /// <summary>Credential type of the run as account.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.CredentialTypeTypeConverter))]
     public partial struct CredentialType :
         System.Management.Automation.IArgumentCompleter

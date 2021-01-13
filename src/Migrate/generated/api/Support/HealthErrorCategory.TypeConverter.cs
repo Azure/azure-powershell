@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for HealthErrorCategory.</summary>
+    /// <summary>The category of the health error.</summary>
     public partial class HealthErrorCategoryTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

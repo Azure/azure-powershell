@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The container identifier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ContainerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).ContainerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).ContainerName = value; }
+        public string ContainerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).ContainerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).ContainerName = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.FailoverProcessServerRequestProperties()); set { {_property = value;} } }
@@ -24,19 +24,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The source process server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string SourceProcessServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).SourceProcessServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).SourceProcessServerId = value; }
+        public string SourceProcessServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).SourceProcessServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).SourceProcessServerId = value ?? null; }
 
         /// <summary>The new process server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string TargetProcessServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).TargetProcessServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).TargetProcessServerId = value; }
+        public string TargetProcessServerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).TargetProcessServerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).TargetProcessServerId = value ?? null; }
 
         /// <summary>A value for failover type. It can be systemlevel/serverlevel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string UpdateType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).UpdateType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).UpdateType = value; }
+        public string UpdateType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).UpdateType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).UpdateType = value ?? null; }
 
         /// <summary>The VMS to migrate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string[] VmsToMigrate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).VmsToMigrate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).VmsToMigrate = value; }
+        public string[] VmsToMigrate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).VmsToMigrate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverProcessServerRequestPropertiesInternal)Property).VmsToMigrate = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="FailoverProcessServerRequest" /> instance.</summary>
         public FailoverProcessServerRequest()
