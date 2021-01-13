@@ -84,7 +84,7 @@ function New-AzBotService {
         ${Location},
 
         [Parameter()]
-        [ValidateNotNullOrEmpty()]
+        # [ValidateNotNullOrEmpty()]
         [ValidateSet('F0', 'S1')]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
         [System.String]
