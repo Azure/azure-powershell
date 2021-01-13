@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
         public PSVpnConnection[] VpnConnection { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "Flag to enable Routing Preference Internet on this VpnGateway.")]
+        public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -147,6 +152,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
+
+            // Set the Routing Preference Internet, if it is specified by customer.
+            vpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
 
             vpnGateway.BgpSettings = null;
 
