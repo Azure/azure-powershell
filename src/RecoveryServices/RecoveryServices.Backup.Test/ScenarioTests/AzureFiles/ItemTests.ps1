@@ -266,7 +266,7 @@ function Test-AzureFSFullRestore
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Enable-Protection $vault $fileShareFriendlyName $saName
+		$item = Enable-ProtectionNew $vault $fileShareFriendlyName $saName
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `

@@ -17,49 +17,49 @@ The same command is used to restore Azure Virtual machines, databases running wi
 
 ### AzureVMParameterSet (Default)
 ```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
- [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <string>] [-RestoreToSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String> 
+[-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <string>] 
+[-RestoreToSecondaryRegion] [-RehydratePriority <string>] [-RehydrateDuration <string>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+[-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMManagedDiskParameterSet
 ```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
- [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <string>] [-RestoreToSecondaryRegion] [-VaultId <String>]
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String> 
+[-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String> [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>]
+[-DiskEncryptionSetId <string>] [-RestoreToSecondaryRegion] [-RehydratePriority <string>] [-RehydrateDuration <string>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMRestoreManagedAsUnmanaged
 ```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
- [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-RestoreToSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String> 
+[-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-RestoreToSecondaryRegion]
+[-RehydratePriority <string>] [-RehydrateDuration <string>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] 
+[-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
 ```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount]
- [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-RestoreToSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String> 
+[-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount] [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-RestoreToSecondaryRegion]
+[-RehydratePriority <string>] [-RehydrateDuration <string>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] 
+[-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareParameterSet
 ```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
- [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
- [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-RestoreToSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase> -ResolveConflict <RestoreFSResolveConflictOption> 
+[-SourceFilePath <String>] [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
+ [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-RestoreToSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadParameterSet
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-WLRecoveryConfig] <RecoveryConfigBase> [-RestoreToSecondaryRegion]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+[-RehydratePriority <string>] [-RehydrateDuration <string>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+[-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,6 +227,17 @@ PS C:\> Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceW
     MSSQLSERVER/m... Restore        InProgress       3/17/2019 10:02:45 AM                       3274xg2b-e4fg-5952-89b4-8cb566gc1748
 
 ```
+
+### Example 8: Rehydrate Restore for IaasVM from an archived recovery point
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+PS C:\> $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-29).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $item[3] -Tier VaultArchive
+PS C:\> $restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -RehydratePriority "Standard" -RehydrateDuration "13" -TargetResourceGroupName "Target_RG" -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Here we filter the recovery points present in the VaultArchive tier and triggers a restore with rehydration priority and rehydration duration.
 
 ## PARAMETERS
 
@@ -523,6 +534,40 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydratePriority 
+
+Rehydration priority for an archived recovery point while triggering the restore. Acceptable values are Standard, High.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureWorkloadParameterSet
+Aliases:
+Accepted values: Standard, High
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrateDuration 
+
+Duration in days for which to keep the archived recovery point rehydrated. Value can range from 10 to 30 days, default value is 15 days.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureWorkloadParameterSet
+Aliases:
+Accepted values: 10 to 30 days
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

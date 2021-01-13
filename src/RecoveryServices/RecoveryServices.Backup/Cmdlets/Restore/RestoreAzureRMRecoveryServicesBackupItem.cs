@@ -14,18 +14,15 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType;
-using WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -223,6 +220,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SwitchParameter RestoreToSecondaryRegion { get; set; }
 
+        /// <summary>
+        /// Rehydration priority for Archive recovery points.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydratePriority)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydratePriority)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydratePriority)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMUnManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydratePriority)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureWorkloadParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydratePriority)]
+        [ValidateSet("Standard","High")]
+        public string RehydratePriority { get; set; }
+
+        /// <summary>
+        /// Rehydration duration for archived RP. values range from 10 to 30, default value is 15.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
+            HelpMessage =  ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage =  ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMUnManagedDiskParameterSet,
+            HelpMessage =  ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureWorkloadParameterSet,
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
+        public string RehydrateDuration = "15";
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -233,7 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
-                
+
                 string secondaryRegion = "";
                 if (RestoreToSecondaryRegion.IsPresent)
                 {
@@ -241,6 +269,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     secondaryRegion = BackupUtils.regionMap[vault.Location];
                     providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
                 }
+
+                if(RehydratePriority != null)
+                {
+                    Logger.Instance.WriteDebug("Rehydrate priority is given ... ");
+
+                    int rehydrateExpiryInDays = Int32.Parse(RehydrateDuration); // Rehydrate duration is taken as days
+                    if (rehydrateExpiryInDays < 10 || rehydrateExpiryInDays > 30)
+                    {
+                        throw new ArgumentException(Resources.InvalidRehydrateDuration);
+                    }
+
+                    providerParameters.Add(RecoveryPointParams.RehydrateDuration, RehydrateDuration);
+                    providerParameters.Add(RecoveryPointParams.RehydratePriority, RehydratePriority);
+                }                
 
                 providerParameters.Add(VaultParams.VaultName, vaultName);
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
@@ -256,13 +298,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreDiskList, RestoreDiskList);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
-                providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent);
-
+                providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent); 
+                
                 if (DiskEncryptionSetId != null)
                 {
                     AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
 
-                    BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                    ServiceClientModel.BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
                     
                     if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled) && !(RestoreToSecondaryRegion.IsPresent))
                     {

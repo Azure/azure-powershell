@@ -616,4 +616,22 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidTargetStorageAccount" xml:space="preserve">
     <value>Please provide a vaild target storage account</value>
   </data>
+  <data name="ArchiveNotSupported" xml:space="preserve">
+    <value>Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet</value>
+  </data>
+  <data name="ArchiveRecommendationNotSupported" xml:space="preserve">
+    <value>Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.</value>
+  </data>
+  <data name="DeleteArchiveRecoveryPoints" xml:space="preserve">
+    <value>You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?</value>
+  </data>
+  <data name="InvalidRehydrateDuration" xml:space="preserve">
+    <value>Rehydrate duration should be between 10 and 30</value>
+  </data>
+  <data name="InvalidRehydration" xml:space="preserve">
+    <value>Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days</value>
+  </data>
+  <data name="DeleteRecoveryPoints" xml:space="preserve">
+    <value>Disable protection with delete recovery points</value>
+  </data>
 </root>
