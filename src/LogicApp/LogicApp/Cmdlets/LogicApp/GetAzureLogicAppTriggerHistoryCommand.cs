@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Management.Automation;
 
     /// <summary>
@@ -51,6 +52,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string HistoryName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates the cmdlet should follow next page links.")]
+        [Alias("FL")]
+        public SwitchParameter FollowNextPageLink { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies how many times to follow next page links if FollowNextPageLink is used.")]
+        [Alias("ML")]
+        [ValidateRange(1, Int32.MaxValue)]
+        public int MaximumFollowNextPageLink { get; set; } = int.MaxValue;
+
         #endregion Input Parameters
 
         /// <summary>
@@ -61,10 +71,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.HistoryName))
             {
-                var enumerator =
-                    LogicAppClient.GetWorkflowTriggerHistories(this.ResourceGroupName, this.Name, this.TriggerName)
-                        .GetEnumerator();
-                this.WriteObject(enumerator.ToIEnumerable<WorkflowTriggerHistory>(), true);
+                var page = new Page<WorkflowTriggerHistory>();
+                int i = 0;
+                do
+                {
+                    page = this.LogicAppClient.GetWorkflowTriggerHistories(this.ResourceGroupName, this.Name, this.TriggerName, page.NextPageLink);
+                    this.WriteObject(page.GetEnumerator().ToIEnumerable<WorkflowTriggerHistory>(), true);
+                    i++;
+                }
+                while (this.FollowNextPageLink && !string.IsNullOrWhiteSpace(page.NextPageLink) && i <= this.MaximumFollowNextPageLink);
             }
             else
             {

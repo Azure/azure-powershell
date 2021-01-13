@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fixed an issue in Secret Management module
+
+## Version 3.3.0
 * Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text [#13630]
 * Supported selective restore a key from a managed HSM full backup [#13526]
 * Fixed some minor issues [#13583] [#13584]

@@ -1,8 +1,8 @@
 {
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"charset\": \"latin1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -16,9 +16,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/operationResults/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "96326ee6-19e9-49da-bf99-cef36c9b88fa" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
@@ -36,10 +36,10 @@
       "Content": "{\"operation\":\"UpsertServerDatabaseManagementOperation\",\"startTime\":\"2020-11-10T22:03:32.76Z\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview+2": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/96326ee6-19e9-49da-bf99-cef36c9b88fa?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"96326ee6-19e9-49da-bf99-cef36c9b88fa\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-10T22:03:32.76Z\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview+3": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -112,13 +112,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
+      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases?api-version=2020-07-01-preview+4": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases?api-version=2020-07-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
@@ -151,13 +151,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/information_schema\",\"name\":\"information_schema\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysql\",\"name\":\"mysql\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/performance_schema\",\"name\":\"performance_schema\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/sys\",\"name\":\"sys\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}]}"
+      "Content": "{\"value\":[{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/information_schema\",\"name\":\"information_schema\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysql\",\"name\":\"mysql\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/performance_schema\",\"name\":\"performance_schema\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"},{\"properties\":{\"charset\":\"utf8\",\"collation\":\"utf8_general_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/sys\",\"name\":\"sys\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}]}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
@@ -190,13 +190,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
+      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
@@ -229,13 +229,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
+      "Content": "{\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview+2": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test-100/databases/mysqldb?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100/databases/mysqldb?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
@@ -254,9 +254,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "868f7062-663d-46f3-83d6-1e53eba390e0" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
@@ -274,10 +274,10 @@
       "Content": "{\"operation\":\"DropServerDatabaseManagementOperation\",\"startTime\":\"2020-11-10T22:03:50.273Z\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview+3": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/azureAsyncOperation/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -314,10 +314,10 @@
       "Content": "{\"name\":\"868f7062-663d-46f3-83d6-1e53eba390e0\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-10T22:03:50.273Z\"}"
     }
   },
-  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview+4": {
+  "Get-AzMySqlFlexibleServerDatabase+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/eastus2euap/operationResults/868f7062-663d-46f3-83d6-1e53eba390e0?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -350,7 +350,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
+      "Content": "{\"properties\":{},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100/databases/mysqldb\",\"name\":\"mysqldb\",\"type\":\"Microsoft.DBforMySQL/flexibleServers/databases\"}"
     }
   }
 }

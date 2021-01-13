@@ -104,6 +104,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
         Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+
+        [Parameter(
+        Mandatory = false,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "The Ipsec share key.")]
         public string SharedKey { get; set; }
@@ -209,6 +215,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
+            vnetGatewayConnection.ConnectionMode = this.ConnectionMode;
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
             vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;

@@ -15,23 +15,95 @@
 
 <#
 .Synopsis
-Creates a new MySQL flexible server
+Creates a new MySQL flexible server.
 .Description
-Creates a new server.
+Creates a new MySQL flexible server.
 .Example
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
+-Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
+Checking the existence of the resource group PowershellMySqlTest ...
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group MySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 .Example
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--AdministratorUserName mysqltest -AdministratorLoginPassword $password
+PS C:\> New-AzMySqlFlexibleServer
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      131072                  Standard_B1ms   Burstable
+Creating resource group group00000000...
+Creating new vnet VNETserver00000000 in resource group group00000000
+Creating new subnet Subnetserver00000000 in resource group group00000000 and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group group00000000...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> $Vnet = 'vnetname'
+PS C:\> New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+or
+
+PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
+PS C:\> New-AzMySqlFlexibleServer  -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+Resource group PowershellMySqlTest exists ? : True
+You have supplied a vnet Id/name. Verifying its existence...
+Creating new vnet vnetname in resource group PowershellMySqlTest
+Creating new subnet Subnetserver00000000 in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group PowershellMySqlTest...
+Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Vnet mysql-vnet -Subnet mysql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
+
+Resource group PowershellMySqlTest exists ? : True
+Creating new vnet mysql-vnet in resource group PowershellMySqlTest
+Creating new subnet mysql-subnet in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess All
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess 10.10.10.10-10.10.10.12
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated
@@ -42,14 +114,14 @@ function New-AzMySqlFlexibleServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the server.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
@@ -62,26 +134,26 @@ param(
     # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The location the resource resides in.
+    ${Location},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # Administrator username for the server.
     # Once set, it cannot be changed.
     ${AdministratorUserName},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.Security.SecureString]
     # The password of the administrator.
     # Minimum 8 characters and maximum 128 characters.
     # Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
     ${AdministratorLoginPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
-    # The location the resource resides in.
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
@@ -126,6 +198,58 @@ param(
     ${Version},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The subnet IP address prefix to use when creating a new vnet in CIDR format.
+    # Default value is 10.0.0.0/24.
+    ${SubnetPrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The Name or Id of an existing Subnet or name of a new one to create.
+    # Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers.
+    # After delegation, this subnet cannot be used for any other type of Azure resources.
+    ${Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The IP address prefix to use when creating a new vnet in CIDR format.
+    # Default value is 10.0.0.0/16.
+    ${VnetPrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # The Name or Id of an existing virtual network or name of a new one to create.
+    # The name must be between 2 to 64 characters.
+    # The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.
+    ${Vnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Determines the public access.
+    # Enter single or range of IP addresses to be 
+    #         included in the allowed list of IPs.
+    # IP address ranges must be dash-
+    #         separated and not contain any spaces.
+    # Specifying 0.0.0.0 allows public
+    #         access from any resources deployed within Azure to access your server.
+    #         Specifying no IP address sets the server in public access mode but does
+    #         not create a firewall rule.
+    ${PublicAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.Object]
+    # Enable or disable high availability feature.
+    # Default value is Disabled.
+    # Default: Disabled.
+    ${HighAvailability},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
@@ -149,14 +273,12 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline.
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline.
     ${HttpPipelinePrepend},
 
     [Parameter()]
@@ -168,20 +290,17 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Uri]
-    # The URI for the proxy server to use.
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call.
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy.
     ${ProxyUseDefaultCredentials}
 )
 

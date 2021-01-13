@@ -1,8 +1,8 @@
 {
-  "Update-AzMySqlConfiguration+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01+1": {
+  "Update-AzMySqlConfiguration+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"value\": \"15\"\n  }\n}",
       "Headers": {
       },
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"12d527f8-26da-4367-af99-9420131c5e00\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T08:03:18.063Z\"}"
     }
   },
-  "Update-AzMySqlConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01+3": {
+  "Update-AzMySqlConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1", "2", "3" ],
@@ -112,13 +112,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"value\":\"15\",\"description\":\"If a read or write on a communication port is interrupted, retry this many times before giving up.\",\"defaultValue\":\"10\",\"dataType\":\"Integer\",\"allowedValues\":\"1-4294967295\",\"source\":\"user-override\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count\",\"name\":\"net_retry_count\",\"type\":\"Microsoft.DBForMySQL/servers/configurations\"}"
+      "Content": "{\"properties\":{\"value\":\"15\",\"description\":\"If a read or write on a communication port is interrupted, retry this many times before giving up.\",\"defaultValue\":\"10\",\"dataType\":\"Integer\",\"allowedValues\":\"1-4294967295\",\"source\":\"user-override\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/net_retry_count\",\"name\":\"net_retry_count\",\"type\":\"Microsoft.DBForMySQL/servers/configurations\"}"
     }
   },
-  "Update-AzMySqlConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01+1": {
+  "Update-AzMySqlConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"value\": \"150\"\n  }\n}",
       "Headers": {
       },
@@ -192,10 +192,10 @@
       "Content": "{\"name\":\"843d746e-2b2d-4130-ab79-dfdf85d1ec6a\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T08:03:35.11Z\"}"
     }
   },
-  "Update-AzMySqlConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01+3": {
+  "Update-AzMySqlConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "4", "5", "6" ],
@@ -228,7 +228,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"value\":\"150\",\"description\":\"The number of seconds the server waits for activity on a noninteractive connection before closing it.\",\"defaultValue\":\"120\",\"dataType\":\"Integer\",\"allowedValues\":\"1-2147483\",\"source\":\"user-override\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout\",\"name\":\"wait_timeout\",\"type\":\"Microsoft.DBForMySQL/servers/configurations\"}"
+      "Content": "{\"properties\":{\"value\":\"150\",\"description\":\"The number of seconds the server waits for activity on a noninteractive connection before closing it.\",\"defaultValue\":\"120\",\"dataType\":\"Integer\",\"allowedValues\":\"1-2147483\",\"source\":\"user-override\",\"isConfigPendingRestart\":\"False\",\"isDynamicConfig\":\"True\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/configurations/wait_timeout\",\"name\":\"wait_timeout\",\"type\":\"Microsoft.DBForMySQL/servers/configurations\"}"
     }
   }
 }

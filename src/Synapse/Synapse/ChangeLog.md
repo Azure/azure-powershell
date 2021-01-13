@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
+
+## Version 0.6.0
 * Added support for operation of Advanced Threat Protection settings in SqlPool-level
     - Add `Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
     - Add `Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting` cmdlet
