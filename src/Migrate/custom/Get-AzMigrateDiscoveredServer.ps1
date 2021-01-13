@@ -19,7 +19,7 @@ Get All discovered servers in a migrate project.
 .Description
 Get Azure migrate server commandlet fetches all servers in a migrate project.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 
 function Get-AzMigrateDiscoveredServer {
