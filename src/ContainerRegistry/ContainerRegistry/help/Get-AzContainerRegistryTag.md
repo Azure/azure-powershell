@@ -1,53 +1,58 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/connect-azcontainerregistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrytag
 schema: 2.0.0
 ---
 
-# Connect-AzContainerRegistry
+# Get-AzContainerRegistryTag
 
 ## SYNOPSIS
-Login to an azure container registry.
+Get or list ACR tag. 
 
 ## SYNTAX
 
-### WithoutNameAndPasswordParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Connect-AzContainerRegistry -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryTag -RepositoryName <String> -RegistryName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### WithNameAndPasswordParameterSet
+### GetParameterSet
 ```
-Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String>
+Get-AzContainerRegistryTag -RepositoryName <String> -Name <String> -RegistryName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Login to an azure container registry.
+Get or list ACR tag.
+To use this cmdlet please run 
+`Update-AzContainerRegistryRepository -RegistryName XXX -Repository XXX -ReadEnable $true -ListEnable $true`
+first.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Connect-AzContainerRegistry -Name $RegistryName
+Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine
+
+Registry                    ImageName Tags
+--------                    --------- ----
+registry.azurecr.io alpine    {latest}
 ```
 
-Login to ACR with no credentials when already login to azure account.
+List tags for repository alpine under registry.
 
 ### Example 2
 ```powershell
-PS C:\> Connect-AzContainerRegistry -Name $RegistryName -UserName $RegistryName -Password $AdminPassWord
+Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine -name latest
+
+Registry                    ImageName Attributes
+--------                    --------- ----------
+registry.azurecr.io alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase
 ```
 
-Login to ACR with admin username/password when admin user was enabled.
-
-### Example 3
-```powershell
-PS C:\> Connect-AzContainerRegistry -Name $RegistryName -UserName $ServicePrincipal -Password $ServicePrincipalPassword
-```
-
-Login to ACR with service principal application ID and password.
+Get tag latest for repository alpine under registry.
 
 ## PARAMETERS
 
@@ -67,26 +72,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Container Registry Name.
+Tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: RegistryName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Password
-Password For Azure Container Registry.
-
-```yaml
-Type: System.String
-Parameter Sets: WithNameAndPasswordParameterSet
+Parameter Sets: GetParameterSet
 Aliases:
 
 Required: True
@@ -96,12 +86,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserName
-User Name For Azure Container Registry.
+### -RegistryName
+Azure Container Registry Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithNameAndPasswordParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RepositoryName
+Repository Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -120,7 +125,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute
+
+### Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList
 
 ## NOTES
 

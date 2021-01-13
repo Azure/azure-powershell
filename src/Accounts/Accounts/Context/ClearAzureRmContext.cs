@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 
@@ -21,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -83,6 +86,15 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     var defaultContext = new AzureContext();
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
+                }
+
+                //clean token cache created by Az.ContainerRegistry
+                string AcrTokenCacheKey = SharedComponentKeys.AcrTokenCacheKey;
+                IDictionary<string, Tuple<string, DateTime>> acrTokenCache;
+                if (AzureSession.Instance.TryGetComponent(AcrTokenCacheKey, out acrTokenCache))
+                {
+                    acrTokenCache.Clear();
+                    AzureSession.Instance.UnregisterComponent<IDictionary<string, Tuple<string, DateTime>>>(AcrTokenCacheKey);
                 }
             }
 
