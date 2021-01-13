@@ -253,7 +253,6 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-[ValidateNotNullOrEmpty()]
 The sku name
 
 ```yaml
