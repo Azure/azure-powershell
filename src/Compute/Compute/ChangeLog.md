@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Remove FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
 
 ## Version 4.8.0
 * New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDscExtensionStatus` and `Get-AzVMDscExtension` cmdlets. 
