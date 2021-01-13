@@ -30,6 +30,9 @@ using System.Threading;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Azure.Storage.Blobs.Specialized;
 using Microsoft.WindowsAzure.Commands.Sync;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 {
@@ -177,12 +180,11 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                 var bs = new BufferedStream(vds);
                 // linear still
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
-                if (vds.DiskType == DiskType.Fixed)
-                {
-                    var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
-                    context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
-                    context.UploadableRanges = nonEmptyUploadableRanges;
-                }
+                
+                // detecting empty data blocks line. Takes long 
+                var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
+                context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
+                context.UploadableRanges = nonEmptyUploadableRanges;
             }
         }
 
@@ -191,14 +193,18 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             context.UploadableDataWithRanges = GetDataWithRangesToUpload(vhdFile, context);
         }
 
+
         protected static IEnumerable<IndexRange> GetNonEmptyRanges(Stream stream, IEnumerable<IndexRange> uploadableRanges)
         {
             Program.SyncOutput.MessageDetectingActualDataBlocks();
             var manager = BufferManager.CreateBufferManager(Int32.MaxValue, MaxBufferSize);
             int totalRangeCount = uploadableRanges.Count();
             int processedRangeCount = 0;
+
+            // looping through each range ( 512 * 1024 * 4 byte blocks )
             foreach (var range in uploadableRanges)
             {
+
                 var dataWithRange = new DataWithRange(manager)
                 {
                     Data = ReadBytes(stream, range, manager),
@@ -215,12 +221,80 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                         yield return dataWithRange.Range;
                     }
                 }
+
                 Program.SyncOutput.ProgressEmptyBlockDetection(++processedRangeCount, totalRangeCount);
             }
 
             Program.SyncOutput.MessageDetectingActualDataBlocksCompleted();
             yield break;
         }
+
+        //protected static IEnumerable<IndexRange> GetNonEmptyRanges(Stream stream, IEnumerable<IndexRange> uploadableRanges)
+        //{
+        //    Program.SyncOutput.MessageDetectingActualDataBlocks();
+        //    var manager = BufferManager.CreateBufferManager(Int32.MaxValue, MaxBufferSize);
+        //    int totalRangeCount = uploadableRanges.Count();
+        //    //int processedRangeCount = 0;
+        //    //IndexRange[] ranges = new List<IndexRange>();
+        //    List<IndexRange> ranges = new List<IndexRange>();
+
+        //    // looping through each range ( 512 * 1024 * 4 byte blocks )
+        //    Parallel.ForEach(uploadableRanges,
+        //        range =>
+        //        {
+        //            //byte[] data = ReadBytes(stream, range, manager);
+        //            //if (IsAllZero(vhdFile, range, manager))
+        //            //{
+        //            //    Program.SyncOutput.DebugEmptyBlockDetected(range);
+        //            //}
+        //            //else
+        //            //{
+        //            //    ranges.Add(range);
+        //            //}
+
+        //            var dataWithRange = new DataWithRange(manager)
+        //            {
+        //                //puting range bytes from stream to data using buffer(manager)
+        //                Data = ReadBytes(stream, range, manager),
+        //                Range = range
+        //            };
+        //            using (dataWithRange)
+        //            {
+        //                if (dataWithRange.IsAllZero())
+        //                {
+        //                    Program.SyncOutput.DebugEmptyBlockDetected(dataWithRange.Range);
+        //                }
+        //                else
+        //                {
+        //                    ranges.Add(range);
+        //                }
+        //            }
+
+        //            //Program.SyncOutput.ProgressEmptyBlockDetection(++processedRangeCount, totalRangeCount);
+        //        });
+
+        //    Program.SyncOutput.MessageDetectingActualDataBlocksCompleted();
+        //    return ranges;
+        //}
+
+        //private static bool IsAllZero(FileInfo vhdFile, IndexRange rangeToRead, BufferManager manager)
+        //{
+        //    MemoryStream dest = new MemoryStream();
+        //    // put stream data into data with rangeToRead information
+        //    using (Stream stream = File.OpenRead(vhdFile.FullName))
+        //    {
+        //        var bufferSize = (int)rangeToRead.Length;
+        //        byte[] data = manager.TakeBuffer(bufferSize);
+        //        int read;
+        //        while ((read = stream.Read(data, 0, data.Length)) > 0)
+        //        {
+        //            dest.Write(data, 0, read);
+        //        }
+        //        var dataBlock = dest.ToArray();
+        //        var startIndex = Array.FindIndex(dataBlock, 0, dataBlock.Length, b => b != 0);
+        //        return startIndex == -1;
+        //    }
+        //}
 
         protected static IEnumerable<DataWithRange> GetDataWithRangesToUpload(FileInfo vhdFile, UploadContextDisk context)
         {

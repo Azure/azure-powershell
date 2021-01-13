@@ -261,6 +261,27 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
+        public void ProgressCopy(double percentageDone)
+        {
+            using (var ps = System.Management.Automation.PowerShell.Create())
+            {
+                if (percentageDone >= 100.0)
+                {
+
+                    var progressCommand1 = String.Format(@"Write-Progress -Activity 'Making a Back-up Copy' -Status '100% Complete' -Completed");
+                    ps.Runspace = runspace;
+                    ps.AddScript(progressCommand1);
+                    ps.Invoke();
+                    return;
+                }
+
+                var progressCommand = String.Format(@"Write-Progress -Activity 'Making a Back-up Copy' -PercentComplete {0} -Status '{1}% Complete' ", percentageDone, (int)percentageDone);
+                ps.Runspace = runspace;
+                ps.AddScript(progressCommand);
+                ps.Invoke();
+            }
+        }
+
         public void WriteVerboseWithTimestamp(string message, params object[] args)
         {
             var messageWithTimeStamp = string.Format(CultureInfo.CurrentCulture, "{0:T} - {1}", DateTime.Now, string.Format(message, args));
