@@ -40,6 +40,8 @@
     - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
 * Added multiple Authentication support for p2sVpnGateway
     - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
+* Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
+    - Added parameter EnableRoutingPreferenceInternetFlag
 
 ## Version 4.4.0
 * Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario
