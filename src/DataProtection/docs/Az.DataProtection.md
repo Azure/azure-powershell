@@ -61,8 +61,23 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [Get-AzDataProtectionResourceOperationResultPatch](Get-AzDataProtectionResourceOperationResultPatch.md)
 
 
+### [GetBackupFrequencyString](GetBackupFrequencyString.md)
+
+
+### [GetTaggingPriority](GetTaggingPriority.md)
+
+
 ### [LoadManifest](LoadManifest.md)
 Prepares Datasource object for backup
+
+### [New-AzDataProtectionPolicyTagCriteria](New-AzDataProtectionPolicyTagCriteria.md)
+Prepares Datasource object for backup
+
+### [New-AzDataProtectionPolicyTriggerSchedule](New-AzDataProtectionPolicyTriggerSchedule.md)
+Creates new Schedule object
+
+### [New-AzDataProtectionRetentionLifeCycle](New-AzDataProtectionRetentionLifeCycle.md)
+Creates new Lifecycle object
 
 ### [Prepare-AzDataProtectionDatasourceInfo](Prepare-AzDataProtectionDatasourceInfo.md)
 Prepares Datasource object for backup
@@ -133,6 +148,12 @@ For example, updating tags for a resource.
 
 ### [Update-AzDataProtectionPolicyRetentionRule](Update-AzDataProtectionPolicyRetentionRule.md)
 Adds or removes Retention Rule to existing Policy
+
+### [Update-AzDataProtectionPolicyTag](Update-AzDataProtectionPolicyTag.md)
+Prepares Datasource object for backup
+
+### [Update-AzDataProtectionPolicyTrigger](Update-AzDataProtectionPolicyTrigger.md)
+Creates new Schedule object
 
 ### [Update-AzDataProtectionResourceOperationGatekeeper](Update-AzDataProtectionResourceOperationGatekeeper.md)
 Updates a ResourceOperationGatekeeper resource belonging to a resource group.

@@ -108,3 +108,37 @@ function TranslatePolicyRetentionLifeCycle {
 		return $translatedLifeCycle
 	}
 }
+
+function GetBackupFrequencyString {
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
+		$frequency
+	)
+
+	process {
+		$freq = $frequency.ToString()
+		if($freq -eq "Weekly"){
+			return "P1W"
+		}
+
+		if($freq -eq "Daily"){
+			return "P1D"
+		}
+	}
+}
+
+function GetTaggingPriority {
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$Name
+	)
+
+	process{
+		$priorityMap = @{"Default"=99;"Weekly"=20;"Monthly"=15;"Yearly"=10}
+		return $priorityMap[$Name]
+	}
+}
