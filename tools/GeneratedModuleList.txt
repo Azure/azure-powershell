@@ -1,3 +1,4 @@
+Az.ADDomainServices
 Az.AppConfiguration
 Az.Blockchain
 Az.BotService
