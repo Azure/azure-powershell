@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
         void MessagePrintBlockRange(IndexRange range);
         void DebugEmptyBlockDetected(IndexRange range);
         void ProgressEmptyBlockDetection(int processedRangeCount, int totalRangeCount);
-
+        void ProgressCopy(double percentageDone);
         void WriteVerboseWithTimestamp(string message, params object[] args);
     }
 }
