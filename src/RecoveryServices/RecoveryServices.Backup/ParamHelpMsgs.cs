@@ -133,9 +133,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ILRTerminate =
                 "Terminate the existing iCSCI connection for file folder restore";
             public const string KeyFileDownloadLocation =
-                "Location where the key file should be downloaded in the case of encrypted VMs.";
+                "Location where the key file should be downloaded in the case of encrypted VMs";
             public const string FileDownloadLocation =
-                "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory.";
+                "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory";
+
+            public const string Archivable = "Used to list archivable/non-archivable recovery points based on true or false";
+            public const string Tier = "Filter recovery points based on tier";
+            public const string IsReadyForMove = "checks whether the RP is Ready to move to target tier. Use this along with target tier parameter";
+            public const string TargetTier = "Target tier to check move readiness";
+            public const string ArchivableRP = "Recovery Point to move to archive";
+            public const string SourceTier = "Source Tier for Recovery Point move. Currently the only acceptable value is 'VaultStandard' ";
+            public const string DestinationTier = "Destination Tier for Recovery Point move. Currently the only acceptable value is 'VaultArchive' ";
         }
 
         internal static class RestoreDisk
@@ -154,6 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoreOnlyOSDisk = "Use this switch to restore only OS disks of a backed up VM";
             public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
             public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
+            public const string TargetZone = "Target zone to restore the disks";
         }
 
         internal static class RestoreFS

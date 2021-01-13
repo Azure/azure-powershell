@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -400,13 +401,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             RecoveryConfigBase wLRecoveryConfigBase =
                 (RecoveryConfigBase)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
-
             AzureWorkloadRecoveryConfig wLRecoveryConfig =
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
-
             bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
+            string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
+                ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
+            string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
@@ -509,6 +512,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
+                #region Rehydrate Restore 
+                CmdletModel.AzureWorkloadRecoveryPoint rp =  (CmdletModel.AzureWorkloadRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                Logger.Instance.WriteDebug("###  RP Tier" + rp.RecoveryPointTier.ToString());
+
+                if(rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority == null)
+                {
+                    throw new ArgumentException(Resources.InvalidRehydration); 
+                }
+
+                // rp.RecoveryPointTier available?? 
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority != null)
+                {
+                    var azureWorkloadRestoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    Logger.Instance.WriteDebug("###  SQL restore requestType " + triggerRestoreRequest.Properties.GetType().ToString());
+
+                    if (triggerRestoreRequest.Properties.GetType().Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
+                    {
+                        Logger.Instance.WriteDebug("###   SQL restore requestType " + "AzureWorkloadSQLPointInTimeRestoreRequest");
+
+                        Logger.Instance.WriteDebug("Rehyrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");
+                        /*AzureWorkloadSQLPointInTimeRestoreWithRehydrateRequest azureWorkloadRestoreRequestDeSerialized = JsonConvert.DeserializeObject<AzureWorkloadSQLPointInTimeRestoreWithRehydrateRequest>(azureWorkloadRestoreRequestSerialized);
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                        triggerRestoreRequest.Properties = azureWorkloadRestoreRequestDeSerialized;*/
+                    }
+                    else
+                    {
+                        Logger.Instance.WriteDebug("###   SQL restore requestType " + "AzureWorkloadSQLRestoreRequest");
+                        AzureWorkloadSQLRestoreWithRehydrateRequest azureWorkloadRestoreRequestDeSerialized = JsonConvert.DeserializeObject<AzureWorkloadSQLRestoreWithRehydrateRequest>(azureWorkloadRestoreRequestSerialized);
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                        azureWorkloadRestoreRequestDeSerialized.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                        triggerRestoreRequest.Properties = azureWorkloadRestoreRequestDeSerialized;
+                    }
+                }
+                #endregion
+
                 var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
@@ -517,8 +559,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation);
                 return response;
-            }          
-            
+            }
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> CreateorModifyPolicy()

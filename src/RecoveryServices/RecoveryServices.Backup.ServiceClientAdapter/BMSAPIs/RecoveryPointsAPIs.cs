@@ -116,6 +116,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Lists recovery points recommended for Archive move
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// ////                       -------------------------------------------------- remove this !!!!!!!!!!    <param name="queryFilter">Query filter</param>
+        /// <returns>List of recovery points</returns>
+        public List<RecoveryPointResource> GetMoveRecommendedRecoveryPoints(
+            string containerName,
+            string protectedItemName,
+            ListRecoveryPointsRecommendedForMoveRequest moveRequest,
+            //ODataQuery<BMSRPQueryObject> queryFilter,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            Func<RestAzureNS.IPage<RecoveryPointResource>> listAsync =
+                () => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListWithHttpMessagesAsync(
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName,
+                "Azure", // change the fabric name SCAdapter.AzureFabricName - ex getCRR RP
+                containerName,
+                protectedItemName,
+                moveRequest
+                // queryFilter,                
+                ).Result.Body;
+
+            Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            var response = HelperUtils.GetPagedList(listAsync, listNextAsync);
+            return response;
+        }
+
+        /// <summary>
         /// provision item level recovery connection identified by the input parameters
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>

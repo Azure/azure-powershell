@@ -613,4 +613,28 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetResourcegroupNotSupported" xml:space="preserve">
     <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
+  <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
+    <value>Please ensure that the given RP recovery type is 'Vault' or remove TargetZone</value>
+  </data>
+  <data name="RecoveryPointZonePinnedException" xml:space="preserve">
+    <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
+  </data>
+  <data name="ZonalRestoreVaultStorageRedundancyException" xml:space="preserve">
+    <value>Please check whether the vault storageRedundancy is ZRS or RA-GRS  or remove TargetZone</value>
+  </data>
+  <data name="ArchiveNotSupported" xml:space="preserve">
+    <value>Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet</value>
+  </data>
+  <data name="ArchiveRecommendationNotSupported" xml:space="preserve">
+    <value>Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.</value>
+  </data>
+  <data name="DeleteArchiveRecoveryPoints" xml:space="preserve">
+    <value>You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?</value>
+  </data>
+  <data name="InvalidRehydrateDuration" xml:space="preserve">
+    <value>Rehydrate duration should be between 10 and 30</value>
+  </data>
+  <data name="InvalidRehydration" xml:space="preserve">
+    <value>Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days</value>
+  </data>
 </root>

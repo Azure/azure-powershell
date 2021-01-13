@@ -1853,5 +1853,95 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointZonePinnedException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointZonePinnedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the given RP tier is Vault tier or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointVaultRecoveryTypeException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointVaultRecoveryTypeException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please check whether the vault storageRedundancy is ZRS or RA-GRS or remove TargetZone.
+        /// </summary>
+        public static string ZonalRestoreVaultStorageRedundancyException
+        {
+            get
+            {
+                return ResourceManager.GetString("ZonalRestoreVaultStorageRedundancyException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveNotSupported", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveRecommendationNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveRecommendationNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days
+        /// </summary>
+        public static string InvalidRehydration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rehydrate duration should be between 10 and 30.
+        /// </summary>
+        public static string InvalidRehydrateDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydrateDuration", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?  
+        /// </summary>
+        public static string DeleteArchiveRecoveryPoints
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteArchiveRecoveryPoints", resourceCulture);
+            }
+        }
+
     }
 }

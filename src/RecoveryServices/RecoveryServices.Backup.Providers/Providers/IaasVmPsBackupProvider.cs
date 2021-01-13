@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -392,6 +393,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreVMBackupItemParams.DiskEncryptionSetId].ToString() : null;
             bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];                        
             String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion]: null;
+            IList<string> targetZones = ProviderData.ContainsKey(RecoveryPointParams.TargetZone) ?
+                new List<string>(new string[]{ (string)ProviderData[RecoveryPointParams.TargetZone]}) : null;
+            string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
+                ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
+            string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
+
+            Logger.Instance.WriteDebug("###############################         Reydrate Duration and Priority: " + rehydrateDuration + "    " + rehydratePriority);
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -435,7 +444,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 restoreDiskLUNS = null;
             }
-
+            
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -451,6 +460,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId
             };
+
+            if(targetZones != null)
+            {
+                restoreRequest.Zones = targetZones;
+            }
             
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
@@ -479,13 +493,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
+                #region Rehydrate Restore 
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority == null)
+                {
+                    throw new ArgumentException(Resources.InvalidRehydration);
+                }
+
+                if (rp.RecoveryPointTier == RecoveryPointTier.VaultArchive && rehydratePriority != null)
+                {
+                    // rehydrate restore request                    
+                    var iaasVmRestoreRequestSerialized = JsonConvert.SerializeObject(triggerRestoreRequest.Properties);
+                    IaasVMRestoreWithRehydrationRequest iaasVMRestoreWithRehydrationRequest = JsonConvert.DeserializeObject<IaasVMRestoreWithRehydrationRequest>(iaasVmRestoreRequestSerialized);
+                    
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo();
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo.RehydrationRetentionDuration = "P" + rehydrateDuration + "D"; // P <val> D
+                    iaasVMRestoreWithRehydrationRequest.RecoveryPointRehydrationInfo.RehydrationPriority = rehydratePriority;
+                    
+                    triggerRestoreRequest.Properties = iaasVMRestoreWithRehydrationRequest;                    
+                }
+                #endregion
+
                 var response = ServiceClientAdapter.RestoreDisk(
-                    rp,
-                    storageAccountResource.Location,
-                    triggerRestoreRequest,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName,
-                    vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
+                rp,
+                storageAccountResource.Location,
+                triggerRestoreRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName,
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
                 return response;
             }    
         }

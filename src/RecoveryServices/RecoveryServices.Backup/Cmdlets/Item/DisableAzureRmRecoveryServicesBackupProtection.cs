@@ -14,8 +14,11 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -87,19 +90,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(DeleteBackupData)
                         {
-                            var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                            // Fetch RecoveryPoints in Archive Tier, if yes throw warning and confirmation prompt
+                            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(Item.Id);
+                            string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
+                            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, Item.Id);
 
-                            // Track Response and display job details
-                            HandleCreatedJob(
-                                    itemResponse,
-                                    Resources.DisableProtectionOperation,
-                                    vaultName: vaultName,
-                                    resourceGroupName: resourceGroupName);
+                            var rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                               containerUri,
+                               protectedItemName,
+                               null,
+                               vaultName: vaultName,
+                               resourceGroupName: resourceGroupName);
+
+                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);
+                            recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
+                            
+                            if (recoveryPointList.Count != 0)
+                            {
+                                Logger.Instance.WriteDebug("#### Archived RP List: " + JsonConvert.SerializeObject(recoveryPointList));
+
+                                if(ShouldProcess(Resources.DeleteArchiveRecoveryPoints))
+                                {
+                                    Logger.Instance.WriteDebug("#### Entered Should Process ...");
+                                    var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                                    Logger.Instance.WriteDebug("item Response " + JsonConvert.SerializeObject(itemResponse));
+                                    // Track Response and display job details
+                                    HandleCreatedJob(
+                                            itemResponse,
+                                            Resources.DisableProtectionOperation,
+                                            vaultName: vaultName,
+                                            resourceGroupName: resourceGroupName);
+                                }
+                                
+                                //  Do you want to continue [Y/N]
+                                // Logger.Instance.WriteDebug("You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect.");
+                            }
+                            else
+                            {
+                                var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                                Logger.Instance.WriteDebug("item Response " + JsonConvert.SerializeObject(itemResponse));
+                                // Track Response and display job details
+                                HandleCreatedJob(
+                                        itemResponse,
+                                        Resources.DisableProtectionOperation,
+                                        vaultName: vaultName,
+                                        resourceGroupName: resourceGroupName);
+                            }
+                            // remove 
+                            //throw new ArgumentException(Resources.ArchiveNotSupported);
+
                         }
                         else
                         {
                             var itemResponse = psBackupProvider.DisableProtection();
-
+                            Logger.Instance.WriteDebug("item Response 2" + JsonConvert.SerializeObject(itemResponse));
                             // Track Response and display job details
                             HandleCreatedJob(
                                     itemResponse,

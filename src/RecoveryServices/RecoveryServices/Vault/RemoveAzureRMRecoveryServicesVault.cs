@@ -52,11 +52,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         Response = response.Response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.Response.StatusCode.ToString()
                     };
-
+                    Logger.Instance.WriteDebug("### try block " + output.ToString());
                     this.WriteObject(output, true);
                 }
                 catch (Exception exception)
                 {
+                    Logger.Instance.WriteDebug("### catch block " + exception.ToString());
                     this.HandleException(exception);
                 }
             }

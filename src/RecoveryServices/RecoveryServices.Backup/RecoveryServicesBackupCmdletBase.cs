@@ -132,8 +132,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string targetErrorId = string.Empty;
                 ErrorCategory targetErrorCategory = ErrorCategory.NotSpecified;
 
+                Logger.Instance.WriteDebug("## reached exception: " +  exception.GetType().ToString());
+                
                 if (exception is AzureRestNS.CloudException)
                 {
+                    Logger.Instance.WriteDebug("## cloud exception");
                     var cloudEx = exception as AzureRestNS.CloudException;
                     if (cloudEx.Response != null && cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
                     {
@@ -152,6 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (exception is SystemNet.WebException)
                 {
+                    Logger.Instance.WriteDebug("## web exception");
                     var webEx = exception as SystemNet.WebException;
                     WriteDebug(string.Format(Resources.WebException, webEx.Response, webEx.Status));
 
@@ -159,9 +163,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (exception is ArgumentException || exception is ArgumentNullException)
                 {
+                    Logger.Instance.WriteDebug("## argument exception");
                     WriteDebug(string.Format(Resources.ArgumentException));
                     targetErrorCategory = ErrorCategory.InvalidArgument;
                 }
+                Logger.Instance.WriteDebug("## targetEx: "+ targetEx.ToString());
+                Logger.Instance.WriteDebug("## targetErrId: " + targetErrorId.ToString());
+                Logger.Instance.WriteDebug("## targetCat: " + targetErrorCategory.ToString());
 
                 var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
                 WriteError(errorRecord);
