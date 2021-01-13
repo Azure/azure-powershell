@@ -13,8 +13,7 @@ Create a in-memory object for QueryComparisonExpression
 ## SYNTAX
 
 ```
-New-AzCostManagementQueryComparisonExpressionObject -Name <String> -Operator <OperatorType> -Value <String[]>
- [<CommonParameters>]
+New-AzCostManagementQueryComparisonExpressionObject -Name <String> -Value <String[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +23,7 @@ Create a in-memory object for QueryComparisonExpression
 
 ### Example 1: Create a comparison expression object of query for cost management export
 ```powershell
-PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')
+PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
 
 Name             Operator Value
 ----             -------- -----
@@ -40,21 +39,6 @@ The name of the column to use in comparison.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Operator
-The operator to use for comparison.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType
 Parameter Sets: (All)
 Aliases:
 
