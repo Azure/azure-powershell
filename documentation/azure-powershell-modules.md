@@ -60,6 +60,7 @@ Front Door                            | `Az.FrontDoor`                          
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
 SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery]
+HealthBot                             | `Az.HealthBot`                          | [![HealthBot]][HealthBotGallery]
 HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
 API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
 HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
@@ -181,6 +182,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
+[HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
@@ -300,6 +302,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
+[HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
