@@ -267,11 +267,6 @@ function New-AzADDomainService {
         try {
             $PSBoundParameters['Location'] = $PSBoundParameters['ReplicaSet'][0].Location
 
-            if ($PSBoundParameters.ContainsKey('LdapSettingPfxCertificatePassword')) {
-                $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['LdapSettingPfxCertificatePassword']
-                $PSBoundParameters['LdapSettingPfxCertificatePassword'] = $psTxt
-            }  
-
             Az.ADDomainServices.internal\New-AzADDomainService @PSBoundParameters
         } catch {
             throw
