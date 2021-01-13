@@ -435,7 +435,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $localnetGateway.Location = $location
 
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1 -ConnectionMode "Default"
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -443,6 +443,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       Assert-AreEqual "3" $expected.RoutingWeight
 	  Assert-AreEqual "IKEv1" $expected.ConnectionProtocol
       #Assert-AreEqual "abc" $expected.SharedKey
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
 
       # List VirtualNetworkGatewayConnections
       $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname
@@ -460,12 +461,14 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $expected.LocalNetworkGateway2.Location = $location
       $expected.RoutingWeight = "4"
       $expected.SharedKey = "xyz"
+      $expected.ConnectionMode = "ResponderOnly"
 
 	  # Set/Update VirtualNetworkGatewayConnection Tags
       $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" } -Force
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName    
       Assert-AreEqual 2 $expected.Tag.Count
 	  Assert-AreEqual $true $expected.Tag.Contains("testtagKey")
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
       
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force

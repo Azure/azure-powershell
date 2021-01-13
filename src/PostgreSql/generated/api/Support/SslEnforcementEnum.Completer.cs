@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for SslEnforcementEnum.</summary>
+    /// <summary>Enable ssl enforcement or not when connect to server.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnumTypeConverter))]
     public partial struct SslEnforcementEnum :
         System.Management.Automation.IArgumentCompleter

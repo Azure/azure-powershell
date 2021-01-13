@@ -148,5 +148,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithQueryString");
+        }
     }
 }

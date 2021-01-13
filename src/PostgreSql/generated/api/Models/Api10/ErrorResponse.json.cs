@@ -2,7 +2,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
 
-    /// <summary>The resource management error response.</summary>
+    /// <summary>
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
+    /// </summary>
     public partial class ErrorResponse
     {
 
@@ -58,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
             {
                 return;
             }
-            {_additionalInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("additionalInfo"), out var __jsonAdditionalInfo) ? If( __jsonAdditionalInfo as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo) (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorAdditionalInfo.FromJson(__u) )) ))() : null : AdditionalInfo;}
             {_code = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("code"), out var __jsonCode) ? (string)__jsonCode : (string)Code;}
             {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)Message;}
             {_target = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("target"), out var __jsonTarget) ? (string)__jsonTarget : (string)Target;}
-            {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("details"), out var __jsonDetails) ? If( __jsonDetails as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse) (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorResponse.FromJson(__p) )) ))() : null : Detail;}
+            {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("details"), out var __jsonDetails) ? If( __jsonDetails as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse) (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorResponse.FromJson(__u) )) ))() : null : Detail;}
+            {_additionalInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("additionalInfo"), out var __jsonAdditionalInfo) ? If( __jsonAdditionalInfo as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo) (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorAdditionalInfo.FromJson(__p) )) ))() : null : AdditionalInfo;}
             AfterFromJson(json);
         }
 
@@ -99,18 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._additionalInfo)
-                {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._additionalInfo )
-                    {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                    }
-                    container.Add("additionalInfo",__w);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != (((object)this._code)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._code.ToString()) : null, "code" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SerializationMode.IncludeReadOnly))
@@ -125,12 +116,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
             {
                 if (null != this._detail)
                 {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._detail )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("details",__w);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._additionalInfo)
+                {
                     var __r = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._detail )
+                    foreach( var __s in this._additionalInfo )
                     {
                         AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("details",__r);
+                    container.Add("additionalInfo",__r);
                 }
             }
             AfterToJson(ref container);

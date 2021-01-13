@@ -14,21 +14,21 @@ while(-not $mockingPath) {
 Describe 'Get-AzMySqlFlexibleServerConfiguration' {
     It 'List' {
         {
-            $config = Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+            $config = Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
             $config.Count | Should -BeGreaterOrEqual 1      
         } | Should -Not -Throw
     }
 
     It 'Get' {
         { 
-            $config = Get-AzMySqlFlexibleServerConfiguration -Name time_zone -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+            $config = Get-AzMySqlFlexibleServerConfiguration -Name time_zone -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
             $config.Name | Should -Be time_zone
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)/configurations/server_id"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/configurations/server_id"
             $config = Get-AzMySqlFlexibleServerConfiguration -InputObject $ID 
             $config.Name | Should -Be server_id
         } | Should -Not -Throw

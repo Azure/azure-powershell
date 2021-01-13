@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         WLRecoveryConfig
     }
 
+    public enum CRRParams
+    {
+        UseSecondaryRegion,
+        SecondaryRegion
+    }
+
     public enum WorkloadRecoveryConfigParams
     {
         PointInTime,
