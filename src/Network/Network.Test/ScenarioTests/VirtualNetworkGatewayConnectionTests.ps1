@@ -853,9 +853,9 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
       Assert-NotNull $ikesa
       
       # Delete VirtualNetworkGatewayConnections
-      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1 -PassThru -Force
       Assert-AreEqual true $delete
-	  $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
+	  $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2 -PassThru -Force
       Assert-AreEqual true $delete
      }
      finally
