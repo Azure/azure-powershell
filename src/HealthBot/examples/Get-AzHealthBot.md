@@ -42,6 +42,5 @@ Location Name                 SystemDataCreatedAt SystemDataCreatedBy   SystemDa
 -------- ----                 ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----
 eastus   yourihealthbot       2020/12/29 5:54:14  test@microsoft.com User                    2020/12/29 5:54:19       ********-****-****-****-********** Application                  Microsoft.HealthBot/healthBots
 ```
-```
 
 Get HealthBot by InputObject
