@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPlanGroupType.</summary>
+    /// <summary>The group type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPlanGroupTypeTypeConverter))]
     public partial struct RecoveryPlanGroupType :
         System.Management.Automation.IArgumentCompleter

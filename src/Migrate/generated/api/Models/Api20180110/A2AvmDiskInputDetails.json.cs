@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             {_diskUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("diskUri"), out var __jsonDiskUri) ? (string)__jsonDiskUri : (string)DiskUri;}
-            {_primaryStagingAzureStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("primaryStagingAzureStorageAccountId"), out var __jsonPrimaryStagingAzureStorageAccountId) ? (string)__jsonPrimaryStagingAzureStorageAccountId : (string)PrimaryStagingAzureStorageAccountId;}
             {_recoveryAzureStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryAzureStorageAccountId"), out var __jsonRecoveryAzureStorageAccountId) ? (string)__jsonRecoveryAzureStorageAccountId : (string)RecoveryAzureStorageAccountId;}
+            {_primaryStagingAzureStorageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("primaryStagingAzureStorageAccountId"), out var __jsonPrimaryStagingAzureStorageAccountId) ? (string)__jsonPrimaryStagingAzureStorageAccountId : (string)PrimaryStagingAzureStorageAccountId;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             AddIf( null != (((object)this._diskUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._diskUri.ToString()) : null, "diskUri" ,container.Add );
-            AddIf( null != (((object)this._primaryStagingAzureStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryStagingAzureStorageAccountId.ToString()) : null, "primaryStagingAzureStorageAccountId" ,container.Add );
             AddIf( null != (((object)this._recoveryAzureStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryAzureStorageAccountId.ToString()) : null, "recoveryAzureStorageAccountId" ,container.Add );
+            AddIf( null != (((object)this._primaryStagingAzureStorageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryStagingAzureStorageAccountId.ToString()) : null, "primaryStagingAzureStorageAccountId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

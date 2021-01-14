@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for SkuTier.</summary>
+    /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
     public partial class SkuTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

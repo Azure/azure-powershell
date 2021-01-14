@@ -181,12 +181,14 @@ function Get-AzMigrateServerReplication {
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the Azure Migrate project  in the current subscription.
@@ -204,6 +206,12 @@ param(
     [System.String]
     # Specifies the replicating server.
     ${TargetObjectID},
+
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
 
     [Parameter(ParameterSetName='GetBySDSID', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -302,11 +310,12 @@ begin {
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetBySRSID = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
+            GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetBySDSID = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             ListById = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
         }
-        if (('ListByName', 'GetBySRSID', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('ListByName', 'GetBySRSID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

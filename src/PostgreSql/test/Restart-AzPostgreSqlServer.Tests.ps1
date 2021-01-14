@@ -18,7 +18,7 @@ Describe 'Restart-AzPostgreSqlServer' {
         } | Should -Not -Throw
     }
 
-    It 'RestartViaIdentity' {
+    It 'RestartViaIdentity' -Skip {
         { 
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/$($env.serverName)/restart"
             Restart-AzPostgreSqlServer -InputObject $ID

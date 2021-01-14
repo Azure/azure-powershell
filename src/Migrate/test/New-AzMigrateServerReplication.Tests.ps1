@@ -23,7 +23,7 @@ Describe 'New-AzMigrateServerReplication' {
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ByInputObjectDefaultUser' -skip {
+    It 'ByInputObjectDefaultUser' -Skip{
         $obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 
         $temp = ""
@@ -32,7 +32,7 @@ Describe 'New-AzMigrateServerReplication' {
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ByInputObjectPowerUser' -skip {
+    It 'ByInputObjectPowerUser' -Skip{
         $OSDisk = New-AzMigrateDiskMapping -DiskID $env.srsDiskId -DiskType $env.srsDiskType -IsOSDisk 'true'
  	$obj = Get-AzMigrateDiscoveredServer  -ResourceGroupName $env.srsResourceGroup -ProjectName $env.srsProjectName -SubscriptionId $env.srsSubscriptionId
 	$obj.Count | Should -BeGreaterOrEqual 1 

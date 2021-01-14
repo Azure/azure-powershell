@@ -26,15 +26,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The ARM Id of the job being executed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string CurrentJobId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobId = value; }
+        public string CurrentJobId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobId = value ?? null; }
 
         /// <summary>The job name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string CurrentJobName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobName = value; }
+        public string CurrentJobName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).JobName = value ?? null; }
 
         /// <summary>The start time of the job.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public global::System.DateTime? CurrentJobStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).StartTime = value; }
+        public global::System.DateTime? CurrentJobStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICurrentJobDetailsInternal)CurrentJob).StartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="EventCorrelationId" /> property.</summary>
         private string _eventCorrelationId;

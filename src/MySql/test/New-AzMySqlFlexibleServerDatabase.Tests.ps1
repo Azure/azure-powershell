@@ -14,11 +14,11 @@ while(-not $mockingPath) {
 Describe 'New-AzMySqlFlexibleServerDatabase' {
     It 'CreateExpanded' {
         { 
-            $database = New-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -Charset latin1
+            $database = New-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Charset latin1
             $database.Name | Should -Be $env.databaseName
             $database.Collation | Should -Be "latin1_swedish_ci"
             $database.Charset | Should -Be "latin1" 
-            Remove-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+            Remove-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
         } | Should -Not -Throw
     }
 }

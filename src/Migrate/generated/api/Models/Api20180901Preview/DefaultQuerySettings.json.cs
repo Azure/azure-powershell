@@ -57,11 +57,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return;
             }
-            {_enableCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableCount"), out var __jsonEnableCount) ? (bool?)__jsonEnableCount : EnableCount;}
             {_enableExpand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableExpand"), out var __jsonEnableExpand) ? (bool?)__jsonEnableExpand : EnableExpand;}
-            {_enableFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableFilter"), out var __jsonEnableFilter) ? (bool?)__jsonEnableFilter : EnableFilter;}
-            {_enableOrderBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableOrderBy"), out var __jsonEnableOrderBy) ? (bool?)__jsonEnableOrderBy : EnableOrderBy;}
             {_enableSelect = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableSelect"), out var __jsonEnableSelect) ? (bool?)__jsonEnableSelect : EnableSelect;}
+            {_enableCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableCount"), out var __jsonEnableCount) ? (bool?)__jsonEnableCount : EnableCount;}
+            {_enableOrderBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableOrderBy"), out var __jsonEnableOrderBy) ? (bool?)__jsonEnableOrderBy : EnableOrderBy;}
+            {_enableFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("enableFilter"), out var __jsonEnableFilter) ? (bool?)__jsonEnableFilter : EnableFilter;}
             {_maxTop = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("maxTop"), out var __jsonMaxTop) ? (int?)__jsonMaxTop : MaxTop;}
             AfterFromJson(json);
         }
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return container;
             }
-            AddIf( null != this._enableCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableCount) : null, "enableCount" ,container.Add );
             AddIf( null != this._enableExpand ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableExpand) : null, "enableExpand" ,container.Add );
-            AddIf( null != this._enableFilter ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableFilter) : null, "enableFilter" ,container.Add );
-            AddIf( null != this._enableOrderBy ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableOrderBy) : null, "enableOrderBy" ,container.Add );
             AddIf( null != this._enableSelect ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableSelect) : null, "enableSelect" ,container.Add );
+            AddIf( null != this._enableCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableCount) : null, "enableCount" ,container.Add );
+            AddIf( null != this._enableOrderBy ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableOrderBy) : null, "enableOrderBy" ,container.Add );
+            AddIf( null != this._enableFilter ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._enableFilter) : null, "enableFilter" ,container.Add );
             AddIf( null != this._maxTop ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._maxTop) : null, "maxTop" ,container.Add );
             AfterToJson(ref container);
             return container;

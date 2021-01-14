@@ -14,15 +14,15 @@ while(-not $mockingPath) {
 Describe 'Get-AzMySqlFlexibleServerFirewallRule' {
     It 'List' {
         { 
-            New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-            $rule = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+            New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+            $rule = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
             $rule.Count | Should -Be 1 
         } | Should -Not -Throw
     }
 
     It 'Get' {
         { 
-            $rule = Get-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+            $rule = Get-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 0.0.0.1 
         } | Should -Not -Throw
@@ -30,11 +30,11 @@ Describe 'Get-AzMySqlFlexibleServerFirewallRule' {
 
     It 'GetViaIdentity' {
         { 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)/firewallRules/$($env.firewallRuleName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
             $rule = Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 0.0.0.1
-            Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+            Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
         } | Should -Not -Throw
     }
 }

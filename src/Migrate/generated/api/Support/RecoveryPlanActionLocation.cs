@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The fabric location.</summary>
     public partial struct RecoveryPlanActionLocation :
         System.IEquatable<RecoveryPlanActionLocation>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="RecoveryPlanActionLocation" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RecoveryPlanActionLocation(System.Convert.ToString(value));
+            return new RecoveryPlanActionLocation(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RecoveryPlanActionLocation</summary>

@@ -21,8 +21,8 @@ Describe 'Get-AzMySqlFlexibleServer' {
 
     It 'Get'  {
         {
-            $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName
-            $servers.Name | Should -Be $env.serverName
+            $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+            $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
     }
 
@@ -35,9 +35,9 @@ Describe 'Get-AzMySqlFlexibleServer' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)"
             $servers = Get-AzMySqlFlexibleServer -InputObject $ID
-            $servers.Name | Should -Be $env.serverName
+            $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
     }
 }

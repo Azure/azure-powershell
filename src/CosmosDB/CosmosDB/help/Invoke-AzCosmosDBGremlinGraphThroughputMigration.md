@@ -42,7 +42,6 @@ PS C:\>  $NewGraph =  New-AzCosmosDBGremlinGraph -AccountName myAccountName -Res
       $AutoscaleThroughput = Invoke-AzCosmosDBGremlinGraphThroughputMigration -InputObject $NewGraph -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName
