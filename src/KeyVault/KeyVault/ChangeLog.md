@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.1
 * Fixed an issue in Secret Management module
 
 ## Version 3.3.0
