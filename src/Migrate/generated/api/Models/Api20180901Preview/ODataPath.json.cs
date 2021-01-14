@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             {_edmType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("edmType"), out var __jsonEdmType) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmType.FromJson(__jsonEdmType) : EdmType;}
             {_navigationSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("navigationSource"), out var __jsonNavigationSource) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmNavigationSource.FromJson(__jsonNavigationSource) : NavigationSource;}
-            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("path"), out var __jsonPath) ? If( __jsonPath as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPathSegment.FromJson(__u) )) ))() : null : Path;}
+            {_segment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("segments"), out var __jsonSegments) ? If( __jsonSegments as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPathSegment.FromJson(__u) )) ))() : null : Segment;}
             {_pathTemplate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("pathTemplate"), out var __jsonPathTemplate) ? (string)__jsonPathTemplate : (string)PathTemplate;}
-            {_segment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("segments"), out var __jsonSegments) ? If( __jsonSegments as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPathSegment.FromJson(__p) )) ))() : null : Segment;}
+            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("path"), out var __jsonPath) ? If( __jsonPath as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPathSegment.FromJson(__p) )) ))() : null : Path;}
             AfterFromJson(json);
         }
 
@@ -106,14 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._path)
+                if (null != this._segment)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._path )
+                    foreach( var __x in this._segment )
                     {
                         AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                     }
-                    container.Add("path",__w);
+                    container.Add("segments",__w);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
@@ -122,14 +122,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._segment)
+                if (null != this._path)
                 {
                     var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._segment )
+                    foreach( var __s in this._path )
                     {
                         AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("segments",__r);
+                    container.Add("path",__r);
                 }
             }
             AfterToJson(ref container);

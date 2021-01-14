@@ -93,9 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness = (string) content.GetValueForProperty("Bitness",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Family, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).FullName = (string) content.GetValueForProperty("FullName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).FullName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness = (string) content.GetValueForProperty("Bitness",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness = (string) content.GetValueForProperty("Bitness",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Family, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).FullName = (string) content.GetValueForProperty("FullName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).FullName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness = (string) content.GetValueForProperty("Bitness",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemConfigurationInternal)this).Bitness, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

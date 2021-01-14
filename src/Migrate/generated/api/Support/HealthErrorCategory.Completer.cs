@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for HealthErrorCategory.</summary>
+    /// <summary>The category of the health error.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategoryTypeConverter))]
     public partial struct HealthErrorCategory :
         System.Management.Automation.IArgumentCompleter

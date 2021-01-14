@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSVhdId = (string) content.GetValueForProperty("OSVhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSVhdId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSVhdId = (string) content.GetValueForProperty("OSVhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSVhdId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

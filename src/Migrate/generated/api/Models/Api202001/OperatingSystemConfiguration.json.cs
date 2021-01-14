@@ -69,9 +69,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return;
             }
-            {_bitness = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("bitness"), out var __jsonBitness) ? (string)__jsonBitness : (string)Bitness;}
             {_family = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("family"), out var __jsonFamily) ? (string)__jsonFamily : (string)Family;}
             {_fullName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fullName"), out var __jsonFullName) ? (string)__jsonFullName : (string)FullName;}
+            {_bitness = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("bitness"), out var __jsonBitness) ? (string)__jsonBitness : (string)Bitness;}
             AfterFromJson(json);
         }
 
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return container;
             }
-            AddIf( null != (((object)this._bitness)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._bitness.ToString()) : null, "bitness" ,container.Add );
             AddIf( null != (((object)this._family)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._family.ToString()) : null, "family" ,container.Add );
             AddIf( null != (((object)this._fullName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fullName.ToString()) : null, "fullName" ,container.Add );
+            AddIf( null != (((object)this._bitness)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._bitness.ToString()) : null, "bitness" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

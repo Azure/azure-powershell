@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzMigrateProject' {
-    It 'Delete' -skip {
+    It 'Delete' -Skip {
         $props = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
         $props.RegisteredTool = {}
         $projName = "AzMigratePwshTestProj"

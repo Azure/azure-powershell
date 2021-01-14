@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for ProtectionHealth.</summary>
+    /// <summary>The consolidated health.</summary>
     public partial class ProtectionHealthTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise = (bool?) content.GetValueForProperty("IsEnterprise",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).ProductName = (string) content.GetValueForProperty("ProductName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).ProductName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise = (bool?) content.GetValueForProperty("IsEnterprise",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Status, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Version, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise = (bool?) content.GetValueForProperty("IsEnterprise",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).ProductName = (string) content.GetValueForProperty("ProductName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).ProductName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise = (bool?) content.GetValueForProperty("IsEnterprise",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).IsEnterprise, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Status, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServerInternal)this).Version, global::System.Convert.ToString);
             AfterDeserializePSObject(content);

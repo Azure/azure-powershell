@@ -33,19 +33,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Agent expiry date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public global::System.DateTime? AgentDetailAgentExpiryDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentExpiryDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentExpiryDate = value; }
+        public global::System.DateTime? AgentDetailAgentExpiryDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentExpiryDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentExpiryDate = value ?? default(global::System.DateTime); }
 
         /// <summary>A value indicating whether installed agent needs to be updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AgentDetailAgentUpdateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentUpdateStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentUpdateStatus = value; }
+        public string AgentDetailAgentUpdateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentUpdateStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentUpdateStatus = value ?? null; }
 
         /// <summary>The agent version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AgentDetailAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentVersion = value; }
+        public string AgentDetailAgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).AgentVersion = value ?? null; }
 
         /// <summary>A value indicating whether reboot is required after update is applied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AgentDetailPostUpdateRebootStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).PostUpdateRebootStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).PostUpdateRebootStatus = value; }
+        public string AgentDetailPostUpdateRebootStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).PostUpdateRebootStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAgentDetailsInternal)AgentDetail).PostUpdateRebootStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="AzureStorageAccountId" /> property.</summary>
         private string _azureStorageAccountId;
@@ -182,15 +182,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The type of the OS on the VM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string OSDetailOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSType = value; }
+        public string OSDetailOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSType = value ?? null; }
 
         /// <summary>The id of the disk containing the OS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string OSDetailOsvhdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSVhdId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSVhdId = value; }
+        public string OSDetailOsvhdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSVhdId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).OSVhdId = value ?? null; }
 
         /// <summary>The OS disk VHD name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string OSDetailVhdName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).VhdName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).VhdName = value; }
+        public string OSDetailVhdName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).VhdName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDiskDetailsInternal)OSDetail).VhdName = value ?? null; }
 
         /// <summary>Backing field for <see cref="OSVersion" /> property.</summary>
         private string _oSVersion;
@@ -243,11 +243,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The initial replication progress percentage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResyncDetailInitialReplicationProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationProgressPercentage = value; }
+        public string ResyncDetailInitialReplicationProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationProgressPercentage = value ?? null; }
 
         /// <summary>Initial replication type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResyncDetailInitialReplicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationType = value; }
+        public string ResyncDetailInitialReplicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)ResyncDetail).InitialReplicationType = value ?? null; }
 
         /// <summary>Backing field for <see cref="RetentionWindowEnd" /> property.</summary>
         private global::System.DateTime? _retentionWindowEnd;

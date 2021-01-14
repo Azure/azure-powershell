@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for SourceSiteOperations.</summary>
+    /// <summary>A value indicating whether source site operations are required.</summary>
     public partial class SourceSiteOperationsTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

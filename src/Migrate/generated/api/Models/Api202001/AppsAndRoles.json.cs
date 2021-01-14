@@ -59,14 +59,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             {_application = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("applications"), out var __jsonApplications) ? If( __jsonApplications as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Application.FromJson(__u) )) ))() : null : Application;}
-            {_bizTalkServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("bizTalkServers"), out var __jsonBizTalkServers) ? If( __jsonBizTalkServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServer.FromJson(__p) )) ))() : null : BizTalkServer;}
-            {_exchangeServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("exchangeServers"), out var __jsonExchangeServers) ? If( __jsonExchangeServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServer.FromJson(__k) )) ))() : null : ExchangeServer;}
-            {_feature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("features"), out var __jsonFeatures) ? If( __jsonFeatures as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Feature.FromJson(__f) )) ))() : null : Feature;}
-            {_otherDatabase = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("otherDatabases"), out var __jsonOtherDatabases) ? If( __jsonOtherDatabases as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__b, (__a)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabase.FromJson(__a) )) ))() : null : OtherDatabase;}
-            {_sharePointServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("sharePointServers"), out var __jsonSharePointServers) ? If( __jsonSharePointServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___w, (___v)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServer.FromJson(___v) )) ))() : null : SharePointServer;}
-            {_sqlServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("sqlServers"), out var __jsonSqlServers) ? If( __jsonSqlServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___r) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___r, (___q)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServer.FromJson(___q) )) ))() : null : SqlServer;}
-            {_systemCenter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("systemCenters"), out var __jsonSystemCenters) ? If( __jsonSystemCenters as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___m) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___m, (___l)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenter.FromJson(___l) )) ))() : null : SystemCenter;}
-            {_webApplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("webApplications"), out var __jsonWebApplications) ? If( __jsonWebApplications as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___h) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___h, (___g)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplication.FromJson(___g) )) ))() : null : WebApplication;}
+            {_webApplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("webApplications"), out var __jsonWebApplications) ? If( __jsonWebApplications as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplication.FromJson(__p) )) ))() : null : WebApplication;}
+            {_feature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("features"), out var __jsonFeatures) ? If( __jsonFeatures as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Feature.FromJson(__k) )) ))() : null : Feature;}
+            {_sqlServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("sqlServers"), out var __jsonSqlServers) ? If( __jsonSqlServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServer.FromJson(__f) )) ))() : null : SqlServer;}
+            {_sharePointServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("sharePointServers"), out var __jsonSharePointServers) ? If( __jsonSharePointServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__b, (__a)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServer.FromJson(__a) )) ))() : null : SharePointServer;}
+            {_systemCenter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("systemCenters"), out var __jsonSystemCenters) ? If( __jsonSystemCenters as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___w, (___v)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenter.FromJson(___v) )) ))() : null : SystemCenter;}
+            {_bizTalkServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("bizTalkServers"), out var __jsonBizTalkServers) ? If( __jsonBizTalkServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___r) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___r, (___q)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServer.FromJson(___q) )) ))() : null : BizTalkServer;}
+            {_exchangeServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("exchangeServers"), out var __jsonExchangeServers) ? If( __jsonExchangeServers as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___m) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___m, (___l)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServer.FromJson(___l) )) ))() : null : ExchangeServer;}
+            {_otherDatabase = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("otherDatabases"), out var __jsonOtherDatabases) ? If( __jsonOtherDatabases as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var ___h) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(___h, (___g)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabase.FromJson(___g) )) ))() : null : OtherDatabase;}
             AfterFromJson(json);
         }
 
@@ -115,98 +115,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._bizTalkServer)
+                if (null != this._webApplication)
                 {
                     var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._bizTalkServer )
+                    foreach( var __s in this._webApplication )
                     {
                         AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("bizTalkServers",__r);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._exchangeServer)
-                {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._exchangeServer )
-                    {
-                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
-                    }
-                    container.Add("exchangeServers",__m);
+                    container.Add("webApplications",__r);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._feature)
                 {
-                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __i in this._feature )
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._feature )
                     {
-                        AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                     }
-                    container.Add("features",__h);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._otherDatabase)
-                {
-                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __d in this._otherDatabase )
-                    {
-                        AddIf(__d?.ToJson(null, serializationMode) ,__c.Add);
-                    }
-                    container.Add("otherDatabases",__c);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._sharePointServer)
-                {
-                    var ___x = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var ___y in this._sharePointServer )
-                    {
-                        AddIf(___y?.ToJson(null, serializationMode) ,___x.Add);
-                    }
-                    container.Add("sharePointServers",___x);
+                    container.Add("features",__m);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._sqlServer)
                 {
-                    var ___s = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var ___t in this._sqlServer )
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._sqlServer )
                     {
-                        AddIf(___t?.ToJson(null, serializationMode) ,___s.Add);
+                        AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
                     }
-                    container.Add("sqlServers",___s);
+                    container.Add("sqlServers",__h);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._sharePointServer)
+                {
+                    var __c = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __d in this._sharePointServer )
+                    {
+                        AddIf(__d?.ToJson(null, serializationMode) ,__c.Add);
+                    }
+                    container.Add("sharePointServers",__c);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._systemCenter)
                 {
-                    var ___n = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var ___o in this._systemCenter )
+                    var ___x = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var ___y in this._systemCenter )
                     {
-                        AddIf(___o?.ToJson(null, serializationMode) ,___n.Add);
+                        AddIf(___y?.ToJson(null, serializationMode) ,___x.Add);
                     }
-                    container.Add("systemCenters",___n);
+                    container.Add("systemCenters",___x);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._webApplication)
+                if (null != this._bizTalkServer)
+                {
+                    var ___s = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var ___t in this._bizTalkServer )
+                    {
+                        AddIf(___t?.ToJson(null, serializationMode) ,___s.Add);
+                    }
+                    container.Add("bizTalkServers",___s);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._exchangeServer)
+                {
+                    var ___n = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var ___o in this._exchangeServer )
+                    {
+                        AddIf(___o?.ToJson(null, serializationMode) ,___n.Add);
+                    }
+                    container.Add("exchangeServers",___n);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._otherDatabase)
                 {
                     var ___i = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var ___j in this._webApplication )
+                    foreach( var ___j in this._otherDatabase )
                     {
                         AddIf(___j?.ToJson(null, serializationMode) ,___i.Add);
                     }
-                    container.Add("webApplications",___i);
+                    container.Add("otherDatabases",___i);
                 }
             }
             AfterToJson(ref container);

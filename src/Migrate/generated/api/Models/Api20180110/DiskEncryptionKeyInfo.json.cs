@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_keyVaultResourceArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultResourceArmId"), out var __jsonKeyVaultResourceArmId) ? (string)__jsonKeyVaultResourceArmId : (string)KeyVaultResourceArmId;}
             {_secretIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("secretIdentifier"), out var __jsonSecretIdentifier) ? (string)__jsonSecretIdentifier : (string)SecretIdentifier;}
+            {_keyVaultResourceArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultResourceArmId"), out var __jsonKeyVaultResourceArmId) ? (string)__jsonKeyVaultResourceArmId : (string)KeyVaultResourceArmId;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != (((object)this._keyVaultResourceArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultResourceArmId.ToString()) : null, "keyVaultResourceArmId" ,container.Add );
             AddIf( null != (((object)this._secretIdentifier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._secretIdentifier.ToString()) : null, "secretIdentifier" ,container.Add );
+            AddIf( null != (((object)this._keyVaultResourceArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultResourceArmId.ToString()) : null, "keyVaultResourceArmId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
