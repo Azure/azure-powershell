@@ -32,6 +32,9 @@ function New-AzCostManagementQueryComparisonExpressionObject {
         [Parameter(Mandatory, HelpMessage="The name of the column to use in comparison.")]
         [string]
         $Name,
+        [Parameter(Mandatory, HelpMessage="The operator to use for comparison.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType]
+        $Operator,
         [Parameter(Mandatory, HelpMessage="Array of values to use for comparison.")]
         [string[]]
         $Value
@@ -41,6 +44,7 @@ function New-AzCostManagementQueryComparisonExpressionObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression]::New()
 
         $Object.Name = $Name
+        $Object.Operator = $Operator
         $Object.Value = $Value
         return $Object
     }

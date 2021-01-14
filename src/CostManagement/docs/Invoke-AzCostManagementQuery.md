@@ -311,6 +311,7 @@ DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
+    - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
   - `[Not <IQueryFilter>]`: The logical "NOT" expression.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
