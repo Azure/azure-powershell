@@ -58,12 +58,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetExtension()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetExtension");
-        }
     }
 }
