@@ -45,6 +45,8 @@
     - Added parameter -IntrusionDetection
     - Added parameter -TransportSecurityName
     - Added parameter -TransportSecurityKeyVaultSecretId
+* Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+    - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
 * Added multiple Authentication support for p2sVpnGateway
     - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 * Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
