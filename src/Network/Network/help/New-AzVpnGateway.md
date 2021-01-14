@@ -15,7 +15,7 @@ Creates a Scalable VPN Gateway.
 ### ByVirtualHubName (Default)
 ```
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubName <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
+ -VirtualHubName <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 ### ByVirtualHubObject
 ```
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHub <PSVirtualHub> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
+ -VirtualHub <PSVirtualHub> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 ### ByVirtualHubResourceId
 ```
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
- -VirtualHubId <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
+ -VirtualHubId <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -197,6 +197,21 @@ The list of VpnConnections that this VpnGateway needs to have.
 
 ```yaml
 Type: PSVpnConnection[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnGatewayNatRule
+The list of VpnGatewayNatRules that are associated with this VpnGateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[]
 Parameter Sets: (All)
 Aliases:
 
