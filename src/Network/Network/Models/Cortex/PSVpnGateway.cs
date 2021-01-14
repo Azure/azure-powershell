@@ -35,5 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSVpnGatewayIpConfiguration> IpConfigurations { get; set;}
 
         public List<PSVpnGatewayNatRule> NatRules { get; set; }
+
+        [Ps1Xml(Label = "Enable RoutingPreferenceInternet", Target = ViewControl.Table)]
+        public bool? IsRoutingPreferenceInternet { get; set; }
     }
 }
