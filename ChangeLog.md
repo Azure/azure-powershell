@@ -7,13 +7,13 @@
 #### Az.Automation
 * Fixed issue where description was not populated for update management schedules
 
-#### Az.IotHub
-* Fixed a regression regarding SAS token generation
-
 #### Az.CosmosDB
 * General availability of 'Az.CosmosDB' module
 * Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 * Introducing AnalyticalStorageTTL in SqlContainer.
+
+#### Az.IotHub
+* Fixed a regression regarding SAS token generation
 
 #### Az.KeyVault
 * Fixed an issue in Secret Management module
