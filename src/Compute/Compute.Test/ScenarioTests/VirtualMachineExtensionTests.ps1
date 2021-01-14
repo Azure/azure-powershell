@@ -19,25 +19,25 @@ Test Virtual Machine Extensions
 function Test-VirtualMachineExtension
 {
     # Setup
-    $rgname = Get-ComputeTestResourceName;
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
+        # Common
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS1_v2';
+        $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        #1
         $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
@@ -46,68 +46,111 @@ function Test-VirtualMachineExtension
         $nicId = $nic.Id;
 
         $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
+        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
+
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
+
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
-        $user = "Foo2";
+        $user = "Foo12";
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPWindowsImageOffline;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
+
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-        ## Get VM
-        #$vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
-        #Assert-NotNull $vm;
-        #
-        ## Virtual Machine Extension
-        #$extname = 'csetest';
-        #$publisher = 'Microsoft.Compute';
-        #$exttype = 'CustomScriptExtension';
-        #$extver = '1.1';
-        #
-        ## Set extension settings by raw strings
-        #$settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
-        #$protectedsettingstr = '{"storageAccountName":"somename","storageAccountKey":"somekey"}';
-        #$job = Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -enableAutomaticUpgrade $True -AsJob
-        #$job | Wait-Job
-        #
-        ## Get VM Extension
-        #$ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
-        #Assert-AreEqual $ext.ResourceGroupName $rgname;
-        #Assert-AreEqual $ext.Name $extname;
-        #Assert-AreEqual $ext.Publisher $publisher;
-        #Assert-AreEqual $ext.ExtensionType $exttype;
-        #Assert-AreEqual $ext.TypeHandlerVersion $extver;
-        #Assert-AreEqual $ext.ResourceGroupName $rgname;
-        #Assert-NotNull $ext.ProvisioningState;
-        #
-        #$ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
-        #Assert-AreEqual $ext.ResourceGroupName $rgname;
-        #Assert-AreEqual $ext.Name $extname;
-        #Assert-AreEqual $ext.Publisher $publisher;
-        #Assert-AreEqual $ext.ExtensionType $exttype;
-        #Assert-AreEqual $ext.TypeHandlerVersion $extver;
-        #Assert-AreEqual $ext.ResourceGroupName $rgname;
-        #Assert-NotNull $ext.ProvisioningState;
-        #Assert-NotNull $ext.Statuses;
-        #Assert-NotNull $ext.SubStatuses;
-        #
-        #$ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname
-        #Assert-True { $ext.Count -ge 1 }
-        #Assert-Null $ext[0].Statuses
-        #
-        #$ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Status
-        #Assert-NotNull $ext.Statuses
-        #
-        ## Remove Extension
-        #$ext | Remove-AzVMExtension -Force;
+        # Virtual Machine Extension
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'CustomScriptExtension';
+        $extver = '1.1';
+
+        # Set extension settings by raw strings
+        $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
+        $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
+        $job = Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -AsJob
+        $job | Wait-Job
+
+        # Get VM Extension
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.ExtensionType $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-NotNull $ext.ProvisioningState;
+
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.ExtensionType $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-NotNull $ext.ProvisioningState;
+        Assert-NotNull $ext.Statuses;
+        Assert-NotNull $ext.SubStatuses;
+
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-True { $ext.Count -ge 1 }
+        Assert-Null $ext[0].Statuses
+
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Status
+        Assert-NotNull $ext.Statuses
+
+        # Remove Extension
+        $ext | Remove-AzVMExtension -Force;
     }
     finally
     {
@@ -2469,6 +2512,67 @@ function Test-VirtualMachineADDomainExtensionDomainJoin
         Assert-NotNull $vm1.Extensions[1].Settings;
 
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Extensions EnableAutomaticUpgrade
+#>
+function Test-VirtualMachineExtensionEnableAutomaticUpgrade
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vmname = "extensionTestVM"
+        $vmssname = "extensionTestVmss"
+        $domainNameLabel = 'pubip'+$rgname;
+        $domainNameLabel2 = $domainNameLabel + '2'
+
+
+        # create vm/vmss
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -domainNameLabel $domainNameLabel
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScalesetName $vmssname -credential $cred -domainNameLabel $domainNameLabel2
+
+        # check vm/vmss
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-NotNull $vm;
+        $vmss = Get-AzVmss -Name $vmssname -ResourceGroupName $rgname;
+        Assert-NotNull $vmss;
+        
+        # Extension
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'CustomScriptExtension';
+        $extver = '1.1';
+        
+        # Set extension settings by raw strings
+        $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
+        $protectedsettingstr = '{"storageAccountName":"somename","storageAccountKey":"somekey"}';
+
+        Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -enableAutomaticUpgrade $False; 
+        $VMSSext = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -enableAutomaticUpgrade $False; 
+        
+        $VMext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+
+        # check enableAutomaticUpgrade property
+        Assert-False { $VMext.EnableAutomaticUpgrade };
+        Assert-False { $VMSSext.VirtualMachineProfile.ExtensionProfile.Extensions[-1].EnableAutomaticUpgrade };
     }
     finally
     {
