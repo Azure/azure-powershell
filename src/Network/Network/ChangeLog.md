@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
     - `New-AzAzVpnGatewayNatRule`
     - `Update-AzAzVpnGatewayNatRule`
