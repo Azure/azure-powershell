@@ -31,6 +31,40 @@ for($i=0; $i -lt 9; $i++)
 {
     $randomValue += $strarray[(Get-Random -Maximum $strarray.Length)]
 }
+
+# Retry azure powershell command.
+function Retry-AzCommand {
+    [CmdletBinding()]
+    param (
+        [string]
+        $Command,
+
+        [int]
+        $RetryCount,
+
+        # Seconds between retries
+        [int]
+        $Sleep
+    )
+    $loopLimit = 0
+    do {
+        try {
+            &([scriptblock]::Create($Command))
+            break
+        }
+        catch {
+            $commandName = ($Command -split ' ')[0]
+            if (++$loopLimit -gt $RetryCount)
+            {
+                throw "Failed to invoke $commandName. $_"
+            } else {
+                Write-Warning "Retry $commandName after $Sleep seconds"
+                Start-Sleep -Seconds $Sleep
+            }
+        }
+    } while ($true) 
+}
+
 # The name of resource group is 1~90 charactors complying with ^[-\w\._\(\)]+$
 $resourceGroupName = "azpssmokerg$randomValue"
 # The name of storage account should be 3~24 lowercase letters and numbers.
@@ -39,27 +73,12 @@ $storageAccountName = "azpssmokesa$randomValue"
 $resourceSetUpCommands=@(
     @{Name = "Az.Resources";                  Command = {New-AzResourceGroup -Name $resourceGroupName -Location westus -ErrorAction Stop}}
 )
+
 $resourceCleanUpCommands = @(
-    @{Name = "Az.Storage [Cleanup]";          Command = {
-                                                            $loopLimit = 0
-                                                            do {
-                                                                try {
-                                                                    Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force -ErrorAction Stop
-                                                                    break
-                                                                }
-                                                                catch {
-                                                                    if (++$loopLimit -gt 30)
-                                                                    {
-                                                                        throw "Failed to invoke Az.Storage [Cleanup]. $_"
-                                                                    } else {
-                                                                        Write-Warning "Retry Az.Storage [Cleanup] after 30 seconds"
-                                                                        Start-Sleep -Seconds 30
-                                                                    }
-                                                                }
-                                                            } while ($true)
-                                                        }},
+    @{Name = "Az.Storage [Cleanup]";          Command = {Retry-AzCommand -Command "Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force -ErrorAction Stop" -RetryCount 30 -Sleep 30}},
     @{Name = "Az.Resources [Cleanup]";        Command = {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction Stop}}
 )
+
 $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     @{Name = "Az.Storage [Data]";             Command = {New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
