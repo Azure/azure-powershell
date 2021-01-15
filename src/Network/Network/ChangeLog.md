@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Registered App Service for Private Link powershells.
+    - `New-AzAzVpnGatewayNatRule`
+    - `Update-AzAzVpnGatewayNatRule`
+    - `Get-AzAzVpnGatewayNatRule`
+    - `Remove-AzAzVpnGatewayNatRule`
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
