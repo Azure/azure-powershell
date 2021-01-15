@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for OperatorType.</summary>
+    /// <summary>The operator to use for comparison.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorTypeTypeConverter))]
     public partial struct OperatorType :
         System.Management.Automation.IArgumentCompleter
