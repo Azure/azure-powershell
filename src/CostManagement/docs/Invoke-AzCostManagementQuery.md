@@ -47,7 +47,7 @@ Invoke AzCostManagementQuery by Scope
 
 ### Example 2: Invoke AzCostManagementQuery by Scope with Dimensions
 ```powershell
-PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator 'In' -Value 'API'
+PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Value 'API'
 $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 
@@ -294,10 +294,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDefinition
-
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult
@@ -315,7 +311,6 @@ DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
-    - `Operator <OperatorType>`: The operator to use for comparison.
     - `Value <String[]>`: Array of values to use for comparison
   - `[Not <IQueryFilter>]`: The logical "NOT" expression.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
