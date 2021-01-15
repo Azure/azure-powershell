@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for RecoveryPlanActionLocation.</summary>
+    /// <summary>The fabric location.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPlanActionLocationTypeConverter))]
     public partial struct RecoveryPlanActionLocation :
         System.Management.Automation.IArgumentCompleter

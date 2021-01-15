@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_providerErrorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("providerErrorDetails"), out var __jsonProviderErrorDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderError.FromJson(__jsonProviderErrorDetails) : ProviderErrorDetail;}
             {_serviceErrorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("serviceErrorDetails"), out var __jsonServiceErrorDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ServiceError.FromJson(__jsonServiceErrorDetails) : ServiceErrorDetail;}
-            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? global::System.DateTime.TryParse((string)__jsonCreationTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationTimeValue) ? __jsonCreationTimeValue : CreationTime : CreationTime;}
+            {_providerErrorDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("providerErrorDetails"), out var __jsonProviderErrorDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderError.FromJson(__jsonProviderErrorDetails) : ProviderErrorDetail;}
             {_errorLevel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("errorLevel"), out var __jsonErrorLevel) ? (string)__jsonErrorLevel : (string)ErrorLevel;}
+            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? global::System.DateTime.TryParse((string)__jsonCreationTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreationTimeValue) ? __jsonCreationTimeValue : CreationTime : CreationTime;}
             {_taskId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("taskId"), out var __jsonTaskId) ? (string)__jsonTaskId : (string)TaskId;}
             AfterFromJson(json);
         }
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._providerErrorDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._providerErrorDetail.ToJson(null,serializationMode) : null, "providerErrorDetails" ,container.Add );
             AddIf( null != this._serviceErrorDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._serviceErrorDetail.ToJson(null,serializationMode) : null, "serviceErrorDetails" ,container.Add );
-            AddIf( null != this._creationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._creationTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "creationTime" ,container.Add );
+            AddIf( null != this._providerErrorDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._providerErrorDetail.ToJson(null,serializationMode) : null, "providerErrorDetails" ,container.Add );
             AddIf( null != (((object)this._errorLevel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._errorLevel.ToString()) : null, "errorLevel" ,container.Add );
+            AddIf( null != this._creationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._creationTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "creationTime" ,container.Add );
             AddIf( null != (((object)this._taskId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._taskId.ToString()) : null, "taskId" ,container.Add );
             AfterToJson(ref container);
             return container;

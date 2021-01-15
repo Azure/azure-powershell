@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return;
             }
-            {_agentDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("agentDetails"), out var __jsonAgentDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentProperties.FromJson(__jsonAgentDetails) : AgentDetail;}
             {_servicePrincipalIdentityDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("servicePrincipalIdentityDetails"), out var __jsonServicePrincipalIdentityDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteSpnProperties.FromJson(__jsonServicePrincipalIdentityDetails) : ServicePrincipalIdentityDetail;}
-            {_applianceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("applianceName"), out var __jsonApplianceName) ? (string)__jsonApplianceName : (string)ApplianceName;}
-            {_discoverySolutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("discoverySolutionId"), out var __jsonDiscoverySolutionId) ? (string)__jsonDiscoverySolutionId : (string)DiscoverySolutionId;}
+            {_agentDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("agentDetails"), out var __jsonAgentDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentProperties.FromJson(__jsonAgentDetails) : AgentDetail;}
             {_serviceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("serviceEndpoint"), out var __jsonServiceEndpoint) ? (string)__jsonServiceEndpoint : (string)ServiceEndpoint;}
+            {_discoverySolutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("discoverySolutionId"), out var __jsonDiscoverySolutionId) ? (string)__jsonDiscoverySolutionId : (string)DiscoverySolutionId;}
+            {_applianceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("applianceName"), out var __jsonApplianceName) ? (string)__jsonApplianceName : (string)ApplianceName;}
             AfterFromJson(json);
         }
 
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return container;
             }
-            AddIf( null != this._agentDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._agentDetail.ToJson(null,serializationMode) : null, "agentDetails" ,container.Add );
             AddIf( null != this._servicePrincipalIdentityDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._servicePrincipalIdentityDetail.ToJson(null,serializationMode) : null, "servicePrincipalIdentityDetails" ,container.Add );
-            AddIf( null != (((object)this._applianceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._applianceName.ToString()) : null, "applianceName" ,container.Add );
-            AddIf( null != (((object)this._discoverySolutionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._discoverySolutionId.ToString()) : null, "discoverySolutionId" ,container.Add );
+            AddIf( null != this._agentDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._agentDetail.ToJson(null,serializationMode) : null, "agentDetails" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._serviceEndpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._serviceEndpoint.ToString()) : null, "serviceEndpoint" ,container.Add );
             }
+            AddIf( null != (((object)this._discoverySolutionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._discoverySolutionId.ToString()) : null, "discoverySolutionId" ,container.Add );
+            AddIf( null != (((object)this._applianceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._applianceName.ToString()) : null, "applianceName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
