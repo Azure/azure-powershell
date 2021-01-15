@@ -183,12 +183,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         var subNetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
                         //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
-<<<<<<< HEAD
-                        var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
-                        CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
-=======
                         var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
->>>>>>> c8b4e3f66d (ASE first draft)
+                        CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
                         if (!IgnoreMissingServiceEndpoint)
                         {
                             var serviceEndpointServiceName = "Microsoft.Web";
