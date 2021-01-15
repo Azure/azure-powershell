@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>
+    /// A value indicating whether the VM has a physical disk attached. String value of {SrsDataContract.PresenceStatus} enum.
+    /// </summary>
     public partial struct PresenceStatus :
         System.IEquatable<PresenceStatus>
     {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="PresenceStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PresenceStatus(System.Convert.ToString(value));
+            return new PresenceStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PresenceStatus</summary>

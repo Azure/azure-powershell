@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __providerSpecificFailoverInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderSpecificFailoverInput(json);
             {_dataSyncOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("dataSyncOption"), out var __jsonDataSyncOption) ? (string)__jsonDataSyncOption : (string)DataSyncOption;}
-            {_providerIdForAlternateRecovery = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("providerIdForAlternateRecovery"), out var __jsonProviderIdForAlternateRecovery) ? (string)__jsonProviderIdForAlternateRecovery : (string)ProviderIdForAlternateRecovery;}
             {_recoveryVMCreationOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryVmCreationOption"), out var __jsonRecoveryVMCreationOption) ? (string)__jsonRecoveryVMCreationOption : (string)RecoveryVMCreationOption;}
+            {_providerIdForAlternateRecovery = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("providerIdForAlternateRecovery"), out var __jsonProviderIdForAlternateRecovery) ? (string)__jsonProviderIdForAlternateRecovery : (string)ProviderIdForAlternateRecovery;}
             AfterFromJson(json);
         }
 
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __providerSpecificFailoverInput?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._dataSyncOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._dataSyncOption.ToString()) : null, "dataSyncOption" ,container.Add );
-            AddIf( null != (((object)this._providerIdForAlternateRecovery)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._providerIdForAlternateRecovery.ToString()) : null, "providerIdForAlternateRecovery" ,container.Add );
             AddIf( null != (((object)this._recoveryVMCreationOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryVMCreationOption.ToString()) : null, "recoveryVmCreationOption" ,container.Add );
+            AddIf( null != (((object)this._providerIdForAlternateRecovery)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._providerIdForAlternateRecovery.ToString()) : null, "providerIdForAlternateRecovery" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

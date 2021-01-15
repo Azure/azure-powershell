@@ -21,11 +21,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>Key vault ARM Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AgentDetailKeyVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultId = value; }
+        public string AgentDetailKeyVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultId = value ?? null; }
 
         /// <summary>Key vault URI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AgentDetailKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultUri = value; }
+        public string AgentDetailKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentPropertiesInternal)AgentDetail).KeyVaultUri = value ?? null; }
 
         /// <summary>Last heartbeat time of the agent in UTC.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -87,36 +87,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// AAD Authority URL which was used to request the token for the service principal.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).AadAuthority = value; }
+        public string ServicePrincipalIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).AadAuthority = value ?? null; }
 
         /// <summary>
         /// Application/client Id for the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ApplicationId = value; }
+        public string ServicePrincipalIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ApplicationId = value ?? null; }
 
         /// <summary>Intended audience for the service principal.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).Audience = value; }
+        public string ServicePrincipalIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).Audience = value ?? null; }
 
         /// <summary>
         /// Object Id of the service principal with which the on-premise management/data plane components would communicate with our
         /// Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ObjectId = value; }
+        public string ServicePrincipalIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).ObjectId = value ?? null; }
 
         /// <summary>Raw certificate data for building certificate expiry flows.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailRawCertData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).RawCertData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).RawCertData = value; }
+        public string ServicePrincipalIdentityDetailRawCertData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).RawCertData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).RawCertData = value ?? null; }
 
         /// <summary>
         /// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServicePrincipalIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).TenantId = value; }
+        public string ServicePrincipalIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnPropertiesInternal)ServicePrincipalIdentityDetail).TenantId = value ?? null; }
 
         /// <summary>Creates an new <see cref="SiteProperties" /> instance.</summary>
         public SiteProperties()

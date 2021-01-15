@@ -80,11 +80,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             __fabricSpecificDetails?.ToJson(container, serializationMode);
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._migrationSolutionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._migrationSolutionId.ToString()) : null, "migrationSolutionId" ,container.Add );
+                AddIf( null != (((object)this._vmwareSiteId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vmwareSiteId.ToString()) : null, "vmwareSiteId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._physicalSiteId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._physicalSiteId.ToString()) : null, "physicalSiteId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._migrationSolutionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._migrationSolutionId.ToString()) : null, "migrationSolutionId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -93,10 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._serviceResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._serviceResourceId.ToString()) : null, "serviceResourceId" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._vmwareSiteId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vmwareSiteId.ToString()) : null, "vmwareSiteId" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __fabricSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.FabricSpecificDetails(json);
-            {_migrationSolutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("migrationSolutionId"), out var __jsonMigrationSolutionId) ? (string)__jsonMigrationSolutionId : (string)MigrationSolutionId;}
+            {_vmwareSiteId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vmwareSiteId"), out var __jsonVmwareSiteId) ? (string)__jsonVmwareSiteId : (string)VmwareSiteId;}
             {_physicalSiteId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("physicalSiteId"), out var __jsonPhysicalSiteId) ? (string)__jsonPhysicalSiteId : (string)PhysicalSiteId;}
+            {_migrationSolutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("migrationSolutionId"), out var __jsonMigrationSolutionId) ? (string)__jsonMigrationSolutionId : (string)MigrationSolutionId;}
             {_serviceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("serviceEndpoint"), out var __jsonServiceEndpoint) ? (string)__jsonServiceEndpoint : (string)ServiceEndpoint;}
             {_serviceResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("serviceResourceId"), out var __jsonServiceResourceId) ? (string)__jsonServiceResourceId : (string)ServiceResourceId;}
-            {_vmwareSiteId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vmwareSiteId"), out var __jsonVmwareSiteId) ? (string)__jsonVmwareSiteId : (string)VmwareSiteId;}
             AfterFromJson(json);
         }
     }
