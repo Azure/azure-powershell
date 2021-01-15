@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         /// <param name="value">the value to convert to an instance of <see cref="Kind" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Kind(System.Convert.ToString(value));
+            return new Kind(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Kind</summary>

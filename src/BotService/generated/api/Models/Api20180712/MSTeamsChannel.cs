@@ -16,22 +16,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Webhook for Microsoft Teams channel calls</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string CallingWebHook { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).CallingWebHook; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).CallingWebHook = value; }
+        public string CallingWebHook { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).CallingWebHook; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).CallingWebHook = value ?? null; }
 
         /// <summary>Enable calling for Microsoft Teams channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableCalling { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).EnableCalling; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).EnableCalling = value; }
+        public bool? EnableCalling { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).EnableCalling; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).EnableCalling = value ?? default(bool); }
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.MSTeamsChannelProperties()); set { {_property = value;} } }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelProperties _property;
@@ -81,12 +81,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         bool? EnableCalling { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
 
     }
     /// Microsoft Teams channel definition
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// <summary>Enable calling for Microsoft Teams channel</summary>
         bool? EnableCalling { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>The set of properties specific to Microsoft Teams channel resource</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IMSTeamsChannelProperties Property { get; set; }
 

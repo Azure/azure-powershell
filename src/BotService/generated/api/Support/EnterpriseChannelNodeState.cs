@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         /// <param name="value">the value to convert to an instance of <see cref="EnterpriseChannelNodeState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new EnterpriseChannelNodeState(System.Convert.ToString(value));
+            return new EnterpriseChannelNodeState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="EnterpriseChannelNodeState" Enum class./></summary>
