@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Removed FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
 * Added deprecation message to the ContainerService cmdlets:
     - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
     - `Get-AzContainerService`
