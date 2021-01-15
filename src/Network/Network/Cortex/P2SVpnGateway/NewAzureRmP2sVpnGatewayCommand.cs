@@ -149,6 +149,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable Routing Preference Internet on this P2SVpnGateway.")]
+        public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -260,6 +265,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 p2sVpnGateway.CustomDnsServers = CustomDnsServer?.ToList();
             }
+
+            // Set the Routing Preference Internet, if it is specified by customer.
+            p2sVpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
