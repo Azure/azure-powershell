@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for Severity.</summary>
+    /// <summary>Severity of error.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SeverityTypeConverter))]
     public partial struct Severity :
         System.Management.Automation.IArgumentCompleter

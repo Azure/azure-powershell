@@ -251,15 +251,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The Azure VM input endpoints.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint[] VMSyncedConfigDetailInputEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).InputEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).InputEndpoint = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint[] VMSyncedConfigDetailInputEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).InputEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).InputEndpoint = value ?? null /* arrayOf */; }
 
         /// <summary>The Azure role assignments.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment[] VMSyncedConfigDetailRoleAssignment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).RoleAssignment; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).RoleAssignment = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment[] VMSyncedConfigDetailRoleAssignment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).RoleAssignment; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).RoleAssignment = value ?? null /* arrayOf */; }
 
         /// <summary>The Azure VM tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsTags VMSyncedConfigDetailTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsTags VMSyncedConfigDetailTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureToAzureVMSyncedConfigDetailsInternal)VMSyncedConfigDetail).Tag = value ?? null /* model class */; }
 
         /// <summary>Creates an new <see cref="A2AReplicationDetails" /> instance.</summary>
         public A2AReplicationDetails()

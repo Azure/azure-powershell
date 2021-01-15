@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for DisableProtectionReason.</summary>
+    /// <summary>Disable protection reason. It can have values NotSpecified/MigrationComplete.</summary>
     public partial class DisableProtectionReasonTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -94,9 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).Version, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).Version, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).RebootStatus, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMobilityServiceUpdateInternal)this).OSType, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

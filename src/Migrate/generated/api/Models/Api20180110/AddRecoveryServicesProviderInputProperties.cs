@@ -17,35 +17,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The base authority for Azure Active Directory authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityInputAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).AadAuthority = value; }
+        public string AuthenticationIdentityInputAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).AadAuthority = value ; }
 
         /// <summary>
         /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityInputApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ApplicationId = value; }
+        public string AuthenticationIdentityInputApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ApplicationId = value ; }
 
         /// <summary>
         /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityInputAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).Audience = value; }
+        public string AuthenticationIdentityInputAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).Audience = value ; }
 
         /// <summary>
         /// The object Id of the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityInputObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ObjectId = value; }
+        public string AuthenticationIdentityInputObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).ObjectId = value ; }
 
         /// <summary>
         /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityInputTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).TenantId = value; }
+        public string AuthenticationIdentityInputTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)AuthenticationIdentityInput).TenantId = value ; }
 
         /// <summary>Backing field for <see cref="MachineName" /> property.</summary>
         private string _machineName;
@@ -69,35 +69,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The base authority for Azure Active Directory authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityInputAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).AadAuthority = value; }
+        public string ResourceAccessIdentityInputAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).AadAuthority = value ; }
 
         /// <summary>
         /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityInputApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ApplicationId = value; }
+        public string ResourceAccessIdentityInputApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ApplicationId = value ; }
 
         /// <summary>
         /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityInputAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).Audience = value; }
+        public string ResourceAccessIdentityInputAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).Audience = value ; }
 
         /// <summary>
         /// The object Id of the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityInputObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ObjectId = value; }
+        public string ResourceAccessIdentityInputObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).ObjectId = value ; }
 
         /// <summary>
         /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityInputTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).TenantId = value; }
+        public string ResourceAccessIdentityInputTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderInputInternal)ResourceAccessIdentityInput).TenantId = value ; }
 
         /// <summary>
         /// Creates an new <see cref="AddRecoveryServicesProviderInputProperties" /> instance.
