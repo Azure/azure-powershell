@@ -2519,3 +2519,64 @@ function Test-VirtualMachineADDomainExtensionDomainJoin
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Extensions EnableAutomaticUpgrade
+#>
+function Test-VirtualMachineExtensionEnableAutomaticUpgrade
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vmname = "extensionTestVM"
+        $vmssname = "extensionTestVmss"
+        $domainNameLabel = 'pubip'+$rgname;
+        $domainNameLabel2 = $domainNameLabel + '2'
+
+
+        # create vm/vmss
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -domainNameLabel $domainNameLabel
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScalesetName $vmssname -credential $cred -domainNameLabel $domainNameLabel2
+
+        # check vm/vmss
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-NotNull $vm;
+        $vmss = Get-AzVmss -Name $vmssname -ResourceGroupName $rgname;
+        Assert-NotNull $vmss;
+        
+        # Extension
+        $extname = 'csetest';
+        $publisher = 'Microsoft.Compute';
+        $exttype = 'CustomScriptExtension';
+        $extver = '1.1';
+        
+        # Set extension settings by raw strings
+        $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
+        $protectedsettingstr = '{"storageAccountName":"somename","storageAccountKey":"somekey"}';
+
+        Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -enableAutomaticUpgrade $False; 
+        $VMSSext = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -enableAutomaticUpgrade $False; 
+        
+        $VMext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+
+        # check enableAutomaticUpgrade property
+        Assert-False { $VMext.EnableAutomaticUpgrade };
+        Assert-False { $VMSSext.VirtualMachineProfile.ExtensionProfile.Extensions[-1].EnableAutomaticUpgrade };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
