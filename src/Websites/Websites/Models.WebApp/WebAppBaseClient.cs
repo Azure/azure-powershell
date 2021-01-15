@@ -57,5 +57,24 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             }
             set { _websitesClient = value; }
         }
+
+        private NetworkClient _networkClient;
+        public NetworkClient NetworkClient
+        {
+            get
+            {
+                if (_networkClient == null)
+                {
+                    _networkClient = new NetworkClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _networkClient;
+            }
+            set { _networkClient = value; }
+        }
     }
 }

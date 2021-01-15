@@ -178,16 +178,22 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     case SubnetNameParameterSet:
                     case SubnetIdParameterSet:
-                        var Subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
+                        var subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
                         //Fetch RG of given SubNet
-                        var subNetResourceGroupName = CmdletHelpers.GetSubnetResourceGroupName(DefaultContext, Subnet, VirtualNetworkName);
+                        var subNetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
                         //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
+<<<<<<< HEAD
                         var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
                         CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
+=======
+                        var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
+>>>>>>> c8b4e3f66d (ASE first draft)
                         if (!IgnoreMissingServiceEndpoint)
                         {
-                            CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
+                            var serviceEndpointServiceName = "Microsoft.Web";
+                            var serviceEndpointLocations = new List<string>() { "*" };
+                            NetworkClient.EnsureSubnetServiceEndpoint(subnetResourceId, serviceEndpointServiceName, serviceEndpointLocations);
                         }
                         
                         ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description, httpHeader);
