@@ -41,6 +41,20 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [<CommonParameters>]
 ```
 
+### SetByResourceIdPublicIpAddressPrefix
+```
+Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ -PublicIpAddressPrefixId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByResourcePublicIpAddressPrefix
+```
+Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ -PublicIpAddressPrefix <PSPublicIpPrefix> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configuration for a load balancer.
 
@@ -48,7 +62,7 @@ The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configu
 
 ### Example 1: Modify the front-end IP configuration of a load balancer
 ```powershell
-PS C:\>$Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
+PS C:\> $Subnet = Get-AzVirtualNetwork -Name "MyVnet" -ResourceGroupName "MyResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "Subnet"
 PS C:\> $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
 PS C:\> $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
@@ -161,6 +175,36 @@ Specifies the ID of the **PublicIpAddress** object that is associated with the f
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddress
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressPrefix
+Specifies the **PublicIpAddressPrefix** object to associate with a front-end IP configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+Parameter Sets: SetByResourcePublicIpAddressPrefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressPrefixId
+Specifies the ID of the **PublicIpAddressPrefix** object to associate with a front-end IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdPublicIpAddressPrefix
 Aliases:
 
 Required: True

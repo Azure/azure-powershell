@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet), OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
-        
+
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.
         /// </summary>
@@ -412,13 +412,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 }
                 else
                 {
-                   taskGenerator = (taskId) => UploadBlobwithSdk(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
+                    taskGenerator = (taskId) => UploadBlobwithSdk(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
                 }
                 RunTask(taskGenerator);
             }
 
             base.DoEndProcessing();
-        }        
+        }
 
         /// <summary>
         /// set blob AccessTier
@@ -432,7 +432,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 return;
             }
-            
+
             StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
             // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
@@ -699,7 +699,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 type = StorageBlob.BlobType.PageBlob;
             }
-            else 
+            else
             {
                 type = StorageBlob.BlobType.Unspecified;
             }

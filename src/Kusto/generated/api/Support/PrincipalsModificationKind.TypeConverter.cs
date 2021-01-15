@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for PrincipalsModificationKind.</summary>
+    /// <summary>The principals modification kind of the database</summary>
     public partial class PrincipalsModificationKindTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -9,9 +9,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.ProxyResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.Resource();
 
         /// <summary>The type of administrator.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -21,20 +21,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; }
 
         /// <summary>The server administrator login account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string Login { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Login = value; }
+        public string Login { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Login; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Login = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type = value; }
 
         /// <summary>Internal Acessors for AdministratorType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResourceInternal.AdministratorType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).AdministratorType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).AdministratorType = value; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorProperties _property;
@@ -55,17 +55,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The server administrator Sid (Secure ID).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string Sid { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Sid; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Sid = value; }
+        public string Sid { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Sid; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).Sid = value ?? null; }
 
         /// <summary>The server Active Directory Administrator tenant id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).TenantId = value; }
+        public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorPropertiesInternal)Property).TenantId = value ?? null; }
 
         /// <summary>
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__proxyResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Type; }
 
         /// <summary>Creates an new <see cref="ServerAdministratorResource" /> instance.</summary>
         public ServerAdministratorResource()
@@ -81,18 +81,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertNotNull(nameof(__resource), __resource);
+            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
     /// Represents a and external administrator to be created.
     public partial interface IServerAdministratorResource :
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResource
     {
         /// <summary>The type of administrator.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Description = @"The type of administrator.",
         SerializedName = @"administratorType",
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         string AdministratorType { get;  }
         /// <summary>The server administrator login account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The server administrator login account name.",
         SerializedName = @"login",
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         string Login { get; set; }
         /// <summary>The server administrator Sid (Secure ID).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The server administrator Sid (Secure ID).",
         SerializedName = @"sid",
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         string Sid { get; set; }
         /// <summary>The server Active Directory Administrator tenant id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The server Active Directory Administrator tenant id.",
         SerializedName = @"tenantId",
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     }
     /// Represents a and external administrator to be created.
     internal partial interface IServerAdministratorResourceInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IProxyResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal
     {
         /// <summary>The type of administrator.</summary>
         string AdministratorType { get; set; }

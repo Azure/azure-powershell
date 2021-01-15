@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for PrivateLinkServiceConnectionStateStatus.</summary>
+    /// <summary>The private link service connection status.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PrivateLinkServiceConnectionStateStatusTypeConverter))]
     public partial struct PrivateLinkServiceConnectionStateStatus :
         System.Management.Automation.IArgumentCompleter

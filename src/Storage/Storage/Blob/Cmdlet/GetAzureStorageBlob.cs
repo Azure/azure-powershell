@@ -429,7 +429,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options, blobItem);
-            if (continuationToken != null)
+            if (!string.IsNullOrEmpty(continuationToken))
             {
                 BlobContinuationToken token = new BlobContinuationToken();
                 token.NextMarker = continuationToken;
@@ -442,7 +442,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobTagItem.BlobName, context, options: options);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options);
-            if (continuationToken != null)
+            if (!string.IsNullOrEmpty(continuationToken))
             {
                 BlobContinuationToken token = new BlobContinuationToken();
                 token.NextMarker = continuationToken;

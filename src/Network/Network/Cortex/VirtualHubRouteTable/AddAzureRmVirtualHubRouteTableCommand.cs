@@ -19,7 +19,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzVHubRouteTable")]
     [Cmdlet(VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
         SupportsShouldProcess = false),

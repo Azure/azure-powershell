@@ -24,6 +24,7 @@ Test all iothub device cmdlets
 function Test-AzureRmIotHubDeviceLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHubs"
+	$dataplaneApiVersion = '2020-03-13'
 	$IotHubName = getAssetName
 	$ResourceGroupName = getAssetName
 	$Sku = "S1"
@@ -83,6 +84,12 @@ function Test-AzureRmIotHubDeviceLifecycle
 	$deviceToken = New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1
 	Assert-StartsWith $SasTokenPrefix $deviceToken
 
+	# Test SAS token validity
+	$hostname = $iothub.Properties.HostName
+	$deviceMessageUri = "https://$hostname/devices/$device1/messages/events?api-version=$dataplaneApiVersion"
+	$deviceMessageResult = Invoke-WebRequest -Uri $deviceMessageUri -Method Post -Body "test" -Headers @{Authorization = $deviceToken}
+	Assert-True { $deviceMessageResult.StatusCode -eq 204 }
+
 	# Expected error while generating SAS token for device
 	$errorMessage = "This device does not support SAS auth."
 	Assert-ThrowsContains { New-AzIotHubSasToken -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device3 } $errorMessage
@@ -122,7 +129,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $updateddevice1twin3.tags.Count -eq 1}
 
 	# Invoke direct method on device
-	$errorMessage = 'Timed out waiting for device to connect.'
+	$errorMessage = "The operation failed because the requested device isn't online or hasn't registered the direct method callback."
 	Assert-ThrowsContains { Invoke-AzIotHubDeviceMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Name "SetTelemetryInterval" } $errorMessage
 	
 	# Get all devices

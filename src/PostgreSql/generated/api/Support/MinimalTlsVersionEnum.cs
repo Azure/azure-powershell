@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>Enforce a minimal Tls version for the server.</summary>
     public partial struct MinimalTlsVersionEnum :
         System.IEquatable<MinimalTlsVersionEnum>
     {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="MinimalTlsVersionEnum" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MinimalTlsVersionEnum(System.Convert.ToString(value));
+            return new MinimalTlsVersionEnum(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MinimalTlsVersionEnum</summary>

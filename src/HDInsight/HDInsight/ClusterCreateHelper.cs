@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations)
         {
-            Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.Gateway);
+            Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
             if (!string.IsNullOrEmpty(httpCredential?.UserName))
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
             }
 
-            configurations[ConfigurationKey.Gateway] = gatewayConfig;
+            configurations[Constants.ConfigurationKey.Gateway] = gatewayConfig;
         }
 
         public static void AddAzureDataLakeStorageGen1ToCoreConfig(string storageResourceId, string storageRootPath, string defaultAzureDataLakeStoreFileSystemEndpointSuffix, IDictionary<string, Dictionary<string, string>> configurations)
@@ -56,20 +55,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
 
             // Get existing core configs.
-            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.CoreSite);
 
             // Add configurations for default ADL storage.
             coreConfig[Constants.StorageConfigurations.DefaultFsKey] = Constants.StorageConfigurations.DefaultFsAdlValue;
             coreConfig[Constants.StorageConfigurations.AdlHostNameKey] = storageAccountName;
             coreConfig[Constants.StorageConfigurations.AdlMountPointKey] = storageRootPath;
 
-            configurations[ConfigurationKey.CoreSite] = coreConfig;
+            configurations[Constants.ConfigurationKey.CoreSite] = coreConfig;
         }
 
         public static void AddAdditionalStorageAccountsToCoreConfig(Dictionary<string, string> additionalStorageAccounts, IDictionary<string, Dictionary<string, string>> configurations)
         {
             // Get existing core configs.
-            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.CoreSite);
 
             foreach (KeyValuePair<string, string> storageAccount in additionalStorageAccounts)
             {
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 coreConfig[configKey] = storageAccount.Value;
             }
 
-            configurations[ConfigurationKey.CoreSite] = coreConfig;
+            configurations[Constants.ConfigurationKey.CoreSite] = coreConfig;
         }
 
         public static void AddDataLakeStorageGen1IdentityToIdentityConfig(Guid applicationId, Guid aadTenantId, byte[] certificateFileBytes, string certificatePassword,
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 {Constants.DataLakeConfigurations.ResourceUriKey, dataLakeEndpointResourceId}
             };
 
-            configurations[ConfigurationKey.ClusterIdentity] = datalakeConfig;
+            configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
         public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, string defaultStorageSuffix)
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             string connectionUrl =
                 string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, hiveMetastore.SqlAzureServerName, hiveMetastore.DatabaseName);
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveSite, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.HiveSite, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionUrlKey, connectionUrl},
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionUserNameKey, hiveMetastore.Credential.UserName},
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameKey, Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameValue}
                 });
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveEnv, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.HiveEnv, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.HiveEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
                     {Constants.MetastoreConfigurations.HiveEnv.DatabaseNameKey, hiveMetastore.DatabaseName},
@@ -169,7 +168,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
             string connectionUrl = string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, oozieMetastore.SqlAzureServerName, oozieMetastore.DatabaseName);
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieSite, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.OozieSite, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.OozieSite.UrlKey, connectionUrl},
                     {Constants.MetastoreConfigurations.OozieSite.UserNameKey, oozieMetastore.Credential.UserName},
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.OozieSite.SchemaKey, Constants.MetastoreConfigurations.OozieSite.SchemaValue}
                 });
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieEnv, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.OozieEnv, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.OozieEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
                     {Constants.MetastoreConfigurations.OozieEnv.DatabaseNameKey, oozieMetastore.DatabaseName},
@@ -186,6 +185,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.OozieEnv.ExistingDatabaseKey, oozieMetastore.DatabaseName},
                     {Constants.MetastoreConfigurations.OozieEnv.ExistingHostKey, oozieMetastore.SqlAzureServerName},
                     {Constants.MetastoreConfigurations.OozieEnv.HostNameKey, oozieMetastore.SqlAzureServerName}
+                });
+        }
+
+        public static void AddCustomAmbariDatabaseToConfigurations(AzureHDInsightMetastore ambariDatabase, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            if (Uri.CheckHostName(ambariDatabase.SqlAzureServerName) != UriHostNameType.Dns)
+            {
+                throw new ArgumentException("Please provide the fully qualified sql server name.");
+            }
+
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.AmbariConf, new Dictionary<string, string>
+                {
+                    {Constants.AmbariConfiguration.SqlServerKey, ambariDatabase.SqlAzureServerName},
+                    {Constants.AmbariConfiguration.DatabaseNameKey, ambariDatabase.DatabaseName},
+                    {Constants.AmbariConfiguration.DatabaseUserKey, ambariDatabase.Credential.UserName},
+                    {Constants.AmbariConfiguration.DatabasePasswordKey, ambariDatabase.Credential.Password.ConvertToString()}
                 });
         }
 

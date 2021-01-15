@@ -159,7 +159,7 @@ function Test-StorageBlobContainerEncryptionScope
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'StorageV2'
 		$containerName = "container"+ $rgname
 		$containerName2 = "container2"+ $rgname

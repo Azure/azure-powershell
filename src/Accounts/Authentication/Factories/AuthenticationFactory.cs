@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
                     {
-                        token = authToken?.ConfigureAwait(true).GetAwaiter().GetResult();
+                        token = authToken?.ConfigureAwait(false).GetAwaiter().GetResult();
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
-                        throw e;
+                        throw;
                     }
 
                     TracingAdapter.Information(string.Format("[AuthenticationFactory] Exception caught when calling TryAuthenticate, retrying authentication - Exception message: '{0}'", e.Message));

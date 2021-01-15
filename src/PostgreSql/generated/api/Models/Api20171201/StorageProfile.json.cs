@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             {_backupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("backupRetentionDays"), out var __jsonBackupRetentionDays) ? (int?)__jsonBackupRetentionDays : BackupRetentionDay;}
             {_geoRedundantBackup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("geoRedundantBackup"), out var __jsonGeoRedundantBackup) ? (string)__jsonGeoRedundantBackup : (string)GeoRedundantBackup;}
-            {_storageAutogrow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("storageAutogrow"), out var __jsonStorageAutogrow) ? (string)__jsonStorageAutogrow : (string)StorageAutogrow;}
             {_storageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("storageMB"), out var __jsonStorageMb) ? (int?)__jsonStorageMb : StorageMb;}
+            {_storageAutogrow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("storageAutogrow"), out var __jsonStorageAutogrow) ? (string)__jsonStorageAutogrow : (string)StorageAutogrow;}
             AfterFromJson(json);
         }
 
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             AddIf( null != this._backupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._backupRetentionDay) : null, "backupRetentionDays" ,container.Add );
             AddIf( null != (((object)this._geoRedundantBackup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._geoRedundantBackup.ToString()) : null, "geoRedundantBackup" ,container.Add );
-            AddIf( null != (((object)this._storageAutogrow)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._storageAutogrow.ToString()) : null, "storageAutogrow" ,container.Add );
             AddIf( null != this._storageMb ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._storageMb) : null, "storageMB" ,container.Add );
+            AddIf( null != (((object)this._storageAutogrow)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._storageAutogrow.ToString()) : null, "storageAutogrow" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -13,12 +13,12 @@
         /// Gets fully qualified resource Id for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
-        public string Id { get; private set; }
+        public virtual string Id { get; protected set; }
 
         /// <summary>
         /// Gets the name of the resource
         /// </summary>
-        public string Name { get; private set; }
+        public virtual string Name { get; protected set; }
 
         /// <summary>
         /// Gets the type of the resource. Ex-

@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageEncryptionScope", DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEncryptionScope))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageEncryptionScope", DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSEncryptionScope))]
     public class GetAzureStorageEncryptionScopeCommand : StorageFileBaseCmdlet
     {
         /// <summary>
@@ -72,41 +72,38 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            if (ShouldProcess(this.EncryptionScopeName, "Create Encryption scope"))
+            switch (ParameterSetName)
             {
-                switch (ParameterSetName)
-                {
-                    case AccountObjectParameterSet:
-                        this.ResourceGroupName = StorageAccount.ResourceGroupName;
-                        this.StorageAccountName = StorageAccount.StorageAccountName;
-                        break;
-                    default:
-                        // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
-                        break;
-                }
+                case AccountObjectParameterSet:
+                    this.ResourceGroupName = StorageAccount.ResourceGroupName;
+                    this.StorageAccountName = StorageAccount.StorageAccountName;
+                    break;
+                default:
+                    // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
+                    break;
+            }
 
-                if (this.EncryptionScopeName == null)
+            if (this.EncryptionScopeName == null)
+            {
+                IPage<EncryptionScope> scopes = this.StorageClient.EncryptionScopes.List(
+                        this.ResourceGroupName,
+                        this.StorageAccountName);
+                WriteEncryptionScopeList(scopes);
+
+                while (scopes.NextPageLink != null)
                 {
-                    IPage<EncryptionScope> scopes = this.StorageClient.EncryptionScopes.List(
-                            this.ResourceGroupName,
-                            this.StorageAccountName);
+                    scopes = this.StorageClient.EncryptionScopes.ListNext(scopes.NextPageLink);
                     WriteEncryptionScopeList(scopes);
-
-                    while (scopes.NextPageLink != null)
-                    {
-                        scopes = this.StorageClient.EncryptionScopes.ListNext(scopes.NextPageLink);
-                        WriteEncryptionScopeList(scopes);
-                    }
                 }
-                else
-                {
-                    var scope = this.StorageClient.EncryptionScopes.Get(
-                                this.ResourceGroupName,
-                                this.StorageAccountName,
-                                this.EncryptionScopeName);
+            }
+            else
+            {
+                var scope = this.StorageClient.EncryptionScopes.Get(
+                            this.ResourceGroupName,
+                            this.StorageAccountName,
+                            this.EncryptionScopeName);
 
-                    WriteObject(new PSEncryptionScope(scope));
-                }
+                WriteObject(new PSEncryptionScope(scope));
             }
         }
 

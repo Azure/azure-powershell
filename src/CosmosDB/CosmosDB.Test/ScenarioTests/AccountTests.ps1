@@ -46,6 +46,14 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.EnableAnalyticalStorage 0
   Assert-AreEqual $cosmosDBAccount.EnableFreeTier 0
 
+  # create an existing database
+  Try {
+    $NewDuplicateCosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2"
+  }
+  Catch {
+    Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
+  }
+
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
 
   Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount.Name
@@ -163,19 +171,24 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup3"
+  $rgName = "CosmosDBResourceGroup4"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregionpowershell2"
+  $cosmosDBAccountName = "testupdateregionpowershell"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
-  try{
-    $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
-    do 
-    {
-        $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
-    
+  try {
+      try {  
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+        do 
+        {
+            $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+        } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+      }
+        Catch{
+            Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
+        }
+
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 

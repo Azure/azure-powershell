@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "Name of the HSM.")]
         [Parameter(ParameterSetName = InteractiveStorageName, Mandatory = true, Position = 1,
             HelpMessage = "Name of the HSM.")]
-        [Alias("HsmName")]
-        public string Name { get; set; }
+        public string HsmName { get; set; }
 
         [Parameter(ParameterSetName = InteractiveStorageUri, Mandatory = true,
             HelpMessage = "URI of the storage container where the backup is going to be stored.")]
@@ -43,8 +42,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true, HelpMessage = "The shared access signature (SAS) token to authenticate the storage account.")]
         public SecureString SasToken { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectStorageUri, Mandatory = true, HelpMessage = "Managed HSM object")]
-        [Parameter(ParameterSetName = InputObjectStorageName, Mandatory = true, HelpMessage = "Managed HSM object")]
+        [Parameter(ParameterSetName = InputObjectStorageUri, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
+        [Parameter(ParameterSetName = InputObjectStorageName, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
         public PSManagedHsm HsmObject { get; set; }
 
         public override void ExecuteCmdlet()
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (this.IsParameterBound(c => c.HsmObject))
             {
-                Name = HsmObject.Name;
+                HsmName = HsmObject.Name;
             }
 
             if (this.IsParameterBound(c => c.StorageAccountName))

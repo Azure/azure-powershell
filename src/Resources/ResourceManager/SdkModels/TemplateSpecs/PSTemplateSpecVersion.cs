@@ -88,7 +88,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 LastModifiedTime = templateSpecVersion.SystemData.LastModifiedAt,
                 Name = templateSpecVersion.Name,
                 Description = templateSpecVersion.Description,
-                Tags = templateSpecVersion.Tags,
+                Tags = templateSpecVersion.Tags == null
+                    ? new Dictionary<string, string>()
+                    : new Dictionary<string, string>(templateSpecVersion.Tags),
                 // Note: Cast is redundant, but present for clarity reasons:
                 Template = ((JToken)templateSpecVersion.Template).ToString()
             };

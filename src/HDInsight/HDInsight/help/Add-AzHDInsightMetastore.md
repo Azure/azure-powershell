@@ -82,6 +82,53 @@ PS C:\> New-AzHDInsightClusterConfig  `
 
 This command adds a SQL database metastore to the cluster named your-hadoop-001.
 
+### Example 2: Add a custom Ambari database to the cluster configuration object
+```
+PS C:\># Primary storage account info
+PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
+PS C:\> $storageAccountName = "yourstorageacct001"
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+
+
+PS C:\> $storageContainer = "container001"
+
+# Cluster configuration info
+PS C:\> $location = "East US 2"
+PS C:\> $clusterResourceGroupName = "Group"
+PS C:\> $clusterName = "your-hadoop-002"
+PS C:\> $clusterCreds = Get-Credential
+
+# If the cluster's resource group doesn't exist yet, run:
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+# Custom Amari database info
+PS C:\> $ambariSqlServer = "your-sqlserver-001"
+PS C:\> $ambariDb = "your-sqldb-003"
+PS C:\> $ambariCreds = Get-Credential
+
+# Create the cluster
+PS C:\> New-AzHDInsightClusterConfig  `
+            | Add-AzHDInsightMetastore `
+                -SqlAzureServerName "$ambariSqlServer.database.contoso.net" `
+                -DatabaseName $ambariDb `
+                -Credential $ambariCreds `
+                -MetastoreType AmbariDatabase `
+            | New-AzHDInsightCluster `
+                -ClusterType Hadoop `
+                -OSType Windows `
+                -ClusterSizeInNodes 4 `
+                -ResourceGroupName $clusterResourceGroupName `
+                -ClusterName $clusterName `
+                -HttpCredential $clusterCreds `
+                -Location $location `
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
+```
+
+This command adds a custom Ambari database to the cluster named your-hadoop-002.
+
 ## PARAMETERS
 
 ### -Config
@@ -153,7 +200,7 @@ Possible values are HiveMetastore or OozieMetastore.
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType
 Parameter Sets: (All)
 Aliases:
-Accepted values: HiveMetastore, OozieMetastore
+Accepted values: HiveMetastore, OozieMetastore, AmbariDatabase
 
 Required: True
 Position: 1

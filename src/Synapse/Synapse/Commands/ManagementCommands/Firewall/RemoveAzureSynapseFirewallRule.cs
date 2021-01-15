@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Synaspe
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -55,14 +58,19 @@ namespace Microsoft.Azure.Commands.Synaspe
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.ShouldProcess(this.Name, string.Format(Resources.RemovingFirewallRule, this.Name, this.WorkspaceName)))
-            {
-                SynapseAnalyticsClient.DeleteFirewallRule(ResourceGroupName, WorkspaceName, Name);
-                if (PassThru)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveFirewallRule, Name),
+                string.Format(Resources.RemovingFirewallRule, this.Name, this.WorkspaceName),
+                Name,
+                () =>
                 {
-                    WriteObject(true);
-                }
-            }
+                    SynapseAnalyticsClient.DeleteFirewallRule(ResourceGroupName, WorkspaceName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

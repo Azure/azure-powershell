@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         private void WriteToFile(PSNotebookResource notebook)
         {
-            string json = JsonConvert.SerializeObject(notebook.Properties, Formatting.Indented);
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(notebook.Properties, Formatting.Indented);
             File.WriteAllText(Path.Combine(this.OutputFolder, notebook.Name + ".ipynb"), json);
         }
     }

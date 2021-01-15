@@ -306,7 +306,7 @@ function Test-Blob
 		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
 		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
 		Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
-		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext	
+		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
 
 		# container softdelete test
 		## Enabled container softdelete,then create and delete a container

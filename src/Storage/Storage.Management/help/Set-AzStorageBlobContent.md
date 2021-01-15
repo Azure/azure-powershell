@@ -303,6 +303,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionScope
+Encryption scope to be used when making requests to the blob.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -File
 Specifies a local file path for a file to upload as blob content.
 
