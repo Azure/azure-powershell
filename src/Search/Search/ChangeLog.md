@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for new networking features
+	- Updated dependency for Microsoft.Azure.Management.Search from 3.0.0 to 4.0.0
+    - Support for adding IP rules to service
+    - Support for disabling public network access to the service (service is only accessible via private endpoints)
+    - Support for managing private endpoint connections
+    - Support for listing resources for which outbound private endpoints can be created
+    - Support for creating outbound private endpoints (shared private link resources) from service to other Azure resources
+* Added support for assigning (or removing) system assigned identity for service
 
 ## Version 0.7.4
 * Update references in .psd1 to use relative path
