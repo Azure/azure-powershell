@@ -41,7 +41,7 @@ Specifies the backup storage redundancy type.
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: GeoRedundant, LocallyRedundant
+Accepted values: GeoRedundant, ZoneRedundant, LocallyRedundant
 
 Required: False
 Position: Named
