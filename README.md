@@ -7,7 +7,8 @@ This repository contains PowerShell cmdlets for developers and administrators to
 Try it out in Azure Cloud Shell!
 * Direct link: Open a browser to https://shell.azure.com
 * Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
-![CloudShellIcon]
+
+[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
 
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.
@@ -180,8 +181,6 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 
 [DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
 [PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest
-
-[CloudShellIcon]: https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png "Launch Azure Cloud Shell"
 
 [ContributionGuidelines]: https://azure.github.io/guidelines/
 [CodeOfConduct]: https://opensource.microsoft.com/codeofconduct/
