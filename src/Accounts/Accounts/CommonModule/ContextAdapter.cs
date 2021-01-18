@@ -156,8 +156,23 @@ namespace Microsoft.Azure.Commands.Common
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                await AuthorizeRequest(context, resourceId, request, cancelToken);
-                return await next(request, cancelToken, cancelAction, signal);
+                IAccessToken accessToken = await AuthorizeRequest(context, resourceId, request, cancelToken);
+                var response = await next(request, cancelToken, cancelAction, signal);
+
+                if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+                {
+                    //get token again with claims challenge
+                    if(accessToken is IClaimsChallengeProcessor processor)
+                    {
+                        var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
+                        if (!string.IsNullOrEmpty(claimsChallenge))
+                        {
+                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken);
+                            response = await next(request, cancelToken, cancelToken, signal);
+                        }
+                    }
+                }
+                return response;
             };
         }
 
@@ -167,21 +182,22 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="context"></param>
         /// <param name="resourceId"></param>
         /// <param name="request"></param>
-        /// <param name="outerToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken)
+        internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (context == null || context.Account == null || context.Environment == null)
             {
                 throw new InvalidOperationException(Resources.InvalidAzureContext);
             }
 
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, resourceId);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
-            }, outerToken);
+                return authToken;
+            }, cancellationToken);
         }
 
         internal void PatchRequestUri(IAzureContext context, HttpRequestMessage request)
