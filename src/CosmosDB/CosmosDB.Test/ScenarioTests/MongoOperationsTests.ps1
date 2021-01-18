@@ -18,8 +18,8 @@ Test MongoDB CRUD cmdlets using Name paramter set
 #>
 function Test-MongoOperationsCmdlets
 {
-  $AccountName = "db001"
-  $rgName = "CosmosDBResourceGroup3668"
+  $AccountName = "mongo-db0002"
+  $rgName = "CosmosDBResourceGroup29"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $shardKey = "partitionkey1"
@@ -47,13 +47,14 @@ Try {
       }
 
       #create index
+      $index0 = New-AzCosmosDBMongoDBIndex -Key "_id"
       $index1 = New-AzCosmosDBMongoDBIndex -Key $partitionKeys -Unique 1
       $index2 = New-AzCosmosDBMongoDBIndex -Key $ttlKeys -TtlInSeconds $ttlInSeconds
 
       #create a new Collection
-      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Index $index1,$index2 -Shard $shardKey
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Index $index0,$index1,$index2 -Shard $shardKey
       Assert-AreEqual $NewCollection.Name $CollectionName
-      Validate-EqualIndexes $NewCollection.Resource.Index ($index1, $index2)
+      Validate-EqualIndexes $NewCollection.Resource.Index ($index0, $index1, $index2)
       Assert-AreEqual $NewCollection.Resource.Shard $ShardKey["Hash"]
 
       #create an existing Collection
@@ -108,9 +109,9 @@ Try {
       $index3 = New-AzCosmosDBMongoDBIndex -Key $ttlKeys -TtlInSeconds $ttlInSeconds2 
       $index4 = New-AzCosmosDBMongoDBIndex -Key $partitionKeys2 -Unique 1
       #update an existing Collection
-      $UpdatedCollection = Update-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Index $index3,$index4
+      $UpdatedCollection = Update-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Index $index0,$index3,$index4
       Assert-AreEqual $UpdatedCollection.Name $CollectionName
-      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index3, $index4)
+      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index0, $index3, $index4)
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -141,8 +142,8 @@ Test MongoDB CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-MongoOperationsCmdletsUsingInputObject
 {
-  $AccountName = "db001"
-  $rgName = "CosmosDBResourceGroup3668"
+  $AccountName = "mongo-db0002"
+  $rgName = "CosmosDBResourceGroup29"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $shardKey = "partitionkey1"
@@ -172,13 +173,14 @@ Try {
       }
 
       #create index
+      $index0 = New-AzCosmosDBMongoDBIndex -Key "_id"
       $index1 = New-AzCosmosDBMongoDBIndex -Key $partitionKeys -Unique 1
       $index2 = New-AzCosmosDBMongoDBIndex -Key $ttlKeys -TtlInSeconds $ttlInSeconds
 
       #create a new Collection
-      $NewCollection = New-AzCosmosDBMongoDBCollection  -ParentObject $NewDatabase -Name $CollectionName -Index $index1,$index2 -Shard $shardKey
+      $NewCollection = New-AzCosmosDBMongoDBCollection  -ParentObject $NewDatabase -Name $CollectionName -Index $index0,$index1,$index2 -Shard $shardKey
       Assert-AreEqual $NewCollection.Name $CollectionName
-      Validate-EqualIndexes $NewCollection.Resource.Index ($index1, $index2)
+      Validate-EqualIndexes $NewCollection.Resource.Index ($index0, $index1, $index2)
       Assert-AreEqual $NewCollection.Resource.Shard $ShardKey["Hash"]
 
       #create an existing Collection
@@ -239,14 +241,14 @@ Try {
       $index3 = New-AzCosmosDBMongoDBIndex -Key $ttlKeys -TtlInSeconds $ttlInSeconds2 
       $index4 = New-AzCosmosDBMongoDBIndex -Key $partitionKeys2 -Unique 1
       #update an existing Collection using ParentObject
-      $UpdatedCollection = Update-AzCosmosDBMongoDBCollection -ParentObject $NewDatabase -Name $CollectionName -Index $index3,$index4
+      $UpdatedCollection = Update-AzCosmosDBMongoDBCollection -ParentObject $NewDatabase -Name $CollectionName -Index $index0,$index3,$index4
       Assert-AreEqual $UpdatedCollection.Name $CollectionName
-      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index3, $index4)
+      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index0, $index3, $index4)
 
       #update an existing Collection using InputObject
-      $UpdatedCollection2 = Update-AzCosmosDBMongoDBCollection -InputObject $UpdatedCollection -Index $index1,$index2
+      $UpdatedCollection2 = Update-AzCosmosDBMongoDBCollection -InputObject $UpdatedCollection -Index $index0,$index1,$index2
       Assert-AreEqual $UpdatedCollection2.Name $CollectionName
-      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index1, $index2)
+      Validate-EqualIndexes $UpdatedCollection.Resource.Index ($index0, $index1, $index2)
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -ParentObject $NewDatabase
@@ -277,8 +279,8 @@ Test MongoDB Throughput cmdlets using all paramter sets
 #>
 function Test-MongoThroughputCmdlets
 {
-  $AccountName = "db001"
-  $rgName = "CosmosDBResourceGroup3668"
+  $AccountName = "mongo-db0002"
+  $rgName = "CosmosDBResourceGroup29"
   $DatabaseName = "dbName3"
   $CollectionName = "collectionName"
 
@@ -358,55 +360,4 @@ function Validate-EqualLists($list1, $list2)
     {
       Assert-true($list1 -contains $ele)
     }
-}
-
-<#
-.SYNOPSIS
-Test Mongo migrate throughput cmdlets 
-#>
-function Test-MongoMigrateThroughputCmdlets
-{
-
-  $AccountName = "db001"
-  $rgName = "CosmosDBResourceGroup3668"
-  $DatabaseName = "dbName4"
-  $CollectionName = "collectionName"
-
-  $ShardKey = "shardKeyPath"
-  $ThroughputValue = 1200
-  $CollectionThroughputValue = 800
-
-  $Autoscale = "Autoscale"
-  $Manual = "Manual"
-
-  Try{
-      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
-      $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-      Assert-AreEqual $Throughput.Throughput $ThroughputValue
-      Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
-
-      $AutoscaleThroughput = Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration -InputObject $NewDatabase -ThroughputType $Autoscale
-      Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
-
-      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration -ParentObject $CosmosDBAccount -Name $DatabaseName -ThroughputType $Manual
-      Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
-
-      $NewCollection =  New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $CollectionThroughputValue -Name $CollectionName -Shard $ShardKey
-      $CollectionThroughput = Get-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
-      Assert-AreEqual $CollectionThroughput.Throughput $CollectionThroughputValue
-
-      $AutoscaledCollectionThroughput = Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -ThroughputType $Autoscale
-      Assert-AreNotEqual $AutoscaledCollectionThroughput.AutoscaleSettings.MaxThroughput 0
-
-      $ManualCollectionThroughput = Invoke-AzCosmosDBMongoDBCollectionThroughputMigration  -InputObject $NewCollection -ThroughputType $Manual
-      Assert-AreEqual $ManualCollectionThroughput.AutoscaleSettings.MaxThroughput 0
-
-      Remove-AzCosmosDBMongoDBCollection -InputObject $NewCollection 
-      Remove-AzCosmosDBMongoDBDatabase -InputObject $NewDatabase
-  }
-  Finally{
-      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
-      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  }
 }
