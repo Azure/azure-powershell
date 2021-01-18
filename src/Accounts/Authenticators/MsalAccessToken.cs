@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    public class MsalAccessToken : IAccessToken
+    public class MsalAccessToken : IAccessToken, IClaimsChallengeProcessor
     {
         public string AccessToken { get; private set; }
 
@@ -112,6 +113,17 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 #endif
             var timeUntilExpiration = ExpiresOn - DateTimeOffset.UtcNow;
             return timeUntilExpiration < ExpirationThreshold;
+        }
+
+        public async ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
+        {
+            //TODO: Credential may not support
+            var newRequestContext = new TokenRequestContext(TokenRequestContext.Scopes, null, claimsChallenge);
+            var token = await TokenCredential.GetTokenAsync(newRequestContext, cancellationToken);
+            AccessToken = token.Token;
+            ExpiresOn = token.ExpiresOn;
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", AccessToken);
+            return true;
         }
     }
 }

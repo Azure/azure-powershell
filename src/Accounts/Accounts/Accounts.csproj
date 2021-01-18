@@ -28,7 +28,7 @@
     <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
       Executable: pwsh
       Application arguments: -NoExit -Command "Import-Module C:\AME\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1"-->
-    <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />
   </Target>
 
   <ItemGroup>
