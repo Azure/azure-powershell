@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
 
                         appServiceEnvironment.VirtualNetwork = new VirtualNetworkProfile(id: subnetResourceId);
                         appServiceEnvironment.InternalLoadBalancingMode = LoadBalancerMode == "Internal" ? "Web,Publishing" : "None";
-
+                        
                         // Create ASEv2
                         ase = WebsitesClient.CreateAppServiceEnvironment(ResourceGroupName, Name, appServiceEnvironment);
                         break;
@@ -119,14 +119,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                         var outboundSubnetResourceId = NetworkClient.ValidateSubnet(outboundSubnet, VirtualNetworkName, outboundSubnetResourceGroupName, DefaultContext.Subscription.Id);
 
                         appServiceEnvironment.VirtualNetwork = new VirtualNetworkProfile(id: outboundSubnetResourceId);
-                        NetworkClient.EnsureASEv3SubnetConfig(outboundSubnetResourceId, inboundSubnetResourceId);
 
                         // Create ASEv3
+                        NetworkClient.VerifyEmptySubnet(outboundSubnetResourceId);
+                        NetworkClient.EnsureSubnetDelegation(outboundSubnetResourceId, "Microsoft.Web/hostingEnvironments");
                         ase = WebsitesClient.CreateAppServiceEnvironment(ResourceGroupName, Name, appServiceEnvironment);
 
                         // Create private endpoint
                         var aseResourceId = ase.Id;
-                        var aseGroupId = "hostingEnvironments";                      
+                        var aseGroupId = "hostingEnvironments";
+                        NetworkClient.EnsureSubnetPrivateEndpointPolicy(inboundSubnetResourceId, false);
                         NetworkClient.CreatePrivateEndpoint(ResourceGroupName, Name, aseResourceId, aseGroupId, inboundSubnetResourceId, Location);
                         break;
                 }

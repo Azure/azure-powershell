@@ -45,6 +45,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
+        public string GetNetworkInterfacePrivateIPAddress(string networkInterfaceId)
+        {
+            var nicId = new ResourceIdentifier(networkInterfaceId);
+            var nic = WrappedNetworkClient.NetworkInterfaces.Get(nicId.ResourceGroupName, nicId.ResourceName);
+            return nic.IpConfigurations[0].PrivateIPAddress;
+        }
+
         public string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)
         {
             //Resource Id Format: "subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}"
@@ -72,14 +79,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return subnetResourceId.ToString();
         }
 
-        public void EnsureASEv3SubnetConfig(string outboundSubnetResourceId, string inboundSubnetResourceId)
+        public string GetVirtualNetworkResourceId(string subnetResourceId)
         {
-            // verify outbound is empty and delegated to hostingEnvironment
-            VerifyEmptySubnet(outboundSubnetResourceId);
-            EnsureSubnetDelegation(outboundSubnetResourceId, "Microsoft.Web/hostingEnvironments");
-
-            // verify inbound has privateEndpoint policy set
-            EnsureSubnetPrivateEndpointPolicy(inboundSubnetResourceId, false);
+            ResourceIdentifier subnetId = new ResourceIdentifier(subnetResourceId);
+            var virtualNetworkResourceId = new ResourceIdentifier();
+            virtualNetworkResourceId.Subscription = subnetId.Subscription;
+            virtualNetworkResourceId.ResourceGroupName = subnetId.ResourceGroupName;
+            virtualNetworkResourceId.ResourceType = "Microsoft.Network/virtualNetworks";
+            virtualNetworkResourceId.ResourceName = subnetId.ParentResource.Substring(subnetId.ParentResource.IndexOf('/')+1);
+            return virtualNetworkResourceId.ToString();
         }
 
         public Subnet GetSubnet(string subnetResourceId)
@@ -187,7 +195,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return null;
         }
 
-        public void CreatePrivateEndpoint(string resourceGroupName, string privateEndpointNamePrefix, string privateLinkResourceId, string groupId, string subnetId, string location)
+        public PrivateEndpoint CreatePrivateEndpoint(string resourceGroupName, string privateEndpointNamePrefix, string privateLinkResourceId, string groupId, string subnetId, string location)
         {
             var privateEndpointName = $"{privateEndpointNamePrefix}PrivateEndpoint";
             var serviceConnectionName = $"{privateEndpointNamePrefix}ServiceConnection";
@@ -200,9 +208,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             plsConnection.PrivateLinkServiceId = privateLinkResourceId;
             plsConnection.GroupIds = groupIds;
             pe.PrivateLinkServiceConnections = new List<PrivateLinkServiceConnection>() { plsConnection };
-            WrappedNetworkClient.PrivateEndpoints.CreateOrUpdate(resourceGroupName, privateEndpointName, pe);
+            return WrappedNetworkClient.PrivateEndpoints.CreateOrUpdate(resourceGroupName, privateEndpointName, pe);
         }
-                
+                               
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

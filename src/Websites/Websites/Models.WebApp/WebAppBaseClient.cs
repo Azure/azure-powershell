@@ -76,5 +76,24 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             }
             set { _networkClient = value; }
         }
+
+        private PrivateDnsClient _privateDnsClient;
+        public PrivateDnsClient PrivateDnsClient
+        {
+            get
+            {
+                if (_privateDnsClient == null)
+                {
+                    _privateDnsClient = new PrivateDnsClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _privateDnsClient;
+            }
+            set { _privateDnsClient = value; }
+        }
     }
 }
