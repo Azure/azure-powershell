@@ -5656,7 +5656,16 @@
               </ListItem>
               <ListItem>
                 <Label>Quick Mode SA</Label>
-                <ScriptBlock>"$($_.quickModeSa.Length) item(s)"</ScriptBlock>
+                <ScriptBlock>
+                  if ($_.quickModeSa.Length -ne $null)
+                  {
+                    "$($_.quickModeSa.Length) item(s)"
+                  }
+                  else
+                  {
+                    "0 item(s)"
+                  }
+                </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -5842,7 +5851,16 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>"$($_.quickModeSa.Length) item(s)"</ScriptBlock>
+                <ScriptBlock>
+                  if ($_.quickModeSa.Length -ne $null)
+                  {
+                  "$($_.quickModeSa.Length) item(s)"
+                  }
+                  else
+                  {
+                  "0 item(s)"
+                  }
+                </ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
