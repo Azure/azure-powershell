@@ -5842,7 +5842,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>"$($_.quickModeSa.Length) item(s)"</PropertyName>
+                <ScriptBlock>"$($_.quickModeSa.Length) item(s)"</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
