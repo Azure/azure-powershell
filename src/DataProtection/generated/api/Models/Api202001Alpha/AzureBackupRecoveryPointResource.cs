@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
 
         /// <summary>AzureBackupRecoveryPointResource properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPoint Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPoint()); set => this._property = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPoint Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPoint()); set => this._property = value; }
 
         /// <summary>
         /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
