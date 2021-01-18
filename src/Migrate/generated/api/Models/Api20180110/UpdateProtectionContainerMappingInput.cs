@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The class type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderSpecificInputInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateProtectionContainerMappingInputPropertiesInternal)Property).ProviderSpecificInputInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateProtectionContainerMappingInputPropertiesInternal)Property).ProviderSpecificInputInstanceType = value; }
+        public string ProviderSpecificInputInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateProtectionContainerMappingInputPropertiesInternal)Property).ProviderSpecificInputInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateProtectionContainerMappingInputPropertiesInternal)Property).ProviderSpecificInputInstanceType = value ?? null; }
 
         /// <summary>Creates an new <see cref="UpdateProtectionContainerMappingInput" /> instance.</summary>
         public UpdateProtectionContainerMappingInput()

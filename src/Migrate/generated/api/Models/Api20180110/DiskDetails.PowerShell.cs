@@ -88,9 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).MaxSizeMb = (long?) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).MaxSizeMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).MaxSizeMb = (long?) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).MaxSizeMb, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

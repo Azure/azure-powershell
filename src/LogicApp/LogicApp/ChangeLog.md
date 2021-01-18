@@ -18,10 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix for Get-AzLogicAppTriggerHistory and Get-AzLogicAppRunAction only retrieving the first page of results
+
+## Version 1.5.0
+* Fixed issue that `Get-AzLogicAppTriggerHistory` and `Get-AzLogicAppRunAction` only retrieving the first page of results [#9141]
 
 ## Version 1.4.0
-* Fixed for Get-AzLogicAppRunHistory only retrieving the first page of results
+* Fixed issue that `Get-AzLogicAppRunHistory` only retrieving the first page of results [#9141]
 
 ## Version 1.3.2
 * Update references in .psd1 to use relative path

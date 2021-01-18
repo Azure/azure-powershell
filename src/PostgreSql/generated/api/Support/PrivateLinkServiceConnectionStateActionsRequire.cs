@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>The actions required for private link service connection.</summary>
     public partial struct PrivateLinkServiceConnectionStateActionsRequire :
         System.IEquatable<PrivateLinkServiceConnectionStateActionsRequire>
     {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PrivateLinkServiceConnectionStateActionsRequire(System.Convert.ToString(value));
+            return new PrivateLinkServiceConnectionStateActionsRequire(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PrivateLinkServiceConnectionStateActionsRequire</summary>

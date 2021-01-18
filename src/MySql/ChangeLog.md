@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Updated New-AzMySqlFlexibleServer cmdlet to provide easy resource group and network management within RDBMS flexible server management
+* Added new cmdlets Get-AzMySqlFlexibleServerLocationBasedCapability and Get-AzMySqlConnectionString
+* Added parameter MinimalTlsVersion
+
 ## Version 0.3.1
 * Fixed secure string issue
 

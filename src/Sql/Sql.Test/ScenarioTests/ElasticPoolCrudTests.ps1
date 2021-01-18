@@ -173,6 +173,50 @@ function Test-CreateElasticPoolWithZoneRedundancy
 
 <#
 	.SYNOPSIS
+	Tests creating an elastic pool with maintenance.
+#>
+function Test-CreateElasticPoolWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create pool with default maintenance
+		$poolName = Get-ElasticPoolName
+		$mId = Get-DefaultPublicMaintenanceConfigurationId $location
+        $serverResourceId = "/subscriptions/${subscriptionId}/resourceGroups/${rgname}/providers/Microsoft.Sql/servers/${serverName}"
+		$job = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-ElasticPoolName $poolName -Edition Premium -MaintenanceConfigurationId $mId -AsJob
+		$job | Wait-Job
+		$ep = $job.Output
+
+		Assert-AreEqual $ep.ElasticPoolName $poolName
+		Assert-NotNull $ep.Edition
+		Assert-NotNull $ep.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $ep.MaintenanceConfigurationId.ToLower()
+
+		# Create pool with non-default maintenance
+		$poolName = Get-ElasticPoolName
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$ep = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-ElasticPoolName $poolName -Edition Premium -MaintenanceConfigurationId $mId
+		Assert-AreEqual $ep.ElasticPoolName $poolName
+		Assert-NotNull $ep.Edition
+		Assert-NotNull $ep.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $ep.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating an elastic pool
 #>
 function Test-UpdateElasticPool
@@ -361,6 +405,45 @@ function Test-UpdateElasticPoolWithZoneRedundancy
 
 <#
 	.SYNOPSIS
+	Tests updating an elastic pool with maintenance
+#>
+function Test-UpdateElasticPoolWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location	
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$poolName = Get-ElasticPoolName
+		$ep1 = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $poolName `
+			-Edition Premium
+		Assert-AreEqual $ep1.ElasticPoolName $poolName
+		Assert-NotNull $ep1.MaintenanceConfigurationId
+		Assert-AreEqual $defaultMId.ToLower() $ep1.MaintenanceConfigurationId.ToLower()
+
+		# Alter database maintenance
+		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$sep1 = Set-AzSqlElasticPool -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName `
+			-MaintenanceConfigurationId $mName
+
+		Assert-AreEqual $sep1.ElasticPoolName $poolName
+		Assert-NotNull $sep1.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $sep1.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests getting an elastic pool
 #>
 function Test-GetElasticPool
@@ -444,6 +527,45 @@ function Test-GetElasticPoolWithZoneRedundancy
 			-ElasticPoolName $ep2.ElasticPoolName
 		Assert-NotNull $gep2.ZoneRedundant
 		Assert-AreEqual "false" $gep2.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests getting an elastic pool with maintenance
+#>
+function Test-GetElasticPoolWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create elastic pool without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$poolName = Get-ElasticPoolName
+		$ep1 = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $poolName `
+			-Edition Premium
+
+		$gep1 = Get-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -ElasticPoolName $ep1.ElasticPoolName
+		Assert-AreEqual $gep1.ElasticPoolName $ep1.ElasticPoolName
+		Assert-AreEqual $defaultMId.ToLower() $gep1.MaintenanceConfigurationId.ToLower()
+
+		# Create elastic pool with maintenance
+		$poolName = Get-ElasticPoolName
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$ep2 = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-ElasticPoolName $poolName -Edition Premium -MaintenanceConfigurationId $mId
+
+		$gep2 = Get-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -ElasticPoolName $ep2.ElasticPoolName
+		Assert-AreEqual $gep2.ElasticPoolName $ep2.ElasticPoolName
+		Assert-AreEqual $mId.ToLower() $gep2.MaintenanceConfigurationId.ToLower()
 	}
 	finally
 	{

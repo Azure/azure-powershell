@@ -13,27 +13,27 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMySqlFlexibleServerFirewallRule' {
     It 'CreateExpanded' {
-        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
         $rule.Name | Should -Be $env.firewallRuleName
         $rule.StartIPAddress | Should -Be 0.0.0.0
         $rule.EndIPAddress | Should -Be 0.0.0.1
-        Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+        Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
     }
 
     It 'ClientIPAddress' {
         #Use only one parameter when only one IP
-        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -ClientIPAddress 0.0.0.1
+        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -ClientIPAddress 0.0.0.1
         $rule.Name | Should -Be $env.firewallRuleName
         $rule.StartIPAddress | Should -Be 0.0.0.1
         $rule.EndIPAddress | Should -Be 0.0.0.1
-        Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+        Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
     }
 
     It 'AllowAll' {
-        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -AllowAll
+        $rule = New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -AllowAll
         $rule.Name | Should -Be $env.firewallRuleName
         $rule.StartIPAddress | Should -Be 0.0.0.0
         $rule.EndIPAddress | Should -Be 255.255.255.255
-        Remove-AzMySqlFlexibleServerFirewallRule -Name $rule.Name -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+        Remove-AzMySqlFlexibleServerFirewallRule -Name $rule.Name -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
     }
 }

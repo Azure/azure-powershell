@@ -94,9 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount = (int?) content.GetValueForProperty("GroupCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).AssessmentCount = (int?) content.GetValueForProperty("AssessmentCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).AssessmentCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).ExtendedDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsExtendedDetails) content.GetValueForProperty("ExtendedDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).ExtendedDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SolutionDetailsExtendedDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount = (int?) content.GetValueForProperty("GroupCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializeDictionary(content);
         }
 
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount = (int?) content.GetValueForProperty("GroupCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).AssessmentCount = (int?) content.GetValueForProperty("AssessmentCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).AssessmentCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).ExtendedDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsExtendedDetails) content.GetValueForProperty("ExtendedDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).ExtendedDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SolutionDetailsExtendedDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount = (int?) content.GetValueForProperty("GroupCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolutionDetailsInternal)this).GroupCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
         }
 

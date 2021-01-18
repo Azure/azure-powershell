@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ConfirmationMessage = "Don't ask for confirmation.";
             public const string BackupManagementType = "The class of resources being protected. Currently the values supported for this cmdlet are ";
             public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
+            public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
         }
 
         internal static class Policy
@@ -56,6 +57,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
             public const string ProtectionPolicy = "Protection policy object.";
             public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
+            public const string EnableProtectionPolicy = "Protection policy object. If policy ID is not present or the backup item is not associated with any" +
+                " policy, then this command will expect a policyID.";
         }
 
         internal static class Job
@@ -141,6 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
             public const string RecoveryConfig = "Recovery config";
+            public const string UseSecondaryReg = "Trigger restore to secondary region (Cross Region Restore)";
         }
 
         internal static class RestoreVM

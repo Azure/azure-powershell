@@ -14,9 +14,8 @@ Sets the properties for backup management.
 ## SYNTAX
 
 ```
-Set-AzRecoveryServicesBackupProperty -Vault <ARSVault>
- [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRecoveryServicesBackupProperty -Vault <ARSVault>  [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>]
+ [-EnableCrossRegionRestore] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PowerShell;
 
+    /// <summary>Dictionary of <string></summary>
     [System.ComponentModel.TypeConverter(typeof(VMwareSiteTagsTypeConverter))]
     public partial class VMwareSiteTags
     {
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             AfterDeserializePSObject(content);
         }
     }
+    /// Dictionary of <string>
     [System.ComponentModel.TypeConverter(typeof(VMwareSiteTagsTypeConverter))]
     public partial interface IVMwareSiteTags
 

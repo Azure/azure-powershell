@@ -29,27 +29,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The job display name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskJobFriendlyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobFriendlyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobFriendlyName = value; }
+        public string JobTaskJobFriendlyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobFriendlyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobFriendlyName = value ?? null; }
 
         /// <summary>The job id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskJobId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobId = value; }
+        public string JobTaskJobId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobId = value ?? null; }
 
         /// <summary>The job name. Enum type ScenarioName.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskJobScenarioName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobScenarioName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobScenarioName = value; }
+        public string JobTaskJobScenarioName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobScenarioName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).JobScenarioName = value ?? null; }
 
         /// <summary>The workflow affected object type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskTargetInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetInstanceType = value; }
+        public string JobTaskTargetInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetInstanceType = value ?? null; }
 
         /// <summary>The object id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskTargetObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectId = value; }
+        public string JobTaskTargetObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectId = value ?? null; }
 
         /// <summary>The object name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string JobTaskTargetObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectName = value; }
+        public string JobTaskTargetObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntityInternal)JobTask).TargetObjectName = value ?? null; }
 
         /// <summary>Internal Acessors for JobTask</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobEntity Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobTaskDetailsInternal.JobTask { get => (this._jobTask = this._jobTask ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobEntity()); set { {_jobTask = value;} } }

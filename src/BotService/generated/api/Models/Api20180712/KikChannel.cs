@@ -18,22 +18,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string ApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).ApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).ApiKey = value; }
+        public string ApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).ApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).ApiKey = value ?? null; }
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsValidated = value; }
+        public bool? IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).IsValidated = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.KikChannelProperties()); set { {_property = value;} } }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelProperties _property;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The Kik user name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string UserName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).UserName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).UserName = value; }
+        public string UserName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).UserName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IKikChannelPropertiesInternal)Property).UserName = value ?? null; }
 
         /// <summary>Creates an new <see cref="KikChannel" /> instance.</summary>
         public KikChannel()
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"apiKey",
@@ -81,12 +81,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string ApiKey { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         bool? IsValidated { get; set; }
         /// <summary>The Kik user name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Kik user name",
         SerializedName = @"userName",
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// </summary>
         string ApiKey { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         bool? IsValidated { get; set; }
         /// <summary>The set of properties specific to Kik channel resource</summary>

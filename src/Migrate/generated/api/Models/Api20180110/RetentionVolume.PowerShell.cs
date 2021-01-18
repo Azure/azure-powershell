@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).CapacityInByte = (long?) content.GetValueForProperty("CapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).CapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).FreeSpaceInByte = (long?) content.GetValueForProperty("FreeSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).FreeSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).ThresholdPercentage = (int?) content.GetValueForProperty("ThresholdPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).ThresholdPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).CapacityInByte = (long?) content.GetValueForProperty("CapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).CapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).FreeSpaceInByte = (long?) content.GetValueForProperty("FreeSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).FreeSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).ThresholdPercentage = (int?) content.GetValueForProperty("ThresholdPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).ThresholdPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRetentionVolumeInternal)this).VolumeName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

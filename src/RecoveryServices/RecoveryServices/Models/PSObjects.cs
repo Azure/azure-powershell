@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
 
+        /// <summary>
+        /// Gets or sets CrossRegionRestore Flag.
+        /// </summary>
+        public bool CrossRegionRestore { get; set; }
+
         #endregion
     }
 

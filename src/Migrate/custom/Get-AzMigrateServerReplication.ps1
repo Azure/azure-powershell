@@ -32,12 +32,14 @@ function Get-AzMigrateServerReplication {
         ${TargetObjectID},
 
         [Parameter(ParameterSetName='ListByName', Mandatory)]
+        [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='ListByName', Mandatory)]
+        [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Azure Migrate project  in the current subscription.
@@ -66,6 +68,12 @@ function Get-AzMigrateServerReplication {
         [System.String]
         # Specifies the Azure Migrate Project in which servers are replicating.
         ${ProjectID},
+
+        [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the display name of the replicating machine.
+        ${MachineName},
 
         [Parameter(ParameterSetName='ListByName')]
         [Parameter(ParameterSetName='ListById')]
@@ -149,6 +157,7 @@ function Get-AzMigrateServerReplication {
             $HasSkipToken = $PSBoundParameters.ContainsKey('SkipToken')
             $null = $PSBoundParameters.Remove('Filter')
             $null = $PSBoundParameters.Remove('SkipToken')
+            $null = $PSBoundParameters.Remove('MachineName')
            
             if ($parameterSet -eq "GetBySDSID"){
                 $MachineIdArray = $DiscoveredMachineId.Split("/")
@@ -212,7 +221,7 @@ function Get-AzMigrateServerReplication {
                 }
             }
             
-            if($parameterSet -match 'List'){
+            if(($parameterSet -match 'List') -or ($parameterSet -eq "GetByMachineName")){
                 if($parameterSet -eq 'ListById'){
                     $ProjectName = $ProjectID.Split("/")[8]
                     $ResourceGroupName = $ResourceGroupID.Split("/")[4]
@@ -235,7 +244,11 @@ function Get-AzMigrateServerReplication {
                 if($HasFilter){$null = $PSBoundParameters.Add("Filter", $Filter)}
                 if($HasSkipToken){$null = $PSBoundParameters.Add("SkipToken", $SkipToken)}
                 
-                return Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+                $replicatingItems = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+                if($parameterSet -eq "GetByMachineName"){
+                    $replicatingItems =  $replicatingItems | Where-Object {$_.MachineName -eq $MachineName}
+                }
+                return $replicatingItems
             }
 
             if (($parameterSet -eq "GetByInputObject") -or ($parameterSet -eq "GetBySRSID")){

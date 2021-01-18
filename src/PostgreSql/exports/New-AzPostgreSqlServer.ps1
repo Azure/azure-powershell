@@ -63,13 +63,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
-    # The location the resource resides in.
+    # Administrator username for the server.
+    # Once set, it cannot be changed.
     ${AdministratorUserName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.Security.SecureString]
-    # The location the resource resides in.
+    # The password of the administrator.
+    # Minimum 8 characters and maximum 128 characters.
+    # Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
     ${AdministratorLoginPassword},
 
     [Parameter(Mandatory)]
@@ -85,6 +88,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum]
     # Enable ssl enforcement or not when connect to server.
     ${SslEnforcement},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum]
+    # Set the minimal TLS version for connections to server when SSL is enabled.
+    # Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+    ${MinimalTlsVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]

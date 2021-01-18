@@ -36,9 +36,9 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IServer>: The source server object to create replica from.
-  Location <String>: The location the resource resides in.
-  [Tag <ITrackedResourceTags>]: Application-specific metadata in the form of key-value pairs.
+INPUTOBJECT <IServer>: The server for the connection string
+  Location <String>: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   [EarliestRestoreDate <DateTime?>]: Earliest restore point creation time (ISO8601 format)
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer]
-    # The source server object to create replica from.
+    # The server for the connection string
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
