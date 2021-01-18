@@ -4840,7 +4840,7 @@
               </ListItem>
               <ListItem>
                 <Label>Quick Mode SA</Label>
-                <PropertyName>quickModeSa</PropertyName>
+                <ScriptBlock>"$($_.quickModeSa.Length) item(s)"</ScriptBlock>
               </ListItem>
             </ListItems>
             <ListItems>
