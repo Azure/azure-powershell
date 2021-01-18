@@ -16,17 +16,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The Slack client id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientId = value; }
+        public string ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientId = value ?? null; }
 
         /// <summary>
         /// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string ClientSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientSecret = value; }
+        public string ClientSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).ClientSecret = value ?? null; }
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The Slack landing page Url</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string LandingPageUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).LandingPageUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).LandingPageUrl = value; }
+        public string LandingPageUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).LandingPageUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).LandingPageUrl = value ?? null; }
 
         /// <summary>The Sms auth token</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelProperties _property;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string VerificationToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).VerificationToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).VerificationToken = value; }
+        public string VerificationToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).VerificationToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISlackChannelPropertiesInternal)Property).VerificationToken = value ?? null; }
 
         /// <summary>Creates an new <see cref="SlackChannel" /> instance.</summary>
         public SlackChannel()
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
     {
         /// <summary>The Slack client id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Slack client id",
         SerializedName = @"clientId",
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"clientSecret",
@@ -125,12 +125,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string ClientSecret { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"verificationToken",
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// </summary>
         string ClientSecret { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         bool? IsValidated { get; set; }
         /// <summary>The Slack landing page Url</summary>

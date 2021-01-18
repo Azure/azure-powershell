@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The scale unit for this VpnGateway.")]
         public uint VpnGatewayScaleUnit { get; set; }
 
@@ -133,6 +138,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 existingVpnGateway.Connections = new List<PSVpnConnection>();
                 existingVpnGateway.Connections.AddRange(this.VpnConnection);
+            }
+
+            //// Modify the natRules
+            existingVpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                existingVpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
             }
 
             //// Modify BgpPeeringAddress

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.0
 * Added support for -QueryString parameter in New-Az*Deployments cmdlets
 
 ## Version 3.1.1

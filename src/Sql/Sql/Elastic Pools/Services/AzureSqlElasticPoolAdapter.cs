@@ -111,7 +111,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
-                LicenseType = model.LicenseType
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = model.MaintenanceConfigurationId,
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -144,7 +145,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
-                LicenseType = model.LicenseType
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -412,7 +414,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 DatabaseDtuMin = pool.DatabaseDtuMin,
                 DatabaseDtuMax = pool.DatabaseDtuMax,
                 Family = pool.Sku.Family,
-                LicenseType = pool.LicenseType
+                LicenseType = pool.LicenseType,
+                MaintenanceConfigurationId = pool.MaintenanceConfigurationId,
             };
 
             return model;

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.1
 * Fix ContinuationToken never null when list blob with -IncludeVersion
     - `Get-AzStorageBlob`
 

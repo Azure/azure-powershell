@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>A value indicating whether multi-VM sync has to be enabled.</summary>
     public partial struct MultiVMSyncStatus :
         System.IEquatable<MultiVMSyncStatus>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="MultiVMSyncStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MultiVMSyncStatus(System.Convert.ToString(value));
+            return new MultiVMSyncStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MultiVMSyncStatus</summary>

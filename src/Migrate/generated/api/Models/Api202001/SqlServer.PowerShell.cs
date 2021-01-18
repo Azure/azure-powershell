@@ -95,11 +95,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered = (string) content.GetValueForProperty("Clustered",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ServicePack = (string) content.GetValueForProperty("ServicePack",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ServicePack, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Version, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered = (string) content.GetValueForProperty("Clustered",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered = (string) content.GetValueForProperty("Clustered",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ServicePack = (string) content.GetValueForProperty("ServicePack",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ServicePack, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Version, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered = (string) content.GetValueForProperty("Clustered",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).Clustered, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServerInternal)this).ClusterName, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 
