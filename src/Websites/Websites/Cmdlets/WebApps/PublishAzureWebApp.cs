@@ -76,10 +76,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     HttpClient client = new HttpClient();
                     if (Timeout != 0)
-                    {
-                        // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
-                        client.Timeout = TimeSpan.FromMilliseconds(Timeout);
-                    }
+                        //The default value should be greater than default 100,000 milliseconds(100 seconds).
+                        if (Timeout > 100000)
+                        {
+                            // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
+                            client.Timeout = TimeSpan.FromMilliseconds(Timeout);
+                        }
+                        else
+                        {
+                            throw new ValidationMetadataException("Minimum value to set for the timeout is 100,000 milliseconds.");
+                        }
                     var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                     HttpContent fileContent = new StreamContent(s);
