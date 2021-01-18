@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountNameHelpMessage = "Name of the Cosmos DB database account.";
         public const string AccountKeyKindHelpMessage = "The access key to regenerate. Accepted values: primary, primaryReadonly, secondary, secondaryReadonly ";
         public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
+        public const string AccountInstanceIdHelpMessage = "The instance Id of the CosmosDB database account. (This is returned as a part of database account properties).";
         public const string AccountObjectHelpMessage = "CosmosDB Account object";
         public const string AccountUpdateLocationHelpMessage = "The georeplication location to be enabled for the Cosmos DB account, can be a single string or an array of strings.";
         public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong. Default is Session.";
@@ -53,6 +54,23 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
         public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
+        public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
+
+        //Restore specific help messages
+        public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
+        public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
+        public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
+        public const string DatabasesToRestoreHelpMessage = "The list of PSDatabaseToRestore objects which specify the subset of databases and collections to restore from the source account. (If not provided, all the databases will be restored)";
+        public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
+        public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
+        public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
+        public const string RestoreLocationNameHelpMessage = "The location of the source account from which restore is triggered. This will also be the write region of the restored account";
+
+        //Backup specific help messages
+        public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";
+        public const string BackupIntervalInMinHelpMessage = "The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)";
+        public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
+        public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -104,13 +122,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IncludedPathIndexesHelpMessage = "List of indexes for this path";
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
+        public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";
         public const string MongoDatabaseObjectHelpMessage = "Mongo Database object.";
         public const string MongoCollectionObjectHelpMessage = "Mongo Collection object.";
         public const string MongoShardKeyHelpMessage = "Sharding key path.";
-        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage.";
+        public const string MongoCollectionAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
         public const string MongoIndexTtlInSeconds = "Number of seconds after which the index expires.";
         public const string MongoIndexUnique = "Bool to indicate if the index is unique or not.";
         public const string MongoIndexKey = "Array of key values as strings.";
@@ -154,6 +173,5 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         // Throughput cmdlets for all APIs
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
-        public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
     }
 }

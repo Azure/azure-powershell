@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public PSConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
         //
         // Summary:
+        //     Gets or sets analytical TTL.
+        // int? since our Service defines it as int?
+        public int? AnalyticalStorageTtl { get; set; }
+        //
+        // Summary:
         //     Gets a system generated property. A unique identifier.
         public string _rid { get; }
         //
