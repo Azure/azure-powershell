@@ -14,7 +14,7 @@ Gets the restorable database account object
 
 ```
 Get-AzCosmosDBRestorableDatabaseAccount [-LocationName <String>] [-DatabaseAccountInstanceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseAccountName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,21 @@ Gets the restorable database account with the given DatabaseInstanceId in the gi
 
 ### -DatabaseAccountInstanceId
 The instance Id of the CosmosDB database account.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseAccountName
+Name of the Cosmos DB database account.
 
 ```yaml
 Type: String

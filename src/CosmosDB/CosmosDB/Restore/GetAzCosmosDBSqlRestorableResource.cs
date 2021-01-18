@@ -15,9 +15,13 @@
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using System.Text.Json.Serialization;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -32,8 +36,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseAccountInstanceId { get; set; }
 
+        [Newtonsoft.Json.JsonConverter(typeof(IsoDateTimeConverter))]
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTimeOffset RestoreTimestampInUtc { get; set; }
+        public DateTime RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreLocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -41,7 +46,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, RestoreTimestampInUtc.ToString()).GetAwaiter().GetResult().Body;
+            DateTime dateTimeInUtc;
+            if (RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
+            {
+                dateTimeInUtc = RestoreTimestampInUtc;
+            }
+            else
+            {
+                dateTimeInUtc = RestoreTimestampInUtc.ToUniversalTime();
+            }
+
+            WriteObject("RestoreTimestamp: " + RestoreTimestampInUtc);
+            WriteObject("RestoreTimestamp in UTC: " + RestoreTimestampInUtc.ToUniversalTime());
+            IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
             foreach (DatabaseRestoreResource restorableSqlResource in restorableSqlResources)
                 WriteObject(new PSDatabaseToRestore(restorableSqlResource));
         }

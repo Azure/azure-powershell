@@ -16,6 +16,9 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -30,9 +33,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseAccountInstanceId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.AccountNameHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseAccountName { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(DatabaseAccountInstanceId))
+            if (!string.IsNullOrEmpty(DatabaseAccountName))
+            {
+                List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
+                List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(databaseAccount => databaseAccount.AccountName.Equals(DatabaseAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                foreach (RestorableDatabaseAccountGetResult restorableDatabaseAccount in accountsWithMatchingName)
+                    WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
+            }
+            else if (!string.IsNullOrEmpty(DatabaseAccountInstanceId) && !string.IsNullOrEmpty(LocationName))
             {
                 RestorableDatabaseAccountGetResult restorableDatabaseAccount = CosmosDBManagementClient.RestorableDatabaseAccounts.GetByLocationWithHttpMessagesAsync(
                     LocationName,

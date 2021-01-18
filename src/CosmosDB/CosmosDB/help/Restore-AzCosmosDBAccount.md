@@ -13,7 +13,7 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 ## SYNTAX
 
 ```
-Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTimeOffset> -SourceDatabaseAccountName <String>
+Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
  [-DatabasesToRestore <PSDatabaseToRestore[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The timestamp to which the source account has to be restored to.
 
 ```yaml
-Type: DateTimeOffset
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

@@ -14,7 +14,7 @@ Lists all the restorable Azure Cosmos DB SQL resources available for a specific 
 
 ```
 Get-AzCosmosDBSqlRestorableResource -LocationName <String> -DatabaseAccountInstanceId <String>
- -RestoreTimestampInUtc <DateTimeOffset> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
+ -RestoreTimestampInUtc <DateTime> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The timestamp to which the source account has to be restored to.
 
 ```yaml
-Type: DateTimeOffset
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

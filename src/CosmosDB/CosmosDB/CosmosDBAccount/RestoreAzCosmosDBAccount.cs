@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     public class RestoreAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTimeOffset RestoreTimestampInUtc { get; set; }
+        public DateTime RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreSourceDatabaseAccountNameHelpMessage)]
         public string SourceDatabaseAccountName { get; set; }
@@ -54,6 +54,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            DateTime utcRestoreDateTime;
+            if (RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
+            {
+                utcRestoreDateTime = RestoreTimestampInUtc;
+            }
+            else
+            {
+                utcRestoreDateTime = RestoreTimestampInUtc.ToUniversalTime();
+            }
+
+            WriteObject("RestoreTimestamp in UTC: " + utcRestoreDateTime);
+
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
 
             RestorableDatabaseAccountGetResult sourceAccountToRestore = null;
@@ -63,7 +75,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                 {
                     if (restorableAccount.CreationTime.HasValue &&
-                        restorableAccount.CreationTime < RestoreTimestampInUtc)
+                        restorableAccount.CreationTime < utcRestoreDateTime)
                     {
                         if (!restorableAccount.DeletionTime.HasValue || restorableAccount.DeletionTime < RestoreTimestampInUtc)
                         {
@@ -76,7 +88,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (sourceAccountToRestore == null)
             {
-                WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given timestamp {RestoreTimestampInUtc}");
+                WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
                 return;
             }
 
@@ -84,7 +96,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             PSRestoreParameters restoreParameters = new PSRestoreParameters()
             {
                 RestoreSource = sourceAccountToRestore.Id,
-                RestoreTimestampInUtc = RestoreTimestampInUtc.DateTime,
+                RestoreTimestampInUtc = utcRestoreDateTime,
                 DatabasesToRestore = DatabasesToRestore
             };
 
