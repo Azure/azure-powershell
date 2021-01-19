@@ -21,6 +21,15 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -Resour
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### platform
+```
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -DataSourceType <String> -SourceDataStore <DataStoreType>
+ -TargetInfo <IRestoreTargetInfoBase> [-SubscriptionId <String>]
+ [-RecoveryPoint <IAzureBackupRecoveryPointResource>] [-RecoveryRequestType <RestoreRequestType>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### Trigger
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
@@ -73,7 +82,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Trigger, TriggerExpanded, TriggerViaIdentity, TriggerViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,7 +97,22 @@ The name of the backup instance
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: platform, Trigger, TriggerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceType
+DataStore Type of the vault
+
+```yaml
+Type: System.String
+Parameter Sets: platform
 Aliases:
 
 Required: True
@@ -103,7 +127,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Trigger, TriggerExpanded, TriggerViaIdentity, TriggerViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -134,7 +158,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Trigger, TriggerExpanded, TriggerViaIdentity, TriggerViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -180,7 +204,38 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Trigger, TriggerExpanded, TriggerViaIdentity, TriggerViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPoint
+Storage Type of the vault
+To construct, see NOTES section for RECOVERYPOINT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPointResource
+Parameter Sets: platform
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryRequestType
+DataStore Type of the vault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreRequestType
+Parameter Sets: platform
 Aliases:
 
 Required: False
@@ -195,7 +250,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: platform, Trigger, TriggerExpanded
 Aliases:
 
 Required: True
@@ -235,6 +290,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SourceDataStore
+DataStore Type of the vault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
+Parameter Sets: platform
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceDataStoreType
 Gets or sets the type of the source data store.
 
@@ -255,7 +325,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: platform, Trigger, TriggerExpanded
 Aliases:
 
 Required: False
@@ -265,12 +335,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetInfo
+DataStore Type of the vault
+To construct, see NOTES section for TARGETINFO properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IRestoreTargetInfoBase
+Parameter Sets: platform
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: platform, Trigger, TriggerExpanded
 Aliases:
 
 Required: True
@@ -324,6 +410,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
+### System.Management.Automation.PSObject
+
 ## NOTES
 
 ALIASES
@@ -351,6 +439,13 @@ PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
   - `RestoreTargetInfoObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
   - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
   - `[RestoreTargetInfoRestoreLocation <String>]`: Target Restore region
+
+RECOVERYPOINT <IAzureBackupRecoveryPointResource>: Storage Type of the vault
+  - `ObjectType <String>`: 
+
+TARGETINFO <IRestoreTargetInfoBase>: DataStore Type of the vault
+  - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+  - `[RestoreLocation <String>]`: Target Restore region
 
 ## RELATED LINKS
 
