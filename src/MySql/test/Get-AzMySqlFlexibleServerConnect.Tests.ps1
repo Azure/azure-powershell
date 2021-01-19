@@ -11,6 +11,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+Install-Module -Name SimplySQL -Scope CurrentUser -Force
+
 Describe 'Get-AzMySqlFlexibleServerConnect' {
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force   
