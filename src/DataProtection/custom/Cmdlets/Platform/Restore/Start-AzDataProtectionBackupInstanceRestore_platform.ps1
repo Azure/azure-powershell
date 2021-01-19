@@ -53,9 +53,9 @@ function Start-AzDataProtectionBackupInstanceRestore_platform{
             $restoreRequest.SourceDataStoreType = $SourceDataStore
             $restoreRequest.RestoreTargetInfo = $TargetInfo
 
-            foreach($param in ("RecoveryPoint", "DataSourceType", "RecoveryRequestType", "SourceDataStore", "TargetInfo"))
+            foreach($param in @("RecoveryPoint", "DataSourceType", "RecoveryRequestType", "SourceDataStore", "TargetInfo"))
             {
-                if($PSBoundParameters.Contains($param))
+                if($PSBoundParameters.ContainsKey($param))
                 {
                     $null = $PSBoundParameters.Remove($param)
                 }

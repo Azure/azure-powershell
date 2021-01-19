@@ -11,10 +11,10 @@ function GetDatasourceSetInfo
 	process 
 	{
 		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.DatasourceSet]::new()
-		DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
-        DataSourceSetInfo.ObjectType = "DatasourceSet"
+		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
+        $DataSourceSetInfo.ObjectType = "DatasourceSet"
         $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
-        DataSourceSetInfo.ResourceId = $splitResourceId[0..($splitResourceId.Count -3)] | Join-String -Separator '/'
+        $DataSourceSetInfo.ResourceId = $splitResourceId[0..($splitResourceId.Count -3)] | Join-String -Separator '/'
         $DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
         $DataSourceSetInfo.ResourceName = $splitResourceId[$splitResourceId.Count -3]
         $splitResourceType = $DatasourceInfo.ResourceType.Split("/")

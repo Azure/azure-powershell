@@ -26,10 +26,16 @@
         {
             $restoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreTargetInfo]::new()
             $DatasourceInfo = Prepare-AzDataProtectionDatasourceInfo @PSBoundParameters
+            $restoreTargetInfo.DatasourceInfo = $DatasourceInfo
+            $restoreTargetInfo.RestoreLocation = $Location
+            $restoreTargetInfo.ObjectType = "RestoreTargetInfo"
             if($manifest.isProxyResource -eq $true)
             {
                 $DatasourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $DatasourceInfo
+                $restoreTargetInfo.DatasourceSetInfo = $DatasourceSetInfo
             }
+            
+            return $restoreTargetInfo
         }
 
 
