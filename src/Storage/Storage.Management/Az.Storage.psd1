@@ -67,7 +67,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll',
                'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll', 
                'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
                'Microsoft.Azure.KeyVault.Core.dll', 'Azure.Storage.Blobs.dll', 
-               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll', 
+               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll',
+               'Azure.core', 'System.Text.Json','Microsoft.Bcl.AsyncInterfaces',
                'Azure.Storage.Queues.dll', 'Azure.Storage.Files.Shares.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
