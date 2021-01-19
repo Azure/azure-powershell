@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
