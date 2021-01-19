@@ -16,6 +16,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sets the timespan in Milliseconds to wait before the request times out.")]
+        [ValidateRange(100000, double.MaxValue)]
         public double Timeout { get; set; }
 
         public override void ExecuteCmdlet()
@@ -75,17 +77,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
-                    if (Timeout != 0)
-                        //The default value should be greater than default 100,000 milliseconds(100 seconds).
-                        if (Timeout > 100000)
-                        {
-                            // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
-                            client.Timeout = TimeSpan.FromMilliseconds(Timeout);
-                        }
-                        else
-                        {
-                            throw new ValidationMetadataException("Minimum value to set for the timeout is 100,000 milliseconds.");
-                        }
+                    if (this.IsParameterBound(cmdlet => cmdlet.Timeout))
+                    {
+                        // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
+                        client.Timeout = TimeSpan.FromMilliseconds(Timeout);
+                    }
+
                     var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                     HttpContent fileContent = new StreamContent(s);
