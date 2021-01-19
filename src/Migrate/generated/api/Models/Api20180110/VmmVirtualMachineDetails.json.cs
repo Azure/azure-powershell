@@ -79,6 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __configurationSettings?.ToJson(container, serializationMode);
             AddIf( null != this._oSDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._oSDetail.ToJson(null,serializationMode) : null, "osDetails" ,container.Add );
+            AddIf( null != (((object)this._sourceItemId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sourceItemId.ToString()) : null, "sourceItemId" ,container.Add );
+            AddIf( null != (((object)this._generation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._generation.ToString()) : null, "generation" ,container.Add );
             if (null != this._diskDetail)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -88,11 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("diskDetails",__w);
             }
-            AddIf( null != (((object)this._generation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._generation.ToString()) : null, "generation" ,container.Add );
-            AddIf( null != (((object)this._hasFibreChannelAdapter)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hasFibreChannelAdapter.ToString()) : null, "hasFibreChannelAdapter" ,container.Add );
             AddIf( null != (((object)this._hasPhysicalDisk)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hasPhysicalDisk.ToString()) : null, "hasPhysicalDisk" ,container.Add );
+            AddIf( null != (((object)this._hasFibreChannelAdapter)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hasFibreChannelAdapter.ToString()) : null, "hasFibreChannelAdapter" ,container.Add );
             AddIf( null != (((object)this._hasSharedVhd)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hasSharedVhd.ToString()) : null, "hasSharedVhd" ,container.Add );
-            AddIf( null != (((object)this._sourceItemId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sourceItemId.ToString()) : null, "sourceItemId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             __configurationSettings = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ConfigurationSettings(json);
             {_oSDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("osDetails"), out var __jsonOSDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.OSDetails.FromJson(__jsonOSDetails) : OSDetail;}
-            {_diskDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("diskDetails"), out var __jsonDiskDetails) ? If( __jsonDiskDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.DiskDetails.FromJson(__u) )) ))() : null : DiskDetail;}
-            {_generation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("generation"), out var __jsonGeneration) ? (string)__jsonGeneration : (string)Generation;}
-            {_hasFibreChannelAdapter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasFibreChannelAdapter"), out var __jsonHasFibreChannelAdapter) ? (string)__jsonHasFibreChannelAdapter : (string)HasFibreChannelAdapter;}
-            {_hasPhysicalDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasPhysicalDisk"), out var __jsonHasPhysicalDisk) ? (string)__jsonHasPhysicalDisk : (string)HasPhysicalDisk;}
-            {_hasSharedVhd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasSharedVhd"), out var __jsonHasSharedVhd) ? (string)__jsonHasSharedVhd : (string)HasSharedVhd;}
             {_sourceItemId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sourceItemId"), out var __jsonSourceItemId) ? (string)__jsonSourceItemId : (string)SourceItemId;}
+            {_generation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("generation"), out var __jsonGeneration) ? (string)__jsonGeneration : (string)Generation;}
+            {_diskDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("diskDetails"), out var __jsonDiskDetails) ? If( __jsonDiskDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDiskDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.DiskDetails.FromJson(__u) )) ))() : null : DiskDetail;}
+            {_hasPhysicalDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasPhysicalDisk"), out var __jsonHasPhysicalDisk) ? (string)__jsonHasPhysicalDisk : (string)HasPhysicalDisk;}
+            {_hasFibreChannelAdapter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasFibreChannelAdapter"), out var __jsonHasFibreChannelAdapter) ? (string)__jsonHasFibreChannelAdapter : (string)HasFibreChannelAdapter;}
+            {_hasSharedVhd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hasSharedVhd"), out var __jsonHasSharedVhd) ? (string)__jsonHasSharedVhd : (string)HasSharedVhd;}
             AfterFromJson(json);
         }
     }

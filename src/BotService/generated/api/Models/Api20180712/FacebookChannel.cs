@@ -16,13 +16,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Facebook application id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string AppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppId = value; }
+        public string AppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppId = value ?? null; }
 
         /// <summary>
         /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string AppSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppSecret = value; }
+        public string AppSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).AppSecret = value ?? null; }
 
         /// <summary>Callback Url</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for CallbackUrl</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelInternal.CallbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).CallbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).CallbackUrl = value; }
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>The list of Facebook pages</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookPage[] Page { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).Page; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).Page = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookPage[] Page { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).Page; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelPropertiesInternal)Property).Page = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookChannelProperties _property;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
     {
         /// <summary>Facebook application id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Facebook application id",
         SerializedName = @"appId",
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"appSecret",
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string CallbackUrl { get;  }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>The list of Facebook pages</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// <summary>Callback Url</summary>
         string CallbackUrl { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>The list of Facebook pages</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IFacebookPage[] Page { get; set; }
         /// <summary>The set of properties specific to bot facebook channel</summary>

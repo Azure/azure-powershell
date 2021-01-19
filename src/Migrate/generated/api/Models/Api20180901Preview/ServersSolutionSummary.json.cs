@@ -71,11 +71,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             __solutionSummary = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SolutionSummary(json);
-            {_assessedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("assessedCount"), out var __jsonAssessedCount) ? (int?)__jsonAssessedCount : AssessedCount;}
             {_discoveredCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("discoveredCount"), out var __jsonDiscoveredCount) ? (int?)__jsonDiscoveredCount : DiscoveredCount;}
-            {_migratedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("migratedCount"), out var __jsonMigratedCount) ? (int?)__jsonMigratedCount : MigratedCount;}
+            {_assessedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("assessedCount"), out var __jsonAssessedCount) ? (int?)__jsonAssessedCount : AssessedCount;}
             {_replicatingCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("replicatingCount"), out var __jsonReplicatingCount) ? (int?)__jsonReplicatingCount : ReplicatingCount;}
             {_testMigratedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("testMigratedCount"), out var __jsonTestMigratedCount) ? (int?)__jsonTestMigratedCount : TestMigratedCount;}
+            {_migratedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("migratedCount"), out var __jsonMigratedCount) ? (int?)__jsonMigratedCount : MigratedCount;}
             AfterFromJson(json);
         }
 
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return container;
             }
             __solutionSummary?.ToJson(container, serializationMode);
-            AddIf( null != this._assessedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._assessedCount) : null, "assessedCount" ,container.Add );
             AddIf( null != this._discoveredCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._discoveredCount) : null, "discoveredCount" ,container.Add );
-            AddIf( null != this._migratedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._migratedCount) : null, "migratedCount" ,container.Add );
+            AddIf( null != this._assessedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._assessedCount) : null, "assessedCount" ,container.Add );
             AddIf( null != this._replicatingCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._replicatingCount) : null, "replicatingCount" ,container.Add );
             AddIf( null != this._testMigratedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._testMigratedCount) : null, "testMigratedCount" ,container.Add );
+            AddIf( null != this._migratedCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._migratedCount) : null, "migratedCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

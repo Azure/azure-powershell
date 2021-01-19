@@ -18,32 +18,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string AccountSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AccountSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AccountSid = value; }
+        public string AccountSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AccountSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AccountSid = value ?? null; }
 
         /// <summary>
         /// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string AuthToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AuthToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AuthToken = value; }
+        public string AuthToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AuthToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).AuthToken = value ?? null; }
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsValidated = value; }
+        public bool? IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).IsValidated = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SmsChannelProperties()); set { {_property = value;} } }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>The Sms phone</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string Phone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).Phone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).Phone = value; }
+        public string Phone { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).Phone; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelPropertiesInternal)Property).Phone = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISmsChannelProperties _property;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"accountSID",
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.",
         SerializedName = @"authToken",
@@ -97,12 +97,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string AuthToken { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         bool? IsValidated { get; set; }
         /// <summary>The Sms phone</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Sms phone",
         SerializedName = @"phone",
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// </summary>
         string AuthToken { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>Whether this channel is validated for the bot</summary>
         bool? IsValidated { get; set; }
         /// <summary>The Sms phone</summary>

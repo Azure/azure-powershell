@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.4
+* Shown correct client request id on debug message [#13745]
+* Added common Azure PowerShell exception type
+* Supported storage API 2019-06-01
+
 ## Version 2.2.3
 * Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
 * Improved debug log of long running operations in generated modules

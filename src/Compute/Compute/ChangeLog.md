@@ -20,6 +20,16 @@
 
 -->
 ## Upcoming Release
+* Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
+* Removed FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
+* Added deprecation message to the ContainerService cmdlets:
+    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+    - `Get-AzContainerService`
+    - `New-AzContainerService`
+    - `New-AzContainerServiceConfig`
+    - `Remove-AzContainerService`
+    - `Remove-AzContainerServiceAgentPoolProfile`
+    - `Update-AzContainerService`
 
 ## Version 4.8.0
 * New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDscExtensionStatus` and `Get-AzVMDscExtension` cmdlets. 

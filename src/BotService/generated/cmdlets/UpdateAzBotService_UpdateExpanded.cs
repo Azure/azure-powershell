@@ -283,7 +283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ParametersBody.SkuName; set => ParametersBody.SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName)""); set => ParametersBody.SkuName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;

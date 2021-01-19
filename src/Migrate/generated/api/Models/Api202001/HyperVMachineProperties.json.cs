@@ -71,37 +71,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             {_appsAndRole = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("appsAndRoles"), out var __jsonAppsAndRoles) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.AppsAndRoles.FromJson(__jsonAppsAndRoles) : AppsAndRole;}
-            {_guestOSDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("guestOSDetails"), out var __jsonGuestOSDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetails.FromJson(__jsonGuestOSDetails) : GuestOSDetail;}
             {_operatingSystemDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("operatingSystemDetails"), out var __jsonOperatingSystemDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OperatingSystem.FromJson(__jsonOperatingSystemDetails) : OperatingSystemDetail;}
-            {_allocatedMemoryInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("allocatedMemoryInMB"), out var __jsonAllocatedMemoryInMb) ? (double?)__jsonAllocatedMemoryInMb : AllocatedMemoryInMb;}
-            {_biosGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("biosGuid"), out var __jsonBiosGuid) ? (string)__jsonBiosGuid : (string)BiosGuid;}
-            {_biosSerialNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("biosSerialNumber"), out var __jsonBiosSerialNumber) ? (string)__jsonBiosSerialNumber : (string)BiosSerialNumber;}
-            {_clusterFqdn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("clusterFqdn"), out var __jsonClusterFqdn) ? (string)__jsonClusterFqdn : (string)ClusterFqdn;}
-            {_clusterId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("clusterId"), out var __jsonClusterId) ? (string)__jsonClusterId : (string)ClusterId;}
-            {_createdTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("createdTimestamp"), out var __jsonCreatedTimestamp) ? (string)__jsonCreatedTimestamp : (string)CreatedTimestamp;}
-            {_disk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("disks"), out var __jsonDisks) ? If( __jsonDisks as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVDisk[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVDisk) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HyperVDisk.FromJson(__u) )) ))() : null : Disk;}
-            {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)DisplayName;}
-            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("errors"), out var __jsonErrors) ? If( __jsonErrors as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetails.FromJson(__p) )) ))() : null : Error;}
-            {_firmware = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("firmware"), out var __jsonFirmware) ? (string)__jsonFirmware : (string)Firmware;}
-            {_generation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("generation"), out var __jsonGeneration) ? (int?)__jsonGeneration : Generation;}
-            {_guestDetailsDiscoveryTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("guestDetailsDiscoveryTimestamp"), out var __jsonGuestDetailsDiscoveryTimestamp) ? global::System.DateTime.TryParse((string)__jsonGuestDetailsDiscoveryTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonGuestDetailsDiscoveryTimestampValue) ? __jsonGuestDetailsDiscoveryTimestampValue : GuestDetailsDiscoveryTimestamp : GuestDetailsDiscoveryTimestamp;}
-            {_highAvailability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("highAvailability"), out var __jsonHighAvailability) ? (string)__jsonHighAvailability : (string)HighAvailability;}
+            {_guestOSDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("guestOSDetails"), out var __jsonGuestOSDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetails.FromJson(__jsonGuestOSDetails) : GuestOSDetail;}
             {_hostFqdn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hostFqdn"), out var __jsonHostFqdn) ? (string)__jsonHostFqdn : (string)HostFqdn;}
             {_hostId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("hostId"), out var __jsonHostId) ? (string)__jsonHostId : (string)HostId;}
-            {_instanceUuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("instanceUuid"), out var __jsonInstanceUuid) ? (string)__jsonInstanceUuid : (string)InstanceUuid;}
-            {_isDeleted = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isDeleted"), out var __jsonIsDeleted) ? (bool?)__jsonIsDeleted : IsDeleted;}
-            {_isDynamicMemoryEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isDynamicMemoryEnabled"), out var __jsonIsDynamicMemoryEnabled) ? (bool?)__jsonIsDynamicMemoryEnabled : IsDynamicMemoryEnabled;}
-            {_isGuestDetailsDiscoveryInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isGuestDetailsDiscoveryInProgress"), out var __jsonIsGuestDetailsDiscoveryInProgress) ? (bool?)__jsonIsGuestDetailsDiscoveryInProgress : IsGuestDetailsDiscoveryInProgress;}
+            {_clusterFqdn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("clusterFqdn"), out var __jsonClusterFqdn) ? (string)__jsonClusterFqdn : (string)ClusterFqdn;}
+            {_clusterId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("clusterId"), out var __jsonClusterId) ? (string)__jsonClusterId : (string)ClusterId;}
             {_managementServerType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("managementServerType"), out var __jsonManagementServerType) ? (string)__jsonManagementServerType : (string)ManagementServerType;}
-            {_maxMemoryMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("maxMemoryMB"), out var __jsonMaxMemoryMb) ? (int?)__jsonMaxMemoryMb : MaxMemoryMb;}
-            {_networkAdapter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("networkAdapters"), out var __jsonNetworkAdapters) ? If( __jsonNetworkAdapters as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVNetworkAdapter[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVNetworkAdapter) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HyperVNetworkAdapter.FromJson(__k) )) ))() : null : NetworkAdapter;}
-            {_numberOfApplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("numberOfApplications"), out var __jsonNumberOfApplications) ? (int?)__jsonNumberOfApplications : NumberOfApplication;}
-            {_numberOfProcessorCore = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("numberOfProcessorCore"), out var __jsonNumberOfProcessorCore) ? (int?)__jsonNumberOfProcessorCore : NumberOfProcessorCore;}
-            {_powerStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("powerStatus"), out var __jsonPowerStatus) ? (string)__jsonPowerStatus : (string)PowerStatus;}
-            {_updatedTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("updatedTimestamp"), out var __jsonUpdatedTimestamp) ? (string)__jsonUpdatedTimestamp : (string)UpdatedTimestamp;}
+            {_generation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("generation"), out var __jsonGeneration) ? (int?)__jsonGeneration : Generation;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)Version;}
+            {_highAvailability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("highAvailability"), out var __jsonHighAvailability) ? (string)__jsonHighAvailability : (string)HighAvailability;}
+            {_maxMemoryMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("maxMemoryMB"), out var __jsonMaxMemoryMb) ? (int?)__jsonMaxMemoryMb : MaxMemoryMb;}
+            {_firmware = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("firmware"), out var __jsonFirmware) ? (string)__jsonFirmware : (string)Firmware;}
+            {_isDynamicMemoryEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isDynamicMemoryEnabled"), out var __jsonIsDynamicMemoryEnabled) ? (bool?)__jsonIsDynamicMemoryEnabled : IsDynamicMemoryEnabled;}
+            {_disk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("disks"), out var __jsonDisks) ? If( __jsonDisks as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVDisk[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVDisk) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HyperVDisk.FromJson(__u) )) ))() : null : Disk;}
+            {_networkAdapter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("networkAdapters"), out var __jsonNetworkAdapters) ? If( __jsonNetworkAdapters as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVNetworkAdapter[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVNetworkAdapter) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HyperVNetworkAdapter.FromJson(__p) )) ))() : null : NetworkAdapter;}
+            {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)DisplayName;}
+            {_numberOfProcessorCore = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("numberOfProcessorCore"), out var __jsonNumberOfProcessorCore) ? (int?)__jsonNumberOfProcessorCore : NumberOfProcessorCore;}
+            {_allocatedMemoryInMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("allocatedMemoryInMB"), out var __jsonAllocatedMemoryInMb) ? (double?)__jsonAllocatedMemoryInMb : AllocatedMemoryInMb;}
             {_vMConfigurationFileLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vmConfigurationFileLocation"), out var __jsonVMConfigurationFileLocation) ? (string)__jsonVMConfigurationFileLocation : (string)VMConfigurationFileLocation;}
+            {_numberOfApplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("numberOfApplications"), out var __jsonNumberOfApplications) ? (int?)__jsonNumberOfApplications : NumberOfApplication;}
+            {_guestDetailsDiscoveryTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("guestDetailsDiscoveryTimestamp"), out var __jsonGuestDetailsDiscoveryTimestamp) ? global::System.DateTime.TryParse((string)__jsonGuestDetailsDiscoveryTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonGuestDetailsDiscoveryTimestampValue) ? __jsonGuestDetailsDiscoveryTimestampValue : GuestDetailsDiscoveryTimestamp : GuestDetailsDiscoveryTimestamp;}
+            {_isGuestDetailsDiscoveryInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isGuestDetailsDiscoveryInProgress"), out var __jsonIsGuestDetailsDiscoveryInProgress) ? (bool?)__jsonIsGuestDetailsDiscoveryInProgress : IsGuestDetailsDiscoveryInProgress;}
+            {_createdTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("createdTimestamp"), out var __jsonCreatedTimestamp) ? (string)__jsonCreatedTimestamp : (string)CreatedTimestamp;}
+            {_updatedTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("updatedTimestamp"), out var __jsonUpdatedTimestamp) ? (string)__jsonUpdatedTimestamp : (string)UpdatedTimestamp;}
+            {_instanceUuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("instanceUuid"), out var __jsonInstanceUuid) ? (string)__jsonInstanceUuid : (string)InstanceUuid;}
+            {_powerStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("powerStatus"), out var __jsonPowerStatus) ? (string)__jsonPowerStatus : (string)PowerStatus;}
+            {_biosSerialNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("biosSerialNumber"), out var __jsonBiosSerialNumber) ? (string)__jsonBiosSerialNumber : (string)BiosSerialNumber;}
+            {_biosGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("biosGuid"), out var __jsonBiosGuid) ? (string)__jsonBiosGuid : (string)BiosGuid;}
             {_vMFqdn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vmFqdn"), out var __jsonVMFqdn) ? (string)__jsonVMFqdn : (string)VMFqdn;}
+            {_isDeleted = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isDeleted"), out var __jsonIsDeleted) ? (bool?)__jsonIsDeleted : IsDeleted;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("errors"), out var __jsonErrors) ? If( __jsonErrors as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetails.FromJson(__k) )) ))() : null : Error;}
             AfterFromJson(json);
         }
 
@@ -130,23 +130,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._guestOSDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._guestOSDetail.ToJson(null,serializationMode) : null, "guestOSDetails" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != this._operatingSystemDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._operatingSystemDetail.ToJson(null,serializationMode) : null, "operatingSystemDetails" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._allocatedMemoryInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((double)this._allocatedMemoryInMb) : null, "allocatedMemoryInMB" ,container.Add );
+                AddIf( null != this._guestOSDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._guestOSDetail.ToJson(null,serializationMode) : null, "guestOSDetails" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._biosGuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._biosGuid.ToString()) : null, "biosGuid" ,container.Add );
+                AddIf( null != (((object)this._hostFqdn)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hostFqdn.ToString()) : null, "hostFqdn" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._biosSerialNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._biosSerialNumber.ToString()) : null, "biosSerialNumber" ,container.Add );
+                AddIf( null != (((object)this._hostId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hostId.ToString()) : null, "hostId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -158,7 +154,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._createdTimestamp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._createdTimestamp.ToString()) : null, "createdTimestamp" ,container.Add );
+                AddIf( null != (((object)this._managementServerType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._managementServerType.ToString()) : null, "managementServerType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._generation ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._generation) : null, "generation" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._highAvailability)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._highAvailability.ToString()) : null, "highAvailability" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._maxMemoryMb ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._maxMemoryMb) : null, "maxMemoryMB" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._firmware)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._firmware.ToString()) : null, "firmware" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._isDynamicMemoryEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isDynamicMemoryEnabled) : null, "isDynamicMemoryEnabled" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -174,83 +194,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._error)
+                if (null != this._networkAdapter)
                 {
                     var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._error )
+                    foreach( var __s in this._networkAdapter )
                     {
                         AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("errors",__r);
+                    container.Add("networkAdapters",__r);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._firmware)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._firmware.ToString()) : null, "firmware" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._generation ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._generation) : null, "generation" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._guestDetailsDiscoveryTimestamp ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._guestDetailsDiscoveryTimestamp?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "guestDetailsDiscoveryTimestamp" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._highAvailability)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._highAvailability.ToString()) : null, "highAvailability" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._hostFqdn)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hostFqdn.ToString()) : null, "hostFqdn" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._hostId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._hostId.ToString()) : null, "hostId" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._instanceUuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._instanceUuid.ToString()) : null, "instanceUuid" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._isDeleted ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isDeleted) : null, "isDeleted" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._isDynamicMemoryEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isDynamicMemoryEnabled) : null, "isDynamicMemoryEnabled" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._isGuestDetailsDiscoveryInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isGuestDetailsDiscoveryInProgress) : null, "isGuestDetailsDiscoveryInProgress" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._managementServerType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._managementServerType.ToString()) : null, "managementServerType" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._maxMemoryMb ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._maxMemoryMb) : null, "maxMemoryMB" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._networkAdapter)
-                {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._networkAdapter )
-                    {
-                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
-                    }
-                    container.Add("networkAdapters",__m);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._numberOfApplication ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._numberOfApplication) : null, "numberOfApplications" ,container.Add );
+                AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -258,15 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._powerStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._powerStatus.ToString()) : null, "powerStatus" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._updatedTimestamp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._updatedTimestamp.ToString()) : null, "updatedTimestamp" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
+                AddIf( null != this._allocatedMemoryInMb ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((double)this._allocatedMemoryInMb) : null, "allocatedMemoryInMB" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -274,7 +222,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != this._numberOfApplication ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._numberOfApplication) : null, "numberOfApplications" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._guestDetailsDiscoveryTimestamp ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._guestDetailsDiscoveryTimestamp?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "guestDetailsDiscoveryTimestamp" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._isGuestDetailsDiscoveryInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isGuestDetailsDiscoveryInProgress) : null, "isGuestDetailsDiscoveryInProgress" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._createdTimestamp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._createdTimestamp.ToString()) : null, "createdTimestamp" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._updatedTimestamp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._updatedTimestamp.ToString()) : null, "updatedTimestamp" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._instanceUuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._instanceUuid.ToString()) : null, "instanceUuid" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._powerStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._powerStatus.ToString()) : null, "powerStatus" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._biosSerialNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._biosSerialNumber.ToString()) : null, "biosSerialNumber" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._biosGuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._biosGuid.ToString()) : null, "biosGuid" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 AddIf( null != (((object)this._vMFqdn)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vMFqdn.ToString()) : null, "vmFqdn" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._isDeleted ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isDeleted) : null, "isDeleted" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._error)
+                {
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._error )
+                    {
+                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                    }
+                    container.Add("errors",__m);
+                }
             }
             AfterToJson(ref container);
             return container;

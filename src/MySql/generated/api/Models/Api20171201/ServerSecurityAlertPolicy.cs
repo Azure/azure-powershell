@@ -17,15 +17,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string[] DisabledAlert { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).DisabledAlert; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).DisabledAlert = value; }
+        public string[] DisabledAlert { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).DisabledAlert; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).DisabledAlert = value ?? null /* arrayOf */; }
 
         /// <summary>Specifies that the alert is sent to the account administrators.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public bool? EmailAccountAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAccountAdmin; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAccountAdmin = value; }
+        public bool? EmailAccountAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAccountAdmin; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAccountAdmin = value ?? default(bool); }
 
         /// <summary>Specifies an array of e-mail addresses to which the alert is sent.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string[] EmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAddress = value; }
+        public string[] EmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).EmailAddress = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -58,22 +58,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Specifies the number of days to keep in the Threat Detection audit logs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public int? RetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).RetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).RetentionDay = value; }
+        public int? RetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).RetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).RetentionDay = value ?? default(int); }
 
         /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState State { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).State = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState? State { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).State = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState)""); }
 
         /// <summary>Specifies the identifier key of the Threat Detection audit storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string StorageAccountAccessKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageAccountAccessKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageAccountAccessKey = value; }
+        public string StorageAccountAccessKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageAccountAccessKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageAccountAccessKey = value ?? null; }
 
         /// <summary>
         /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat
         /// Detection audit logs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string StorageEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageEndpoint = value; }
+        public string StorageEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ISecurityAlertPolicyPropertiesInternal)Property).StorageEndpoint = value ?? null; }
 
         /// <summary>
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -140,12 +140,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         int? RetentionDay { get; set; }
         /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the state of the policy, whether it is enabled or disabled.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState) })]
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState State { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState? State { get; set; }
         /// <summary>Specifies the identifier key of the Threat Detection audit storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>Specifies the number of days to keep in the Threat Detection audit logs.</summary>
         int? RetentionDay { get; set; }
         /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState State { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState? State { get; set; }
         /// <summary>Specifies the identifier key of the Threat Detection audit storage account.</summary>
         string StorageAccountAccessKey { get; set; }
         /// <summary>

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for AlternateLocationRecoveryOption.</summary>
+    /// <summary>The ALR option.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AlternateLocationRecoveryOptionTypeConverter))]
     public partial struct AlternateLocationRecoveryOption :
         System.Management.Automation.IArgumentCompleter

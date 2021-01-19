@@ -58,8 +58,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerForUpdate>: Parameters allowed to update for a server.
-  SkuName <String>: The name of the sku, e.g. Standard_D32s_v3.
-  SkuTier <SkuTier>: The tier of the particular SKU, e.g. GeneralPurpose.
   [AdministratorLoginPassword <String>]: The password of the administrator login.
   [DelegatedSubnetArgumentSubnetArmResourceId <String>]: delegated subnet arm resource id.
   [HaEnabled <HaEnabledEnum?>]: Enable HA or not for a server.
@@ -68,6 +66,8 @@ PARAMETER <IServerForUpdate>: Parameters allowed to update for a server.
   [MaintenanceWindowStartHour <Int32?>]: start hour for maintenance window
   [MaintenanceWindowStartMinute <Int32?>]: start minute for maintenance window
   [ReplicationRole <String>]: The replication role of the server.
+  [SkuName <String>]: The name of the sku, e.g. Standard_D32s_v3.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. GeneralPurpose.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
   [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
   [StorageProfileStorageAutogrow <StorageAutogrow?>]: Enable Storage Auto Grow.

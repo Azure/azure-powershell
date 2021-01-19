@@ -115,6 +115,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
+        /// <summary>
+        /// Fetches the VM Bakup Items from Secondary Region.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        public SwitchParameter UseSecondaryRegion;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -138,12 +144,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ItemParams.ProtectionStatus, ProtectionStatus },
                         { ItemParams.ProtectionState, ProtectionState },
                         { ItemParams.WorkloadType, WorkloadType },
-                        { ItemParams.FriendlyName, FriendlyName }
+                        { ItemParams.FriendlyName, FriendlyName },
+                        { CRRParams.UseSecondaryRegion, UseSecondaryRegion.IsPresent}
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = null;
                 List<ItemBase> itemModels = null;
-
                 if (BackupManagementType == BackupManagementType.MAB)
                 {
                     AzureWorkloadProviderHelper provider = new AzureWorkloadProviderHelper(ServiceClientAdapter);

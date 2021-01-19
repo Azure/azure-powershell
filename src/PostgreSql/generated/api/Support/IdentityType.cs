@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>
+    /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory
+    /// principal for the resource.
+    /// </summary>
     public partial struct IdentityType :
         System.IEquatable<IdentityType>
     {
@@ -18,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="IdentityType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new IdentityType(System.Convert.ToString(value));
+            return new IdentityType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type IdentityType</summary>

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchservice
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSearchService
 
 ## SYNOPSIS
-Remove an Azure Search service.
+Remove an Azure Cognitive Search service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzSearchService [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProf
 ```
 
 ## DESCRIPTION
-The **Remove-AzSearchService** cmdlet removes an Azure Search service with specified parameters.
+The **Remove-AzSearchService** cmdlet removes an Azure Cognitive Search service with specified parameters.
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ Are you sure you want to remove Search Service 'pstestazuresearch01'?
 PS C:\>
 ```
 
-The example removes an Azure Search service.
+The example removes an Azure Cognitive Search service.
 
 ## PARAMETERS
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Search Service Input Object.
+Azure Cognitive Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Search Service Resource Id.
+Azure Cognitive Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -207,4 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzSearchService](./Get-AzSearchService.md)
 
 [Set-AzSearchService](./Set-AzSearchService.md)
-

@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
         /// <summary>The URI of the key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string Uri { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyPropertiesInternal)Property).Uri; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyPropertiesInternal)Property).Uri = value; }
+        public string Uri { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyPropertiesInternal)Property).Uri; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKeyPropertiesInternal)Property).Uri = value ?? null; }
 
         /// <summary>Creates an new <see cref="ServerKey" /> instance.</summary>
         public ServerKey()
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         string Kind { get;  }
         /// <summary>The key type like 'AzureKeyVault'.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = true,
         Description = @"The key type like 'AzureKeyVault'.",
         SerializedName = @"serverKeyType",

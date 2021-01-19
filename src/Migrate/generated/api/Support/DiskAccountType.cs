@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The disk type.</summary>
     public partial struct DiskAccountType :
         System.IEquatable<DiskAccountType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="DiskAccountType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DiskAccountType(System.Convert.ToString(value));
+            return new DiskAccountType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DiskAccountType" Enum class./></summary>
