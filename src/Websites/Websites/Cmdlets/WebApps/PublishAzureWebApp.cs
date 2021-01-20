@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sets the timespan in Milliseconds to wait before the request times out.")]
-        [ValidateRange(100000, double.PositiveInfinity)]
+        [ValidateRange(100000, 3600000)]
         public double Timeout { get; set; }
 
         public override void ExecuteCmdlet()
