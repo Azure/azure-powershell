@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     if (restorableAccount.CreationTime.HasValue &&
                         restorableAccount.CreationTime < utcRestoreDateTime)
                     {
-                        if (!restorableAccount.DeletionTime.HasValue || restorableAccount.DeletionTime < RestoreTimestampInUtc)
+                        if (!restorableAccount.DeletionTime.HasValue || restorableAccount.DeletionTime > utcRestoreDateTime)
                         {
                             sourceAccountToRestore = restorableAccount;
                             break;
