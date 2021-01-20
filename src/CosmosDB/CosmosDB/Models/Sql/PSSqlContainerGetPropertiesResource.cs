@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DefaultTtl = sqlContainerGetPropertiesResource.DefaultTtl;
             UniqueKeyPolicy = new PSUniqueKeyPolicy(sqlContainerGetPropertiesResource.UniqueKeyPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
-            AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
             _rid = sqlContainerGetPropertiesResource._rid;
             _ts = sqlContainerGetPropertiesResource._ts;
             _etag = sqlContainerGetPropertiesResource._etag;

@@ -58,6 +58,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
             ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
+            InstanceId = databaseAccountGetResults.InstanceId;
+            BackupPolicy = new PSBackupPolicy(databaseAccountGetResults.BackupPolicy);
+            RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
+            CreateMode = databaseAccountGetResults.CreateMode;
         }
 
         //
@@ -180,5 +184,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether to enable storage analytics.
         public bool? EnableAnalyticalStorage { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the InstanceId of the CosmosDB Account
+        public string InstanceId { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the Backup Policy of the CosmosDB Account
+        public PSBackupPolicy BackupPolicy { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the RestoreParameters of the CosmosDB Account
+        public PSRestoreParameters RestoreParameters { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the CreateMode of the CosmosDB Account
+        public string CreateMode { get; set; }
     }
 }
