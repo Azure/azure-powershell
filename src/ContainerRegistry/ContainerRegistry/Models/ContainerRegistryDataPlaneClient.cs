@@ -83,7 +83,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (value == null || value.IsExpired(_minutesBeforeExpiration))
             {
                 string token = key.Equals(_refreshTokenKey) ? getRefreshToken() : getAccessToken(key);
-                value = new AcrToken(token);
+                try
+                {
+                    value = new AcrToken(token);
+                }
+                catch
+                {
+                    throw new InvalidOperationException(string.Format("Invalud token for {0}", key));
+                }
+                
                 cache[key] = value;
             }
             return value.GetToken();

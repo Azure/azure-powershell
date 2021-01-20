@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             throw new NotImplementedException();
         }
 
+        //link looks like: </acr/v1/_catalog?last=test%2Fbusybox99&n=100&orderby=>; rel="next"
+        //repository should be in between of first appeartance of '=' and '&'
         protected string getLastListed(string nextLink)
         {
             int left = nextLink.IndexOf('=');
