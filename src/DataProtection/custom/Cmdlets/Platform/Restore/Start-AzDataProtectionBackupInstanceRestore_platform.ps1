@@ -49,7 +49,7 @@ function Start-AzDataProtectionBackupInstanceRestore_platform{
         {
             $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPointBasedRestoreRequest]::new()
             $restoreRequest.ObjectType = $restoreRequestObjectType
-            $restoreRequest.RecoveryPointId = $RecoveryPoint.Property.FriendlyName
+            $restoreRequest.RecoveryPointId = $RecoveryPoint.Name
             $restoreRequest.SourceDataStoreType = $SourceDataStore
             $restoreRequest.RestoreTargetInfo = $TargetInfo
 

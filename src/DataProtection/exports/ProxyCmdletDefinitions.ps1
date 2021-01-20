@@ -6541,7 +6541,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/initialize-
 #>
 function Initialize-AzDataProtectionTargetRestoreInfo {
 [OutputType([PSObject])]
-[CmdletBinding(DefaultParameterSetName='RestoreAlternateLocation', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='alternateLocation', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -6570,7 +6570,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            RestoreAlternateLocation = 'Az.DataProtection.custom\Initialize-AzDataProtectionTargetRestoreInfo';
+            alternateLocation = 'Az.DataProtection.custom\Initialize-AzDataProtectionTargetRestoreInfo_alternateLocation';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
