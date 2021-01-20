@@ -16,14 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -87,21 +85,22 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
                 }
-
-                //clean token cache created by Az.ContainerRegistry
-                string AcrTokenCacheKey = SharedComponentKeys.AcrTokenCacheKey;
-                IDictionary<string, Tuple<string, DateTime>> acrTokenCache;
-                if (AzureSession.Instance.TryGetComponent(AcrTokenCacheKey, out acrTokenCache))
-                {
-                    acrTokenCache.Clear();
-                    AzureSession.Instance.UnregisterComponent<IDictionary<string, Tuple<string, DateTime>>>(AcrTokenCacheKey);
-                }
             }
+
+            ClearAzureSessionComponents();
 
             if (PassThru.IsPresent)
             {
                 WriteObject(result);
             }
         }
+
+        //Clear components with on clear-azcontext events in azure session instance
+        void ClearAzureSessionComponents()
+        {
+            AzureSession.Instance.ClearComponentsOnClearAzContext();
+        }
     }
+
+
 }

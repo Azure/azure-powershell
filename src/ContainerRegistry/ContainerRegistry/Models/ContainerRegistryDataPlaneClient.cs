@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations;
 using Microsoft.Azure.ContainerRegistry;
@@ -23,9 +22,6 @@ using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Profile.Utilities;
-using System.Text.Json;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -34,9 +30,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private AzureContainerRegistryClient _client;
         private string _accessToken = default(string);
         private string _endPoint;
-        private IAzureContext _context;
         private readonly string _suffix;
-        
+
+        private IAzureContext _context;
+        private AcrTokenCacheComponents _tokenCacheComponent;
+
         private const string _grantType = "access_token";
         private const string _scopeDefault = "registry:catalog:*";
         private const string _https = "https://";
@@ -52,20 +50,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public ContainerRegistryDataPlaneClient(IAzureContext context)
         {
             _context = context;
-            _suffix = context.Environment.ContainerRegistryEndpointSuffix;
-            ServiceClientCredentials clientCredential = new RenewingTokenCredential(new ExternalAccessToken(_accessToken, () => _accessToken));
+            _suffix = _context.Environment.ContainerRegistryEndpointSuffix;
+            ServiceClientCredentials clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(_accessToken, () => _accessToken);
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(clientCredential);
-        }
-
-        public IDictionary<string, Tuple<string, DateTime>> TryGetTokenCache()
-        {
-            IDictionary<string, Tuple<string, DateTime>> cache;
-            if (!AzureSession.Instance.TryGetComponent(_acrTokenCacheKey, out cache))
-            {
-                AzureSession.Instance.RegisterComponent<IDictionary<string, Tuple<string, DateTime>>>(_acrTokenCacheKey, () => new Dictionary<string, Tuple<string, DateTime>>());
-                AzureSession.Instance.TryGetComponent(_acrTokenCacheKey, out cache);
-            }
-            return cache;
         }
 
         public AzureContainerRegistryClient GetClient()
@@ -81,33 +68,25 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         private string TryGetToken(string key)
         {
-            IDictionary<string, Tuple<string, DateTime>> cache = TryGetTokenCache();
-            Tuple<string, DateTime> value;
+            if (_tokenCacheComponent == null)
+            {
+                _tokenCacheComponent = new AcrTokenCacheComponents();
+            }
+            if (_tokenCacheComponent.GetComponent() == null)
+            {
+                _tokenCacheComponent.Register(_acrTokenCacheKey, AzureSession.Instance);
+            }
+
+            IDictionary<string, AcrToken> cache = _tokenCacheComponent.GetComponent();
+            AcrToken value;
             cache.TryGetValue(key, out value);
-            if (value == null || isTokenExpired(value))
+            if (value == null || value.IsExpired(_minutesBeforeExpiration))
             {
                 string token = key.Equals(_refreshTokenKey) ? getRefreshToken() : getAccessToken(key);
-                value = new Tuple<string, DateTime>(token, getTokenExpiration(token));
+                value = new AcrToken(token);
                 cache[key] = value;
             }
-            return value.Item1;
-        }
-
-        private DateTime getTokenExpiration(string token)
-        {
-            string decodedToken = Base64UrlHelper.DecodeToString(token.Split('.')[1]);
-            int unixTimeSeconds = JsonDocument.Parse(decodedToken)
-                                      .RootElement
-                                      .EnumerateObject()
-                                      .Where(p => p.Name == "exp")
-                                      .Select(p => p.Value.GetInt32())
-                                      .First();
-            return DateTimeOffset.FromUnixTimeSeconds(unixTimeSeconds).UtcDateTime;
-        }
-
-        private bool isTokenExpired(Tuple<string, DateTime> value)
-        {
-            return (value.Item2 - DateTime.UtcNow).Minutes <= _minutesBeforeExpiration;
+            return value.GetToken();
         }
 
         public void SetEndPoint(string RegistryName)
@@ -121,29 +100,32 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return _endPoint;
         }
         
-        private string getAccessToken(string scope)
+        private string getArmAccessToken()
         {
-            string refreshToken = TryGetToken(_refreshTokenKey);
-            return GetClient()
-                    .AccessTokens
-                    .GetAsync(service: _endPoint, scope: scope, refreshToken: refreshToken)
-                    .GetAwaiter()
-                    .GetResult()
-                    .AccessTokenProperty;
+            return AzureSession
+                   .Instance.AuthenticationFactory
+                   .Authenticate(_context.Account, _context.Environment, _context.Tenant.Id, null, ShowDialog.Never, null, _context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager))
+                   .AccessToken;
         }
 
         private string getRefreshToken()
         {
-            string armAccessToken = AzureSession
-                                    .Instance.AuthenticationFactory
-                                    .Authenticate(_context.Account, _context.Environment, _context.Tenant.Id, null, ShowDialog.Never, null, _context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager))
-                                    .AccessToken;
             return GetClient()
                     .RefreshTokens
-                    .GetFromExchangeAsync(grantType: _grantType, service: _endPoint, accessToken: armAccessToken)
+                    .GetFromExchangeAsync(grantType: _grantType, service: _endPoint, accessToken: getArmAccessToken())
                     .GetAwaiter()
                     .GetResult()
                     .RefreshTokenProperty;
+        }
+
+        private string getAccessToken(string scope)
+        {
+            return GetClient()
+                    .AccessTokens
+                    .GetAsync(service: _endPoint, scope: scope, refreshToken: TryGetToken(_refreshTokenKey))
+                    .GetAwaiter()
+                    .GetResult()
+                    .AccessTokenProperty;
         }
 
         public PSRepositoryAttribute GetRepository(string repository)
