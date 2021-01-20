@@ -573,11 +573,11 @@
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="false"/>
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope Stack -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
+    <!-- <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope Stack -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
-          ContinueOnError="false"/>
+          ContinueOnError="false"/> -->
 
-    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
+    <!-- <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" /> -->
   </Target>
 
   <PropertyGroup>
