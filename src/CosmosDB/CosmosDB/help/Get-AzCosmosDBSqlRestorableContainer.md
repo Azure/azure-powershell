@@ -26,15 +26,47 @@ Get-AzCosmosDBSqlRestorableContainer -ParentObject <PSRestorableSqlDatabaseGetRe
 
 ## DESCRIPTION
 Lists all the restorable Azure Cosmos DB SQL containers available for a specific database.
-
+The list would have entries corresponding to create, replace and delete events of all live and deleted containers under the database.
+This list is useful to identify the restore timestamp based on the changes in the container. 
+For example, if user wants to restore the database account to a timestamp when a specific container is deleted, the user can find corresponding collection delete event from this list, and choose a timestamp before the delete event for restore.
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Get-AzCosmosDBSqlRestorableContainer -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRid {DatabaseRid}
 
-Name    Id		Type		Resource
-{name}  {id}	{Type}		Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResource
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
+                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
+Name            : 6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
+Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
+_rid            : qsLuzwAAAA==
+OperationType   : Create
+EventTimestamp  : 01/20/2021 18:44:07
+OwnerId         : foo-container2
+OwnerResourceId : Ts0YAPGKTvw=
+Container       : Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResourceContainer
+
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
+                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/ff36d1d3-f9dc-40a0-a003-60fe349abcfb
+Name            : ff36d1d3-f9dc-40a0-a003-60fe349abcfb
+Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
+_rid            : Ngu72QAAAA==
+OperationType   : Replace
+EventTimestamp  : 01/20/2021 18:44:07
+OwnerId         : foo-container1
+OwnerResourceId : Ts0YAP+RbG0=
+Container       : Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResourceContainer
+
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
+                    /{DatabaseAccountInstanceIdInstanceId}/restorableSqlContainers/2afb35ba-1755-4fbc-85be-ae175dd0668f
+Name            : 2afb35ba-1755-4fbc-85be-ae175dd0668f
+Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlContainers
+_rid            : lSuf5gAAAA==
+OperationType   : Create
+EventTimestamp  : 01/20/2021 18:42:43
+OwnerId         : foo-container1
+OwnerResourceId : Ts0YAP+RbG0=
+Container       : Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlContainerPropertiesResourceContainer
 ```
 
 The resource object contains the properties of the container resource

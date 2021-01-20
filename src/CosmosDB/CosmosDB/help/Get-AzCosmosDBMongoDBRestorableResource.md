@@ -29,6 +29,8 @@ Get-AzCosmosDBMongoDBRestorableResource -LocationName <String> -DatabaseAccountI
 
 ## DESCRIPTION
 Lists all the restorable Azure Cosmos DB MongoDB resources available for a specific database account at a given time and location.
+The list is useful to know what resources exist in the source account at the given time. This will provide the user an indication of what to expect if the account is restored to the given time.
+The user can also use this list and provide a subset of restorable resources if the user wants to restore only specific databases/collections.
 
 ## EXAMPLES
 

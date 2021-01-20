@@ -25,7 +25,10 @@ Get-AzCosmosDBMongoDBRestorableDatabase -ParentObject <PSRestorableDatabaseAccou
 ```
 
 ## DESCRIPTION
-Gets the list of all the restorable Azure Cosmos DB MongoDB databases available under the restorable account.
+Gets the list of all the restorable Azure Cosmos DB MongoDB database events available under the restorable account.
+The list would have entries corresponding to create, replace and delete events of all live and deleted databases.
+This list is useful to identify the restore timestamp based on the changes in the database. 
+For example, if user wants to restore the database account to a timestamp when a database named foo is deleted, the user can find corresponding database delete event from this list, and choose a timestamp before the delete event for restore.
 
 ## EXAMPLES
 
@@ -33,8 +36,15 @@ Gets the list of all the restorable Azure Cosmos DB MongoDB databases available 
 ```powershell
 PS C:\> Get-AzCosmosDBMongoDBRestorableDatabase -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
 
-Name    Id		Type		Resource
-{name}  {id}	{Type}		Microsoft.Azure.Management.CosmosDB.Models.PSRestorableMongoDBDatabasePropertiesResource
+Name            : cb04fbfc-4142-413d-b2c5-c91723a17e28
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts/{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBDatabases/cb04fbfc-4142-413d-b2c5-c91723
+                  a17e28
+Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableMongoDBDatabases
+_rid            : a+35ZwAAAA==
+OperationType   : Create
+EventTimestamp  : 01/20/2021 18:42:37
+OwnerId         : foo-db1
+OwnerResourceId : Ts0YAA==
 ```
 
 The resource object contains the properties of the database resource
