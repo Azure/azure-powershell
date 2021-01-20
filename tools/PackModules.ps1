@@ -115,9 +115,13 @@ try {
         $artifactDir = ($artifact).Name
         $tokens = $artifactDir.split(".")
         if($tokens.length -gt 1) {
-            # Az.n.n.n.nuget or Az.module.n.n.n.nuget
-            if($tokens.length -gt 5) {
-                $module_name = $tokens[0]+"."+$tokens[1]
+            # Naming format: moduleName.n.n.n.nuget
+            if($tokens.length -ge 5) {
+                $module_name = ""
+                for($i = 0; $i -lt ($tokens.length - 4); $i++){
+                    $module_name += ($tokens[$i] + ".")
+                }
+                $module_name = $module_name.substring(0, $module_name.length - 1)            
             } else {
                 $module_name = $tokens[0]
             }
@@ -126,6 +130,7 @@ try {
         }
         Write-Output "Repackaging $module_name under $artifactDir"
         Update-NugetPackage -TempRepoPath (Get-Item $Artifacts).FullName -ModuleName $module_name -DirPath $tmp"\"$artifactDir -NugetExe $NugetExe
+        Remove-Item -Recurse $tmp"\"$artifactDir -Force -ErrorAction Stop
     } 
 } catch {
     $Errors = $_
