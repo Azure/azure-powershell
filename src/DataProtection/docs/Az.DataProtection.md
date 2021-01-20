@@ -64,8 +64,17 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [GetBackupFrequencyString](GetBackupFrequencyString.md)
 
 
+### [GetDatasourceSetInfo](GetDatasourceSetInfo.md)
+
+
+### [GetRestoreType](GetRestoreType.md)
+
+
 ### [GetTaggingPriority](GetTaggingPriority.md)
 
+
+### [Initialize-AzDataProtectionTargetRestoreInfo](Initialize-AzDataProtectionTargetRestoreInfo.md)
+Get Backup Vault storage setting object
 
 ### [LoadManifest](LoadManifest.md)
 Prepares Datasource object for backup

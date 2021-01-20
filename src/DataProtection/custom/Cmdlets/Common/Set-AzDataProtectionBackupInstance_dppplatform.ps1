@@ -38,15 +38,7 @@ function Set-AzDataProtectionBackupInstance_dppplatform {
         $instance.ProtectionStatus.Status = "ProtectionConfigured"
         if($manifest.isProxyResource -eq $true)
         {
-            $instance.DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
-            $instance.DataSourceSetInfo.ObjectType = "DatasourceSet"
-            $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
-            $instance.DataSourceSetInfo.ResourceId = $splitResourceId[0..($splitResourceId.Count -3)] | Join-String -Separator '/'
-            $instance.DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
-            $instance.DataSourceSetInfo.ResourceName = $splitResourceId[$splitResourceId.Count -3]
-            $splitResourceType = $DatasourceInfo.ResourceType.Split("/")
-            $instance.DataSourceSetInfo.ResourceType =  $splitResourceType[0..($splitResourceType.Count -2)] | Join-String -Separator '/'     # Use manifest for datasource set type
-            $instance.DataSourceSetInfo.ResourceUri = ""
+            $instance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $DatasourceInfo
         }
 
         $instance.ObjectType = "BackupInstance"
