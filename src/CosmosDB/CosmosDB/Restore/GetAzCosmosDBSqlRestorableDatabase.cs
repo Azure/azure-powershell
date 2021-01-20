@@ -12,26 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System;
 using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlRestorableDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableSqlDatabaseGetResult))]
     public class GetAzCosmosDBSqlRestorableDatabase : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string LocationName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseAccountInstanceId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableDatabaseAccountObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSRestorableDatabaseAccountGetResult ParentObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                LocationName = ParentObject.Location;
+                DatabaseAccountInstanceId = ParentObject.DatabaseAccountInstanceId;
+            }
+
             IEnumerable restorableSqlDatabases = CosmosDBManagementClient.RestorableSqlDatabases.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId).GetAwaiter().GetResult().Body;
             foreach (RestorableSqlDatabaseGetResult restorableSqlDatabase in restorableSqlDatabases)
                 WriteObject(new PSRestorableSqlDatabaseGetResult(restorableSqlDatabase));

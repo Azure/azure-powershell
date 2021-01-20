@@ -32,7 +32,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Name = restorableSqlDatabaseGetResult.Name;
             Id = restorableSqlDatabaseGetResult.Id;
             Type = restorableSqlDatabaseGetResult.Type;
-            Resource = new PSRestorableSqlDatabasePropertiesResource(restorableSqlDatabaseGetResult.Resource);
+            this._rid = restorableSqlDatabaseGetResult.Resource._rid;
+            OperationType = restorableSqlDatabaseGetResult.Resource.OperationType;
+            EventTimestamp = restorableSqlDatabaseGetResult.Resource.EventTimestamp;
+            OwnerId = restorableSqlDatabaseGetResult.Resource.OwnerId;
+            OwnerResourceId = restorableSqlDatabaseGetResult.Resource.OwnerResourceId;
+            Database = new PSRestorableSqlDatabasePropertiesResourceDatabase(restorableSqlDatabaseGetResult.Resource.Database);
         }
 
         /// <summary>
@@ -54,9 +59,40 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the properties of the CosmosDB Sql database resource
+        /// Gets a system generated property. A unique identifier.
         /// </summary>
-        [Ps1Xml(Label = "Resource", Target = ViewControl.List)]
-        public PSRestorableSqlDatabasePropertiesResource Resource { get; set; }
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public string _rid { get; private set; }
+
+        /// <summary>
+        /// Gets the operation type of this database event. Possible values
+        /// include: 'Create', 'Replace', 'Delete', 'SystemOperation'
+        /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public string OperationType { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp of this database event.
+        /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public string EventTimestamp { get; private set; }
+
+        /// <summary>
+        /// Gets the name of this restorable SQL database.
+        /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public string OwnerId { get; private set; }
+
+        /// <summary>
+        /// Gets the resource Id of this restorable SQL database.
+        /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public string OwnerResourceId { get; private set; }
+
+        /// <summary>
+        /// Gets the database properties of the restorable SQL database
+        /// </summary>
+        [Ps1Xml(Label = "Id", Target = ViewControl.List)]
+        public PSRestorableSqlDatabasePropertiesResourceDatabase Database { get; set; }
     }
 }

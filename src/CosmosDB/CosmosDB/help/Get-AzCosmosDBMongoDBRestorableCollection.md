@@ -12,9 +12,16 @@ Lists all the restorable Azure Cosmos DB MongoDB collection available for a spec
 
 ## SYNTAX
 
+### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableCollection -LocationName <String> -DatabaseAccountInstanceId <String>
  -DatabaseRid <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Get-AzCosmosDBMongoDBRestorableCollection -ParentObject <PSRestorableSqlDatabaseGetResult>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +47,7 @@ The instance Id of the CosmosDB database account.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -55,7 +62,7 @@ ResourceId of the database.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -85,13 +92,28 @@ Name of the Location in string.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+CosmosDB Restorable MongoDB Database object
+
+```yaml
+Type: PSRestorableSqlDatabaseGetResult
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

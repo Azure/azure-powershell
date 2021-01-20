@@ -12,9 +12,18 @@ Lists all the restorable Azure Cosmos DB MongoDB resources available for a speci
 
 ## SYNTAX
 
+### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableResource -LocationName <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTimeOffset> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Get-AzCosmosDBMongoDBRestorableResource -LocationName <String> -DatabaseAccountInstanceId <String>
+ -RestoreTimestampInUtc <DateTimeOffset> -RestoreLocation <String>
+ -ParentObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -79,6 +88,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+CosmosDB Restorable Database Account object
+
+```yaml
+Type: PSRestorableDatabaseAccountGetResult
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

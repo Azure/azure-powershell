@@ -39,7 +39,7 @@ function Test-RestoreFromNewAccountCmdlets
   Assert-NotNull $restorableSqlDatabases
   Assert-AreEqual $restorableSqlDatabases.Count 2
 
-  $databaseRid=$restorableSqlDatabases[0].Resource.OwnerResourceId
+  $databaseRid=$restorableSqlDatabases[0].OwnerResourceId
   $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
   Assert-NotNull $restorableSqlContainers
   Assert-True { $restorableSqlContainers.Count -gt 1 }
@@ -111,7 +111,7 @@ function Test-MongoRestoreAccountCmdlets
   Assert-NotNull $restorableMongoDatabases
   Assert-AreEqual $restorableMongoDatabases.Count 1
 
-  $databaseRid=$restorableMongoDatabases[0].Resource.OwnerResourceId
+  $databaseRid=$restorableMongoDatabases[0].OwnerResourceId
   $restorableMongoContainers = Get-AzCosmosDBMongoDBRestorableCollection -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
   Assert-NotNull $restorableMongoContainers
   Assert-AreEqual $restorableMongoContainers.Count 2

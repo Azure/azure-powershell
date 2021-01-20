@@ -14,28 +14,43 @@
 
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
+using System.Web;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBRestorableCollection", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableMongodbCollectionGetResult))]
     public class GetAzCosmosDBMongoDBRestorableCollection : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string LocationName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseAccountInstanceId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.DatabaseResourceIdHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseRid { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableMongoDBDatabaseObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSRestorableSqlDatabaseGetResult ParentObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<locationName>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableMongoDBDatabases/<Id>
+                string[] idComponents = ParentObject.Id.Split('/');
+                LocationName = HttpUtility.UrlDecode(idComponents[6]);
+                DatabaseAccountInstanceId = idComponents[8];
+                DatabaseRid = ParentObject.OwnerResourceId;
+            }
+
             IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRid).GetAwaiter().GetResult().Body;
             foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
                 WriteObject(new PSRestorableMongodbCollectionGetResult(restorableMongoDBCollection));

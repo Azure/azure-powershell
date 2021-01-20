@@ -32,31 +32,60 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = restorableMongodbCollectionGetResult.Id;
             Name = restorableMongodbCollectionGetResult.Name;
             Type = restorableMongodbCollectionGetResult.Type;
-            Resource = new PSRestorableMongodbCollectionPropertiesResource(restorableMongodbCollectionGetResult.Resource);
+            _rid = restorableMongodbCollectionGetResult.Resource._rid;
+            OperationType = restorableMongodbCollectionGetResult.Resource.OperationType;
+            EventTimestamp = restorableMongodbCollectionGetResult.Resource.EventTimestamp;
+            OwnerId = restorableMongodbCollectionGetResult.Resource.OwnerId;
+            OwnerResourceId = restorableMongodbCollectionGetResult.Resource.OwnerResourceId;
         }
 
-        //
-        // Summary:
-        //     Gets the unique resource identifier of the RestorableMongodbCollection resource.
+        /// <summary>
+        ///  Gets the unique resource identifier of the RestorableMongodbCollection resource.
+        /// </summary>
         [Ps1Xml(Label = "Id", Target = ViewControl.List)]
         public string Id { get; }
 
-        //
-        // Summary:
-        //     Gets the name of the RestorableMongodbCollection resource.
+        /// <summary>
+        //  Gets the name of the RestorableMongodbCollection resource.
+        /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.List)]
         public string Name { get; }
 
-        //
-        // Summary:
-        //     Gets the type of Azure resource.
+        /// <summary>
+        /// Gets the type of Azure resource.
+        /// </summary>
         [Ps1Xml(Label = "Type", Target = ViewControl.List)]
         public string Type { get; }
 
-        //
-        // Summary:
-        //     Gets or sets the properties of the CosmosDB Mondodb collection resource
-        [Ps1Xml(Label = "Resource", Target = ViewControl.List)]
-        public PSRestorableMongodbCollectionPropertiesResource Resource { get; set; }
+        /// <summary>
+        /// Gets a system generated property. A unique identifier.
+        /// </summary>
+        [Ps1Xml(Label = "_rid", Target = ViewControl.List)]
+        public string _rid { get; private set; }
+
+        /// <summary>
+        /// Gets the operation type of this collection event. Possible values
+        /// include: 'Create', 'Replace', 'Delete', 'SystemOperation'
+        /// </summary>
+        [Ps1Xml(Label = "OperationType", Target = ViewControl.List)]
+        public string OperationType { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp of this collection event.
+        /// </summary>
+        [Ps1Xml(Label = "EventTimestamp", Target = ViewControl.List)]
+        public string EventTimestamp { get; private set; }
+
+        /// <summary>
+        /// Gets the name of this restorable MongoDB collection.
+        /// </summary>
+        [Ps1Xml(Label = "OwnerId", Target = ViewControl.List)]
+        public string OwnerId { get; private set; }
+
+        /// <summary>
+        /// Gets the resource Id of this restorable MongoDB collection.
+        /// </summary>
+        [Ps1Xml(Label = "OwnerResourceId", Target = ViewControl.List)]
+        public string OwnerResourceId { get; private set; }
     }
 }

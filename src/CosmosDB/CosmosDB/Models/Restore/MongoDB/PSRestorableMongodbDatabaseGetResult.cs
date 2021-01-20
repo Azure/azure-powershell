@@ -32,31 +32,60 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = restorableMongodbDatabaseGetResult.Id;
             Name = restorableMongodbDatabaseGetResult.Name;
             Type = restorableMongodbDatabaseGetResult.Type;
-            Resource = new PSRestorableMongodbDatabasePropertiesResource(restorableMongodbDatabaseGetResult.Resource);
+            _rid = restorableMongodbDatabaseGetResult.Resource._rid;
+            OperationType = restorableMongodbDatabaseGetResult.Resource.OperationType;
+            EventTimestamp = restorableMongodbDatabaseGetResult.Resource.EventTimestamp;
+            OwnerId = restorableMongodbDatabaseGetResult.Resource.OwnerId;
+            OwnerResourceId = restorableMongodbDatabaseGetResult.Resource.OwnerResourceId;
         }
 
-        //
-        // Summary:
-        //     Gets the unique resource identifier of the RestorableMongodbDatabase resource.
+        /// <summary>
+        /// Gets the unique resource identifier of the RestorableMongodbDatabase resource.
+        /// </summary>
         [Ps1Xml(Label = "Id", Target = ViewControl.List)]
         public string Id { get; }
 
-        //
-        // Summary:
-        //     Gets the name of the RestorableMongodbDatabase resource.
+        /// <summary>
+        ///  Gets the name of the RestorableMongodbDatabase resource.
+        /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.List)]
         public string Name { get; }
 
-        //
-        // Summary:
-        //     Gets the type of Azure resource.
+        /// <summary>
+        /// Gets the type of Azure resource.
+        /// </summary>
         [Ps1Xml(Label = "Type", Target = ViewControl.List)]
         public string Type { get; }
 
-        //
-        // Summary:
-        //     Gets or sets the properties of the CosmosDB Mondodb database resource
-        [Ps1Xml(Label = "Resource", Target = ViewControl.List)]
-        public PSRestorableMongodbDatabasePropertiesResource Resource { get; set; }
+        /// <summary>
+        /// Gets a system generated property. A unique identifier.
+        /// </summary>
+        [Ps1Xml(Label = "_rid", Target = ViewControl.List)]
+        public string _rid { get; private set; }
+
+        /// <summary>
+        /// Gets the operation type of this database event. Possible values
+        /// include: 'Create', 'Replace', 'Delete', 'SystemOperation'
+        /// </summary>
+        [Ps1Xml(Label = "OperationType", Target = ViewControl.List)]
+        public string OperationType { get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp of this database event.
+        /// </summary>
+        [Ps1Xml(Label = "EventTimestamp", Target = ViewControl.List)]
+        public string EventTimestamp { get; private set; }
+
+        /// <summary>
+        /// Gets the name of this restorable MongoDB database.
+        /// </summary>
+        [Ps1Xml(Label = "OwnerId", Target = ViewControl.List)]
+        public string OwnerId { get; private set; }
+
+        /// <summary>
+        /// Gets the resource Id of this restorable MongoDB database.
+        /// </summary>
+        [Ps1Xml(Label = "OwnerResourceId", Target = ViewControl.List)]
+        public string OwnerResourceId { get; private set; }
     }
 }
