@@ -61,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity = (string) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace = (string) content.GetValueForProperty("FreeSpace",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).SymbolicName = (string) content.GetValueForProperty("SymbolicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).SymbolicName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Uuid = (string) content.GetValueForProperty("Uuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Uuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity = (string) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace = (string) content.GetValueForProperty("FreeSpace",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity = (string) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace = (string) content.GetValueForProperty("FreeSpace",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).SymbolicName = (string) content.GetValueForProperty("SymbolicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).SymbolicName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Uuid = (string) content.GetValueForProperty("Uuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Uuid, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity = (string) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Capacity, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace = (string) content.GetValueForProperty("FreeSpace",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).FreeSpace, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDataStoreInternal)this).Type, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

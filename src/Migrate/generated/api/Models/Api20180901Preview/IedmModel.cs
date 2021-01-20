@@ -14,10 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         public string[] DeclaredNamespace { get => this._declaredNamespace; }
 
         /// <summary>Backing field for <see cref="DirectValueAnnotationsManager" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager _directValueAnnotationsManager;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _directValueAnnotationsManager;
 
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager DirectValueAnnotationsManager { get => (this._directValueAnnotationsManager = this._directValueAnnotationsManager ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmDirectValueAnnotationsManager()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny DirectValueAnnotationsManager { get => (this._directValueAnnotationsManager = this._directValueAnnotationsManager ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); }
 
         /// <summary>Backing field for <see cref="EntityContainer" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmEntityContainer _entityContainer;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal.DeclaredNamespace { get => this._declaredNamespace; set { {_declaredNamespace = value;} } }
 
         /// <summary>Internal Acessors for DirectValueAnnotationsManager</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal.DirectValueAnnotationsManager { get => (this._directValueAnnotationsManager = this._directValueAnnotationsManager ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmDirectValueAnnotationsManager()); set { {_directValueAnnotationsManager = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal.DirectValueAnnotationsManager { get => (this._directValueAnnotationsManager = this._directValueAnnotationsManager ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set { {_directValueAnnotationsManager = value;} } }
 
         /// <summary>Internal Acessors for EntityContainer</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmEntityContainer Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal.EntityContainer { get => (this._entityContainer = this._entityContainer ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmEntityContainer()); set { {_entityContainer = value;} } }
@@ -101,14 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         SerializedName = @"declaredNamespaces",
         PossibleTypes = new [] { typeof(string) })]
         string[] DeclaredNamespace { get;  }
-
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"",
+        Description = @"Any object",
         SerializedName = @"directValueAnnotationsManager",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager DirectValueAnnotationsManager { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny DirectValueAnnotationsManager { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -171,8 +172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
 
     {
         string[] DeclaredNamespace { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager DirectValueAnnotationsManager { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny DirectValueAnnotationsManager { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmEntityContainer EntityContainer { get; set; }
 

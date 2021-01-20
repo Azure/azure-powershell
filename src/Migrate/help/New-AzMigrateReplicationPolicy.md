@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String

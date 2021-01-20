@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchquerykey
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSearchQueryKey
 
 ## SYNOPSIS
-Gets query key(s) of the Azure Search service.
+Gets query key(s) of the Azure Cognitive Search service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzSearchQueryKey [-ParentResourceId] <String> [-DefaultProfile <IAzureContex
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure Search service.
+The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure Cognitive Search service.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Name Key
      896AA09C167541072D404E1BE0442CE9
 ```
 
-The example gets all query key(s) of the Azure Search Service.
+The example gets all query key(s) of the Azure Cognitive Search service.
 
 ## PARAMETERS
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Search Service Input Object.
+Azure Cognitive Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-Search Service Resource Id.
+Azure Cognitive Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

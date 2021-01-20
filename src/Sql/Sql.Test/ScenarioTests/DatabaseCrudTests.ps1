@@ -307,6 +307,50 @@ function Test-CreateDatabaseWithZoneRedundancy
 
 <#
 	.SYNOPSIS
+	Tests creating a database with maintenance.
+#>
+function Test-CreateDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database with default maintenance
+		$databaseName = Get-DatabaseName
+		$mId = Get-DefaultPublicMaintenanceConfigurationId $location
+        $serverResourceId = "/subscriptions/${subscriptionId}/resourceGroups/${rgname}/providers/Microsoft.Sql/servers/${serverName}"
+		$job = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mId -AsJob -Force
+		$job | Wait-Job
+		$db = $job.Output
+
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $db.MaintenanceConfigurationId.ToLower()
+
+		# Create database with non-default maintenance
+		$databaseName = Get-DatabaseName
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mId -Force
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $db.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with Backup Storage Redundancy
 #>
 function Test-CreateDatabaseWithBackupStorageRedundancy
@@ -572,6 +616,44 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 		Assert-AreEqual $sdb2.DatabaseName $db2.DatabaseName
 		Assert-NotNull $sdb2.ZoneRedundant
 		Assert-AreEqual "false" $sdb2.ZoneRedundant
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database with maintenance
+#>
+function Test-UpdateDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location	
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition Premium -Force
+		Assert-AreEqual $db1.DatabaseName $databaseName
+		Assert-NotNull $db1.MaintenanceConfigurationId
+		Assert-AreEqual $defaultMId.ToLower() $db1.MaintenanceConfigurationId.ToLower()
+
+		# Alter database maintenance
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$sdb1 = Set-AzSqlDatabase -ResourceGroupName $db1.ResourceGroupName -ServerName $db1.ServerName -DatabaseName $db1.DatabaseName `
+			-MaintenanceConfigurationId $mId
+
+		Assert-AreEqual $sdb1.DatabaseName $databaseName
+		Assert-NotNull $sdb1.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $sdb1.MaintenanceConfigurationId.ToLower()
 	}
 	finally
 	{
@@ -849,6 +931,45 @@ function Test-GetDatabaseWithZoneRedundancy
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests getting a database with maintenance
+#>
+function Test-GetDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition Premium -Force
+
+		$gdb1 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-AreEqual $gdb1.DatabaseName $db1.DatabaseName
+		Assert-AreEqual $defaultMId.ToLower() $gdb1.MaintenanceConfigurationId.ToLower()
+
+		# Create database with maintenance (try using name instead of full id)
+		$databaseName = Get-DatabaseName
+		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mName
+
+		$gdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
+		Assert-AreEqual $gdb2.DatabaseName $db2.DatabaseName
+		Assert-AreEqual $mId.ToLower() $gdb2.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
 
 <#
 	.SYNOPSIS

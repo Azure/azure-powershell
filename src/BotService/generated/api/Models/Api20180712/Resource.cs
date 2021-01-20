@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The sku name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkuInternal)Sku).Name = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName? SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkuInternal)Sku).Name = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName)""); }
 
         /// <summary>Gets the sku tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -139,12 +139,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string Name { get;  }
         /// <summary>The sku name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The sku name",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName? SkuName { get; set; }
         /// <summary>Gets the sku tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// <summary>Gets or sets the SKU of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISku Sku { get; set; }
         /// <summary>The sku name</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName? SkuName { get; set; }
         /// <summary>Gets the sku tier. This is based on the SKU name.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuTier? SkuTier { get; set; }
         /// <summary>Contains resource tags defined as key/value pairs.</summary>

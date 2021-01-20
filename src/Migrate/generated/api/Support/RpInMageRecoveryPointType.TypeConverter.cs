@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for RpInMageRecoveryPointType.</summary>
+    /// <summary>The recovery point type.</summary>
     public partial class RpInMageRecoveryPointTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

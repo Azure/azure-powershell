@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Updated `Clear-AzContext` to clean token cache created by Az.ContainerRegistry
+
+## Version 2.2.4
 * Shown correct client request id on debug message [#13745]
 * Added common Azure PowerShell exception type
 * Supported storage API 2019-06-01
