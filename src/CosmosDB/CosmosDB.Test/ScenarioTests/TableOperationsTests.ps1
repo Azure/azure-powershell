@@ -18,8 +18,8 @@ Test Table CRUD operations
 #>
 function Test-TableOperationsCmdlets
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-db2527"
+  $rgName = "CosmosDBResourceGroup27"
   $TableName = "table1"
   $TableName2 = "table2"
   $ThroughputValue = 500
@@ -79,8 +79,8 @@ Test Table CRUD operations using InputObject and ParentObject parameter set
 #>
 function Test-TableOperationsCmdletsUsingInputObject
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-db2527"
+  $rgName = "CosmosDBResourceGroup27"
   $TableName = "table1"
   $TableName2 = "table2"
   $ThroughputValue = 500
@@ -132,8 +132,8 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-29"
+  $rgName = "CosmosDBResourceGroup29"
   $TableName = "tableName3"
 
   $ThroughputValue = 1200
@@ -157,43 +157,6 @@ function Test-TableThroughputCmdlets
   Assert-AreEqual $UpdatedThroughput.Throughput $UpdatedThroughputValue3
 
   Remove-AzCosmosDBTable -InputObject $NewTable 
-  }
-  Finally{
-      Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
-  }
-}
-
-<#
-.SYNOPSIS
-Test Cassandra migrate throughput cmdlets 
-#>
-function Test-TableMigrateThroughputCmdlets
-{
-
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
-  $TableName = "tableName4"
-
-  $ThroughputValue = 1200
-  $TableThroughputValue = 800
-
-  $Autoscale = "Autoscale"
-  $Manual = "Manual"
-
-  Try{
-      $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
-      $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
-      Assert-AreEqual $Throughput.Throughput $ThroughputValue
-      Assert-AreEqual $Throughput.AutoscaleSettings.MaxThroughput 0
-
-      $AutoscaleThroughput = Invoke-AzCosmosDBTableThroughputMigration -InputObject $NewTable -ThroughputType $Autoscale
-      Assert-AreNotEqual $AutoscaleThroughput.AutoscaleSettings.MaxThroughput 0
-
-      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName #get parent object
-      $ManualThroughput = Invoke-AzCosmosDBTableThroughputMigration -ParentObject $CosmosDBAccount -Name $TableName -ThroughputType $Manual
-      Assert-AreEqual $ManualThroughput.AutoscaleSettings.MaxThroughput 0
-
-      Remove-AzCosmosDBTable -InputObject $NewTable 
   }
   Finally{
       Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
