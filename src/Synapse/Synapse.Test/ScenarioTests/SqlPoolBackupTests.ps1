@@ -105,6 +105,77 @@ function Test-SqlPoolRestorePoint
 	}
 }
 
+function Test-SqlPoolGeoBackup
+{
+	# Setup
+	$testSuffix = 'ps2502'
+	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
+
+	try
+	{	
+	    $SqlPoolGeoBackupGet =Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
+        Assert-AreEqual $params.sqlPoolName $SqlPoolGeoBackupGet[0].Name
+        Assert-Null $SqlPoolGeoBackupGet[0].ElasticPoolName
+        Assert-NotNull $SqlPoolGeoBackupGet[0].Edition
+        Assert-NotNull $SqlPoolGeoBackupGet[0].LastAvailableBackupDate
+
+        $SqlPoolGeoBackupGetByPool =Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
+        Assert-AreEqual 1 $SqlPoolGeoBackupGetByPool.Count
+        Assert-AreEqual $params.sqlPoolName $SqlPoolGeoBackupGetByPool.Name
+        Assert-Null $SqlPoolGeoBackupGetByPool.ElasticPoolName
+        Assert-NotNull $SqlPoolGeoBackupGetByPool.Edition
+        Assert-NotNull $SqlPoolGeoBackupGetByPool.LastAvailableBackupDate
+    }
+	finally
+	{
+		# Cleanup
+		#Remove-SqlPoolBackupTestEnvironment $testSuffix
+	}
+}
+
+function Test-SqlDeletedDatabaseBackup
+{
+	# Setup
+	$testSuffix = 'ps2504'
+	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
+    
+    $rgname = $params.rgname
+    $workspaceName = $params.workspaceName
+    $sqlPoolName = $params.sqlPoolName
+
+	try
+	{	
+        New-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName  -PerformanceLevel DW400c
+        Wait-Seconds 80
+        Remove-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName -Force
+        Wait-Seconds 90
+
+	    $SqlDeletedDatabaseBackupGet =Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName# -Name $params.sqlPoolName
+        Assert-AreEqual $sqlPoolName $SqlDeletedDatabaseBackupGet[0].SqlPoolName
+        Assert-Null $SqlDeletedDatabaseBackupGet[0].ElasticPoolName
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].Edition
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].MaxSizeBytes
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].ServiceLevelObjective
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].CreationDate
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].DeletionDate
+        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].EarliestRestoreDate
+        
+        $SqlDeletedDatabaseBackupGetByPool= Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
+        Assert-AreEqual $sqlPoolName $SqlDeletedDatabaseBackupGetByPool[0].SqlPoolName
+        Assert-Null $SqlDeletedDatabaseBackupGetByPool[0].ElasticPoolName
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].Edition
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].MaxSizeBytes
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].ServiceLevelObjective
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].CreationDate
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].DeletionDate
+        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].EarliestRestoreDate
+    }
+	finally
+	{
+		# Cleanup
+		#Remove-SqlPoolBackupTestEnvironment $testSuffix
+	}
+}
 <#
 .SYNOPSIS
 Tests for restoring from restore point
