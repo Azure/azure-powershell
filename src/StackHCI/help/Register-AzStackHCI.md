@@ -56,7 +56,7 @@ PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c145
 PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/980be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
 ```
 
-Invoking from WAC
+Invoking from WAC.
 
 ### EXAMPLE 4
 ```powershell
