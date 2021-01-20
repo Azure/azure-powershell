@@ -65,63 +65,57 @@ Describe 'Update-AzWvdScalingPlan' {
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
             $scalingPlan.Location | Should -Be $resourceLocation
 
-            #BUGBUG: This is known to fail because the ArmProvider is trying to send a PATCH to the RDVmManager service, which it doesn't currently allow
-            try {
-                $scalingPlan = Update-AzWvdScalingPlan `
-                    -SubscriptionId $env.SubscriptionId `
-                    -ResourceGroupName $resourceGroup `
-                    -Name 'ScalingPlanPowershellContained1' `
-                    -Description 'desc2' `
-                    -FriendlyName 'fri2' `
-                    -HostPoolType 'Pooled' `
-                    -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
-                    -Schedule @(
-                        @{
-                            'name'                           = 'Work Week';
-                            'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
+            $scalingPlan = Update-AzWvdScalingPlan `
+                -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $resourceGroup `
+                -Name 'ScalingPlanPowershellContained1' `
+                -Description 'desc2' `
+                -FriendlyName 'fri2' `
+                -HostPoolType 'Pooled' `
+                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -Schedule @(
+                    @{
+                        'name'                           = 'Work Week';
+                        'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
 
-                            'rampUpStartTime'                = '1900-01-01T06:00:00Z';
-                            'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
-                            'rampUpMinimumHostsPct'          = 20;
-                            'rampUpCapacityThresholdPct'     = 20;
+                        'rampUpStartTime'                = '1900-01-01T06:00:00Z';
+                        'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
+                        'rampUpMinimumHostsPct'          = 20;
+                        'rampUpCapacityThresholdPct'     = 20;
 
-                            'peakStartTime'                  = '1900-01-01T08:00:00Z';
-                            'peakLoadBalancingAlgorithm'     = 'DepthFirst';
+                        'peakStartTime'                  = '1900-01-01T08:00:00Z';
+                        'peakLoadBalancingAlgorithm'     = 'DepthFirst';
 
-                            'RampDownStartTime'              = '1900-01-01T18:00:00Z';
-                            'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
-                            'rampDownMinimumHostsPct'        = 20;
-                            'rampDownCapacityThresholdPct'   = 20;
-                            'rampDownForceLogoffUser'       = $true;
-                            'rampDownWaitTimeMinute'        = 30;
-                            'rampDownNotificationMessage'    = 'Log out now, please.';
-                            'rampDownStopHostsWhen'          = 'ZeroSessions';
+                        'RampDownStartTime'              = '1900-01-01T18:00:00Z';
+                        'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
+                        'rampDownMinimumHostsPct'        = 20;
+                        'rampDownCapacityThresholdPct'   = 20;
+                        'rampDownForceLogoffUser'       = $true;
+                        'rampDownWaitTimeMinute'        = 30;
+                        'rampDownNotificationMessage'    = 'Log out now, please.';
+                        'rampDownStopHostsWhen'          = 'ZeroSessions';
 
-                            'offPeakStartTime'               = '1900-01-01T20:00:00Z';
-                            'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
-                        }
-                    ) `
-                    -HostPoolReference @(
-                        @{
-                            'hostPoolArmPath' = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test";
-                            'scalingPlanEnabled' = $false;
-                        },
-                        @{
-                            'hostPoolArmPath' = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test2";
-                            'scalingPlanEnabled' = $false;
-                        }
-                    )
-                
-                $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-                $scalingPlan.Location | Should -Be $resourceLocation
-                $scalingPlan.Description | Should -Be 'desc2'
-                $scalingPlan.FriendlyName | Should -Be 'fri2'
-                $scalingPlan.Schedule.Count | Should -Be 1
-                $scalingPlan.HostPoolReference.Count | Should -Be 2
-            }
-            catch {
-                #TODO: Remove this try/catch when Update is working
-            }
+                        'offPeakStartTime'               = '1900-01-01T20:00:00Z';
+                        'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
+                    }
+                ) `
+                -HostPoolReference @(
+                    @{
+                        'hostPoolArmPath' = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test";
+                        'scalingPlanEnabled' = $false;
+                    },
+                    @{
+                        'hostPoolArmPath' = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test2";
+                        'scalingPlanEnabled' = $false;
+                    }
+                )
+            
+            $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
+            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Description | Should -Be 'desc2'
+            $scalingPlan.FriendlyName | Should -Be 'fri2'
+            $scalingPlan.Schedule.Count | Should -Be 1
+            $scalingPlan.HostPoolReference.Count | Should -Be 2
 
             $scalingPlan = Get-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
@@ -130,8 +124,7 @@ Describe 'Update-AzWvdScalingPlan' {
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
             $scalingPlan.Schedule.Count | Should -Be 1
-            #TODO: HostPoolReference count should be 2 when Update is working
-            $scalingPlan.HostPoolReference.Count | Should -Be 1
+            $scalingPlan.HostPoolReference.Count | Should -Be 2
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `

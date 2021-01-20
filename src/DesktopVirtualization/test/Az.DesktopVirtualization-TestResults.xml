@@ -1,43 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2021-01-20" time="09:12:06">
-  <environment machine-name="JEHURREN-RD" user-domain="NORTHAMERICA" platform="Microsoft Windows 10 Enterprise Insider Preview|C:\WINDOWS|\Device\Harddisk0\Partition3" os-version="10.0.21296" nunit-version="2.5.8.0" cwd="D:\dev\forked\azure-powershell\src\DesktopVirtualization" user="jehurren" clr-version="Unknown" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2021-01-20" time="15:37:31">
+  <environment machine-name="JEHURREN-RD" cwd="D:\dev\forked\azure-powershell\src\DesktopVirtualization" clr-version="Unknown" nunit-version="2.5.8.0" user-domain="NORTHAMERICA" user="jehurren" os-version="10.0.21296" platform="Microsoft Windows 10 Enterprise Insider Preview|C:\WINDOWS|\Device\Harddisk0\Partition3" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="18.8866" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="5.55" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdScalingPlan.Tests.ps1" executed="True" result="Success" success="True" time="11.8009" asserts="0" description="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Get-AzWvdScalingPlan.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdScalingPlan.Tests.ps1" executed="True" result="Success" success="True" time="5.55" asserts="0" description="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdScalingPlan.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Get-AzWvdScalingPlan" executed="True" result="Success" success="True" time="11.5321" asserts="0" description="Get-AzWvdScalingPlan">
+          <test-suite type="TestFixture" name="Update-AzWvdScalingPlan" executed="True" result="Success" success="True" time="5.2047" asserts="0" description="Update-AzWvdScalingPlan">
             <results>
-              <test-case description="Get" name="Get-AzWvdScalingPlan.Get" time="4.3133" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List" name="Get-AzWvdScalingPlan.List" time="3.118" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List By Subscription" name="Get-AzWvdScalingPlan.List By Subscription" time="3.6189" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\New-AzWvdScalingPlan.Tests.ps1" executed="True" result="Success" success="True" time="2.9" asserts="0" description="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\New-AzWvdScalingPlan.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzWvdScalingPlan" executed="True" result="Success" success="True" time="2.6571" asserts="0" description="New-AzWvdScalingPlan">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzWvdScalingPlan.CreateExpanded" time="2.555" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdScalingPlan.Tests.ps1" executed="True" result="Success" success="True" time="1.8035" asserts="0" description="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Remove-AzWvdScalingPlan.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzWvdScalingPlan" executed="True" result="Success" success="True" time="1.6603" asserts="0" description="Remove-AzWvdScalingPlan">
-            <results>
-              <test-case description="Delete" name="Remove-AzWvdScalingPlan.Delete" time="1.5766" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdScalingPlan.Tests.ps1" executed="True" result="Success" success="True" time="2.3823" asserts="0" description="D:\dev\forked\azure-powershell\src\DesktopVirtualization\test\Update-AzWvdScalingPlan.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzWvdScalingPlan" executed="True" result="Success" success="True" time="2.1871" asserts="0" description="Update-AzWvdScalingPlan">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzWvdScalingPlan.UpdateExpanded" time="2.1146" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="Update-AzWvdScalingPlan.UpdateExpanded" time="4.7751" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
