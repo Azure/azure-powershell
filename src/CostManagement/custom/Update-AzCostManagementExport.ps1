@@ -232,15 +232,73 @@ param(
     process {
         try {
             $getExport
+            # 1. GET
+            $hasConfigurationColumn = $PSBoundParameters.Remove('ConfigurationColumn')
+            $hasDataSetGranularity = $PSBoundParameters.Remove('DataSetGranularity')
+            $hasDefinitionTimeframe = $PSBoundParameters.Remove('DefinitionTimeframe')
+            $hasDefinitionType = $PSBoundParameters.Remove('DefinitionType')
+            $hasDestinationResourceId = $PSBoundParameters.Remove('DestinationResourceId')
+            $hasDestinationRootFolderPath = $PSBoundParameters.Remove('DestinationRootFolderPath')
+            $hasETag = $PSBoundParameters.Remove('ETag')
+            $hasFormat = $PSBoundParameters.Remove('Format')
+            $hasRecurrencePeriodFrom = $PSBoundParameters.Remove('RecurrencePeriodFrom')
+            $hasRecurrencePeriodTo = $PSBoundParameters.Remove('RecurrencePeriodTo')
+            $hasScheduleRecurrence = $PSBoundParameters.Remove('ScheduleRecurrence')
+            $hasScheduleStatus = $PSBoundParameters.Remove('ScheduleStatus')
+            $hasTimePeriodFrom = $PSBoundParameters.Remove('TimePeriodFrom')
+            $hasTimePeriodTo = $PSBoundParameters.Remove('TimePeriodTo')
             if($PSBoundParameters['InputObject'] -ne $null)
             {
-                $InputExportObject = $PSBoundParameters['InputObject']
-                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject
+                # $InputExportObject = $PSBoundParameters['InputObject']
+                $getExport = Get-AzCostManagementExport @PSBoundParameters
             }else{
-                $InputExportScope = $PSBoundParameters['Scope']
-                $InputExportName = $PSBoundParameters['Name']
-                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName
+                # $InputExportScope = $PSBoundParameters['Scope']
+                # $InputExportName = $PSBoundParameters['Name']
+                $getExport = Get-AzCostManagementExport @PSBoundParameters
             }
+            if ($hasConfigurationColumn){
+                $null = $PSBoundParameters.Add("ConfigurationColumn",$ConfigurationColumn)
+            }
+            if ($hasDataSetGranularity){
+                $null = $PSBoundParameters.Add("DataSetGranularity",$DataSetGranularity)
+            }
+            if ($hasDefinitionTimeframe){
+                $null = $PSBoundParameters.Add("DefinitionTimeframe",$DefinitionTimeframe)
+            }
+            if ($hasDefinitionType){
+                $null = $PSBoundParameters.Add("DefinitionType",$DefinitionType)
+            }
+            if ($hasDestinationResourceId){
+                $null = $PSBoundParameters.Add("DestinationResourceId",$DestinationResourceId)
+            }
+            if ($hasDestinationRootFolderPath){
+                $null = $PSBoundParameters.Add("DestinationRootFolderPath",$DestinationRootFolderPath)
+            }
+            if ($hasETag){
+                $null = $PSBoundParameters.Add("ETag",$ETag)
+            }
+            if ($hasFormat){
+                $null = $PSBoundParameters.Add("Format",$Format)
+            }
+            if ($hasRecurrencePeriodFrom){
+                $null = $PSBoundParameters.Add("RecurrencePeriodFrom",$RecurrencePeriodFrom)
+            }
+            if ($hasRecurrencePeriodTo){
+                $null = $PSBoundParameters.Add("RecurrencePeriodTo",$RecurrencePeriodTo)
+            }
+            if ($hasScheduleRecurrence){
+                $null = $PSBoundParameters.Add("ScheduleRecurrence",$ScheduleRecurrence)
+            }
+            if ($hasScheduleStatus){
+                $null = $PSBoundParameters.Add("ScheduleStatus",$ScheduleStatus)
+            }
+            if ($hasTimePeriodFrom){
+                $null = $PSBoundParameters.Add("TimePeriodFrom",$TimePeriodFrom)
+            }
+            if ($hasTimePeriodTo){
+                $null = $PSBoundParameters.Add("TimePeriodTo",$TimePeriodTo)
+            }
+            
             $null = $PSBoundParameters.Add("ETag",$getExport.Etag)
             if($PSBoundParameters['DataSetGranularity'] -eq $null)
             {
