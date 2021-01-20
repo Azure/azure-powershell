@@ -79,4 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         Friday,
         Saturday
     }
+
+    public enum RestoreRequestType
+    {
+        RecoveryPointBased = 0
+    }
 }
