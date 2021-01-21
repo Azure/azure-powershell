@@ -231,30 +231,24 @@ param(
 
     process {
         try {
-            $getExport
-            # 1. GET
-            $hasConfigurationColumn = $PSBoundParameters.Remove('ConfigurationColumn')
-            $hasDataSetGranularity = $PSBoundParameters.Remove('DataSetGranularity')
-            $hasDefinitionTimeframe = $PSBoundParameters.Remove('DefinitionTimeframe')
-            $hasDefinitionType = $PSBoundParameters.Remove('DefinitionType')
-            $hasDestinationResourceId = $PSBoundParameters.Remove('DestinationResourceId')
-            $hasDestinationRootFolderPath = $PSBoundParameters.Remove('DestinationRootFolderPath')
-            $hasETag = $PSBoundParameters.Remove('ETag')
-            $hasFormat = $PSBoundParameters.Remove('Format')
-            $hasRecurrencePeriodFrom = $PSBoundParameters.Remove('RecurrencePeriodFrom')
-            $hasRecurrencePeriodTo = $PSBoundParameters.Remove('RecurrencePeriodTo')
-            $hasScheduleRecurrence = $PSBoundParameters.Remove('ScheduleRecurrence')
-            $hasScheduleStatus = $PSBoundParameters.Remove('ScheduleStatus')
-            $hasTimePeriodFrom = $PSBoundParameters.Remove('TimePeriodFrom')
-            $hasTimePeriodTo = $PSBoundParameters.Remove('TimePeriodTo')
+            $CommonPSBoundParameters = @{}
+            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+            }
+            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+            }
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
+            }
             if($PSBoundParameters['InputObject'] -ne $null)
             {
-                # $InputExportObject = $PSBoundParameters['InputObject']
-                $getExport = Get-AzCostManagementExport @PSBoundParameters
+                $InputExportObject = $PSBoundParameters['InputObject']
+                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject @CommonPSBoundParameters
             }else{
-                # $InputExportScope = $PSBoundParameters['Scope']
-                # $InputExportName = $PSBoundParameters['Name']
-                $getExport = Get-AzCostManagementExport @PSBoundParameters
+                $InputExportScope = $PSBoundParameters['Scope']
+                $InputExportName = $PSBoundParameters['Name']
+                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName @CommonPSBoundParameters
             }
             if ($hasConfigurationColumn){
                 $null = $PSBoundParameters.Add("ConfigurationColumn",$ConfigurationColumn)
