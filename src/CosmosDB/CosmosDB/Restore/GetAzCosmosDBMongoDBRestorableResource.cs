@@ -53,7 +53,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             IEnumerable restorableMongoDBResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, RestoreTimestampInUtc.ToString()).GetAwaiter().GetResult().Body;
             foreach (DatabaseRestoreResource restorableMongoDBResource in restorableMongoDBResources)
+            {
                 WriteObject(new PSDatabaseToRestore(restorableMongoDBResource));
+            }
         }
     }
 }

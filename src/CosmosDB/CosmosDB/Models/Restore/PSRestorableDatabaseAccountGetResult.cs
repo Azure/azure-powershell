@@ -25,7 +25,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public PSRestorableDatabaseAccountGetResult(RestorableDatabaseAccountGetResult restorableDatabaseAccountGetResult)
         {
             if (restorableDatabaseAccountGetResult == null)
+            {
                 return;
+            }
 
             Id = restorableDatabaseAccountGetResult.Id;
             DatabaseAccountInstanceId = restorableDatabaseAccountGetResult.Name;

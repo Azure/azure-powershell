@@ -61,7 +61,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 IEnumerable restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListByLocationWithHttpMessagesAsync(LocationName).GetAwaiter().GetResult().Body;
                 foreach (RestorableDatabaseAccountGetResult restorableDatabaseAccount in restorableDatabaseAccounts)
+                {
                     WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
+                }
             }
             else
             {

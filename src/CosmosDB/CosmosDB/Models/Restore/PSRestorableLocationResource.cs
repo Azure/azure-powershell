@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         public PSRestorableLocationResource(RestorableLocationResource restorableLocationResource)
         {
+            if (restorableLocationResource == null)
+            {
+                return;
+            }
+
             LocationName = restorableLocationResource.LocationName;
             RegionalDatabaseAccountInstanceId = restorableLocationResource.RegionalDatabaseAccountInstanceId;
             CreationTime = restorableLocationResource.CreationTime;
