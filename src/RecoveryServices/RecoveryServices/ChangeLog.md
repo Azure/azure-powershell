@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Zone Redundancy for Recovery Service Vaults. 
 
 ## Version 3.3.0
 * Added Cross Region Restore feature.  
