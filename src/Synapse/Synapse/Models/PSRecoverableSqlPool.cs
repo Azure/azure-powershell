@@ -5,17 +5,15 @@ using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSBackupModel : ProxyResource
+    public class PSRecoverableSqlPool : PSSynapseProxyResource
     {
-        public PSBackupModel(RecoverableSqlPool recoverableSqlPool)
+        public PSRecoverableSqlPool(RecoverableSqlPool recoverableSqlPool)
+            : base(recoverableSqlPool?.Id, recoverableSqlPool?.Name, recoverableSqlPool?.Type)
         {
             this.Edition = recoverableSqlPool.Edition;
             this.ServiceLevelObjective = recoverableSqlPool.ServiceLevelObjective;
             this.ElasticPoolName = recoverableSqlPool.ElasticPoolName;
             this.LastAvailableBackupDate = recoverableSqlPool.LastAvailableBackupDate;
-            this.Id = recoverableSqlPool.Id;
-            this.Name = recoverableSqlPool.Name;
-            this.Type = recoverableSqlPool.Type;
         }
 
         public string Edition { get; set; }
@@ -32,12 +30,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         // Summary:
         //     Gets the last available backup date of the database (ISO8601 format)
         public DateTime? LastAvailableBackupDate { get; set; }
-
-        public new string Id { get; set; }
-
-        public new string Name { get; set; }
-
-        public new string Type { get; set; }
     }
 }
 

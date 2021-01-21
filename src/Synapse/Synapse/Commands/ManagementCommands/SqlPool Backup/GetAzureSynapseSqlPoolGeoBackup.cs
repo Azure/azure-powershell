@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPoolGeoBackup,
         DefaultParameterSetName = GetByNameParameterSet)]
-    [OutputType(typeof(PSBackupModel))]
+    [OutputType(typeof(PSRecoverableSqlPool))]
     public class GetAzureSynapseSqlPoolGeoBackup : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";

@@ -23,23 +23,17 @@ The **Get-AzSynapseDroppedSqlPool** cmdlet gets a specified deleted SQL pool bac
 
 ## EXAMPLES
 
-### Example 1: Get a specified backup from a sql pool
+### Example 1: Get a specified dropped sqlpools from a sql pool
 ```powershell
-PS C:\> Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+PS C:\> Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name "ContosoSqlPool"
 ```
-The cmdlet retrieves Backup for a sql pool.
+The cmdlet retrieves dropped sqlpools for a sql pool.
 
-### Example 2: Get all backups on a workspace
+### Example 2: Get all dropped sqlpool on a workspace
 ```
 PS C:\>Get-AzSynapseDroppedSqlPool -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
-This command gets all available backups on a specified workspace.
-
-### Example 3: Get all geo-redundant backups on a workspace using filtering
-```
-PS C:\>Get-AzSynapseDroppedSqlPool -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
-```
-This command gets all available geo-redundant backups on a specified workspace that start with "Contoso".
+This command gets all available dropped sqlpool on a specified workspace.
 
 ## PARAMETERS
 

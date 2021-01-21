@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.DroppedSqlPool,
         DefaultParameterSetName = GetByNameParameterSet)]
-    [OutputType(typeof(PSDroppedPoolBackupModel))]
+    [OutputType(typeof(PSRestorableDroppedSqlPool))]
     public class GetAzureSynapseDroppedSqlPool : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
+            HelpMessage = HelpMessages.DeletionDate)]
         [ValidateNotNullOrEmpty]
         public DateTime? DeletionDate { get; set; }
 

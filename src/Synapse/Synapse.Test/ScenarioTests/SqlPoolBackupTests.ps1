@@ -146,11 +146,16 @@ function Test-DroppedSqlPool
 	try
 	{	
         New-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName  -PerformanceLevel DW400c
+        
+        # wait for a short while since it needs some time to create
         Wait-Seconds 80
+
         Remove-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName -Force
+        
+        # wait for a short while since it needs some time to delete
         Wait-Seconds 90
 
-	    $DroppedSqlPoolGet =Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName# -Name $params.sqlPoolName
+	    $DroppedSqlPoolGet =Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
         Assert-AreEqual $sqlPoolName $DroppedSqlPoolGet[0].SqlPoolName
         Assert-Null $DroppedSqlPoolGet[0].ElasticPoolName
         Assert-NotNull $DroppedSqlPoolGet[0].Edition

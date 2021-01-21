@@ -1889,13 +1889,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<PSBackupModel> GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        public virtual async Task<PSRecoverableSqlPool> GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
 
-                return new PSBackupModel(taskResponse.Body);
+                return new PSRecoverableSqlPool(taskResponse.Body);
             }
             catch (ErrorContractException ex)
             {
@@ -1903,17 +1903,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<List<PSBackupModel>> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
+        public virtual async Task<List<PSRecoverableSqlPool>> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListWithHttpMessagesAsync(resourceGroupName, workspaceName);
-                var results = new List<PSBackupModel>();
+                var results = new List<PSRecoverableSqlPool>();
                 var response = taskResponse.Body;
 
                 foreach (var res in response.ToList())
                 {
-                    results.Add(new PSBackupModel(res));
+                    results.Add(new PSRecoverableSqlPool(res));
                 }
 
                 return results;
@@ -1924,13 +1924,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<PSDroppedPoolBackupModel> GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
+        public virtual async Task<PSRestorableDroppedSqlPool> GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.RestorableDroppedSqlPools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolAndTimeName);
 
-                return new PSDroppedPoolBackupModel(taskResponse.Body);
+                return new PSRestorableDroppedSqlPool(taskResponse.Body);
             }
             catch (ErrorContractException ex)
             {
@@ -1938,17 +1938,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<List<PSDroppedPoolBackupModel>> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
+        public virtual async Task<List<PSRestorableDroppedSqlPool>> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspaceWithHttpMessagesAsync(resourceGroupName, workspaceName);
-                var results = new List<PSDroppedPoolBackupModel>();
+                var results = new List<PSRestorableDroppedSqlPool>();
                 var response = taskResponse.Body;
 
                 foreach (var res in response.ToList())
                 {
-                    results.Add(new PSDroppedPoolBackupModel(res));
+                    results.Add(new PSRestorableDroppedSqlPool(res));
                 }
 
                 return results;
