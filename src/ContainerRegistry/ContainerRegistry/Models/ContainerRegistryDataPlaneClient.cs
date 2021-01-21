@@ -27,19 +27,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
+        private const string _defaultGrantType = "access_token";
+        private const string _defaultScope = "registry:catalog:*";
+        private const string _https = "https://";
+        private const string _refreshTokenKey = "AcrRefreshToken";
+
         private AzureContainerRegistryClient _client;
         private string _accessToken = default(string);
         private string _endPoint;
         private readonly string _suffix;
-
         private IAzureContext _context;
-        private AcrTokenCacheComponents _tokenCacheComponent;
 
-        private const string _grantType = "access_token";
-        private const string _scopeDefault = "registry:catalog:*";
-        private const string _https = "https://";
-        private const string _refreshTokenKey = "AcrRefreshToken";
-        private const string _acrTokenCacheKey = SharedComponentKeys.AcrTokenCacheKey;
+        private readonly string _acrTokenCacheKey;
+
         private const int _minutesBeforeExpiration = 5;
 
 
@@ -47,12 +47,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
 
-        public ContainerRegistryDataPlaneClient(IAzureContext context)
+        public ContainerRegistryDataPlaneClient(IAzureContext context, string acrTokenCacheKey)
         {
             _context = context;
             _suffix = _context.Environment.ContainerRegistryEndpointSuffix;
             ServiceClientCredentials clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(_accessToken, () => _accessToken);
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(clientCredential);
+            _acrTokenCacheKey = acrTokenCacheKey;
         }
 
         public AzureContainerRegistryClient GetClient()
@@ -60,27 +61,23 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return _client;
         }
 
-        public string TryAuthenticate(string scope = _scopeDefault)
+        public string Authenticate(string scope = _defaultScope)
         {
-            _accessToken = TryGetToken(scope);
+            _accessToken = GetToken(scope);
             return _accessToken;
         }
 
-        private string TryGetToken(string key)
+        private string GetToken(string key)
         {
-            if (_tokenCacheComponent == null)
+            AcrTokenCache cache;
+            if (!AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache))
             {
-                _tokenCacheComponent = new AcrTokenCacheComponents();
-            }
-            if (_tokenCacheComponent.GetComponent() == null)
-            {
-                _tokenCacheComponent.Register(_acrTokenCacheKey, AzureSession.Instance);
+                AzureSession.Instance.RegisterComponent<AcrTokenCache>(_acrTokenCacheKey, () => new AcrTokenCache());
+                AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache);
             }
 
-            IDictionary<string, AcrToken> cache = _tokenCacheComponent.GetComponent();
             AcrToken value;
-            cache.TryGetValue(key, out value);
-            if (value == null || value.IsExpired(_minutesBeforeExpiration))
+            if (!cache.TryGetToken(key, out value) || value.IsExpired(_minutesBeforeExpiration))
             {
                 string token = key.Equals(_refreshTokenKey) ? getRefreshToken() : getAccessToken(key);
                 try
@@ -91,8 +88,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 {
                     throw new InvalidOperationException(string.Format("Invalud token for {0}", key));
                 }
-                
-                cache[key] = value;
+
+                cache.Add(key, value);
             }
             return value.GetToken();
         }
@@ -120,7 +117,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             return GetClient()
                     .RefreshTokens
-                    .GetFromExchangeAsync(grantType: _grantType, service: _endPoint, accessToken: getArmAccessToken())
+                    .GetFromExchangeAsync(grantType: _defaultGrantType, service: _endPoint, accessToken: getArmAccessToken())
                     .GetAwaiter()
                     .GetResult()
                     .RefreshTokenProperty;
@@ -130,7 +127,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             return GetClient()
                     .AccessTokens
-                    .GetAsync(service: _endPoint, scope: scope, refreshToken: TryGetToken(_refreshTokenKey))
+                    .GetAsync(service: _endPoint, scope: scope, refreshToken: GetToken(_refreshTokenKey))
                     .GetAwaiter()
                     .GetResult()
                     .AccessTokenProperty;

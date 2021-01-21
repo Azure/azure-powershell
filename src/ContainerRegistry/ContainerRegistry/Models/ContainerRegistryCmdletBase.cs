@@ -139,15 +139,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
         }
 
+        private const string _acrTokenCacheKey = "AcrTokenCacheKey";
         private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
-
         public ContainerRegistryDataPlaneClient RegistryDataPlaneClient
         {
             get
             {
                 if (_RegistryDataPlaneClient == null)
                 {
-                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext)
+                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext, _acrTokenCacheKey)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

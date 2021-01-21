@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ParameterSetName.Equals(WithoutNameAndPasswordParameterSet))
             {
                 this.UserName = new Guid().ToString();
-                this.Password = this.RegistryDataPlaneClient.TryAuthenticate();
+                this.Password = this.RegistryDataPlaneClient.Authenticate();
             }
 
             string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
