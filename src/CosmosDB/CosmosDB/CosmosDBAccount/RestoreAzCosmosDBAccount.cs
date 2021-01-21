@@ -64,8 +64,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 utcRestoreDateTime = RestoreTimestampInUtc.ToUniversalTime();
             }
 
-            WriteObject("RestoreTimestamp in UTC: " + utcRestoreDateTime);
-
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
 
             RestorableDatabaseAccountGetResult sourceAccountToRestore = null;
@@ -110,9 +108,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Locations = LocationCollection
             };
 
+            string apiKind = "GlobalDocumentDB";
+            if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+            {
+                apiKind = "MongoDB";
+            }
+
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(location: sourceAccountToRestore.Location, name: TargetDatabaseAccountName, properties: databaseAccountCreateUpdateProperties)
             {
-                Kind = "GlobalDocumentDB"
+                Kind = apiKind
             };
 
             if (ShouldProcess(TargetDatabaseAccountName,

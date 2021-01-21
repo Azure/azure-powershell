@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             IEnumerable restorableSqlDatabases = CosmosDBManagementClient.RestorableSqlDatabases.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId).GetAwaiter().GetResult().Body;
             foreach (RestorableSqlDatabaseGetResult restorableSqlDatabase in restorableSqlDatabases)
+            {
                 WriteObject(new PSRestorableSqlDatabaseGetResult(restorableSqlDatabase));
+            }
         }
     }
 }

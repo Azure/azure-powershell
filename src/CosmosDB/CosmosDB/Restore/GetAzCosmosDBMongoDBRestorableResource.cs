@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {

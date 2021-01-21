@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Management.CosmosDB.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(databaseAccount => databaseAccount.AccountName.Equals(DatabaseAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
 
                 foreach (RestorableDatabaseAccountGetResult restorableDatabaseAccount in accountsWithMatchingName)
+                {
                     WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
+                }
             }
             else if (!string.IsNullOrEmpty(DatabaseAccountInstanceId) && !string.IsNullOrEmpty(LocationName))
             {
@@ -65,7 +67,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 IEnumerable restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
                 foreach (RestorableDatabaseAccountGetResult restorableDatabaseAccount in restorableDatabaseAccounts)
+                {
                     WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
+                }
             }
         }
     }

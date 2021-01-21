@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.CosmosDB.Models;
 namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     public class PSRestorableLocationResource

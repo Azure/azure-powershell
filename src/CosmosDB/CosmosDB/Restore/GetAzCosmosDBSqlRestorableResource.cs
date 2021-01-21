@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Management.CosmosDB.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using System.Text.Json.Serialization;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB.Models;
+using Newtonsoft.Json.Converters;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -66,11 +63,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 dateTimeInUtc = RestoreTimestampInUtc.ToUniversalTime();
             }
 
-            WriteObject("RestoreTimestamp: " + RestoreTimestampInUtc);
-            WriteObject("RestoreTimestamp in UTC: " + RestoreTimestampInUtc.ToUniversalTime());
             IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
             foreach (DatabaseRestoreResource restorableSqlResource in restorableSqlResources)
+            {
                 WriteObject(new PSDatabaseToRestore(restorableSqlResource));
+            }
         }
     }
 }

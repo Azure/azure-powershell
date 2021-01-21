@@ -15,10 +15,10 @@ Create a new CosmosDB Account.
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
  [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
- [-ServerVersion <String>] [-BackupPolicyType <String>] -ResourceGroupName <String> -Name <String>
- [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-Location <String[]>]
- [-LocationObject <PSLocation[]>] [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>]
- [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
+ [-ServerVersion <String>] [-Location <String[]>] [-LocationObject <PSLocation[]>] [-BackupPolicyType <String>]
+ -ResourceGroupName <String> -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
+ [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
+ [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

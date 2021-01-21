@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* This release introduces the preview commands for the following scenarios:
 * Introduced support for creating accounts with continuous mode backup policy.
 * Introduced support for Point in time restore for accounts with continuous mode backup policy.
 * Introduced support to update the backup interval and backup retention for accounts with periodic mode backup policy.
@@ -29,6 +30,7 @@
     New-AzCosmosDBRestore, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
     Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,
     Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
+* Removed the support for throughput Migration.
 
 ## Version 1.0.0
 * General availability of 'Az.CosmosDB' module

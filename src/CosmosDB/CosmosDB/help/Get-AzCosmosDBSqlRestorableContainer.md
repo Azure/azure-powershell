@@ -29,6 +29,7 @@ Lists all the restorable Azure Cosmos DB SQL containers available for a specific
 The list would have entries corresponding to create, replace and delete events of all live and deleted containers under the database.
 This list is useful to identify the restore timestamp based on the changes in the container. 
 For example, if user wants to restore the database account to a timestamp when a specific container is deleted, the user can find corresponding collection delete event from this list, and choose a timestamp before the delete event for restore.
+
 ## EXAMPLES
 
 ### Example 1

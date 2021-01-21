@@ -29,6 +29,7 @@ Gets the list of all the restorable Azure Cosmos DB Sql databases available unde
 The list would have entries corresponding to create, replace and delete events of all live and deleted databases.
 This list is useful to identify the restore timestamp based on the changes in the database. 
 For example, if user wants to restore the database account to a timestamp when a database named foo is deleted, the user can find corresponding database delete event from this list, and choose a timestamp before the delete event for restore.
+
 ## EXAMPLES
 
 ### Example 1

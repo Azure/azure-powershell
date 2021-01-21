@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CosmosDB.Helpers;
-using Microsoft.Azure.Commands.CosmosDB.Models;
-using Microsoft.Azure.Management.CosmosDB;
-using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     public class RestoreRequestDynamicParameters
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.RestoreSourceIdHelpMessage)]
-        public string RestoreSourceId { get; set; }
+        public string SourceRestorableDatabaseAccountId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.RestoreSourceDatabaseAccountNameHelpMessage)]
         public string SourceDatabaseAccountName { get; set; }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public PSRestoreParameters GetRestoreParameters(CosmosDBManagementClient cosmosDBManagementClient)
         {
-            if (string.IsNullOrEmpty(RestoreSourceId) && !string.IsNullOrEmpty(SourceDatabaseAccountName))
+            if (string.IsNullOrEmpty(SourceRestorableDatabaseAccountId) && !string.IsNullOrEmpty(SourceDatabaseAccountName))
             {
                 List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = cosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
                 List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(databaseAccount => databaseAccount.AccountName.Equals(SourceDatabaseAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         {
                             if (!restorableAccount.DeletionTime.HasValue || restorableAccount.DeletionTime < RestoreTimestampInUtc)
                             {
-                                RestoreSourceId = restorableAccount.Id;
+                                SourceRestorableDatabaseAccountId = restorableAccount.Id;
                                 break;
                             }
                         }
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            if (string.IsNullOrEmpty(RestoreSourceId))
+            if (string.IsNullOrEmpty(SourceRestorableDatabaseAccountId))
             {
                 return null;
             }
 
             PSRestoreParameters restoreParameters = new PSRestoreParameters()
             {
-                RestoreSource = RestoreSourceId,
+                RestoreSource = SourceRestorableDatabaseAccountId,
                 RestoreTimestampInUtc = RestoreTimestampInUtc.DateTime,
                 DatabasesToRestore = DatabasesToRestore
             };
