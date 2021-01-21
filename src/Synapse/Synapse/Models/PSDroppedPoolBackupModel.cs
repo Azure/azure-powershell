@@ -5,9 +5,9 @@ using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSDeletedDatabaseBackupModel : ProxyResource
+    public class PSDroppedPoolBackupModel : ProxyResource
     {
-        public PSDeletedDatabaseBackupModel(RestorableDroppedSqlPool restorableDroppedSqlPool)
+        public PSDroppedPoolBackupModel(RestorableDroppedSqlPool restorableDroppedSqlPool)
         {
             this.Location = restorableDroppedSqlPool.Location;
             this.SqlpoolName = restorableDroppedSqlPool.DatabaseName;

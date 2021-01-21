@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSqlDeletedDatabaseBackup()
+        public void TestDroppedSqlPool()
         {
             NewInstance.RunPsTest(
                 _logger,
-                "Test-SqlDeletedDatabaseBackup");
+                "Test-DroppedSqlPool");
         }
 
         [Fact]

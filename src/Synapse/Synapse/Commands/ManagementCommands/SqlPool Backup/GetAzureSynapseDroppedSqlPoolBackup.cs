@@ -8,10 +8,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlDeletedDatabaseBackup,
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.DroppedSqlPool,
         DefaultParameterSetName = GetByNameParameterSet)]
-    [OutputType(typeof(PSDeletedDatabaseBackupModel))]
-    public class GetAzureSynapseSqlDeletedDatabaseBackup : SynapseManagementCmdletBase
+    [OutputType(typeof(PSDroppedPoolBackupModel))]
+    public class GetAzureSynapseDroppedSqlPool : SynapseManagementCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
 

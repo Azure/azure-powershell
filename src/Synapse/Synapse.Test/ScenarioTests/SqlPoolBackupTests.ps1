@@ -133,7 +133,7 @@ function Test-SqlPoolGeoBackup
 	}
 }
 
-function Test-SqlDeletedDatabaseBackup
+function Test-DroppedSqlPool
 {
 	# Setup
 	$testSuffix = 'ps2504'
@@ -150,25 +150,25 @@ function Test-SqlDeletedDatabaseBackup
         Remove-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName -Force
         Wait-Seconds 90
 
-	    $SqlDeletedDatabaseBackupGet =Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName# -Name $params.sqlPoolName
-        Assert-AreEqual $sqlPoolName $SqlDeletedDatabaseBackupGet[0].SqlPoolName
-        Assert-Null $SqlDeletedDatabaseBackupGet[0].ElasticPoolName
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].Edition
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].MaxSizeBytes
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].ServiceLevelObjective
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].CreationDate
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].DeletionDate
-        Assert-NotNull $SqlDeletedDatabaseBackupGet[0].EarliestRestoreDate
+	    $DroppedSqlPoolGet =Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName# -Name $params.sqlPoolName
+        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGet[0].SqlPoolName
+        Assert-Null $DroppedSqlPoolGet[0].ElasticPoolName
+        Assert-NotNull $DroppedSqlPoolGet[0].Edition
+        Assert-NotNull $DroppedSqlPoolGet[0].MaxSizeBytes
+        Assert-NotNull $DroppedSqlPoolGet[0].ServiceLevelObjective
+        Assert-NotNull $DroppedSqlPoolGet[0].CreationDate
+        Assert-NotNull $DroppedSqlPoolGet[0].DeletionDate
+        Assert-NotNull $DroppedSqlPoolGet[0].EarliestRestoreDate
         
-        $SqlDeletedDatabaseBackupGetByPool= Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        Assert-AreEqual $sqlPoolName $SqlDeletedDatabaseBackupGetByPool[0].SqlPoolName
-        Assert-Null $SqlDeletedDatabaseBackupGetByPool[0].ElasticPoolName
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].Edition
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].MaxSizeBytes
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].ServiceLevelObjective
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].CreationDate
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].DeletionDate
-        Assert-NotNull $SqlDeletedDatabaseBackupGetByPool[0].EarliestRestoreDate
+        $DroppedSqlPoolGetByPool= Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
+        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGetByPool[0].SqlPoolName
+        Assert-Null $DroppedSqlPoolGetByPool[0].ElasticPoolName
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].Edition
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].MaxSizeBytes
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].ServiceLevelObjective
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].CreationDate
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].DeletionDate
+        Assert-NotNull $DroppedSqlPoolGetByPool[0].EarliestRestoreDate
     }
 	finally
 	{

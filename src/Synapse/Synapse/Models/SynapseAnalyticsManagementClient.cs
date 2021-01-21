@@ -1924,13 +1924,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<PSDeletedDatabaseBackupModel> GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
+        public virtual async Task<PSDroppedPoolBackupModel> GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.RestorableDroppedSqlPools.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolAndTimeName);
 
-                return new PSDeletedDatabaseBackupModel(taskResponse.Body);
+                return new PSDroppedPoolBackupModel(taskResponse.Body);
             }
             catch (ErrorContractException ex)
             {
@@ -1938,17 +1938,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public virtual async Task<List<PSDeletedDatabaseBackupModel>> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
+        public virtual async Task<List<PSDroppedPoolBackupModel>> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
         {
             try
             {
                 var taskResponse = await _synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspaceWithHttpMessagesAsync(resourceGroupName, workspaceName);
-                var results = new List<PSDeletedDatabaseBackupModel>();
+                var results = new List<PSDroppedPoolBackupModel>();
                 var response = taskResponse.Body;
 
                 foreach (var res in response.ToList())
                 {
-                    results.Add(new PSDeletedDatabaseBackupModel(res));
+                    results.Add(new PSDroppedPoolBackupModel(res));
                 }
 
                 return results;

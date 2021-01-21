@@ -1,43 +1,43 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqldeleteddatabasebackup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsedroppedsqlpool
 schema: 2.0.0
 ---
 
-# Get-AzSynapseSqlDeletedDatabaseBackup
+# Get-AzSynapseDroppedSqlPool
 
 ## SYNOPSIS
-Gets a deleted database backup of a Synapse Sql Pool.
+Gets a dropped Sql pool backup of a Synapse Sql Pool.
 
 ## SYNTAX
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlDeletedDatabaseBackup [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Get-AzSynapseDroppedSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 ## DESCRIPTION
-The **Get-AzSynapseSqlDeletedDatabaseBackup** cmdlet gets a specified deleted SQL database backup that you can restore, or all deleted backups that you can restore in a workspace. 
+The **Get-AzSynapseDroppedSqlPool** cmdlet gets a specified deleted SQL pool backup that you can restore, or all deleted backups that you can restore in a workspace. 
 
 
 ## EXAMPLES
 
 ### Example 1: Get a specified backup from a sql pool
 ```powershell
-PS C:\> Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+PS C:\> Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
-The cmdlet retrieves  Backup for a sql pool.
+The cmdlet retrieves Backup for a sql pool.
 
 ### Example 2: Get all backups on a workspace
 ```
-PS C:\>Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+PS C:\>Get-AzSynapseDroppedSqlPool -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
 This command gets all available backups on a specified workspace.
 
 ### Example 3: Get all geo-redundant backups on a workspace using filtering
 ```
-PS C:\>Get-AzSynapseSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
+PS C:\>Get-AzSynapseDroppedSqlPool -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
 ```
 This command gets all available geo-redundant backups on a specified workspace that start with "Contoso".
 
@@ -64,7 +64,7 @@ The Synapse Sql pool.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
-Aliases: AzSynapseSqlDeletedDatabaseBackup
+Aliases: AzSynapseDroppedSqlPool
 
 Required: True
 Position: Named
@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSDeletedDatabaseBackupModel
+### Microsoft.Azure.Commands.Synapse.Models.PSDroppedSqlPoolBackupModel
 
 ## NOTES
 
