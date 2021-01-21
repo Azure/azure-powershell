@@ -19,12 +19,6 @@
 --->
 
 ## Upcoming Release
-* Register App Service Resources ('Microsoft.Web/sites', 'Microsoft.Web/hostingEnvironments') for Private Link Powershells.
-    - `Get-AzPrivateLinkResource`
-    - `Get-AzPrivateEndpointConnection`
-    - `Approve-AzPrivateEndpointConnection`
-    - `Deny-AzPrivateEndpointConnection`
-    - `Remove-AzPrivateEndpointConnection`
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
