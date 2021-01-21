@@ -65,7 +65,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = @('Az.CosmosDB.Format.ps1xml')
+FormatsToProcess = @('Az.CosmosDB.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll')
