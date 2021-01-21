@@ -121,6 +121,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             return new PSTriggerSubscriptionStatus(this.DataFactoryManagementClient.Triggers.GetEventSubscriptionStatus(resourceGroupName, dataFactoryName, triggerName));
         }
 
+        public virtual void StopTriggerRun(string resourceGroupName, string dataFactoryName, string triggerName, string triggerRunId)
+        {
+            this.DataFactoryManagementClient.TriggerRuns.Cancel(resourceGroupName, dataFactoryName, triggerName, triggerRunId);
+        }
+
+        public virtual void RerunTriggerRun(string resourceGroupName, string dataFactoryName, string triggerName, string triggerRunId)
+        {
+            this.DataFactoryManagementClient.TriggerRuns.Rerun(resourceGroupName, dataFactoryName, triggerName, triggerRunId);
+        }
+
         private TriggerResource CreateOrUpdateTrigger(string resourceGroupName, string dataFactoryName,
             string triggerName, string rawJsonContent)
         {

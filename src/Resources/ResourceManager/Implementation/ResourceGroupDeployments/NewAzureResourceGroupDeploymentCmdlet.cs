@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
             typeof(NewAzureResourceGroupDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
             TemplateObject = TemplateObject,
             TemplateSpecId = TemplateSpecId,
+            QueryString = QueryString,
             TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
             ParameterUri = TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
@@ -105,6 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             DeploymentScopeType.ResourceGroup,
             deploymentName: this.Name,
             mode: this.Mode,
+            queryString: this.QueryString,
             resourceGroupName: this.ResourceGroupName,
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
@@ -112,7 +117,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType);
+            excludeChangeTypes: this.WhatIfExcludeChangeType); 
 
         protected override void OnProcessRecord()
         {

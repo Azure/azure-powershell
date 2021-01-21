@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName = (string) content.GetValueForProperty("OSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName = (string) content.GetValueForProperty("OSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSVersion, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName = (string) content.GetValueForProperty("OSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName = (string) content.GetValueForProperty("OSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystemInternal)this).OSVersion, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '0.1.1'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -109,7 +109,8 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* the first preview release'
+            ReleaseNotes = '* Fix bugs for Install-AzModule
+            * Fix syntax errors when run in Windows Powershell'
     
             # Prerelease string of this module
             # Prerelease = ''

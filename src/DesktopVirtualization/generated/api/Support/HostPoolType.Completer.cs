@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for HostPoolType.</summary>
+    /// <summary>HostPool type for desktop.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolTypeTypeConverter))]
     public partial struct HostPoolType :
         System.Management.Automation.IArgumentCompleter

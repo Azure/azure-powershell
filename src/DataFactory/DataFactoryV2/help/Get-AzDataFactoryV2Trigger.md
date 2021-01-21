@@ -35,7 +35,7 @@ The **Get-AzDataFactoryV2Trigger** cmdlet gets information about triggers in a d
 
 ## EXAMPLES
 
-### Example 1: Get information about a specific trigger
+### Example 1: Get information about all triggers
 ```
 PS C:\> Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 
@@ -54,7 +54,7 @@ PS C:\> Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "Wi
 
 Gets a list of all triggers that have been created in the data factory "WikiADF".
 
-### Example 2: Get information about all triggers
+### Example 2: Get information about a specific trigger
 ```
 Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
 

@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.HealthcareApis.Models;
-using Microsoft.Azure.Management.HealthcareApis;
-using System.Globalization;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {

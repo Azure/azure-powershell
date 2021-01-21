@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Language extension that can run within KQL query.</summary>
     public partial struct LanguageExtensionName :
         System.IEquatable<LanguageExtensionName>
     {

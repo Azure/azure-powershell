@@ -22,7 +22,9 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Aks
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzAksCluster")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
+    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmAks : KubeCmdletBase
     {

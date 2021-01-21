@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.AzureFirewallPolicy;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -39,15 +40,23 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddress,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddressAndTranslatedAddress,
+            HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddressAndTranslatedFqdn,
             HelpMessage = "The source addresses of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroup,
-            HelpMessage = "The source ipgroups of the rule. Either SourceIpGroup or SourceAddress must be present.")]
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroupAndTranslatedAddress,
+            HelpMessage = "The source ipgroups of the rule. Either SourceAddress or SourceIpGroup must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroupAndTranslatedFqdn,
+            HelpMessage = "The source ipgroups of the rule. Either SourceAddress or SourceIpGroup must be present.")]
         [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
@@ -70,9 +79,25 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The translated address for this NAT rule")]
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddressAndTranslatedAddress,
+            HelpMessage = "The translated address for this NAT rule. Either translated address or fqdn must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroupAndTranslatedAddress,
+            HelpMessage = "The translated address for this NAT rule. Either translated address or fqdn must be present.")]
         [ValidateNotNullOrEmpty]
         public string TranslatedAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddressAndTranslatedFqdn,
+            HelpMessage = "The translated FQDN for this NAT rule. Either translated address or fqdn must be present.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceIpGroupAndTranslatedFqdn,
+            HelpMessage = "The translated FQDN for this NAT rule. Either translated address or fqdn must be present.")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -84,6 +109,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if (TranslatedFqdn != null)
+            {
+                ValidateIsFqdn(TranslatedFqdn);
+            }
+
             var natRule = new PSAzureFirewallPolicyNatRule
             {
                 Name = this.Name,
@@ -93,10 +123,21 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 TranslatedAddress = this.TranslatedAddress,
+                TranslatedFqdn = this.TranslatedFqdn,
                 TranslatedPort = this.TranslatedPort,
                 RuleType = "NatRule"
             };
             WriteObject(natRule);
+        }
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
+            }
         }
     }
 }

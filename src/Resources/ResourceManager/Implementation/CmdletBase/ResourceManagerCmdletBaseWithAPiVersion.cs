@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
-        public string ApiVersion { get; set; }
+        public virtual string ApiVersion { get; set; }
 
         private Dictionary<string, string> GetCmdletHeaders()
         {

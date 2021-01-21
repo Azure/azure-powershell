@@ -352,13 +352,13 @@
   <data name="UnableToLaunchBrowser" xml:space="preserve">
     <value>Unable to launch a browser for authorization code login. Reverting to device code login.</value>
   </data>
-  <data name="EnvironmentNotFound" xml:space="preserve">
-    <value>The environment name '{0}' is not found.</value>
-  </data>
   <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
     <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
   </data>
   <data name="MissingPasswordAndNoCache" xml:space="preserve">
     <value>Password is missing and no cache found for the current user.</value>
+  </data>
+  <data name="FailedToMigrateAdal2Msal" xml:space="preserve">
+    <value>INITIALZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
   </data>
 </root>

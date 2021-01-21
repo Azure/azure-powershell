@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Crypto;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;

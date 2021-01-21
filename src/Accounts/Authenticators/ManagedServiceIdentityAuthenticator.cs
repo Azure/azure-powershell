@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -30,6 +32,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
 
+        private static Regex SystemMsiNameRegex = new Regex(Constants.DefaultMsiAccountIdPrefix + @"\d+");
 
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
@@ -37,9 +40,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var scopes = new[] { GetResourceId(msiParameters.ResourceId, msiParameters.Environment) };
             var requestContext = new TokenRequestContext(scopes);
-            ManagedIdentityCredential identityCredential = new ManagedIdentityCredential();
-            var tokenTask = identityCredential.GetTokenAsync(requestContext);
-            return MsalAccessToken.GetAccessTokenAsync(tokenTask, msiParameters.TenantId, msiParameters.Account.Id);
+            var userAccountId = SystemMsiNameRegex.IsMatch(msiParameters.Account.Id) ? null : msiParameters.Account.Id;
+
+            AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
+            AzureSession.Instance.TryGetComponent(nameof(MsalAccessTokenAcquirerFactory), out MsalAccessTokenAcquirerFactory msalAccessTokenAcquirerFactory);
+
+            var identityCredential = azureCredentialFactory.CreateManagedIdentityCredential(userAccountId);
+            var msalAccessTokenAcquirer = msalAccessTokenAcquirerFactory.CreateMsalAccessTokenAcquirer();
+            return msalAccessTokenAcquirer.GetAccessTokenAsync(identityCredential, requestContext, cancellationToken,
+                msiParameters.TenantId, msiParameters.Account.Id);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

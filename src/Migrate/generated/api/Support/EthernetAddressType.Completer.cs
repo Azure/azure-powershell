@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for EthernetAddressType.</summary>
+    /// <summary>The source IP address type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressTypeTypeConverter))]
     public partial struct EthernetAddressType :
         System.Management.Automation.IArgumentCompleter

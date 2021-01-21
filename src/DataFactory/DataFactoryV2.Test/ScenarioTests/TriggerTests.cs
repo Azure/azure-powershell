@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInvokeAndStopTriggerRun()
+        {
+            RunPowerShellTest(_logger, "Test-TriggerInvokeAndStop");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTriggerRun()
         {
             RunPowerShellTest(_logger, "Test-TriggerRun");

@@ -146,6 +146,37 @@ function Test-NewAzAks
     }
 }
 
+function Test-NewAzAksByServicePrincipal
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = "eastus"
+
+    $ServicePrincipalId = '618a2a3a-9d44-415a-b0ce-9729253a4ba9'
+    $Secret = '5E41A57vC_ODdiFb5ji-a9~C~Mp3gKt7D~'
+    $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
+    $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName `
+                -ServicePrincipalIdAndSecret $credObject
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $ServicePrincipalId $cluster.ServicePrincipalProfile.ClientId
+
+        $cluster | Import-AzAksCredential -Force
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
 function Test-NewAzAksAddons
 {
     # Setup

@@ -435,7 +435,7 @@
     <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
   <data name="ConnectionMonitorV1V2" xml:space="preserve">
-    <value>Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
+    <value>Connection monitor V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
   </data>
   <data name="ConnectionMonitorSourceResourceIdInputObjectTestGroups" xml:space="preserve">
     <value>Either SourceResourceId or InputObject or TestGroups is to be defined</value>
@@ -443,20 +443,8 @@
   <data name="EndpointResourceId" xml:space="preserve">
     <value>Endpoint resourceId not in the correct format</value>
   </data>
-  <data name="EndpointFilterType" xml:space="preserve">
-    <value>Only filter type Include is supported</value>
-  </data>
-  <data name="EndpointFilterItem" xml:space="preserve">
-    <value>FilterType defined without filter item</value>
-  </data>
-  <data name="EndpointFilterItemType" xml:space="preserve">
-    <value>Endpoint filter item type is not AgentAddress</value>
-  </data>
-  <data name="EndpointFilterItemAddress" xml:space="preserve">
-    <value>Endpoint filter item address is empty</value>
-  </data>
-  <data name="EndpointFilterItemList" xml:space="preserve">
-    <value>Filter item list is empty</value>
+  <data name="InvalidEndpointResourceIdForSpecifiedType" xml:space="preserve">
+    <value>ResourceId is invalid for specified endpoint type {0}</value>
   </data>
   <data name="EndpointSourceDestination" xml:space="preserve">
     <value>No sources or destination endpoints</value>
@@ -539,6 +527,9 @@
   <data name="UnsupportedProtocolConfigurationType" xml:space="preserve">
     <value>Either TCP, HTTP or ICMP protocol should be defined.</value>
   </data>
+  <data name="UnsupportedDestinationPortBehavior" xml:space="preserve">
+    <value>Invalid value for DestinationPortBehavior. Supported values are 'None', 'ListenIfAvailable'.</value>
+  </data>
   <data name="UnsupportedHTTPMethod" xml:space="preserve">
     <value>Method in HTTPConfiguration is not supported. Valid values are 'GET' and 'POST'.</value>
   </data>
@@ -594,7 +585,13 @@
     <value>Specified resourceID in endpoint is not a valid resource ID.</value>
   </data>
   <data name="InvalidEndpointResourceType" xml:space="preserve">
-    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint.</value>
+    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualNetwork, Subnet and Workspace. Please update the resource ID of endpoint.</value>
+  </data>
+  <data name="EmptyEndpointType" xml:space="preserve">
+    <value>Type in the endpoint {0} should be populated. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork.</value>
+  </data>
+  <data name="InvalidEndpointType" xml:space="preserve">
+    <value>Invalid type in the endpoint {0}. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, ExternalAddress.</value>
   </data>
   <data name="EndpointFilterItemIsMissing" xml:space="preserve">
     <value>Connection monitor workspace endpoint must have at least one EndpointFilterItem.</value>
@@ -695,5 +692,11 @@
   <data name="CommissioningStateConflict" xml:space="preserve">
     <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
     <comment>Error message for setting the customIpPrefix</comment>
+  </data>
+  <data name="ApplicationGatewaySslProfileName" xml:space="preserve">
+    <value>sslProfiles</value>
+  </data>
+  <data name="ApplicationGatewayTrustedClientCertificateName" xml:space="preserve">
+    <value>trustedClientCertificates</value>
   </data>
 </root>

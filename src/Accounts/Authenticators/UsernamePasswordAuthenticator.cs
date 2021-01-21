@@ -65,7 +65,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
                 return MsalAccessToken.GetAccessTokenAsync(
                     authTask,
-                    () => passwordCredential.GetTokenAsync(requestContext, cancellationToken),
+                    passwordCredential,
+                    requestContext,
                     cancellationToken);
             }
             else

@@ -98,10 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId = (string) content.GetValueForProperty("NativeHostMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType = (string) content.GetValueForProperty("VirtualMachineType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeMachineId = (string) content.GetValueForProperty("NativeMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeMachineId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType = (string) content.GetValueForProperty("VirtualMachineType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId = (string) content.GetValueForProperty("NativeHostMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId = (string) content.GetValueForProperty("NativeHostMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType = (string) content.GetValueForProperty("VirtualMachineType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeMachineId = (string) content.GetValueForProperty("NativeMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeMachineId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType = (string) content.GetValueForProperty("VirtualMachineType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).VirtualMachineType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId = (string) content.GetValueForProperty("NativeHostMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVirtualMachineConfigurationInternal)this).NativeHostMachineId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
     }

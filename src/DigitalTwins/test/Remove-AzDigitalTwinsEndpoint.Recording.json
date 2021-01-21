@@ -1,0 +1,349 @@
+{
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "b85cbaa5-e43c-48ea-b1a3-b1cc72938868" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEh1YkVuZHBvaW50TmFtZW9na2RseSJ9?api-version=2020-10-31" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "9b87c8d0-3cb8-4494-941d-db55138fb0c4" ],
+        "x-ms-correlation-request-id": [ "9b87c8d0-3cb8-4494-941d-db55138fb0c4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055631Z:9b87c8d0-3cb8-4494-941d-db55138fb0c4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "475" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventHubEndpointNameogkdly\",\"name\":\"eventHubEndpointNameogkdly\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"***\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2020-10-25T05:49:22.1220696+00:00\"}}"
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEh1YkVuZHBvaW50TmFtZW9na2RseSJ9?api-version=2020-10-31+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEh1YkVuZHBvaW50TmFtZW9na2RseSJ9?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "b85cbaa5-e43c-48ea-b1a3-b1cc72938868" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "cc91bb46-c952-4773-b43f-2fd5252f6a01" ],
+        "x-ms-correlation-request-id": [ "cc91bb46-c952-4773-b43f-2fd5252f6a01" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055641Z:cc91bb46-c952-4773-b43f-2fd5252f6a01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEh1YkVuZHBvaW50TmFtZW9na2RseSJ9?api-version=2020-10-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEh1YkVuZHBvaW50TmFtZW9na2RseSJ9?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "b85cbaa5-e43c-48ea-b1a3-b1cc72938868" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "b691d1f8-8266-4226-a9fe-22e4795ef81f" ],
+        "x-ms-correlation-request-id": [ "b691d1f8-8266-4226-a9fe-22e4795ef81f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055642Z:b691d1f8-8266-4226-a9fe-22e4795ef81f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "bfcb7f1f-6e26-4df2-a7d3-9b62db79c383" ],
+        "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "9981cdd1-deb4-4e8c-b3c7-588b90a83ab0" ],
+        "x-ms-correlation-request-id": [ "9981cdd1-deb4-4e8c-b3c7-588b90a83ab0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055642Z:9981cdd1-deb4-4e8c-b3c7-588b90a83ab0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1059" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/ServiceBusEndpointNamepn9rkm\",\"name\":\"ServiceBusEndpointNamepn9rkm\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:33.6299792+00:00\"}},{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5\",\"name\":\"eventGridEndpointNamewndrh5\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://###\",\"accessKey1\":\"***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:53:27.6174696+00:00\"}}]}"
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "aa8768dc-ab76-4761-810d-f7fd0cd72b29" ],
+        "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "dbd84a62-3983-4ce6-bc11-f99ac10b9815" ],
+        "x-ms-correlation-request-id": [ "dbd84a62-3983-4ce6-bc11-f99ac10b9815" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055643Z:dbd84a62-3983-4ce6-bc11-f99ac10b9815" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "493" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5\",\"name\":\"eventGridEndpointNamewndrh5\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://###\",\"accessKey1\":\"***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:53:27.6174696+00:00\"}}"
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5?api-version=2020-10-31+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "0379e300-b8ea-44b5-822b-2186ce7712b6" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEdyaWRFbmRwb2ludE5hbWV3bmRyaDUifQ==?api-version=2020-10-31" ],
+        "Retry-After": [ "10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "48b60d56-2d5b-4da2-9020-7bf5118f5086" ],
+        "x-ms-correlation-request-id": [ "48b60d56-2d5b-4da2-9020-7bf5118f5086" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055643Z:48b60d56-2d5b-4da2-9020-7bf5118f5086" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "548" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/eventGridEndpointNamewndrh5\",\"name\":\"eventGridEndpointNamewndrh5\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://eventgridname6ltobc.eastus-1.eventgrid.azure.net/api/events\",\"accessKey1\":\"***\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2020-10-25T05:53:27.6606141+00:00\"}}"
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEdyaWRFbmRwb2ludE5hbWV3bmRyaDUifQ==?api-version=2020-10-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEdyaWRFbmRwb2ludE5hbWV3bmRyaDUifQ==?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "0379e300-b8ea-44b5-822b-2186ce7712b6" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "627fda7e-5df6-4507-878f-fe5a3f0bf15a" ],
+        "x-ms-correlation-request-id": [ "627fda7e-5df6-4507-878f-fe5a3f0bf15a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055654Z:627fda7e-5df6-4507-878f-fe5a3f0bf15a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEdyaWRFbmRwb2ludE5hbWV3bmRyaDUifQ==?api-version=2020-10-31+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InlvdXJpZGlnaXRhbHR3aW5zLXJnbHJienVuIiwicmVzb3VyY2VOYW1lIjoieW91cmlEaWdpdGFsVHdpbnNldDJpMGMiLCJuZXN0ZWRSZXNvdXJjZU5hbWUiOiJldmVudEdyaWRFbmRwb2ludE5hbWV3bmRyaDUifQ==?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "0379e300-b8ea-44b5-822b-2186ce7712b6" ],
+        "CommandName": [ "Remove-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Remove-AzDigitalTwinsEndpoint_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "5f636a7b-e9ff-41ea-a173-eb1b0598df98" ],
+        "x-ms-correlation-request-id": [ "5f636a7b-e9ff-41ea-a173-eb1b0598df98" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055654Z:5f636a7b-e9ff-41ea-a173-eb1b0598df98" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "c19e43e8-045b-49a6-8215-64f8f1274f86" ],
+        "CommandName": [ "Get-AzDigitalTwinsEndpoint" ],
+        "FullCommandName": [ "Get-AzDigitalTwinsEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "28383599-c3cb-439e-b78a-82fdf2b306d1" ],
+        "x-ms-correlation-request-id": [ "28383599-c3cb-439e-b78a-82fdf2b306d1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T055654Z:28383599-c3cb-439e-b78a-82fdf2b306d1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 05:56:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c/endpoints/ServiceBusEndpointNamepn9rkm\",\"name\":\"ServiceBusEndpointNamepn9rkm\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://***/;SharedAccessKeyName=***;SharedAccessKey=***;EntityPath=***\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:49:33.6299792+00:00\"}}]}"
+    }
+  }
+}

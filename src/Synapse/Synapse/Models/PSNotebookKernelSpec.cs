@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -25,20 +24,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public NotebookKernelSpec ToSdkObject()
-        {
-            var notebookKernelSpec = new NotebookKernelSpec(this.Name, this.DisplayName);
-            this.AdditionalProperties?.ForEach(item => notebookKernelSpec.Add(item.Key, item.Value));
-            return notebookKernelSpec;
-        }
     }
 }

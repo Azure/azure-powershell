@@ -116,6 +116,60 @@ function Test-PublicIpPrefixCRUD
 
 <#
 .SYNOPSIS
+Tests creating new simple publicIpPrefix.
+#>
+function Test-GlobalPublicIpPrefixCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
+    $location = "eastus2euap"
+    $ipTagType = "NetworkDomain"
+    $ipTagTag = "test"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        $ipTag = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefixTag
+        $ipTag.IpTagType = $ipTagType
+        $ipTag.Tag = $ipTagTag
+
+        # Create publicIpPrefix
+        $job = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Tier Global -PrefixLength 30 -IpTag $ipTag -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+        $expected = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual $expected.Location $actual.Location
+        Assert-AreEqual 30 $expected.PrefixLength
+        Assert-NotNull $expected.ResourceGuid
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual $ipTagType $expected.IpTags[0].IpTagType
+        Assert-AreEqual $ipTagTag $expected.IpTags[0].Tag
+
+        # list
+        $list = Get-AzPublicIpPrefix -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $list[0].Name $actual.Name
+        Assert-AreEqual $list[0].Location $actual.Location
+        Assert-AreEqual 30 $list[0].PrefixLength
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState       
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpPrefix and allocating Ip from it.
 #>
 function Test-PublicIpPrefixAllocatePublicIpAddress

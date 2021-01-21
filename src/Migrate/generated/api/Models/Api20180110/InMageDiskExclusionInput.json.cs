@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_diskSignatureOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("diskSignatureOptions"), out var __jsonDiskSignatureOptions) ? If( __jsonDiskSignatureOptions as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InMageDiskSignatureExclusionOptions.FromJson(__u) )) ))() : null : DiskSignatureOption;}
-            {_volumeOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("volumeOptions"), out var __jsonVolumeOptions) ? If( __jsonVolumeOptions as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InMageVolumeExclusionOptions.FromJson(__p) )) ))() : null : VolumeOption;}
+            {_volumeOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("volumeOptions"), out var __jsonVolumeOptions) ? If( __jsonVolumeOptions as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InMageVolumeExclusionOptions.FromJson(__u) )) ))() : null : VolumeOption;}
+            {_diskSignatureOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("diskSignatureOptions"), out var __jsonDiskSignatureOptions) ? If( __jsonDiskSignatureOptions as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InMageDiskSignatureExclusionOptions.FromJson(__p) )) ))() : null : DiskSignatureOption;}
             AfterFromJson(json);
         }
 
@@ -96,23 +96,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            if (null != this._diskSignatureOption)
+            if (null != this._volumeOption)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __x in this._diskSignatureOption )
+                foreach( var __x in this._volumeOption )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("diskSignatureOptions",__w);
+                container.Add("volumeOptions",__w);
             }
-            if (null != this._volumeOption)
+            if (null != this._diskSignatureOption)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __s in this._volumeOption )
+                foreach( var __s in this._diskSignatureOption )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("volumeOptions",__r);
+                container.Add("diskSignatureOptions",__r);
             }
             AfterToJson(ref container);
             return container;
