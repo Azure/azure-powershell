@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The list of parameters for the Service Provider</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderParameter[] Parameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderPropertiesInternal)Property).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderPropertiesInternal)Property).Parameter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderParameter[] Parameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderPropertiesInternal)Property).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderPropertiesInternal)Property).Parameter = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IServiceProviderProperties _property;

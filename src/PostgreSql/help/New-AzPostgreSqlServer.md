@@ -16,9 +16,9 @@ Creates a new server.
 New-AzPostgreSqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
  -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
  [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-SslEnforcement <SslEnforcementEnum>]
+ [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,9 @@ These cmdlets create a new PostgreSql server.
 ## PARAMETERS
 
 ### -AdministratorLoginPassword
-The location the resource resides in.
+The password of the administrator.
+Minimum 8 characters and maximum 128 characters.
+Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
 
 ```yaml
 Type: System.Security.SecureString
@@ -55,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -AdministratorUserName
-The location the resource resides in.
+Administrator username for the server.
+Once set, it cannot be changed.
 
 ```yaml
 Type: System.String
@@ -139,6 +142,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Set the minimal TLS version for connections to server when SSL is enabled.
+Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

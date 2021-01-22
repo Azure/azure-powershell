@@ -130,5 +130,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the license type of the elastic pool
         /// </summary>
         public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the elastic pool
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
     }
 }

@@ -622,7 +622,15 @@
     "alias": "RedisEnterpriseCache"
   },
   {
+    "regex": "ADDomainService",
+    "alias": "ADDomainServices"
+  },
+  {
     "regex": "BotService",
     "alias": "BotService"
+  },
+  {
+    "alias": "HealthBot",
+    "regex": "HealthBot"
   }
 ]

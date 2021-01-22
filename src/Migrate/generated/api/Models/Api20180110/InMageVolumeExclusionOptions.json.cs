@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_onlyExcludeIfSingleVolume = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("onlyExcludeIfSingleVolume"), out var __jsonOnlyExcludeIfSingleVolume) ? (string)__jsonOnlyExcludeIfSingleVolume : (string)OnlyExcludeIfSingleVolume;}
             {_volumeLabel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("volumeLabel"), out var __jsonVolumeLabel) ? (string)__jsonVolumeLabel : (string)VolumeLabel;}
+            {_onlyExcludeIfSingleVolume = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("onlyExcludeIfSingleVolume"), out var __jsonOnlyExcludeIfSingleVolume) ? (string)__jsonOnlyExcludeIfSingleVolume : (string)OnlyExcludeIfSingleVolume;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != (((object)this._onlyExcludeIfSingleVolume)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._onlyExcludeIfSingleVolume.ToString()) : null, "onlyExcludeIfSingleVolume" ,container.Add );
             AddIf( null != (((object)this._volumeLabel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._volumeLabel.ToString()) : null, "volumeLabel" ,container.Add );
+            AddIf( null != (((object)this._onlyExcludeIfSingleVolume)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._onlyExcludeIfSingleVolume.ToString()) : null, "onlyExcludeIfSingleVolume" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

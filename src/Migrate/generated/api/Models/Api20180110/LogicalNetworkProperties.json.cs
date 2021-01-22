@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             {_friendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("friendlyName"), out var __jsonFriendlyName) ? (string)__jsonFriendlyName : (string)FriendlyName;}
-            {_logicalNetworkDefinitionsStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("logicalNetworkDefinitionsStatus"), out var __jsonLogicalNetworkDefinitionsStatus) ? (string)__jsonLogicalNetworkDefinitionsStatus : (string)LogicalNetworkDefinitionsStatus;}
-            {_logicalNetworkUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("logicalNetworkUsage"), out var __jsonLogicalNetworkUsage) ? (string)__jsonLogicalNetworkUsage : (string)LogicalNetworkUsage;}
             {_networkVirtualizationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkVirtualizationStatus"), out var __jsonNetworkVirtualizationStatus) ? (string)__jsonNetworkVirtualizationStatus : (string)NetworkVirtualizationStatus;}
+            {_logicalNetworkUsage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("logicalNetworkUsage"), out var __jsonLogicalNetworkUsage) ? (string)__jsonLogicalNetworkUsage : (string)LogicalNetworkUsage;}
+            {_logicalNetworkDefinitionsStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("logicalNetworkDefinitionsStatus"), out var __jsonLogicalNetworkDefinitionsStatus) ? (string)__jsonLogicalNetworkDefinitionsStatus : (string)LogicalNetworkDefinitionsStatus;}
             AfterFromJson(json);
         }
 
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             AddIf( null != (((object)this._friendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._friendlyName.ToString()) : null, "friendlyName" ,container.Add );
-            AddIf( null != (((object)this._logicalNetworkDefinitionsStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._logicalNetworkDefinitionsStatus.ToString()) : null, "logicalNetworkDefinitionsStatus" ,container.Add );
-            AddIf( null != (((object)this._logicalNetworkUsage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._logicalNetworkUsage.ToString()) : null, "logicalNetworkUsage" ,container.Add );
             AddIf( null != (((object)this._networkVirtualizationStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkVirtualizationStatus.ToString()) : null, "networkVirtualizationStatus" ,container.Add );
+            AddIf( null != (((object)this._logicalNetworkUsage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._logicalNetworkUsage.ToString()) : null, "logicalNetworkUsage" ,container.Add );
+            AddIf( null != (((object)this._logicalNetworkDefinitionsStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._logicalNetworkDefinitionsStatus.ToString()) : null, "logicalNetworkDefinitionsStatus" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

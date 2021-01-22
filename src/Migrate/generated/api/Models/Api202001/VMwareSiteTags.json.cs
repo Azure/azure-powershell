@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
 
+    /// <summary>Dictionary of <string></summary>
     public partial class VMwareSiteTags
     {
 

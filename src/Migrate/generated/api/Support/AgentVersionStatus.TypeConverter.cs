@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for AgentVersionStatus.</summary>
+    /// <summary>A value indicating whether security update required.</summary>
     public partial class AgentVersionStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

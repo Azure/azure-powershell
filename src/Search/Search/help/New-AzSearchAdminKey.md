@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchadminkey
@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSearchAdminKey
 
 ## SYNOPSIS
-Regenerates an admin key of the Azure Search service.
+Regenerates an admin key of the Azure Cognitive Search service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzSearchAdminKey [-ParentResourceId] <String> -KeyKind <PSSearchAdminKeyKind
 ```
 
 ## DESCRIPTION
-The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Search service.
+The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Cognitive Search service.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ Primary                          Secondary
 85B3813D11904B591BE8A196C2C743A1 CEF791D5BAC2E6C0B232C56702F21E87
 ```
 
-The example regenerates Primary key of the Azure Search Service.
+The example regenerates Primary key of the Azure Cognitive Search service.
 
 ## PARAMETERS
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyKind
-Search Service admin key kind (Primary/Secondary).
+Azure Cognitive Search Service admin key kind (Primary/Secondary).
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Search Service Input Object.
+Azure Cognitive Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-Search Service Resource Id.
+Azure Cognitive Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

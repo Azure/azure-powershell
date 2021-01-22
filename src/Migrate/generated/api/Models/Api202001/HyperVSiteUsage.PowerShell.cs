@@ -94,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount = (int?) content.GetValueForProperty("ClusterCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount = (int?) content.GetValueForProperty("HostCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).MachineCount = (int?) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).MachineCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).RunAsAccountCount = (int?) content.GetValueForProperty("RunAsAccountCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).RunAsAccountCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount = (int?) content.GetValueForProperty("HostCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount = (int?) content.GetValueForProperty("ClusterCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializeDictionary(content);
         }
 
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount = (int?) content.GetValueForProperty("ClusterCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount = (int?) content.GetValueForProperty("HostCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).MachineCount = (int?) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).MachineCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).RunAsAccountCount = (int?) content.GetValueForProperty("RunAsAccountCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).RunAsAccountCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount = (int?) content.GetValueForProperty("HostCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).HostCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount = (int?) content.GetValueForProperty("ClusterCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteUsageInternal)this).ClusterCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
         }
 

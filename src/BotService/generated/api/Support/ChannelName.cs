@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         /// <param name="value">the value to convert to an instance of <see cref="ChannelName" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ChannelName(System.Convert.ToString(value));
+            return new ChannelName(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ChannelName</summary>

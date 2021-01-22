@@ -265,14 +265,18 @@ function New-AzMigrateServerReplication {
                 throw "Provider not supported"
             }
            
+            # in case if the credential type is null which is in case of older appliances or
+            # in case if the credential type is vmwarefabric type which is for newer appliances
+            # send that run as account id only.
+            # for vCenter there will be always one credential so returning the first one which matches it.
+            # when multiple vCenter support comes then this might not work and need to redesign this.
             if(!$HasRunAsAccountId){
                 $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
                 $null = $PSBoundParameters.Add('SiteName', $SiteName)
                 $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount @PSBoundParameters
                 $VMWarerunasaccountID = ""
                 foreach($account in $runAsAccounts){
-                    $runasAccountSiteName = $account.Id.Split("/")[8]
-                    if( $runasAccountSiteName -ceq $SiteName){
+                    if(($null -eq $account.CredentialType) -or ($account.CredentialType -eq "VMwareFabric")){
                         $VMWarerunasaccountID = $account.Id
                         break
                     }
@@ -366,6 +370,16 @@ public static int hashForArtifact(String artifact)
             if(!$HasTargetBDStorage){
                 $TargetBootDiagnosticsStorageAccount = $LogStorageAccountID
             }
+
+            # Storage accounts need to be in the same subscription as that of the VM.
+            if (($null -ne $TargetBootDiagnosticsStorageAccount) -and ($TargetBootDiagnosticsStorageAccount.length -gt 1)){
+                $TargetBDSASubscriptionId = $TargetBootDiagnosticsStorageAccount.Split('/')[2]
+                $TargetSubscriptionId = $TargetResourceGroupId.Split('/')[2]
+                if($TargetBDSASubscriptionId -ne $TargetSubscriptionId){
+                    $TargetBootDiagnosticsStorageAccount = $null
+                }
+            }
+            
             if(!$HasResync){
                 $PerformAutoResync = "true"
             }
@@ -394,6 +408,23 @@ public static int hashForArtifact(String artifact)
 
 
             if ($parameterSet -match 'DefaultUser'){
+                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+                if($parameterSet -eq 'ByInputObjectDefaultUser'){
+                    foreach($onPremDisk in $InputObject.Disk){
+                        if($onPremDisk.Uuid -ne $OSDiskID){
+                            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
+                            $DiskObject.DiskId = $onPremDisk.Uuid
+                            $DiskObject.DiskType = "Standard_LRS"
+                            $DiskObject.IsOSDisk = "false"
+                            $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
+                            $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                            if($HasDiskEncryptionSetID){
+                                $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
+                            }
+                            $DiskToInclude+=$DiskObject
+                        }
+                    }
+                }
                 $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
                 $DiskObject.DiskId = $OSDiskID
                 $DiskObject.DiskType = $DiskType
@@ -401,12 +432,12 @@ public static int hashForArtifact(String artifact)
                 $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                 $DiskObject.LogStorageAccountId = $LogStorageAccountID
                 if($HasDiskEncryptionSetID){
-                    $DiskObject.DiskEncryptionSetId = DiskEncryptionSetID
+                    $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
                 }
                 
-                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DiskToInclude = @()
                 $DiskToInclude+=$DiskObject
                 $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
+                
             }else{
                 foreach ($DiskObject in $DiskToInclude) {
                     $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas

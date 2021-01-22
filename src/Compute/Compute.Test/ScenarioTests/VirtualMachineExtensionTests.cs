@@ -176,5 +176,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineADDomainExtensionDomainJoin");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineExtensionEnableAutomaticUpgrade()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineExtensionEnableAutomaticUpgrade");
+        }
     }
 }

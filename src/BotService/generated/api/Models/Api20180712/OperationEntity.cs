@@ -17,19 +17,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The description of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Description = value; }
+        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Description = value ?? null; }
 
         /// <summary>The action that users can perform, based on their permission level.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Operation = value; }
+        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Operation = value ?? null; }
 
         /// <summary>Service provider: Microsoft Bot Service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Provider = value; }
+        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Provider = value ?? null; }
 
         /// <summary>Resource on which the operation is performed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Resource = value; }
+        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfoInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for Display</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationDisplayInfo Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntityInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationDisplayInfo()); set { {_display = value;} } }
