@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHD file to fixed size. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
+                    Exception outputEx = new Exception("Failed to convert VHDx file. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHDX file. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
+                    Exception outputEx = new Exception("Failed to convert VHD file to fixed size. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
