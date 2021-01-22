@@ -16,7 +16,7 @@ $vnetName = "logReplayPS"
 $subnetName = "Cool"
 $location = "westeurope"
 $lastBackupName = "full.bak";
-$resourceGroupName = "mibrkiclogreplay"
+$resourceGroupName = "mibrkiclrs"
 
 function Create-Resources
 {
@@ -48,7 +48,7 @@ function Create-Resources
 		# Add file to container to use for log replay
 		Set-AzStorageBlobContent -File ".\Resources\full.bak" `
 			-Container $containerName `
-			-Blob ".\Resources\full.bak" `
+			-Blob ".\full.bak" `
 			-Context $ctx
 	}
 
@@ -129,7 +129,7 @@ function Test-ManagedDatabaseLogReplay
 	}
 	finally
 	{
-		Remove-ResourceGroupForTest $rg
+		# Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -157,7 +157,7 @@ function Test-CompleteCancelManagedDatabaseLogReplay
 		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
-			-StorageContainerSasToken $testStorageContainerSasToken
+			-StorageContainerSasToken $testStorageContainerSasToken -AsJob
 
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
 			Start-Sleep -s 10
@@ -221,7 +221,7 @@ function Test-CompleteCancelManagedDatabaseLogReplay
 		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
-			-StorageContainerSasToken $testStorageContainerSasToken
+			-StorageContainerSasToken $testStorageContainerSasToken -AsJob
 
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
 			Start-Sleep -s 10
@@ -293,7 +293,7 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 		Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName `
 			-Name $managedDatabaseName -Collation $collation `
 			-StorageContainerUri $testStorageContainerUri `
-			-StorageContainerSasToken $testStorageContainerSasToken
+			-StorageContainerSasToken $testStorageContainerSasToken -AsJob
 
 		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
 			Start-Sleep -s 10
