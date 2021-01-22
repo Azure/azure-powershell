@@ -442,6 +442,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             var result = newDisk.DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
             var psObject = new PSDisk();
             ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
+            Console.WriteLine("Created Managed Disk:");
             WriteObject(psObject);
         }
 
