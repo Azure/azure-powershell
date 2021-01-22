@@ -18,13 +18,8 @@ using Microsoft.Azure.Management.SecurityInsights.Models;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
 {
-    public class PSSentinelDataConnectorDataTypeOffice
-    {
-        public PSSentinelDataConnectorDataTypeOfficeExchange Exchange { get; set; }
-
-        public PSSentinelDataConnectorDataTypeOfficeSharePoint SharePoint { get; set; }
-
-        public PSSentinelDataConnectorDataTypeOfficeTeams Teams { get; set; }
+    public class PSSentinelDataConnectorDataTypeOfficeTeams    {
+        public string State { get; set; }
 
     }
 }

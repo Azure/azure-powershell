@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new PSSentinelDataConnectorDataTypeOffice()
             {
                 Exchange = value.Exchange.ConvertToPSType(),
-                SharePoint = value.SharePoint.ConvertToPSType()
+                SharePoint = value.SharePoint.ConvertToPSType(),
+                Teams = value.Teams.ConvertToPSType()
 
             };
         }
@@ -273,6 +274,14 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         public static PSSentinelDataConnectorDataTypeOfficeSharePoint ConvertToPSType(this OfficeDataConnectorDataTypesSharePoint value)
         {
             return new PSSentinelDataConnectorDataTypeOfficeSharePoint()
+            {
+                State = value.State
+            };
+        }
+
+        public static PSSentinelDataConnectorDataTypeOfficeTeams ConvertToPSType(this OfficeDataConnectorDataTypesTeams value)
+        {
+            return new PSSentinelDataConnectorDataTypeOfficeTeams()
             {
                 State = value.State
             };
@@ -466,7 +475,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new OfficeDataConnectorDataTypes()
             {
                 Exchange = value.Exchange.CreatePSType(),
-                SharePoint = value.SharePoint.CreatePSType()
+                SharePoint = value.SharePoint.CreatePSType(),
+                Teams = value.Teams.CreatePSType()
 
             };
         }
@@ -504,6 +514,13 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         public static OfficeDataConnectorDataTypesSharePoint CreatePSType(this PSSentinelDataConnectorDataTypeOfficeSharePoint value)
         {
             return new OfficeDataConnectorDataTypesSharePoint()
+            {
+                State = value.State
+            };
+        }
+        public static OfficeDataConnectorDataTypesTeams CreatePSType(this PSSentinelDataConnectorDataTypeOfficeTeams value)
+        {
+            return new OfficeDataConnectorDataTypesTeams()
             {
                 State = value.State
             };

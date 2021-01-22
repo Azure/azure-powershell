@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
+    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.2" />
   </ItemGroup>
   
   <ItemGroup>
