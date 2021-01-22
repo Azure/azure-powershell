@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable array which represents the snapshot object")]
+            HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
         [ValidateNotNullOrEmpty]
-        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        public string SnapshotPolicyId { get; set; }
         
         [Parameter(
             Mandatory = false,
@@ -182,6 +182,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Describe if a volume is Kerberos Enabled.")]
         public SwitchParameter KerberosEnabled { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume.")]
+        public SwitchParameter SmbEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables continuously available share property for SMB volume. Only applicable for SMB volume.")]
+        public SwitchParameter SmbContinuouslyAvailable { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -221,12 +231,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
-            var dataProtection = new PSNetAppFilesVolumeDataProtection
+            PSNetAppFilesVolumeDataProtection dataProtection = null;
+            if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
             {
-                Replication = ReplicationObject,
-                Snapshot = Snapshot,
-                Backup = Backup
-            };
+                dataProtection = new PSNetAppFilesVolumeDataProtection
+                {
+                    Replication = ReplicationObject,
+                    Snapshot = new PSNetAppFilesVolumeSnapshotPolicy() { SnapshotPolicyId = SnapshotPolicyId },
+                    Backup = Backup
+                };                
+            }
 
             var volumeBody = new Management.NetApp.Models.Volume()
             {
@@ -236,7 +250,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
-                DataProtection = (dataProtection.Replication != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
+                DataProtection = (dataProtection != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
                 Tags = tagPairs,
@@ -245,7 +259,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SecurityStyle = SecurityStyle,
                 BackupId = BackupId,
                 ThroughputMibps = ThroughputMibps,
-                KerberosEnabled = KerberosEnabled
+                KerberosEnabled = KerberosEnabled.IsPresent,
+                SmbEncryption = SmbEncryption,
+                SmbContinuouslyAvailable = SmbContinuouslyAvailable
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

@@ -113,7 +113,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public string[] BackupOperator { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.")]
@@ -125,7 +124,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             HelpMessage = "Name of the active directory machine. This optional parameter is used only while creating kerberos volume")]
         [ValidateNotNullOrEmpty]
         public string AdName { get; set; }
-        
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier")]
+        [ValidateNotNullOrEmpty]
+        public string[] SecurityOperators { get; set; }
+
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
@@ -163,7 +168,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     OrganizationalUnit = OrganizationalUnit,
                     BackupOperators = BackupOperator,
                     KdcIP = KdcIP,
-                    ServerRootCACertificate = ServerRootCACertificate
+                    ServerRootCACertificate = ServerRootCACertificate,
+                    SecurityOperators = SecurityOperators
                 };
                 if (anfAccount.ActiveDirectories == null)
                 {

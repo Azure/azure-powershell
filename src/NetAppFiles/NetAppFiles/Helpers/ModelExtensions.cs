@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = activeDirectory.BackupOperators,
                 KdcIP = activeDirectory.KdcIP,
                 AdName = activeDirectory.AdName,
-                ServerRootCACertificate = activeDirectory.ServerRootCACertificate
+                ServerRootCACertificate = activeDirectory.ServerRootCACertificate,
+                SecurityOperators = activeDirectory.SecurityOperators
             };
             return psActiveDirectory;
         }
@@ -212,7 +213,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }
             if (DataProtection.Snapshot != null)
             {
-                var snapshot = new PSNetAppFilesVolumeSnapshot();
+                var snapshot = new PSNetAppFilesVolumeSnapshotPolicy();
                 snapshot.SnapshotPolicyId = DataProtection.Snapshot.SnapshotPolicyId;
                 psDataProtection.Snapshot = snapshot;
             }
@@ -309,7 +310,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupId = volume.BackupId,
                 SecurityStyle = volume.SecurityStyle,
                 ThroughputMibps = volume.ThroughputMibps,
-                KerberosEnabled = volume.KerberosEnabled
+                KerberosEnabled = volume.KerberosEnabled,
+                SmbEncryption = volume.SmbEncryption,
+                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable
+
             };
         }
 

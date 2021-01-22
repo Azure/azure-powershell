@@ -139,6 +139,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         public string AdName { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier")]
+        [ValidateNotNullOrEmpty]
+        public string[] SecurityOperators { get; set; }
+
+        [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -196,6 +202,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
                     anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                     anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                    anfADConfig.SecurityOperators = SecurityOperators ?? anfADConfig.SecurityOperators;
                 }
                 else
                 {
@@ -217,6 +224,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                         anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
                         anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                         anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                        anfADConfig.SecurityOperators = SecurityOperators ?? anfADConfig.SecurityOperators;
                     }
                 }
                 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remark>
         /// Snapshot properties
         /// </remark>        
-        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        public PSNetAppFilesVolumeSnapshotPolicy Snapshot { get; set; }
 
 
         /// <summary>
