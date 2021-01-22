@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Renew certificate type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RenewCertificateType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRenewCertificateInputPropertiesInternal)Property).RenewCertificateType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRenewCertificateInputPropertiesInternal)Property).RenewCertificateType = value; }
+        public string RenewCertificateType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRenewCertificateInputPropertiesInternal)Property).RenewCertificateType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRenewCertificateInputPropertiesInternal)Property).RenewCertificateType = value ?? null; }
 
         /// <summary>Creates an new <see cref="RenewCertificateInput" /> instance.</summary>
         public RenewCertificateInput()

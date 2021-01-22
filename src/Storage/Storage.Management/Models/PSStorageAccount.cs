@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
             this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
             this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
 
         }
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Id { get; set; }
 
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
@@ -121,6 +123,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string LargeFileSharesState { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSRoutingPreference RoutingPreference { get; set; }
 
         public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
 

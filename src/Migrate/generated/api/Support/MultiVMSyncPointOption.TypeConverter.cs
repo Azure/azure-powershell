@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for MultiVMSyncPointOption.</summary>
+    /// <summary>
+    /// A value indicating whether multi VM sync enabled VMs should use multi VM sync points for failover.
+    /// </summary>
     public partial class MultiVMSyncPointOptionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

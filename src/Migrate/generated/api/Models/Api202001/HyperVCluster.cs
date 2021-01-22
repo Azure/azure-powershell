@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>FQDN/IPAddress of the Hyper-V cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string Fqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).Fqdn = value; }
+        public string Fqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).Fqdn = value ?? null; }
 
         /// <summary>Functional level of the Hyper-V cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>List of hosts (FQDN) currently being tracked by the cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string[] HostFqdnList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).HostFqdnList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).HostFqdnList = value; }
+        public string[] HostFqdnList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).HostFqdnList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).HostFqdnList = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>Run as account ID of the Hyper-V cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RunAsAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).RunAsAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).RunAsAccountId = value; }
+        public string RunAsAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).RunAsAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVClusterPropertiesInternal)Property).RunAsAccountId = value ?? null; }
 
         /// <summary>Status of the Hyper-V cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]

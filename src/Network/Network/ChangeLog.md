@@ -19,6 +19,41 @@
 --->
 
 ## Upcoming Release
+* Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+
+## Version 4.5.0
+* Added new cmdlets for CRUD of VpnGatewayNATRule.
+    - `New-AzAzVpnGatewayNatRule`
+    - `Update-AzAzVpnGatewayNatRule`
+    - `Get-AzAzVpnGatewayNatRule`
+    - `Remove-AzAzVpnGatewayNatRule`	
+* Updated cmdlets to set NATRule on VpnGateway resource and associate it with VpnSiteLinkConnection resource.
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`	
+    - `New-AzVpnSiteLinkConnection`
+* Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+* Updated `New-AzFirewallPolicyApplicationRule` cmdlet:
+    - Added parameter TargetUrl
+    - Added parameter TerminateTLS
+* Added new cmdlets for Azure Firewall Premium Features
+    - `New-AzFirewallPolicyIntrusionDetection`
+    - `New-AzFirewallPolicyIntrusionDetectionBypassTraffic`
+    - `New-AzFirewallPolicyIntrusionDetectionSignatureOverride`
+* Updated New-AzFirewallPolicy cmdlet:
+    - Added parameter -SkuTier
+    - Added parameter -Identity
+    - Added parameter -UserAssignedIdentityId
+    - Added parameter -IntrusionDetection
+    - Added parameter -TransportSecurityName
+    - Added parameter -TransportSecurityKeyVaultSecretId
+* Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+    - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
+* Added multiple Authentication support for p2sVpnGateway
+    - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
+* Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
+    - Added parameter EnableRoutingPreferenceInternetFlag
 
 ## Version 4.4.0
 * Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario
@@ -667,4 +702,3 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
-

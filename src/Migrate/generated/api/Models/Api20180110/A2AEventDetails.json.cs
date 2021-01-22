@@ -59,12 +59,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __eventProviderSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EventProviderSpecificDetails(json);
-            {_fabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricLocation"), out var __jsonFabricLocation) ? (string)__jsonFabricLocation : (string)FabricLocation;}
-            {_fabricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricName"), out var __jsonFabricName) ? (string)__jsonFabricName : (string)FabricName;}
-            {_fabricObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricObjectId"), out var __jsonFabricObjectId) ? (string)__jsonFabricObjectId : (string)FabricObjectId;}
             {_protectedItemName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("protectedItemName"), out var __jsonProtectedItemName) ? (string)__jsonProtectedItemName : (string)ProtectedItemName;}
-            {_remoteFabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("remoteFabricLocation"), out var __jsonRemoteFabricLocation) ? (string)__jsonRemoteFabricLocation : (string)RemoteFabricLocation;}
+            {_fabricObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricObjectId"), out var __jsonFabricObjectId) ? (string)__jsonFabricObjectId : (string)FabricObjectId;}
+            {_fabricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricName"), out var __jsonFabricName) ? (string)__jsonFabricName : (string)FabricName;}
+            {_fabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("fabricLocation"), out var __jsonFabricLocation) ? (string)__jsonFabricLocation : (string)FabricLocation;}
             {_remoteFabricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("remoteFabricName"), out var __jsonRemoteFabricName) ? (string)__jsonRemoteFabricName : (string)RemoteFabricName;}
+            {_remoteFabricLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("remoteFabricLocation"), out var __jsonRemoteFabricLocation) ? (string)__jsonRemoteFabricLocation : (string)RemoteFabricLocation;}
             AfterFromJson(json);
         }
 
@@ -100,12 +100,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __eventProviderSpecificDetails?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._fabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricLocation.ToString()) : null, "fabricLocation" ,container.Add );
-            AddIf( null != (((object)this._fabricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricName.ToString()) : null, "fabricName" ,container.Add );
-            AddIf( null != (((object)this._fabricObjectId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricObjectId.ToString()) : null, "fabricObjectId" ,container.Add );
             AddIf( null != (((object)this._protectedItemName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._protectedItemName.ToString()) : null, "protectedItemName" ,container.Add );
-            AddIf( null != (((object)this._remoteFabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._remoteFabricLocation.ToString()) : null, "remoteFabricLocation" ,container.Add );
+            AddIf( null != (((object)this._fabricObjectId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricObjectId.ToString()) : null, "fabricObjectId" ,container.Add );
+            AddIf( null != (((object)this._fabricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricName.ToString()) : null, "fabricName" ,container.Add );
+            AddIf( null != (((object)this._fabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._fabricLocation.ToString()) : null, "fabricLocation" ,container.Add );
             AddIf( null != (((object)this._remoteFabricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._remoteFabricName.ToString()) : null, "remoteFabricName" ,container.Add );
+            AddIf( null != (((object)this._remoteFabricLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._remoteFabricLocation.ToString()) : null, "remoteFabricLocation" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for Severity.</summary>
+    /// <summary>Severity of error.</summary>
     public partial class SeverityTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

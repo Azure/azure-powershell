@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             {_errorCode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("errorCode"), out var __jsonErrorCode) ? (int?)__jsonErrorCode : ErrorCode;}
-            {_errorId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("errorId"), out var __jsonErrorId) ? (string)__jsonErrorId : (string)ErrorId;}
             {_errorMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("errorMessage"), out var __jsonErrorMessage) ? (string)__jsonErrorMessage : (string)ErrorMessage;}
+            {_errorId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("errorId"), out var __jsonErrorId) ? (string)__jsonErrorId : (string)ErrorId;}
             {_possibleCaus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("possibleCauses"), out var __jsonPossibleCauses) ? (string)__jsonPossibleCauses : (string)PossibleCaus;}
             {_recommendedAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recommendedAction"), out var __jsonRecommendedAction) ? (string)__jsonRecommendedAction : (string)RecommendedAction;}
             AfterFromJson(json);
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             AddIf( null != this._errorCode ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._errorCode) : null, "errorCode" ,container.Add );
-            AddIf( null != (((object)this._errorId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._errorId.ToString()) : null, "errorId" ,container.Add );
             AddIf( null != (((object)this._errorMessage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._errorMessage.ToString()) : null, "errorMessage" ,container.Add );
+            AddIf( null != (((object)this._errorId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._errorId.ToString()) : null, "errorId" ,container.Add );
             AddIf( null != (((object)this._possibleCaus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._possibleCaus.ToString()) : null, "possibleCauses" ,container.Add );
             AddIf( null != (((object)this._recommendedAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recommendedAction.ToString()) : null, "recommendedAction" ,container.Add );
             AfterToJson(ref container);

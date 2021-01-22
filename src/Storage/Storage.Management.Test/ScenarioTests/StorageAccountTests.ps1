@@ -1390,3 +1390,79 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Clean-ResourceGroup $rgname
     }
 }
+
+	<#
+.SYNOPSIS
+Test Test-NewSetAzStorageAccount_RoutingPreference
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewSetAzStorageAccount_RoutingPreference
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "MicrosoftRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+		
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -RoutingChoice InternetRouting;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishMicrosoftEndpoint $false ;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $false $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $true $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishInternetEndpoint $false;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $false $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $false $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "InternetRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $false -RoutingChoice MicrosoftRouting;
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+		Assert-AreEqual $true $sto.RoutingPreference.PublishMicrosoftEndpoints
+		Assert-AreEqual $false $sto.RoutingPreference.PublishInternetEndpoints
+		Assert-AreEqual "MicrosoftRouting" $sto.RoutingPreference.RoutingChoice
+		Assert-AreNotEqual $null $sto.PrimaryEndpoints.MicrosoftEndpoints
+		Assert-AreEqual $null $sto.PrimaryEndpoints.InternetEndpoints
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

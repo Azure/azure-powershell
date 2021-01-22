@@ -196,6 +196,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string SecondaryType { get; set; }
 
         /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -251,6 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             HighAvailabilityReplicaCount = null;
             BackupStorageRedundancy = null;
             SecondaryType = null;
+            MaintenanceConfigurationId = null;
         }
 
         /// <summary>
@@ -304,6 +310,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
             BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
             SecondaryType = database.SecondaryType;
+            MaintenanceConfigurationId = database.MaintenanceConfigurationId;
         }
 
         /// <summary>

@@ -369,7 +369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1091,7 +1091,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2715,7 +2715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -3770,7 +3770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -5283,7 +5283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7340,7 +7340,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13554,7 +13554,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13862,7 +13862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14227,7 +14227,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14535,7 +14535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16551,7 +16551,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16657,7 +16657,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17381,7 +17381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17546,7 +17546,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17711,7 +17711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountAssembly, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.AssemblyProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18299,7 +18299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18405,7 +18405,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
             "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19399,7 +19399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19564,7 +19564,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19729,7 +19729,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LogicApp.Models",
                   "Name": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Models.PSIntegrationAccountBatchConfiguration, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -22447,7 +22447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -23936,7 +23936,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ControlNumberChangedTime": "System.DateTime",
               "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
@@ -26067,6 +26067,46 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "FollowNextPageLink",
+          "AliasList": [
+            "FL"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaximumFollowNextPageLink",
+          "AliasList": [
+            "ML"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -26196,6 +26236,58 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FollowNextPageLink",
+                "AliasList": [
+                  "FL"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaximumFollowNextPageLink",
+                "AliasList": [
+                  "ML"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -27548,6 +27640,46 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "FollowNextPageLink",
+          "AliasList": [
+            "FL"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaximumFollowNextPageLink",
+          "AliasList": [
+            "ML"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -27677,6 +27809,58 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FollowNextPageLink",
+                "AliasList": [
+                  "FL"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaximumFollowNextPageLink",
+                "AliasList": [
+                  "ML"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -37084,7 +37268,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -37096,7 +37280,7 @@
     "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType": {
       "Namespace": "Microsoft.Azure.Commands.LogicApp.Utilities",
       "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.MessageType, Microsoft.Azure.PowerShell.Cmdlets.LogicApp, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

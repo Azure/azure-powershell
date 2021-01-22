@@ -258,12 +258,12 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            Guid subscrptionIdGuid;
+            Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
-                if (Guid.TryParse(Subscription, out subscrptionIdGuid))
+                if (Guid.TryParse(Subscription, out subscriptionIdGuid))
                 {
                     subscriptionId = Subscription;
                 }
@@ -397,12 +397,12 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
-                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtitilies))
+                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtilities))
                 {
-                    commonUtitilies = new CommonUtilities();
-                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtitilies);
+                    commonUtilities = new CommonUtilities();
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if(!commonUtitilies.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                if(!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;

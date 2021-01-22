@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.0
 * Added support for -QueryString parameter in New-Az*Deployments cmdlets
 
 ## Version 3.1.1
@@ -35,6 +37,8 @@
 * Added culture info to parse methods
 * Fixed issue where attempts to deploy template specs from a subscription outside of the current subscription context would fail
 * Changed Double parser for version parser
+* Changed New-AzRoleAssignment to include principal type during calls
+* Changed Set-AzRoleAssignment to include principal type during calls
 
 ## Version 3.0.0
 * Fixed parsing bug

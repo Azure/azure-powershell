@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for PresenceStatus.</summary>
+    /// <summary>
+    /// A value indicating whether the VM has a physical disk attached. String value of {SrsDataContract.PresenceStatus} enum.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatusTypeConverter))]
     public partial struct PresenceStatus :
         System.Management.Automation.IArgumentCompleter

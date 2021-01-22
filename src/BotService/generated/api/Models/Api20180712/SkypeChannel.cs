@@ -16,46 +16,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Calling web hook for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string CallingWebHook { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).CallingWebHook; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).CallingWebHook = value; }
+        public string CallingWebHook { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).CallingWebHook; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).CallingWebHook = value ?? null; }
 
         /// <summary>Enable calling for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableCalling { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableCalling; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableCalling = value; }
+        public bool? EnableCalling { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableCalling; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableCalling = value ?? default(bool); }
 
         /// <summary>Enable groups for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableGroup = value; }
+        public bool? EnableGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableGroup = value ?? default(bool); }
 
         /// <summary>Enable media cards for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableMediaCard { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMediaCard; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMediaCard = value; }
+        public bool? EnableMediaCard { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMediaCard; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMediaCard = value ?? default(bool); }
 
         /// <summary>Enable messaging for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableMessaging { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMessaging; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMessaging = value; }
+        public bool? EnableMessaging { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMessaging; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableMessaging = value ?? default(bool); }
 
         /// <summary>Enable screen sharing for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableScreenSharing { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableScreenSharing; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableScreenSharing = value; }
+        public bool? EnableScreenSharing { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableScreenSharing; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableScreenSharing = value ?? default(bool); }
 
         /// <summary>Enable video for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool? EnableVideo { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableVideo; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableVideo = value; }
+        public bool? EnableVideo { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableVideo; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).EnableVideo = value ?? default(bool); }
 
         /// <summary>Group mode for Skype channel</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string GroupsMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).GroupsMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).GroupsMode = value; }
+        public string GroupsMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).GroupsMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).GroupsMode = value ?? null; }
 
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public bool IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).IsEnabled = value; }
+        public bool? IsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).IsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelPropertiesInternal)Property).IsEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SkypeChannelProperties()); set { {_property = value;} } }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelProperties _property;
@@ -153,12 +153,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string GroupsMode { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Whether this channel is enabled for the bot",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
 
     }
     /// Skype channel definition
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         /// <summary>Group mode for Skype channel</summary>
         string GroupsMode { get; set; }
         /// <summary>Whether this channel is enabled for the bot</summary>
-        bool IsEnabled { get; set; }
+        bool? IsEnabled { get; set; }
         /// <summary>The set of properties specific to Skype channel resource</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISkypeChannelProperties Property { get; set; }
 

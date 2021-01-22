@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
-    [GenericBreakingChange("Set-AzRecoveryServicesBackupProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Please use singular alias Set-AzRecoveryServicesBackupProperty, as Set-AzRecoveryServicesBackupProperties alias will be removed in an upcoming breaking change release", "4.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProperty", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Set-AzRecoveryServicesBackupProperties")]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase

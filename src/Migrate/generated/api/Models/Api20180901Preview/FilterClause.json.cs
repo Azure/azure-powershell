@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             {_expression = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("expression"), out var __jsonExpression) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.SingleValueNode.FromJson(__jsonExpression) : Expression;}
-            {_itemType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("itemType"), out var __jsonItemType) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmTypeReference.FromJson(__jsonItemType) : ItemType;}
             {_rangeVariable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("rangeVariable"), out var __jsonRangeVariable) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.RangeVariable.FromJson(__jsonRangeVariable) : RangeVariable;}
+            {_itemType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("itemType"), out var __jsonItemType) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmTypeReference.FromJson(__jsonItemType) : ItemType;}
             AfterFromJson(json);
         }
 
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._itemType ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._itemType.ToJson(null,serializationMode) : null, "itemType" ,container.Add );
+                AddIf( null != this._rangeVariable ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._rangeVariable.ToJson(null,serializationMode) : null, "rangeVariable" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._rangeVariable ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._rangeVariable.ToJson(null,serializationMode) : null, "rangeVariable" ,container.Add );
+                AddIf( null != this._itemType ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._itemType.ToJson(null,serializationMode) : null, "itemType" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

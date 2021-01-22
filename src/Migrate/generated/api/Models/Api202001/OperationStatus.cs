@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>Result or output of the workflow.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string Result { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperationStatusPropertiesInternal)Property).Result; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperationStatusPropertiesInternal)Property).Result = value; }
+        public string Result { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperationStatusPropertiesInternal)Property).Result; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperationStatusPropertiesInternal)Property).Result = value ?? null; }
 
         /// <summary>Backing field for <see cref="StartTime" /> property.</summary>
         private string _startTime;
