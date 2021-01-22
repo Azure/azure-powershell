@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
 
                     // 3-3: GENERATE SAS
-                    Console.WriteLine("Generating SAS);
+                    Console.WriteLine("Generating SAS");
                     GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = "Write";
