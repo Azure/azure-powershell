@@ -214,6 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
 
                     // 3-3: GENERATE SAS
+                    Console.WriteLine("Generating SAS);
                     GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = "Write";
@@ -245,6 +246,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
 
                     // 3-5: REVOKE SAS
+                    Console.WriteLine("Revoking SAS");
                     RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
                     var RevokeResult = revokeSas.DisksClient.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -258,7 +260,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
 
                     Console.WriteLine("SAS revoked. Upload Complete");
-                    //WriteObject(output);
 
                 }
                 else
