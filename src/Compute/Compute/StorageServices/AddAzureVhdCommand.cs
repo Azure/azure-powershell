@@ -181,104 +181,91 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ExecuteClientAction(() =>
             {
 
-                using (StreamWriter sw = File.AppendText(@"C:\Users\thchan\desktop\addVhd\AddAzVhdLog.txt"))
+                Program.SyncOutput = new PSSyncOutputEvents(this);
+                // 1.              CONVERT VHDX TO VHD
+                if (this.LocalFilePath.Extension == ".vhdx")
                 {
-                    sw.WriteLine("\n\nNew Run: " + this.LocalFilePath + " " + this.LocalFilePath.Length + " " + DateTime.Now.TimeOfDay);
-                    Program.SyncOutput = new PSSyncOutputEvents(this);
-                    // 1.              CONVERT VHDX TO VHD
-                    if (this.LocalFilePath.Extension == ".vhdx")
+                    convertVhd();
+                }
+
+                checkForCorruptedAndDynamicallySizedVhd();
+                checkVhdFileSize(this.LocalFilePath);
+
+                // 2.            RESIZE VHD
+                if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
+                {
+                    resizeVhdFile();
+                }
+                else // does not need resizing
+                {
+                    WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
+                }
+
+                if (this.ParameterSetName == DirectUploadToManagedDiskSet)
+                {
+
+                    // 3. DIRECT UPLOAD TO MANAGED DISK
+
+                    // 3-1. CREATE DISK CONFIG 
+                    checkForExistingDisk(this.ResourceGroupName, this.DiskName);
+                    var diskConfig = CreateDiskConfig();
+
+                    // 3-2: CREATE DISK
+                    createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
+
+                    // 3-3: GENERATE SAS
+                    GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
+                    var grantAccessData = new GrantAccessData();
+                    grantAccessData.Access = "Write";
+                    long gbInBytes = 1073741824;
+                    int gb = (int)(this.LocalFilePath.Length / gbInBytes);
+                    grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
+                    var accessUri = sas.DisksClient.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                    Uri sasUri = new Uri(accessUri.AccessSAS);
+                    Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
+                    //Uri fake = new Uri("https://theostoracc.blob.core.windows.net/testblob/uploaded.vhd");
+                    //PageBlobClient managedDisk = new PageBlobClient(fake, null);
+
+                    // 3-4: UPLOAD                  
+                    PageBlobClient managedDisk = new PageBlobClient(sasUri, null);
+                    DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
+                    var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
+                    var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
+                    
+                    if (synchronizer.Synchronize())
                     {
-                        sw.WriteLine("Begin VHD Convert: " + DateTime.Now.TimeOfDay);
-                        convertVhd();
-                        sw.WriteLine("Done VHD Convert: " + DateTime.Now.TimeOfDay);
-                    }
-
-                    checkForCorruptedAndDynamicallySizedVhd();
-                    checkVhdFileSize(this.LocalFilePath);
-
-                    // 2.            RESIZE VHD
-                    if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
-                    {
-                        sw.WriteLine("Begin Resize VHD: " + DateTime.Now.TimeOfDay);
-                        resizeVhdFile();
-                        sw.WriteLine("Done Resize VHD: " + DateTime.Now.TimeOfDay);
-                    }
-                    else // does not need resizing
-                    {
-                        WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
-                    }
-
-                    if (this.ParameterSetName == DirectUploadToManagedDiskSet)
-                    {
-
-                        // 3. DIRECT UPLOAD TO MANAGED DISK
-
-                        // 3-1. CREATE DISK CONFIG 
-                        checkForExistingDisk(this.ResourceGroupName, this.DiskName);
-                        var diskConfig = CreateDiskConfig();
-
-                        // 3-2: CREATE DISK
-                        createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
-
-                        // 3-3: GENERATE SAS
-                        GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
-                        var grantAccessData = new GrantAccessData();
-                        grantAccessData.Access = "Write";
-                        long gbInBytes = 1073741824;
-                        int gb = (int)(this.LocalFilePath.Length / gbInBytes);
-                        grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
-                        var accessUri = sas.DisksClient.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
-                        Uri sasUri = new Uri(accessUri.AccessSAS);
-                        Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
-                        //Uri fake = new Uri("https://theostoracc.blob.core.windows.net/testblob/uploaded.vhd");
-                        //PageBlobClient managedDisk = new PageBlobClient(fake, null);
-
-                        // 3-4: UPLOAD                  
-                        sw.WriteLine("Begin Upload: " + this.LocalFilePath + " " + this.LocalFilePath.Length / (long)1073741824 + " GB " + DateTime.Now.TimeOfDay);
-                        PageBlobClient managedDisk = new PageBlobClient(sasUri, null);
-                        sw.WriteLine("Upload Prep start: " + DateTime.Now.TimeOfDay);
-                        DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
-                        var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
-                        sw.WriteLine("Upload Prep end, upload begin: " + DateTime.Now.TimeOfDay);
-                        var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
-                        
-                        if (synchronizer.Synchronize())
-                        {
-                            var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
-                            Console.WriteLine("Upload successful");
-                            WriteObject(result);
-                        }
-                        else
-                        {
-                            //TODO
-                            Console.WriteLine("Upload failed");
-                        }
-                        //Process.Start(@"..\..\..\src\Compute\Compute\StorageServices\azcopy.exe copy " + this.LocalFilePath + " " + sasUri + " --blob-type Pageblob");
-                        sw.WriteLine("Done Upload: " + DateTime.Now.TimeOfDay);
-
-                        // 3-5: REVOKE SAS
-                        RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
-                        var RevokeResult = revokeSas.DisksClient.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
-                        PSOperationStatusResponse output = new PSOperationStatusResponse
-                        {
-                            StartTime = this.StartTime,
-                            EndTime = DateTime.Now
-                        };
-                        if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
-                        {
-                            output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
-                        }
-
-                        Console.WriteLine("SAS revoked. Upload Complete");
-                        //WriteObject(output);
-
+                        var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
+                        Console.WriteLine("Upload successful");
+                        WriteObject(result);
                     }
                     else
                     {
-                        var parameters = ValidateParameters();
-                        var vhdUploadContext = VhdUploaderModel.Upload(parameters);
-                        WriteObject(vhdUploadContext);
+                        //TODO
+                        Console.WriteLine("Upload failed");
                     }
+
+                    // 3-5: REVOKE SAS
+                    RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
+                    var RevokeResult = revokeSas.DisksClient.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+                    if (RevokeResult != null && RevokeResult.Request != null && RevokeResult.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
+                    }
+
+                    Console.WriteLine("SAS revoked. Upload Complete");
+                    //WriteObject(output);
+
+                }
+                else
+                {
+                    var parameters = ValidateParameters();
+                    var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+                    WriteObject(vhdUploadContext);
                 }
             });
 
@@ -392,7 +379,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void createBackUp(string filePath)
         {
-            if (filePath.Contains("_FixedSize"))
+            if (filePath.Contains("_FixedSize") || filePath.Contains("_Converted"))
             {
                 return;
             }
@@ -674,8 +661,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             Program.SyncOutput.ProgressHyperV(percentComplete, "Resizing VHD");
                             WmiUtilities.ValidateOutput(outParams, scope);
                         }
-                }
+                    }
                     Console.WriteLine("Resized " + this.LocalFilePath + " from " + this.LocalFilePath.Length + " bytes to " + FullFileSize + " bytes.");
+                    this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
                 }
             }
             catch (System.Management.ManagementException ex)
