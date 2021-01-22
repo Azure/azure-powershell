@@ -27,7 +27,9 @@
   - New-AzCosmosBAccount cmdlet is updated with new parameters: IsRestoreReqeust, RestoreSource, RestoreTimestampInUtc, DatabasesToRestore, BackupPolicy.
   - Update-AzCosmosDBAccount cmdlet is updated with new parameters: BackupPolicy.
   - The following cmdlets are added:
-    - New-AzCosmosDBRestore, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount, Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource, Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
+   - New-AzCosmosDBRestore, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
+   - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,
+   - Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
   - Removed the support for throughput Migration. (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
   - Removed AnalyticalStorageTTL from SqlContainer datamodel (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
 * Please note this is a preview version. The cmdlets introduced here may be changed or removed in a future release.
