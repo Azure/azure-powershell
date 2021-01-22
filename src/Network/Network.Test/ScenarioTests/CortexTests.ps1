@@ -1289,3 +1289,8 @@ function Test-VHubRouteTableCRUD
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-VpnSiteLinkConnectionGetIkeSa
+{
+	
+}
