@@ -281,6 +281,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilityZone { get; set; }
 
@@ -289,6 +292,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [ValidateNotNullOrEmpty]
         public string RecoveryProximityPlacementGroupId { get; set; }
 
@@ -489,7 +495,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
                 EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
-                DiskEncryptionSetId = this.DiskEncryptionSetId
+                DiskEncryptionSetId = this.DiskEncryptionSetId,
+                TargetAvailabilityZone = this.RecoveryAvailabilityZone,
+                TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId
             };
 
             if (this.IsParameterBound(c => c.InMageAzureV2DiskInput))
@@ -582,6 +590,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             providerSettings.TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
                                                     ? this.ProtectableItem.FriendlyName
                                                     : this.RecoveryVmName;
+            providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
+            providerSettings.TargetAvailabilityZone = this.RecoveryAvailabilityZone;
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
             {

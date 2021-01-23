@@ -17,8 +17,9 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
  [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-RecoveryProximityPlacementGroupId <String>]
- [-EnableAcceleratedNetworkingOnRecovery] [-RecoveryBootDiagStorageAccountId <String>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryAvailabilityZone <String>]
+ [-RecoveryProximityPlacementGroupId <String>] [-EnableAcceleratedNetworkingOnRecovery]
+ [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
@@ -86,7 +87,6 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -In
 ```
 
 Start the update operation for the specified replication protected item to use the supplied proximity placement group for failover VM.
-
 
 ## PARAMETERS
 
@@ -307,6 +307,21 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySet
 Availability set for replication protected item after failover.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAvailabilityZone
+{{ Fill RecoveryAvailabilityZone Description }}
 
 ```yaml
 Type: System.String
