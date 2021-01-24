@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
 
     /// <summary>
     /// Low-level API implementation for the HanaOnAzure service.
+    /// HANA on Azure Client
     /// </summary>
     public partial class HanaOnAzure
     {
@@ -2097,7 +2098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SapMonitorsUpdate(string subscriptionId, string resourceGroupName, string sapMonitorName, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SapMonitorsUpdate(string subscriptionId, string resourceGroupName, string sapMonitorName, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags1 body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-02-07-preview";
             // Constant Parameters
@@ -2144,7 +2145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SapMonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SapMonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags1 body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-02-07-preview";
             // Constant Parameters
@@ -2251,7 +2252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SapMonitorsUpdate_Validate(string subscriptionId, string resourceGroupName, string sapMonitorName, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags body, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SapMonitorsUpdate_Validate(string subscriptionId, string resourceGroupName, string sapMonitorName, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ITags1 body, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2415,7 +2416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <summary>Create or update an identity in the specified subscription and resource group.</summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="body">Parameters to create or update the identity</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2582,7 +2583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="body">Parameters to create or update the identity</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2604,7 +2605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <summary>Deletes the identity.</summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2759,7 +2760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -2778,7 +2779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <summary>Gets the identity.</summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2924,7 +2925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -2945,7 +2946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3091,7 +3092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3265,7 +3266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// <summary>Update an identity in the specified subscription and resource group.</summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="body">Parameters to update the identity</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3421,7 +3422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure
         /// </summary>
         /// <param name="subscriptionId">Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID
         /// forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="resourceGroupName">The name of the Resource Group to which the identity belongs.</param>
         /// <param name="resourceName">The name of the identity resource.</param>
         /// <param name="body">Parameters to update the identity</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> instance that will receive events.</param>

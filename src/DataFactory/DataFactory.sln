@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFactoryV2.Test", "DataF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFactories", "DataFactories\DataFactories.csproj", "{238C90D1-1EB1-4DFB-A738-4E5ED7B030A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFactories.Test", "DataFactories.Test\DataFactories.Test.csproj", "{FC3DB827-C39B-4FE2-8AAA-0E518F52B9A1}"

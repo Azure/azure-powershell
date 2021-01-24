@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Gets the Instance type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType = value; }
+        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType = value ?? null; }
 
         /// <summary>The unique replication protected item name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ReplicationProtectedItemName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ReplicationProtectedItemName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ReplicationProtectedItemName = value; }
+        public string ReplicationProtectedItemName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ReplicationProtectedItemName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISwitchProtectionInputPropertiesInternal)Property).ReplicationProtectedItemName = value ?? null; }
 
         /// <summary>Creates an new <see cref="SwitchProtectionInput" /> instance.</summary>
         public SwitchProtectionInput()

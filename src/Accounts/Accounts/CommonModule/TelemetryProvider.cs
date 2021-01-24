@@ -236,7 +236,12 @@ namespace Microsoft.Azure.Commands.Common
 
         public bool TryGetValue(string key, out AzurePSQoSEvent value)
         {
-            return ProcessRecordEvents.TryGetValue(key, out value);
+            if(key != null)
+            {
+                return ProcessRecordEvents.TryGetValue(key, out value);
+            }
+            value = null;
+            return false;
         }
 
         public void Add(KeyValuePair<string, AzurePSQoSEvent> item)

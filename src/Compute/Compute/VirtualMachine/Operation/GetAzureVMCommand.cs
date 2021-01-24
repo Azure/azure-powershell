@@ -21,7 +21,9 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -117,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     ReturnListVMObject(
                         this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
-                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
+                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync); 
                 }
                 else if (ShouldGetByName(ResourceGroupName, Name))
                 {
@@ -149,14 +151,51 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
+        private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
+            Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
+        {
+            var psResultListStatus = new List<PSVirtualMachineListStatus>();
+            
+            while (vmListResult != null)
+            {
+                psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                {
+                    vmListResult = listNextFunction(vmListResult.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    vmListResult = null;
+                }
+            }
+
+            if (this.Status.IsPresent)
+            {
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultListStatus), true);
+            }
+            else
+            {
+                var psResultList = new List<PSVirtualMachineList>();
+                foreach (var item in psResultListStatus)
+                {
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
+                    psResultList.Add(psItem);
+                }
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
+            }
+        }
+
         private List<PSVirtualMachineListStatus> GetPowerstate(
             AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             List<PSVirtualMachineListStatus> psResultListStatus)
         {
+
             if (vmListResult.Body != null)
             {
                 int vm_count = 0;
-                foreach (var item in vmListResult.Body)
+                var filteredList = TopLevelWildcardFilter(ResourceGroupName, Name, resources: vmListResult.Body);
+                foreach (var item in filteredList)
                 {
                     vm_count++;
                     var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
@@ -206,39 +245,6 @@ namespace Microsoft.Azure.Commands.Compute
             return psResultListStatus;
         }
 
-        private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
-            Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
-        {
-            var psResultListStatus = new List<PSVirtualMachineListStatus>();
-
-            while (vmListResult != null)
-            {
-                psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
-
-                if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
-                {
-                    vmListResult = listNextFunction(vmListResult.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
-                }
-                else
-                {
-                    vmListResult = null;
-                }
-            }
-
-            if (this.Status.IsPresent)
-            {
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultListStatus), true);
-            }
-            else
-            {
-                var psResultList = new List<PSVirtualMachineList>();
-                foreach (var item in psResultListStatus)
-                {
-                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
-                    psResultList.Add(psItem);
-                }
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
-            }
-        }
+        
     }
 }

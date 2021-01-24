@@ -234,11 +234,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         }
                     }
 
-                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
-
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))

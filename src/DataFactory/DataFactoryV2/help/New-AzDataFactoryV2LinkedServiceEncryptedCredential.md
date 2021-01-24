@@ -29,6 +29,10 @@ New-AzDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <S
 ## DESCRIPTION
 The New-AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet encrypt credential in linked service with specified integration runtime.
 
+Please ensure the following prerequisites are met:
+* **Remote access** option is enabled on the self-hosted integration runtime.
+* Powershell 7.0 or higher is used to execute the cmdlet.
+
 ## EXAMPLES
 
 ### Example 1: Encrypt credentials in a linked service

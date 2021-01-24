@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a regression regarding SAS token generation
+
+## Version 2.7.1
+* Fixed an issue of SAS token.
+
+## Version 2.7.0
+* Allowed tags in IoT Hub create cmdlet.
 
 ## Version 2.6.0
 * Updated devices sdk.

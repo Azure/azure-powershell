@@ -80,7 +80,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure Workload
         /// </summary>
         AzureWorkload,
-        MAB
+
+        /// <summary>
+        /// Represents MAB agent
+        /// </summary>
+        MAB,
+
+        /// <summary>
+        /// represents that the BackupManagementType is Not Applicable.
+        /// </summary>
+        NA
     }
 
     /// <summary>
@@ -331,7 +340,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Data move between source and target vaults
         /// </summary>
-        BackupDataMove
+        BackupDataMove,
+
+        /// <summary>
+        /// update the customer managed key
+        /// </summary>
+        UpdateCustomerManagedKey
     }
 
     /// <summary>

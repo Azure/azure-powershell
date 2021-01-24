@@ -89,10 +89,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return;
             }
-            {_extendedSummary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("extendedSummary"), out var __jsonExtendedSummary) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ProjectSummaryExtendedSummary.FromJson(__jsonExtendedSummary) : ExtendedSummary;}
             {_instanceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("instanceType"), out var __jsonInstanceType) ? (string)__jsonInstanceType : (string)InstanceType;}
-            {_lastSummaryRefreshedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastSummaryRefreshedTime"), out var __jsonLastSummaryRefreshedTime) ? global::System.DateTime.TryParse((string)__jsonLastSummaryRefreshedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSummaryRefreshedTimeValue) ? __jsonLastSummaryRefreshedTimeValue : LastSummaryRefreshedTime : LastSummaryRefreshedTime;}
             {_refreshSummaryState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("refreshSummaryState"), out var __jsonRefreshSummaryState) ? (string)__jsonRefreshSummaryState : (string)RefreshSummaryState;}
+            {_lastSummaryRefreshedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastSummaryRefreshedTime"), out var __jsonLastSummaryRefreshedTime) ? global::System.DateTime.TryParse((string)__jsonLastSummaryRefreshedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSummaryRefreshedTimeValue) ? __jsonLastSummaryRefreshedTimeValue : LastSummaryRefreshedTime : LastSummaryRefreshedTime;}
+            {_extendedSummary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("extendedSummary"), out var __jsonExtendedSummary) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ProjectSummaryExtendedSummary.FromJson(__jsonExtendedSummary) : ExtendedSummary;}
             AfterFromJson(json);
         }
 
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return container;
             }
-            AddIf( null != this._extendedSummary ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._extendedSummary.ToJson(null,serializationMode) : null, "extendedSummary" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._instanceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._instanceType.ToString()) : null, "instanceType" ,container.Add );
             }
-            AddIf( null != this._lastSummaryRefreshedTime ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._lastSummaryRefreshedTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastSummaryRefreshedTime" ,container.Add );
             AddIf( null != (((object)this._refreshSummaryState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._refreshSummaryState.ToString()) : null, "refreshSummaryState" ,container.Add );
+            AddIf( null != this._lastSummaryRefreshedTime ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._lastSummaryRefreshedTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastSummaryRefreshedTime" ,container.Add );
+            AddIf( null != this._extendedSummary ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._extendedSummary.ToJson(null,serializationMode) : null, "extendedSummary" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

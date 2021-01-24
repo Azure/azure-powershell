@@ -33,9 +33,9 @@ function Get-AzModuleUpdateList {
         Write-Debug "Retrieving installed Az modules"
         $installModules = @{}
         try {
-            (PowerShellGet\Get-InstalledModule -Name "Az*" -ErrorAction Stop).Where({
+            PowerShellGet\Get-InstalledModule -Name "Az*" -ErrorAction Stop | Where-Object {
                 ($_.Author -eq 'Microsoft Corporation' -or $_.CompanyName -eq 'Microsoft Corporation') -and ($_.Name -match "Az(\.[a-zA-Z0-9]+)?$")
-            }) | ForEach-Object {
+            } | ForEach-Object {
                 $installModules[$_.Name] = @()
             }
         }
@@ -105,10 +105,10 @@ function Get-AzModuleUpdateList {
 
         Write-Debug "The modules to check for update: $($modules.Name)"
 
-        $modulesToUpdate = $modules.Where({ !$installModules.ContainsKey($_.Name) -or !$installModules[$_.Name] -or [Version]($_.Version) -gt [Version]$installModules[$_.Name][0].Item1 })
+        $modulesToUpdate = $modules | Where-Object { !$installModules.ContainsKey($_.Name) -or !$installModules[$_.Name] -or [Version]($_.Version) -gt [Version]$installModules[$_.Name][0].Item1 }
         if ("Az" -eq ($modulesToUpdate | Select-Object -First 1).Name) {
             $first, $rest = $modulesToUpdate
-            $modulesToUpdate = (@() + $rest + $first)
+            $modulesToUpdate = (@() + $rest + $first) | Where-Object {$_ -ne $null}
         }
 
         If (-not $modulesToUpdate) {

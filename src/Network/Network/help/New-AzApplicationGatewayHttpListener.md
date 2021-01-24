@@ -16,8 +16,8 @@ Creates an HTTP listener for an application gateway.
 ### SetByResourceId
 ```
 New-AzApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
- [-FrontendPortId <String>] [-SslCertificateId <String>] [-FirewallPolicyId <String>] [-HostName <String>]
- [-HostNames <String[]>] [-RequireServerNameIndication <String>] -Protocol <String>
+ [-FrontendPortId <String>] [-SslCertificateId <String>] [-FirewallPolicyId <String>] [-SslProfileId <String>]
+ [-HostName <String>] [-HostNames <String[]>] [-RequireServerNameIndication <String>] -Protocol <String>
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -28,8 +28,8 @@ New-AzApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
- [-SslCertificate <PSApplicationGatewaySslCertificate>] [-HostName <String>] [-HostNames <String[]>]
- [-RequireServerNameIndication <String>] -Protocol <String>
+ [-SslCertificate <PSApplicationGatewaySslCertificate>] [-SslProfile <PSApplicationGatewaySslProfile>]
+ [-HostName <String>] [-HostNames <String[]>] [-RequireServerNameIndication <String>] -Protocol <String>
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -305,8 +305,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SslProfile
+SslProfile
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SslProfileId
+SslProfileId
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -26,7 +26,9 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAksCluster")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : NewKubeBase
     {

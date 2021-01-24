@@ -65,14 +65,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
             };
             var browserCredential = new InteractiveBrowserCredential(options);
-            var source = new CancellationTokenSource();
-            source.CancelAfter(TimeSpan.FromMinutes(5));
-            var authTask = browserCredential.AuthenticateAsync(requestContext, source.Token);
+            var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
 
             return MsalAccessToken.GetAccessTokenAsync(
                 authTask,
-                () => browserCredential.GetTokenAsync(requestContext, source.Token),
-                source.Token);
+                browserCredential,
+                requestContext,
+                cancellationToken);
         }
 
         private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)

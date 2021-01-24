@@ -87,8 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress = (string) content.GetValueForProperty("EndIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).StartIPAddress = (string) content.GetValueForProperty("StartIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).StartIPAddress, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress = (string) content.GetValueForProperty("EndIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress = (string) content.GetValueForProperty("EndIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).StartIPAddress = (string) content.GetValueForProperty("StartIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).StartIPAddress, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress = (string) content.GetValueForProperty("EndIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRulePropertiesInternal)this).EndIPAddress, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

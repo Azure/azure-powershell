@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="8" skipped="0" invalid="0" date="2020-12-14" time="10:43:00">
+  <environment cwd="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache" user="xidi" machine-name="DESKTOP-G9R8CMG" user-domain="FAREAST" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" nunit-version="2.5.8.0" os-version="10.0.19042" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="3.6315" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Export-AzRedisEnterpriseCacheDatabase.Tests.ps1" executed="True" result="Ignored" success="True" time="0.5623" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Export-AzRedisEnterpriseCacheDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Export-AzRedisEnterpriseCacheDatabase" executed="True" result="Ignored" success="True" time="0.309" asserts="0" description="Export-AzRedisEnterpriseCacheDatabase">
+            <results>
+              <test-case description="ExportExpanded" name="Export-AzRedisEnterpriseCacheDatabase.ExportExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCache.Tests.ps1" executed="True" result="Success" success="True" time="0.7693" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCache.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRedisEnterpriseCache" executed="True" result="Success" success="True" time="0.6262" asserts="0" description="Get-AzRedisEnterpriseCache">
+            <results>
+              <test-case description="Get" name="Get-AzRedisEnterpriseCache.Get" time="0.4121" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzRedisEnterpriseCache.List" time="0.0738" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheDatabase.Tests.ps1" executed="True" result="Success" success="True" time="0.216" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRedisEnterpriseCacheDatabase" executed="True" result="Success" success="True" time="0.1103" asserts="0" description="Get-AzRedisEnterpriseCacheDatabase">
+            <results>
+              <test-case description="List" name="Get-AzRedisEnterpriseCacheDatabase.List" time="0.0556" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheDatabaseKey.Tests.ps1" executed="True" result="Success" success="True" time="0.2371" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheDatabaseKey.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRedisEnterpriseCacheDatabaseKey" executed="True" result="Success" success="True" time="0.1245" asserts="0" description="Get-AzRedisEnterpriseCacheDatabaseKey">
+            <results>
+              <test-case description="List" name="Get-AzRedisEnterpriseCacheDatabaseKey.List" time="0.0406" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheOperationStatus.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1777" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Get-AzRedisEnterpriseCacheOperationStatus.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRedisEnterpriseCacheOperationStatus" executed="True" result="Ignored" success="True" time="0.063" asserts="0" description="Get-AzRedisEnterpriseCacheOperationStatus">
+            <results>
+              <test-case description="Operation" name="Get-AzRedisEnterpriseCacheOperationStatus.Operation" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Import-AzRedisEnterpriseCacheDatabase.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1944" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Import-AzRedisEnterpriseCacheDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Import-AzRedisEnterpriseCacheDatabase" executed="True" result="Ignored" success="True" time="0.083" asserts="0" description="Import-AzRedisEnterpriseCacheDatabase">
+            <results>
+              <test-case description="ImportExpanded" name="Import-AzRedisEnterpriseCacheDatabase.ImportExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\New-AzRedisEnterpriseCache.Tests.ps1" executed="True" result="Success" success="True" time="0.4877" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\New-AzRedisEnterpriseCache.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRedisEnterpriseCache" executed="True" result="Success" success="True" time="0.3703" asserts="0" description="New-AzRedisEnterpriseCache">
+            <results>
+              <test-case description="Create" name="New-AzRedisEnterpriseCache.Create" time="0.3084" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\New-AzRedisEnterpriseCacheDatabaseKey.Tests.ps1" executed="True" result="Success" success="True" time="0.3135" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\New-AzRedisEnterpriseCacheDatabaseKey.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRedisEnterpriseCacheDatabaseKey" executed="True" result="Success" success="True" time="0.1765" asserts="0" description="New-AzRedisEnterpriseCacheDatabaseKey">
+            <results>
+              <test-case description="RegenerateExpanded" name="New-AzRedisEnterpriseCacheDatabaseKey.RegenerateExpanded" time="0.0865" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Remove-AzRedisEnterpriseCache.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2877" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Remove-AzRedisEnterpriseCache.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRedisEnterpriseCache" executed="True" result="Ignored" success="True" time="0.1734" asserts="0" description="Remove-AzRedisEnterpriseCache">
+            <results>
+              <test-case description="Delete" name="Remove-AzRedisEnterpriseCache.Delete" time="0.1078" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzRedisEnterpriseCache.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Update-AzRedisEnterpriseCache.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1912" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Update-AzRedisEnterpriseCache.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRedisEnterpriseCache" executed="True" result="Ignored" success="True" time="0.0733" asserts="0" description="Update-AzRedisEnterpriseCache">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRedisEnterpriseCache.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzRedisEnterpriseCache.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Update-AzRedisEnterpriseCacheDatabase.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1945" asserts="0" description="C:\Users\xidi\src\azure-powershell\src\RedisEnterpriseCache\test\Update-AzRedisEnterpriseCacheDatabase.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRedisEnterpriseCacheDatabase" executed="True" result="Ignored" success="True" time="0.0753" asserts="0" description="Update-AzRedisEnterpriseCacheDatabase">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRedisEnterpriseCacheDatabase.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzRedisEnterpriseCacheDatabase.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

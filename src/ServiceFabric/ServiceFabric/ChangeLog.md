@@ -19,8 +19,15 @@
 -->
 ## Upcoming Release
 
-## Version 2.2.0
+## Version 2.2.2
+* Fixed `Add-AzServiceFabricNodeType`. Added node type to service fabric cluster before creating virtual machine scale set.
 
+## Version 2.2.1
+* Added example to `Set-AzServiceFabricSetting` with SettingsSectionDescription param
+* Updated application related cmdlets to call out that support is only for ARM deployed resources
+* Marked for deprecation cluster cert cmdlets `Add-AzureRmServiceFabricClusterCertificate` and `Remove-AzureRmServiceFabricClusterCertificate`
+
+## Version 2.2.0
 * Added new cmdlets for managed clusters and node types:
     - `New-AzServiceFabricManagedCluster`
     - `Get-AzServiceFabricManagedCluster`

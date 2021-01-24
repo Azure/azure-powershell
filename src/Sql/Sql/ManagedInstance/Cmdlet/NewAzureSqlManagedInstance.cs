@@ -317,6 +317,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -475,7 +482,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 DnsZonePartner = this.DnsZonePartner,
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                BackupStorageRedundancy = this.BackupStorageRedundancy
+                BackupStorageRedundancy = this.BackupStorageRedundancy,
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId
             });
             return newEntity;
         }

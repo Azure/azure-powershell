@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
@@ -55,9 +54,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             x5c = new List<string>();
 
             PublicKey publicKey = cert.PublicKey;
-
-            if (publicKey.Key.KeyExchangeAlgorithm != "RSA" || publicKey.Key.KeySize < 2048)
-                throw new Exception("Invalid argument");
+            // Originally "RSA" is the only supported alg
+            // However on Windows PowerShell this is what you get from a certificate
+            // And I have verified this could work
+            if (
+                (publicKey.Key.KeyExchangeAlgorithm != "RSA-PKCS1-KeyEx") &&
+                (publicKey.Key.KeyExchangeAlgorithm != "RSA") || publicKey.Key.KeySize < 2048)
+                throw new Exception("Incorrect certificate format.");
 
             RSAParameters rsaParameters = cert.GetRSAPublicKey().ExportParameters(false);
             SetExponent(rsaParameters.Exponent);

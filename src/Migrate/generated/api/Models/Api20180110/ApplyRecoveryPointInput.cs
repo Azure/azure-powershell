@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The class type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType = value; }
+        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType = value ?? null; }
 
         /// <summary>The recovery point Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RecoveryPointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).RecoveryPointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).RecoveryPointId = value; }
+        public string RecoveryPointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).RecoveryPointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointInputPropertiesInternal)Property).RecoveryPointId = value ?? null; }
 
         /// <summary>Creates an new <see cref="ApplyRecoveryPointInput" /> instance.</summary>
         public ApplyRecoveryPointInput()

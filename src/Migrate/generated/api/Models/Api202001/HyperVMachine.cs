@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 
         /// <summary>Type of the operating system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string GuestOSDetailOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachinePropertiesInternal)Property).GuestOSDetailOstype; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachinePropertiesInternal)Property).GuestOSDetailOstype = value; }
+        public string GuestOSDetailOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachinePropertiesInternal)Property).GuestOSDetailOstype; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachinePropertiesInternal)Property).GuestOSDetailOstype = value ?? null; }
 
         /// <summary>Version of the operating system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]

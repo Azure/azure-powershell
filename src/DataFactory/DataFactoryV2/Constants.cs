@@ -68,6 +68,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpTriggerName = "The trigger name.";
 
+        public const string HelpTriggerRunId = "The Run ID of the trigger.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
         public const string HelpTriggerObject = "The trigger object.";
 
         public const string HelpPipeline = "The pipeline object.";
@@ -282,5 +286,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
 
+        public const string ActionDescriptionForInvokePipeline = "Starts a run for \"{0}\" pipeline in the \"{1}\" factory.";
     }
 }

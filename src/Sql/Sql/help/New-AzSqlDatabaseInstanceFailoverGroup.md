@@ -84,7 +84,6 @@ New-AzSqlDatabaseInstanceFailoverGroup -FailoverPolicy Automatic -GracePeriodWit
 
 ### -AllowReadOnlyFailoverToPrimary
 Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint.
-This feature is not yet supported.
 
 ```yaml
 Type: System.String

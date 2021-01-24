@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The guest disk signature based option for disk exclusion.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions[] DiskExclusionInputDiskSignatureOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).DiskSignatureOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).DiskSignatureOption = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskSignatureExclusionOptions[] DiskExclusionInputDiskSignatureOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).DiskSignatureOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).DiskSignatureOption = value ?? null /* arrayOf */; }
 
         /// <summary>The volume label based option for disk exclusion.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions[] DiskExclusionInputVolumeOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).VolumeOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).VolumeOption = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageVolumeExclusionOptions[] DiskExclusionInputVolumeOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).VolumeOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageDiskExclusionInputInternal)DiskExclusionInput).VolumeOption = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="DisksToInclude" /> property.</summary>
         private string[] _disksToInclude;

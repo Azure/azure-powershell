@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
@@ -273,8 +274,8 @@ namespace Microsoft.Azure.Commands.Resources
             }
             // ensure that if ConditionVersion is empty in any way, it becomes null
             ConditionVersion = string.IsNullOrEmpty(ConditionVersion) ? null : string.IsNullOrWhiteSpace(ConditionVersion) ? null : ConditionVersion; 
-            double _conditionVersion = double.Parse(ConditionVersion ?? "2.0");
-            if (_conditionVersion < 2.0)
+            var _conditionVersion = Version.Parse(ConditionVersion ?? "2.0");
+            if (_conditionVersion.Major < 2)
             {
                 WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
                 return;

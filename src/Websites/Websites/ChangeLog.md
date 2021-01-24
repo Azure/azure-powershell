@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for App Service Managed certificates
+    - `New-AzWebAppCertificate`
+    - `Remove-AzWebAppCertificate`
+* Fixed issue that causes Docker Password to be removed from appsettings in `Set-AzWebApp` and `Set-AzWebAppSlot`
+
+## Version 2.1.1
+* Prevent duplicate access restriction rules
+
+## Version 2.1.0
+* Added support for new access restriction features: ServiceTag, multi-ip and http-headers
+
+## Version 2.0.0
 * Added support for Premium V3 pricing tier
 * Updated the WebSites SDK to 3.1.0
 
