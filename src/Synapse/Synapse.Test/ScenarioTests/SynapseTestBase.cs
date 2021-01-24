@@ -52,9 +52,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         public static SynapseTestBase NewInstance => new SynapseTestBase();
 
-        protected static string TestResourceGroupName;
-
-        protected static string TestWorkspaceName;
+        protected static string TestResourceGroupName = "zzy-test-rg";
+        protected static string TestWorkspaceName = "testsynapseworkspace";
 
         protected static string TestSparkPoolName;
 
