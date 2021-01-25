@@ -181,7 +181,8 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Security.AccessControl",
             "System.Security.Principal.Windows",
             "System.Data.SqlClient",
-            "System.Security.Cryptography.ProtectedData"
+            "System.Security.Cryptography.ProtectedData",
+            "System.Text.Json"
         };
 
         private readonly Dictionary<string, AssemblyRecord> _assemblies =
