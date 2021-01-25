@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         public StorageManagementClient StorageManagementClient { get; private set; }
 
         public static SynapseTestBase NewInstance => new SynapseTestBase();
-       
+
         protected static string TestResourceGroupName;
 
         protected static string TestWorkspaceName;

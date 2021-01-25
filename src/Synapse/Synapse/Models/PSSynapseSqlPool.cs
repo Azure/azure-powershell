@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 this.RestorePointInTime = DateTime.Parse(sqlPool.RestorePointInTime);
             }
-
         }
 
         /// <summary>
