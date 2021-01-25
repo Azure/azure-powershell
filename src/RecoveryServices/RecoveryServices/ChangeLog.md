@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* modified policy validation limits as per backup service.
 * Added Zone Redundancy for Recovery Service Vaults. 
 
 ## Version 3.3.0
