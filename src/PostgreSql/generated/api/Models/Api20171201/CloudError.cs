@@ -23,7 +23,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse _error;
 
-        /// <summary>The resource management error response.</summary>
+        /// <summary>
+        /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+        /// the OData error response format.)
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorResponse()); set => this._error = value; }
 
@@ -115,7 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         string Code { get; set; }
         /// <summary>The error details.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse[] Detail { get; set; }
-        /// <summary>The resource management error response.</summary>
+        /// <summary>
+        /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+        /// the OData error response format.)
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse Error { get; set; }
         /// <summary>The error message.</summary>
         string Message { get; set; }

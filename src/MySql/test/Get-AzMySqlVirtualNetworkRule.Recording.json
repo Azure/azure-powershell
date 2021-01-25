@@ -1,9 +1,9 @@
 {
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
-      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -16,9 +16,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01" ],
         "Retry-After": [ "30" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01" ],
         "x-ms-request-id": [ "569cb4f0-1275-4372-9370-179d5ddc5b42" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
@@ -36,10 +36,10 @@
       "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-07-24T06:07:42.957Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01+2": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/569cb4f0-1275-4372-9370-179d5ddc5b42?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1", "2" ],
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"569cb4f0-1275-4372-9370-179d5ddc5b42\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T06:07:42.957Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1", "2", "3" ],
@@ -112,13 +112,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01+4": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
@@ -151,13 +151,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}]}"
+      "Content": "{\"value\":[{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}]}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+List+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
@@ -274,11 +274,11 @@
       "Content": null
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
-      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -291,9 +291,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01" ],
         "Retry-After": [ "30" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01" ],
         "x-ms-request-id": [ "eca86a26-160c-4b90-9c07-b010bad8e44b" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
@@ -311,10 +311,10 @@
       "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-07-24T06:08:34.003Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01+2": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/eca86a26-160c-4b90-9c07-b010bad8e44b?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "8", "9" ],
@@ -351,10 +351,10 @@
       "Content": "{\"name\":\"eca86a26-160c-4b90-9c07-b010bad8e44b\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T06:08:34.003Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "8", "9", "10" ],
@@ -387,13 +387,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
@@ -426,13 +426,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+Get+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
@@ -549,11 +549,11 @@
       "Content": null
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
-      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "Content": "{\n  \"properties\": {\n    \"virtualNetworkSubnetId\": \"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\"\n  }\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -566,9 +566,9 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/operationResults/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01" ],
         "Retry-After": [ "30" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01" ],
         "x-ms-request-id": [ "c7a1a2cb-254e-4524-957d-a0325f03d984" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
@@ -586,10 +586,10 @@
       "Content": "{\"operation\":\"UpsertElasticServerVnetFirewallRule\",\"startTime\":\"2020-07-24T06:09:23.787Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01+2": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/locations/eastus/azureAsyncOperation/c7a1a2cb-254e-4524-957d-a0325f03d984?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "15", "16" ],
@@ -626,10 +626,10 @@
       "Content": "{\"name\":\"c7a1a2cb-254e-4524-957d-a0325f03d984\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T06:09:23.787Z\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "15", "16", "17" ],
@@ -662,13 +662,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "18" ],
@@ -701,13 +701,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
+      "Content": "{\"properties\":{\"virtualNetworkSubnetId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.Network/virtualNetworks/MySqlVNet/subnets/MysqlSubnet1\",\"ignoreMissingVnetServiceEndpoint\":false,\"state\":\"Ready\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet\",\"name\":\"mysqlvnet\",\"type\":\"Microsoft.DBForMySQL/servers/virtualNetworkRules\"}"
     }
   },
-  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
+  "Get-AzMySqlVirtualNetworkRule+[NoContext]+GetViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100/virtualNetworkRules/mysqlvnet?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "19" ],

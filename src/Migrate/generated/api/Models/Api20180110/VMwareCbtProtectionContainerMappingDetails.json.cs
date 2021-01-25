@@ -90,15 +90,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._serviceBusConnectionStringSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._serviceBusConnectionStringSecretName.ToString()) : null, "serviceBusConnectionStringSecretName" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != (((object)this._storageAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._storageAccountId.ToString()) : null, "storageAccountId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._storageAccountSasSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._storageAccountSasSecretName.ToString()) : null, "storageAccountSasSecretName" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._serviceBusConnectionStringSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._serviceBusConnectionStringSecretName.ToString()) : null, "serviceBusConnectionStringSecretName" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             __protectionContainerMappingProviderSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProtectionContainerMappingProviderSpecificDetails(json);
             {_keyVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultId"), out var __jsonKeyVaultId) ? (string)__jsonKeyVaultId : (string)KeyVaultId;}
             {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultUri"), out var __jsonKeyVaultUri) ? (string)__jsonKeyVaultUri : (string)KeyVaultUri;}
-            {_serviceBusConnectionStringSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("serviceBusConnectionStringSecretName"), out var __jsonServiceBusConnectionStringSecretName) ? (string)__jsonServiceBusConnectionStringSecretName : (string)ServiceBusConnectionStringSecretName;}
             {_storageAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("storageAccountId"), out var __jsonStorageAccountId) ? (string)__jsonStorageAccountId : (string)StorageAccountId;}
             {_storageAccountSasSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("storageAccountSasSecretName"), out var __jsonStorageAccountSasSecretName) ? (string)__jsonStorageAccountSasSecretName : (string)StorageAccountSasSecretName;}
+            {_serviceBusConnectionStringSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("serviceBusConnectionStringSecretName"), out var __jsonServiceBusConnectionStringSecretName) ? (string)__jsonServiceBusConnectionStringSecretName : (string)ServiceBusConnectionStringSecretName;}
             {_targetLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetLocation"), out var __jsonTargetLocation) ? (string)__jsonTargetLocation : (string)TargetLocation;}
             AfterFromJson(json);
         }

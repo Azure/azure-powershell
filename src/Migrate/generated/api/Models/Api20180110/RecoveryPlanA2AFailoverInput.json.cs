@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __recoveryPlanProviderSpecificFailoverInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanProviderSpecificFailoverInput(json);
+            {_recoveryPointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointType"), out var __jsonRecoveryPointType) ? (string)__jsonRecoveryPointType : (string)RecoveryPointType;}
             {_cloudServiceCreationOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("cloudServiceCreationOption"), out var __jsonCloudServiceCreationOption) ? (string)__jsonCloudServiceCreationOption : (string)CloudServiceCreationOption;}
             {_multiVMSyncPointOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("multiVmSyncPointOption"), out var __jsonMultiVMSyncPointOption) ? (string)__jsonMultiVMSyncPointOption : (string)MultiVMSyncPointOption;}
-            {_recoveryPointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointType"), out var __jsonRecoveryPointType) ? (string)__jsonRecoveryPointType : (string)RecoveryPointType;}
             AfterFromJson(json);
         }
 
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __recoveryPlanProviderSpecificFailoverInput?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._recoveryPointType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointType.ToString()) : null, "recoveryPointType" ,container.Add );
             AddIf( null != (((object)this._cloudServiceCreationOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._cloudServiceCreationOption.ToString()) : null, "cloudServiceCreationOption" ,container.Add );
             AddIf( null != (((object)this._multiVMSyncPointOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._multiVMSyncPointOption.ToString()) : null, "multiVmSyncPointOption" ,container.Add );
-            AddIf( null != (((object)this._recoveryPointType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointType.ToString()) : null, "recoveryPointType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

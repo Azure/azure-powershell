@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -34,38 +34,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public int SuggestionAccepted { get; set; }
 
         /// <inheritdoc/>
-        public void OnHistory(string historyLine)
+        public void OnHistory(HistoryTelemetryData telemetryData)
         {
             this.RecordedSuggestion = new RecordedSuggestionForHistory()
             {
-                HistoryLine = historyLine,
+                HistoryLine = telemetryData.Command,
             };
         }
 
         /// <inheritdoc/>
-        public void OnRequestPrediction(string command)
+        public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
         }
 
         /// <inheritdoc/>
-        public void OnRequestPredictionError(string command, Exception e)
-        {
-        }
-
-        /// <inheritdoc/>
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
         {
             ++this.SuggestionAccepted;
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled)
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
         {
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestionError(Exception e)
+        public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData)
         {
         }
+
     }
 }

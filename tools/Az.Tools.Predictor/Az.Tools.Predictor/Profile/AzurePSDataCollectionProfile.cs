@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Tools.AzPredictor;
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.IO;
+using System.Text.Json;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile
 {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile
     /// <summary>
     /// The profile about data collection in Azure PowerShell
     /// </summary>
-    public sealed class AzurePSDataCollectionProfile
+    internal sealed class AzurePSDataCollectionProfile
     {
         private const string EnvironmentVariableName = "Azure_PS_Data_Collection";
         private const string DefaultFileName = "AzurePSDataCollectionProfile.json";
@@ -59,10 +59,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile
         }
 
         /// <summary>
-        /// Gets if the data collection is enabled.
+        /// Gets or sets if the data collection is enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "enableAzureDataCollection")]
-        public bool? EnableAzureDataCollection { get; private set; }
+        public bool? EnableAzureDataCollection { get; set; }
 
         private static AzurePSDataCollectionProfile CreateInstance()
         {
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile
                     if (File.Exists(dataPath))
                     {
                         string contents = File.ReadAllText(dataPath);
-                        var localResult = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                        var localResult = JsonSerializer.Deserialize<AzurePSDataCollectionProfile>(contents, JsonUtilities.DefaultSerializerOptions);
                         if (localResult != null && localResult.EnableAzureDataCollection.HasValue)
                         {
                             result = localResult;

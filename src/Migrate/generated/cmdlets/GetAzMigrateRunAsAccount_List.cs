@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
     /// <summary>Method to get run as accounts.</summary>
     /// <remarks>
-    /// [OpenAPI] RunAsAccounts_List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/runAsAccounts"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/runAsAccounts"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMigrateRunAsAccount_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount))]

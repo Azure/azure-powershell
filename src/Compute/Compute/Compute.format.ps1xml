@@ -183,16 +183,12 @@
           <TableColumnHeader/>
           <TableColumnHeader/>
           <TableColumnHeader/>
-          <TableColumnHeader/>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FilterExpression</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Skus</PropertyName>

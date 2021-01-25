@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for DatabasePrincipalType.</summary>
+    /// <summary>Database principal type.</summary>
     public partial class DatabasePrincipalTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

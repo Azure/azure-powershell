@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return;
             }
-            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.TrackedResource(json);
+            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.TrackedResource(json);
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ResourceIdentity.FromJson(__jsonIdentity) : Identity;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerProperties.FromJson(__jsonProperties) : Property;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.Sku.FromJson(__jsonSku) : Sku;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerProperties.FromJson(__jsonProperties) : Property;}
             AfterFromJson(json);
         }
 
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
-            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

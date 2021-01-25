@@ -71,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __providerSpecificFailoverInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderSpecificFailoverInput(json);
-            {_primaryKekCertificatePfx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("primaryKekCertificatePfx"), out var __jsonPrimaryKekCertificatePfx) ? (string)__jsonPrimaryKekCertificatePfx : (string)PrimaryKekCertificatePfx;}
-            {_recoveryPointId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointId"), out var __jsonRecoveryPointId) ? (string)__jsonRecoveryPointId : (string)RecoveryPointId;}
-            {_secondaryKekCertificatePfx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("secondaryKekCertificatePfx"), out var __jsonSecondaryKekCertificatePfx) ? (string)__jsonSecondaryKekCertificatePfx : (string)SecondaryKekCertificatePfx;}
             {_vaultLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vaultLocation"), out var __jsonVaultLocation) ? (string)__jsonVaultLocation : (string)VaultLocation;}
+            {_primaryKekCertificatePfx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("primaryKekCertificatePfx"), out var __jsonPrimaryKekCertificatePfx) ? (string)__jsonPrimaryKekCertificatePfx : (string)PrimaryKekCertificatePfx;}
+            {_secondaryKekCertificatePfx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("secondaryKekCertificatePfx"), out var __jsonSecondaryKekCertificatePfx) ? (string)__jsonSecondaryKekCertificatePfx : (string)SecondaryKekCertificatePfx;}
+            {_recoveryPointId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointId"), out var __jsonRecoveryPointId) ? (string)__jsonRecoveryPointId : (string)RecoveryPointId;}
             AfterFromJson(json);
         }
 
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __providerSpecificFailoverInput?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._primaryKekCertificatePfx)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryKekCertificatePfx.ToString()) : null, "primaryKekCertificatePfx" ,container.Add );
-            AddIf( null != (((object)this._recoveryPointId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointId.ToString()) : null, "recoveryPointId" ,container.Add );
-            AddIf( null != (((object)this._secondaryKekCertificatePfx)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._secondaryKekCertificatePfx.ToString()) : null, "secondaryKekCertificatePfx" ,container.Add );
             AddIf( null != (((object)this._vaultLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vaultLocation.ToString()) : null, "vaultLocation" ,container.Add );
+            AddIf( null != (((object)this._primaryKekCertificatePfx)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._primaryKekCertificatePfx.ToString()) : null, "primaryKekCertificatePfx" ,container.Add );
+            AddIf( null != (((object)this._secondaryKekCertificatePfx)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._secondaryKekCertificatePfx.ToString()) : null, "secondaryKekCertificatePfx" ,container.Add );
+            AddIf( null != (((object)this._recoveryPointId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointId.ToString()) : null, "recoveryPointId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

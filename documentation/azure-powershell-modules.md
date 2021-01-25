@@ -11,6 +11,7 @@ Azure PowerShell                      | `Az`                                    
 Azure Service                         | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]
+ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery]
 Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery]
 Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery]
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
@@ -24,10 +25,12 @@ Batch                                 | `Az.Batch`                              
 Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
 Blockchain                            | `Az.Blockchain`                         | [![Blockchain]][BlockchainGallery]
 Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
+BotService                            | `Az.BotService`                         | [![BotService]][BotServiceGallery]
 Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
 Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery]
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
+Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
 Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
@@ -57,6 +60,7 @@ Front Door                            | `Az.FrontDoor`                          
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
 SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery]
+HealthBot                             | `Az.HealthBot`                          | [![HealthBot]][HealthBotGallery]
 HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
 API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
 HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
@@ -95,6 +99,7 @@ Power BI Embedded                     | `Az.PowerBIEmbedded`                    
 Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
 Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
 Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
+Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
 Relay                                 | `Az.Relay`                              | [![Relay]][RelayGallery]
 Reservations                          | `Az.Reservations`                       | [![Reservations]][ReservationsGallery]
 Resource Graph                        | `Az.ResourceGraph`                      | [![ResourceGraph]][ResourceGraphGallery]
@@ -102,6 +107,7 @@ Resource Mover                        | `Az.ResourceMover`                      
 Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery]
 Search                                | `Az.Search`                             | [![Search]][SearchGallery]
 Security                              | `Az.Security`                           | [![Security]][SecurityGallery]
+Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
 Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
@@ -127,6 +133,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- Shields -->
 [Az]:                         https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
 [Accounts]:                   https://img.shields.io/powershellgallery/v/Az.Accounts.svg?style=flat-square&label=Az.Accounts
+[ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
 [Aks]:                        https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
@@ -140,10 +147,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
 [Blockchain]:                 https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
+[BotService]:                 https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
+[Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
@@ -173,6 +182,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
+[HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
@@ -211,6 +221,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
+[RedisEnterpriseCache]:       https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache
 [Relay]:                      https://img.shields.io/powershellgallery/v/Az.Relay.svg?style=flat-square&label=Az.Relay
 [Reservations]:               https://img.shields.io/powershellgallery/v/Az.Reservations.svg?style=flat-square&label=Az.Reservations
 [ResourceGraph]:              https://img.shields.io/powershellgallery/v/Az.ResourceGraph.svg?style=flat-square&label=Az.ResourceGraph
@@ -218,6 +229,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Resources]:                  https://img.shields.io/powershellgallery/v/Az.Resources.svg?style=flat-square&label=Az.Resources
 [Search]:                     https://img.shields.io/powershellgallery/v/Az.Search.svg?style=flat-square&label=Az.Search
 [Security]:                   https://img.shields.io/powershellgallery/v/Az.Security.svg?style=flat-square&label=Az.Security
+[SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
@@ -241,6 +253,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
 [AccountsGallery]:                   https://www.powershellgallery.com/packages/Az.Accounts/
+[ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/
 [AksGallery]:                        https://www.powershellgallery.com/packages/Az.Aks/
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
@@ -254,10 +267,12 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
 [BlockchainGallery]:                 https://www.powershellgallery.com/packages/Az.Blockchain/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
+[BotServiceGallery]:                 https://www.powershellgallery.com/packages/Az.BotService/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
+[CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
@@ -287,6 +302,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
+[HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
@@ -325,6 +341,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
+[RedisEnterpriseCacheGallery]:       https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/
 [RelayGallery]:                      https://www.powershellgallery.com/packages/Az.Relay/
 [ReservationsGallery]:               https://www.powershellgallery.com/packages/Az.Reservations/
 [ResourceGraphGallery]:              https://www.powershellgallery.com/packages/Az.ResourceGraph/
@@ -332,6 +349,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [ResourcesGallery]:                  https://www.powershellgallery.com/packages/Az.Resources/
 [SearchGallery]:                     https://www.powershellgallery.com/packages/Az.Search/
 [SecurityGallery]:                   https://www.powershellgallery.com/packages/Az.Security/
+[SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/

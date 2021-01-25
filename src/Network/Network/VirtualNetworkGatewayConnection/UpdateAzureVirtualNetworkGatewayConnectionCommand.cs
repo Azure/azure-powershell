@@ -24,6 +24,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -47,6 +48,12 @@ namespace Microsoft.Azure.Commands.Network
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
         public int? DpdTimeoutInSeconds { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -108,6 +115,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.DpdTimeoutInSeconds.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
+                    }
+
+                    if (!String.IsNullOrEmpty(this.ConnectionMode))
+                    {
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)

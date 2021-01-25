@@ -87,7 +87,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         Interval = configuration.ScheduleConfiguration.Interval,
                         IsEnabled = configuration.ScheduleConfiguration.IsEnabled,
                         TimeZone = configuration.ScheduleConfiguration.TimeZone,
-                        AdvancedSchedule = configuration.ScheduleConfiguration.GetAdvancedSchedule()
+                        AdvancedSchedule = configuration.ScheduleConfiguration.GetAdvancedSchedule(),
+                        Description = configuration.ScheduleConfiguration.Description
                     },
                     UpdateConfiguration = new Sdk.UpdateConfiguration()
                     {

@@ -219,6 +219,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string SecondaryType { get; set; }
 
         /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Database.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -301,6 +308,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 BackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

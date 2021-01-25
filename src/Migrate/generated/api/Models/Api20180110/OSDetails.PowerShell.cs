@@ -94,12 +94,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion = (string) content.GetValueForProperty("OSMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion = (string) content.GetValueForProperty("OSMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition = (string) content.GetValueForProperty("OSEdition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).ProductType = (string) content.GetValueForProperty("ProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).ProductType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition = (string) content.GetValueForProperty("OSEdition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion = (string) content.GetValueForProperty("OSMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion = (string) content.GetValueForProperty("OSMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -117,12 +117,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion = (string) content.GetValueForProperty("OSMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion = (string) content.GetValueForProperty("OSMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition = (string) content.GetValueForProperty("OSEdition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).ProductType = (string) content.GetValueForProperty("ProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).ProductType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition = (string) content.GetValueForProperty("OSEdition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSEdition, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion = (string) content.GetValueForProperty("OSMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMajorVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion = (string) content.GetValueForProperty("OSMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOSDetailsInternal)this).OSMinorVersion, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

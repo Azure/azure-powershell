@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for LicenseType.</summary>
+    /// <summary>License type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.LicenseTypeTypeConverter))]
     public partial struct LicenseType :
         System.Management.Automation.IArgumentCompleter

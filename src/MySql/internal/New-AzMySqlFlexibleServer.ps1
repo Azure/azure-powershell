@@ -22,18 +22,90 @@ Creates a new server or updates an existing server.
 The update action will overwrite the existing server.
 .Example
 PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240
+-Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      10240                  Standard_B1ms   Burstable
+Checking the existence of the resource group PowershellMySqlTest ...
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group MySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 .Example
-PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--AdministratorUserName mysqltest -AdministratorLoginPassword $password
+PS C:\> New-AzMySqlFlexibleServer
 
-Name            Location AdministratorLogin Version StorageProfileStorageMb SkuName         SkuTier     
-----            -------- ------------------ ------- ----------------------- ------------    -------------        
-mysql-test      West US 2   mysqltest    5.7      131072                  Standard_B1ms   Burstable
+Creating resource group group00000000...
+Creating new vnet VNETserver00000000 in resource group group00000000
+Creating new subnet Subnetserver00000000 in resource group group00000000 and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group group00000000...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> $Vnet = 'vnetname'
+PS C:\> New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+or
+
+PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
+PS C:\> New-AzMySqlFlexibleServer  -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+
+Resource group PowershellMySqlTest exists ? : True
+You have supplied a vnet Id/name. Verifying its existence...
+Creating new vnet vnetname in resource group PowershellMySqlTest
+Creating new subnet Subnetserver00000000 in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server server00000000 in group PowershellMySqlTest...
+Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Vnet mysql-vnet -Subnet mysql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
+
+Resource group PowershellMySqlTest exists ? : True
+Creating new vnet mysql-vnet in resource group PowershellMySqlTest
+Creating new subnet mysql-subnet in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess All
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+.Example
+PS C:\> New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess 10.10.10.10-10.10.10.12
+
+Resource group PowershellMySqlTest exists ? : True
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
+
+Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
+----             --------  -------       -------   ------------------ ------- -----------------------
+mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated
@@ -61,8 +133,6 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 
 PARAMETER <IServerAutoGenerated>: Represents a server.
   Location <String>: The geo-location where the resource lives
-  SkuName <String>: The name of the sku, e.g. Standard_D32s_v3.
-  SkuTier <SkuTier>: The tier of the particular SKU, e.g. GeneralPurpose.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
@@ -81,6 +151,8 @@ PARAMETER <IServerAutoGenerated>: Represents a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ReplicationRole <String>]: The replication role.
   [RestorePointInTime <DateTime?>]: Restore point creation time (ISO8601 format), specifying the time to restore from.
+  [SkuName <String>]: The name of the sku, e.g. Standard_D32s_v3.
+  [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. GeneralPurpose.
   [SourceServerId <String>]: The source MySQL server id.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
   [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
