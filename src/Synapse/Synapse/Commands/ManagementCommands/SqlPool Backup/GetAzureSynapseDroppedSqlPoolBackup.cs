@@ -45,18 +45,18 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 if (MyInvocation.BoundParameters.ContainsKey("DeletionDate"))
                 {
-                    var result = this.SynapseAnalyticsClient.GetDroppedSqlPoolBackup(this.ResourceGroupName, this.WorkspaceName, this.Name + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()).ConfigureAwait(true).GetAwaiter().GetResult();
-                    WriteObject(result, true);
+                    var result = this.SynapseAnalyticsClient.GetDroppedSqlPoolBackup(this.ResourceGroupName, this.WorkspaceName, this.Name + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString());
+                    WriteObject(result);
                 }
                 else
                 {
-                    var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult().Where(backup => backup.SqlpoolName == Name).ToList();
+                    var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName).Where(backup => backup.DatabaseName == Name).ToList();
                     WriteObject(results, true);
                 }
             }
             else
             {
-                var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult();
+                var results = this.SynapseAnalyticsClient.ListDroppedSqlPoolBackups(this.ResourceGroupName, this.WorkspaceName);
                 WriteObject(results, true);
             }
         }

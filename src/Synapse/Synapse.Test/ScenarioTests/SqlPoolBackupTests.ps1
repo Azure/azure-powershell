@@ -120,7 +120,6 @@ function Test-SqlPoolGeoBackup
         Assert-NotNull $SqlPoolGeoBackupGet[0].LastAvailableBackupDate
 
         $SqlPoolGeoBackupGetByPool =Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        Assert-AreEqual 1 $SqlPoolGeoBackupGetByPool.Count
         Assert-AreEqual $params.sqlPoolName $SqlPoolGeoBackupGetByPool.Name
         Assert-Null $SqlPoolGeoBackupGetByPool.ElasticPoolName
         Assert-NotNull $SqlPoolGeoBackupGetByPool.Edition
@@ -136,7 +135,7 @@ function Test-SqlPoolGeoBackup
 function Test-DroppedSqlPool
 {
 	# Setup
-	$testSuffix = 'ps2504'
+	$testSuffix = 'ps2503'
 	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
     
     $rgname = $params.rgname
@@ -151,12 +150,9 @@ function Test-DroppedSqlPool
         Wait-Seconds 80
 
         Remove-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName -Force
-        
-        # wait for a short while since it needs some time to delete
-        Wait-Seconds 90
 
 	    $DroppedSqlPoolGet =Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
-        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGet[0].SqlPoolName
+        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGet[0].DatabaseName
         Assert-Null $DroppedSqlPoolGet[0].ElasticPoolName
         Assert-NotNull $DroppedSqlPoolGet[0].Edition
         Assert-NotNull $DroppedSqlPoolGet[0].MaxSizeBytes
@@ -166,7 +162,7 @@ function Test-DroppedSqlPool
         Assert-NotNull $DroppedSqlPoolGet[0].EarliestRestoreDate
         
         $DroppedSqlPoolGetByPool= Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGetByPool[0].SqlPoolName
+        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGetByPool[0].DatabaseName
         Assert-Null $DroppedSqlPoolGetByPool[0].ElasticPoolName
         Assert-NotNull $DroppedSqlPoolGetByPool[0].Edition
         Assert-NotNull $DroppedSqlPoolGetByPool[0].MaxSizeBytes

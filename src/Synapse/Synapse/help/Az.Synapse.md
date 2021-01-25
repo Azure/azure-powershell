@@ -41,6 +41,9 @@ Gets information about data flows in workspace.
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
 
+### [Get-AzSynapseDroppedSqlPool](Get-AzSynapseDroppedSqlPool.md)
+This feature is in a limited preview, initially accessible only to certain subscriptions. Gets Synapse Sql dropped Sql Pool Backup.
+
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
@@ -49,12 +52,6 @@ Gets information about integration runtime resources.
 
 ### [Get-AzSynapseIntegrationRuntimeKey](Get-AzSynapseIntegrationRuntimeKey.md)
 Gets keys for a self-hosted integration runtime.
-
-### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
-Gets Synapse Sql Pool Geo Backup.
-
-### [Get-AzSynapseDroppedSqlPool](Get-AzSynapseDroppedSqlPool.md)
-Gets Synapse Sql dropped Sql Pool Backup.
 
 ### [Get-AzSynapseIntegrationRuntimeMetric](Get-AzSynapseIntegrationRuntimeMetric.md)
 Gets metric data for an integration runtime. 
@@ -115,6 +112,9 @@ Gets the advanced threat protection settings for a SQL pool.
 
 ### [Get-AzSynapseSqlPoolAuditSetting](Get-AzSynapseSqlPoolAuditSetting.md)
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
+
+### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
+This feature is in a limited preview, initially accessible only to certain subscriptions. Gets Synapse Sql Pool Geo Backup.
 
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
 Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.

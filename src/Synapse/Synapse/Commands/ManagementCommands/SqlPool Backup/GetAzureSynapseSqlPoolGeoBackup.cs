@@ -30,17 +30,16 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override  void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
-                var result =  this.SynapseAnalyticsClient.GetRecoverableSqlPool(ResourceGroupName, WorkspaceName, Name).ConfigureAwait(true).GetAwaiter().GetResult();
+                var result =  this.SynapseAnalyticsClient.GetRecoverableSqlPool(ResourceGroupName, WorkspaceName, Name);
                 WriteObject(result);
             }
             else
             {
-                var results = this.SynapseAnalyticsClient.ListRecoverableSqlPool(this.ResourceGroupName, this.WorkspaceName).ConfigureAwait(true).GetAwaiter().GetResult();
-                results = SubResourceWildcardFilter(Name, results);
+                var results = this.SynapseAnalyticsClient.ListRecoverableSqlPool(this.ResourceGroupName, this.WorkspaceName);
                 WriteObject(results, true);
             }
         }
