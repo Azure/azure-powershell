@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override void Validate()
         {
-            int MinDurationCountInWeeks = 1, MaxDurationCountInWeeks = PolicyConstants.MaxAllowedRetentionDurationCount;
+            int MinDurationCountInWeeks = 1, MaxDurationCountInWeeks = PolicyConstants.MaxAllowedRetentionDurationCountWeekly;
             if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMin;
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
-            int MinDurationCountInMonths = 1, MaxDurationCountInMonths = PolicyConstants.MaxAllowedRetentionDurationCount;
+            int MinDurationCountInMonths = 1, MaxDurationCountInMonths = PolicyConstants.MaxAllowedRetentionDurationCountMonthly;
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMin;
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
-            int MinDurationCountInYears = 1, MaxDurationCountInYears = 10;
+            int MinDurationCountInYears = 1, MaxDurationCountInYears = PolicyConstants.MaxAllowedRetentionDurationCountYearly;
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInYears = PolicyConstants.AfsYearlyRetentionMin;
