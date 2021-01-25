@@ -1,9 +1,6 @@
 ﻿using Microsoft.Azure.Management.Synapse.Models;
 using System;
-<<<<<<< HEAD
-=======
 using System.Management.Automation;
->>>>>>> 3d1a05f522ab49cd43b0b3099cf07dcb66978eba
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -21,21 +18,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.RecoverableDatabaseId = sqlPool?.RecoverableDatabaseId;
             this.ProvisioningState = sqlPool?.ProvisioningState;
             this.Status = sqlPool?.Status;
-<<<<<<< HEAD
-            //this.RestorePointInTime = sqlPool?.RestorePointInTime;
-            this.CreateMode = sqlPool?.CreateMode;
-            this.CreationDate = sqlPool?.CreationDate;
-=======
             this.CreateMode = sqlPool?.CreateMode;
             this.CreationDate = sqlPool?.CreationDate;
 
->>>>>>> 3d1a05f522ab49cd43b0b3099cf07dcb66978eba
             if (sqlPool?.RestorePointInTime != null)
             {
                 this.RestorePointInTime = DateTime.Parse(sqlPool.RestorePointInTime);
             }
-<<<<<<< HEAD
-=======
+
         }
 
         /// <summary>
@@ -62,7 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 this.Name = value;
             }
->>>>>>> 3d1a05f522ab49cd43b0b3099cf07dcb66978eba
         }
 
         /// <summary>

@@ -135,52 +135,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
                 createParams.Sku = new Sku
                 {
-<<<<<<< HEAD
-                    case CreateByNameParameterSet:
-                    case CreateByParentObjectParameterSet:
-                        createParams.CreateMode = SynapseSqlPoolCreateMode.Default;
-                        createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
-                        createParams.Sku = new Sku
-                        {
-                            Name = this.PerformanceLevel
-                        };
-                        break;
-
-                    case CreateFromBackupNameByNameParameterSet:
-                    case CreateFromBackupNameByParentObjectParameterSet:
-                    case CreateFromBackupIdByNameParameterSet:
-                    case CreateFromBackupIdByParentObjectParameterSet:
-                    case CreateFromBackupInputObjectByNameParameterSet:
-                        createParams.CreateMode = SynapseSqlPoolCreateMode.Recovery;
-                        createParams.RecoverableDatabaseId = this.BackupResourceId;
-                        break;
-
-                    case CreateFromRestorePointNameByNameParameterSet:
-                    case CreateFromRestorePointNameByParentObjectParameterSet:
-                    case CreateFromRestorePointIdByNameParameterSet:
-                    case CreateFromRestorePointIdByParentObjectParameterSet:
-                    case CreateFromRestorePointInputObjectByNameParameterSet:
-                        if (!this.IsParameterBound(c => c.RestorePoint))
-                        {
-                            this.RestorePoint = GetNewestRestorePoint();
-                        }
-
-                        createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
-                        createParams.SourceDatabaseId = this.SourceResourceId;
-                        createParams.RestorePointInTime = this.RestorePoint.ToString();
-                        createParams.Sku = new Sku
-                        {
-                            Name = this.PerformanceLevel
-                        };
-
-                        break;
-
-                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
-                }
-=======
                     Name = this.PerformanceLevel
                 };
->>>>>>> 3d1a05f522ab49cd43b0b3099cf07dcb66978eba
 
                 if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
                 {
