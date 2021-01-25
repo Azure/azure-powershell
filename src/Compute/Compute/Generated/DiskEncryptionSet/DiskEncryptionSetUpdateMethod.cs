@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
+                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
                 }
                 this.DiskEncryptionSetUpdate.ActiveKey.KeyUrl = this.KeyUrl;
             }
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
+                    this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey.SourceVault == null)
                 {
