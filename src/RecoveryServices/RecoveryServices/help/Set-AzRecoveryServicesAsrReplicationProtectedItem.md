@@ -321,7 +321,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAvailabilityZone
-{{ Fill RecoveryAvailabilityZone Description }}
+Specifies availability zone for replication protected item after failover.
 
 ```yaml
 Type: System.String
