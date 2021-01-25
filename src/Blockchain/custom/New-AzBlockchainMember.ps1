@@ -183,16 +183,6 @@ param(
 
 process {
     try {
-        if ($PSBoundParameters.ContainsKey('Password')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
-            $null = $PSBoundParameters.Remove('Password')
-            $PSBoundParameters.Add('Password', $psTxt)
-        }
-        if ($PSBoundParameters.ContainsKey('ConsortiumManagementAccountPassword')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['ConsortiumManagementAccountPassword']
-            $null = $PSBoundParameters.Remove('ConsortiumManagementAccountPassword')
-            $PSBoundParameters.Add('ConsortiumManagementAccountPassword', $psTxt)
-        }
         if ($PSBoundParameters.ContainsKey('Sku')) {
             $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
             $null = $PSBoundParameters.Remove('Sku')
