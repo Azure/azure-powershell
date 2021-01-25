@@ -20,6 +20,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
 
+        private string paramValueHistoryFilePath = "";
+
         private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
 
         public ParameterValuePredictor()
@@ -28,6 +30,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var directory = fileInfo.DirectoryName;
             var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
             _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+
+            String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string[] paths = new string[] { path, "Microsoft", "Windows", "PowerShell", "PSReadLine", "paramValueHistory.json" };
+            paramValueHistoryFilePath = System.IO.Path.Combine(paths);
+            //Console.WriteLine(filePath);
+            if (System.IO.File.Exists(paramValueHistoryFilePath))
+            {
+                _localParameterValues = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(File.ReadAllText(paramValueHistoryFilePath), JsonUtilities.DefaultSerializerOptions);
+            }
+
         }
 
         /// <summary>
@@ -119,6 +131,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             var key = _command_param_to_resource_map[commandNoun][parameterName];
                             var parameterValue = command[i].ToString();
                             this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
+                            String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
+                            System.IO.File.WriteAllText(paramValueHistoryFilePath, localParameterValuesJson);
                         }
                     }
                 }   
