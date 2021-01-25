@@ -18,12 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* modified policy validation limits as per backup service.
+* Added Zone Redundancy for Recovery Service Vaults.
 * Azure Site Recovery support to Proximity placement group and Availability zone as optional input parameters at enabling protection for Vmware to Azure.
 * Azure Site Recovery support to Proximity placement group and Availability zone as optional input parameters at enabling protection for HyperV to Azure.
 * Azure Site Recovery support to update replication protected item with Proximity placement group and Availability zone for Vmware to Azure.
-* Azure Site Recovery support to update replication protected item with Proximity placement group and Availability zone for HyperV to Azure.
-* modified policy validation limits as per backup service.
-* Added Zone Redundancy for Recovery Service Vaults. 
+* Azure Site Recovery support to update replication protected item with Proximity placement group and Availability zone for HyperV to Azure. 
 
 ## Version 3.3.0
 * Added Cross Region Restore feature.  
