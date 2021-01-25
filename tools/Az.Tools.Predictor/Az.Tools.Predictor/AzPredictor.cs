@@ -22,6 +22,7 @@ using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
 
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestions in PSReadLine.
     /// </summary>
-    internal sealed class AzPredictor : ICommandPredictor
+    internal sealed class AzPredictor : ICommandPredictor, IDisposable
     {
         /// <inhericdoc />
         public string Name => "Az Predictor";
@@ -57,8 +58,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly ITelemetryClient _telemetryClient;
         private readonly Settings _settings;
         private readonly IAzContext _azContext;
+        private uint _suggestionSessionId = 0;
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
+        private CancellationTokenSource _predictionRequestCancellationSource;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>.
@@ -75,8 +78,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _azContext = azContext;
         }
 
+        /// <inhericdoc/>
+        public void Dispose()
+        {
+            if (_predictionRequestCancellationSource != null)
+            {
+                _predictionRequestCancellationSource.Dispose();
+                _predictionRequestCancellationSource = null;
+            }
+        }
+
         /// <inhericdoc />
-        public void StartEarlyProcessing(IReadOnlyList<string> history)
+        public void StartEarlyProcessing(string clientId, IReadOnlyList<string> history)
         {
             // The context only changes when the user executes the corresponding command.
             _azContext?.UpdateContext();
@@ -148,11 +161,43 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
+                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.Item2));
 
                 if (isLastTwoCommandsChanged)
                 {
-                    _service.RequestPredictions(_lastTwoMaskedCommands);
+                    // When it's called multiple times, we only need to keep the one for the latest command.
+
+                    _predictionRequestCancellationSource?.Cancel();
+                    _predictionRequestCancellationSource = new CancellationTokenSource();
+                    // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
+                    // _lastTwoMaskedCommands may change when the method is called again.
+                    var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
+                    Exception exception = null;
+                    var hasSentHttpRequest = false;
+
+                    // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
+                    Task.Run(async () =>
+                            {
+                                try
+                                {
+                                    await _service.RequestPredictionsAsync(lastTwoMaskedCommands, _predictionRequestCancellationSource.Token);
+                                }
+                                catch (ServiceRequestException e)
+                                {
+                                    hasSentHttpRequest = e.IsRequestSent;
+                                    exception = e.InnerException;
+                                }
+                                catch (Exception e)
+                                {
+                                    exception = e;
+                                }
+                                finally
+                                {
+                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(clientId, lastTwoMaskedCommands,
+                                                hasSentHttpRequest,
+                                                (exception is OperationCanceledException ? null : exception)));
+                                }
+                            }, _predictionRequestCancellationSource.Token);
                 }
             }
 
@@ -175,17 +220,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inhericdoc />
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public SuggestionPackage GetSuggestion(string clientId, PredictionContext context, CancellationToken cancellationToken)
         {
-            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(acceptedSuggestion));
-        }
+            var localSuggestionSessionId = _suggestionSessionId++;
 
-        /// <inhericdoc />
-        public List<PredictiveSuggestion> GetSuggestion(PredictionContext context, CancellationToken cancellationToken)
-        {
             if (_settings.SuggestionCount.Value <= 0)
             {
-                return new List<PredictiveSuggestion>();
+                return CreateResult(new List<PredictiveSuggestion>());
             }
 
             Exception exception = null;
@@ -198,21 +239,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
-                return returnedValue ?? new List<PredictiveSuggestion>();
+                return CreateResult(returnedValue ?? new List<PredictiveSuggestion>());
             }
             catch (Exception e) when (!(e is OperationCanceledException))
             {
                 exception = e;
-                return new List<PredictiveSuggestion>();
+                return CreateResult(new List<PredictiveSuggestion>());
             }
             finally
             {
 
-                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(context.InputAst,
+                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(clientId, localSuggestionSessionId, context.InputAst,
                         suggestions,
                         cancellationToken.IsCancellationRequested,
                         exception));
             }
+
+            SuggestionPackage CreateResult(List<PredictiveSuggestion> suggestions)
+            {
+                return new SuggestionPackage(localSuggestionSessionId, suggestions);
+            }
+        }
+
+        /// <inhericdoc />
+        public void OnSuggestionDisplayed(uint session, int countOrIndex)
+        {
+            if (countOrIndex > 0)
+            {
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(session,  countOrIndex));
+            }
+            else
+            {
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(session,  -countOrIndex));
+            }
+        }
+
+        /// <inhericdoc />
+        public void OnSuggestionAccepted(uint session, string acceptedSuggestion)
+        {
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(session, acceptedSuggestion));
         }
     }
 

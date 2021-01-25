@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
-{
-    /// <summary>
-    /// An interface that all telemetry data class should implement.
-    /// </summary>
-    public interface ITelemetryData
-    {
-        /// <summary>
-        /// Gets the correlation id.
-        /// </summary>
-        string CorrelationId { get; internal set; }
+using System;
 
-        /// <summary>
-        /// Gets the session id.
-        /// </summary>
-        string SessionId { get; internal set; }
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
+{
+    sealed class MockAzContext : IAzContext
+    {
+        public string UserId => "TestUserId";
+
+        public string MacAddress => "TestMacAddress";
+
+        public string OSVersion => "TestOSVersion";
+
+        public Version PowerShellVersion => Version.Parse("0.0.0.0");
+
+        public Version ModuleVersion => Version.Parse("0.0.0.0");
+
+        public Version AzVersion => Version.Parse("0.0.0.0");
+
+        public void UpdateContext()
+        {
+        }
     }
 }

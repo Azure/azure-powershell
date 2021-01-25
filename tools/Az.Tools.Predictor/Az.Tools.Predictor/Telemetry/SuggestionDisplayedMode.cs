@@ -15,18 +15,18 @@
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// An interface that all telemetry data class should implement.
+    /// The enum for the mode where the suggestion is displayed.
     /// </summary>
-    public interface ITelemetryData
+    public enum SuggestionDisplayMode
     {
         /// <summary>
-        /// Gets the correlation id.
+        /// The suggestion is displayed in a list.
         /// </summary>
-        string CorrelationId { get; internal set; }
+        ListView,
 
         /// <summary>
-        /// Gets the session id.
+        /// The suggestion is displayed inline of the user input.
         /// </summary>
-        string SessionId { get; internal set; }
+        InlineView,
     }
 }

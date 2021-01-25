@@ -31,8 +31,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Suggestion { get; }
 
         /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public uint SuggestionSessionId { get; init; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
         /// </summary>
-        public SuggestionAcceptedTelemetryData(string suggestion) => Suggestion = suggestion;
+        /// <param name="suggestionSessionId">The suggestion session id.</param>
+        /// <param name="suggestion">The suggestion that's accepted by the user.</param>
+        public SuggestionAcceptedTelemetryData(uint suggestionSessionId, string suggestion)
+        {
+            SuggestionSessionId = suggestionSessionId;
+            Suggestion = suggestion;
+        }
     }
 }
