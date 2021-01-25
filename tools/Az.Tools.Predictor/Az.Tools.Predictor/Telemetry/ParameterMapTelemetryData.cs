@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// The data to collect in <see cref="ITelemetryClient.OnHistory"/>.
+    /// The data to collect in <see cref="ITelemetryClient.OnGetSuggestion"/>.
     /// </summary>
-    public sealed class HistoryTelemetryData : ITelemetryData
+    public sealed class ParameterMapTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
         string ITelemetryData.SessionId { get; set; }
@@ -26,14 +28,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets the history command line.
+        /// Gets the exception if there is an error during the operation.
         /// </summary>
-        public string Command { get; }
+        /// <remarks>
+        /// OperationCanceledException isn't considered an error.
+        /// </remarks>
+        public Exception Exception { get; }
 
         /// <summary>
-        /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
+        /// Creates a new instance of <see cref="ParameterMapTelemetryData" />.
         /// </summary>
-        /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(string command) => Command = command;
+        /// <param name="exception">The exception that is thrown if there is an error.</param>
+        public ParameterMapTelemetryData(Exception exception)
+        {
+            Exception = exception;
+        }
     }
 }
