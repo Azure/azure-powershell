@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]
+        public int? BackupIntervalInMinutes { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupRetentionInHoursHelpMessage)]
+        public int? BackupRetentionIntervalInHours { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
