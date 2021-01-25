@@ -87,8 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ProductName = (string) content.GetValueForProperty("ProductName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ProductName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Role, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ServicePack = (string) content.GetValueForProperty("ServicePack",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ServicePack, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Version, global::System.Convert.ToString);
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ProductName = (string) content.GetValueForProperty("ProductName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ProductName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition = (string) content.GetValueForProperty("Edition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Edition, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Role, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ServicePack = (string) content.GetValueForProperty("ServicePack",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).ServicePack, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServerInternal)this).Version, global::System.Convert.ToString);

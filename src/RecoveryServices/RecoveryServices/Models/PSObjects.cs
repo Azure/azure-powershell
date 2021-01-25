@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
 
+        /// <summary>
+        /// Gets or sets CrossRegionRestore Flag.
+        /// </summary>
+        public bool CrossRegionRestore { get; set; }
+
         #endregion
     }
 
@@ -200,6 +205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum AzureRmRecoveryServicesBackupStorageRedundancyType
     {
         GeoRedundant = 1,
+        ZoneRedundant,
         LocallyRedundant
     }
 

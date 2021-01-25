@@ -89,10 +89,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Action actual = () => this._service.GetSuggestion(null, 1, 1, CancellationToken.None);
             Assert.Throws<ArgumentNullException>(actual);
 
-            actual = () => this._service.GetSuggestion(predictionContext.InputAst, 0, 1, CancellationToken.None);
+            actual = () => this._service.GetSuggestion(predictionContext, 0, 1, CancellationToken.None);
             Assert.Throws<ArgumentOutOfRangeException>(actual);
 
-            actual = () => this._service.GetSuggestion(predictionContext.InputAst, 1, 0, CancellationToken.None);
+            actual = () => this._service.GetSuggestion(predictionContext, 1, 0, CancellationToken.None);
             Assert.Throws<ArgumentOutOfRangeException>(actual);
         }
 
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingCommandBasedPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
-            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
+            var commandName = commandAst?.GetCommandName();
             var inputParameterSet = new ParameterSet(commandAst);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
             Assert.NotNull(actual.PredictiveSuggestions.First());
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal<string>(expected.SourceTexts, actual.SourceTexts);
             Assert.All<SuggestionSource>(actual.SuggestionSources, (source) => Assert.Equal(SuggestionSource.CurrentCommand, source));
 
-            actual = this._noFallbackPredictorService.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            actual = this._noFallbackPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
             Assert.NotNull(actual.PredictiveSuggestions.First());
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyUsingFallbackPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
             Assert.NotNull(actual.PredictiveSuggestions.First());
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal<string>(expected.SourceTexts, actual.SourceTexts);
             Assert.All<SuggestionSource>(actual.SuggestionSources, (source) => Assert.Equal(SuggestionSource.StaticCommands, source));
 
-            actual = this._noCommandBasedPredictorService.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            actual = this._noCommandBasedPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.NotNull(actual);
             Assert.True(actual.Count > 0);
             Assert.NotNull(actual.PredictiveSuggestions.First());
@@ -199,16 +199,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyNoPrediction(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            var actual = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.Equal(0, actual.Count);
 
-            actual = this._noFallbackPredictorService.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            actual = this._noFallbackPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.Equal(0, actual.Count);
 
-            actual = this._noCommandBasedPredictorService.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            actual = this._noCommandBasedPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.Equal(0, actual.Count);
 
-            actual = this._noPredictorService.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            actual = this._noPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
+            Assert.Null(actual);
+        }
+
+        /// <summary>
+        /// Verify that it returns null when we cannot parse the user input.
+        /// </summary>
+        [Theory]
+        [InlineData("git status")]
+        public void VerifyFailToParseUserInput(string userInput)
+        {
+            var predictionContext = PredictionContext.Create(userInput);
+            var actual = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             Assert.Null(actual);
         }
 
@@ -216,16 +228,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify when we cannot parse the user input correctly.
         /// </summary>
         /// <remarks>
-        /// When we can parse them correctly, please move the InlineData to the corresponding test methods, for example, "git status"
-        /// doesn't have any prediction so it should move to <see cref="VerifyNoPrediction"/>.
+        /// When we can parse them correctly, please move the InlineData to the corresponding test methods.
         /// </remarks>
         [Theory]
-        [InlineData("git status")]
         [InlineData("Get-AzContext Name")]
         public void VerifyMalFormattedCommandLine(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            Action actual = () => this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            Action actual = () => this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             _ = Assert.Throws<InvalidOperationException>(actual);
         }
     }

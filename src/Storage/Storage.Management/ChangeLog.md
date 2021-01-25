@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported RoutingPreference settings in create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 3.2.1
+* Fix ContinuationToken never null when list blob with -IncludeVersion
+    - `Get-AzStorageBlob`
 
 ## Version 3.2.0
 * Supported create/update/get/list EncryptionScope of a Storage account

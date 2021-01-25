@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __providerSpecificFailoverInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderSpecificFailoverInput(json);
-            {_recoveryPointId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointId"), out var __jsonRecoveryPointId) ? (string)__jsonRecoveryPointId : (string)RecoveryPointId;}
             {_vaultLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("vaultLocation"), out var __jsonVaultLocation) ? (string)__jsonVaultLocation : (string)VaultLocation;}
+            {_recoveryPointId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryPointId"), out var __jsonRecoveryPointId) ? (string)__jsonRecoveryPointId : (string)RecoveryPointId;}
             AfterFromJson(json);
         }
 
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __providerSpecificFailoverInput?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._recoveryPointId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointId.ToString()) : null, "recoveryPointId" ,container.Add );
             AddIf( null != (((object)this._vaultLocation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._vaultLocation.ToString()) : null, "vaultLocation" ,container.Add );
+            AddIf( null != (((object)this._recoveryPointId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryPointId.ToString()) : null, "recoveryPointId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

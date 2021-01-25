@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_expiryDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("expiryDate"), out var __jsonExpiryDate) ? global::System.DateTime.TryParse((string)__jsonExpiryDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExpiryDateValue) ? __jsonExpiryDateValue : ExpiryDate : ExpiryDate;}
             {_postUpdateRebootStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("postUpdateRebootStatus"), out var __jsonPostUpdateRebootStatus) ? (string)__jsonPostUpdateRebootStatus : (string)PostUpdateRebootStatus;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)Version;}
+            {_expiryDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("expiryDate"), out var __jsonExpiryDate) ? global::System.DateTime.TryParse((string)__jsonExpiryDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExpiryDateValue) ? __jsonExpiryDateValue : ExpiryDate : ExpiryDate;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._expiryDate ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._expiryDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "expiryDate" ,container.Add );
             AddIf( null != (((object)this._postUpdateRebootStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._postUpdateRebootStatus.ToString()) : null, "postUpdateRebootStatus" ,container.Add );
-            AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
+            AddIf( null != this._expiryDate ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._expiryDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "expiryDate" ,container.Add );
+            AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

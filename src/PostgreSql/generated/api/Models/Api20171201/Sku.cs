@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.",
         SerializedName = @"name",

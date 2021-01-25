@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Type of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string PropertiesType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Type = value; }
+        public string PropertiesType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Type = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFileProperties _property;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Size of the log file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public long? SizeInKb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).SizeInKb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).SizeInKb = value; }
+        public long? SizeInKb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).SizeInKb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).SizeInKb = value ?? default(long); }
 
         /// <summary>
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The url to download the log file from.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string Url { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Url = value; }
+        public string Url { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFilePropertiesInternal)Property).Url = value ?? null; }
 
         /// <summary>Creates an new <see cref="LogFile" /> instance.</summary>
         public LogFile()

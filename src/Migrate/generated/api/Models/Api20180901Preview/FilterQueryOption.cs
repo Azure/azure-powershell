@@ -113,10 +113,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         public string RawValue { get => this._rawValue; }
 
         /// <summary>Backing field for <see cref="Validator" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IFilterQueryValidator _validator;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _validator;
 
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IFilterQueryValidator Validator { get => (this._validator = this._validator ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.FilterQueryValidator()); set => this._validator = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Validator { get => (this._validator = this._validator ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set => this._validator = value; }
 
         /// <summary>Creates an new <see cref="FilterQueryOption" /> instance.</summary>
         public FilterQueryOption()
@@ -214,14 +215,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         SerializedName = @"rawValue",
         PossibleTypes = new [] { typeof(string) })]
         string RawValue { get;  }
-
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Any object",
         SerializedName = @"validator",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IFilterQueryValidator) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IFilterQueryValidator Validator { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Validator { get; set; }
 
     }
     internal partial interface IFilterQueryOptionInternal
@@ -266,8 +267,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         bool? RangeVariableTypeReferenceIsNullable { get; set; }
 
         string RawValue { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IFilterQueryValidator Validator { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Validator { get; set; }
 
     }
 }

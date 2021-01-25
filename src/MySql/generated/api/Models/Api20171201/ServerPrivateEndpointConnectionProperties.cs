@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>Resource id of the private endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPrivateEndpointPropertyInternal)PrivateEndpoint).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPrivateEndpointPropertyInternal)PrivateEndpoint).Id = value; }
+        public string PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPrivateEndpointPropertyInternal)PrivateEndpoint).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPrivateEndpointPropertyInternal)PrivateEndpoint).Id = value ?? null; }
 
         /// <summary>Backing field for <see cref="PrivateLinkServiceConnectionState" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStateProperty _privateLinkServiceConnectionState;
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The private link service connection description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string PrivateLinkServiceConnectionStateDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Description = value; }
+        public string PrivateLinkServiceConnectionStateDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Description = value ?? null; }
 
         /// <summary>The private link service connection status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus PrivateLinkServiceConnectionStateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Status = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus? PrivateLinkServiceConnectionStateStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPrivateLinkServiceConnectionStatePropertyInternal)PrivateLinkServiceConnectionState).Status = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus)""); }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateEndpointProvisioningState? _provisioningState;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateActionsRequire? PrivateLinkServiceConnectionStateActionsRequired { get;  }
         /// <summary>The private link service connection description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The private link service connection description.",
         SerializedName = @"description",
@@ -95,12 +95,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         string PrivateLinkServiceConnectionStateDescription { get; set; }
         /// <summary>The private link service connection status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The private link service connection status.",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus) })]
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus PrivateLinkServiceConnectionStateStatus { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus? PrivateLinkServiceConnectionStateStatus { get; set; }
         /// <summary>State of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>The private link service connection description.</summary>
         string PrivateLinkServiceConnectionStateDescription { get; set; }
         /// <summary>The private link service connection status.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus PrivateLinkServiceConnectionStateStatus { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateLinkServiceConnectionStateStatus? PrivateLinkServiceConnectionStateStatus { get; set; }
         /// <summary>State of the private endpoint connection.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PrivateEndpointProvisioningState? ProvisioningState { get; set; }
 

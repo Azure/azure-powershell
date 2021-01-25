@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.2
+* Fixed issue where description was not populated for update management schedules
+
 ## Version 1.4.1
 * Fixed issue that parameters of `Start-AzAutomationRunbook` cannot convert PSObject wrapped string to JSON string [#13240]
 * Fixed location completer for New-AzAutomationUpdateManagementAzureQuery cmdlet

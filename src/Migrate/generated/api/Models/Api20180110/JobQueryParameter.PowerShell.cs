@@ -94,11 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).EndTime = (string) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).EndTime, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).FabricId = (string) content.GetValueForProperty("FabricId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).FabricId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).JobStatus = (string) content.GetValueForProperty("JobStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).JobStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -116,11 +116,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).EndTime = (string) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).EndTime, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).FabricId = (string) content.GetValueForProperty("FabricId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).FabricId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType = (string) content.GetValueForProperty("AffectedObjectType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).AffectedObjectType, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).JobStatus = (string) content.GetValueForProperty("JobStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).JobStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJobQueryParameterInternal)this).StartTime, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

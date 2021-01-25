@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
     /// <summary>Gets a list of virtual network rules in a server.</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualNetworkRules_ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules"
+    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/virtualNetworkRules"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlVirtualNetworkRule_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule))]

@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PowerShell;
 
+    /// <summary>Dictionary of <string></summary>
     [System.ComponentModel.TypeConverter(typeof(HyperVSiteTagsTypeConverter))]
     public partial class HyperVSiteTags
     {
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
+    /// Dictionary of <string>
     [System.ComponentModel.TypeConverter(typeof(HyperVSiteTagsTypeConverter))]
     public partial interface IHyperVSiteTags
 

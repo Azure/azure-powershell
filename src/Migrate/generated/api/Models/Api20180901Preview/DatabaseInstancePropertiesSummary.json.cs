@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDatabaseInstanceSummary>)this).AdditionalProperties, null ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDatabaseInstanceSummary>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.DatabaseInstanceSummary.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 

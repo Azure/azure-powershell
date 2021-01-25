@@ -100,11 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool = (string) content.GetValueForProperty("ApplicationPool",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform = (string) content.GetValueForProperty("Platform",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Status, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform = (string) content.GetValueForProperty("Platform",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).WebServer = (string) content.GetValueForProperty("WebServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).WebServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool = (string) content.GetValueForProperty("ApplicationPool",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool = (string) content.GetValueForProperty("ApplicationPool",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform = (string) content.GetValueForProperty("Platform",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Status, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform = (string) content.GetValueForProperty("Platform",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).Platform, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName = (string) content.GetValueForProperty("GroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).GroupName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).WebServer = (string) content.GetValueForProperty("WebServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).WebServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool = (string) content.GetValueForProperty("ApplicationPool",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplicationInternal)this).ApplicationPool, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
     }

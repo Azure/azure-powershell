@@ -11,6 +11,7 @@ Azure PowerShell                      | `Az`                                    
 Azure Service                         | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]
+ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery]
 Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery]
 Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery]
 Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
@@ -59,6 +60,7 @@ Front Door                            | `Az.FrontDoor`                          
 Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
 Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
 SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery]
+HealthBot                             | `Az.HealthBot`                          | [![HealthBot]][HealthBotGallery]
 HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
 API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
 HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
@@ -131,6 +133,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- Shields -->
 [Az]:                         https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
 [Accounts]:                   https://img.shields.io/powershellgallery/v/Az.Accounts.svg?style=flat-square&label=Az.Accounts
+[ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
 [Aks]:                        https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
@@ -179,6 +182,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
+[HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
@@ -249,6 +253,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
 [AccountsGallery]:                   https://www.powershellgallery.com/packages/Az.Accounts/
+[ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/
 [AksGallery]:                        https://www.powershellgallery.com/packages/Az.Aks/
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
@@ -297,6 +302,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
+[HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/

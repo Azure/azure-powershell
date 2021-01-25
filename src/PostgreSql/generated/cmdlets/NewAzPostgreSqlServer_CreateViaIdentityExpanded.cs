@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
     /// <summary>Creates a new server, or will overwrite an existing server.</summary>
     /// <remarks>
-    /// [OpenAPI] Servers_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPostgreSqlServer_CreateViaIdentityExpanded", SupportsShouldProcess = true)]

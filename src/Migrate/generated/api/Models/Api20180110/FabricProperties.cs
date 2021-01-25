@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         ReadOnly = false,
         Description = @"Fabric specific settings.",
         SerializedName = @"customDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabricSpecificDetails),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAzureFabricSpecificDetails) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabricSpecificDetails) })]
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabricSpecificDetails CustomDetail { get; set; }
         /// <summary>Encryption details for the fabric.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
