@@ -132,7 +132,11 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
+<<<<<<< HEAD
 Required: False
+=======
+Required: True
+>>>>>>> 2fbbb55c18... cherry picked for resource id bug fixes
 Position: Named
 Default value: None
 Accept pipeline input: False

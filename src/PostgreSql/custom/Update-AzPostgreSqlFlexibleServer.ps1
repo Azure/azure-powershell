@@ -186,6 +186,10 @@ function Update-AzPostgreSqlFlexibleServer {
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
 
+            if($PSBoundParameters.ContainsKey('InputObject')){
+                $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+            }
+
             
 
             Az.PostgreSql.internal\Update-AzPostgreSqlFlexibleServer @PSBoundParameters

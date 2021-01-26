@@ -12,19 +12,35 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzPostgreSqlFlexibleServerConnect' {
-    It 'Test' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force   
 
-    It 'TestAndQuery' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'TestViaIdentityAndQuery' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'TestViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+     If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+         Install-Module -Name SimplySQL -Scope CurrentUser -Force
+         It 'Test' {
+             {   
+                 Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -AdministratorLoginPassword $password
+             } | Should -Not -Throw
+         }
+ 
+         It 'TestViaIdentity' {
+             {
+                 $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)"
+                 Get-AzPostgreSqlFlexibleServerConnect -InputObject $ID -AdministratorLoginPassword $password
+             } | Should -Not -Throw
+         }
+ 
+         It 'TestAndQuery' {
+             {   
+                 Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -AdministratorLoginPassword $password -Query "CREATE TABLE dbtest (col1 INT)"
+             } | Should -Not -Throw
+         }
+ 
+         It 'TestViaIdentityAndQuery' {
+             {
+                 $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)"
+                 Get-AzPostgreSqlFlexibleServerConnect -InputObject $ID -AdministratorLoginPassword $password -Query "CREATE TABLE dbtest2 (col1 INT)"
+             } | Should -Not -Throw
+         }
+     }
 }

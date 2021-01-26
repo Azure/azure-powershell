@@ -99,6 +99,9 @@ function Get-AzPostgreSqlFlexibleServerConnectionString {
 
     process {
         $null = $PSBoundParameters.Remove('Client')
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+        }
         $postgreSql = Az.PostgreSql\Get-AzPostgreSqlFlexibleServer @PSBoundParameters
         $DBHost = $postgreSql.FullyQualifiedDomainName
         $DBPort = 5432

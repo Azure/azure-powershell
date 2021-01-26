@@ -148,12 +148,16 @@ param(
 
 process {
     try {
-        if($PSBoundParameters.ContainsKey('ClientIPAddress'))
-        {
+        if($PSBoundParameters.ContainsKey('ClientIPAddress')){
             $PSBoundParameters['StartIPAddress'] = $PSBoundParameters['ClientIPAddress']
             $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['ClientIPAddress']
             $null = $PSBoundParameters.Remove('ClientIPAddress')
         }
+
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+        }
+        
         Az.PostgreSql.internal\Update-AzPostgreSqlFlexibleServerFirewallRule @PSBoundParameters
     } catch {
         throw
