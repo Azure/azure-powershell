@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 
-{{ Add output here }}
+Location      Name             Type
+--------      ----             ----
+westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-{{ Add description here }}
+This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List Windows Virtual Desktop Scaling Plans
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
 
-{{ Add output here }}
+Location      Name             Type
+--------      ----             ----
+westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
+westcentralus scalingPlan2     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-{{ Add description here }}
-
+This command lists all the Windows Virtual Desktop Scaling Plans in a Resource Group.
