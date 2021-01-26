@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/new-azvmwareprivatecloud
+Module Name: Az.VMware
+online version: https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
 schema: 2.0.0
 ---
 
-# New-AzVMWarePrivateCloud
+# New-AzVMwarePrivateCloud
 
 ## SYNOPSIS
 Create or update a private cloud
@@ -13,8 +13,8 @@ Create or update a private cloud
 ## SYNTAX
 
 ```
-New-AzVMWarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
- -ManagementClusterSize <Int32> -NetworkBlock <String> -SkuName <String> [-SubscriptionId <String>]
+New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
+ -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>]
  [-Internet <InternetEnum>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Create or update a private cloud
 
 ### Example 1: Create private cloud
 ```powershell
-PS C:\> New-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
+PS C:\> New-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
 
 Location      Name            Type
 --------      ----            ----
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.InternetEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the SKU.
 
 ```yaml
@@ -287,7 +287,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud
 
 ## NOTES
 

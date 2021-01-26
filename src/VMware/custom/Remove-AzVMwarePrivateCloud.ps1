@@ -22,7 +22,7 @@ PS C:\> Remove-AzVMwarePrivateCloud -ResourceGroupName azps-test-group -Name azp
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMwareIdentity
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -140,44 +140,18 @@ function Remove-AzVMwarePrivateCloud {
         ${ProxyUseDefaultCredentials}
     )
     
-    begin {
-        try {
-            $outBuffer = $null
-            if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-                $PSBoundParameters['OutBuffer'] = 1
-            }
-            $parameterSet = $PSCmdlet.ParameterSetName
-            $mapping = @{
-                Delete = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_Delete';
-                DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_DeleteViaIdentity';
-            }
-            if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-            $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-            $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-            $steppablePipeline.Begin($PSCmdlet)
-        } catch {
-            throw
-        }
-    }
-    
     process {
+        $message = "Deleting the private cloud is an irreversible operation. Once the private cloud is deleted, the data cannot be recovered, as it terminates all running workloads and components and destroys all private cloud data and configuration settings, including public IP addresses."
+        $target = -join($PSBoundParameters['Name'], " in resource group: ", $PSBoundParameters['ResourceGroupName'])
         try {
-            $steppablePipeline.Process($_)
+            Write-Warning $message
+            if($PSCmdlet.ShouldProcess($target)){
+                Az.VMware.internal\Remove-AzVMwarePrivateCloud @PSBoundParameters
+            }
         } catch {
             throw
         }
     }
-    
-    end {
-        try {
-            $steppablePipeline.End()
-        } catch {
-            throw
-        }
-    }
-    }
+}
     
     

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
+Module Name: Az.VMware
 online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
 schema: 2.0.0
 ---
 
-# Test-AzVMWareLocationTrialAvailability
+# Test-AzVMwareLocationTrialAvailability
 
 ## SYNOPSIS
 Return trial status for subscription by region
@@ -14,13 +14,13 @@ Return trial status for subscription by region
 
 ### Check (Default)
 ```
-Test-AzVMWareLocationTrialAvailability -Location <String> [-SubscriptionId <String>]
+Test-AzVMwareLocationTrialAvailability -Location <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzVMWareLocationTrialAvailability -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+Test-AzVMwareLocationTrialAvailability -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Return trial status for subscription by region
 
 ### Example 1: Check trial availability
 ```powershell
-PS C:\> Test-AzVMWareLocationTrialAvailability -Location australiaeast
+PS C:\> Test-AzVMwareLocationTrialAvailability -Location australiaeast
 
 AvailableHost Status
 ------------- ------
@@ -62,7 +62,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: CheckViaIdentity
 Aliases:
 
@@ -139,11 +139,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial
 
 ## NOTES
 
@@ -154,7 +154,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

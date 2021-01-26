@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
+Module Name: Az.VMware
 online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/get-azvmwareauthorization
 schema: 2.0.0
 ---
 
-# Get-AzVMWareAuthorization
+# Get-AzVMwareAuthorization
 
 ## SYNOPSIS
 Get an ExpressRoute Circuit Authorization by name in a private cloud
@@ -14,19 +14,19 @@ Get an ExpressRoute Circuit Authorization by name in a private cloud
 
 ### List (Default)
 ```
-Get-AzVMWareAuthorization -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzVMwareAuthorization -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVMWareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVMWareAuthorization -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Get an ExpressRoute Circuit Authorization by name in a private cloud
 
 ### Example 1: Get authorization
 ```powershell
-PS C:\> Get-AzVMWareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 
 
@@ -49,7 +49,7 @@ This cmdlet gets authorization `azps-test-auth` under private cloud `azps-test-c
 
 ### Example 2: List authorization
 ```powershell
-PS C:\> Get-AzVMWareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 
 
@@ -82,7 +82,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -159,11 +159,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization
 
 ## NOTES
 
@@ -174,7 +174,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

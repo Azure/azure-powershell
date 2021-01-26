@@ -1,5 +1,5 @@
 {
-  "New-AzVMWareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20+1": {
+  "New-AzVMwareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20",

@@ -1,5 +1,5 @@
 {
-  "Test-AzVMWareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkQuotaAvailability?api-version=2020-03-20+1": {
+  "Test-AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkQuotaAvailability?api-version=2020-03-20+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkQuotaAvailability?api-version=2020-03-20",
@@ -7,8 +7,8 @@
       "Headers": {
         "x-ms-unique-id": [ "30" ],
         "x-ms-client-request-id": [ "8d21e059-811a-4dd3-8211-c2274cadcec2" ],
-        "CommandName": [ "Test-AzVMWareLocationQuotaAvailability" ],
-        "FullCommandName": [ "Test-AzVMWareLocationQuotaAvailability_Check" ],
+        "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
+        "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]

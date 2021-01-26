@@ -1,6 +1,6 @@
 ### Example 1: Get cluster
 ```powershell
-PS C:\> Get-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 Name              Type
 ----              ----
@@ -11,7 +11,7 @@ Get cluster
 
 ### Example 2: List clusters
 ```powershell
-PS C:\> Get-AzVMWareCluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareCluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 Name              Type
 ----              ----

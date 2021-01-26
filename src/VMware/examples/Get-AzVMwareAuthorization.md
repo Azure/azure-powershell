@@ -1,6 +1,6 @@
 ### Example 1: Get authorization
 ```powershell
-PS C:\> Get-AzVMWareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 
 
@@ -13,7 +13,7 @@ This cmdlet gets authorization `azps-test-auth` under private cloud `azps-test-c
 
 ### Example 2: List authorization
 ```powershell
-PS C:\> Get-AzVMWareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 
 
