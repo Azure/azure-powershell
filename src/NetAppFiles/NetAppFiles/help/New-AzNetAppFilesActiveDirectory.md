@@ -17,7 +17,7 @@ Creates a new Azure NetApp Files (ANF) active directory configuration.
 New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> [-Dns <String[]>]
  -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>] [-Password <SecureString>]
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
- [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperators <String[]>]
+ [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <Strin
 New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String>
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
- [-SecurityOperators <String[]>] -AccountObject <PSNetAppFilesAccount>
+ [-SecurityOperator <String[]>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecurityOperators
+### -SecurityOperator
 Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
 
 ```yaml

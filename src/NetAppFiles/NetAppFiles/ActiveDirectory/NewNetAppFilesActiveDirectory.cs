@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             Mandatory = false,
             HelpMessage = "Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier")]
         [ValidateNotNullOrEmpty]
-        public string[] SecurityOperators { get; set; }
+        public string[] SecurityOperator { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     BackupOperators = BackupOperator,
                     KdcIP = KdcIP,
                     ServerRootCACertificate = ServerRootCACertificate,
-                    SecurityOperators = SecurityOperators
+                    SecurityOperators = SecurityOperator
                 };
                 if (anfAccount.ActiveDirectories == null)
                 {
