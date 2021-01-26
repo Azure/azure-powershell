@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Zone Redundancy for Recovery Service Vaults. 
 * Azure Site Recovery support for Proximity placement group for Vmware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for Availability zone for Vmware to Azure and HyperV to Azure providers.
 

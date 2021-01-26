@@ -208,14 +208,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public SwitchParameter RestoreAsUnmanagedDisks { get; set; }
 
         /// <summary>
-        /// Disk Encryption Set to encrypt the restored VM   // add more param sets 
+        /// Disk Encryption Set to encrypt the restored VM
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet, 
             HelpMessage = ParamHelpMsgs.Encryption.DES)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
             HelpMessage = ParamHelpMsgs.Encryption.DES)]
-        /* [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreFS.MultipleSourceFilePath)]*/
         public string DiskEncryptionSetId { get; set; }
 
         /// <summary>
@@ -270,7 +268,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         providerParameters.Add(RestoreVMBackupItemParams.DiskEncryptionSetId, DiskEncryptionSetId);
                     }
-                }                
+                }
 
                 if (StorageAccountName != null)
                 {
