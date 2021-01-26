@@ -22,6 +22,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 
@@ -285,7 +286,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context.Account == null)
             {
-                throw new ArgumentException(Resources.ArmAccountNotFound);
+                throw new AzPSArgumentException(Resources.ArmAccountNotFound, "context.Account", ErrorKind.UserError);
             }
             switch (context.Account.Type)
             {
