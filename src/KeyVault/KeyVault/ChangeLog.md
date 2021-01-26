@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported specifying key type and curve name when importing keys via a BYOK file
 
 ## Version 3.3.1
 * Fixed an issue in Secret Management module
