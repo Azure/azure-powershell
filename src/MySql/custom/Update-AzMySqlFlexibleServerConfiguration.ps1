@@ -135,10 +135,15 @@ param(
 
 process {
     try {
-        if(!$PSBoundParameters.ContainsKey('Source'))
-        {
+        
+        if(!$PSBoundParameters.ContainsKey('Source')){
             $PSBoundParameters.Source = 'user-override'
         }
+
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforMySQL","DBForMySql")
+        }   
+
         Az.MySql.internal\Update-AzMySqlFlexibleServerConfiguration @PSBoundParameters
     } catch {
         throw

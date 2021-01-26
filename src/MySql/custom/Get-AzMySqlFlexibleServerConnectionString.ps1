@@ -125,6 +125,11 @@ function Get-AzMySqlFlexibleServerConnectionString {
 
         $clientConnection = $PSBoundParameters['Client']
         $null = $PSBoundParameters.Remove('Client')
+
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforMySQL","DBForMySql")
+        }   
+        
         $mySqlServer = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $DBHost = $mySqlServer.FullyQualifiedDomainName
         $DBPort = 3306
