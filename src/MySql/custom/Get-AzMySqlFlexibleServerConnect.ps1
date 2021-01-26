@@ -18,27 +18,31 @@ function Get-AzMySqlFlexibleServerConnect {
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Test out the connection to the database server')]
     param(
         [Parameter(ParameterSetName='Get', Mandatory, HelpMessage = 'The name of the server to connect.')]
+        [Parameter(ParameterSetName='GetAndQuery', Mandatory, HelpMessage = 'The name of the server to connect.')]
         [Alias('ServerName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName='Get', Mandatory,  HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
+        [Parameter(ParameterSetName='Get', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
+        [Parameter(ParameterSetName='GetAndQuery', Mandatory, HelpMessage = 'The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Get', HelpMessage = 'The database name to connect. If not specified, the default db name flexibleserverdb will be used for the connection string.')]
+        [Parameter(Mandatory, HelpMessage = 'The database name to connect. If not specified, the default db name flexibleserverdb will be used for the connection string.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${DatabaseName},
 
-        [Parameter(HelpMessage = 'The query for the database to test')]
+        [Parameter(ParameterSetName='GetViaIdentityAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
+        [Parameter(ParameterSetName='GetAndQuery', Mandatory, HelpMessage = 'The query for the database to test')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${QueryText},
 
         [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
+        [Parameter(ParameterSetName='GetViaIdentityAndQuery', Mandatory, ValueFromPipeline, HelpMessage = 'The server to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
         ${InputObject},
@@ -124,7 +128,7 @@ function Get-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('QueryText')
         }
 
-        $Password = $PSBoundParameters.AdministratorLoginPassword
+        $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
         
 

@@ -14,15 +14,30 @@ Test out the connection to the database server
 
 ### Get (Default)
 ```
-Get-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-QueryText <String>]
- [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetAndQuery
+```
+Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
+ -ResourceGroupName <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMySqlFlexibleServerConnect -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity>
- [-QueryText <String>] [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
+ -InputObject <IMySqlIdentity> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityAndQuery
+```
+Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
+ -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity> [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,10 +130,10 @@ If not specified, the default db name flexibleserverdb will be used for the conn
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +161,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityAndQuery
 Aliases:
 
 Required: True
@@ -161,7 +176,7 @@ The name of the server to connect.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetAndQuery
 Aliases: ServerName
 
 Required: True
@@ -176,10 +191,10 @@ The query for the database to test
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetAndQuery, GetViaIdentityAndQuery
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,7 +206,7 @@ The name of the resource group that contains the resource, You can obtain this v
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetAndQuery
 Aliases:
 
 Required: True
