@@ -118,6 +118,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ApplicationId = "The Application identifier of the session.";
 
+        public const string scanRecordObject = "The scan record object to use in order to convert a Vulnerability Assessment scan.";
+
         public const string SqlDatabaseName = "Name of Synapse SQL Database.";
 
         public const string SqlDatabaseResourceId = "Resource identifier of Synapse SQL Database.";

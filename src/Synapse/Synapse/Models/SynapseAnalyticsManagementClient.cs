@@ -1533,11 +1533,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public async Task StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
+        public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
         {
             try
             {
-                await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScanAsync(resourceGroup, workspaceName, sqlPoolName, scanId);
+                _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
             }
             catch (ErrorContractException ex)
             {
@@ -1545,12 +1545,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
           
         }
-        internal async Task<PSVulnerabilityAssessmentScanRecordModel> GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
+        internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
         {
             try
             {
-                var response = await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, scanId);
-                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, response.Body);
+                var result = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Get(resourceGroupName, workspaceName, sqlPoolName, scanId);
+                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, result);
             }
             catch (ErrorContractException ex)
             {
@@ -1558,12 +1558,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        internal async Task<List<PSVulnerabilityAssessmentScanRecordModel>> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
+        internal List<PSVulnerabilityAssessmentScanRecordModel> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
             try
             {
-                var response = await _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName);
-                return response.Body.Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, scanRecord)).ToList();
+                var firstPage = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.List(resourceGroupName, workspaceName, sqlPoolName);
+                return ListResources(firstPage, _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListNext).Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, scanRecord)).ToList();
             }
             catch (ErrorContractException ex)
             {
@@ -1571,7 +1571,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, VulnerabilityAssessmentScanRecord scanRecord)
+        private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, string workSpace, string sqlPool, VulnerabilityAssessmentScanRecord scanRecord)
         {
             TriggerType scanTriggerType;
             Enum.TryParse(scanRecord.TriggerType, true, out scanTriggerType);
@@ -1579,6 +1579,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return new PSVulnerabilityAssessmentScanRecordModel()
             {
                 ResourceGroupName = resourceGroup,
+                workspaceName = workSpace,
+                sqlPoolName = sqlPool,
                 ScanId = scanRecord.ScanId,
                 TriggerType = scanTriggerType,
                 State = scanRecord.State,
