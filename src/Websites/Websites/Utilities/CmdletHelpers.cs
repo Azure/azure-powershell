@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
@@ -432,6 +433,30 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             return certificates.ToArray();
+        }
+
+        internal static bool CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, ActiveDirectoryClient activedirectoryClient, string resourceGroupName, string keyVault)
+        {
+            var status = false;
+            var AZUREGOVWEBSITESAPPID = "6a02c803-dafd-4136-b4c3-5a6f318b4714";
+            var AZUREPUBLICWEBSITESAPPID = "abfa0a7c-a6b6-4736-8310-5855508787cd";
+            var kv1 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault).Properties.AccessPolicies
+                      .Select(x => new {
+                          applicationid = activedirectoryClient.GetServicePrincipalByObjectId(x.ObjectId).ApplicationId,
+                          objectid = x.ObjectId,
+                          perms = x.Permissions.Secrets
+                      }).ToList();
+
+            var perms = kv1.Where(x => (x.applicationid != null &&
+                                 (x.applicationid.ToString() == AZUREPUBLICWEBSITESAPPID || x.applicationid.ToString() == AZUREGOVWEBSITESAPPID))
+                                 && x.perms.Contains("Get")).Count();
+
+            if (perms > 0)
+            {
+                status = true;
+            }
+
+            return status;
         }
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)

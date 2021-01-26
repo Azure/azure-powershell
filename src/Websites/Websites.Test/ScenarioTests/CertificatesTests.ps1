@@ -140,3 +140,24 @@ function Test-RemoveAzWebAppCertificate
 	
 	}
 }
+
+<#
+.SYNOPSIS
+Tests creating a new Web Hosting Plan.
+#>
+function Test-ImportAzWebAppKeyVaultCertificate
+{
+	$rgname = "testkv1611"
+	$wname = "testasewebapp"
+	$keyvaultname =	"testkv1611"
+	$keyvaultcertname =	"testcertname1611"
+	try
+	{		
+		#Setup
+		$kvcert = Import-AzWebAppKeyVaultCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyVaultName $keyvaultname -CertName $keyvaultcertname
+	}
+	finally
+	{
+
+	}
+}
