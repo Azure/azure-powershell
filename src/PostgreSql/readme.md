@@ -115,6 +115,16 @@ directive:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
     hide: true
+  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+    where:
+      verb: Get$|Remove$
+      subject: ^FlexibleServer$|^FlexibleServerConfiguration$|^FlexibleServerFirewallRule$
+    hide: true
+  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+    where:
+      verb: Restart$|Stop$|Start$
+      subject: ^FlexibleServer$
+    hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId
       subject: VirtualNetworkRule

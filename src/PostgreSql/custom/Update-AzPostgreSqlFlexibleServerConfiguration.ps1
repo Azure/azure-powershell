@@ -136,10 +136,14 @@ param(
 
     process {
     try {
-        if(!$PSBoundParameters.ContainsKey('Source'))
-        {
+        if(!$PSBoundParameters.ContainsKey('Source')){
             $PSBoundParameters.Source = 'user-override'
         }
+
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+        }
+
         Az.PostgreSql.internal\Update-AzPostgreSqlFlexibleServerConfiguration @PSBoundParameters
     } catch {
         throw
