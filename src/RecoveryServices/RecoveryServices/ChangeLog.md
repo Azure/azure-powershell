@@ -20,8 +20,6 @@
 ## Upcoming Release
 * Azure Site Recovery support for Proximity placement group for Vmware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for Availability zone for Vmware to Azure and HyperV to Azure providers.
-* modified policy validation limits as per backup service.
-* Added Zone Redundancy for Recovery Service Vaults.
 
 ## Version 3.3.0
 * Added Cross Region Restore feature.  
