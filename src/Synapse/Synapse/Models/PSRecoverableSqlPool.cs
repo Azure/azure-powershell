@@ -17,15 +17,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         }
 
         public string Edition { get; set; }
+
         //
         // Summary:
         //     Gets the service level objective name of the database
-
         public string ServiceLevelObjective { get; set; }
+
         //
         // Summary:
         //     Gets the elastic pool name of the database
         public string ElasticPoolName { get; set; }
+
         //
         // Summary:
         //     Gets the last available backup date of the database (ISO8601 format)

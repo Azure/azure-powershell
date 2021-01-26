@@ -1934,8 +1934,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
-                return new List<RestorableDroppedSqlPool>(restorableDroppedSqlPoolList);
+                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.L .ListByWorkspace(resourceGroupName, workspaceName);
+                return restorableDroppedSqlPoolList.ToList();
             }
             catch (ErrorContractException ex)
             {

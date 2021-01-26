@@ -128,31 +128,25 @@ function Test-SqlPoolGeoBackup
 	finally
 	{
 		# Cleanup
-		#Remove-SqlPoolBackupTestEnvironment $testSuffix
+		Remove-SqlPoolBackupTestEnvironment $testSuffix
 	}
 }
 
 function Test-DroppedSqlPool
 {
 	# Setup
-	$testSuffix = 'ps2503'
-	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
-    
-    $rgname = $params.rgname
-    $workspaceName = $params.workspaceName
-    $sqlPoolName = $params.sqlPoolName
+	$testSuffix = getAssetName
+	Create-SqlPoolBackupTestEnvironment $testSuffix
+    $params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
 
 	try
 	{	
-        New-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName  -PerformanceLevel DW400c
-        
-        # wait for a short while since it needs some time to create
-        Wait-Seconds 80
+        Remove-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName -Force
 
-        Remove-AzSynapseSqlPool -ResourceGroupName $rgname -WorkspaceName $workspaceName -Name $sqlPoolName -Force
+        Wait-Seconds 300
 
 	    $DroppedSqlPoolGet =Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
-        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGet[0].DatabaseName
+        Assert-AreEqual $params.sqlPoolName $DroppedSqlPoolGet[0].DatabaseName
         Assert-Null $DroppedSqlPoolGet[0].ElasticPoolName
         Assert-NotNull $DroppedSqlPoolGet[0].Edition
         Assert-NotNull $DroppedSqlPoolGet[0].MaxSizeBytes
@@ -162,7 +156,7 @@ function Test-DroppedSqlPool
         Assert-NotNull $DroppedSqlPoolGet[0].EarliestRestoreDate
         
         $DroppedSqlPoolGetByPool= Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        Assert-AreEqual $sqlPoolName $DroppedSqlPoolGetByPool[0].DatabaseName
+        Assert-AreEqual $params.sqlPoolName $DroppedSqlPoolGetByPool[0].DatabaseName
         Assert-Null $DroppedSqlPoolGetByPool[0].ElasticPoolName
         Assert-NotNull $DroppedSqlPoolGetByPool[0].Edition
         Assert-NotNull $DroppedSqlPoolGetByPool[0].MaxSizeBytes
@@ -174,7 +168,7 @@ function Test-DroppedSqlPool
 	finally
 	{
 		# Cleanup
-		#Remove-SqlPoolBackupTestEnvironment $testSuffix
+		Remove-SqlPoolBackupTestEnvironment $testSuffix
 	}
 }
 <#
@@ -275,7 +269,7 @@ function Get-SqlPoolBackupTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-              location = "westcentralus";
+              location = "northeurope";
               restoredSqlPoolName = "dwrestore" + $testSuffix;
 		}
 }

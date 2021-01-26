@@ -44,13 +44,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         //
         // Summary:
         //     Gets the service level objective name of the database
-
         public string ServiceLevelObjective { get; }
 
         //
         // Summary:
         //     Gets the elastic pool name of the database
-
         public string ElasticPoolName { get; }
 
         //
