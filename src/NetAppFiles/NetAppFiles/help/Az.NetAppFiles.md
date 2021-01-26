@@ -44,6 +44,9 @@ Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
 
+### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
+Re-Initializes the replication connection on the destination volume
+
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.
 

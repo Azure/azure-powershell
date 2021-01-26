@@ -15,7 +15,7 @@
 //namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Models
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-    public class PSNetAppFilesVolumeSnapshotPolicy
+    public class PSNetAppFilesVolumeSnapshot
     {
         /// <summary>
         /// Snapshot Policy ResourceId

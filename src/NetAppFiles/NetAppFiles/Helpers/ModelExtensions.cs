@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }
             if (DataProtection.Snapshot != null)
             {
-                var snapshot = new PSNetAppFilesVolumeSnapshotPolicy();
+                var snapshot = new PSNetAppFilesVolumeSnapshot();
                 snapshot.SnapshotPolicyId = DataProtection.Snapshot.SnapshotPolicyId;
                 psDataProtection.Snapshot = snapshot;
             }

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -139,8 +140,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
+            HelpMessage = "A hashtable array which represents the snapshot object")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("Snapshot", ChangeDescription = "Snapshot invalid and preserved for compatibility. Parameter SnapshotPolicyId should be used instead")]
+        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
+        [ValidateNotNullOrEmpty]       
         public string SnapshotPolicyId { get; set; }
         
         [Parameter(
@@ -237,7 +245,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
                     Replication = ReplicationObject,
-                    Snapshot = new PSNetAppFilesVolumeSnapshotPolicy() { SnapshotPolicyId = SnapshotPolicyId },
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
                     Backup = Backup
                 };                
             }
