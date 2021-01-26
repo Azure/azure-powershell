@@ -1,41 +1,41 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverconnect
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
 schema: 2.0.0
 ---
 
-# Get-AzMySqlFlexibleServerConnect
+# Test-AzMySqlFlexibleServerConnect
 
 ## SYNOPSIS
 Test out the connection to the database server
 
 ## SYNTAX
 
-### Get (Default)
+### Test (Default)
 ```
-Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
+Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetAndQuery
+### TestAndQuery
 ```
-Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
+Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
  -ResourceGroupName <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### TestViaIdentity
 ```
-Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
+Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
  -InputObject <IMySqlIdentity> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentityAndQuery
+### TestViaIdentityAndQuery
 ```
-Get-AzMySqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
+Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
  -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity> [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -161,7 +161,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityAndQuery
+Parameter Sets: TestViaIdentity, TestViaIdentityAndQuery
 Aliases:
 
 Required: True
@@ -176,7 +176,7 @@ The name of the server to connect.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndQuery
+Parameter Sets: Test, TestAndQuery
 Aliases: ServerName
 
 Required: True
@@ -191,7 +191,7 @@ The query for the database to test
 
 ```yaml
 Type: System.String
-Parameter Sets: GetAndQuery, GetViaIdentityAndQuery
+Parameter Sets: TestAndQuery, TestViaIdentityAndQuery
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ The name of the resource group that contains the resource, You can obtain this v
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndQuery
+Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
