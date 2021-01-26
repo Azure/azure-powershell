@@ -270,7 +270,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlInstanceDatabaseLogReplay', 
                'Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication', 
                'Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication', 
-               'Get-AzSqlInstanceActiveDirectoryOnlyAuthentication'
+               'Get-AzSqlInstanceActiveDirectoryOnlyAuthentication',
+			   'Get-AzServerTrustGroup',
+			   'New-AzServerTrustGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
