@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public OperatingSystemTypes? OsType { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public SwitchParameter BurstingEnabled { get; set; }
+
+        [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
@@ -377,7 +381,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
-                Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null
+                Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
+                BurstingEnabled = this.BurstingEnabled.IsPresent ? true : (bool?)null
             };
 
             WriteObject(vDisk);
