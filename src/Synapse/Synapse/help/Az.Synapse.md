@@ -305,11 +305,11 @@ Creates a trigger in a workspace.
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
 
-### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
-Starts a trigger in a workspace.
-
 ### [Start-AzSynapseSqlPoolVulnerabilityAssessmentScan](Start-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
 Start a Synapse Analytics SQL pool vulnerability assessment scan record.
+
+### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
+Starts a trigger in a workspace.
 
 ### [Stop-AzSynapsePipelineRun](Stop-AzSynapsePipelineRun.md)
 Stops a pipeline run in a workspace.
