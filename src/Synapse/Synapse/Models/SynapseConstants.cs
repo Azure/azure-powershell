@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string VulnerabilityAssessmentScan = nameof(VulnerabilityAssessmentScan);
 
-        public const string VulnerabilityAssessmentScanInitialziation = nameof(VulnerabilityAssessmentScanInitialziation);
-
         public const string SqlPoolName = nameof(SqlPoolName);
 
         public const string RestorePoint = nameof(RestorePoint);

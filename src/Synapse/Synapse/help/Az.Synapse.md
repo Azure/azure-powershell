@@ -17,6 +17,9 @@ Subscribe the event trigger to external service events.
 ### [Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
+### [Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan](Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
+Converts to a Synapse Analytics SQL pool vulnerability assessment scan record.
+
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
 
@@ -104,15 +107,6 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [Get-AzSynapseSqlPool](Get-AzSynapseSqlPool.md)
 Gets a Synapse Analytics SQL pool.
 
-### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
-Gets a Synapse Analytics SQL pool vulnerability assessment scan record.
-
-### [Convert-AzSynapseVulnerabilityAssessmentScan](Convert-AzSynapseVulnerabilityAssessmentScan.md)
-Converts to a Synapse Analytics SQL pool vulnerability assessment scan record.
-
-### [Start-AzSynapseVulnerabilityAssessmentScanInitialziation](Start-AzSynapseVulnerabilityAssessmentScanInitialziation.md)
-Start a Synapse Analytics SQL pool vulnerability assessment scan record.
-
 ### [Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting](Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting.md)
 Gets the advanced threat protection settings for a SQL pool.
 
@@ -136,6 +130,9 @@ Gets the vulnerability assessment rule baseline.
 
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
+
+### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
+Gets a Synapse Analytics SQL pool vulnerability assessment scan record.
 
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
@@ -310,6 +307,9 @@ Starts a Synapse Analytics Spark session.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Start-AzSynapseSqlPoolVulnerabilityAssessmentScan](Start-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
+Start a Synapse Analytics SQL pool vulnerability assessment scan record.
 
 ### [Stop-AzSynapsePipelineRun](Stop-AzSynapsePipelineRun.md)
 Stops a pipeline run in a workspace.
