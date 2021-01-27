@@ -124,7 +124,7 @@ Support                               | `Az.Support`                            
 Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery]
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
-VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
+VMware Virtual Stream                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
