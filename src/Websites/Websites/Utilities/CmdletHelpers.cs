@@ -435,28 +435,26 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return certificates.ToArray();
         }
 
-        internal static bool CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, ActiveDirectoryClient activedirectoryClient, string resourceGroupName, string keyVault)
+        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault)
         {
-            var status = false;
-            var AZUREGOVWEBSITESAPPID = "6a02c803-dafd-4136-b4c3-5a6f318b4714";
-            var AZUREPUBLICWEBSITESAPPID = "abfa0a7c-a6b6-4736-8310-5855508787cd";
-            var kv1 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault).Properties.AccessPolicies
-                      .Select(x => new {
-                          applicationid = activedirectoryClient.GetServicePrincipalByObjectId(x.ObjectId).ApplicationId,
-                          objectid = x.ObjectId,
-                          perms = x.Permissions.Secrets
-                      }).ToList();
-
-            var perms = kv1.Where(x => (x.applicationid != null &&
-                                 (x.applicationid.ToString() == AZUREPUBLICWEBSITESAPPID || x.applicationid.ToString() == AZUREGOVWEBSITESAPPID))
-                                 && x.perms.Contains("Get")).Count();
-
-            if (perms > 0)
+            var perm1 = " ";
+            var kv2 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
+            foreach (var policy in kv2.Properties.AccessPolicies)
             {
-                status = true;
+                if (policy.ObjectId == ("f8daea97-62e7-4026-becf-13c2ea98e8b4"))
+                {
+                    foreach (var perm in policy.Permissions.Secrets)
+                    {
+                        if ((perm == "Get") || (perm == "get"))
+                        {
+                            perm1 = perm;
+                            Console.WriteLine("Success");
+                            break;
+                        }
+                    }
+                }
             }
-
-            return status;
+            return perm1.ToString();
         }
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)

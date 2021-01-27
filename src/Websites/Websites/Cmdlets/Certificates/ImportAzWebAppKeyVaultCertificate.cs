@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     kvid = KeyVaultName;
                 }
-                bool keyvaultperm;
-                keyvaultperm = CmdletHelpers.CheckServicePrincipalPermissions(this.ResourcesClient, this.KeyvaultClient, (Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryClient)this.ActiveDirectoryClient, kvresourcegrpname, KeyVaultName);
+                string keyvaultperm;
+                keyvaultperm = CmdletHelpers.CheckServicePrincipalPermissions(this.ResourcesClient, this.KeyvaultClient,kvresourcegrpname, KeyVaultName);
                 var lnk = "https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html";
-                if (!keyvaultperm)
+                if ((keyvaultperm != "Get") & (keyvaultperm != "get"))
                 {
                     WriteWarning("Unable to verify Key Vault permissions.");
                     WriteWarning("You may need to grant Microsoft.Azure.WebSites service principal the Secret:Get permission");

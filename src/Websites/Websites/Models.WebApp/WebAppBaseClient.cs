@@ -15,8 +15,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Commands.WebApps.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
@@ -76,32 +74,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                 return _keyVaultClient;
             }
             set { _keyVaultClient = value; }
-        }
-
-        private Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryClient _activeDirectoryClient;
-        public ActiveDirectoryClient ActiveDirectoryClient
-        {
-            get
-            {
-                if (_activeDirectoryClient != null) return _activeDirectoryClient;
-#if NETSTANDARD
-                try
-                {
-                    _activeDirectoryClient = new Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryClient(DefaultProfile.DefaultContext);
-                }
-                catch
-                {
-                    _activeDirectoryClient = null;
-                }
-#else
-                _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
-                () => Task.FromResult(_dataServiceCredential.GetToken()));
-#endif
-                return _activeDirectoryClient;
-            }
-
-            set { _activeDirectoryClient = value; }
         }
     }
 }
