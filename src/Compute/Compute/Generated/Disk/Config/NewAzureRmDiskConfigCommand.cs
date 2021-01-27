@@ -63,10 +63,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public OperatingSystemTypes? OsType { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        public SwitchParameter BurstingEnabled { get; set; }
-
-        [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
@@ -191,6 +187,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? BurstingEnabled { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -382,7 +383,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
-                BurstingEnabled = this.BurstingEnabled.IsPresent ? true : (bool?)null
+                BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
             };
 
             WriteObject(vDisk);
