@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * [BreakingChange] Renamed module to AZ.VMware
+* Set confirmation prompt poped by default
 
 ## Version 0.1.0
 * First preview release for module Az.VMWare
