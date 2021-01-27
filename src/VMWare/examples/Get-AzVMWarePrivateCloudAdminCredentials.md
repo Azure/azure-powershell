@@ -1,6 +1,6 @@
 ### Example 1: Get admin credential of private cloud
 ```powershell
-PS C:\> Get-AzVMWarePrivateCloudAdminCredentials -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwarePrivateCloudAdminCredentials -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 NsxtPassword NsxtUsername VcenterPassword VcenterUsername
 ------------ ------------ --------------- ---------------

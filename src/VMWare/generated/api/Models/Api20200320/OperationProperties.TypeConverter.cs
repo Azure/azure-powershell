@@ -1,11 +1,11 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ErrorAdditionalInfo1" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="OperationProperties" />
     /// </summary>
-    public partial class ErrorAdditionalInfo1TypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class OperationPropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -24,10 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
         /// parameter.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ErrorAdditionalInfo1"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="OperationProperties"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ErrorAdditionalInfo1" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="OperationProperties" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
             try
             {
                 string text = sourceValue.ToString()?.Trim();
-                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonType.Object;
+                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonType.Object;
             }
             catch
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ErrorAdditionalInfo1" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="OperationProperties" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
@@ -97,24 +97,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
         /// /> and <see cref="ignoreCase" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ErrorAdditionalInfo1" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="OperationProperties" />.</param>
         /// <returns>
-        /// an instance of <see cref="ErrorAdditionalInfo1" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="OperationProperties" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo1 ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperationProperties ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo1).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperationProperties).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ErrorAdditionalInfo1.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return OperationProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -122,11 +122,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ErrorAdditionalInfo1.DeserializeFromPSObject(sourceValue);
+                return OperationProperties.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ErrorAdditionalInfo1.DeserializeFromDictionary(sourceValue);
+                return OperationProperties.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

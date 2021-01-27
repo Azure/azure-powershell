@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>A paged list of HCX Enterprise Sites</summary>
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteListTypeConverter))]
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteList" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteList" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteList DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteList DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new HcxEnterpriseSiteList(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteList" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteList" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteList DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteList DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new HcxEnterpriseSiteList(content);
         }
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteList FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteList FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -113,15 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteListInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// A paged list of HCX Enterprise Sites
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteListTypeConverter))]

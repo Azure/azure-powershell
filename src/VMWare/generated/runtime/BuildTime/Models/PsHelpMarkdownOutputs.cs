@@ -5,9 +5,9 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.PsHelpOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.PsHelpOutputExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
     internal class HelpMetadataOutput
     {

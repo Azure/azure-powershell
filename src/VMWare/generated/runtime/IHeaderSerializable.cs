@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime
 {
     public interface IHeaderSerializable
     {

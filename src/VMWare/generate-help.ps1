@@ -39,14 +39,14 @@ if(Test-Path $docsFolder) {
 $null = New-Item -ItemType Directory -Force -Path $docsFolder -ErrorAction SilentlyContinue
 $examplesFolder = Join-Path $PSScriptRoot 'examples'
 
-$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.VMWare.psd1')
+$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.VMware.psd1')
 $modulePath = $modulePsd1.FullName
 $moduleName = $modulePsd1.BaseName
 
 # Load DLL to use build-time cmdlets
 Import-Module -Name $modulePath
-Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.VMWare.private.dll')
-$instance = [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Module]::Instance
+Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.VMware.private.dll')
+$instance = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Module]::Instance
 # Module info is shared per profile
 $moduleInfo = Get-Module -Name $moduleName
 

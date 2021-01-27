@@ -1,12 +1,11 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="MetricSpecification" />
     /// </summary>
-    public partial class Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchemaTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class MetricSpecificationTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -25,11 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
         /// parameter.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="MetricSpecification"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
-        /// /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="MetricSpecification" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -62,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
             try
             {
                 string text = sourceValue.ToString()?.Trim();
-                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonType.Object;
+                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonType.Object;
             }
             catch
             {
@@ -91,8 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
-        /// />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="MetricSpecification" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
@@ -100,26 +97,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
         /// /> and <see cref="ignoreCase" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="MetricSpecification" />.</param>
         /// <returns>
-        /// an instance of <see cref="Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema"
-        /// />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="MetricSpecification" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPaths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IMetricSpecification ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPaths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IMetricSpecification).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return MetricSpecification.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +122,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema.DeserializeFromPSObject(sourceValue);
+                return MetricSpecification.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return Paths15976RbSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftAvsPrivatecloudsPrivatecloudnameAuthorizationsAuthorizationnamePutRequestbodyContentApplicationJsonSchema.DeserializeFromDictionary(sourceValue);
+                return MetricSpecification.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

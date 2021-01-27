@@ -8,9 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.PsHelpers;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.PsHelpers;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "CmdletSurface")]
   [DoNotExport]

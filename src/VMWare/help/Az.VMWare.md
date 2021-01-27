@@ -1,55 +1,55 @@
 ---
-Module Name: Az.VMWare
+Module Name: Az.VMware
 Module Guid: 78d2fac8-ec90-47ad-b8aa-a27106b158f5
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.vmware
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.VMWare Module
+# Az.VMware Module
 ## Description
-Microsoft Azure PowerShell: VMWare cmdlets
+Microsoft Azure PowerShell: VMware cmdlets
 
-## Az.VMWare Cmdlets
-### [Get-AzVMWareAuthorization](Get-AzVMWareAuthorization.md)
+## Az.VMware Cmdlets
+### [Get-AzVMwareAuthorization](Get-AzVMwareAuthorization.md)
 Get an ExpressRoute Circuit Authorization by name in a private cloud
 
-### [Get-AzVMWareCluster](Get-AzVMWareCluster.md)
+### [Get-AzVMwareCluster](Get-AzVMwareCluster.md)
 Get a cluster by name in a private cloud
 
-### [Get-AzVMWarePrivateCloud](Get-AzVMWarePrivateCloud.md)
+### [Get-AzVMwarePrivateCloud](Get-AzVMwarePrivateCloud.md)
 Get a private cloud
 
-### [Get-AzVMWarePrivateCloudAdminCredentials](Get-AzVMWarePrivateCloudAdminCredentials.md)
+### [Get-AzVMwarePrivateCloudAdminCredentials](Get-AzVMwarePrivateCloudAdminCredentials.md)
 List the admin credentials for the private cloud
 
-### [New-AzVMWareAuthorization](New-AzVMWareAuthorization.md)
+### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
 Create or update an ExpressRoute Circuit Authorization in a private cloud
 
-### [New-AzVMWareCluster](New-AzVMWareCluster.md)
+### [New-AzVMwareCluster](New-AzVMwareCluster.md)
 Create or update a cluster in a private cloud
 
-### [New-AzVMWarePrivateCloud](New-AzVMWarePrivateCloud.md)
+### [New-AzVMwarePrivateCloud](New-AzVMwarePrivateCloud.md)
 Create or update a private cloud
 
-### [Remove-AzVMWareAuthorization](Remove-AzVMWareAuthorization.md)
+### [Remove-AzVMwareAuthorization](Remove-AzVMwareAuthorization.md)
 Delete an ExpressRoute Circuit Authorization in a private cloud
 
-### [Remove-AzVMWareCluster](Remove-AzVMWareCluster.md)
+### [Remove-AzVMwareCluster](Remove-AzVMwareCluster.md)
 Delete a cluster in a private cloud
 
-### [Remove-AzVMWarePrivateCloud](Remove-AzVMWarePrivateCloud.md)
+### [Remove-AzVMwarePrivateCloud](Remove-AzVMwarePrivateCloud.md)
 Delete a private cloud
 
-### [Test-AzVMWareLocationQuotaAvailability](Test-AzVMWareLocationQuotaAvailability.md)
+### [Test-AzVMwareLocationQuotaAvailability](Test-AzVMwareLocationQuotaAvailability.md)
 Return quota for subscription by region
 
-### [Test-AzVMWareLocationTrialAvailability](Test-AzVMWareLocationTrialAvailability.md)
+### [Test-AzVMwareLocationTrialAvailability](Test-AzVMwareLocationTrialAvailability.md)
 Return trial status for subscription by region
 
-### [Update-AzVMWareCluster](Update-AzVMWareCluster.md)
+### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
 Update a cluster in a private cloud
 
-### [Update-AzVMWarePrivateCloud](Update-AzVMWarePrivateCloud.md)
+### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
 Update a private cloud
 

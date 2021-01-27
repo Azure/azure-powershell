@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>An HCX Enterprise Site resource</summary>
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteTypeConverter))]
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new HcxEnterpriseSite(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new HcxEnterpriseSite(content);
         }
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSite FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSite FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -94,17 +94,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSitePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.HcxEnterpriseSiteStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.HcxEnterpriseSiteStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSitePropertiesTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.HcxEnterpriseSiteStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.HcxEnterpriseSiteStatus.CreateFrom);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -117,19 +117,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSitePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.HcxEnterpriseSiteStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.HcxEnterpriseSiteStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSitePropertiesTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Id, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IResourceInternal)this).Type, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).ActivationKey, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.HcxEnterpriseSiteStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IHcxEnterpriseSiteInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.HcxEnterpriseSiteStatus.CreateFrom);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// An HCX Enterprise Site resource
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteTypeConverter))]

@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>Subscription trial availability</summary>
     [System.ComponentModel.TypeConverter(typeof(TrialTypeConverter))]
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new Trial(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new Trial(content);
         }
@@ -78,15 +78,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrial FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).AvailableHost = (int?) content.GetValueForProperty("AvailableHost",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).AvailableHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.TrialStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.TrialStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).AvailableHost = (int?) content.GetValueForProperty("AvailableHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).AvailableHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).AvailableHost = (int?) content.GetValueForProperty("AvailableHost",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).AvailableHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.TrialStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrialInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.TrialStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).AvailableHost = (int?) content.GetValueForProperty("AvailableHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrialInternal)this).AvailableHost, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
         }
     }

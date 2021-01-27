@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>The properties of an ExpressRoute Circuit Authorization resource</summary>
     [System.ComponentModel.TypeConverter(typeof(ExpressRouteAuthorizationPropertiesTypeConverter))]
@@ -48,35 +48,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationProperties"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationProperties"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new ExpressRouteAuthorizationProperties(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationProperties"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationProperties"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new ExpressRouteAuthorizationProperties(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId = (string) content.GetValueForProperty("ExpressRouteAuthorizationId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.ExpressRouteAuthorizationProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.ExpressRouteAuthorizationProvisioningState.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId = (string) content.GetValueForProperty("ExpressRouteAuthorizationId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId = (string) content.GetValueForProperty("ExpressRouteAuthorizationId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.ExpressRouteAuthorizationProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.ExpressRouteAuthorizationProvisioningState.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId = (string) content.GetValueForProperty("ExpressRouteAuthorizationId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey = (string) content.GetValueForProperty("ExpressRouteAuthorizationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationPropertiesInternal)this).ExpressRouteAuthorizationKey, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IExpressRouteAuthorizationProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorizationProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// The properties of an ExpressRoute Circuit Authorization resource
     [System.ComponentModel.TypeConverter(typeof(ExpressRouteAuthorizationPropertiesTypeConverter))]

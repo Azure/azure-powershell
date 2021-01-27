@@ -19,11 +19,11 @@ Delete a private cloud
 .Description
 Delete a private cloud
 .Example
-PS C:\> Remove-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
+PS C:\> Remove-AzVMwarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
   [ClusterName <String>]: Name of the cluster in the private cloud
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
@@ -43,34 +43,34 @@ INPUTOBJECT <IVMWareIdentity>: Identity Parameter
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
-function Remove-AzVMWarePrivateCloud {
+function Remove-AzVMwarePrivateCloud {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('PrivateCloudName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -78,64 +78,64 @@ param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -149,8 +149,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.VMWare.private\Remove-AzVMWarePrivateCloud_Delete';
-            DeleteViaIdentity = 'Az.VMWare.private\Remove-AzVMWarePrivateCloud_DeleteViaIdentity';
+            Delete = 'Az.VMware.custom\Remove-AzVMwarePrivateCloud';
+            DeleteViaIdentity = 'Az.VMware.custom\Remove-AzVMwarePrivateCloud';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

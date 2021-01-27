@@ -3,12 +3,12 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime
 {
     using System;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
     public class RestException : Exception, IDisposable
     {
@@ -40,14 +40,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime
             try
             {
                 // try to parse the body as JSON, and see if a code and message are in there.
-                var json = Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(ResponseBody) as Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonObject;
+                var json = Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(ResponseBody) as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject;
+
+                // error message could be in properties.statusMessage
+                { message = If(json?.Property("properties"), out var p)
+                    && If(p?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("statusMessage"), out var sm)
+                    ? (string)sm : (string)Message; }
 
                 // see if there is an error block in the body
-                json = json.Property("error") ?? json;
+                json = json?.Property("error") ?? json;
 
-                { Code = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonString>("code"), out var c) ? (string)c : (string)StatusCode.ToString(); }
-                { message = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonString>("message"), out var m) ? (string)m : (string)Message; }
-                { Action = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonString>("action"), out var a) ? (string)a : (string)Action; }
+                { Code = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("code"), out var c) ? (string)c : (string)StatusCode.ToString(); }
+                { message = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("message"), out var m) ? (string)m : (string)Message; }
+                { Action = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("action"), out var a) ? (string)a : (string)Action; }
             }
 #if DEBUG
             catch (System.Exception E)

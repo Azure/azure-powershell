@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>vCenter Single Sign On Identity Source</summary>
     [System.ComponentModel.TypeConverter(typeof(IdentitySourceTypeConverter))]
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new IdentitySource(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new IdentitySource(content);
         }
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -94,21 +94,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Alias = (string) content.GetValueForProperty("Alias",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Alias, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn = (string) content.GetValueForProperty("BaseGroupDn",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn = (string) content.GetValueForProperty("BaseUserDn",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Domain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer = (string) content.GetValueForProperty("PrimaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer = (string) content.GetValueForProperty("SecondaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Ssl = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.SslEnum?) content.GetValueForProperty("Ssl",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Ssl, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.SslEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Username, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Alias = (string) content.GetValueForProperty("Alias",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Alias, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Domain, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn = (string) content.GetValueForProperty("BaseUserDn",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn = (string) content.GetValueForProperty("BaseGroupDn",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer = (string) content.GetValueForProperty("PrimaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer = (string) content.GetValueForProperty("SecondaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Ssl = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum?) content.GetValueForProperty("Ssl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Ssl, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Username, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -121,23 +121,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Alias = (string) content.GetValueForProperty("Alias",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Alias, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn = (string) content.GetValueForProperty("BaseGroupDn",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn = (string) content.GetValueForProperty("BaseUserDn",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Domain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer = (string) content.GetValueForProperty("PrimaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer = (string) content.GetValueForProperty("SecondaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Ssl = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.SslEnum?) content.GetValueForProperty("Ssl",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Ssl, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.SslEnum.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySourceInternal)this).Username, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Alias = (string) content.GetValueForProperty("Alias",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Alias, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Domain = (string) content.GetValueForProperty("Domain",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Domain, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn = (string) content.GetValueForProperty("BaseUserDn",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseUserDn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn = (string) content.GetValueForProperty("BaseGroupDn",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).BaseGroupDn, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer = (string) content.GetValueForProperty("PrimaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).PrimaryServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer = (string) content.GetValueForProperty("SecondaryServer",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).SecondaryServer, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Ssl = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum?) content.GetValueForProperty("Ssl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Ssl, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Username, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// vCenter Single Sign On Identity Source
     [System.ComponentModel.TypeConverter(typeof(IdentitySourceTypeConverter))]

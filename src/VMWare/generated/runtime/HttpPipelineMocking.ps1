@@ -6,7 +6,7 @@ if (-not $TestRecordingFile) {
 }
 
 # create the Http Pipeline Recorder
-$Mock = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PipelineMock $TestRecordingFile
+$Mock = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock $TestRecordingFile
 
 # set the recorder to the appropriate mode (default to 'live')
 Write-Host -ForegroundColor Green "Running '$TestMode' mode..."

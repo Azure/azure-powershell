@@ -3,14 +3,14 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Linq;
     using System.Net;
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json;
 
     public enum MockMode
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime
         private readonly string recordingPath;
         private int counter = 0;
 
-        public static implicit operator Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SendAsyncStep(PipelineMock instance) => instance.SendAsync;
+        public static implicit operator Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep(PipelineMock instance) => instance.SendAsync;
 
         public MockMode Mode { get; set; } = MockMode.Live;
         public PipelineMock(string recordingPath)

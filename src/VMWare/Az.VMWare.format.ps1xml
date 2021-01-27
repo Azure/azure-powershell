@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.VMWareIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMwareIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.VMWareIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMwareIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -60,9 +60,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.AdminCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.AdminCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.AdminCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.AdminCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -100,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -140,9 +140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Cluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Cluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Cluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Cluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -168,9 +168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -190,9 +190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -230,9 +230,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ClusterUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ClusterUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Endpoints</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Endpoints</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Endpoints</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Endpoints</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorization</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorization</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorization</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorization</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -314,9 +314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -336,9 +336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ExpressRouteAuthorizationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ExpressRouteAuthorizationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -370,9 +370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSite</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSite</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -398,9 +398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -420,9 +420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.HcxEnterpriseSiteProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.HcxEnterpriseSiteProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -448,9 +448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IdentitySource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IdentitySource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -524,9 +524,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ManagementCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.LogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ManagementCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.LogSpecification</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BlobDuration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BlobDuration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ManagementCluster</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ManagementCluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -538,6 +572,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Host</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -552,27 +589,8 @@
               <TableColumnItem>
                 <PropertyName>Host</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Operation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -580,9 +598,171 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.MetricDimension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.MetricDimension</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InternalName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToBeExportedForShoebox</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InternalName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToBeExportedForShoebox</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.MetricSpecification</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.MetricSpecification</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AggregationType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Category</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayDescription</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableRegionalMdmAccount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FillGapWithZero</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceMdmAccount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceMdmNamespace</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportedAggregationType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportedTimeGrainType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Unit</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AggregationType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayDescription</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableRegionalMdmAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FillGapWithZero</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceMdmAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceMdmNamespace</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportedAggregationType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportedTimeGrainType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Unit</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Operation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Operation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -620,9 +800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.OperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -642,9 +822,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloud</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloud</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloud</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloud</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -676,9 +856,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -698,9 +878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -712,6 +892,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagementClusterId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagementClusterProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagementClusterSize</Label>
@@ -757,6 +940,9 @@
                 <PropertyName>ManagementClusterId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ManagementClusterProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ManagementClusterSize</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -792,9 +978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -814,9 +1000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.PrivateCloudUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.PrivateCloudUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -836,9 +1022,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -858,9 +1044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.QuotaHostsRemaining</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.QuotaHostsRemaining</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.QuotaHostsRemaining</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.QuotaHostsRemaining</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -880,9 +1066,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -908,9 +1094,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -930,9 +1116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -964,9 +1150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -986,9 +1172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Trial</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Trial</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1014,9 +1200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1036,9 +1222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>Subscription quotas</summary>
     [System.ComponentModel.TypeConverter(typeof(QuotaTypeConverter))]
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new Quota(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new Quota(content);
         }
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).HostsRemaining = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaHostsRemaining) content.GetValueForProperty("HostsRemaining",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).HostsRemaining, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.QuotaHostsRemainingTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).Enabled = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.QuotaEnabled?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).Enabled, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.QuotaEnabled.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).HostsRemaining = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining) content.GetValueForProperty("HostsRemaining",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).HostsRemaining, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.QuotaHostsRemainingTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).Enabled = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).Enabled, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled.CreateFrom);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Quota"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Quota"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -113,15 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).HostsRemaining = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaHostsRemaining) content.GetValueForProperty("HostsRemaining",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).HostsRemaining, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.QuotaHostsRemainingTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).Enabled = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.QuotaEnabled?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuotaInternal)this).Enabled, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.QuotaEnabled.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).HostsRemaining = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining) content.GetValueForProperty("HostsRemaining",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).HostsRemaining, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.QuotaHostsRemainingTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).Enabled = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaInternal)this).Enabled, Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled.CreateFrom);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// Subscription quotas
     [System.ComponentModel.TypeConverter(typeof(QuotaTypeConverter))]

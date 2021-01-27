@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>API error response</summary>
     [System.ComponentModel.TypeConverter(typeof(CloudErrorTypeConverter))]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.CloudError"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.CloudError"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -61,17 +61,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Code, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Message, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.CloudError"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.CloudError"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,37 +84,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Code, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Message, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudErrorInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             AfterDeserializePSObject(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.CloudError"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.CloudError"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudError" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudError" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudError DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudError DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new CloudError(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.CloudError"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.CloudError"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudError" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudError" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudError DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudError DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new CloudError(content);
         }
@@ -124,12 +124,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICloudError FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICloudError FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// API error response
     [System.ComponentModel.TypeConverter(typeof(CloudErrorTypeConverter))]

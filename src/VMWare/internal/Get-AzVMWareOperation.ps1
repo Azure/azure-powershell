@@ -28,57 +28,57 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.vmware/get-azvmwareoperation
 #>
-function Get-AzVMWareOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IOperation])]
+function Get-AzVMwareOperation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -92,7 +92,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'Az.VMWare.private\Get-AzVMWareOperation_List';
+            List = 'Az.VMware.private\Get-AzVMwareOperation_List';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}

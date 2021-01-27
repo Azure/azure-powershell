@@ -9,7 +9,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "FormatPs1xml")]
   [DoNotExport]
@@ -19,8 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
     [ValidateNotNullOrEmpty]
     public string FilePath { get; set; }
 
-    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support";
+    private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.VMware.Models";
+    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.VMware.Support";
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 
     protected override void ProcessRecord()

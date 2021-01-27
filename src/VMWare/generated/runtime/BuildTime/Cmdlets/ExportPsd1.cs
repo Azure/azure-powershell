@@ -8,9 +8,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.PsHelpers;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.PsHelpers;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "Psd1")]
   [DoNotExport]
@@ -69,21 +69,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
         var sb = new StringBuilder();
         sb.AppendLine("@{");
         sb.AppendLine($@"{GuidStart} = '{ModuleGuid}'");
-        sb.AppendLine($@"{Indent}RootModule = '{"./Az.VMWare.psm1"}'");
+        sb.AppendLine($@"{Indent}RootModule = '{"./Az.VMware.psm1"}'");
         sb.AppendLine($@"{Indent}ModuleVersion = '{version}'");
         sb.AppendLine($@"{Indent}CompatiblePSEditions = 'Core', 'Desktop'");
         sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
         sb.AppendLine($@"{Indent}CompanyName = '{"Microsoft Corporation"}'");
         sb.AppendLine($@"{Indent}Copyright = '{"Microsoft Corporation. All rights reserved."}'");
-        sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell: VMWare cmdlets"}'");
+        sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell: VMware cmdlets"}'");
         sb.AppendLine($@"{Indent}PowerShellVersion = '5.1'");
         sb.AppendLine($@"{Indent}DotNetFrameworkVersion = '4.7.2'");
-        sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.VMWare.private.dll"}'");
+        sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.VMware.private.dll"}'");
 
         var customFormatPs1xmlFiles = Directory.GetFiles(CustomFolder)
             .Where(f => f.EndsWith(".format.ps1xml"))
             .Select(f => $"{CustomFolderRelative}/{Path.GetFileName(f)}");
-        var formatList = customFormatPs1xmlFiles.Prepend("./Az.VMWare.format.ps1xml").ToPsList();
+        var formatList = customFormatPs1xmlFiles.Prepend("./Az.VMware.format.ps1xml").ToPsList();
         sb.AppendLine($@"{Indent}FormatsToProcess = {formatList}");
 
         var functionInfos = GetScriptCmdlets(ExportsFolder).ToArray();
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
         {
             sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = {previewVersion}");
         }
-        sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule VMWare".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
+        sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule VMware".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
         sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");
         sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{"https://github.com/Azure/azure-powershell"}'");
         sb.AppendLine($@"{Indent}{Indent}{Indent}ReleaseNotes = ''");

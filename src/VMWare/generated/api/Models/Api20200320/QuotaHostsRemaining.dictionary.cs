@@ -1,19 +1,19 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
     public partial class QuotaHostsRemaining :
-        Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<int>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<int>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,int> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,int>();
 
-        global::System.Collections.Generic.IDictionary<global::System.String,int> Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<int>.AdditionalProperties { get => __additionalProperties; }
+        global::System.Collections.Generic.IDictionary<global::System.String,int> Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<int>.AdditionalProperties { get => __additionalProperties; }
 
-        int Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<int>.Count { get => __additionalProperties.Count; }
+        int Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<int>.Count { get => __additionalProperties.Count; }
 
-        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<int>.Keys { get => __additionalProperties.Keys; }
+        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<int>.Keys { get => __additionalProperties.Keys; }
 
-        global::System.Collections.Generic.IEnumerable<int> Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<int>.Values { get => __additionalProperties.Values; }
+        global::System.Collections.Generic.IEnumerable<int> Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<int>.Values { get => __additionalProperties.Values; }
 
         public int this[global::System.String index] { get => __additionalProperties[index]; set => __additionalProperties[index] = value; }
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         {
             if (null != source)
             {
-                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() {  } ) )
+                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() {  } ) )
                 {
                     if ((null != property.Key && null != property.Value))
                     {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         {
             if (null != source)
             {
-                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() {  } ) )
+                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() {  } ) )
                 {
                     if ((null != property.Key && null != property.Value))
                     {
@@ -65,6 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,int>(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.QuotaHostsRemaining source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,int>(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.QuotaHostsRemaining source) => source.__additionalProperties;
     }
 }

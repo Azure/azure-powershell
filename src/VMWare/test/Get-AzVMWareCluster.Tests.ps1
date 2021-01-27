@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzVMWareCluster.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzVMwareCluster.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzVMWareCluster' {
+Describe 'Get-AzVMwareCluster' {
     It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

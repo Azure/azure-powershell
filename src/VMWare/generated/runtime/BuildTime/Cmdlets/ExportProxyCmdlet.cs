@@ -7,12 +7,12 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.PsHelpers;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.MarkdownRenderer;
-using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell.PsProxyTypeExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.PsHelpers;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.MarkdownRenderer;
+using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell.PsProxyTypeExtensions;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
     [Cmdlet(VerbsData.Export, "ProxyCmdlet", DefaultParameterSetName = "Docs")]
     [DoNotExport]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
         [ValidateNotNullOrEmpty]
         public string DocsFolder { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "Docs")]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ExamplesFolder { get; set; }
 

@@ -1,11 +1,11 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
     /// <summary>Resource tags</summary>
     public partial class TrackedResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrackedResourceTags,
-        Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ITrackedResourceTagsInternal
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrackedResourceTags,
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrackedResourceTagsInternal
     {
 
         /// <summary>Creates an new <see cref="TrackedResourceTags" /> instance.</summary>
@@ -16,8 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
     }
     /// Resource tags
     public partial interface ITrackedResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.IAssociativeArray<string>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IAssociativeArray<string>
     {
 
     }

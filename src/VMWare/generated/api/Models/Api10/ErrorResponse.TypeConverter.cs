@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>
     /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ErrorResponse" />
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
             try
             {
                 string text = sourceValue.ToString()?.Trim();
-                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonType.Object;
+                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonType.Object;
             }
             catch
             {
@@ -101,14 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         /// <returns>
         /// an instance of <see cref="ErrorResponse" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse).IsAssignableFrom(type))
             {
                 return sourceValue;
             }

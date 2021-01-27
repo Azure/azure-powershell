@@ -1,9 +1,9 @@
 # region Generated 
   # Load the private module dll
-  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.VMWare.private.dll')
+  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.VMware.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.VMWare.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Module]::Instance
 
   # Export nothing to clear implicit exports
   Export-ModuleMember

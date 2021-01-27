@@ -1,6 +1,6 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>An ExpressRoute Circuit</summary>
     [System.ComponentModel.TypeConverter(typeof(CircuitTypeConverter))]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -61,15 +61,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRouteId = (string) content.GetValueForProperty("ExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRouteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("ExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).PrimarySubnet = (string) content.GetValueForProperty("PrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).PrimarySubnet, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).SecondarySubnet = (string) content.GetValueForProperty("SecondarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).SecondarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).PrimarySubnet = (string) content.GetValueForProperty("PrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).PrimarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).SecondarySubnet = (string) content.GetValueForProperty("SecondarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).SecondarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRouteId = (string) content.GetValueForProperty("ExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRouteId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("ExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,35 +82,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRouteId = (string) content.GetValueForProperty("ExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRouteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("ExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).PrimarySubnet = (string) content.GetValueForProperty("PrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).PrimarySubnet, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).SecondarySubnet = (string) content.GetValueForProperty("SecondarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuitInternal)this).SecondarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).PrimarySubnet = (string) content.GetValueForProperty("PrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).PrimarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).SecondarySubnet = (string) content.GetValueForProperty("SecondarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).SecondarySubnet, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRouteId = (string) content.GetValueForProperty("ExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRouteId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("ExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuitInternal)this).ExpressRoutePrivatePeeringId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuit" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuit" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuit DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuit DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new Circuit(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.Circuit"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.Circuit"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuit" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuit" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuit DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuit DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new Circuit(content);
         }
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICircuit FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICircuit FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
     /// An ExpressRoute Circuit
     [System.ComponentModel.TypeConverter(typeof(CircuitTypeConverter))]

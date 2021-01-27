@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json
 {
     internal static class JsonModelCache
     {

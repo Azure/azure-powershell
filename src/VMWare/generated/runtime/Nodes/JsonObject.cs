@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json
 {
     public partial class JsonObject : JsonNode, IDictionary<string, JsonNode>
     {

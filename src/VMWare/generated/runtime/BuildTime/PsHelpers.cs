@@ -10,7 +10,7 @@ using System.Linq;
 using System.Management.Automation;
 using Pwsh = System.Management.Automation.PowerShell;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 {
     internal static class PsHelpers
     {

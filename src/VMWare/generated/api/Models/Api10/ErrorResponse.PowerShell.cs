@@ -1,8 +1,11 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
+namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>The resource management error response.</summary>
+    /// <summary>
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ErrorResponseTypeConverter))]
     public partial class ErrorResponse
     {
@@ -48,33 +51,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
             return new ErrorResponse(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
             return new ErrorResponse(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -87,16 +90,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Message, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponse"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponse"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -109,11 +112,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Message, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Detail = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse[]) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorResponseTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).AdditionalInfo = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo[]) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             AfterDeserializePSObject(content);
         }
 
@@ -122,14 +125,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api10.IErrorResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api10.IErrorResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
-        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMWare.Runtime.SerializationMode.IncludeAll)?.ToString();
+        public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The resource management error response.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
     [System.ComponentModel.TypeConverter(typeof(ErrorResponseTypeConverter))]
     public partial interface IErrorResponse
 

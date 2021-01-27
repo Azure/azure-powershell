@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
+Module Name: Az.VMware
 online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/remove-azvmwarecluster
 schema: 2.0.0
 ---
 
-# Remove-AzVMWareCluster
+# Remove-AzVMwareCluster
 
 ## SYNOPSIS
 Delete a cluster in a private cloud
@@ -14,14 +14,14 @@ Delete a cluster in a private cloud
 
 ### Delete (Default)
 ```
-Remove-AzVMWareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Remove-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzVMWareCluster -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzVMwareCluster -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Delete a cluster in a private cloud
 
 ### Example 1: Delete cluster in private cloud
 ```powershell
-PS C:\> Remove-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Remove-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 ```
 
@@ -75,7 +75,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -213,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 
 ## OUTPUTS
 
@@ -228,7 +228,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.VMWare
-This directory contains the PowerShell module for the VMWare service.
+# Az.VMware
+This directory contains the PowerShell module for the VMware service.
 
 ---
 ## Status
-[![Az.VMWare](https://img.shields.io/powershellgallery/v/Az.VMWare.svg?style=flat-square&label=Az.VMWare "Az.VMWare")](https://www.powershellgallery.com/packages/Az.VMWare/)
+[![Az.VMware](https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware "Az.VMware")](https://www.powershellgallery.com/packages/Az.VMware/)
 
 ## Info
 - Modifiable: yes
@@ -17,13 +17,13 @@ This directory contains the PowerShell module for the VMWare service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.VMWare`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.VMware`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -54,7 +54,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/vmware/resource-manager/Microsoft.AVS/stable/2020-03-20/vmware.json
 
 module-version: 0.1.0
-title: VMWare
+title: VMware
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
@@ -72,7 +72,7 @@ directive:
     remove: true
   # Hide cmdlets.
   - where:
-      verb: New
+      verb: New|Remove
       subject: PrivateCloud
     hide: true
   - where:
