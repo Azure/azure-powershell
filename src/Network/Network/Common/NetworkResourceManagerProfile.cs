@@ -1368,13 +1368,16 @@ namespace Microsoft.Azure.Commands.Network
                 // Virtual Router
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualRouter, MNM.VirtualRouter>();
+                cfg.CreateMap<CNM.PSRouteServer, MNM.VirtualRouter>();
                 cfg.CreateMap<CNM.PSVirtualRouterPeer, MNM.BgpConnection>();
+                cfg.CreateMap<CNM.PSRouteServerPeer, MNM.BgpConnection>();
                 cfg.CreateMap<CNM.PSPeerRoute, MNM.PeerRoute>();
                 cfg.CreateMap<CNM.PSHubIpConfiguration, MNM.HubIpConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.BgpConnection, CNM.PSBgpConnection>();
                 cfg.CreateMap<MNM.BgpConnection, CNM.PSVirtualRouterPeer>();
+                cfg.CreateMap<MNM.BgpConnection, CNM.PSRouteServerPeer>();
                 cfg.CreateMap<MNM.PeerRoute, CNM.PSPeerRoute>();
                 cfg.CreateMap<MNM.HubIpConfiguration, CNM.PSHubIpConfiguration>();
 

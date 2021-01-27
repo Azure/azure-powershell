@@ -21,18 +21,16 @@ using System;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Update-AzRouteServer")]
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
-    public partial class UpdateAzureRmVirtualRouter : VirtualRouterBaseCmdlet
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteServer", SupportsShouldProcess = true, DefaultParameterSetName = RouteServerParameterSetNames.ByRouteServerName), OutputType(typeof(PSRouteServer))]
+    public partial class UpdateAzureRmRouteServer : RouteServerBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
             Mandatory = true,
-            HelpMessage = "The resource group name of the virtual router.",
+            HelpMessage = "The resource group name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -41,29 +39,29 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName")]
         [Parameter(
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
             Mandatory = true,
-            HelpMessage = "The name of the virtual router.",
+            HelpMessage = "The name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public string RouterName { get; set; }
+        public string RouteServerName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
-            HelpMessage = "Flag to allow branch to branch traffic for virtual router.")]
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
+            HelpMessage = "Flag to allow branch to branch traffic for route server.")]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterResourceId,
-            HelpMessage = "Flag to allow branch to branch traffic for virtual router.")]
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
+            HelpMessage = "Flag to allow branch to branch traffic for route server.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterResourceId,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
             Mandatory = true,
-            HelpMessage = "ResourceId of the virtual router.",
+            HelpMessage = "ResourceId of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
@@ -73,28 +71,28 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (string.Equals(this.ParameterSetName, VirtualRouterParameterSetNames.ByVirtualRouterResourceId, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(this.ParameterSetName, RouteServerParameterSetNames.ByRouteServerResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 this.ResourceGroupName = resourceInfo.ResourceGroupName;
-                this.RouterName = resourceInfo.ResourceName;
+                this.RouteServerName = resourceInfo.ResourceName;
             }
 
             string ipConfigName = "ipconfig1";
 
-            var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouterName);
+            var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
             virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
-            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouterName, virtualHub);
+            this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, virtualHub);
 
             var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);
             psVirtualHub.ResourceGroupName = this.ResourceGroupName;
             psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-            AddBgpConnectionsToPSVirtualHub(virtualHub, psVirtualHub, ResourceGroupName, RouterName);
-            AddIpConfigurtaionToPSVirtualHub(psVirtualHub, this.ResourceGroupName, RouterName, ipConfigName);
+            AddBgpConnectionsToPSVirtualHub(psVirtualHub, ResourceGroupName, RouteServerName);
+            AddIpConfigurtaionToPSVirtualHub(psVirtualHub, this.ResourceGroupName, RouteServerName, ipConfigName);
 
-            var psVirtualRouter = new PSVirtualRouter(psVirtualHub);
-            psVirtualRouter.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-            WriteObject(psVirtualRouter, true);
+            var routeServerModel = new PSRouteServer(psVirtualHub);
+            routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+            WriteObject(routeServerModel, true);
         }
     }
 }
