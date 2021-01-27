@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,31 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System.Net;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Linq;
-using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Add-AzRouteServerPeer")]
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeer", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
-    public partial class AddAzureRmVirtualRouterPeer : VirtualRouterBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteServerPeer", SupportsShouldProcess = true, DefaultParameterSetName = RouteServerPeerParameterSetNames.ByRouteServerPeerName), OutputType(typeof(PSRouteServer))]
+    public partial class AddAzureRmRouteServerPeer : RouteServerBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group name of the virtual router/peer.",
+            HelpMessage = "The resource group name of the route server/peer.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -46,21 +38,21 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the virtual router Peer.",
+            HelpMessage = "The name of the route server peer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PeerName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Ip of remote VirtualRouter peer.",
+            HelpMessage = "Ip of remote route server peer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PeerIp { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "ASN of remote VirtualRouter peer.",
+            HelpMessage = "ASN of remote route server peer.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public uint PeerAsn { get; set; }
@@ -68,9 +60,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterName,
-            HelpMessage = "The virtual router where peer exists.")]
-        public string VirtualRouterName { get; set; }
+            ParameterSetName = RouteServerPeerParameterSetNames.ByRouteServerName,
+            HelpMessage = "The route server where peer exists.")]
+        public string RouteServerName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -87,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
             var present = true;
             try
             {
-                this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Get(this.ResourceGroupName, this.VirtualRouterName, this.PeerName);
+                this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.Get(this.ResourceGroupName, this.RouteServerName, this.PeerName);
             }
             catch (Exception ex)
             {
@@ -104,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (present)
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.PeerName, this.ResourceGroupName, this.VirtualRouterName));
+                throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.PeerName, this.ResourceGroupName, this.RouteServerName));
             }
 
             ConfirmAction(
@@ -113,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.PeerName));
-                    PSVirtualRouterPeer peer = new PSVirtualRouterPeer
+                    PSRouteServerPeer peer = new PSRouteServerPeer
                     {
                         PeerAsn = this.PeerAsn,
                         PeerIp = this.PeerIp,
@@ -122,21 +114,20 @@ namespace Microsoft.Azure.Commands.Network
                     string ipConfigName = "ipconfig1";
 
                     var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(peer);
-                    
-                    this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.VirtualRouterName, this.PeerName, bgpConnectionModel);
-                    var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.VirtualRouterName);
+
+                    this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, this.PeerName, bgpConnectionModel);
+                    var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.RouteServerName);
                     var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHub);
                     virtualHubModel.ResourceGroupName = this.ResourceGroupName;
                     virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
-                    AddBgpConnectionsToPSVirtualHub(virtualHub, virtualHubModel, ResourceGroupName, this.VirtualRouterName);
-                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, this.VirtualRouterName, ipConfigName);
+                    AddBgpConnectionsToPSVirtualHub(virtualHubModel, ResourceGroupName, this.RouteServerName);
+                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, this.RouteServerName, ipConfigName);
 
-                    var VirtualRouterModel = new PSVirtualRouter(virtualHubModel);
-                    VirtualRouterModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
+                    var routeServerModel = new PSRouteServer(virtualHubModel);
+                    routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
 
-                    WriteObject(VirtualRouterModel, true);
+                    WriteObject(routeServerModel, true);
                 });
-
         }
     }
 }
