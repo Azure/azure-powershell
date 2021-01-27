@@ -8,8 +8,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
-
-
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -20,25 +20,47 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
 
-        private string paramValueHistoryFilePath = "";
+        private System.Threading.Mutex _mutex = new System.Threading.Mutex(false, "paramValueHistoryFile_update");
 
-        private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
+        private readonly Dictionary<string, Dictionary<string, string>> _commandPparamToResourceMap;
+
+        private string _paramValueHistoryFilePath = "";
+        private CancellationTokenSource _cancellationTokenSource;
+
 
         public ParameterValuePredictor()
         {
             var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
             var directory = fileInfo.DirectoryName;
             var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
-            _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+            _commandPparamToResourceMap = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
 
             String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string[] paths = new string[] { path, "Microsoft", "Windows", "PowerShell", "PSReadLine", "paramValueHistory.json" };
-            paramValueHistoryFilePath = System.IO.Path.Combine(paths);
-            //Console.WriteLine(filePath);
-            if (System.IO.File.Exists(paramValueHistoryFilePath))
+            string[] paths = new string[] { path, "Microsoft", "Windows", "PowerShell", "AzPredictor", "paramValueHistory.json" };
+            _paramValueHistoryFilePath = System.IO.Path.Combine(paths);
+            Directory.CreateDirectory(Path.GetDirectoryName(_paramValueHistoryFilePath));
+
+            Task.Run(() =>
             {
-                _localParameterValues = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(File.ReadAllText(paramValueHistoryFilePath), JsonUtilities.DefaultSerializerOptions);
-            }
+                if (System.IO.File.Exists(_paramValueHistoryFilePath))
+                {
+                    _mutex.WaitOne();
+                    try
+                    {
+                        var localParameterValues = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(File.ReadAllText(_paramValueHistoryFilePath), JsonUtilities.DefaultSerializerOptions);
+                        foreach (var v in localParameterValues)
+                        {
+                            _localParameterValues.AddOrUpdate(v.Key, key => v.Value, (key, oldValue) => oldValue);
+                        }
+                    }
+                    finally
+                    {
+                        _mutex.ReleaseMutex();
+                    }
+                }
+
+                
+            });
 
         }
 
@@ -67,12 +89,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
         public string GetParameterValueFromAzCommand(string commandNoun, string parameterName)
         {
-            if (_command_param_to_resource_map.ContainsKey(commandNoun))
+            if (_commandPparamToResourceMap.ContainsKey(commandNoun))
             {
                 parameterName = parameterName.ToLower();
-                if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
+                if (_commandPparamToResourceMap[commandNoun].ContainsKey(parameterName))
                 {
-                    var key = _command_param_to_resource_map[commandNoun][parameterName];
+                    var key = _commandPparamToResourceMap[commandNoun][parameterName];
                     if (_localParameterValues.TryGetValue(key, out var value))
                     {
                         return value;
@@ -124,15 +146,32 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 if (command[i - 1] is CommandParameterAst parameterAst && command[i] is StringConstantExpressionAst)
                 {
                     var parameterName = command[i - 1].ToString().ToLower().Trim('-');
-                    if (_command_param_to_resource_map.ContainsKey(commandNoun))
+                    if (_commandPparamToResourceMap.ContainsKey(commandNoun))
                     {
-                        if (_command_param_to_resource_map[commandNoun].ContainsKey(parameterName))
+                        if (_commandPparamToResourceMap[commandNoun].ContainsKey(parameterName))
                         {
-                            var key = _command_param_to_resource_map[commandNoun][parameterName];
+                            _cancellationTokenSource?.Cancel();
+                            _cancellationTokenSource = new CancellationTokenSource();
+                            var key = _commandPparamToResourceMap[commandNoun][parameterName];
                             var parameterValue = command[i].ToString();
-                            this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
-                            String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
-                            System.IO.File.WriteAllText(paramValueHistoryFilePath, localParameterValuesJson);
+                            Task.Run(() =>
+                            {
+                                this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
+                                if (_cancellationTokenSource.IsCancellationRequested)
+                                {
+                                    throw new OperationCanceledException();
+                                }
+                                String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
+                                _mutex.WaitOne();
+                                try
+                                {
+                                    System.IO.File.WriteAllText(_paramValueHistoryFilePath, localParameterValuesJson);
+                                }
+                                finally
+                                {
+                                    _mutex.ReleaseMutex();
+                                }
+                            });
                         }
                     }
                 }   
