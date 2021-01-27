@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints?.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
-
             ConnectivityEndpoints = cluster?.Properties?.ConnectivityEndpoints?.Select(endpoint => new AzureHDInsightConnectivityEndpoint(endpoint)).ToList();
             Error = cluster.Properties.Errors?.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
@@ -283,6 +282,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public AzureHDInsightComputeIsolationProperties ComputeIsolationProperties;
 
+        /// <summary>
+        /// Gets or sets the connectivity endpoints.
+        /// </summary>
         public IList<AzureHDInsightConnectivityEndpoint> ConnectivityEndpoints;
     }
 }
