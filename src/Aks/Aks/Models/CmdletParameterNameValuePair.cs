@@ -12,25 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-using Microsoft.Azure.Commands.Common.Exceptions;
-
-namespace Microsoft.Azure.Commands.Aks.Commands
+namespace Microsoft.Azure.Commands.Aks.Models
 {
-    internal static class Utilities
+    internal struct CmdletParameterNameValuePair
     {
-        public static string GetParentResourceName(string parentResource, string parameterSource)
+        public CmdletParameterNameValuePair(string name, object value)
         {
-            if (string.IsNullOrWhiteSpace(parentResource))
-                throw new AzPSArgumentException(
-                    Properties.Resources.ParentResourceMustNotBeEmpty,
-                    parameterSource,
-                    desensitizedMessage: Properties.Resources.ParentResourceMustNotBeEmpty);
-
-            var items = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-            return items.Length > 0 ? items[items.Length - 1] : null;
+            Name = name;
+            Value = value;
         }
+
+        public string Name { get; set; }
+        public object Value { get; set; }
     }
 }
