@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,18 +22,17 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzRouteServer")]
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureVirtualRouterCommand : NetworkBaseCmdlet
+
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteServer", DefaultParameterSetName = RouteServerParameterSetNames.ByRouteServerName, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureRmRouteServerCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
-            HelpMessage = "The resource group name of the virtual router.",
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
+            HelpMessage = "The resource group name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -42,27 +41,27 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName,
-            HelpMessage = "The name of the virtual router.",
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
+            HelpMessage = "The name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string RouterName { get; set; }
+        public string RouteServerName { get; set; }
 
         [Parameter(
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterInputObject,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual router input object.")]
+            HelpMessage = "The route server input object.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualRouter InputObject { get; set; }
+        public PSRouteServer InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterResourceId,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual router resource Id.")]
+            HelpMessage = "The route server resource Id.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter("Microsoft.Network/virtualRouters")]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string ResourceId { get; set; }
 
         [Parameter(
@@ -78,15 +77,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(VirtualRouterParameterSetNames.ByVirtualRouterInputObject, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(RouteServerParameterSetNames.ByRouteServerInputObject, StringComparison.OrdinalIgnoreCase))
             {
-                RouterName = InputObject.Name;
+                RouteServerName = InputObject.Name;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
-            else if (ParameterSetName.Equals(VirtualRouterParameterSetNames.ByVirtualRouterResourceId, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(RouteServerParameterSetNames.ByRouteServerResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
-                RouterName = parsedResourceId.ResourceName;
+                RouteServerName = parsedResourceId.ResourceName;
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
@@ -94,15 +93,15 @@ namespace Microsoft.Azure.Commands.Network
 
             ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemoveVirtualRouterWarning, this.RouterName),
+                    string.Format(Properties.Resources.RemoveRouteServerWarning, this.RouteServerName),
                     Properties.Resources.RemoveResourceMessage,
-                    this.RouterName,
+                    this.RouteServerName,
                 () =>
                 {
                     string ipConfigName = "ipconfig1";
 
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Delete(ResourceGroupName, RouterName, ipConfigName);
-                    this.NetworkClient.NetworkManagementClient.VirtualHubs.Delete(ResourceGroupName, RouterName);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Delete(ResourceGroupName, RouteServerName, ipConfigName);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubs.Delete(ResourceGroupName, RouteServerName);
                     if (PassThru)
                     {
                         WriteObject(true);
