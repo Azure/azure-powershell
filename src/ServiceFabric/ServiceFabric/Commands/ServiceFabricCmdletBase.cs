@@ -12,6 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Security.KeyVault.Certificates;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,33 +41,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using System.Threading.Tasks;
 using Action = System.Action;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Internal.Resources.Utilities;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.Models;
-using Newtonsoft.Json.Linq;
-using System.Threading;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json;
-using SFResource = Microsoft.Azure.Management.ServiceFabric.Models.Resource;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -97,7 +95,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
         private Lazy<GraphRbacManagementClient> graphClient;
-        private Lazy<IKeyVaultClient> keyVaultClient;
+        private Lazy<CertificateClient> certificateClient;
+        private Lazy<SecretClient> secretClient;
 
         internal IComputeManagementClient ComputeClient
         {
@@ -117,12 +116,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { graphClient = new Lazy<GraphRbacManagementClient>(() => value); }
         }
 
-        internal IKeyVaultClient KeyVaultClient
+        public Lazy<CertificateClient> CertificateClient
         {
-            get { return keyVaultClient.Value; }
-            set { keyVaultClient = new Lazy<IKeyVaultClient>(() => value); }
+            get { return certificateClient; }
+            set { certificateClient = value; }
         }
 
+        public Lazy<SecretClient> SecretClient
+        {
+            get { return secretClient; }
+            set { secretClient = value; }
+        }
         public ServiceFabricCmdletBase() : base()
         {
             InitializeAzureRmClients();
@@ -139,9 +143,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
-
-            keyVaultClient = new Lazy<IKeyVaultClient>(() =>
-            new KeyVaultClient(AuthenticationCallback));
 
             graphClient = new Lazy<GraphRbacManagementClient>(() =>
              AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
@@ -404,7 +405,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
+        protected KeyVaultCertificateWithPolicy ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -433,23 +434,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
             WriteVerboseWithTimestamp(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
-            var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
-                CreateVaultUri(keyVaultName).ToString(),
-                certificateName,
-                fileContentEncoded,
-                clearPassword,
-                new CertificatePolicy
+            var certificateOption = new ImportCertificateOptions(certificateName, new X509Certificate().GetRawCertData())
+            {
+                Password = clearPassword,
+                Policy = new CertificatePolicy(WellKnownIssuerNames.Self, certificateName)
                 {
-                    SecretProperties = new SecretProperties
-                    {
-                        ContentType = Constants.SecretContentType
-                    }
+                    ContentType = new CertificateContentType(Constants.SecretContentType),
                 }
-                ).GetAwaiter().GetResult();
+            };
+            var certificateProperties = this.certificateClient.Value.ImportCertificateAsync(certificateOption).GetAwaiter().GetResult();
 
-            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Id));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}"));
 
-            return certificateBundle;
+            return certificateProperties;
         }
 
         protected string GetCurrentUserObjectId()
@@ -585,7 +582,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             "Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}'",
                             beginRequestResponse.RequestId,
                             beginRequestResponse.Response.StatusCode);
-                        
+
                     }
 
                     WriteErrorWithTimestamp(errorMessage);
@@ -597,7 +594,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 PrintSdkExceptionDetail(e);
                 throw;
             }
-            
+
             return result?.Body;
         }
 
