@@ -13,9 +13,16 @@ Gets properties of Virtual Machine Extensions installed on a virtual machine.
 
 ## SYNTAX
 
+### GetExtensionParameterSet (Default)
 ```
 Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### VMParameterSet
+```
+Get-AzVMExtension [-VM <PSVirtualMachine>] [-Status] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +105,30 @@ AutoUpgradeMinorVersion : True
 ForceUpdateTag          :
 ```
 
+### Example 4: Get properties of an extension using the VM parameter
+```
+PS C:\> $vm = Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine22"
+PS C:\> Get-AzVMExtension -VM $vm
+
+ResourceGroupName       : ResourceGroup11
+VMName                  : VirtualMachine22
+Name                    : CustomScriptExtension
+Location                : eastus
+Etag                    : null
+Publisher               : Microsoft.Azure.Extensions
+ExtensionType           : CustomScript
+TypeHandlerVersion      : 2.0
+Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11
+                          /providers/Microsoft.Compute/virtualMachines/VirtualMachine22/extensions/CustomScriptExtension
+PublicSettings          : {}
+ProtectedSettings       :
+ProvisioningState       : Succeeded
+Statuses                :
+SubStatuses             :
+AutoUpgradeMinorVersion : True
+ForceUpdateTag          :
+```
+
 This command gets the list of extensions installed on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 
 ## PARAMETERS
@@ -123,7 +154,7 @@ This cmdlet gets properties for the extension that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExtensionParameterSet
 Aliases: ExtensionName
 
 Required: False
@@ -138,7 +169,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExtensionParameterSet
 Aliases:
 
 Required: True
@@ -163,13 +194,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VM
+Specifies the virtual machine object the extension is on.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameter Sets: VMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VMName
 Specifies the name of a virtual machine.
 This cmdlet gets properties of an extension from the virtual machine that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExtensionParameterSet
 Aliases: ResourceName
 
 Required: True
