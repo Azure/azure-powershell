@@ -359,6 +359,6 @@
     <value>Password is missing and no cache found for the current user.</value>
   </data>
   <data name="FailedToMigrateAdal2Msal" xml:space="preserve">
-    <value>INITIALZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
+    <value>INITIALIZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
   </data>
 </root>

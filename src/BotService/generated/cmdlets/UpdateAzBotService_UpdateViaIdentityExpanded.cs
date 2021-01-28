@@ -262,7 +262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ParametersBody.SkuName; set => ParametersBody.SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName)""); set => ParametersBody.SkuName = value; }
 
         /// <summary>Contains resource tags defined as key/value pairs.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ExportAs(typeof(global::System.Collections.Hashtable))]

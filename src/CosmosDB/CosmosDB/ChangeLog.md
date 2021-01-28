@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability of 'Az.CosmosDB' module
 * Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 * Introducing AnalyticalStorageTTL in SqlContainer.
