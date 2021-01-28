@@ -29,23 +29,12 @@ Remove a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes a Windows Virtual Desktop Scaling Plan in a Resource Group.
 
 ## PARAMETERS
 
