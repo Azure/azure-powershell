@@ -23,10 +23,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class GetSuggestionTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        string ITelemetryData.SessionId { get; set; }
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
         /// Gets the user input.

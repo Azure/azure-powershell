@@ -69,13 +69,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             {
                 return;
             }
-            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("path"), out var __jsonPath) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPath.FromJson(__jsonPath) : Path;}
             {_defaultQuerySetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("defaultQuerySettings"), out var __jsonDefaultQuerySettings) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.DefaultQuerySettings.FromJson(__jsonDefaultQuerySettings) : DefaultQuerySetting;}
-            {_elementType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("elementType"), out var __jsonElementType) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmType.FromJson(__jsonElementType) : ElementType;}
             {_model = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("model"), out var __jsonModel) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmModel.FromJson(__jsonModel) : Model;}
+            {_elementType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("elementType"), out var __jsonElementType) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmType.FromJson(__jsonElementType) : ElementType;}
             {_navigationSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("navigationSource"), out var __jsonNavigationSource) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmNavigationSource.FromJson(__jsonNavigationSource) : NavigationSource;}
+            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("path"), out var __jsonPath) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ODataPath.FromJson(__jsonPath) : Path;}
             {_elementClrType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("elementClrType"), out var __jsonElementClrType) ? (string)__jsonElementClrType : (string)ElementClrType;}
-            {_requestContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("requestContainer"), out var __jsonRequestContainer) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IserviceProvider.FromJson(__jsonRequestContainer) : RequestContainer;}
+            {_requestContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("requestContainer"), out var __jsonRequestContainer) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any.FromJson(__jsonRequestContainer) : RequestContainer;}
             AfterFromJson(json);
         }
 
@@ -100,15 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._path ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._path.ToJson(null,serializationMode) : null, "path" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != this._defaultQuerySetting ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._defaultQuerySetting.ToJson(null,serializationMode) : null, "defaultQuerySettings" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._elementType ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._elementType.ToJson(null,serializationMode) : null, "elementType" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -116,7 +108,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
+                AddIf( null != this._elementType ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._elementType.ToJson(null,serializationMode) : null, "elementType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
                 AddIf( null != this._navigationSource ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._navigationSource.ToJson(null,serializationMode) : null, "navigationSource" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._path ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._path.ToJson(null,serializationMode) : null, "path" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {

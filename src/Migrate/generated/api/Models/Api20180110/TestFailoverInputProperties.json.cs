@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             {_providerSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("providerSpecificDetails"), out var __jsonProviderSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ProviderSpecificFailoverInput.FromJson(__jsonProviderSpecificDetails) : ProviderSpecificDetail;}
             {_failoverDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("failoverDirection"), out var __jsonFailoverDirection) ? (string)__jsonFailoverDirection : (string)FailoverDirection;}
-            {_networkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkId"), out var __jsonNetworkId) ? (string)__jsonNetworkId : (string)NetworkId;}
             {_networkType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkType"), out var __jsonNetworkType) ? (string)__jsonNetworkType : (string)NetworkType;}
+            {_networkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkId"), out var __jsonNetworkId) ? (string)__jsonNetworkId : (string)NetworkId;}
             {_skipTestFailoverCleanup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("skipTestFailoverCleanup"), out var __jsonSkipTestFailoverCleanup) ? (string)__jsonSkipTestFailoverCleanup : (string)SkipTestFailoverCleanup;}
             AfterFromJson(json);
         }
@@ -99,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             AddIf( null != this._providerSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._providerSpecificDetail.ToJson(null,serializationMode) : null, "providerSpecificDetails" ,container.Add );
             AddIf( null != (((object)this._failoverDirection)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._failoverDirection.ToString()) : null, "failoverDirection" ,container.Add );
-            AddIf( null != (((object)this._networkId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkId.ToString()) : null, "networkId" ,container.Add );
             AddIf( null != (((object)this._networkType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkType.ToString()) : null, "networkType" ,container.Add );
+            AddIf( null != (((object)this._networkId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkId.ToString()) : null, "networkId" ,container.Add );
             AddIf( null != (((object)this._skipTestFailoverCleanup)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._skipTestFailoverCleanup.ToString()) : null, "skipTestFailoverCleanup" ,container.Add );
             AfterToJson(ref container);
             return container;

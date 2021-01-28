@@ -59,9 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
+            {_targetProtectionContainerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetProtectionContainerId"), out var __jsonTargetProtectionContainerId) ? (string)__jsonTargetProtectionContainerId : (string)TargetProtectionContainerId;}
             {_policyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("policyId"), out var __jsonPolicyId) ? (string)__jsonPolicyId : (string)PolicyId;}
             {_providerSpecificInput = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("providerSpecificInput"), out var __jsonProviderSpecificInput) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ReplicationProviderSpecificContainerMappingInput.FromJson(__jsonProviderSpecificInput) : ProviderSpecificInput;}
-            {_targetProtectionContainerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetProtectionContainerId"), out var __jsonTargetProtectionContainerId) ? (string)__jsonTargetProtectionContainerId : (string)TargetProtectionContainerId;}
             AfterFromJson(json);
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._targetProtectionContainerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetProtectionContainerId.ToString()) : null, "targetProtectionContainerId" ,container.Add );
             AddIf( null != (((object)this._policyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._policyId.ToString()) : null, "policyId" ,container.Add );
             AddIf( null != this._providerSpecificInput ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._providerSpecificInput.ToJson(null,serializationMode) : null, "providerSpecificInput" ,container.Add );
-            AddIf( null != (((object)this._targetProtectionContainerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetProtectionContainerId.ToString()) : null, "targetProtectionContainerId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

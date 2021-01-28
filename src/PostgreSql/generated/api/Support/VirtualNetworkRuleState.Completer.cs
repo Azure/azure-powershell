@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for VirtualNetworkRuleState.</summary>
+    /// <summary>Virtual Network Rule State</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.VirtualNetworkRuleStateTypeConverter))]
     public partial struct VirtualNetworkRuleState :
         System.Management.Automation.IArgumentCompleter

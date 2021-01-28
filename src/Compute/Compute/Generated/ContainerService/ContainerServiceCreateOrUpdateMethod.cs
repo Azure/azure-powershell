@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [WindowsAzure.Commands.Common.CustomAttributes.CmdletDeprecation()]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 
+    [WindowsAzure.Commands.Common.CustomAttributes.CmdletDeprecation()]
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet

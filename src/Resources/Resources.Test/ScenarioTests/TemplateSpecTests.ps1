@@ -247,6 +247,33 @@ function Test-RemoveTemplateSpec
 
 <#
 .SYNOPSIS
+Tests that using a non-existant TemplateSpec throws the correct type of error
+#>
+function Test-TemplateSpecErrorType
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+    try
+    {
+        # Prepare our RG and basic template spec (with two versions):
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        Assert-Throws { Get-AzTemplateSpec -ResourceGroupName $rgname -Name $rname }
+        Assert-AreEqual $error.Exception.GetType().name TemplateSpecsErrorException
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Validates that when New-AzTemplateSpec is executed with a -Tags parameter value 
 and neither the template spec or version exist, the Tags get applied to both the 
 new template spec and the new template spec version.

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
+            {_sendToOwner = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sendToOwners"), out var __jsonSendToOwners) ? (string)__jsonSendToOwners : (string)SendToOwner;}
             {_customEmailAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("customEmailAddresses"), out var __jsonCustomEmailAddresses) ? If( __jsonCustomEmailAddresses as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : CustomEmailAddress;}
             {_locale = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("locale"), out var __jsonLocale) ? (string)__jsonLocale : (string)Locale;}
-            {_sendToOwner = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sendToOwners"), out var __jsonSendToOwners) ? (string)__jsonSendToOwners : (string)SendToOwner;}
             AfterFromJson(json);
         }
 
@@ -95,6 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._sendToOwner)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sendToOwner.ToString()) : null, "sendToOwners" ,container.Add );
             if (null != this._customEmailAddress)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -105,7 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 container.Add("customEmailAddresses",__w);
             }
             AddIf( null != (((object)this._locale)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._locale.ToString()) : null, "locale" ,container.Add );
-            AddIf( null != (((object)this._sendToOwner)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sendToOwner.ToString()) : null, "sendToOwners" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

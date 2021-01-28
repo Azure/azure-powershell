@@ -16,12 +16,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>The charset of the database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 1)]
-        public string Charset { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Charset; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Charset = value; }
+        public string Charset { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Charset; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Charset = value ?? null; }
 
         /// <summary>The collation of the database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 2)]
-        public string Collation { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Collation; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Collation = value; }
+        public string Collation { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Collation; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabasePropertiesInternal)Property).Collation = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

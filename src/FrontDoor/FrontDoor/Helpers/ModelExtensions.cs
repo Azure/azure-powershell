@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Type = sdkFrontDoor.Type,
                 Tags = sdkFrontDoor.Tags.ToHashTableTags(),
                 FriendlyName = sdkFrontDoor.FriendlyName,
+                FrontDoorId = sdkFrontDoor.FrontdoorId,
                 RoutingRules = sdkFrontDoor.RoutingRules?.Select(x => x.ToPSRoutingRule()).ToList(),
                 BackendPools = sdkFrontDoor.BackendPools?.Select(x => x.ToPSBackendPool()).ToList(),
                 HealthProbeSettings = sdkFrontDoor.HealthProbeSettings?.Select(x => x.ToPSHealthProbeSetting()).ToList(),

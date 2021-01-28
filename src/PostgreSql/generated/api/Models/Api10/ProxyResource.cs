@@ -3,7 +3,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     public partial class ProxyResource :
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IProxyResource,
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
         private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.Resource();
 
         /// <summary>
-        /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResourceInternal)__resource).Id; }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResourceInternal)__resource).Name; }
 
         /// <summary>
-        /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResourceInternal)__resource).Type; }
@@ -58,14 +58,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
             await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     public partial interface IProxyResource :
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResource
     {
 
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     internal partial interface IProxyResourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IResourceInternal
     {

@@ -10,18 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The failover deployment model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.FailoverDeploymentModel? FailoverDeploymentModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).FailoverDeploymentModel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).FailoverDeploymentModel = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.FailoverDeploymentModel? FailoverDeploymentModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).FailoverDeploymentModel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).FailoverDeploymentModel = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.FailoverDeploymentModel)""); }
 
         /// <summary>The recovery plan groups.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup[] Group { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).Group; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).Group = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryPlanGroup[] Group { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).Group; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).Group = value ; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.CreateRecoveryPlanInputProperties()); set { {_property = value;} } }
 
         /// <summary>The primary fabric Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string PrimaryFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).PrimaryFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).PrimaryFabricId = value; }
+        public string PrimaryFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).PrimaryFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).PrimaryFabricId = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputProperties _property;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The recovery fabric Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RecoveryFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).RecoveryFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).RecoveryFabricId = value; }
+        public string RecoveryFabricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).RecoveryFabricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ICreateRecoveryPlanInputPropertiesInternal)Property).RecoveryFabricId = value ; }
 
         /// <summary>Creates an new <see cref="CreateRecoveryPlanInput" /> instance.</summary>
         public CreateRecoveryPlanInput()

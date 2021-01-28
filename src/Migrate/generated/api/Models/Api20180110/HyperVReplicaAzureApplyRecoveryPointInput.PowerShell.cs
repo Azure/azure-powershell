@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation = (string) content.GetValueForProperty("VaultLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).PrimaryKekCertificatePfx = (string) content.GetValueForProperty("PrimaryKekCertificatePfx",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).PrimaryKekCertificatePfx, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).SecondaryKekCertificatePfx = (string) content.GetValueForProperty("SecondaryKekCertificatePfx",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).SecondaryKekCertificatePfx, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation = (string) content.GetValueForProperty("VaultLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation = (string) content.GetValueForProperty("VaultLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).PrimaryKekCertificatePfx = (string) content.GetValueForProperty("PrimaryKekCertificatePfx",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).PrimaryKekCertificatePfx, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).SecondaryKekCertificatePfx = (string) content.GetValueForProperty("SecondaryKekCertificatePfx",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).SecondaryKekCertificatePfx, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation = (string) content.GetValueForProperty("VaultLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzureApplyRecoveryPointInputInternal)this).VaultLocation, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
