@@ -73,9 +73,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
         //repository should be in between of first appeartance of '=' and '&'
         protected string GetLastListed(string nextLink)
         {
-            int left = nextLink.IndexOf('=');
-            int right = nextLink.IndexOf('&');
-            return HttpUtility.UrlDecode(nextLink.Substring(left + 1, right - left - 1));
+            int startOfParam = nextLink.IndexOf('<') + 1;
+            int endOfParam = nextLink.IndexOf('>') - startOfParam - 1;
+            string param = nextLink.Substring(startOfParam, endOfParam).Substring(nextLink.IndexOf('?') + 1);
+            string last = param.Split('&')[0].Split('=')[1];
+            return HttpUtility.UrlDecode(last);
         }
     }
 }
