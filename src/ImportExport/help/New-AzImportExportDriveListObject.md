@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/en-us/powershell/module/az.importexport/new-AzImportExportDriveListObject
+online version: https://docs.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 schema: 2.0.0
 ---
 

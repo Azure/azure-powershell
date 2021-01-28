@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/invoke-Azstorageaccountfailover
+online version: https://docs.microsoft.com/powershell/module/Az.storage/invoke-Azstorageaccountfailover
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ Invoke-AzStorageAccountFailover -InputObject <PSStorageAccount> [-Force] [-AsJob
 Invokes failover of a Storage account. Failover request can be triggered for a storage account in case of availability issues. 
 The failover occurs from the storage account's primary cluster to secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover.
 Please understand the following impact to your storage account before you initiate the failover:
-1.1. Please check the Last Sync Time using GET Blob Service Stats (https://docs.microsoft.com/en-us/rest/api/storageservices/get-blob-service-stats), GET Table Service Stats (https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient.getservicestats?view=azure-dotnet) and GET Queue Service Stats (https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueueclient.getservicestats?view=azure-dotnet) for your account. This is the data you may lose if you initiate the failover.
+1.1. Please check the Last Sync Time using GET Blob Service Stats (https://docs.microsoft.com/rest/api/storageservices/get-blob-service-stats), GET Table Service Stats (https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient.getservicestats?view=azure-dotnet) and GET Queue Service Stats (https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueueclient.getservicestats?view=azure-dotnet) for your account. This is the data you may lose if you initiate the failover.
 2.After the failover, your storage account type will be converted to locally redundant storage(LRS). You can convert your account to use geo-redundant storage(GRS).
 3.Once you re-enable GRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. https://azure.microsoft.com/en-us/pricing/details/bandwidth/
 

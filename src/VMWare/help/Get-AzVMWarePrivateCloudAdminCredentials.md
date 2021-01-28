@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMWare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredentials
+online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredentials
 schema: 2.0.0
 ---
 

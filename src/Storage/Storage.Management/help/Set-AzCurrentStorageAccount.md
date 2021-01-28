@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azcurrentstorageaccount
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azcurrentstorageaccount
 schema: 2.0.0
 ---
 

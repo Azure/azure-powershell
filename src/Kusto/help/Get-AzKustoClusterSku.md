@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/get-azkustoclustersku
+online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 schema: 2.0.0
 ---
 

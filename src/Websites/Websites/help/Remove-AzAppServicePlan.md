@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 78AAF476-2E9E-4E60-9940-9A9AC6F9506A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azappserviceplan
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azappserviceplan
 schema: 2.0.0
 ---
 

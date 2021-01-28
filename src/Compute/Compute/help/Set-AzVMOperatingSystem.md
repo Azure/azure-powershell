@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 39AADD19-2EDD-4C1F-BC9E-22186DD9A085
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem
 schema: 2.0.0
 ---
 
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 
 ### -TimeZone
 Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
-Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String

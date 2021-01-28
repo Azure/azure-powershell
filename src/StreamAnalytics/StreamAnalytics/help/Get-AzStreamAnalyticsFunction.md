@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: 7F08A880-1FC5-4542-8AB8-927BB999A552
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
 schema: 2.0.0
 ---
 
