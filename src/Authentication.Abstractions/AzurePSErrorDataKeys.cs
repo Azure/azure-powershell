@@ -42,6 +42,11 @@ namespace Microsoft.Azure.Commands.Common
         public static readonly string HttpStatusCode = KeyPrefix + "HttpStatusCode";
 
         /// <summary>
+        /// Key for cloud error code in http response body
+        /// </summary>
+        public static readonly string CloudErrorCodeKey = KeyPrefix + "CloudErrorCode";
+
+        /// <summary>
         /// Key for authentication error code which normally comes from MSAL.NET
         /// </summary>
         public static readonly string AuthErrorCodeKey = KeyPrefix + "AuthErrorCode";
@@ -100,6 +105,7 @@ namespace Microsoft.Azure.Commands.Common
             ErrorLineNumberKey,
             ErrorFileNameKey,
             ErrorHResultKey,
+            CloudErrorCodeKey,
         });
     }
 }

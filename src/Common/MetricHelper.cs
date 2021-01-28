@@ -303,17 +303,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 eventProperties.Add("interval", ((TimeSpan)(qos.StartTime - qos.PreviousEndTime)).ToString("c"));
             }
 
-            if (!qos.IsSuccess && qos.Exception?.Data?.Contains(AzurePSErrorDataKeys.ErrorKindKey) == true)
-            {
-                eventProperties.Add("pebcak", (qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey] == ErrorKind.UserError).ToString());
-            }
-
             if (qos.Exception != null && populateException)
             {
                 eventProperties["exception-type"] = qos.Exception.GetType().ToString();
+                string cloudErrorCode = null;
                 if (qos.Exception is CloudException cloudException)
                 {
                     eventProperties["exception-httpcode"] = cloudException.Response?.StatusCode.ToString();
+                    cloudErrorCode = cloudException.Body?.Code;
                 }
                 Exception innerException = qos.Exception.InnerException;
                 List<Exception> innerExceptions = new List<Exception>();
@@ -321,9 +318,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 while (innerException != null)
                 {
                     innerExceptions.Add(innerException);
-                    if (innerException is CloudException)
+                    if (innerException is CloudException innerCloudException)
                     {
-                        eventProperties["exception-httpcode"] = ((CloudException)qos.Exception).Response?.StatusCode.ToString();
+                        eventProperties["exception-httpcode"] = innerCloudException.Response?.StatusCode.ToString();
+                        cloudErrorCode = innerCloudException.Body?.Code;
                     }
                     innerException = innerException.InnerException;
                 }
@@ -339,12 +337,33 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     eventProperties["exception-stack"] = stack;
                 }
 
+                if (cloudErrorCode != null && !(qos.Exception.Data?.Contains(AzurePSErrorDataKeys.CloudErrorCodeKey) == true))
+                {
+                    qos.Exception.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = cloudErrorCode;
+                }
+
                 if (qos.Exception.Data != null)
                 {
                     if (qos.Exception.Data.Contains(AzurePSErrorDataKeys.HttpStatusCode))
                     {
                         eventProperties["exception-httpcode"] = qos.Exception.Data[AzurePSErrorDataKeys.HttpStatusCode].ToString();
                     }
+
+                    if (qos.Exception.Data.Contains(AzurePSErrorDataKeys.CloudErrorCodeKey) == true)
+                    {
+                        string existingErrorKind = qos.Exception.Data.Contains(AzurePSErrorDataKeys.ErrorKindKey)
+                                                    ? qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey].ToString()
+                                                    : null;
+                        cloudErrorCode = (string)qos.Exception.Data[AzurePSErrorDataKeys.CloudErrorCodeKey];
+                        // For the time being, we consider ResourceNotFound and ResourceGroupNotFound as user's input error. 
+                        // We are considering if ResourceNotFound should be false positive error.
+                        if (("ResourceNotFound".Equals(cloudErrorCode) || "ResourceGroupNotFound".Equals(cloudErrorCode))
+                            && existingErrorKind != ErrorKind.FalseError)
+                        {
+                            qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
+                        }
+                    }
+
                     StringBuilder sb = new StringBuilder();
                     foreach (var key in qos.Exception.Data?.Keys)
                     {
@@ -361,6 +380,20 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     if(sb.Length > 0)
                     {
                         eventProperties["exception-data"] = sb.ToString();
+                    }
+                }
+                //We record the case which exception has no message
+                if (string.IsNullOrEmpty(qos.Exception.Message))
+                {
+                    eventProperties["exception-emptymessage"] = true.ToString();
+                }
+
+                if (!qos.IsSuccess && qos.Exception?.Data?.Contains(AzurePSErrorDataKeys.ErrorKindKey) == true)
+                {
+                    eventProperties["pebcak"] = (qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey] == ErrorKind.UserError).ToString();
+                    if (qos.Exception.Data[AzurePSErrorDataKeys.ErrorKindKey] == ErrorKind.FalseError)
+                    {
+                        eventProperties["IsSuccess"] = true.ToString();
                     }
                 }
             }
