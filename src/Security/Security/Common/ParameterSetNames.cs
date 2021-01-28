@@ -37,5 +37,18 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string DataExportSettingsScope = "DataExportSettingsScope";
 
         #endregion
+
+        #region Sql Vulnerability Assessment
+
+        public const string OnPremMachines = "OnPremMachines";
+        public const string ResourceIdWithBaselineObject = "ResourceIdWithBaselineObject";
+        public const string ResourceIdWithBaselineLatest = "ResourceIdWithBaselineLatest";
+        public const string OnPremMachinesWithBaselineObject = "OnPremMachinesWithBaselineObject";
+        public const string OnPremMachinesWithBaselineLatest = "OnPremMachinesWithBaselineLatest";
+        public const string InputObjectWithResourceId = "InputObjectWithResourceId";
+        public const string InputObjectWithOnPrem = "InputObjectWithOnPrem";
+
+
+        #endregion
     }
 }

@@ -160,5 +160,11 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Summary = "Return output in a summarized form";
 
         #endregion
+
+        #region SQL Vulnerability Assessment
+
+        public const string Server = "Server name";
+        public const string Database = "Database name";
+        #endregion
     }
 }
