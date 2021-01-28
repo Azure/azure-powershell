@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,29 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System.Net;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Linq;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzRouteServer")]
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
-    public partial class NewAzureRmVirtualRouter : VirtualRouterBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteServer", SupportsShouldProcess = true, DefaultParameterSetName = RouteServerParameterSetNames.ByRouteServerName), OutputType(typeof(PSRouteServer))]
+    public partial class NewAzureRmRouteServer : RouteServerBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group name of the virtual router.",
+            HelpMessage = "The resource group name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -44,14 +39,14 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the virtual router.",
+            HelpMessage = "The name of the route server.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string RouteServerName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The subnet where the virtual router is hosted.")]
+            HelpMessage = "The subnet where the route server is hosted.")]
         [ValidateNotNullOrEmpty]
         public string HostedSubnet { get; set; }
 
@@ -80,11 +75,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            
+
             var present = true;
             try
             {
-                this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.Name);
+                this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.RouteServerName);
             }
             catch (Exception ex)
             {
@@ -101,20 +96,20 @@ namespace Microsoft.Azure.Commands.Network
 
             if (present)
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
+                throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.RouteServerName, this.ResourceGroupName));
             }
-            
+
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
-                Name,
+                RouteServerName,
                 () =>
                 {
-                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.RouteServerName));
                     PSVirtualHub virtualHub = new PSVirtualHub
                     {
                         ResourceGroupName = this.ResourceGroupName,
-                        Name = this.Name,
+                        Name = this.RouteServerName,
                         Location = this.Location
                     };
 
@@ -129,17 +124,17 @@ namespace Microsoft.Azure.Commands.Network
                     virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
                     virtualHubModel.Sku = "Standard";
 
-                    this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualHubModel);
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.CreateOrUpdate(this.ResourceGroupName, this.Name, ipConfigName, ipconfig);
-                    virtualHubModel = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.Name);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, virtualHubModel);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, ipConfigName, ipconfig);
+                    virtualHubModel = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.RouteServerName);
 
                     virtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHubModel);
                     virtualHub.ResourceGroupName = this.ResourceGroupName;
-                    AddIpConfigurtaionToPSVirtualHub(virtualHub, this.ResourceGroupName, this.Name, ipConfigName);
-                   
-                    var virtualRouter = new PSVirtualRouter(virtualHub);
-                    virtualRouter.Tag = TagsConversionHelper.CreateTagHashtable(virtualHubModel.Tags);
-                    WriteObject(virtualRouter, true);
+                    AddIpConfigurtaionToPSVirtualHub(virtualHub, this.ResourceGroupName, this.RouteServerName, ipConfigName);
+
+                    var routeServerModel = new PSRouteServer(virtualHub);
+                    routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHubModel.Tags);
+                    WriteObject(routeServerModel, true);
                 });
 
         }
