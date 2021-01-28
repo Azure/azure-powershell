@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.3'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Search.dll'
@@ -77,7 +77,10 @@ FunctionsToExport = @()
 CmdletsToExport = 'New-AzSearchService', 'Get-AzSearchService', 'Set-AzSearchService', 
                'Remove-AzSearchService', 'Get-AzSearchAdminKeyPair', 
                'New-AzSearchAdminKey', 'Get-AzSearchQueryKey', 
-               'New-AzSearchQueryKey', 'Remove-AzSearchQueryKey'
+               'New-AzSearchQueryKey', 'Remove-AzSearchQueryKey',
+               'Get-AzSearchPrivateEndpointConnection', 'Set-AzSearchPrivateEndpointConnection', 'Remove-AzSearchPrivateEndpointConnection',
+               'New-AzSearchSharedPrivateLinkResource', 'Get-AzSearchSharedPrivateLinkResource', 'Set-AzSearchSharedPrivateLinkResource', 'Remove-AzSearchSharedPrivateLinkResource',
+               'Get-AzSearchPrivateLinkResource'
 
 # Variables to export from this module
 # VariablesToExport = @()

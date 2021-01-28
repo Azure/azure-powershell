@@ -16,6 +16,7 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -81,11 +82,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EgressNatRule
+The list of egress  NAT rules that are associated with this link Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableBgp
 Enable BGP for this link connection
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressNatRule
+The list of ingress NAT rules that are associated with this link Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 

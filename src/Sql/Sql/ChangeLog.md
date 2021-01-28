@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+
+## Version 2.15.0
 * Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
 
 ## Version 2.14.0
