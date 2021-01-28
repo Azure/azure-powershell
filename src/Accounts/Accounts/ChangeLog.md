@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `Clear-AzContext` to clean token cache created by Az.ContainerRegistry
 
 ## Version 2.2.4
 * Shown correct client request id on debug message [#13745]

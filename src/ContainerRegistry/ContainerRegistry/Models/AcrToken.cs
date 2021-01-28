@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
 
         public bool IsExpired(int minutesBeforeExpiration)
         {
-            return (_exp - DateTime.UtcNow).Minutes <= minutesBeforeExpiration;
+            return DateTime.UtcNow.AddMinutes(minutesBeforeExpiration) >= _exp;
         }
     }
 }

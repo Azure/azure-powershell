@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             this._repositoryName = repository;
         }
 
-        protected override string _resource
+        protected override string Resource
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             }
         }
 
-        protected override string _name
+        protected override string Name
         {
             get
             {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             }
         }
 
-        protected override string _permission
+        protected override string Permission
         {
             get
             {

@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
     public abstract class ContainerRegistryDataPlaneOperationBase<T>
     {
         protected ContainerRegistryDataPlaneClient _client;
-        protected virtual string _scope
+        protected virtual string Scope
         {
             get
             {
-                return String.Format("{0}:{1}:{2}", _resource, _name, _permission);
+                return String.Format("{0}:{1}:{2}", Resource, Name, Permission);
             }
             set
             {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             }
         }
 
-        protected virtual string _resource
+        protected virtual string Resource
         {
             get
             {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             }
         }
 
-        protected virtual string _name
+        protected virtual string Name
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
             }
         }
 
-        protected virtual string _permission
+        protected virtual string Permission
         {
             get
             {
@@ -63,18 +63,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
 
         public T ProcessRequest()
         {
-            _client.Authenticate(_scope);
+            _client.Authenticate(Scope);
             return SendRequest();
         }
 
-        public virtual T SendRequest()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract T SendRequest();
 
         //sample link: </acr/v1/_catalog?last=test%2Fbusybox99&n=100&orderby=>; rel="next"
         //repository should be in between of first appeartance of '=' and '&'
-        protected string getLastListed(string nextLink)
+        protected string GetLastListed(string nextLink)
         {
             int left = nextLink.IndexOf('=');
             int right = nextLink.IndexOf('&');

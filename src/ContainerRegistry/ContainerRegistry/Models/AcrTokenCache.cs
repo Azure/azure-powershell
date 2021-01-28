@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
             return _cache.TryGetValue(key, out value);
         }
 
-        public void Add(string key, AcrToken token)
+        public void Set(string key, AcrToken token)
         {
             _cache[key] = token;
         }

@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -87,20 +85,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 }
             }
 
-            ClearAzureSessionComponents();
-
             if (PassThru.IsPresent)
             {
                 WriteObject(result);
             }
         }
-
-        //Clear components with on clear-azcontext events in azure session instance
-        void ClearAzureSessionComponents()
-        {
-            AzureSession.Instance.ClearComponentsOnClearAzContext();
-        }
     }
-
-
 }

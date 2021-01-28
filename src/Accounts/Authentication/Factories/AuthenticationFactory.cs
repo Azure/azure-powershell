@@ -349,9 +349,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(string token, Func<string> func = null)
+        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
         {
-            return new RenewingTokenCredential(new ExternalAccessToken(token, func));
+            return new RenewingTokenCredential(new ExternalAccessToken(accessToken, renew));
         }
 
         /// <summary>

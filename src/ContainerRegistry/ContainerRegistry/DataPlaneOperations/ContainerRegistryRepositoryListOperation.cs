@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations
                 {
                     try
                     {
-                        last = getLastListed(nextLink);
+                        last = GetLastListed(nextLink);
                         hasNext = true;
                     }
                     catch

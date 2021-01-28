@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             AcrToken value;
             if (!cache.TryGetToken(key, out value) || value.IsExpired(_minutesBeforeExpiration))
             {
-                string token = key.Equals(_refreshTokenKey) ? getRefreshToken() : getAccessToken(key);
+                string token = key.Equals(_refreshTokenKey) ? GetRefreshToken() : GetAccessToken(key);
                 try
                 {
                     value = new AcrToken(token);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     throw new InvalidOperationException(string.Format("Invalud token for {0}", key));
                 }
 
-                cache.Add(key, value);
+                cache.Set(key, value);
             }
             return value.GetToken();
         }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return _endPoint;
         }
         
-        private string getArmAccessToken()
+        private string GetArmAccessToken()
         {
             return AzureSession
                    .Instance.AuthenticationFactory
@@ -113,17 +113,17 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                    .AccessToken;
         }
 
-        private string getRefreshToken()
+        private string GetRefreshToken()
         {
             return GetClient()
                     .RefreshTokens
-                    .GetFromExchangeAsync(grantType: _defaultGrantType, service: _endPoint, accessToken: getArmAccessToken())
+                    .GetFromExchangeAsync(grantType: _defaultGrantType, service: _endPoint, accessToken: GetArmAccessToken())
                     .GetAwaiter()
                     .GetResult()
                     .RefreshTokenProperty;
         }
 
-        private string getAccessToken(string scope)
+        private string GetAccessToken(string scope)
         {
             return GetClient()
                     .AccessTokens
