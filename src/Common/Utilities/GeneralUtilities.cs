@@ -326,6 +326,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 matchers);
         }
 
+        public static string GetLog(HttpResponseMessage response)
+        {
+            return GetLog(response, null);
+        }
+
         public static string GetLog(HttpRequestMessage request, IList<Regex> matchers = null)
         {
             if (request == null)
@@ -342,6 +347,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 (HttpHeaders)request.Headers,
                 body,
                 matchers);
+        }
+
+        public static string GetLog(HttpRequestMessage request)
+        {
+            return GetLog(request, null);
         }
 
         public static string FormatString(string content)
