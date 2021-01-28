@@ -81,6 +81,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint);
 
         /// <summary>
+        /// Get service client credentials with initial token and delegate for renewing
+        /// </summary>
+        /// <param name="token">Initial token for credential</param>
+        /// <param name="function">Delegate for renewing token</param>
+        /// <returns>Service client credentials</returns>
+        ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null);
+
+        /// <summary>
         /// Remove any stored credentials for the given user
         /// </summary>
         /// <param name="account">The account to remove credentials for</param>

@@ -28,12 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
     }
 
-    public static class SharedComponentKeys
-    {
-        //Will be stored in AzureSession and shared between Az.ContainerRegistry and Az.Accounts
-        public const string AcrTokenCacheKey = "AcrTokenCache";   
-    }
-
     public static class StorSimpleConstants
     {
         public const string DefaultStorageAccountEndpoint = "core.windows.net";

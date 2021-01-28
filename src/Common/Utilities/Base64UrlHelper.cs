@@ -16,7 +16,7 @@ using System;
 using System.Globalization;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Profile.Utilities
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     //The source code is copied from https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/master/src/client/Microsoft.Identity.Client/Utils/Base64UrlHelpers.cs
     public static class Base64UrlHelper
