@@ -57,6 +57,9 @@ function Test-ExportLogAnalyticGroupByParameters
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        <#
+        ### Uncomment this area to run the test. 
+
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $container = "contain";
@@ -96,6 +99,7 @@ function Test-ExportLogAnalyticGroupByParameters
             $throttle_blob = $blobs | where {$_.name.contains("ThrottledRequests")};
             Assert-NotNull $throttle_blob;
         }
+        #>
     }
     finally
     {
