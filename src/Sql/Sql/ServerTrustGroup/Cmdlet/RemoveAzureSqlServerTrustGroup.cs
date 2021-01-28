@@ -12,27 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 {
-	/// <summary>
-	/// Cmdlet to create a new Azure Server Trust Group
-	/// </summary>
-	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
-	public class NewAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
+	[Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTrustGroupModel))]
+	public class RemoveAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
 		/// Gets or sets the name of the InstanceFailoverGroup to use.
 		/// </summary>
-		[Parameter(Mandatory = true,
+		[Parameter(Mandatory = false,
 			Position = 1,
 			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
 		[LocationCompleter("Microsoft.Sql/locations/serverTrustGroups")]
@@ -42,69 +37,39 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		/// <summary>
 		/// Gets or sets the name of the InstanceFailoverGroup to use.
 		/// </summary>
-		[Parameter(Mandatory = true,
+		[Parameter(Mandatory = false,
 			Position = 2,
 			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
 		[ValidateNotNullOrEmpty]
 		public string Name { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name of the InstanceFailoverGroup to use.
-		/// </summary>
-		[Parameter(Mandatory = true,
-			Position = 3,
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
-		[ValidateNotNullOrEmpty]
-		public List<String> GroupMembers { get; set; }
-
-		/// <summary>
-		/// Gets or sets the name of the InstanceFailoverGroup to use.
-		/// </summary>
-		[Parameter(Mandatory = false,
-			Position = 4,
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
-		[ValidateNotNullOrEmpty]
-		public List<String> TrustScope { get; set; }
 
 		protected override IEnumerable<AzureSqlServerTrustGroupModel> GetEntity()
 		{
-			//try
-			//{
-			//	ModelAdapter.GetServerTrustGroup(this.ResourceGroupName, this.Location, this.Name);
-			//}
-			//catch (CloudException)
-			//{
-				//if(ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-				//{
-					return null;
-				//}
-
-				//throw;
-			//}
-
-			//throw new PSArgumentException("Already exists");
+			return new List<AzureSqlServerTrustGroupModel>() {
+				ModelAdapter.GetServerTrustGroup(this.ResourceGroupName, this.Location, this.Name),
+			};
 		}
 
+		/// <summary>
+		/// No user input to apply to model
+		/// </summary>
+		/// <param name="model">Model retrieved from service</param>
+		/// <returns>The model that was passed in</returns>
 		protected override IEnumerable<AzureSqlServerTrustGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerTrustGroupModel> model)
 		{
-			List<AzureSqlServerTrustGroupModel> newEntity = new List<AzureSqlServerTrustGroupModel>();
-			newEntity.Add(new AzureSqlServerTrustGroupModel()
-			{
-				ResourceGroupName = this.ResourceGroupName,
-				Location = this.Location,
-				Name = this.Name,
-				TrustScope = this.TrustScope,
-				GroupMembers = this.GroupMembers
-			});
-			return newEntity;
+			return model;
 		}
 
+		/// <summary>
+		/// Persist deletion
+		/// </summary>
+		/// <param name="entity">The output of apply user input to model</param>
+		/// <returns>The input entity</returns>
 		protected override IEnumerable<AzureSqlServerTrustGroupModel> PersistChanges(IEnumerable<AzureSqlServerTrustGroupModel> entity)
 		{
-			return new List<AzureSqlServerTrustGroupModel>()
-			{
-				ModelAdapter.CreateServerTrustGroup(entity.First())
-			};
+			ModelAdapter.DeleteServerTrustGroup(this.ResourceGroupName, this.Location, this.Name);
+			return entity;
 		}
 	}
 }

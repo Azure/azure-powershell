@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; } 
 
         /// <summary>
         /// Initializes the Azure Sql Server Trust Group Adapter

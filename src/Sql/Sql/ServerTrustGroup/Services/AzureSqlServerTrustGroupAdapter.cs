@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,30 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
             return CreateServerTrustGroupModelFromResponse(res);
 		}
 
+        public List<AzureSqlServerTrustGroupModel> ListServerTrustGrousByInstance(string resourceGroupName, string serverTrustGroupName)
+		{
+            IPage<Management.Sql.Models.ServerTrustGroup> entities = Communicator.ListGroupsByInstance(resourceGroupName, serverTrustGroupName);
+            List<AzureSqlServerTrustGroupModel> models = new List<AzureSqlServerTrustGroupModel>();
+            foreach(Management.Sql.Models.ServerTrustGroup entity in entities)
+			{
+                models.Add(CreateServerTrustGroupModelFromResponse(entity));
+			}
+
+            return models;
+		}
+
+        public List<AzureSqlServerTrustGroupModel> ListServerTrustGrousByLocation(string resourceGroupName, string location)
+		{
+            IPage<Management.Sql.Models.ServerTrustGroup> entities = Communicator.ListGroupsByLocation(resourceGroupName, location);
+            List<AzureSqlServerTrustGroupModel> models = new List<AzureSqlServerTrustGroupModel>();
+            foreach (Management.Sql.Models.ServerTrustGroup entity in entities)
+            {
+                models.Add(CreateServerTrustGroupModelFromResponse(entity));
+            }
+
+            return models;
+        }
+
         public AzureSqlServerTrustGroupModel CreateServerTrustGroup(AzureSqlServerTrustGroupModel model)
 		{
             Management.Sql.Models.ServerTrustGroup parameters = new Management.Sql.Models.ServerTrustGroup();
@@ -44,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
             parameters.TrustScopes = model.TrustScope;
             foreach(String member in model.GroupMembers)
             {
-                parameters.GroupMembers.Add(new ServerInfo($"/subscriptions/{Context.Subscription}/resourceGroups/{model.ResourceGroupName}/providers/Microsoft.Sql/managedInstances/{member}"));
+                parameters.GroupMembers.Add(new ServerInfo($"/subscriptions/{Context.Subscription.Id}/resourceGroups/{model.ResourceGroupName}/providers/Microsoft.Sql/managedInstances/{member}"));
             }
 
             var res = Communicator.Create(model.ResourceGroupName, model.Location, model.Name, parameters);
