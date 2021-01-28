@@ -30,6 +30,7 @@
     - `Remove-AzContainerService`
     - `Remove-AzContainerServiceAgentPoolProfile`
     - `Update-AzContainerService`
+* Added parameter `-BurstingEnabled` to `New-AzDiskConfig` and `New-AzDiskUpdateConfig`
 * Added `-GroupByApplicationId` and `-GroupByUserAgent` parameters to the `Export-AzLogAnalyticThrottledRequest` and `Export-AzLogAnalyticRequestRateByInterval` cmdlets.
 
 ## Version 4.8.0
