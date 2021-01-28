@@ -236,6 +236,10 @@ PrivateData = @{
     - Add ''Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline'' cmdlet
     - Add ''Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline'' cmdlet
     - Add ''Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline'' cmdlet
+* Added support for operation of Vulnerability Assessment Scan in SqlPool-level
+    - Add ''Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan'' cmdlet
+    - Add ''Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord'' cmdlet
+    - Add ''Start-AzSynapseSqlPoolVulnerabilityAssessmentScan'' cmdlet
 * Fixed deserialization error when create Pipeline/Dataset/Trigger through DefinitionFile
 * Added polling for artifacts cmdlets'
 
