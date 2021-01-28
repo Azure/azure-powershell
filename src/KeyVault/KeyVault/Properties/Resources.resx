@@ -585,4 +585,10 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="SelectiveRestoreFailed" xml:space="preserve">
     <value>Failed to selective restore key {0} of managed HSM {1}.</value>
   </data>
+  <data name="EcButNoCurveName" xml:space="preserve">
+    <value>Please input a valid 'CurveName' when KeyType is 'EC'.</value>
+  </data>
+  <data name="CurveNameButNotEc" xml:space="preserve">
+    <value>When '-CurveName' is specified, '-KeyType' must be 'EC'.</value>
+  </data>
 </root>
