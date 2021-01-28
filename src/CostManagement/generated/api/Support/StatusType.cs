@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>
+    /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
+    /// </summary>
     public partial struct StatusType :
         System.IEquatable<StatusType>
     {
@@ -20,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="StatusType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new StatusType(System.Convert.ToString(value));
+            return new StatusType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type StatusType</summary>
