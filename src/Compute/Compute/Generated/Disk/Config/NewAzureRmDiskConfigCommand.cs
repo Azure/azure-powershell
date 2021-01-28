@@ -188,6 +188,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? BurstingEnabled { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -377,7 +382,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
-                Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null
+                Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
+                BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
             };
 
             WriteObject(vDisk);
