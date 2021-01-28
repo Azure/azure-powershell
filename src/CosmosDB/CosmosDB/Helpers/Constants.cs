@@ -173,6 +173,20 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
 
+        // Role cmdlets help messages
+        public const string PrincipalIdHelpMessage = "Guid Principal Id of the Role Assignment.";
+        public const string ScopeHelpMessage  = "Scope of the Role Assignment.";
+        public const string RoleAssignmentHelpMessage  = "Role Assignment object.";
+        public const string RoleAssignmentIdHelpMessage  = "Guid Role Assignment Id.";
+        public const string RoleDefinitionHelpMessage  = "Role Definition object.";
+        public const string RoleDefinitionIdHelpMessage  = "Guid Role Definition Id.";
+        public const string TypeHelpMessage = "Type of Role Definition, either CustomRole or BuiltInRole. Default value is CustomRole.";
+        public const string RoleNameHelpMessage = "Role Definition Name.";
+        public const string DataActionsHelpMessage = "Role Definition Data Actions.";
+        public const string PermissionsHelpMessage = "Role Definition Permissions.";
+        public const string AssignableScopesHelpMessage = "Role Definition Assignable Scopes.";
+        public const string RoleDefinitionNameHelpMessage = "Role Definition Name";
+
         // Throughput cmdlets for all APIs
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";

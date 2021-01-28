@@ -32,6 +32,13 @@
     - Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
   - Removed the support for throughput Migration. (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
   - Removed AnalyticalStorageTTL from SqlContainer datamodel (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
+* Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
+  - The following cmdlets are added:
+    - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlRoleDefinition, New-AzCosmosDBSqlRoleAssignment,
+    - Remove-AzCosmosDBSqlRoleDefinition, Remove-AzCosmosDBSqlRoleAssignment,
+    - Update-AzCosmosDBSqlRoleDefinition, Update-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlPermission
 * Please note this is a preview version. The cmdlets introduced here may be changed or removed in a future release.
 
 ## Version 1.0.0

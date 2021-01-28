@@ -12,15 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions
-{
-    internal static class ExceptionMessage
-    {
-        public const string Conflict = "Resource with Name {0} already exists.";
-        public const string NotFound = "Resource with Name {0} does not exist.";
+using Microsoft.Azure.Management.CosmosDB.Models;
+using System.Collections.Generic;
 
-        public const string ConflictSqlRoleResourceId = "Role {0} with Id {1} already exists.";
-        public const string NotFoundSqlRoleResourceId = "Role {0} with Id {1} does not exist.";
-        public const string NotFoundSqlRoleResourceName = "Role {0} with Name {1} does not exist.";
+namespace Microsoft.Azure.Commands.CosmosDB.Models
+{
+    public class PSPermission
+    {
+        public PSPermission()
+        {
+        }
+
+        public PSPermission(List<string> dataActions)
+        {
+            DataActions = dataActions;
+        }
+
+        /// <summary>
+        /// Gets or sets DataActions
+        /// </summary>
+        public IList<string> DataActions { get; set; }
     }
 }
