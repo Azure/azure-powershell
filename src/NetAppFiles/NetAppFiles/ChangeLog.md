@@ -22,12 +22,6 @@
 * Volume list now gets all volumes instead of first over 100 volumes
 * Added SnapshotPolicyId to NewAzNetAppFilesVolume to set snapshot policy to volume
 
-
-## Version 0.4.0
-* Added aesEncryption, ldapSigning properties to ActiveDirectory
-* Fixed Tags in UpdateAzNetAppFilesBackupPolicy
-* Return backupId in Backup and BackupPatch models
-
 ## Version 0.3.0
 * Added aesEncryption, ldapSigning properties to ActiveDirectory
 * Fixed Tags in UpdateAzNetAppFilesBackupPolicy

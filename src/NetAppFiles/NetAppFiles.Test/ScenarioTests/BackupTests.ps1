@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+    
 
 <#
 .SYNOPSIS
@@ -28,7 +29,8 @@ function Test-BackupCrud
     $backupName2 = Get-ResourceName    
     $backupPolicyName1 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
-    $backupLocation = "southcentralus"
+    #$backupLocation = "southcentralus"
+    $backupLocation = "eastus2euap"
     $label = "powershellBackupTest"
     $labelUpdate = "powershellBackupTestUpdate"
     $label2 = "powershellBackupTest2"
@@ -66,6 +68,26 @@ function Test-BackupCrud
     $protocolTypes = New-Object string[] 1
     $protocolTypes[0] = "NFSv3"
 
+    function WaitForSucceeded #($sourceOnly)
+    {
+        $i = 1 
+        do
+        {
+            $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1            
+            Start-Sleep -Seconds 10.0
+            $i++
+        }
+        while (($sourceVolume.ProvisioningState -ne "Succeeded") -or ($i -le 10));
+    }    
+    function SleepDuringRecord
+    {
+        if ($env:AZURE_TEST_MODE -eq "Record")
+        {
+            Write-Output "Sleep in record mode"
+            Start-Sleep -Seconds 30.0
+        }
+    }
+
     try
     {
         # create the resource group
@@ -98,7 +120,10 @@ function Test-BackupCrud
         Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
         Assert-NotNull $retrievedVolume.ExportPolicy
         Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
-
+        
+        SleepDuringRecord
+        WaitForSucceeded
+        
         # get check Vaults 
         $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
@@ -106,9 +131,10 @@ function Test-BackupCrud
             BackupEnabled = $true
             PolicyEnforced = $true
         }
+        SleepDuringRecord
          # volume update with backup policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
-        
+        SleepDuringRecord
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
