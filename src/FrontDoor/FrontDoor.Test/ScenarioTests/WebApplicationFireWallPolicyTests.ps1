@@ -35,11 +35,12 @@ function Test-PolicyCrud
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
     Assert-AreEqual $Name $retrievedPolicy.Name
+    Assert-AreEqual "Disabled" $retrievedPolicy.RequestBodyCheck
     Assert-AreEqual $customRule1.Name $retrievedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule1.RuleType $retrievedPolicy.CustomRules[0].RuleType
     Assert-AreEqual $customRule1.Action $retrievedPolicy.CustomRules[0].Action
@@ -100,12 +101,13 @@ function Test-PolicyCrudWithPiping
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
 
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
     $updatedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
+    Assert-AreEqual "Disabled" $updatedPolicy.RequestBodyCheck
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule2.Action $updatedPolicy.CustomRules[0].Action
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
