@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute
                     case ResourceIdParameterSet:
                         ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                         resourceGroup = identifier.ResourceGroupName;
-                        virtualMachineName = this.VMName;
+                        virtualMachineName = identifier.ResourceName;
 
                         break;
 
