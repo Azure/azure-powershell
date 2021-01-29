@@ -89,7 +89,6 @@
   <Import Condition="$(OnPremiseBuild)" Project="$(CIToolsPath)/Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
   <UsingTask TaskName="ESRPSignTask" AssemblyFile="$(CISignRepoPath)/tools/sdkbuildtools/tasks/MS.Az.Sdk.OnPremise.Build.Tasks.dll" />
   <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="FilterTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="CIFilterTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
 
   <Target Name="Clean">
@@ -163,8 +162,8 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <CallTarget Targets="BuildNormalModules" />
 
-    <CallTarget Targets="Predictor" Condition="$(SubTasks.Contains('predictor'))" />
-    <CallTarget Targets="Installer" Condition="$(SubTasks.Contains('installer'))" />
+    <CallTarget Targets="Az.Tools.Predictor" Condition="$(SubTasks.Contains('predictor'))" />
+    <CallTarget Targets="Az.Tools.Installer" Condition="$(SubTasks.Contains('installer'))" />
   </Target>
 
   <Target Name="BuildNormalModules">
@@ -277,11 +276,11 @@
     <OnError ExecuteTargets="ChangeLogErrorMessage" />
   </Target>
 
-  <Target Name="Installer">
+  <Target Name="Az.Tools.Installer">
     <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:clean;build;test" />
   </Target>
 
-  <Target Name="Predictor">
+  <Target Name="Az.Tools.Predictor">
     <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:clean;build;test" />
   </Target>
 

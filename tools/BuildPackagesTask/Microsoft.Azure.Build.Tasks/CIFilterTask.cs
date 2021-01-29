@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Serilog;
 
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -201,12 +200,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [TEST_PHASE] = new HashSet<string>(from x in GetTestCsprojList(TargetModule, csprojMap).ToList() select x)
             };
 
-            Serilog.Log.Information("----------------- InfluencedModuleInfo -----------------");
+            Console.WriteLine("----------------- InfluencedModuleInfo -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
             {
-                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
             }
-            Serilog.Log.Information("--------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------");
 
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
             
@@ -238,13 +237,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         {
                             machedModuleName = regexResult.Groups[MODULE_NAME_PLACEHOLDER].Value;
                         }
-                        Serilog.Log.Debug(string.Format("File {0} match rule: {1} and phaseConfig is: [{2}]", filePath, regex.ToString(), string.Join(", ", phaseConfigList)));
+                        Console.WriteLine(string.Format("File {0} match rule: {1} and phaseConfig is: [{2}]", filePath, regex.ToString(), string.Join(", ", phaseConfigList)));
                         break;
                     }
                 }
                 if (!isMatched)
                 {
-                    Serilog.Log.Warning(string.Format("File {0} doesn't match any rule, goto fallback logic.", filePath));
+                    Console.WriteLine(string.Format("File {0} doesn't match any rule, goto fallback logic.", filePath));
                     phaseList = new List<string>()
                     {
                         BUILD_PHASE + ":" + AllModule,
@@ -304,12 +303,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList("Accounts", csprojMap));
                 }
             }
-            Serilog.Log.Information("----------------- InfluencedModuleInfo -----------------");
+            Console.WriteLine("----------------- InfluencedModuleInfo -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
             {
-                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
             }
-            Serilog.Log.Information("--------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------");
 
             return influencedModuleInfo;
         }
@@ -352,8 +351,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             foreach (string phaseName in influencedModuleInfo.Keys)
             {
-                Serilog.Log.Information("-----------------------------------");
-                Serilog.Log.Information(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
             }
 
             return influencedModuleInfo;
@@ -381,7 +380,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
             DateTime endTime = DateTime.Now;
-            Serilog.Log.Information(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
+            Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
             
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
 
@@ -396,16 +395,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// <returns> Returns a value indicating wheter the success status of the task. </returns>
         public override bool Execute()
         {
-            Serilog.Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console(outputTemplate: "[{Level:u3}] {Message}{NewLine}{Exception}")
-                .WriteTo.File("logs\\.log", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
             FilterTaskResult = new CIFilterTaskResult();
 
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
-            Serilog.Log.Information(string.Format("FilesChanged: {0}", FilesChanged.Length));
+            Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
             if (FilesChanged != null && FilesChanged.Length > 0)
             {
                 return ProcessFileChanged(csprojMap);

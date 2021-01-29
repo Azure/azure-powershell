@@ -50,9 +50,9 @@ namespace StaticAnalysis
             try
             {
                 string installDir = null;
-                if (args.Any(a => a == "--package-directory" || a == "-p"))
+                if (args.Any(a => a.Equals("--package-directory") || a.Equals("-p")))
                 {
-                    int idx = Array.FindIndex(args, a => a == "--package-directory" || a == "-p");
+                    int idx = Array.FindIndex(args, a => a.Equals("--package-directory") || a.Equals("-p"));
                     if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --package-directory parameter.");
@@ -76,7 +76,7 @@ namespace StaticAnalysis
                 bool logReportsDirectoryWarning = true;
                 if (args.Any(a => a == "--reports-directory" || a == "-r"))
                 {
-                    int idx = Array.FindIndex(args, a => a == "--reports-directory" || a == "-r");
+                    int idx = Array.FindIndex(args, a => a.Equals("--reports-directory") || a.Equals("-r"));
                     if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --reports-directory parameter.");
@@ -92,9 +92,9 @@ namespace StaticAnalysis
                 }
 
                 var modulesToAnalyze = new List<string>();
-                if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
+                if (args.Any(a => a.Equals("--modules-to-analyze") || a.Equals("-m")))
                 {
-                    int idx = Array.FindIndex(args, a => a == "--modules-to-analyze" || a == "-m");
+                    int idx = Array.FindIndex(args, a => a.Equals("--modules-to-analyze") || a.Equals("-m"));
                     if (idx + 1 == args.Length)
                     {
                         Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
@@ -111,9 +111,9 @@ namespace StaticAnalysis
                 }
 
                 bool needToCheckIssue = false;
-                if (args.Any(a => a == "--analyzers"))
+                if (args.Any(a => a.Equals("--analyzers")))
                 {
-                    int idx = Array.FindIndex(args, a => a == "--analyzers");
+                    int idx = Array.FindIndex(args, a => a.Equals("--analyzers"));
                     if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --package-directory parameter.");
@@ -156,8 +156,8 @@ namespace StaticAnalysis
                 // https://stackoverflow.com/a/9737418/294804
                 var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
                 ExceptionsDirectory = Path.Combine(assemblyDirectory, "Exceptions");
-                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
-                var useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
+                bool useExceptions = !args.Any(a => a.Equals("--dont-use-exceptions") || a.Equals("-d"));
+                var useNetcore = args.Any(a => a.Equals("--use-netcore") || a.Equals("-u"));
                 ConsolidateExceptionFiles(ExceptionsDirectory, useNetcore);
 
                 analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) : new AnalysisLogger(reportsDirectory);
