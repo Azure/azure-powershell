@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Used the latest version of autorest to generate code
+* Fixed an error that the CostmanagementExport could not be updated correctly
 
 ## Version 0.1.0
 * First preview release for module Az.CostManagement
