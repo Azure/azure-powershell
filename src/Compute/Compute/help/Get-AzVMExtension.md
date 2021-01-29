@@ -21,7 +21,13 @@ Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <Str
 
 ### VMParameterSet
 ```
-Get-AzVMExtension [-VM <PSVirtualMachine>] [-Status] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVMExtension [-Status] [-VMObject <PSVirtualMachine>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzVMExtension [-Status] [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -179,6 +185,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Resource Id specifying the virtual machine object the extension is on.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Status
 Indicates that this cmdlet gets only the instance view of an extension.
 
@@ -191,21 +212,6 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VM
-Specifies the virtual machine object the extension is on.
-
-```yaml
-Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameter Sets: VMParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -222,6 +228,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VMObject
+Specifies the virtual machine object the extension is on.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameter Sets: VMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

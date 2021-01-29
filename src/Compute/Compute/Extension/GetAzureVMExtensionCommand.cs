@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using System.Linq;
 using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Commands.Compute
     {
 
         private const string GetExtensionParamSetName = "GetExtensionParameterSet",
-            VMParameterSetName = "VMParameterSet";
+            VMParameterSetName = "VMParameterSet",
+            ResourceIdParameterSet = "ResourceIdParameterSet";
 
         [Parameter(
            Mandatory = true,
@@ -62,18 +64,25 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = VMParameterSetName,
-            ValueFromPipeline = true,
-            HelpMessage = "Specifies the virtual machine object the extension is on.")]
-        [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VM { get; set; }
-
-        [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
+
+        [Parameter(
+            ParameterSetName = VMParameterSetName,
+            ValueFromPipeline = true,
+            HelpMessage = "Specifies the virtual machine object the extension is on.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachine VMObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Resource Id specifying the virtual machine object the extension is on.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -84,19 +93,32 @@ namespace Microsoft.Azure.Commands.Compute
                 string virtualMachineName = "";
                 string resourceGroup = "";
 
-                if (this.ParameterSetName.Equals(VMParameterSetName))
+                switch (ParameterSetName)
                 {
-                    virtualMachineName = this.VM.Name;
-                    if (this.VM.ResourceGroupName == null)
-                    {
-                        WriteError("The incoming virtual machine must have a 'resourceGroupName'.", this.VM);
-                    }
-                    resourceGroup = this.VM.ResourceGroupName;
-                }
-                else
-                {
-                    virtualMachineName = VMName;
-                    resourceGroup = ResourceGroupName;
+
+                    case VMParameterSetName:
+                        virtualMachineName = this.VMObject.Name;
+                        if (this.VMObject.ResourceGroupName == null)
+                        {
+                            WriteError("The incoming virtual machine must have a 'resourceGroupName'.", this.VMObject);
+                        }
+                        resourceGroup = this.VMObject.ResourceGroupName;
+
+                        break;
+
+                    case ResourceIdParameterSet:
+                        ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                        resourceGroup = identifier.ResourceGroupName;
+                        virtualMachineName = this.VMName;
+
+                        break;
+
+                    default:
+                        virtualMachineName = VMName;
+                        resourceGroup = ResourceGroupName;
+
+                        break;
+
                 }
 
                 if (!string.IsNullOrEmpty(Name))
