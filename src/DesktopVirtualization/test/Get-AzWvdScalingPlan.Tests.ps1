@@ -40,8 +40,8 @@ Describe 'Get-AzWvdScalingPlan' {
                 -ResourceGroupName $resourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
 
-                $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-                $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
+            $scalingPlan.Location | Should -Be $resourceLocation
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
@@ -85,7 +85,7 @@ Describe 'Get-AzWvdScalingPlan' {
 
             $scalingPlans = Get-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup
+                -ResourceGroupName $resourceGroup `
                 | Where-Object -Property Name -Match 'ScalingPlanPowershellContained*' `
                 | Sort-Object -Property Name
 
@@ -137,7 +137,7 @@ Describe 'Get-AzWvdScalingPlan' {
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained2'
             $scalingPlan.Location | Should -Be $resourceLocation
 
-            $scalingPlans = Get-AzWvdScalingPlan -SubscriptionId $env.SubscriptionId
+            $scalingPlans = Get-AzWvdScalingPlan -SubscriptionId $env.SubscriptionId `
                 | Where-Object -Property Name -Match 'ScalingPlanPowershellContained*' `
                 | Sort-Object -Property Name
 
