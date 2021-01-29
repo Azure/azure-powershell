@@ -181,7 +181,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
             var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + duration);
             string stringToSign = WebUtility.UrlEncode(resourceUri) + "\n" + expiry;
-            stringToSign=Regex.Replace(stringToSign, "(%[0-9A-F]{2})", c => c.Value.ToLowerInvariant());
             HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
             var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
             var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri), WebUtility.UrlEncode(signature), expiry);
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 sasToken += String.Format(CultureInfo.InvariantCulture, "&skn={0}", keyName);
             }
-            return Regex.Replace(sasToken, "(%[0-9A-F]{2})", c => c.Value.ToLowerInvariant());
+            return sasToken;
         }
     }
 }

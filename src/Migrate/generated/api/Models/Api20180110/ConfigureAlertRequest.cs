@@ -10,11 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The custom email address for sending emails.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string[] CustomEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).CustomEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).CustomEmailAddress = value; }
+        public string[] CustomEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).CustomEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).CustomEmailAddress = value ?? null /* arrayOf */; }
 
         /// <summary>The locale for the email notification.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string Locale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).Locale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).Locale = value; }
+        public string Locale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).Locale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).Locale = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ConfigureAlertRequestProperties()); set { {_property = value;} } }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>A value indicating whether to send email to subscription administrator.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string SendToOwner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).SendToOwner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).SendToOwner = value; }
+        public string SendToOwner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).SendToOwner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IConfigureAlertRequestPropertiesInternal)Property).SendToOwner = value ?? null; }
 
         /// <summary>Creates an new <see cref="ConfigureAlertRequest" /> instance.</summary>
         public ConfigureAlertRequest()

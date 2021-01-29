@@ -1112,3 +1112,37 @@ function DelegateSubnetToSQLMIAndGetVnet ($vnetName, $subnetName, $resourceGroup
 
 	return $vnet
 }
+
+<#
+	.SYNOPSIS
+	Generates default public maintenance configuration id for specified location
+#>
+function Get-DefaultPublicMaintenanceConfigurationId($location)
+{
+	$subscriptionId = (Get-AzContext).Subscription.Id
+
+	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default";
+}
+
+<#
+	.SYNOPSIS
+	Generates public maintenance configuration id for specified location and schedule name
+#>
+function Get-PublicMaintenanceConfigurationName($location, $scheduleName)
+{
+	$shortLocation = $location -replace '\s',''
+
+	return "SQL_${shortLocation}_${scheduleName}";
+}
+
+<#
+	.SYNOPSIS
+	Generates public maintenance configuration id for specified location and schedule name
+#>
+function Get-PublicMaintenanceConfigurationId($location, $scheduleName)
+{
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$configName = Get-PublicMaintenanceConfigurationName $location $scheduleName
+
+	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/${configName}";
+}

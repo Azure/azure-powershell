@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>SKU name.</summary>
     public partial struct AzureSkuName :
         System.IEquatable<AzureSkuName>
     {
@@ -38,6 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2AV4 = @"Standard_E2a_v4";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4AV4 = @"Standard_E4a_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE64IV3 = @"Standard_E64i_v3";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AV4 = @"Standard_E8a_v4";
 

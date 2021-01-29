@@ -33,6 +33,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </remarks>
     internal sealed class CommandLinePredictor
     {
+        private class DuplicateResult
+        {
+            public string Source { get; set; }
+
+            public string Description { get; set; }
+
+            public DuplicateResult(string source, string description)
+            {
+                this.Source = source;
+                this.Description = description;
+            }
+        }
+
         private readonly IList<CommandLine> _commandLinePredictions = new List<CommandLine>();
         private readonly ParameterValuePredictor _parameterValuePredictor;
 
@@ -41,23 +54,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="modelPredictions">List of suggestions from the model, sorted by frequency (most to least).</param>
         /// <param name="parameterValuePredictor">Provide the prediction to the parameter values.</param>
-        public CommandLinePredictor(IList<string> modelPredictions, ParameterValuePredictor parameterValuePredictor)
+        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor)
         {
             Validation.CheckArgument(modelPredictions, $"{nameof(modelPredictions)} cannot be null.");
 
             _parameterValuePredictor = parameterValuePredictor;
             var commnadLines =  new List<CommandLine>();
 
-            foreach (var predictionTextRaw in modelPredictions ?? Enumerable.Empty<string>())
+            foreach (var predictiveCommand in modelPredictions ?? Enumerable.Empty<PredictiveCommand>())
             {
-                var predictionText = CommandLineUtilities.EscapePredictionText(predictionTextRaw);
+                var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
                 Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
-                var commandAst = (ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst);
+                var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
+                var commandName = commandAst?.GetCommandName();
 
-                if (commandAst?.CommandElements[0] is StringConstantExpressionAst commandName)
+                if (!string.IsNullOrWhiteSpace(commandName))
                 {
                     var parameterSet = new ParameterSet(commandAst);
-                    this._commandLinePredictions.Add(new CommandLine(commandName.Value, parameterSet));
+                    this._commandLinePredictions.Add(new CommandLine(commandName, predictiveCommand.Description, parameterSet));
                 }
             }
         }
@@ -90,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             const int commandCollectionCapacity = 10;
             CommandLineSuggestion result = new();
-            var resultsTemp = new Dictionary<string, string>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
+            var duplicateResults = new Dictionary<string, DuplicateResult>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
 
             var isCommandNameComplete = inputParameterSet.Parameters.Any() || rawUserInput.EndsWith(' ');
 
@@ -122,10 +136,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     resultBuilder.Clear();
                     resultBuilder.Append(_commandLinePredictions[i].Name);
                     usedParams.Clear();
+                    string commandNoun = ParameterValuePredictor.GetAzCommandNoun(_commandLinePredictions[i].Name).ToLower();
 
-                    if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, _commandLinePredictions[i].ParameterSet, usedParams))
+                    if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, commandNoun, _commandLinePredictions[i].ParameterSet, usedParams))
                     {
-                        PredictRestOfParameters(resultBuilder, _commandLinePredictions[i].ParameterSet.Parameters, usedParams);
+                        PredictRestOfParameters(resultBuilder, commandNoun, _commandLinePredictions[i].ParameterSet.Parameters, usedParams);
 
                         if (resultBuilder.Length <= rawUserInput.Length)
                         {
@@ -144,17 +159,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
                             presentCommands.Add(_commandLinePredictions[i].Name, 1);
                         }
                         else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDuplicate)
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
                             presentCommands[_commandLinePredictions[i].Name] += 1;
                         }
                         else
                         {
-                            _ = resultsTemp.TryAdd(prediction, sourceBuilder.ToString());
+                            _ = duplicateResults.TryAdd(prediction, new DuplicateResult(sourceBuilder.ToString(), _commandLinePredictions[i].Description));
                         }
                     }
                 }
@@ -162,11 +177,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var resultCount = result.Count;
 
-            if ((resultCount < suggestionCount) && (resultsTemp.Count > 0))
+            if ((resultCount < suggestionCount) && (duplicateResults.Count > 0))
             {
-                foreach (var temp in resultsTemp.Take(suggestionCount - resultCount))
+                foreach (var temp in duplicateResults.Take(suggestionCount - resultCount))
                 {
-                    result.AddSuggestion(new PredictiveSuggestion(temp.Key), temp.Value);
+                    result.AddSuggestion(new PredictiveSuggestion(temp.Key, temp.Value.Description), temp.Value.Source);
                 }
             }
 
@@ -177,15 +192,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Appends unused parameters to the builder.
         /// </summary>
         /// <param name="builder">StringBuilder that aggregates the prediction text output.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="parameters">Chosen prediction parameters.</param>
         /// <param name="usedParams">Set of used parameters for set.</param>
-        private void PredictRestOfParameters(StringBuilder builder, IReadOnlyList<Parameter> parameters, HashSet<int> usedParams)
+        private void PredictRestOfParameters(StringBuilder builder, string commandNoun, IReadOnlyList<Parameter> parameters, HashSet<int> usedParams)
         {
             for (var j = 0; j < parameters.Count; j++)
             {
                 if (!usedParams.Contains(j))
                 {
-                    BuildParameterValue(builder, parameters[j]);
+                    BuildParameterValue(builder, commandNoun, parameters[j]);
                 }
             }
         }
@@ -195,9 +211,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         /// <param name="builder">StringBuilder that aggregates the prediction text output.</param>
         /// <param name="inputParameters">Parsed ParameterSet from the user input AST.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="predictionParameters">Candidate prediction parameter set.</param>
         /// <param name="usedParams">Set of used parameters for set.</param>
-        private bool DoesPredictionParameterSetMatchInput(StringBuilder builder, ParameterSet inputParameters, ParameterSet predictionParameters, HashSet<int> usedParams)
+        private bool DoesPredictionParameterSetMatchInput(StringBuilder builder, ParameterSet inputParameters, string commandNoun,ParameterSet predictionParameters, HashSet<int> usedParams)
         {
             foreach (var inputParameter in inputParameters.Parameters)
             {
@@ -215,7 +232,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
                     else
                     {
-                        BuildParameterValue(builder, predictionParameters.Parameters[matchIndex]);
+                        BuildParameterValue(builder, commandNoun, predictionParameters.Parameters[matchIndex]);
                     }
                 }
             }
@@ -234,11 +251,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// "TestVM" is predicted for Get-AzVM.
         /// </summary>
         /// <param name="builder">The string builder to create the whole predicted command line.</param>
+        /// <param name="commandNoun">Command Noun.</param>
         /// <param name="parameter">The parameter name and value from prediction.</param>
-        private void BuildParameterValue(StringBuilder builder, Parameter parameter)
+        private void BuildParameterValue(StringBuilder builder, string commandNoun, Parameter parameter)
         {
             var parameterName = parameter.Name;
-            var parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(parameterName);
+            string parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(commandNoun, parameterName);
 
             if (string.IsNullOrWhiteSpace(parameterValue))
             {

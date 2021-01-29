@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for VirtualDiskMode.</summary>
+    /// <summary>Disk mode property used for identifying independent disks.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VirtualDiskModeTypeConverter))]
     public partial struct VirtualDiskMode :
         System.Management.Automation.IArgumentCompleter

@@ -14,12 +14,18 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType;
+using WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -36,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMUnManagedDiskParameterSet = "AzureVMUnManagedDiskParameterSet";
         internal const string AzureFileShareParameterSet = "AzureFileShareParameterSet";
         internal const string AzureWorkloadParameterSet = "AzureWorkloadParameterSet";
-
+       
         /// <summary>
         /// Location of the Recovery Services Vault.
         /// </summary>
@@ -201,6 +207,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsUnmanagedDisks)]
         public SwitchParameter RestoreAsUnmanagedDisks { get; set; }
 
+        /// <summary>
+        /// Disk Encryption Set to encrypt the restored VM
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet, 
+            HelpMessage = ParamHelpMsgs.Encryption.DES)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.Encryption.DES)]
+        public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Switch param to trigger restore to secondary region (Cross Region Restore).
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.UseSecondaryReg)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter RestoreToSecondaryRegion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -211,6 +233,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                
+                string secondaryRegion = "";
+                if (RestoreToSecondaryRegion.IsPresent)
+                {
+                    ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
+                    secondaryRegion = BackupUtils.regionMap[vault.Location];
+                    providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
+                }
 
                 providerParameters.Add(VaultParams.VaultName, vaultName);
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
@@ -226,6 +256,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreDiskList, RestoreDiskList);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
+                providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent);
+
+                if (DiskEncryptionSetId != null)
+                {
+                    AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
+
+                    BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                    
+                    if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled) && !(RestoreToSecondaryRegion.IsPresent))
+                    {
+                        providerParameters.Add(RestoreVMBackupItemParams.DiskEncryptionSetId, DiskEncryptionSetId);
+                    }
+                }
 
                 if (StorageAccountName != null)
                 {
@@ -265,13 +308,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     psBackupProvider = providerManager.GetProviderInstance(
                         WorkloadType.MSSQL, BackupManagementType.AzureWorkload);
                 }
-                var jobResponse = psBackupProvider.TriggerRestore();
-                WriteDebug(string.Format("Restore submitted"));
-                HandleCreatedJob(
+                var jobResponse = psBackupProvider.TriggerRestore();                                
+
+                if (RestoreToSecondaryRegion.IsPresent)
+                {                    
+                    var operationId = jobResponse.Request.RequestUri.Segments.Last();   
+                    var response = ServiceClientAdapter.GetCrrOperationStatus(secondaryRegion, operationId);
+
+                    string jobIDJson = JsonConvert.SerializeObject(response.Body.Properties);
+                    string[] jobSplits = jobIDJson.Split(new char[] { '\"' });
+                    string jobID = jobSplits[jobSplits.Length - 2];
+                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID)); 
+                }
+                else
+                {
+                    HandleCreatedJob(
                     jobResponse,
                     Resources.RestoreOperation,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+                }
             }, ShouldProcess(RecoveryPoint != null ? RecoveryPoint.ItemName : WLRecoveryConfig.ToString(), VerbsData.Restore));
         }
     }

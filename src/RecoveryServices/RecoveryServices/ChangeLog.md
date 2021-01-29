@@ -18,8 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* modified policy validation limits as per backup service.
+* Added Zone Redundancy for Recovery Service Vaults. 
+* Azure Site Recovery support for Proximity placement group for Vmware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability zone for Vmware to Azure and HyperV to Azure providers.
+
+## Version 3.3.0
+* Added Cross Region Restore feature.  
+* Blocked getting workload config when target item is an availability group.
+
+## Version 3.2.0
 * Enabled softdelete feature for SQL.
-* Fixing SQL AG restore, removing the container name check.
+* Fixed SQL AG restore and removed the container name check.
+* Changed container name format for Azure Files backup item.
+* Added CMK feature support for Recovery services vault.
 
 ## Version 3.1.0
 * Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.

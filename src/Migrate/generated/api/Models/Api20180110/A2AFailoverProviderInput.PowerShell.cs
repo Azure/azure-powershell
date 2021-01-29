@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption = (string) content.GetValueForProperty("CloudServiceCreationOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption = (string) content.GetValueForProperty("CloudServiceCreationOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderSpecificFailoverInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderSpecificFailoverInputInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption = (string) content.GetValueForProperty("CloudServiceCreationOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption = (string) content.GetValueForProperty("CloudServiceCreationOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AFailoverProviderInputInternal)this).CloudServiceCreationOption, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderSpecificFailoverInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProviderSpecificFailoverInputInternal)this).InstanceType, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }

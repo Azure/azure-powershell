@@ -1710,7 +1710,29 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule..
+        /// </summary>
+        internal static string VpnGatewayRequiredToCreateVpnNatRule
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VpnGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
         /// </summary>

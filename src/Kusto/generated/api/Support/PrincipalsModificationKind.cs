@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The principals modification kind of the database</summary>
     public partial struct PrincipalsModificationKind :
         System.IEquatable<PrincipalsModificationKind>
     {

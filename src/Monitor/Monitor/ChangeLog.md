@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 
+## Version 2.4.0
+* Added cmdlets for data collection rules: 
+    - `Get-AzDataCollectionRule`
+    - `New-AzDataCollectionRule`
+    - `Set-AzDataCollectionRule`
+    - `Update-AzDataCollectionRule`
+    - `Remove-AzDataCollectionRule`
+* Added cmdlets for data collection rules associations
+    - `Get-AzDataCollectionRuleAssociation`
+    - `New-AzDataCollectionRuleAssociation`
+    - `Remove-AzDataCollectionRuleAssociation`
+
 ## Version 2.3.0
 * Changed parameter `Rule` of `New-AzAutoscaleProfile` to accept empty list. [#12903]
 * Added new cmdlets to support creating diagnostic settings more flexible:

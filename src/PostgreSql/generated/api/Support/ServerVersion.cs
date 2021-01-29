@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
+    /// <summary>The version of a server.</summary>
     public partial struct ServerVersion :
         System.IEquatable<ServerVersion>
     {
@@ -21,6 +22,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion Ten2 = @"10.2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion Twelve = @"12";
+
         /// <summary>the value for an instance of the <see cref="ServerVersion" /> Enum.</summary>
         private string _value { get; set; }
 
@@ -28,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         /// <param name="value">the value to convert to an instance of <see cref="ServerVersion" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ServerVersion(System.Convert.ToString(value));
+            return new ServerVersion(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ServerVersion</summary>

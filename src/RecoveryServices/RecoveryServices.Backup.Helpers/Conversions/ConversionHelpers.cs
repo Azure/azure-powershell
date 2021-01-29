@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             itemModel = new AzureFileShareItem(
                 protectedItem,
-                IdUtils.GetNameFromUri(containerUri),
+                containerUri,
                 ContainerType.AzureStorage,
                 policyName);
             return itemModel;

@@ -6,6 +6,7 @@
     using MNM = Microsoft.Azure.Management.Network.Models;
     using System.Security;
     using Microsoft.WindowsAzure.Commands.Common;
+    using System.Linq;
 
     [Cmdlet(
         VerbsCommon.New,
@@ -73,6 +74,16 @@
             HelpMessage = "Use policy based traffic selectors for this link connection.")]
         public SwitchParameter UsePolicyBasedTrafficSelectors { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this link Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this link Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -83,7 +94,9 @@
                 EnableBgp = this.EnableBgp.IsPresent,
                 UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent,
                 UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
-                RoutingWeight = Convert.ToInt32(this.RoutingWeight)
+                RoutingWeight = Convert.ToInt32(this.RoutingWeight),
+                IngressNatRules = IngressNatRule?.ToList(),
+                EgressNatRules = EgressNatRule?.ToList()
             };
 
             if (this.VpnSiteLink == null)

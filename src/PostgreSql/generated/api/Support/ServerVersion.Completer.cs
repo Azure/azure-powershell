@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for ServerVersion.</summary>
+    /// <summary>The version of a server.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersionTypeConverter))]
     public partial struct ServerVersion :
         System.Management.Automation.IArgumentCompleter
@@ -49,6 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "11".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("11", "11", global::System.Management.Automation.CompletionResultType.ParameterValue, "11");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "12".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("12", "12", global::System.Management.Automation.CompletionResultType.ParameterValue, "12");
             }
         }
     }

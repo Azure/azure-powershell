@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.3
 * Fixed the command `Invoke-AzDataFactoryV2Pipeline` for SupportsShouldProcess issue
 
 ## Version 1.11.2

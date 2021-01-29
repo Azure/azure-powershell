@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for InfrastructureEncryption.</summary>
+    /// <summary>
+    /// Add a second layer of encryption for your data using new encryption algorithm which gives additional data protection.
+    /// Value is optional but if passed in, must be 'Disabled' or 'Enabled'.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.InfrastructureEncryptionTypeConverter))]
     public partial struct InfrastructureEncryption :
         System.Management.Automation.IArgumentCompleter

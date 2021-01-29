@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
         [ResourceNameCompleter(ResourceTypes.SqlPool, nameof(WorkspaceName))]
+        [Alias(SynapseConstants.SqlPoolName)]
         [ValidateNotNullOrEmpty]
-        public string SqlPoolName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = DeleteByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolRestorePointName)]
         [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet, HelpMessage = HelpMessages.SqlPoolRestorePointName)]
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
             ResourceTypes.SqlPoolRestorePoint,
             nameof(ResourceGroupName),
             nameof(WorkspaceName),
-            nameof(SqlPoolName))]
+            nameof(Name))]
         [ValidateNotNullOrEmpty]
         public DateTime RestorePointCreationDate { get; set; }
 
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.SqlPoolName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
             } 
 
             if (this.IsParameterBound(c => c.InputObject))
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.SqlPoolName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.SqlPoolName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
@@ -110,11 +111,11 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemoveSynapseSqlPoolRestorePoint, this.RestorePointCreationDate),
-                string.Format(Resources.RemovingSynapseSqlPoolRestorePoint, this.RestorePointCreationDate, this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName),
+                string.Format(Resources.RemovingSynapseSqlPoolRestorePoint, this.RestorePointCreationDate, this.ResourceGroupName, this.WorkspaceName, this.Name),
                 this.RestorePointCreationDate.ToFileTimeUtc().ToString(),
                 () =>
                 {
-                    this.SynapseAnalyticsClient.DeleteSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.SqlPoolName, this.RestorePointCreationDate.ToFileTimeUtc().ToString());
+                    this.SynapseAnalyticsClient.DeleteSqlPoolRestorePoint(this.ResourceGroupName, this.WorkspaceName, this.Name, this.RestorePointCreationDate.ToFileTimeUtc().ToString());
                     if (this.PassThru.IsPresent)
                     {
                         WriteObject(true);

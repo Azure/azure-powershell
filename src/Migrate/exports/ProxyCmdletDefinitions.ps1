@@ -234,7 +234,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -391,7 +391,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -553,7 +553,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -684,7 +684,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigraterepli
 #>
 function Get-AzMigrateReplicationProtectionContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -699,7 +699,7 @@ param(
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Fabric name.
@@ -715,7 +715,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -870,7 +870,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -1478,7 +1478,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -1672,7 +1672,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]
@@ -2765,12 +2765,14 @@ function Get-AzMigrateServerReplication {
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the Azure Migrate project  in the current subscription.
@@ -2788,6 +2790,12 @@ param(
     [System.String]
     # Specifies the replicating server.
     ${TargetObjectID},
+
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
 
     [Parameter(ParameterSetName='GetBySDSID', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -2886,11 +2894,12 @@ begin {
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetBySRSID = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
+            GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetBySDSID = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             ListById = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
         }
-        if (('ListByName', 'GetBySRSID', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('ListByName', 'GetBySRSID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4058,6 +4067,12 @@ param(
     [System.String]
     # Specifies the Availability Zone to be used for VM creation.
     ${TargetAvailabilityZone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the storage account to be used for boot diagnostics.
+    ${TargetBootDiagnosticsStorageAccount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
