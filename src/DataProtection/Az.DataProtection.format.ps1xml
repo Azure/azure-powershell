@@ -310,6 +310,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstanceResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstanceResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BackupInstanceName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BackupInstanceName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AbsoluteDeleteOption</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AbsoluteDeleteOption</TypeName>
@@ -1049,34 +1083,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstanceResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstanceResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

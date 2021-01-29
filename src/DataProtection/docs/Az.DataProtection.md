@@ -73,6 +73,9 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [GetTaggingPriority](GetTaggingPriority.md)
 
 
+### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
+Prepares Backup instance object for backup
+
 ### [Initialize-AzDataProtectionTargetRestoreInfo](Initialize-AzDataProtectionTargetRestoreInfo.md)
 Get Backup Vault storage setting object
 
@@ -87,9 +90,6 @@ Creates new Schedule object
 
 ### [New-AzDataProtectionRetentionLifeCycle](New-AzDataProtectionRetentionLifeCycle.md)
 Creates new Lifecycle object
-
-### [Prepare-AzDataProtectionDatasourceInfo](Prepare-AzDataProtectionDatasourceInfo.md)
-Prepares Datasource object for backup
 
 ### [Remove-AzDataProtectionBackupInstance](Remove-AzDataProtectionBackupInstance.md)
 
