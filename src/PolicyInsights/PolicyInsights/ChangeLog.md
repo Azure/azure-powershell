@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Undo bug with version 1.4.0
+
 ## Version 1.4.0
 * Added support for returning paginated results for Get-AzPolicyState
 
