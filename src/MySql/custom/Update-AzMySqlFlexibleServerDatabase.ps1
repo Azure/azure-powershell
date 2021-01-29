@@ -23,7 +23,6 @@ function Update-AzMySqlFlexibleServerDatabase {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='Update', Mandatory)]
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Alias('DatabaseName')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
@@ -31,7 +30,6 @@ function Update-AzMySqlFlexibleServerDatabase {
         # The name of the database.
         ${Name},
     
-        [Parameter(ParameterSetName='Update', Mandatory)]
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
@@ -39,14 +37,12 @@ function Update-AzMySqlFlexibleServerDatabase {
         # The name is case insensitive.
         ${ResourceGroupName},
     
-        [Parameter(ParameterSetName='Update', Mandatory)]
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         # The name of the server.
         ${ServerName},
     
-        [Parameter(ParameterSetName='Update')]
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -54,21 +50,12 @@ function Update-AzMySqlFlexibleServerDatabase {
         # The ID of the target subscription.
         ${SubscriptionId},
     
-        [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-    
-        [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase]
-        # Represents a Database.
-        # To construct, see NOTES section for PARAMETER properties and create a hash table.
-        ${Parameter},
     
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

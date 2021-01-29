@@ -117,29 +117,6 @@ function Stop-AzMySqlFlexibleServer {
         ${ProxyUseDefaultCredentials}
     )
     
-    begin {
-        try {
-            $outBuffer = $null
-            if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-                $PSBoundParameters['OutBuffer'] = 1
-            }
-            $parameterSet = $PSCmdlet.ParameterSetName
-            $mapping = @{
-                Stop = 'Az.MySql.private\Stop-AzMySqlFlexibleServer_Stop';
-                StopViaIdentity = 'Az.MySql.private\Stop-AzMySqlFlexibleServer_StopViaIdentity';
-            }
-            if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-            $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-            $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-            $steppablePipeline.Begin($PSCmdlet)
-        } catch {
-            throw
-        }
-    }
-    
     process {
         try {
             
