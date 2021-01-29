@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added FrontDoorId to properties
-* Add JSON Exclussions and RequestBodyCheck support to managed rules
+* Added JSON Exclussions and RequestBodyCheck support to managed rules
 
 ## Version 1.6.1
 * Fixed an issue where an exception is being thrown when Enum.Parse tries to coerce a null value to an Enabled or Disabled enum values [#12344]
