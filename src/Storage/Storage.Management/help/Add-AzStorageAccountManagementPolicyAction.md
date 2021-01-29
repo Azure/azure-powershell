@@ -24,6 +24,12 @@ Add-AzStorageAccountManagementPolicyAction -SnapshotAction <String> -DaysAfterCr
  [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### BlobVersion
+```
+Add-AzStorageAccountManagementPolicyAction -BlobVersionAction <String> -DaysAfterCreationGreaterThan <Int32>
+ [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Add-AzStorageAccountManagementPolicyAction** cmdlet adds an action to the input ManagementPolicy Action Group object, or creates a ManagementPolicy Action Group object with the action.
 
@@ -67,12 +73,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BlobVersionAction
+The management policy action for blob version.
+
+```yaml
+Type: System.String
+Parameter Sets: BlobVersion
+Aliases:
+Accepted values: Delete, TierToArchive, TierToCool
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DaysAfterCreationGreaterThan
 Integer value indicating the age in days after creation.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Snapshot
+Parameter Sets: Snapshot, BlobVersion
 Aliases:
 
 Required: True
@@ -135,7 +157,7 @@ The management policy action for snapshot.
 Type: System.String
 Parameter Sets: Snapshot
 Aliases:
-Accepted values: Delete
+Accepted values: Delete, TierToArchive, TierToCool
 
 Required: True
 Position: Named
