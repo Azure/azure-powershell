@@ -141,11 +141,11 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBMongoDBDatabaseThroughput', 
                'Update-AzCosmosDBGremlinGraphThroughput', 
                'Update-AzCosmosDBGremlinDatabaseThroughput', 
-               'Update-AzCosmosDBCassandraTableThroughput', 
+               'Update-AzCosmosDBCassandraTableThroughput',
                'Update-AzCosmosDBCassandraKeyspaceThroughput', 
-               'Update-AzCosmosDBTableThroughput', 
+               'Update-AzCosmosDBTableThroughput',
                'Update-AzCosmosDBMongoDBCollection', 
-               'Update-AzCosmosDBMongoDBDatabase', 
+               'Update-AzCosmosDBMongoDBDatabase',
                'New-AzCosmosDBMongoDBCollection', 'New-AzCosmosDBMongoDBDatabase',
                'New-AzCosmosDBDatabaseToRestore',
                'Restore-AzCosmosDBAccount',
@@ -157,8 +157,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBMongoDBRestorableCollection',
                'Get-AzCosmosDBMongoDBRestorableResource',
                'New-AzCosmosDBSqlRoleDefinition', 'New-AzCosmosDBSqlRoleAssignment', 
-               'Get-AzCosmosDBSqlRoleDefinition', 'Get-AzCosmosDBSqlRoleAssignment', 
-               'Remove-AzCosmosDBSqlRoleDefinition', 'Remove-AzCosmosDBSqlRoleAssignment', 
+               'Get-AzCosmosDBSqlRoleDefinition', 'Get-AzCosmosDBSqlRoleAssignment',
+               'Remove-AzCosmosDBSqlRoleDefinition', 'Remove-AzCosmosDBSqlRoleAssignment',
                'Update-AzCosmosDBSqlRoleDefinition', 'Update-AzCosmosDBSqlRoleAssignment',
                'New-AzCosmosDBPermission'
 
@@ -195,9 +195,27 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* General availability of ''Az.CosmosDB'' module
-* Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
-* Introducing AnalyticalStorageTTL in SqlContainer.'
+        ReleaseNotes = '* This release introduces the cmdlets for the preview features of Continuous Backup(Point in time restore):
+        - Introduced support for creating accounts with continuous mode backup policy.
+        - Introduced support for Point in time restore for accounts with continuous mode backup policy.
+        - Introduced support to update the backup interval and backup retention for accounts with periodic mode backup policy.
+        - Introduced support to list the restorable resources in a live database account.
+        - New-AzCosmosBAccount cmdlet is updated with new parameters: IsRestoreReqeust, RestoreSource, RestoreTimestampInUtc, DatabasesToRestore, BackupPolicy.
+        - Update-AzCosmosDBAccount cmdlet is updated with new parameters: BackupPolicy.
+        - The following cmdlets are added:
+          - New-AzCosmosDBRestore, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
+          - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,
+          - Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
+        - Removed the support for throughput Migration. (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
+        - Removed AnalyticalStorageTTL from SqlContainer datamodel (Please use the stable version of Az.CosmosDB Powershell module if you intend to use this feature).
+      * Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
+        - The following cmdlets are added:
+          - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
+          - New-AzCosmosDBSqlRoleDefinition, New-AzCosmosDBSqlRoleAssignment,
+          - Remove-AzCosmosDBSqlRoleDefinition, Remove-AzCosmosDBSqlRoleAssignment,
+          - Update-AzCosmosDBSqlRoleDefinition, Update-AzCosmosDBSqlRoleAssignment,
+          - New-AzCosmosDBSqlPermission
+      * Please note this is a preview version. The cmdlets introduced here may be changed or removed in a future release.'
 
         # Prerelease string of this module
         Prerelease = 'preview'

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.0
 * This release introduces the cmdlets for the preview features of Continuous Backup(Point in time restore):
   - Introduced support for creating accounts with continuous mode backup policy.
   - Introduced support for Point in time restore for accounts with continuous mode backup policy.
