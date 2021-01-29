@@ -193,7 +193,7 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
 # FileList = @()
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-PrivateData = @{
+ PrivateData = @{
 
     PSData = @{
 
@@ -210,11 +210,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-* Added support for operation of Vulnerability Assessment Scan in SqlPool-level
+        ReleaseNotes = '* Added support for operation of Vulnerability Assessment Scan in SqlPool-level
     - Add ''Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan'' cmdlet
     - Add ''Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord'' cmdlet
-    - Add ''Start-AzSynapseSqlPoolVulnerabilityAssessmentScan'' cmdlet
-    
+    - Add ''Start-AzSynapseSqlPoolVulnerabilityAssessmentScan'' cmdlet'
+
         # Prerelease string of this module
         # Prerelease = ''
 

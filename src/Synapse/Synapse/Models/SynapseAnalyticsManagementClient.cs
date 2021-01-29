@@ -1571,6 +1571,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public PSVulnerabilityAssessmentScanExportModel ConvertSqlPoolVulnerabilityAssessmentScan(string resourceGroupName, string workSpaceName,
+           string sqlPoolName, string scanId)
+        {
+            var response = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Export(resourceGroupName, workSpaceName, sqlPoolName, scanId);
+            return new PSVulnerabilityAssessmentScanExportModel(resourceGroupName, workSpaceName, sqlPoolName, scanId, response.ExportedReportLocation);
+        }
+
         private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, string workSpace, string sqlPool, VulnerabilityAssessmentScanRecord scanRecord)
         {
             TriggerType scanTriggerType;
