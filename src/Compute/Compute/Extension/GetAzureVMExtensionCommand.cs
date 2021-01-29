@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "Resource Id specifying the virtual machine object the extension is on.")]
+            HelpMessage = "Resource id specifying the virtual machine object the extension is on.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
