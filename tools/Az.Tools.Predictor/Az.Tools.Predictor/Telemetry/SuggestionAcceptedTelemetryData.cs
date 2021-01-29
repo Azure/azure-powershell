@@ -26,6 +26,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public string ClientId { get; init; }
+
+        /// <summary>
         /// Gets the suggestion that's accepted by the user.
         /// </summary>
         public string Suggestion { get; }
@@ -38,10 +43,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
         /// </summary>
+        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="suggestion">The suggestion that's accepted by the user.</param>
-        public SuggestionAcceptedTelemetryData(uint suggestionSessionId, string suggestion)
+        public SuggestionAcceptedTelemetryData(string clientId, uint suggestionSessionId, string suggestion)
         {
+            ClientId = clientId;
             SuggestionSessionId = suggestionSessionId;
             Suggestion = suggestion;
         }

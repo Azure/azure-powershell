@@ -26,6 +26,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public string ClientId { get; init; }
+
+        /// <summary>
         /// The mode the suggestion is displayed in.
         /// </summary>
         public SuggestionDisplayMode DisplayMode { get; init; }
@@ -47,11 +52,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/>.
         /// </summary>
+        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="displayMode">The mode the suggestion is displayed in.</param>
         /// <param name="suggestionCountOrIndex">The index or count of the suggestions displayed.</param>
-        private SuggestionDisplayedTelemetryData(uint suggestionSessionId, SuggestionDisplayMode displayMode, int suggestionCountOrIndex)
+        private SuggestionDisplayedTelemetryData(string clientId, uint suggestionSessionId, SuggestionDisplayMode displayMode, int suggestionCountOrIndex)
         {
+            ClientId = clientId;
             SuggestionSessionId = suggestionSessionId;
             DisplayMode = displayMode;
             SuggestionCountOrIndex = suggestionCountOrIndex;
@@ -61,22 +68,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/> for the suggestions displayed in
         /// <see cref="SuggestionDisplayMode.InlineView"/>.
         /// </summary>
+        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="index">The index of the suggestion that's displayed.</param>
-        public static SuggestionDisplayedTelemetryData CreateForInlineView(uint suggestionSessionId, int index)
+        public static SuggestionDisplayedTelemetryData CreateForInlineView(string clientId, uint suggestionSessionId, int index)
         {
-            return new SuggestionDisplayedTelemetryData(suggestionSessionId, SuggestionDisplayMode.InlineView, index);
+            return new SuggestionDisplayedTelemetryData(clientId, suggestionSessionId, SuggestionDisplayMode.InlineView, index);
         }
 
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/> for the suggestions displayed in
         /// <see cref="SuggestionDisplayMode.ListView"/>.
         /// </summary>
+        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="count">The count of the suggestions that are displayed.</param>
-        public static SuggestionDisplayedTelemetryData CreateForListView(uint suggestionSessionId, int count)
+        public static SuggestionDisplayedTelemetryData CreateForListView(string clientId, uint suggestionSessionId, int count)
         {
-            return new SuggestionDisplayedTelemetryData(suggestionSessionId, SuggestionDisplayMode.ListView, count);
+            return new SuggestionDisplayedTelemetryData(clientId, suggestionSessionId, SuggestionDisplayMode.ListView, count);
         }
     }
 }

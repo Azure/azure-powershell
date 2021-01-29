@@ -282,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             var properties = CreateProperties(telemetryData);
             properties.Add("ClientId", telemetryData.ClientId);
-            properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
+            properties.Add("SuggestionSessionId", telemetryData != null ? telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture) : string.Empty);
             properties.Add("UserInput", maskedUserInput ?? string.Empty);
             properties.Add("Suggestion", sourceTexts != null ? JsonSerializer.Serialize(sourceTexts.Zip(suggestionSource).Select((s) => Tuple.Create(s.First, s.Second)), JsonUtilities.TelemetrySerializerOptions) : string.Empty);
             properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
@@ -297,6 +297,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         private void SendTelemetry(SuggestionDisplayedTelemetryData telemetryData)
         {
             var properties = CreateProperties(telemetryData);
+            properties.Add("ClientId", telemetryData.ClientId);
             properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
             properties.Add("SuggestionDisplayMode", telemetryData.DisplayMode.ToString());
 
@@ -326,6 +327,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             var properties = CreateProperties(telemetryData);
+            properties.Add("ClientId", telemetryData.ClientId);
             properties.Add("AcceptedSuggestion", suggestion);
             properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
 

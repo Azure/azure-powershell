@@ -359,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var actual = _azPredictor.GetSuggestion(AzPredictorTests.AzPredictorClient, predictionContext, CancellationToken.None);
 
-            Assert.Empty(actual.SuggestionEntries);
+            Assert.Null(actual.SuggestionEntries);
         }
     }
 }

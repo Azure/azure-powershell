@@ -549,7 +549,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.GetSuggestionData.ClientId);
-            Assert.Equal(suggestionPackage.Session, telemetryClient.GetSuggestionData.SuggestionSessionId);
+            Assert.Equal(suggestionPackage.Session.Value, telemetryClient.GetSuggestionData.SuggestionSessionId);
             Assert.NotNull(telemetryClient.GetSuggestionData.Suggestion);
             Assert.NotNull(telemetryClient.GetSuggestionData.UserInput);
 
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("GetSuggestion", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(suggestionPackage.Session.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
+            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", telemetryClient.RecordedTelemetry[0].Properties["UserInut"]);
             Assert.Equal("", telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
 
@@ -566,12 +566,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.ResetWaitingTasks();
             telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
 
-            azPredictor.OnSuggestionDisplayed(suggestionPackage.Session, displayCountOrIndex);
+            azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, displayCountOrIndex);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
             Assert.EndsWith("DisplaySuggestion", telemetryClient.RecordedTelemetry[0].EventName);
-            Assert.Equal(suggestionPackage.Session.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
+            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.SuggestionDisplayedData.ClientId);
             Assert.Equal("ListView", telemetryClient.RecordedTelemetry[0].Properties["SuggestionDisplayMode"]);
             Assert.Equal(displayCountOrIndex.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionCount"]);
             Assert.False(telemetryClient.RecordedTelemetry[0].Properties.ContainsKey("SuggestionIndex"));
@@ -580,18 +581,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.ResetWaitingTasks();
             telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
 
-            azPredictor.OnSuggestionAccepted(suggestionPackage.Session, acceptedSuggestion);
+            azPredictor.OnSuggestionAccepted(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, acceptedSuggestion);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
             Assert.EndsWith("AcceptSuggestion", telemetryClient.RecordedTelemetry[0].EventName);
-            Assert.Equal(suggestionPackage.Session.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
+            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal(acceptedSuggestion, telemetryClient.RecordedTelemetry[0].Properties["AccepedSuggestion"]);
 
-            Assert.Equal(suggestionPackage.Session, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
+            Assert.Equal(suggestionPackage.Session.Value, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
             Assert.Equal(displayCountOrIndex, telemetryClient.SuggestionDisplayedData.SuggestionCountOrIndex);
 
-            Assert.Equal(suggestionPackage.Session, telemetryClient.SuggestionAcceptedData.SuggestionSessionId);
+            Assert.Equal(suggestionPackage.Session.Value, telemetryClient.SuggestionAcceptedData.SuggestionSessionId);
             Assert.Equal(acceptedSuggestion, telemetryClient.SuggestionAcceptedData.Suggestion);
 
             AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
@@ -637,15 +639,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             uint suggestionSessionId = 2;
             var suggestionCountOrIndex = 4;
-            azPredictor.OnSuggestionDisplayed(suggestionSessionId, suggestionCountOrIndex);
+            azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionSessionId, suggestionCountOrIndex);
 
             Assert.Equal(suggestionCountOrIndex, telemetryClient.SuggestionDisplayedData.SuggestionCountOrIndex);
             Assert.Equal(SuggestionDisplayMode.ListView, telemetryClient.SuggestionDisplayedData.DisplayMode);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.SuggestionDisplayedData.ClientId);
             Assert.Equal(suggestionSessionId, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
             Assert.EndsWith("DisplaySuggestion", telemetryClient.RecordedTelemetry[0].EventName);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(suggestionSessionId.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal("ListView", telemetryClient.RecordedTelemetry[0].Properties["SuggestionDisplayMode"]);
             Assert.Equal(suggestionCountOrIndex.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionCount"]);
@@ -663,15 +667,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             uint suggestionSessionId = 40;
             var suggestionCountOrIndex = 0;
-            azPredictor.OnSuggestionDisplayed(suggestionSessionId, suggestionCountOrIndex);
+            azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionSessionId, suggestionCountOrIndex);
 
             Assert.Equal(suggestionCountOrIndex, telemetryClient.SuggestionDisplayedData.SuggestionCountOrIndex);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.SuggestionDisplayedData.ClientId);
             Assert.Equal(SuggestionDisplayMode.InlineView, telemetryClient.SuggestionDisplayedData.DisplayMode);
             Assert.Equal(suggestionSessionId, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
             Assert.EndsWith("DisplaySuggestion", telemetryClient.RecordedTelemetry[0].EventName);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(suggestionSessionId.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal("InlineView", telemetryClient.RecordedTelemetry[0].Properties["SuggestionDisplayMode"]);
             Assert.Equal(suggestionCountOrIndex.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionIndex"]);
@@ -689,15 +695,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             uint suggestionSessionId = 14;
             var suggestionCountOrIndex = -1;
-            azPredictor.OnSuggestionDisplayed(suggestionSessionId, suggestionCountOrIndex);
+            azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionSessionId, suggestionCountOrIndex);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
             Assert.Equal(Math.Abs(suggestionCountOrIndex), telemetryClient.SuggestionDisplayedData.SuggestionCountOrIndex);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.SuggestionDisplayedData.ClientId);
             Assert.Equal(SuggestionDisplayMode.InlineView, telemetryClient.SuggestionDisplayedData.DisplayMode);
             Assert.Equal(suggestionSessionId, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
 
             Assert.EndsWith("DisplaySuggestion", telemetryClient.RecordedTelemetry[0].EventName);
+            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(suggestionSessionId.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal("InlineView", telemetryClient.RecordedTelemetry[0].Properties["SuggestionDisplayMode"]);
             Assert.Equal(Math.Abs(suggestionCountOrIndex).ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionIndex"]);
@@ -723,7 +731,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("GetSuggestion", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(suggestionPackage.Session.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
             Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", telemetryClient.RecordedTelemetry[0].Properties["UserInput"]);
             Assert.StartsWith($"Type: {typeof(MockTestException)}\nStack Trace: ", telemetryClient.RecordedTelemetry[0].Properties["Exception"]);
         }

@@ -226,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             if (_settings.SuggestionCount.Value <= 0)
             {
-                return CreateResult(new List<PredictiveSuggestion>());
+                return CreateResult(null);
             }
 
             Exception exception = null;
@@ -239,12 +239,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
-                return CreateResult(returnedValue ?? new List<PredictiveSuggestion>());
+                return CreateResult(returnedValue);
             }
             catch (Exception e) when (!(e is OperationCanceledException))
             {
                 exception = e;
-                return CreateResult(new List<PredictiveSuggestion>());
+                return CreateResult(null);
             }
             finally
             {
@@ -257,27 +257,32 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             SuggestionPackage CreateResult(List<PredictiveSuggestion> suggestions)
             {
+                if ((suggestions == null) || (suggestions.Count == 0))
+                {
+                    return default(SuggestionPackage);
+                }
+
                 return new SuggestionPackage(localSuggestionSessionId, suggestions);
             }
         }
 
         /// <inhericdoc />
-        public void OnSuggestionDisplayed(uint session, int countOrIndex)
+        public void OnSuggestionDisplayed(string clientId, uint session, int countOrIndex)
         {
             if (countOrIndex > 0)
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(session,  countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(clientId, session,  countOrIndex));
             }
             else
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(session,  -countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(clientId, session,  -countOrIndex));
             }
         }
 
         /// <inhericdoc />
-        public void OnSuggestionAccepted(uint session, string acceptedSuggestion)
+        public void OnSuggestionAccepted(string clientId, uint session, string acceptedSuggestion)
         {
-            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(session, acceptedSuggestion));
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(clientId, session, acceptedSuggestion));
         }
     }
 
