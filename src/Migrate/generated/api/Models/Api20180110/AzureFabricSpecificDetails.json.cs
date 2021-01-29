@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __fabricSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.FabricSpecificDetails(json);
-            {_containerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("containerIds"), out var __jsonContainerIds) ? If( __jsonContainerIds as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : ContainerId;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
+            {_containerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("containerIds"), out var __jsonContainerIds) ? If( __jsonContainerIds as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : ContainerId;}
             AfterFromJson(json);
         }
 
@@ -96,6 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __fabricSpecificDetails?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             if (null != this._containerId)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -105,7 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("containerIds",__w);
             }
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

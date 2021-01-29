@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported specifying key type and curve name when importing keys via a BYOK file
+
+## Version 3.3.1
+* Fixed an issue in Secret Management module
 
 ## Version 3.3.0
 * Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text [#13630]

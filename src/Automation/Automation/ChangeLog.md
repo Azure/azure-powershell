@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue of processing `PSCustomObject` and `Array`.
+
+## Version 1.4.2
 * Fixed issue where description was not populated for update management schedules
 
 ## Version 1.4.1

@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Maximum allowed duration length of retention.
         /// </summary>
         public const int MaxAllowedRetentionDurationCount = 9999;
+        public const int MaxAllowedRetentionDurationCountWeekly = 5163;
+        public const int MaxAllowedRetentionDurationCountMonthly = 1188;
+        public const int MaxAllowedRetentionDurationCountYearly = 99;
+
         public const int AfsDailyRetentionDaysMax = 200;
         public const int AfsDailyRetentionDaysMin = 1;
         public const int AfsWeeklyRetentionMax = 200;
@@ -56,9 +60,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int NumOfMonthsInYear = 12;
 
         // SQL constants
-        public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
-        public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
-        public const int MaxAllowedRetentionDurationCountYearlySql = 10;
+        public const int MaxAllowedRetentionDurationCountWeeklySql = 5163;
+        public const int MaxAllowedRetentionDurationCountMonthlySql = 1188;
+        public const int MaxAllowedRetentionDurationCountYearlySql = 99;
+
     }
 
     /// <summary>

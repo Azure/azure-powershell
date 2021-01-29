@@ -4,7 +4,7 @@ This repository contains PowerShell cmdlets for developers and administrators to
 
 ## Basics
 
-If you would like to become an active contributor to this project (or any other open source Microsoft project), please see the list of resources found on [this page](https://opensource.microsoft.com/resources).
+If you would like to become an active contributor to this project (or any other open source Microsoft project), please see the list of resources found on [this page](https://opensource.microsoft.com/collaborate/).
 
 ## Before Starting
 

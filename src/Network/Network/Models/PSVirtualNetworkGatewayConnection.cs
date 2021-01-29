@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public int DpdTimeoutSeconds { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ConnectionMode { get; set; }
+
         public string SharedKey { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

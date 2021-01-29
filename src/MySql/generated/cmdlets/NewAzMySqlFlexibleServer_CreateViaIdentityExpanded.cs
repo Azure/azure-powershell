@@ -330,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier; set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); set => ParametersBody.SkuTier = value; }
 
         /// <summary>The source MySQL server id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The source MySQL server id.")]

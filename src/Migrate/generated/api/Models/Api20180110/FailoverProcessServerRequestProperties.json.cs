@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {_containerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("containerName"), out var __jsonContainerName) ? (string)__jsonContainerName : (string)ContainerName;}
             {_sourceProcessServerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("sourceProcessServerId"), out var __jsonSourceProcessServerId) ? (string)__jsonSourceProcessServerId : (string)SourceProcessServerId;}
             {_targetProcessServerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("targetProcessServerId"), out var __jsonTargetProcessServerId) ? (string)__jsonTargetProcessServerId : (string)TargetProcessServerId;}
-            {_updateType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("updateType"), out var __jsonUpdateType) ? (string)__jsonUpdateType : (string)UpdateType;}
             {_vmsToMigrate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("vmsToMigrate"), out var __jsonVmsToMigrate) ? If( __jsonVmsToMigrate as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : VmsToMigrate;}
+            {_updateType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("updateType"), out var __jsonUpdateType) ? (string)__jsonUpdateType : (string)UpdateType;}
             AfterFromJson(json);
         }
 
@@ -101,7 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             AddIf( null != (((object)this._containerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._containerName.ToString()) : null, "containerName" ,container.Add );
             AddIf( null != (((object)this._sourceProcessServerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._sourceProcessServerId.ToString()) : null, "sourceProcessServerId" ,container.Add );
             AddIf( null != (((object)this._targetProcessServerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._targetProcessServerId.ToString()) : null, "targetProcessServerId" ,container.Add );
-            AddIf( null != (((object)this._updateType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._updateType.ToString()) : null, "updateType" ,container.Add );
             if (null != this._vmsToMigrate)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -111,6 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("vmsToMigrate",__w);
             }
+            AddIf( null != (((object)this._updateType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._updateType.ToString()) : null, "updateType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

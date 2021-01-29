@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/set-azsearchservice
@@ -8,30 +8,34 @@ schema: 2.0.0
 # Set-AzSearchService
 
 ## SYNOPSIS
-Update an Azure Search service.
+Update an Azure Cognitive Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
- [-ReplicaCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReplicaCount <Int32>] [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>]
+ [-IPRuleList <PSIpRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
+ [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
+ [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSearchService** cmdlet modifies an Azure Search service.
+The **Set-AzSearchService** cmdlet modifies an Azure Cognitive Search service.
 
 ## EXAMPLES
 
@@ -51,7 +55,7 @@ HostingMode       : Default
 Tags              :
 ```
 
-The example changes partition count and replica count of the Azure Search service to 2.
+The example changes partition count and replica count of the Azure Cognitive Search service to 2.
 
 ## PARAMETERS
 
@@ -62,6 +66,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -85,6 +104,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IPRuleList
+(Optional) Azure Cognitive Search Service IP rules
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Search Service name.
 
@@ -105,6 +139,21 @@ Search Service partition count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+(Optional) Azure Cognitive Search Service public network access (Enabled/Disabled)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

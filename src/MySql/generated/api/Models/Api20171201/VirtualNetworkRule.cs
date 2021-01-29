@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// Create firewall rule before the virtual network has vnet service endpoint enabled.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public bool? IgnoreMissingVnetServiceEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).IgnoreMissingVnetServiceEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).IgnoreMissingVnetServiceEndpoint = value; }
+        public bool? IgnoreMissingVnetServiceEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).IgnoreMissingVnetServiceEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).IgnoreMissingVnetServiceEndpoint = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api10.IResourceInternal)__resource).Id = value; }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The ARM resource id of the virtual network subnet.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string VirtualNetworkSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).VirtualNetworkSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).VirtualNetworkSubnetId = value; }
+        public string VirtualNetworkSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).VirtualNetworkSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRulePropertiesInternal)Property).VirtualNetworkSubnetId = value ; }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> instance that will receive validation

@@ -1,8 +1,8 @@
 {
-  "Update-AzMySqlServer+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
+  "Update-AzMySqlServer+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"sslEnforcement\": \"Disabled\"\n  }\n}",
       "Headers": {
       },
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"c235c4a7-107f-4565-9b27-6860f50cc315\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T07:21:57.153Z\"}"
     }
   },
-  "Update-AzMySqlServer+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+3": {
+  "Update-AzMySqlServer+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1", "2", "3" ],
@@ -112,13 +112,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
     }
   },
-  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
+  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
@@ -151,13 +151,13 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
     }
   },
-  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+2": {
+  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": "{\n  \"properties\": {\n    \"storageProfile\": {\n      \"backupRetentionDays\": 23\n    }\n  }\n}",
       "Headers": {
       },
@@ -231,10 +231,10 @@
       "Content": "{\"name\":\"764ecc56-a76f-47d1-bc51-0ab7fc8c90c2\",\"status\":\"Succeeded\",\"startTime\":\"2020-07-24T07:23:01.107Z\"}"
     }
   },
-  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+4": {
+  "Update-AzMySqlServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "5", "6", "7" ],
@@ -267,7 +267,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTest/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
+      "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"mysql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":23,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Disabled\"},\"version\":\"5.7\",\"sslEnforcement\":\"Disabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"mysql-test-100.mysql.database.azure.com\",\"earliestRestoreDate\":\"2020-07-24T03:52:43.253+00:00\",\"replicationRole\":\"Master\",\"masterServerId\":\"\",\"replicaCapacity\":5,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySQL/servers/mysql-test-100\",\"name\":\"mysql-test-100\",\"type\":\"Microsoft.DBForMySQL/servers\"}"
     }
   }
 }

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class RequestPredictionTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        string ITelemetryData.SessionId { get; set; }
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
         /// Gets the masked command lines that are used to request prediction.

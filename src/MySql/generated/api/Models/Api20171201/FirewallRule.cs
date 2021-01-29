@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>The end IP address of the server firewall rule. Must be IPv4 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 2)]
-        public string EndIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).EndIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).EndIPAddress = value; }
+        public string EndIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).EndIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).EndIPAddress = value ; }
 
         /// <summary>
         /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         /// <summary>The start IP address of the server firewall rule. Must be IPv4 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.FormatTable(Index = 1)]
-        public string StartIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).StartIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).StartIPAddress = value; }
+        public string StartIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).StartIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRulePropertiesInternal)Property).StartIPAddress = value ; }
 
         /// <summary>
         /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
