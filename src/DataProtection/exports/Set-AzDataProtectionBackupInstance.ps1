@@ -36,14 +36,27 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DATASOURCEINFO <IDatasource>: Datasource Details
-  ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-  [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
-  [ResourceLocation <String>]: Location of datasource.
-  [ResourceName <String>]: Unique identifier of the resource in the context of parent.
-  [ResourceType <String>]: Resource Type of Datasource.
-  [ResourceUri <String>]: Uri of the resource.
-  [Type <String>]: DatasourceType of the resource.
+BACKUPINSTANCE <IBackupInstanceResource>: Datasource Details
+  [Property <IBackupInstance>]: BackupInstanceResource properties
+    DataSourceInfo <IDatasource>: Gets or sets the data source information.
+      ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+      [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+      [ResourceLocation <String>]: Location of datasource.
+      [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+      [ResourceType <String>]: Resource Type of Datasource.
+      [ResourceUri <String>]: Uri of the resource.
+      [Type <String>]: DatasourceType of the resource.
+    PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
+      PolicyId <String>: 
+    [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
+      ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+      [DatasourceType <String>]: DatasourceType of the resource.
+      [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+      [ResourceLocation <String>]: Location of datasource.
+      [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+      [ResourceType <String>]: Resource Type of Datasource.
+      [ResourceUri <String>]: Uri of the resource.
+    [ObjectType <String>]: 
 
 PARAMETER <IBackupInstanceResource>: BackupInstance Resource
   [Property <IBackupInstance>]: BackupInstanceResource properties
@@ -146,22 +159,10 @@ param(
 
     [Parameter(ParameterSetName='dppplatform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDatasource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource]
     # Datasource Details
-    # To construct, see NOTES section for DATASOURCEINFO properties and create a hash table.
-    ${DatasourceInfo},
-
-    [Parameter(ParameterSetName='dppplatform', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Policy Id
-    ${PolicyId},
-
-    [Parameter(ParameterSetName='dppplatform', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Datasource Type
-    ${DatasourceType},
+    # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
+    ${BackupInstance},
 
     [Parameter(ParameterSetName='Put')]
     [Parameter(ParameterSetName='PutExpanded')]

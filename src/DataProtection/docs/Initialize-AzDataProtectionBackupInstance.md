@@ -1,32 +1,24 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/prepare-azdataprotectiondatasourceinfo
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
-# Prepare-AzDataProtectionDatasourceInfo
+# Initialize-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Prepares Datasource object for backup
+Prepares Backup instance object for backup
 
 ## SYNTAX
 
-### GetById (Default)
 ```
-Prepare-AzDataProtectionDatasourceInfo -DatasourceId <String> -DatasourceType <String> -Location <String>
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetByName
-```
-Prepare-AzDataProtectionDatasourceInfo -DatasourceType <String> -Location <String> -Name <String>
- -ResourceGroup <String> -SubscriptionId <String> [-ParentServerName <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> [-DatasourceId <String>]
+ [-PolicyId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Prepares Datasource object for backup
+Prepares Backup instance object for backup
 
 ## EXAMPLES
 
@@ -55,10 +47,10 @@ ARM ID of the datasource to be protected
 
 ```yaml
 Type: System.String
-Parameter Sets: GetById
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,7 +61,7 @@ Accept wildcard characters: False
 Datasource Type
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -80,75 +72,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of Datasource
+### -PolicyId
+Policy Id to be assiciated to Datasource
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name the datasource to be protected
-
-```yaml
-Type: System.String
-Parameter Sets: GetByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentServerName
-Server name of the datasource to be protected
-
-```yaml
-Type: System.String
-Parameter Sets: GetByName
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-ResourceGroup of the datasource to be protected
-
-```yaml
-Type: System.String
-Parameter Sets: GetByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription ID of the datasource to be protected
-
-```yaml
-Type: System.String
-Parameter Sets: GetByName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDatasource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource
 
 ## NOTES
 

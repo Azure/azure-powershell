@@ -2,6 +2,13 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 {
+
+    public enum DatasourceTypes
+    {
+        AzureDatabaseForPostgreSQL = 0,
+        AzureBlob
+    }
+
     public enum StorageSettingType
     {
         GeoRedundant = 0,
