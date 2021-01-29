@@ -180,6 +180,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V, a Windows naitive virtualization product. \nFor more information visit *link*");
+                Console.ResetColor();
+
 
                 Program.SyncOutput = new PSSyncOutputEvents(this);
                 // 1.              CONVERT VHDX TO VHD
@@ -236,13 +240,13 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     if (synchronizer.Synchronize())
                     {
                         var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
-                        Console.WriteLine("Upload successful");
                         WriteObject(result);
                     }
                     else
                     {
-                        //TODO
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Upload failed");
+                        Console.ResetColor();
                     }
 
                     // 3-5: REVOKE SAS
@@ -259,7 +263,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         output.Name = GetOperationIdFromUrlString(RevokeResult.Request.RequestUri.ToString());
                     }
 
-                    Console.WriteLine("SAS revoked. Upload Complete");
+                    Console.WriteLine("SAS revoked.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nUpload completed successfully.");
+                    Console.ResetColor();
 
                 }
                 else
@@ -380,18 +387,22 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void createBackUp(string filePath)
         {
+            string resizedFileName = returnAvailExtensionName(filePath, "_resized", ".vhd");
+            System.IO.File.Move(filePath, resizedFileName);
+            this.LocalFilePath = new FileInfo(resizedFileName);
             if (filePath.Contains("_FixedSize") || filePath.Contains("_Converted"))
             {
                 return;
             }
 
-            string backupPath = returnAvailExtensionName(filePath, "_backup", Path.GetExtension(filePath));
-            Console.WriteLine("Making a back up copy before resizing.");
+            //string backupPath = returnAvailExtensionName(filePath, "_backup", Path.GetExtension(filePath));
+            string backupPath = filePath;
+            Console.WriteLine("Making a copy of the VHD file before resizing.");
 
             byte[] buffer = new byte[1024 * 1024 * 100]; // 100MB buffer
             bool cancelFlag = false;
 
-            using (FileStream source = new FileStream(this.LocalFilePath.FullName, FileMode.Open, FileAccess.Read))
+            using (FileStream source = new FileStream(resizedFileName, FileMode.Open, FileAccess.Read))
             {
                 long fileLength = source.Length;
                 using (FileStream dest = new FileStream(backupPath, FileMode.CreateNew, FileAccess.Write))
@@ -542,7 +553,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         }
                     }
                     Console.WriteLine("Converted file: " + ConvertedPath);
-                    this.LocalFilePath = vhdFileInfo;
+                    this.LocalFilePath = new FileInfo(vhdFileInfo.FullName);
                 }
             }
             catch (System.Management.ManagementException ex)
@@ -567,7 +578,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         private void convertDynamicVhdToStatic()
         {
             string FixedSizePath = returnAvailExtensionName(this.LocalFilePath.FullName, "_FixedSize", ".vhd");
-            //string FixedSizePath = this.LocalFilePath.DirectoryName + @"\" + Path.GetFileNameWithoutExtension(this.LocalFilePath.FullName) + "_fixedSize.vhd";
             FileInfo FixedFileInfo = new FileInfo(FixedSizePath);
             ManagementScope scope = new ManagementScope(@"\root\virtualization\V2");
             VirtualHardDiskSettingData settingData = new VirtualHardDiskSettingData(VirtualHardDiskType.FixedSize, VirtualHardDiskFormat.Vhd, FixedFileInfo.FullName, null, 0, 0, 0, 0);
@@ -639,7 +649,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     StorageUtilities.GetImageManagementService(scope))
                 {
                     createBackUp(this.LocalFilePath.FullName);
-                    Console.WriteLine("Resizing " + this.LocalFilePath);
+                    Console.WriteLine("Resizing to: " + this.LocalFilePath);
+                    long sizeBefore = this.LocalFilePath.Length;
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
                     {
@@ -664,7 +675,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                             WmiUtilities.ValidateOutput(outParams, scope);
                         }
                     }
-                    Console.WriteLine("Resized " + this.LocalFilePath + " from " + this.LocalFilePath.Length + " bytes to " + FullFileSize + " bytes.");
+                    Console.WriteLine("Resized " + this.LocalFilePath + " from " + sizeBefore + " bytes to " + FullFileSize + " bytes.");
                     this.LocalFilePath = new FileInfo(this.LocalFilePath.FullName);
                 }
             }

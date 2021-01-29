@@ -268,14 +268,14 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 if (percentageDone >= 100.0)
                 {
 
-                    var progressCommand1 = String.Format(@"Write-Progress -Activity 'Making a Back-up Copy' -Status '100% Complete' -Completed");
+                    var progressCommand1 = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -Status '100% Complete' -Completed");
                     ps.Runspace = runspace;
                     ps.AddScript(progressCommand1);
                     ps.Invoke();
                     return;
                 }
 
-                var progressCommand = String.Format(@"Write-Progress -Activity 'Making a Back-up Copy' -PercentComplete {0} -Status '{1}% Complete' ", percentageDone, (int)percentageDone);
+                var progressCommand = String.Format(@"Write-Progress -Activity 'Making a Copy of the VHD file before resizing' -PercentComplete {0} -Status '{1}% Complete' ", percentageDone, (int)percentageDone);
                 ps.Runspace = runspace;
                 ps.AddScript(progressCommand);
                 ps.Invoke();
