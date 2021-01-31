@@ -23,9 +23,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
-
 namespace Microsoft.WindowsAzure.Build.Tasks
 {
     /// <summary>
@@ -63,7 +60,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         [Output]
         public CIFilterTaskResult FilterTaskResult { get; set; }
 
-        private const string TaskMappingConfigName = ".ci-config.yml";
+        private const string TaskMappingConfigName = ".ci-config.json";
 
         private const string AllModule = "all";
         private const string SingleModule = "module";
@@ -365,12 +362,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 throw new Exception("CI phase config is not found!");
             }
-            var deserializer = new DeserializerBuilder()
-                .WithNamingConvention(new CamelCaseNamingConvention())
-                .Build();
             string content = File.ReadAllText(configPath);
 
-            CIPhaseFilterConfig config = deserializer.Deserialize<CIPhaseFilterConfig>(content);
+            CIPhaseFilterConfig config = JsonConvert.DeserializeObject<CIPhaseFilterConfig>(content);
             List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern))), rule.Phases)).ToList();
 
             DateTime startTime = DateTime.Now;
