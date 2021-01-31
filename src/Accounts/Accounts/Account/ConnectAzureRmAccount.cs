@@ -185,6 +185,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Present to use subject name issuer authentication.")]
+        public SwitchParameter SendCertificateChain { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -288,6 +291,11 @@ namespace Microsoft.Azure.Commands.Profile
                 case ServicePrincipalCertificateParameterSet:
                 case ServicePrincipalParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    if (SendCertificateChain.IsPresent)
+                    {
+                        azureAccount.SetProperty("SendCertificateChain", Boolean.TrueString);
+                    }
+                    
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;

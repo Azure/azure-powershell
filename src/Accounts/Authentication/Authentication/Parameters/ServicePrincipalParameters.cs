@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string resourceId,
             string applicationId,
             string thumbprint,
-            SecureString secret) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
+            SecureString secret,
+            bool? sendCertificateChain) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, sendCertificateChain)
         {
             ApplicationId = applicationId;
             Thumbprint = thumbprint;
