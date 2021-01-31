@@ -132,7 +132,7 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
         }
 
-        $Password = $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+        $Password = $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
         
 
