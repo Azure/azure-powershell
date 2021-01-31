@@ -14,30 +14,30 @@ Test out the connection to the database server
 
 ### Test (Default)
 ```
-Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
-Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
- -ResourceGroupName <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
+Test-AzPostgreSqlFlexibleServerConnect -Name <String> -QueryText <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
-Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
- -InputObject <IPostgreSqlIdentity> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword <SecureString>
+ -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
-Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
- -AdministratorLoginPassword <SecureString> -InputObject <IPostgreSqlIdentity>
- [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect -QueryText <String> -AdministratorLoginPassword <SecureString>
+ -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
