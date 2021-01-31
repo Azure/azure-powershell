@@ -31,7 +31,7 @@ function Test-AzPostgreSqlFlexibleServerConnect {
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage = 'The database name to connect.')]
+        [Parameter(HelpMessage = 'The database name to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
         [System.String]
         ${DatabaseName},
