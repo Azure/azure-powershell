@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Bug fix in ExpressRouteLink MacSecConfig.  Added new property to:
+   - `PSExpressRouteLinkMacSecConfig`:
+       - Added SciState parameter
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
 
 ## Version 4.5.0
