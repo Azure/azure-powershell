@@ -14,29 +14,28 @@ Test out the connection to the database server
 
 ### Test (Default)
 ```
-Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
-Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
- -ResourceGroupName <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
+Test-AzMySqlFlexibleServerConnect -Name <String> -QueryText <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
-Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
- -InputObject <IMySqlIdentity> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity>
+ [-DatabaseName <String>] [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
-Test-AzMySqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
- -AdministratorLoginPassword <SecureString> -InputObject <IMySqlIdentity> [-AdministratorUserName <String>]
+Test-AzMySqlFlexibleServerConnect -QueryText <String> -AdministratorLoginPassword <SecureString>
+ -InputObject <IMySqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -126,14 +125,13 @@ Accept wildcard characters: False
 
 ### -DatabaseName
 The database name to connect.
-If not specified, the default db name flexibleserverdb will be used for the connection string.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

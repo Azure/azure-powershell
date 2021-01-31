@@ -30,7 +30,7 @@ function Test-AzMySqlFlexibleServerConnect {
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage = 'The database name to connect. If not specified, the default db name flexibleserverdb will be used for the connection string.')]
+        [Parameter(HelpMessage = 'The database name to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
         [System.String]
         ${DatabaseName},
@@ -116,7 +116,7 @@ function Test-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('AdministratorUserName')
         }
 
-        $DatabaseName = 'flexibleserverdb'
+        $DatabaseName = [string]::Empty
         if ($PSBoundParameters.ContainsKey('DatabaseName')) {
             $DatabaseName = $PSBoundParameters.DatabaseName
             $null = $PSBoundParameters.Remove('DatabaseName')
@@ -140,7 +140,12 @@ function Test-AzMySqlFlexibleServerConnect {
 
         
         try {
-            Open-MySqlConnection -Database $DatabaseName -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+            if ([string]::IsNullOrEmpty($DatabaseName)){
+                Open-MySqlConnection -Database $DatabaseName -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+            }
+            else {
+                Open-MySqlConnection -Server $HostAddr -UserName $AdministratorUserName -Password $Password -SSLMode Required -WarningAction 'silentlycontinue'
+            }
         } catch {
             Write-Host $_.Exception.GetType().FullName
             Write-Host $_.Exception.Message
