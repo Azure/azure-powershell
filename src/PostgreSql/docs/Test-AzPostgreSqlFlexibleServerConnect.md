@@ -1,29 +1,43 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.postgresql/get-azpostgresqlflexibleserverconnect
+online version: https://docs.microsoft.com/en-us/powershell/module/az.postgresql/test-azpostgresqlflexibleserverconnect
 schema: 2.0.0
 ---
 
-# Get-AzPostgreSqlFlexibleServerConnect
+# Test-AzPostgreSqlFlexibleServerConnect
 
 ## SYNOPSIS
 Test out the connection to the database server
 
 ## SYNTAX
 
-### Get (Default)
+### Test (Default)
 ```
-Get-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-QueryText <String>]
- [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -Name <String> -ResourceGroupName <String>
+ -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### TestAndQuery
 ```
-Get-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword <SecureString>
- -InputObject <IPostgreSqlIdentity> [-QueryText <String>] [-AdministratorUserName <String>]
+Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -Name <String> -QueryText <String>
+ -ResourceGroupName <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -AdministratorLoginPassword <SecureString>
+ -InputObject <IPostgreSqlIdentity> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### TestViaIdentityAndQuery
+```
+Test-AzPostgreSqlFlexibleServerConnect -DatabaseName <String> -QueryText <String>
+ -AdministratorLoginPassword <SecureString> -InputObject <IPostgreSqlIdentity>
+ [-AdministratorUserName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,10 +129,10 @@ The database name to connect.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +160,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: TestViaIdentity, TestViaIdentityAndQuery
 Aliases:
 
 Required: True
@@ -161,7 +175,7 @@ The name of the server to connect.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Test, TestAndQuery
 Aliases: ServerName
 
 Required: True
@@ -176,10 +190,10 @@ The query for the database to test
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: TestAndQuery, TestViaIdentityAndQuery
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,7 +205,7 @@ The name of the resource group that contains the resource, You can obtain this v
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
