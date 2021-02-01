@@ -1,0 +1,36 @@
+{
+  "New-AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20",
+      "Content": "{\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "197" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "d31b97c1-6938-4e96-a14b-6f9e11def145" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "377bdb1d-1de8-48c9-ab75-38283e410c21" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040257Z:377bdb1d-1de8-48c9-ab75-38283e410c21" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "146" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"Conflict\",\"message\":\"Cannot reprocess private cloud with different cluster size than the original request (original was \u00270\u0027).\"}}"
+    }
+  }
+}
