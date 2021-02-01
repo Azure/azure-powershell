@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for HostingEnvironmentStatus.</summary>
+    /// <summary>Current status of the App Service Environment.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.HostingEnvironmentStatusTypeConverter))]
     public partial struct HostingEnvironmentStatus :
         System.Management.Automation.IArgumentCompleter

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>The type of migration operation to be done</summary>
     public partial struct MySqlMigrationType :
         System.IEquatable<MySqlMigrationType>
     {

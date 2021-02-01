@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>
+    /// Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription'
+    /// </summary>
     public partial struct ResourceSkuRestrictionsReasonCode :
         System.IEquatable<ResourceSkuRestrictionsReasonCode>
     {

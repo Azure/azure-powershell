@@ -12,23 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Rest.Azure;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -37,11 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
     /// </summary>
     public class ImportExportDatabaseCommunicator
     {
-        /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
@@ -53,11 +44,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
+        /// The Sql client to be used by this end points communicator
+        /// </summary>
+        private SqlManagementClient SqlClient { get; set; }
+
+        /// <summary>
         /// The response header handler
         /// </summary>
         private ImportExportResponseHeaderHandler ResponseHeaderHandler { get; set; }
 
-        private Uri LastLocationHeader { get; set; }
+        private static Uri LastLocationHeader { get; set; }
 
         private ManualResetEvent LocationHeaderResetEvent = new ManualResetEvent(false);
 
@@ -83,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             if (headers.Location != null && headers.Location.ToString().Contains("importExportOperationResults"))
             {
-                this.LastLocationHeader = headers.Location;
+                LastLocationHeader = headers.Location;
                 LocationHeaderResetEvent.Set();
             }
         }
@@ -93,11 +89,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public ImportExportOperationResult BeginExport(string resourceGroupName, string serverName, string databaseName, ExportDatabaseDefinition parameters, out Uri operationStatusLink)
         {
-            this.LastLocationHeader = null;
+            LastLocationHeader = null;
             LocationHeaderResetEvent.Reset();
             ImportExportOperationResult result = GetCurrentSqlClient().Databases.BeginExport(resourceGroupName, serverName, databaseName, parameters);
             LocationHeaderResetEvent.WaitOne(3000);
-            operationStatusLink = this.LastLocationHeader;
+            operationStatusLink = LastLocationHeader;
             return result;
         }
 
@@ -106,15 +102,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public ImportExportOperationResult BeginImportNewDatabase(string resourceGroupName, string serverName, ImportNewDatabaseDefinition parameters, out Uri operationStatusLink)
         {
-            this.LastLocationHeader = null;
+            LastLocationHeader = null;
             LocationHeaderResetEvent.Reset();
             ImportExportOperationResult result = GetCurrentSqlClient().Servers.BeginImportDatabase(resourceGroupName, serverName, parameters);
             LocationHeaderResetEvent.WaitOne(3000);
-            operationStatusLink = this.LastLocationHeader;
+            operationStatusLink = LastLocationHeader;
             return result;
         }
 
-        public ImportExportOperationResult GetOperationStatus(string operationStatusLink)
+        /// <summary>
+        /// Get the status of an operation given a raw Operation Status Link
+        /// </summary>
+        /// <param name="operationStatusLink">Status link as returned by the import or export commandlet</param>
+        /// <param name="rawHttpResponse">Out parameter for the raw HTTP response for further inspection</param>
+        /// <returns></returns>
+        public ImportExportOperationResult GetOperationStatus(string operationStatusLink, out HttpResponseMessage rawHttpResponse)
         {
             var client = GetCurrentSqlClient();
 
@@ -129,6 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             response.EnsureSuccessStatusCode();
 
+            rawHttpResponse = response;
             string responseString = response.Content.ReadAsStringAsync().Result;
 
             ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings

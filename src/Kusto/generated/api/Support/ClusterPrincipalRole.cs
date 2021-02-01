@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>Cluster principal role.</summary>
     public partial struct ClusterPrincipalRole :
         System.IEquatable<ClusterPrincipalRole>
     {

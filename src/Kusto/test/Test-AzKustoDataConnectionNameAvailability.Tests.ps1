@@ -13,9 +13,9 @@ while (-not $mockingPath) {
 
 Describe 'Test-AzKustoDataConnectionNameAvailability' {
     It 'CheckExpanded' {
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName
         $dataConnectionResourceType = $env.dataConnectionResourceType
 
@@ -24,9 +24,9 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
     }
 
     It 'CheckViaIdentityExpanded' {
-        $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $resourceGroupName = $env.resourceGroupNamefordc
+        $clusterName = $env.clusterNamefordc
+        $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
         $dataConnectionResourceType = $env.dataConnectionResourceType
 

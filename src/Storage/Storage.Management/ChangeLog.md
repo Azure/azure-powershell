@@ -18,6 +18,60 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported RoutingPreference settings in create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 3.2.1
+* Fix ContinuationToken never null when list blob with -IncludeVersion
+    - `Get-AzStorageBlob`
+
+## Version 3.2.0
+* Supported create/update/get/list EncryptionScope of a Storage account
+    - `New-AzStorageEncryptionScope`
+    - `Update-AzStorageEncryptionScope`
+    - `Get-AzStorageEncryptionScope`
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzRmStorageContainer`
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
+
+## Version 3.1.0
+* Supported upload Azure File size up to 4 TiB
+    - `Set-AzStorageFileContent`
+* Upgraded Azure.Storage.Blobs to 12.7.0
+* Upgraded Azure.Storage.Files.Shares to 12.5.0
+* Upgraded Azure.Storage.Files.DataLake to 12.5.0
+* Upgraded Azure.Storage.Queues to 12.5.0
+
+## Version 3.0.0
+* Removed obsolete property RestorePolicy.LastEnabledTime
+    - `Enable-AzStorageBlobRestorePolicy`
+    - `Disable-AzStorageBlobRestorePolicy`
+    - `Get-AzStorageBlobServiceProperty`
+    - `Update-AzStorageBlobServiceProperty`
+* Change Type of DaysAfterModificationGreaterThan from int to int?
+    - `Set-AzStorageAccountManagementPolicy`
+    - `Get-AzStorageAccountManagementPolicy`
+    - `Add-AzStorageAccountManagementPolicyAction`
+    - `New-AzStorageAccountManagementPolicyRule`
+* Supported create/update file share with access tier
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported set/update/remove Acl recursively on Datalake Gen2 item 
+    -  `Set-AzDataLakeGen2AclRecursive` 
+    -  `Update-AzDataLakeGen2AclRecursive` 
+    -  `Remove-AzDataLakeGen2AclRecursive`
+* Supported Container access policy with new permission x,t
+    -  `New-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+* Changed the output of get/set Container access policy cmdlet, by change the child property Permission type from enum to String
+    -  `Get-AzStorageContainerStoredAccessPolicy`
+    -  `Set-AzStorageContainerStoredAccessPolicy`
+* Fixed a sample script issue of set management policy with json
+    -  `Set-AzStorageAccountManagementPolicy`
+
+## Version 2.7.0
 * Supported enable/disable/get share soft delete properties on file Service of a Storage account
     - `Update-AzStorageFileServiceProperty`
     - `Get-AzStorageFileServiceProperty`

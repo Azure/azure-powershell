@@ -25,12 +25,13 @@ The **Get-AzRecoveryServicesVaultProperty** cmdlet returns the properties of a R
 
 ### Example 1: Get Properties of a vault
 ```
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "MyVaultName"
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 PS C:\> $props = Get-AzRecoveryServicesVaultProperty -VaultId $vault.Id
+PS C:\> $encryption.encryptionProperties
 ```
 
 The first command gets a Vault object and then stores it in the $vault variable.
-The second command Gets the Vault Properties.
+The second command Gets the Vault Properties. Next we access the encryptionProperties of the vault.
 
 ## PARAMETERS
 

@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
 #>
 function New-AzSpringCloudAppDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -78,17 +78,11 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentSettingsEnvironmentVariables]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables]))]
     [System.Collections.Hashtable]
     # Collection of environment variables
     ${EnvironmentVariable},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Instance count
-    ${InstanceCount},
-
+    
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [System.String]
@@ -202,10 +196,6 @@ param(
         if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
             $PSBoundParameters.Add('DeploymentSettingEnvironmentVariable', $EnvironmentVariable)
             $Null = $PSBoundParameters.Remove('EnvironmentVariable')
-        }
-        if ($PSBoundParameters.ContainsKey('InstanceCount')) {
-            $PSBoundParameters.Add('DeploymentSettingInstanceCount', $InstanceCount)
-            $Null = $PSBoundParameters.Remove('InstanceCount')
         }
         if ($PSBoundParameters.ContainsKey('JvmOption')) {
             $PSBoundParameters.Add('DeploymentSettingJvmOption', $JvmOption)

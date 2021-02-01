@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
+    /// <summary>Dictionary of <ContainerInfo></summary>
     [System.ComponentModel.TypeConverter(typeof(WebSiteInstanceStatusPropertiesContainersTypeConverter))]
     public partial class WebSiteInstanceStatusPropertiesContainers
     {
@@ -125,6 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             AfterDeserializePSObject(content);
         }
     }
+    /// Dictionary of <ContainerInfo>
     [System.ComponentModel.TypeConverter(typeof(WebSiteInstanceStatusPropertiesContainersTypeConverter))]
     public partial interface IWebSiteInstanceStatusPropertiesContainers
 

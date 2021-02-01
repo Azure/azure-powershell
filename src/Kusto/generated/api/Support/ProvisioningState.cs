@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
+    /// <summary>The provisioned state of the resource.</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>TypeConverter implementation for ConfigServerState.</summary>
+    /// <summary>State of the config server.</summary>
     public partial class ConfigServerStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

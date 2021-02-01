@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
     /// <summary>Description for Get all apps for a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] WebApps_List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Web/sites"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Web/sites"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFunctionApp_List")]

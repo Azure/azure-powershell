@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             {_bypass = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("bypass"), out var __jsonBypass) ? (string)__jsonBypass : (string)Bypass;}
+            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRule.FromJson(__u) )) ))() : null : VirtualNetworkRule;}
+            {_iPRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("ipRules"), out var __jsonIPRules) ? If( __jsonIPRules as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRule.FromJson(__p) )) ))() : null : IPRule;}
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)DefaultAction;}
-            {_iPRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("ipRules"), out var __jsonIPRules) ? If( __jsonIPRules as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IIPRule) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IPRule.FromJson(__u) )) ))() : null : IPRule;}
-            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.VirtualNetworkRule.FromJson(__p) )) ))() : null : VirtualNetworkRule;}
             AfterFromJson(json);
         }
 
@@ -97,25 +97,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return container;
             }
             AddIf( null != (((object)this._bypass)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._bypass.ToString()) : null, "bypass" ,container.Add );
-            AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
-            if (null != this._iPRule)
+            if (null != this._virtualNetworkRule)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._iPRule )
+                foreach( var __x in this._virtualNetworkRule )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("ipRules",__w);
+                container.Add("virtualNetworkRules",__w);
             }
-            if (null != this._virtualNetworkRule)
+            if (null != this._iPRule)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __s in this._virtualNetworkRule )
+                foreach( var __s in this._iPRule )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("virtualNetworkRules",__r);
+                container.Add("ipRules",__r);
             }
+            AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

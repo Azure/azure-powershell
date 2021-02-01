@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of Solution</summary>
     public partial struct SolutionType :
         System.IEquatable<SolutionType>
     {

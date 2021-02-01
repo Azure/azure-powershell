@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
@@ -92,12 +94,50 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Intrusion Detection Setting")]
+        [ValidateNotNull]
+        public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Transport security name")]
+        public string TransportSecurityName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault")]
+        public string TransportSecurityKeyVaultSecretId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall policy sku tier")]
+        [ValidateSet(
+            MNM.FirewallPolicySkuTier.Standard,
+            MNM.FirewallPolicySkuTier.Premium,
+            IgnoreCase = true)]
+        public string SkuTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
+
         public override void Execute()
         {
 
             base.Execute();
 
-            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));
+            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));  
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -118,8 +158,50 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
-                DnsSettings = this.DnsSetting
+                DnsSettings = this.DnsSetting,
+                Sku = new PSAzureFirewallPolicySku {
+                    Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
+                },
+                IntrusionDetection = this.IntrusionDetection
             };
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                firewallPolicy.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                firewallPolicy.Identity = this.Identity;
+            }
+
+            if (this.TransportSecurityKeyVaultSecretId != null)
+            {
+                if (this.TransportSecurityName == null)
+                {
+                    throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                if (this.Identity == null && this.UserAssignedIdentityId == null)
+                {
+                    throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                firewallPolicy.TransportSecurity = new PSAzureFirewallPolicyTransportSecurity
+                {
+                    CertificateAuthority = new PSAzureFirewallPolicyTransportSecurityCertificateAuthority
+                    {
+                        Name = this.TransportSecurityName,
+                        KeyVaultSecretId = this.TransportSecurityKeyVaultSecretId
+                    }
+                };
+            }
 
             // Map to the sdk object
             var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);

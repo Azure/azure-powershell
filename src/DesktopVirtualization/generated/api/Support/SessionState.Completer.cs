@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>Argument completer implementation for SessionState.</summary>
+    /// <summary>State of user session.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionStateTypeConverter))]
     public partial struct SessionState :
         System.Management.Automation.IArgumentCompleter

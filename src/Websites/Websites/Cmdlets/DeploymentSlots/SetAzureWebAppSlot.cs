@@ -234,11 +234,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         }
                     }
 
-                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
-
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))
@@ -267,7 +269,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             Location = location,
                             Tags = tags,
                             ServerFarmId = WebApp.ServerFarmId,
-                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
+                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned, null, null) : new ManagedServiceIdentity(ManagedServiceIdentityType.None, null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 

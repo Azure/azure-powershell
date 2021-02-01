@@ -42,7 +42,6 @@ PS C:\>
       $AutoscaleThroughput = Invoke-AzCosmosDBTableThroughputMigration -InputObject $NewTable -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

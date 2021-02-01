@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for UnauthenticatedClientAction.</summary>
+    /// <summary>The action to take when an unauthenticated client attempts to access the app.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.UnauthenticatedClientActionTypeConverter))]
     public partial struct UnauthenticatedClientAction :
         System.Management.Automation.IArgumentCompleter

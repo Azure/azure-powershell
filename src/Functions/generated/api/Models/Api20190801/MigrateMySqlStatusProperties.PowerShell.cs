@@ -96,9 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus?) content.GetValueForProperty("MigrationOperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).OperationId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).LocalMySqlEnabled = (bool?) content.GetValueForProperty("LocalMySqlEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).LocalMySqlEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus?) content.GetValueForProperty("MigrationOperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus.CreateFrom);
             AfterDeserializeDictionary(content);
         }
 
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus?) content.GetValueForProperty("MigrationOperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus.CreateFrom);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).OperationId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).LocalMySqlEnabled = (bool?) content.GetValueForProperty("LocalMySqlEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).LocalMySqlEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus?) content.GetValueForProperty("MigrationOperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IMigrateMySqlStatusPropertiesInternal)this).MigrationOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.OperationStatus.CreateFrom);
             AfterDeserializePSObject(content);
         }
 

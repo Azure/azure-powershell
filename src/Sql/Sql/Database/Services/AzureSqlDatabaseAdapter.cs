@@ -162,6 +162,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 MinCapacity = model.Database.MinimumCapacity,
                 HighAvailabilityReplicaCount = model.Database.ReadReplicaCount,
                 StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                SecondaryType = model.Database.SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

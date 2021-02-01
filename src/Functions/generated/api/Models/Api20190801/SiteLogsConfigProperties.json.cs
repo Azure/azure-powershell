@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return;
             }
             {_applicationLog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("applicationLogs"), out var __jsonApplicationLogs) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ApplicationLogsConfig.FromJson(__jsonApplicationLogs) : ApplicationLog;}
-            {_detailedErrorMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("detailedErrorMessages"), out var __jsonDetailedErrorMessages) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EnabledConfig.FromJson(__jsonDetailedErrorMessages) : DetailedErrorMessage;}
-            {_failedRequestsTracing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("failedRequestsTracing"), out var __jsonFailedRequestsTracing) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EnabledConfig.FromJson(__jsonFailedRequestsTracing) : FailedRequestsTracing;}
             {_httpLog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("httpLogs"), out var __jsonHttpLogs) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HttpLogsConfig.FromJson(__jsonHttpLogs) : HttpLog;}
+            {_failedRequestsTracing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("failedRequestsTracing"), out var __jsonFailedRequestsTracing) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EnabledConfig.FromJson(__jsonFailedRequestsTracing) : FailedRequestsTracing;}
+            {_detailedErrorMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("detailedErrorMessages"), out var __jsonDetailedErrorMessages) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.EnabledConfig.FromJson(__jsonDetailedErrorMessages) : DetailedErrorMessage;}
             AfterFromJson(json);
         }
 
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 return container;
             }
             AddIf( null != this._applicationLog ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._applicationLog.ToJson(null,serializationMode) : null, "applicationLogs" ,container.Add );
-            AddIf( null != this._detailedErrorMessage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._detailedErrorMessage.ToJson(null,serializationMode) : null, "detailedErrorMessages" ,container.Add );
-            AddIf( null != this._failedRequestsTracing ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._failedRequestsTracing.ToJson(null,serializationMode) : null, "failedRequestsTracing" ,container.Add );
             AddIf( null != this._httpLog ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._httpLog.ToJson(null,serializationMode) : null, "httpLogs" ,container.Add );
+            AddIf( null != this._failedRequestsTracing ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._failedRequestsTracing.ToJson(null,serializationMode) : null, "failedRequestsTracing" ,container.Add );
+            AddIf( null != this._detailedErrorMessage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._detailedErrorMessage.ToJson(null,serializationMode) : null, "detailedErrorMessages" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

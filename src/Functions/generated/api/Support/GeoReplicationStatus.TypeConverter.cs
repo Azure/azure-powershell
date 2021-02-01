@@ -6,7 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for GeoReplicationStatus.</summary>
+    /// <summary>
+    /// The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and
+    /// operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in
+    /// progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location
+    /// is temporarily unavailable.
+    /// </summary>
     public partial class GeoReplicationStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

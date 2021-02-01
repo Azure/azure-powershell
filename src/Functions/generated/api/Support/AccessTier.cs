@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>
+    /// Required for storage accounts where kind = BlobStorage. The access tier used for billing.
+    /// </summary>
     public partial struct AccessTier :
         System.IEquatable<AccessTier>
     {

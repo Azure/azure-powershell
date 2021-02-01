@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_serviceBusNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceBusNamespace"), out var __jsonServiceBusNamespace) ? (string)__jsonServiceBusNamespace : (string)ServiceBusNamespace;}
+            {_relayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("relayName"), out var __jsonRelayName) ? (string)__jsonRelayName : (string)RelayName;}
+            {_relayArmUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("relayArmUri"), out var __jsonRelayArmUri) ? (string)__jsonRelayArmUri : (string)RelayArmUri;}
             {_hostname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("hostname"), out var __jsonHostname) ? (string)__jsonHostname : (string)Hostname;}
             {_port = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("port"), out var __jsonPort) ? (int?)__jsonPort : Port;}
-            {_relayArmUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("relayArmUri"), out var __jsonRelayArmUri) ? (string)__jsonRelayArmUri : (string)RelayArmUri;}
-            {_relayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("relayName"), out var __jsonRelayName) ? (string)__jsonRelayName : (string)RelayName;}
             {_sendKeyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sendKeyName"), out var __jsonSendKeyName) ? (string)__jsonSendKeyName : (string)SendKeyName;}
             {_sendKeyValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("sendKeyValue"), out var __jsonSendKeyValue) ? (string)__jsonSendKeyValue : (string)SendKeyValue;}
-            {_serviceBusNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceBusNamespace"), out var __jsonServiceBusNamespace) ? (string)__jsonServiceBusNamespace : (string)ServiceBusNamespace;}
             {_serviceBusSuffix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("serviceBusSuffix"), out var __jsonServiceBusSuffix) ? (string)__jsonServiceBusSuffix : (string)ServiceBusSuffix;}
             AfterFromJson(json);
         }
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._serviceBusNamespace)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceBusNamespace.ToString()) : null, "serviceBusNamespace" ,container.Add );
+            AddIf( null != (((object)this._relayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._relayName.ToString()) : null, "relayName" ,container.Add );
+            AddIf( null != (((object)this._relayArmUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._relayArmUri.ToString()) : null, "relayArmUri" ,container.Add );
             AddIf( null != (((object)this._hostname)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._hostname.ToString()) : null, "hostname" ,container.Add );
             AddIf( null != this._port ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._port) : null, "port" ,container.Add );
-            AddIf( null != (((object)this._relayArmUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._relayArmUri.ToString()) : null, "relayArmUri" ,container.Add );
-            AddIf( null != (((object)this._relayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._relayName.ToString()) : null, "relayName" ,container.Add );
             AddIf( null != (((object)this._sendKeyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._sendKeyName.ToString()) : null, "sendKeyName" ,container.Add );
             AddIf( null != (((object)this._sendKeyValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._sendKeyValue.ToString()) : null, "sendKeyValue" ,container.Add );
-            AddIf( null != (((object)this._serviceBusNamespace)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceBusNamespace.ToString()) : null, "serviceBusNamespace" ,container.Add );
             AddIf( null != (((object)this._serviceBusSuffix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._serviceBusSuffix.ToString()) : null, "serviceBusSuffix" ,container.Add );
             AfterToJson(ref container);
             return container;

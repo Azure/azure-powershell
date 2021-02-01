@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Type of managed service identity.</summary>
     public partial struct ManagedServiceIdentityType :
         System.IEquatable<ManagedServiceIdentityType>
     {

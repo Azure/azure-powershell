@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for ManagedPipelineMode.</summary>
+    /// <summary>Managed pipeline mode.</summary>
     public partial class ManagedPipelineModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

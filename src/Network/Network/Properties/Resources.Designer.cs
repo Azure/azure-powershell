@@ -131,7 +131,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to sslProfiles.
+        /// </summary>
+        internal static string ApplicationGatewaySslProfileName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewaySslProfileName", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
@@ -239,7 +250,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to trustedClientCertificates.
+        /// </summary>
+        internal static string ApplicationGatewayTrustedClientCertificateName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewayTrustedClientCertificateName", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
@@ -394,7 +416,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified.
+        ///   Looks up a localized string similar to Connection monitor V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified.
         /// </summary>
         internal static string ConnectionMonitorV1V2 {
             get {
@@ -466,20 +488,11 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FilterType defined without filter item.
+        ///   Looks up a localized string similar to Type in the endpoint {0} should be populated. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork..
         /// </summary>
-        internal static string EndpointFilterItem {
+        internal static string EmptyEndpointType {
             get {
-                return ResourceManager.GetString("EndpointFilterItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Endpoint filter item address is empty.
-        /// </summary>
-        internal static string EndpointFilterItemAddress {
-            get {
-                return ResourceManager.GetString("EndpointFilterItemAddress", resourceCulture);
+                return ResourceManager.GetString("EmptyEndpointType", resourceCulture);
             }
         }
         
@@ -507,33 +520,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string EndpointFilterItemIsMissing {
             get {
                 return ResourceManager.GetString("EndpointFilterItemIsMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Filter item list is empty.
-        /// </summary>
-        internal static string EndpointFilterItemList {
-            get {
-                return ResourceManager.GetString("EndpointFilterItemList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Endpoint filter item type is not AgentAddress.
-        /// </summary>
-        internal static string EndpointFilterItemType {
-            get {
-                return ResourceManager.GetString("EndpointFilterItemType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only filter type Include is supported.
-        /// </summary>
-        internal static string EndpointFilterType {
-            get {
-                return ResourceManager.GetString("EndpointFilterType", resourceCulture);
             }
         }
         
@@ -655,11 +641,29 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint..
+        ///   Looks up a localized string similar to ResourceId is invalid for specified endpoint type {0}.
+        /// </summary>
+        internal static string InvalidEndpointResourceIdForSpecifiedType {
+            get {
+                return ResourceManager.GetString("InvalidEndpointResourceIdForSpecifiedType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualNetwork, Subnet and Workspace. Please update the resource ID of endpoint..
         /// </summary>
         internal static string InvalidEndpointResourceType {
             get {
                 return ResourceManager.GetString("InvalidEndpointResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid type in the endpoint {0}. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, ExternalAddress..
+        /// </summary>
+        internal static string InvalidEndpointType {
+            get {
+                return ResourceManager.GetString("InvalidEndpointType", resourceCulture);
             }
         }
         
@@ -1121,7 +1125,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemoveVirtualRouterWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a RouteServer will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveRouteServerWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveRouteServerWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
@@ -1465,6 +1480,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for DestinationPortBehavior. Supported values are &apos;None&apos;, &apos;ListenIfAvailable&apos;..
+        /// </summary>
+        internal static string UnsupportedDestinationPortBehavior {
+            get {
+                return ResourceManager.GetString("UnsupportedDestinationPortBehavior", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specified EndpointFilterItemType is not supported. Supported type is &apos;AgentAddress&apos;..
         /// </summary>
         internal static string UnsupportedEndpointFilterItemType {
@@ -1697,7 +1721,29 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule..
+        /// </summary>
+        internal static string VpnGatewayRequiredToCreateVpnNatRule
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VpnGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
         /// </summary>

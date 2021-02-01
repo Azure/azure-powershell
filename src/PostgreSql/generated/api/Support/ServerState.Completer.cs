@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for ServerState.</summary>
+    /// <summary>A state of a server that is visible to user.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerStateTypeConverter))]
     public partial struct ServerState :
         System.Management.Automation.IArgumentCompleter
@@ -41,6 +41,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Inaccessible".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Inaccessible", "Inaccessible", global::System.Management.Automation.CompletionResultType.ParameterValue, "Inaccessible");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Starting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Starting", "Starting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Starting");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopping".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Stopping", "Stopping", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopping");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Stopped", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Updating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Updating", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
             }
         }
     }

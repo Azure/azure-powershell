@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>Resource Type of ApplicationGroup.</summary>
     public partial struct ApplicationGroupType :
         System.IEquatable<ApplicationGroupType>
     {

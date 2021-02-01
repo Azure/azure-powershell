@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Domain registration status.</summary>
     public partial struct DomainStatus :
         System.IEquatable<DomainStatus>
     {

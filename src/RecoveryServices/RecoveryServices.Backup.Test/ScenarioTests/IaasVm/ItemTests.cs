@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureUnmanagedVMFullRestore");
         }
 
-        [Fact]
+        [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMSoftDelete()
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultContext");
         }
 
-        [Fact]
+        [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMSetVaultProperty()
@@ -138,6 +138,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureBackupDataMove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureRSVaultMSI()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureRSVaultMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMCrossRegionRestore()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMCrossRegionRestore");
         }
     }
 }

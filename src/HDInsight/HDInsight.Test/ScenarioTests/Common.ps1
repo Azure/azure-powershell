@@ -73,7 +73,7 @@ class ClusterCommonCreateParameter{
       [string] $clusterName
       [string] $location
       [string] $resourceGroupName
-      [string] $storageAccountName
+      [string] $storageAccountResourceId
       [string] $clusterType
       [int] $clusterSizeInNodes
       [string] $storageAccountKey
@@ -82,13 +82,13 @@ class ClusterCommonCreateParameter{
       [string] $minSupportedTlsVersion
 
 	  ClusterCommonCreateParameter([string] $clusterName, [string] $location, [string] $resourceGroupName,
-                                   [string] $storageAccountName, [string] $clusterType, [int] $clusterSizeInNodes, 
+                                   [string] $storageAccountResourceId, [string] $clusterType, [int] $clusterSizeInNodes, 
                                    [string] $storageAccountKey, [System.Management.Automation.PSCredential] $httpCredential,
                                    [System.Management.Automation.PSCredential] $sshCredential, [string] $minSupportedTlsVersion){
                 $this.clusterName=$clusterName
                 $this.location=$location
                 $this.resourceGroupName=$resourceGroupName
-                $this.storageAccountName=$storageAccountName
+                $this.storageAccountResourceId=$storageAccountResourceId
                 $this.clusterType=$clusterType
                 $this.clusterSizeInNodes=$clusterSizeInNodes
                 $this.storageAccountKey=$storageAccountKey
@@ -100,9 +100,9 @@ class ClusterCommonCreateParameter{
 
 <#
 .SYNOPSIS
- Create Common Parameter for creating cluster.
+ Create Common Parameter with WASB for creating cluster.
 #>
-function Prepare-ClusterCreateParameterForWASB{
+function Prepare-ClusterCreateParameter{
     param(
       [string] $clusterName="hdi-ps-test",
       [string] $location="East US",
@@ -118,8 +118,9 @@ function Prepare-ClusterCreateParameterForWASB{
 
     $storageAccountName=Generate-StorageAccountName($storageAccountName)
 
-    $storageAccount= New-AzStorageAccount -ResourceGroupName $resourceGroupName -Location $location -Name $storageAccountName -TypeString "Standard_RAGRS"
+	$storageAccount= New-AzStorageAccount -ResourceGroupName $resourceGroupName -Location $location -Name $storageAccountName -TypeString Standard_RAGRS
 
+	$storageAccountResourceId=$storageAccount.Id
     $storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
     $storageAccountKey=$storageAccountKey[0].Value
 
@@ -131,9 +132,9 @@ function Prepare-ClusterCreateParameterForWASB{
     $httpCredential=New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
     $sshCredential=New-Object System.Management.Automation.PSCredential($sshUser, $sshPassword)
 
-    $clusterSizeInNodes=2
+    $clusterSizeInNodes=3
     $minSupportedTlsVersion="1.2"
-    return [ClusterCommonCreateParameter]::new($clusterName, $location,  $resourceGroupName,$storageAccountName, 
+    return [ClusterCommonCreateParameter]::new($clusterName, $location,  $resourceGroupName,$storageAccountResourceId, 
                                                $clusterType, $clusterSizeInNodes,$storageAccountKey, $httpCredential,
                                                $sshCredential, $minSupportedTlsVersion)
 }
@@ -151,7 +152,7 @@ function Create-CMKCluster{
 	  [string] $keyName="key-ps-cmktest"
     )
 
-    $params=Prepare-ClusterCreateParameterForWASB -clusterName $clusterName -location $location 
+    $params=Prepare-ClusterCreateParameter -clusterName $clusterName -location $location 
 
     # new user-assigned identity
     $assignedIdentity= New-AzUserAssignedIdentity -ResourceGroupName $params.resourceGroupName -Name $assignedIdentityName
@@ -169,8 +170,8 @@ function Create-CMKCluster{
     $encryptionKeyName=$encryptionKey.Name
     # new hdi cluster with cmk
     $cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName -ClusterName $params.clusterName `
-    -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType -DefaultStorageAccountName $params.storageAccountName `
-    -DefaultStorageAccountKey $params.storageAccountKey -HttpCredential $params.httpCredential -SshCredential $params.sshCredential  `
+    -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType -StorageAccountResourceId $params.storageAccountResourceId `
+    -StorageAccountKey $params.storageAccountKey -HttpCredential $params.httpCredential -SshCredential $params.sshCredential  `
     -AssignedIdentity $assignedIdentityId -EncryptionKeyName $encryptionKeyName -EncryptionKeyVersion $encryptionKeyVersion `
     -EncryptionVaultUri $encryptionVaultUri
 

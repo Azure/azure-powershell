@@ -40,7 +40,7 @@ The **Get-AzAutomationDscNodeReport** cmdlet gets reports sent from an APS Desir
 ### Example 1: Get all reports for a DSC node
 ```
 PS C:\>$Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "Computer14"
-PS C:\> Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup14" -AutomationAccountName "Contoso17" -NodeId $Node.Id
+PS C:\> Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -NodeId $Node.Id
 ```
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.

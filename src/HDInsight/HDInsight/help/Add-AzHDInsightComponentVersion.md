@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
@@ -29,6 +29,7 @@ The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running 
 PS C:\> # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
             -Name $storageAccountName | %{ $_.Key1 }
@@ -57,9 +58,9 @@ PS C:\> # Primary storage account info
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageContainer `
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer `
                 -SshCredential $sshCredentials `
                 -Version "3.5"
 ```
@@ -151,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

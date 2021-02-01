@@ -15,14 +15,14 @@ Cancels a resource group deployment.
 
 ### StopByResourceGroupDeploymentName (Default)
 ```
-Stop-AzResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>] [-Pre]
+Stop-AzResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByResourceGroupDeploymentId
 ```
-Stop-AzResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzResourceGroupDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,22 +59,6 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 ```
 
 ## PARAMETERS
-
-### -ApiVersion
-Specifies the API version that is supported by the resource Provider.
-You can specify a different version than the default version.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure

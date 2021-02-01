@@ -45,7 +45,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             using (var profile = GetDefaultProfile())
             {
-                contextAction(profile.ToProfile(), new RMProfileClient(profile));
+                var client = new RMProfileClient(profile)
+                {
+                    WarningLog = (s) => WriteWarning(s)
+                };
+                contextAction(profile.ToProfile(), client);
             }
         }
 
@@ -123,12 +127,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     {
                         ProtectedProfileProvider.InitializeResourceManagerProfile();
                     }
-                    catch (SystemException e)
+                    catch (Exception e)
                     {
-                        if (!(e is IOException) && !(e is UnauthorizedAccessException))
-                        {
-                            throw e;
-                        }
+                        //Likely the exception is related to IO or permission, fallback to Process save mode
                         WriteInitializationWarnings(string.Format(Resources.ProfileFileNotAccessible, e.Message));
                         ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }

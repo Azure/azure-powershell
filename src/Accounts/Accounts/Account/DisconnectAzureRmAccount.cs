@@ -126,12 +126,11 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                     {
-                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, AzureSession.Instance.TokenCache);
+                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, null);
                     }
 
                     if (AzureRmProfileProvider.Instance.Profile != null)
                     {
-
                         ModifyContext((localProfile, profileClient) =>
                        {
                            var matchingContexts = localProfile.Contexts?.Values?.Where((c) => c != null && c.Account != null && string.Equals(c.Account.Id, azureAccount.Id, StringComparison.CurrentCultureIgnoreCase));

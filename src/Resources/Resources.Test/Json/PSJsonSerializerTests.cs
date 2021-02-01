@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
             var hashtable = new Hashtable
             {
                 ["foo"] = new PSObject("fooValue"),
-                ["bar"] = true,
+                ["Bar"] = true,
                 ["nested"] = new Hashtable
                 {
                     ["foo"] = new PSObject(Guid.Parse("4d44fe86-f04a-4ba5-9900-abdec8cb11c1")),
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
             JToken expected = JToken.FromObject(new
             {
                 foo = "fooValue",
-                bar = true,
+                Bar = true,
                 nested = new
                 {
                     foo = "4d44fe86-f04a-4ba5-9900-abdec8cb11c1",

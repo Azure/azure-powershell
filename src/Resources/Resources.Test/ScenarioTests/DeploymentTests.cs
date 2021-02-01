@@ -49,6 +49,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTestResourceGroupDeploymentErrors()
         {
             TestRunner.RunTestScript("Test-TestResourceGroupDeploymentErrors");
@@ -139,6 +147,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewDeploymentFromNonexistentTemplateParameterFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithQueryString");
         }
     }
 }

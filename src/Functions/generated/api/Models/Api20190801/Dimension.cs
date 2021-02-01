@@ -8,17 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     /// </summary>
     public partial class Dimension :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimension,
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDimensionInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimension"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimension __dimension = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.Dimension();
 
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)__dimension).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)__dimension).DisplayName = value; }
+        /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
+        private string _displayName;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
         /// <summary>Backing field for <see cref="InternalName" /> property.</summary>
         private string _internalName;
@@ -26,8 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string InternalName { get => this._internalName; set => this._internalName = value; }
 
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)__dimension).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal)__dimension).Name = value; }
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="ToBeExportedForShoebox" /> property.</summary>
         private bool? _toBeExportedForShoebox;
@@ -40,25 +40,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__dimension), __dimension);
-            await eventListener.AssertObjectIsValid(nameof(__dimension), __dimension);
-        }
     }
     /// Dimension of a resource metric. For e.g. instance specific HTTP requests for a web app,
     /// where instance name is dimension of the metric HTTP request
     public partial interface IDimension :
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimension
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable
     {
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
+
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
@@ -71,6 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         Required = false,
         ReadOnly = false,
         Description = @"",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
         SerializedName = @"toBeExportedForShoebox",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ToBeExportedForShoebox { get; set; }
@@ -78,10 +81,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
     }
     /// Dimension of a resource metric. For e.g. instance specific HTTP requests for a web app,
     /// where instance name is dimension of the metric HTTP request
-    internal partial interface IDimensionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IDimensionInternal
+    internal partial interface IDimensionInternal
+
     {
+        string DisplayName { get; set; }
+
         string InternalName { get; set; }
+
+        string Name { get; set; }
 
         bool? ToBeExportedForShoebox { get; set; }
 

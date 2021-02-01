@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Updates an existing resource group.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(PSResourceGroup))]
-    public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithAPiVersion
+    public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
         /// <summary>
         /// List resources group by name parameter set.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 2C2AF43D-18BF-4036-A355-FC27E406B18A
@@ -27,6 +27,7 @@ The **Add-AzHDInsightStorage** cmdlet adds an Azure Storage account entry to the
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
@@ -62,9 +63,9 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageContainer
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
 ```
 
 This command adds an blob storage account entry to the HDInsight configuration named your-hadoop-001.
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
+            AddIf( null != (((object)this._virtualPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualPath.ToString()) : null, "virtualPath" ,container.Add );
             AddIf( null != (((object)this._physicalPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._physicalPath.ToString()) : null, "physicalPath" ,container.Add );
             AddIf( null != this._preloadEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._preloadEnabled) : null, "preloadEnabled" ,container.Add );
             if (null != this._virtualDirectory)
@@ -88,7 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
                 }
                 container.Add("virtualDirectories",__w);
             }
-            AddIf( null != (((object)this._virtualPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._virtualPath.ToString()) : null, "virtualPath" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
+            {_virtualPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualPath"), out var __jsonVirtualPath) ? (string)__jsonVirtualPath : (string)VirtualPath;}
             {_physicalPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("physicalPath"), out var __jsonPhysicalPath) ? (string)__jsonPhysicalPath : (string)PhysicalPath;}
             {_preloadEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("preloadEnabled"), out var __jsonPreloadEnabled) ? (bool?)__jsonPreloadEnabled : PreloadEnabled;}
             {_virtualDirectory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("virtualDirectories"), out var __jsonVirtualDirectories) ? If( __jsonVirtualDirectories as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualDirectory) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.VirtualDirectory.FromJson(__u) )) ))() : null : VirtualDirectory;}
-            {_virtualPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("virtualPath"), out var __jsonVirtualPath) ? (string)__jsonVirtualPath : (string)VirtualPath;}
             AfterFromJson(json);
         }
     }

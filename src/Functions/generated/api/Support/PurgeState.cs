@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
+    /// <summary>Status of the operation represented by the requested Id.</summary>
     public partial struct PurgeState :
         System.IEquatable<PurgeState>
     {

@@ -18,6 +18,39 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+* Fixed regression in 'Set-AzSqlServerAudit' when PredicateExpression argument is provided
+
+## Version 2.15.0
+* Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
+
+## Version 2.14.0
+* Fixed parameter description for `InstanceFailoverGroup` command.
+* Updated the logic in which schemaName, tableName and columnName are being extracted from the id of SQL Data Classification commands.
+* Fixed Status and StatusMessage fields in `Get-AzSqlDatabaseImportExportStatus` to conform to documentation
+* Added Microsoft support operations (DevOps) auditing cmdlets: Get-AzSqlServerMSSupportAudit, Set-AzSqlServerMSSupportAudit, Remove-AzSqlServerMSSupportAudit
+
+## Version 2.13.0
+* Added SecondaryType to the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+* Added HighAvailabilityReplicaCount to the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+* Made ReadReplicaCount an alias of HighAvailabilityReplicaCount in the following: 
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+
+## Version 2.12.0
+* Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
+* Added MaintenanceConfigurationId to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* Fixed a bug in GetAzureSqlDatabaseReplicationLink.cs where PartnerServerName parameter was being checked for by value instead of key
+
+## Version 2.11.1
+* Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
+* Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object [#13097]
+* Update Azure Paired Regions URL in Backup Storage Redundancy Warnings
 
 ## Version 2.11.0
 * Added BackupStorageRedundancy to the following: 

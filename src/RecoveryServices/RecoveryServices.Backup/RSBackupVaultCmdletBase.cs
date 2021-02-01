@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+﻿using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 jobId,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName));
-        }
+        }        
 
         /// <summary>
         /// Gets list of job PS models after fetching the job objects from the service given the list of job IDs.
@@ -48,6 +49,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     resourceGroupName: resourceGroupName));
             }
             return result;
+        }
+
+        /// <summary>
+        /// Get the job PS model after fetching the job object from the service given the job ID.
+        /// </summary>
+        /// <param name="jobId">ID of the job to be fetched</param>
+        /// <returns></returns>
+        public CmdletModel.JobBase GetCrrJobObject(string secondaryRegion, string vaultId, string jobId)
+        {
+            CrrJobRequest jobRequest = new CrrJobRequest();
+            jobRequest.JobName = jobId;
+            jobRequest.ResourceId = vaultId;
+
+            JobBase job = JobConversions.GetPSJob(ServiceClientAdapter.GetCRRJobDetails(
+                secondaryRegion,
+                jobRequest));
+
+            return job;
         }
 
         /// <summary>

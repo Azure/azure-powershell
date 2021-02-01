@@ -1,16 +1,10 @@
 {
-  "New-AzWvdWorkspace+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview+1": {
+  "New-AzWvdWorkspace+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": "{\r\n  \"location\": \"canadaeast\",\r\n  \"properties\": {\r\n    \"description\": \"des\",\r\n    \"friendlyName\": \"fri\"\r\n  }\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "4c19c83b-7da1-44b6-ab72-06ba06ce601d" ],
-        "CommandName": [ "New-AzWvdWorkspace" ],
-        "FullCommandName": [ "New-AzWvdWorkspace_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -23,38 +17,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Location": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
-        "x-ms-lamport-ts": [ "1354" ],
-        "x-ms-correlation-id": [ "ef63add9-5d5d-4e6c-9ae9-57f86e5eab59" ],
-        "Set-Cookie": [ "ARRAffinity=c3993951269a336093859e2d8ef7f0a92a2d62cf9845bee3a71f457faa51d793;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-opsarmpath": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1" ],
+        "x-ms-lamport-ts": [ "16173" ],
+        "x-ms-correlation-id": [ "aef23eba-bf29-4799-9d7c-557580ce4522" ],
+        "Set-Cookie": [ "ARRAffinity=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;Secure;Domain=rdarmprovider.dev05.avdtest.net", "ARRAffinitySameSite=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider.dev05.avdtest.net" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "ef63add9-5d5d-4e6c-9ae9-57f86e5eab59" ],
-        "x-ms-correlation-request-id": [ "ef63add9-5d5d-4e6c-9ae9-57f86e5eab59" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200402T211229Z:ef63add9-5d5d-4e6c-9ae9-57f86e5eab59" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1147" ],
+        "x-ms-request-id": [ "aef23eba-bf29-4799-9d7c-557580ce4522" ],
+        "x-ms-correlation-request-id": [ "aef23eba-bf29-4799-9d7c-557580ce4522" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201021T152239Z:aef23eba-bf29-4799-9d7c-557580ce4522" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 02 Apr 2020 21:12:28 GMT" ]
+        "Date": [ "Wed, 21 Oct 2020 15:22:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "383" ],
+        "Content-Length": [ "457" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[]}}"
+      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[],\"cloudPcResource\":false,\"objectId\":\"29ac529f-8e25-4f25-8485-1c96b4d53e2f\"}}"
     }
   },
-  "New-AzWvdWorkspace+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview+2": {
+  "New-AzWvdWorkspace+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "27162e73-1f86-4e5e-b515-5bc96863b00a" ],
+        "x-ms-unique-id": [ "134" ],
+        "x-ms-client-request-id": [ "1f3b54af-3a8b-4ea7-a782-357449f70980" ],
         "CommandName": [ "Get-AzWvdWorkspace" ],
         "FullCommandName": [ "Get-AzWvdWorkspace_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -66,38 +62,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-lamport-ts": [ "1357" ],
-        "x-ms-correlation-id": [ "2158857d-f40d-42a8-915b-0a3ecffc8cbb" ],
-        "Set-Cookie": [ "ARRAffinity=c3993951269a336093859e2d8ef7f0a92a2d62cf9845bee3a71f457faa51d793;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
+        "x-ms-opsarmpath": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1" ],
+        "x-ms-lamport-ts": [ "16176" ],
+        "x-ms-correlation-id": [ "8650858f-d52b-49af-87d1-2d045e60a110" ],
+        "Set-Cookie": [ "ARRAffinity=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;Secure;Domain=rdarmprovider.dev05.avdtest.net", "ARRAffinitySameSite=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider.dev05.avdtest.net" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "2158857d-f40d-42a8-915b-0a3ecffc8cbb" ],
-        "x-ms-correlation-request-id": [ "2158857d-f40d-42a8-915b-0a3ecffc8cbb" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200402T211229Z:2158857d-f40d-42a8-915b-0a3ecffc8cbb" ],
+        "x-ms-request-id": [ "8650858f-d52b-49af-87d1-2d045e60a110" ],
+        "x-ms-correlation-request-id": [ "8650858f-d52b-49af-87d1-2d045e60a110" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201021T152239Z:8650858f-d52b-49af-87d1-2d045e60a110" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 02 Apr 2020 21:12:28 GMT" ]
+        "Date": [ "Wed, 21 Oct 2020 15:22:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "383" ],
+        "Content-Length": [ "457" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[]}}"
+      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[],\"cloudPcResource\":false,\"objectId\":\"29ac529f-8e25-4f25-8485-1c96b4d53e2f\"}}"
     }
   },
-  "New-AzWvdWorkspace+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview+3": {
+  "New-AzWvdWorkspace+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2019-12-10-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1?api-version=2020-11-02-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "8f967529-9557-4716-b60a-ce6797451bce" ],
+        "x-ms-unique-id": [ "135" ],
+        "x-ms-client-request-id": [ "11638907-e8e8-4ab6-abd6-166889178a84" ],
         "CommandName": [ "Remove-AzWvdWorkspace" ],
         "FullCommandName": [ "Remove-AzWvdWorkspace_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -109,25 +107,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14988" ],
-        "x-ms-lamport-ts": [ "1360" ],
-        "x-ms-correlation-id": [ "20a814e2-fd9d-41b3-aa50-dff07aee878e" ],
-        "Set-Cookie": [ "ARRAffinity=c3993951269a336093859e2d8ef7f0a92a2d62cf9845bee3a71f457faa51d793;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14952" ],
+        "x-ms-opsarmpath": [ "/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1" ],
+        "x-ms-lamport-ts": [ "16179" ],
+        "x-ms-correlation-id": [ "847f916b-2d3a-4106-b01d-a4d315ae41ad" ],
+        "Set-Cookie": [ "ARRAffinity=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;Secure;Domain=rdarmprovider.dev05.avdtest.net", "ARRAffinitySameSite=f798a5d59f1c3d1489a4b197779bfa953c88b216f7c0c1aadd6e5cb7de62688d;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider.dev05.avdtest.net" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "20a814e2-fd9d-41b3-aa50-dff07aee878e" ],
-        "x-ms-correlation-request-id": [ "20a814e2-fd9d-41b3-aa50-dff07aee878e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20200402T211230Z:20a814e2-fd9d-41b3-aa50-dff07aee878e" ],
+        "x-ms-request-id": [ "847f916b-2d3a-4106-b01d-a4d315ae41ad" ],
+        "x-ms-correlation-request-id": [ "847f916b-2d3a-4106-b01d-a4d315ae41ad" ],
+        "x-ms-routing-request-id": [ "WESTUS:20201021T152241Z:847f916b-2d3a-4106-b01d-a4d315ae41ad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 02 Apr 2020 21:12:29 GMT" ]
+        "Date": [ "Wed, 21 Oct 2020 15:22:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "383" ],
+        "Content-Length": [ "457" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[]}}"
+      "Content": "{\"name\":\"WorkspacePowershell1\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/workspaces/WorkspacePowershell1\",\"type\":\"Microsoft.DesktopVirtualization/workspaces\",\"location\":\"canadaeast\",\"tags\":null,\"kind\":null,\"properties\":{\"description\":\"des\",\"friendlyName\":\"fri\",\"applicationGroupReferences\":[],\"cloudPcResource\":false,\"objectId\":\"29ac529f-8e25-4f25-8485-1c96b4d53e2f\"}}"
     }
   }
 }

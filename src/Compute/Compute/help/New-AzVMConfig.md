@@ -166,7 +166,13 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type, which is for bringing your own license scenario.
+Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
+Possible values for Windows Server are:
+- Windows_Client
+- Windows_Server
+Possible values for Linux Server operating system are: 
+- RHEL_BYOS (for RHEL) 
+- SLES_BYOS (for SUSE) 
 
 ```yaml
 Type: System.String

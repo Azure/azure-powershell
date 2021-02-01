@@ -14,8 +14,8 @@ Adds a security profile to a cluster configuration object.
 ## SYNTAX
 
 ```
-Add-AzHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -Domain <String>
- -DomainUserCredential <PSCredential> -OrganizationalUnitDN <String> -LdapsUrls <String[]>
+Add-AzHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -DomainResourceId <String>
+ -DomainUserCredential <PSCredential> [-OrganizationalUnitDN <String>] -LdapsUrls <String[]>
  [-ClusterUsersGroupDNs <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,6 +30,7 @@ Security profile contains configuration related joining the cluster to Active Di
 ```
 PS C:\> #Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
@@ -69,9 +70,9 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
-                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageContainer
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
 ```
 
 This command adds a security profile value to the cluster named your-hadoop-001.
@@ -124,8 +125,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Domain
-Active Directory domain for the cluster
+### -DomainResourceId
+Active Directory domain resource id for the cluster.
 
 ```yaml
 Type: System.String
@@ -178,7 +179,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzReservationQuote
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get a quote for the reservation. This is passed to `New-AzReservation` to purchase.
 
 ## SYNTAX
 

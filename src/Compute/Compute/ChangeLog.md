@@ -20,6 +20,36 @@
 
 -->
 ## Upcoming Release
+* Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
+* Removed FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
+* Added deprecation message to the ContainerService cmdlets:
+    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+    - `Get-AzContainerService`
+    - `New-AzContainerService`
+    - `New-AzContainerServiceConfig`
+    - `Remove-AzContainerService`
+    - `Remove-AzContainerServiceAgentPoolProfile`
+    - `Update-AzContainerService`
+* Added parameter `-BurstingEnabled` to `New-AzDiskConfig` and `New-AzDiskUpdateConfig`
+* Added `-GroupByApplicationId` and `-GroupByUserAgent` parameters to the `Export-AzLogAnalyticThrottledRequest` and `Export-AzLogAnalyticRequestRateByInterval` cmdlets.
+
+## Version 4.8.0
+* New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDscExtensionStatus` and `Get-AzVMDscExtension` cmdlets. 
+* Edited `New-AzSnapshot` cmdlet to check for existing snapshot with the same name in the same resource group. 
+    - Throws an error if a duplicate snapshot exists. 
+
+## Version 4.7.0
+* Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
+* New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
+## Version 4.6.0
+* Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* New cmdlet `Get-AzDiskEncryptionSetAssociatedResource`
+* Added `Tier` and `LogicalSectorSize` optional parameters to the New-AzDiskConfig cmdlet. 
+* Added `Tier`, `MaxSharesCount`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
+* Modified `Get-AzVmBootDiagnostics` cmdlet to use the new RetrieveBootDiagnosticsData API instead of directly accessing the BootDiagnostics properties on the virtual machine.  
+
+## Version 4.5.0
 * Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
 * Added the `-Top` and `-OrderBy` optional parameters to the `Get-AzVmImage` cmdlet. 
 

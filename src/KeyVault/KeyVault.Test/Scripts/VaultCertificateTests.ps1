@@ -8,7 +8,8 @@ function Get-CertificateSubjectName([string]$certificateName)
 function Get-X509FromSecretBySubjectDistinguishedName([string]$keyVault, [string]$secretName, [string]$subjectDistinguishedName)
 {
     $secret = Get-AzKeyVaultSecret $keyVault $secretName
-    $secretValueBytes = [System.Convert]::FromBase64String($secret.SecretValueText)
+    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($secret.SecretValue))
+    $secretValueBytes = [System.Convert]::FromBase64String($secretValueText)
     $x509FromSecretCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $x509FromSecretCollection.Import($secretValueBytes)
     $x509Matches = $x509FromSecretCollection.Find([Security.Cryptography.X509Certificates.X509FindType]::FindBySubjectDistinguishedName, $subjectDistinguishedName, $false)
@@ -359,7 +360,7 @@ function Test_NewCertificatePolicy
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
-    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15

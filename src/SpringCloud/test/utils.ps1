@@ -11,9 +11,9 @@ function setupEnv() {
     Write-Warning "Need to use  Az.Resources module, Please check if installed  Az.Resources(1.8.0 or Greater)."
     # Az.KeyVault,, Az.CosmosDB Az.KeyVault(2.0.0 or Greater),  and Az.CosmosDB(0.1.4 or Greater)
     # Import az moduel
-    Import-Module -Name Az.Resources
+    # Import-Module -Name Az.Resources
     # Import-Module -Name Az.KeyVault
-    #Import-Module -Name Az.CosmosDB
+    # Import-Module -Name Az.CosmosDB
     
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -87,25 +87,25 @@ function setupEnv() {
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appGateway -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appGateway -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
 
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAccount -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAccount -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
 
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -Name $env.appAuth -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAuth -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAuth -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -InstanceCount 1 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
     
     Write-Host -ForegroundColor Green "App platform created successfully."
    

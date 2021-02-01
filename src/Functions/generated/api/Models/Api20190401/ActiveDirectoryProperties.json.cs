@@ -58,12 +58,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_azureStorageSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azureStorageSid"), out var __jsonAzureStorageSid) ? (string)__jsonAzureStorageSid : (string)AzureStorageSid;}
-            {_domainGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainGuid"), out var __jsonDomainGuid) ? (string)__jsonDomainGuid : (string)DomainGuid;}
             {_domainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainName"), out var __jsonDomainName) ? (string)__jsonDomainName : (string)DomainName;}
-            {_domainSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainSid"), out var __jsonDomainSid) ? (string)__jsonDomainSid : (string)DomainSid;}
-            {_forestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("forestName"), out var __jsonForestName) ? (string)__jsonForestName : (string)ForestName;}
             {_netBiosDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("netBiosDomainName"), out var __jsonNetBiosDomainName) ? (string)__jsonNetBiosDomainName : (string)NetBiosDomainName;}
+            {_forestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("forestName"), out var __jsonForestName) ? (string)__jsonForestName : (string)ForestName;}
+            {_domainGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainGuid"), out var __jsonDomainGuid) ? (string)__jsonDomainGuid : (string)DomainGuid;}
+            {_domainSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("domainSid"), out var __jsonDomainSid) ? (string)__jsonDomainSid : (string)DomainSid;}
+            {_azureStorageSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("azureStorageSid"), out var __jsonAzureStorageSid) ? (string)__jsonAzureStorageSid : (string)AzureStorageSid;}
             AfterFromJson(json);
         }
 
@@ -98,12 +98,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return container;
             }
-            AddIf( null != (((object)this._azureStorageSid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azureStorageSid.ToString()) : null, "azureStorageSid" ,container.Add );
-            AddIf( null != (((object)this._domainGuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainGuid.ToString()) : null, "domainGuid" ,container.Add );
             AddIf( null != (((object)this._domainName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainName.ToString()) : null, "domainName" ,container.Add );
-            AddIf( null != (((object)this._domainSid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainSid.ToString()) : null, "domainSid" ,container.Add );
-            AddIf( null != (((object)this._forestName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._forestName.ToString()) : null, "forestName" ,container.Add );
             AddIf( null != (((object)this._netBiosDomainName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._netBiosDomainName.ToString()) : null, "netBiosDomainName" ,container.Add );
+            AddIf( null != (((object)this._forestName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._forestName.ToString()) : null, "forestName" ,container.Add );
+            AddIf( null != (((object)this._domainGuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainGuid.ToString()) : null, "domainGuid" ,container.Add );
+            AddIf( null != (((object)this._domainSid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._domainSid.ToString()) : null, "domainSid" ,container.Add );
+            AddIf( null != (((object)this._azureStorageSid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._azureStorageSid.ToString()) : null, "azureStorageSid" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

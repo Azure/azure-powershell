@@ -12,85 +12,40 @@ Updates an existing VpnServerConfiguration.
 
 ## SYNTAX
 
-### ByVpnServerConfigurationNameByCertificateAuthentication (Default)
+### ByVpnServerConfigurationName (Default)
 ```
 Update-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> [-VpnProtocol <String[]>]
  [-VpnAuthenticationType <String[]>] [-VpnClientRootCertificateFilesList <String[]>]
- [-VpnClientRevokedCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-VpnClientRevokedCertificateFilesList <String[]>] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>]
+ [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByVpnServerConfigurationNameByRadiusAuthentication
-```
-Update-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
- [-RadiusServerList <PSRadiusServer[]>] [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationNameByAadAuthentication
-```
-Update-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>]
- [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationObjectByCertificateAuthentication
+### ByVpnServerConfigurationObject
 ```
 Update-AzVpnServerConfiguration -InputObject <PSVpnServerConfiguration> [-VpnProtocol <String[]>]
  [-VpnAuthenticationType <String[]>] [-VpnClientRootCertificateFilesList <String[]>]
- [-VpnClientRevokedCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-VpnClientRevokedCertificateFilesList <String[]>] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>]
+ [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByVpnServerConfigurationObjectByRadiusAuthentication
-```
-Update-AzVpnServerConfiguration -InputObject <PSVpnServerConfiguration> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
- [-RadiusServerList <PSRadiusServer[]>] [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationObjectByAadAuthentication
-```
-Update-AzVpnServerConfiguration -InputObject <PSVpnServerConfiguration> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>]
- [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationResourceIdByCertificateAuthentication
+### ByVpnServerConfigurationResourceId
 ```
 Update-AzVpnServerConfiguration -ResourceId <String> [-VpnProtocol <String[]>]
  [-VpnAuthenticationType <String[]>] [-VpnClientRootCertificateFilesList <String[]>]
- [-VpnClientRevokedCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-VpnClientRevokedCertificateFilesList <String[]>] [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>]
+ [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationResourceIdByRadiusAuthentication
-```
-Update-AzVpnServerConfiguration -ResourceId <String> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
- [-RadiusServerList <PSRadiusServer[]>] [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVpnServerConfigurationResourceIdByAadAuthentication
-```
-Update-AzVpnServerConfiguration -ResourceId <String> [-VpnProtocol <String[]>]
- [-VpnAuthenticationType <String[]>] [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>]
- [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +90,7 @@ AAD audience for P2S AAD authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication, ByVpnServerConfigurationObjectByAadAuthentication, ByVpnServerConfigurationResourceIdByAadAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,7 +105,7 @@ AAD issuer for P2S AAD authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication, ByVpnServerConfigurationObjectByAadAuthentication, ByVpnServerConfigurationResourceIdByAadAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +120,7 @@ AAD tenant for P2S AAD authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByAadAuthentication, ByVpnServerConfigurationObjectByAadAuthentication, ByVpnServerConfigurationResourceIdByAadAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,7 +165,7 @@ The vpn server configuration object to be modified
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
-Parameter Sets: ByVpnServerConfigurationObjectByCertificateAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationObjectByAadAuthentication
+Parameter Sets: ByVpnServerConfigurationObject
 Aliases: VpnServerConfiguration
 
 Required: True
@@ -225,7 +180,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication, ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationNameByAadAuthentication
+Parameter Sets: ByVpnServerConfigurationName
 Aliases: ResourceName, VpnServerConfigurationName
 
 Required: True
@@ -240,7 +195,7 @@ A list of RadiusClientRootCertificate files' paths
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +210,7 @@ P2S External Radius server address.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -270,7 +225,7 @@ P2S External multiple radius servers.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRadiusServer[]
-Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +240,7 @@ A list of RadiusClientRootCertificate files' paths
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -300,7 +255,7 @@ P2S External Radius server secret.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationObjectByRadiusAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -315,7 +270,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication, ByVpnServerConfigurationNameByRadiusAuthentication, ByVpnServerConfigurationNameByAadAuthentication
+Parameter Sets: ByVpnServerConfigurationName
 Aliases:
 
 Required: True
@@ -330,7 +285,7 @@ The Azure resource ID for the vpn server configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnServerConfigurationResourceIdByCertificateAuthentication, ByVpnServerConfigurationResourceIdByRadiusAuthentication, ByVpnServerConfigurationResourceIdByAadAuthentication
+Parameter Sets: ByVpnServerConfigurationResourceId
 Aliases: VpnServerConfigurationId
 
 Required: True
@@ -391,7 +346,7 @@ A list of VpnClientCertificates to be revoked files' paths
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication, ByVpnServerConfigurationObjectByCertificateAuthentication, ByVpnServerConfigurationResourceIdByCertificateAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -406,7 +361,7 @@ A list of VpnClientRootCertificates to be added files' paths
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByVpnServerConfigurationNameByCertificateAuthentication, ByVpnServerConfigurationObjectByCertificateAuthentication, ByVpnServerConfigurationResourceIdByCertificateAuthentication
+Parameter Sets: (All)
 Aliases:
 
 Required: False

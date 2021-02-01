@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for ProvisioningState.</summary>
+    /// <summary>Gets the status of the storage account at the time the operation was called.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ProvisioningStateTypeConverter))]
     public partial struct ProvisioningState :
         System.Management.Automation.IArgumentCompleter

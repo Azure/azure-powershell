@@ -1,0 +1,216 @@
+{
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31",
+      "Content": "{\r\n  \"name\": \"youriDigitalTwinsy0cghi\",\r\n  \"type\": \"Microsoft.DigitalTwins/digitalTwinsInstances\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "100" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "713191b4-bc90-4ec8-b303-209d628afdbd" ],
+        "x-ms-correlation-request-id": [ "713191b4-bc90-4ec8-b303-209d628afdbd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063759Z:713191b4-bc90-4ec8-b303-209d628afdbd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:37:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "74" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"message\":\"\u0027youriDigitalTwinsy0cghi\u0027 is available.\"}"
+    }
+  },
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31",
+      "Content": "{\r\n  \"name\": \"youriDigitalTwinsy0cghi\",\r\n  \"type\": \"Microsoft.DigitalTwins/digitalTwinsInstances\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "100" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "07b2302a-04fd-4a13-9054-72d80bcf7bf4" ],
+        "x-ms-correlation-request-id": [ "07b2302a-04fd-4a13-9054-72d80bcf7bf4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063800Z:07b2302a-04fd-4a13-9054-72d80bcf7bf4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:37:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "74" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"message\":\"\u0027youriDigitalTwinsy0cghi\u0027 is available.\"}"
+    }
+  },
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "75221750-bb43-471a-936b-e8c48c8a6602" ],
+        "CommandName": [ "Get-AzDigitalTwinsInstance" ],
+        "FullCommandName": [ "Get-AzDigitalTwinsInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "8f9251ab-9410-485a-835c-647f1448112f" ],
+        "x-ms-correlation-request-id": [ "8f9251ab-9410-485a-835c-647f1448112f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063800Z:8f9251ab-9410-485a-835c-647f1448112f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:37:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c\",\"name\":\"youriDigitalTwinset2i0c\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances\",\"properties\":{\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:33:07.1906536Z\",\"lastUpdatedTime\":\"2020-10-25T05:41:26.1248986Z\",\"hostName\":\"youriDigitalTwinset2i0c.api.eus.digitaltwins.azure.net\"},\"location\":\"eastus\",\"tags\":{\"dtt\":\"003\"}}"
+    }
+  },
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31",
+      "Content": "{\r\n  \"name\": \"youriDigitalTwinset2i0c\",\r\n  \"type\": \"Microsoft.DigitalTwins/digitalTwinsInstances\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "100" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "52c983bd-220c-486e-8702-ea542f052beb" ],
+        "x-ms-correlation-request-id": [ "52c983bd-220c-486e-8702-ea542f052beb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063801Z:52c983bd-220c-486e-8702-ea542f052beb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:38:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "191" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"A DigitalTwins instance with the name \u0027youriDigitalTwinset2i0c\u0027 already exists in region \u0027eastus\u0027. Please choose a different name.\"}"
+    }
+  },
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+CheckViaIdentity+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c?api-version=2020-10-31+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c?api-version=2020-10-31",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "6e8f2be7-3466-41ac-b275-ab935d441424" ],
+        "CommandName": [ "Get-AzDigitalTwinsInstance" ],
+        "FullCommandName": [ "Get-AzDigitalTwinsInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "d22d0fb2-4538-4970-88fa-ec975a91d1b8" ],
+        "x-ms-correlation-request-id": [ "d22d0fb2-4538-4970-88fa-ec975a91d1b8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063801Z:d22d0fb2-4538-4970-88fa-ec975a91d1b8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:38:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/youridigitaltwins-rglrbzun/providers/Microsoft.DigitalTwins/digitalTwinsInstances/youriDigitalTwinset2i0c\",\"name\":\"youriDigitalTwinset2i0c\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances\",\"properties\":{\"provisioningState\":\"Succeeded\",\"createdTime\":\"2020-10-25T05:33:07.1906536Z\",\"lastUpdatedTime\":\"2020-10-25T05:41:26.1248986Z\",\"hostName\":\"youriDigitalTwinset2i0c.api.eus.digitaltwins.azure.net\"},\"location\":\"eastus\",\"tags\":{\"dtt\":\"003\"}}"
+    }
+  },
+  "Test-AzDigitalTwinsInstanceNameAvailability+[NoContext]+CheckViaIdentity+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.DigitalTwins/locations/eastus/checkNameAvailability?api-version=2020-10-31",
+      "Content": "{\r\n  \"name\": \"youriDigitalTwinsy0cghi\",\r\n  \"type\": \"Microsoft.DigitalTwins/digitalTwinsInstances\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "100" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "bfb425bc-ab1e-4e80-ab3d-1eb2d8ae7b81" ],
+        "x-ms-correlation-request-id": [ "bfb425bc-ab1e-4e80-ab3d-1eb2d8ae7b81" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201025T063802Z:bfb425bc-ab1e-4e80-ab3d-1eb2d8ae7b81" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 25 Oct 2020 06:38:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "74" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"message\":\"\u0027youriDigitalTwinsy0cghi\u0027 is available.\"}"
+    }
+  }
+}

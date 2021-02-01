@@ -68,7 +68,8 @@ IpConfiguration          : {
 DnsSettings              : null
 Zones                    : {}
 Sku                      : {
-                             "Name": "Basic"
+                             "Name": "Basic", 
+                             "Tier": "Regional"
                            }
 IpTags                   : []
 ```
@@ -99,7 +100,8 @@ IpConfiguration          : {
 DnsSettings              : null
 Zones                    : {}
 Sku                      : {
-                             "Name": "Basic"
+                             "Name": "Basic",
+                             "Tier": "Regional"
                            }
 IpTags                   : []
 ```

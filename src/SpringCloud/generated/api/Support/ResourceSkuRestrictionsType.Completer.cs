@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceSkuRestrictionsType.</summary>
+    /// <summary>Gets the type of restrictions. Possible values include: 'Location', 'Zone'</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ResourceSkuRestrictionsTypeTypeConverter))]
     public partial struct ResourceSkuRestrictionsType :
         System.Management.Automation.IArgumentCompleter

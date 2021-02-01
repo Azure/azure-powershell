@@ -20,6 +20,9 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Text;
 using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -31,13 +34,41 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 return null;
             }
-
+            if (inputObject is string @str)
+            {
+                return str.Trim();
+            }
+            else if (inputObject is object[] @objectArray)
+            {
+                return SerializeArray(objectArray);
+            }
+            else if (inputObject is PSObject @psObject)
+            {
+                return SerializePsObject(psObject);
+            }
             return JsonConvert.SerializeObject(inputObject);
+        }
+
+        private static string SerializePsObject(PSObject @psObject)
+        {
+            Dictionary<string, string> hashTable = new Dictionary<string, string>();
+            foreach (var item in @psObject.Properties)
+            {
+                hashTable.Add(item.Name, Serialize(item.Value));
+            }
+
+            return JsonConvert.SerializeObject(hashTable);
+        }
+
+        private static string SerializeArray(object[] objectArray)
+        {
+            List<object> objectList = objectArray.ToList();
+            return string.Format("[{0}]", string.Join(",", objectList.Select(Serialize).ToList()));
         }
 
         public static PSObject Deserialize(string json)
         {
-            if (String.IsNullOrEmpty(json))
+            if (string.IsNullOrEmpty(json))
             {
                 return null;
             }
@@ -49,43 +80,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             } catch
             {
                 return json;
-            }
-        }
-
-        /// <summary>
-        /// Invokes a powershell script using the same runspace as the caller.
-        /// </summary>
-        /// <param name="scriptName">script name</param>
-        /// <param name="parameters">parameters for the script</param>
-        /// <returns></returns>
-        private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters)
-        {
-            using (var powerShell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
-            {
-                powerShell.AddCommand(scriptName);
-                foreach (DictionaryEntry parameter in parameters)
-                {
-                    powerShell.AddParameter(parameter.Key.ToString(), parameter.Value);
-                }
-
-
-                var result = powerShell.Invoke();
-
-                //Error handling
-                if (powerShell.HadErrors)
-                {
-                    StringBuilder errorStringBuilder = new StringBuilder();
-                    foreach (var error in powerShell.Streams.Error)
-                    {
-                        errorStringBuilder.AppendLine(error.InvocationInfo.MyCommand.Name + " : " + error.Exception.Message);
-                        errorStringBuilder.AppendLine(error.InvocationInfo.PositionMessage);
-                    }
-
-                    throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
-                       Resources.PowershellJsonDecrypterFailed, errorStringBuilder.ToString()));
-                }
-
-                return result;
             }
         }
     }

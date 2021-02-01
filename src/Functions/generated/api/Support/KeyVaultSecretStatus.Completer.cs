@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for KeyVaultSecretStatus.</summary>
+    /// <summary>Status of the Key Vault secret.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.KeyVaultSecretStatusTypeConverter))]
     public partial struct KeyVaultSecretStatus :
         System.Management.Automation.IArgumentCompleter

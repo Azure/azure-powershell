@@ -70,8 +70,6 @@ namespace Microsoft.Azure.Commands.Aks
             Mandatory = false,
             ParameterSetName = DefaultParamSet,
             HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
-        [Alias("ClientIdAndSecret")]
-        [CmdletParameterBreakingChange("ClientIdAndSecret", ReplaceMentCmdletParameterName = "ServicePrincipalIdAndSecret")]
         public PSCredential ServicePrincipalIdAndSecret { get; set; }
 
         [Parameter(Mandatory = false,

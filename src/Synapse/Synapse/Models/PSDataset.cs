@@ -1,6 +1,5 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,57 +34,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public PSDataset() { }
 
-        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
-        [JsonProperty(PropertyName = "structure")]
         public object Structure { get; set; }
 
-        [JsonProperty(PropertyName = "schema")]
         public object Schema { get; set; }
 
-        [JsonProperty(PropertyName = "linkedServiceName")]
         public LinkedServiceReference LinkedServiceName { get; set; }
 
-        [JsonProperty(PropertyName = "parameters")]
         public IDictionary<string, PSParameterSpecification> Parameters { get; set; }
 
-        [JsonProperty(PropertyName = "annotations")]
         public IList<object> Annotations { get; set; }
 
-        [JsonProperty(PropertyName = "folder")]
         public PSDatasetFolder Folder { get; set; }
 
-        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
 
         public virtual void Validate() { }
-
-        public virtual Dataset ToSdkObject()
-        {
-            var dataset = new Dataset(this.LinkedServiceName);
-            SetProperties(dataset);
-            return dataset;
-        }
-
-        protected void SetProperties(Dataset dataset)
-        {
-            dataset.Description = this.Description;
-            dataset.Structure = this.Structure;
-            dataset.Schema = this.Schema;
-            dataset.Folder = this.Folder?.ToSdkObject();
-            this.Parameters?.ForEach(item => dataset.Parameters.Add(item.Key, item.Value?.ToSdkObject()));
-            this.Annotations?.ForEach(item => dataset.Annotations.Add(item));
-            if (this.AdditionalProperties != null)
-            {
-                foreach (var item in this.AdditionalProperties)
-                {
-                    if (item.Key != "typeProperties")
-                    {
-                        dataset.Add(item.Key, item.Value);
-                    }
-                }
-            }
-        }
     }
 }

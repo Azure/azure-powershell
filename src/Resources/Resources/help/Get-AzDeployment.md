@@ -14,14 +14,12 @@ Get deployment
 
 ### GetByDeploymentName (Default)
 ```
-Get-AzDeployment [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeployment [[-Name] <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentId
 ```
-Get-AzDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,22 +46,6 @@ You can assign a name to a deployment when you create it by using the **New-AzDe
 If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
 
 ## PARAMETERS
-
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,7 +87,7 @@ Parameter Sets: GetByDeploymentName
 Aliases: DeploymentName
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -378,9 +378,50 @@ function Test-ExportResourceGroup
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
-                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        
+		$r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
+
+		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
+		Assert-NotNull $exportOutput
+		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests async export to export resource group template file.
+#>
+function Test-ExportResourceGroup-AsyncRoute
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rnameConstant = Get-ResourceName
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$resourceType = "Providers.Test/statefulResources"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		$i = 0;
+		while($i -lt 25)
+		{
+		  $rname = $rnameConstant + $i.ToString()
+		  New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -Force
+		  $i++
+		}
+
+		$resourcesCount = (Get-AzResource -ResourceGroupName $rgname).Length
+		Assert-True { $resourcesCount -gt 20 }
 
 		$exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force
 		Assert-NotNull $exportOutput
@@ -414,12 +455,10 @@ function Test-ExportResourceGroupWithFiltering
         # Test
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r1.ResourceId
 
-        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r2.ResourceId
 
         $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments

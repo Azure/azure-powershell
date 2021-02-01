@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType = (string[]) content.GetValueForProperty("BlobType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).PrefixMatch = (string[]) content.GetValueForProperty("PrefixMatch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).PrefixMatch, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType = (string[]) content.GetValueForProperty("BlobType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
 
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType = (string[]) content.GetValueForProperty("BlobType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).PrefixMatch = (string[]) content.GetValueForProperty("PrefixMatch",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).PrefixMatch, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType = (string[]) content.GetValueForProperty("BlobType",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyFilterInternal)this).BlobType, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }
 

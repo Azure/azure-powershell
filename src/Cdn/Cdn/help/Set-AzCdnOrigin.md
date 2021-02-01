@@ -13,8 +13,27 @@ Updates a CDN origin server.
 
 ## SYNTAX
 
+### ByFieldsParameterSet (Default)
 ```
-Set-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] -OriginName <String> -ProfileName <String> [-Priority <Int32>]
+ -ResourceGroupName <String> [-Weight <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByFieldsPrivateLinkParameterSet
+```
+Set-AzCdnOrigin -EndpointName <String> -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] -OriginName <String> -ProfileName <String> [-Priority <Int32>]
+ [-PrivateLinkApprovalMessage <String>] -PrivateLinkLocation <String> -PrivateLinkResourceId <String>
+ -ResourceGroupName <String> [-Weight <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Set-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +48,7 @@ Specifies the origin server that this cmdlet updates.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
-Parameter Sets: (All)
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
@@ -46,6 +65,231 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointName
+Azure CDN endpoint name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostName
+Azure CDN origin host name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPort
+Azure CDN origin http port.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpsPort
+Azure CDN origin https port.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginHostHeader
+Azure CDN origin host header.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginName
+Azure CDN origin name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+Azure CDN origin priority.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkApprovalMessage
+A custom message to be included in the approval request to connect to the Private Link.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkLocation
+Azure CDN origin private link location.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkResourceId
+Azure CDN origin private link resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Azure CDN profile name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group of the Azure CDN profile.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Weight
+Azure CDN origin weight.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByFieldsParameterSet, ByFieldsPrivateLinkParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

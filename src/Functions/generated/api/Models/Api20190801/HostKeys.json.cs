@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_functionKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("functionKeys"), out var __jsonFunctionKeys) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeys.FromJson(__jsonFunctionKeys) : FunctionKey;}
             {_masterKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("masterKey"), out var __jsonMasterKey) ? (string)__jsonMasterKey : (string)MasterKey;}
+            {_functionKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("functionKeys"), out var __jsonFunctionKeys) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysFunctionKeys.FromJson(__jsonFunctionKeys) : FunctionKey;}
             {_systemKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("systemKeys"), out var __jsonSystemKeys) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.HostKeysSystemKeys.FromJson(__jsonSystemKeys) : SystemKey;}
             AfterFromJson(json);
         }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != this._functionKey ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._functionKey.ToJson(null,serializationMode) : null, "functionKeys" ,container.Add );
             AddIf( null != (((object)this._masterKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._masterKey.ToString()) : null, "masterKey" ,container.Add );
+            AddIf( null != this._functionKey ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._functionKey.ToJson(null,serializationMode) : null, "functionKeys" ,container.Add );
             AddIf( null != this._systemKey ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) this._systemKey.ToJson(null,serializationMode) : null, "systemKeys" ,container.Add );
             AfterToJson(ref container);
             return container;

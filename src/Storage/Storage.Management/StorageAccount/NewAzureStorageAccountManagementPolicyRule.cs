@@ -21,7 +21,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [CmdletOutputBreakingChange(typeof(PSManagementPolicyActionGroup), ChangeDescription = "The type of sub child property DaysAfterModificationGreaterThan will change from int to int? in a future release.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyRule"), OutputType(typeof(PSManagementPolicyRule))]
     public class NewAzureStorageAccountManagementPolicyRuleCommand : StorageAccountBaseCmdlet
     {

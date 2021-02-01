@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for KeyPermission.</summary>
+    /// <summary>Permissions for the key -- read-only or full permissions.</summary>
     public partial class KeyPermissionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

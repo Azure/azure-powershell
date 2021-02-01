@@ -2,6 +2,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
+    /// <summary>Dictionary of <ApiKVReference></summary>
     [System.ComponentModel.TypeConverter(typeof(KeyVaultReferenceCollectionPropertiesKeyToReferenceStatusesTypeConverter))]
     public partial class KeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses
     {
@@ -125,6 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
+    /// Dictionary of <ApiKVReference>
     [System.ComponentModel.TypeConverter(typeof(KeyVaultReferenceCollectionPropertiesKeyToReferenceStatusesTypeConverter))]
     public partial interface IKeyVaultReferenceCollectionPropertiesKeyToReferenceStatuses
 

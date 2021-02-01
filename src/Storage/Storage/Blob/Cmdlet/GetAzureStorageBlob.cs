@@ -378,14 +378,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                IAsyncEnumerator<Page<BlobTagItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
+                IAsyncEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
                     .AsPages(track2ContinuationToken, requestCount)
                     .GetAsyncEnumerator();
 
-                Page<BlobTagItem> page;
+                Page<TaggedBlobItem> page;
                 await enumerator.MoveNextAsync().ConfigureAwait(false);
                 page = enumerator.Current;
-                foreach (BlobTagItem item in page.Values)
+                foreach (TaggedBlobItem item in page.Values)
                 {
                     BlobContainerClient track2container = blobServiceClient.GetBlobContainerClient(item.BlobContainerName);
                     OutputStream.WriteObject(taskId, GetAzureStorageBlob(item, track2container, localChannel.StorageContext, page.ContinuationToken, ClientOptions));
@@ -404,7 +404,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options, blobItem);
-            if (continuationToken != null)
+            if (!string.IsNullOrEmpty(continuationToken))
             {
                 BlobContinuationToken token = new BlobContinuationToken();
                 token.NextMarker = continuationToken;
@@ -413,11 +413,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             return outputblob;
         }
 
-        public static AzureStorageBlob GetAzureStorageBlob(BlobTagItem blobTagItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
+        public static AzureStorageBlob GetAzureStorageBlob(TaggedBlobItem blobTagItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
         {
             BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobTagItem.BlobName, context, options: options);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options);
-            if (continuationToken != null)
+            if (!string.IsNullOrEmpty(continuationToken))
             {
                 BlobContinuationToken token = new BlobContinuationToken();
                 token.NextMarker = continuationToken;

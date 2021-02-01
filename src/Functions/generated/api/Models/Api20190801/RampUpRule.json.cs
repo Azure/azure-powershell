@@ -73,14 +73,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_actionHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("actionHostName"), out var __jsonActionHostName) ? (string)__jsonActionHostName : (string)ActionHostName;}
-            {_changeDecisionCallbackUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("changeDecisionCallbackUrl"), out var __jsonChangeDecisionCallbackUrl) ? (string)__jsonChangeDecisionCallbackUrl : (string)ChangeDecisionCallbackUrl;}
-            {_changeIntervalInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("changeIntervalInMinutes"), out var __jsonChangeIntervalInMinutes) ? (int?)__jsonChangeIntervalInMinutes : ChangeIntervalInMinute;}
-            {_changeStep = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("changeStep"), out var __jsonChangeStep) ? (double?)__jsonChangeStep : ChangeStep;}
-            {_maxReroutePercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxReroutePercentage"), out var __jsonMaxReroutePercentage) ? (double?)__jsonMaxReroutePercentage : MaxReroutePercentage;}
-            {_minReroutePercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("minReroutePercentage"), out var __jsonMinReroutePercentage) ? (double?)__jsonMinReroutePercentage : MinReroutePercentage;}
             {_reroutePercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("reroutePercentage"), out var __jsonReroutePercentage) ? (double?)__jsonReroutePercentage : ReroutePercentage;}
+            {_changeStep = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("changeStep"), out var __jsonChangeStep) ? (double?)__jsonChangeStep : ChangeStep;}
+            {_changeIntervalInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("changeIntervalInMinutes"), out var __jsonChangeIntervalInMinutes) ? (int?)__jsonChangeIntervalInMinutes : ChangeIntervalInMinute;}
+            {_minReroutePercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("minReroutePercentage"), out var __jsonMinReroutePercentage) ? (double?)__jsonMinReroutePercentage : MinReroutePercentage;}
+            {_maxReroutePercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxReroutePercentage"), out var __jsonMaxReroutePercentage) ? (double?)__jsonMaxReroutePercentage : MaxReroutePercentage;}
+            {_changeDecisionCallbackUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("changeDecisionCallbackUrl"), out var __jsonChangeDecisionCallbackUrl) ? (string)__jsonChangeDecisionCallbackUrl : (string)ChangeDecisionCallbackUrl;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             AfterFromJson(json);
         }
 
@@ -103,14 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._actionHostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._actionHostName.ToString()) : null, "actionHostName" ,container.Add );
-            AddIf( null != (((object)this._changeDecisionCallbackUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._changeDecisionCallbackUrl.ToString()) : null, "changeDecisionCallbackUrl" ,container.Add );
-            AddIf( null != this._changeIntervalInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._changeIntervalInMinute) : null, "changeIntervalInMinutes" ,container.Add );
-            AddIf( null != this._changeStep ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._changeStep) : null, "changeStep" ,container.Add );
-            AddIf( null != this._maxReroutePercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._maxReroutePercentage) : null, "maxReroutePercentage" ,container.Add );
-            AddIf( null != this._minReroutePercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._minReroutePercentage) : null, "minReroutePercentage" ,container.Add );
             AddIf( null != this._reroutePercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._reroutePercentage) : null, "reroutePercentage" ,container.Add );
+            AddIf( null != this._changeStep ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._changeStep) : null, "changeStep" ,container.Add );
+            AddIf( null != this._changeIntervalInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._changeIntervalInMinute) : null, "changeIntervalInMinutes" ,container.Add );
+            AddIf( null != this._minReroutePercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._minReroutePercentage) : null, "minReroutePercentage" ,container.Add );
+            AddIf( null != this._maxReroutePercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._maxReroutePercentage) : null, "maxReroutePercentage" ,container.Add );
+            AddIf( null != (((object)this._changeDecisionCallbackUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._changeDecisionCallbackUrl.ToString()) : null, "changeDecisionCallbackUrl" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

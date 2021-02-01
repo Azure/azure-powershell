@@ -104,6 +104,9 @@ Gets the stored access policy or policies for an Azure storage container.
 ### [Get-AzStorageCORSRule](Get-AzStorageCORSRule.md)
 Gets CORS rules for a Storage service type.
 
+### [Get-AzStorageEncryptionScope](Get-AzStorageEncryptionScope.md)
+Get or list encryption scopes from a Storage account.
+
 ### [Get-AzStorageFile](Get-AzStorageFile.md)
 Lists directories and files for a path.
 
@@ -209,6 +212,9 @@ Creates an Azure Storage context.
 ### [New-AzStorageDirectory](New-AzStorageDirectory.md)
 Creates a directory.
 
+### [New-AzStorageEncryptionScope](New-AzStorageEncryptionScope.md)
+Creates an encryption scope for a Storage account.
+
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
 
@@ -241,6 +247,9 @@ Generates an SAS token for an Azure Storage table.
 
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 Creates a stored access policy for an Azure storage table.
+
+### [Remove-AzDataLakeGen2AclRecursive](Remove-AzDataLakeGen2AclRecursive.md)
+Remove ACL recursively on the specified path. 
 
 ### [Remove-AzDataLakeGen2Item](Remove-AzDataLakeGen2Item.md)
 Remove a file or directory.
@@ -317,6 +326,9 @@ Revoke all User Delegation keys of a Storage account.
 ### [Set-AzCurrentStorageAccount](Set-AzCurrentStorageAccount.md)
 Modifies the current Storage account of the specified subscription.
 
+### [Set-AzDataLakeGen2AclRecursive](Set-AzDataLakeGen2AclRecursive.md)
+Set ACL recursively on the specified path. 
+
 ### [Set-AzDataLakeGen2ItemAclObject](Set-AzDataLakeGen2ItemAclObject.md)
 Creates/Updates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
 
@@ -380,6 +392,9 @@ Stops a copy operation.
 ### [Stop-AzStorageFileCopy](Stop-AzStorageFileCopy.md)
 Stops a copy operation to the specified destination file.
 
+### [Update-AzDataLakeGen2AclRecursive](Update-AzDataLakeGen2AclRecursive.md)
+Update ACL recursively on the specified path. 
+
 ### [Update-AzDataLakeGen2Item](Update-AzDataLakeGen2Item.md)
 Update a file or directory on properties, metadata, permission, ACL, and owner.
 
@@ -394,6 +409,9 @@ Update the NetworkRule property of a Storage account
 
 ### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
 Modifies the service properties for the Azure Storage Blob service.
+
+### [Update-AzStorageEncryptionScope](Update-AzStorageEncryptionScope.md)
+Modify an encryption scope for a Storage account.
 
 ### [Update-AzStorageFileServiceProperty](Update-AzStorageFileServiceProperty.md)
 Modifies the service properties for the Azure Storage File service.

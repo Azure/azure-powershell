@@ -23,6 +23,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// set access level for specified container
@@ -80,11 +82,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
 
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
+            bool needUseTrack2 = false;
 
             CloudBlobContainer container = localChannel.GetContainerReference(name);
 
             // Get container permission and set the public access as input
-            BlobContainerPermissions permissions;
+            BlobContainerPermissions permissions = null;
             try
             {
                 permissions = localChannel.GetContainerPermissions(container, null, requestOptions, OperationContext);
@@ -93,13 +96,58 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
             {
                 throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
             }
-            permissions.PublicAccess = accessLevel;
-
-            await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-
-            if (PassThru)
+            catch (StorageException e) when (e.IsConflictException())
             {
-                WriteCloudContainerObject(taskId, localChannel, container, permissions);
+                // 409 Conflict, might caused by the container has an Stored access policy contains a permission that is not supported by Track1 SDK API veresion, so switch to Track2 SDK
+                needUseTrack2 = true;
+            }
+
+            if (!needUseTrack2) // Track1
+            {
+                permissions.PublicAccess = accessLevel;
+
+                await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+
+                if (PassThru)
+                {
+                    WriteCloudContainerObject(taskId, localChannel, container, permissions);
+                }
+            }
+            else // Track2
+            {
+                BlobContainerClient containerClient = AzureStorageContainer.GetTrack2BlobContainerClient(container, this.Channel.StorageContext, ClientOptions);
+
+                // Get container permission and set the public access as input
+                BlobContainerAccessPolicy accessPolicy;
+
+                accessPolicy = containerClient.GetAccessPolicy(null, this.CmdletCancellationToken);
+
+                PublicAccessType publicAccessType = PublicAccessType.None;
+                switch (accessLevel)
+                {
+                    case BlobContainerPublicAccessType.Blob:
+                        publicAccessType = PublicAccessType.Blob;
+                        break;
+                    case BlobContainerPublicAccessType.Container:
+                        publicAccessType = PublicAccessType.BlobContainer;
+                        break;
+                    case BlobContainerPublicAccessType.Off:
+                        publicAccessType = PublicAccessType.None;
+                        break;
+                    default:
+                    case BlobContainerPublicAccessType.Unknown:
+                        throw new ArgumentOutOfRangeException("Permission");
+
+                }
+                await containerClient.SetAccessPolicyAsync(publicAccessType, accessPolicy.SignedIdentifiers, null, this.CmdletCancellationToken).ConfigureAwait(false);
+
+                if (PassThru)
+                {
+                    AzureStorageContainer storageContainer = new AzureStorageContainer(container, null);
+                    storageContainer.Context = localChannel.StorageContext;
+                    storageContainer.SetTrack2Permission();
+                    OutputStream.WriteObject(taskId, storageContainer);
+                }
             }
         }
 

@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return;
             }
-            {_biztalkUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("biztalkUri"), out var __jsonBiztalkUri) ? (string)__jsonBiztalkUri : (string)BiztalkUri;}
-            {_entityConnectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("entityConnectionString"), out var __jsonEntityConnectionString) ? (string)__jsonEntityConnectionString : (string)EntityConnectionString;}
             {_entityName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("entityName"), out var __jsonEntityName) ? (string)__jsonEntityName : (string)EntityName;}
+            {_entityConnectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("entityConnectionString"), out var __jsonEntityConnectionString) ? (string)__jsonEntityConnectionString : (string)EntityConnectionString;}
+            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
+            {_resourceConnectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceConnectionString"), out var __jsonResourceConnectionString) ? (string)__jsonResourceConnectionString : (string)ResourceConnectionString;}
             {_hostname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("hostname"), out var __jsonHostname) ? (string)__jsonHostname : (string)Hostname;}
             {_port = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("port"), out var __jsonPort) ? (int?)__jsonPort : Port;}
-            {_resourceConnectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceConnectionString"), out var __jsonResourceConnectionString) ? (string)__jsonResourceConnectionString : (string)ResourceConnectionString;}
-            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
+            {_biztalkUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("biztalkUri"), out var __jsonBiztalkUri) ? (string)__jsonBiztalkUri : (string)BiztalkUri;}
             AfterFromJson(json);
         }
 
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {
                 return container;
             }
-            AddIf( null != (((object)this._biztalkUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._biztalkUri.ToString()) : null, "biztalkUri" ,container.Add );
-            AddIf( null != (((object)this._entityConnectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._entityConnectionString.ToString()) : null, "entityConnectionString" ,container.Add );
             AddIf( null != (((object)this._entityName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._entityName.ToString()) : null, "entityName" ,container.Add );
+            AddIf( null != (((object)this._entityConnectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._entityConnectionString.ToString()) : null, "entityConnectionString" ,container.Add );
+            AddIf( null != (((object)this._resourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceType.ToString()) : null, "resourceType" ,container.Add );
+            AddIf( null != (((object)this._resourceConnectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceConnectionString.ToString()) : null, "resourceConnectionString" ,container.Add );
             AddIf( null != (((object)this._hostname)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._hostname.ToString()) : null, "hostname" ,container.Add );
             AddIf( null != this._port ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._port) : null, "port" ,container.Add );
-            AddIf( null != (((object)this._resourceConnectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceConnectionString.ToString()) : null, "resourceConnectionString" ,container.Add );
-            AddIf( null != (((object)this._resourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._resourceType.ToString()) : null, "resourceType" ,container.Add );
+            AddIf( null != (((object)this._biztalkUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._biztalkUri.ToString()) : null, "biztalkUri" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
+    /// <summary>Gets or sets the type of the scale.</summary>
     public partial struct SkuScaleType :
         System.IEquatable<SkuScaleType>
     {

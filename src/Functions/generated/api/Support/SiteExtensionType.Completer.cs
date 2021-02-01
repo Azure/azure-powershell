@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>Argument completer implementation for SiteExtensionType.</summary>
+    /// <summary>Site extension type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteExtensionTypeTypeConverter))]
     public partial struct SiteExtensionType :
         System.Management.Automation.IArgumentCompleter

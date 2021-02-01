@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using Microsoft.Rest;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -389,6 +388,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] restoreDiskList = (string[])ProviderData[RestoreVMBackupItemParams.RestoreDiskList];
             SwitchParameter restoreOnlyOSDisk = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreOnlyOSDisk];
             SwitchParameter restoreAsUnmanagedDisks = (SwitchParameter)ProviderData[RestoreVMBackupItemParams.RestoreAsUnmanagedDisks];
+            String DiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.DiskEncryptionSetId) ?
+                (string)ProviderData[RestoreVMBackupItemParams.DiskEncryptionSetId].ToString() : null;
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];                        
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion]: null;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -406,20 +409,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
-            if(targetResourceGroupName != null && restoreAsUnmanagedDisks.IsPresent)
-            {
-                throw new Exception(Resources.TargetRGUnmanagedRestoreDuplicateParamsException);
-            }
-
-            if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
-            {
-                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
-            }
-
+            // if the vm is managed virtual machine then either target rg or the unmanaged restore intent should be provided
             if(rp.IsManagedVirtualMachine == true && targetResourceGroupName == null
                 && restoreAsUnmanagedDisks.IsPresent == false)
             {
-                Logger.Instance.WriteWarning(Resources.UnmanagedVMRestoreWarning);
+                throw new Exception(Resources.UnmanagedVMRestoreWarning);
+            }
+
+            // if the vm is unmanaged, target rg should not be provided
+            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null)
+            {
+                Logger.Instance.WriteWarning(Resources.TargetResourcegroupNotSupported);
             }
 
             IList<int?> restoreDiskLUNS;
@@ -448,20 +448,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     "/subscriptions/" + ServiceClientAdapter.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
                     null,
                 OriginalStorageAccountOption = useOsa,
-                RestoreDiskLunList = restoreDiskLUNS
+                RestoreDiskLunList = restoreDiskLUNS,
+                DiskEncryptionSetId = DiskEncryptionSetId
             };
-
+            
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
+            
+            if (useSecondaryRegion)
+            {
+                // get access token
+                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName);
 
-            var response = ServiceClientAdapter.RestoreDisk(
-                rp,
-                storageAccountResource.Location,
-                triggerRestoreRequest,
-                vaultName: vaultName,
-                resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
-            return response;
+                // Iaas VM CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+                restoreRequest.Region = secondaryRegion;
+                restoreRequest.AffinityGroup = "";                 
+                
+                CrossRegionRestoreRequest crrRestoreRequest = new CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = restoreRequest;
+                
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    crrRestoreRequest,
+                    storageAccountResource.Location,
+                    secondaryRegion: secondaryRegion);
+                
+                return response;
+            }
+            else
+            {
+                var response = ServiceClientAdapter.RestoreDisk(
+                    rp,
+                    storageAccountResource.Location,
+                    triggerRestoreRequest,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName,
+                    vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
+                return response;
+            }    
         }
 
         public ProtectedItemResource GetProtectedItem()
@@ -827,7 +853,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
             ItemDeleteState deleteState =
                (ItemDeleteState)ProviderData[ItemParams.DeleteState];
-
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];            
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -837,7 +863,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureIaasVM,
-                DataSourceType.VM);
+                DataSourceType.VM,
+                UseSecondaryRegion);
 
             // 2. Filter by item name
             List<ItemBase> itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(

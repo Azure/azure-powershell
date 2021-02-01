@@ -1,0 +1,40 @@
+{
+  "Get-AzMigrateSolution+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "ff15ca16-6c2c-4416-a113-51815bd94d37" ],
+        "CommandName": [ "Get-AzMigrateSolution" ],
+        "FullCommandName": [ "Get-AzMigrateSolution_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "adf83548-7dd0-401d-831c-8b3372401985" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "1301ceeb-8bc6-4900-a296-ce6359f7eecd" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191233Z:1301ceeb-8bc6-4900-a296-ce6359f7eecd" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1269" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/BugBashAVSVMware/Solutions/Servers-Migration-ServerMigration\",\"name\":\"Servers-Migration-ServerMigration\",\"type\":\"Microsoft.Migrate/MigrateProjects/Solutions\",\"etag\":\"\\\"010097f1-0000-1800-0000-5ee9ae2b0000\\\"\",\"properties\":{\"tool\":\"ServerMigration\",\"purpose\":\"Migration\",\"goal\":\"Servers\",\"status\":\"Active\",\"cleanupState\":\"None\",\"summary\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":0,\"testMigratedCount\":0,\"migratedCount\":0},\"details\":{\"groupCount\":0,\"assessmentCount\":0,\"extendedDetails\":{\"applianceNameToSiteIdMapV2\":\"[\\r\\n  {\\r\\n    \\\"ApplianceName\\\": \\\"BBVMwareAVS\\\",\\r\\n    \\\"SiteId\\\": \\\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite\\\"\\r\\n  }\\r\\n]\",\"projectId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/assessmentprojects/BugBashAVSVMwarea7fdproject\",\"vaultId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.RecoveryServices/vaults/BugBashAVSVMwarea7fdrsvault\"}}}}"
+    }
+  }
+}

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnConnection
         public string FilterData { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "VpnSiteLink Name of Vpn Connection to  start packet capture on Vpn connection.")]
         public string LinkConnectionName { get; set; }
 

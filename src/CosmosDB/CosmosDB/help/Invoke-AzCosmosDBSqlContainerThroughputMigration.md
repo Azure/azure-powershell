@@ -42,7 +42,6 @@ PS C:\>$NewSqlContainer =  New-AzCosmosDBSqlContainer -AccountName myAccountName
       $AutoscaleThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration -InputObject $NewSqlContainer -ThroughputType Autoscale
 ```
 
-
 ## PARAMETERS
 
 ### -AccountName

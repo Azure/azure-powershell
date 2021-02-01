@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             mode: DeploymentMode.Incremental,
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
+            templateSpecId: TemplateSpecId,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.ResultFormat,

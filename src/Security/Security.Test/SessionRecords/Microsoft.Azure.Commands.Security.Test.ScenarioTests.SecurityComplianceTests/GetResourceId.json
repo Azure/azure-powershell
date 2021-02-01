@@ -1,49 +1,45 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions%2F487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances?api-version=2017-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMlMkY0ODdiYjQ4NS1iNWIwLTQ3MWUtOWMwZC0xMDcxNzYxMmY4NjkvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9jb21wbGlhbmNlcz9hcGktdmVyc2lvbj0yMDE3LTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances?api-version=2017-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvY29tcGxpYW5jZXM/YXBpLXZlcnNpb249MjAxNy0wOC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ea47874-9387-448b-860a-9d333c855f25"
+          "b2e4fb24-a571-4855-a1c7-ad0eaa27124b"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/0.9.0.0"
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-20Z\",\r\n      \"name\": \"2018-08-20Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-20T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-19Z\",\r\n      \"name\": \"2018-08-19Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-19T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-18Z\",\r\n      \"name\": \"2018-08-18Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-18T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-17Z\",\r\n      \"name\": \"2018-08-17Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-17T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-16Z\",\r\n      \"name\": \"2018-08-16Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-16T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-15Z\",\r\n      \"name\": \"2018-08-15Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-15T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-14Z\",\r\n      \"name\": \"2018-08-14Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-14T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-13Z\",\r\n      \"name\": \"2018-08-13Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-13T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-12Z\",\r\n      \"name\": \"2018-08-12Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-12T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-11Z\",\r\n      \"name\": \"2018-08-11Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-11T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-10Z\",\r\n      \"name\": \"2018-08-10Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-10T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-09Z\",\r\n      \"name\": \"2018-08-09Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-09T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-08Z\",\r\n      \"name\": \"2018-08-08Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-08T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-07Z\",\r\n      \"name\": \"2018-08-07Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.27777777777777779\r\n          }\r\n        ],\r\n        \"resourceCount\": 18,\r\n        \"assessmentTimestampUtcDate\": \"2018-08-07T00:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "5583"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "57d6f57c-fa9f-4e81-9498-0b88abe4bccc"
+          "f87ee8cf-e127-4cbf-a2f5-751befbea26b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "370efbee-9098-407c-b851-379f31272382"
+          "782e87b2-4278-4d11-ac9d-177d81fb5d1d"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20180820T185056Z:370efbee-9098-407c-b851-379f31272382"
+          "UKSOUTH:20201130T145910Z:782e87b2-4278-4d11-ac9d-177d81fb5d1d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,16 +47,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Mon, 20 Aug 2018 18:50:55 GMT"
+          "Mon, 30 Nov 2020 14:59:10 GMT"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Content-Length": [
+          "5415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-30Z\",\r\n      \"name\": \"2020-11-30Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-30T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-29Z\",\r\n      \"name\": \"2020-11-29Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-29T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-28Z\",\r\n      \"name\": \"2020-11-28Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-28T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-27Z\",\r\n      \"name\": \"2020-11-27Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-27T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-26Z\",\r\n      \"name\": \"2020-11-26Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-26T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-25Z\",\r\n      \"name\": \"2020-11-25Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-25T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-24Z\",\r\n      \"name\": \"2020-11-24Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-24T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-23Z\",\r\n      \"name\": \"2020-11-23Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-23T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-22Z\",\r\n      \"name\": \"2020-11-22Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-22T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-21Z\",\r\n      \"name\": \"2020-11-21Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-21T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-20Z\",\r\n      \"name\": \"2020-11-20Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-20T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-19Z\",\r\n      \"name\": \"2020-11-19Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-19T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-18Z\",\r\n      \"name\": \"2020-11-18Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-18T00:00:00Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-17Z\",\r\n      \"name\": \"2020-11-17Z\",\r\n      \"type\": \"Microsoft.Security/compliances\",\r\n      \"properties\": {\r\n        \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n        \"assessmentResult\": [\r\n          {\r\n            \"type\": \"Compliant\",\r\n            \"percentage\": 0.09375\r\n          }\r\n        ],\r\n        \"resourceCount\": 32,\r\n        \"assessmentTimestampUtcDate\": \"2020-11-17T00:00:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -70,20 +70,49 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1cb7d23e-d213-45e6-ab9c-760876d9085f"
+          "60d1a592-d710-416e-8ddd-6480a5750c9d"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/0.9.0.0"
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"type\": \"Microsoft.Security/locations\",\r\n      \"properties\": {\r\n        \"homeRegionName\": \"centralus\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "210a0469-5531-4a34-a7ad-bd2ba49be341"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "99"
+        ],
+        "x-ms-correlation-request-id": [
+          "027f74ba-2752-4ab9-9972-e125f749b3c8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20201130T145911Z:027f74ba-2752-4ab9-9972-e125f749b3c8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 30 Nov 2020 14:59:10 GMT"
+        ],
         "Content-Length": [
           "222"
         ],
@@ -92,21 +121,51 @@
         ],
         "Expires": [
           "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"type\": \"Microsoft.Security/locations\",\r\n      \"properties\": {\r\n        \"homeRegionName\": \"centralus\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-30Z?api-version=2017-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvY29tcGxpYW5jZXMvMjAyMC0xMS0zMFo/YXBpLXZlcnNpb249MjAxNy0wOC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c3a8dcbf-bb48-4bc3-af45-d86d08462a02"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6e2591f3-56c8-438e-b2fc-1008e0657e7b"
+          "b8169fb4-c4a7-431e-a2e9-28916481ff8d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "99"
+          "748"
         ],
         "x-ms-correlation-request-id": [
-          "7cb28e97-e8a4-4ad8-996c-93a17efc58ec"
+          "4437c955-166f-4e10-9f84-fb33bc3b31a8"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20180820T185057Z:7cb28e97-e8a4-4ad8-996c-93a17efc58ec"
+          "UKSOUTH:20201130T145911Z:4437c955-166f-4e10-9f84-fb33bc3b31a8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,79 +173,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Mon, 20 Aug 2018 18:50:56 GMT"
+          "Mon, 30 Nov 2020 14:59:11 GMT"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions%2F487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-20Z?api-version=2017-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMlMkY0ODdiYjQ4NS1iNWIwLTQ3MWUtOWMwZC0xMDcxNzYxMmY4NjkvcHJvdmlkZXJzL01pY3Jvc29mdC5TZWN1cml0eS9jb21wbGlhbmNlcy8yMDE4LTA4LTIwWj9hcGktdmVyc2lvbj0yMDE3LTA4LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c8eeac9b-d745-48cb-abfb-c20c9c12699f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-20Z\",\r\n  \"name\": \"2018-08-20Z\",\r\n  \"type\": \"Microsoft.Security/compliances\",\r\n  \"properties\": {\r\n    \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n    \"assessmentResult\": [\r\n      {\r\n        \"type\": \"Compliant\",\r\n        \"percentage\": 0.27777777777777779\r\n      }\r\n    ],\r\n    \"resourceCount\": 18,\r\n    \"assessmentTimestampUtcDate\": \"2018-08-20T00:00:00Z\"\r\n  }\r\n}",
-      "ResponseHeaders": {
         "Content-Length": [
-          "397"
+          "385"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e6d797f7-a24b-4548-825c-57d7dad1d816"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "748"
-        ],
-        "x-ms-correlation-request-id": [
-          "98b85492-d321-410b-9db2-1caa5e84ef56"
-        ],
-        "x-ms-routing-request-id": [
-          "UKSOUTH2:20180820T185058Z:98b85492-d321-410b-9db2-1caa5e84ef56"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 20 Aug 2018 18:50:57 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2020-11-30Z\",\r\n  \"name\": \"2020-11-30Z\",\r\n  \"type\": \"Microsoft.Security/compliances\",\r\n  \"properties\": {\r\n    \"scope\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869\",\r\n    \"assessmentResult\": [\r\n      {\r\n        \"type\": \"Compliant\",\r\n        \"percentage\": 0.09375\r\n      }\r\n    ],\r\n    \"resourceCount\": 32,\r\n    \"assessmentTimestampUtcDate\": \"2020-11-30T00:00:00Z\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

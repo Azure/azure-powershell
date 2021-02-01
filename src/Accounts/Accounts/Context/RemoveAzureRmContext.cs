@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
-using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Linq;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -79,11 +79,31 @@ namespace Microsoft.Azure.Commands.Profile.Context
                             if (profile.Contexts.ContainsKey(name))
                             {
                                 var removedContext = profile.Contexts[name];
-                                if (client.TryRemoveContext(name) && PassThru.IsPresent)
+                                if (client.TryRemoveContext(name))
                                 {
-                                    var outContext = new PSAzureContext(removedContext);
-                                    outContext.Name = name;
-                                    WriteObject(outContext);
+                                    if (removedContext.Account.Type == AzureAccount.AccountType.User &&
+                                        !profile.Contexts.Any(c => c.Value.Account.Id == removedContext.Account.Id))
+                                    {
+                                        PowerShellTokenCacheProvider tokenCacheProvider;
+                                        if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
+                                        {
+                                            WriteWarning(string.Format(Resources.ClientFactoryNotRegisteredRemoval, removedContext.Account.Id));
+                                        }
+                                        else
+                                        {
+                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id))
+                                            {
+                                                WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
+                                            }
+                                        }
+                                    }
+
+                                    if (this.PassThru.IsPresent)
+                                    {
+                                        var outContext = new PSAzureContext(removedContext);
+                                        outContext.Name = name;
+                                        WriteObject(outContext);
+                                    }
                                 }
                             }
                         });

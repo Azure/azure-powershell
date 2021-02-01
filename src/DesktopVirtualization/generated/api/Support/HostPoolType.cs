@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
+    /// <summary>HostPool type for desktop.</summary>
     public partial struct HostPoolType :
         System.IEquatable<HostPoolType>
     {

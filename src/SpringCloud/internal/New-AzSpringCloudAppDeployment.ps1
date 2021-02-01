@@ -45,12 +45,12 @@ Property                             : Microsoft.Azure.PowerShell.Cmdlets.Spring
 Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.springcloud/new-azspringcloudappdeployment
 #>
 function New-AzSpringCloudAppDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -95,16 +95,10 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.IDeploymentSettingsEnvironmentVariables]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables]))]
     [System.Collections.Hashtable]
     # Collection of environment variables
     ${DeploymentSettingEnvironmentVariable},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [System.Int32]
-    # Instance count, basic tier should be in range (1, 25), standard tier should be in range (1, 500)
-    ${DeploymentSettingInstanceCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
@@ -119,11 +113,35 @@ param(
     ${DeploymentSettingMemoryInGb},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # The path to the .NET executable relative to zip root
+    ${DeploymentSettingNetCoreMainEntryPath},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion])]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion]
     # Runtime version
     ${DeploymentSettingRuntimeVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.Int32]
+    # Current capacity of the target resource
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Name of the Sku
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
+    [System.String]
+    # Tier of the Sku
+    ${SkuTier},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]

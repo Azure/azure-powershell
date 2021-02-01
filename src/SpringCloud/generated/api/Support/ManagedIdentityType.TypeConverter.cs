@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>TypeConverter implementation for ManagedIdentityType.</summary>
+    /// <summary>Type of the managed identity</summary>
     public partial class ManagedIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

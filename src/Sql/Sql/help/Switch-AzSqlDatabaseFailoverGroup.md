@@ -21,6 +21,7 @@ Switch-AzSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <
 ## DESCRIPTION
 This command swaps the roles of the servers in a Failover Group and switches all secondary databases to the primary role. All new TDS sessions are automatically re-routed to the secondary server after the DNS client cache is refreshed. When the original primary server is back online, all formerly primary databases in it will switch to the secondary role.
 The Failover Group's secondary server must be used to execute this command.
+If the AllowDataLoss parameter is not specified, this command waits until both roles are switched. If the AllowDataLoss parameter is specified, the command only waits until the new primary assumes its role.
 
 ## EXAMPLES
 

@@ -5,8 +5,10 @@
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
 Try it out in Azure Cloud Shell!
+* Direct link: Open a browser to https://shell.azure.com
+* Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
 
-[![CloudShellIcon]][CloudShell]
+[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
 
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.
@@ -147,6 +149,12 @@ If you would like to become an active contributor to this project, please follow
 
 Additional information about contributing to this repository can be found in the [`CONTRIBUTING.md`][Contributing] document and the [_Azure PowerShell Developer Guide_][DeveloperGuide] document.
 
+## Telemetry
+
+Azure PowerShell collects telemetry data by default. Microsoft aggregates collected data to identify patterns of usage to identify common issues and to improve the experience of Azure PowerShell. Microsoft Azure PowerShell does not collect any private or personal data.
+For example, the usage data helps identify issues such as cmdlets with low success and helps prioritize our work.
+While we appreciate the insights this data provides, we also understand that not everyone wants to send usage data. You can disable data collection with the [`Disable-AzDataCollection`](/powershell/module/az.accounts/disable-azdatacollection) cmdlet. You can also read our [privacy statement](https://privacy.microsoft.com/privacystatement) to learn more.
+
 ## Learn More
 
 * [Microsoft Azure Documentation][MicrosoftAzureDocs]
@@ -174,10 +182,7 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
 [PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest
 
-[CloudShell]: https://shell.azure.com/powershell
-[CloudShellIcon]: https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell"
-
-[ContributionGuidelines]: https://azure.github.io/guidelines/
+[ContributionGuidelines]: https://opensource.microsoft.com/collaborate/
 [CodeOfConduct]: https://opensource.microsoft.com/codeofconduct/
 [CodeOfConductFaq]: https://opensource.microsoft.com/codeofconduct/faq/
 [OpenCodeEmail]: mailto:opencode@microsoft.com

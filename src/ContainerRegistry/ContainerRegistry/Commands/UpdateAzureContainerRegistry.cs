@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
@@ -59,6 +60,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The network rule set for a container registry.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Container Registry SKU.")]
         [Alias(ContainerRegistrySkuAlias, RegistrySkuAlias)]
         [ValidateSet(SkuTier.Classic, SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
@@ -104,7 +109,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
             if (ShouldProcess(Name, "Update Container Registry"))
             {
-                var registry = RegistryClient.UpdateRegistry(ResourceGroupName, Name, adminUserEnabled, Sku, storageAccountId, tags);
+                var registry = RegistryClient.UpdateRegistry(ResourceGroupName, Name, adminUserEnabled, Sku, storageAccountId, NetworkRuleSet, tags);
                 WriteObject(new PSContainerRegistry(registry));
             }
         }

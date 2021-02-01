@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).DisplayVersion = (string) content.GetValueForProperty("DisplayVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).DisplayVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion = (string) content.GetValueForProperty("RuntimeVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsDefault = (bool?) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsRemoteDebuggingEnabled = (bool?) content.GetValueForProperty("IsRemoteDebuggingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsRemoteDebuggingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion = (string) content.GetValueForProperty("RuntimeVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).DisplayVersion = (string) content.GetValueForProperty("DisplayVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).DisplayVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion = (string) content.GetValueForProperty("RuntimeVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsDefault = (bool?) content.GetValueForProperty("IsDefault",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsDefault, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsRemoteDebuggingEnabled = (bool?) content.GetValueForProperty("IsRemoteDebuggingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).IsRemoteDebuggingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion = (string) content.GetValueForProperty("RuntimeVersion",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStackMinorVersionInternal)this).RuntimeVersion, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

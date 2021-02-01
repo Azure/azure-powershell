@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for LoadBalancerType.</summary>
+    /// <summary>The type of the load balancer.</summary>
     public partial class LoadBalancerTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

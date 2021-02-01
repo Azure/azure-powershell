@@ -586,11 +586,51 @@
     "regex": "ConnectedMachine"
   },
   {
-    "regex": "VMWare",
-    "alias": "VMWare"
+    "regex": "VMware",
+    "alias": "VMware"
   },
   {
     "alias": "Dedicated HSM",
     "regex": "DedicatedHsm"
+  },
+  {
+    "alias": "Migrate",
+    "regex": "Migrate"
+  },
+  {
+    "regex": "DigitalTwins",
+    "alias": "DigitalTwins"
+  },
+  {
+    "regex": "CloudService",
+    "alias": "CloudService"
+  },
+  {
+    "alias": "WindowsIotServices",
+    "regex": "WindowsIotServices"
+  },
+  {
+    "regex": "CostManagement",
+    "alias": "CostManagement"
+  },
+  {
+    "regex": "Communication",
+    "alias": "Communication"
+  },
+  {
+    "regex": "RedisEnterpriseCache",
+    "alias": "RedisEnterpriseCache"
+  },
+  {
+    "regex": "ADDomainService",
+    "alias": "ADDomainServices"
+  },
+  {
+    "regex": "BotService",
+    "alias": "BotService"
+  },
+  {
+    "alias": "HealthBot",
+    "regex": "HealthBot"
   }
 ]

@@ -58,11 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return;
             }
-            {_allowedHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("allowedHeaders"), out var __jsonAllowedHeaders) ? If( __jsonAllowedHeaders as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : AllowedHeader;}
+            {_allowedOrigin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("allowedOrigins"), out var __jsonAllowedOrigins) ? If( __jsonAllowedOrigins as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : AllowedOrigin;}
             {_allowedMethod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("allowedMethods"), out var __jsonAllowedMethods) ? If( __jsonAllowedMethods as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : AllowedMethod;}
-            {_allowedOrigin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("allowedOrigins"), out var __jsonAllowedOrigins) ? If( __jsonAllowedOrigins as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : AllowedOrigin;}
-            {_exposedHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("exposedHeaders"), out var __jsonExposedHeaders) ? If( __jsonExposedHeaders as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : ExposedHeader;}
             {_maxAgeInSecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maxAgeInSeconds"), out var __jsonMaxAgeInSeconds) ? (int)__jsonMaxAgeInSeconds : MaxAgeInSecond;}
+            {_exposedHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("exposedHeaders"), out var __jsonExposedHeaders) ? If( __jsonExposedHeaders as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : ExposedHeader;}
+            {_allowedHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("allowedHeaders"), out var __jsonAllowedHeaders) ? If( __jsonAllowedHeaders as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : AllowedHeader;}
             AfterFromJson(json);
         }
 
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
             {
                 return container;
             }
-            if (null != this._allowedHeader)
+            if (null != this._allowedOrigin)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __x in this._allowedHeader )
+                foreach( var __x in this._allowedOrigin )
                 {
                     AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                 }
-                container.Add("allowedHeaders",__w);
+                container.Add("allowedOrigins",__w);
             }
             if (null != this._allowedMethod)
             {
@@ -115,25 +115,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
                 }
                 container.Add("allowedMethods",__r);
             }
-            if (null != this._allowedOrigin)
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber(this._maxAgeInSecond), "maxAgeInSeconds" ,container.Add );
+            if (null != this._exposedHeader)
             {
                 var __m = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __n in this._allowedOrigin )
+                foreach( var __n in this._exposedHeader )
                 {
                     AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                 }
-                container.Add("allowedOrigins",__m);
+                container.Add("exposedHeaders",__m);
             }
-            if (null != this._exposedHeader)
+            if (null != this._allowedHeader)
             {
                 var __h = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
-                foreach( var __i in this._exposedHeader )
+                foreach( var __i in this._allowedHeader )
                 {
                     AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                 }
-                container.Add("exposedHeaders",__h);
+                container.Add("allowedHeaders",__h);
             }
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber(this._maxAgeInSecond), "maxAgeInSeconds" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System.IO;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -38,6 +34,8 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [Parameter(Mandatory = false, HelpMessage = "Delete all users and groups from the global scope without prompting")]
         public SwitchParameter Force { get; set; }
 
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
             switch (GetContextModificationScope())
@@ -50,10 +48,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
-                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage,
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget,
                         () => ModifyContext(ClearContext),
-                        () => 
+                        () =>
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
@@ -74,39 +72,18 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     client.TryRemoveContext(context);
                 }
 
-                var defaultContext = new AzureContext();
-                var cache = AzureSession.Instance.TokenCache;
-                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                PowerShellTokenCacheProvider tokenCacheProvider;
+                if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
                 {
-                    var fileCache = cache as ProtectedFileTokenCache;
-                    if (fileCache == null)
-                    {
-                        try
-                        {
-                            var session = AzureSession.Instance;
-                            fileCache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
-                            fileCache.Clear();
-                        }
-                        catch
-                        {
-                            // ignore exceptions from creating a token cache
-                        }
-                    }
-
-                    cache.Clear();
+                    WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
                 else
                 {
-                    var localCache = cache as AuthenticationStoreTokenCache;
-                    if (localCache != null)
-                    {
-                        localCache.Clear();
-                    }
+                    tokenCacheProvider.ClearCache();
+                    var defaultContext = new AzureContext();
+                    profile.TrySetDefaultContext(defaultContext);
+                    result = true;
                 }
-
-                defaultContext.TokenCache = cache;
-                profile.TrySetDefaultContext(defaultContext);
-                result = true;
             }
 
             if (PassThru.IsPresent)

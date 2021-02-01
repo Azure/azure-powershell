@@ -256,7 +256,7 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingSerialized(bool serialize = true)
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with metadata from JSON file...");
+            Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
@@ -267,7 +267,7 @@ namespace VersionController.Models
             {
                 powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
                 var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
+                nestedModules = cmdletResult.Select(c => c.ToString());
             }
 
             Version versionBump = Version.PATCH;
@@ -290,9 +290,17 @@ namespace VersionController.Models
                 }
 
                 requiredModules.Add(outputModuleDirectory);
-                foreach (var nestedModule in nestedModules)
+                foreach (var nestedModuleName in nestedModules)
                 {
+                    // Handcrafted modules assume its nested module always is DLL file. 
+                    var nestedModule = nestedModuleName + ".dll";
                     var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+
+                    // However we support PSM1, PSD1 other nested module type. Skip this check and we need to use a different design soon.
+                    if(assemblyPath == null)
+                    {
+                        continue;
+                    }
                     var proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
@@ -359,7 +367,7 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingGallery()
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with seemblies in the saved gallery folder...");
+            Console.WriteLine("Comparing the cmdlet assemblies with assemblies in the saved gallery folder...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;

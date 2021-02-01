@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             {
                 object processed = ProcessValue(value, 0, context);
 
-                return JsonConvert.SerializeObject(processed, JsonExtensions.ObjectSerializationSettings);
+                return JsonConvert.SerializeObject(processed);
             }
             catch (OperationCanceledException)
             {

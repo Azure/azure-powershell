@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] WhatIfExcludeChangeType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -77,6 +80,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             DeploymentMode = DeploymentMode.Incremental,
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
+            TemplateSpecId = TemplateSpecId,
+            QueryString = QueryString,
             TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = this.GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
@@ -90,6 +95,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             mode: DeploymentMode.Incremental,
             templateUri: TemplateUri ?? this.TryResolvePath(TemplateFile),
             templateObject: this.TemplateObject,
+            templateSpecId: TemplateSpecId,
+            queryString: QueryString,
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.WhatIfResultFormat,

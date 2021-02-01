@@ -44,7 +44,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
 
 The following prerequisites should be completed before contributing to the Azure PowerShell repository:
 
-- Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- Install [Visual Studio 2019 or above](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater

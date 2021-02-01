@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
@@ -434,6 +435,28 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return certificates.ToArray();
         }
 
+        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault)
+        {
+            var perm1 = " ";
+            var kv2 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
+            foreach (var policy in kv2.Properties.AccessPolicies)
+            {
+                if (policy.ObjectId == ("f8daea97-62e7-4026-becf-13c2ea98e8b4"))
+                {
+                    foreach (var perm in policy.Permissions.Secrets)
+                    {
+                        if ((perm == "Get") || (perm == "get"))
+                        {
+                            perm1 = perm;
+                            Console.WriteLine("Success");
+                            break;
+                        }
+                    }
+                }
+            }
+            return perm1.ToString();
+        }
+
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
         {
             return new SiteConfigResource
@@ -486,8 +509,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState,
-                ReservedInstanceCount = config.ReservedInstanceCount
+                FtpsState = config.FtpsState
             };
         }
 
@@ -538,7 +560,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
-                ReservedInstanceCount = config.ReservedInstanceCount,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
                 FtpsState = config.FtpsState,

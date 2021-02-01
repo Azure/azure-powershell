@@ -77,7 +77,7 @@ function Update-AzModule {
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
         if ($ppsedition -eq "Core") {
-            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop).Where({$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
+            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop | Where-Object {$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
             $allPahts = ($allPahts | Select-String -Pattern "WindowsPowerShell")
             if ($allPahts) {
                 Write-Warning "Az modules are also installed in WindowsPowerShell. Please update them using WindowsPowerShell."
@@ -96,9 +96,9 @@ function Update-AzModule {
         if($allToUpdate) {
             Write-Host -ForegroundColor DarkGreen "The modules to Update:$($allToUpdate | Out-String)"
 
-            $allToUpdateReordered = @() + $allToUpdate.Where({$_.Name -eq "Az"})
-            $allToUpdateReordered += $allToUpdate.Where({$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"})
-            $allToUpdateReordered += $allToUpdate.Where({$_.Name -eq "Az.Accounts"})
+            $allToUpdateReordered = @() + ($allToUpdate | Where-Object {$_.Name -eq "Az"})
+            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"}
+            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -eq "Az.Accounts"}
 
             foreach ($module in $allToUpdateReordered) {
                 if (-not $module) {

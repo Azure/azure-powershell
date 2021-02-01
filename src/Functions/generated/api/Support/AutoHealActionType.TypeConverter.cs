@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>TypeConverter implementation for AutoHealActionType.</summary>
+    /// <summary>Predefined action to be taken.</summary>
     public partial class AutoHealActionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

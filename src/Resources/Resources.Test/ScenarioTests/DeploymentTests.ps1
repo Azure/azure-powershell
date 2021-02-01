@@ -112,6 +112,40 @@ function Test-NewDeploymentFromTemplateFile
     }
 }
 
+function Test-NewDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateSpecId $resourceId -TemplateParameterFile "sampleTemplateParams.json"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 function Test-NewDeploymentFromTemplateObject
 {
     # Setup
@@ -599,6 +633,39 @@ function Test-NewDeploymentFromNonexistentTemplateParameterFile
         Assert-Throws { New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateParams.json -TemplateParameterFile $file } $exceptionMessage
     }
     finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment from a template in a storage account using a query string.
+#>
+function Test-NewDeploymentWithQueryString
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		#Create deployment
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.blob.core.windows.net/testqsblob/linkedTemplateParent.json" -QueryString "foo"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname

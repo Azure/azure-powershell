@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
 {
 
-    /// <summary>Argument completer implementation for DeploymentResourceStatus.</summary>
+    /// <summary>Status of the Deployment</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatusTypeConverter))]
     public partial struct DeploymentResourceStatus :
         System.Management.Automation.IArgumentCompleter
