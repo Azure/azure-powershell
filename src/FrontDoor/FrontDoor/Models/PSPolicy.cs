@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string CustomBlockResponseBody { get; set; }
 
+        public PSEnabledState? RequestBodyCheck { get; set; }
+
         public List<PSCustomRule> CustomRules { get; set; }
 
         public List<PSManagedRule> ManagedRules { get; set; }
