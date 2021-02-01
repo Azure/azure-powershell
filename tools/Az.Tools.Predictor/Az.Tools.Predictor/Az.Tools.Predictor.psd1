@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -50,7 +50,7 @@ PowerShellVersion = '7.1'
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
-ScriptsToProcess = @("ImportPrompt.ps1")
+ScriptsToProcess = @("InterceptSurvey.ps1")
 
 # Format files (.ps1xml) to be loaded when importing this module
 
