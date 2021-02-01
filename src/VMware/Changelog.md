@@ -19,7 +19,8 @@
 -->
 ## Upcoming Release
 * [BreakingChange] Renamed module to Az.VMware
-* Set confirmation prompt poped by default
+* Set confirmation prompt poped by default for `Remove-AzVMwarePrivateCloud`
+* Added parameter 'AcceptEULA' and legal term to `New-AzVMwarePrivateCloud`
 
 ## Version 0.1.0
 * First preview release for module Az.VMWare
