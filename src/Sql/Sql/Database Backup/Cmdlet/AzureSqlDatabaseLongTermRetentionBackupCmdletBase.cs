@@ -24,8 +24,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase :
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase<T> :
+        AzureSqlCmdletBase<IEnumerable<T>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Initializes the adapter

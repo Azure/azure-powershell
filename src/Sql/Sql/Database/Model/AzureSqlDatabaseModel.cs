@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
-            ReadReplicaCount = database.ReadReplicaCount;
+            ReadReplicaCount = database.HighAvailabilityReplicaCount;
             BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
         }
 

@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string serverName,
             string databaseName)
         {
-            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
+            Management.Sql.Models.LongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName);
@@ -276,6 +276,41 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
                 WeekOfYear = response.WeekOfYear
+            };
+        }
+
+        /// <summary>
+        /// Update a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        internal AzureSqlDatabaseLongTermRetentionBackupCopyModel CopyDatabaseLongTermRetentionBackup(
+            AzureSqlDatabaseLongTermRetentionBackupCopyModel model)
+        {
+            Management.Sql.Models.LongTermRetentionBackupOperationResult response = Communicator.CopyDatabaseLongTermRetentionBackup(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName,
+                new Management.Sql.Models.CopyLongTermRetentionBackupParameters()
+                {
+                    TargetServerFullyQualifiedDomainName = model.TargetServerFullyQualifiedDomainName,
+                    TargetDatabaseName = model.TargetDatabaseName,
+                    TargetServerResourceId = model.TargetServerResourceId,
+                    TargetSubscriptionId = model.TargetSubscriptionId,
+                    TargetResourceGroup = model.TargetResourceGroupName
+                });
+
+            return new AzureSqlDatabaseLongTermRetentionBackupCopyModel()
+            {
+                SourceBackupResourceId = response.FromBackupResourceId,
+                TargetBackupResourceId = response.ToBackupResourceId
             };
         }
 
@@ -324,11 +359,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string databaseName,
             AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+            Management.Sql.Models.LongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName,
-                    new Management.Sql.Models.BackupLongTermRetentionPolicy()
+                    new Management.Sql.Models.LongTermRetentionPolicy()
                     {
                         WeeklyRetention = model.WeeklyRetention,
                         MonthlyRetention = model.MonthlyRetention,
