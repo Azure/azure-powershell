@@ -50,7 +50,7 @@ PowerShellVersion = '7.1'
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
-ScriptsToProcess = @("InterceptSurvey.ps1")
+ScriptsToProcess = @("PromptSurvey.ps1")
 
 # Format files (.ps1xml) to be loaded when importing this module
 

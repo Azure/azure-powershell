@@ -5,8 +5,15 @@ param (
     [int] $majorVersion
 )
 
-if ([string]::IsNullOrWhiteSpace($moduleName))
-{
+if ([string]::IsNullOrWhiteSpace($moduleName)) {
+    return
+}
+
+if ($majorVersion -lt 0) {
+    return
+}
+
+if ($env:Azure_PS_Intercept_Survey -eq "false") {
     return
 }
 
@@ -96,7 +103,7 @@ function Update-InterceptObject {
 
     $newActiveDays = $recordedActiveDays
 
-    if ($today -ne $recordedLastActiveDate) {
+    if ($elapsedDays -ne 0) {
         $newActiveDays++
     }
 
@@ -138,10 +145,10 @@ try
             ConvertTo-Json -InputObject $interceptObject | Out-File $interceptFilePath -Encoding utf8
         }
     }
-} finally
-{
-    $mutex.ReleaseMutex()
+} catch {
 }
+
+$mutex.ReleaseMutex()
 
 Write-Host "To enable suggestions from Az predictor, run: Set-PSReadLineOption -PredictionSource HistoryAndPlugin"
 
