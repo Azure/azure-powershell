@@ -337,9 +337,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     {
                         csprojSet.UnionWith(GetBuildCsprojList(moduleName, csprojMap));
                     }
-                    foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories))
+                    if (csprojSet.Count != 0)
                     {
-                        csprojSet.Add(filename);
+                        foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories))
+                        {
+                            csprojSet.Add(filename);
+                        }
                     }
                     influencedModuleInfo[phaseName] = csprojSet;
                 }
