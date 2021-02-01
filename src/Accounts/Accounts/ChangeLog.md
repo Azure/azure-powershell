@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Invoked on clear context listener in Azure session to be cleared when `Clear-AzContext` was executed
+* Invoked on-clear-context listener in Azure session when `Clear-AzContext` was executed
 
 ## Version 2.2.4
 * Shown correct client request id on debug message [#13745]
