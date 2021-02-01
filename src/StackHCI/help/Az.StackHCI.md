@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.StackHCI Module
 ## Description
-Microsoft Azure PowerShell: StackHCI cmdlets
+Microsoft Azure PowerShell: Azure Stack HCI registration cmdlets
 
 ## Az.StackHCI Cmdlets
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
