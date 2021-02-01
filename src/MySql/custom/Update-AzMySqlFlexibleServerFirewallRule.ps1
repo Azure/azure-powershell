@@ -148,12 +148,18 @@ param(
 
 process {
     try {
+
         if($PSBoundParameters.ContainsKey('ClientIPAddress'))
         {
             $PSBoundParameters['StartIPAddress'] = $PSBoundParameters['ClientIPAddress']
             $PSBoundParameters['EndIPAddress'] = $PSBoundParameters['ClientIPAddress']
             $null = $PSBoundParameters.Remove('ClientIPAddress')
         }
+
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforMySQL","DBForMySql")
+        }   
+
         Az.MySql.internal\Update-AzMySqlFlexibleServerFirewallRule @PSBoundParameters
     } catch {
         throw

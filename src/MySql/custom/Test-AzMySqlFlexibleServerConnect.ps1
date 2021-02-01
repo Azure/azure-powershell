@@ -130,8 +130,11 @@ function Test-AzMySqlFlexibleServerConnect {
 
         $Password = $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-        
 
+        if($PSBoundParameters.ContainsKey('InputObject')){
+            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforMySQL","DBForMySql")
+        }   
+        
         $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $HostAddr = $Server.FullyQualifiedDomainName
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {

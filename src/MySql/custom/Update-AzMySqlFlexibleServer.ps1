@@ -181,6 +181,10 @@ function Update-AzMySqlFlexibleServer {
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
 
+            if($PSBoundParameters.ContainsKey('InputObject')){
+                $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforMySQL","DBForMySql")
+            }
+
             Az.MySql.internal\Update-AzMySqlFlexibleServer @PSBoundParameters
         } catch {
             throw

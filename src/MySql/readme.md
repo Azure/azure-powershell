@@ -101,7 +101,7 @@ directive:
     hide: true
   - where:
       verb: Update$
-      subject: ^FlexibleServerConfiguration$
+      subject: ^FlexibleServerConfiguration$|^flexibleServerDatabase$
     hide: true
   - where:
       verb: New$
@@ -111,6 +111,16 @@ directive:
   - where:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
+    hide: true
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where:
+      verb: Get$|Remove$
+      subject: ^FlexibleServer$|^FlexibleServerConfiguration$|^FlexibleServerDatabase$|^FlexibleServerFirewallRule$
+    hide: true
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where:
+      verb: Restart$|Stop$|Start$
+      subject: ^FlexibleServer$
     hide: true
   - where:
       parameter-name: VirtualNetworkSubnetId

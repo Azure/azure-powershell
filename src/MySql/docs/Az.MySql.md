@@ -26,6 +26,9 @@ Gets information about a server.
 ### [Get-AzMySqlFlexibleServerConfiguration](Get-AzMySqlFlexibleServerConfiguration.md)
 Gets information about a configuration of server.
 
+### [Get-AzMySqlFlexibleServerConnect](Get-AzMySqlFlexibleServerConnect.md)
+Test out the connection to the database server
+
 ### [Get-AzMySqlFlexibleServerConnectionString](Get-AzMySqlFlexibleServerConnectionString.md)
 Get the connection string according to client connection provider.
 

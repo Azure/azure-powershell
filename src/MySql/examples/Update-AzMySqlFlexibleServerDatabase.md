@@ -8,10 +8,10 @@ databasetest   utf8      latin1_swedish_ci
 ```
 Update a database by resource name.
 
-### Example 2: Update MySql database by parameter.
+### Example 2: Update MySql database by identity.
 ```powershell
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/databases/databasetest"
-PS C:\> Update-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
+PS C:\> Update-AzMySqlFlexibleServerDatabase -InputObject $ID -Charset utf8
 
 Name            Charset     Collation              
 ----            -------- ------------------
