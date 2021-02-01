@@ -105,6 +105,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
         public string CustomBlockResponseBody { get; set; }
 
+        /// <summary>
+        /// Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string RequestBodyCheck { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -182,6 +189,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             if (this.IsParameterBound(c => c.RedirectUrl))
             {
                 updateParameters.PolicySettings.RedirectUrl = RedirectUrl;
+            }
+
+            if (this.IsParameterBound(c => c.RequestBodyCheck))
+            {
+                updateParameters.PolicySettings.RequestBodyCheck = RequestBodyCheck;
             }
 
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
