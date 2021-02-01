@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse
             else
             {
                 var results = this.SynapseAnalyticsClient.ListRecoverableSqlPool(this.ResourceGroupName, this.WorkspaceName);
-                WriteObject(results, true);
+                WriteObject(SubResourceWildcardFilter(Name, results), true);
             }
         }
     }
