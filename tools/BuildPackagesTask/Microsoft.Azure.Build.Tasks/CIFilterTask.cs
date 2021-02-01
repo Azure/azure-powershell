@@ -292,10 +292,22 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                 }
             }
-            var keys = influencedModuleInfo.Keys.ToList();
-            foreach (string phaseName in keys)
+            List<string> expectedKeyList = new List<string>()
             {
-                if (influencedModuleInfo[phaseName].Contains(AllModule))
+                BUILD_PHASE,
+                ANALYSIS_BREAKING_CHANGE_PHASE,
+                ANALYSIS_DEPENDENCY_PHASE,
+                ANALYSIS_HELP_PHASE,
+                ANALYSIS_SIGNATURE_PHASE,
+                TEST_PHASE
+            };
+            foreach (string phaseName in expectedKeyList)
+            {
+                if (!influencedModuleInfo.ContainsKey(phaseName))
+                {
+                    influencedModuleInfo[phaseName] = new HashSet<string>();
+                }
+                else if (influencedModuleInfo[phaseName].Contains(AllModule))
                 {
                     influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList("Accounts", csprojMap));
                 }
