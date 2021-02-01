@@ -1,8 +1,6 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -17,11 +15,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public static class CmdletHelpers
     {
-        public static NetworkManagementClient networkClient
-        {
-            get;
-            private set;
-        }
         public static HashSet<string> SiteConfigParameters = new HashSet<string>
             {
                 "DefaultDocuments",

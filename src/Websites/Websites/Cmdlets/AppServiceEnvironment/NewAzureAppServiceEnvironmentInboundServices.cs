@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create inbound services for a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironmentInboundServices", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironmentInboundServices", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class NewAzureAppServiceEnvironmentInboundServicesCmdlet : WebAppBaseClientCmdLet
     {
         private const string SubnetIdParameterSet = "SubnetIdParameterSet";
@@ -41,11 +41,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [Parameter(Mandatory = false, HelpMessage = "Do not create Azure Private DNS Zone and records.")]
         public SwitchParameter SkipDns { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return status.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, $"Creating App Service Environment '{Name}'"))
-            {
-                AppServiceEnvironmentResource ase = null;
+            AppServiceEnvironmentResource ase = WebsitesClient.GetAppServiceEnvironment(ResourceGroupName, Name);
+            string shouldProcessMessage = "";
+            if (ase.Kind.ToLower() == "asev2")
+                shouldProcessMessage = SkipDns ? "No changes will be made" : $"Create Private DNS Zone and A Records for {Name}";
+            else if (ase.Kind.ToLower() == "asev3")
+                shouldProcessMessage = SkipDns ? $"Disable Network Policy in Subnet and create private endpoint for {Name}" : $"Disable Network Policy in Subnet, create private endpoint, and create Private DNS Zone and A Records for {Name}";
+
+            if (ShouldProcess(Name, shouldProcessMessage))
+            {                
                 switch (ParameterSetName)
                 {
                     case SubnetNameParameterSet:
@@ -56,7 +65,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                         //If unable to fetch Subnet rg from above step, use the input RG to get validation error from api call.
                         subnetResourceGroupName = !String.IsNullOrEmpty(subnetResourceGroupName) ? subnetResourceGroupName : ResourceGroupName;
                         var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subnetResourceGroupName, DefaultContext.Subscription.Id);                        
-                        ase = WebsitesClient.GetAppServiceEnvironment(ResourceGroupName, Name);
                         if (ase != null)
                         {
                             string inboundIPAddress = "";
@@ -80,7 +88,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                                 var aseGroupId = "hostingEnvironments";
                                 NetworkClient.EnsureSubnetPrivateEndpointPolicy(subnetResourceId, false);
                                 var pe = NetworkClient.CreatePrivateEndpoint(ResourceGroupName, Name, aseResourceId, aseGroupId, subnetResourceId, ase.Location);
-                                var nicId = pe.NetworkInterfaces[0].Id;                                
+                                var nicId = pe.NetworkInterfaces[0].Id;
                                 inboundIPAddress = NetworkClient.GetNetworkInterfacePrivateIPAddress(nicId);
                             }
 
@@ -92,6 +100,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                             }
                         }
                         break;
+                }
+
+                if (PassThru)
+                {
+                    WriteObject(true);
                 }
             }
         }

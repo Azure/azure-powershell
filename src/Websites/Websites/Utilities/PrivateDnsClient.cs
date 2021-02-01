@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.PrivateDns;
-using Microsoft.Azure.Management.PrivateDns.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns;
+using Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.PrivateDns.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {

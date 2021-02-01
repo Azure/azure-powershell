@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureAppServiceEnvironmentCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return status.")]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -40,6 +43,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                 () =>
                 {
                     WebsitesClient.RemoveAppServiceEnvironment(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 });
         }
     }

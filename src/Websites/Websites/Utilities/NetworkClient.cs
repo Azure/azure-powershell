@@ -15,10 +15,8 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-//using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-//using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network.Models;
 using Microsoft.Azure.Management.WebSites;
 using System;
 using System.Collections.Generic;

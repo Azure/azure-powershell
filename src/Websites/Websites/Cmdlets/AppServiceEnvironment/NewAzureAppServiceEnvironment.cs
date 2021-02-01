@@ -2,7 +2,6 @@
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true), OutputType(typeof(PSAppServiceEnvironment))]
     public class NewAzureAppServiceEnvironmentCmdlet : WebAppBaseClientCmdLet
     {
         private const string ASEv2SubnetIdParameterSet = "ASEv2SubnetIdParameterSet";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West Europe.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the app service environment eg: West Europe.")]
         [LocationCompleter("Microsoft.Web/sites", "Microsoft.Web/serverFarms", "Microsoft.Web/hostingEnvironments")]
         public string Location { get; set; }
 
@@ -61,14 +60,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateSet("Internal", "External")]
         public string LoadBalancerMode { get; set; }
 
-        [Parameter(ParameterSetName = ASEv3SubnetIdParameterSet, Mandatory = true, HelpMessage = "The subnet id.")]
-        [ValidateNotNullOrEmpty]
-        public string InboundSubnetId { get; set; }
-
-        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name.")]
-        [ValidateNotNullOrEmpty]
-        public string InboundSubnetName { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Return the app service environment object.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -94,7 +85,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                         var subnet = ParameterSetName == ASEv2SubnetNameParameterSet ? SubnetName : SubnetId;
                         //Fetch RG of given Subnet
                         var subnetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
-                        //If unble to fetch Subnet rg from above step, use the input RG to get validation error from api call.
+                        //If unable to fetch Subnet rg from above step, use the input RG to get validation error from api call.
                         subnetResourceGroupName = !String.IsNullOrEmpty(subnetResourceGroupName) ? subnetResourceGroupName : ResourceGroupName;
                         var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subnetResourceGroupName, DefaultContext.Subscription.Id);
 
@@ -108,13 +99,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                     case ASEv3SubnetNameParameterSet:
                     case ASEv3SubnetIdParameterSet:
                         var outboundSubnet = ParameterSetName == ASEv3SubnetNameParameterSet ? SubnetName : SubnetId;
-                        var inboundSubnet = ParameterSetName == ASEv3SubnetNameParameterSet ? InboundSubnetName : InboundSubnetId;
                         //Fetch RG of given Subnet
-                        var inboundSubnetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(inboundSubnet, VirtualNetworkName);
                         var outboundSubnetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(outboundSubnet, VirtualNetworkName);
-                        //If unble to fetch Subnet rg from above step, use the input RG to get validation error from api call.
-                        inboundSubnetResourceGroupName = !String.IsNullOrEmpty(inboundSubnetResourceGroupName) ? inboundSubnetResourceGroupName : ResourceGroupName;
-                        var inboundSubnetResourceId = NetworkClient.ValidateSubnet(inboundSubnet, VirtualNetworkName, inboundSubnetResourceGroupName, DefaultContext.Subscription.Id);
+                        //If unable to fetch Subnet rg from above step, use the input RG to get validation error from api call.
                         outboundSubnetResourceGroupName = !String.IsNullOrEmpty(outboundSubnetResourceGroupName) ? outboundSubnetResourceGroupName : ResourceGroupName;
                         var outboundSubnetResourceId = NetworkClient.ValidateSubnet(outboundSubnet, VirtualNetworkName, outboundSubnetResourceGroupName, DefaultContext.Subscription.Id);
 
@@ -124,12 +111,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                         NetworkClient.VerifyEmptySubnet(outboundSubnetResourceId);
                         NetworkClient.EnsureSubnetDelegation(outboundSubnetResourceId, "Microsoft.Web/hostingEnvironments");
                         ase = WebsitesClient.CreateAppServiceEnvironment(ResourceGroupName, Name, appServiceEnvironment);
-
-                        // Create private endpoint
-                        var aseResourceId = ase.Id;
-                        var aseGroupId = "hostingEnvironments";
-                        NetworkClient.EnsureSubnetPrivateEndpointPolicy(inboundSubnetResourceId, false);
-                        NetworkClient.CreatePrivateEndpoint(ResourceGroupName, Name, aseResourceId, aseGroupId, inboundSubnetResourceId, Location);
                         break;
                 }
 
