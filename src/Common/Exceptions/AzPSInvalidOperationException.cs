@@ -19,32 +19,55 @@ using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Common.Exceptions
 {
+    /// <summary>
+    /// Representive of InvalidOperationException in Azure PowerShell.
+    /// </summary>
     public class AzPSInvalidOperationException : PSInvalidOperationException, IContainsAzPSErrorData
     {
+        /// <summary>
+        /// ErrorKind that causes this exception.
+        /// </summary>
         public ErrorKind ErrorKind
         {
             get => Data.GetValue<ErrorKind>(AzurePSErrorDataKeys.ErrorKindKey);
             private set => Data.SetValue(AzurePSErrorDataKeys.ErrorKindKey, value);
         }
 
+        /// <summary>
+        /// The error message which doesn't contain PII.
+        /// </summary>
         public string DesensitizedErrorMessage
         {
             get => Data.GetValue<string>(AzurePSErrorDataKeys.DesensitizedErrorMessageKey);
             private set => Data.SetValue(AzurePSErrorDataKeys.DesensitizedErrorMessageKey, value);
         }
 
+        /// <summary>
+        /// The number of line when exception happens.
+        /// </summary>
         public int? ErrorLineNumber
         {
             get => Data.GetNullableValue<int>(AzurePSErrorDataKeys.ErrorLineNumberKey);
             private set => Data.SetValue(AzurePSErrorDataKeys.ErrorLineNumberKey, value);
         }
 
+        /// <summary>
+        /// The file name when exception happens.
+        /// </summary>
         public string ErrorFileName
         {
             get => Data.GetValue<string>(AzurePSErrorDataKeys.ErrorFileNameKey);
             private set => Data.SetValue(AzurePSErrorDataKeys.ErrorFileNameKey, value);
         }
 
+        /// <summary>
+        /// Construtor of AzPSInvalidOperationException
+        /// </summary>
+        /// <param name="message">The error message that explains the reason for the exception.</param>
+        /// <param name="innerException">The exception that is the cause of the current exception. Default value is null.</param>
+        /// <param name="desensitizedMessage">The error message which doesn't contain PII.</param>
+        /// <param name="lineNumber">The number of line when exception happens.</param>
+        /// <param name="filePath">The file path when exception happens.</param>
         public AzPSInvalidOperationException(
             string message,
             Exception innerException = null,
@@ -55,6 +78,15 @@ namespace Microsoft.Azure.Commands.Common.Exceptions
         {
         }
 
+        /// <summary>
+        /// Constructor of AzPSInvalidOperationException
+        /// </summary>
+        /// <param name="message">The error message that explains the reason for the exception.</param>
+        /// <param name="errorKind">ErrorKind that causes this exception.</param>
+        /// <param name="innerException">The exception that is the cause of the current exception. Default value is null.</param>
+        /// <param name="desensitizedMessage">The error message which doesn't contain PII.</param>
+        /// <param name="lineNumber">The number of line when exception happens.</param>
+        /// <param name="filePath">The file path when exception happens.</param>
         public AzPSInvalidOperationException(
             string message,
             ErrorKind errorKind,
