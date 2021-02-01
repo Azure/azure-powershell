@@ -350,6 +350,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            return new RenewingTokenCredential(new ExternalAccessToken(accessToken, renew));
+        }
+
         /// <summary>
         /// Remove a user from token cache.
         /// </summary>
