@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>Chart type of the main view in Cost Analysis. Required.</summary>
     public partial struct ChartType :
         System.IEquatable<ChartType>
     {
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ChartType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ChartType(System.Convert.ToString(value));
+            return new ChartType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ChartType</summary>

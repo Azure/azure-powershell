@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for RecurrenceType.</summary>
+    /// <summary>The schedule recurrence.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceTypeTypeConverter))]
     public partial struct RecurrenceType :
         System.Management.Automation.IArgumentCompleter
