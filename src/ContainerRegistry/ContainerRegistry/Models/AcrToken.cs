@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.Profile.Utilities;
+﻿using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Text.Json;
