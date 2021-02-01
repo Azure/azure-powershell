@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for KpiType.</summary>
+    /// <summary>KPI type (Forecast, Budget).</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.KpiTypeTypeConverter))]
     public partial struct KpiType :
         System.Management.Automation.IArgumentCompleter

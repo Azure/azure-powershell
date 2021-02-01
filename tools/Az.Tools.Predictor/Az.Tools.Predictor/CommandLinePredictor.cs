@@ -65,12 +65,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
                 Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
-                var commandAst = (ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst);
+                var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
+                var commandName = commandAst?.GetCommandName();
 
-                if (commandAst?.CommandElements[0] is StringConstantExpressionAst commandName)
+                if (!string.IsNullOrWhiteSpace(commandName))
                 {
                     var parameterSet = new ParameterSet(commandAst);
-                    this._commandLinePredictions.Add(new CommandLine(commandName.Value, predictiveCommand.Description, parameterSet));
+                    this._commandLinePredictions.Add(new CommandLine(commandName, predictiveCommand.Description, parameterSet));
                 }
             }
         }
