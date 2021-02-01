@@ -2264,6 +2264,11 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
+    ${AcceptEULA},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
