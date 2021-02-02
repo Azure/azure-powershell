@@ -3,6 +3,8 @@
   "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
   "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
   "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "allowedRestoreModes": [ "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
   "policySettings": {
     "defaultPolicy": {
       "DatasourceType": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
@@ -42,11 +44,11 @@
               "DeleteAfterObjectType": "AbsoluteDeleteOption",
               "SourceDataStoreObjectType": "DataStoreInfoBase",
               "SourceDataStoreType": "VaultStore",
-              "TargetDataStoreCopySetting":  null
+              "TargetDataStoreCopySetting": null
             }
           ],
           "Name": "Default",
-          "ObjectType" : "AzureRetentionRule"
+          "ObjectType": "AzureRetentionRule"
         }
       ]
     }

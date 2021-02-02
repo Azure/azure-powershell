@@ -91,4 +91,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     {
         RecoveryPointBased = 0
     }
+
+    public enum RestoreMode
+    {
+        RecoveryPointBased = 0,
+        PointInTimeBased
+    }
+
+    public enum RestoreTargetType
+    {
+        AlternateLocation = 0,
+        RestoreAsFiles
+    }
+
 }

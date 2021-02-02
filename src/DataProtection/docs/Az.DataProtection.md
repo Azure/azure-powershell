@@ -64,6 +64,9 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [GetBackupFrequencyString](GetBackupFrequencyString.md)
 
 
+### [GetDatasourceInfo](GetDatasourceInfo.md)
+
+
 ### [GetDatasourceSetInfo](GetDatasourceSetInfo.md)
 
 
@@ -75,6 +78,9 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
 Prepares Backup instance object for backup
+
+### [Initialize-AzDataProtectionRestoreRequest](Initialize-AzDataProtectionRestoreRequest.md)
+Prepares Restore Request object for backup
 
 ### [Initialize-AzDataProtectionTargetRestoreInfo](Initialize-AzDataProtectionTargetRestoreInfo.md)
 Get Backup Vault storage setting object
@@ -167,4 +173,7 @@ Creates new Schedule object
 ### [Update-AzDataProtectionResourceOperationGatekeeper](Update-AzDataProtectionResourceOperationGatekeeper.md)
 Updates a ResourceOperationGatekeeper resource belonging to a resource group.
 For example, updating tags for a resource.
+
+### [ValidateRestoreOptions](ValidateRestoreOptions.md)
+
 
