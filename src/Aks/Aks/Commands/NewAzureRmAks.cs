@@ -183,11 +183,6 @@ namespace Microsoft.Azure.Commands.Aks
             return GetSshKey(generateSshKeyPath);
         }
 
-        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         protected void PrepareParameter()
         {
             if (this.IsParameterBound(c => c.GenerateSshKey))

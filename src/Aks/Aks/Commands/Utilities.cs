@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         public static string GetParentResourceName(string parentResource, string parameterSource)
         {
             if (string.IsNullOrWhiteSpace(parentResource))
-                throw new AzPSArgumentException(
+                throw new AzPSArgumentNullException(
                     Properties.Resources.ParentResourceMustNotBeEmpty,
                     parameterSource,
                     desensitizedMessage: Properties.Resources.ParentResourceMustNotBeEmpty);
