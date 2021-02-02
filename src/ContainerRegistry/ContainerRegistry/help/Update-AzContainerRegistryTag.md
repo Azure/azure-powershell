@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerRegistryTag
 
 ## SYNOPSIS
-Update Acr tag.
+Update ACR tag.
 
 ## SYNTAX
 

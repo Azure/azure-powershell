@@ -96,7 +96,7 @@ Update ACR manifest.
 Update ACR repository.
 
 ### [Update-AzContainerRegistryTag](Update-AzContainerRegistryTag.md)
-Update Acr tag.
+Update ACR tag.
 
 ### [Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
 Updates a container registry webhook.
