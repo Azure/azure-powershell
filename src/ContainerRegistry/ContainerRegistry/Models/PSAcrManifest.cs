@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
         {
             Registry = manifest?.Registry;
             ImageName = manifest?.Registry;
-            if (manifest != null)
+            if (manifest != null && manifest.ManifestsAttributes != null)
             {
                 ManifestsAttributes = manifest.ManifestsAttributes.Select(x => new PSManifestAttributeBase(x)).ToList();
             }
