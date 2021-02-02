@@ -40,5 +40,33 @@ title: Websites
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-# directive:
+directive:
+  # Use "StaticWebApp" as subject prefix
+  - where:
+      subject-prefix: Websites
+      subject: StaticSite(.*)
+    set:
+      subject-prefix: StaticWebApp
+      subject: $1
+
+  # Rename `Invoke-` cmdlets, using better verbs
+  - where:
+      verb: Invoke
+      subject: Detach
+    set:
+      verb: Remove
+      subject: AttachedRepository
+      # alternatives:
+      # Remove-AzStaticWebAppAttachedRepository
+      # Remove-AzStaticWebAppAttachedRepo
+      # Remove-AzStaticWebAppRepository
+  - where:
+      verb: Invoke
+      subject: WorkflowPreview|PreviewWorkflow
+    set:
+      verb: New
+      subject: PreviewWorkflow
+      # alternatives:
+      # New-AzStaticWebAppPreviewWorkflow
+      # New-AzStaticWebAppWorkflowPreview
 ```
