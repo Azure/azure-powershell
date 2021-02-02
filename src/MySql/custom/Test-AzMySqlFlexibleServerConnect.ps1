@@ -107,13 +107,14 @@ function Test-AzMySqlFlexibleServerConnect {
     process {
         if (!(Get-Module -ListAvailable -Name SimplySQL)){
             Write-Error "This cmdlet requires SimplySQL module. Please install the module first by running Install-Module -Name SimplySQL."
+            exit
         }
         Import-Module SimplySQL
-        
-        $AdministratorUserName = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
-            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
-            $null = $PSBoundParameters.Remove('AdministratorUserName')
+
+        $Query = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('QueryText')) {
+            $Query = $PSBoundParameters.QueryText
+            $null = $PSBoundParameters.Remove('QueryText')
         }
 
         $DatabaseName = [string]::Empty
@@ -122,22 +123,20 @@ function Test-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
 
-        $Query = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('QueryText')) {
-            $Query = $PSBoundParameters.QueryText
-            $null = $PSBoundParameters.Remove('QueryText')
-        }
-
         $Password = $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-        
+
+        $AdministratorUserName = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
+            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
+            $null = $PSBoundParameters.Remove('AdministratorUserName')
+        }
 
         $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $HostAddr = $Server.FullyQualifiedDomainName
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
-
         
         try {
             if ([string]::IsNullOrEmpty($DatabaseName)){
