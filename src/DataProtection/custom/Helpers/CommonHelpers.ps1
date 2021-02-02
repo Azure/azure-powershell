@@ -24,3 +24,42 @@ function GetDatasourceSetInfo
 		return $DataSourceSetInfo
 	}
 }
+
+function GetDatasourceInfo
+{
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$ResourceId,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$ResourceLocation,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType
+	)
+
+	process
+	{
+		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.Datasource]::new()
+		$DataSourceInfo.ObjectType = "Datasource"
+        $DataSourceInfo.ResourceId = $ResourceId
+        $DataSourceInfo.ResourceLocation = $ResourceLocation
+        $DataSourceInfo.ResourceName = $ResourceId.Split("/")[-1]
+        $DataSourceInfo.ResourceType = $manifest.resourceType
+        $DataSourceInfo.ResourceUri = ""
+        if($manifest.isProxyResource -eq $false)
+        {
+            $DataSourceInfo.ResourceUri = $ResourceId
+        }
+        $DataSourceInfo.Type = $manifest.datasourceType
+
+		return $DataSourceInfo
+	}
+}
