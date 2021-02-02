@@ -74,6 +74,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private const string ANALYSIS_DEPENDENCY_PHASE = "dependency";
         private const string ANALYSIS_SIGNATURE_PHASE = "signature";
         private const string TEST_PHASE = "test";
+        private const string ACCOUNT_MODULE_NAME = "Accounts";
 
         private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
 
@@ -125,7 +126,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = "Accounts";
+                moduleName = ACCOUNT_MODULE_NAME;
             }
             string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => !x.Contains("Test")).ToArray();
@@ -166,7 +167,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = "Accounts";
+                moduleName = ACCOUNT_MODULE_NAME;
             }
             return GetRelatedCsprojList(moduleName, csprojMap)
                 .Select(GetModuleNameFromCsprojPath)
@@ -178,7 +179,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             if (moduleName.Equals(AllModule))
             {
-                moduleName = "Accounts";
+                moduleName = ACCOUNT_MODULE_NAME;
             }
             string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToArray();
@@ -309,16 +310,20 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
                 else if (influencedModuleInfo[phaseName].Contains(AllModule))
                 {
-                    influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList("Accounts", csprojMap));
+                    influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList(ACCOUNT_MODULE_NAME, csprojMap));
                 }
             }
 
             foreach (string moduleName in influencedModuleInfo[TEST_PHASE])
             {
-                if (moduleName != "Accounts")
+                if (!moduleName.Equals(ACCOUNT_MODULE_NAME))
                 {
                     influencedModuleInfo[BUILD_PHASE].UnionWith(GetDependentModuleList(moduleName, csprojMap));
                 }
+            }
+            if (influencedModuleInfo[BUILD_PHASE].Count == 0)
+            {
+                influencedModuleInfo[BUILD_PHASE].Add(ACCOUNT_MODULE_NAME);
             }
             Console.WriteLine("----------------- InfluencedModuleInfo -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
