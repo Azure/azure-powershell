@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.2.4'
+ModuleVersion = '100.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -143,9 +143,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Shown correct client request id on debug message [#13745]
-* Added common Azure PowerShell exception type
-* Supported storage API 2019-06-01'
+        ReleaseNotes = '* Supported subject name issuer authentication.'
 
         # Prerelease string of this module
         # Prerelease = ''
