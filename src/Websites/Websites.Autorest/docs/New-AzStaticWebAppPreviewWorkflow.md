@@ -14,10 +14,9 @@ Description for Generates a preview workflow file for the static site
 
 ### PreviewExpanded (Default)
 ```
-New-AzStaticWebAppPreviewWorkflow -Location <String> [-SubscriptionId <String>] [-Branch <String>]
- [-BuildPropertyApiLocation <String>] [-BuildPropertyAppArtifactLocation <String>]
- [-BuildPropertyAppLocation <String>] [-Kind <String>] [-RepositoryUrl <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppPreviewWorkflow -Location <String> [-SubscriptionId <String>] [-ApiLocation <String>]
+ [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>] [-Kind <String>]
+ [-RepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Preview
@@ -36,10 +35,9 @@ New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity>
 
 ### PreviewViaIdentityExpanded
 ```
-New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity> [-Branch <String>]
- [-BuildPropertyApiLocation <String>] [-BuildPropertyAppArtifactLocation <String>]
- [-BuildPropertyAppLocation <String>] [-Kind <String>] [-RepositoryUrl <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity> [-ApiLocation <String>]
+ [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>] [-Kind <String>]
+ [-RepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,22 +65,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Branch
-The target branch in the repository.
-
-```yaml
-Type: System.String
-Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildPropertyApiLocation
+### -ApiLocation
 The path to the api code within the repository.
 
 ```yaml
@@ -97,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuildPropertyAppArtifactLocation
+### -AppArtifactLocation
 The path of the app artifacts after building.
 
 ```yaml
@@ -112,8 +95,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuildPropertyAppLocation
+### -AppLocation
 The path to the app code within the repository.
+
+```yaml
+Type: System.String
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Branch
+The target branch in the repository.
 
 ```yaml
 Type: System.String

@@ -80,4 +80,10 @@ directive:
       # alternatives:
       # New-AzStaticWebAppPreviewWorkflow
       # New-AzStaticWebAppWorkflowPreview
+
+  # Rename some parameters
+  - where:
+      parameter-name: BuildProperty(.*)
+    set:
+      parameter-name: $1
 ```
