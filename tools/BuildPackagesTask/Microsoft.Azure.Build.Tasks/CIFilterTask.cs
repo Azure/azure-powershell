@@ -352,7 +352,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     if (csprojSet.Count != 0)
                     {
-                        foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories))
+                        foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories).Where(x => !x.Contains("Test")))
                         {
                             csprojSet.Add(filename);
                         }
