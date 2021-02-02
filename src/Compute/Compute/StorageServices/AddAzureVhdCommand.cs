@@ -228,8 +228,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     var accessUri = sas.DisksClient.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
                     Uri sasUri = new Uri(accessUri.AccessSAS);
                     Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
-                    //Uri fake = new Uri("https://theostoracc.blob.core.windows.net/testblob/uploaded.vhd");
-                    //PageBlobClient managedDisk = new PageBlobClient(fake, null);
 
                     // 3-4: UPLOAD                  
                     PageBlobClient managedDisk = new PageBlobClient(sasUri, null);
