@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Tracked CloudError code in exception
-* Invoked on-clear-context listener in Azure session when `Clear-AzContext` was executed
+* Raised `OnContextCleared` event when `Clearn-AzContext` was executed
 
 ## Version 2.2.4
 * Shown correct client request id on debug message [#13745]
