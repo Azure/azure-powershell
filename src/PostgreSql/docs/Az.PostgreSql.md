@@ -95,6 +95,9 @@ Starts a server.
 ### [Stop-AzPostgreSqlFlexibleServer](Stop-AzPostgreSqlFlexibleServer.md)
 Stops a server.
 
+### [Test-AzPostgreSqlFlexibleServerConnect](Test-AzPostgreSqlFlexibleServerConnect.md)
+Test out the connection to the database server
+
 ### [Update-AzPostgreSqlConfiguration](Update-AzPostgreSqlConfiguration.md)
 Updates a configuration of a server.
 Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
