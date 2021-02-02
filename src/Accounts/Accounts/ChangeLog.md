@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Tracked CloudError code in exception
-* Raised `OnContextCleared` event when `Clearn-AzContext` was executed
+* Raised 'ContextCleared' event when `Clear-AzContext` was executed
 
 ## Version 2.2.4
 * Shown correct client request id on debug message [#13745]
