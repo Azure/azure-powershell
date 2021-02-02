@@ -108,13 +108,14 @@ function Test-AzPostgreSqlFlexibleServerConnect {
     process {
         if (!(Get-Module -ListAvailable -Name SimplySQL)){
             Write-Error "This cmdlet requires SimplySQL module. Please install the module first by running Install-Module -Name SimplySQL."
+            exit
         }
         Import-Module SimplySQL
         
-        $AdministratorUserName = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
-            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
-            $null = $PSBoundParameters.Remove('AdministratorUserName')
+        $Query = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('QueryText')) {
+            $Query = $PSBoundParameters.QueryText
+            $null = $PSBoundParameters.Remove('QueryText')
         }
 
         $DatabaseName = [string]::Empty
@@ -123,13 +124,10 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
 
-        $Query = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('QueryText')) {
-            $Query = $PSBoundParameters.QueryText
-            $null = $PSBoundParameters.Remove('QueryText')
-        }
-        if($PSBoundParameters.ContainsKey('InputObject')){
-            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+        $AdministratorUserName = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
+            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
+            $null = $PSBoundParameters.Remove('AdministratorUserName')
         }
 
         $Password = $PSBoundParameters['AdministratorLoginPassword']
@@ -141,7 +139,6 @@ function Test-AzPostgreSqlFlexibleServerConnect {
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
-
         
         try {
             if ([string]::IsNullOrEmpty($DatabaseName)){
