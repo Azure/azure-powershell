@@ -39,8 +39,8 @@ Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <S
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -471,6 +471,21 @@ Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: Process, CurrentUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SendCertificateChain
+Present to use subject name issuer authentication.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Aliases:
 
 Required: False
 Position: Named

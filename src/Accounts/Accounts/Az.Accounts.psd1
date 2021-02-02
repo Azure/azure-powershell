@@ -143,7 +143,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
+<<<<<<< HEAD
         ReleaseNotes = '* Fallback to first valid context if current default context key is ''Default'' which is invalid'
+=======
+        ReleaseNotes = '* Supported subject name issuer authentication.'
+>>>>>>> 193beb0daf... Update help markdown file
 
         # Prerelease string of this module
         # Prerelease = ''
