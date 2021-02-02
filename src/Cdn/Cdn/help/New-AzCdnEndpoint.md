@@ -281,7 +281,7 @@ Accept wildcard characters: False
 The number of seconds between health probes.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

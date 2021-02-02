@@ -81,10 +81,10 @@ Creates a delivery rule condition.
 Creates a CDN endpoint.
 
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
-Creates a CDN origin
+Creates a new CDN origin
 
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
-Creates a CDN origin group
+Creates a new CDN origin group
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
@@ -114,7 +114,7 @@ Updates a CDN endpoint.
 Updates a CDN origin server.
 
 ### [Set-AzCdnOriginGroup](Set-AzCdnOriginGroup.md)
-Updates a CDN origin group
+Updates the CDN origin group
 
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.

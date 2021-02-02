@@ -38,8 +38,9 @@ Remove-AzCdnOrigin will delete a CDN origin from the given endpoint. If the orig
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName 
+PS C:\> Remove-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName
 ```
+
 This cmdlet will remove the specified origin from the given endpoint. 
 
 ## PARAMETERS
