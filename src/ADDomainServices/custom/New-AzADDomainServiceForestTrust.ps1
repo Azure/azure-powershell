@@ -52,10 +52,7 @@ function New-AzADDomainServiceForestTrust {
         $Object.FriendlyName = $FriendlyName
         $Object.RemoteDnsIP = $RemoteDnsIP
         $Object.TrustDirection = $TrustDirection
-        if ($PSBoundParameters.ContainsKey('TrustPassword')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $TrustPassword
-            $Object.TrustPassword = $psTxt
-        } 
+        $Object.TrustPassword = $TrustPassword
         $Object.TrustedDomainFqdn = $TrustedDomainFqdn
         return $Object
     }

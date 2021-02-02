@@ -123,7 +123,7 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $DatabaseName = $PSBoundParameters.DatabaseName
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
-        
+
         $AdministratorUserName = [string]::Empty
         if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
             $AdministratorUserName = $PSBoundParameters.AdministratorUserName
