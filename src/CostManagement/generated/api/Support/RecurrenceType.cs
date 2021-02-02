@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>The schedule recurrence.</summary>
     public partial struct RecurrenceType :
         System.IEquatable<RecurrenceType>
     {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="RecurrenceType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RecurrenceType(System.Convert.ToString(value));
+            return new RecurrenceType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RecurrenceType</summary>

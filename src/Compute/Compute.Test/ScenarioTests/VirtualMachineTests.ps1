@@ -4524,3 +4524,45 @@ function Test-VirtualMachineGetVMNameAcrossResourceGroups
         Clean-ResourceGroup $rgname2;
     }
 }
+
+<#
+.SYNOPSIS
+
+#>
+function Test-VirtualMachineGetVMExtensionPiping
+{
+    # Setup
+    $loc = "eastus";
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname = 'v' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $domainNameLabel1 = "domain1" + $rgname;
+
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel1;
+        
+        # No error is thrown
+        $vmExt = Get-AzVM -VM $vm1 | Get-AzVMExtension;
+
+        # Test expected error message when missing ResourceGroup. 
+        $vmname2 = "errorvm";
+        $vmConfig = New-AzVMConfig -Name $vmname2 -VMSize $vmsize;
+        Assert-ThrowsContains {
+            $vmError = $vmconfig | Get-AzVMExtension; } "The incoming virtual machine must have a 'resourceGroupName'.";
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
