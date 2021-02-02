@@ -312,6 +312,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList("Accounts", csprojMap));
                 }
             }
+
+            foreach (string moduleName in influencedModuleInfo[TEST_PHASE])
+            {
+                influencedModuleInfo[BUILD_PHASE].UnionWith(GetDependentModuleList(moduleName, csprojMap));
+            }
             Console.WriteLine("----------------- InfluencedModuleInfo -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
             {
