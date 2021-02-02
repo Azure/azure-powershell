@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added cmdlets:
+* Added cmdlets to supported repository, manifest, and tag operations:
     - `Get-AzContainerRegistryRepository`
     - `Update-AzContainerRegistryRepository`
     - `Remove-AzContainerRegistryRepository`
