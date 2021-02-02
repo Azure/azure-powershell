@@ -44,9 +44,6 @@ Description for Creates a new static site in an existing resource group, or upda
 ### [New-AzStaticWebAppBuildFunctionAppSetting](New-AzStaticWebAppBuildFunctionAppSetting.md)
 Description for Creates or updates the function app settings of a static site build.
 
-### [New-AzStaticWebAppCustomDomain](New-AzStaticWebAppCustomDomain.md)
-Description for Creates a new static site custom domain in an existing resource group and static site.
-
 ### [New-AzStaticWebAppFunctionAppSetting](New-AzStaticWebAppFunctionAppSetting.md)
 Description for Creates or updates the function app settings of a static site.
 
@@ -73,18 +70,6 @@ Description for Deletes the user entry from the static site.
 
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
-
-### [Set-AzStaticWebApp](Set-AzStaticWebApp.md)
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
-
-### [Set-AzStaticWebAppBuildFunctionAppSetting](Set-AzStaticWebAppBuildFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site build.
-
-### [Set-AzStaticWebAppCustomDomain](Set-AzStaticWebAppCustomDomain.md)
-Description for Creates a new static site custom domain in an existing resource group and static site.
-
-### [Set-AzStaticWebAppFunctionAppSetting](Set-AzStaticWebAppFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site.
 
 ### [Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite](Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite.md)
 Description for Validates a particular custom domain can be added to a static site.

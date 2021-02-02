@@ -12,32 +12,10 @@ Description for Creates an invitation link for a user with the role
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzStaticWebAppUserRoleInvitationLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Domain <String>] [-Kind <String>] [-NumHoursToExpiration <Int32>] [-Provider <String>] [-Role <String>]
  [-UserDetail <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzStaticWebAppUserRoleInvitationLink -Name <String> -ResourceGroupName <String>
- -StaticSiteUserRolesInvitationEnvelope <IStaticSiteUserInvitationRequestResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzStaticWebAppUserRoleInvitationLink -InputObject <IWebsitesIdentity>
- -StaticSiteUserRolesInvitationEnvelope <IStaticSiteUserInvitationRequestResource>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzStaticWebAppUserRoleInvitationLink -InputObject <IWebsitesIdentity> [-Domain <String>] [-Kind <String>]
- [-NumHoursToExpiration <Int32>] [-Provider <String>] [-Role <String>] [-UserDetail <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +63,7 @@ The domain name for the static site custom domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -95,28 +73,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -131,7 +93,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -146,7 +108,7 @@ The number of hours the sas token stays valid
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,7 +123,7 @@ The identity provider for the static site user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -176,7 +138,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -191,29 +153,13 @@ The roles for the static site user, in free-form string format
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StaticSiteUserRolesInvitationEnvelope
-Static sites user roles invitation resource.
-To construct, see NOTES section for STATICSITEUSERROLESINVITATIONENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserInvitationRequestResource
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -224,7 +170,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -239,7 +185,7 @@ The user id for the static site user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,10 +231,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserInvitationRequestResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserInvitationResponseResource
@@ -296,30 +238,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
-  - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Location where you plan to create the static site.
-  - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
-  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
-  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Userid <String>]`: The user id of the user.
-
-STATICSITEUSERROLESINVITATIONENVELOPE <IStaticSiteUserInvitationRequestResource>: Static sites user roles invitation resource.
-  - `[Kind <String>]`: Kind of resource.
-  - `[Domain <String>]`: The domain name for the static site custom domain.
-  - `[NumHoursToExpiration <Int32?>]`: The number of hours the sas token stays valid
-  - `[Provider <String>]`: The identity provider for the static site user.
-  - `[Role <String>]`: The roles for the static site user, in free-form string format
-  - `[UserDetail <String>]`: The user id for the static site user.
 
 ## RELATED LINKS
 

@@ -20,19 +20,6 @@ Update-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzStaticWebApp -Name <String> -ResourceGroupName <String>
- -StaticSiteEnvelope <IStaticSitePatchResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzStaticWebApp -InputObject <IWebsitesIdentity> -StaticSiteEnvelope <IStaticSitePatchResource>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-Branch <String>] [-BuildPropertyApiLocation <String>]
@@ -71,7 +58,7 @@ The target branch in the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -86,7 +73,7 @@ The path to the api code within the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -101,7 +88,7 @@ The path of the app artifacts after building.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -116,7 +103,7 @@ The path to the app code within the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +134,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,7 +149,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +164,7 @@ Name of the static site to create or update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -193,7 +180,7 @@ This is used to setup the Github Actions workflow file and API secrets.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -208,7 +195,7 @@ URL for the repository of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -223,29 +210,13 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StaticSiteEnvelope
-ARM resource for a static site when patching
-To construct, see NOTES section for STATICSITEENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSitePatchResource
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -256,7 +227,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -302,8 +273,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSitePatchResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 
 ## OUTPUTS
@@ -329,15 +298,6 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
-
-STATICSITEENVELOPE <IStaticSitePatchResource>: ARM resource for a static site when patching
-  - `[Kind <String>]`: Kind of resource.
-  - `[Branch <String>]`: The target branch in the repository.
-  - `[BuildPropertyApiLocation <String>]`: The path to the api code within the repository.
-  - `[BuildPropertyAppArtifactLocation <String>]`: The path of the app artifacts after building.
-  - `[BuildPropertyAppLocation <String>]`: The path to the app code within the repository.
-  - `[RepositoryToken <String>]`: A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.
-  - `[RepositoryUrl <String>]`: URL for the repository of the static site.
 
 ## RELATED LINKS
 

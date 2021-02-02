@@ -12,30 +12,10 @@ Description for Creates or updates the function app settings of a static site.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Create
-```
-New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String>
- -AppSetting <IStringDictionary> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzStaticWebAppFunctionAppSetting -InputObject <IWebsitesIdentity> -AppSetting <IStringDictionary>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzStaticWebAppFunctionAppSetting -InputObject <IWebsitesIdentity> [-Kind <String>] [-Property <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,22 +43,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AppSetting
-String dictionary resource.
-To construct, see NOTES section for APPSETTING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -94,28 +58,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,7 +78,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -145,7 +93,7 @@ Settings.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,7 +108,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -177,7 +125,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -223,10 +171,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
-
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
@@ -234,27 +178,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-APPSETTING <IStringDictionary>: String dictionary resource.
-  - `[Kind <String>]`: Kind of resource.
-  - `[Property <IStringDictionaryProperties>]`: Settings.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
-  - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Location where you plan to create the static site.
-  - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
-  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
-  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Userid <String>]`: The user id of the user.
 
 ## RELATED LINKS
 
