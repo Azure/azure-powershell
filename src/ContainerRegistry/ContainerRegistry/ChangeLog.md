@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets to supported repository, manifest, and tag operations:
+    - `Get-AzContainerRegistryRepository`
+    - `Update-AzContainerRegistryRepository`
+    - `Remove-AzContainerRegistryRepository`
+    - `Get-AzContainerRegistryManifest`
+    - `Update-AzContainerRegistryManifest`
+    - `Remove-AzContainerRegistryManifest`
+    - `Get-AzContainerRegistryTag`
+    - `Update-AzContainerRegistryTag`
+    - `Remove-AzContainerRegistryTag`
 
 ## Version 2.1.0
 * Supported parameter `Name` for and value from pipeline input for `Get-AzContainerRegistryUsage` [#13605]

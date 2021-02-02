@@ -85,9 +85,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string InvalidRegistryOrReplicationResourceIdErrorMessage = "This is an invalid container registry resource id or replication resource id";
         protected const string InvalidReplicationResourceIdErrorMessage = "This is an invalid replication resource id";
 
-        protected const string WithoutNameAndPasswordParameterSet = "WithoutNameAndPasswordParameterSet";
-        protected const string WithNameAndPasswordParameterSet = "WithNameAndPasswordParameterSet";
-
         protected struct PasswordNameStrings
         {
             internal const string Password = "password";
@@ -142,15 +139,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
         }
 
+        private const string _acrTokenCacheKey = "AcrTokenCacheKey";
         private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
-
         public ContainerRegistryDataPlaneClient RegistryDataPlaneClient
         {
             get
             {
                 if (_RegistryDataPlaneClient == null)
                 {
-                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext)
+                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext, _acrTokenCacheKey)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
