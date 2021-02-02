@@ -98,8 +98,10 @@ namespace Microsoft.Azure.Commands.Aks
                 }
                 else
                 {
-                    //TODO: Update AzurePSErrorDataKeys.CouldErrorCode
-                    ex.Data["AzPSCloudErrorCode"] = ex.Body?.Code;
+                    if (!string.IsNullOrEmpty(ex.Body?.Code))
+                    {
+                        ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = ex.Body.Code;
+                    }
                     throw;
                 }
             }
