@@ -326,12 +326,11 @@ namespace Microsoft.Azure.Commands.Aks
                 var acrObjects = RmClient.Resources.List(acrQuery);
                 acrResourceId = acrObjects.First().Id;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw new AzPSArgumentException(
                     string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
                     acrParameterName,
-                    ex,
                     string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
 

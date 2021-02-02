@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Aks
                     errorMessage += pair.Value;
                 }
             }
-            throw new AzPSArgumentException(errorMessage, parametersMap[e.Target].Name, e, desensitizedMessage, filePath: callerFilePath);
+            throw new AzPSArgumentException(errorMessage, parametersMap[e.Target].Name, desensitizedMessage, filePath: callerFilePath);
         }
     }
 }
