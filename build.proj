@@ -184,8 +184,11 @@
       <CsprojFiles Include="$(BuildCsprojList.Split(`;`))" />
       <CsprojFiles Include="$(TestCsprojList.Split(`;`))" Condition="'$(Configuration)' != 'Release'" />
     </ItemGroup>
+    <Message Importance="high" Text="==============================" />
+    <Message Importance="high" Text="@(CsprojFiles->Count())" />
+    <Message Importance="high" Text="==============================" />
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
-    <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
+    <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" Condition="'@(CsprojFiles->Count())' &gt; 0"/>
     <PropertyGroup>
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
