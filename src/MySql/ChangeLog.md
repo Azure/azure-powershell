@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlet `Test-AzMySqlFlexibleServerConnect`
 
 ## Version 0.4.0
 * Updated New-AzMySqlFlexibleServer cmdlet to provide easy resource group and network management within RDBMS flexible server management
