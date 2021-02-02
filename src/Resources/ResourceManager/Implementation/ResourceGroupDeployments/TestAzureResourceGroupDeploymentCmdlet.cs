@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.")]
         public string RollBackDeploymentName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         public string DeploymentName { get; set; }
 
         public TestAzureResourceGroupDeploymentCmdlet()
@@ -66,6 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentMode = Mode,
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
+                QueryString = QueryString,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)

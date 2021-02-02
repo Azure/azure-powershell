@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         protected override void OnProcessRecord()
         {
             var parameters = new PSDeploymentCmdletParameters()
@@ -41,6 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Location = Location,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
+                QueryString = QueryString,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri
             };
