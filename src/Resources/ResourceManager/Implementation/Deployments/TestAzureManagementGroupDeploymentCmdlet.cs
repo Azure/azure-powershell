@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, AzureRMConstants.AzureRMPrefix + "ManagementGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
-    public class TestAzureManagementGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class TestAzureManagementGroupDeploymentCmdlet : TestDeploymentCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
@@ -35,9 +36,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
-        public string QueryString { get; set; }
 
         protected override void OnProcessRecord()
         {
