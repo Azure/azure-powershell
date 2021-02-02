@@ -35,7 +35,7 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 ### New an AKS with default params.
 
 ```powershell
-PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster
+PS C:\> New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
 ### Create Windows Server container on an AKS.
@@ -44,7 +44,7 @@ To create Windows Server container on an AKS, you must specify at least four fol
 
 ```powershell
 PS C:\> $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
-PS C:\> New-AzAks -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
+PS C:\> New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 PS C:\> New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
