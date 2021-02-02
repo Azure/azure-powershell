@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Tracked CloudError code in exception
 * Invoked on-clear-context listener in Azure session when `Clear-AzContext` was executed
 
 ## Version 2.2.4

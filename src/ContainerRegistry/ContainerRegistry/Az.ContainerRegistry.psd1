@@ -90,7 +90,16 @@ CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry',
                'Get-AzContainerRegistryWebhookEvent', 
                'Import-AzContainerRegistryImage', 'Get-AzContainerRegistryUsage', 
                'Set-AzContainerRegistryNetworkRuleSet', 
-               'New-AzContainerRegistryNetworkRule', 'Connect-AzContainerRegistry'
+               'New-AzContainerRegistryNetworkRule', 'Connect-AzContainerRegistry', 
+               'Get-AzContainerRegistryRepository', 
+               'Remove-AzContainerRegistryRepository', 
+               'Update-AzContainerRegistryRepository', 
+               'Get-AzContainerRegistryManifest', 
+               'Remove-AzContainerRegistryManifest', 
+               'Update-AzContainerRegistryManifest', 
+               'Get-AzContainerRegistryTag', 
+               'Update-AzContainerRegistryTag', 
+               'Remove-AzContainerRegistryTag'
 
 # Variables to export from this module
 # VariablesToExport = @()

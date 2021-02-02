@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 case Constants.IdParameterSet:
                     resource = new ResourceIdentifier(Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(Id));
                     Name = resource.ResourceName;
                     break;
                 case Constants.InputObjectParameterSet:
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     pool = PSMapper.Instance.Map<AgentPool>(InputObject);
                     resource = new ResourceIdentifier(pool.Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(InputObject));
                     Name = resource.ResourceName;
                     break;
                 case Constants.ParentObjectParameterSet:
