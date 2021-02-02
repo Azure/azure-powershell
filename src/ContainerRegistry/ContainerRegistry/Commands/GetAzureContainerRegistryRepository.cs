@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryRepository", DefaultParameterSetName = ListParameterSet)]
-    [OutputType(typeof(PSAcrManifest), typeof(PSManifestAttribute))]
+    [OutputType(typeof(string), typeof(PSRepositoryAttribute))]
     public class GetAzureContainerRegistryRepository : ContainerRegistryDataPlaneCmdletBase
     {
         [Parameter(ParameterSetName = GetParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Repository Name.")]

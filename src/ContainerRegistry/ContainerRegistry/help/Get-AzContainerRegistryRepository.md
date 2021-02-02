@@ -137,9 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest
+### System.String
 
-### Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute
+### Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute
 
 ## NOTES
 
