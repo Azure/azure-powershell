@@ -41,13 +41,18 @@ namespace Microsoft.Azure.Commands.Security.Common
         #region Sql Vulnerability Assessment
 
         public const string OnPremMachines = "OnPremMachines";
+
         public const string ResourceIdWithBaselineObject = "ResourceIdWithBaselineObject";
         public const string ResourceIdWithBaselineLatest = "ResourceIdWithBaselineLatest";
         public const string OnPremMachinesWithBaselineObject = "OnPremMachinesWithBaselineObject";
         public const string OnPremMachinesWithBaselineLatest = "OnPremMachinesWithBaselineLatest";
-        public const string InputObjectWithResourceId = "InputObjectWithResourceId";
-        public const string InputObjectWithOnPrem = "InputObjectWithOnPrem";
+        public const string InputObjectBaselineWithResourceId = "InputObjectWithResourceId";
+        public const string InputObjectBaselineWithOnPrem = "InputObjectBaselineWithOnPrem";
 
+        public const string ResourceIdWithScanId = "ResourceIdWithScanId";
+        public const string ResourceIdWithLatest = "ResourceIdWithLatest";
+        public const string OnPremMachinesWithScanId = "OnPremMachinesWithScanId";
+        public const string OnPremMachinesWithLatest= "OnPremMachinesWithLatest";
 
         #endregion
     }

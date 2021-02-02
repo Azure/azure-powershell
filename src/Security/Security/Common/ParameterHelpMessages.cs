@@ -165,6 +165,16 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string Server = "Server name";
         public const string Database = "Database name";
+        public const string ComputerName = "Computer full name - on premise parameter";
+        public const string VMUUID = "VMUUID - on premise parameter";
+        public const string AgentId = "Agent id - on premise parameter";
+        public const string WorkspaceResourceId = "Workspace resource id - on premise parameter";
+        public const string UseLatest = "Use latest results for the operation";
+        public const string RuleId = "Vulnerability Assessment rule id";
+        public const string ScanId = "Vulnerability Assessment scan id";
+        public const string Baseline = "Vulnerability Assessment baseline object";
+
+
         #endregion
     }
 }
