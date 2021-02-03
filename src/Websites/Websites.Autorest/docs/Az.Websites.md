@@ -71,7 +71,7 @@ Description for Deletes the user entry from the static site.
 ### [Reset-AzStaticWebAppApiKey](Reset-AzStaticWebAppApiKey.md)
 Description for Resets the api key for an existing static site.
 
-### [Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite](Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite.md)
+### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.
 
 ### [Update-AzStaticWebApp](Update-AzStaticWebApp.md)

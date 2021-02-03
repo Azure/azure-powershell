@@ -80,6 +80,10 @@ directive:
       # alternatives:
       # New-AzStaticWebAppPreviewWorkflow
       # New-AzStaticWebAppWorkflowPreview
+  - where:
+      subject: CustomDomainCanBeAddedToStaticSite
+    set:
+      subject: CustomDomain
 
   # Rename some parameters
   - where:

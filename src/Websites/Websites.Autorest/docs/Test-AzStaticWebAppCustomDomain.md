@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/test-azstaticwebappcustomdomaincanbeaddedtostaticsite
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/test-azstaticwebappcustomdomain
 schema: 2.0.0
 ---
 
-# Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite
+# Test-AzStaticWebAppCustomDomain
 
 ## SYNOPSIS
 Description for Validates a particular custom domain can be added to a static site.
@@ -14,15 +14,14 @@ Description for Validates a particular custom domain can be added to a static si
 
 ### Validate (Default)
 ```
-Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite -DomainName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Test-AzStaticWebAppCustomDomainCanBeAddedToStaticSite -InputObject <IWebsitesIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
