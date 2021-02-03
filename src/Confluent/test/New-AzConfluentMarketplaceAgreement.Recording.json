@@ -1,0 +1,38 @@
+{
+  "New-AzConfluentMarketplaceAgreement+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ec5a926a-68f0-4b60-b3ae-58399456abb7/providers/Microsoft.Confluent/agreements/default?api-version=2020-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ec5a926a-68f0-4b60-b3ae-58399456abb7/providers/Microsoft.Confluent/agreements/default?api-version=2020-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"accepted\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "30b1b294-54df-4307-b931-002cdd8fa40d" ],
+        "x-ms-correlation-request-id": [ "cdaf9cf7-6fb7-41f9-9cfd-4fd05c22de39" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210203T092040Z:cdaf9cf7-6fb7-41f9-9cfd-4fd05c22de39" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 03 Feb 2021 09:20:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "330" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ec5a926a-68f0-4b60-b3ae-58399456abb7/providers/Microsoft.Confluent/agreements/default\",\"name\":\"default\",\"type\":\"Microsoft.Confluent/agreements\",\"properties\":{\"publisher\":null,\"product\":null,\"plan\":null,\"licenseTextLink\":null,\"privacyPolicyLink\":null,\"retrieveDatetime\":null,\"signature\":null,\"accepted\":true}}",
+      "isContentBase64": false
+    }
+  }
+}
