@@ -107,12 +107,6 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    # [System.String]
-    # # eTag of the resource.
-    # # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-    # ${ETag},
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},

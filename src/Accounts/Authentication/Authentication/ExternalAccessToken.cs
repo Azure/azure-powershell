@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication
 
         private readonly Func<string> _refresh;
 
-        public ExternalAccessToken(string token, Func<string> refresh = null)
+        public ExternalAccessToken(string accessToken, Func<string> renew = null)
         {
-            this.AccessToken = token;
-            this._refresh = refresh;
+            this.AccessToken = accessToken;
+            this._refresh = renew;
         }
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
