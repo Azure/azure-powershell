@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
+## Version 0.7.0
+* Added support for operation of getting droppedsqlpool and geobackup
+    - Add `Get-AzSynapseDroppedSqlPool` cmdlet
+    - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
 
 ## Version 0.6.0
 * Added support for operation of Advanced Threat Protection settings in SqlPool-level
