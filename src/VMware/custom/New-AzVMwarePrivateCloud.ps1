@@ -190,7 +190,6 @@ function New-AzVMwarePrivateCloud {
     )
     
     process {
-
         if(!$PSBoundParameters.ContainsKey('AcceptEULA')){
             $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
             try {
