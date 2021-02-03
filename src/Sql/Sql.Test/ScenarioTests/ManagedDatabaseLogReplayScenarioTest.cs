@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 networkClient);
         }
 
-        public ManagedDatabaseLogReplayScenarioTest(ITestOutputHelper output) : base(output)
+        public ManagedDatabaseLogReplayScenarioTest(ITestOutputHelper output) : base(output, true)
         {
             base.resourceTypesToIgnoreApiVersion = new string[] {
                 "Microsoft.Sql/managedInstances",

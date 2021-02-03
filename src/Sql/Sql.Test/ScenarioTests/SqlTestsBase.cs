@@ -42,15 +42,30 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     {
         protected EnvironmentSetupHelper Helper;
         protected string[] resourceTypesToIgnoreApiVersion;
+        protected string[] modules;
         private const string TenantIdKey = "TenantId";
 
-        protected SqlTestsBase(ITestOutputHelper output)
+        protected SqlTestsBase(ITestOutputHelper output, bool useStorageSDK = false)
         {
             Helper = new EnvironmentSetupHelper();
 
             var tracer = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(tracer);
             Helper.TracingInterceptor = tracer;
+            modules = new []
+            {
+                "ScenarioTests\\Common.ps1",
+                "ScenarioTests\\" + GetType().Name + ".ps1",
+                Helper.RMProfileModule,
+                Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
+                Helper.RMNetworkModule,
+                useStorageSDK ? Helper.RMStorageModule : "AzureRM.Storage.ps1",
+                "AzureRM.Resources.ps1",
+                Helper.RMOperationalInsightsModule,
+                Helper.RMEventHubModule,
+                Helper.RMMonitorModule,
+                Helper.RMKeyVaultModule
+            };
         }
 
         protected virtual void SetupManagementClients(MockContext context)
@@ -89,18 +104,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             {
                 Helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 SetupManagementClients(context);
-                Helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + GetType().Name + ".ps1",
-                    Helper.RMProfileModule,
-                    Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
-                    Helper.RMNetworkModule,
-                    Helper.RMStorageModule,
-                    "AzureRM.Resources.ps1",
-                    Helper.RMOperationalInsightsModule,
-                    Helper.RMEventHubModule,
-                    Helper.RMMonitorModule,
-                    Helper.RMKeyVaultModule);
+                Helper.SetupModules(AzureModule.AzureResourceManager, modules);
                 Helper.RunPowerShellTest(scripts);
             }
         }
