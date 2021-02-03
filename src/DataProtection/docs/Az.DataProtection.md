@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: DataProtection cmdlets
 
 ## Az.DataProtection Cmdlets
+### [AddFilterToQuery](AddFilterToQuery.md)
+
+
 ### [Backup-AzDataProtectionBackupInstanceAdhoc](Backup-AzDataProtectionBackupInstanceAdhoc.md)
 Trigger adhoc backup
 
@@ -36,6 +39,9 @@ The blob contains exported jobs in JSON serialized format.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
+
+### [Get-AzDataProtectionJobFromARG](Get-AzDataProtectionJobFromARG.md)
+Get Backup Vault storage setting object
 
 ### [Get-AzDataProtectionOperationResult](Get-AzDataProtectionOperationResult.md)
 Gets the operation result for a resource

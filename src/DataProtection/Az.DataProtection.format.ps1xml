@@ -521,6 +521,9 @@
             <Label>DataSourceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Duration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -595,6 +598,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DataSourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Duration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EndTime</PropertyName>
