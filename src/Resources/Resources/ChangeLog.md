@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added support for -QueryString parameter in Test-Az*Deployments cmdlets
+* Fixed issue with dynamic parameters when New-Az*Deployments is used with -QueryString
 
 ## Version 3.2.0
 * Added support for -QueryString parameter in New-Az*Deployments cmdlets
