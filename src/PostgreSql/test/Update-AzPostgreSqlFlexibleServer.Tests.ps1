@@ -16,14 +16,25 @@ Describe 'Update-AzPostgreSqlFlexibleServer' {
         {
             $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 15 
             $server.StorageProfileBackupRetentionDay | Should -Be 15
+
+            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -MaintenanceWindow "Mon:1:30"
+            $server.MaintenanceWindowCustomWindow | Should -Be 'Enabled'
+            $server.MaintenanceWindowDayOfWeek | Should -Be '1'
+            $server.MaintenanceWindowStartHour | Should -Be '1'
+            $server.MaintenanceWindowStartMinute | Should -Be '30'
+
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSql/flexibleServers/$($env.flexibleServerName)/"
-            $server = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 20
-            $server.StorageProfileBackupRetentionDay | Should -Be 20
+            $server = Update-AzPostgreSqlFlexibleServer -InputObject $ID -StorageInMb 20480
+            $server.StorageProfileStorageMb | Should -Be 20480
+
+            $server = Update-AzPostgreSqlFlexibleServer -InputObject $ID -SkuTier GeneralPurpose -Sku Standard_D2ds_v4
+            $server.SkuTier | Should -Be 'GeneralPurpose'
+            $server.SkuName | Should -Be 'Standard_D2ds_v4'
         } | Should -Not -Throw
     }
 }

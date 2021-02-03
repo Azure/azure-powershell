@@ -61,12 +61,12 @@ function Update-AzPostgreSqlFlexibleServer {
         [System.String]
         ${ReplicationRole},
 
-        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
+        [Parameter(HelpMessage='The name of the sku, e.g. Burstable_B1ms, Standard_D2ds_v4')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${Sku},
 
-        [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
+        [Parameter(HelpMessage='The tier of the particular SKU. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier])]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier]
@@ -76,6 +76,7 @@ function Update-AzPostgreSqlFlexibleServer {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum])]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum]
+        [Validateset('Enabled', 'Disabled')]
         # Enable HA or not for a server.
         ${HaEnabled},
 
@@ -83,12 +84,18 @@ function Update-AzPostgreSqlFlexibleServer {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum])]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum]
+        [Validateset('Enabled', 'Disabled')]
         ${SslEnforcement},
 
         [Parameter(HelpMessage='Backup retention days for the server. Day count is between 7 and 35.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.Int32]
         ${BackupRetentionDay},
+
+        [Parameter(HelpMessage='Period of time (UTC) designated for maintenance. Examples: "Sun:23:30" to schedule on Sunday, 11:30pm UTC. To set back to default pass in "Disabled"')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
+        ${MaintenanceWindow},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow])]
@@ -186,7 +193,39 @@ function Update-AzPostgreSqlFlexibleServer {
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
 
-            
+            if ($PSBoundParameters.ContainsKey('MaintenanceWindow')) {
+
+                $PSBoundParameters.MaintenanceWindowDayOfWeek = $null
+                $PSBoundParameters.MaintenanceWindowStartHour = $null
+                $PSBoundParameters.MaintenanceWindowStartMinute = $null
+
+                if ($PSBoundParameters.MaintenanceWindow.ToLower() -eq "disabled"){
+                    $PSBoundParameters.MaintenanceWindowDayOfWeek = 0
+                    $PSBoundParameters.MaintenanceWindowStartHour = 0
+                    $PSBoundParameters.MaintenanceWindowStartMinute = 0
+                    $PSBoundParameters.MaintenanceWindowCustomWindow = "Disabled"
+                }
+                else {
+                    $ParsedWindow = $PSBoundParameters.MaintenanceWindow -split ":"
+                    $DaytoNumber = @{Mon = 1; Tue = 2; Wed = 3; Thur = 4; Fri = 5; Sat = 6; Sun = 0}
+
+                    if ($ParsedWindow.Length -ge 1){
+                        $PSBoundParameters.MaintenanceWindowDayOfWeek =  $DaytoNumber[$ParsedWindow[0]]
+                    }
+
+                    if ($ParsedWindow.Length -ge 2){
+                        $PSBoundParameters.MaintenanceWindowStartHour = $ParsedWindow[1]
+                    }
+
+                    if ($ParsedWindow.Length -ge 3){
+                        $PSBoundParameters.MaintenanceWindowStartMinute = $ParsedWindow[2]
+                    }
+
+                    $PSBoundParameters.MaintenanceWindowCustomWindow = "Enabled"
+                }
+
+                $null = $PSBoundParameters.Remove('MaintenanceWindow')
+            }
 
             Az.PostgreSql.internal\Update-AzPostgreSqlFlexibleServer @PSBoundParameters
         } catch {
