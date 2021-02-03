@@ -58,12 +58,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            {_dataset = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("dataset"), out var __jsonDataset) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ForecastDataset.FromJson(__jsonDataset) : Dataset;}
             {_timePeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("timePeriod"), out var __jsonTimePeriod) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryTimePeriod.FromJson(__jsonTimePeriod) : TimePeriod;}
+            {_dataset = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("dataset"), out var __jsonDataset) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ForecastDataset.FromJson(__jsonDataset) : Dataset;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
+            {_timeframe = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("timeframe"), out var __jsonTimeframe) ? (string)__jsonTimeframe : (string)Timeframe;}
             {_includeActualCost = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean>("includeActualCost"), out var __jsonIncludeActualCost) ? (bool?)__jsonIncludeActualCost : IncludeActualCost;}
             {_includeFreshPartialCost = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean>("includeFreshPartialCost"), out var __jsonIncludeFreshPartialCost) ? (bool?)__jsonIncludeFreshPartialCost : IncludeFreshPartialCost;}
-            {_timeframe = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("timeframe"), out var __jsonTimeframe) ? (string)__jsonTimeframe : (string)Timeframe;}
             AfterFromJson(json);
         }
 
@@ -98,12 +98,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return container;
             }
-            AddIf( null != this._dataset ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._dataset.ToJson(null,serializationMode) : null, "dataset" ,container.Add );
             AddIf( null != this._timePeriod ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._timePeriod.ToJson(null,serializationMode) : null, "timePeriod" ,container.Add );
+            AddIf( null != this._dataset ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._dataset.ToJson(null,serializationMode) : null, "dataset" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != (((object)this._timeframe)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._timeframe.ToString()) : null, "timeframe" ,container.Add );
             AddIf( null != this._includeActualCost ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._includeActualCost) : null, "includeActualCost" ,container.Add );
             AddIf( null != this._includeFreshPartialCost ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonBoolean((bool)this._includeFreshPartialCost) : null, "includeFreshPartialCost" ,container.Add );
-            AddIf( null != (((object)this._timeframe)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._timeframe.ToString()) : null, "timeframe" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

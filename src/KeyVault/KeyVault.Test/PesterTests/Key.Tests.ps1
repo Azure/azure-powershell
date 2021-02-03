@@ -17,3 +17,14 @@ Describe "Update key" {
         Get-AzKeyVaultKey -VaultName $vaultName -Name $keyName -IncludeVersions | ForEach-Object { $_.Enabled | Should -BeTrue }
     }
 }
+
+Describe "Add key" {
+    It "should throw when key type EC and curve name are not paired" {
+        {
+            Add-AzKeyVaultKey -VaultName veakkine-kv -Name PSECImportedKey -KeyFilePath E:\targetBlob.byok -KeyType EC -ErrorAction Stop
+        } | Should -Throw "CurveName"
+        {
+            Add-AzKeyVaultKey -VaultName veakkine-kv -Name PSECImportedKey -KeyFilePath E:\targetBlob.byok -CurveName P-256 -ErrorAction Stop
+        } | Should -Throw "KeyType"
+    }
+}

@@ -21,6 +21,9 @@
 * Supported RoutingPreference settings in create/update Storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+* Upgraded Azure.Storage.Blobs to 12.8.0
+* Upgraded Azure.Storage.Files.Shares to 12.6.0
+* Upgraded Azure.Storage.Files.DataLake to 12.6.0
 
 ## Version 3.2.1
 * Fix ContinuationToken never null when list blob with -IncludeVersion

@@ -22,9 +22,11 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzRouteServerPeer")]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeer", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName), OutputType(typeof(PSVirtualRouter))]
     public partial class RemoveAzureRmVirtualRouterPeer : VirtualRouterBaseCmdlet
     {

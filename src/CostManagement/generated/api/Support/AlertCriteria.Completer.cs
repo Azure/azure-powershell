@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for AlertCriteria.</summary>
+    /// <summary>Criteria that triggered alert</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AlertCriteriaTypeConverter))]
     public partial struct AlertCriteria :
         System.Management.Automation.IArgumentCompleter

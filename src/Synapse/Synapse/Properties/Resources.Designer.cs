@@ -1160,7 +1160,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
             }
         }
-        
+
+        internal static string ScanIdParameterIsRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Service principal with Name &apos;{0}&apos; does not exist..
         /// </summary>
