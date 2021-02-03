@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MaxCapacity = model.DatabaseCapacityMax
                 },
                 LicenseType = model.LicenseType,
-                MaintenanceConfigurationId = model.MaintenanceConfigurationId,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
