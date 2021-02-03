@@ -38,6 +38,14 @@ Set-AzExpressRoutePort -InputObject $erport
 
 Modifies the admin state of a link of an ExpressRoutePort
 
+### Example 3
+```powershell
+$erport = Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
+$erport.Links[0].AdminState = 'Enabled'
+$erport.SciState = 'Disabled'
+Set-AzExpressRoutePort -ExpressRoutePort $erport
+```
+
 ## PARAMETERS
 
 ### -AsJob

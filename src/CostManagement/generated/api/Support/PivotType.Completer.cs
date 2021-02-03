@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for PivotType.</summary>
+    /// <summary>Data type to show in view.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotTypeTypeConverter))]
     public partial struct PivotType :
         System.Management.Automation.IArgumentCompleter

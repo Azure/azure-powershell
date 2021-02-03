@@ -99,23 +99,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             DetermineTargetsState(model, state);
         }
 
-        internal string[] ExtractAuditActions(IEnumerable<string> auditActionsAndGroups)
-        {
-            var actions = new List<string>();
-            if (auditActionsAndGroups != null)
-            {
-                auditActionsAndGroups.ForEach(item =>
-                {
-                    if (!Enum.TryParse(item, true, out AuditActionGroups group))
-                    {
-                        actions.Add(item);
-                    }
-                });
-            }
-
-            return actions.ToArray();
-        }
-
         internal virtual void ModelizeStorageKeyType(AuditModelType model, bool? isSecondary) { }
 
         internal virtual void ModelizeRetentionInfo(AuditModelType model, int? retentionDays) { }
@@ -930,6 +913,23 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             base.PolicizeAuditModel(model, policy);
 
             dynamicPolicy.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model.AuditActionGroup, model.AuditAction);
+        }
+
+        private string[] ExtractAuditActions(IEnumerable<string> auditActionsAndGroups)
+        {
+            var actions = new List<string>();
+            if (auditActionsAndGroups != null)
+            {
+                auditActionsAndGroups.ForEach(item =>
+                {
+                    if (!Enum.TryParse(item, true, out AuditActionGroups group))
+                    {
+                        actions.Add(item);
+                    }
+                });
+            }
+
+            return actions.ToArray();
         }
 
         internal string DatabaseName { get; set; }

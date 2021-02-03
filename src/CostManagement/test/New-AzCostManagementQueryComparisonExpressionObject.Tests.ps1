@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzCostManagementQueryComparisonExpressionObject' {
     It '__AllParameterSets' {
         { 
-            $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')  
+            $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator 'In' -Value @('East US', 'West Europe')  
         } | Should -Not -Throw
     }
 }
