@@ -1,6 +1,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
+    using System;
 
     /// <summary>Resource class</summary>
     public partial class DppResource
