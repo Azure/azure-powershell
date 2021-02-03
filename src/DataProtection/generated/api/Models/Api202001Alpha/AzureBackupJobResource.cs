@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
 
         /// <summary>Total run time of the job.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public global::System.TimeSpan? Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration; }
+        public string Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration; }
 
         /// <summary>EndTime of the job(in UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobResourceInternal.BackupInstanceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).BackupInstanceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).BackupInstanceId = value; }
 
         /// <summary>Internal Acessors for Duration</summary>
-        global::System.TimeSpan? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobResourceInternal.Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobResourceInternal.Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).Duration = value; }
 
         /// <summary>Internal Acessors for EndTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobResourceInternal.EndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupJobInternal)Property).EndTime = value; }
@@ -325,8 +325,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         ReadOnly = true,
         Description = @"Total run time of the job.",
         SerializedName = @"duration",
-        PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        global::System.TimeSpan? Duration { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string Duration { get;  }
         /// <summary>EndTime of the job(in UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         /// <summary>Type of DataSource</summary>
         string DataSourceType { get; set; }
         /// <summary>Total run time of the job.</summary>
-        global::System.TimeSpan? Duration { get; set; }
+        string Duration { get; set; }
         /// <summary>EndTime of the job(in UTC)</summary>
         global::System.DateTime? EndTime { get; set; }
         /// <summary>A List, detatiling the errors related to the job</summary>
