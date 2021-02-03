@@ -104,7 +104,7 @@ function New-AzVMwarePrivateCloud {
         [System.Int32]
         # The cluster size
         ${ManagementClusterSize},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
@@ -132,6 +132,11 @@ function New-AzVMwarePrivateCloud {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AcceptEULA},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -185,12 +190,35 @@ function New-AzVMwarePrivateCloud {
     )
     
     process {
+
+        if(!$PSBoundParameters.ContainsKey('AcceptEULA')){
+            try {
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                switch ($confirmation) {
+                    'Y' {
+                        Break
+                    }
+    
+                    Default {
+                        Return
+                    }
+                }
+            } catch {
+                throw
+            }
+        }else {
+            $null = $PSBoundParameters.Remove('AcceptEULA')
+        }
+
         try {
             if($PSBoundParameters.ContainsKey('Sku')) {
                 $sku = $PSBoundParameters['Sku']
-                $PSBoundParameters.Remove('Sku')
+                $null = $PSBoundParameters.Remove('Sku')
                 $PSBoundParameters.Add('SkuName', $sku)
-            }
+            }  
             Az.VMware.internal\New-AzVMwarePrivateCloud @PSBoundParameters
         } catch {
             throw

@@ -525,7 +525,7 @@ function CreateFirewallRule($Parameters) {
         }
         return $FirewallRule.Name
     }
-    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
+    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -eq 'none') {
         Write-Host "No firewall rule was set"
     }
 }
