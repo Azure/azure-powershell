@@ -4,6 +4,7 @@
     using Microsoft.Azure.Commands.Network.Models.Cortex;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
     using System;
@@ -16,7 +17,7 @@
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSiteLinkConnectionIkeSa",
         DefaultParameterSetName = "ByName"),
         OutputType(typeof(List<PSVpnSiteLinkConnectionIkeSaMainModeSa>))]
-    class GetAzVpnSiteLinkConnectionIkeSaCommand : NetworkBaseCmdlet
+    public class GetAzVpnSiteLinkConnectionIkeSaCommand : VpnLinkConnectionBaseCmdlet
     {
         [Parameter(
             ParameterSetName = "ByName",
@@ -33,7 +34,7 @@
             HelpMessage = "The Vpn gateway name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string GrandParentResourceName { get; set; }
+        public string VpnGatewayName { get; set; }
 
         [Alias("VpnConnectionName")]
         [Parameter(
@@ -42,9 +43,9 @@
             HelpMessage = "The Vpn connection name.")]
         [ResourceNameCompleter("Microsoft.Network/connections", "GrandParentResourceName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string VpnConnectionName { get; set; }
 
-        [Alias("VpnSiteLinkConnectionName")]
+        [Alias("ResourceName", "VpnSiteLinkConnectionName")]
         [Parameter(
             ParameterSetName = "ByName",
             Mandatory = true,
@@ -60,7 +61,7 @@
             ValueFromPipeline = true,
             HelpMessage = "The Vpn site link connection object.")]
         [ValidateNotNullOrEmpty]
-        public PSVpnSiteLinkConnection VpnSiteLinkConnection { get; set; }
+        public PSVpnSiteLinkConnection InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = "ByResourceId",
@@ -145,19 +146,25 @@
                 {
                     var parsedResourceId = new ResourceIdentifier(ResourceId);
                     this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                    this.GrandParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).First();
-                    this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                    this.VpnGatewayName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).First();
+                    this.VpnConnectionName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                     this.Name = parsedResourceId.ResourceName;
                 }
             }
 
             base.Execute();
 
-            if (true)
+            // TODO: Update condition to IsVpnLinkConnectionPresent
+            if (this.IsVpnConnectionPresent(this.ResourceGroupName, this.VpnGatewayName, this.VpnConnectionName))
             {
-                /*
-                 * Update SDK and nuget packages and then call GetIkeSas()
-                 */
+                this.VpnLinkConnectionClient.GetIkeSas(this.ResourceGroupName, this.VpnGatewayName, this.VpnConnectionName, this.Name);
+                string response = this.VpnLinkConnectionClient.GetIkeSas(this.ResourceGroupName, this.VpnGatewayName, this.VpnConnectionName, this.Name);
+
+                WriteObject(this.ConvertToPsReadableFormat(response), true);
+            }
+            else
+            {
+                throw new PSArgumentException(Properties.Resources.ResourceNotFound, this.Name);
             }
         }
     }

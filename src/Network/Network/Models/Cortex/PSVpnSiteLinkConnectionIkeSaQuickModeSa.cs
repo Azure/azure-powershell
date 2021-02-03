@@ -5,7 +5,7 @@
     using System;
     using System.Collections.Generic;
 
-    class PSVpnSiteLinkConnectionIkeSaQuickModeSa
+    public class PSVpnSiteLinkConnectionIkeSaQuickModeSa
     {
         public PSVpnSiteLinkConnectionIkeSaQuickModeSa()
         {

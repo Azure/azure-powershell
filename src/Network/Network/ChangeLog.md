@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+    - `Get-VpnSiteLinkConnectionIkeSa`
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
