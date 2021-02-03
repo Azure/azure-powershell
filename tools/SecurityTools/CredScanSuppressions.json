@@ -1290,6 +1290,14 @@
       "_justification": "storage account deleted after the test run"
     },
     {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanConvertTest.json",
+      "_justification": "Vulnerability Assessment Scan Convert Tests"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanRecordGetListTest.json",
+      "_justification": "Vulnerability Assessment Record Get List Tests"
+    },
+    {
       "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
       "_justification": "Legitimate session record. Test resource is deleted."
     },
