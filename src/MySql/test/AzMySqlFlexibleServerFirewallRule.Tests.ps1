@@ -44,10 +44,6 @@ Describe 'AzMySqlFlexibleServerFirewallRule' {
             $rule.StartIPAddress | Should -Be 0.0.0.1
             $rule.EndIPAddress | Should -Be 0.0.0.1 
 
-            $rule = Update-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -AllowAll
-            $rule.StartIPAddress | Should -Be 0.0.0.0
-            $rule.EndIPAddress | Should -Be 255.255.255.255
-
             Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
         
         } | Should -Not -Throw
@@ -62,15 +58,17 @@ Describe 'AzMySqlFlexibleServerFirewallRule' {
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 255.255.255.255
 
-            $rule = Get-AzMySqlFlexibleServerFirewallRule -InputObject $rule
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+
+            $rule = Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 255.255.255.255
 
-            $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $rule -ClientIPAddress 0.0.0.2
+            $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.2
             $rule.StartIPAddress | Should -Be 0.0.0.2
             $rule.EndIPAddress | Should -Be 0.0.0.2
 
-            Remove-AzMySqlFlexibleServerFirewallRule -InputObject $rule
+            Remove-AzMySqlFlexibleServerFirewallRule -InputObject $ID
 
         } | Should -Not -Throw
     }
