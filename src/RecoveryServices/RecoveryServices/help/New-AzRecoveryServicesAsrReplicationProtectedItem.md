@@ -15,7 +15,7 @@ Enables replication for an ASR protectable item by creating a replication protec
 ### EnterpriseToEnterprise (Default)
 ```
 New-AzRecoveryServicesAsrReplicationProtectedItem [-VmmToVmm] -ProtectableItem <ASRProtectableItem>
- -Name <String> -ProtectionContainerMapping <ASRProtectionContainerMapping> [-UseManagedDisk <String>]
+ -Name <String> -ProtectionContainerMapping <ASRProtectionContainerMapping>
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
