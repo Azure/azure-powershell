@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlPoolGeoBackup = nameof(SqlPoolGeoBackup);
+
+        public const string DroppedSqlPool = nameof(DroppedSqlPool);
+
         public const string VulnerabilityAssessmentScanRecord = nameof(VulnerabilityAssessmentScanRecord);
 
         public const string VulnerabilityAssessmentScan = nameof(VulnerabilityAssessmentScan);

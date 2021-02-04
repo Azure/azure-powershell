@@ -53,7 +53,7 @@ The Get-AzActivityLog cmdlet retrieve Activity Log events. The events can be ass
 
 ### Example 1: Get an event log by subscription ID
 ```
-PS C:\>Get-ActivityAzLog
+PS C:\>Get-AzActivityLog
 ```
 
 This command lists at most 1000 events associated with the user's subscription ID that took place 7 days from the current date/time.
