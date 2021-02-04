@@ -31,7 +31,7 @@ function setupEnv() {
 
     # Create confluent organiztion for test
     Write-Host -ForegroundColor Green "Start to creating two confluent organiztion for test"
-    # For hide exception: There's a problem in creating Confluent Organization. Resource: /subscriptions/ec5a926a-68f0-4b60-b3ae-58399456abb7/resourceGroups/lucas-rg-test/providers/Microsoft.Confluent/organizations/confluentorg-01-pwsh Error: Cannot complete signup. Reason: Email already exists. 
+    # For hide exception: There's a problem in creating Confluent Organization. Error: Cannot complete signup. Reason: Email already exists. 
     # Because the confluent organization created complete. But the status is failed.
     try {
       New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail

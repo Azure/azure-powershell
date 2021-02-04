@@ -29,23 +29,21 @@ Delete Organization resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a confluent organization by name
 ```powershell
-PS C:\> Remove-AzConfluentOrganization -ResourceGroupName lucas-rg-test -Name confluentorg-01-portal
+PS C:\> Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a confluent organization by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a confluent organization by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a confluent organization by pipeline.
 
 ## PARAMETERS
 

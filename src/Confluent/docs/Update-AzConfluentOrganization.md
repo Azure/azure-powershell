@@ -29,23 +29,27 @@ Update Organization resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a confluent organization by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> pdate-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Tag @{"key01" = "value01"}
 
-{{ Add output here }}
+Location Name                 Type
+-------- ----                 ----
+eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command updates a confluent organization by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a confluent organization by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Update-AzConfluentOrganization -Tag @{"key01" = "value01"; "key02"="value02"}
 
-{{ Add output here }}
+Location Name                 Type
+-------- ----                 ----
+eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command updates a confluent organization by pipeline.
 
 ## PARAMETERS
 

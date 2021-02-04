@@ -1,10 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a confluent organization
 ```powershell
-PS C:\>  New-AzConfluentOrganization -ResourceGroupName lucas-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M"
+PS C:\>  New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
 
-{{ Add output here }}
+Location Name                   Type
+-------- ----                   ----
+eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command creates a confluent organization.
 
 

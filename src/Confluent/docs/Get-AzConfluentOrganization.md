@@ -40,7 +40,7 @@ Get the properties of a specific Organization resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all confluent organizations under a subscription
 ```powershell
 PS C:\> Get-AzConfluentOrganization
 
@@ -59,38 +59,29 @@ westus2       dri-02-02                Microsoft.Confluent/organizations
 westcentralus RohitWCUS88              Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command lists all confluent organizations under a subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a confluent organization by name
 ```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName lucas-rg-test
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 3: {{ Add title here }}
-```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName lucas-rg-test -Name confluentorg-01-portal
+PS C:\> Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
 
 Location Name                   Type
 -------- ----                   ----
 eastus   confluentorg-01-portal Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command gets a confluent organization by name.
 
-### Example 4: {{ Add title here }}
+### Example 3: Get a confluent organization by pipeline
 ```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName lucas-rg-test -Name confluentorg-01-portal | Get-AzConfluentOrganization
+PS C:\> New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" | Get-AzConfluentOrganization
 
 Location Name                   Type
 -------- ----                   ----
-eastus   confluentorg-01-portal Microsoft.Confluent/organizations
+eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command gets a confluent organization by pipeline.
 
 ## PARAMETERS
 

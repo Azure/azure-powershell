@@ -24,7 +24,7 @@ Accept marketplace terms.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create confluent marketplace agreement under a subscription
 ```powershell
 PS C:\> New-AzConfluentMarketplaceAgreement -Accepted
 
@@ -33,7 +33,7 @@ Name    Type
 default Microsoft.Confluent/agreement
 ```
 
-{{ Add description here }}
+This command create confluent marketplace agreement under a subscription.
 
 ## PARAMETERS
 
