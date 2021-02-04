@@ -11,7 +11,26 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataProtection.private.dll'
   FormatsToProcess = './Az.DataProtection.format.ps1xml'
-  FunctionsToExport = 'AddFilterToQuery', 'Backup-AzDataProtectionBackupInstanceAdhoc', 'Get-AzDataProtectionBackupInstance', 'Get-AzDataProtectionBackupPolicy', 'Get-AzDataProtectionBackupVault', 'Get-AzDataProtectionBackupVaultResource', 'Get-AzDataProtectionBackupVaultStorageSetting', 'Get-AzDataProtectionExportJobsOperationResult', 'Get-AzDataProtectionJob', 'Get-AzDataProtectionJobFromARG', 'Get-AzDataProtectionOperationResult', 'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate', 'Get-AzDataProtectionRecoveryPoint', 'Get-AzDataProtectionRecoveryPointList', 'Get-AzDataProtectionResourceOperationGatekeeper', 'Get-AzDataProtectionResourceOperationGatekeeperResource', 'Get-AzDataProtectionResourceOperationResultPatch', 'GetBackupFrequencyString', 'GetDatasourceInfo', 'GetDatasourceSetInfo', 'GetRestoreType', 'GetTaggingPriority', 'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest', 'Initialize-AzDataProtectionTargetRestoreInfo', 'LoadManifest', 'New-AzDataProtectionPolicyTagCriteria', 'New-AzDataProtectionPolicyTriggerSchedule', 'New-AzDataProtectionRetentionLifeCycle', 'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy', 'Remove-AzDataProtectionBackupVault', 'Remove-AzDataProtectionResourceOperationGatekeeper', 'Set-AzDataProtectionBackupInstance', 'Set-AzDataProtectionBackupPolicy', 'Set-AzDataProtectionBackupVault', 'Set-AzDataProtectionResourceOperationGatekeeper', 'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore', 'Start-AzDataProtectionExportJob', 'Test-AzDataProtectionBackupInstance', 'Test-AzDataProtectionBackupInstanceRestore', 'Test-AzDataProtectionBackupVaultNameAvailability', 'TranslateBackupParam', 'TranslateBackupPolicy', 'TranslateBackupPolicyRule', 'TranslateBackupPolicyTagCriteria', 'TranslateBackupPolicyTrigger', 'TranslatePolicyRetentionLifeCycle', 'Update-AzDataProtectionBackupVault', 'Update-AzDataProtectionPolicyRetentionRule', 'Update-AzDataProtectionPolicyTag', 'Update-AzDataProtectionPolicyTrigger', 'Update-AzDataProtectionResourceOperationGatekeeper', 'ValidateRestoreOptions', '*'
+  FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
+                    'Get-AzDataProtectionBackupInstance',
+                    'Get-AzDataProtectionBackupPolicy',
+                    'Get-AzDataProtectionBackupVault',
+                    'Get-AzDataProtectionBackupVaultStorageSetting',
+                    'Get-AzDataProtectionExportJobsOperationResult',
+                    'Get-AzDataProtectionJob',
+                    'Get-AzDataProtectionJobFromARG', 'Get-AzDataProtectionOperationResult',
+                    'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate',
+                    'Get-AzDataProtectionRecoveryPoint', 'Get-AzDataProtectionRecoveryPointList',
+                    'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest',
+                    'Initialize-AzDataProtectionTargetRestoreInfo', 'New-AzDataProtectionPolicyTagCriteria',
+                    'New-AzDataProtectionPolicyTriggerSchedule', 'New-AzDataProtectionRetentionLifeCycle',
+                    'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy',
+                    'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance',
+                    'Set-AzDataProtectionBackupPolicy', 'Set-AzDataProtectionBackupVault',
+                    'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore',
+                    'Start-AzDataProtectionExportJob', 'Update-AzDataProtectionBackupVault',
+                    'Update-AzDataProtectionPolicyRetentionRule', 'Update-AzDataProtectionPolicyTag',
+                    'Update-AzDataProtectionPolicyTrigger'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

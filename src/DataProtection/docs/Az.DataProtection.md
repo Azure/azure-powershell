@@ -26,9 +26,6 @@ Gets a backup policy belonging to a backup vault
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
 Returns a resource belonging to a resource group.
 
-### [Get-AzDataProtectionBackupVaultResource](Get-AzDataProtectionBackupVaultResource.md)
-Returns resource collection belonging to a subscription.
-
 ### [Get-AzDataProtectionBackupVaultStorageSetting](Get-AzDataProtectionBackupVaultStorageSetting.md)
 Get Backup Vault storage setting object
 
