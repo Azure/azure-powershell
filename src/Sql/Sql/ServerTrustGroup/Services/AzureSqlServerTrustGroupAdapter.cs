@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
             AzureSqlServerTrustGroupModel model = new AzureSqlServerTrustGroupModel();
 
             model.Name = serverTrustGroup.Name;
+            model.Id = serverTrustGroup.Id;
             model.ResourceGroupName = GetUriSegment(serverTrustGroup.Id, 4);
             model.Location = GetUriSegment(serverTrustGroup.Id, 8);
             model.GroupMembers = serverTrustGroup.GroupMembers.Select(member => member.ServerId).ToList();

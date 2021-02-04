@@ -7,17 +7,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model
     public class AzureSqlServerTrustGroupModel
     {
         /// <summary>
-        /// Gets or sets the name of the primary location
+        /// Gets or sets the Id of the Server Trust Group.
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the primary location.
         /// </summary>
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Instance Failover Group.
+        /// Gets or sets the name of the Server Trust Group.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource group
+        /// Gets or sets the name of the resource group.
         /// </summary>
         public string ResourceGroupName { get; set; }
 

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model;
 using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -30,18 +31,38 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = "Default",
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = "ListByInstanceSet",
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = "ListByLocationSet",
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; } 
+        public override string ResourceGroupName { get; set; }
+
+        protected string GetResourceGroupName(string ResourceId = null)
+        {
+            if (string.Equals(this.ParameterSetName, "", System.StringComparison.OrdinalIgnoreCase) && ResourceId != null)
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                return resourceInfo.ResourceGroupName;
+            }
+
+            return ResourceGroupName;
+        }
 
         /// <summary>
-        /// Initializes the Azure Sql Server Trust Group Adapter
+        /// Initializes the Azure Sql Server Trust Group Adapter.
         /// </summary>
         /// <returns></returns>
         protected override AzureSqlServerTrustGroupAdapter InitModelAdapter()
 		{
 			return new AzureSqlServerTrustGroupAdapter(DefaultProfile.DefaultContext);
 		}
-	}
+    }
 }
