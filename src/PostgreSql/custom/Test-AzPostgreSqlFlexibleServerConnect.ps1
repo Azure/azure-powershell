@@ -30,7 +30,7 @@ function Test-AzPostgreSqlFlexibleServerConnect {
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage = 'The database name to connect.')]
+        [Parameter(HelpMessage = 'The database name to connect.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
         [System.String]
         ${DatabaseName},
@@ -107,13 +107,14 @@ function Test-AzPostgreSqlFlexibleServerConnect {
     process {
         if (!(Get-Module -ListAvailable -Name SimplySQL)){
             Write-Error "This cmdlet requires SimplySQL module. Please install the module first by running Install-Module -Name SimplySQL."
+            exit
         }
         Import-Module SimplySQL
         
-        $AdministratorUserName = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
-            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
-            $null = $PSBoundParameters.Remove('AdministratorUserName')
+        $Query = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('QueryText')) {
+            $Query = $PSBoundParameters.QueryText
+            $null = $PSBoundParameters.Remove('QueryText')
         }
 
         $DatabaseName = [string]::Empty
@@ -122,16 +123,13 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
 
-        $Query = [string]::Empty
-        if ($PSBoundParameters.ContainsKey('QueryText')) {
-            $Query = $PSBoundParameters.QueryText
-            $null = $PSBoundParameters.Remove('QueryText')
-        }
-        if($PSBoundParameters.ContainsKey('InputObject')){
-            $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+        $AdministratorUserName = [string]::Empty
+        if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
+            $AdministratorUserName = $PSBoundParameters.AdministratorUserName
+            $null = $PSBoundParameters.Remove('AdministratorUserName')
         }
 
-        $Password = $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+        $Password = $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
         
 
@@ -140,7 +138,6 @@ function Test-AzPostgreSqlFlexibleServerConnect {
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
-
         
         try {
             if ([string]::IsNullOrEmpty($DatabaseName)){

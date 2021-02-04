@@ -104,7 +104,7 @@ function New-AzVMwarePrivateCloud {
         [System.Int32]
         # The cluster size
         ${ManagementClusterSize},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
@@ -125,13 +125,18 @@ function New-AzVMwarePrivateCloud {
         ${VcenterPassword},
     
         [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+        ${AcceptEULA},
+        
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -185,12 +190,33 @@ function New-AzVMwarePrivateCloud {
     )
     
     process {
+        if(!$AcceptEULA){
+            $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+            try {
+                $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+            } catch {
+                throw 
+            }
+            $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+            switch ($confirmation) {
+                'Y' {
+                    Break
+                }
+
+                Default {
+                    Return
+                }
+            }
+        }else {
+            $null = $PSBoundParameters.Remove('AcceptEULA')
+        }
+
         try {
             if($PSBoundParameters.ContainsKey('Sku')) {
                 $sku = $PSBoundParameters['Sku']
-                $PSBoundParameters.Remove('Sku')
+                $null = $PSBoundParameters.Remove('Sku')
                 $PSBoundParameters.Add('SkuName', $sku)
-            }
+            }  
             Az.VMware.internal\New-AzVMwarePrivateCloud @PSBoundParameters
         } catch {
             throw
