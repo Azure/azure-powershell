@@ -25,7 +25,7 @@ Describe 'Remove-AzPostgreSqlFlexibleServer' {
 
     It 'DeleteViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.serverName2)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.serverName2)"
             If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
