@@ -20,12 +20,17 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const int PurgeLoadMaximumCollectionCount = 50;
     }
 
-    public class HelpMessageConstants
+    public static class HelpMessageConstants
     {
         public const string ResourceGroupName = "The resource group name.";
         public const string AfdProfileName = "Azure Front Door profile name.";
         public const string AfdEndpointName = "Azure Front Door endpoint name.";
-
         public const string AfdProfileObjectDescription = "Azure Front Door profile object.";
+    }
+
+    public static class AfdSku
+    {
+        public const string StandardAzureFrontDoor = "Standard_AzureFrontDoor";
+        public const string PremiumAzureFrontDoor = "Premium_AzureFrontDoor";
     }
 }

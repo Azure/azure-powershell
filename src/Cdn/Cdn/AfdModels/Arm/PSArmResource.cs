@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,23 +11,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.Models.Profile
+using Microsoft.Rest.Azure;
+
+namespace Microsoft.Azure.Commands.Cdn.AfdModels.Arm
 {
-    public enum PSSkuName
+    public class PSArmResource : IResource
     {
-        Standard_Verizon,
-        Premium_Verizon,
-        Custom_Verizon,
-        Standard_Akamai,
-        Standard_Microsoft,
-        Standard_ChinaCdn,
-        Premium_ChinaCdn,
-        Standard_955BandWidth_ChinaCdn,
-        Standard_AvgBandWidth_ChinaCdn,
-        StandardPlus_ChinaCdn,
-        StandardPlus_955BandWidth_ChinaCdn,
-        StandardPlus_AvgBandWidth_ChinaCdn,
-        Standard_AzureFrontDoor,
-        Premium_AzureFrontDoor
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public string ProvisioningState { get; set; }
     }
 }

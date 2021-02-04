@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 psProfile.Name,
                 psProfile.Type,
                 psProfile.Tags.ToDictionaryTags(),
+                null,
                 psProfile.ResourceState.ToString(),
                 psProfile.ProvisioningState.ToString());
         }
