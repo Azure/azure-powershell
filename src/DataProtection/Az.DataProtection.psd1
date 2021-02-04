@@ -20,7 +20,7 @@
                     'Get-AzDataProtectionJob',
                     'Get-AzDataProtectionJobFromARG', 'Get-AzDataProtectionOperationResult',
                     'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate',
-                    'Get-AzDataProtectionRecoveryPoint', 'Get-AzDataProtectionRecoveryPointList',
+                    'Get-AzDataProtectionRecoveryPoint',
                     'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest',
                     'Initialize-AzDataProtectionTargetRestoreInfo', 'New-AzDataProtectionPolicyTagCriteria',
                     'New-AzDataProtectionPolicyTriggerSchedule', 'New-AzDataProtectionRetentionLifeCycle',
