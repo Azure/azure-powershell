@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             DatabaseAccountGetResults readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
 
             DatabaseAccountUpdateParameters databaseAccountUpdateParameters = new DatabaseAccountUpdateParameters(locations: readDatabase.Locations, location: readDatabase.WriteLocations.ElementAt(0).LocationName);
+
+            databaseAccountUpdateParameters.NetworkAclBypass = readDatabase.NetworkAclBypass;
+            databaseAccountUpdateParameters.NetworkAclBypassResourceIds = readDatabase.NetworkAclBypassResourceIds;
+
             if (EnableMultipleWriteLocations != null)
             {
                 databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
@@ -96,6 +100,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (EnableAnalyticalStorage != null)
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            }
+            if (NetworkAclBypass != null)
+            {
+                databaseAccountUpdateParameters.NetworkAclBypass = NetworkAclBypass;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
@@ -132,6 +140,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
                 databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
+            }
+
+            if (NetworkAclBypassResourceId != null)
+            {
+                Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
+                databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

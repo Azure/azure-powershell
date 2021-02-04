@@ -147,6 +147,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
+            Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
+
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags);
             databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
@@ -156,6 +158,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            databaseAccountCreateUpdateParameters.NetworkAclBypass = NetworkAclBypass;
+            databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
 
             if (IpRule != null && IpRule.Length > 0)
             {

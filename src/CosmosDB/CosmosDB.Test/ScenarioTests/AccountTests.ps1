@@ -31,8 +31,11 @@ function Test-AccountRelatedCmdlets
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
   $publicNetworkAccess = "Enabled"
+  $networkAclBypass = "AzureServices"
+  $networkAclBypassResourceId = "/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName"
+  $networkAclBypassResourceId2 = "/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName2"
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2"
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -NetworkAclBypassResourceId $networkAclBypassResourceId
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -45,6 +48,8 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.ApiProperties.ServerVersion "3.2"
   Assert-AreEqual $cosmosDBAccount.EnableAnalyticalStorage 0
   Assert-AreEqual $cosmosDBAccount.EnableFreeTier 0
+  Assert-AreEqual $cosmosDBAccount.NetworkAclBypass $NetworkAclBypass
+  Assert-AreEqual $cosmosDBAccount.NetworkAclBypassResourceIds.Count 1
 
   # create an existing database
   Try {
@@ -54,7 +59,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId,$networkAclBypassResourceId2
 
   Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -63,6 +68,8 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover 1 
   Assert-AreEqual $updatedCosmosDBAccount.IsVirtualNetworkFilterEnabled 1
   Assert-AreEqual $updatedCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
+  Assert-AreEqual $cosmosDBAccount.NetworkAclBypass $NetworkAclBypass
+  Assert-AreEqual $cosmosDBAccount.NetworkAclBypassResourceIds.Count 2
 
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
