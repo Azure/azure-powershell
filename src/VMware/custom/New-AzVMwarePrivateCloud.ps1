@@ -126,7 +126,7 @@ function New-AzVMwarePrivateCloud {
     
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
-        # Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+        # Accept EULA of AVS, legal term will pop up without this parameter provided
         ${AcceptEULA},
         
         [Parameter()]

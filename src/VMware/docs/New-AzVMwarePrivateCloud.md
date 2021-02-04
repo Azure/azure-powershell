@@ -38,7 +38,7 @@ Create private cloud
 ## PARAMETERS
 
 ### -AcceptEULA
-Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+Accept EULA of AVS, legal term will pop up without this parameter provided
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
