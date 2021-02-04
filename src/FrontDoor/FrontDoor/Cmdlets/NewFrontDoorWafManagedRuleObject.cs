@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Type of the ruleset (e.g.: DefaultRuleSet)
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Type of the ruleset")]
-        [PSArgumentCompleter("BotProtection", "DefaultRuleSet")]
+        [PSArgumentCompleter("BotProtection", "DefaultRuleSet", "Microsoft_DefaultRuleSet")]
         public string Type { get; set; }
 
         /// <summary>
         /// Version of the ruleset (e.g.: preview-0.1)
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Version of the ruleset")]
-        [PSArgumentCompleter("1.0", "preview-0.1")]
+        [PSArgumentCompleter("2.0", "1.1", "1.0", "preview-0.1")]
         public string Version { get; set; }
 
         /// <summary>

@@ -72,7 +72,7 @@ Azure Container Registry Name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: RegistryName
 
 Required: True
 Position: Named

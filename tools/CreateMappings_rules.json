@@ -586,8 +586,8 @@
     "regex": "ConnectedMachine"
   },
   {
-    "regex": "VMWare",
-    "alias": "VMWare"
+    "regex": "VMware",
+    "alias": "VMware"
   },
   {
     "alias": "Dedicated HSM",

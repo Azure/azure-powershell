@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Argument completer implementation for QueryColumnType.</summary>
+    /// <summary>The type of the column in the export.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnTypeTypeConverter))]
     public partial struct QueryColumnType :
         System.Management.Automation.IArgumentCompleter

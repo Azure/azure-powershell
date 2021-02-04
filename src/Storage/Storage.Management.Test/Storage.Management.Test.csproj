@@ -11,9 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.7.0" />
-    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.5.0" />
-    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.5.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.8.0" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.6.0" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.6.0" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.5.0" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
   </ItemGroup>

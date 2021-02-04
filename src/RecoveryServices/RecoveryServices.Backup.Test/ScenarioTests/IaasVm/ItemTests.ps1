@@ -14,7 +14,7 @@
 
 function Test-AzureVMCrossRegionRestore
 {
-	$location = "southeastasia"
+	$location = "centraluseuap"
 	$resourceGroupName = Create-ResourceGroup $location 24
 
 	try
@@ -24,10 +24,6 @@ function Test-AzureVMCrossRegionRestore
 
 		# waiting for service to reflect
 		Start-TestSleep 20000
-
-		# Assert that the vault isn't CRR enabled
-		$crr = Get-AzRecoveryServicesBackupProperty -Vault $vault
-		Assert-True { $crr.CrossRegionRestore -eq $false }
 
 		# Enable CRR
 		Set-AzRecoveryServicesBackupProperty -Vault $vault -EnableCrossRegionRestore

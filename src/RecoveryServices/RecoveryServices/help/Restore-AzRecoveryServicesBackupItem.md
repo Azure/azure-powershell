@@ -495,6 +495,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskEncryptionSetId 
+
+The DES ID to encrypt the restored disks.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMParameterSet, AzureVMManagedDiskParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreToSecondaryRegion
+
+Use this switch to trigger the Cross region restore to secondary region.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureIaasVM
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 
 ARM ID of the Recovery Services Vault.
