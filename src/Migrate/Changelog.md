@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+## Version 0.2.0
 * Bug fixed in update replication migration item to pass all properties (changed/unchanged) to service, and not just the changed ones.
 * Bug fixed in enable migrate to pick correct run as account id for VMware Cbt provider.
 * Added new parameter (MachineName) in get replication migration item, to get replication migration item by friendly name.

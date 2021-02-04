@@ -26,11 +26,11 @@ The **Get-AzApplicationGatewayAuthenticationCertificate** cmdlet gets an authent
 ### Example 1: Get a specified authentication certificate
 ```
 PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $pool = Get-AzApplicationGatewayBackendAddressPool -Name "pool01" -ApplicationGateway $appgw
+PS C:\> $cert = Get-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores it in the $appgw variable.
-The second command gets the authentication certificate named pool01 and stores it in the $pool variable.
+The second command gets the authentication certificate named cert01 and stores it in the $cert variable.
 
 ## PARAMETERS
 

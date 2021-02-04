@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>The operation to execute an export.</summary>
     /// <remarks>
-    /// [OpenAPI] Exports_Execute=>POST:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run"
+    /// [OpenAPI] Execute=>POST:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzCostManagementExecuteExport_ExecuteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

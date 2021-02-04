@@ -22,8 +22,9 @@ Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-Backup
 
 ## DESCRIPTION
 
-The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
-A Backup container encapsulates data sources that are modelled as backup items.
+The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container. A Backup container encapsulates data sources that are modelled as backup items.
+For Container type "Azure VM" , the output lists all the containers whose name exactly matches to the one passed  as the value for Friendly Name parameter. 
+For other container types,  output gives a list of containers with name similar to the value passed for Friendly name parameter.
 Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES

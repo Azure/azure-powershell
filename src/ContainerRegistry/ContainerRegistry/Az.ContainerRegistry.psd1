@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.3'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.ContainerRegistry.dll', 
@@ -90,7 +90,16 @@ CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry',
                'Get-AzContainerRegistryWebhookEvent', 
                'Import-AzContainerRegistryImage', 'Get-AzContainerRegistryUsage', 
                'Set-AzContainerRegistryNetworkRuleSet', 
-               'New-AzContainerRegistryNetworkRule', 'Connect-AzContainerRegistry'
+               'New-AzContainerRegistryNetworkRule', 'Connect-AzContainerRegistry', 
+               'Get-AzContainerRegistryRepository', 
+               'Remove-AzContainerRegistryRepository', 
+               'Update-AzContainerRegistryRepository', 
+               'Get-AzContainerRegistryManifest', 
+               'Remove-AzContainerRegistryManifest', 
+               'Update-AzContainerRegistryManifest', 
+               'Get-AzContainerRegistryTag', 
+               'Update-AzContainerRegistryTag', 
+               'Remove-AzContainerRegistryTag'
 
 # Variables to export from this module
 # VariablesToExport = @()

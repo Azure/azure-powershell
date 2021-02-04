@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchservice
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSearchService
 
 ## SYNOPSIS
-Gets an Azure Search service.
+Gets an Azure Cognitive Search service.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextContai
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchService** cmdlet gets the specified Azure Search service.
+The **Get-AzSearchService** cmdlet gets the specified Azure Cognitive Search service.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ HostingMode       : Default
 Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Search/searchServices/felixwa-basic-search
 ```
 
-Get an Azure Search service with specified parameters.
+Get an Azure Cognitive Search service with specified parameters.
 
 ## PARAMETERS
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Search Service Resource Id.
+Azure Cognitive Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

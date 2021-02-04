@@ -19,6 +19,29 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
+    - `New-AzRouteServer`
+    - `Get-AzRouteServer`
+    - `Remove-AzRouteServer`
+    - `Update-AzRouteServer`
+    - `Get-AzRouteServerPeer`
+    - `Add-AzRouteServerPeer`
+    - `Update-AzRouteServerPeer`
+    - `Remove-AzRouteServerPeer`
+    - Added deprecation attribute warning to the old cmdlets.
+* Bug fix in ExpressRouteLink MacSecConfig. Added new property `SciState` to `PSExpressRouteLinkMacSecConfig`
+* Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+
+## Version 4.5.0
+* Added new cmdlets for CRUD of VpnGatewayNATRule.
+    - `New-AzAzVpnGatewayNatRule`
+    - `Update-AzAzVpnGatewayNatRule`
+    - `Get-AzAzVpnGatewayNatRule`
+    - `Remove-AzAzVpnGatewayNatRule`	
+* Updated cmdlets to set NATRule on VpnGateway resource and associate it with VpnSiteLinkConnection resource.
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`	
+    - `New-AzVpnSiteLinkConnection`
 * Updated cmdlets to enable setting of ConnectionMode on Virtual Network Gateway Connections.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
@@ -36,9 +59,12 @@
     - Added parameter -IntrusionDetection
     - Added parameter -TransportSecurityName
     - Added parameter -TransportSecurityKeyVaultSecretId
+* Added new cmdlet to fetch IKE Security Associations for Virtual Network Gateway Connections.
+    - `Get-AzVirtualNetworkGatewayConnectionIkeSa`
 * Added multiple Authentication support for p2sVpnGateway
     - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
-
+* Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
+    - Added parameter EnableRoutingPreferenceInternetFlag
 
 ## Version 4.4.0
 * Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario
