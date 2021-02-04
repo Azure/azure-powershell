@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * [BreakingChange] Renamed module to Az.VMware
 * Set confirmation prompt poped by default
 * Displayed legal term and added parameter `AcceptEULA` for `New-AzVMwarePrivateCloud`

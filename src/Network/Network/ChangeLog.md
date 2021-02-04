@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `New-AzRouteServer`
     - `Get-AzRouteServer`
