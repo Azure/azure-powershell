@@ -686,7 +686,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseManagedDisk
-Specify whether the Azure virtual machine that is created on failover should use managed disks
+Specifies if the Azure virtual machine that is created on failover should use managed disks. It Accepts either True or False.
 
 ```yaml
 Type: System.String
