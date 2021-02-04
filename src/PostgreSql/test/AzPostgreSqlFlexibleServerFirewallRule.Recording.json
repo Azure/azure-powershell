@@ -1,8 +1,8 @@
 {
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"0.0.0.1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -16,35 +16,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/dedab222-924b-48ee-a0f3-20866f73dbc5?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/30e212f2-4eeb-438b-9af4-918fc7f2efa9?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/dedab222-924b-48ee-a0f3-20866f73dbc5?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/30e212f2-4eeb-438b-9af4-918fc7f2efa9?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "dedab222-924b-48ee-a0f3-20866f73dbc5" ],
+        "x-ms-request-id": [ "30e212f2-4eeb-438b-9af4-918fc7f2efa9" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "40c30805-603d-4993-a0f9-e71b3f1e7d94" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225233Z:40c30805-603d-4993-a0f9-e71b3f1e7d94" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-correlation-request-id": [ "44379111-1faa-45c5-8f68-f3f43c9e8f3b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091227Z:44379111-1faa-45c5-8f68-f3f43c9e8f3b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:52:32 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:12:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "98" ],
+        "Content-Length": [ "99" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-03T22:52:32.84Z\"}"
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:12:27.143Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/dedab222-924b-48ee-a0f3-20866f73dbc5?api-version=2020-02-14-preview+2": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/30e212f2-4eeb-438b-9af4-918fc7f2efa9?api-version=2020-02-14-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/dedab222-924b-48ee-a0f3-20866f73dbc5?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/30e212f2-4eeb-438b-9af4-918fc7f2efa9?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "fa44a66a-00c3-41bc-9d95-c62a35bb007e" ],
+        "x-ms-unique-id": [ "122" ],
+        "x-ms-client-request-id": [ "05f0d931-4350-4e0a-ae05-316a9310d0aa" ],
         "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,31 +60,31 @@
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "69f0263a-a90a-43a8-a144-a2e5bae6bd73" ],
+        "x-ms-request-id": [ "589c33fa-cf19-4ef7-a7b6-9d6494fdeda9" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "afe5f4cc-fba1-43de-9a88-d8bf6226de87" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225333Z:afe5f4cc-fba1-43de-9a88-d8bf6226de87" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "x-ms-correlation-request-id": [ "44079285-32ae-4b00-a748-2513bb0e357f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091327Z:44079285-32ae-4b00-a748-2513bb0e357f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:53:32 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:13:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "106" ],
+        "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"dedab222-924b-48ee-a0f3-20866f73dbc5\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-03T22:52:32.84Z\"}"
+      "Content": "{\"name\":\"30e212f2-4eeb-438b-9af4-918fc7f2efa9\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:12:27.143Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "fa44a66a-00c3-41bc-9d95-c62a35bb007e" ],
+        "x-ms-unique-id": [ "123" ],
+        "x-ms-client-request-id": [ "05f0d931-4350-4e0a-ae05-316a9310d0aa" ],
         "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -99,30 +99,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "471ee430-706b-4497-8d28-2a9c7629cd65" ],
+        "x-ms-request-id": [ "fbdf3e5a-dfc8-4194-b4c9-f2212dee920a" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "9010217a-d3a0-4794-9bac-e2f4af9a616f" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225333Z:9010217a-d3a0-4794-9bac-e2f4af9a616f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "x-ms-correlation-request-id": [ "fdc24f60-c718-4f81-a3c0-9bd0fb156782" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091328Z:fdc24f60-c718-4f81-a3c0-9bd0fb156782" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:53:33 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:13:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "360" ],
+        "Content-Length": [ "362" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "c008f58f-4944-4a98-aac3-89c85cbf4b3b" ],
+        "x-ms-unique-id": [ "124" ],
+        "x-ms-client-request-id": [ "12a6cbe8-e4d9-4f66-ab03-492951b080a2" ],
         "CommandName": [ "Az.PostgreSql.internal\\Get-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerFirewallRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -138,26 +138,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fae8ce2f-d3b9-4588-a3c3-7771aac8aaa9" ],
+        "x-ms-request-id": [ "2cddae5a-3c14-4618-8cd7-383c6882d7b4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "3db6a50e-9636-4ea2-904a-42ad718d8490" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225334Z:3db6a50e-9636-4ea2-904a-42ad718d8490" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-correlation-request-id": [ "1cbac12f-c732-4a99-b4b3-346771f0e443" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091328Z:1cbac12f-c732-4a99-b4b3-346771f0e443" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:53:33 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:13:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "360" ],
+        "Content-Length": [ "362" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+5": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+5": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.2\",\r\n    \"endIpAddress\": \"0.0.0.3\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -171,35 +171,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/1479cbbd-38c2-4a9b-b884-f2619b9a4a7b?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/d73cc8f3-65d4-4643-a20d-bf72f5bf0cad?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/1479cbbd-38c2-4a9b-b884-f2619b9a4a7b?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/d73cc8f3-65d4-4643-a20d-bf72f5bf0cad?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "1479cbbd-38c2-4a9b-b884-f2619b9a4a7b" ],
+        "x-ms-request-id": [ "d73cc8f3-65d4-4643-a20d-bf72f5bf0cad" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "4f1732b1-dbfb-4f38-baec-95bf23a87482" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225335Z:4f1732b1-dbfb-4f38-baec-95bf23a87482" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-correlation-request-id": [ "12fa2f81-c41f-410b-8c56-605e716ab5a8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091329Z:12fa2f81-c41f-410b-8c56-605e716ab5a8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:53:34 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:13:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "98" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-03T22:53:35.09Z\"}"
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:13:29.04Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/1479cbbd-38c2-4a9b-b884-f2619b9a4a7b?api-version=2020-02-14-preview+6": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/d73cc8f3-65d4-4643-a20d-bf72f5bf0cad?api-version=2020-02-14-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/1479cbbd-38c2-4a9b-b884-f2619b9a4a7b?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/d73cc8f3-65d4-4643-a20d-bf72f5bf0cad?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "599886f8-3f29-4843-9248-fb3019e25a6f" ],
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "e9ff5e82-7963-4f33-b6ae-504612e53b66" ],
         "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerFirewallRule_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -215,31 +215,31 @@
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "58583515-a440-4c72-ac56-89d0da9999dc" ],
+        "x-ms-request-id": [ "f3fa965d-3972-4952-9c39-d6b8b93d559a" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "23f6dbd1-81d2-4cd9-b571-a75fbc4d4540" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225435Z:23f6dbd1-81d2-4cd9-b571-a75fbc4d4540" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-correlation-request-id": [ "d0adedfb-a271-442d-827d-2def9867b9af" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091429Z:d0adedfb-a271-442d-827d-2def9867b9af" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:54:34 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:14:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "106" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"1479cbbd-38c2-4a9b-b884-f2619b9a4a7b\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-03T22:53:35.09Z\"}"
+      "Content": "{\"name\":\"d73cc8f3-65d4-4643-a20d-bf72f5bf0cad\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:13:29.04Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+7": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "599886f8-3f29-4843-9248-fb3019e25a6f" ],
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "e9ff5e82-7963-4f33-b6ae-504612e53b66" ],
         "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerFirewallRule_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -254,30 +254,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3f00470a-68de-4591-a8d2-db596195abf5" ],
+        "x-ms-request-id": [ "c7ed44a7-c701-4f47-af26-cb7c102f00fb" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "24cf26c3-cecc-4be5-951f-36ca8a3c6dd8" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225436Z:24cf26c3-cecc-4be5-951f-36ca8a3c6dd8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
+        "x-ms-correlation-request-id": [ "bce6c68f-08ed-414e-ae48-e947bddeba53" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091430Z:bce6c68f-08ed-414e-ae48-e947bddeba53" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:54:35 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:14:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "360" ],
+        "Content-Length": [ "362" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.3\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.3\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules?api-version=2020-02-14-preview+8": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules?api-version=2020-02-14-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "c1ff63aa-cb89-4d65-a147-965c23e03744" ],
+        "x-ms-unique-id": [ "128" ],
+        "x-ms-client-request-id": [ "e16fb844-f3c4-4291-b23e-dff241f706aa" ],
         "CommandName": [ "Az.PostgreSql.internal\\Get-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerFirewallRule_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -293,26 +293,421 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "dd5feb1f-feeb-44c1-8d73-fce09de00f93" ],
+        "x-ms-request-id": [ "fd17f375-42f0-4d0f-92ed-a401f904883e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "bec64c43-308a-4429-9ea8-a166c0dd5fdc" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225436Z:bec64c43-308a-4429-9ea8-a166c0dd5fdc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
+        "x-ms-correlation-request-id": [ "c687d7f4-a24a-4dcf-8586-d937e4f1c548" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091430Z:c687d7f4-a24a-4dcf-8586-d937e4f1c548" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:54:35 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:14:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "765" ],
+        "Content-Length": [ "374" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/AllowAll_2021-02-03_14-42-52\",\"name\":\"AllowAll_2021-02-03_14-42-52\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"},{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.3\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}]}"
+      "Content": "{\"value\":[{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.3\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}]}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+9": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "129" ],
+        "x-ms-client-request-id": [ "f396cef3-d742-463c-945f-b9816346f485" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-correlation-request-id": [ "8d883dc6-2ad6-4c98-a7c2-bb07d9de3a24" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091430Z:8d883dc6-2ad6-4c98-a7c2-bb07d9de3a24" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:14:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "97" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:14:30.583Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "f396cef3-d742-463c-945f-b9816346f485" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "49ab797c-31c7-4be7-a4d6-8c38399d3fdd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11916" ],
+        "x-ms-correlation-request-id": [ "3562e323-7c5a-4e09-8f3c-12a97bc0cd99" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091531Z:3562e323-7c5a-4e09-8f3c-12a97bc0cd99" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:15:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:14:30.583Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/c416ce30-5a0e-43c6-99b5-2dac0ffbeaaa?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "131" ],
+        "x-ms-client-request-id": [ "f396cef3-d742-463c-945f-b9816346f485" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b3b92a46-7db5-4e49-8356-e485cbf814b9" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11915" ],
+        "x-ms-correlation-request-id": [ "f06dbb07-8a84-45c4-acd9-b17334a36687" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091531Z:f06dbb07-8a84-45c4-acd9-b17334a36687" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:15:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+12": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.1\",\r\n    \"endIpAddress\": \"0.0.0.1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "93" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/67b2db07-fdea-44dd-8538-aa50bac7e9a8?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/67b2db07-fdea-44dd-8538-aa50bac7e9a8?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "67b2db07-fdea-44dd-8538-aa50bac7e9a8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "2162ad03-4d88-4cc9-a95b-721acc312e84" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091532Z:2162ad03-4d88-4cc9-a95b-721acc312e84" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:15:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "99" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:15:32.037Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/67b2db07-fdea-44dd-8538-aa50bac7e9a8?api-version=2020-02-14-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/67b2db07-fdea-44dd-8538-aa50bac7e9a8?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "5df2d2cc-daf8-4245-96b0-fc295928e587" ],
+        "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a1d54561-b163-45a6-b181-4ef7954c300c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11914" ],
+        "x-ms-correlation-request-id": [ "1e883f8c-074f-4395-8116-ce175ff3ccb4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091632Z:1e883f8c-074f-4395-8116-ce175ff3ccb4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:16:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"67b2db07-fdea-44dd-8538-aa50bac7e9a8\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:15:32.037Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "134" ],
+        "x-ms-client-request-id": [ "5df2d2cc-daf8-4245-96b0-fc295928e587" ],
+        "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5c365852-dc5f-43b1-8b62-ab3568f4e113" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
+        "x-ms-correlation-request-id": [ "17dd7ddd-ed60-478f-afbd-57caf0aa68bf" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091632Z:17dd7ddd-ed60-478f-afbd-57caf0aa68bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:16:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "362" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.1\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "135" ],
+        "x-ms-client-request-id": [ "f07000c1-0f4e-4947-9165-b089dfc45229" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Get-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerFirewallRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4716840c-8690-45b2-aa55-98d2059c2611" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
+        "x-ms-correlation-request-id": [ "90fcd8b4-1589-4cfb-9481-c1fa047f9c5c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091633Z:90fcd8b4-1589-4cfb-9481-c1fa047f9c5c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:16:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "362" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.1\",\"endIpAddress\":\"0.0.0.1\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+16": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "136" ],
+        "x-ms-client-request-id": [ "2491858f-9f57-409b-a039-4ddc90cee379" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "17a21087-1e42-4499-ac75-5281429c5bd5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-correlation-request-id": [ "5f3edae1-8b95-47a9-b948-802559955dbb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091633Z:5f3edae1-8b95-47a9-b948-802559955dbb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:16:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "97" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:16:33.513Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "137" ],
+        "x-ms-client-request-id": [ "2491858f-9f57-409b-a039-4ddc90cee379" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "30998019-f2e2-4a8c-9d56-83e22f0a1f65" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-correlation-request-id": [ "64de7d86-5f56-4b69-a6ac-d804a504cf0b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091734Z:64de7d86-5f56-4b69-a6ac-d804a504cf0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:17:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"17a21087-1e42-4499-ac75-5281429c5bd5\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:16:33.513Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaName+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/17a21087-1e42-4499-ac75-5281429c5bd5?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "138" ],
+        "x-ms-client-request-id": [ "2491858f-9f57-409b-a039-4ddc90cee379" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a2a7ee32-9641-49a7-a001-35dc65eab8a4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
+        "x-ms-correlation-request-id": [ "eff8a4c1-1f64-4438-8e10-c3b4fcc177ad" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091734Z:eff8a4c1-1f64-4438-8e10-c3b4fcc177ad" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:17:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"255.255.255.255\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -326,35 +721,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/da04cdf9-89ef-4f2d-8df4-2d03eea33e99?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/fb258c26-5dbe-472b-8a4f-04d9c987567d?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/da04cdf9-89ef-4f2d-8df4-2d03eea33e99?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fb258c26-5dbe-472b-8a4f-04d9c987567d?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "da04cdf9-89ef-4f2d-8df4-2d03eea33e99" ],
+        "x-ms-request-id": [ "fb258c26-5dbe-472b-8a4f-04d9c987567d" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "265d3d54-fb84-4239-88ed-59df833726ef" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225437Z:265d3d54-fb84-4239-88ed-59df833726ef" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
+        "x-ms-correlation-request-id": [ "29ef22f1-3523-4a87-bfbd-8a0ca9cb2fcd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091735Z:29ef22f1-3523-4a87-bfbd-8a0ca9cb2fcd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:54:36 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:17:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "99" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-03T22:54:37.567Z\"}"
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:17:34.947Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/da04cdf9-89ef-4f2d-8df4-2d03eea33e99?api-version=2020-02-14-preview+2": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fb258c26-5dbe-472b-8a4f-04d9c987567d?api-version=2020-02-14-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/da04cdf9-89ef-4f2d-8df4-2d03eea33e99?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fb258c26-5dbe-472b-8a4f-04d9c987567d?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "b9475873-b20b-4b42-a2ad-5e21900d8bbf" ],
+        "x-ms-unique-id": [ "140" ],
+        "x-ms-client-request-id": [ "60028357-3428-4a01-ad54-cae5ac3bb1f2" ],
         "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -370,31 +765,31 @@
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "60" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "33d59521-f6f1-45d4-8d18-3179828cf492" ],
+        "x-ms-request-id": [ "7613acb2-e9b4-4fd0-8ce5-856afcdbaaed" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "x-ms-correlation-request-id": [ "96d40242-5c08-48f4-925f-8c18d46bf4dc" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225538Z:96d40242-5c08-48f4-925f-8c18d46bf4dc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-correlation-request-id": [ "c5518ba7-59f4-4e5f-8cca-0f6953d32f48" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091835Z:c5518ba7-59f4-4e5f-8cca-0f6953d32f48" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:55:38 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:18:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"da04cdf9-89ef-4f2d-8df4-2d03eea33e99\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-03T22:54:37.567Z\"}"
+      "Content": "{\"name\":\"fb258c26-5dbe-472b-8a4f-04d9c987567d\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:17:34.947Z\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "b9475873-b20b-4b42-a2ad-5e21900d8bbf" ],
+        "x-ms-unique-id": [ "141" ],
+        "x-ms-client-request-id": [ "60028357-3428-4a01-ad54-cae5ac3bb1f2" ],
         "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "New-AzPostgreSqlFlexibleServerFirewallRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -409,30 +804,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "460f2d2a-1f51-4cc4-b7ec-04b57a083efe" ],
+        "x-ms-request-id": [ "763118b3-d34e-400f-9060-073856997d33" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "72532e06-7a9d-4fc1-bf0f-b6757f85d63a" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225538Z:72532e06-7a9d-4fc1-bf0f-b6757f85d63a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11908" ],
+        "x-ms-correlation-request-id": [ "e453b8f1-78d8-414d-bfc3-276872933424" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091835Z:e453b8f1-78d8-414d-bfc3-276872933424" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:55:38 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:18:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "368" ],
+        "Content-Length": [ "370" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "16d6809a-a5c4-4ac1-8521-319431a9dc41" ],
+        "x-ms-unique-id": [ "142" ],
+        "x-ms-client-request-id": [ "8398b5b3-42ed-4885-b90d-70e89b3ad6dc" ],
         "CommandName": [ "Az.PostgreSql.internal\\Get-AzPostgreSqlFlexibleServerFirewallRule" ],
         "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerFirewallRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -448,26 +843,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3b032359-e283-40c8-ae9a-f588f838a2ec" ],
+        "x-ms-request-id": [ "94090fbf-58d2-4c86-b99b-408d998c37fe" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
-        "x-ms-correlation-request-id": [ "f4c1fba3-15c2-4a29-8a2e-8c449a13dae6" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225539Z:f4c1fba3-15c2-4a29-8a2e-8c449a13dae6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
+        "x-ms-correlation-request-id": [ "c074eead-1a4e-40ef-8a82-2da3d3dc6a78" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091836Z:c074eead-1a4e-40ef-8a82-2da3d3dc6a78" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:55:39 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:18:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "368" ],
+        "Content-Length": [ "370" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.0\",\"endIpAddress\":\"255.255.255.255\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
     }
   },
-  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+5": {
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+5": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.2\",\r\n    \"endIpAddress\": \"0.0.0.2\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -481,24 +876,223 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/6110f680-d654-4703-ba4a-bf3e7a218ddf?api-version=2020-02-14-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4?api-version=2020-02-14-preview" ],
         "Retry-After": [ "60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/6110f680-d654-4703-ba4a-bf3e7a218ddf?api-version=2020-02-14-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4?api-version=2020-02-14-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6110f680-d654-4703-ba4a-bf3e7a218ddf" ],
+        "x-ms-request-id": [ "fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "13ec9fda-0a8c-4fe5-b7dd-0ce92670e0b1" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210203T225540Z:13ec9fda-0a8c-4fe5-b7dd-0ce92670e0b1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "93de981e-ebd7-4eca-9478-23a3c98f9c53" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091836Z:93de981e-ebd7-4eca-9478-23a3c98f9c53" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Feb 2021 22:55:39 GMT" ]
+        "Date": [ "Thu, 04 Feb 2021 09:18:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "99" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-03T22:55:39.967Z\"}"
+      "Content": "{\"operation\":\"UpsertServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:18:36.703Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4?api-version=2020-02-14-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "144" ],
+        "x-ms-client-request-id": [ "2ed14edd-6de0-443f-89b2-5b953b85cbc9" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerFirewallRule_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a0045e97-5d4c-4a4b-b7d0-0d11cf42811e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
+        "x-ms-correlation-request-id": [ "062193b5-029d-4c46-9b25-dfc3d361897b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091937Z:062193b5-029d-4c46-9b25-dfc3d361897b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:19:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"fc9d0c5a-a4bb-47be-b14b-730f1d5f7fd4\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:18:36.703Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "145" ],
+        "x-ms-client-request-id": [ "2ed14edd-6de0-443f-89b2-5b953b85cbc9" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerFirewallRule_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c1021a39-ef19-440b-bc16-7435a9a8ba78" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11905" ],
+        "x-ms-correlation-request-id": [ "b58a328e-921d-42e7-80dd-d995eec761b0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091937Z:b58a328e-921d-42e7-80dd-d995eec761b0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:19:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "362" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startIpAddress\":\"0.0.0.2\",\"endIpAddress\":\"0.0.0.2\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01\",\"name\":\"postgresqlrule01\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/firewallRules\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100-2/firewallRules/postgresqlrule01?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "146" ],
+        "x-ms-client-request-id": [ "cf2fe6d9-fd37-4142-9e2b-9b8fa0e9856c" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5e3d6969-6bc6-489d-b0e1-36b6b7c740d3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-correlation-request-id": [ "6b7a2ef8-12c7-4502-9c78-58839b92086c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T091937Z:6b7a2ef8-12c7-4502-9c78-58839b92086c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:19:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "97" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"DropServerFirewallRulesManagementOperation\",\"startTime\":\"2021-02-04T09:19:37.877Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/azureAsyncOperation/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "147" ],
+        "x-ms-client-request-id": [ "cf2fe6d9-fd37-4142-9e2b-9b8fa0e9856c" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bfb1fed2-241f-49ad-bc71-9324c9d3ec82" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
+        "x-ms-correlation-request-id": [ "95dd28fa-4b88-4e63-a9e2-e6700ca74109" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T092038Z:95dd28fa-4b88-4e63-a9e2-e6700ca74109" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:20:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"5e3d6969-6bc6-489d-b0e1-36b6b7c740d3\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-04T09:19:37.877Z\"}"
+    }
+  },
+  "AzPostgreSqlFlexibleServerFirewallRule+[NoContext]+ViaIdentity+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus/operationResults/5e3d6969-6bc6-489d-b0e1-36b6b7c740d3?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "148" ],
+        "x-ms-client-request-id": [ "cf2fe6d9-fd37-4142-9e2b-9b8fa0e9856c" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Remove-AzPostgreSqlFlexibleServerFirewallRule" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServerFirewallRule_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6de9d330-2c4a-42bf-ba9b-2fb02b1b8933" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11905" ],
+        "x-ms-correlation-request-id": [ "0a4d9ba9-78b3-4b25-a5a8-84f78a278ca7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210204T092038Z:0a4d9ba9-78b3-4b25-a5a8-84f78a278ca7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Feb 2021 09:20:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
     }
   }
 }
