@@ -31,6 +31,8 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+.Outputs
+System.Management.Automation.PSObject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,16 +54,18 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource], [PSObject])]
+[CmdletBinding(DefaultParameterSetName='multiple', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='multiple')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the resource group where the backup vault is present.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='multiple')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -81,7 +85,8 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
@@ -89,40 +94,46 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='Get', DontShow)]
+    [Parameter(ParameterSetName='GetViaIdentity', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -139,8 +150,9 @@ begin {
         $mapping = @{
             Get = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_Get';
             GetViaIdentity = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_GetViaIdentity';
+            multiple = 'Az.DataProtection.custom\Get-AzDataProtectionBackupVault_multiple';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'multiple') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

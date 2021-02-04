@@ -26,9 +26,6 @@ Gets a backup policy belonging to a backup vault
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
 Returns a resource belonging to a resource group.
 
-### [Get-AzDataProtectionBackupVaultResource](Get-AzDataProtectionBackupVaultResource.md)
-Returns resource collection belonging to a subscription.
-
 ### [Get-AzDataProtectionBackupVaultStorageSetting](Get-AzDataProtectionBackupVaultStorageSetting.md)
 Get Backup Vault storage setting object
 
@@ -54,9 +51,6 @@ Prepares Datasource object for backup
 
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
-
-### [Get-AzDataProtectionRecoveryPointList](Get-AzDataProtectionRecoveryPointList.md)
-Returns a list of Recovery Points for a DataSource in a vault.
 
 ### [Get-AzDataProtectionResourceOperationGatekeeper](Get-AzDataProtectionResourceOperationGatekeeper.md)
 Returns a ResourceOperationGateKeeper belonging to a resource group.
