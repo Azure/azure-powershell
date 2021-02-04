@@ -16,6 +16,7 @@ function setupEnv() {
     $resourceGroup = "MySqlTestGroup"
     $location = "westus2"
     $serverName = "mysql-test-100"
+    $serverName2 = "mysql-test-100-2"
     $flexibleServerName = "mysql-flexible-test-100"
     $flexibleServerName2 = "mysql-flexible-test-200"
     $flexibleServerName3 = "mysql-flexible-test-300"
@@ -48,9 +49,10 @@ function setupEnv() {
     }
     
     $env.Add("serverName", $serverName)
+    $env.Add("serverName2", $serverName2)
     $env.Add("flexibleServerName", $flexibleServerName)
-    $env.Add("flexibleServerName2", $serverName2)
-    $env.Add("flexibleServerName3", $serverName3)
+    $env.Add("flexibleServerName2", $flexibleServerName2)
+    $env.Add("flexibleServerName3", $flexibleServerName3)
     $env.Add("restoreName", $restoreName)
     $env.Add("restoreName2", $restoreName2)
     $env.Add("replicaName", $replicaName)
