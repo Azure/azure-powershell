@@ -112,6 +112,7 @@ function Get-AzPostgreSqlFlexibleServerConfiguration {
         try {
             if($PSBoundParameters.ContainsKey('InputObject')){
                 $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("DBforPostgreSQL","DBForPostgreSql")
+                $PSBoundParameters.InputObject.Id = $PSBoundParameters.InputObject.Id.Replace("serversv2","flexibleServers")
             }
    
             Az.PostgreSql.internal\Get-AzPostgreSqlFlexibleServerConfiguration @PSBoundParameters

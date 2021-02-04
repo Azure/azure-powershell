@@ -44,10 +44,6 @@ Describe 'AzPostgreSqlFlexibleServerFirewallRule' {
             $rule.StartIPAddress | Should -Be 0.0.0.1
             $rule.EndIPAddress | Should -Be 0.0.0.1 
 
-            $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -AllowAll
-            $rule.StartIPAddress | Should -Be 0.0.0.0
-            $rule.EndIPAddress | Should -Be 255.255.255.255
-
             Remove-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
         
         } | Should -Not -Throw
