@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because curent mapping was breaking certain scenarios
 
 ## Version 3.2.0
 * Added support for -QueryString parameter in New-Az*Deployments cmdlets
