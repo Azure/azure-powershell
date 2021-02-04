@@ -60,6 +60,9 @@ subject-prefix: 'MySQL'
 
 directive:
   - from: swagger-document
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForMySql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}")
+  - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
   - from: Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
