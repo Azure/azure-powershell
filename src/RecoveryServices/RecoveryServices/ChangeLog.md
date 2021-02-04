@@ -22,6 +22,7 @@
 * Added Zone Redundancy for Recovery Service Vaults. 
 * Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for Availability zone for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for UseManagedDisk for HyperV to Azure provider
 
 ## Version 3.3.0
 * Added Cross Region Restore feature.  
