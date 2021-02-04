@@ -44,6 +44,9 @@ Gets information about data flows in workspace.
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
 
+### [Get-AzSynapseDroppedSqlPool](Get-AzSynapseDroppedSqlPool.md)
+Gets Synapse Sql dropped Sql Pool Backup.
+
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
 
@@ -112,6 +115,9 @@ Gets the advanced threat protection settings for a SQL pool.
 
 ### [Get-AzSynapseSqlPoolAuditSetting](Get-AzSynapseSqlPoolAuditSetting.md)
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
+
+### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
+Gets Synapse Sql Pool Geo Backup.
 
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
 Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.

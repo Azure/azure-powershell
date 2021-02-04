@@ -1962,6 +1962,60 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public PSRecoverableSqlPool GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.Get(resourceGroupName, workspaceName, sqlPoolName);
+
+                return new PSRecoverableSqlPool(recoverableSqlPool);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public List<RecoverableSqlPool> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListNext);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public PSRestorableDroppedSqlPool GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
+        {
+            try
+            {
+                var restorableDroppedSqlPool = this._synapseManagementClient.RestorableDroppedSqlPools.Get(resourceGroupName, workspaceName, sqlPoolAndTimeName);
+
+                return new PSRestorableDroppedSqlPool(restorableDroppedSqlPool);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public List<RestorableDroppedSqlPool> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
+                return restorableDroppedSqlPoolList.ToList();
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         internal SqlDatabase GetSqlDatabase(string resourceGroupName, string workspaceName, string sqlDatabaseName)
         {
             try
