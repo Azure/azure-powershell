@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
+            if (ManagementPublicIpAddress == null && (publicIpAddresses == null || publicIpAddresses.Count() == 0))
             {
                 throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
             }
