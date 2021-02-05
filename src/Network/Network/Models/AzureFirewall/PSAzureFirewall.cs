@@ -137,9 +137,12 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            if (ManagementPublicIpAddress == null && (publicIpAddresses == null || publicIpAddresses.Count() == 0))
+            if (ManagementPublicIpAddress == null)
             {
-                throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
+                if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
+                {
+                    throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
+                }
             }
 
             PSSubnet firewallSubnet = null;
@@ -151,7 +154,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
-
+           
             PSSubnet firewallMgmtSubnet = null;
             if (ManagementPublicIpAddress != null)
             {
@@ -174,14 +177,21 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            for (var i = 0; i < publicIpAddresses.Count(); i++)
+            if (publicIpAddresses != null)
             {
-                this.IpConfigurations.Add(
-                    new PSAzureFirewallIpConfiguration
-                    {
-                        Name = $"{AzureFirewallIpConfigurationName}{i}",
-                        PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
-                    });
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration{Name = "fwdatapipconfig"});
             }
 
             this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };

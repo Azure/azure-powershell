@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             NewParameterTypeName = "List<PSPublicIpAddress>",
             ReplaceMentCmdletParameterName = "PublicIpAddress")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "OldIpConfigurationParameterValues",
             HelpMessage = "Public IP address name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.")]
