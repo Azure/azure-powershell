@@ -27,6 +27,7 @@ The **Get-AzFrontDoor** cmdletGet gets all existing Front Doors in the current s
 PS C:\> Get-AzFrontDoor
 
 FriendlyName          : frontdoor1
+FrontDoorId           : {guid}
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -43,6 +44,7 @@ Name                  : frontdoor1
 Type                  : Microsoft.Network/frontdoor1
 
 FriendlyName          : frontdoor1
+FrontDoorId           : {guid}
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -66,6 +68,7 @@ Get all FrontDoors in the current subscription.
 PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1"
 
 FriendlyName          : frontdoor1
+FrontDoorId           : {guid}
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -82,6 +85,7 @@ Name                  : frontdoor1
 Type                  : Microsoft.Network/frontdoor1
 
 FriendlyName          : frontdoor2
+FrontDoorId           : {guid}
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -105,6 +109,7 @@ Get all FrontDoors in resource group "rg1" in the current subscription.
 PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1" -Name "frontDoor1"
 
 FriendlyName          : frontdoor1
+FrontDoorId           : {guid}
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}

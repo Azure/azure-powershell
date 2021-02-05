@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`
+
+## Version 0.3.0
+* Add parameter MinimalTlsVersion
+* First version of flexible server
+
 ## Version 0.2.0
 * New/Update-AzPostgreSqlFirewallRule create a default name with time stamp when no name is passed (#12738)
 * Added validateset for parameter StorageAutogrow (#12736)

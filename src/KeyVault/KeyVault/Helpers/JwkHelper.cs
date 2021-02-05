@@ -137,5 +137,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
                 }
             }
         }
+
+        internal static bool IsEC(string keyType) =>
+            string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
     /// <summary>The operation to create an ASR migration item (enable migration).</summary>
     /// <remarks>
-    /// [OpenAPI] ReplicationMigrationItems_Create=>PUT:"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}"
+    /// [OpenAPI] Create=>PUT:"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMigrateReplicationMigrationItem_CreateExpanded", SupportsShouldProcess = true)]
@@ -208,12 +208,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The subscription Id.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The subscription Id.")]
+        /// <summary>Azure Subscription Id in which migrate project was created.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Azure Subscription Id in which migrate project was created.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The subscription Id.",
+        Description = @"Azure Subscription Id in which migrate project was created.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(

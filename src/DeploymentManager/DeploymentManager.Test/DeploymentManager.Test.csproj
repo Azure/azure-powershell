@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Management.DeploymentManager" Version="0.9.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.12.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +49,10 @@
     <None Update="ScenarioTests\RestHealthCheckProperties.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.11.0-preview" />
   </ItemGroup>
 
 </Project>

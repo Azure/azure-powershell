@@ -41,5 +41,9 @@ namespace Microsoft.Azure.Commands.Aks
         };
         public const string AddOnNameMonitoring = "Monitoring";
         public const string AddOnNameVirtualNode = "VirtualNode";
+
+        internal const string DotNetApiParameterResourceGroupName = "resourceGroupName";
+        internal const string DotNetApiParameterResourceName = "resourceName";
+        internal const string DotNetApiParameterAgentPoolName = "agentPoolName";
     }
 }

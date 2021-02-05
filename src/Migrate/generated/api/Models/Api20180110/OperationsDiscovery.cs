@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// Create or Update any 'display.resource' Delete any 'display.resource' 'ActionName' any 'display.resources'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Description = value; }
+        public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Description = value ?? null; }
 
         /// <summary>
         /// The operation. The localized friendly name for the operation, as it should be shown to the user. It should be concise
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// or Update Delete 'ActionName'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Operation = value; }
+        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Operation = value ?? null; }
 
         /// <summary>
         /// The provider. The localized friendly form of the resource provider name – it is expected to also include the publisher/company
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// Insights" or "Microsoft Compute."
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Provider = value; }
+        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Provider = value ?? null; }
 
         /// <summary>
         /// The resource. The localized friendly form of the resource related to this action/operation – it should match the public
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// Job Collections", or "Virtual Machine VM Sizes" or "Scheduler Jobs"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Resource = value; }
+        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplayInternal)Display).Resource = value ?? null; }
 
         /// <summary>Internal Acessors for Display</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IDisplay Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.Display()); set { {_display = value;} } }
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         public string Origin { get => this._origin; set => this._origin = value; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _property;
 
         /// <summary>Properties. Reserved for future use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.OperationsDiscoveryProperties()); set => this._property = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set => this._property = value; }
 
         /// <summary>Creates an new <see cref="OperationsDiscovery" /> instance.</summary>
         public OperationsDiscovery()
@@ -185,8 +185,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         ReadOnly = false,
         Description = @"Properties. Reserved for future use.",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get; set; }
 
     }
     /// Operations discovery class.
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         /// </summary>
         string Origin { get; set; }
         /// <summary>Properties. Reserved for future use.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscoveryProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Property { get; set; }
 
     }
 }

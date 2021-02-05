@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
@@ -24,25 +24,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// does not matter to resulting prediction - the prediction should adapt to the
     /// order of the parameters typed by the user.
     /// </summary>
+    /// <remarks>
+    /// This doesn't handle the positional parameters yet.
+    /// </remarks>
     sealed class ParameterSet
     {
-        public IList<Tuple<string, string>> Parameters { get; }
+        /// <summary>
+        /// Gets the list of the parameters with their names and values.
+        /// </summary>
+        public IReadOnlyList<Parameter> Parameters { get; }
 
         public ParameterSet(CommandAst commandAst)
         {
-            Parameters = new List<Tuple<string, string>>();
-            var elements = commandAst.CommandElements.Skip(1);
-            Ast param = null;
+            Validation.CheckArgument(commandAst, $"{nameof(commandAst)} cannot be null.");
+
+            var parameters = new List<Parameter>();
+            CommandParameterAst param = null;
             Ast arg = null;
-            foreach (Ast elem in elements)
+
+            // Loop through all the parameters. The first element of CommandElements is the command name, so skip it.
+            for (var i = 1; i < commandAst.CommandElements.Count(); ++i)
             {
-                if (elem is CommandParameterAst)
+                var elem = commandAst.CommandElements[i];
+
+                if (elem is CommandParameterAst p)
                 {
-                    if (param != null)
-                    {
-                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
-                    }
-                    param = elem;
+                    AddParameter(param, arg);
+                    param = p;
                     arg = null;
                 }
                 else if (AzPredictorConstants.ParameterIndicator == elem?.ToString().Trim().FirstOrDefault())
@@ -50,11 +58,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // We have an incomplete command line such as
                     // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
                     // We'll ignore the incomplete parameter.
-                    if (param != null)
-                    {
-                        Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
-                    }
-
+                    AddParameter(param, arg);
                     param = null;
                     arg = null;
                 }
@@ -64,14 +68,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
+            Validation.CheckInvariant((param != null) || (arg == null));
 
-            if (param != null)
+            AddParameter(param, arg);
+
+            Parameters = parameters;
+
+            void AddParameter(CommandParameterAst parameter, Ast parameterValue)
             {
-                Parameters.Add(new Tuple<string, string>(param.ToString(), arg?.ToString()));
-            }
-            else if (arg != null)
-            {
-                throw new InvalidOperationException();
+                if (parameter != null)
+                {
+                    var value = parameterValue?.ToString();
+                    if (value == null)
+                    {
+                        value = parameter.Argument?.ToString();
+                    }
+
+                    if (value != null)
+                    {
+                        value = CommandLineUtilities.UnescapePredictionText(value);
+                    }
+
+                    parameters.Add(new Parameter(parameter.ParameterName, value));
+                }
             }
         }
     }

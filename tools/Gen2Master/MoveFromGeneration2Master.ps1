@@ -8,13 +8,13 @@ Function Move-Generation2Master {
 
     process {
         $ModuleName = ($SourcePath.Trim("\").Split("\"))[-1]
-        If (-not ($DestPath.Trim("\").Split("\"))[-1] -eq $ModuleName) {
+        If (-not ($DestPath.Trim("\").Split("\")[-1] -eq $ModuleName)) {
             $DestPath = Join-Path -Path $DestPath -ChildPath $ModuleName
         }
         If (-not (Test-Path $DestPath)) {
             New-Item -ItemType Directory -Path $DestPath
         }
-        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test')
+        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
         Foreach($Dir in $Dir2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $Dir
             $DestItem = Join-Path -Path $DestPath -ChildPath $Dir
@@ -68,7 +68,7 @@ Function Move-Generation2Master {
         }
         If ($Null -eq $RequiredModule) {
             $FullDestPath = Resolve-Path -path $DestPath
-            $AccountsModulePath = [System.IO.Path]::Combine($FullDestPath, 'Accounts', 'Accounts')
+            $AccountsModulePath = [System.IO.Path]::Combine($FullDestPath, '..', 'Accounts', 'Accounts')
             $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
             $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }

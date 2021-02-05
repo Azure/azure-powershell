@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList = (string[]) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).FriendlyName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList = (string[]) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList = (string[]) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).FriendlyName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList = (string[]) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ISubnetInternal)this).AddressList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }
 

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for ApplicationGroupType.</summary>
+    /// <summary>Resource Type of ApplicationGroup.</summary>
     public partial class ApplicationGroupTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

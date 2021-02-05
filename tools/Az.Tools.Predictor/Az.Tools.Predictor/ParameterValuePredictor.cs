@@ -1,8 +1,27 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Management.Automation.Language;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Text.Json;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -11,12 +30,70 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     sealed class ParameterValuePredictor
     {
-        /// <summary>
-        /// The collections of the parameter names that is used directly as the key in local parameter collection.
-        /// </summary>
-        private static readonly IReadOnlyCollection<string> _specialLocalParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "location", "credential", "addressprefix" };
-
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
+
+        private System.Threading.Mutex _mutex = new System.Threading.Mutex(false, "paramValueHistoryFile_update");
+
+        private readonly Dictionary<string, Dictionary<string, string>> _commandParamToResourceMap;
+
+        private string _paramValueHistoryFilePath = "";
+        private CancellationTokenSource _cancellationTokenSource;
+
+
+        private ITelemetryClient _telemetryClient;
+
+        public ParameterValuePredictor(ITelemetryClient telemetryClient)
+        {
+            Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
+
+            _telemetryClient = telemetryClient;
+
+            var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
+            var directory = fileInfo.DirectoryName;
+            var mappingFilePath = Path.Join(directory, "command_param_to_resource_map.json");
+            Exception exception = null;
+
+            try
+            {
+                _commandParamToResourceMap = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+            }
+            catch (Exception e)
+            {
+                // We don't want it to crash the module when the file doesn't exist or when it's mal-formatted.
+                exception = e;
+            }
+            _telemetryClient.OnLoadParameterMap(new ParameterMapTelemetryData(exception));
+
+            String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string[] paths = new string[] { path, "Microsoft", "Windows", "PowerShell", "AzPredictor", "paramValueHistory.json" };
+            _paramValueHistoryFilePath = System.IO.Path.Combine(paths);
+            Directory.CreateDirectory(Path.GetDirectoryName(_paramValueHistoryFilePath));
+
+            Task.Run(() =>
+            {
+                if (System.IO.File.Exists(_paramValueHistoryFilePath))
+                {
+                    _mutex.WaitOne();
+                    try
+                    {
+                        var localParameterValues = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(File.ReadAllText(_paramValueHistoryFilePath), JsonUtilities.DefaultSerializerOptions);
+                        foreach (var v in localParameterValues)
+                        {
+                            _localParameterValues.AddOrUpdate(v.Key, key => v.Value, (key, oldValue) => oldValue);
+                        }
+                    }
+                    finally
+                    {
+                        _mutex.ReleaseMutex();
+                    }
+                }
+
+                
+            });
+
+        }
+
+        
 
         /// <summary>
         /// Process the command from history
@@ -26,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (command != null)
             {
-                ExtractLocalParameters(command.CommandElements);
+                ExtractLocalParameters(command);
             }
         }
 
@@ -38,12 +115,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// > Get-AzVM -VMName &lt;TestVM&gt;
         /// "TestVM" is predicted for Get-AzVM.
         /// </summary>
+        /// <param name="commandNoun">The command noun</param>
         /// <param name="parameterName">The parameter name</param>
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
-        public string GetParameterValueFromAzCommand(string parameterName)
+        public string GetParameterValueFromAzCommand(string commandNoun, string parameterName)
         {
-            parameterName = parameterName.TrimStart(AzPredictorConstants.ParameterIndicator);
-            if (_localParameterValues.TryGetValue(parameterName.ToUpper(), out var value))
+            parameterName = parameterName.ToLower();
+            var key = parameterName;
+            Dictionary<string, string> commandNounMap = null;
+
+            if (_commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap) == true)
+            {
+                if (commandNounMap.TryGetValue(parameterName, out var parameterNameMappedValue))
+                {
+                    key = parameterNameMappedValue;
+                }
+            }
+
+            if (_localParameterValues.TryGetValue(key, out var value))
             {
                 return value;
             }
@@ -51,18 +140,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return null;
         }
 
-        /// <summary>
-        /// Gets the key to the local parameter dictionary from the command noun and the parameter name.
-        /// </summary>
-        /// <param name="commandNoun">The noun in the PowerShell command, e.g. the noun for command New-AzVM is VM.</param>
-        /// <param name="parameterName">The command's parameter name, e.g. "New-AzVM -Name" the parameter name is Name</param>
-        /// <returns></returns>
-        private static string GetLocalParameterKey(string commandNoun, string parameterName)
-        {
-            return _specialLocalParameterNames.Contains(parameterName) ? parameterName.ToUpper() : string.Concat(commandNoun, parameterName).ToUpper();
-        }
 
-        private static string GetAzCommandNoun(string commandName)
+        public static string GetAzCommandNoun(string commandName)
         {
             var monikerIndex = commandName?.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
 
@@ -85,27 +164,86 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         ///   ResourceGroupName => Hello
         ///   Location => 'EastUS'
         /// </summary>
-        /// <param name="command">The command ast elements</param>
-        private void ExtractLocalParameters(System.Collections.ObjectModel.ReadOnlyCollection<CommandElementAst> command)
+        /// <param name="command">The command ast element</param>
+        /// <remarks>
+        /// This doesn't support positional parameter.
+        /// </remarks>
+        private void ExtractLocalParameters(CommandAst command)
         {
             // Azure PowerShell command is in the form of {Verb}-Az{Noun}, e.g. New-AzResource.
             // We need to extract the noun to construct the parameter name.
 
-            var commandName = command.FirstOrDefault()?.ToString();
-            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName);
+            var commandName = command.GetCommandName();
+            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName)?.ToLower();
             if (commandNoun == null)
             {
                 return;
             }
 
-            for (int i = 2; i < command.Count; i += 2)
+            Dictionary<string, string> commandNounMap = null;
+            _commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap);
+
+            for (int i = 1; i < command.CommandElements.Count;)
             {
-                if (command[i - 1] is CommandParameterAst && command[i] is StringConstantExpressionAst)
+                if (command.CommandElements[i] is CommandParameterAst parameterAst)
                 {
-                    var parameterName = command[i - 1].ToString().TrimStart(AzPredictorConstants.ParameterIndicator);
-                    var key = ParameterValuePredictor.GetLocalParameterKey(commandNoun, parameterName);
-                    var parameterValue = command[i].ToString();
-                    this._localParameterValues.AddOrUpdate(key, parameterValue, (k, v) => parameterValue);
+                    var parameterName = parameterAst.ParameterName.ToLower();
+                    string parameterValue = null;
+
+                    // In the form of "-Name:Value"
+                    if (parameterAst.Argument != null)
+                    {
+                        parameterValue = parameterAst.Argument.ToString();
+                        ++i;
+                    }
+                    else if (i + 1 < command.CommandElements.Count)
+                    {
+                        // We don't support positional parameter.
+                        // The next element is either
+                        // 1. The value of this parameter name.
+                        // 2. This parameter is a switch parameter which doesn't have a value. The next element is a parameter.
+
+                        var nextElement = command.CommandElements[i + 1];
+
+                        if (nextElement is CommandParameterAst)
+                        {
+                            ++i;
+                            continue;
+                        }
+
+                        parameterValue = command.CommandElements[i + 1].ToString();
+                        i += 2;
+                    }
+
+                    var parameterKey = parameterName;
+
+                    if (commandNounMap != null)
+                    {
+                        if (commandNounMap.TryGetValue(parameterName, out var mappedValue))
+                        {
+                            parameterKey = mappedValue;
+                        }
+                    }
+                    _cancellationTokenSource?.Cancel();
+                    _cancellationTokenSource = new CancellationTokenSource();
+                    Task.Run(() =>
+                    {
+                        this._localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
+                        if (_cancellationTokenSource.IsCancellationRequested)
+                        {
+                            throw new OperationCanceledException();
+                        }
+                        String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
+                        _mutex.WaitOne();
+                        try
+                        {
+                            System.IO.File.WriteAllText(_paramValueHistoryFilePath, localParameterValuesJson);
+                        }
+                        finally
+                        {
+                            _mutex.ReleaseMutex();
+                        }
+                    });
                 }
             }
         }

@@ -680,5 +680,51 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Storage.Models.Endpoints</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Storage.Models.Endpoints</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Blob</PropertyName>
+                <Label>Blob</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Queue</PropertyName>
+                <Label>Queue</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Table</PropertyName>
+                <Label>Table</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>File</PropertyName>
+                <Label>File</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Web</PropertyName>
+                <Label>Web</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Dfs</PropertyName>
+                <Label>Dfs</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.MicrosoftEndpoints -Compress</ScriptBlock>
+                <Label>MicrosoftEndpoints</Label>
+              </ListItem> 
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.InternetEndpoints -Compress</ScriptBlock>
+                <Label>InternetEndpoints</Label>
+              </ListItem>   
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

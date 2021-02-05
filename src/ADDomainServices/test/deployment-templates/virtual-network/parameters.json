@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworks_name": {
+      "value": "youriNTW1f6kb0"
+    },
+    "networkSecurityGroups_externalid": {
+      "value": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/youriADDomain-rg-d74j9z/providers/Microsoft.Network/networkSecurityGroups/youriNSGmghcd2"
+    }
+  }
+}

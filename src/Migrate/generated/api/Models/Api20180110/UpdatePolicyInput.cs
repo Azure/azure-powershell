@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The ReplicationProviderSettings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput ReplicationProviderSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdatePolicyInputPropertiesInternal)Property).ReplicationProviderSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdatePolicyInputPropertiesInternal)Property).ReplicationProviderSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput ReplicationProviderSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdatePolicyInputPropertiesInternal)Property).ReplicationProviderSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdatePolicyInputPropertiesInternal)Property).ReplicationProviderSetting = value ?? null /* model class */; }
 
         /// <summary>Creates an new <see cref="UpdatePolicyInput" /> instance.</summary>
         public UpdatePolicyInput()
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         ReadOnly = false,
         Description = @"The ReplicationProviderSettings.",
         SerializedName = @"replicationProviderSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2APolicyCreationInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaAzurePolicyInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaBluePolicyInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHyperVReplicaPolicyInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMageAzureV2PolicyInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInMagePolicyInput) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput) })]
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput ReplicationProviderSetting { get; set; }
 
     }

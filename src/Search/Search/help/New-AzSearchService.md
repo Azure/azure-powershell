@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchservice
@@ -8,18 +8,19 @@ schema: 2.0.0
 # New-AzSearchService
 
 ## SYNOPSIS
-Creates an Azure Search service.
+Creates an Azure Cognitive Search service.
 
 ## SYNTAX
 
 ```
 New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
+ [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSearchService** cmdlet creates an Azure Search service with specified parameters.
+The **New-AzSearchService** cmdlet creates an Azure Cognitive Search service with specified parameters.
 
 ## EXAMPLES
 
@@ -39,7 +40,7 @@ HostingMode       : Default
 Tags              :
 ```
 
-The command creates an Azure Search service.
+The command creates an Azure Cognitive Search service.
 
 ## PARAMETERS
 
@@ -59,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostingMode
-Search Service hosting mode.
+Azure Cognitive Search Service hosting mode.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]
@@ -74,8 +75,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPRuleList
+(Optional) Azure Cognitive Search Service IP rules
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-Search Service location.
+Azure Cognitive Search Service location.
 
 ```yaml
 Type: System.String
@@ -90,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -105,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartitionCount
-Search Service partition count.
+Azure Cognitive Search Service partition count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -119,8 +150,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+(Optional) Azure Cognitive Search Service public network access (Enabled/Disabled)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicaCount
-Search Service replica count.
+Azure Cognitive Search Service replica count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -150,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Search Service Sku.
+Azure Cognitive Search Service Sku.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSkuName
@@ -196,7 +242,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

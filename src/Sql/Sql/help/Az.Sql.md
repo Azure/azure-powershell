@@ -329,6 +329,9 @@ Gets the auditing settings of an Azure SQL server.
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
+### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
+Gets the Microsoft support operations auditing settings of an Azure SQL server.
+
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
@@ -569,6 +572,9 @@ Deletes a firewall rule from a SQL Database server.
 ### [Remove-AzSqlServerKeyVaultKey](Remove-AzSqlServerKeyVaultKey.md)
 Removes a Key Vault key from a SQL server.
 
+### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
+Removes the Microsoft support operations auditing settings of an Azure SQL server.
+
 ### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
 
@@ -703,6 +709,9 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 
 ### [Set-AzSqlServerFirewallRule](Set-AzSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
+
+### [Set-AzSqlServerMSSupportAudit](Set-AzSqlServerMSSupportAudit.md)
+Changes the Microsoft support operations auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.

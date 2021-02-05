@@ -16,27 +16,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The categorized resource counts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts ContainerHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthCategorizedResourceCount = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts ContainerHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthCategorizedResourceCount = value ?? null /* model class */; }
 
         /// <summary>The list of summary of health errors across the resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] ContainerHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthIssue = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] ContainerHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthIssue = value ?? null /* arrayOf */; }
 
         /// <summary>The count of total resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public int? ContainerHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthResourceCount = value; }
+        public int? ContainerHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ContainerHealthResourceCount = value ?? default(int); }
 
         /// <summary>The categorized resource counts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts FabricHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthCategorizedResourceCount = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts FabricHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthCategorizedResourceCount = value ?? null /* model class */; }
 
         /// <summary>The list of summary of health errors across the resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] FabricHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthIssue = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] FabricHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthIssue = value ?? null /* arrayOf */; }
 
         /// <summary>The count of total resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public int? FabricHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthResourceCount = value; }
+        public int? FabricHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).FabricHealthResourceCount = value ?? default(int); }
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The categorized resource counts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts ProtectedItemHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthCategorizedResourceCount = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceHealthSummaryCategorizedResourceCounts ProtectedItemHealthCategorizedResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthCategorizedResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthCategorizedResourceCount = value ?? null /* model class */; }
 
         /// <summary>The list of summary of health errors across the resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] ProtectedItemHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthIssue = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[] ProtectedItemHealthIssue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthIssue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthIssue = value ?? null /* arrayOf */; }
 
         /// <summary>The count of total resources under the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public int? ProtectedItemHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthResourceCount = value; }
+        public int? ProtectedItemHealthResourceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthResourceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).ProtectedItemHealthResourceCount = value ?? default(int); }
 
         /// <summary>Resource Type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The list of errors on the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError[] VaultError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).VaultError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).VaultError = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthError[] VaultError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).VaultError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVaultHealthPropertiesInternal)Property).VaultError = value ?? null /* arrayOf */; }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive validation

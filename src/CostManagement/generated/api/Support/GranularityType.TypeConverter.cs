@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for GranularityType.</summary>
+    /// <summary>The granularity of rows in the forecast.</summary>
     public partial class GranularityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

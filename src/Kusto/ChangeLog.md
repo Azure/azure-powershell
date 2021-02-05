@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Updated API version to 2020-09-18.
+
 ## Version 1.0.0
 * General availability of 'Az.Kusto' module
 

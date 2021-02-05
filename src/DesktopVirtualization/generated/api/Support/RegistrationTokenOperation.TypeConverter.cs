@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for RegistrationTokenOperation.</summary>
+    /// <summary>The type of resetting the token.</summary>
     public partial class RegistrationTokenOperationTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

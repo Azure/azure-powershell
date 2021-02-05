@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ### -SupportAutomaticPlacement
 Specifies if HostGroup will enable automatic placement of vm's.
 Automatic placement means these VMs are placed on dedicated hosts, chosen by Azure, under the dedicated host group.
-If not specified, default value will be true.
+If not specified, default value will be false.
 
 ```yaml
 Type: bool

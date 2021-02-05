@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).NicId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).RecoveryVMSubnetName = (string) content.GetValueForProperty("RecoveryVMSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).RecoveryVMSubnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).ReplicaNicStaticIPAddress = (string) content.GetValueForProperty("ReplicaNicStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).ReplicaNicStaticIPAddress, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).SelectionType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).NicId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).RecoveryVMSubnetName = (string) content.GetValueForProperty("RecoveryVMSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).RecoveryVMSubnetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).ReplicaNicStaticIPAddress = (string) content.GetValueForProperty("ReplicaNicStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).ReplicaNicStaticIPAddress, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).SelectionType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMNicInputDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             AfterDeserializePSObject(content);
         }
     }

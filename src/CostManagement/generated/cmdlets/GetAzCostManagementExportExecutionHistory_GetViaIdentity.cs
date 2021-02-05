@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
     /// The operation to get the execution history of an export for the defined scope and export name.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Exports_GetExecutionHistory=>GET:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory"
+    /// [OpenAPI] GetExecutionHistory=>GET:"/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCostManagementExportExecutionHistory_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution))]

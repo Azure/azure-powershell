@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>Argument completer implementation for DataSyncStatus.</summary>
+    /// <summary>The data sync option.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DataSyncStatusTypeConverter))]
     public partial struct DataSyncStatus :
         System.Management.Automation.IArgumentCompleter

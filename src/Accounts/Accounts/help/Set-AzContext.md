@@ -60,7 +60,7 @@ The context includes tenant, subscription, and environment information.
 
 ### Example 1: Set the subscription context
 ```
-PS C:\>Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
