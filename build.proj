@@ -277,11 +277,11 @@
   </Target>
 
   <Target Name="AzToolsInstaller">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:clean;build;test" />
+    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:'clean;build;test'" />
   </Target>
 
   <Target Name="AzToolsPredictor">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:clean;build;test" />
+    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:'clean;build;test'" />
   </Target>
 
   <Target Name="ChangeLogErrorMessage">

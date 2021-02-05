@@ -93,12 +93,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             return JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(mapFilePath));
         }
 
-        private List<string> GetCsprojListUnderModule(string moduleName, string[] csprojList)
-        {
-            return csprojList.Where(x => x.Replace("\\", "/").Contains("/" + moduleName + "/"))
-                .ToList();
-        }
-
         private List<string> GetRelatedCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
             List<string> csprojList = new List<string>();
@@ -128,9 +122,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 moduleName = ACCOUNT_MODULE_NAME;
             }
-            string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => !x.Contains("Test")).ToArray();
-            return GetCsprojListUnderModule(moduleName, csprojList);
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => !x.Contains("Test")).ToList();
         }
 
         private string GetModuleNameFromCsprojPath(string csprojPath)
@@ -181,24 +174,23 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 moduleName = ACCOUNT_MODULE_NAME;
             }
-            string[] csprojList = GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => x.Contains("Test")).ToArray();
-            return GetCsprojListUnderModule(moduleName, csprojList);
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => x.Contains("Test")).ToList();;
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
         {
             Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
             {
-                [BUILD_PHASE] = new HashSet<string>(from x in GetBuildCsprojList(TargetModule, csprojMap).ToList() select x),
-                [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
-                [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
-                [ANALYSIS_HELP_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
-                [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(from x in GetDependenceModuleList(TargetModule, csprojMap).ToList() select x),
-                [TEST_PHASE] = new HashSet<string>(from x in GetTestCsprojList(TargetModule, csprojMap).ToList() select x)
+                [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_HELP_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
             };
 
-            Console.WriteLine("----------------- InfluencedModuleInfo -----------------");
+            Console.WriteLine("----------------- InfluencedModuleInfo TargetModule -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
             {
                 Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
