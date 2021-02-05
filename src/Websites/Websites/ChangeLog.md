@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * #13763- Introduced an option to give custom timeout for `Publish-AzWebApp` 
+
+## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.
 
 ## Version 2.2.0
