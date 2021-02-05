@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Updated New-AzFirewall to no longer require data public IP for force tunneling firewall (with management IP and subnet)
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
