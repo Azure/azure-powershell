@@ -44,6 +44,9 @@ Description for Creates a new static site in an existing resource group, or upda
 ### [New-AzStaticWebAppBuildFunctionAppSetting](New-AzStaticWebAppBuildFunctionAppSetting.md)
 Description for Creates or updates the function app settings of a static site build.
 
+### [New-AzStaticWebAppCustomDomain](New-AzStaticWebAppCustomDomain.md)
+Description for Creates a new static site custom domain in an existing resource group and static site.
+
 ### [New-AzStaticWebAppFunctionAppSetting](New-AzStaticWebAppFunctionAppSetting.md)
 Description for Creates or updates the function app settings of a static site.
 

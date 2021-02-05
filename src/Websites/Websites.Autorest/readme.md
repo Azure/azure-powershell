@@ -54,6 +54,13 @@ directive:
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: ^(?!CustomDomain).*$
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$
+      subject: CustomDomain
     remove: true
   # Remove the set-* cmdlet
   - where:
