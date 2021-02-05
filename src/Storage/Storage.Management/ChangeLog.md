@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.0
 * Supported RoutingPreference settings in create/update Storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added cmdlets to supported repository, manifest, and tag operations:
     - `Get-AzContainerRegistryRepository`
     - `Update-AzContainerRegistryRepository`

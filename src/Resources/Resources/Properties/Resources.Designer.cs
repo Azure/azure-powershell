@@ -484,15 +484,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No AD object could be found with current parameters, please confirm the information provided is correct and try again.
-        /// </summary>
-        internal static string NoADObjectFound {
-            get {
-                return ResourceManager.GetString("NoADObjectFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot find any deployments in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string NoDeploymentWereFound {
