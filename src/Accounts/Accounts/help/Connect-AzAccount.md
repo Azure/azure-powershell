@@ -480,7 +480,7 @@ Accept wildcard characters: False
 ```
 
 ### -SendCertificateChain
-Present to use subject name issuer authentication.
+Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

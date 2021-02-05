@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Present to use subject name issuer authentication.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.")]
         public SwitchParameter SendCertificateChain { get; set; }
 
         protected override IAzureContext DefaultContext
@@ -304,13 +304,15 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
                     break;
                 case ServicePrincipalCertificateParameterSet:
-                case ServicePrincipalParameterSet:
-                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-                    if (SendCertificateChain.IsPresent)
+                    if (SendCertificateChain)
                     {
-                        azureAccount.SetProperty("SendCertificateChain", Boolean.TrueString);
+                        azureAccount.SetProperty("SendCertificateChain", SendCertificateChain.ToString());
+                        WriteDebug("SendCertificateChain is set.");
                     }
-                    
+                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    break;
+                case ServicePrincipalParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;  
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
