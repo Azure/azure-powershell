@@ -94,6 +94,14 @@ Supported -EnableNoPublicIP when creating a Databricks workspace
 #### Az.Websites
 * Added support for Importing a key vault certificate to WebApp.
 
+### Thanks to our community contributors
+* @atul-ram, Update Set-AzEventHub.md (#13921)
+* Christoph Bergmeister [MVP] (@bergmeister), Set-AzDataLakeGen2AclRecursive.md - Fix typo (directiry -> directory) (#14082)
+* Alexander Schmidt (@devdeer-alex), Fixed broken link to contribution guidelines (#14009)
+* @JiangYuchun, Update Get-AzApplicationGatewayAuthenticationCertificate.md (#13972)
+* Sebastian Olsen (@Spacebjorn), Corrected example command (#13901)
+
+
 ## 5.4.0 - January 2021
 #### Az.Accounts
 * Shown correct client request id on debug message [#13745]
