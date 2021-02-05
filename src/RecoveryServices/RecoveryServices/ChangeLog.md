@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.0
 * modified policy validation limits as per backup service.
 * Added Zone Redundancy for Recovery Service Vaults. 
 * Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.

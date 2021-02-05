@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.0
 * Added cmdlet `Test-AzMySqlFlexibleServerConnect`
 
 ## Version 0.4.0

@@ -51,7 +51,7 @@
   # ProcessorArchitecture = ''
   
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.5'; })
   
   # Assemblies that must be loaded prior to importing this module
   RequiredAssemblies = './bin/Az.Migrate.private.dll'

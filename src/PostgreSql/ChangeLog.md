@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`
 
 ## Version 0.3.0
