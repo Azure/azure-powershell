@@ -21,7 +21,7 @@
 * Tracked CloudError code in exception
 * Raised 'ContextCleared' event when `Clear-AzContext` was executed
 
-## Version 100.0.0
+## Version 2.2.99
 * Supported subject name issuer authentication.
 
 ## Version 2.2.4
