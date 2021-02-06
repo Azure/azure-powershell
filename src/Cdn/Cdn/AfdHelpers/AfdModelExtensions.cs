@@ -11,10 +11,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint;
 using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
+using System.Collections.Generic;
+
+using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdUtilities
+
+namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
     public static class AfdModelExtensions
     {
@@ -27,9 +32,25 @@ namespace Microsoft.Azure.Commands.Cdn.AfdUtilities
                 Type = sdkAfdProfile.Type,
                 ProvisioningState = sdkAfdProfile.ProvisioningState,
                 Location = sdkAfdProfile.Location,
-                // Tags = sdkAfdProfile.Tags.ToHashTableTags(),
+                Tags = (Dictionary<string, string>)sdkAfdProfile.Tags,
                 ResourceState = sdkAfdProfile.ResourceState,
                 Sku = sdkAfdProfile.Sku.Name
+            };
+        }
+
+        public static PSAfdEndpoint ToPSAfdEndpoint(this SdkAfdEndpoint sdkAfdEndpoint)
+        {
+            return new PSAfdEndpoint
+            {
+                Id = sdkAfdEndpoint.Id,
+                Name = sdkAfdEndpoint.Name,
+                Type = sdkAfdEndpoint.Type,
+                ProvisioningState = sdkAfdEndpoint.ProvisioningState,
+                Location = sdkAfdEndpoint.Location,
+                Tags = (Dictionary<string, string>)sdkAfdEndpoint.Tags,
+                HostName = sdkAfdEndpoint.HostName,
+                OriginResponseTimeoutSeconds = (int)sdkAfdEndpoint.OriginResponseTimeoutSeconds,
+                EnabledState = sdkAfdEndpoint.EnabledState
             };
         }
     }

@@ -11,20 +11,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdModels.Arm
+namespace Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint
 {
-    public class PSArmTrackedResource : PSArmResource
+    public class PSAfdEndpoint : PSArmTrackedResource
     {
-        /// <summary>
-        /// Gets or sets the Location
-        /// </summary>
-        public string Location { get; set; }
+        public string HostName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Tags
-        /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public int OriginResponseTimeoutSeconds { get; set; }
+
+        public string EnabledState { get; set; }
     }
 }

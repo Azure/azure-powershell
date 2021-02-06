@@ -11,9 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.AfdUtilities
+using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
+using System.Text.RegularExpressions;
+
+namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
-    public static class AfdValidators
+    public static class AfdUtilities
     {
         public static bool IsValuePresent(string value)
         {

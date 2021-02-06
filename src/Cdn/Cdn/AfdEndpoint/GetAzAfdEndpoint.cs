@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,9 +12,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint;
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
+using Microsoft.Azure.Commands.Cdn.AfdHelpers;
 using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Models.AfdEndpoint;
-using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 {
@@ -36,11 +37,34 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
-        public PSProfile AfdProfile { get; set; }
+        public PSAfdProfile AfdProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            try
+            {
+                if (ParameterSetName == ObjectParameterSet)
+                {
+                    this.ResourceGroupName = AfdResourceUtilities.GetResourceGroupFromAfdProfile(AfdProfile);
+                    this.AfdProfileName = AfdProfile.Name;
+
+                    // change var to actual data type
+                    var endpoints = CdnManagementClient.AFDEndpoints.ListByProfile(this.ResourceGroupName, this.AfdProfileName);
+                }
+
+                if (AfdUtilities.IsValuePresent(this.ResourceGroupName) && AfdUtilities.IsValuePresent(this.AfdProfileName) && AfdUtilities.IsValuePresent(this.AfdEndpointName))
+                {
+                    Microsoft.Azure.Management.Cdn.Models.AFDEndpoint afdEndpoint = CdnManagementClient.AFDEndpoints.Get(this.ResourceGroupName, this.AfdProfileName, this.AfdEndpointName);
+                    WriteObject(afdEndpoint.ToPSAfdEndpoint());
+                }
+
+                // all endpoints in the profile
+
+            } catch(Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponse)
+            {
+                throw new PSArgumentException(errorResponse.Response.Content);
+            }
+           
         }
     }
 }

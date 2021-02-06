@@ -11,15 +11,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
+using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Cdn;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
-using Microsoft.Azure.Commands.Cdn.AfdUtilities;
-using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 {
@@ -35,43 +34,50 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
         public override void ExecuteCmdlet()
         {
-            if (this.ResourceGroupName == null && this.AfdProfileName == null)
+            try
             {
-                List<PSAfdProfile> afdProfilesList = CdnManagementClient.Profiles.List()
-                                                     .Select(afdProfile => afdProfile.ToPSAfdProfile())
-                                                     .Where(afdProfile => (afdProfile.Sku == AfdSku.StandardAzureFrontDoor || afdProfile.Sku == AfdSku.PremiumAzureFrontDoor))
-                                                     .ToList();
+                if (this.ResourceGroupName == null && this.AfdProfileName == null)
+                {
+                    // not all profiles are delivered by the payload
+                    // limitation somewhere in the RP?
+                    List<PSAfdProfile> afdProfilesList = CdnManagementClient.Profiles.List()
+                                                         .Select(afdProfile => afdProfile.ToPSAfdProfile())
+                                                         .Where(afdProfile => (afdProfile.Sku == AfdSku.StandardAzureFrontDoor || afdProfile.Sku == AfdSku.PremiumAzureFrontDoor))
+                                                         .ToList();
 
-                WriteVerbose(Resources.Success);
-                WriteObject(afdProfilesList);
+                    WriteObject(afdProfilesList);
+                }
+                else if (AfdUtilities.IsValuePresent(this.ResourceGroupName) && this.AfdProfileName == null)
+                {
+                    // works
+                    List<PSAfdProfile> afdProfilesList = CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName)
+                                                         .Select(afdProfile => afdProfile.ToPSAfdProfile())
+                                                         .Where(afdProfile => (afdProfile.Sku == AfdSku.StandardAzureFrontDoor || afdProfile.Sku == AfdSku.PremiumAzureFrontDoor))
+                                                         .ToList();
+
+                    WriteObject(afdProfilesList);
+                }
+                else if (this.ResourceGroupName == null && AfdUtilities.IsValuePresent(this.AfdProfileName))
+                {
+                    // not all profiles are delivered by the payload
+                    // limitation somewhere in the RP?
+                    List<PSAfdProfile> afdProfileList = CdnManagementClient.Profiles.List()
+                                                        .Select(afdProfile => afdProfile.ToPSAfdProfile())
+                                                        .Where(afdProfile => (afdProfile.Sku == AfdSku.StandardAzureFrontDoor || afdProfile.Sku == AfdSku.PremiumAzureFrontDoor))
+                                                        .ToList();
+
+                    WriteObject(afdProfileList);
+                }
+                else
+                {
+                    // works
+                    Microsoft.Azure.Management.Cdn.Models.Profile afdProfile = CdnManagementClient.Profiles.Get(ResourceGroupName, AfdProfileName);
+                    WriteObject(afdProfile.ToPSAfdProfile());
+                }
+            } catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponseException)
+            {
+                throw new PSArgumentException(errorResponseException.Response.Content);
             }
-            else if (AfdValidators.IsValuePresent(this.ResourceGroupName) && this.AfdProfileName == null)
-            {
-                // need to figure out why the filter is not working
-                List<PSAfdProfile> afdProfilesList = CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName)
-                                                     .Select(afdProfile => afdProfile.ToPSAfdProfile())
-                                                     .Where(afdProfile => (afdProfile.Sku == AfdSku.StandardAzureFrontDoor || afdProfile.Sku == AfdSku.PremiumAzureFrontDoor))
-                                                     .ToList();
-
-                WriteVerbose(Resources.Success);
-                WriteObject(afdProfilesList);
-            }
-            else if (this.ResourceGroupName == null && AfdValidators.IsValuePresent(this.AfdProfileName))
-            {
-                List<PSAfdProfile> afdProfileList = CdnManagementClient.Profiles.List()
-                                                    .Select(afdProfile => afdProfile.ToPSAfdProfile())
-                                                    .Where(afdProfile => afdProfile.Name == this.AfdProfileName)
-                                                    .ToList();
-
-                WriteVerbose(Resources.Success);
-                WriteObject(afdProfileList);
-            } 
-            else if (AfdValidators.IsValuePresent(this.ResourceGroupName) && AfdValidators.IsValuePresent(this.AfdProfileName))
-            {
-                Microsoft.Azure.Management.Cdn.Models.Profile afdProfile = CdnManagementClient.Profiles.Get(ResourceGroupName, AfdProfileName);
-                WriteVerbose(Resources.Success);
-                WriteObject(afdProfile.ToPSAfdProfile());
-            }    
         }
     }
 }
