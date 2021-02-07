@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DedicatedHsm
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
+online version: https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
 schema: 2.0.0
 ---
 

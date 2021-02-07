@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/new-azcloudservice
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 schema: 2.0.0
 ---
 

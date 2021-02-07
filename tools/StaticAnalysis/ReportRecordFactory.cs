@@ -28,23 +28,23 @@ namespace StaticAnalysis
     {
         public static IReportRecord Create(string type)
         {
-            if (type.Equals(typeof(BreakingChangeIssue).FullName))
+            if (type.Equals("BreakingChangeIssue"))
             {
                 return new BreakingChangeIssue();
             }
-            if (type.Equals(typeof(BreakingChangeIssue).FullName))
+            if (type.Equals("AssemblyVersionConflict"))
             {
                 return new AssemblyVersionConflict();
             }
-            if (type.Equals(typeof(BreakingChangeIssue).FullName))
+            if (type.Equals("SharedAssemblyConflict"))
             {
                 return new SharedAssemblyConflict();
             }
-            if (type.Equals(typeof(BreakingChangeIssue).FullName))
+            if (type.Equals("MissingAssembly"))
             {
                 return new MissingAssembly();
             }
-            if (type.Equals(typeof(BreakingChangeIssue).FullName))
+            if (type.Equals("ExtraAssembly"))
             {
                 return new ExtraAssembly();
             }

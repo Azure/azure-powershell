@@ -2254,6 +2254,12 @@ param(
     ${VcenterPassword},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+    ${AcceptEULA},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]

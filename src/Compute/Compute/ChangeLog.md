@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
 * Removed FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
 * Added deprecation message to the ContainerService cmdlets:

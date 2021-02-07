@@ -30,11 +30,11 @@ namespace StaticAnalysis.IssueChecker
     {
         private readonly List<(string, string)> exceptionLogInfoList = new List<(string, string)>()
         {
-            ("BreakingChangeIssues.csv", typeof(BreakingChangeIssue).FullName),
-            ("AssemblyVersionConflict.csv", typeof(AssemblyVersionConflict).FullName),
-            ("SharedAssemblyConflict.csv", typeof(SharedAssemblyConflict).FullName),
-            ("MissingAssemblies.csv", typeof(MissingAssembly).FullName),
-            ("ExtraAssemblies.csv", typeof(ExtraAssembly).FullName),
+            ("BreakingChangeIssues.csv", "BreakingChangeIssues"),
+            ("AssemblyVersionConflict.csv", "AssemblyVersionConflict"),
+            ("SharedAssemblyConflict.csv", "SharedAssemblyConflict"),
+            ("MissingAssemblies.csv", "MissingAssembly"),
+            ("ExtraAssemblies.csv", "ExtraAssembly"),
         };
         public AnalysisLogger Logger { get; set; }
 

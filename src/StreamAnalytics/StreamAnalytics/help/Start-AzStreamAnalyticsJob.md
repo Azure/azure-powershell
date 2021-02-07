@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: B5914F65-CAF8-4647-BA78-49B65DD6D67A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
 schema: 2.0.0
 ---
 

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+Module Name: Az.VMWare
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 schema: 2.0.0
 ---
 
-# New-AzVMwarePrivateCloud
+# New-AzVMWarePrivateCloud
 
 ## SYNOPSIS
 Create or update a private cloud
@@ -14,7 +14,7 @@ Create or update a private cloud
 
 ```
 New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
- -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>]
+ -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>] [-AcceptEULA]
  [-Internet <InternetEnum>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Create or update a private cloud
 
 ### Example 1: Create private cloud
 ```powershell
-PS C:\> New-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
+PS C:\> New-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
 
 Location      Name            Type
 --------      ----            ----
@@ -36,6 +36,21 @@ australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 Create private cloud
 
 ## PARAMETERS
+
+### -AcceptEULA
+Accept EULA of AVS, legal term will pop up without this parameter provided
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -71,7 +86,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.InternetEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +302,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPrivateCloud
 
 ## NOTES
 
