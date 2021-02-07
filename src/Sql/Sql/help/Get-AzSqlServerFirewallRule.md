@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AD8BA5CB-D5D4-4C6E-A65F-E7AE69E3B22C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverfirewallrule
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 

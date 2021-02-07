@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ImageBuilder
 Module Guid: 8ff047e4-15bb-4b53-a728-75641c49958b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder
+Download Help Link: https://docs.microsoft.com/powershell/module/az.imagebuilder
 Help Version: 1.0.0.0
 Locale: en-US
 ---

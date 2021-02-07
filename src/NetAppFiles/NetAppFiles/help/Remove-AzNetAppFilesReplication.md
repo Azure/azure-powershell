@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilesreplication
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesreplication
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/get-Azsqlelasticjobcredential
+online version: https://docs.microsoft.com/powershell/module/Az.sql/get-Azsqlelasticjobcredential
 schema: 2.0.0
 ---
 

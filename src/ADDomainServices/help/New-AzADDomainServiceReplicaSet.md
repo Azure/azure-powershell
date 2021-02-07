@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSet
+online version: https://docs.microsoft.com/powershell/module/az.ADDomainServices/new-AzADDomainServiceReplicaSet
 schema: 2.0.0
 ---
 
