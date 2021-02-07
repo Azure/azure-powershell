@@ -34,7 +34,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
+https://docs.microsoft.com/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
 #>
 function Remove-AzConnectedKubernetes {
 [OutputType([System.Boolean])]
