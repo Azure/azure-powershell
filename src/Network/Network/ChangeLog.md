@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
