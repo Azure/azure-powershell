@@ -166,12 +166,6 @@ function Update-AzPostgreSqlFlexibleServer {
 
     process {
         try {
-            if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $bStr = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
-                $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-                $PSBoundParameters.Add('AdministratorLoginPassword', $bStr)
-            }
-
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
                 $PSBoundParameters.StorageProfileStorageMb = $PSBoundParameters['StorageInMb']
                 $null = $PSBoundParameters.Remove('StorageInMb')

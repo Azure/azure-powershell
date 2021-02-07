@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.5
 * Tracked CloudError code in exception
 * Raised 'ContextCleared' event when `Clear-AzContext` was executed
 

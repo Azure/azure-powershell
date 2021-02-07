@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.
 
 ## Version 2.2.0

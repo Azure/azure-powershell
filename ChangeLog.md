@@ -1,3 +1,107 @@
+## 5.5.0 - February 2021
+#### Az.Accounts
+* Tracked CloudError code in exception
+* Raised 'ContextCleared' event when 'Clear-AzContext' was executed
+
+#### Az.Aks
+* Refined error messages of cmdlet failure.
+* Upgraded exception handling to use Azure PowerShell related exceptions.
+* Fixed the issue that user could not use provided service principal to create Kubernetes cluster. [#13938]
+
+#### Az.Automation
+* Fixed the issue of processing 'PSCustomObject' and 'Array'.
+
+#### Az.Compute
+* Added parameter '-EnableAutomaticUpgrade' to 'Set-AzVmExtension' and 'Add-AzVmssExtension'.
+* Removed FilterExpression parameter from 'Get-AzVMImage' cmdlet documentation. 
+* Added deprecation message to the ContainerService cmdlets:
+    - 'Add-AzureRmContainerServiceAgentPoolProfileCommand'
+    - 'Get-AzContainerService'
+    - 'New-AzContainerService'
+    - 'New-AzContainerServiceConfig'
+    - 'Remove-AzContainerService'
+    - 'Remove-AzContainerServiceAgentPoolProfile'
+    - 'Update-AzContainerService'
+* Added parameter '-BurstingEnabled' to 'New-AzDiskConfig' and 'New-AzDiskUpdateConfig'
+* Added '-GroupByApplicationId' and '-GroupByUserAgent' parameters to the 'Export-AzLogAnalyticThrottledRequest' and 'Export-AzLogAnalyticRequestRateByInterval' cmdlets.
+* Added 'VMParameterSet' parameter set to 'Get-AzVMExtension' cmdlet. Added new parameter '-VM' to this parameter set. 
+
+#### Az.ContainerRegistry
+* Added cmdlets to supported repository, manifest, and tag operations:
+    - 'Get-AzContainerRegistryRepository'
+    - 'Update-AzContainerRegistryRepository'
+    - 'Remove-AzContainerRegistryRepository'
+    - 'Get-AzContainerRegistryManifest'
+    - 'Update-AzContainerRegistryManifest'
+    - 'Remove-AzContainerRegistryManifest'
+    - 'Get-AzContainerRegistryTag'
+    - 'Update-AzContainerRegistryTag'
+    - 'Remove-AzContainerRegistryTag'
+
+#### Az.Databricks
+Supported -EnableNoPublicIP when creating a Databricks workspace
+
+#### Az.FrontDoor
+* Added FrontDoorId to properties
+* Added JSON Exclusions and RequestBodyCheck support to managed rules
+
+#### Az.HDInsight
+* Added new parameter '-EnableComputeIsolation' and '-ComputeIsolationHostSku' to the cmdlet 'New-AzHDInsightCluster' to support compute isolation feature
+* Added property 'ComputeIsolationProperties' and 'ConnectivityEndpoints' in the class AzureHDInsightCluster.
+
+#### Az.KeyVault
+* Supported specifying key type and curve name when importing keys via a BYOK file
+
+#### Az.Network
+* Added new cmdlets to replace old product name 'virtual router' with new name 'route server' in the future.
+    - 'New-AzRouteServer'
+    - 'Get-AzRouteServer'
+    - 'Remove-AzRouteServer'
+    - 'Update-AzRouteServer'
+    - 'Get-AzRouteServerPeer'
+    - 'Add-AzRouteServerPeer'
+    - 'Update-AzRouteServerPeer'
+    - 'Remove-AzRouteServerPeer'
+    - Added deprecation attribute warning to the old cmdlets.
+* Bug fix in ExpressRouteLink MacSecConfig. Added new property 'SciState' to 'PSExpressRouteLinkMacSecConfig'
+* Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+
+#### Az.PolicyInsights
+* Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
+
+#### Az.RecoveryServices
+* modified policy validation limits as per backup service.
+* Added Zone Redundancy for Recovery Service Vaults. 
+* Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability zone for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for UseManagedDisk for HyperV to Azure provider
+
+#### Az.Resources
+* Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because current mapping was breaking certain scenarios
+
+#### Az.Sql
+* Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+* Fixed regression in 'Set-AzSqlServerAudit' when PredicateExpression argument is provided
+
+#### Az.Storage
+* Supported RoutingPreference settings in create/update Storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Upgraded Azure.Storage.Blobs to 12.8.0
+* Upgraded Azure.Storage.Files.Shares to 12.6.0
+* Upgraded Azure.Storage.Files.DataLake to 12.6.0
+
+#### Az.Websites
+* Added support for Importing a key vault certificate to WebApp.
+
+### Thanks to our community contributors
+* @atul-ram, Update Set-AzEventHub.md (#13921)
+* Christoph Bergmeister [MVP] (@bergmeister), Set-AzDataLakeGen2AclRecursive.md - Fix typo (directiry -> directory) (#14082)
+* Alexander Schmidt (@devdeer-alex), Fixed broken link to contribution guidelines (#14009)
+* @JiangYuchun, Update Get-AzApplicationGatewayAuthenticationCertificate.md (#13972)
+* Sebastian Olsen (@Spacebjorn), Corrected example command (#13901)
+
+
 ## 5.4.0 - January 2021
 #### Az.Accounts
 * Shown correct client request id on debug message [#13745]

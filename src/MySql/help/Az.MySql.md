@@ -110,6 +110,9 @@ Starts a server.
 ### [Stop-AzMySqlFlexibleServer](Stop-AzMySqlFlexibleServer.md)
 Stops a server.
 
+### [Test-AzMySqlFlexibleServerConnect](Test-AzMySqlFlexibleServerConnect.md)
+Test out the connection to the database server
+
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)
 Updates a configuration of a server.
 Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.

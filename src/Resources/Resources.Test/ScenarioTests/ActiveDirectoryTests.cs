@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");
         }
 
-        [Fact(Skip = "Test is not deterministic, only works on record mode")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithReaderRole()
         {
@@ -607,8 +607,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateDeleteAppCredentials");
         }
-
-        [Fact(Skip = "Test is not deterministic, only works on record mode")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteSpCredentials()
         {
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Test is not deterministic, only works on record mode")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipal()
         {

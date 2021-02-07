@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
-        [Fact(Skip = "Breaking PR in 2 parts needs this test to be disabled temporarily")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaCreatedBySP()
         {

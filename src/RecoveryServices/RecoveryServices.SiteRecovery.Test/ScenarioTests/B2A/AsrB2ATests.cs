@@ -204,5 +204,22 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.VaultSettingsFilePath +
                 "\"");
         }
+
+        [Fact]
+        [Trait(
+            Category.AcceptanceType,
+            Category.CheckIn)]
+        public void TestCreateRPIWithManagedDisk()
+        {
+            this.VaultSettingsFilePath = System.IO.Path.Combine(
+                System.AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "Test-CreateRPIWithManagedDisk -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
     }
 }
