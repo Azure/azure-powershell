@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/new-azaks
+online version: https://docs.microsoft.com/powershell/module/az.aks/new-azaks
 schema: 2.0.0
 ---
 

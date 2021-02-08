@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailablesslpredefinedpolicy
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayavailablesslpredefinedpolicy
 schema: 2.0.0
 ---
 

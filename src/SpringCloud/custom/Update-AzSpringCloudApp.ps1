@@ -48,7 +48,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [ServiceName <String>]: The name of the Service resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.springcloud/update-azspringcloudapp
+https://docs.microsoft.com/powershell/module/az.springcloud/update-azspringcloudapp
 #>
 function Update-AzSpringCloudApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource])]

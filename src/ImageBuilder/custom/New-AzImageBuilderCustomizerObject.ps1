@@ -19,7 +19,7 @@ Describes a unit of image customization
 Describes a unit of image customization
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
+https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
 #>
 function New-AzImageBuilderCustomizerObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer')]

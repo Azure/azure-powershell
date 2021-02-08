@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmextension
 schema: 2.0.0
 ---
 

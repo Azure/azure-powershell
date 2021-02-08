@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalert
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalert
 schema: 2.0.0
 ---
 

@@ -19,7 +19,7 @@ Stops replication for the migrated server.
 .Description
 The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server. 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]

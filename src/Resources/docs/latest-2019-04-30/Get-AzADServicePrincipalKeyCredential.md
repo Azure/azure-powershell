@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalkeycredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipalkeycredential
 schema: 2.0.0
 ---
 

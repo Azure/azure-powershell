@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecurityrule
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworksecurityrule
 schema: 2.0.0
 ---
 
