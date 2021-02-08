@@ -268,7 +268,7 @@ function Add-CsprojMappings
         foreach ($CsprojFile in $CsprojFiles)
         {
             $Fields = $CsprojFile.FullName.Replace('/', '\').Split('\')
-            $Project = $Fields[$Fields.Length - 2]
+            $Project = $Fields[$Fields.Length - 3]
             foreach ($ProjectName in $Script:ProjectToSolutionMappings.Keys)
             {
                 foreach ($Solution in $Script:ProjectToSolutionMappings[$ProjectName])
